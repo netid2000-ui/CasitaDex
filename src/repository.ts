@@ -16,7 +16,10 @@ export function repository(storage: Storage, environment: string) {
     async save(data: Data): Promise<void> {
       const raw = JSON.stringify(parseData(JSON.stringify(data)));
       const previous = await storage.getItem(key);
-      if (previous !== null) await storage.setItem(key + ":recovery", previous);
+      if (previous !== null) {
+        const checked = JSON.stringify(parseData(previous));
+        await storage.setItem(key + ":recovery", checked);
+      }
       await storage.setItem(key, raw);
     },
     async recover(): Promise<Data> {

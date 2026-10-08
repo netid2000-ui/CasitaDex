@@ -31,6 +31,11 @@ test("no backend identity, dependencies or Production profiles", () => {
   const pkg = require("../package.json"),
     eas = require("../eas.json");
   assert.ok(!Object.keys(pkg.dependencies).some((k) => /firebase/i.test(k)));
+  assert.equal(
+    pkg.dependencies["expo-notifications"],
+    undefined,
+    "Unused Firebase Messaging dependency must not return without a new local-only reminder decision",
+  );
   assert.equal(eas.build.production, undefined);
   assert.equal(eas.submit, undefined);
   for (const p of [

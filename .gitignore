@@ -11,3 +11,6 @@ credentials/
 coverage/
 playwright-report/
 test-results/
+
+/android/
+/ios/

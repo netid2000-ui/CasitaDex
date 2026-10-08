@@ -1,5 +1,8 @@
 # Accessibility contract
-Universal and never paywalled. Inherited from Event Command SB-10.
-Implemented: visible labels, heading roles, text confidence states, >=48 dp control targets, uncapped system font scaling, explicit extra-large text preference, wrapping navigation/controls, scrollable content, keyboard focus outline, no swipe-only or icon-only required actions, no animations, plain-language validation and recovery.
-Required QA: narrow and desktop viewport, 200% text across Today/Answers/Add/More/detail/share/import, keyboard access, no horizontal overflow, native TalkBack/VoiceOver and 200%+ system font scale. Browser evidence is not native acceptance.
-Colors: dark green #203F36 on paper #F5F2EA or white; white on dark green for selection. Meaning remains explicit in words.
+Universal and never paywalled. Governing standard: ART + FUNCTION + EXPERIENCE — WITHOUT GIMMICKS.
+
+Implemented: visible labels, heading roles, textual confidence states, minimum 48 dp control targets, uncapped OS font scaling, persisted Extra-large text, wrapping navigation/controls, scrollable content, keyboard focus indication, no swipe-only or icon-only required action, no animation, plain-language validation and recovery. Added persisted Light / Dark / System appearance with expo-system-ui and a matching status bar.
+
+Light palette: paper #F5F2EA, text #203F36, panel #FFFFFF. Dark palette: paper #15241F, text #E4EFE5, panel #20382D. Selection reverses these text/panel roles, with explicit selected state. Color never carries meaning alone. Record measured contrast in QA evidence.
+
+Required evidence: 320px and desktop browser widths, 200% app text on all major screens including details/share/import, keyboard access, no clipping, OS appearance changes, native system font scaling, TalkBack, VoiceOver, focus order and Reduce Motion. Browser/semantic-label checks cannot close native screen-reader acceptance. Exact results and open gates are in NATIVE_BATCH_REPORT.md.

@@ -1,13 +1,16 @@
 import React from "react";
+import { StatusBar } from "expo-status-bar";
 import { View } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { Slot, router, usePathname } from "expo-router";
 import { Provider } from "../state";
-import { Button, colors, s } from "../ui";
+import { Button, useTheme } from "../ui";
 function Shell() {
   const path = usePathname();
+  const { colors, s, dark } = useTheme();
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: colors.paper }}>
+      <StatusBar style={dark ? "light" : "dark"} />
       <View style={s.nav}>
         {[
           ["Today", "/"],

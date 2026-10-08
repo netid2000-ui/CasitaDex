@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import {
   Platform,
+  useColorScheme,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -10,7 +11,7 @@ import {
   type TextProps,
 } from "react-native";
 import { useData } from "./state";
-export const colors = {
+const lightColors = {
   paper: "#F5F2EA",
   ink: "#203F36",
   muted: "#52645C",
@@ -18,12 +19,30 @@ export const colors = {
   white: "#FFFFFF",
   accent: "#E8EDDB",
 };
+const darkColors = {
+  paper: "#15241F",
+  ink: "#E4EFE5",
+  muted: "#B8CBBF",
+  line: "#657D70",
+  white: "#20382D",
+  accent: "#304C3D",
+};
+export function useTheme() {
+  const { appearance } = useData();
+  const system = useColorScheme();
+  const dark =
+    appearance === "Dark" || (appearance === "System" && system === "dark");
+  const colors = dark ? darkColors : lightColors;
+  const s = useMemo(() => makeStyles(colors), [colors]);
+  return { colors, s, dark };
+}
 export function Copy({
   children,
   kind = "body",
   ...props
 }: TextProps & { kind?: "body" | "title" | "answer" | "small" }) {
   const { large } = useData();
+  const { colors } = useTheme();
   const size =
     { body: 17, title: 32, answer: 29, small: 14 }[kind] * (large ? 2 : 1);
   return (
@@ -55,6 +74,7 @@ export function Button({
   selected?: boolean;
   disabled?: boolean;
 }) {
+  const { colors, s } = useTheme();
   const [focused, setFocused] = useState(false);
   return (
     <Pressable
@@ -92,6 +112,7 @@ export function Field({
   multiline?: boolean;
 }) {
   const { large } = useData();
+  const { s } = useTheme();
   return (
     <View style={s.gap}>
       <Copy>{label}</Copy>
@@ -119,6 +140,7 @@ export function Page({
   children: React.ReactNode;
 }) {
   const { ready, error, busy, reload, recover } = useData();
+  const { s } = useTheme();
   return (
     <ScrollView
       keyboardShouldPersistTaps="handled"
@@ -150,53 +172,54 @@ export function Page({
     </ScrollView>
   );
 }
-export const s = StyleSheet.create({
-  page: {
-    padding: 24,
-    paddingBottom: 48,
-    backgroundColor: colors.paper,
-    flexGrow: 1,
-  },
-  container: { width: "100%", maxWidth: 820, alignSelf: "center", gap: 18 },
-  gap: { gap: 8 },
-  row: { flexDirection: "row", flexWrap: "wrap", gap: 10 },
-  panel: {
-    backgroundColor: colors.white,
-    padding: 22,
-    borderRadius: 18,
-    borderWidth: 1,
-    borderColor: colors.line,
-    gap: 12,
-  },
-  button: {
-    minHeight: 52,
-    minWidth: 48,
-    paddingVertical: 12,
-    paddingHorizontal: 17,
-    borderRadius: 12,
-    borderWidth: 1,
-    borderColor: colors.line,
-    backgroundColor: colors.white,
-    justifyContent: "center",
-    flexShrink: 1,
-  },
-  selected: { backgroundColor: colors.ink, borderColor: colors.ink },
-  input: {
-    backgroundColor: colors.white,
-    borderColor: colors.muted,
-    borderWidth: 1,
-    borderRadius: 10,
-    padding: 14,
-    color: colors.ink,
-  },
-  tag: { backgroundColor: colors.accent, padding: 10, borderRadius: 8 },
-  nav: {
-    backgroundColor: colors.white,
-    padding: 12,
-    flexDirection: "row",
-    flexWrap: "wrap",
-    gap: 8,
-    borderBottomWidth: 1,
-    borderColor: colors.line,
-  },
-});
+const makeStyles = (colors: typeof lightColors) =>
+  StyleSheet.create({
+    page: {
+      padding: 24,
+      paddingBottom: 48,
+      backgroundColor: colors.paper,
+      flexGrow: 1,
+    },
+    container: { width: "100%", maxWidth: 820, alignSelf: "center", gap: 18 },
+    gap: { gap: 8 },
+    row: { flexDirection: "row", flexWrap: "wrap", gap: 10 },
+    panel: {
+      backgroundColor: colors.white,
+      padding: 22,
+      borderRadius: 18,
+      borderWidth: 1,
+      borderColor: colors.line,
+      gap: 12,
+    },
+    button: {
+      minHeight: 52,
+      minWidth: 48,
+      paddingVertical: 12,
+      paddingHorizontal: 17,
+      borderRadius: 12,
+      borderWidth: 1,
+      borderColor: colors.line,
+      backgroundColor: colors.white,
+      justifyContent: "center",
+      flexShrink: 1,
+    },
+    selected: { backgroundColor: colors.ink, borderColor: colors.ink },
+    input: {
+      backgroundColor: colors.white,
+      borderColor: colors.muted,
+      borderWidth: 1,
+      borderRadius: 10,
+      padding: 14,
+      color: colors.ink,
+    },
+    tag: { backgroundColor: colors.accent, padding: 10, borderRadius: 8 },
+    nav: {
+      backgroundColor: colors.white,
+      padding: 12,
+      flexDirection: "row",
+      flexWrap: "wrap",
+      gap: 8,
+      borderBottomWidth: 1,
+      borderColor: colors.line,
+    },
+  });

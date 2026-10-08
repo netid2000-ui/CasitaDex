@@ -7,18 +7,27 @@ import React, {
 } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Constants from "expo-constants";
-import { repository } from "./repository";
+import { createRepository } from "./persistence";
+import {
+  preferenceStore,
+  defaultPreferences,
+  type Preferences,
+  type AppearancePreference,
+} from "./preferences";
 import { empty, type Data } from "./model";
-const repo = repository(
-  AsyncStorage,
-  Constants.expoConfig?.extra?.appEnvironment || "development",
-);
+const environment =
+  Constants.expoConfig?.extra?.appEnvironment || "development";
+const repo = createRepository(environment);
+const prefs = preferenceStore(AsyncStorage, environment);
 type State = {
   data: Data;
   ready: boolean;
   error: string;
   busy: boolean;
   large: boolean;
+  appearance: AppearancePreference;
+  setAppearance: (v: AppearancePreference) => void;
+  preferenceError: string;
   setLarge: (v: boolean) => void;
   save: (d: Data) => Promise<boolean>;
   reload: () => Promise<void>;
@@ -30,7 +39,26 @@ export function Provider({ children }: { children: React.ReactNode }) {
     [ready, setReady] = useState(false),
     [error, setError] = useState(""),
     [busy, setBusy] = useState(false),
-    [large, setLarge] = useState(false);
+    [preferences, setPreferences] = useState(defaultPreferences),
+    [preferenceError, setPreferenceError] = useState("");
+  const currentPreferences = useRef(defaultPreferences);
+  const preferenceQueue = useRef(Promise.resolve());
+  function updatePreferences(patch: Partial<Preferences>) {
+    const next = { ...currentPreferences.current, ...patch };
+    currentPreferences.current = next;
+    setPreferences(next);
+    preferenceQueue.current = preferenceQueue.current
+      .then(() => prefs.save(next))
+      .then(() => setPreferenceError(""))
+      .catch(() =>
+        setPreferenceError(
+          "This reading setting applies now but could not be saved. Select it again to retry.",
+        ),
+      );
+  }
+  const setLarge = (large: boolean) => updatePreferences({ large });
+  const setAppearance = (appearance: AppearancePreference) =>
+    updatePreferences({ appearance });
   const lock = useRef(false);
   async function reload() {
     setReady(false);
@@ -46,10 +74,20 @@ export function Provider({ children }: { children: React.ReactNode }) {
   }
   useEffect(() => {
     let active = true;
-    repo
-      .load()
-      .then((loaded) => {
+    Promise.all([
+      repo.load(),
+      prefs.load().catch(() => {
+        if (active)
+          setPreferenceError(
+            "Your reading settings could not be loaded. Choose them again to save.",
+          );
+        return defaultPreferences;
+      }),
+    ])
+      .then(([loaded, reading]) => {
         if (active) {
+          currentPreferences.current = reading;
+          setPreferences(reading);
           setData(loaded);
           setReady(true);
         }
@@ -109,7 +147,10 @@ export function Provider({ children }: { children: React.ReactNode }) {
         ready,
         error,
         busy,
-        large,
+        large: preferences.large,
+        appearance: preferences.appearance,
+        setAppearance,
+        preferenceError,
         setLarge,
         save,
         reload,

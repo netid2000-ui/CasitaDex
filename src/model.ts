@@ -102,8 +102,16 @@ function date(v: unknown): v is string {
     new Date(v).toISOString().slice(0, 10) === v
   );
 }
+export function utf8Bytes(value: string): number {
+  let count = 0;
+  for (const character of value) {
+    const code = character.codePointAt(0)!;
+    count += code <= 0x7f ? 1 : code <= 0x7ff ? 2 : code <= 0xffff ? 3 : 4;
+  }
+  return count;
+}
 export function parseData(raw: string): Data {
-  if (raw.length > 2000000)
+  if (raw.length > 2000000 || utf8Bytes(raw) > 2000000)
     throw new Error("Backup is too large. Maximum size is 2 MB.");
   const d = JSON.parse(raw);
   if (

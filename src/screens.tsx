@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Platform, Share, View } from "react-native";
 import { router, useLocalSearchParams } from "expo-router";
-import { Button, Copy, Field, Page, s } from "./ui";
+import { Button, Copy, Field, Page, useTheme } from "./ui";
 import { useData } from "./state";
 import {
   confidences,
@@ -26,6 +26,7 @@ const today = () => {
 const uid = () =>
   Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 10);
 function Tile({ card, compact = false }: { card: Card; compact?: boolean }) {
+  const { s } = useTheme();
   return (
     <View style={s.panel}>
       {card.demo && <Copy kind="small">EXAMPLE · Not your home</Copy>}
@@ -46,6 +47,7 @@ function Tile({ card, compact = false }: { card: Card; compact?: boolean }) {
   );
 }
 export function Today() {
+  const { s } = useTheme();
   const { data, save, busy } = useData();
   const due = data.cards.filter((c) => c.due && c.due <= today()),
     check = data.cards.filter((c) => c.confidence === "Needs checking");
@@ -108,6 +110,7 @@ export function Today() {
   );
 }
 export function Answers() {
+  const { s } = useTheme();
   const params = useLocalSearchParams<{ mode?: string }>();
   const { data } = useData();
   const [query, setQuery] = useState(""),
@@ -236,6 +239,7 @@ export function Answers() {
   );
 }
 export function Add() {
+  const { s } = useTheme();
   const { data, save, busy } = useData();
   const [title, setTitle] = useState(""),
     [answer, setAnswer] = useState(""),
@@ -312,6 +316,7 @@ export function Add() {
   );
 }
 export function Detail() {
+  const { s } = useTheme();
   const { id } = useLocalSearchParams<{ id: string }>();
   const { data, save, busy } = useData();
   const card = data.cards.find((c) => c.id === id);
@@ -516,7 +521,18 @@ export function Detail() {
   );
 }
 export function More() {
-  const { data, large, setLarge, save, busy, recover } = useData();
+  const { s } = useTheme();
+  const {
+    data,
+    large,
+    setLarge,
+    appearance,
+    setAppearance,
+    preferenceError,
+    save,
+    busy,
+    recover,
+  } = useData();
   const [output, setOutput] = useState(""),
     [input, setInput] = useState(""),
     [candidate, setCandidate] = useState<Data | null>(null),
@@ -545,6 +561,20 @@ export function More() {
           selected={large}
           onPress={() => setLarge(!large)}
         />
+        <Copy>Appearance</Copy>
+        <View style={s.row}>
+          {(["System", "Light", "Dark"] as const).map((value) => (
+            <Button
+              key={value}
+              label={value}
+              selected={appearance === value}
+              onPress={() => setAppearance(value)}
+            />
+          ))}
+        </View>
+        {!!preferenceError && (
+          <Copy accessibilityRole="alert">{preferenceError}</Copy>
+        )}
         <Copy>
           System text scaling remains enabled. No information depends on color,
           motion or sound.

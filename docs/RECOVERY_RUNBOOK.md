@@ -1,21 +1,45 @@
 # CasitaDex recovery runbook
-## Local development
-Repository: this isolated casitadex directory. No remote configured. Node 24.19.0 and npm are host-provided. Dependencies live only in node_modules with package-lock.json for reproducibility. This batch's npm cache is ../../work/npm-cache. No system package upgrades are required.
-Restore source from its local Git commit or recovery bundle. Run npm ci, npm test, npm run typecheck, npm run lint, npm run doctor, npm run export:web. A Git bundle is a second local copy, not an off-device backup.
-Development preview uses loopback only. The static review server uses port 8765 and serves dist; stop its process/session to release the port. Start with npm run preview. No public tunnel, database, credentials or backend is needed.
-Expo development preview uses the Expo CLI default port 8081; choose an unused port if occupied rather than terminating unrelated processes.
+Updated 2026-10-07 for the Native Acceptance + Data Durability batch.
 
-## User data
-AsyncStorage key casitadex:development:v1 or casitadex:staging:v1. Web storage is browser-origin scoped, so different ports have separate data. Native variants also have separate app sandboxes. Use text export/import to transfer data intentionally.
-Each successful replacement saves the previous primary JSON to the same key plus :recovery before replacing primary. A recovery-copy failure aborts the new write. A primary-write failure rejects the change and leaves the UI on its previous data.
-A read failure blocks all editing; it never replaces unreadable data with empty defaults. Retry loading or choose Recover previous save. More offers confirmed recovery even after an accidental replacement.
-Export before deleting browser/app data or uninstalling. No automatic cloud backup exists. Recovery copies may contain recently deleted cards until the next save. This prototype is unsuitable for credentials or confidential vault data.
-Import accepts a maximum 2 MB, schema version 1, valid space/card references, real ISO dates and verified provenance. It excludes unknown properties. Media import is rejected rather than falsely restoring missing files.
+## Source and local preview
+Restore this isolated repository from its local Git commit or Git bundle; no remote or off-device backup is configured. Preserve your own export before uninstalling or clearing app/browser data. A source bundle contains code, not your app data.
+Use Node 24.19.0 (also runs the node:sqlite technical spike), npm and the committed package-lock.json. Run npm ci, npm run typecheck, npm run lint, npm test, npm run doctor, npm run export:web. Review the Doctor result; do not suppress its online schema check.
+Start npm run preview for the static web review on 127.0.0.1:8765. Expo development normally uses port 8081; choose an unused port rather than stopping unrelated software. No public tunnel or server is needed for installed native operation. The web preview requires its local server for cold page loads; loaded-offline browser evidence is not native offline-cold evidence.
+Browser QA uses Playwright 1.62.1 and installed Microsoft Edge, isolated from personal browser sessions:
+- npm run test:browser
+- node tests/accessibility-smoke.cjs
+- node tests/durability-browser.cjs
 
-## Dependencies and operational limits
-Expo 57 and its SDK-compatible Router/safe-area/screens/links/constants packages; React 19.2.3; React Native 0.86.3; AsyncStorage 2.2.0; TypeScript 6.0.3. The lockfile is authoritative for resolved patches.
-QA tools (lint, doctor, formatting, browser smoke) are development-only. No analytics or remote error reporting is added.
-No EAS project ID, credentials, signing files or store provisioning. eas.json is inert configuration for future internal work, with no Production or submit profile.
-Physical Android/iPhone screen-reader, system font scaling, cold-relaunch and native storage/share evidence must be collected before native acceptance; never infer those from browser success.
+## Native structured data
+Android/iOS use expo-sqlite 57.0.4. Each environment uses casitadex-development-v1.db or casitadex-staging-v1.db inside its app sandbox. On Android Expo places these under files/SQLite; the typical Staging path is /data/user/0/com.designsbyfa.casitadex.staging/files/SQLite/. iOS uses Expo's defaultDatabaseDirectory; do not hard-code a simulator UUID.
+Tables: spaces, cards (one validated card document, including ordered history, per row), metadata (schema and previous-save snapshot). The private connection enables WAL, synchronous FULL and foreign keys. The repository serializes operations and uses BEGIN IMMEDIATE / COMMIT / ROLLBACK on that connection. No unrelated asynchronous operation can join a transaction.
+Only a committed schema marker marks migration complete. Existing AsyncStorage casitadex:<environment>:v1 data is validated and migrated once; legacy bytes are left untouched. Invalid legacy primary data blocks ordinary loading/saving. Explicit recovery can import its valid :recovery copy. Failed migration rolls back and remains retryable. Future database schema versions fail closed.
+To recover: retry loading; if unsuccessful, explicitly choose Recover previous save. Normal save first validates existing primary rows; corruption cannot displace known-good recovery. Recovery is transactional. If neither current nor recovery data is readable, preserve the sandbox and obtain a user-controlled export if one exists; do not clear storage or reset to empty.
+Do not copy just a live .db file: WAL sidecars may contain committed data. Prefer the app's validated text export. Low-level diagnostic copies require a closed app/database and preservation of relevant sidecars. Device/emulator root inspection is not a consumer backup feature.
 
-Browser QA uses pinned Playwright 1.62.1 and the installed Microsoft Edge in an isolated headless test profile. Start npm run preview, then npm run test:browser and node tests/accessibility-smoke.cjs. No personal browser session is read. The bundled runtime was used initially; the repository now pins Playwright so npm ci reproduces the runner. Edge must be installed. Expo Doctor 1.20.4 needs outbound Expo API access; a schema-request outage is a failed/unverified gate, not permission to suppress the check.
+## Web data and reading preferences
+The browser preview retains AsyncStorage's browser-origin storage, using casitadex:development:v1 or casitadex:staging:v1 plus :recovery. Native migration does not alter a browser origin. Ports/profiles are separate stores. The browser adapter validates the prior value before writing recovery, but its two-key write is not an atomic database transaction.
+Reading preferences use casitadex:<environment>:preferences, separately from card exports. Light, Dark, System, and Extra-large text persist on the device. OS font scaling remains enabled. If preference writing fails, the UI explains that the current setting could not be persisted.
+
+## Export/import and deletion
+More prepares a user-controlled version-1 text backup with spaces/cards/dates/confidence/history. Paste a backup, validate it, review counts, then explicitly confirm replacement. The limit is 2,000,000 UTF-8 bytes, not characters. Unknown fields are stripped; invalid dates, duplicate cards, missing references, or unsupported versions are rejected before mutation.
+No media attachments, media cleanup, file-provider export or local notification scheduling are implemented. Imports containing media fail explicitly. Do not imply complete media/reminder acceptance.
+Plain text exports and local data are not encrypted credential storage. Device loss, browser clearing or uninstall may erase current and recovery data. Deletion removes a card from the current collection; previous-save snapshots and preserved pre-migration legacy bytes can still contain it. Retaining legacy data is a deliberate reversible migration safeguard; cleanup requires a separately documented, verified post-migration step. Do not claim secure erasure or automatic cloud backup.
+
+## Windows Android build tooling
+Local inventory: Android Studio; SDK at C:/Users/franco/AppData/Local/Android/Sdk; Temurin JDK 21.0.12.101; Gradle wrapper 9.3.1; SDK/build tools 36; NDK 27.1.12297006; emulator Medium_Phone_API_37.0 (Android 17/API 37, x86_64). Exact build result is in NATIVE_BATCH_REPORT.md.
+Set JAVA_HOME to the installed JDK 21 directory and ANDROID_HOME to that SDK directory. Use a task-owned ANDROID_USER_HOME (../../work/android-state) to avoid the restricted shell attempting to write /.android, and GRADLE_USER_HOME (../../work/gradle-cache). npm cache for this batch is ../../work/npm-cache. These caches are reconstructible downloads, not app backups.
+Set EXPO_PUBLIC_APP_ENV=staging, EXPO_NO_TELEMETRY=1, CI=1.
+1. node node_modules/expo/bin/cli prebuild --platform android --no-install
+2. Resolve scripts/verify-local-only.gradle to an absolute path (Gradle resolves relative init scripts under android/).
+3. android/gradlew.bat -p android --init-script <absolute-guard-path> verifyLocalOnlyRuntime :app:assembleRelease -PreactNativeArchitectures=x86_64 --max-workers=2 --console=plain --no-daemon
+This is an internally tested Staging build with a generated debug/test signing key, despite Gradle's release-variant name. It is not Production authorization or store signing. It bundles JavaScript so no Metro server is required for offline-cold tests. Generated android/ and ios/ are ignored; do not commit generated test keys. No EAS/cloud build is used.
+Use adb -s <verified emulator> install -r <test APK>, then launch com.designsbyfa.casitadex.staging. Never clear or uninstall other apps. Capture emulator settings before tests and restore changed font, appearance, accessibility and network settings afterward.
+Original emulator state for this batch: font_scale=1.3, night mode=no, accessibility services=null, airplane=0, wifi=1, mobile_data=1, animator/transition/window animation scales=0.
+
+## iOS and physical devices
+Xcode and an accessible Mac/iOS simulator or a separately authorized signed device build are required. This Windows environment has no accessible Mac/Xcode, physical Android or physical iPhone test target. Keep those gates OPEN; do not substitute browser/Node/emulator results for physical-device acceptance.
+
+## Security, processes and release boundaries
+SDK baseline: Expo 57.0.27, React Native 0.86.3, React 19.2.3, TypeScript 6.0.3, AsyncStorage 2.2.0. Added expo-system-ui 57.0.4 and expo-sqlite 57.0.4; lockfile is authoritative.
+No Firebase/backend, account, ads, analytics, paid resource, EAS project, public hosting, store submission or Production configuration. Production config intentionally throws. Stop only task-owned preview/build/test processes when finished. See DEPENDENCY_REVIEW_2026-10-07.md for unresolved advisories; local acceptance is not a distribution waiver.
