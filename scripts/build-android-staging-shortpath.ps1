@@ -37,6 +37,15 @@ if (-not $RunBuild) {
   Write-Host 'DRY RUN: no source copied or build performed. Pass -RunBuild to create isolated clone and attempt Staging APK.'
   exit 0
 }
+# Validate prerequisites before creating the isolated checkout. A missing SDK or JDK
+# should not leave C:\cdx\a behind and block the next attempt.
+if (-not $env:ANDROID_HOME) { $env:ANDROID_HOME = Join-Path $env:LOCALAPPDATA 'Android\Sdk' }
+if (-not (Test-Path (Join-Path $env:ANDROID_HOME 'platform-tools\adb.exe'))) {
+  throw "Android SDK/adb missing under $env:ANDROID_HOME"
+}
+if (-not $env:JAVA_HOME -or -not (Test-Path (Join-Path $env:JAVA_HOME 'bin\java.exe'))) {
+  throw 'Set JAVA_HOME to a valid installed JDK 21 before running.'
+}
 foreach ($folder in @($ScratchRoot,$gradle,$androidUser,$npmCache)) {
   New-Item -ItemType Directory -Force -Path $folder | Out-Null
 }
@@ -50,11 +59,6 @@ $env:CI = '1'
 $env:GRADLE_USER_HOME = $gradle
 $env:ANDROID_USER_HOME = $androidUser
 $env:npm_config_cache = $npmCache
-if (-not $env:ANDROID_HOME) { $env:ANDROID_HOME = Join-Path $env:LOCALAPPDATA 'Android\Sdk' }
-if (-not (Test-Path (Join-Path $env:ANDROID_HOME 'platform-tools\adb.exe'))) {
-  throw "Android SDK/adb missing under $env:ANDROID_HOME"
-}
-if (-not $env:JAVA_HOME) { throw 'Set JAVA_HOME to installed JDK 21 before running.' }
 Push-Location $project
 try {
   & npm ci --no-audit --no-fund; Require-Exit 'npm ci'
