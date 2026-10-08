@@ -30,3 +30,6 @@ The isolated Windows Android recovery script now validates Android SDK/adb and J
 
 ## CD-SB-01 debug-artifact verification adjustment — 2026-10-08
 The local-only Gradle gate now evaluates `debugRuntimeClasspath`, matching the actual `assembleDebug` Staging target, rather than using a Release graph as a proxy. The Windows build driver additionally checks the built APK's package name with Android SDK `aapt` and refuses a mismatched identity. Both remain unexecuted native build checks in this environment; Android APK, emulator, device and accessibility acceptance are OPEN.
+
+### CD-SB-01 build preflight follow-up (2026-10-08)
+The guarded Windows Android recovery script now checks `node` and `npm` before creating its isolated checkout, alongside Android SDK/adb and JDK checks. `tests/android-build-contract.test.mjs` checks prerequisite ordering, the Staging Debug APK identity assertion, and the matching pre-build Firebase runtime graph gate. These are **static source-contract tests**; neither PowerShell runtime behavior nor native APK compilation was tested in this Linux environment. Android build/install and all device QA remain OPEN until Windows evidence exists. Remote Desktop Commander was online but remote usage was 0% during this checkpoint. No Production/Firebase/cloud/store change was made.

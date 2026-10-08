@@ -37,8 +37,13 @@ if (-not $RunBuild) {
   Write-Host 'DRY RUN: no source copied or build performed. Pass -RunBuild to create isolated clone and attempt Staging APK.'
   exit 0
 }
-# Validate prerequisites before creating the isolated checkout. A missing SDK or JDK
+# Validate prerequisites before creating the isolated checkout. A missing tool
 # should not leave C:\cdx\a behind and block the next attempt.
+foreach ($tool in @('node', 'npm')) {
+  if (-not (Get-Command $tool -ErrorAction SilentlyContinue)) {
+    throw "Required build command unavailable: $tool"
+  }
+}
 if (-not $env:ANDROID_HOME) { $env:ANDROID_HOME = Join-Path $env:LOCALAPPDATA 'Android\Sdk' }
 if (-not (Test-Path (Join-Path $env:ANDROID_HOME 'platform-tools\adb.exe'))) {
   throw "Android SDK/adb missing under $env:ANDROID_HOME"
