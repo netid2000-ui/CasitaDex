@@ -18,3 +18,6 @@ Charter v0.2 adds the Event Command-style professional change-control and eviden
 ## Expert leadership amendment — 2026-10-08
 
 Owner-approved Chief Product & Technology Lead model now codified in Product Charter v0.3, covering nine expert disciplines. All CD-SB-01 through CD-SB-09 reviews must use this cross-functional model. The charter/documentation amendment creates no Android APK and does not close native, iOS, media, notification, backup or release gates. No external infrastructure or Production resources were created.
+
+## CD-SB-01 continuation — 2026-10-08
+A non-destructive, opt-in PowerShell diagnostic was added for the next Windows attempt using a uniformly short **physical** C: checkout/cache path. It is preparatory only, not a proven workaround. In the current ChatGPT environment Node/npm/Java are available; Android SDK, adb and installed project dependencies are absent. No APK, emulator tests, physical device evidence, Firebase/Production resources, or GitHub remote were created here. CD-SB-01 and native acceptance remain OPEN pending Windows execution and logs.
