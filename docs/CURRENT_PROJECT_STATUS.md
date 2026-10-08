@@ -27,3 +27,6 @@ Re-reviewed the isolated Windows build script. Before this correction it invoked
 
 ## CD-SB-01 prerequisite fail-fast adjustment — 2026-10-08
 The isolated Windows Android recovery script now validates Android SDK/adb and JAVA_HOME/java.exe before creating `C:\cdx\a`. Previously, missing prerequisites left a cloned directory behind, causing subsequent attempts to stop at the refusal-to-overwrite safeguard. This change is an unexecuted Windows-specific correction; native compile and device acceptance remain OPEN.
+
+## CD-SB-01 debug-artifact verification adjustment — 2026-10-08
+The local-only Gradle gate now evaluates `debugRuntimeClasspath`, matching the actual `assembleDebug` Staging target, rather than using a Release graph as a proxy. The Windows build driver additionally checks the built APK's package name with Android SDK `aapt` and refuses a mismatched identity. Both remain unexecuted native build checks in this environment; Android APK, emulator, device and accessibility acceptance are OPEN.

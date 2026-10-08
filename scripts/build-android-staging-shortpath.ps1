@@ -68,6 +68,16 @@ try {
   Require-Exit 'Android Staging compile'
   $apk = Join-Path $project 'android\app\build\outputs\apk\debug\app-debug.apk'
   if (-not (Test-Path $apk)) { throw 'Gradle returned success but expected APK is missing' }
+  # Verify the APK's actual package identity rather than relying on the build environment.
+  $aapt = Get-ChildItem (Join-Path $env:ANDROID_HOME 'build-tools') -Directory -ErrorAction Stop |
+    Sort-Object Name -Descending | ForEach-Object { Join-Path $_.FullName 'aapt.exe' } |
+    Where-Object { Test-Path $_ } | Select-Object -First 1
+  if (-not $aapt) { throw 'Android aapt.exe unavailable: cannot verify APK identity' }
+  $badging = (& $aapt dump badging $apk | Select-Object -First 1)
+  Require-Exit 'Read APK identity'
+  if ($badging -notmatch "^package: name='com\.designsbyfa\.casitadex\.staging'") {
+    throw "APK identity mismatch: $badging"
+  }
   $hash = (Get-FileHash -Algorithm SHA256 $apk).Hash
   Write-Host "STAGING APK: $apk"
   Write-Host "APK SHA256: $hash"
