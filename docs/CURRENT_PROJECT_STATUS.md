@@ -14,3 +14,7 @@ Android build is BLOCKED by Windows native paths and mixed mapped/canonical root
 
 ## Governance update — 2026-10-07
 Charter v0.2 adds the Event Command-style professional change-control and evidence gates without importing Event Command's backend. The ordered CasitaDex super-batches CD-SB-01 through CD-SB-09 are in `CASITADEX_SUPER_BATCH_PLAN.md`; only CD-SB-01 is active. Planning/documentation is not an Android fix, APK build or release acceptance. The source baseline for this amendment is final recovered Work commit `af1d12c`; previous status text discussing `6b13117` refers to the implementation commit, not the final documentation HEAD. No cloud, Production or app-store activity authorized.
+
+## Expert leadership amendment — 2026-10-08
+
+Owner-approved Chief Product & Technology Lead model now codified in Product Charter v0.3, covering nine expert disciplines. All CD-SB-01 through CD-SB-09 reviews must use this cross-functional model. The charter/documentation amendment creates no Android APK and does not close native, iOS, media, notification, backup or release gates. No external infrastructure or Production resources were created.

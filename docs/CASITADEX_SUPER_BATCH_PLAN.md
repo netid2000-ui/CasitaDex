@@ -3,6 +3,10 @@
 Date: 2026-10-07 · Owner: Designs by F&A · Status: APPROVED ROADMAP; ONLY CD-SB-01 ACTIVE
 Baseline: `prototype/bootstrap` at `af1d12c` (native-durability completion). CasitaDex milestone names deliberately differ from Event Command SB-12 / SB-13.
 
+## Leadership and review contract
+
+Charter Amendment B makes the assistant Chief Product & Technology Lead. Before each super-batch, consider all nine disciplines, record applicable specialist risks and acceptance criteria, and distinguish verified observations from professional judgment. Charter-first governance, owner authority and return-to-originating-chat remain mandatory.
+
 ## Rules common to every super-batch
 
 Charter/status/ADR review → current evidence → research → documented technical and UX decisions → implementation → static QA → automated tests → runtime and device/accessibility QA → correction/retest → status/runbook/evidence → local commit → return to originating chat. Every acceptance claim requires reproducible evidence. Preserve Development/Staging isolation, `backendMode=none`, no Firebase, no Production/cloud/store/paid activity, no account and no unauthorized expansion. Inability to access a device/tool is BLOCKED, not PASS. Each super-batch must leave the tree clean or document precisely why not.
