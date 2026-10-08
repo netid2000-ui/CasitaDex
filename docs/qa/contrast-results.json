@@ -1,0 +1,66 @@
+[
+  {
+    "mode": "light",
+    "role": "ink",
+    "foreground": "#203F36",
+    "background": "#F5F2EA",
+    "ratio": 10.28,
+    "threshold": 4.5
+  },
+  {
+    "mode": "light",
+    "role": "ink",
+    "foreground": "#203F36",
+    "background": "#FFFFFF",
+    "ratio": 11.5,
+    "threshold": 4.5
+  },
+  {
+    "mode": "light",
+    "role": "line",
+    "foreground": "#718377",
+    "background": "#F5F2EA",
+    "ratio": 3.6,
+    "threshold": 3
+  },
+  {
+    "mode": "light",
+    "role": "line",
+    "foreground": "#718377",
+    "background": "#FFFFFF",
+    "ratio": 4.03,
+    "threshold": 3
+  },
+  {
+    "mode": "dark",
+    "role": "ink",
+    "foreground": "#E4EFE5",
+    "background": "#15241F",
+    "ratio": 13.63,
+    "threshold": 4.5
+  },
+  {
+    "mode": "dark",
+    "role": "ink",
+    "foreground": "#E4EFE5",
+    "background": "#20382D",
+    "ratio": 10.68,
+    "threshold": 4.5
+  },
+  {
+    "mode": "dark",
+    "role": "line",
+    "foreground": "#819B8B",
+    "background": "#15241F",
+    "ratio": 5.36,
+    "threshold": 3
+  },
+  {
+    "mode": "dark",
+    "role": "line",
+    "foreground": "#819B8B",
+    "background": "#20382D",
+    "ratio": 4.2,
+    "threshold": 3
+  }
+]

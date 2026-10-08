@@ -1,0 +1,20 @@
+{
+  "recordedAt": "2026-10-07T21:46:40.8243495-05:00",
+  "os": "Windows",
+  "node": "v24.19.0",
+  "npm": "11.17.0",
+  "git": "git version 2.55.0.windows.5",
+  "jdk": "Temurin 21.0.12.101",
+  "gradleWrapper": "9.3.1",
+  "androidSdk": "C:/Users/franco/AppData/Local/Android/Sdk",
+  "compileSdk": 36,
+  "buildTools": "36.0.0",
+  "ndk": "27.1.12297006",
+  "emulator": "Medium_Phone_API_37.0 / API 37 / x86_64",
+  "physicalAndroid": "not connected",
+  "ios": "no accessible Mac/Xcode/device",
+  "webPreviewPort": 8765,
+  "expoDefaultPort": 8081,
+  "cloudResources": [],
+  "productionAuthorized": false
+}

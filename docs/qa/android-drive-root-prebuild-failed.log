@@ -1,0 +1,18 @@
+- Creating native directory (./android)
+✔ Created native directory
+- Updating package.json
+✔ Updated package.json | no changes
+- Running prebuild
+✖ Prebuild failed
+Error: Couldn't find "package.json" up from path "R:\"
+Error: Couldn't find "package.json" up from path "R:\"
+    at findPackageJsonPathAsync (R:\node_modules\expo-modules-autolinking\build\commands\autolinkingOptions.js:127:11)
+    at getPackageJsonPath (R:\node_modules\expo-modules-autolinking\build\commands\autolinkingOptions.js:138:58)
+    at getPackageJson (R:\node_modules\expo-modules-autolinking\build\commands\autolinkingOptions.js:141:101)
+    at Object.getPlatformOptions (R:\node_modules\expo-modules-autolinking\build\commands\autolinkingOptions.js:147:39)
+    at Object.getOptionsForPlatform (R:\node_modules\expo-modules-autolinking\build\dependencies\CachedDependenciesLinker.js:36:60)
+    at scanExpoModuleResolutionsForPlatform (R:\node_modules\expo-modules-autolinking\build\dependencies\CachedDependenciesLinker.js:124:56)
+    at R:\node_modules\@expo\prebuild-config\build\getAutolinkedPackages.js:26:64
+    at Array.map (<anonymous>)
+    at getAutolinkedPackagesAsync (R:\node_modules\@expo\prebuild-config\build\getAutolinkedPackages.js:25:63)
+    at getPrebuildConfigAsync (R:\node_modules\@expo\prebuild-config\build\getPrebuildConfig.js:27:91)

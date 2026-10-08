@@ -1,0 +1,51 @@
+{
+  "date": "2026-10-08T03:02:43.585Z",
+  "checks": [
+    "Six realistic cards created through UI; maintenance history and due date saved",
+    "Browser process restart preserves cards and reading preferences",
+    "Light, Dark and live System appearance respond",
+    "Six answer-retrieval journeys measured without a target guarantee",
+    "Maintenance date and history survive process restart",
+    "Delete confirmation, cancel and durable deletion verified",
+    "Text export/import restores six cards; selective preview excludes unrelated data",
+    "Already-loaded browser application retrieves restored answers offline"
+  ],
+  "retrieval": [
+    {
+      "task": "HVAC filter",
+      "milliseconds": 1080,
+      "method": "automated known-route click/search/open; not human usability"
+    },
+    {
+      "task": "Refrigerator water filter",
+      "milliseconds": 565,
+      "method": "automated known-route click/search/open; not human usability"
+    },
+    {
+      "task": "Living-room paint formula",
+      "milliseconds": 1002,
+      "method": "automated known-route click/search/open; not human usability"
+    },
+    {
+      "task": "Main water shutoff",
+      "milliseconds": 1015,
+      "method": "automated known-route click/search/open; not human usability"
+    },
+    {
+      "task": "Dishwasher model",
+      "milliseconds": 597,
+      "method": "automated known-route click/search/open; not human usability"
+    },
+    {
+      "task": "Last HVAC service",
+      "milliseconds": 522,
+      "method": "automated known-route click/search/open; not human usability"
+    }
+  ],
+  "pageErrors": [],
+  "limitations": [
+    "Browser restart uses local preview server; this is not offline cold launch",
+    "Timings use automated input and do not replace human comparison with Notes, Photos, paper or memory",
+    "No native screen reader acceptance inferred"
+  ]
+}

@@ -6,10 +6,36 @@
   "node": "24.19.0",
   "expo": "57.0.27",
   "reactNative": "0.86.3",
-  "webBundle": "entry-0b3857db16a366660a99e3a8ba8b0fbe.js",
-  "webModules": 788,
+  "webBundle": "entry-f2d90e5d023d8d6645cd6b4b1d249957.js",
+  "webModules": 793,
   "webAssets": 18,
-  "nativeBuilds": [],
+  "nativeBuilds": [
+    {
+      "platform": "android",
+      "environment": "staging",
+      "architecture": "x86_64",
+      "sourceCommit": "6b13117d624f28139b48d16f69a18fe2c98fe746",
+      "status": "failed-no-apk",
+      "attempts": [
+        {
+          "location": "short physical clone and short cache",
+          "elapsed": "13m38s",
+          "tasks": 125,
+          "reason": "Ninja generated object filename exceeds 260 characters",
+          "log": "docs/qa/android-short-cache-failed.log"
+        },
+        {
+          "location": "temporary R:/cdx mapping",
+          "elapsed": "4m26s",
+          "tasks": 39,
+          "reason": "React Native codegen mixes R: and physical C: roots",
+          "log": "docs/qa/android-drive-build-failed.log"
+        }
+      ],
+      "runtimeTests": "not-run",
+      "temporaryMapping": "removed"
+    }
+  ],
   "cloudBuilds": [],
   "ciRunIds": [],
   "doctor": {
@@ -23,5 +49,14 @@
     "high": 18,
     "moderate": 11,
     "rootAdvisories": 4
-  }
+  },
+  "applicationSourceCommit": "6b13117d624f28139b48d16f69a18fe2c98fe746",
+  "automatedTestsPassed": 26,
+  "browserChecksPassed": 35,
+  "nativeRuntimeComponents": 210,
+  "firebaseComponents": 0,
+  "nativeAcceptance": "open",
+  "physicalAndroid": "not-run",
+  "ios": "not-run-no-accessible-Mac-Xcode",
+  "screenReaderAcceptance": "open"
 }

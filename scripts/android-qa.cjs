@@ -40,11 +40,11 @@ async function find(label,kind="button"){
 }
 async function click(label){tap(await find(label));await pause(180);}
 async function fill(label,value){
- if(!/^[a-zA-Z0-9 .,/:()_-]*$/.test(value))throw Error("QA input must use safe ASCII");
+ if(!/^[\x20-\x7E]*$/.test(value))throw Error("QA input must use ASCII supported by adb input");
  const node=await find(label,"field");tap(node);
  adb("shell","input","keyevent","123");
  if(node.text.length)adb("shell","input","keyevent",...Array(node.text.length).fill("67"));
- if(value)adb("shell","input","text",value.replace(/ /g,"%s"));
+ if(value)adb("shell","input","text", "'" + value.replaceAll("'", "'\"'\"'").replace(/ /g,"%s") + "'");
  adb("shell","input","keyevent","4");
  await pause(120);
 }
@@ -55,5 +55,5 @@ function screenshot(name){
  return state;
 }
 async function cold(){adb("shell","am","force-stop",packageName);adb("shell","am","start","-W","-n",packageName+"/.MainActivity");await pause(1200);}
-module.exports={adb,dump,click,fill,screenshot,cold,pause,packageName,scroll};
+module.exports={adb,dump,find,click,fill,screenshot,cold,pause,packageName,scroll};
 if(require.main===module){const state=screenshot(process.argv[2]||"current");console.log(JSON.stringify(state.nodes.map(n=>({text:n.text,label:n["content-desc"],class:n.class,clickable:n.clickable,bounds:n.bounds})),null,2));}

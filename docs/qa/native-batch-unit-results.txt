@@ -1,0 +1,50 @@
+
+> casitadex@0.1.0 test
+> node --test tests/*.test.mjs
+
+✔ environment allowlist and distinct native identities (2.5276ms)
+✔ no backend identity, dependencies or Production profiles (4.213ms)
+(node:40076) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/franco/Documents/Codex/2026-10-07/referenced-chatgpt-conversation-this-is-an/outputs/casitadex/src/model.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to \\?\C:\Users\franco\Documents\Codex\2026-10-07\referenced-chatgpt-conversation-this-is-an\outputs\casitadex\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ versioned backup round trips and preserves confidence (5.0061ms)
+✔ reject malformed, future, duplicate and impossible-date backups (8.6435ms)
+✔ ignore unexpected imported fields (0.5047ms)
+✔ search and context projections share one source (0.3092ms)
+✔ share excludes unselected cards and optional private detail by default (0.4537ms)
+✔ Development and Staging never share storage (0.6526ms)
+✔ corrupt read leaves raw data untouched (0.3777ms)
+✔ previous save recovers after replacement (0.6047ms)
+✔ failed write rejects without losing current primary (0.5731ms)
+✔ invalid import is rejected before any storage write (0.3426ms)
+(node:29680) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/franco/Documents/Codex/2026-10-07/referenced-chatgpt-conversation-this-is-an/outputs/casitadex/src/sqlite-repository.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to \\?\C:\Users\franco\Documents\Codex\2026-10-07\referenced-chatgpt-conversation-this-is-an\outputs\casitadex\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ SQLite migration preserves legacy, source confidence, dates and ordered history; marker prevents reimport (131.7331ms)
+✔ SQLite reopens durable rows from disk (67.8373ms)
+✔ SQLite rolls back row deletion AND recovery changes when a later write fails (5.0095ms)
+✔ failed migration is retryable and does not remove legacy data (2.0086ms)
+✔ corrupt legacy primary blocks writes, explicit previous-save recovery is available (2.5796ms)
+✔ corrupt SQLite primary cannot overwrite good recovery; explicit recovery repairs it (3.4118ms)
+✔ SQLite serializes saves and reads, rejects future schema and enforces foreign keys (2.4831ms)
+✔ independent native environment databases and legacy keys stay isolated (1.8449ms)
+✔ browser recovery copy survives corruption appearing between load and save (0.6541ms)
+✔ backup size uses UTF-8 bytes including multibyte characters (72.6393ms)
+✔ reading preferences persist per environment without carrying private cards (1.1018ms)
+✔ SQLite survives an OS-killed writer before commit (1663.2261ms)
+✔ every permitted collection exports within the import byte limit (251.8764ms)
+(node:25236) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/franco/Documents/Codex/2026-10-07/referenced-chatgpt-conversation-this-is-an/outputs/casitadex/src/theme.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to \\?\C:\Users\franco\Documents\Codex\2026-10-07\referenced-chatgpt-conversation-this-is-an\outputs\casitadex\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ both actual palettes meet text and control-boundary contrast targets (1.3515ms)
+ℹ tests 26
+ℹ suites 0
+ℹ pass 26
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3695.6745

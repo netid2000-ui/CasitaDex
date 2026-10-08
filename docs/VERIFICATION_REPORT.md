@@ -1,3 +1,5 @@
+> Historical foundation report. For the subsequent native durability batch and current acceptance status, see NATIVE_BATCH_REPORT.md and CURRENT_PROJECT_STATUS.md.
+
 # CasitaDex prototype verification — 2026-10-07
 ## User story
 Save a home fact → local repository validates/persists it → reload and retrieve it → selectively preview a share → export or recover the user-controlled collection.

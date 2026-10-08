@@ -1,19 +1,17 @@
 # CasitaDex prototype
 **ART + FUNCTION + EXPERIENCE — WITHOUT GIMMICKS.**
 
-Local-only Expo / React Native / TypeScript prototype generated from the SB-12A starter. Read docs/PRODUCT_CHARTER.md and docs/BOOTSTRAP_SPEC.md first.
+Independent, local-only Expo / React Native / TypeScript app generated from the accepted SB-12A starter. Read docs/PRODUCT_CHARTER.md, docs/PROJECT_CONTINUATION_REQUIREMENTS_2026-10-07.md, docs/ADR-002_NATIVE_DURABILITY.md and docs/CURRENT_PROJECT_STATUS.md before continuing.
 
-## Run locally
-Use Node 24 LTS. Install with `npm ci`. Run `npm run web` for the local development preview. No Expo account or cloud project is needed for web. Native builds are not created in this batch.
-Run `npm run typecheck`, `npm test`, `npm run lint`, `npm run doctor`, and `npm run export:web`.
+## Run and verify locally
+Use Node 24.19.0 and the committed lockfile. Run npm ci, npm run typecheck, npm run lint, npm test, npm run doctor, npm run export:web. Start npm run preview for loopback web review on port 8765. No Expo account/backend is needed. Native Staging build instructions, tool versions and Windows recovery are in docs/RECOVERY_RUNBOOK.md.
+Run npm run test:browser, node tests/accessibility-smoke.cjs, node tests/durability-browser.cjs and node tests/appearance-browser.cjs against the preview. Native helper tests require an explicitly verified CasitaDex emulator build; do not infer native success from browser or Node SQLite results.
 
 ## Explore
-Start empty or choose **Explore example home**. Examples are labeled as examples. Use Today, Answers, Add and More. Buy filters replacement facts; Fix surfaces recorded references; Find surfaces locations; Maintain filters genuinely due cards; Share requires selection and preview.
-Add a card, check its source, edit its answer, record maintenance, and reload. More provides a readable versioned backup and validated import with confirmation. No home address, credentials or account are required.
+Start empty or opt into a clearly labeled example home. Today | Answers | Add | More supports Buy/Fix/Find/Maintain/Share. Add one useful fact; check a source; edit; record a due date or completed maintenance; select and preview a snapshot. More offers persisted Light/Dark/System and Extra-large text, a compact versioned text backup, validated import and explicit previous-save recovery.
+Native structured data uses transactional SQLite; the web preview retains separate origin-scoped storage. Migration preserves legacy data rather than erasing it. Device loss/uninstall can erase local data: export to somewhere you control.
 
 ## Boundaries
-Development and Staging have separate native IDs, schemes and local storage keys. Only those environments resolve; Production is locked. No cloud project, remote repo, store record, paid service or deployment has been created.
-This is a UX prototype, not V1 or native acceptance. SQLite, app-owned media, OS local notifications, native sharing/device QA and purchase restore remain later gates.
-SB-12 physical Android closure is separate and pending; final SB-12A acceptance remains open. SB-13 has not started.
-
-See docs/CURRENT_PROJECT_STATUS.md for exact tested status and docs/RECOVERY_RUNBOOK.md for recovery.
+backendMode=none. Unique Development/Staging app identities; Production locked. No Firebase resource, cloud backend, account, ad SDK, public launch, store submission, paid service or trademark filing. The unused native Firebase Messaging dependency discovered during this batch was removed.
+This is not full V1 or native acceptance. App-owned media, local OS notifications and file-provider backup remain unimplemented. Native/physical acceptance and dependency remediation remain open wherever no passing evidence is recorded. See docs/NATIVE_BATCH_REPORT.md for exact results.
+Event Command SB-12 physical Android closure and final SB-12A acceptance remain separate/open. SB-13 has not started.
