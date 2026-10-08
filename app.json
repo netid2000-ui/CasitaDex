@@ -1,0 +1,17 @@
+{
+  "expo": {
+    "name": "CasitaDex",
+    "slug": "casitadex",
+    "scheme": "casitadex",
+    "version": "0.1.0",
+    "orientation": "default",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.designsbyfa.casitadex"
+    },
+    "android": {
+      "package": "com.designsbyfa.casitadex"
+    }
+  }
+}

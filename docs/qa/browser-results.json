@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-08T00:50:19.825Z",
+  "checks": [
+    "Buy suppresses location",
+    "Fix references",
+    "Find location",
+    "Maintain due filter",
+    "Search and empty state",
+    "Selected share preview excludes private details",
+    "Add validation and save",
+    "Verification requires explicit source",
+    "Cold page reload retains saved card",
+    "Edit resets confidence",
+    "Maintenance validates dates and clears completed reminder",
+    "Invalid import rejected; valid restore confirmed",
+    "Loaded app works offline",
+    "200% text primary screens at 390px",
+    "Keyboard focus reaches controls",
+    "Desktop reflow",
+    "Corrupt data blocks overwrite and restores previous save",
+    "No page exceptions"
+  ],
+  "pageErrors": []
+}

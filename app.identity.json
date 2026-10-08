@@ -1,0 +1,11 @@
+{
+  "appName": "CasitaDex",
+  "appSlug": "casitadex",
+  "appScheme": "casitadex",
+  "androidPackage": "com.designsbyfa.casitadex",
+  "iosBundleId": "com.designsbyfa.casitadex",
+  "expoOwner": "netid2000-10",
+  "repositoryName": "casitadex",
+  "backendMode": "none",
+  "productionAuthorized": false
+}

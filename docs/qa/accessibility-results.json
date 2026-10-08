@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-08T00:48:57.001Z",
+  "checks": [
+    "More 200% at 320px, controls >=48",
+    "Today 200% at 320px",
+    "Detail 200% at 320px",
+    "Share preview 200% at 320px",
+    "Add 200% at 320px",
+    "Reduced motion retains navigation"
+  ],
+  "nativeScreenReader": "not tested"
+}

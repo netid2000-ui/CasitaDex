@@ -1,0 +1,131 @@
+{
+  "sourceRepository": "netid2000-ui/event-command-by-fa",
+  "sourceCommit": "8c5dd4e9d792fa408afaeaef568e1369ed547edc",
+  "implementationCommit": "3a6464f8a663237c10220e4b99a7340fe55fdcef",
+  "starterFiles": [
+    {
+      "path": "starter/README.md",
+      "gitBlobSha": "3378dd5487b4a32061748dcbac583d34a0957e81"
+    },
+    {
+      "path": "starter/config/app.identity.example.json",
+      "gitBlobSha": "9c9cadd865d0718f124496d546032a5dd56d00b2"
+    },
+    {
+      "path": "starter/examples/app2.dryrun.identity.json",
+      "gitBlobSha": "155b5f16c2af6ccc81989c4982239fcb8cdd1ec4"
+    },
+    {
+      "path": "starter/examples/casitadex.dryrun.identity.json",
+      "gitBlobSha": "1a476cd870303de1624be4fea468112b2395f449"
+    },
+    {
+      "path": "starter/scripts/lib.mjs",
+      "gitBlobSha": "4e3a2434750d508d7d8a797acec1c17d374e0f04"
+    },
+    {
+      "path": "starter/scripts/render-local.mjs",
+      "gitBlobSha": "aa73a18ead7a78239e5e7f62c6d548b01de15a76"
+    },
+    {
+      "path": "starter/scripts/test-starter-guardrails.mjs",
+      "gitBlobSha": "f464efbcd5c823959555963dc5201a4d5a89e408"
+    },
+    {
+      "path": "starter/scripts/validate-starter.mjs",
+      "gitBlobSha": "1bec91971f54c435107e3853d955a200993962ae"
+    },
+    {
+      "path": "starter/templates/.firebaserc.tpl",
+      "gitBlobSha": "447b92cd7c37d03738c676695ba65876bb716225"
+    },
+    {
+      "path": "starter/templates/.gitignore.tpl",
+      "gitBlobSha": "d9e9869a64125b8c5bf68b87f4722fff72404770"
+    },
+    {
+      "path": "starter/templates/App.tsx.tpl",
+      "gitBlobSha": "09cafd30a4f7310a7f1dc720e4473a08b8ce835f"
+    },
+    {
+      "path": "starter/templates/app.config.js.tpl",
+      "gitBlobSha": "212d9af155c2a2acc8eb0b6baef5de6ad9b99380"
+    },
+    {
+      "path": "starter/templates/app.json.tpl",
+      "gitBlobSha": "b9a529edcd4f45dc794a2e2d416ec99e88b4897b"
+    },
+    {
+      "path": "starter/templates/config/firebase/README.md.tpl",
+      "gitBlobSha": "6233a3ffeba37cf8cfd14a108692551b65969dd5"
+    },
+    {
+      "path": "starter/templates/docs/ACCESSIBILITY_CHECKLIST.md.tpl",
+      "gitBlobSha": "61d3cdefc60a65e2b1536272f93e20e6695fdadb"
+    },
+    {
+      "path": "starter/templates/docs/CURRENT_PROJECT_STATUS.md.tpl",
+      "gitBlobSha": "48eae675359d569196e1bdb9e8cb91a437c92fc4"
+    },
+    {
+      "path": "starter/templates/docs/NEW_APP_HANDOFF.md.tpl",
+      "gitBlobSha": "ff27691cb63e75ad1c3fb15cd497aae03f46cc81"
+    },
+    {
+      "path": "starter/templates/docs/PRODUCT_CHARTER.md.tpl",
+      "gitBlobSha": "294b0c7547db54d87d5ff269b6296f3a42144c49"
+    },
+    {
+      "path": "starter/templates/docs/QA_GATE_CHECKLIST.md.tpl",
+      "gitBlobSha": "c7f003deec40ea84200e9370c69bce3bfba88a1f"
+    },
+    {
+      "path": "starter/templates/docs/RECOVERY_RUNBOOK.md.tpl",
+      "gitBlobSha": "7f517bbcb333f5eb2647786ab3dc3b05f49bfc57"
+    },
+    {
+      "path": "starter/templates/eas.json.tpl",
+      "gitBlobSha": "dfb7f0df22b06892cf62e57e97d3da832e0d5d22"
+    },
+    {
+      "path": "starter/templates/firebase.dev.json.tpl",
+      "gitBlobSha": "a1f49902e8bb6a269c4678f66808e6339b123d84"
+    },
+    {
+      "path": "starter/templates/firebase.staging.json.tpl",
+      "gitBlobSha": "a1f49902e8bb6a269c4678f66808e6339b123d84"
+    },
+    {
+      "path": "starter/templates/firestore.indexes.json.tpl",
+      "gitBlobSha": "4b30d898cfaa1a593483fe8e16304213ee4ea64a"
+    },
+    {
+      "path": "starter/templates/firestore.rules.tpl",
+      "gitBlobSha": "8386f4ef296a7bd1ab7b94535541623b98dfa911"
+    },
+    {
+      "path": "starter/templates/index.ts.tpl",
+      "gitBlobSha": "8f76389f5564c1aef7c2c53f5deddba5a421d3e1"
+    },
+    {
+      "path": "starter/templates/package.json.tpl",
+      "gitBlobSha": "cf4958dfd79b6d60e6c8f6c20fbc31cd8b561307"
+    },
+    {
+      "path": "starter/templates/storage.rules.tpl",
+      "gitBlobSha": "e9f67bf304321d6913ffb3d2e6a908d21f16edf2"
+    },
+    {
+      "path": "starter/templates/tsconfig.json.tpl",
+      "gitBlobSha": "784bef2a2076b078d803945479f830c69e5bd1b7"
+    }
+  ],
+  "validation": {
+    "genericFirebase": "PASS — local temporary render only",
+    "casitadexLocalOnly": "PASS",
+    "guardrails": 10
+  },
+  "finalSB12AAcceptance": "OPEN",
+  "physicalSB12Android": "PENDING — not exercised by this prototype",
+  "SB13": "NOT STARTED"
+}
