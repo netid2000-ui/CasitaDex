@@ -43,3 +43,6 @@ Xcode and an accessible Mac/iOS simulator or a separately authorized signed devi
 ## Security, processes and release boundaries
 SDK baseline: Expo 57.0.27, React Native 0.86.3, React 19.2.3, TypeScript 6.0.3, AsyncStorage 2.2.0. Added expo-system-ui 57.0.4 and expo-sqlite 57.0.4; lockfile is authoritative.
 No Firebase/backend, account, ads, analytics, paid resource, EAS project, public hosting, store submission or Production configuration. Production config intentionally throws. Stop only task-owned preview/build/test processes when finished. See DEPENDENCY_REVIEW_2026-10-07.md for unresolved advisories; local acceptance is not a distribution waiver.
+
+## Windows build path recovery
+The long projectless workspace path produced repeated CMake object-path warnings (object directory 209 characters; full object-path maximum 250) during native library generation. Cancel that attempt and build an exact local Git clone under C:/Users/franco/Documents/Codex/work/cdx. Keep the primary repository and its history intact; no source edits in the build clone. Reuse the task's Gradle/npm caches via absolute paths. Build evidence must identify the source commit and clone path. This is local build recovery, not a cloud resource or another product repository.

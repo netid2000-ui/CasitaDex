@@ -7,6 +7,7 @@ import {
   confidences,
   contexts,
   examples,
+  exportData,
   matches,
   parseData,
   snapshot,
@@ -592,7 +593,7 @@ export function More() {
         </Copy>
         <Button
           label="Prepare text backup"
-          onPress={() => setOutput(JSON.stringify(data, null, 2))}
+          onPress={() => setOutput(exportData(data))}
         />
         {!!output && (
           <>

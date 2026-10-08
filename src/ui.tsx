@@ -11,22 +11,7 @@ import {
   type TextProps,
 } from "react-native";
 import { useData } from "./state";
-const lightColors = {
-  paper: "#F5F2EA",
-  ink: "#203F36",
-  muted: "#52645C",
-  line: "#CAD3C9",
-  white: "#FFFFFF",
-  accent: "#E8EDDB",
-};
-const darkColors = {
-  paper: "#15241F",
-  ink: "#E4EFE5",
-  muted: "#B8CBBF",
-  line: "#657D70",
-  white: "#20382D",
-  accent: "#304C3D",
-};
+import { lightColors, darkColors } from "./theme";
 export function useTheme() {
   const { appearance } = useData();
   const system = useColorScheme();

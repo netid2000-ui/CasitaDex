@@ -194,6 +194,9 @@ export function parseData(raw: string): Data {
     })),
   };
 }
+export function exportData(data: Data): string {
+  return JSON.stringify(parseData(JSON.stringify(data)));
+}
 export function examples(): Data {
   const d = empty();
   d.cards = [

@@ -258,3 +258,17 @@ test("SQLite survives an OS-killed writer before commit", async () => {
     rmdirSync(dir);
   }
 });
+
+test("every permitted collection exports within the import byte limit", async () => {
+  const { exportData } = await import("../src/model.ts");
+  const data = examples(),
+    template = data.cards[0];
+  data.cards = Array.from({ length: 850 }, (_, i) => ({
+    ...template,
+    id: String(i),
+    notes: "x".repeat(1900),
+  }));
+  assert.ok(utf8Bytes(JSON.stringify(data)) < 2000000);
+  assert.ok(utf8Bytes(JSON.stringify(data, null, 2)) > 2000000);
+  assert.deepEqual(parseData(exportData(data)), data);
+});
