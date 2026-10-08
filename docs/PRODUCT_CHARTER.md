@@ -1,6 +1,6 @@
 # CasitaDex — V1 Product Charter
 
-Version: 0.1 — 2026-10-07
+Version: 0.2 — 2026-10-07 (governance and super-batch amendment)
 Status: WORKING PRODUCT NAME APPROVED / PRODUCT DESIGN AUTHORIZED / IMPLEMENTATION RESOURCE GATES STILL CLOSED
 Owner: Designs by F&A
 
@@ -355,7 +355,7 @@ Before implementation acceptance:
 10. Can the system add a future Space/template without rewriting the core data model?
 
 ## Build/resource gate
-This charter authorizes product design and SB-12A dry-run testing.
+This charter authorizes product design, the existing isolated CasitaDex prototype, and bounded development/verification under the super-batch controls below. SB-12A is the reusable-starter program, not a CasitaDex product milestone.
 
 It does **not** authorize:
 - a Production environment;
@@ -365,4 +365,31 @@ It does **not** authorize:
 - a public trademark claim;
 - public launch.
 
-A real CasitaDex repository/Expo identity should be created only after SB-12A starter validation is sufficiently green and the owner authorizes the bootstrap step.
+The existing isolated, local-only CasitaDex repository and Development/Staging identities are already created. This historical bootstrap gate is satisfied for the prototype only; it is not authorization for cloud, Production, store, or public launch.
+
+
+## Amendment A — Professional engineering and execution governance (2026-10-07)
+
+CasitaDex follows the **Designs by F&A Event Command process standard**, not its Firebase architecture or event-planning product model. The assistant operates as project manager, technical lead, product/UX lead, accessibility and QA lead, security/privacy reviewer, and cost/recovery reviewer. **ART + FUNCTION + EXPERIENCE — WITHOUT GIMMICKS** and **Fewer features. Faster answers.** govern tradeoffs.
+
+### Charter-first and evidence-first change control
+
+For every material batch: read this charter and latest status/ADRs; examine actual repository and accepted evidence; research affected tools and constraints; document options, risk and acceptance tests; implement the smallest bounded change; run static, automated, runtime and visual/device QA where accessible; correct and retest; update evidence/runbook/status; commit. Do not treat a build or browser test as native-device acceptance. Record PASS, FAIL, BLOCKED and NOT RUN separately. The owner does not serve as the first QA pass.
+
+Preserve a **single originating-chat command center**. Execute directly in that conversation when tools permit. When another environment is indispensable, its instruction must mandate a self-contained return handoff to the originating chat (commits, changes, failures, tests, remaining gates and next decision), with copyable fallback if automatic return is unavailable. No unrequested scope expansion or automatic launch of the next major super-batch.
+
+### Environment, security, resilience and cost gates
+
+Keep unique Development/Staging identities and isolated local databases; Production remains locked until separately authorized. V1 uses `backendMode=none`, app-scoped SQLite/media, and user-controlled import/export. Neither Firebase nor another permanent backend is implied by the reusable starter. No cloud build, remote repository creation, store submission, paid service, public launch, account system, ads, or analytics is authorized by this amendment. Private GitHub backup is the preferred future durability mechanism but requires an explicit repository/access path; never mistake a local Git bundle for off-device backup. Never commit secrets, local user data, generated signing keys or private credentials.
+
+Document new/changed software, runtime versions, dependencies, ports, build commands, fallback and restore procedures in the runbook **in the same batch**. Preserve source and commit integrity; do not overwrite interrupted work, silently migrate records, or mark open gates accepted. Critical accessibility (dynamic scaling, screen readers, contrast, reachability, redundant status cues, reduced motion) is free. The answer, confidence source and next action must remain obvious even at large text sizes.
+
+### Super-batch authority and phase gates
+
+The approved ordered work program is maintained in [`docs/CASITADEX_SUPER_BATCH_PLAN.md`](CASITADEX_SUPER_BATCH_PLAN.md). Each batch has deliverables, objective exit evidence, dependency gates and an explicit stop/return checkpoint. Owner approval to **proceed** authorizes execution of the next bounded, non-Production super-batch; it does not waive native acceptance or authorize Production/cloud/store spending. Scope or platform changes with new material cost/security implications require a documented decision before execution.
+
+The current approved starting point is **CD-SB-01 — Native Build Recovery + Repository Durability**. It may validate and correct local builds, assemble audit evidence, and prepare a private-repository plan. Do not create any external repository automatically merely to overcome absent desktop access. The next gate **CD-SB-02** cannot be marked closed until the installable APK and required Android device evidence exist.
+
+### Non-goals and later product scope
+
+Home-first, not home-limited remains architectural only. Multiple Spaces, vehicle/RV/boat packs, memberships, cloud sync and household collaboration are not part of the immediate native closure. Local device notifications must respect the strict no-Firebase dependency graph; any apparent Google/Firebase transitive dependency requires explicit technical review, not a quiet exception. Product claims and pricing remain hypotheses pending research and tests.

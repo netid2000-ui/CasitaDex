@@ -10,3 +10,7 @@ Doctor's online schema verification and four root dependency advisories remain o
 backendMode=none; Production locked; no cloud/store/public/paid activity. ART + FUNCTION + EXPERIENCE — WITHOUT GIMMICKS. Event Command SB-12 physical Android is separate; SB-13 not started. Return to SB-12 Acceptance Status for review before another major batch.
 
 Android build is BLOCKED by Windows native paths and mixed mapped/canonical roots. No APK was produced, installed or tested. Native QA drivers are prepared, not run. The temporary drive mapping was removed. Detailed failures and recovery attempts are in NATIVE_BATCH_REPORT.md.
+
+
+## Governance update — 2026-10-07
+Charter v0.2 adds the Event Command-style professional change-control and evidence gates without importing Event Command's backend. The ordered CasitaDex super-batches CD-SB-01 through CD-SB-09 are in `CASITADEX_SUPER_BATCH_PLAN.md`; only CD-SB-01 is active. Planning/documentation is not an Android fix, APK build or release acceptance. The source baseline for this amendment is final recovered Work commit `af1d12c`; previous status text discussing `6b13117` refers to the implementation commit, not the final documentation HEAD. No cloud, Production or app-store activity authorized.
