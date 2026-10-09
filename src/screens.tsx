@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Platform, Share, View } from "react-native";
 import { router, useLocalSearchParams } from "expo-router";
 import { Button, Copy, Field, Page, useTheme } from "./ui";
 import { useData } from "./state";
+import { pickBackupFile, saveBackupFile } from "./backup-files";
 import {
   confidences,
   contexts,
@@ -534,6 +535,9 @@ export function More() {
     busy,
     recover,
   } = useData();
+  const fileOperation = useRef(false);
+  const [fileBusy, setFileBusy] = useState(false);
+  const [previewSource, setPreviewSource] = useState("");
   const [output, setOutput] = useState(""),
     [input, setInput] = useState(""),
     [candidate, setCandidate] = useState<Data | null>(null),
@@ -543,11 +547,13 @@ export function More() {
     try {
       const d = parseData(input);
       setCandidate(d);
+      setPreviewSource(exportData(data));
       setMessage(
         "Backup checked. Review the counts before replacing your collection.",
       );
     } catch (e) {
       setCandidate(null);
+      setPreviewSource("");
       setMessage(e instanceof Error ? e.message : "Invalid backup.");
     }
   }
@@ -591,6 +597,53 @@ export function More() {
           are readable text: keep them somewhere you trust. Nothing is backed up
           automatically.
         </Copy>
+        {Platform.OS === "android" && (
+          <>
+            <Button
+              label="Save backup file"
+              disabled={busy || fileBusy}
+              onPress={() => {
+                if (fileOperation.current) return;
+                fileOperation.current = true;
+                setFileBusy(true);
+                setMessage("Choose a folder for your backup.");
+                void saveBackupFile(data)
+                  .then(setMessage)
+                  .catch((e) => setMessage(e instanceof Error ? e.message : "Backup failed."))
+                  .finally(() => { fileOperation.current = false; setFileBusy(false); });
+              }}
+            />
+            <Button
+              label="Choose backup file to restore"
+              disabled={busy || fileBusy}
+              onPress={() => {
+                if (fileOperation.current) return;
+                fileOperation.current = true;
+                setFileBusy(true);
+                setCandidate(null);
+                setPreviewSource("");
+                setMessage("Choose a CasitaDex backup file to check.");
+                void pickBackupFile()
+                  .then((raw) => {
+                    if (raw === null) {
+                      setMessage("File selection canceled. Your answers were not changed.");
+                      return;
+                    }
+                    setInput(raw);
+                    setCandidate(parseData(raw));
+                    setPreviewSource(exportData(data));
+                    setMessage("Backup checked. Review the counts before replacing your collection.");
+                  })
+                  .catch((e) => {
+                    setCandidate(null);
+                    setPreviewSource("");
+                    setMessage(e instanceof Error ? e.message : "Invalid backup file.");
+                  })
+                  .finally(() => { fileOperation.current = false; setFileBusy(false); });
+              }}
+            />
+          </>
+        )}
         <Button
           label="Prepare text backup"
           onPress={() => setOutput(exportData(data))}
@@ -636,6 +689,7 @@ export function More() {
           onChangeText={(v) => {
             setInput(v);
             setCandidate(null);
+            setPreviewSource("");
           }}
           multiline
         />
@@ -647,19 +701,33 @@ export function More() {
               {candidate.cards.length} cards in {candidate.spaces.length}{" "}
               spaces? A previous-save recovery copy is retained on this device.
             </Copy>
-            <Button label="Cancel restore" onPress={() => setCandidate(null)} />
+            <Button label="Cancel restore" onPress={() => { setCandidate(null); setPreviewSource(""); }} />
             <Button
               label="Confirm replace from backup"
-              disabled={busy}
-              onPress={() =>
+              disabled={busy || fileBusy}
+              onPress={() => {
+                if (fileOperation.current) return;
+                if (exportData(data) !== previewSource) {
+                  setCandidate(null);
+                  setPreviewSource("");
+                  setMessage("Answers changed since the backup check. Recheck before restoring.");
+                  return;
+                }
+                fileOperation.current = true;
+                setFileBusy(true);
                 void save(candidate).then((ok) => {
                   if (ok) {
                     setCandidate(null);
+                    setPreviewSource("");
                     setInput("");
                     setMessage("Backup restored.");
+                  } else {
+                    setMessage("Restore was not completed. Current answers were not replaced.");
                   }
-                })
-              }
+                }).catch((e) => {
+                  setMessage(e instanceof Error ? e.message : "Restore failed.");
+                }).finally(() => { fileOperation.current = false; setFileBusy(false); });
+              }}
             />
           </>
         )}

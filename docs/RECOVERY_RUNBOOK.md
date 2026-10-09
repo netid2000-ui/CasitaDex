@@ -63,3 +63,61 @@ Run `scripts/build-android-staging-shortpath.ps1` in PowerShell on the authorize
 
 ### Short-path native build preflight
 The `scripts/build-android-staging-shortpath.ps1 -RunBuild` command checks `ANDROID_HOME\platform-tools\adb.exe` and `JAVA_HOME\bin\java.exe` before creating its isolated `C:\cdx\a` checkout. A missing prerequisite now fails without leaving a partial clone. A failure *after* clone begins still requires inspection and manual preservation/removal of `C:\cdx\a` before retrying; never delete the original source repository.
+
+## Android Staging recovery and Backup Phase A - 2026-10-09
+
+The earlier blocked Android build attempts documented above are historical.
+
+### Verified Android staging build
+
+Repository: C:\CasitaDex-Git
+Branch: prototype/bootstrap
+Verified source baseline: 19ca392
+Build checkout: C:\cdy\a
+Build architecture: arm64-v8a
+Environment: Staging only
+
+Standalone APK:
+C:\cdy\a\android\app\build\outputs\apk\release\app-release.apk
+
+The APK was built successfully, verified as Firebase-free,
+and installed using adb install -r without uninstalling the app.
+
+The APK is locally test-signed, not Production-signed.
+
+Metro is not required for standalone offline operation.
+
+### Physical Android evidence
+
+Samsung Galaxy A16 5G:
+- Offline launch, creation, editing and search: PASS
+- Full shutdown and restart durability: PASS
+- Data retained after Wi-Fi reconnection: PASS
+
+### Backup Phase A
+
+The More screen now provides Android backup-file export and
+document-picker import using user-controlled file locations.
+
+Backups are version-1 JSON text with a 2 MB limit.
+Export performs read-back verification.
+Import validates the backup before presenting replacement confirmation.
+Existing SQLite transactional persistence remains unchanged.
+
+Backup files are NOT encrypted.
+No automatic cloud backup or synchronization is provided.
+
+41 automated tests passed, including 10 backup-file tests.
+
+### Remaining gates
+
+Physical backup-file export and restore: NOT RUN.
+Encrypted backup, merge/conflict handling, and independent
+integrity authentication: OPEN.
+Device-replacement recovery and iOS acceptance: OPEN.
+
+Do not uninstall CasitaDex, clear application storage, or
+overwrite household records during acceptance testing.
+
+No Production, Firebase, public repository, or cloud deployment
+is authorized.

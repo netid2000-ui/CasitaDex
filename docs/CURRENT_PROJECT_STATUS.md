@@ -33,3 +33,30 @@ The local-only Gradle gate now evaluates `debugRuntimeClasspath`, matching the a
 
 ### CD-SB-01 build preflight follow-up (2026-10-08)
 The guarded Windows Android recovery script now checks `node` and `npm` before creating its isolated checkout, alongside Android SDK/adb and JDK checks. `tests/android-build-contract.test.mjs` checks prerequisite ordering, the Staging Debug APK identity assertion, and the matching pre-build Firebase runtime graph gate. These are **static source-contract tests**; neither PowerShell runtime behavior nor native APK compilation was tested in this Linux environment. Android build/install and all device QA remain OPEN until Windows evidence exists. Remote Desktop Commander was online but remote usage was 0% during this checkpoint. No Production/Firebase/cloud/store change was made.
+
+## Android physical acceptance and Backup Phase A — 2026-10-09
+
+The earlier Android build-blocked entries above are historical.
+
+A standalone, Firebase-free Android Staging APK was successfully
+built and installed on a Samsung Galaxy A16 5G.
+
+Physical device testing PASSED for offline launch, creation,
+editing, searching, complete device reboot, persistence after
+reboot, and Wi-Fi reconnection.
+
+Data Protection Phase A now includes user-controlled Android
+backup-file export and import, read-back verification, restore
+confirmation, file-operation locking, and failure handling.
+
+Automated regression testing: 41 PASS, 0 FAIL.
+TypeScript and ESLint: PASS.
+
+OPEN: Physical backup-file export and restoration acceptance.
+OPEN: Encryption, safe merge/conflict resolution, independent
+backup integrity verification, device replacement, and iOS.
+
+See ANDROID_BACKUP_PHASE_A_ACCEPTANCE.md for detailed evidence.
+
+No Production, Firebase, cloud synchronization, or store
+distribution has been authorized.
