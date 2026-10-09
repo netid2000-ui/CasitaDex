@@ -4,7 +4,7 @@
 [CmdletBinding()]
 param(
   [string]$Source = (Resolve-Path (Join-Path $PSScriptRoot '..')).Path,
-  [string]$ScratchRoot = 'C:\cdx',
+  [string]$ScratchRoot = 'C:\cdy',
   [switch]$RunBuild
 )
 $ErrorActionPreference = 'Stop'
@@ -28,7 +28,7 @@ $project = Join-Path $ScratchRoot 'a'
 $gradle = Join-Path $ScratchRoot 'g'
 $androidUser = Join-Path $ScratchRoot 'u'
 $npmCache = Join-Path $ScratchRoot 'n'
-$guard = Join-Path $project 'scripts\verify-local-only.gradle'
+$report = Join-Path $project 'docs\qa\android-release-runtime-dependencies.txt'
 if (Test-Path $project) { throw "Refusing to overwrite existing build directory: $project" }
 Write-Host "Source: $sourcePath"
 Write-Host "Commit: $head"
@@ -68,10 +68,23 @@ Push-Location $project
 try {
   & npm ci --no-audit --no-fund; Require-Exit 'npm ci'
   & node node_modules/expo/bin/cli prebuild --platform android --no-install; Require-Exit 'Expo prebuild'
-  & (Join-Path $project 'android\gradlew.bat') -p (Join-Path $project 'android') --init-script $guard verifyLocalOnlyRuntime --console=plain --no-daemon; Require-Exit 'Verify Android runtime dependencies'
-  & (Join-Path $project 'android\gradlew.bat') -p (Join-Path $project 'android') --init-script $guard ':app:assembleDebug' '-PreactNativeArchitectures=x86_64' '--max-workers=2' '--console=plain' '--no-daemon'
-  Require-Exit 'Android Staging compile'
-  $apk = Join-Path $project 'android\app\build\outputs\apk\debug\app-debug.apk'
+  # Inspect the exact runtime graph for the APK being assembled; Gradle's built-in task
+  # resolves on :app, avoiding the Gradle 9 unsafe cross-project resolution failure.
+  New-Item -ItemType Directory -Force -Path (Split-Path $report) | Out-Null
+  $gradlew = Join-Path $project 'android\gradlew.bat'
+  & $gradlew -p (Join-Path $project 'android') ':app:dependencies' '--configuration' 'releaseRuntimeClasspath' '--console=plain' '--no-daemon' > $report 2>&1
+  Require-Exit 'Resolve release runtime dependencies'
+  $graph = [System.IO.File]::ReadAllText($report)
+  if ($graph -notmatch 'BUILD SUCCESSFUL') { throw 'BLOCKED: Gradle runtime report has no successful completion marker.' }
+  if ($graph -match 'com\.google\.firebase:|(?m)^.*(?:FAILED|Could not resolve).*$') {
+    throw "BLOCKED: Firebase or unresolved dependencies in $report"
+  }
+  Write-Host 'PASS: Firebase-free release runtime graph, with no unresolved entries.'
+  # The release variant bundles its JS assets, unlike assembleDebug which needs Metro.
+  # Staging package ID remains enforced below; this does not deploy Production.
+  & $gradlew -p (Join-Path $project 'android') ':app:assembleRelease' '-PreactNativeArchitectures=arm64-v8a' '--max-workers=2' '--console=plain' '--no-daemon'
+  Require-Exit 'Standalone Android Staging compile'
+  $apk = Join-Path $project 'android\app\build\outputs\apk\release\app-release.apk'
   if (-not (Test-Path $apk)) { throw 'Gradle returned success but expected APK is missing' }
   # Verify the APK's actual package identity rather than relying on the build environment.
   $aapt = Get-ChildItem (Join-Path $env:ANDROID_HOME 'build-tools') -Directory -ErrorAction Stop |
@@ -86,5 +99,17 @@ try {
   $hash = (Get-FileHash -Algorithm SHA256 $apk).Hash
   Write-Host "STAGING APK: $apk"
   Write-Host "APK SHA256: $hash"
-  Write-Host 'Locally debug-signed Staging APK; no Production/store signing. Compilation does not establish device or accessibility acceptance.'
+  Add-Type -AssemblyName System.IO.Compression.FileSystem
+  $archive = [System.IO.Compression.ZipFile]::OpenRead($apk)
+  try {
+    $jsAsset = $archive.Entries | Where-Object { $_.FullName -eq 'assets/index.android.bundle' } | Select-Object -First 1
+    if (-not $jsAsset -or $jsAsset.Length -le 0) { throw 'BLOCKED: Bundled JavaScript asset is missing or empty in APK.' }
+    Write-Host "PASS: JavaScript asset packaged ($($jsAsset.Length) bytes)."
+  } finally { $archive.Dispose() }
+  $apksigner = Get-ChildItem (Join-Path $env:ANDROID_HOME 'build-tools') -Directory | Sort-Object Name -Descending | ForEach-Object { Join-Path $_.FullName 'apksigner.bat' } | Where-Object { Test-Path $_ } | Select-Object -First 1
+  if (-not $apksigner) { throw 'BLOCKED: apksigner.bat unavailable.' }
+  & $apksigner verify --print-certs $apk
+  Require-Exit 'Verify staging APK signature'
+  Write-Host 'STOP before installing: compare signer SHA-256 with installed APK, preserving existing phone data.'
+  Write-Host 'No Production deployment or phone installation performed.'
 } finally { Pop-Location }
