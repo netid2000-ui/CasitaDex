@@ -3,7 +3,7 @@
 # This script never changes the source checkout or global Git/Windows settings.
 [CmdletBinding()]
 param(
-  [string]$Source = (Resolve-Path (Join-Path $PSScriptRoot '..')).Path,
+  [string]$Source = '',
   [string]$ScratchRoot = 'C:\cdy',
   [switch]$RunBuild
 )
@@ -12,18 +12,24 @@ Set-StrictMode -Version Latest
 function Require-Exit([string]$Task) {
   if ($LASTEXITCODE -ne 0) { throw "$Task failed with exit code $LASTEXITCODE" }
 }
+if (-not $Source) { $Source = (Resolve-Path (Join-Path $PSScriptRoot '..')).Path }
 $sourcePath = (Resolve-Path $Source).Path
 $head = (& git -c "safe.directory=$sourcePath" -C $sourcePath rev-parse HEAD).Trim()
 Require-Exit 'Read source commit'
 $dirty = @(& git -c "safe.directory=$sourcePath" -C $sourcePath status --porcelain)
 Require-Exit 'Read source status'
 if ($dirty.Count -gt 0) { throw 'Source checkout has uncommitted changes. Commit or preserve them separately before creating a build snapshot.' }
-if (-not $ScratchRoot.StartsWith('C:\', [StringComparison]::OrdinalIgnoreCase)) {
-  throw 'Use a short physical C: directory, not a mapped/subst/network drive.'
+if ($ScratchRoot -notmatch '^[A-Za-z]:\\') {
+  throw 'Use a short absolute drive path.'
+}
+$drive = $ScratchRoot.Substring(0, 2).ToUpperInvariant()
+$disk = Get-CimInstance Win32_LogicalDisk -Filter "DeviceID='$drive'"
+if (-not $disk -or $disk.DriveType -ne 3 -or $disk.FileSystem -ne 'NTFS') {
+  throw 'ScratchRoot must be on a fixed NTFS drive.'
 }
 if ($ScratchRoot.Length -gt 15) { throw 'ScratchRoot must be short (15 characters or less).' }
 $substOutput = (& subst.exe | Out-String)
-if ($substOutput -match '(?im)^C:\\:') { throw 'C: appears as a subst drive; use the real physical drive instead.' }
+if ($substOutput -match ('(?im)^' + [regex]::Escape($drive) + '\\:')) { throw 'Scratch drive is mapped by subst.' }
 $project = Join-Path $ScratchRoot 'a'
 $gradle = Join-Path $ScratchRoot 'g'
 $androidUser = Join-Path $ScratchRoot 'u'
@@ -91,7 +97,8 @@ try {
     Sort-Object Name -Descending | ForEach-Object { Join-Path $_.FullName 'aapt.exe' } |
     Where-Object { Test-Path $_ } | Select-Object -First 1
   if (-not $aapt) { throw 'Android aapt.exe unavailable: cannot verify APK identity' }
-  $badging = (& $aapt dump badging $apk | Select-Object -First 1)
+  $details = @(& $aapt dump badging $apk)
+$badging = $details | Where-Object { $_ -match "^package: " } | Select-Object -First 1
   Require-Exit 'Read APK identity'
   if ($badging -notmatch "^package: name='com\.designsbyfa\.casitadex\.staging'") {
     throw "APK identity mismatch: $badging"
