@@ -70,3 +70,7 @@ See ANDROID_BACKUP_PHASE_A_ACCEPTANCE.md for detailed evidence.
 
 No Production, Firebase, cloud synchronization, or store
 distribution has been authorized.
+
+
+## Charter v0.4 — October 11, 2026
+AI Commander is now the authorized default Windows execution path. See Charter Amendment C and AI_COMMANDER_NEW_CHAT_HANDOFF_2026-10-11.md. All nine leadership roles, charter/documentation review, relevant research and evidence gates precede implementation. No application changes in this governance amendment.

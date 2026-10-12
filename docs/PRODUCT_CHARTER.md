@@ -1,6 +1,6 @@
 # CasitaDex — V1 Product Charter
 
-Version: 0.3 — 2026-10-08 (expert leadership amendment)
+Version: 0.4 — 2026-10-11 (AI Commander execution amendment)
 Status: WORKING PRODUCT NAME APPROVED / PRODUCT DESIGN AUTHORIZED / IMPLEMENTATION RESOURCE GATES STILL CLOSED
 Owner: Designs by F&A
 
@@ -417,3 +417,44 @@ The current approved starting point is **CD-SB-01 — Native Build Recovery + Re
 ### Non-goals and later product scope
 
 Home-first, not home-limited remains architectural only. Multiple Spaces, vehicle/RV/boat packs, memberships, cloud sync and household collaboration are not part of the immediate native closure. Local device notifications must respect the strict no-Firebase dependency graph; any apparent Google/Firebase transitive dependency requires explicit technical review, not a quiet exception. Product claims and pricing remain hypotheses pending research and tests.
+
+
+## Amendment C — AI Commander execution and continuation (2026-10-11)
+
+Owner authorization: **AI Commander — CasitaDex is the authorized default Windows
+execution path, replacing mandatory Work-mode handoffs.** Execute from the active
+CasitaDex project conversation against aic-DESKTOP-FP0BMH2 (DESKTOP-FP0BMH2),
+using the eligible Primary connection. Verify current link metadata and session
+status; never assume old connection identifiers remain valid.
+
+Within the approved bounded batch, use AI Commander for repository inspection,
+research-supported implementation, tests, local Staging builds, evidence,
+documentation and local commits. Prefer non-elevated, scoped commands. This
+authority does not bypass connector approvals or expand release/security gates.
+Do not send the owner to Work or another chat when connected tools suffice.
+If a capability is genuinely missing, explain the exact blocker and use the
+least disruptive supported alternative. An owner-requested new chat is permitted.
+
+Before substantive continuation, read this charter, current status, roadmap,
+applicable ADRs, acceptance evidence, security/dependency reviews, and runbook.
+Verify actual branch, HEAD, worktree, artifacts and device state. Resolve stale
+historical summaries against current evidence without discarding open gates.
+Apply all nine Amendment B disciplines. Research affected capabilities, current
+official documentation, limitations, compatibility, cost, privacy/security,
+failure modes, recovery and accessibility as relevant; record sources, dates,
+decisions and remaining uncertainty before material implementation. Mark
+non-applicable disciplines with a reason; do not fabricate specialist sign-off.
+
+Every handoff must include all nine roles, required reading, research obligations,
+authorization boundaries, exact source/artifact evidence, completed work, open
+gates and next action. A receiving chat must read these before making changes.
+It must provide a complete return handoff addressed to the originating CasitaDex
+conversation, with actions, commits, tests, failures, blockers and next steps;
+provide copyable text if automatic return is unavailable.
+
+Keep $0 recurring cost, no paid tunnels/billing activation, no exposed Windows
+ports, local-only/no Firebase, no Production/store/public launch. Preserve
+repositories, backups and household data. Agent uninstall, access-code reset,
+account deletion and destructive recovery require explicit owner approval.
+This amendment supersedes older mandatory Work-routing language only; all other
+charter controls and owner acceptance gates remain in force.

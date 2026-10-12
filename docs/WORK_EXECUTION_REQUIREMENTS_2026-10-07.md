@@ -1,3 +1,5 @@
+Current routing: Charter v0.4 Amendment C authorizes AI Commander directly from the project chat, replacing mandatory Work-mode handoffs. Read AI_COMMANDER_NEW_CHAT_HANDOFF_2026-10-11.md and all required charter/documentation/research/role obligations before continuation. Historical execution evidence below remains retained.
+
 # CASITADEX — WORK EXECUTION & RETURN HANDOFF
 **Date:** October 7, 2026
 **Owner:** Designs by F&A
