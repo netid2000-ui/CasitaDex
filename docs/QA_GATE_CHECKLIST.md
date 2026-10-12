@@ -1,4 +1,14 @@
 # Native Acceptance + Data Durability — current evidence
+
+## Latest checkpoint — October 11, 2026
+Active: Android text-backup Phase A verification. Existing Staging APK checks,
+41/41 tests, TypeScript and lint PASS. An existing two-card backup and safety copy
+validate with matching hashes. No Android device is attached to ADB.
+Native restore and installed-phone certificate checks remain OPEN.
+See [BACKUP_PHASE_A_CHECKPOINT_2026-10-11.md](BACKUP_PHASE_A_CHECKPOINT_2026-10-11.md).
+Earlier build-blocked/only-CD-SB-01-active statements below are historical.
+Full Android accessibility, iOS and media-inclusive CD-SB-05 are not closed.
+
 Date: 2026-10-07. Governing standard: ART + FUNCTION + EXPERIENCE — WITHOUT GIMMICKS.
 
 Application source: 6b13117d624f28139b48d16f69a18fe2c98fe746, preceded by 705bdedb29498621e8a1c42686739a30056c539c. Foundation: a774e986e70104d7e2b6a87eed4fa49aa0ce1103. Final documentation commit is recorded in the external completion handoff. No remote push or cloud build.

@@ -121,3 +121,21 @@ overwrite household records during acceptance testing.
 
 No Production, Firebase, public repository, or cloud deployment
 is authorized.
+
+## Verified continuation — October 11, 2026
+Source C:\CasitaDex-Git, prototype/bootstrap; source baseline 789bda3.
+Existing E:\cdx\a build at 789bda3 passes artifact checks; APK under
+android\app\build\outputs\apk\release\app-release.apk.
+Helper supports short physical fixed NTFS paths, including E:. Never clone into
+an existing build directory. No rebuild, cleanup or software installation needed.
+C: approx 9.7 GiB free; E: approx 1.9 TiB. Node 24.19.0/npm 11.17.0 verified.
+AI Commander 1.4.3 Primary connection works for scoped non-elevated commands.
+Check session status first. Screen sharing remains off; no exposed port needed.
+Prior account-link failure did not recur; original cause remains unknown.
+Remote PowerShell scripts must stay below approximately 3001 characters;
+larger payloads are rejected before execution. Split writes into bounded chunks.
+ADB has no attached device. Check installed signer before install -r;
+never uninstall or clear storage to resolve a mismatch.
+Existing backup and safety copy on E: validate; they are not off-device backups.
+See BACKUP_PHASE_A_CHECKPOINT_2026-10-11.md for exact paths, hashes and next device steps.
+No service/port changes. Native restore remains OPEN.

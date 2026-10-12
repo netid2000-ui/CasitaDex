@@ -1,5 +1,15 @@
 # CasitaDex — Governed super-batch roadmap
 
+## Latest checkpoint — October 11, 2026
+Active: Android text-backup Phase A verification. Existing Staging APK checks,
+41/41 tests, TypeScript and lint PASS. An existing two-card backup and safety copy
+validate with matching hashes. No Android device is attached to ADB.
+Native restore and installed-phone certificate checks remain OPEN.
+See [BACKUP_PHASE_A_CHECKPOINT_2026-10-11.md](BACKUP_PHASE_A_CHECKPOINT_2026-10-11.md).
+Earlier build-blocked/only-CD-SB-01-active statements below are historical.
+Full Android accessibility, iOS and media-inclusive CD-SB-05 are not closed.
+
+
 Date: 2026-10-07 · Owner: Designs by F&A · Status: APPROVED ROADMAP; ONLY CD-SB-01 ACTIVE
 Baseline: `prototype/bootstrap` at `af1d12c` (native-durability completion). CasitaDex milestone names deliberately differ from Event Command SB-12 / SB-13.
 

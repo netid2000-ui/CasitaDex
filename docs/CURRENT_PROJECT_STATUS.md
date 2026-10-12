@@ -1,4 +1,14 @@
 # CasitaDex current status
+
+## Latest checkpoint — October 11, 2026
+Active: Android text-backup Phase A verification. Existing Staging APK checks,
+41/41 tests, TypeScript and lint PASS. An existing two-card backup and safety copy
+validate with matching hashes. No Android device is attached to ADB.
+Native restore and installed-phone certificate checks remain OPEN.
+See [BACKUP_PHASE_A_CHECKPOINT_2026-10-11.md](BACKUP_PHASE_A_CHECKPOINT_2026-10-11.md).
+Earlier build-blocked/only-CD-SB-01-active statements below are historical.
+Full Android accessibility, iOS and media-inclusive CD-SB-05 are not closed.
+
 Updated October 7, 2026.
 
 Prototype foundation and the bounded native durability implementation are complete at source commit 6b13117d624f28139b48d16f69a18fe2c98fe746. Native acceptance remains OPEN; see NATIVE_BATCH_REPORT.md for exact platform/build results and remaining gates. No V1/release acceptance is implied.
