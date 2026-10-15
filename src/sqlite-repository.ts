@@ -69,6 +69,16 @@ export function sqliteRepository(
     );
   }
   async function replace(sql: SQL, data: Data) {
+    // Legacy text-only replacement must not destroy cards referenced by media-v2.
+    // A future media-aware replacement will stage and commit both datasets together.
+    const mediaTable = await sql.getFirstAsync<{ name: string }>(
+      "SELECT name FROM sqlite_master WHERE type='table' AND name='media_v2'",
+    );
+    if (mediaTable) {
+      const count = await sql.getFirstAsync<{ count: number }>("SELECT COUNT(*) AS count FROM media_v2");
+      if (count && count.count > 0)
+        throw new Error("This collection has image attachments. Use media-aware backup and restore; text-only replacement is blocked.");
+    }
     await sql.runAsync("DELETE FROM cards");
     await sql.runAsync("DELETE FROM spaces");
     for (const [index, space] of data.spaces.entries())
@@ -160,3 +170,4 @@ export function sqliteRepository(
       }),
   };
 }
+
