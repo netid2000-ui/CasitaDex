@@ -1,0 +1,14 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import fs from "node:fs";
+import vm from "node:vm";
+import ts from "typescript";
+const source=fs.readFileSync(new URL("../src/media-recovery.ts",import.meta.url),"utf8");
+const js=ts.transpileModule(source,{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;
+const module={exports:{}};vm.runInNewContext(js,{module,exports:module.exports,Map});
+const evaluate=module.exports.evaluateMediaRecovery;
+const entry={id:"m",cardId:"c",path:"media/m.png",mime:"image/png",bytes:12,sha256:"a".repeat(64)};
+test("pending without metadata is non-destructive inspection",()=>assert.equal(evaluate([{entry,phase:"pending"}],[])[0].verdict,"inspect-pending"));
+test("promoted without metadata requires byte verification",()=>assert.equal(evaluate([{entry,phase:"promoted"}],[])[0].verdict,"verify-promoted"));
+test("mismatched metadata never authorizes deletion",()=>assert.equal(evaluate([{entry,phase:"promoted"}],[{...entry,sha256:"b".repeat(64)}])[0].verdict,"metadata-mismatch"));
+test("finished matching journal reported complete",()=>assert.equal(evaluate([{entry,phase:"committed"}],[entry])[0].verdict,"journal-complete"));
