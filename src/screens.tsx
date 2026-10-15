@@ -1,9 +1,12 @@
-import React, { useRef, useState } from "react";
-import { Platform, Share, View } from "react-native";
+import React, { useEffect, useRef, useState } from "react";
+import { Image, Platform, Share, View } from "react-native";
 import { router, useLocalSearchParams } from "expo-router";
 import { Button, Copy, Field, Page, useTheme } from "./ui";
 import { useData } from "./state";
 import { pickBackupFile, saveBackupFile } from "./backup-files";
+import { listCardImages, pickAndAttachImage, removeCardImage } from "./media-attachment";
+import Constants from "expo-constants";
+import {saveMediaBackup,pickMediaBackup,restoreMediaBackup,recoverMediaPrevious} from "./media-transfer";
 import {
   confidences,
   contexts,
@@ -31,12 +34,12 @@ function Tile({ card, compact = false }: { card: Card; compact?: boolean }) {
   const { s } = useTheme();
   return (
     <View style={s.panel}>
-      {card.demo && <Copy kind="small">EXAMPLE · Not your home</Copy>}
+      {card.demo && <Copy kind="small">EXAMPLE ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· Not your home</Copy>}
       <Copy kind="small">{card.title.toUpperCase()}</Copy>
       <Copy kind="answer">{card.answer}</Copy>
       <Copy>
         {card.confidence}
-        {card.verifiedAt ? " · " + card.verifiedAt : ""}
+        {card.verifiedAt ? " ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· " + card.verifiedAt : ""}
       </Copy>
       {!compact && <Copy>{card.location}</Copy>}
       <Button
@@ -61,7 +64,7 @@ export function Today() {
       {data.cards.length === 0 ? (
         <View style={s.panel}>
           <Copy accessibilityRole="header" kind="answer">
-            What’s one thing you wish you could remember about your home?
+            WhatÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢s one thing you wish you could remember about your home?
           </Copy>
           <Copy>
             A filter size. A paint color. Where something lives. Start with one
@@ -94,7 +97,7 @@ export function Today() {
           ) : null}
           {due.map((c) => (
             <View key={"due" + c.id} style={s.gap}>
-              <Copy>Maintenance due · {c.due}</Copy>
+              <Copy>Maintenance due ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· {c.due}</Copy>
               <Tile card={c} />
             </View>
           ))}
@@ -158,11 +161,11 @@ export function Answers() {
       <Copy>
         {(
           {
-            Buy: "Store Mode · Replacement facts, ready for the aisle.",
-            Fix: "Fix Mode · Models, references and recorded history.",
-            Find: "Find · Your saved locations. Reference only; verify on site.",
+            Buy: "Store Mode ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· Replacement facts, ready for the aisle.",
+            Fix: "Fix Mode ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· Models, references and recorded history.",
+            Find: "Find ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· Your saved locations. Reference only; verify on site.",
             Maintain:
-              "Maintain · Due dates you recorded. No device notifications in this prototype.",
+              "Maintain ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· Due dates you recorded. No device notifications in this prototype.",
             Share: "Select only the cards you want to disclose.",
           } as Record<string, string>
         )[mode] || "Your useful facts, together."}
@@ -221,7 +224,7 @@ export function Answers() {
           {preview && (
             <>
               <Copy accessibilityRole="header" kind="answer">
-                Exactly what you’ll share
+                Exactly what youÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ll share
               </Copy>
               <Copy selectable>{text}</Copy>
               <Button
@@ -305,12 +308,12 @@ export function Add() {
         ))}
       </View>
       <Copy>
-        Starts as Unknown. Confirm against a source when you’re ready. Keep
+        Starts as Unknown. Confirm against a source when youÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢re ready. Keep
         passwords, door codes and alarm codes out of CasitaDex.
       </Copy>
       {!!error && <Copy accessibilityRole="alert">{error}</Copy>}
       <Button
-        label={busy ? "Saving…" : "Save answer"}
+        label={busy ? "SavingÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¦" : "Save answer"}
         disabled={busy}
         onPress={() => void submit()}
       />
@@ -322,12 +325,15 @@ export function Detail() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const { data, save, busy } = useData();
   const card = data.cards.find((c) => c.id === id);
+  const mediaEnvironment=Constants.expoConfig?.extra?.appEnvironment || "development";
+  const [images,setImages]=useState<{id:string;uri:string}[]>([]);
   const [source, setSource] = useState(""),
     [due, setDue] = useState(""),
     [message, setMessage] = useState(""),
     [confirm, setConfirm] = useState(false),
     [editing, setEditing] = useState(false),
     [newAnswer, setNewAnswer] = useState("");
+  useEffect(()=>{if(!card||Platform.OS!=="android")return;let active=true;void listCardImages(mediaEnvironment,card.id).then(rows=>{if(active)setImages(rows)}).catch(()=>{if(active)setMessage("Images could not be loaded")});return ()=>{active=false}},[card,mediaEnvironment]);
   async function update(patch: Partial<Card>) {
     if (!card) return false;
     return save({
@@ -375,19 +381,41 @@ export function Detail() {
       {card ? (
         <>
           <View style={s.panel}>
-            {card.demo && <Copy>EXAMPLE · Not your home</Copy>}
+            {card.demo && <Copy>EXAMPLE ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· Not your home</Copy>}
             <Copy kind="answer" selectable>
               {card.answer}
             </Copy>
             <Copy>
               {card.confidence}
-              {card.verifiedAt ? " · " + card.verifiedAt : ""}
+              {card.verifiedAt ? " ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· " + card.verifiedAt : ""}
             </Copy>
             <Copy>{card.location}</Copy>
             <Copy>{card.notes}</Copy>
             <Copy>Source: {card.source || "Not recorded"}</Copy>
           </View>
-          <Button
+          {Platform.OS === "android" && (
+            <View style={s.panel}>
+              <Copy accessibilityRole="header" kind="answer">Attached images</Copy>
+              {images.length === 0 && <Copy>No images attached.</Copy>}
+              {images.map(image => (
+                <View key={image.id}>
+                  <Image source={{uri:image.uri}} accessibilityLabel="Attached image" style={{width:220,height:180}} resizeMode="contain" />
+                  <Button label="Remove attached image" disabled={busy} onPress={() => {
+                    if (!card) return;
+                    void removeCardImage(mediaEnvironment,card.id,image.id)
+                      .then(()=>listCardImages(mediaEnvironment,card.id))
+                      .then(setImages).catch(e=>setMessage(e instanceof Error?e.message:"Image removal failed"));
+                  }} />
+                </View>
+              ))}
+              <Button label="Attach an image" disabled={busy} onPress={() => {
+                if (!card) return;
+                void pickAndAttachImage(mediaEnvironment,card.id)
+                  .then(()=>listCardImages(mediaEnvironment,card.id))
+                  .then(setImages).catch(e=>setMessage(e instanceof Error?e.message:"Image import failed"));
+              }} />
+            </View>
+          )}          <Button
             label="Edit answer"
             disabled={busy}
             onPress={() => {
@@ -476,7 +504,7 @@ export function Detail() {
           {card.history.length ? (
             card.history.map((h) => (
               <Copy key={h.id}>
-                {h.date} · {h.action}
+                {h.date} ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â· {h.action}
               </Copy>
             ))
           ) : (
@@ -534,10 +562,15 @@ export function More() {
     save,
     busy,
     recover,
+    reload,
   } = useData();
   const fileOperation = useRef(false);
   const [fileBusy, setFileBusy] = useState(false);
   const [previewSource, setPreviewSource] = useState("");
+  const [mediaCandidate,setMediaCandidate]=useState<{raw:Uint8Array;cardCount:number;imageCount:number}|null>(null);
+  const [mediaSnapshot,setMediaSnapshot]=useState("");
+  const [confirmMediaRecovery,setConfirmMediaRecovery]=useState(false);
+  const mediaEnvironment=Constants.expoConfig?.extra?.appEnvironment || "development";
   const [output, setOutput] = useState(""),
     [input, setInput] = useState(""),
     [candidate, setCandidate] = useState<Data | null>(null),
@@ -593,13 +626,57 @@ export function More() {
         </Copy>
         <Copy>
           A backup includes every space, card, location, note, confidence, due
-          date and history entry. This prototype has no photos or files. Backups
-          are readable text: keep them somewhere you trust. Nothing is backed up
-          automatically.
+          date and history entry. Text-only backups exclude attached images.
+          Use Save full backup (with images) on Android for images and text.
+          Backups are never automatic: keep independent copies.
         </Copy>
         {Platform.OS === "android" && (
           <>
-            <Button
+            <Button label="Save full backup (with images)" disabled={busy||fileBusy} onPress={()=>{
+              if(fileOperation.current)return;
+              fileOperation.current=true;setFileBusy(true);
+              void saveMediaBackup(mediaEnvironment,data)
+                .then(setMessage).catch(e=>setMessage(e instanceof Error?e.message:"Full backup failed"))
+                .finally(()=>{fileOperation.current=false;setFileBusy(false)});
+            }} />
+            <Button label="Choose full backup to check" disabled={busy||fileBusy} onPress={()=>{
+              if(fileOperation.current)return;
+              fileOperation.current=true;setFileBusy(true);setMediaCandidate(null);
+              void pickMediaBackup().then(result=>{
+                if(result){setMediaCandidate(result);setMediaSnapshot(exportData(data));setMessage("Full backup checked. Confirm replacement below.")}
+                else setMessage("Full backup selection canceled; nothing changed.");
+              }).catch(e=>setMessage(e instanceof Error?e.message:"Invalid media backup"))
+              .finally(()=>{fileOperation.current=false;setFileBusy(false)});
+            }} />            {mediaCandidate && (
+              <View style={s.panel}>
+                <Copy>Replace {data.cards.length} current cards with {mediaCandidate.cardCount} cards and {mediaCandidate.imageCount} images? Previous saved version is retained for recovery.</Copy>
+                <Button label="Cancel full restore" onPress={()=>setMediaCandidate(null)} />
+                <Button label="Confirm full restore" disabled={busy||fileBusy} onPress={()=>{
+                  if(fileOperation.current)return;
+                  if(exportData(data)!==mediaSnapshot){setMediaCandidate(null);setMessage("Answers changed; check the backup again.");return;}
+                  fileOperation.current=true;setFileBusy(true);
+                  void restoreMediaBackup(mediaEnvironment,mediaCandidate.raw).then(()=>reload())
+                    .then(()=>{setMediaCandidate(null);setMessage("Full backup restored and verified.")})
+                    .catch(e=>setMessage(e instanceof Error?e.message:"Full restore failed; current answers preserved"))
+                    .finally(()=>{fileOperation.current=false;setFileBusy(false)});
+                }} />
+              </View>
+            )}
+            <Button label="Recover previous full save" disabled={busy||fileBusy} onPress={()=>setConfirmMediaRecovery(true)} />
+            {confirmMediaRecovery && (
+              <View style={s.panel}>
+                <Copy>Replace current answers and images with the previous full saved version?</Copy>
+                <Button label="Cancel full recovery" onPress={()=>setConfirmMediaRecovery(false)} />
+                <Button label="Confirm full recovery" disabled={busy||fileBusy} onPress={()=>{
+                  if(fileOperation.current)return;
+                  fileOperation.current=true;setFileBusy(true);
+                  void recoverMediaPrevious(mediaEnvironment).then(()=>reload())
+                    .then(()=>{setConfirmMediaRecovery(false);setMessage("Previous full save recovered.")})
+                    .catch(e=>setMessage(e instanceof Error?e.message:"Full recovery failed"))
+                    .finally(()=>{fileOperation.current=false;setFileBusy(false)});
+                }} />
+              </View>
+            )}            <Button
               label="Save backup file"
               disabled={busy || fileBusy}
               onPress={() => {
@@ -739,15 +816,15 @@ export function More() {
         </Copy>
         <Copy>
           No account, ads, analytics or cloud service. Local storage is not an
-          encrypted credential vault. Media attachments, device notifications
-          and purchases are not available in this prototype.
+          encrypted credential vault. Image attachments are Android-only in this
+          prototype. Device notifications and purchases are unavailable.
         </Copy>
         <Copy>
           Support: include the screen and what went wrong when reporting
           feedback. Do not include private home details.
         </Copy>
         <Copy kind="small">
-          ART + FUNCTION + EXPERIENCE — WITHOUT GIMMICKS.
+          ART + FUNCTION + EXPERIENCE ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â WITHOUT GIMMICKS.
         </Copy>
       </View>
     </Page>

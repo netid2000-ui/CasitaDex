@@ -76,8 +76,21 @@ export function sqliteRepository(
     );
     if (mediaTable) {
       const count = await sql.getFirstAsync<{ count: number }>("SELECT COUNT(*) AS count FROM media_v2");
-      if (count && count.count > 0)
-        throw new Error("This collection has image attachments. Use media-aware backup and restore; text-only replacement is blocked.");
+      if (count && count.count > 0) {
+        // Never delete media parent rows. Ordinary edits to the same cards/spaces
+        // may update in place; imports changing identity require v2 restore.
+        const previous = await read(sql);
+        const sameCards = previous.cards.length === data.cards.length &&
+          previous.cards.every(c => data.cards.some(n => n.id === c.id));
+        const sameSpaces = previous.spaces.length === data.spaces.length &&
+          previous.spaces.every(s => data.spaces.some(n => n.id === s.id));
+        if (!sameCards || !sameSpaces) throw new Error("This collection has image attachments. Use media-aware backup and restore; text-only replacement is blocked.");
+        for (const [index, space] of data.spaces.entries())
+          await sql.runAsync("UPDATE spaces SET name=?, position=? WHERE id=?",space.name,index,space.id);
+        for (const [index, card] of data.cards.entries())
+          await sql.runAsync("UPDATE cards SET space_id=?, position=?, payload=? WHERE id=?",card.spaceId,index,JSON.stringify(card),card.id);
+        return;
+      }
     }
     await sql.runAsync("DELETE FROM cards");
     await sql.runAsync("DELETE FROM spaces");
@@ -143,6 +156,12 @@ export function sqliteRepository(
             "INSERT OR REPLACE INTO metadata (key, value) VALUES ('recovery', ?)",
             JSON.stringify(previous),
           );
+          const mediaTable=await tx.getFirstAsync<{name:string}>("SELECT name FROM sqlite_master WHERE type='table' AND name='media_v2'");
+          if(mediaTable){
+            const rows=await tx.getAllAsync<{id:string;card_id:string;relative_path:string;mime:string;byte_count:number;sha256:string}>("SELECT id,card_id,relative_path,mime,byte_count,sha256 FROM media_v2 ORDER BY id");
+            const manifest={version:2,media:rows.map(r=>({id:r.id,cardId:r.card_id,path:r.relative_path,mime:r.mime,bytes:r.byte_count,sha256:r.sha256}))};
+            await tx.runAsync("INSERT OR REPLACE INTO metadata(key,value) VALUES('recovery_media_v2',?)",JSON.stringify(manifest));
+          }
           await replace(tx, valid);
         });
       }),

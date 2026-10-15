@@ -1,4 +1,4 @@
-﻿import { preflightPortableMediaContainer } from "./media-portable-container";
+import { preflightPortableMediaContainer } from "./media-portable-container";
 import type { Data } from "./model";
 import type { MediaManifest } from "./media-manifest";
 /** A single-use safety gate: no mutation before complete byte/hash preflight. */

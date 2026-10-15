@@ -1,4 +1,4 @@
-﻿import test from 'node:test';
+import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
@@ -31,5 +31,22 @@ test('injected SQL insert failure rolls back both replacement and recovery marke
   raw.exec('DROP TRIGGER fail_replacement');
   await repo.save(next);
   assert.equal((await repo.load()).cards[0].answer,'NewAnswer');
+ }finally{raw.close()}
+});
+test('attached card can be edited in place but legacy replacement cannot discard its identity',async()=>{
+ const raw=new DatabaseSync(':memory:');
+ try{
+  const repo=repoModule.sqliteRepository(adapter(raw),{getItem:async()=>null},'staging');
+  const data=model.empty();data.cards.push({id:'c1',spaceId:'home',title:'Image card',answer:'before',location:'',notes:'',context:'Buy',confidence:'Unknown',source:'',history:[]});
+  await repo.save(data);
+  raw.exec("CREATE TABLE media_v2(id TEXT PRIMARY KEY,card_id TEXT REFERENCES cards(id) ON DELETE RESTRICT, relative_path TEXT, mime TEXT, byte_count INTEGER,sha256 TEXT); INSERT INTO media_v2 VALUES('m1','c1','media/m1.png','image/png',9,'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')");
+  const edited=JSON.parse(JSON.stringify(data));edited.cards[0].answer='after';
+  await repo.save(edited);
+  assert.equal((await repo.load()).cards[0].answer,'after');
+  assert.equal(raw.prepare('SELECT COUNT(*) AS n FROM media_v2').get().n,1);
+  const replacing=JSON.parse(JSON.stringify(edited));replacing.cards[0].id='c2';
+  await assert.rejects(repo.save(replacing),/media-aware backup and restore/);
+  assert.equal((await repo.load()).cards[0].id,'c1');
+  assert.equal(raw.prepare('SELECT COUNT(*) AS n FROM media_v2').get().n,1);
  }finally{raw.close()}
 });
