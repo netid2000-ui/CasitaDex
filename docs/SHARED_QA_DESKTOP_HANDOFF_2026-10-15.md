@@ -1,0 +1,8 @@
+# Shared QA desktop handoff — 2026-10-15
+CasitaDex command center remains originating chat; authoritative repository C:\CasitaDex-Git on DESKTOP-FP0BMH2, branch prototype/bootstrap. Keep unrelated recovery runbook modifications untouched.
+
+Second machine DESKTOP-MB70M1T via aic-DESKTOP-MB70M1T is ONLINE, agent 1.6.0 on live verification. C:\DevSetup\CROSS-PLATFORM-QA-WORKFLOW.md, CROSS-PLATFORM-QA-ACCEPTANCE-TEMPLATE.md, RECOVERY-RUNBOOK.md, verify.ps1 and IOS-REMOTE-SIMULATOR-RESEARCH.md are present. Android SDK emulator FA_Android35_SmokeTest was recognized by ADB as emulator-5554; Chrome/Edge installed. Remote screenshot sharing currently OFF. CasitaDex repository was not present at C:\CasitaDex-Git on this test desktop. There was one pre-existing running remote job; do not interfere.
+
+Shared baseline: disposable Expo smoke app Android native build/install and EAS iOS simulator artifact/Appetize rendering previously accepted, NOT CasitaDex QA evidence. Future CasitaDex isolated test checkout must not share credentials/data, overwrite other projects, or push repository without approval. Reuse toolchain and separate QA storage. EAS for proprietary CasitaDex requires project-specific owner authorization, account/profile, privacy/cost checks and specific approval before Appetize upload. iOS cloud simulator != signed iPhone binary. Android emulator != physical acceptance.
+
+Gate: finish integrated media attachments and safe recovery, then non-Production Staging Android emulator testing and separate approved EAS simulator build. No Production or customer data transfer.
