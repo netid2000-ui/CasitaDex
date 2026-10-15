@@ -8,11 +8,11 @@ const js=ts.transpileModule(source,{compilerOptions:{module:ts.ModuleKind.Common
 const events=[];let fail="";
 const st={stageMedia:async()=>{events.push("stage");if(fail==="stage")throw Error("stage fail")}};
 const jo={recordMediaOperation:async()=>events.push("pending"),advanceMediaOperation:async(_d,_id,_from,to)=>{events.push(to);if(fail===to)throw Error("phase fail")},listIncompleteMedia:async()=>[{entry:{id:"x",path:"media/x.png"},phase:"promoted"}]};
-const sql={attachMedia:async()=>{events.push("attach");if(fail==="attach")throw Error("DB fail")}};
+const sql={commitMediaWithJournal:async()=>{events.push("attach");if(fail==="attach")throw Error("DB fail")}};
 const m={exports:{}};vm.runInNewContext(js,{module:m,exports:m.exports,require:n=>n.includes("media-staging")?st:n.includes("media-journal")?jo:sql,Error});
 const {attachWithJournal,inspectInterruptedMedia}=m.exports;
 const run=()=>attachWithJournal({}, {}, {id:"x"},new Uint8Array(),async()=>"");
-test("journaled flow preserves write ordering",async()=>{events.length=0;fail="";await run();assert.deepEqual(events,["pending","stage","promoted","attach","committed"])});
+test("journaled flow preserves write ordering",async()=>{events.length=0;fail="";await run();assert.deepEqual(events,["pending","stage","promoted","attach"])});
 test("failed stage does not commit metadata",async()=>{events.length=0;fail="stage";await assert.rejects(run());assert.deepEqual(events,["pending","stage"])});
 test("failed DB attach never announces committed",async()=>{events.length=0;fail="attach";await assert.rejects(run());assert.deepEqual(events,["pending","stage","promoted","attach"])});
 test("interrupted operations only suggest inspection",async()=>{const result=await inspectInterruptedMedia({});assert.equal(result[0].phase,"promoted");assert.match(result[0].action,/Inspect/)});
