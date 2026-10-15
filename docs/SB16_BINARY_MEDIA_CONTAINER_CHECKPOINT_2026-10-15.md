@@ -1,0 +1,7 @@
+﻿# SB-16 binary media container source checkpoint — 2026-10-15
+
+Implemented a pure versioned CDXM2 binary envelope builder/parser in src/media-portable-container.ts. Frames are length-delimited: legacy version-1 text payload, version-2 media manifest, image byte frames in manifest order. Input is capped at 110MB with each header <=2MB. Builder validates manifest/card associations, media signatures, sizes and hashes before generating container. Parser rejects unknown magic, truncated/oversized frames, trailing bytes and invalid UTF-8; preflight verifies all payload media digests before any future database/file mutations.
+
+New source tests include roundtrip, truncated/trailing bytes and altered media digest. Node test suite reports 100 passing, zero failing; TypeScript check PASS and targeted ESLint PASS. This is NOT yet a user-visible export/import, an atomic restore implementation or native file-picker QA. No attachment UI has been integrated. Cryptographic SHA-256 must be supplied by a trusted native adapter. Existing version-1 text backup remains unchanged.
+
+Remaining coordinated superbatch gates: SB-14 actual Expo SQLite failure injection/recovery; SB-15 native picker and app-private card image operations; SB-16 container file provider wiring, media restore staging/journaling, rollback and both-machine QA. No Production, push, physical phone, emulator reset or change to dirty RECOVERY_RUNBOOK.md.
