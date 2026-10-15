@@ -1,0 +1,6 @@
+# CasitaDex isolated staging emulator build attempt — 2026-10-15
+Source: DESKTOP-FP0BMH2 C:\CasitaDex-Git branch prototype/bootstrap at fccbb03f39f29f4a5178da6cb7299ae1015ded3a. Uncommitted docs/RECOVERY_RUNBOOK.md preserved.
+
+Immutable detached local clone C:\cq\a, not authoritative repository. Isolated npm ci PASS, Expo Android prebuild PASS after correcting cmd environment quoting (set "EXPO_PUBLIC_APP_ENV=staging"). Staging package com.designsbyfa.casitadex.staging. Build script C:\cq\build-qa.cmd checks debugRuntimeClasspath for com.google.firebase: before :app:assembleDebug targeting x86_64 and creates no Production artifact. Android build job a803316941005b7c STARTED; outcome must be checked using remote_job_status and full logs, not assumed. Runtime graph C:\cq\runtime-graph.txt. Compiler output expected C:\cq\a\android\app\build\outputs\apk\debug\app-debug.apk ONLY if build succeeds.
+
+Shared emulator DESKTOP-MB70M1T FA_Android35_SmokeTest is booted, but CasitaDex has not yet been installed/tested there. No cross-machine transfer, phone installation, cloud build, remote git push or Appetize upload. Media attachment functionality is not yet active in application UI, so build only verifies baseline and regression, not CD-SB-04 completion.
