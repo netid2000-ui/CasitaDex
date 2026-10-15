@@ -1,0 +1,6 @@
+# CasitaDex Android Staging APK native compile — verified 2026-10-15
+Build machine DESKTOP-FP0BMH2. Isolated detached clone C:\cq\a at commit fccbb03; authoritative repo unchanged aside from this evidence doc. npm ci exit 0; Expo prebuild exit 0; Gradle debugRuntimeClasspath check passed and no com.google.firebase: dependency detected; :app:assembleDebug for x86_64 exit 0 (BUILD SUCCESSFUL, 338 tasks). Java/Android runtime build output in AI Commander job a803316941005b7c, dependency graph C:\cq\runtime-graph.txt.
+
+APK: C:\cq\a\android\app\build\outputs\apk\debug\app-debug.apk (80022727 bytes). APK SHA256: D2C649E8E4E7BB4D0D3AC6F157E7D6D704C5EF5FC4F70FA29F9C6325CC1CD54A. aapt package: com.designsbyfa.casitadex.staging, version 0.1.0, min SDK24, target SDK36. apksigner verify successful: Android Debug signer SHA256 fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c. Debug-signed APK for TEST emulator only; no production/physical phone installation.
+
+Emulator DESKTOP-MB70M1T is available but artifact transfer, installation, launch, offline durability and accessibility tests remain NOT RUN. Existing Android emulator hosts other project processes, do not overwrite them. New media workflow is not connected to main UI and this binary is NOT SB-04 attachment acceptance. iOS separate gate. Preserve uncommitted docs/RECOVERY_RUNBOOK.md.
