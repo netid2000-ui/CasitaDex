@@ -1,0 +1,14 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import fs from "node:fs";
+import vm from "node:vm";
+import ts from "typescript";
+const load=(n,req)=>{const source=fs.readFileSync(new URL(`../src/${n}.ts`,import.meta.url),"utf8");const code=ts.transpileModule(source,{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;const m={exports:{}};vm.runInNewContext(code,{module:m,exports:m.exports,require:req,Set,Number,Error,Object});return m.exports;};
+const manifest=load("media-manifest",()=>{});
+const api=load("media-backup-v2",name=>name==="./model"?{parseData:raw=>{const value=JSON.parse(raw);if(value.version!==1 || value.media?.length)throw Error("Invalid text data");return value;}}:manifest);
+const text=JSON.stringify({version:1,spaces:[{id:"home",name:"Home"}],cards:[{id:"c1"}],media:[]});
+const item={id:"a",cardId:"c1",path:"media/a.png",mime:"image/png",bytes:21,sha256:"a".repeat(64)};
+test("v2 manifest preview counts images without writing data",()=>{const r=api.previewMediaBackup(text,{version:2,media:[item]});assert.equal(r.totalBytes,21);assert.equal(r.manifest.media[0].cardId,"c1")});
+test("rejects media referencing absent cards",()=>assert.throws(()=>api.previewMediaBackup(text,{version:2,media:[{...item,cardId:"absent"}]}),/card reference/));
+test("rejects unsafe archive entry names",()=>assert.throws(()=>api.previewMediaBackup(text,{version:2,media:[{...item,path:"../escape"}]}),/path/));
+test("rejects invalid text before considering manifest",()=>assert.throws(()=>api.previewMediaBackup(JSON.stringify({version:99,media:[]}),{version:2,media:[]}),/text/));
