@@ -1,0 +1,7 @@
+﻿# Media restore preflight checkpoint — 2026-10-15
+
+Scope: media-inclusive restore safety foundation only, not live app integration. Added verifyPortableMediaPayload to src/media-backup-v2.ts: after version-2 manifest preflight, caller supplies each expected image byte array; verifyMediaBytes checks exact byte length, image signature and SHA-256 digest before a future restore adapter performs any mutation. Missing files and mismatched hashes fail closed. No database or file writes are performed by this helper. Tests cover valid bytes, corrupt hash, wrong length and missing file.
+
+Primary development repository checks: npm test 95 pass, 0 fail; npm run typecheck pass; npm run lint pass. No native APK was rebuilt or tested for this change. Existing media SQLite, staged file store and journaling are still disconnected from live card UI and the existing legacy text backup. V2 packaging/readback and atomic restore are not implemented. Do not claim physical media or media backup accepted.
+
+Next integration gates: determine approved image picker and hashing APIs; wire app-owned media file storage and SQLite companion tables with transaction journal through the serial native repository; safe user-facing card attachment picker/preview/remove; add independent native artifact QA on DESKTOP-MB70M1T; build portable media container with staging, manifests, integrity and rollback; retain v1 text restore compatibility. No external service, Production, remote push or phone modifications.
