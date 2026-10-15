@@ -1,0 +1,14 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import fs from "node:fs";
+import vm from "node:vm";
+import ts from "typescript";
+import {DatabaseSync} from "node:sqlite";
+const load=(n,req)=>{const src=fs.readFileSync(new URL(`../src/${n}.ts`,import.meta.url),"utf8");const js=ts.transpileModule(src,{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;const m={exports:{}};vm.runInNewContext(js,{module:m,exports:m.exports,require:req,Set,Number,Error,Object});return m.exports;};
+const journal=load("media-journal",()=>load("media-manifest",()=>{}));
+const make=()=>{const raw=new DatabaseSync(":memory:");const q={execAsync:async s=>raw.exec(s),runAsync:async(s,...p)=>raw.prepare(s).run(...p),getFirstAsync:async(s,...p)=>raw.prepare(s).get(...p)||null,getAllAsync:async(s,...p)=>raw.prepare(s).all(...p),withExclusiveTransactionAsync:async f=>{raw.exec("BEGIN IMMEDIATE");try{await f(q);raw.exec("COMMIT")}catch(e){raw.exec("ROLLBACK");throw e}}};return {raw,q}};
+const entry={id:"media1",cardId:"card1",path:"media/media1.png",mime:"image/png",bytes:20,sha256:"a".repeat(64)};
+test("journal tracks incomplete persisted operation",async()=>{const {raw,q}=make();await journal.prepareMediaJournal(q);await journal.recordMediaOperation(q,entry);assert.equal((await journal.listIncompleteMedia(q))[0].phase,"pending");raw.close()});
+test("valid journal progression",async()=>{const {raw,q}=make();await journal.prepareMediaJournal(q);await journal.recordMediaOperation(q,entry);await journal.advanceMediaOperation(q,"media1","pending","promoted");assert.equal((await journal.listIncompleteMedia(q))[0].phase,"promoted");await journal.advanceMediaOperation(q,"media1","promoted","committed");assert.equal((await journal.listIncompleteMedia(q)).length,0);raw.close()});
+test("phase mismatch rolls back",async()=>{const {raw,q}=make();await journal.prepareMediaJournal(q);await journal.recordMediaOperation(q,entry);await assert.rejects(journal.advanceMediaOperation(q,"media1","promoted","committed"),/mismatch/);assert.equal((await journal.listIncompleteMedia(q))[0].phase,"pending");raw.close()});
+test("rejects skipping stages",async()=>{await assert.rejects(journal.advanceMediaOperation(make().q,"x","pending","committed"),/transition/)});
