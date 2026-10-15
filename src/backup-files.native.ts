@@ -52,5 +52,8 @@ export async function pickBackupFile(): Promise<string | null> {
     throw new Error("Backup is too large. Maximum size is 2 MB.");
   }
   const raw = await FileSystem.readAsStringAsync(asset.uri, { encoding: FileSystem.EncodingType.UTF8 });
+  if (new TextEncoder().encode(raw).byteLength > 2_000_000) {
+    throw new Error("Backup is too large. Maximum size is 2 MB.");
+  }
   return exportData(parseData(raw));
 }

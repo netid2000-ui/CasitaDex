@@ -38,7 +38,7 @@ function harness(options = {}) {
     } };
     throw Error(`Unexpected dependency ${name}`);
   };
-  vm.runInNewContext(transpiled, { module, exports: module.exports, require: fakeRequire, Date, Error, Buffer });
+  vm.runInNewContext(transpiled, { module, exports: module.exports, require: fakeRequire, Date, Error, Buffer, TextEncoder });
   return { api: module.exports, calls };
 }
 
@@ -87,4 +87,15 @@ test('invalid import rejected', async () => {
 test('other platforms reject file export', async () => {
   const h = harness({ platform: 'ios' });
   await assert.rejects(h.api.saveBackupFile(fixture), /Android only/i);
+});
+test('unknown document size still enforces UTF-8 byte limit after reading', async () => {
+  const h = harness({ picked: { canceled: false, assets: [{ uri: 'file://unknown' }] }, readData: 'é'.repeat(1_000_001) });
+  await assert.rejects(h.api.pickBackupFile(), /too large/i);
+  assert.deepEqual(h.calls, ['read']);
+});
+
+test('underreported document size cannot bypass actual UTF-8 byte limit', async () => {
+  const h = harness({ picked: { canceled: false, assets: [{ uri: 'file://underreported', size: 10 }] }, readData: 'é'.repeat(1_000_001) });
+  await assert.rejects(h.api.pickBackupFile(), /too large/i);
+  assert.deepEqual(h.calls, ['read']);
 });
