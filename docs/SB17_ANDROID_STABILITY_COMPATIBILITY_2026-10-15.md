@@ -16,3 +16,7 @@ PASS: two different API levels (35 and 37) and screen widths, offline force-stop
 BLOCKED: ANR-free secondary full reboot and font-scale session; reproducible healthy boot time. Further gates: low-memory process kill, long-run soak/performance profiling, TalkBack, screen-reader/live large-font visuals, actual power-cut/storage-fault injection, and additional Android OS versions. **SB-17 is NOT fully accepted** until these are closed. Existing SB-14–16 features and independent QA remain accepted.
 
 Repo primary: `C:\CasitaDex-Git` branch `prototype/bootstrap`. Preserve owner-modified dirty `docs/RECOVERY_RUNBOOK.md` and do not stage it. No new build needed because no app code was changed.
+
+## Post Windows 11 26H2 retest — October 16, 2026
+
+Secondary workstation now confirmed Windows 11 Pro 26H2 build 26300.9711; WHPX usable, SDK/AVD preserved. Initial AVD boot and app cold launches improved (1946ms initial, 1188ms font 1.3, 3147ms/1757ms offline). Original QA card, answer and photo remain intact. However a repeat non-wiping Android reboot triggered **com.android.systemui SystemUIService ANR** (20,026ms wait) and an independent cold AVD startup with temporary GPU auto/SwiftShader also triggered SystemUI ANR (20,020ms wait). Non-destructive Wait recovered the app and attachments in both cases. Full evidence and limits: `SB17_POST_WINDOWS_26H2_SECONDARY_QA_2026-10-16.md`. SB-17 remains **PARTIALLY ACCEPTED**; Windows 26H2 did not resolve the System UI ANR.

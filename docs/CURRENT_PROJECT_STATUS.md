@@ -1,4 +1,7 @@
 # CasitaDex current status
+## October 16, 2026 — Post-26H2 secondary QA
+
+Windows 11 Pro 26H2 (build 26300.9711) confirmed on secondary DESKTOP-MB70M1T, Android SDK/AVD and WHPX usable, existing QA card/image preserved. Android 15 emulator cold boot and app launch PASS, temporary font 1.3 and offline app launch PASS, settings restored. **System UI ANR recurred** both after a full non-wiping Android reboot and with a temporary GPU auto/SwiftShader launch; Android log events name `com.android.systemui/.SystemUIService` timeout near 20 seconds. Wait recovered without data loss. SB-17 remains PARTIAL, not a healthy-boot acceptance. See `SB17_POST_WINDOWS_26H2_SECONDARY_QA_2026-10-16.md`; preserve owner's dirty recovery runbook.
 ## October 15, 2026 — SB-18 owner-approved design baseline
 
 The owner explicitly approved the existing interactive household-memory prototype as the baseline for future CasitaDex native UI/UX. Charter v0.7 Amendment F establishes this design direction. Accepted reference/source hash and bounded implementation sequence: `docs/design/SB18_OWNER_APPROVED_DESIGN_BASELINE_2026-10-15.md`. This is NOT final human-research/accessibility/native UI signoff. Existing SB-17 secondary emulator ANR, iOS/voice/camera, pricing, security, and Production gates remain open. Preserve the owner-edited `docs/RECOVERY_RUNBOOK.md`; no cloud or Production.
