@@ -77,18 +77,27 @@ export function sqliteRepository(
     if (mediaTable) {
       const count = await sql.getFirstAsync<{ count: number }>("SELECT COUNT(*) AS count FROM media_v2");
       if (count && count.count > 0) {
-        // Never delete media parent rows. Ordinary edits to the same cards/spaces
-        // may update in place; imports changing identity require v2 restore.
-        const previous = await read(sql);
-        const sameCards = previous.cards.length === data.cards.length &&
-          previous.cards.every(c => data.cards.some(n => n.id === c.id));
-        const sameSpaces = previous.spaces.length === data.spaces.length &&
-          previous.spaces.every(s => data.spaces.some(n => n.id === s.id));
-        if (!sameCards || !sameSpaces) throw new Error("This collection has image attachments. Use media-aware backup and restore; text-only replacement is blocked.");
-        for (const [index, space] of data.spaces.entries())
-          await sql.runAsync("UPDATE spaces SET name=?, position=? WHERE id=?",space.name,index,space.id);
-        for (const [index, card] of data.cards.entries())
-          await sql.runAsync("UPDATE cards SET space_id=?, position=?, payload=? WHERE id=?",card.spaceId,index,JSON.stringify(card),card.id);
+        // Keep all attached parent rows. Apply ordinary collection edits in
+        // place instead of deleting the whole table, which would lose images.
+        const previous=await read(sql);
+        const oldSpaces=new Set(previous.spaces.map(s=>s.id));
+        const oldCards=new Set(previous.cards.map(c=>c.id));
+        const nextSpaces=new Set(data.spaces.map(s=>s.id));
+        const nextCards=new Set(data.cards.map(c=>c.id));
+        for(const [i,space] of data.spaces.entries()) {
+          if(oldSpaces.has(space.id))await sql.runAsync("UPDATE spaces SET name=?,position=? WHERE id=?",space.name,i,space.id);
+          else await sql.runAsync("INSERT INTO spaces(id,name,position) VALUES(?,?,?)",space.id,space.name,i);
+        }
+        for(const [i,card] of data.cards.entries()) {
+          if(oldCards.has(card.id))await sql.runAsync("UPDATE cards SET space_id=?,position=?,payload=? WHERE id=?",card.spaceId,i,JSON.stringify(card),card.id);
+          else await sql.runAsync("INSERT INTO cards(id,space_id,position,payload) VALUES(?,?,?,?)",card.id,card.spaceId,i,JSON.stringify(card));
+        }
+        for(const old of previous.cards.filter(c=>!nextCards.has(c.id))) {
+          const count=await sql.getFirstAsync<{n:number}>("SELECT COUNT(*) AS n FROM media_v2 WHERE card_id=?",old.id);
+          if(count?.n)throw Error("This card has image attachments. Use media-aware backup and restore; text-only replacement is blocked.");
+          await sql.runAsync("DELETE FROM cards WHERE id=?",old.id);
+        }
+        for(const old of previous.spaces.filter(s=>!nextSpaces.has(s.id)))await sql.runAsync("DELETE FROM spaces WHERE id=?",old.id);
         return;
       }
     }

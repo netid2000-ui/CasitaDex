@@ -1,5 +1,11 @@
 # CasitaDex current status
 
+## Latest verified checkpoint — October 15, 2026: SB-14 to SB-16 Android Staging
+
+Coordinated data protection, live private image attachment, and versioned media-inclusive SAF backup/restore have been implemented on Android Staging and independently functionally tested on `DESKTOP-MB70M1T` (Android 15 emulator); the primary desktop emulator also exported and independently hash-verified a full backup. Different-data media restore, corrupt-hash rejection, previous-save rollback with images, offline force-stop persistence, attachment removal confirmation and media re-import passed. Automated suite 105/105 PASS, TypeScript PASS, ESLint PASS; native x86_64 Staging Gradle build PASS, no Firebase runtime graph dependency. Refer to `SB14_16_COORDINATED_ANDROID_ACCEPTANCE_2026-10-15.md` for exact evidence, limitations and unclosed risk gates.
+
+NOT a V1/Production approval. Explicitly open: Android forced power-loss/full-disk injection, broader platform/accessibility tests, iOS image acceptance, encryption/key design, package-size limitations, final security and store release review. No Production, Git push or physical phone changes.
+
 ## Latest checkpoint — October 11, 2026
 Active: Android text-backup Phase A verification. Existing Staging APK checks,
 41/41 tests, TypeScript and lint PASS. An existing two-card backup and safety copy

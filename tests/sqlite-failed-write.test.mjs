@@ -43,6 +43,9 @@ test('attached card can be edited in place but legacy replacement cannot discard
   const edited=JSON.parse(JSON.stringify(data));edited.cards[0].answer='after';
   await repo.save(edited);
   assert.equal((await repo.load()).cards[0].answer,'after');
+  const added=JSON.parse(JSON.stringify(edited));added.cards.push({...added.cards[0],id:'c2',title:'Second card'});
+  await repo.save(added);assert.equal((await repo.load()).cards.length,2);
+  await repo.save(edited);assert.equal((await repo.load()).cards.length,1);
   assert.equal(raw.prepare('SELECT COUNT(*) AS n FROM media_v2').get().n,1);
   const replacing=JSON.parse(JSON.stringify(edited));replacing.cards[0].id='c2';
   await assert.rejects(repo.save(replacing),/media-aware backup and restore/);

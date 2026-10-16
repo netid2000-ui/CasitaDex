@@ -13,7 +13,8 @@ const safe=/^media\/[A-Za-z0-9_-]{1,100}\.(jpg|png|webp)$/;
 const stores=new Map<string,Promise<Database>>();
 function database(environment:string):Promise<Database>{
  if(!["development","staging"].includes(environment))throw Error("Invalid environment");
- if(!stores.has(environment))stores.set(environment,openDatabaseAsync(`casitadex-${environment}-v1.db`).then(db=>{
+ if(!stores.has(environment))stores.set(environment,openDatabaseAsync(`casitadex-${environment}-v1.db`).then(async db=>{
+  await db.execAsync("PRAGMA foreign_keys=ON; PRAGMA journal_mode=WAL; PRAGMA synchronous=FULL;");
   const adapter:Database={execAsync:db.execAsync.bind(db),runAsync:db.runAsync.bind(db),getAllAsync:db.getAllAsync.bind(db),getFirstAsync:db.getFirstAsync.bind(db),withExclusiveTransactionAsync:async(task:(tx:SQL)=>Promise<void>)=>{await db.withExclusiveTransactionAsync(task)}};
   return adapter;
  }).catch(error=>{stores.delete(environment);throw error}));
@@ -23,6 +24,7 @@ function fileUri(path:string){if(!safe.test(path))throw Error("Unsafe image path
 export async function listCardImages(environment:string,cardId:string){
  const db=await database(environment);await prepareMediaTable(db);
  const entries=await listAttachedMedia(db,cardId);
+ for(const entry of entries){if(!mediaFileByPath(entry.path).exists)throw Error("An attached image file is missing. Keep your backup and retry recovery.");}
  return entries.map(entry=>({...entry,uri:fileUri(entry.path)}));
 }
 export async function pickAndAttachImage(environment:string,cardId:string){

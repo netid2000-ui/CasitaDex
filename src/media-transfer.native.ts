@@ -13,9 +13,18 @@ import { createNativeMediaStore } from "./media-store.native";
 import type { Database, SQL } from "./sqlite-repository";
 const nativeCap=20_000_000;
 function base64(bytes:Uint8Array):string {
- let out="";const chunk=3*4096;
- for(let i=0;i<bytes.length;i+=chunk)out+=btoa(String.fromCharCode(...bytes.subarray(i,i+chunk)));
- return out;
+ const abc="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+ let output="";const chunk=3*4096;
+ for(let begin=0;begin<bytes.length;begin+=chunk){
+  let piece="";
+  for(let i=begin;i<Math.min(begin+chunk,bytes.length);i+=3){
+   const a=bytes[i],hasB=i+1<bytes.length,hasC=i+2<bytes.length;
+   const b=hasB?bytes[i+1]:0,c=hasC?bytes[i+2]:0;
+   piece+=abc[a>>2]+abc[((a&3)<<4)|(b>>4)]+(hasB?abc[((b&15)<<2)|(c>>6)]:"=")+(hasC?abc[c&63]:"=");
+  }
+  output+=piece;
+ }
+ return output;
 }
 async function listManifest(db:Database,cardIds:string[]){
  await prepareMediaTable(db);
@@ -88,6 +97,14 @@ export async function restoreMediaBackup(environment:string,raw:Uint8Array){
   staged.push(entry);
  }
  await db.withExclusiveTransactionAsync(async tx=>{
+  const current=await readCollection(tx);
+  if(exportData(current)!==exportData(previous))throw Error("Current answers changed during media restore; recheck backup");
+  const oldRows=await tx.getAllAsync<{id:string;sha256:string}>("SELECT id,sha256 FROM media_v2 ORDER BY id");
+  if(JSON.stringify(oldRows.map(x=>[x.id,x.sha256]))!==JSON.stringify(priorImages.media.map(x=>[x.id,x.sha256])))throw Error("Attached images changed during restore");
+  for(const entry of staged){
+   const journal=await tx.getFirstAsync<{phase:string;relative_path:string;sha256:string}>("SELECT phase,relative_path,sha256 FROM media_ops_v2 WHERE id=?",entry.id);
+   if(!journal||journal.phase!=="promoted"||journal.relative_path!==entry.path||journal.sha256!==entry.sha256)throw Error("Incomplete media staging journal");
+  }
   await replaceCollection(tx,opened.preview.text,staged);
   await tx.runAsync("INSERT OR REPLACE INTO metadata(key,value) VALUES('recovery',?)",JSON.stringify(previous));
   await tx.runAsync("INSERT OR REPLACE INTO metadata(key,value) VALUES('recovery_media_v2',?)",JSON.stringify(priorImages));
@@ -102,5 +119,10 @@ export async function recoverMediaPrevious(environment:string){
  const mediaRow=await db.getFirstAsync<{value:string}>("SELECT value FROM metadata WHERE key='recovery_media_v2'");
  const prior=validateMediaManifest(mediaRow?JSON.parse(mediaRow.value):{version:2,media:[]},text.cards.map(c=>c.id));
  await verifyExisting(prior.media);
- await db.withExclusiveTransactionAsync(async tx=>replaceCollection(tx,text,prior.media));
+ await db.withExclusiveTransactionAsync(async tx=>{
+  const latest=await tx.getFirstAsync<{value:string}>("SELECT value FROM metadata WHERE key='recovery'");
+  const latestMedia=await tx.getFirstAsync<{value:string}>("SELECT value FROM metadata WHERE key='recovery_media_v2'");
+  if(latest?.value!==row.value||latestMedia?.value!==mediaRow?.value)throw Error("Recovery snapshot changed; recheck before recovering");
+  await replaceCollection(tx,text,prior.media);
+ });
 }

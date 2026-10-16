@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Image, Platform, Share, View } from "react-native";
+import { Alert, Image, Platform, Share, View } from "react-native";
 import { router, useLocalSearchParams } from "expo-router";
 import { Button, Copy, Field, Page, useTheme } from "./ui";
 import { useData } from "./state";
@@ -401,10 +401,15 @@ export function Detail() {
                 <View key={image.id}>
                   <Image source={{uri:image.uri}} accessibilityLabel="Attached image" style={{width:220,height:180}} resizeMode="contain" />
                   <Button label="Remove attached image" disabled={busy} onPress={() => {
-                    if (!card) return;
-                    void removeCardImage(mediaEnvironment,card.id,image.id)
-                      .then(()=>listCardImages(mediaEnvironment,card.id))
-                      .then(setImages).catch(e=>setMessage(e instanceof Error?e.message:"Image removal failed"));
+                    if(!card)return;
+                    Alert.alert("Remove this image?","The image will be detached from this card.",[
+                      {text:"Cancel",style:"cancel"},
+                      {text:"Remove",style:"destructive",onPress:()=>{
+                        void removeCardImage(mediaEnvironment,card.id,image.id)
+                          .then(()=>listCardImages(mediaEnvironment,card.id))
+                          .then(setImages).catch(e=>setMessage(e instanceof Error?e.message:"Image removal failed"));
+                      }}
+                    ]);
                   }} />
                 </View>
               ))}
