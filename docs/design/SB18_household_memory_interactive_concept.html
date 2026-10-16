@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>CasitaDex — Household Memory Concept · SB-18</title>
+<style>
+:root{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-synthesis:none;color:#18392f;background:#e9ede7}
+*{box-sizing:border-box}body{margin:0}.shell{min-height:100vh;display:flex;align-items:center;justify-content:center;gap:58px;padding:30px}
+.notes{width:320px;align-self:center}.eyebrow{text-transform:uppercase;letter-spacing:.15em;font-size:11px;font-weight:800;color:#57716a}.notes h1{font-size:42px;line-height:1.06;letter-spacing:-.055em;margin:18px 0;color:#204a3e}.notes p{font-size:16px;line-height:1.58;color:#4d635b}
+.notes h2{font-size:16px;margin-top:30px}.journey{display:flex;flex-wrap:wrap;gap:8px;margin:15px 0}
+.journey button{border:1px solid #c8d3cb;background:rgba(255,255,255,.8);border-radius:99px;padding:10px 14px;color:#24483d;font-weight:650;cursor:pointer;font-size:13px}
+.journey button.active{background:#234e41;color:white;border-color:#234e41}
+.notes .promise{border-left:3px solid #6c967c;padding-left:14px;font-size:14px}
+.device{width:414px;height:835px;background:#203a31;flex-shrink:0;padding:9px;border-radius:39px;box-shadow:0 28px 70px #152d2637,0 0 0 1px #17332a;position:relative}
+.app{background:#f7f7f3;overflow:hidden;border-radius:31px;height:100%;display:flex;flex-direction:column}
+.status{display:flex;justify-content:space-between;padding:15px 23px 10px;font-size:12px;color:#526a60;flex:none}
+.brandline{display:flex;align-items:center;justify-content:space-between;padding:5px 23px 17px;flex:none}
+.brand{letter-spacing:.06em;font-size:12px;font-weight:850;color:#21483d}.mark{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:9px;background:#244a40;color:#fff;margin-right:6px;font-size:14px}
+.statushint{font-size:11px;font-weight:650;color:#49675a;display:flex;align-items:center;gap:5px}.dot{width:7px;height:7px;background:#5d9974;border-radius:99px}
+.content{padding:3px 22px 24px;flex:1;overflow:auto;scrollbar-width:thin}.bottom{display:grid;grid-template-columns:repeat(4,1fr);align-items:center;background:#fff;border-top:1px solid #e5e9e1;padding:9px 7px 13px;box-shadow:0 -4px 18px #123d2b07;flex:none}
+.nav{border:0;background:transparent;color:#63776c;font:600 11px system-ui;min-height:55px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer;border-radius:13px}
+.nav .ico{font-size:20px;line-height:23px}.nav.on{color:#164a38;background:#e9f1e7}
+h1,h2,h3,p{margin-top:0}h1{font-size:30px;letter-spacing:-.047em;line-height:1.14;margin-bottom:9px}h2{font-size:20px;letter-spacing:-.028em;margin-bottom:12px}h3{font-size:15px;margin-bottom:8px}
+.sub{font-size:15px;line-height:1.45;color:#526a5c;margin-bottom:22px}.kicker{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:800;color:#476653;margin:0 0 10px}
+.searchbar{width:100%;display:flex;gap:10px;align-items:center;border:1.5px solid #d9e0d7;border-radius:17px;padding:4px 6px 4px 15px;background:#fff;margin:15px 0 17px;box-shadow:0 2px 9px #1d463009}
+.searchbar input{min-width:0;flex:1;font:inherit;font-size:15px;border:0;outline:0;height:44px;color:#1c4738;background:transparent}.searchbar button{background:#244c40;color:#fff;border:0;border-radius:12px;height:44px;min-width:44px;font-size:19px;cursor:pointer}
+button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #9abf9b;outline-offset:3px}
+button{font-family:inherit}.primary{border:0;background:#214d40;color:white;border-radius:16px;padding:14px 17px;min-height:50px;font-weight:750;font-size:15px;cursor:pointer}
+.secondary{border:1px solid #d1dad0;background:#fff;color:#2c5444;border-radius:14px;padding:12px 13px;min-height:48px;font-weight:700;cursor:pointer}
+.link{background:none;border:0;color:#295c45;font-size:14px;font-weight:800;cursor:pointer;padding:8px 0;min-height:48px}
+.card{background:white;border:1px solid #e2e8de;border-radius:19px;padding:16px;box-shadow:0 3px 14px #1b462808;margin:12px 0}
+.card.button{display:block;text-align:left;width:100%;cursor:pointer;min-height:90px}.card.button:hover{border-color:#88a698}
+.card small{display:block;color:#5e7267;font-size:11px;font-weight:750;margin-bottom:9px}
+.answer{font-size:25px;font-weight:850;letter-spacing:-.045em;color:#224a3c;line-height:1.15}.context{font-size:13px;color:#566e60;margin-top:6px}
+.section{display:flex;justify-content:space-between;align-items:center;margin:26px 0 10px}.section h2{margin:0}
+.hero{padding:21px 18px;background:#e8efe5;border-radius:23px;margin:10px 0 18px;position:relative;overflow:hidden}.hero:after{content:"";width:110px;height:110px;border:21px solid #d6e3d5;border-radius:90px;position:absolute;right:-50px;top:-60px;pointer-events:none}
+.hero p{color:#4c6a59;font-size:13px;line-height:1.5;margin:8px 0 15px;max-width:260px}
+.hero button{position:relative;z-index:1}.row{display:flex;gap:10px}.row>*{flex:1}
+.action-card{border:1px solid #dce5d8;background:#fff;border-radius:17px;min-height:100px;padding:17px 12px;text-align:left;color:#20483d;cursor:pointer}
+.action-card b{display:block;font-size:15px;margin:9px 0 4px}.action-card small{font-size:11px;color:#526a5c;line-height:1.3;display:block}
+.pic{height:148px;border-radius:15px;background:linear-gradient(126deg,#a2b29a,#e5e9d9 54%,#adb4a6);position:relative;display:grid;place-items:center;overflow:hidden;margin:12px 0}
+.pic:before{content:"";width:140px;height:95px;background:#f7f6e9;transform:rotate(-10deg);border-radius:5px;box-shadow:0 10px 25px #233b255c}
+.pic:after{content:"16 × 25 × 1  ·  MERV 11";position:absolute;top:65px;left:50%;transform:translateX(-50%) rotate(-10deg);white-space:nowrap;font-size:11px;font-weight:850;letter-spacing:.025em;color:#364c44}
+.meta{display:grid;grid-template-columns:100px 1fr;gap:12px;padding:12px 0;border-bottom:1px solid #e8ece5;font-size:13px}.meta .dim{color:#687d70}
+.badge{background:#e7f1e8;color:#28513d;border-radius:999px;padding:5px 9px;font-size:11px;font-weight:800;display:inline-block}
+.notice{background:#edf2e8;color:#41624c;padding:12px 13px;border-radius:13px;font-size:12px;line-height:1.45;margin:15px 0}
+.warning{background:#fff5e9;color:#81521d;border-radius:13px;padding:12px 13px;line-height:1.4;font-size:12px;margin:12px 0}
+.inputlabel{font-weight:750;font-size:13px;display:block;margin:15px 0 7px}
+.textbox{width:100%;border:1px solid #cfdad0;padding:13px 14px;border-radius:13px;background:#fff;color:#183d32;font:inherit;font-size:15px;min-height:50px}
+textarea.textbox{min-height:96px;resize:vertical}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin:16px 0}.chip{background:#eff2ed;border:1px solid #e0e9df;border-radius:999px;font-size:12px;padding:10px 13px;color:#466555;cursor:pointer;font-weight:700;min-height:48px}.chip.active{background:#214c3e;color:#fff;border-color:#214c3e}
+.capture-box{background:#edf3ec;border:1px dashed #a9bca9;border-radius:16px;text-align:center;padding:18px 12px;margin:14px 0}.capture-box strong{display:block;font-size:14px;margin:8px}.capture-box p{font-size:12px;color:#61776a;line-height:1.4;margin:0 0 9px}
+.back{background:none;border:0;padding:8px 0;color:#416651;font-size:14px;font-weight:850;cursor:pointer;margin-bottom:14px;min-height:48px}
+.divider{height:1px;background:#e3e8df;margin:18px 0}
+.plan{border:1px solid #e0e9df;background:white;border-radius:17px;padding:17px;margin:12px 0}.plan h3{font-size:19px}.plan p{font-size:13px;color:#52685c;line-height:1.5}.list{font-size:13px;color:#4e6858;line-height:1.85;padding-left:19px}
+.settings-row{width:100%;background:white;border:1px solid #e2e7df;padding:17px 15px;min-height:58px;border-radius:14px;text-align:left;margin:7px 0;font-size:14px;font-weight:750;color:#2c503f;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.empty{text-align:center;margin:26px 0;padding:28px 15px;background:#fff;border-radius:17px}.empty p{font-size:13px;color:#5a7562}
+.demo{font-size:11px;color:#647669;line-height:1.45;margin-top:10px}.screenreader{position:absolute;left:-10000px}
+@media(max-width:830px){.shell{display:block;padding:0}.notes{display:none}.device{height:100dvh;width:100%;padding:0;border-radius:0;box-shadow:none}.app{border-radius:0}.content{padding-left:19px;padding-right:19px}.bottom{padding-bottom:max(11px,env(safe-area-inset-bottom))}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="shell">
+<aside class="notes" aria-label="Prototype explanation">
+<div class="eyebrow">DESIGNS BY F&A · SB-18</div>
+<h1>One less thing to remember.</h1>
+<p>A quiet place for the facts that make everyday life easier. <b>Answers first.</b> Photos and voice when useful. Private on your device.</p>
+<h2>Explore the concept</h2>
+<div class="journey">
+<button onclick="go('first')">00 First visit</button><button onclick="go('home')">01 Home</button><button onclick="go('find')">02 Find</button><button onclick="go('detail')">03 Answer</button>
+<button onclick="go('add')">04 Capture</button><button onclick="go('spaces')">05 Spaces</button><button onclick="go('storage')">06 Backup</button>
+<button onclick="go('upgrade')">07 Optional Complete</button>
+</div>
+<p class="promise">This is a <strong>design-only interactive prototype</strong>. Sample information is fictitious. Changes are stored only in this page's temporary memory. Camera, voice, backups and purchases are not connected.</p>
+</aside>
+<div class="device">
+<div class="app">
+<div class="status"><span>9:41</span><span>● ● ● ▰</span></div>
+<div class="brandline"><span class="brand"><span class="mark">⌂</span>CASITADEX</span><span class="statushint">DESIGN PREVIEW</span></div>
+<main id="content" class="content" aria-live="polite"></main>
+<nav id="bottom" class="bottom" aria-label="Primary navigation"></nav>
+</div>
+</div>
+</div>
+<script>
+(function(){
+"use strict";
+var cards=[
+{id:1,title:"Air filter size",answer:"16 × 25 × 1",location:"Hallway return vent",category:"Heating & cooling",verified:"Checked August 2026",media:"photo"},
+{id:2,title:"Living room paint",answer:"Soft Sage · SW 6177",location:"Paint supplies · garage",category:"Paint & finishes",verified:"Recorded May 2026",media:""},
+{id:3,title:"Water shutoff",answer:"Utility room, left wall",location:"Near water heater",category:"Home essentials",verified:"Needs checking",media:""}
+];
+var selected=1,view="home",capture="write",draft={title:"",answer:"",location:""},search="",filter="All",recording=false,message="";
+var content=document.getElementById("content"),nav=document.getElementById("bottom");
+function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;")}
+function announce(msg){message=msg;render();}
+function cardTile(c){return '<button class="card button" onclick="openCard('+c.id+')"><small>'+esc(c.category)+' · '+esc(c.title)+'</small><div class="answer">'+esc(c.answer)+'</div><div class="context">↗ '+esc(c.location)+'</div></button>'}
+function head(label,title,subtitle){return '<p class="kicker">'+label+'</p><h1>'+title+'</h1><p class="sub">'+subtitle+'</p>'}
+function first(){return head("WELCOME TO CASITADEX","Your home.<br>A little easier.","Keep the details that help you every day. One memory is enough to start.")+
+'<div class="hero" style="padding:28px 19px"><div class="kicker">LET’S START SMALL</div><h2>What’s one thing<br>you wish you remembered?</h2><p>A filter size, a paint color, or where you put something important.</p><button class="primary" onclick="go(\'add\')">Save your first answer</button></div>'+
+'<div class="card"><h3>No account. No setup project.</h3><p class="context">Save your first answer offline, and build your home’s memory naturally as you need it.</p><button class="link" onclick="go(\'home\')">Explore example answers →</button></div>'+
+'<p class="demo">First-run concept: no inventory wizard, no forced category setup, no upgrade prompt.</p>'}
+function home(){return head("YOUR HOME, REMEMBERED","A little less<br>to remember.","Find the little details you need, right when you need them.")+
+'<div class="searchbar"><span aria-hidden="true">⌕</span><input aria-label="Search saved answers" id="quicksearch" placeholder="Filter size, paint color, anything…" onkeydown="if(event.key===\'Enter\')window.quickSearch(this.value)"><button aria-label="Find answer" onclick="quickSearch(document.getElementById(\'quicksearch\').value)">→</button></div>'+
+'<div class="hero"><div class="kicker">SOMETHING TO REMEMBER?</div><h2>Save it while<br>it’s fresh.</h2><p>Write a quick note, keep a photo, or add a voice recording.</p><button class="primary" onclick="go(\'add\')">+ Save a memory</button></div>'+
+'<div class="section"><h2>Recently remembered</h2><button class="link" onclick="go(\'find\')">See all →</button></div>'+
+cards.slice(0,2).map(cardTile).join("")+
+'<div class="notice">✓ In the native app, memories stay on your device. These are sample answers.</div>'}
+function find(){var list=cards.filter(function(c){var t=(c.title+" "+c.answer+" "+c.location+" "+c.category).toLowerCase();return t.indexOf(search.toLowerCase())>=0&&(filter==="All"||c.category===filter)});
+return head("FIND AN ANSWER","What are you looking for?","Search a fact, a location, or something you own.")+
+'<div class="searchbar"><input id="findquery" aria-label="Search answers" placeholder="Search saved memories" value="'+esc(search)+'" onkeydown="if(event.key===\'Enter\')window.quickSearch(this.value)"><button aria-label="Search" onclick="quickSearch(document.getElementById(\'findquery\').value)">⌕</button></div>'+
+'<div class="chips"><button class="chip '+(filter==="All"?"active":"")+'" onclick="setFilter(\'All\')">All</button>'+
+['Heating & cooling','Paint & finishes','Home essentials'].map(function(c){return '<button class="chip '+(filter===c?"active":"")+'" onclick="setFilter(\''+c+'\')">'+esc(c)+'</button>'}).join("")+'</div>'+
+'<div class="section"><h2>'+list.length+' saved '+(list.length===1?"answer":"answers")+'</h2><button class="link" onclick="go(\'spaces\')">Browse spaces →</button></div>'+
+(list.length?list.map(cardTile).join(""):'<div class="empty"><h2>Nothing here yet</h2><p>Try another phrase, or save what you need to remember.</p><button class="secondary" onclick="go(\'add\')">Save an answer</button></div>')}
+function detail(){var c=cards.find(function(x){return x.id===selected})||cards[0];return '<button class="back" onclick="go(\'find\')">← All answers</button><p class="kicker">'+esc(c.category)+'</p><h1>'+esc(c.title)+'</h1><p class="sub">Here’s what you saved.</p>'+
+'<div class="card"><div class="kicker">THE ANSWER</div><div class="answer" style="font-size:34px">'+esc(c.answer)+'</div><div class="divider"></div><div class="meta"><span class="dim">Where</span><strong>'+esc(c.location||"Not specified")+'</strong></div><div class="meta"><span class="dim">Trust status</span><span>'+esc(c.verified)+'</span></div></div>'+
+(c.media==="photo"?'<h2>Photo reference</h2><div class="pic" role="img" aria-label="Illustrative photograph of an air filter showing 16 by 25 by 1 inches"></div><p class="demo">Illustrative concept photo, not a real attachment.</p>':'')+
+'<div class="row"><button class="secondary" onclick="announce(\'Concept only: editing belongs in the future native design.\')">Edit answer</button><button class="secondary" onclick="announce(\'Concept only: sharing is not connected in this prototype.\')">Share</button></div>'}
+function add(){var m=capture;return head("SAVE ONE USEFUL THING","What do you want to remember?","Just enough detail to make it easy to find later.")+
+'<div class="chips"><button class="chip '+(m==="write"?"active":"")+'" onclick="setCapture(\'write\')">✎ Write</button><button class="chip '+(m==="photo"?"active":"")+'" onclick="setCapture(\'photo\')">▣ Photo</button><button class="chip '+(m==="voice"?"active":"")+'" onclick="setCapture(\'voice\')">♫ Voice</button></div>'+
+(m==="photo"?'<div class="capture-box"><div style="font-size:27px">▣</div><strong>Add a helpful photo</strong><p>Photograph a label or choose an existing picture. Camera integration will be built and tested later.</p><button class="secondary" onclick="announce(\'Camera preview only — no camera accessed.\')">Take a photo · concept</button></div>':m==="voice"?'<div class="capture-box"><div style="font-size:27px">♫</div><strong>'+(!recording?'Record a voice note':'Recording state · simulation')+'</strong><p>Recording will be on-device, with playback and clear stop controls. This screen does not access your microphone.</p><button class="secondary" onclick="toggleRecording()">'+(recording?'■ Stop simulation':'● Show recording state')+'</button></div>':'')+
+'<label class="inputlabel" for="memoryTitle">What should you call it?</label><input class="textbox" id="memoryTitle" placeholder="For example, Air filter size" value="'+esc(draft.title)+'" oninput="window.setDraft(\'title\',this.value)">'+
+'<label class="inputlabel" for="memoryAnswer">The important detail</label><textarea class="textbox" id="memoryAnswer" placeholder="The exact answer you might need later…" oninput="window.setDraft(\'answer\',this.value)">'+esc(draft.answer)+'</textarea>'+
+'<label class="inputlabel" for="memoryWhere">Where is it? <span style="font-weight:400;color:#526a5c">(optional)</span></label><input class="textbox" id="memoryWhere" placeholder="Hallway, garage, kitchen…" value="'+esc(draft.location)+'" oninput="window.setDraft(\'location\',this.value)">'+
+'<p class="demo">Saved only on this device in the future native app. Prototype entries are temporary and disappear when this page is closed.</p><button class="primary" style="width:100%;margin:16px 0 5px" onclick="saveDemo()">Save this memory</button>'}
+function spaces(){var groups=['Heating & cooling','Paint & finishes','Home essentials'];return '<button class="back" onclick="go(\'find\')">← Find answers</button>'+head("BROWSE WHEN USEFUL","Places & topics","You don’t have to organize everything before saving.")+
+groups.map(function(g){return '<button class="settings-row" onclick="openSpace(\''+g+'\')"><span>'+esc(g)+'</span><span>'+cards.filter(function(c){return c.category===g}).length+' →</span></button>'}).join("")+
+'<div class="notice">Spaces are a way to browse—not a setup task you must finish.</div>'}
+function more(){return head("YOUR CASITADEX","Your data. Your choice.","The everyday essentials, clearly organized.")+
+'<button class="settings-row" onclick="go(\'storage\')"><span>◫ &nbsp;Storage & backup</span><span>→</span></button>'+
+'<button class="settings-row" onclick="announce(\'Privacy settings concept: records stay on the device by default.\')"><span>♢ &nbsp;Privacy & accessibility</span><span>→</span></button>'+
+'<button class="settings-row" onclick="announce(\'Help content is scheduled for design review.\')"><span>◉ &nbsp;Help & how it works</span><span>→</span></button>'+
+'<div class="divider"></div><div class="section"><h2>Optional enhancements</h2></div><p class="sub">CasitaDex remains useful without a purchase.</p><button class="secondary" style="width:100%" onclick="go(\'upgrade\')">Explore Complete & Cloud Care</button>'+
+'<div class="notice">No account required for your saved answers.</div>'}
+function storage(){return '<button class="back" onclick="go(\'more\')">← More</button>'+head("STORAGE & BACKUP","Your memories are yours.","All essential answers remain on this device.")+
+'<div class="card"><div class="kicker">LOCAL STATUS</div><h2 style="margin-bottom:6px">✓ Saved on this device</h2><p class="sub" style="margin:0">Usable without internet or a subscription.</p><div class="divider"></div><div class="meta"><span class="dim">Media use</span><strong>Measured in native app</strong></div><div class="meta"><span class="dim">Cloud backup</span><strong>Not configured</strong></div></div>'+
+'<h2>Backup options</h2><div class="plan"><h3>Manual backup <span class="badge">FREE</span></h3><p>Export and restore your own records, including supported attachments. Choose a compatible Files destination.</p><button class="secondary" onclick="announce(\'Concept only: manual backup not connected here.\')">Explore manual backup</button></div>'+
+'<div class="plan"><h3>Cloud Care <span class="badge">OPTIONAL</span></h3><p>Automated, verified, encrypted backup to compatible storage you already own. Planned later, subject to security testing.</p><button class="link" onclick="go(\'upgrade\')">See optional plans →</button></div>'+
+'<div class="warning">Cloud storage capacity is not included. An online backup must never be called verified until its integrity and recovery path have been checked.</div>'}
+function upgrade(){return '<button class="back" onclick="go(\'more\')">← More</button>'+head("ENHANCE IF IT HELPS","More convenience.<br>Never less ownership.","There’s no need to upgrade to keep remembering your home.")+
+'<div class="plan"><div class="kicker">ALWAYS INCLUDED</div><h2>CasitaDex Free</h2><p>Offline answers, search, camera and voice when implemented, accessibility, manual backup and full restore.</p><span class="badge">YOUR ESSENTIALS STAY FREE</span></div>'+
+'<div class="plan"><div class="kicker">OPTIONAL ONE-TIME</div><h2>CasitaDex Complete</h2><p>Advanced views, assisted organization, smarter reports and time-saving tools. No recurring charge for local features.</p><span class="badge">PRICING UNDER RESEARCH</span></div>'+
+'<div class="plan"><div class="kicker">OPTIONAL ONGOING</div><h2>Cloud Care</h2><p>Automated encrypted backup with compatible personal cloud storage, version history and recovery assistance, once available and verified.</p><span class="badge">NOT CURRENTLY AVAILABLE</span></div>'+
+'<p class="demo">This is a concept comparison only. No checkout, store products, plans or subscriptions are connected.</p>'}
+function render(){var pages={first:first,home:home,find:find,detail:detail,add:add,spaces:spaces,more:more,storage:storage,upgrade:upgrade};
+content.innerHTML=(pages[view]||home)()+(message?'<div class="notice" role="status">'+esc(message)+'</div>':'');
+var navs=[['home','⌂','Home'],['find','⌕','Find'],['add','＋','Add'],['more','☰','More']];
+nav.innerHTML=navs.map(function(n){var on=view===n[0]||(view==="detail"&&n[0]==="find")||(view==="spaces"&&n[0]==="find")||(view==="storage"&&n[0]==="more")||(view==="upgrade"&&n[0]==="more");return '<button class="nav '+(on?"on":"")+'" aria-label="'+n[2]+'" '+(on?'aria-current="page"':'')+' onclick="go(\''+n[0]+'\')"><span class="ico" aria-hidden="true">'+n[1]+'</span>'+n[2]+'</button>'}).join("");
+Array.prototype.forEach.call(document.querySelectorAll(".journey button"),function(b){var key=b.textContent.trim().split(" ").slice(1).join(" ").toLowerCase();b.classList.toggle("active",key===(view==="detail"?"answer":view==="add"?"capture":view==="storage"?"backup":view==="upgrade"?"optional complete":view))});
+}
+window.go=function(v){view=v;message="";render();content.scrollTop=0};
+window.openCard=function(id){selected=id;window.go("detail")};
+window.setCapture=function(m){capture=m;recording=false;message="";render()};
+window.setDraft=function(k,v){draft[k]=v};
+window.quickSearch=function(q){search=q;filter="All";window.go("find")};
+window.setFilter=function(f){filter=f;render()};
+window.openSpace=function(s){filter=s;search="";window.go("find")};
+window.toggleRecording=function(){recording=!recording;announce(recording?"Recording controls are a demonstration only—no audio is captured.":"Recording simulation stopped. No audio was created.")};
+window.saveDemo=function(){if(!draft.title.trim()||!draft.answer.trim()){announce("Add a name and the important detail to save this example.");return}
+var id=Math.max.apply(null,cards.map(function(c){return c.id}))+1;cards.unshift({id:id,title:draft.title,answer:draft.answer,location:draft.location||"Not recorded",category:"Home essentials",verified:"Not yet verified",media:""});selected=id;draft={title:"",answer:"",location:""};window.go("detail");announce("Example added to the prototype only. Nothing was stored on your device.")};
+render();
+})();
+</script>
+</body>
+</html>

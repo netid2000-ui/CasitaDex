@@ -1,6 +1,6 @@
 # CasitaDex — V1 Product Charter
 
-Version: 0.5 — 2026-10-15 (SB-18 optional BYOS monetization design amendment)
+Version: 0.6 — 2026-10-15 (SB-18 household memory product promise)
 Status: WORKING PRODUCT NAME APPROVED / PRODUCT DESIGN AUTHORIZED / IMPLEMENTATION RESOURCE GATES STILL CLOSED
 Owner: Designs by F&A
 
@@ -466,3 +466,13 @@ Owner-approved PRODUCT DESIGN DIRECTION: core CasitaDex remains offline-first. U
 Non-negotiable FREE rights: local answer access, photo/voice access when released, accessibility, local search, manually exporting/restoring ALL supported personal data and backups, and recovery without a paid entitlement. Encryption of manual portable backups, when implemented, is not Pro-only. Pro monetizes convenience: optional direct account integration, consent-driven verified and potentially scheduled encrypted backup, version management and restore-assist, subject to OS/background constraints and explicit technical acceptance. Premium expiration must not strand the user's files or break local use.
 
 This is NOT authority to implement network dependencies, OAuth/billing, backend/cloud storage, subscriptions, Production, or store listing under V1. Original V1 no-cloud and one-time Complete purchase *implementation gates* remain until separately amended after cost, security, platform-policy and willingness-to-pay research. Pricing and whether the premium offering is lifetime or recurring are OPEN decisions; no recurring infrastructure is authorized.
+
+## Amendment E — Household Memory Product Promise (2026-10-15)
+
+Owner-approved governing principle: **CasitaDex is a household memory app people can trust for years, NOT an inventory application that continually asks them to upgrade.** This overrides feature-led pressure in future design decisions while preserving the already approved charter and offline-first engineering gates.
+
+The first screen must help people **find or save one useful answer**, not start an asset catalog or inventory-completion journey. A household fact, optional photo or optional voice note should be fast to save, understandable years later and owned by the user. Retrieval shows the exact answer before metadata. Source, verification status, location and last review remain clear; do not imply unverified content is authoritative.
+
+No streaks, item-count targets, mandatory categorization, ads, manipulative upgrade funnels, forced account, required cloud connection or paywall on local records, core photo/voice capture, accessibility, basic sharing, manual portable backup and recovery. Upgrades are invited only when a user chooses an enhanced task or Settings, with full pricing/provider-cost disclosures and cancellation-safe data access. Keep the interface warm, visually restrained, text-resizable and accessible. Do not presume 4 or 5 navigation destinations are final before user research.
+
+SB-18 design-review evidence and untested claims: `docs/design/SB18_HOUSEHOLD_MEMORY_UX_SYSTEM_2026-10-15.md`, `SB18_FIELD_RESEARCH_PROTOCOL_2026-10-15.md`, `SB18_NATIVE_IMPLEMENTATION_READINESS_2026-10-15.md`, and the interactive prototype in `docs/design`. No spending, cloud authentication, app subscriptions, Production or app-store launch is authorized by this design amendment.
