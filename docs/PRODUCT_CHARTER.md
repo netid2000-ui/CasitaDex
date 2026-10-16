@@ -1,6 +1,6 @@
 # CasitaDex — V1 Product Charter
 
-Version: 0.6 — 2026-10-15 (SB-18 household memory product promise)
+Version: 0.7 — 2026-10-15 (SB-18 owner-approved interactive UI baseline)
 Status: WORKING PRODUCT NAME APPROVED / PRODUCT DESIGN AUTHORIZED / IMPLEMENTATION RESOURCE GATES STILL CLOSED
 Owner: Designs by F&A
 
@@ -476,3 +476,9 @@ The first screen must help people **find or save one useful answer**, not start 
 No streaks, item-count targets, mandatory categorization, ads, manipulative upgrade funnels, forced account, required cloud connection or paywall on local records, core photo/voice capture, accessibility, basic sharing, manual portable backup and recovery. Upgrades are invited only when a user chooses an enhanced task or Settings, with full pricing/provider-cost disclosures and cancellation-safe data access. Keep the interface warm, visually restrained, text-resizable and accessible. Do not presume 4 or 5 navigation destinations are final before user research.
 
 SB-18 design-review evidence and untested claims: `docs/design/SB18_HOUSEHOLD_MEMORY_UX_SYSTEM_2026-10-15.md`, `SB18_FIELD_RESEARCH_PROTOCOL_2026-10-15.md`, `SB18_NATIVE_IMPLEMENTATION_READINESS_2026-10-15.md`, and the interactive prototype in `docs/design`. No spending, cloud authentication, app subscriptions, Production or app-store launch is authorized by this design amendment.
+
+## Amendment F — Owner-Approved SB-18 UI/UX Baseline (2026-10-15)
+
+The owner approved the October 15 CasitaDex household-memory interactive prototype as the **product design baseline**, not final pixel-perfect native acceptance. Source: `docs/design/SB18_household_memory_interactive_concept.html`; immutable SHA-256 and exact accepted screens are recorded in `docs/design/SB18_OWNER_APPROVED_DESIGN_BASELINE_2026-10-15.md`.
+
+The approved approach is warm, calm and accessible; exact answers first; optional photo and voice recall; first-run one-answer success; simple Home, Find, Add, More navigation with Spaces accessible within Find; trustworthy local/offline status; and quiet, optional Premium in Settings rather than interruptions. Preserve users' ability to read, write, search, export and restore their personal records without an upgrade. Maintain all cloud/Production/payment and human/native acceptance gates. Use this design as the reference for later bounded SB-19 implementation, with changes driven by measured usability, security, accessibility or native-platform constraints—not speculative inventory features or monetization expansion.

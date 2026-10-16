@@ -1,4 +1,7 @@
 # CasitaDex current status
+## October 15, 2026 — SB-18 owner-approved design baseline
+
+The owner explicitly approved the existing interactive household-memory prototype as the baseline for future CasitaDex native UI/UX. Charter v0.7 Amendment F establishes this design direction. Accepted reference/source hash and bounded implementation sequence: `docs/design/SB18_OWNER_APPROVED_DESIGN_BASELINE_2026-10-15.md`. This is NOT final human-research/accessibility/native UI signoff. Existing SB-17 secondary emulator ANR, iOS/voice/camera, pricing, security, and Production gates remain open. Preserve the owner-edited `docs/RECOVERY_RUNBOOK.md`; no cloud or Production.
 ## October 15, 2026 — SB-18 household-memory design review package
 
 Owner explicitly reapproved the north star: a lasting household memory app, not an inventory/upsell funnel. Charter Amendment E added. New standalone HTML prototype plus first-visit, Home, Find, Answer, Add photo/voice simulation, Spaces, More, Storage and optional Complete/Cloud Care; 390px screenshots and automated Playwright browser smoke PASS (also 360px, 130% browser zoom and 1280px desktop). No native UI code changed; local records and purchase/cloud services remain unaffected. Full evidence and remaining gates in `docs/design/SB18_REVIEW_PACKAGE_README.md`, `SB18_HOUSEHOLD_MEMORY_UX_SYSTEM_2026-10-15.md`, `SB18_FIELD_RESEARCH_PROTOCOL_2026-10-15.md`, and `SB18_NATIVE_IMPLEMENTATION_READINESS_2026-10-15.md`. Browser proof is NOT native or human usability acceptance; SB-17 System UI ANR still open.

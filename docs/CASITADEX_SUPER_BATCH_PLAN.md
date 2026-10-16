@@ -1,4 +1,7 @@
 # CasitaDex — Governed super-batch roadmap
+## Approved UI baseline — October 15, 2026
+
+Owner selected the existing SB-18 interactive household-memory concept as the native implementation baseline. Canonical acceptance record: `docs/design/SB18_OWNER_APPROVED_DESIGN_BASELINE_2026-10-15.md`; charter Amendment F. Preserve approved answer-first navigation, privacy, simplicity and no-ads/no-aggressive-upsell policy. SB-18 accessibility/user-study closure and SB-17 platform stability are still open. SB-19 implementation should be staged and tested; no paid cloud/account/payment/Production work is implied.
 ## Active design lane / status override — October 15, 2026
 
 SB-18 interaction-design checkpoint: first visit, Home, Find, Answer, Add/photo/voice simulations, Spaces, Storage, and optional plan UX are prototyped in docs/design/SB18_household_memory_interactive_concept.html. The HTML browser walkthrough passes, with rendered mobile/desktop previews and a reproducible Playwright test. This is NOT native release acceptance or real voice/camera functionality. Next: owner design review, moderated usability research (including accessibility), final states and the SB-19 native UI migration plan; do not start paid cloud or store integrations.
