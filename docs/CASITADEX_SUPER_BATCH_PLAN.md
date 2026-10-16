@@ -1,4 +1,7 @@
 # CasitaDex — Governed super-batch roadmap
+## Active design lane / status override — October 15, 2026
+
+Historical CD-SB-01 "ACTIVE" and October 11 Phase A wording below are retained as provenance, NOT current execution state. Latest Android accepted source is SB-14 to SB-16 at `ca40afc`; SB-17 has functional compatibility passes but System UI ANR / secondary boot performance OPEN. Current owner-approved SB-18 is professional UI/UX design and monetization discovery. Prototype proposals, price cards, provider APIs and tier plans are not implementation authorizations. Read current `CURRENT_PROJECT_STATUS.md`, `PRODUCT_CHARTER.md` Amendment D, SB-18 research/UX/economics docs before final screens; read SB-17 acceptance before claiming Android stable. Finish the SB-18 detailed screen designs, usability/price experiments, entitlement architecture and governance gates before SB-19 implementation. Reconcile the legacy CD-SB ordering at next formal roadmap revision; do not silently treat stale older stages as complete or skip iOS/physical acceptance.
 
 ## Latest checkpoint — October 11, 2026
 Active: Android text-backup Phase A verification. Existing Staging APK checks,

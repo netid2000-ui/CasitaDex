@@ -1,4 +1,9 @@
 # CasitaDex current status
+## Active October 15, 2026: SB-18 professional UX and monetization discovery
+
+Working SB-18 research now inventories 15 revenue candidates, seven consumer competitors, baseline data-access rights, three paid packaging approaches, gross cohort sensitivity and entitlement-aware UI placement. No interviews, production payments, actual sales, customer price validation, cloud/provider credentials or in-app billing executed. See `SB18_MONETIZATION_MARKET_RESEARCH_2026-10-15.md`, `SB18_REVENUE_OPPORTUNITIES_AND_UX_BLUEPRINT_2026-10-15.md`, `SB18_PRICING_ECONOMICS_AND_VALIDATION_PLAN_2026-10-15.md`. Charter Amendment D approves BYOS monetization design direction only. User approval for concrete pricing/implementation remains OPEN.
+
+SB-17 two Android emulator/API-level tests and reboot persistence passed, but secondary System UI ANR and abnormal boot latency remain OPEN; Windows 11 26H2 upgrade on secondary was user-initiated and may be unfinished, so no post-upgrade acceptance is claimed. Source: `SB17_ANDROID_STABILITY_COMPATIBILITY_2026-10-15.md`.
 
 ## Latest verified checkpoint — October 15, 2026: SB-14 to SB-16 Android Staging
 
