@@ -1,6 +1,6 @@
 # CasitaDex — V1 Product Charter
 
-Version: 0.4 — 2026-10-11 (AI Commander execution amendment)
+Version: 0.5 — 2026-10-15 (SB-18 optional BYOS monetization design amendment)
 Status: WORKING PRODUCT NAME APPROVED / PRODUCT DESIGN AUTHORIZED / IMPLEMENTATION RESOURCE GATES STILL CLOSED
 Owner: Designs by F&A
 
@@ -458,3 +458,11 @@ repositories, backups and household data. Agent uninstall, access-code reset,
 account deletion and destructive recovery require explicit owner approval.
 This amendment supersedes older mandatory Work-routing language only; all other
 charter controls and owner acceptance gates remain in force.
+
+## Amendment D — Local-first with optional monetized cloud convenience (2026-10-15)
+
+Owner-approved PRODUCT DESIGN DIRECTION: core CasitaDex remains offline-first. Users may later pay for optional online storage/backup management, preferably using their own OneDrive, Google Drive, iCloud Drive or OS Files provider. F&A does not inherently provide cloud storage with this upgrade; provider capacity, accounts and fees are separate. See `SB18_BYOS_STORAGE_MONETIZATION_DECISION_2026-10-15.md`.
+
+Non-negotiable FREE rights: local answer access, photo/voice access when released, accessibility, local search, manually exporting/restoring ALL supported personal data and backups, and recovery without a paid entitlement. Encryption of manual portable backups, when implemented, is not Pro-only. Pro monetizes convenience: optional direct account integration, consent-driven verified and potentially scheduled encrypted backup, version management and restore-assist, subject to OS/background constraints and explicit technical acceptance. Premium expiration must not strand the user's files or break local use.
+
+This is NOT authority to implement network dependencies, OAuth/billing, backend/cloud storage, subscriptions, Production, or store listing under V1. Original V1 no-cloud and one-time Complete purchase *implementation gates* remain until separately amended after cost, security, platform-policy and willingness-to-pay research. Pricing and whether the premium offering is lifetime or recurring are OPEN decisions; no recurring infrastructure is authorized.
