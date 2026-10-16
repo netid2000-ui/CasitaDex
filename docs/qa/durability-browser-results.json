@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-08T03:02:43.585Z",
+  "date": "2026-10-16T05:54:29.314Z",
   "checks": [
     "Six realistic cards created through UI; maintenance history and due date saved",
     "Browser process restart preserves cards and reading preferences",
@@ -13,32 +13,32 @@
   "retrieval": [
     {
       "task": "HVAC filter",
-      "milliseconds": 1080,
+      "milliseconds": 171,
       "method": "automated known-route click/search/open; not human usability"
     },
     {
       "task": "Refrigerator water filter",
-      "milliseconds": 565,
+      "milliseconds": 149,
       "method": "automated known-route click/search/open; not human usability"
     },
     {
       "task": "Living-room paint formula",
-      "milliseconds": 1002,
+      "milliseconds": 138,
       "method": "automated known-route click/search/open; not human usability"
     },
     {
       "task": "Main water shutoff",
-      "milliseconds": 1015,
+      "milliseconds": 145,
       "method": "automated known-route click/search/open; not human usability"
     },
     {
       "task": "Dishwasher model",
-      "milliseconds": 597,
+      "milliseconds": 127,
       "method": "automated known-route click/search/open; not human usability"
     },
     {
       "task": "Last HVAC service",
-      "milliseconds": 522,
+      "milliseconds": 139,
       "method": "automated known-route click/search/open; not human usability"
     }
   ],

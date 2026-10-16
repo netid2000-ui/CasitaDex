@@ -10,7 +10,13 @@ const fs = require("node:fs");
   const errors = [];
   page.on("pageerror", (e) => errors.push(e.message));
   const click = (label) =>
-    page.getByRole("button", { name: label, exact: true }).click();
+    (["Home", "Find", "Add", "More"].includes(label)
+      ? page.getByRole("tab", { name: label, exact: true })
+      : page.getByRole("button", {
+          name: label === "Find filter" ? "Find" : label,
+          exact: true,
+        })
+    ).click();
   const field = (label) =>
     page.getByRole("textbox", { name: label, exact: true });
   const checks = [];
@@ -28,8 +34,9 @@ const fs = require("node:fs");
   fs.mkdirSync("docs/qa", { recursive: true });
   await page.goto("http://127.0.0.1:8765");
   await click("Explore example home");
-  await click("Answers");
-  await page.getByText("The answer, right here.", { exact: true }).waitFor();
+  await click("Find");
+  await page.getByText("What are you looking for?", { exact: true }).waitFor();
+  await click("Refine results");
   await click("Buy");
   await page.getByText("20 × 25 × 1", { exact: true }).waitFor();
   assert.equal(
@@ -40,7 +47,7 @@ const fs = require("node:fs");
   await click("Fix");
   await page.getByText("EDR4RXD1", { exact: true }).waitFor();
   pass("Fix references");
-  await click("Find");
+  await click("Find filter");
   await page.getByText("Garage · left wall", { exact: true }).waitFor();
   pass("Find location");
   await click("Maintain");
@@ -48,10 +55,10 @@ const fs = require("node:fs");
   pass("Maintain due filter");
   await click("All");
   await field("Search answers").fill("no such answer");
-  await page.getByText("No matching answers.", { exact: true }).waitFor();
+  await page.getByText("No matching answers.", { exact: false }).waitFor();
   await field("Search answers").fill("");
   pass("Search and empty state");
-  await click("Share");
+  await click("Share selected");
   assert.equal(
     await page
       .getByRole("button", { name: "Preview 0 selected cards", exact: true })
@@ -123,7 +130,7 @@ const fs = require("node:fs");
   await page.getByText("Backup restored.", { exact: true }).waitFor();
   pass("Invalid import rejected; valid restore confirmed");
   await context.setOffline(true);
-  await click("Answers");
+  await click("Find");
   await field("Search answers").fill("Workshop");
   await page.getByText("AAA rechargeable", { exact: true }).waitFor();
   pass("Loaded app works offline");
@@ -132,7 +139,7 @@ const fs = require("node:fs");
   await click("Extra-large text: Off");
   await overflow();
   await page.screenshot({ path: "docs/qa/more-200-mobile.png" });
-  for (const tab of ["Today", "Answers", "Add"]) {
+  for (const tab of ["Home", "Find", "Add"]) {
     await click(tab);
     await overflow();
     await page.getByRole("textbox").first().count();
@@ -149,7 +156,7 @@ const fs = require("node:fs");
   await click("More");
   await click("Extra-large text: On");
   await page.setViewportSize({ width: 1280, height: 900 });
-  await click("Answers");
+  await click("Find");
   await field("Search answers").fill("");
   await click("All");
   await overflow();
@@ -165,7 +172,7 @@ const fs = require("node:fs");
     "BROKEN",
   );
   await click("Recover previous save");
-  await page.getByText("The answer, right here.", { exact: true }).waitFor();
+  await page.getByText("What are you looking for?", { exact: true }).waitFor();
   await page.getByText("AAA rechargeable", { exact: true }).waitFor();
   pass("Corrupt data blocks overwrite and restores previous save");
   assert.deepEqual(errors, []);

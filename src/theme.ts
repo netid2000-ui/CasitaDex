@@ -1,10 +1,10 @@
 export const lightColors = {
-  paper: "#F5F2EA",
-  ink: "#203F36",
-  muted: "#52645C",
+  paper: "#F7F6F1",
+  ink: "#193C33",
+  muted: "#50645D",
   line: "#718377",
   white: "#FFFFFF",
-  accent: "#E8EDDB",
+  accent: "#DCE9D7",
 };
 export const darkColors = {
   paper: "#15241F",

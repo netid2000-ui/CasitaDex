@@ -1,4 +1,7 @@
 # CasitaDex current status
+## October 16, 2026 — SB-19 Phase A native UI source checkpoint
+
+Implemented owner-approved Home/Find/answer-first presentation, warm palettes and bottom Home/Find/Add/More nav with safe areas. Existing offline persistence, image, verification, selective sharing and backup/recovery code unchanged. TypeScript, lint, web export, browser functional/accessibility/appearance/durability and 105 node domain tests PASS. No Staging APK or physical Android/iOS visual acceptance yet; isolated Android build is next. Report `SB19_NATIVE_UI_CONVERGENCE_PHASE_A_2026-10-16.md`. Preserve dirty recovery runbook; no Production, cloud or payments.
 ## October 16, 2026 — Clean Pixel 8 emulator acceleration study
 
 Secondary Windows 11 26H2 WHPX acceleration and Android API35 x86_64 verified. Created **separate** official Pixel 8 visual QA AVD `FA_Pixel8_Optimized_API35` with 2 cores, 2560MB RAM, device frame, cold boot and GPU Auto default; original Pixel 5 QA AVD/data untouched. Auto first boot and Auto restart passed observed event-log checks. Temporary Host GPU used Intel HD Graphics 630 and achieved faster starts, but a subsequent cold start produced `com.android.systemui/.SystemUIService` ANR **even without CasitaDex installed** on clean Pixel 8. GPU default reverted Auto. **SB-17 remains PARTIALLY accepted**, no confirmed cure or CasitaDex acceptance on new emulator. Evidence `SB17_CLEAN_PIXEL8_AVD_ACCELERATION_2026-10-16.md`. No antivirus/security exclusions, process priority changes, Production deploy or app reinstall.

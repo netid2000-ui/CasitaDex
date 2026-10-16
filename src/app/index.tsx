@@ -1,1 +1,1 @@
-export { Today as default } from "../screens";
+export { Home as default } from "../screens";

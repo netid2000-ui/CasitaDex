@@ -1,1 +1,1 @@
-export { Answers as default } from "../screens";
+export { FindHome as default } from "../screens";

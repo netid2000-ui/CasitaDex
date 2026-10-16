@@ -29,7 +29,7 @@ export function Copy({
   const { large } = useData();
   const { colors } = useTheme();
   const size =
-    { body: 17, title: 32, answer: 29, small: 14 }[kind] * (large ? 2 : 1);
+    { body: 17, title: 31, answer: 29, small: 14 }[kind] * (large ? 2 : 1);
   return (
     <Text
       {...props}
@@ -40,7 +40,9 @@ export function Copy({
           lineHeight: size * 1.3,
           flexShrink: 1,
         },
-        kind === "title" || kind === "answer" ? { fontWeight: "600" } : null,
+        kind === "title" || kind === "answer"
+          ? { fontWeight: "700", letterSpacing: -0.4 }
+          : null,
         props.style,
       ]}
     >
@@ -125,14 +127,19 @@ export function Page({
   children: React.ReactNode;
 }) {
   const { ready, error, busy, reload, recover } = useData();
-  const { s } = useTheme();
+  const { s, colors } = useTheme();
   return (
     <ScrollView
       keyboardShouldPersistTaps="handled"
       contentContainerStyle={s.page}
     >
       <View style={s.container}>
-        <Copy kind="small">CASITADEX · MY HOME</Copy>
+        <Copy
+          kind="small"
+          style={{ color: colors.muted, fontWeight: "700", letterSpacing: 1.1 }}
+        >
+          YOUR HOME, REMEMBERED
+        </Copy>
         <Copy accessibilityRole="header" kind="title">
           {title}
         </Copy>
@@ -160,21 +167,22 @@ export function Page({
 const makeStyles = (colors: typeof lightColors) =>
   StyleSheet.create({
     page: {
-      padding: 24,
-      paddingBottom: 48,
+      paddingHorizontal: 21,
+      paddingTop: 20,
+      paddingBottom: 40,
       backgroundColor: colors.paper,
       flexGrow: 1,
     },
-    container: { width: "100%", maxWidth: 820, alignSelf: "center", gap: 18 },
+    container: { width: "100%", maxWidth: 820, alignSelf: "center", gap: 16 },
     gap: { gap: 8 },
     row: { flexDirection: "row", flexWrap: "wrap", gap: 10 },
     panel: {
       backgroundColor: colors.white,
-      padding: 22,
-      borderRadius: 18,
+      padding: 18,
+      borderRadius: 19,
       borderWidth: 1,
       borderColor: colors.line,
-      gap: 12,
+      gap: 11,
     },
     button: {
       minHeight: 52,
@@ -200,11 +208,23 @@ const makeStyles = (colors: typeof lightColors) =>
     tag: { backgroundColor: colors.accent, padding: 10, borderRadius: 8 },
     nav: {
       backgroundColor: colors.white,
-      padding: 12,
+      paddingTop: 7,
+      paddingBottom: 8,
+      paddingHorizontal: 7,
       flexDirection: "row",
-      flexWrap: "wrap",
-      gap: 8,
-      borderBottomWidth: 1,
+      borderTopWidth: 1,
       borderColor: colors.line,
+      gap: 5,
     },
+    navTab: {
+      flex: 1,
+      minHeight: 55,
+      alignItems: "center",
+      justifyContent: "center",
+      borderRadius: 14,
+      paddingVertical: 5,
+    },
+    navTabActive: { backgroundColor: colors.accent },
+    navIcon: { fontSize: 25, lineHeight: 28, fontWeight: "600" },
+    navLabel: { fontSize: 12, fontWeight: "700" },
   });
