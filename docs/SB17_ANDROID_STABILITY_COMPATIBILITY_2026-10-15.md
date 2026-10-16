@@ -20,3 +20,7 @@ Repo primary: `C:\CasitaDex-Git` branch `prototype/bootstrap`. Preserve owner-mo
 ## Post Windows 11 26H2 retest — October 16, 2026
 
 Secondary workstation now confirmed Windows 11 Pro 26H2 build 26300.9711; WHPX usable, SDK/AVD preserved. Initial AVD boot and app cold launches improved (1946ms initial, 1188ms font 1.3, 3147ms/1757ms offline). Original QA card, answer and photo remain intact. However a repeat non-wiping Android reboot triggered **com.android.systemui SystemUIService ANR** (20,026ms wait) and an independent cold AVD startup with temporary GPU auto/SwiftShader also triggered SystemUI ANR (20,020ms wait). Non-destructive Wait recovered the app and attachments in both cases. Full evidence and limits: `SB17_POST_WINDOWS_26H2_SECONDARY_QA_2026-10-16.md`. SB-17 remains **PARTIALLY ACCEPTED**; Windows 26H2 did not resolve the System UI ANR.
+
+## Additional isolated AVD optimization experiment — October 16, 2026
+
+Clean official Pixel 8 API35 x86_64 AVD was created on secondary, preserving original AVD/user data. WHPX is healthy; 2 cores, 2560MB guest RAM, official Pixel device frame. GPU Host (Intel HD Graphics 630) sped some boots but **System UI ANR recurred on a clean AVD without CasitaDex installed**. Returning the new AVD to GPU Auto passed observed boot/reboot checks; insufficient for soak/long-term stability certification. Original AVD remains untouched; no broad Defender exclusions/High priority. See `SB17_CLEAN_PIXEL8_AVD_ACCELERATION_2026-10-16.md`. Stability remains OPEN; do not mark SB-17 fully accepted.
