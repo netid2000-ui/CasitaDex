@@ -1,0 +1,17 @@
+{
+  "result": "PASS",
+  "expected": "phone-baseline-before-upgrade.cdxe",
+  "actual": "phone-C-final-small.cdxe",
+  "actualBytes": 58680,
+  "actualSha256": "be69d867220957cb862b688254fd800cd9f8de1f6797d787fd84aae54fc16ae1",
+  "data": "EXACT",
+  "draft": "EXACT",
+  "attempts": "EXACT",
+  "records": 19,
+  "savedPhotos": 1,
+  "draftPhotos": 1,
+  "independentFilesystemSQLiteReopen": "PASS",
+  "allPhotoHashes": "PASS",
+  "proofDirectory": "/home/fa-dev/projects/casitadex-independent-acceptance-g1ARjb",
+  "revisionDifference": "Expected restore/checkpoint revision only"
+}

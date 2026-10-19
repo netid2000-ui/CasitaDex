@@ -1,0 +1,21 @@
+{
+  "baseline": {
+    "info": 0,
+    "low": 0,
+    "moderate": 12,
+    "high": 18,
+    "critical": 0,
+    "total": 30
+  },
+  "current": {
+    "info": 0,
+    "low": 0,
+    "moderate": 12,
+    "high": 18,
+    "critical": 0,
+    "total": 30
+  },
+  "addedAdvisoryIds": [],
+  "removedAdvisoryIds": [],
+  "remediation": "No forced core-framework downgrade applied; release risk disposition remains open."
+}

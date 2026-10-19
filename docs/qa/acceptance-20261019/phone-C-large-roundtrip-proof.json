@@ -1,0 +1,17 @@
+{
+  "result": "PASS",
+  "expected": "CasitaDex-synthetic-photo-stress.cdxe",
+  "actual": "phone-C-large-full.cdxe",
+  "actualBytes": 85011029,
+  "actualSha256": "e4e04576cb83565216a97eb5949d4f51cbb94d325ca1d5958df4383f8b6e158f",
+  "data": "EXACT",
+  "draft": "EXACT",
+  "attempts": "EXACT",
+  "records": 19,
+  "savedPhotos": 5,
+  "draftPhotos": 5,
+  "independentFilesystemSQLiteReopen": "PASS",
+  "allPhotoHashes": "PASS",
+  "proofDirectory": "/home/fa-dev/projects/casitadex-independent-acceptance-2sV97l",
+  "revisionDifference": "Expected restore/checkpoint revision only"
+}

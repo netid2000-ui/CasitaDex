@@ -25,11 +25,11 @@ export function Copy({
   children,
   kind = "body",
   ...props
-}: TextProps & { kind?: "body" | "title" | "answer" | "small" }) {
+}: TextProps & { kind?: "body" | "title" | "answer" | "small" | "section" }) {
   const { large } = useData();
   const { colors } = useTheme();
   const size =
-    { body: 17, title: 31, answer: 29, small: 14 }[kind] * (large ? 2 : 1);
+    { body: 17, title: 31, answer: 29, small: 14, section: 20 }[kind] * (large ? 2 : 1);
   return (
     <Text
       {...props}
@@ -56,12 +56,16 @@ export function Button({
   selected,
   disabled = false,
   primary = false,
+  variant = "tonal",
+  compact = false,
 }: {
   label: string;
   onPress: () => void;
   selected?: boolean;
   disabled?: boolean;
   primary?: boolean;
+  variant?: "tonal" | "quiet";
+  compact?: boolean;
 }) {
   const { colors, s } = useTheme();
   const [focused, setFocused] = useState(false);
@@ -78,13 +82,16 @@ export function Button({
       onPress={onPress}
       style={({ pressed }) => [
         s.button,
-        (selected || primary) && s.selected,
-        focused && { borderColor: colors.ink, borderWidth: 2 },
-        pressed && { elevation: 1, shadowOpacity: 0.06, borderBottomWidth: 1, transform: [{ translateY: 3 }] },
+        compact && s.compact,
+        variant === "quiet" && s.quiet,
+        selected && s.selected,
+        primary && s.primary,
+        focused && { borderColor: colors.focus, borderWidth: 2 },
+        pressed && { opacity: 0.82, elevation: 0, shadowOpacity: 0, transform: [{ translateY: 1 }] },
         disabled && { opacity: 0.55 },
       ]}
     >
-      <Copy style={selected || primary ? { color: colors.paper, fontWeight: "700", textAlign: "center" } : { fontWeight: "600", textAlign: "center" }}>
+      <Copy kind={compact ? "small" : "body"} style={primary ? { color: colors.onPrimary, fontWeight: "700", textAlign: "center" } : selected ? { color: colors.ink, fontWeight: "700", textAlign: "center" } : { fontWeight: "600", textAlign: "center" }}>
         {label}
       </Copy>
     </Pressable>
@@ -108,12 +115,18 @@ export function Field({
   maxLength?:number;
 }) {
   const { large } = useData();
-  const { s } = useTheme();
+  const { s, colors } = useTheme();
+  const [focused, setFocused] = useState(false);
   return (
     <View style={s.gap}>
-      <Copy>{label}</Copy>
+      <Copy style={{ fontWeight: "600" }}>{label}</Copy>
       <TextInput
         accessibilityLabel={label}
+        onFocus={() => setFocused(true)}
+        onBlur={() => setFocused(false)}
+        selectionColor={colors.focus}
+        cursorColor={colors.focus}
+        textAlignVertical={multiline ? "top" : "center"}
         value={value}
         editable={!disabled}
         accessibilityState={{disabled}}
@@ -124,6 +137,8 @@ export function Field({
         maxLength={maxLength??(multiline ? 2000000 : 1000)}
         style={[
           s.input,
+          focused && { borderColor: colors.focus, borderWidth: 2 },
+          disabled && { opacity: 0.55 },
           { fontSize: large ? 34 : 17, minHeight: multiline ? 120 : 52 },
         ]}
       />
@@ -161,12 +176,13 @@ export function Page({
       onScroll={onScrollY?event=>{if(restored.current)onScrollY(event.nativeEvent.contentOffset.y);}:undefined}
       onContentSizeChange={(_width,height)=>{contentHeight.current=height;restorePosition();}}
       keyboardShouldPersistTaps="handled"
+      automaticallyAdjustKeyboardInsets
       contentContainerStyle={s.page}
     >
       <View style={s.container}>
         {!hideHeading ? <Copy
           kind="small"
-          style={{ color: colors.muted, fontWeight: "700", letterSpacing: 1.1 }}
+          style={{ color: colors.muted, fontWeight: "600", letterSpacing: 0.7 }}
         >
           YOUR HOME, REMEMBERED
         </Copy> : null}
@@ -197,21 +213,21 @@ export function Page({
 const makeStyles = (colors: typeof lightColors) =>
   StyleSheet.create({
     page: {
-      paddingHorizontal: 21,
-      paddingTop: 20,
+      paddingHorizontal: 20,
+      paddingTop: 24,
       paddingBottom: 40,
       backgroundColor: colors.paper,
       flexGrow: 1,
     },
-    container: { width: "100%", maxWidth: 820, alignSelf: "center", gap: 12 },
+    container: { width: "100%", maxWidth: 720, alignSelf: "center", gap: 16 },
     gap: { gap: 8 },
     row: { flexDirection: "row", flexWrap: "wrap", gap: 10 },
     panel: {
       backgroundColor: colors.white,
       padding: 18,
-      borderRadius: 19,
+      borderRadius: 20,
       borderWidth: 1,
-      borderColor: colors.line,
+      borderColor: colors.separator,
       gap: 11,
     },
     button: {
@@ -219,22 +235,25 @@ const makeStyles = (colors: typeof lightColors) =>
       minWidth: 48,
       paddingVertical: 11,
       paddingHorizontal: 17,
-      borderRadius: 999,
+      borderRadius: 16,
       borderWidth: 1,
-      borderColor: colors.muted,
-      borderBottomWidth: 2,
+      borderColor: colors.line,
+      borderBottomWidth: 1,
       borderBottomColor: colors.line,
       backgroundColor: colors.accent,
-      elevation: 6,
+      elevation: 1,
       shadowColor: "#000000",
-      shadowOffset: { width: 0, height: 4 },
-      shadowOpacity: 0.17,
-      shadowRadius: 8,
+      shadowOffset: { width: 0, height: 1 },
+      shadowOpacity: 0.06,
+      shadowRadius: 3,
       justifyContent: "center",
       alignItems: "center",
       flexShrink: 1,
     },
-    selected: { backgroundColor: colors.ink, borderColor: colors.ink, borderBottomColor: colors.ink },
+    compact: { minHeight: 48, paddingHorizontal: 12, paddingVertical: 8, borderRadius: 999, backgroundColor: colors.white, elevation: 0, shadowOpacity: 0 },
+    selected: { backgroundColor: colors.accent, borderColor: colors.focus, borderWidth: 2 },
+    primary: { backgroundColor: colors.primary, borderColor: colors.primary, borderBottomColor: colors.primary, elevation: 2, shadowOpacity: 0.10 },
+    quiet: { backgroundColor: colors.white, borderColor: colors.line, elevation: 0, shadowOpacity: 0 },
     input: {
       backgroundColor: colors.white,
       borderColor: colors.muted,
@@ -262,7 +281,7 @@ const makeStyles = (colors: typeof lightColors) =>
       borderRadius: 14,
       paddingVertical: 5,
     },
-    navTabActive: { backgroundColor: colors.accent },
+    navTabActive: { backgroundColor: colors.accent, borderWidth: 1, borderColor: colors.focus },
     navIcon: { fontSize: 25, lineHeight: 28, fontWeight: "600" },
     navLabel: { fontSize: 12, fontWeight: "700" },
   });

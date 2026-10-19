@@ -1,0 +1,26 @@
+{
+  "x86_64": {
+    "file": "CasitaDex-Dev-Acceptance-C-x86_64-20261019.apk",
+    "bytes": 48834217,
+    "sha256": "507e04bfc35dbc588135d7ccbe0434d021e3c34dd46c6bad7dc285ab87232cce",
+    "abis": [
+      "x86_64"
+    ],
+    "embeddedJavaScript": true,
+    "certificate": "fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c",
+    "package": "com.designsbyfa.casitadex.dev"
+  },
+  "arm64-v8a": {
+    "file": "CasitaDex-Dev-Acceptance-C-arm64-v8a-20261019.apk",
+    "bytes": 48356374,
+    "sha256": "f32f5ea74445ff2416c11cdae312ea5eaa40a4c33df5f97fee2667d34c170125",
+    "abis": [
+      "arm64-v8a"
+    ],
+    "embeddedJavaScript": true,
+    "certificate": "fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c",
+    "package": "com.designsbyfa.casitadex.dev"
+  },
+  "sourceFilesMatched": 133,
+  "runtimeComponents": 215
+}

@@ -6,14 +6,15 @@ import { Slot, router, usePathname } from "expo-router";
 import { Provider } from "../state";
 import { useTheme } from "../ui";
 
+import { NavigationIcon } from "../navigation-icon";
 import { guardedNavigate } from "../eng-navigation";
 
 type Route = "/" | "/answers" | "/add" | "/more";
-const destinations: { label: string; icon: string; route: Route }[] = [
-  { label: "Home", icon: "⌂", route: "/" },
-  { label: "Find", icon: "⌕", route: "/answers" },
-  { label: "Add", icon: "+", route: "/add" },
-  { label: "More", icon: "☰", route: "/more" },
+const destinations: { label: "Home" | "Find" | "Add" | "More"; route: Route }[] = [
+  { label: "Home", route: "/" },
+  { label: "Find", route: "/answers" },
+  { label: "Add", route: "/add" },
+  { label: "More", route: "/more" },
 ];
 
 function Shell() {
@@ -33,7 +34,7 @@ function Shell() {
         style={{ backgroundColor: colors.white }}
       >
         <View style={s.nav} accessibilityLabel="Primary navigation">
-          {destinations.map(({ label, icon, route }) => {
+          {destinations.map(({ label, route }) => {
             const active =
               path === route || (route === "/answers" && path === "/card");
             return (
@@ -45,24 +46,16 @@ function Shell() {
                 onPress={() => guardedNavigate(() => router.navigate(route))}
                 style={({ pressed }) => [
                   s.navTab,
-                  label === "Add" && { backgroundColor: colors.ink, borderRadius: 999, alignSelf: "center", flex: 0, width: 62, minHeight: 62, elevation: 5 },
+
                   active && s.navTabActive,
                   pressed && { opacity: 0.75 },
                 ]}
               >
-                <Text
-                  style={[
-                    s.navIcon,
-                    { color: label === "Add" ? colors.paper : active ? colors.ink : colors.muted },
-                  ]}
-                  accessibilityElementsHidden
-                >
-                  {icon}
-                </Text>
+                <NavigationIcon name={label} color={active ? colors.ink : colors.muted} />
                 <Text
                   style={[
                     s.navLabel,
-                    { color: label === "Add" ? colors.paper : active ? colors.ink : colors.muted },
+                    { color: active ? colors.ink : colors.muted },
                   ]}
                 >
                   {label}

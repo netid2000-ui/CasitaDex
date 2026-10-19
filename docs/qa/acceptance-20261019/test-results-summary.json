@@ -1,0 +1,47 @@
+{
+  "candidate": "C",
+  "date": "2026-10-19",
+  "linux": {
+    "passed": 275,
+    "failed": 0
+  },
+  "windows": {
+    "passed": 273,
+    "skipped": 2,
+    "failed": 0,
+    "skipReason": "Expected platform symlink cases"
+  },
+  "typescript": "PASS",
+  "eslint": "PASS",
+  "webExport": "PASS",
+  "expoDoctor": "21/21 PASS",
+  "iosProjectGeneration": "PASS without pods; Apple build/runtime NOT TESTED",
+  "nativeDependencyGraph": {
+    "components": 215,
+    "firebaseComponents": 0
+  },
+  "physical": "Samsung A16 SM-S166V Android 16 ARM64",
+  "emulator": "Android 15 x86_64 emulator-5580",
+  "sourceBuildInputEqualityFiles": 133,
+  "additionalUncompiledQaHelpers": 2,
+  "stagingApkBeforeAfterSha256": "66f2390117b512fb400c6d1b473ac8d7c508ef3d7e831843646b7b66a44768bb",
+  "phoneFinalState": {
+    "collection": "19 synthetic records; 17 active, 1 archived, 1 recently deleted",
+    "savedPhotos": 1,
+    "draftPhotos": 1,
+    "appearance": "System",
+    "fontScale": "1.0",
+    "accelerometerRotation": "1",
+    "accessibilityServices": "null"
+  },
+  "largeTextCheck": "200% OS font: Home structure/actions and labeled tabs observed; scrollable recents. Bounded observation, not complete accessibility acceptance.",
+  "notPerformed": [
+    "Apple native compile/runtime",
+    "spoken accessibility",
+    "physical full-disk/power-loss matrix",
+    "global storage hysteresis calibration",
+    "store publication",
+    "production/cloud activation",
+    "remote push"
+  ]
+}

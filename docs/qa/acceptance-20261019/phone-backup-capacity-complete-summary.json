@@ -1,0 +1,14 @@
+{
+  "samples": 340,
+  "firstUtc": "2026-10-19T13:30:17.1572606Z",
+  "lastUtc": "2026-10-19T13:32:16.2340966Z",
+  "initialAvailable": 92498030592,
+  "minimumAvailable": 92326871040,
+  "finalAvailable": 92411301888,
+  "observedPeakDecrease": 171159552,
+  "retainedDecrease": 86728704,
+  "exportBytes": 85011029,
+  "exportSha256": "e4e04576cb83565216a97eb5949d4f51cbb94d325ca1d5958df4383f8b6e158f",
+  "capture": "Begins at folder grant before output write; ends after verified completion and readback cleanup.",
+  "scope": "One same-volume Samsung Android 16 sample; includes OS/filesystem activity. Not calibrated global warning/critical/hysteresis policy."
+}

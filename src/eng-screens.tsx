@@ -12,6 +12,7 @@ import { defaultFilter, findMemories, searchIndex, homeMemories, type FindFilter
 import { textBackupPreview, createTextBackup } from "./eng-text-backup";
 import { duplicateCandidates } from "./eng-duplicates";
 import { registerEditGuard } from "./eng-navigation";
+import { NavigationIcon } from "./navigation-icon";
 import { confidences } from "./model";
 const day=localDay;
 function message(e:unknown){const text=e instanceof Error?e.message:"Operation failed. Your last confirmed save is kept.";return text.startsWith("SB20 compatibility:")?"Check the name, answer or photo, source and dates before saving. Your last confirmed save is kept.":text;}
@@ -32,7 +33,7 @@ function useEng(){
   }
   return {snapshot,setSnapshot,status,setStatus,busy,run,refresh};
 }
-function Status({text}:{text:string}){return <Copy accessibilityLiveRegion="polite">{text}</Copy>;}
+function Status({text}:{text:string}){return text ? <Copy kind="small" accessibilityLiveRegion="polite">{text}</Copy> : null;}
 function MemoryLink({memory,data}:{memory:MemoryV2;data?:EngSnapshot["data"]}){
   const {s}=useTheme();
   return <Pressable accessibilityRole="button" accessibilityLabel={`Open ${memory.title}: ${memory.answer||"Photo memory"}`}
@@ -62,17 +63,20 @@ function PhotoViewer({path,label,onClose}:{path:string;label:string;onClose:()=>
 let findCache={query:"",filter:defaultFilter(),page:0,y:0,expanded:false};
 export function EngHome(){
  const e=useEng(),{colors}=useTheme(),preferences=useData(),[quick,setQuick]=useState("");
- const banner=Image.resolveAssetSource(require("../assets/casitadex-branded-banner.png"));
  const home=e.snapshot?homeMemories(e.snapshot.data,day()):null;
  function open(query="",reminder="all"){findCache={query,filter:{...defaultFilter(),reminder},page:0,y:0,expanded:false};router.push("/answers");}
  return <Page independent title="" hideHeading>
- <Image source={require("../assets/casitadex-branded-banner.png")} resizeMode="contain" accessibilityLabel="CasitaDex. Your home, remembered. A little less to remember." style={{aspectRatio:banner.width/banner.height,width:"100%",height:undefined}} />
- <Copy>Search your memories</Copy><View style={{flexDirection:"row",alignItems:"center",gap:8,borderRadius:32,borderWidth:1,borderColor:colors.muted,backgroundColor:colors.white,padding:8}}><TextInput accessibilityLabel="Search your memories" placeholder="Find an answer" placeholderTextColor={colors.muted} value={quick} onChangeText={setQuick} onSubmitEditing={()=>open(quick)} returnKeyType="search" style={{flex:1,minHeight:52,fontSize:preferences.large?34:17,color:colors.ink,paddingHorizontal:12}} /><Button label="GO" onPress={()=>open(quick)} /></View>
- <Copy>{home?.active??0} saved memories</Copy><Button primary label="Save a memory" onPress={()=>router.push("/add")} />
+ <View style={{flexDirection:"row",alignItems:"center",justifyContent:"space-between",gap:16}}>
+   <View style={{flex:1,gap:4}}><Copy kind="title" accessibilityRole="header">CasitaDex</Copy><Copy kind="small" style={{color:colors.muted}}>Your home, remembered.</Copy></View>
+   <View accessible={false} style={{width:48,height:48,borderRadius:16,alignItems:"center",justifyContent:"center",backgroundColor:colors.accent}}><NavigationIcon name="Home" color={colors.ink} /></View>
+ </View>
+ <Copy style={{color:colors.muted}}>A little less to remember.</Copy>
+ <Copy>Search your memories</Copy><View style={{flexDirection:"row",alignItems:"center",gap:8,borderRadius:32,borderWidth:1,borderColor:colors.muted,backgroundColor:colors.white,padding:8}}><TextInput accessibilityLabel="Search your memories" placeholder="Find an answer" placeholderTextColor={colors.muted} value={quick} onChangeText={setQuick} onSubmitEditing={()=>open(quick)} returnKeyType="search" style={{flex:1,minHeight:52,fontSize:preferences.large?34:17,color:colors.ink,paddingHorizontal:12}} /><Button primary label="GO" onPress={()=>open(quick)} /></View>
+ <Copy kind="small">{home?.active??0} saved {(home?.active??0)===1?"memory":"memories"} · On this device</Copy><Button primary label="Save a memory" onPress={()=>router.push("/add")} />
  {e.snapshot?.draft?<Button label="Continue unfinished memory" onPress={()=>router.push("/add")} />:null}
- <Copy accessibilityRole="header">Recently remembered</Copy>{home?.recent.map(m=><MemoryLink key={m.id} memory={m} />)}
- <Button label="See all memories" onPress={()=>open()} />
- {home?.due.length?<><Copy accessibilityRole="header">Reminders</Copy>{home.due.map(m=><View key={m.id}><MemoryLink memory={m} /><Copy>Due {m.due}</Copy></View>)}<Button label="See all due reminders" onPress={()=>open("","due")} /></>:null}
+ <Copy kind="section" accessibilityRole="header" style={{fontWeight:"700"}}>Recently remembered</Copy>{home?.recent.map(m=><MemoryLink key={m.id} memory={m} />)}
+ <Button variant="quiet" label="See all memories" onPress={()=>open()} />
+ {home?.due.length?<><Copy kind="section" accessibilityRole="header" style={{fontWeight:"700"}}>Reminders</Copy>{home.due.map(m=><View key={m.id}><MemoryLink memory={m} /><Copy>Due {m.due}</Copy></View>)}<Button variant="quiet" label="See all due reminders" onPress={()=>open("","due")} /></>:null}
  <Status text={e.status} />{!e.snapshot?<Button label="Retry loading full collection" onPress={()=>void e.refresh()} />:null}
  </Page>;
 }
@@ -85,23 +89,24 @@ export function EngFind(){
  useEffect(()=>{findCache={...findCache,query,filter:f,page,expanded:filters};},[query,f,page,filters]);
  function filter(patch:Partial<FindFilter>){setF(old=>({...old,...patch}));setPage(0);setSelected([]);}
  function bulk(state:MemoryV2["lifecycle"]){const ids=[...selected],revision=e.snapshot!.revision;Alert.alert(`Change ${ids.length} selected memories?`,`Move to ${state==="active"?"Active":state==="archived"?"Archive":"Recently Deleted"}. Photos stay attached. Previous full save remains recoverable.`,[{text:"Cancel",style:"cancel"},{text:"Confirm",onPress:()=>void e.run(async store=>{await store.bulkLifecycle(ids,state,revision);setSelected([]);setSelecting(false);})}]);}
+ const hasFilters=f.space!=="all"||f.categories.length>0||f.uncategorized||f.confidence!=="all"||f.reminder!=="all"||f.attachment!=="all";
  const currentPage=Math.min(page,Math.max(0,Math.ceil(records.length/50)-1));
  return <Page key={returnScroll.key} independent title="Find an answer" restoreScrollY={returnScroll.y} restoreReady={!!e.snapshot} onScrollY={y=>{if(focused.current)findCache.y=y;}}>
  <Field label="Search your memories" value={query} onChangeText={q=>{setQuery(q);setPage(0);}} />
- <View style={s.row}>{(["active","archived","recently_deleted"] as const).map(value=><Button key={value} label={value==="active"?"Active":value==="archived"?"Archived":"Recently Deleted"} selected={f.lifecycle===value} onPress={()=>filter({lifecycle:value,reminder:"all"})} />)}</View>
- <Copy>Space</Copy><View style={s.row}><Button label="All spaces" selected={f.space==="all"} onPress={()=>filter({space:"all"})} /><Button label="Unassigned" selected={f.space===null} onPress={()=>filter({space:null})} />{e.snapshot?.data.spaces.map(x=><Button key={x.id} label={x.name} selected={f.space===x.id} onPress={()=>filter({space:x.id})} />)}</View>
- <Copy>Categories (any selected)</Copy><View style={s.row}><Button label="All categories" selected={!f.categories.length&&!f.uncategorized} onPress={()=>filter({categories:[],uncategorized:false})} /><Button label="Uncategorized" selected={f.uncategorized} onPress={()=>filter({categories:[],uncategorized:true})} />{e.snapshot?.data.categories.map(x=><Button key={x.id} label={x.name} selected={f.categories.includes(x.id)} onPress={()=>filter({uncategorized:false,categories:f.categories.includes(x.id)?f.categories.filter(id=>id!==x.id):[...f.categories,x.id]})} />)}</View>
- <Button label={filters?"Hide more filters":"More filters"} onPress={()=>setFilters(!filters)} />{filters?<>
- <Copy>Verification</Copy><View style={s.row}>{["all",...confidences].map(value=><Button key={value} label={value==="all"?"Any verification":value} selected={f.confidence===value} onPress={()=>filter({confidence:value})} />)}</View>
- <Copy>Reminders (active memories)</Copy><View style={s.row}>{["all","due","overdue","today","future","none"].map(value=><Button key={value} label={value==="all"?"Any reminder":value} selected={f.reminder===value} onPress={()=>filter({reminder:value})} />)}</View>
- <Copy>Attachments</Copy><View style={s.row}>{["all","photos","text"].map(value=><Button key={value} label={value==="all"?"Any attachment":value==="text"?"Without photos":"With photos"} selected={f.attachment===value} onPress={()=>filter({attachment:value})} />)}</View>
+ <ScrollView horizontal showsHorizontalScrollIndicator contentContainerStyle={{flexDirection:"row",gap:8,paddingBottom:4}}>{(["active","archived","recently_deleted"] as const).map(value=><Button compact key={value} label={value==="active"?"Active":value==="archived"?"Archived":"Recently Deleted"} selected={f.lifecycle===value} onPress={()=>filter({lifecycle:value,reminder:"all"})} />)}</ScrollView>
+ <View style={{gap:6}}><Copy kind="small" style={{fontWeight:"600"}}>Space</Copy><ScrollView horizontal showsHorizontalScrollIndicator contentContainerStyle={{flexDirection:"row",gap:8,paddingBottom:4}}><Button compact label="All spaces" selected={f.space==="all"} onPress={()=>filter({space:"all"})} /><Button compact label="Unassigned" selected={f.space===null} onPress={()=>filter({space:null})} />{e.snapshot?.data.spaces.map(x=><Button compact key={x.id} label={x.name} selected={f.space===x.id} onPress={()=>filter({space:x.id})} />)}</ScrollView></View>
+ <View style={{gap:6}}><Copy kind="small" style={{fontWeight:"600"}}>Categories (any selected)</Copy><ScrollView horizontal showsHorizontalScrollIndicator contentContainerStyle={{flexDirection:"row",gap:8,paddingBottom:4}}><Button compact label="All categories" selected={!f.categories.length&&!f.uncategorized} onPress={()=>filter({categories:[],uncategorized:false})} /><Button compact label="Uncategorized" selected={f.uncategorized} onPress={()=>filter({categories:[],uncategorized:true})} />{e.snapshot?.data.categories.map(x=><Button compact key={x.id} label={x.name} selected={f.categories.includes(x.id)} onPress={()=>filter({uncategorized:false,categories:f.categories.includes(x.id)?f.categories.filter(id=>id!==x.id):[...f.categories,x.id]})} />)}</ScrollView></View>
+ <Button compact label={filters?"Hide more filters":"More filters"} onPress={()=>setFilters(!filters)} />{filters?<>
+ <Copy>Verification</Copy><View style={s.row}>{["all",...confidences].map(value=><Button compact key={value} label={value==="all"?"Any verification":value} selected={f.confidence===value} onPress={()=>filter({confidence:value})} />)}</View>
+ <Copy>Reminders (active memories)</Copy><View style={s.row}>{["all","due","overdue","today","future","none"].map(value=><Button compact key={value} label={value==="all"?"Any reminder":value} selected={f.reminder===value} onPress={()=>filter({reminder:value})} />)}</View>
+ <Copy>Attachments</Copy><View style={s.row}>{["all","photos","text"].map(value=><Button compact key={value} label={value==="all"?"Any attachment":value==="text"?"Without photos":"With photos"} selected={f.attachment===value} onPress={()=>filter({attachment:value})} />)}</View>
  </>:null}
- <View style={s.row}>{f.space!=="all"?<Button label="Remove Space filter" onPress={()=>filter({space:"all"})} />:null}{f.uncategorized?<Button label="Remove Uncategorized filter" onPress={()=>filter({uncategorized:false})} />:null}{f.categories.map(id=><Button key={id} label={`Remove ${e.snapshot?.data.categories.find(c=>c.id===id)?.name??"Category"} filter`} onPress={()=>filter({categories:f.categories.filter(c=>c!==id)})} />)}{(["confidence","reminder","attachment"] as const).filter(key=>f[key]!=="all").map(key=><Button key={key} label={`Remove ${f[key]} filter`} onPress={()=>filter({[key]:"all"})} />)}</View>
- <Copy>Applied: {f.space==="all"?"all spaces":f.space===null?"Unassigned":e.snapshot?.data.spaces.find(x=>x.id===f.space)?.name}; {f.uncategorized?"Uncategorized":f.categories.map(id=>e.snapshot?.data.categories.find(x=>x.id===id)?.name).join(", ")||"all categories"}; {f.confidence}; {f.reminder}; {f.attachment}</Copy>
- <Button label="Clear filters" onPress={()=>{setF({...defaultFilter(),lifecycle:f.lifecycle});setPage(0);}} />
- <Copy>{records.length} memories</Copy><Button label={selecting?"Cancel selection":"Select memories"} onPress={()=>{setSelecting(!selecting);setSelected([]);}} />{selecting?<><Copy>{selected.length} selected</Copy>{(["active","archived","recently_deleted"] as const).filter(state=>state!==f.lifecycle).map(state=><Button key={state} label={state==="active"?"Restore selected":state==="archived"?"Archive selected":"Delete selected"} disabled={e.busy||!selected.length} onPress={()=>bulk(state)} />)}</>:null}{records.slice(currentPage*50,(currentPage+1)*50).map(m=><View key={m.id}>{selecting?<Button label={`Select ${m.title}`} disabled={e.busy} selected={selected.includes(m.id)} onPress={()=>setSelected(old=>old.includes(m.id)?old.filter(id=>id!==m.id):[...old,m.id])} />:null}<MemoryLink memory={m} data={e.snapshot!.data} /></View>)}
+ {hasFilters?<View style={s.row}>{f.space!=="all"?<Button compact label="Remove Space filter" onPress={()=>filter({space:"all"})} />:null}{f.uncategorized?<Button compact label="Remove Uncategorized filter" onPress={()=>filter({uncategorized:false})} />:null}{f.categories.map(id=><Button compact key={id} label={`Remove ${e.snapshot?.data.categories.find(c=>c.id===id)?.name??"Category"} filter`} onPress={()=>filter({categories:f.categories.filter(c=>c!==id)})} />)}{(["confidence","reminder","attachment"] as const).filter(key=>f[key]!=="all").map(key=><Button compact key={key} label={`Remove ${f[key]} filter`} onPress={()=>filter({[key]:"all"})} />)}</View>:null}
+ {hasFilters?<Copy kind="small">{f.lifecycle==="active"?"Active memories":f.lifecycle==="archived"?"Archived memories":"Recently Deleted memories"} · Filters applied</Copy>:null}
+ {hasFilters?<Button compact variant="quiet" label="Clear filters" onPress={()=>{setF({...defaultFilter(),lifecycle:f.lifecycle});setPage(0);}} />:null}
+ <View style={[s.row,{alignItems:"center",justifyContent:"space-between"}]}><Copy kind="small">{records.length} {records.length===1?"memory":"memories"}</Copy><Button compact label={selecting?"Cancel selection":"Select memories"} onPress={()=>{setSelecting(!selecting);setSelected([]);}} /></View>{selecting?<><Copy>{selected.length} selected</Copy>{(["active","archived","recently_deleted"] as const).filter(state=>state!==f.lifecycle).map(state=><Button compact key={state} label={state==="active"?"Restore selected":state==="archived"?"Archive selected":"Delete selected"} disabled={e.busy||!selected.length} onPress={()=>bulk(state)} />)}</>:null}{records.slice(currentPage*50,(currentPage+1)*50).map(m=><View key={m.id}>{selecting?<Button compact label={`Select ${m.title}`} disabled={e.busy} selected={selected.includes(m.id)} onPress={()=>setSelected(old=>old.includes(m.id)?old.filter(id=>id!==m.id):[...old,m.id])} />:null}<MemoryLink memory={m} data={e.snapshot!.data} /></View>)}
  {!records.length?<Copy>No memories match. Try fewer words or clear filters.</Copy>:null}
- {records.length>50?<View style={s.row}><Copy>Page {currentPage+1} of {Math.ceil(records.length/50)}</Copy><Button label="Previous 50 results" disabled={!currentPage} onPress={()=>setPage(currentPage-1)} /><Button label="Next 50 results" disabled={(currentPage+1)*50>=records.length} onPress={()=>setPage(currentPage+1)} /></View>:null}
+ {records.length>50?<View style={s.row}><Copy>Page {currentPage+1} of {Math.ceil(records.length/50)}</Copy><Button compact label="Previous 50 results" disabled={!currentPage} onPress={()=>setPage(currentPage-1)} /><Button compact label="Next 50 results" disabled={(currentPage+1)*50>=records.length} onPress={()=>setPage(currentPage+1)} /></View>:null}
  {f.lifecycle==="recently_deleted"?<Copy>Deleted memories and photos remain recoverable. Restore them from their details.</Copy>:null}<Status text={e.status} />
  </Page>;
 }

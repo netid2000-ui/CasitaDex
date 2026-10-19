@@ -1,0 +1,28 @@
+{
+  "purpose": "SYNTHETIC ACCEPTANCE ONLY",
+  "file": "CasitaDex-synthetic-household-acceptance.cdxe",
+  "bytes": 58680,
+  "sha256": "f08295d3dee5b306cb0196c9f5cdd9add87f9f6f9e96ebe5d4bb872399f89e84",
+  "records": 19,
+  "lifecycles": {
+    "active": 17,
+    "archived": 1,
+    "recently_deleted": 1
+  },
+  "savedPhotos": 1,
+  "draftPhotos": 1,
+  "draftPartialDue": "2026-11-",
+  "textOmissions": {
+    "included": 18,
+    "omitted": [
+      {
+        "id": "e_mvf9ecqw_i1sx5wwanx",
+        "title": "Photo-only equipment label",
+        "lifecycle": "active"
+      }
+    ],
+    "savedPhotos": 1,
+    "draftPhotos": 1
+  },
+  "independentDecode": "PASS"
+}

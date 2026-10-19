@@ -1,0 +1,66 @@
+{
+  "changed": [
+    {
+      "path": "app.config.js",
+      "before": "1d577461a70c999450c3aa4027a76668f73e707951f87f537b0110597efef773",
+      "after": "dda139ef9facf2c7e13b89449043a404632a9989c02c4c777bfa2f5115b97805"
+    },
+    {
+      "path": "package.json",
+      "before": "1008a3fd989d4f8bd7c77875e95eb53c27bb9dd009dc855b35aab0ff464cb5c2",
+      "after": "e0989cef3cc9354222cd45907fe629a8287070eb8bdf49f2584ec6c65efa4622"
+    },
+    {
+      "path": "package-lock.json",
+      "before": "d4851e28d1d17c1bc4a0347cafd9d3fc4774f2dc3a49d05835a1a23d272c69b5",
+      "after": "0222a13bb04cde033fbb3c2f852ad82267be732e7f1e3e0b65266b3fca8cac0b"
+    },
+    {
+      "path": "src/ui.tsx",
+      "before": "277ac899e8a2de22dbe9cdb41173bc792f659c166b3b6682ed2310a488a95167",
+      "after": "e29974ee8b73fe8e74c85d424e3f2573fc01cba7434713f83b48b320b3d18517"
+    },
+    {
+      "path": "src/theme.ts",
+      "before": "bedffc6943a1470638e2e321dcc9945bc3c2156cb0b7e55310d36e658a4ba61f",
+      "after": "07bfc09c43ab3d32f16aaf174474502aa63626e3535dd949d2fa68f847303ed0"
+    },
+    {
+      "path": "src/app/_layout.tsx",
+      "before": "45fdb64c34631ac0a464544e994d2cc81afacccb56d7c26b8d3784dfb2107995",
+      "after": "c690ff04ebde8f450e1633fec213956b8035b668e937cd54e427f1174c21fc24"
+    },
+    {
+      "path": "src/navigation-icon.tsx",
+      "before": null,
+      "after": "bd12400d217b5022ba2adc5a0a90be033d1b445b9caf790f30b60bb0371febb9"
+    },
+    {
+      "path": "src/eng-screens.tsx",
+      "before": "cec93eeb3e6cffb8959efad3bf5a0a42a99c811a31990dcb991873fe8dab86c8",
+      "after": "a3881446f701fc2e1a3a3554fcd1d6ea429e7a6e110bc5a2e28767738dc4174b"
+    },
+    {
+      "path": "tests/household-fixture.mjs",
+      "before": null,
+      "after": "7b18273020e7a34e73f0701935223f54b639e8e089a89b9ae89215f3fc919c04"
+    },
+    {
+      "path": "tests/household-scenarios.test.mjs",
+      "before": null,
+      "after": "0bf53c442827a5a636f81b25379e21fa45636750e67b1114cfd7e219bb7c769e"
+    },
+    {
+      "path": "tests/fixtures/synthetic-equipment-label.png",
+      "before": null,
+      "after": "5a38e7765474892b34ba840dcb7873bec9cd361386631ba32bb75c1fbfed5dc5"
+    },
+    {
+      "path": "scripts/create-household-scenarios.mjs",
+      "before": null,
+      "after": "a93df322ad4a1a68fbbccc55bde6c7727053cb589388b6ac15cbdc1ce8d07b59"
+    }
+  ],
+  "sourceFilesMatched": 133,
+  "result": "PASS"
+}

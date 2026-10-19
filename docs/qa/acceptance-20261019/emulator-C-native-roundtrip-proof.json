@@ -1,0 +1,17 @@
+{
+  "result": "PASS",
+  "expected": "emulator-original-golden.cdxe",
+  "actual": "emulator-C-final-original.cdxe",
+  "actualBytes": 21887379,
+  "actualSha256": "3c56868ce419688828d5a0b6057d8a731b5101329f47738cfa78c52725613b3f",
+  "data": "EXACT",
+  "draft": "EXACT",
+  "attempts": "EXACT",
+  "records": 3,
+  "savedPhotos": 1,
+  "draftPhotos": 5,
+  "independentFilesystemSQLiteReopen": "PASS",
+  "allPhotoHashes": "PASS",
+  "proofDirectory": "/home/fa-dev/projects/casitadex-independent-acceptance-EzsCIt",
+  "revisionDifference": "Expected restore/checkpoint revision only"
+}

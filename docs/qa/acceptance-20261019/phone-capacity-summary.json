@@ -1,0 +1,34 @@
+{
+  "samples": 600,
+  "firstUtc": "2026-10-19T13:21:10.9148562Z",
+  "lastUtc": "2026-10-19T13:24:44.9744255Z",
+  "phases": {
+    "restore-review": {
+      "samples": 111,
+      "initial": 92744036352,
+      "minimum": 92744032256,
+      "final": 92744036352
+    },
+    "restore-cutover": {
+      "samples": 298,
+      "initial": 92744036352,
+      "minimum": 92658696192,
+      "final": 92658720768
+    },
+    "backup-preflight": {
+      "samples": 172,
+      "initial": 92658720768,
+      "minimum": 92658573312,
+      "final": 92658593792
+    },
+    "backup-write": {
+      "samples": 19,
+      "initial": 92658593792,
+      "minimum": 92650684416,
+      "final": 92650684416
+    }
+  },
+  "outputBytes": 85011029,
+  "scope": "One Samsung Android 16 same-volume run; df sample begins after incoming file was cached. Includes filesystem/OS activity. Not global warning/critical/hysteresis calibration.",
+  "backupObservedPeakDecrease": 8036352
+}

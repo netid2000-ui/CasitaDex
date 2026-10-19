@@ -1,3 +1,8 @@
+## Acceptance update — 2026-10-19, candidate C
+The approved implementation/design followup is built and installed as isolated Development on the Samsung A16 and Android emulator. Linux 275/275 tests; Windows 273 pass / 2 expected skips; TypeScript, lint, web export and Expo Doctor 21/21 pass. Native household, large-photo backup/recovery and preservation checks pass, including independent filesystem/SQLite reopen and photo hashes. The prior implementation/owner-work checkpoint is be4ae76f6f215b2dcf1da64d3fbac15ac18ce1f1. Current evidence supersedes older statements below about no checkpoint, no physical device or Doctor mismatches.
+
+See [acceptance/design report](ACCEPTANCE_AND_DESIGN_REFINEMENT_2026-10-19.md) and docs/qa/acceptance-20261019. Apple runtime, spoken/human acceptance, storage policy/physical fault matrix, emulator ANR and pre-existing dependency security disposition remain release gates. No remote push, publication or production/cloud activation occurred.
+
 # CasitaDex ENG change and test ledger
 Date: 2026-10-19 UTC. Final candidate: H. Owner instruction: implement all documented ENG changes, list changes during work, and use fewer permission checkpoints.
 

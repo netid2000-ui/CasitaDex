@@ -1,0 +1,21 @@
+{
+  "changes": [
+    {
+      "path": "src/ui.tsx",
+      "before": "e29974ee8b73fe8e74c85d424e3f2573fc01cba7434713f83b48b320b3d18517",
+      "after": "02992062f493e1b3187b051ede7f28a088f45e90d22d489c70a257d13f18a737"
+    },
+    {
+      "path": "src/eng-screens.tsx",
+      "before": "a3881446f701fc2e1a3a3554fcd1d6ea429e7a6e110bc5a2e28767738dc4174b",
+      "after": "3a6d8fcb380a447ec4e298e3e89466722f66db8e841105193013c7ecc5f311cf"
+    },
+    {
+      "path": "tests/household-scenarios.test.mjs",
+      "before": "0bf53c442827a5a636f81b25379e21fa45636750e67b1114cfd7e219bb7c769e",
+      "after": "ae88f1ec856b1e1a3e68c48ceb892fb17fc0fcaf14f9db56610508a8fb80c19e"
+    }
+  ],
+  "sourceFilesMatched": 133,
+  "result": "PASS"
+}

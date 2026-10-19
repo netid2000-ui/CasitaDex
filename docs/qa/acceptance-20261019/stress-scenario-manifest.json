@@ -1,0 +1,11 @@
+{
+  "purpose": "SYNTHETIC LARGE-PHOTO ACCEPTANCE",
+  "file": "CasitaDex-synthetic-photo-stress.cdxe",
+  "bytes": 85011030,
+  "sha256": "8b3b79aef8af924f503146bf9c346fdab935550be8d162ef64847b09aa253ea9",
+  "largePhotoBytes": 9441653,
+  "records": 19,
+  "savedPhotos": 5,
+  "draftPhotos": 5,
+  "independentDecode": "PASS"
+}

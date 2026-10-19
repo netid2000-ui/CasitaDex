@@ -19,7 +19,7 @@ module.exports = ({ config }) => {
       package: "com.designsbyfa.casitadex." + suffix,
       allowBackup: false,
     },
-    plugins: ["expo-router", ["expo-image-picker", {cameraPermission: "Allow CasitaDex to take a photo for your memory.", photosPermission: "Allow CasitaDex to choose a photo for your memory.", microphonePermission: false}]],
+    plugins: ["expo-router", "expo-splash-screen", ["expo-image-picker", {cameraPermission: "Allow CasitaDex to take a photo for your memory.", photosPermission: "Allow CasitaDex to choose a photo for your memory.", microphonePermission: false}]],
     web: { bundler: "metro", output: "single" },
     extra: {
       appEnvironment: env,
