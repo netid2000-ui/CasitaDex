@@ -1,3 +1,4 @@
+import { engEnabled } from "./eng-runtime";
 import React, {
   createContext,
   useContext,
@@ -20,6 +21,8 @@ const environment =
 const repo = createRepository(environment);
 const prefs = preferenceStore(AsyncStorage, environment);
 type State = {
+  drafts: typeof repo.drafts;
+  saveDraft: (attempt: string, memoryId: string) => Promise<string | null>;
   data: Data;
   ready: boolean;
   error: string;
@@ -63,7 +66,7 @@ export function Provider({ children }: { children: React.ReactNode }) {
   async function reload() {
     setReady(false);
     try {
-      setData(await repo.load());
+      setData(engEnabled ? empty() : await repo.load());
       setError("");
       setReady(true);
     } catch {
@@ -75,7 +78,7 @@ export function Provider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     let active = true;
     Promise.all([
-      repo.load(),
+      engEnabled ? Promise.resolve(empty()) : repo.load(),
       prefs.load().catch(() => {
         if (active)
           setPreferenceError(
@@ -121,6 +124,23 @@ export function Provider({ children }: { children: React.ReactNode }) {
       setBusy(false);
     }
   }
+  async function saveDraft(attempt: string, memoryId: string) {
+    if (lock.current || !ready || !repo.drafts) return null;
+    lock.current = true;
+    setBusy(true);
+    try {
+      const result = await repo.drafts.save(attempt, memoryId);
+      setData(result.data);
+      setError("");
+      return result.id;
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Save failed. Your draft is preserved.");
+      return null;
+    } finally {
+      lock.current = false;
+      setBusy(false);
+    }
+  }
   async function recover() {
     if (lock.current) return;
     lock.current = true;
@@ -143,6 +163,8 @@ export function Provider({ children }: { children: React.ReactNode }) {
   return (
     <Context.Provider
       value={{
+        drafts: repo.drafts,
+        saveDraft,
         data,
         ready,
         error,

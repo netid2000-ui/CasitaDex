@@ -482,3 +482,21 @@ SB-18 design-review evidence and untested claims: `docs/design/SB18_HOUSEHOLD_ME
 The owner approved the October 15 CasitaDex household-memory interactive prototype as the **product design baseline**, not final pixel-perfect native acceptance. Source: `docs/design/SB18_household_memory_interactive_concept.html`; immutable SHA-256 and exact accepted screens are recorded in `docs/design/SB18_OWNER_APPROVED_DESIGN_BASELINE_2026-10-15.md`.
 
 The approved approach is warm, calm and accessible; exact answers first; optional photo and voice recall; first-run one-answer success; simple Home, Find, Add, More navigation with Spaces accessible within Find; trustworthy local/offline status; and quiet, optional Premium in Settings rather than interruptions. Preserve users' ability to read, write, search, export and restore their personal records without an upgrade. Maintain all cloud/Production/payment and human/native acceptance gates. Use this design as the reference for later bounded SB-19 implementation, with changes driven by measured usability, security, accessibility or native-platform constraints—not speculative inventory features or monetization expansion.
+
+
+## Amendment G — Remote Desktop Commander daily call budget (2026-10-18)
+
+Owner directive: limit Remote Desktop Commander to **no more than 300 tool calls per day**, even when the service resets or permits additional calls. Treat 300 as a hard daily operating ceiling, not a usage target. Track and report calls when counts are available; if exact usage is uncertain, maintain a conservative buffer and stop before risking the ceiling. Do not claim exact usage without supporting evidence.
+
+Use AI Commander — CasitaDex for eligible routine terminal commands, repository inspection, build jobs and diagnostics. Reserve Remote Desktop Commander for graphical or system interactions that require its distinct capabilities. Batch related reads, avoid redundant polling, and prefer durable job logs and concise checkpoints. Never bypass this cap by switching accounts or sessions. If the cap is reached, defer Remote Desktop Commander work or use an already-authorized alternative without weakening security, QA or owner-approval gates.
+
+This resource-management amendment does not authorize production deployments, destructive actions, additional spending or changes to existing acceptance gates.
+
+
+## Owner Operating Policy — Tool Efficiency and Daily Desktop Commander Limit (2026-10-18)
+
+Owner-approved standing policy for Designs by F&A projects: **Prefer AI Commander for routine command execution**, including repository inspection, build/test commands, logs, system diagnostics, and long-running jobs where authorized. Use Remote Desktop Commander only when its distinct desktop/GUI capability is needed; avoid unnecessary repeated status checks, redundant polling, and fragmented tool calls. Batch related checks and rely on durable logs and clear completion checkpoints.
+
+**Remote Desktop Commander: maximum 300 tool calls per day across project work**, even after a service reset. This is a ceiling, not a usage target. Track counts where available; if the actual count is unknown, keep a conservative margin and stop before risking the limit. Do not circumvent the limit by switching sessions or accounts. If a task requires more calls, defer it or use another already-authorized tool, without bypassing owner approval, security controls, testing or deployment gates.
+
+Keep the originating project chat as the command center. Update operational runbooks and future handoffs with this policy. This amendment grants no new authority for destructive actions, paid services, production deployments or handling credentials.

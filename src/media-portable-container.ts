@@ -45,3 +45,4 @@ export async function preflightPortableMediaContainer(raw:Uint8Array,hash:(b:Uin
  await verifyPortableMediaPayload(opened.preview,opened.readEntry,hash);
  return opened;
 }
+

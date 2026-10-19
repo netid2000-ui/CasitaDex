@@ -24,3 +24,4 @@ export async function verifyPortableMediaPayload(
     await verifyMediaBytes(entry, bytes, sha256);
   }
 }
+

@@ -24,7 +24,7 @@ export function createNativeMediaStore(): MediaStore {
       setup(); const src = new File(temporary, `${id(key)}.tmp`);
       const dest = new File(managed, name(path));
       if (!src.exists || dest.exists) throw new Error("Missing staged media or destination exists");
-      src.move(dest);
+      await src.move(dest);
     },
     async removeTemporary(key) {
       const f = new File(temporary, `${id(key)}.tmp`); if (f.exists) f.delete();

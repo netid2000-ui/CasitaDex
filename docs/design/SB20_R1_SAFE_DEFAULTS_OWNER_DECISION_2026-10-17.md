@@ -1,0 +1,8 @@
+﻿# SB-20 R1 Owner Decision — Safe Defaults and Meaningful Content
+Date: 2026-10-17 | APPROVED OPTION A | Design only, implementation ON HOLD
+
+A newly saved memory requires a meaningful user-authored title AND (nonblank user-written answer OR at least one successfully validated, durably stored photograph). Drafts may be incomplete and are never indexed or mistaken for saved memories. No placeholder or inferred answer may be written solely to satisfy old validators. Home may DISPLAY literal 'Photo memory' for photo-only recents; it is not a stored answer or verification claim.
+
+Default new record state: Active; verification: Unknown; Space: Unassigned (nullable in new model); Categories: empty; reminder: none; source and verifiedAt: unset; photos: none; timestamps generated from actual corresponding successful events. No invented source, checked status, reminder, location, image interpretation or history. User-selected fields override defaults before durable commit.
+Migration rule: preserve every historical Space, Context (Buy/Fix/Find/Maintain), answer, source, verification date, reminder and valid metadata. Never rewrite old records merely to apply new defaults. No silent loss of legacy metadata. Require versioned validation and migration instead of stuffing fictitious values into v1 fields.
+Open engineering details: nonblank title quality rules, title normalization, empty-vs-null answer contract, reliable media association, timestamps and clock anomaly safety, back-compat export/restore, and nullable Space schema strategy. Only technical design authorized, not application edits.

@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useRef } from "react";
 import {
   Platform,
   useColorScheme,
@@ -55,11 +55,13 @@ export function Button({
   onPress,
   selected,
   disabled = false,
+  primary = false,
 }: {
   label: string;
   onPress: () => void;
   selected?: boolean;
   disabled?: boolean;
+  primary?: boolean;
 }) {
   const { colors, s } = useTheme();
   const [focused, setFocused] = useState(false);
@@ -76,12 +78,13 @@ export function Button({
       onPress={onPress}
       style={({ pressed }) => [
         s.button,
-        selected && s.selected,
-        (pressed || focused) && { borderColor: colors.ink, borderWidth: 1 },
+        (selected || primary) && s.selected,
+        focused && { borderColor: colors.ink, borderWidth: 2 },
+        pressed && { elevation: 1, shadowOpacity: 0.06, borderBottomWidth: 1, transform: [{ translateY: 3 }] },
         disabled && { opacity: 0.55 },
       ]}
     >
-      <Copy style={selected ? { color: colors.white } : undefined}>
+      <Copy style={selected || primary ? { color: colors.paper, fontWeight: "700", textAlign: "center" } : { fontWeight: "600", textAlign: "center" }}>
         {label}
       </Copy>
     </Pressable>
@@ -92,11 +95,17 @@ export function Field({
   value,
   onChangeText,
   multiline = false,
+  onSubmitEditing,
+  disabled=false,
+  maxLength,
 }: {
   label: string;
   value: string;
   onChangeText: (v: string) => void;
   multiline?: boolean;
+  onSubmitEditing?: () => void;
+  disabled?:boolean;
+  maxLength?:number;
 }) {
   const { large } = useData();
   const { s } = useTheme();
@@ -106,9 +115,13 @@ export function Field({
       <TextInput
         accessibilityLabel={label}
         value={value}
+        editable={!disabled}
+        accessibilityState={{disabled}}
         onChangeText={onChangeText}
         multiline={multiline}
-        maxLength={multiline ? 2000000 : 1000}
+        onSubmitEditing={onSubmitEditing}
+        returnKeyType={onSubmitEditing ? "search" : undefined}
+        maxLength={maxLength??(multiline ? 2000000 : 1000)}
         style={[
           s.input,
           { fontSize: large ? 34 : 17, minHeight: multiline ? 120 : 52 },
@@ -120,31 +133,48 @@ export function Field({
 export function Page({
   title,
   subtitle,
+  independent = false,
+  hideHeading = false,
+  restoreScrollY = 0,
+  restoreReady = true,
+  onScrollY,
   children,
 }: {
   title: string;
   subtitle?: string;
+  independent?: boolean;
+  hideHeading?: boolean;
+  restoreScrollY?:number;
+  restoreReady?:boolean;
+  onScrollY?:(y:number)=>void;
   children: React.ReactNode;
 }) {
+  const scroll=useRef<ScrollView>(null),restored=useRef(false),viewport=useRef(0),contentHeight=useRef(0);
+  function restorePosition(){if(!restoreReady||restored.current||viewport.current<=0||contentHeight.current<=0)return;const y=Math.min(restoreScrollY,Math.max(0,contentHeight.current-viewport.current));scroll.current?.scrollTo({y,animated:false});restored.current=true;}
   const { ready, error, busy, reload, recover } = useData();
   const { s, colors } = useTheme();
   return (
     <ScrollView
+      ref={scroll}
+      onLayout={event=>{viewport.current=event.nativeEvent.layout.height;restorePosition();}}
+      scrollEventThrottle={100}
+      onScroll={onScrollY?event=>{if(restored.current)onScrollY(event.nativeEvent.contentOffset.y);}:undefined}
+      onContentSizeChange={(_width,height)=>{contentHeight.current=height;restorePosition();}}
       keyboardShouldPersistTaps="handled"
       contentContainerStyle={s.page}
     >
       <View style={s.container}>
-        <Copy
+        {!hideHeading ? <Copy
           kind="small"
           style={{ color: colors.muted, fontWeight: "700", letterSpacing: 1.1 }}
         >
           YOUR HOME, REMEMBERED
-        </Copy>
-        <Copy accessibilityRole="header" kind="title">
+        </Copy> : null}
+        {!hideHeading ? <Copy accessibilityRole="header" kind="title">
           {title}
-        </Copy>
-        {subtitle && <Copy>{subtitle}</Copy>}
-        {error ? (
+        </Copy> : null}
+        {subtitle ? <Copy>{subtitle}</Copy> : null}
+        {error && !independent ? (
           <View accessibilityRole="alert" style={s.panel}>
             <Copy>{error}</Copy>
             <Button
@@ -159,7 +189,7 @@ export function Page({
             />
           </View>
         ) : null}
-        {ready ? children : !error ? <Copy>Opening your answers…</Copy> : null}
+        {independent || ready ? children : !error ? <Copy>Opening your answers…</Copy> : null}
       </View>
     </ScrollView>
   );
@@ -173,7 +203,7 @@ const makeStyles = (colors: typeof lightColors) =>
       backgroundColor: colors.paper,
       flexGrow: 1,
     },
-    container: { width: "100%", maxWidth: 820, alignSelf: "center", gap: 16 },
+    container: { width: "100%", maxWidth: 820, alignSelf: "center", gap: 12 },
     gap: { gap: 8 },
     row: { flexDirection: "row", flexWrap: "wrap", gap: 10 },
     panel: {
@@ -187,21 +217,29 @@ const makeStyles = (colors: typeof lightColors) =>
     button: {
       minHeight: 52,
       minWidth: 48,
-      paddingVertical: 12,
+      paddingVertical: 11,
       paddingHorizontal: 17,
-      borderRadius: 12,
+      borderRadius: 999,
       borderWidth: 1,
-      borderColor: colors.line,
-      backgroundColor: colors.white,
+      borderColor: colors.muted,
+      borderBottomWidth: 2,
+      borderBottomColor: colors.line,
+      backgroundColor: colors.accent,
+      elevation: 6,
+      shadowColor: "#000000",
+      shadowOffset: { width: 0, height: 4 },
+      shadowOpacity: 0.17,
+      shadowRadius: 8,
       justifyContent: "center",
+      alignItems: "center",
       flexShrink: 1,
     },
-    selected: { backgroundColor: colors.ink, borderColor: colors.ink },
+    selected: { backgroundColor: colors.ink, borderColor: colors.ink, borderBottomColor: colors.ink },
     input: {
       backgroundColor: colors.white,
       borderColor: colors.muted,
       borderWidth: 1,
-      borderRadius: 10,
+      borderRadius: 15,
       padding: 14,
       color: colors.ink,
     },

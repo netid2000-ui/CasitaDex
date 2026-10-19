@@ -1,3 +1,35 @@
+## October 19 UTC - ENG application gaps implemented; acceptance gates remain
+
+The identified Home/Find/Add/Detail/More application gaps I01-I13 are implemented and integrated (26 code/test/package files). WSL: 271 PASS; primary Windows: 269 PASS / 2 expected symlink SKIP / 0 FAIL. Compilation, lint, web export and both Development Android builds pass. The 215-component native runtime has no Firebase. All 69 frozen source/config/package hashes match primary.
+
+Native checks cover durable photo/draft fields, Review/edit guards, independent sharing consent, explicit restores, actual full/text exports with independent filesystem/SQLite reopen, and 0/500/5000 collection flows. Final data/draft/attempts exactly match the preserved three-record/five-photo-draft snapshot.
+
+Full ENG/SB-20 RELEASE acceptance remains PARTIAL: numerical storage policy, trusted-clock permanent cleanup, remaining real native failure/platform/human acceptance and publication gates stay open. Existing emulator System UI reboot ANR remains open. Expo Doctor reports five pre-existing SDK patch mismatches (20/21 checks). No commit/push/merge/deploy/phone/cloud activation occurred.
+
+Current ledger: [ENG_COMPLETION_CHANGE_TEST_LEDGER_2026-10-19.md](design/ENG_COMPLETION_CHANGE_TEST_LEDGER_2026-10-19.md). More -> Backup & Restore contains full, limited text and previous-save recovery tools. Storage & Cleanup is first under Memory management. Earlier entries below are historical and retain their original scope.
+
+---
+
+## October 19 UTC - ENG coverage correction: INCOMPLETE
+Review of 37 design/integration records and the 236-case inventory found missing signed behavior. Nine disposable probes reproduced seven unmet requirements: answer/source verification reset, stale restore preview, draft notes, multiword search, default share privacy, and local-calendar dates. Two positive checks passed, including legacy seven-photo/two-Space portability.
+Core native media/draft/full-backup evidence remains valid at its stated scope. Full ENG and SB-20 are NOT complete. Home/Find/Add/Detail/More conformance and consumer failure-path coverage also remain incomplete, beyond the existing platform/calibration/cleanup gates.
+See docs/design/ENG_DOCUMENT_COVERAGE_AUDIT_2026-10-19.md and docs/qa/eng-coverage-audit-20261019/probes.json. This review changed documentation/evidence only; application/APK source unchanged. Prior completion wording below is superseded, historical evidence preserved.
+
+## October 19, 2026 UTC - Full ENG Development integration verified
+Full native ENG source is integrated into C:\CasitaDex-Git. Durable photo/camera drafts, photo-only save, canonical v2 data, taxonomy/lifecycle, protected media journals, full draft-inclusive backup, explicit draft conflicts and full previous-save recovery are live in Development.
+236/236 WSL tests PASS; Windows 234 PASS/2 symlink SKIP/0 FAIL; TypeScript/lint PASS; x86_64 and ARM64 internal Release builds PASS; 214-component local-only graph has no Firebase.
+Final installed LT1 Dev APK B22AF4E184AEF986EE9C3A885435C4D9ED5790C19198BA754C0DD3142F4D2978. ARM64 review APK prepared, not installed on phone.
+21.8 MB native backup, all lifecycle/draft counts, both draft choices, cancellation, previous recovery, camera and process restart passed. Actual exported file also restored all fields/photos into a fresh SQLite/private filesystem and reopened successfully.
+All APK source-manifest hashes match primary. HEAD remains b940ccc; dirty owner work preserved, no commit/push/merge/deploy. Full evidence and open gates: docs/design/FULL_ENG_NATIVE_ACCEPTANCE_2026-10-19.md.
+PARTIAL broader acceptance remains: numerical storage calibration, permanent cleanup clock policy, physical/iOS/spoken accessibility/full-disk testing, existing emulator reboot ANR. Earlier text-slice/isolated-only entries below are historical.
+
+## October 18, 2026 — Native ENG text-draft slice verified
+PASS within Development-only scope: native Add now uses the tested ENG-D orchestrator with a real SQLite recoverable text draft and atomic/idempotent save. Incomplete-save guard, draft exclusion from Find, restart recovery, saved-memory persistence, consumed-draft removal and confirmed/cancelled discard passed on LT1 offline.
+Reviewed eight-file contribution is integrated into primary working tree. All primary source hashes match the tested APK source manifest. Linux 209/209 PASS; primary Windows 207 PASS/2 symlink-privilege SKIP/0 FAIL; TypeScript/lint PASS.
+Installed Dev APK SHA256 CC361BA6B6496BAD8E72203F19B92EBC6A44BE27361C5B780F20BE466E45F8F7, 48,151,883 bytes, debug-signed Release with embedded JS. Package com.designsbyfa.casitadex.dev coexists with preserved LT1 Staging.
+Full ENG/SB-22 remain OPEN: photo drafts/camera/photo-only save, v2/category/lifecycle and Space creation, draft-inclusive portable backup, full accessibility, physical platforms and emulator reboot stability. Drafts are Development-only and must be saved as memories before current portable backup.
+Evidence: docs/design/NATIVE_TEXT_DRAFT_ACCEPTANCE_2026-10-18.md. HEAD still b940ccc; pre-existing and new working-tree changes retained intentionally; no commit/push/merge/Production action.
+
 # CasitaDex — Governed super-batch roadmap
 ## Approved UI baseline — October 15, 2026
 

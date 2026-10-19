@@ -6,6 +6,8 @@ import { Slot, router, usePathname } from "expo-router";
 import { Provider } from "../state";
 import { useTheme } from "../ui";
 
+import { guardedNavigate } from "../eng-navigation";
+
 type Route = "/" | "/answers" | "/add" | "/more";
 const destinations: { label: string; icon: string; route: Route }[] = [
   { label: "Home", icon: "⌂", route: "/" },
@@ -40,9 +42,10 @@ function Shell() {
                 accessibilityRole="tab"
                 accessibilityLabel={label}
                 accessibilityState={{ selected: active }}
-                onPress={() => router.navigate(route)}
+                onPress={() => guardedNavigate(() => router.navigate(route))}
                 style={({ pressed }) => [
                   s.navTab,
+                  label === "Add" && { backgroundColor: colors.ink, borderRadius: 999, alignSelf: "center", flex: 0, width: 62, minHeight: 62, elevation: 5 },
                   active && s.navTabActive,
                   pressed && { opacity: 0.75 },
                 ]}
@@ -50,7 +53,7 @@ function Shell() {
                 <Text
                   style={[
                     s.navIcon,
-                    { color: active ? colors.ink : colors.muted },
+                    { color: label === "Add" ? colors.paper : active ? colors.ink : colors.muted },
                   ]}
                   accessibilityElementsHidden
                 >
@@ -59,7 +62,7 @@ function Shell() {
                 <Text
                   style={[
                     s.navLabel,
-                    { color: active ? colors.ink : colors.muted },
+                    { color: label === "Add" ? colors.paper : active ? colors.ink : colors.muted },
                   ]}
                 >
                   {label}

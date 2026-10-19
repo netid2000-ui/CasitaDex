@@ -1,0 +1,150 @@
+{
+    "backup":  "CasitaDex-full-2026-10-19T03-50-35-676Z.cdxe",
+    "bytes":  21818091,
+    "sha256":  "BCD02A480C9E8A0D462D3B2E3E670143F2C89ABD635FF43B63949BFA465BD01C",
+    "photoFramesVerified":  6,
+    "memories":  [
+                     {
+                         "id":  "mvem3627-z1zcqkcp",
+                         "title":  "ENG_NATIVE_DRAFT_QA",
+                         "answer":  "green_storage_drawer",
+                         "spaceId":  "home",
+                         "categoryIds":  [
+
+                                         ],
+                         "legacyContext":  "Find",
+                         "location":  "hall_closet",
+                         "notes":  "",
+                         "confidence":  "Unknown",
+                         "source":  "",
+                         "history":  [
+
+                                     ],
+                         "lifecycle":  "active",
+                         "mediaIds":  [
+
+                                      ]
+                     },
+                     {
+                         "id":  "e_mveo373o_ytfrorf3t",
+                         "title":  "FULL_ENG_PHOTO_QA",
+                         "answer":  "",
+                         "location":  "",
+                         "notes":  "",
+                         "spaceId":  null,
+                         "categoryIds":  [
+
+                                         ],
+                         "legacyContext":  null,
+                         "confidence":  "Unknown",
+                         "source":  "",
+                         "history":  [
+
+                                     ],
+                         "lifecycle":  "recently_deleted",
+                         "mediaIds":  [
+                                          "e_mveokgkw_igqqzvk98o"
+                                      ],
+                         "deletedAt":  "2026-10-19"
+                     },
+                     {
+                         "id":  "e_mveozxv7_fh7pdyhk7n",
+                         "title":  "FULL_ENG_ARCHIVED_QA",
+                         "answer":  "Filter_20x25",
+                         "location":  "Archive_QA_shelf",
+                         "notes":  "Native_backup_metadata_QA",
+                         "spaceId":  null,
+                         "categoryIds":  [
+
+                                         ],
+                         "legacyContext":  null,
+                         "confidence":  "Verified",
+                         "source":  "QA_fixture_label",
+                         "history":  [
+                                         {
+                                             "id":  "e_mvep3sfd_kphp8l7yj4",
+                                             "date":  "2026-10-19",
+                                             "action":  "Native_full_ENG_history"
+                                         }
+                                     ],
+                         "lifecycle":  "archived",
+                         "mediaIds":  [
+
+                                      ],
+                         "verifiedAt":  "2026-10-19",
+                         "due":  "2026-11-18"
+                     }
+                 ],
+    "spaces":  [
+                   {
+                       "id":  "home",
+                       "name":  "My Home"
+                   },
+                   {
+                       "id":  "e_mvep6et0_tijevf8rug",
+                       "name":  "Garage_QA_ENG"
+                   }
+               ],
+    "categories":  [
+                       {
+                           "id":  "e_mvep6w2p_gp2ixqgar3",
+                           "name":  "VEquipment_QA"
+                       }
+                   ],
+    "draft":  {
+                  "id":  "e_mvep549g_ql86brygm7",
+                  "attempt":  "e_mvep549h_5lqx2vcvda",
+                  "memoryId":  "e_mvep549h_p9ndu0xwbp",
+                  "checkpoint":  31,
+                  "title":  "FULL_ENG_DRAFT_BACKUP_QA",
+                  "answer":  "",
+                  "location":  "",
+                  "spaceId":  "e_mvep6et0_tijevf8rug",
+                  "legacyContext":  null,
+                  "categoryIds":  [
+                                      "e_mvep6w2p_gp2ixqgar3"
+                                  ],
+                  "photos":  [
+                                 {
+                                     "id":  "e_mvepce6b_v6g4iddxjt",
+                                     "cardId":  "e_mvep549h_p9ndu0xwbp",
+                                     "path":  "media/e_mvepce6b_v6g4iddxjt.png",
+                                     "mime":  "image/png",
+                                     "bytes":  7266290,
+                                     "sha256":  "639c51332c348fea901bdfc4dcad01046c7cefe4eafdd9a15558f1492ab635db"
+                                 },
+                                 {
+                                     "id":  "e_mvepd0we_tog3pm1cng",
+                                     "cardId":  "e_mvep549h_p9ndu0xwbp",
+                                     "path":  "media/e_mvepd0we_tog3pm1cng.png",
+                                     "mime":  "image/png",
+                                     "bytes":  7266290,
+                                     "sha256":  "639c51332c348fea901bdfc4dcad01046c7cefe4eafdd9a15558f1492ab635db"
+                                 },
+                                 {
+                                     "id":  "e_mvepdiu8_q7tjz6k7dx",
+                                     "cardId":  "e_mvep549h_p9ndu0xwbp",
+                                     "path":  "media/e_mvepdiu8_q7tjz6k7dx.png",
+                                     "mime":  "image/png",
+                                     "bytes":  7266290,
+                                     "sha256":  "639c51332c348fea901bdfc4dcad01046c7cefe4eafdd9a15558f1492ab635db"
+                                 },
+                                 {
+                                     "id":  "e_mvepe0xj_o3hto46n2t",
+                                     "cardId":  "e_mvep549h_p9ndu0xwbp",
+                                     "path":  "media/e_mvepe0xj_o3hto46n2t.png",
+                                     "mime":  "image/png",
+                                     "bytes":  5400,
+                                     "sha256":  "42072e626835dd98e0f26258d695af036fe3149ff5d025d9ed93c15c9215a0b5"
+                                 },
+                                 {
+                                     "id":  "e_mvepeq4e_lgsbbpms9l",
+                                     "cardId":  "e_mvep549h_p9ndu0xwbp",
+                                     "path":  "media/e_mvepeq4e_lgsbbpms9l.png",
+                                     "mime":  "image/png",
+                                     "bytes":  5400,
+                                     "sha256":  "42072e626835dd98e0f26258d695af036fe3149ff5d025d9ed93c15c9215a0b5"
+                                 }
+                             ]
+              }
+}

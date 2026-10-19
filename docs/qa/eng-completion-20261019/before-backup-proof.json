@@ -1,0 +1,25 @@
+{
+  "source": "/mnt/c/Users/franco/Downloads/before-ENG-completion.cdxe",
+  "size": 21887293,
+  "memories": [
+    {
+      "title": "ENG_NATIVE_DRAFT_QA",
+      "state": "active"
+    },
+    {
+      "title": "FULL_ENG_PHOTO_QA",
+      "state": "recently_deleted"
+    },
+    {
+      "title": "FULL_ENG_ARCHIVED_QA",
+      "state": "archived"
+    }
+  ],
+  "draft": {
+    "title": "FULL_ENG_DRAFT_BACKUP_QA",
+    "answer": "CURRENT_DRAFT_CHOICE_QA",
+    "photos": 5
+  },
+  "photosVerified": 6,
+  "result": "PASS"
+}

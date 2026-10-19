@@ -1,0 +1,35 @@
+{
+  "proofDirectory": "/home/fa-dev/projects/casitadex-eng-independent-restore-Uq3xGk",
+  "results": [
+    {
+      "file": "postQA-native-full.cdxe",
+      "size": 21894379,
+      "sha256": "2d1a33a5d94dbbd2aeacffd943359a062bc5b9d4c663af1e0463dad7c1b3990f",
+      "source": "Full v3",
+      "saved": 4,
+      "photos": 6,
+      "draftPhotos": 1,
+      "exactRestoreAndDiskReopen": "PASS"
+    },
+    {
+      "file": "native-limited-text.json",
+      "size": 4900,
+      "sha256": "d6f495350171bc249045f37cfbf5f5877636b520a80b879b1a0e9f22b94d9924",
+      "source": "Text-only v1; 6 saved photos and 1 draft photos excluded; 1 photo-only saved memories omitted. Full written metadata and lifecycle are retained.",
+      "saved": 3,
+      "photos": 0,
+      "draftPhotos": 0,
+      "exactRestoreAndDiskReopen": "PASS"
+    },
+    {
+      "file": "golden-ENG-optional-draft.cdxe",
+      "size": 21887378,
+      "sha256": "d8bd4f2e217db8fef77c98eb1feba03de1db3bd71029e80b29e5747e2521a7d1",
+      "source": "Full v3",
+      "saved": 3,
+      "photos": 1,
+      "draftPhotos": 5,
+      "exactRestoreAndDiskReopen": "PASS"
+    }
+  ]
+}

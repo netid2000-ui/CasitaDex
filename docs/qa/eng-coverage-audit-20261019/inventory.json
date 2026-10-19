@@ -1,0 +1,990 @@
+{
+  "documents": [
+    {
+      "path": "docs/design/FULL_ENG_NATIVE_ACCEPTANCE_2026-10-19.md",
+      "bytes": 10511,
+      "sha256": "c8707fb30daebc32a7bf9842719f2b8c3d37e72c8f6f8bbda0f1f837d83c2cf7"
+    },
+    {
+      "path": "docs/design/NATIVE_TEXT_DRAFT_ACCEPTANCE_2026-10-18.md",
+      "bytes": 7129,
+      "sha256": "b139c284f9f5cb6aef3e88b8fc31aff37a1be140a31dd1bd599b143c495a60ea"
+    },
+    {
+      "path": "docs/design/NATIVE_TEXT_DRAFT_INTEGRATION_2026-10-18.md",
+      "bytes": 3539,
+      "sha256": "a6645d630ef81c2b73f5d1ae7d8ccdc44c3c82a3085562c883132d161587caa3"
+    },
+    {
+      "path": "docs/design/SB20_ADD_OWNER_DECISIONS_2026-10-17.md",
+      "bytes": 4973,
+      "sha256": "ba34376122b90bfa7eae4253a1f6d9b789d5ece2aab03d1f5352636dda85853b"
+    },
+    {
+      "path": "docs/design/SB20_ADD_SPEC_V1_0_OWNER_REVIEW_2026-10-17.md",
+      "bytes": 7234,
+      "sha256": "0ae28429516f2f2eeddbaf3780c84f23048bbcea78fcdf9d5ac350f962a18825"
+    },
+    {
+      "path": "docs/design/SB20_ADD_V1_0_OWNER_SIGNOFF_2026-10-17.md",
+      "bytes": 730,
+      "sha256": "44c277e205f0aad74733379340a403e93ddf10c8d0ae3bf188883c870bdde51a"
+    },
+    {
+      "path": "docs/design/SB20_CROSS_TAB_CONSISTENCY_REVIEW_V0_1_2026-10-17.md",
+      "bytes": 6545,
+      "sha256": "c43c5c6762b3f38744ffbb5943f0c8f6ac7f847d6d1d96aff44778953ea7cde7"
+    },
+    {
+      "path": "docs/design/SB20_CROSS_TAB_OWNER_DECISIONS_2026-10-17.md",
+      "bytes": 912,
+      "sha256": "cb930b7e21d2306a1583631cae9d845f3044ec04c924485e03aa2a9bbfa44e8b"
+    },
+    {
+      "path": "docs/design/SB20_ENG_A_FIRST_IMPLEMENTATION_SUPERBATCH_PROPOSAL_V0_1_2026-10-17.md",
+      "bytes": 6260,
+      "sha256": "4361a7de7e9222fc73da3cca17fd7a5a37dd5ace9f0ad39653343e79b6db229b"
+    },
+    {
+      "path": "docs/design/SB20_ENG_INTEGRATION_AUDIT_2026-10-18.md",
+      "bytes": 5354,
+      "sha256": "e74e2a1ec132ecdd17198d75a566ca106de11621066f264342c2150e32effaee"
+    },
+    {
+      "path": "docs/design/SB20_FINAL_DESIGN_INTEGRATION_OWNER_REVIEW_2026-10-17.md",
+      "bytes": 5264,
+      "sha256": "bd4d0b5c32e286de8eb7fa93f074ca1af5ae21566dc47bd6b75ff8373e10320b"
+    },
+    {
+      "path": "docs/design/SB20_FINAL_INTEGRATED_DESIGN_OWNER_SIGNOFF_2026-10-17.md",
+      "bytes": 855,
+      "sha256": "4dbb557b39b32df77269ed644a23e093ebfa5ae19c954f8e916d9684708c7bc9"
+    },
+    {
+      "path": "docs/design/SB20_FIND_ANSWER_DETAIL_SPEC_V0_9_OWNER_REVIEW_2026-10-17.md",
+      "bytes": 7759,
+      "sha256": "32f1009ec96d32ef02079f23fd05aff149ced143aa4474dfe3091e7530da1117"
+    },
+    {
+      "path": "docs/design/SB20_FIND_ANSWER_DETAIL_V0_9_OWNER_SIGNOFF_2026-10-17.md",
+      "bytes": 1480,
+      "sha256": "f1685e972b97fe972a5e48d163e32e39fd8958865fca71d64d341f03e8951002"
+    },
+    {
+      "path": "docs/design/SB20_FIND_OWNER_DECISIONS_2026-10-17.md",
+      "bytes": 7682,
+      "sha256": "523a0ea158d2bc32cd44a40433df2fba9f1eae0790e2f5c894380badea8e59dd"
+    },
+    {
+      "path": "docs/design/SB20_HOME_V1_1_OWNER_SIGNOFF_2026-10-17.md",
+      "bytes": 3204,
+      "sha256": "0ed4e680f9ac2c138ea719d2497c1fa3479ae346fd201a0d8fe4642969f8777b"
+    },
+    {
+      "path": "docs/design/SB20_IMPLEMENTATION_READINESS_PLAN_V1_0_2026-10-17.md",
+      "bytes": 8197,
+      "sha256": "d1463c1799075da5a8c85a6c577a10502a2410ad7b1a81e6bc51fb0032b24f3f"
+    },
+    {
+      "path": "docs/design/SB20_MORE_OWNER_DECISIONS_2026-10-17.md",
+      "bytes": 2634,
+      "sha256": "4056afde279f487f12264fe3c9fdf02cf212a1b0b2c7b9e4dd97f19e93c4bda8"
+    },
+    {
+      "path": "docs/design/SB20_MORE_SPEC_V0_1_RESEARCH_OWNER_REVIEW_2026-10-17.md",
+      "bytes": 14942,
+      "sha256": "b8c4c350b644a04c807fbc74099adfc5a8e1698294ef25fcdbbce9290576b8f2"
+    },
+    {
+      "path": "docs/design/SB20_MORE_V0_9_CONSOLIDATED_OWNER_REVIEW_2026-10-17.md",
+      "bytes": 10425,
+      "sha256": "608b22318cd3086377904f56f0fa89ae3a2685484ce11034f56ccec7d0aeea01"
+    },
+    {
+      "path": "docs/design/SB20_MORE_V0_9_OWNER_SIGNOFF_2026-10-17.md",
+      "bytes": 821,
+      "sha256": "cd4cf546959f3cb68088194854e9478ef6df1b4241892561a9b3bd30310df2f5"
+    },
+    {
+      "path": "docs/design/SB20_NONDESTRUCTIVE_PREFLIGHT_2026-10-17.md",
+      "bytes": 2995,
+      "sha256": "f5e9e7bc40b9f01812ed8b11f6c44b0b34571c553f1f8288939603fa8a93c62d"
+    },
+    {
+      "path": "docs/design/SB20_R1_MIGRATION_REVIEW_2026-10-17.md",
+      "bytes": 7531,
+      "sha256": "8395d77bbf1de17a9a07b939497969511962f8ff008e99e06d5f022760290eed"
+    },
+    {
+      "path": "docs/design/SB20_R1_SAFE_DEFAULTS_OWNER_DECISION_2026-10-17.md",
+      "bytes": 1612,
+      "sha256": "03eb62b6564bfedb04b95c63f4782379953824cf1fc2f7adfc171a91f5ae13ff"
+    },
+    {
+      "path": "docs/design/SB20_R2_MEDIA_DRAFT_BACKUP_INTEGRITY_V0_1_2026-10-17.md",
+      "bytes": 7962,
+      "sha256": "a5813c4405d5f1461ba0cab688ef9ec5973134695927fbc92458255a92a218db"
+    },
+    {
+      "path": "docs/design/SB20_R2_TECHNICAL_DESIGN_OWNER_SIGNOFF_2026-10-17.md",
+      "bytes": 1572,
+      "sha256": "786f6816237b0632f41da8e4e442dbae892f2df5e93221e20fa6529897693d7c"
+    },
+    {
+      "path": "docs/design/SB20_R3_CONTROLLED_IMPLEMENTATION_PLAN_V0_1_2026-10-17.md",
+      "bytes": 4264,
+      "sha256": "df1882b761e189eb44ab54c81775438ec2064d13b45ee8acb4599ec8a8786bf9"
+    },
+    {
+      "path": "docs/design/SB20_R3_PLANNING_OWNER_APPROVAL_2026-10-17.md",
+      "bytes": 1146,
+      "sha256": "5c06a73464f1348f645cbac3817ec027182083fe0d8671d1a7c76351ed10d343"
+    },
+    {
+      "path": "docs/design/SB20_R4_ADAPTIVE_STORAGE_CALIBRATION_PLAN_V0_1_2026-10-17.md",
+      "bytes": 4275,
+      "sha256": "e0b73d2790c20ca66567c944efeb4784e5a10a5abb70e6891239cf75f0b83ac3"
+    },
+    {
+      "path": "docs/design/SB20_R4_STORAGE_METHODOLOGY_OWNER_SIGNOFF_2026-10-17.md",
+      "bytes": 1231,
+      "sha256": "12509ed125704577319ee7ee4c07cc866fe49bab0492a5c987001aa7bf18f2a5"
+    },
+    {
+      "path": "docs/design/SB20_R5_BACKUP_RESTORE_ACCEPTANCE_PLAN_V0_1_2026-10-17.md",
+      "bytes": 5416,
+      "sha256": "e9f1f2e5162432f9b734f87dba656168fb961584bc42ec38610053bab5bdf4fc"
+    },
+    {
+      "path": "docs/design/SB20_R5_BACKUP_RESTORE_OWNER_SIGNOFF_2026-10-17.md",
+      "bytes": 1172,
+      "sha256": "9cab8f1929fcc137946d0ed24ed6596d213e070c919b9a8985da11886710aace"
+    },
+    {
+      "path": "docs/design/SB20_R6_QA_ACCEPTANCE_PLAN_V0_1_2026-10-17.md",
+      "bytes": 4030,
+      "sha256": "9b5aef47fe3a379116ca68d113f7275a376dcf8deb9010b104f981c3f6e92777"
+    },
+    {
+      "path": "docs/design/SB20_R6_QA_OWNER_SIGNOFF_2026-10-17.md",
+      "bytes": 764,
+      "sha256": "3142d70f1681b76487a2e4027e1a16e6db2a737f276a56077ce462d6829ad562"
+    },
+    {
+      "path": "docs/design/SB20_R7_RELEASE_READINESS_GATES_V0_1_2026-10-17.md",
+      "bytes": 3756,
+      "sha256": "07cab700d98e263358fc1d07e51d148acdb3544fc862603a6d93c6108bdcd8fa"
+    },
+    {
+      "path": "docs/design/SB20_R7_RELEASE_READINESS_OWNER_SIGNOFF_2026-10-17.md",
+      "bytes": 896,
+      "sha256": "ae791db585fee6df5d759208241379625ed707829bac90357c510212b520d02d"
+    },
+    {
+      "path": "docs/design/SB21_23_MEDIUM_PHONE_EXECUTION_2026-10-18.md",
+      "bytes": 5630,
+      "sha256": "e8826e81112bdec88ad2e8f4ee3e5fe9daf3b33880f54a8e0f96737c8486321e"
+    }
+  ],
+  "tests": [
+    {
+      "file": "tests/android-build-contract.test.mjs",
+      "cases": [
+        "preflight runs before isolated checkout creation",
+        "build remains isolated and Staging-only",
+        "release dependency gate precedes compilation",
+        "APK package identity and bundled JavaScript are verified",
+        "APK signature is verified without installing on device"
+      ],
+      "imports": [
+        "node:fs",
+        "node:test",
+        "node:assert/strict"
+      ]
+    },
+    {
+      "file": "tests/backup-files.test.mjs",
+      "cases": [
+        "file export is written and read back before reporting success",
+        "cancelled directory selection creates no file",
+        "failed write triggers cleanup",
+        "verification mismatch triggers cleanup",
+        "cleanup failure explicitly warns of leftover file",
+        "canceled picker makes no file read",
+        "selected valid backup is canonicalized",
+        "oversized file rejected before read",
+        "invalid import rejected",
+        "other platforms reject file export",
+        "unknown document size still enforces UTF-8 byte limit after reading",
+        "underreported document size cannot bypass actual UTF-8 byte limit"
+      ],
+      "imports": [
+        "node:test",
+        "node:assert/strict",
+        "node:fs",
+        "node:vm",
+        "typescript"
+      ]
+    },
+    {
+      "file": "tests/config.test.mjs",
+      "cases": [
+        "environment allowlist and distinct native identities",
+        "no backend identity, dependencies or Production profiles"
+      ],
+      "imports": [
+        "node:test",
+        "node:assert/strict",
+        "node:module",
+        "node:fs"
+      ]
+    },
+    {
+      "file": "tests/domain.test.mjs",
+      "cases": [
+        "versioned backup round trips and preserves confidence",
+        "reject malformed, future, duplicate and impossible-date backups",
+        "ignore unexpected imported fields",
+        "search and context projections share one source",
+        "share excludes unselected cards and optional private detail by default",
+        "Development and Staging never share storage",
+        "corrupt read leaves raw data untouched",
+        "previous save recovers after replacement",
+        "failed write rejects without losing current primary",
+        "invalid import is rejected before any storage write"
+      ],
+      "imports": [
+        "node:test",
+        "node:assert/strict",
+        "../src/model.ts",
+        "../src/repository.ts"
+      ]
+    },
+    {
+      "file": "tests/durability.test.mjs",
+      "cases": [
+        "SQLite migration preserves legacy, source confidence, dates and ordered history; marker prevents reimport",
+        "SQLite reopens durable rows from disk",
+        "SQLite rolls back row deletion AND recovery changes when a later write fails",
+        "failed migration is retryable and does not remove legacy data",
+        "corrupt legacy primary blocks writes, explicit previous-save recovery is available",
+        "corrupt SQLite primary cannot overwrite good recovery; explicit recovery repairs it",
+        "SQLite serializes saves and reads, rejects future schema and enforces foreign keys",
+        "independent native environment databases and legacy keys stay isolated",
+        "browser recovery copy survives corruption appearing between load and save",
+        "backup size uses UTF-8 bytes including multibyte characters",
+        "reading preferences persist per environment without carrying private cards",
+        "SQLite survives an OS-killed writer before commit",
+        "every permitted collection exports within the import byte limit"
+      ],
+      "imports": [
+        "node:test",
+        "node:assert/strict",
+        "node:sqlite",
+        "node:fs",
+        "node:os",
+        "node:path",
+        "../src/sqlite-repository.ts",
+        "../src/repository.ts",
+        "../src/preferences.ts",
+        "../src/model.ts",
+        ", async (t) => {\n  const old = memory(),\n    db = adapter();\n  t.after(() => db.db.close());\n  const r = sqliteRepository(db, old, ",
+        "node:sqlite"
+      ]
+    },
+    {
+      "file": "tests/full-eng-native-boundaries.test.mjs",
+      "cases": [
+        "native-equivalent private bytes and draft ownership survive closing every database handle",
+        "OS-killed writer cannot leave an acknowledged mixed draft/memory snapshot"
+      ],
+      "imports": [
+        "node:test",
+        "node:assert/strict",
+        "node:fs",
+        "node:path",
+        "node:os",
+        "node:child_process",
+        "node:crypto",
+        "node:sqlite",
+        "../src/eng-store.ts",
+        "../src/model.ts",
+        ");});assert.deepEqual((await store.load()).draft,staged.draft);assert.deepEqual(await files.read(entry.path),png);const saved=await store.saveDraft(d.attempt,d.memoryId);assert.equal(saved.data.memories[0].answer,"
+      ]
+    },
+    {
+      "file": "tests/full-eng-stream.test.mjs",
+      "cases": [
+        "native streaming exports and preflights a valid >20 MB photo draft without full-buffer reads",
+        "stream write interruption and corrupt/truncated readback never mutate source draft",
+        "valid near-limit legacy text metadata converts without losing supported authored fields"
+      ],
+      "imports": [
+        "node:test",
+        "node:assert/strict",
+        "node:crypto",
+        "../src/model.ts",
+        "../src/eng-store.ts",
+        "../src/eng-backup.ts",
+        "../src/eng-stream.ts"
+      ]
+    },
+    {
+      "file": "tests/full-eng.test.mjs",
+      "cases": [
+        "legacy migration retains full authored metadata and does not mutate migration input",
+        "new draft uses Unassigned, no category, and resumes across a real database reopen",
+        "photo-only commit preserves truly empty answer, hash, ID, Unknown and duplicate-safe attempt",
+        "title alone fails; sixth photo fails without dropping five durable photos",
+        "low storage, invalid MIME, failed private copy preserve the last confirmed draft",
+        "injected SQLite commit failure rolls back memory, attempt, draft and recovery atomically",
+        "stale checkpoints and forged durable-photo metadata cannot replace draft",
+        "archive, recently deleted, restore and 30-day expiry retain private bytes and recovery owners",
+        "full backup restores saved and draft photos independently with IDs and bytes intact",
+        "draft conflict keep, incoming, cancel and previous full recovery preserve both choices",
+        "truncation, corrupt hash, future version and trailing bytes fail before target mutation",
+        "legacy text backup remains readable and disclosed; missing/corrupt live bytes block save and backup",
+        "stale edited memory cannot overwrite a newer revision; source/date evidence is validated",
+        "legacy CDXM2 image container imports authored card and exact image hash, without draft fabrication",
+        "failed restore cutover retains old state and previous full recovery, then retry succeeds",
+        "saved photo additions are journaled; photo-only last image cannot be removed",
+        "all supported legacy record and Space identifiers survive migration without renaming",
+        "explicit full recovery repairs corrupt primary JSON without destroying damaged bytes or known-good recovery",
+        "known portable state can replace corrupt primary only through explicit incoming-draft choice",
+        "missing primary after restart cannot silently remigrate v1; explicit recovery restores known full state",
+        "declared future primary and future initialization markers cannot be downgraded by recovery"
+      ],
+      "imports": [
+        "node:test",
+        "node:assert/strict",
+        "node:fs",
+        "node:os",
+        "node:path",
+        "node:crypto",
+        "node:sqlite",
+        "../src/eng-store.ts",
+        "../src/eng-backup.ts",
+        "../src/model.ts"
+      ]
+    },
+    {
+      "file": "tests/media-atomic.test.mjs",
+      "cases": [
+        "atomic commit survives close and reopen",
+        "failed media insert leaves promoted journal on disk"
+      ],
+      "imports": [
+        "node:test",
+        "node:assert/strict",
+        "node:fs",
+        "node:vm",
+        "typescript",
+        "node:os",
+        "node:path",
+        "node:sqlite"
+      ]
+    },
+    {
+      "file": "tests/media-backup-v2.test.mjs",
+      "cases": [
+        "v2 manifest preview counts images without writing data",
+        "rejects media referencing absent cards",
+        "rejects unsafe archive entry names",
+        "rejects invalid text before considering manifest",
+        "validates every media entry before the restore adapter may write",
+        "rejects corrupt media before any database mutation"
+      ],
+      "imports": [
+        "node:test",
+        "node:assert/strict",
+        "node:fs",
+        "node:vm",
+        "typescript"
+      ]
+    },
+    {
+      "file": "tests/media-base64-native.test.mjs",
+      "cases": [
+        "native v2 binary export Base64 handles padding and 12K boundaries"
+      ],
+      "imports": [
+        "node:test",
+        "node:assert/strict",
+        "node:fs",
+        "node:vm",
+        "typescript"
+      ]
+    },
+    {
+      "file": "tests/media-coordinator.test.mjs",
+      "cases": [
+        "promotes before committing metadata",
+        "uncertain DB failure retains file for reconciliation",
+        "staging failure prevents database calls",
+        "reconciliation only suggests non-protected paths",
+        "rejects unsafe reconciliation candidate"
+      ],
+      "imports": [
+        "node:test",
+        "node:assert/strict",
+        "node:fs",
+        "node:vm",
+        "typescript"
+      ]
+    },
+    {
+      "file": "tests/media-integrity.test.mjs",
+      "cases": [
+        "sniffs image signatures independently of claimed filename",
+        "accepts matching bytes signature length and real SHA256",
+        "rejects inconsistent byte length before digest",
+        "rejects disguised image before digest",
+        "rejects changed bytes with stale digest",
+        "rejects invalid calculated digest"
+      ],
+      "imports": [
+        "node:test",
+        "node:assert/strict",
+        "node:fs",
+        "node:vm",
+        "typescript",
+        "node:crypto"
+      ]
+    },
+    {
+      "file": "tests/media-journal-flow.test.mjs",
+      "cases": [
+        "journaled flow preserves write ordering",
+        "failed stage does not commit metadata",
+        "failed DB attach never announces committed",
+        "interrupted operations only suggest inspection"
+      ],
+      "imports": [
+        "node:test",
+        "node:assert/strict",
+        "node:fs",
+        "node:vm",
+        "typescript"
+      ]
+    },
+    {
+      "file": "tests/media-journal.test.mjs",
+      "cases": [
+        "journal tracks incomplete persisted operation",
+        "valid journal progression",
+        "phase mismatch rolls back",
+        "rejects skipping stages"
+      ],
+      "imports": [
+        "node:test",
+        "node:assert/strict",
+        "node:fs",
+        "node:vm",
+        "typescript",
+        "node:sqlite"
+      ]
+    },
+    {
+      "file": "tests/media-legacy-replacement-guard.test.mjs",
+      "cases": [
+        "legacy card replacement probes existing media table before deletion"
+      ],
+      "imports": [
+        "node:test",
+        "node:assert/strict",
+        "node:fs"
+      ]
+    },
+    {
+      "file": "tests/media-manifest.test.mjs",
+      "cases": [
+        "valid manifest creates normalized, allowlisted metadata",
+        "reject unrecognized schema",
+        "reject traversal and absolute paths",
+        "reject missing parent card",
+        "reject duplicate media identifiers",
+        "reject unsupported type and mismatched filename extension",
+        "reject invalid SHA256 and byte count",
+        "reject excessive manifest entries"
+      ],
+      "imports": [
+        "node:test",
+        "node:assert/strict",
+        "node:fs",
+        "node:vm",
+        "typescript"
+      ]
+    },
+    {
+      "file": "tests/media-native-restore-transaction.test.mjs",
+      "cases": [
+        "media restore SQL failure rolls back cards and recovery, followed by successful recovery"
+      ],
+      "imports": [
+        "node:test",
+        "node:assert/strict",
+        "node:fs",
+        "node:vm",
+        "typescript",
+        "node:sqlite"
+      ]
+    },
+    {
+      "file": "tests/media-portable-container.test.mjs",
+      "cases": [
+        "v2 portable container roundtrip verifies all media before restore",
+        "rejects truncated container and unexpected trailing data",
+        "rejects modified image digest"
+      ],
+      "imports": [
+        "node:test",
+        "node:assert/strict",
+        "node:fs",
+        "node:vm",
+        "typescript"
+      ]
+    },
+    {
+      "file": "tests/media-recovery.test.mjs",
+      "cases": [
+        "pending without metadata is non-destructive inspection",
+        "promoted without metadata requires byte verification",
+        "mismatched metadata never authorizes deletion",
+        "finished matching journal reported complete"
+      ],
+      "imports": [
+        "node:test",
+        "node:assert/strict",
+        "node:fs",
+        "node:vm",
+        "typescript"
+      ]
+    },
+    {
+      "file": "tests/media-restore-gate.test.mjs",
+      "cases": [
+        "verified restore gate calls apply only after all images pass",
+        "corrupt hash blocks all mutations"
+      ],
+      "imports": [
+        "node:test",
+        "node:assert/strict",
+        "node:fs",
+        "node:vm",
+        "typescript"
+      ]
+    },
+    {
+      "file": "tests/media-sqlite.test.mjs",
+      "cases": [
+        "media table created without modifying text cards",
+        "rejects orphan parent and rolls back",
+        "duplicate file path cannot replace existing attachment",
+        "invalid manifest cannot write metadata"
+      ],
+      "imports": [
+        "node:test",
+        "node:assert/strict",
+        "node:fs",
+        "node:vm",
+        "typescript",
+        "node:sqlite"
+      ]
+    },
+    {
+      "file": "tests/media-staging.test.mjs",
+      "cases": [
+        "verified stage readback precedes promote",
+        "corrupt readback blocks promotion",
+        "failed promotion cleans temporary",
+        "invalid bytes never reach store",
+        "orphan cleanup preserves referenced",
+        "unsafe cleanup path rejected"
+      ],
+      "imports": [
+        "node:test",
+        "node:assert/strict",
+        "node:fs",
+        "node:vm",
+        "typescript",
+        "node:crypto"
+      ]
+    },
+    {
+      "file": "tests/media-store-native.test.mjs",
+      "cases": [
+        "private staging writes and promotes without changing existing files",
+        "rejects path traversal before removal",
+        "refuses replacement of existing destination"
+      ],
+      "imports": [
+        "node:test",
+        "node:assert/strict",
+        "node:fs",
+        "node:vm",
+        "typescript"
+      ]
+    },
+    {
+      "file": "tests/native-draft.test.mjs",
+      "cases": [
+        "unfinished native draft survives reopening and stays outside saved/searchable cards",
+        "ENG save commits card, attempt and draft consumption together; replay cannot duplicate",
+        "card insert failure rolls back memory, recovery marker, attempt and draft consumption",
+        "failure consuming draft rolls back an already inserted card and attempt",
+        "stale, conflicting and different drafts cannot overwrite the durable unfinished draft",
+        "invalid content or missing Space fails without consuming the draft",
+        "saving a text draft preserves existing media parents and captures recovery manifest",
+        "discard affects only the confirmed draft; successful save rejects late checkpoint recreation",
+        "unknown or absent draft fields fail closed without overwriting prior bytes"
+      ],
+      "imports": [
+        "node:test",
+        "node:assert/strict",
+        "node:fs",
+        "node:os",
+        "node:path",
+        "node:sqlite",
+        "../src/sqlite-repository.ts",
+        "../src/draft-sqlite.ts",
+        "../src/model.ts"
+      ]
+    },
+    {
+      "file": "tests/native-media-await.test.mjs",
+      "cases": [
+        "native media promotion waits for Expo asynchronous move before acknowledging private ownership"
+      ],
+      "imports": [
+        "node:test",
+        "node:assert/strict",
+        "node:module"
+      ]
+    },
+    {
+      "file": "tests/sb20-eng-a.test.mjs",
+      "cases": [
+        "empty legacy import preserves default Space and creates no fabricated records",
+        "legacy records preserve exact metadata and Context as compatibility field",
+        "new photo-only memory needs independently verified media hash bytes",
+        "cannot save title alone, placeholder does not get inserted",
+        "custom labels, archived, deletion metadata, due and verification gates",
+        "unsupported version, unknown field, lost media parent and duplicates fail closed",
+        "v1 future versions and damaged inputs cannot be silently coerced",
+        "synthetic transformations never mutate input source",
+        "legacy demo marker is preserved rather than dropped"
+      ],
+      "imports": [
+        "node:test",
+        "node:assert/strict",
+        "../src/model.ts",
+        "../src/sb20-contract.ts"
+      ]
+    },
+    {
+      "file": "tests/sb20-eng-b.test.mjs",
+      "cases": [
+        "one private draft, checkpoint and interruption before acknowledgement",
+        "picker failures and invalid hash preserve durable draft",
+        "five staged photos, sixth blocked, bytes are copied",
+        "title or real content required, photo-only valid without false answer",
+        "failure before promotion leaves original draft/media unchanged",
+        "failure after promotion retains media and allows idempotent retry",
+        "failure before transaction preserves draft and promoted bytes",
+        "failure after commit returns existing memory without duplication",
+        "saved references cannot be cleaned, journal only settled postcommit",
+        "discard does not automatically purge staged bytes"
+      ],
+      "imports": [
+        "node:test",
+        "node:assert/strict",
+        "node:crypto",
+        "../src/sb20-draft-media.ts"
+      ]
+    },
+    {
+      "file": "tests/sb20-eng-c.test.mjs",
+      "cases": [
+        "real SQLite draft checkpoint survives close and reopen",
+        "verified staged byte file survives reopen",
+        "wrong hash and path rejected without attachment",
+        "mid-transaction failure rolls back metadata and retains draft",
+        "post-commit lost acknowledgement retries without duplicates",
+        "partial stage interruption leaves record uncommitted and inspectable",
+        "orphan inventory marks ambiguous files but never deletes bytes",
+        "corrupted staged file reported without modifying saved draft"
+      ],
+      "imports": [
+        "node:test",
+        "node:assert/strict",
+        "node:fs",
+        "node:os",
+        "node:path",
+        "node:crypto",
+        "../src/sb20-native-fixture.mjs"
+      ]
+    },
+    {
+      "file": "tests/sb20-eng-d.test.mjs",
+      "cases": [
+        "native port Save commits photo-only record and retries idempotently",
+        "corrupted media blocks save before metadata mutation",
+        "missing and unsafe media are read-only verdicts",
+        "uncertain commit acknowledgement preserves data for reconciliation"
+      ],
+      "imports": [
+        "node:test",
+        "node:assert/strict",
+        "node:fs",
+        "node:os",
+        "node:path",
+        "node:crypto",
+        "../src/sb20-native-fixture.mjs",
+        "../src/sb20-native-adapter.ts"
+      ]
+    },
+    {
+      "file": "tests/sb20-eng-e.test.mjs",
+      "cases": [
+        "isolation guards reject original and staging namespaces",
+        "persistent checkpoint permits exactly one draft and monotonic update",
+        "private-media copy and verified photo-only save are idempotent",
+        "corruption fails closed and preserves draft and media metadata",
+        "failed metadata transaction rolls back and preserves staged photo",
+        "unsafe ID, invalid type and path traversal rejected",
+        "actual SQL trigger failure rolls back attempted Save atomically"
+      ],
+      "imports": [
+        "node:test",
+        "node:assert/strict",
+        "node:sqlite",
+        "node:crypto",
+        "node:fs",
+        "node:path",
+        "node:os",
+        "../src/sb20-expo-ports.ts",
+        "../src/sb20-native-adapter.ts"
+      ]
+    },
+    {
+      "file": "tests/sb20-eng-f-b.test.mjs",
+      "cases": [
+        "pending journal survives SQLite reopen and retains bytes",
+        "staged and promoted interruptions require reconciliation, never cleanup",
+        "only committed owned media is marked verified",
+        "corruption/missing file fails read-only without destructive action",
+        "illegal progression and duplicate IDs fail closed",
+        "transaction abort rolls back journal transition"
+      ],
+      "imports": [
+        "node:test",
+        "node:assert/strict",
+        "node:sqlite",
+        "node:crypto",
+        "node:fs",
+        "node:path",
+        "node:os",
+        "../src/sb20-eng-f-b-journal.mjs"
+      ]
+    },
+    {
+      "file": "tests/sb20-eng-f-c.test.mjs",
+      "cases": [
+        "successful synthetic commit and idempotent retry",
+        "interrupted staged operation retains bytes and journal",
+        "promotion interruption preserves media and prevents unsafe retry",
+        "failed SQL commit never inserts memory and protects promoted bytes",
+        "lost acknowledgement resolves previously committed attempt once",
+        "manifest mismatch and duplicate attempt identity fail closed"
+      ],
+      "imports": [
+        "node:test",
+        "node:assert/strict",
+        "node:sqlite",
+        "node:crypto",
+        "node:fs",
+        "node:path",
+        "node:os",
+        "../src/sb20-eng-f-c-coordinator.mjs"
+      ]
+    },
+    {
+      "file": "tests/sb20-eng-f-d.test.mjs",
+      "cases": [
+        "async operation commits once and is replayable after DB reopen",
+        "failure after staging durably marks recovery-needed and preserves photo bytes",
+        "failure after promotion retains bytes and marks uncertain",
+        "failed atomic metadata transaction leaves durable uncertain state",
+        "lost acknowledgement after commit retries once",
+        "invalid hash fails closed, persists recovery state, retains no false memory"
+      ],
+      "imports": [
+        "node:test",
+        "node:assert/strict",
+        "node:sqlite",
+        "node:crypto",
+        "node:fs",
+        "node:path",
+        "node:os",
+        "../src/sb20-eng-f-d-async.ts"
+      ]
+    },
+    {
+      "file": "tests/sb20-eng-f-e.test.mjs",
+      "cases": [
+        "guard refuses live/legacy SQLite or media names",
+        "bridge commits and retries after database reopen without duplicate",
+        "promote interruption leaves recovery-needed and original staging bytes",
+        "SQL commit failure rolls back memory and persists recovery marker",
+        "failed recovery marker does not erase promoted synthetic file"
+      ],
+      "imports": [
+        "node:test",
+        "node:assert/strict",
+        "node:sqlite",
+        "node:fs",
+        "node:path",
+        "node:os",
+        "node:crypto",
+        "../src/sb20-expo-ports.ts",
+        "../src/sb20-eng-f-e-bridge.ts",
+        "../src/sb20-eng-f-d-async.ts"
+      ]
+    },
+    {
+      "file": "tests/sb20-eng-f-f.test.mjs",
+      "cases": [
+        "all seven owner classes protect synthetic photos",
+        "incomplete owner inventory and short trash retention fail closed",
+        "orphan, missing, corruption and unknown attempt never authorize deletion",
+        "committed verified owner can be acknowledged after SQLite reopen",
+        "unconfirmed Save writes inspection verdict durably",
+        "failed recovery recording refuses acknowledgment",
+        "attempt bound to another memory fails closed and persists integrity decision",
+        "untrusted owner ID and invalid deleted timestamp reject inventory"
+      ],
+      "imports": [
+        "node:test",
+        "node:assert/strict",
+        "node:sqlite",
+        "node:fs",
+        "node:path",
+        "node:os",
+        "../src/sb20-eng-f-f-ownership.ts"
+      ]
+    },
+    {
+      "file": "tests/sb20-eng-f-g.test.mjs",
+      "cases": [
+        "seven source tables independently enumerate protected photo references",
+        "incomplete required source scan stops enumeration",
+        "invalid parent and corrupt photo are retained for review",
+        "wrong parent identifier and unsupported deletion timestamp fail closed",
+        "legacy record with more than five photos remains enumerated",
+        "unknown Save attempt from enumerated owner remains unacknowledged",
+        "duplicate media ownership across sources remains protected"
+      ],
+      "imports": [
+        "node:test",
+        "node:assert/strict",
+        "node:sqlite",
+        "node:fs",
+        "node:path",
+        "node:os",
+        "../src/sb20-eng-f-g-enumerator.ts"
+      ]
+    },
+    {
+      "file": "tests/sb20-eng-f-h.test.mjs",
+      "cases": [
+        "valid physical synthetic bytes and parent rows pass",
+        "changed file contents fail checksum without deletion",
+        "missing photo file classified not deleted",
+        "wrong parent reference fails closed",
+        "incomplete parent table stops verification",
+        "invalid photo ID cannot traverse private root",
+        "owner category across all seven parent tables resolves",
+        "legacy parent keeps more than five preexisting media files"
+      ],
+      "imports": [
+        "node:test",
+        "node:assert/strict",
+        "node:sqlite",
+        "node:crypto",
+        "node:fs",
+        "node:path",
+        "node:os",
+        "../src/sb20-eng-f-h-verifier.ts"
+      ]
+    },
+    {
+      "file": "tests/sb20-eng-f-i.test.mjs",
+      "cases": [
+        "valid photo parent and file hashes pass",
+        "dangling reference and orphaned manifest are classified without deletion",
+        "conflicting duplicate owner associations fail closed",
+        "corrupted actual synthetic bytes are flagged",
+        "deleted lifecycle future timestamps fail closed",
+        "missing mandatory source aborts enumeration",
+        "all lifecycle ownership categories stay protected",
+        "symlink escape is rejected where supported",
+        "manifest without any reference is classified orphan"
+      ],
+      "imports": [
+        "node:test",
+        "node:assert/strict",
+        "node:sqlite",
+        "node:crypto",
+        "node:fs",
+        "node:path",
+        "node:os",
+        "../src/sb20-eng-f-i-hardening.ts"
+      ]
+    },
+    {
+      "file": "tests/sb20-eng-f-j.test.mjs",
+      "cases": [
+        "file symlink pointing outside synthetic root is rejected, if permitted",
+        "junction portal cannot be addressed through guarded media ID"
+      ],
+      "imports": [
+        "node:test",
+        "node:assert/strict",
+        "node:fs",
+        "node:os",
+        "node:path",
+        "node:child_process",
+        "node:crypto",
+        "../src/sb20-eng-f-i-hardening.ts",
+        "node:sqlite"
+      ]
+    },
+    {
+      "file": "tests/sqlite-failed-write.test.mjs",
+      "cases": [
+        "injected SQL insert failure rolls back both replacement and recovery marker",
+        "attached card can be edited in place but legacy replacement cannot discard its identity"
+      ],
+      "imports": [
+        "node:test",
+        "node:assert/strict",
+        "node:fs",
+        "node:vm",
+        "typescript",
+        "node:sqlite",
+        "+n)});\nfunction adapter(raw){const q={execAsync:async s=>raw.exec(s),runAsync:async(s,...p)=>raw.prepare(s).run(...p),getFirstAsync:async(s,...p)=>raw.prepare(s).get(...p)||null,getAllAsync:async(s,...p)=>raw.prepare(s).all(...p),withExclusiveTransactionAsync:async fn=>{raw.exec("
+      ]
+    },
+    {
+      "file": "tests/theme.test.mjs",
+      "cases": [
+        "both actual palettes meet text and control-boundary contrast targets"
+      ],
+      "imports": [
+        "node:test",
+        "node:assert/strict",
+        "../src/theme.ts"
+      ]
+    }
+  ]
+}

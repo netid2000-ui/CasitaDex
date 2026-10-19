@@ -1,0 +1,82 @@
+{
+  "scope": "Disposable in-memory SQLite and extracted current UI expressions only; no installed data/source mutation",
+  "results": [
+    {
+      "id": "edit-answer",
+      "expected": "Needs checking; verifiedAt cleared; event retained",
+      "actual": {
+        "confidence": "Verified",
+        "verifiedAt": "2026-10-18",
+        "historyCount": 1
+      },
+      "met": false
+    },
+    {
+      "id": "edit-source",
+      "expected": "Needs checking; verifiedAt cleared; event retained",
+      "actual": {
+        "confidence": "Verified",
+        "verifiedAt": "2026-10-18",
+        "historyCount": 1
+      },
+      "met": false
+    },
+    {
+      "id": "edit-notes",
+      "expected": "Verified",
+      "actual": {
+        "confidence": "Verified",
+        "verifiedAt": "2026-10-18",
+        "historyCount": 1
+      },
+      "met": true
+    },
+    {
+      "id": "stale-restore-preview",
+      "expected": "Reject/reconfirm intervening change",
+      "actual": {
+        "rejected": false,
+        "beforeCount": 2,
+        "afterCount": 1,
+        "recoverableCount": 2
+      },
+      "met": false
+    },
+    {
+      "id": "draft-notes",
+      "expected": "Preserve optional notes in draft",
+      "actual": false,
+      "met": false
+    },
+    {
+      "id": "find-multiword",
+      "expected": true,
+      "actual": false,
+      "met": false
+    },
+    {
+      "id": "share-default-privacy",
+      "expected": "Title/answer only before separate opt-ins",
+      "actual": "Filter\n20x25\nPrivate shelf\nPrivate notes\nVerified",
+      "met": false
+    },
+    {
+      "id": "local-calendar-day",
+      "expected": "2026-10-18 in America/Chicago",
+      "actual": "2026-10-19",
+      "met": false
+    },
+    {
+      "id": "legacy-seven-photo-multispace-roundtrip",
+      "expected": "All IDs, fields, labels and 7 hashes retained",
+      "actual": {
+        "memories": 2,
+        "spaces": 2,
+        "photos": 7,
+        "equal": true
+      },
+      "met": true
+    }
+  ],
+  "unmet": 7
+}

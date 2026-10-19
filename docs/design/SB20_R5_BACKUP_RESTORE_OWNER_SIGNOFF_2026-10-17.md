@@ -1,0 +1,5 @@
+﻿# CasitaDex SB-20 — R5 Owner Acceptance Methodology Signoff
+Date 2026-10-17 | Designs by F&A
+STATUS: APPROVED R5 BACKUP/RESTORE/ROLLBACK ACCEPTANCE METHODOLOGY ONLY.
+Owner agreed to sign off SB20_R5_BACKUP_RESTORE_ACCEPTANCE_PLAN_V0_1_2026-10-17.md. Full portable backups must preserve active, archived and 30-day recoverable deleted records, photos, Categories/Spaces, genuine verification and reminders, and one unfinished draft with successfully staged photos. Restore must validate schema, bytes/hashes, available write+rollback space, record associations and destructive replacement preview before cutover; resolve existing-draft conflicts explicitly and maintain rollback path on failure. Legacy supported text/CDXM2 imports remain recognized with truthful omissions.
+R5 B01-B12 are unexecuted future acceptance tests. Exact backup version, storage limits, clock policy, draft-conflict copy and filesystem/database cutover need engineering/owner resolution. R5 approval IS NOT implementation permission: source, schema, build, Git, deploy, paid/cloud integrations and devices stay on hold. Next documentation-only R6/R7 quality and release-readiness planning.

@@ -1,5 +1,8 @@
+import { engEnabled } from "./eng-runtime";
+import { EngHome, EngFind, EngAdd, EngDetail, EngMore } from "./eng-screens";
+import { DraftAdd } from "./draft-add";
 import React, { useEffect, useRef, useState } from "react";
-import { Alert, Image, Platform, Share, View } from "react-native";
+import { Alert, Image, Platform, Pressable, Share, TextInput, View } from "react-native";
 import { router, useLocalSearchParams } from "expo-router";
 import { Button, Copy, Field, Page, useTheme } from "./ui";
 import { useData } from "./state";
@@ -40,36 +43,29 @@ const today = () => {
 const uid = () =>
   Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 10);
 function Tile({ card, compact = false }: { card: Card; compact?: boolean }) {
-  const { s, colors } = useTheme();
+  const { colors } = useTheme();
   return (
-    <View style={[s.panel, { gap: 9, paddingVertical: 20 }]}>
-      {card.demo && (
-        <Copy kind="small" style={{ color: colors.muted }}>
-          EXAMPLE - Not your home
-        </Copy>
-      )}
-      <Copy
-        kind="small"
-        style={{ color: colors.muted, fontWeight: "700", letterSpacing: 0.7 }}
-      >
-        {card.title.toUpperCase()}
-      </Copy>
-      <Copy kind="answer">{card.answer}</Copy>
-      {!compact && !!card.location && <Copy>{card.location}</Copy>}
-      <Copy kind="small" style={{ color: colors.muted }}>
-        {card.confidence}
-        {card.verifiedAt ? " - " + card.verifiedAt : ""}
-      </Copy>
-      <Button
-        label={"Open " + card.title}
-        onPress={() =>
-          router.push({ pathname: "/card", params: { id: card.id } })
-        }
-      />
-    </View>
+    <Pressable
+      accessibilityRole="button"
+      accessibilityLabel={"Open " + card.title}
+      onPress={() => router.push({ pathname: "/card", params: { id: card.id } })}
+      style={{ flexDirection: "row", alignItems: "center", backgroundColor: colors.white,
+        borderRadius: 16, borderColor: colors.line, borderWidth: 1, padding: 9, gap: 10, minHeight: 76 }}
+    >
+      <View style={{ width: 46, height: 54, borderRadius: 10, backgroundColor: colors.accent,
+        justifyContent: "center", alignItems: "center" }}>
+        <Copy style={{ fontSize: 23, fontWeight: "700" }}>{"\u2302"}</Copy>
+      </View>
+      <View style={{ flex: 1, gap: 2 }}>
+        <Copy style={{ fontWeight: "700", fontSize: 16 }}>{card.title}</Copy>
+        <Copy kind="small" style={{ color: colors.muted }} numberOfLines={2}>{card.answer}</Copy>
+        {!compact && !!card.location && <Copy kind="small" style={{ color: colors.muted }} numberOfLines={1}>Location: {card.location}</Copy>}
+        {card.demo && <Copy kind="small" style={{ color: colors.muted }}>Example â€” not your home</Copy>}
+      </View>
+      <Copy style={{ fontSize: 23, color: colors.muted }}>{"\u203A"}</Copy>
+    </Pressable>
   );
-}
-export function Today() {
+}export function Today() {
   const { s } = useTheme();
   const { data, save, busy } = useData();
   const due = data.cards.filter((c) => c.due && c.due <= today()),
@@ -89,7 +85,8 @@ export function Today() {
             useful answer.
           </Copy>
           <Button
-            label="Save your first answer"
+            primary
+            label="+ Save a memory"
             onPress={() => router.push("/add")}
           />
           <Button
@@ -132,7 +129,8 @@ export function Today() {
     </Page>
   );
 }
-export function Answers() {
+export function Answers() { return engEnabled ? <EngFind /> : <LegacyAnswers />; }
+function LegacyAnswers() {
   const { s } = useTheme();
   const params = useLocalSearchParams<{ mode?: string }>();
   const { data } = useData();
@@ -161,7 +159,7 @@ export function Answers() {
   }
   return (
     <Page title="The answer, right here." subtitle="What are you trying to do?">
-      <Field label="Search answers" value={query} onChangeText={setQuery} />
+      <Field label="Search your memories" value={query} onChangeText={setQuery} />
       <View style={s.row}>
         {["All", ...contexts, "Share"].map((m) => (
           <Button
@@ -261,7 +259,12 @@ export function Answers() {
     </Page>
   );
 }
-export function Add() {
+export function Add() { return engEnabled ? <EngAdd /> : <LegacyAddScreen />; }
+function LegacyAddScreen() {
+  const { drafts } = useData();
+  return drafts ? <DraftAdd /> : <LegacyAdd />;
+}
+function LegacyAdd() {
   const { s } = useTheme();
   const { data, save, busy } = useData();
   const [title, setTitle] = useState(""),
@@ -300,9 +303,10 @@ export function Add() {
   }
   return (
     <Page
-      title="One useful answer."
-      subtitle="Add more whenever something is worth remembering."
+      title="Add a Memory"
+      subtitle="Save a quick detail now, so you can find it later."
     >
+      <Image source={require("../assets/house-trees-header.png")} resizeMode="contain" accessibilityLabel="House and trees" style={{ width: 120, height: 102, alignSelf: "flex-end" }} />
       <Field
         label="What do you want to remember?"
         value={title}
@@ -314,7 +318,7 @@ export function Add() {
         value={location}
         onChangeText={setLocation}
       />
-      <Copy>When will this help?</Copy>
+      <Copy>Category (optional)</Copy>
       <View style={s.row}>
         {contexts.map((c) => (
           <Button
@@ -331,14 +335,17 @@ export function Add() {
       </Copy>
       {!!error && <Copy accessibilityRole="alert">{error}</Copy>}
       <Button
-        label={busy ? "Saving..." : "Save answer"}
+        primary
+        label={busy ? "Saving..." : "Save memory"}
         disabled={busy}
         onPress={() => void submit()}
       />
+      <Button label="Cancel" onPress={() => router.replace("/")} />
     </Page>
   );
 }
-export function Detail() {
+export function Detail() { return engEnabled ? <EngDetail /> : <LegacyDetail />; }
+function LegacyDetail() {
   const { s } = useTheme();
   const { id } = useLocalSearchParams<{ id: string }>();
   const { data, save, busy } = useData();
@@ -493,7 +500,7 @@ export function Detail() {
                 }}
               />
             </View>
-          )}{" "}
+          )}
           <Button
             label="Edit answer"
             disabled={busy}
@@ -629,7 +636,8 @@ export function Detail() {
     </Page>
   );
 }
-export function More() {
+export function More() { return engEnabled ? <EngMore /> : <LegacyMore />; }
+function LegacyMore() {
   const { s } = useTheme();
   const {
     data,
@@ -675,7 +683,8 @@ export function More() {
     }
   }
   return (
-    <Page title="Yours to keep." subtitle="Your answers stay on this device.">
+    <Page title="More" subtitle="Your answers stay on this device.">
+      <Image source={require("../assets/house-landscape.png")} resizeMode="cover" accessibilityLabel="Cottage and garden landscape" style={{ width: 145, height: 120, alignSelf: "center" }} />
       <View style={s.panel}>
         <Copy accessibilityRole="header" kind="answer">
           Reading comfort
@@ -767,7 +776,7 @@ export function More() {
                     setFileBusy(false);
                   });
               }}
-            />{" "}
+            />
             {mediaCandidate && (
               <View style={s.panel}>
                 <Copy>
@@ -858,7 +867,7 @@ export function More() {
                   }}
                 />
               </View>
-            )}{" "}
+            )}
             <Button
               label="Save backup file"
               disabled={busy || fileBusy}
@@ -1053,51 +1062,32 @@ export function More() {
  * components so Share and maintenance flows remain intact during migration.
  * All data is read from the same offline repository; no schema or cloud changes.
  */
-export function Home() {
+export function Home() { return engEnabled ? <EngHome /> : <LegacyHome />; }
+function LegacyHome() {
   const { data, save, busy } = useData();
   const { s, colors } = useTheme();
   const [quick, setQuick] = useState("");
-  const recent = [...data.cards].reverse().slice(0, 3);
+  const recent = [...data.cards].reverse().slice(0, 2);
   const needsCheck = data.cards.filter(
     (c) => c.confidence === "Needs checking" || (!!c.due && c.due <= today()),
   );
   return (
     <Page
-      title="A little less to remember."
-      subtitle="Find the details you need, right when you need them."
+      title=""
+      hideHeading
+      
     >
-      <View style={[s.panel, { padding: 13, gap: 9 }]}>
-        <Field
-          label="Search your memories"
-          value={quick}
-          onChangeText={setQuick}
-        />
-        <Button
-          label="Find an answer"
-          onPress={() =>
-            router.push({ pathname: "/answers", params: { q: quick } })
-          }
-        />
+      <Image source={require("../assets/casitadex-branded-banner.png")} resizeMode="contain" accessibilityLabel="CasitaDex. Your home, remembered. A little less to remember." style={{ width: "100%", height: 242, marginTop: -5 }} />
+      <View style={{ flexDirection: "row", alignItems: "center", gap: 8, backgroundColor: colors.white, borderColor: colors.line, borderWidth: 1, borderRadius: 18, padding: 6 }}>
+        <TextInput accessibilityLabel="Search your memories" placeholder="Search your memories..." placeholderTextColor={colors.muted} value={quick} onChangeText={setQuick} returnKeyType="search" onSubmitEditing={() => router.push({ pathname: "/answers", params: { q: quick } })} style={{ flex: 1, minWidth: 0, height: 48, color: colors.ink, paddingHorizontal: 12, fontSize: 16 }} />
+        <Pressable accessibilityRole="button" accessibilityLabel="Search memories" accessibilityHint="Opens matching saved memories" onPress={() => router.push({ pathname: "/answers", params: { q: quick } })} style={{ width: 66, height: 48, borderRadius: 14, backgroundColor: colors.ink, alignItems: "center", justifyContent: "center" }}>
+          <Copy style={{ color: colors.paper, fontSize: 16, fontWeight: "700", letterSpacing: 1, includeFontPadding: false }}>GO</Copy>
+        </Pressable>
       </View>
-      <View
-        style={[
-          s.panel,
-          {
-            backgroundColor: colors.accent,
-            borderColor: colors.accent,
-            paddingVertical: 24,
-          },
-        ]}
-      >
-        <Copy kind="small" style={{ fontWeight: "700", letterSpacing: 1 }}>
-          SOMETHING TO REMEMBER?
-        </Copy>
-        <Copy kind="answer">Save it while it is fresh.</Copy>
+      <Button primary label="+ Save a memory" onPress={() => router.push("/add")} />
+      <View style={[s.panel, { backgroundColor: colors.accent, borderColor: colors.accent, paddingVertical: 12, gap: 4 }]}>
+        <Copy style={{ fontWeight: "700", fontSize: 19 }}>Save it while it is fresh.</Copy>
         <Copy>Keep a quick household fact now, and find it later.</Copy>
-        <Button
-          label={data.cards.length ? "Save a memory" : "Save your first answer"}
-          onPress={() => router.push("/add")}
-        />
       </View>
       {data.cards.length === 0 ? (
         <View style={s.panel}>
@@ -1139,7 +1129,8 @@ export function Home() {
     </Page>
   );
 }
-export function FindHome() {
+export function FindHome() { return engEnabled ? <EngFind /> : <LegacyFindHome />; }
+function LegacyFindHome() {
   const params = useLocalSearchParams<{ mode?: string; q?: string }>();
   const { data } = useData();
   const { s, colors } = useTheme();
@@ -1157,10 +1148,10 @@ export function FindHome() {
   );
   return (
     <Page
-      title="What are you looking for?"
+      title="Find a Memory"
       subtitle="Search a fact, a place, or something you want to remember."
     >
-      <Field label="Search answers" value={query} onChangeText={setQuery} />
+      <Field label="Search your memories" value={query} onChangeText={setQuery} />
       <View style={s.row}>
         <Button
           label="All"
@@ -1249,3 +1240,4 @@ export function FindHome() {
     </Page>
   );
 }
+

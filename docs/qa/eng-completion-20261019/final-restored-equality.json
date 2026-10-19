@@ -1,0 +1,15 @@
+{
+  "data": "EXACT",
+  "draft": "EXACT",
+  "attempts": "EXACT",
+  "saved": 3,
+  "lifecycles": [
+    "active",
+    "recently_deleted",
+    "archived"
+  ],
+  "draftPhotos": 5,
+  "allPhotoFrames": "SHA-256 verified",
+  "revisionDifference": "expected after restore/checkpoint",
+  "result": "PASS"
+}
