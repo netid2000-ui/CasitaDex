@@ -1,1 +1,1 @@
-export { Home as default } from "../screens";
+export { EngHome as default } from "../eng-screens";

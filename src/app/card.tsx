@@ -1,1 +1,1 @@
-export { Detail as default } from "../screens";
+export { EngDetail as default } from "../eng-screens";

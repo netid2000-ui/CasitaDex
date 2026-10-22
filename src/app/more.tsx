@@ -1,1 +1,1 @@
-export { More as default } from "../screens";
+export { EngMore as default } from "../eng-screens";
