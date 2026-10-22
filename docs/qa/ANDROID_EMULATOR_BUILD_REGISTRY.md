@@ -36,3 +36,14 @@ Build commit 44cf17b in an isolated, clean staging checkout, produce a signed/ve
 - LT1 emulator-5580 also has staging; preserve all existing QA packages/data.
 - Current newest by dev-app install time remains MB70M1T emulator-5554 (2026-10-21 20:05:26), but no device is yet certified newest by source provenance.
 - Build responsibility: LT1 WSL2; run newest verified APK on MB70M1T. No installs performed during inspection.
+
+## 2026-10-22 verified LT1 WSL2 emulator build and install
+- Source: primary Git archive e4c1d6f1b7206dbe755df5473ece613b81b2b78f; archive SHA256 572175F30847EB1C470930E29D95D47197B7B47C6C7111D3A3C994547C749D9A matched LT1 copy.
+- Build: LT1 Ubuntu-24.04 WSL2; Gradle assembleRelease x86_64 BUILD SUCCESSFUL; APK lib/x86_64/libreactnative.so verified.
+- Corrected APK SHA256 0345CF54E5F8FF80C3F2956C396D256FB4263C065F23E94E3071D2A099568EBF; size 45066567 bytes.
+- Destination: DESKTOP-MB70M1T F:\Designs-by-FA\QA\CasitaDex\casitadex-e4c1d6f-x86_64.apk; transfer hash matched.
+- Target: DESKTOP-MB70M1T emulator-5554, staging package com.designsbyfa.casitadex.staging version 0.1.0 code 1, installed 2026-10-22 13:28:57 local.
+- Android adb install -r Success; explicit MainActivity launch; staging process PID 14714 and topResumedActivity staging after delay; no FATAL EXCEPTION in last 300 logcat lines.
+- Existing com.designsbyfa.casitadex.dev package preserved; no QA data cleared.
+- Initial arm64-only staging APK crashed on x86_64 emulator due to missing libreactnative.so; superseded by corrected APK.
+- Visual Figma parity, navigation, reminder draft protection and functional acceptance still PENDING; launch smoke test PASS only.
