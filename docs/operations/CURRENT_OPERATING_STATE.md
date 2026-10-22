@@ -4,7 +4,7 @@ Approved 2026-10-22. MANDATORY read-before-act authority.
 
 ## Binding machine assignments
 - DESKTOP-FP0BMH2: authoritative Git repository C:\CasitaDex-Git. NO Android compilation.
-- LT1: Android APK build machine. Preserve existing emulator QA data.
+- LT1: Android APK build machine, using Ubuntu-24.04 on WSL2 (Linux Node/npm/Java/Android SDK). Preserve existing emulator QA data. Windows PATH checks do not establish WSL toolchain readiness.
 - DESKTOP-MB70M1T: newest-build Android visual QA, emulator-5554.
 - Samsung physical Android: install only with explicit approval.
 - Emulator serial numbers are unique only within each host.
@@ -12,7 +12,7 @@ Approved 2026-10-22. MANDATORY read-before-act authority.
 ## Current approved work
 - Figma Warm Editorial A.2 is the design authority for iOS and Android.
 - Dedicated Memories, Photos, Reminders; clean Home with three creation actions.
-- Build a verified staging APK on LT1 and install on MB70M1T without clearing data.
+- Build a verified staging APK in LT1 WSL2 from the current source commit and install on MB70M1T without clearing data. Existing LT1 SB-26 APK is not verified as current source.
 - Verify Figma parity, buttons, navigation and Reminder unsaved-draft guard.
 - Latest source checkpoint at creation: 159095e; always re-read Git HEAD.
 - Primary C: was full after an incorrectly assigned build; no APK resulted.
