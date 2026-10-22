@@ -23,3 +23,35 @@ test('actual native staging composition rolls back consumer metadata through wri
   assert.ok(reads>0);
  }finally{hook.deregister();delete globalThis.__engComposition;}
 });
+
+test("saved draft photo bytes match source after store reinitialization",async()=>{
+ const x=setup();try{
+ const d={...newEngDraft(),checkpoint:1,title:"Byte integrity",answer:"Preserved"};
+ await x.store.checkpoint(d);
+ const saved=await x.store.addPhoto(d.id,png);
+ const entry=saved.draft.photos[0];
+ assert.deepEqual(x.files.get(entry.path),png);
+ assert.equal(await hash(x.files.get(entry.path)),entry.sha256);
+ const reopened=createEngStore(x.db,x.port,async()=>{throw Error("Unexpected migration")});
+ const after=await reopened.load();
+ assert.equal(after.draft.photos[0].sha256,entry.sha256);
+ assert.deepEqual(x.files.get(after.draft.photos[0].path),png);
+ assert.ok((await reopened.audit()).some(item=>item.entry.id===entry.id&&item.verdict==="verified"));
+ }finally{x.close();}
+});
+
+test("photo attachment rejects one-byte-below required storage before journal or file mutation",async()=>{
+ const x=setup();try{
+  const draft={...newEngDraft(),checkpoint:1,title:"Low storage boundary",answer:"Keep"};
+  await x.store.checkpoint(draft);
+  const before=await x.store.load();
+  const priorFiles=[...x.files.entries()];
+  let required=0;
+  x.port.capacity=async bytes=>{required=bytes; if(bytes>png.length*2+2_000_000-1)throw Error("Insufficient storage at threshold")};
+  await assert.rejects(x.store.addPhoto(draft.id,png),/Insufficient storage at threshold/);
+  assert.equal(required,png.length*2+2_000_000);
+  assert.deepEqual(await x.store.load(),before);
+  assert.deepEqual([...x.files.entries()],priorFiles);
+  assert.equal(x.raw.prepare("SELECT COUNT(*) AS n FROM eng_media_ops_v2").get().n,0);
+ }finally{x.close()}
+});

@@ -5,6 +5,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Alert, Image, Platform, Pressable, Share, TextInput, View } from "react-native";
 import { router, useLocalSearchParams } from "expo-router";
 import { Button, Copy, Field, Page, useTheme } from "./ui";
+import { BrandHeader, BrandLogo, BrandArt, HomeArtwork } from "./brand";
 import { useData } from "./state";
 import { pickBackupFile, saveBackupFile } from "./backup-files";
 import {
@@ -60,7 +61,7 @@ function Tile({ card, compact = false }: { card: Card; compact?: boolean }) {
         <Copy style={{ fontWeight: "700", fontSize: 16 }}>{card.title}</Copy>
         <Copy kind="small" style={{ color: colors.muted }} numberOfLines={2}>{card.answer}</Copy>
         {!compact && !!card.location && <Copy kind="small" style={{ color: colors.muted }} numberOfLines={1}>Location: {card.location}</Copy>}
-        {card.demo && <Copy kind="small" style={{ color: colors.muted }}>Example â€” not your home</Copy>}
+        {card.demo && <Copy kind="small" style={{ color: colors.muted }}>Example Ã¢â‚¬â€ not your home</Copy>}
       </View>
       <Copy style={{ fontSize: 23, color: colors.muted }}>{"\u203A"}</Copy>
     </Pressable>
@@ -306,7 +307,7 @@ function LegacyAdd() {
       title="Add a Memory"
       subtitle="Save a quick detail now, so you can find it later."
     >
-      <Image source={require("../assets/house-trees-header.png")} resizeMode="contain" accessibilityLabel="House and trees" style={{ width: 120, height: 102, alignSelf: "flex-end" }} />
+
       <Field
         label="What do you want to remember?"
         value={title}
@@ -684,7 +685,7 @@ function LegacyMore() {
   }
   return (
     <Page title="More" subtitle="Your answers stay on this device.">
-      <Image source={require("../assets/house-landscape.png")} resizeMode="cover" accessibilityLabel="Cottage and garden landscape" style={{ width: 145, height: 120, alignSelf: "center" }} />
+      <BrandLogo width={160} />
       <View style={s.panel}>
         <Copy accessibilityRole="header" kind="answer">
           Reading comfort
@@ -717,6 +718,7 @@ function LegacyMore() {
         <Copy accessibilityRole="header" kind="answer">
           Backup & recovery
         </Copy>
+        <BrandArt name="backup" size={104} />
         <Copy>
           A backup includes every space, card, location, note, confidence, due
           date and history entry. Text-only backups exclude attached images. Use
@@ -1075,9 +1077,9 @@ function LegacyHome() {
     <Page
       title=""
       hideHeading
-      
+
     >
-      <Image source={require("../assets/casitadex-branded-banner.png")} resizeMode="contain" accessibilityLabel="CasitaDex. Your home, remembered. A little less to remember." style={{ width: "100%", height: 242, marginTop: -5 }} />
+      <BrandHeader />
       <View style={{ flexDirection: "row", alignItems: "center", gap: 8, backgroundColor: colors.white, borderColor: colors.line, borderWidth: 1, borderRadius: 18, padding: 6 }}>
         <TextInput accessibilityLabel="Search your memories" placeholder="Search your memories..." placeholderTextColor={colors.muted} value={quick} onChangeText={setQuick} returnKeyType="search" onSubmitEditing={() => router.push({ pathname: "/answers", params: { q: quick } })} style={{ flex: 1, minWidth: 0, height: 48, color: colors.ink, paddingHorizontal: 12, fontSize: 16 }} />
         <Pressable accessibilityRole="button" accessibilityLabel="Search memories" accessibilityHint="Opens matching saved memories" onPress={() => router.push({ pathname: "/answers", params: { q: quick } })} style={{ width: 66, height: 48, borderRadius: 14, backgroundColor: colors.ink, alignItems: "center", justifyContent: "center" }}>
@@ -1123,6 +1125,7 @@ function LegacyHome() {
           />
         </>
       )}
+      <HomeArtwork />
       <Copy kind="small" style={{ color: colors.muted }}>
         Saved on this device. No account or automatic cloud backup.
       </Copy>
@@ -1221,6 +1224,7 @@ function LegacyFindHome() {
         cards.map((c) => <Tile key={c.id} card={c} compact={mode === "Buy"} />)
       ) : (
         <View style={s.panel}>
+          <BrandArt name="find" size={120} />
           <Copy>
             No matching answers. Try another phrase or save what you want to
             remember.
@@ -1240,4 +1244,3 @@ function LegacyFindHome() {
     </Page>
   );
 }
-

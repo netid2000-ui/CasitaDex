@@ -1,10 +1,13 @@
+import type { RepeatSchedule } from "./reminder-recurrence";
+import DateTimePicker, { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
 import React, { useCallback, useEffect, useRef, useState, useMemo } from "react";
-import { Alert, AppState, BackHandler, Image, Modal, Pressable, ScrollView, Share, TextInput, View, useWindowDimensions } from "react-native";
+import { Platform, Alert, AppState, BackHandler, Image, Modal, Pressable, ScrollView, Share, View, useWindowDimensions } from "react-native";
 import { router, useFocusEffect, useLocalSearchParams } from "expo-router";
 import { Button, Copy, Field, Page, useTheme } from "./ui";
 import { useData } from "./state";
 import { getEngStore, getEngStorage, chooseEngPhoto, engPhotoUri, writeEngBackup, pickEngBackup, shareEngPhotos, writeEngText, type EngStore, type EngBackup } from "./eng-runtime";
 import { newEngDraft } from "./eng-store";
+import { listStandaloneReminders,saveStandaloneReminder,completeStandaloneReminder,deleteStandaloneReminder,type StandaloneReminder } from "./standalone-reminders";
 import type { EngDraft, EngSnapshot } from "./eng-types";
 import type { MemoryV2 } from "./sb20-contract";
 import { localDay, eventText, sharePreview, type ShareField } from "./eng-domain";
@@ -12,7 +15,9 @@ import { defaultFilter, findMemories, searchIndex, homeMemories, type FindFilter
 import { textBackupPreview, createTextBackup } from "./eng-text-backup";
 import { duplicateCandidates } from "./eng-duplicates";
 import { registerEditGuard } from "./eng-navigation";
-import { NavigationIcon } from "./navigation-icon";
+import { BrandHeader, BrandLogo, BrandArt } from "./brand";
+import { HomeAction } from "./home-action";
+import { EditorialIntro } from "./editorial-intro";
 import { confidences } from "./model";
 const day=localDay;
 function message(e:unknown){const text=e instanceof Error?e.message:"Operation failed. Your last confirmed save is kept.";return text.startsWith("SB20 compatibility:")?"Check the name, answer or photo, source and dates before saving. Your last confirmed save is kept.":text;}
@@ -39,7 +44,7 @@ function MemoryLink({memory,data}:{memory:MemoryV2;data?:EngSnapshot["data"]}){
   return <Pressable accessibilityRole="button" accessibilityLabel={`Open ${memory.title}: ${memory.answer||"Photo memory"}`}
     onPress={()=>router.push({pathname:"/card",params:{id:memory.id}})} style={s.panel}>
     {data?<><Copy kind="answer">{memory.answer||"Photo memory"}</Copy><Copy style={{fontWeight:"700"}}>{memory.title}</Copy>{!memory.answer&&data.media.media.find(p=>p.cardId===memory.id)?<Image source={{uri:engPhotoUri(data.media.media.find(p=>p.cardId===memory.id)!.path)}} accessibilityLabel={`Photo for ${memory.title}`} resizeMode="contain" style={{width:"100%",height:160}} />:null}<Copy kind="small">{data.spaces.find(x=>x.id===memory.spaceId)?.name??"Unassigned"}{memory.categoryIds.length?" · "+memory.categoryIds.map(id=>data.categories.find(x=>x.id===id)?.name).join(", "):""} · {memory.confidence}</Copy></>:<><Copy style={{fontWeight:"700"}}>{memory.title}</Copy><Copy>{memory.answer||"Photo memory"}</Copy></>}
-    
+
   </Pressable>;
 }
 function PhotoViewer({path,label,onClose}:{path:string;label:string;onClose:()=>void}){
@@ -62,25 +67,129 @@ function PhotoViewer({path,label,onClose}:{path:string;label:string;onClose:()=>
 }
 let findCache={query:"",filter:defaultFilter(),page:0,y:0,expanded:false};
 export function EngHome(){
- const e=useEng(),{colors}=useTheme(),preferences=useData(),[quick,setQuick]=useState("");
+ const e=useEng(),{s}=useTheme(),[confirmDelete,setConfirmDelete]=useState(false);
  const home=e.snapshot?homeMemories(e.snapshot.data,day()):null;
- function open(query="",reminder="all"){findCache={query,filter:{...defaultFilter(),reminder},page:0,y:0,expanded:false};router.push("/answers");}
+ const [homeReminders,setHomeReminders]=useState<StandaloneReminder[]>([]);
+ useFocusEffect(useCallback(()=>{let active=true;void listStandaloneReminders().then(items=>{if(active)setHomeReminders(items.filter(r=>!r.completed).sort((a,b)=>(a.dueDate+a.dueTime).localeCompare(b.dueDate+b.dueTime)).slice(0,3));}).catch(()=>{if(active)setHomeReminders([]);});return()=>{active=false;};},[]));
+ const draft=e.snapshot?.draft;
+
+ function commands(items:{label:string;action:()=>void;disabled?:boolean}[]){return <View style={{flexDirection:"row",gap:10}}>{items.map(item=><View key={item.label} style={{flex:1}}><Button label={item.label} disabled={item.disabled||e.busy} onPress={item.action} /></View>)}</View>;}
  return <Page independent title="" hideHeading>
- <View style={{flexDirection:"row",alignItems:"center",justifyContent:"space-between",gap:16}}>
-   <View style={{flex:1,gap:4}}><Copy kind="title" accessibilityRole="header">CasitaDex</Copy><Copy kind="small" style={{color:colors.muted}}>Your home, remembered.</Copy></View>
-   <View accessible={false} style={{width:48,height:48,borderRadius:16,alignItems:"center",justifyContent:"center",backgroundColor:colors.accent}}><NavigationIcon name="Home" color={colors.ink} /></View>
- </View>
- <Copy style={{color:colors.muted}}>A little less to remember.</Copy>
- <Copy>Search your memories</Copy><View style={{flexDirection:"row",alignItems:"center",gap:8,borderRadius:32,borderWidth:1,borderColor:colors.muted,backgroundColor:colors.white,padding:8}}><TextInput accessibilityLabel="Search your memories" placeholder="Find an answer" placeholderTextColor={colors.muted} value={quick} onChangeText={setQuick} onSubmitEditing={()=>open(quick)} returnKeyType="search" style={{flex:1,minHeight:52,fontSize:preferences.large?34:17,color:colors.ink,paddingHorizontal:12}} /><Button primary label="GO" onPress={()=>open(quick)} /></View>
- <Copy kind="small">{home?.active??0} saved {(home?.active??0)===1?"memory":"memories"} · On this device</Copy><Button primary label="Save a memory" onPress={()=>router.push("/add")} />
- {e.snapshot?.draft?<Button label="Continue unfinished memory" onPress={()=>router.push("/add")} />:null}
- <Copy kind="section" accessibilityRole="header" style={{fontWeight:"700"}}>Recently remembered</Copy>{home?.recent.map(m=><MemoryLink key={m.id} memory={m} />)}
- <Button variant="quiet" label="See all memories" onPress={()=>open()} />
- {home?.due.length?<><Copy kind="section" accessibilityRole="header" style={{fontWeight:"700"}}>Reminders</Copy>{home.due.map(m=><View key={m.id}><MemoryLink memory={m} /><Copy>Due {m.due}</Copy></View>)}<Button variant="quiet" label="See all due reminders" onPress={()=>open("","due")} /></>:null}
- <Status text={e.status} />{!e.snapshot?<Button label="Retry loading full collection" onPress={()=>void e.refresh()} />:null}
+ <BrandHeader />
+ <EditorialIntro eyebrow="Your personal reference" title="The details that matter." description="A calmer place to keep useful things." />
+ {draft?<View style={s.panel}>
+   <Copy kind="answer">Unfinished Memory (Draft)</Copy>
+   <Copy style={{fontWeight:"700"}}>{draft.title.trim()||"Untitled memory"}</Copy>
+   <Copy kind="small">{draft.photos.length} attached photos. Your unfinished information is saved on this device.</Copy>
+   {commands([{label:"Resume Draft",action:()=>router.push("/add")},{label:"Delete Draft",action:()=>setConfirmDelete(true)}])}
+   {confirmDelete?<View style={{gap:8}}>
+     <Copy>Delete this unfinished memory, its text and {draft.photos.length} draft photos? Saved memories and their photos will not be deleted.</Copy>
+     {commands([{label:"Cancel",action:()=>setConfirmDelete(false)},{label:"Delete Draft and Photos",action:()=>void e.run(async store=>{await store.discard(draft.id,draft.checkpoint);setConfirmDelete(false);},"Draft deleted. Saved memories were kept.")}])}
+   </View>:null}
+ </View>:null}
+ <View style={{gap:12}}>
+ <HomeAction primary title="Add Memory" detail="Capture a useful detail" icon="Memories" disabled={!!draft||!e.snapshot} onPress={()=>router.push("/add")} />
+ <HomeAction title="Add Photo Memory" detail="Start with an image" icon="Photos" disabled={!!draft||!e.snapshot} onPress={()=>router.push("/add?mode=photo")} />
+ <HomeAction title="Add Reminder" detail="Remember the next step" icon="Reminders" onPress={()=>router.push("/reminders?mode=new")} />
+ </View> {(homeReminders.length>0||!!home?.due.length)?<Copy kind="section" accessibilityRole="header">Upcoming reminders</Copy>:null}
+ {homeReminders.length||home?.due.length?<>{homeReminders.map(r=><View key={r.id} style={s.panel}><Copy style={{fontWeight:"700"}}>{r.title}</Copy><Copy kind="small">{r.dueDate} at {r.dueTime}</Copy></View>)}{home?.due.slice(0,Math.max(0,3-homeReminders.length)).map(m=><MemoryLink key={m.id} memory={m} />)}<Button label="View all reminders" onPress={()=>router.push("/reminders")} /></>:null}
+ <Status text={e.status} />
  </Page>;
 }
-export function EngFind(){
+export function EngPhotos(){
+ const e=useEng(),{s}=useTheme(),[selected,setSelected]=useState<string|null>(null),[preview,setPreview]=useState<{path:string;label:string}|null>(null);
+ const memories=e.snapshot?.data.memories.filter(m=>m.mediaIds.length>0&&m.lifecycle!=="recently_deleted")??[];
+ const m=memories.find(x=>x.id===selected);
+ return <Page independent title="Photos" hideHeading>
+ <BrandHeader /><EditorialIntro eyebrow="Visual memories" title="Photos with a purpose." description="Every photo stays linked to its memory." />
+ <Copy>Select a saved memory to review, add, replace, or remove its photos. Existing photos are preserved until you confirm a change.</Copy>
+ {preview?<PhotoViewer path={preview.path} label={preview.label} onClose={()=>setPreview(null)} />:null}
+ {!m?<>{memories.length===0?<Copy>No saved memories with photos yet.</Copy>:<View style={{ flexDirection:"row",flexWrap:"wrap",gap:12,justifyContent:"space-between" }}>{memories.map(x=>{
+ const first=e.snapshot?.data.media.media.find(p=>p.cardId===x.id);
+ return <Pressable key={x.id} accessibilityRole="button" accessibilityLabel={`Open ${x.title} photo memory`}
+ onPress={()=>setSelected(x.id)} style={{width:"47%",minWidth:135,flexGrow:1,backgroundColor:s.panel.backgroundColor,borderWidth:1,borderColor:"#B9C4B9",borderRadius:17,padding:9,gap:9,minHeight:180}}>
+  {first?<Image source={{uri:engPhotoUri(first.path)}} resizeMode="cover" accessibilityLabel={`Photo for ${x.title}`} style={{width:"100%",height:130,borderRadius:12,backgroundColor:"#E4EBE4"}}/>:<View style={{width:"100%",height:130,borderRadius:12,backgroundColor:"#E4EBE4",alignItems:"center",justifyContent:"center"}}><Copy>Photo</Copy></View>}
+  <Copy style={{fontWeight:"700",fontSize:15}}>{x.title}</Copy><Copy kind="small">{x.mediaIds.length} {x.mediaIds.length===1?"photo":"photos"}</Copy>
+ </Pressable>;
+ })}</View>}</>:<>
+ <Button label="Back to photo memories" onPress={()=>setSelected(null)} />
+ <Copy kind="section">{m.title}</Copy>
+ {e.snapshot?.data.media.media.filter(p=>p.cardId===m.id).map((p,i)=><View key={p.id} style={s.panel}>
+ <Image source={{uri:engPhotoUri(p.path)}} resizeMode="contain" accessibilityLabel={"Saved photo "+(i+1)} style={{width:"100%",height:220}} />
+ <Button label={"View photo "+(i+1)} onPress={()=>setPreview({path:p.path,label:"Photo "+(i+1)+" of "+m.title})} />
+ <Button label={"Replace photo "+(i+1)} disabled={e.busy} onPress={()=>void e.run(async store=>{const bytes=await chooseEngPhoto(false);if(bytes)await store.replaceMemoryPhoto(m.id,p.id,bytes);},"Photo replacement saved. Previous snapshot retained.")} />
+ <Button label={"Remove photo "+(i+1)} disabled={e.busy} onPress={()=>Alert.alert("Remove saved photo?","Remove this photo from the memory? Previous full save remains recoverable.",[{text:"Cancel",style:"cancel"},{text:"Remove photo",style:"destructive",onPress:()=>void e.run(store=>store.removeMemoryPhoto(m.id,p.id))}])} />
+ </View>)}
+ <Button label="Add Photo" disabled={e.busy||m.mediaIds.length>=5} onPress={()=>void e.run(async store=>{const bytes=await chooseEngPhoto(false);if(bytes)await store.addMemoryPhoto(m.id,bytes);},"Photo added to saved memory.")} />
+ </>}
+ <Status text={e.status} />
+ </Page>;
+}
+export function EngReminders(){
+ const {s}=useTheme(),params=useLocalSearchParams<{mode?:string}>();
+ const [items,setItems]=useState<StandaloneReminder[]>([]),[expandedReminder,setExpandedReminder]=useState<string|null>(null),[editing,setEditing]=useState<string|null>(params.mode==="new"?"new":null);
+ const [title,setTitle]=useState(""),[notes,setNotes]=useState(""),[dueDate,setDueDate]=useState(day()),[dueTime,setDueTime]=useState("09:00"),[repeat,setRepeat]=useState<RepeatSchedule>("once"),[iosPicker,setIosPicker]=useState<"date"|"time"|null>(null),[status,setStatus]=useState(""),[busy,setBusy]=useState(false);
+ const refresh=useCallback(async()=>{try{setItems(await listStandaloneReminders());}catch(e){setStatus(message(e));}},[]);
+ useFocusEffect(useCallback(()=>{void refresh();},[refresh]));
+ function choosePicker(mode:"date"|"time"){
+  const parts=dueDate.split("-").map(Number),clock=dueTime.split(":").map(Number);
+  const current=new Date(parts[0],parts[1]-1,parts[2],clock[0],clock[1]);
+  if(Platform.OS==="android"){
+   DateTimePickerAndroid.open({value:current,mode,is24Hour:false,onChange:(event,selected)=>{
+    if(event.type!=="set"||!selected)return;
+    if(mode==="date")setDueDate([selected.getFullYear(),String(selected.getMonth()+1).padStart(2,"0"),String(selected.getDate()).padStart(2,"0")].join("-"));
+    else setDueTime([String(selected.getHours()).padStart(2,"0"),String(selected.getMinutes()).padStart(2,"0")].join(":"));
+   }});
+  }else setIosPicker(mode);
+ }
+ const reminderDirty=editing!==null&&(title.trim().length>0||notes.trim().length>0||dueDate!==day()||dueTime!=="09:00"||repeat!=="once");
+  const leaveReminder=useCallback(()=>{if(!reminderDirty){setEditing(null);return;}Alert.alert("Discard reminder changes?","Your unsaved reminder changes will be lost.",[{text:"Keep editing",style:"cancel"},{text:"Discard changes",style:"destructive",onPress:()=>setEditing(null)}]);},[reminderDirty]);
+  useEffect(()=>{if(editing===null)return;const h=BackHandler.addEventListener("hardwareBackPress",()=>{leaveReminder();return true;});return()=>h.remove();},[editing,leaveReminder]);
+  function edit(r?:StandaloneReminder){setEditing(r?.id??"new");setTitle(r?.title??"");setNotes(r?.notes??"");setDueDate(r?.dueDate??day());setDueTime(r?.dueTime??"09:00");setRepeat(r?.repeat??"once");setStatus("");}
+ async function act(task:()=>Promise<void>,success:string){if(busy)return;setBusy(true);try{await task();await refresh();setEditing(null);setStatus(success);}catch(e){setStatus(message(e));}finally{setBusy(false);}}
+ return <Page independent title="Reminders" hideHeading><BrandHeader /><EditorialIntro eyebrow="A little help remembering" title="What needs attention." description="The right details, at the right time." />
+ <Copy>Standalone reminders are saved locally. Repeat schedules are saved locally. Phone notifications are not yet available.</Copy>
+ {editing!==null?<View style={s.panel}>
+  <Copy kind="section">{editing==="new"?"New reminder":"Edit reminder"}</Copy>
+  <Field label="Reminder title" value={title} onChangeText={setTitle} maxLength={200}/>
+  <Field label="Notes (optional)" value={notes} onChangeText={setNotes} multiline maxLength={4000}/>
+  <Copy>Due: {dueDate} at {dueTime}</Copy><Button label="Select Date" onPress={()=>choosePicker("date")}/><Button label="Select Time" onPress={()=>choosePicker("time")}/>{iosPicker?<DateTimePicker value={new Date(dueDate+"T"+dueTime+":00")} mode={iosPicker} onChange={(_,selected)=>{if(!selected)return;if(iosPicker==="date")setDueDate([selected.getFullYear(),String(selected.getMonth()+1).padStart(2,"0"),String(selected.getDate()).padStart(2,"0")].join("-"));else setDueTime([String(selected.getHours()).padStart(2,"0"),String(selected.getMinutes()).padStart(2,"0")].join(":"));}}/>:null}{iosPicker?<Button label="Done Selecting" onPress={()=>setIosPicker(null)}/>:null}
+  <Copy>Repeat: {repeat}</Copy>{(["once","daily","weekly","monthly","yearly"] as RepeatSchedule[]).map(option=><Button key={option} label={option==="once"?"Once":option[0].toUpperCase()+option.slice(1)} selected={repeat===option} onPress={()=>setRepeat(option)}/>)}<Button label="Save Reminder" disabled={busy||!title.trim()} onPress={()=>void act(()=>saveStandaloneReminder({id:editing==="new"?undefined:editing,title,notes,dueDate,dueTime,repeat}),"Reminder saved on this device.")}/>
+  <Button label="Cancel" onPress={leaveReminder}/>
+ </View>:<Button primary label="Create Reminder" onPress={()=>edit()}/>}
+ {items.map(r=><View key={r.id} style={s.panel}>
+  <Copy style={{fontWeight:"700"}}>{r.title}</Copy><Copy>{r.dueDate} at {r.dueTime} · {r.repeat}{r.completed?" · Completed":""}</Copy>
+  {r.notes?<Copy kind="small">{r.notes}</Copy>:null}
+  <Button variant="quiet" label={expandedReminder===r.id?"Close actions":"Manage reminder"} onPress={()=>setExpandedReminder(old=>old===r.id?null:r.id)}/>
+  {expandedReminder===r.id?<>  <Button label="Edit" disabled={busy} onPress={()=>edit(r)}/>
+  <Button label={r.completed?"Mark Incomplete":"Mark Complete"} disabled={busy} onPress={()=>void act(()=>completeStandaloneReminder(r.id,!r.completed),"Reminder updated.")}/>
+  <Button label="Delete Reminder" disabled={busy} onPress={()=>Alert.alert("Delete reminder?","This standalone reminder will be permanently deleted. Saved memories are not affected.",[{text:"Cancel",style:"cancel"},{text:"Delete",style:"destructive",onPress:()=>void act(()=>deleteStandaloneReminder(r.id),"Reminder deleted.")}])}/> </>:null}
+ </View>)}
+ <Status text={status}/></Page>;
+}
+export function EngMemories(){
+ const e=useEng();
+ const [category,setCategory]=useState<string>("all"),[limit,setLimit]=useState(50);
+ const data=e.snapshot?.data;
+ const memories=(data?.memories??[]).filter(m=>m.lifecycle==="active"&&(category==="all"||m.categoryIds.includes(category))).sort((a,b)=>(b.updatedAt??b.createdAt??"").localeCompare(a.updatedAt??a.createdAt??""));
+ return <Page independent hideHeading title="Memories">
+  <BrandHeader />
+  <EditorialIntro eyebrow="Everything you have saved" title="Your memories." description="Browse and care for saved information." />
+  <Copy>Browse and manage what you have saved on this device.</Copy>
+  <Button label="Add Memory" onPress={()=>router.push("/add")} />
+  <Button variant="quiet" label="Add 90 fictional QA sample memories" disabled={e.busy} onPress={()=>Alert.alert("Add 90 sample memories?","Adds clearly labeled fictional household records and 15 categories on this Development device. Existing memories, draft, and photos are preserved. This action is idempotent; sample records are not real facts.",[{text:"Cancel",style:"cancel"},{text:"Add samples",onPress:()=>void e.run(store=>store.seedSyntheticQa(),"90 fictional sample memories added. Existing draft preserved.")}])} />
+  <Copy kind="section">Browse by category</Copy>
+  <ScrollView horizontal showsHorizontalScrollIndicator contentContainerStyle={{flexDirection:"row",gap:8,paddingBottom:4}}>
+   <Button compact label="All categories" selected={category==="all"} onPress={()=>{setCategory("all");setLimit(50);}} />
+   {data?.categories.map(c=><Button compact key={c.id} label={c.name} selected={category===c.id} onPress={()=>{setCategory(c.id);setLimit(50);}} />)}
+  </ScrollView>
+  {memories.length===0?<Copy>No saved memories in this category yet.</Copy>:memories.slice(0,limit).map(m=><MemoryLink key={m.id} memory={m} data={data!} />)}
+  {memories.length>limit?<Button label={`Show more (${memories.length-limit} remaining)`} onPress={()=>setLimit(n=>n+50)} />:null}
+  <Button label="Find a specific answer" onPress={()=>router.push("/answers")} />
+  <Button label="Settings, backup and recovery" onPress={()=>router.push("/more")} />
+  <Status text={e.status} />
+ </Page>;
+}export function EngFind(){
  const e=useEng(),{s}=useTheme();const [query,setQuery]=useState(findCache.query),[f,setF]=useState<FindFilter>(findCache.filter),[page,setPage]=useState(findCache.page),[filters,setFilters]=useState(findCache.expanded),[selecting,setSelecting]=useState(false),[selected,setSelected]=useState<string[]>([]);
  const [returnScroll,setReturnScroll]=useState(()=>({key:0,y:findCache.y})),focused=useRef(false);
  useFocusEffect(useCallback(()=>{const y=findCache.y;focused.current=true;setReturnScroll(old=>({key:old.key+1,y}));return()=>{focused.current=false;};},[]));
@@ -91,7 +200,9 @@ export function EngFind(){
  function bulk(state:MemoryV2["lifecycle"]){const ids=[...selected],revision=e.snapshot!.revision;Alert.alert(`Change ${ids.length} selected memories?`,`Move to ${state==="active"?"Active":state==="archived"?"Archive":"Recently Deleted"}. Photos stay attached. Previous full save remains recoverable.`,[{text:"Cancel",style:"cancel"},{text:"Confirm",onPress:()=>void e.run(async store=>{await store.bulkLifecycle(ids,state,revision);setSelected([]);setSelecting(false);})}]);}
  const hasFilters=f.space!=="all"||f.categories.length>0||f.uncategorized||f.confidence!=="all"||f.reminder!=="all"||f.attachment!=="all";
  const currentPage=Math.min(page,Math.max(0,Math.ceil(records.length/50)-1));
- return <Page key={returnScroll.key} independent title="Find an answer" restoreScrollY={returnScroll.y} restoreReady={!!e.snapshot} onScrollY={y=>{if(focused.current)findCache.y=y;}}>
+ return <Page key={returnScroll.key} independent hideHeading title="Find an answer" restoreScrollY={returnScroll.y} restoreReady={!!e.snapshot} onScrollY={y=>{if(focused.current)findCache.y=y;}}>
+ <BrandHeader />
+ <EditorialIntro eyebrow="Your answers, ready" title="Find it in seconds." description="Search the details you have saved." />
  <Field label="Search your memories" value={query} onChangeText={q=>{setQuery(q);setPage(0);}} />
  <ScrollView horizontal showsHorizontalScrollIndicator contentContainerStyle={{flexDirection:"row",gap:8,paddingBottom:4}}>{(["active","archived","recently_deleted"] as const).map(value=><Button compact key={value} label={value==="active"?"Active":value==="archived"?"Archived":"Recently Deleted"} selected={f.lifecycle===value} onPress={()=>filter({lifecycle:value,reminder:"all"})} />)}</ScrollView>
  <View style={{gap:6}}><Copy kind="small" style={{fontWeight:"600"}}>Space</Copy><ScrollView horizontal showsHorizontalScrollIndicator contentContainerStyle={{flexDirection:"row",gap:8,paddingBottom:4}}><Button compact label="All spaces" selected={f.space==="all"} onPress={()=>filter({space:"all"})} /><Button compact label="Unassigned" selected={f.space===null} onPress={()=>filter({space:null})} />{e.snapshot?.data.spaces.map(x=><Button compact key={x.id} label={x.name} selected={f.space===x.id} onPress={()=>filter({space:x.id})} />)}</ScrollView></View>
@@ -105,14 +216,15 @@ export function EngFind(){
  {hasFilters?<Copy kind="small">{f.lifecycle==="active"?"Active memories":f.lifecycle==="archived"?"Archived memories":"Recently Deleted memories"} · Filters applied</Copy>:null}
  {hasFilters?<Button compact variant="quiet" label="Clear filters" onPress={()=>{setF({...defaultFilter(),lifecycle:f.lifecycle});setPage(0);}} />:null}
  <View style={[s.row,{alignItems:"center",justifyContent:"space-between"}]}><Copy kind="small">{records.length} {records.length===1?"memory":"memories"}</Copy><Button compact label={selecting?"Cancel selection":"Select memories"} onPress={()=>{setSelecting(!selecting);setSelected([]);}} /></View>{selecting?<><Copy>{selected.length} selected</Copy>{(["active","archived","recently_deleted"] as const).filter(state=>state!==f.lifecycle).map(state=><Button compact key={state} label={state==="active"?"Restore selected":state==="archived"?"Archive selected":"Delete selected"} disabled={e.busy||!selected.length} onPress={()=>bulk(state)} />)}</>:null}{records.slice(currentPage*50,(currentPage+1)*50).map(m=><View key={m.id}>{selecting?<Button compact label={`Select ${m.title}`} disabled={e.busy} selected={selected.includes(m.id)} onPress={()=>setSelected(old=>old.includes(m.id)?old.filter(id=>id!==m.id):[...old,m.id])} />:null}<MemoryLink memory={m} data={e.snapshot!.data} /></View>)}
- {!records.length?<Copy>No memories match. Try fewer words or clear filters.</Copy>:null}
+ {e.snapshot&&!records.length?<><BrandArt name="find" size={120} /><Copy>No memories match. Try fewer words or clear filters.</Copy></>:null}
  {records.length>50?<View style={s.row}><Copy>Page {currentPage+1} of {Math.ceil(records.length/50)}</Copy><Button compact label="Previous 50 results" disabled={!currentPage} onPress={()=>setPage(currentPage-1)} /><Button compact label="Next 50 results" disabled={(currentPage+1)*50>=records.length} onPress={()=>setPage(currentPage+1)} /></View>:null}
  {f.lifecycle==="recently_deleted"?<Copy>Deleted memories and photos remain recoverable. Restore them from their details.</Copy>:null}<Status text={e.status} />
  </Page>;
 }
 export function EngAdd(){
+  const params=useLocalSearchParams<{mode?:string}>();const photoFirst=params.mode==="photo";
   const e=useEng(),{s}=useTheme();const {setStatus}=e;const [form,setForm]=useState<EngDraft|null>(null),[mode,setMode]=useState<"loading"|"resume"|"edit">("loading");
-  const [duplicate,setDuplicate]=useState(false),[organize,setOrganize]=useState(false),[details,setDetails]=useState(false);
+  const [duplicate,setDuplicate]=useState(false),[organize,setOrganize]=useState(false),[details,setDetails]=useState(false),[managePhotos,setManagePhotos]=useState(false);
  const [zoomPhoto,setZoomPhoto]=useState<{path:string;label:string}|null>(null);
   const [newSpace,setNewSpace]=useState(""),[newCategory,setNewCategory]=useState(""),[discard,setDiscard]=useState(false);
   const current=useRef<EngDraft|null>(null),timer=useRef<ReturnType<typeof setTimeout>|null>(null),initialized=useRef(false),done=useRef(false),blocked=useRef(false);
@@ -163,22 +275,25 @@ export function EngAdd(){
     },true);
   }
   const disabled=e.busy||working;
-  return <Page independent title={mode==="resume"?"Continue your memory?":"Add a Memory"} subtitle="Save a quick detail now, so you can find it later.">
-    {mode==="loading"?<Copy>Reading your draft…</Copy>:null}
+  return <Page independent hideHeading title="Add a Memory">
+ <BrandHeader />
+    <Copy accessibilityRole="header" kind="title">{mode==="resume"?"Unfinished Memory":photoFirst?"Add Photo Memory":"Add Memory"}</Copy>
+     {mode==="loading"?<Copy>Reading your draft…</Copy>:null}
     {mode==="resume"?<><Copy kind="answer">{form?.title||"Unfinished memory"}</Copy>
-      <Copy>Your unfinished memory and photos are kept separately from saved answers.</Copy>
-      <Button primary label="Continue draft" disabled={disabled} onPress={()=>setMode("edit")} />
-      <Button label="Discard draft" disabled={disabled} onPress={()=>setDiscard(true)} />
+      <Copy>{form?.photos.length??0} saved photos. Your draft is safe on this device.</Copy>
+      <Button primary label="Continue Editing" disabled={disabled} onPress={()=>setMode("edit")} />
+      <Button variant="quiet" label="Draft options" disabled={disabled} onPress={()=>setDiscard(true)} />
     </>:null}
     {mode==="edit"?<>
+      {photoFirst?<><Copy kind="section">Start with a photo</Copy><Copy>Take a photo or choose one from your device, then add a title and optional details.</Copy><View style={s.row}><Button label="Take photo" disabled={disabled} onPress={()=>void photo(true)} /><Button label="Choose photo" disabled={disabled} onPress={()=>void photo(false)} /></View></>:null}
       <Field maxLength={200} label="What do you want to remember?" value={form?.title??""} onChangeText={title=>change({title})} />
       <Field maxLength={1000} label="The answer (or add a photo)" value={form?.answer??""} onChangeText={answer=>change({answer})} />
-      
+
       <Copy>Photos ({form?.photos.length??0}/5)</Copy>
-      {zoomPhoto?<PhotoViewer path={zoomPhoto.path} label={zoomPhoto.label} onClose={()=>setZoomPhoto(null)} />:null}{form?.photos.map((p,index)=><View key={p.id} style={s.panel}>
+      <Button label={managePhotos?"Hide saved photos":"View saved photos"} onPress={()=>setManagePhotos(!managePhotos)} />{managePhotos?<> {zoomPhoto?<PhotoViewer path={zoomPhoto.path} label={zoomPhoto.label} onClose={()=>setZoomPhoto(null)} />:null}{form?.photos.map((p,index)=><View key={p.id} style={s.panel}>
         <Image source={{uri:engPhotoUri(p.path)}} resizeMode="contain" accessibilityLabel={`Draft photo ${index+1}`} style={{width:"100%",height:260}} />
         <Button label={`Open draft photo ${index+1} to zoom`} onPress={()=>setZoomPhoto({path:p.path,label:`Draft photo ${index+1}`})} /><Button label={`Replace draft photo ${index+1}`} disabled={disabled} onPress={()=>void action(async store=>{const bytes=await chooseEngPhoto(false);if(!bytes){setStatus("Replacement canceled. Original photo kept.");return;}const next=await store.replacePhoto(form.id,p.id,bytes);update(next.draft!);setStatus("Draft photo replaced and verified.");})} /><Button label={`Remove draft photo ${index+1}`} disabled={disabled} onPress={()=>void action(async store=>{const next=await store.removePhoto(form.id,p.id);update(next.draft!);setStatus("Photo removed from draft. Previous save remains recoverable.");})} />
-      </View>)}
+      </View>)}</>:null}
       <Button label="Take photo" disabled={disabled||(form?.photos.length??0)>=5} onPress={()=>void photo(true)} />
       <Button label="Browse image files" disabled={disabled||(form?.photos.length??0)>=5} onPress={()=>void photo("files")} /><Button label="Choose photo" disabled={disabled||(form?.photos.length??0)>=5} onPress={()=>void photo(false)} />
       <Button label={organize?"Hide organization":"Organize (optional)"} onPress={()=>setOrganize(!organize)} />{organize?<><Copy>Space (optional)</Copy><View style={s.row}>
@@ -198,13 +313,13 @@ export function EngAdd(){
       {form?.categoryIds.map(id=><Button key={`rename-${id}`} label={`Rename ${e.snapshot?.data.categories.find(c=>c.id===id)?.name} using new Category name`} disabled={disabled} onPress={()=>void action(async store=>{const snapshot=await store.load();await store.renameTaxonomy("category",id,newCategory,snapshot.revision);setNewCategory("");setStatus("Category renamed. Draft kept.");})} />)}
       <Button label="Create Category" disabled={disabled} onPress={()=>void action(async store=>{await store.taxonomy("category",newCategory);setNewCategory("");setStatus("Category created. Select it to add it to your memory.");})} />
       </>:null}<Button label={details?"Hide more details":"More details (optional)"} onPress={()=>setDetails(!details)} />{details?<><Field maxLength={4000} label="Where it is (optional)" value={form?.location??""} onChangeText={location=>change({location})} /><Field maxLength={4000} label="Notes (optional)" multiline value={form?.notes??""} onChangeText={notes=>change({notes})} /><Field maxLength={200} label="Source (optional)" value={form?.source??""} onChangeText={source=>change({source})} /><Field maxLength={10} label="Reminder date (YYYY-MM-DD, optional)" value={form?.due??""} onChangeText={due=>change({due:due||undefined})} /></>:null}
-      <Copy>Starts as Unknown. Confirm against a source when ready. Keep passwords, door codes and alarm codes out of CasitaDex.</Copy>
+
       <Button primary label={working?"Saving…":"Save memory"} disabled={disabled} onPress={()=>void save()} />
-      {form?<Button label="Discard draft" disabled={disabled} onPress={()=>setDiscard(true)} />:null}
+      {form?<Button variant="quiet" label="Draft options" disabled={disabled} onPress={()=>setDiscard(true)} />:null}
     </>:null}
-    {duplicate?<View style={s.panel}><Copy>A similar memory or matching photo already exists. Your unfinished draft is kept.</Copy>{(form&&e.snapshot?duplicateCandidates(form,e.snapshot):[]).map(m=><View key={m.id}><Copy>Existing {m.lifecycle==="recently_deleted"?"Recently Deleted":m.lifecycle} memory</Copy><MemoryLink memory={m} /></View>)}
-      <Button label="Keep editing draft" onPress={()=>setDuplicate(false)} />
-      <Button label="Save anyway" disabled={disabled} onPress={()=>void save(true)} />
+    {duplicate?<View style={s.panel}><Copy>Possible duplicate. Your draft is safe. Review the existing memory or save anyway.</Copy>{(form&&e.snapshot?duplicateCandidates(form,e.snapshot):[]).map(m=><View key={m.id}><Copy>Existing {m.lifecycle==="recently_deleted"?"Recently Deleted":m.lifecycle} memory</Copy><MemoryLink memory={m} /></View>)}
+      <Button primary label="Return to editing" onPress={()=>setDuplicate(false)} />
+      <Button label="Save as separate memory" disabled={disabled} onPress={()=>void save(true)} />
     </View>:null}
     {discard?<View style={s.panel}><Copy>Discard this unfinished memory and its photos? Saved memories will stay as they are.</Copy>
       <Button label="Keep draft" disabled={disabled} onPress={()=>setDiscard(false)} />
@@ -294,10 +409,12 @@ function LabelManager({e}:{e:ReturnType<typeof useEng>}){
  {impact?<><Copy>Remove “{impact.name}” from {impact.memories} saved memories and {impact.draft?"the unfinished draft":"no draft"}? Memories and photos are kept. Removed Spaces become Unassigned.</Copy><Button label="Confirm remove label only" disabled={e.busy} onPress={()=>void e.run(async store=>{await store.removeTaxonomy(impact.kind,impact.id,impact.revision);setSelected("");setImpact(null);setName("");})} /><Button label="Cancel label removal" onPress={()=>setImpact(null)} /></>:null}</>:null}</View>;
 }
 export function EngMore(){
-  const e=useEng(),preferences=useData();const [incoming,setIncoming]=useState<EngBackup|null>(null),[conflict,setConflict]=useState<"keep"|"incoming"|null>(null),[confirmRecovery,setConfirmRecovery]=useState(false);const [restoreToken,setRestoreToken]=useState<string|null>(null);const [textReview,setTextReview]=useState<{snapshot:EngSnapshot;token:string}|null>(null);const [section,setSection]=useState<"storage"|"labels"|"backup"|"preferences"|"help"|null>(null);
+  const e=useEng(),preferences=useData();const [reminderRestoreToken,setReminderRestoreToken]=useState<string|null>(null),[incoming,setIncoming]=useState<EngBackup|null>(null),[conflict,setConflict]=useState<"keep"|"incoming"|null>(null),[confirmRecovery,setConfirmRecovery]=useState(false);const [restoreToken,setRestoreToken]=useState<string|null>(null);const [textReview,setTextReview]=useState<{snapshot:EngSnapshot;token:string}|null>(null);const [section,setSection]=useState<"storage"|"labels"|"backup"|"preferences"|"help"|null>(null);
   useEffect(()=>{if(!section)return;const h=BackHandler.addEventListener("hardwareBackPress",()=>{setSection(null);return true;});return()=>h.remove();},[section]);
-  return <Page key={section??"menu"} independent title="More">
-    {!section?<>
+  return <Page key={section??"menu"} independent hideHeading title="More">
+ <BrandHeader />
+    <Copy accessibilityRole="header" kind="title">More</Copy>
+     {!section?<>
     <Copy>Memories stay on this device. A local save is not a separate backup.</Copy>
     <Copy accessibilityRole="header">Memory management</Copy><Button label="Storage & Cleanup" onPress={()=>setSection("storage")} />
     <Button label="Archived memories" onPress={()=>{findCache={query:"",filter:{...defaultFilter(),lifecycle:"archived"},page:0,y:0,expanded:false};router.push("/answers");}} />
@@ -309,7 +426,7 @@ export function EngMore(){
     {section==="storage"?<><Copy accessibilityRole="header">Storage & Cleanup</Copy>    <Button label="Measure device storage" disabled={e.busy} onPress={()=>void e.run(async()=>{
       const storage=await getEngStorage();
       const free=Number.isFinite(storage.free)?`${storage.free} bytes`:"Unavailable";
-      e.setStatus(`Device usable storage: ${free}. Verified protected photo bytes: ${storage.protectedBytes}. Unreadable references: ${storage.unreadable}. Photo totals exclude database, cache and unindexed files. Archive and Recently Deleted reclaim no bytes. Calibrated warning thresholds are not enabled in this Development build.`);
+      e.setStatus(`App-available device storage: ${free}. Verified protected photo content: ${storage.protectedBytes} bytes. Referenced photo content: ${storage.referencedBytes} bytes. Unreadable files: ${storage.unreadable}. Photos kept for: ${Object.entries(storage.ownerCounts).map(([owner,count])=>({active:"Active",archived:"Archived",recently_deleted:"Recently Deleted",draft:"Draft",recovery:"Previous save","legacy-v1":"Earlier collection","legacy-recovery":"Earlier previous save",journal:"Retained photo operations"} as Record<string,string>)[owner]+" "+count).join(", ")}. Groups can overlap. Photo content sizes exclude database, cache, filesystem allocation and unindexed files. Archive and Recently Deleted reclaim no bytes. Automatic cleanup and permanent purge remain disabled. Space is checked before saving or restoring. Automatic low-space alerts are not enabled.`);
     },"")} />
     <Button label="Check photo integrity and protected owners" disabled={e.busy} onPress={()=>void e.run(async store=>{const result=await store.audit();const bad=result.filter(x=>x.verdict!=="verified");e.setStatus(`${result.length} protected photo references checked. ${bad.length} need attention.`+(bad.length?" "+bad.map(x=>x.owner+": "+x.verdict).join("; "):" No files removed."));},"")} />
 <Copy>Largest saved photos (recorded size; retained photos may overlap recovery references). Archive and Recently Deleted do not reclaim bytes.</Copy>
@@ -318,15 +435,15 @@ export function EngMore(){
     {e.snapshot?.draft?<Button label="Review unfinished draft and its photos" onPress={()=>router.push("/add")} />:null}<Copy>Permanent cleanup is unavailable in this Development build. Memories and photos remain recoverable.</Copy></>:null}
     {section==="labels"?<LabelManager e={e} />:null}
     {section==="backup"?<>
-    <Copy>Back up your memories</Copy><Copy>Full backups include active, archived and recently deleted memories, photos, categories, Spaces, and your unfinished draft. Full backups support all currently permitted collection and draft photos, up to 154 MB.</Copy>
+    <View style={{flexDirection:"row",alignItems:"center",gap:16}}><BrandArt name="backup" size={80} /><Copy accessibilityRole="header" kind="section" style={{flex:1}}>Back up your memories</Copy></View><Copy>Full v4 backups include standalone reminders. Before restoring, keep a second verified backup. Full v4 restore replaces current standalone reminders after explicit review and confirmation. Text backups still exclude standalone reminders. Full backups include active, archived and recently deleted memories, photos, categories, Spaces, and your unfinished draft. Full backups support all currently permitted collection and draft photos, up to 154 MB.</Copy>
     <Button primary label="Save full backup (with draft and photos)" disabled={e.busy} onPress={()=>void e.run(async store=>{const b=await store.backup();e.setStatus(await writeEngBackup(b));},"")} />
     <Button label="Review limited text backup (photos excluded)" disabled={e.busy} onPress={()=>void e.run(async store=>{const b=await store.backup();setTextReview({snapshot:b.snapshot,token:await store.restoreToken()});},"")} />
     {textReview?<View><Copy>PHOTOS EXCLUDED. Includes {textBackupPreview(textReview.snapshot).included} written-answer memories with lifecycle, labels, notes, source, history and reminders. Omits {textBackupPreview(textReview.snapshot).omitted.length} photo-only saved memories and all {textBackupPreview(textReview.snapshot).savedPhotos} saved / {textBackupPreview(textReview.snapshot).draftPhotos} draft photos. Draft text is retained; it may need a new photo before saving. Use a full backup for complete recovery.</Copy>{textBackupPreview(textReview.snapshot).omitted.map(m=><Copy key={m.id}>Excluded: {m.title} ({m.lifecycle})</Copy>)}<Button primary label="Confirm save limited text backup" disabled={e.busy} onPress={()=>void e.run(async store=>{if(await store.restoreToken()!==textReview.token)throw Error("Collection changed. Review the text backup again.");e.setStatus(await writeEngText(createTextBackup(textReview.snapshot),true));setTextReview(null);},"")} /><Button label="Cancel text backup" onPress={()=>setTextReview(null)} /></View>:null}
     <Copy>Text export is a readable report of all states and draft text. It includes private written metadata and history, excludes photo bytes, and cannot restore a collection. Use a full backup for recovery.</Copy>
     <Button label="Save text report (no photos; not a backup)" disabled={e.busy} onPress={()=>void e.run(async store=>{const b=await store.backup();const text=JSON.stringify({format:"CasitaDex readable text report — not restorable",exportedAt:new Date().toISOString(),memories:b.snapshot.data.memories,spaces:b.snapshot.data.spaces,categories:b.snapshot.data.categories,draft:b.snapshot.draft?{...b.snapshot.draft,photos:b.snapshot.draft.photos.map(p=>({id:p.id,note:"Photo bytes excluded"}))}:null},null,2);e.setStatus(await writeEngText(text));},"")} />
-    <Button label="Choose backup to review" disabled={e.busy} onPress={()=>void e.run(async store=>{const backup=await pickEngBackup();setIncoming(backup);setRestoreToken(backup?await store.restoreToken():null);setConflict(null);e.setStatus(backup?"Backup checked. Review before replacing your collection.":"Backup selection canceled. Current data kept.");},"")} />
+    <Button label="Choose backup to review" disabled={e.busy} onPress={()=>void e.run(async store=>{const backup=await pickEngBackup();setIncoming(backup);setRestoreToken(backup?await store.restoreToken():null);setReminderRestoreToken(backup?.reminders?await store.reminderRestoreToken():null);setConflict(null);e.setStatus(backup?"Backup checked. Review before replacing your collection.":"Backup selection canceled. Current data kept.");},"")} />
     {incoming?<>
-      <Copy>{incoming.source}</Copy><Copy>{incoming.snapshot.data.memories.length} memories, {incoming.snapshot.data.media.media.length} saved photos, {incoming.snapshot.draft?"1 unfinished draft":"no unfinished draft"}, {incoming.snapshot.draft?.photos.length??0} draft photos.</Copy>
+      <Copy>{incoming.source}</Copy>{incoming.reminders?<Copy>Standalone reminders in backup: {incoming.reminders.rows.length}. Confirming replaces all current standalone reminders.</Copy>:<Copy>Legacy archive: current standalone reminders will be kept.</Copy>}<Copy>{incoming.snapshot.data.memories.length} memories, {incoming.snapshot.data.media.media.length} saved photos, {incoming.snapshot.draft?"1 unfinished draft":"no unfinished draft"}, {incoming.snapshot.draft?.photos.length??0} draft photos.</Copy>
       <Copy>Active: {incoming.snapshot.data.memories.filter(m=>m.lifecycle==="active").length}; Archived: {incoming.snapshot.data.memories.filter(m=>m.lifecycle==="archived").length}; Recently Deleted: {incoming.snapshot.data.memories.filter(m=>m.lifecycle==="recently_deleted").length}.</Copy>
       <Copy>Replacing the collection keeps the current full state as a recoverable previous save.</Copy>
       {e.snapshot?.draft?<>
@@ -334,16 +451,16 @@ export function EngMore(){
         <Button label="Keep current draft" disabled={e.busy} selected={conflict==="keep"} onPress={()=>setConflict("keep")} />
         <Button label="Use backed-up draft (previous state recoverable)" disabled={e.busy} selected={conflict==="incoming"} onPress={()=>setConflict("incoming")} />
       </>:null}
-      <Button primary label="Confirm replace with reviewed backup" disabled={e.busy||!!(e.snapshot?.draft&&!conflict)} onPress={()=>void e.run(async store=>{if(!restoreToken)throw Error("Review this backup again");await store.stageRestore(incoming.snapshot,incoming.read,restoreToken);await store.restore(incoming.snapshot,conflict??"incoming",restoreToken);setIncoming(null);},"Full collection restored and verified.")} />
+      <Button primary label="Confirm replace with reviewed backup" disabled={e.busy||!!(e.snapshot?.draft&&!conflict)} onPress={()=>void e.run(async store=>{if(!restoreToken)throw Error("Review this backup again");await store.stageRestore(incoming.snapshot,incoming.read,restoreToken);if(incoming.reminders)await store.restoreV4(incoming.snapshot,incoming.reminders,conflict??"incoming",restoreToken,reminderRestoreToken??undefined);else await store.restore(incoming.snapshot,conflict??"incoming",restoreToken);setIncoming(null);},"Full collection restored and verified.")} />
       <Button label="Cancel restore" disabled={e.busy} onPress={()=>{setIncoming(null);e.setStatus("Restore canceled. Your collection and draft are kept.");}} />
     </>:null}
     <Button label="Recover previous full save" disabled={e.busy} onPress={()=>setConfirmRecovery(true)} />
-    {confirmRecovery?<><Copy>Replace the current collection and draft with the previous full save? Your current state becomes the recoverable previous save.</Copy>
-      <Button label="Confirm full recovery" disabled={e.busy} onPress={()=>void e.run(async store=>{await store.recover();setConfirmRecovery(false);},"Previous full save recovered and verified.")} />
+    {confirmRecovery?<><Copy>Recover the previous Full v4 collection, draft, photos and standalone reminders? Your current state becomes the recoverable previous save.</Copy>
+      <Button label="Confirm full recovery" disabled={e.busy} onPress={()=>void e.run(async store=>{if(await store.hasV4Recovery())await store.recoverV4();else await store.recover();setConfirmRecovery(false);},"Previous full save recovered and verified.")} />
       <Button label="Cancel recovery" onPress={()=>setConfirmRecovery(false)} />
     </>:null}
     </>:null}
-    {section==="help"?<><Copy accessibilityRole="header">Help & About</Copy><Copy>CasitaDex Development 0.1.0. Memories and photos stay on this device unless you export or share them. Keep a verified full backup in a second location. Text backups from earlier versions can be reviewed with Choose backup. They cannot contain photos or an unfinished draft.</Copy><Copy>Verification records what you checked against a source. It is not a guarantee of correctness. Editing an answer or its source requires checking again. Archive pauses reminders; Recently Deleted keeps recovery available. Cleanup does not run automatically in this build.</Copy>
+    {section==="help"?<><BrandLogo width={180} /><Copy accessibilityRole="header">Help & About</Copy><Copy>CasitaDex Development 0.1.0. Memories and photos stay on this device unless you export or share them. Keep a verified full backup in a second location. Text backups from earlier versions can be reviewed with Choose backup. They cannot contain photos or an unfinished draft.</Copy><Copy>Verification records what you checked against a source. It is not a guarantee of correctness. Editing an answer or its source requires checking again. Archive pauses reminders; Recently Deleted keeps recovery available. Cleanup does not run automatically in this build.</Copy>
     </>:null}{section==="preferences"?<><Copy accessibilityRole="header">Appearance & Accessibility</Copy><Button label="Large text" selected={preferences.large} onPress={()=>preferences.setLarge(!preferences.large)} />
     {(["System","Light","Dark"] as const).map(value=><Button key={value} label={value+" appearance"} selected={preferences.appearance===value} onPress={()=>preferences.setAppearance(value)} />)}
     <Copy>{preferences.preferenceError}</Copy></>:null}<Status text={e.status} />

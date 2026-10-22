@@ -1,0 +1,1 @@
+{"expected":"before","stale":"reminder","exhaust":false,"stop":"","scenario":"stale_reminder","action":"restore","expectError":true,"choice":"incoming"}

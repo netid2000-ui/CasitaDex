@@ -1,0 +1,22 @@
+# Current determination: BLOCKED - full acceptance awaits signed R4 storage-policy/scope decision
+See SB24_SB25_RETURN_HANDOFF_20261020.md for final evidence. Historical entries follow unchanged.
+
+# SB-25 — 2026-10-20
+Status: BLOCKED by SB24 cancellation safety failure. Not started. No storage calibration, cleanup changes, tests or emulator acceptance performed. Permanent purge unchanged. See SB24_ACCEPTANCE_20261020.md.
+
+## SB25 authorized implementation and calibration in progress
+SB24 Development data-protection gate passed before this implementation. Existing owner files preserved byte-for-byte under docs/qa/sb25-storage-20261020/preserved (snapshot suffixes avoid compiling evidence copies). Source changes: conservative app-available storage measurement (SDK57 Paths.freeSpace versus legacy StatFs.availableBlocks); fresh per-operation checks for staging/export/share/restore; reminder-inclusive Full v4 restore and recovery capacity estimates with in-transaction recheck; original exception retained if rollback also fails; deduplicated protected ownership report with unknown/conflicting metadata failing closed; Development legacy physical photo deletion blocked before database access. No automatic cleanup or permanent purge enabled.
+23 targeted atomic/storage safety tests passed, plus direct legacy cleanup guard regression1/1. Full suite before last cleanup guard:327 total,325 pass,2 skip,0 fail. Typecheck/lint follow-up exit0. Final full suite running.
+Native QA build4f27c1a7b076d3a0 passed1m39s,362 tasks. APK C:\cdr\a\sb25-production-qa.apk SHA256 067B84F03571BA80838101DE2E09A17DBBB3DF374308D14AE56FA71CD2B7AFAF. Seven relevant authoritative/build/bundled module hashes matched. Native pressure job e3faba34674bbf44: genuine zero-available filesystem; old Paths reading145625088 bytes while app-available API0. Corrected capacity denied4000000-byte request; actual Full v4 restore denied5040505-byte request at0, without partial logical mutation. Restart/retry/recovery verification finishing. Full evidence under sb25-storage-20261020 and timestamped sb24-production-native-20261020 records.
+Signed SB20 R4 methodology and More owner decisions require separate approval for new global warning/critical/reserve/hysteresis policy. No new global numerical policy enabled. Complete remaining native evidence and final Development artifact before requesting any policy decision.
+
+## 2026-10-20 final Development receipt
+SB-24 PASS at Development acceptance. SB-25 BLOCKED for full acceptance pending the signed R4 storage-policy/scope decision; see docs/qa/SB25_STORAGE_POLICY_DECISION_20261020.md. Permanent purge and automatic global low-space alerts remain disabled.
+Final APK: C:\cdr\a\sb24-sb25-development-x86_64-20261020.apk; 45047247 bytes; SHA-256 66F9DD8DB7BBDEEEEBF5C8C644BC8FA82689D3861F38216EE9B757A19350B0BB. Development package com.designsbyfa.casitadex.dev, version 0.1.0 (1), non-debuggable Release, x86_64. Installed with adb -s emulator-5580 install -r; installed base APK read-back hash matches. No wipe. Pre-change APK retained at C:\cdr\a\sb25-prechange-development.apk.
+105 source/config/asset files match isolated build; seven changed bundled modules match source. Final regression: 328 total, 326 passed, 2 expected Windows symlink skips, 0 failed; TypeScript and ESLint passed. Final text-only copy edit also passed TypeScript/ESLint.
+Read-only owner-emulator UI confirms draft with attached photo, 64303 protected/referenced photo bytes, zero unreadable files, Draft/Previous save/Retained photo operation protection. Font scale 1.3, effective density 320, Measure target 52dp. Spoken TalkBack and physical-device acceptance not claimed.
+Disposable exhaustion AVD CasitaDex_SB24_Disposable_20261020 on port 5582 is stopped. Never run pressure scripts on emulator-5580 or Samsung. The disposable AVD requires 4GiB RAM/6GiB data; serialize it with Gradle. Actual exhausted-storage failures preserved previous state, restart/retry/recovery passed. Rollback cleanup errors retain original cause. Supporting raw logs include early inconclusive reporter failures; use final passing JSON receipts.
+
+
+## Owner-approved Development scope closure - 2026-10-20
+SB25 PASS for verified per-operation storage safeguards under explicit owner approval. Global numerical warning/critical/reserve/hysteresis policy is excluded/deferred, not passed. See SB25_STORAGE_POLICY_DECISION_20261020.md. Permanent purge and unknown-owner deletion remain disabled. SB26 eligible to start; no release acceptance implied.

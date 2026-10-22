@@ -12,3 +12,27 @@ test("journal tracks incomplete persisted operation",async()=>{const {raw,q}=mak
 test("valid journal progression",async()=>{const {raw,q}=make();await journal.prepareMediaJournal(q);await journal.recordMediaOperation(q,entry);await journal.advanceMediaOperation(q,"media1","pending","promoted");assert.equal((await journal.listIncompleteMedia(q))[0].phase,"promoted");await journal.advanceMediaOperation(q,"media1","promoted","committed");assert.equal((await journal.listIncompleteMedia(q)).length,0);raw.close()});
 test("phase mismatch rolls back",async()=>{const {raw,q}=make();await journal.prepareMediaJournal(q);await journal.recordMediaOperation(q,entry);await assert.rejects(journal.advanceMediaOperation(q,"media1","promoted","committed"),/mismatch/);assert.equal((await journal.listIncompleteMedia(q))[0].phase,"pending");raw.close()});
 test("rejects skipping stages",async()=>{await assert.rejects(journal.advanceMediaOperation(make().q,"x","pending","committed"),/transition/)});
+test("fresh journal reader observes pending operation without marking it complete",async()=>{
+ const {raw,q}=make();try{
+  await journal.prepareMediaJournal(q);
+  await journal.recordMediaOperation(q,entry);
+  const reader=load("media-journal",()=>load("media-manifest",()=>{}));
+  const pending=await reader.listIncompleteMedia(q);
+  assert.equal(pending.length,1);
+  assert.equal(pending[0].phase,"pending");
+  assert.equal(raw.prepare("SELECT COUNT(*) AS n FROM media_ops_v2 WHERE phase=?").get("committed").n,0);
+ }finally{raw.close();}
+});
+
+test("fresh journal reader observes promoted operation without marking it complete",async()=>{
+ const {raw,q}=make();try{
+  await journal.prepareMediaJournal(q);
+  await journal.recordMediaOperation(q,entry);
+  await journal.advanceMediaOperation(q,entry.id,"pending","promoted");
+  const reader=load("media-journal",()=>load("media-manifest",()=>{}));
+  const pending=await reader.listIncompleteMedia(q);
+  assert.equal(pending.length,1);
+  assert.equal(pending[0].phase,"promoted");
+  assert.equal(raw.prepare("SELECT COUNT(*) AS n FROM media_ops_v2 WHERE phase=?").get("committed").n,0);
+ }finally{raw.close();}
+});

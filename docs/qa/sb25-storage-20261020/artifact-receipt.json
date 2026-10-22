@@ -1,0 +1,15 @@
+{
+    "package":  "com.designsbyfa.casitadex.dev",
+    "abi":  "x86_64",
+    "version":  "0.1.0",
+    "artifact":  "C:\\cdr\\a\\sb24-sb25-development-x86_64-20261020.apk",
+    "bytes":  45047247,
+    "sha256":  "66F9DD8DB7BBDEEEEBF5C8C644BC8FA82689D3861F38216EE9B757A19350B0BB",
+    "installedSha256":  "66F9DD8DB7BBDEEEEBF5C8C644BC8FA82689D3861F38216EE9B757A19350B0BB",
+    "emulator":  "emulator-5580",
+    "buildJob":  "404ca495f962cca2",
+    "sourceManifestFiles":  105,
+    "verifiedBundledModules":  7,
+    "debuggable":  false,
+    "dataWipe":  false
+}

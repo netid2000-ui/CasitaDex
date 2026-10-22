@@ -1,0 +1,37 @@
+[
+  {
+    "path": "src/eng-runtime.native.ts",
+    "sourceHash": "2632b85d0f1e8588d6f9b441aa9651609ba71c11de9d79407905a5f40438e4f1",
+    "bundledHash": "2632b85d0f1e8588d6f9b441aa9651609ba71c11de9d79407905a5f40438e4f1"
+  },
+  {
+    "path": "src/eng-store.ts",
+    "sourceHash": "ea4edf8e26569dc591665f26865a4a90572bba911944ceb23858e8cfdc5bf80a",
+    "bundledHash": "ea4edf8e26569dc591665f26865a4a90572bba911944ceb23858e8cfdc5bf80a"
+  },
+  {
+    "path": "src/storage-safety.ts",
+    "sourceHash": "d7429b38667354d639d60cc254b1452de544c387ffd4939d065dc7336267c701",
+    "bundledHash": "d7429b38667354d639d60cc254b1452de544c387ffd4939d065dc7336267c701"
+  },
+  {
+    "path": "src/storage-space.native.ts",
+    "sourceHash": "09db145588b47c129c9ca440c5853dc01cc7ad8b3c74956812f611e06f12d26f",
+    "bundledHash": "09db145588b47c129c9ca440c5853dc01cc7ad8b3c74956812f611e06f12d26f"
+  },
+  {
+    "path": "src/sqlite-write-transaction.ts",
+    "sourceHash": "40f2e32d04e6756a79526c3b86ab97f7bec2ca42b713955868323478fd0b9f86",
+    "bundledHash": "40f2e32d04e6756a79526c3b86ab97f7bec2ca42b713955868323478fd0b9f86"
+  },
+  {
+    "path": "src/media-attachment.native.ts",
+    "sourceHash": "f780f4b5632412484c991cc643bab1b73a9c94ec55537f188a9e88f321b0fda9",
+    "bundledHash": "f780f4b5632412484c991cc643bab1b73a9c94ec55537f188a9e88f321b0fda9"
+  },
+  {
+    "path": "src/eng-screens.tsx",
+    "sourceHash": "b83707cd0ba751e16da4de5324b3c84c11f66d85bd2c10366f83d29aaacc3dfa",
+    "bundledHash": "b83707cd0ba751e16da4de5324b3c84c11f66d85bd2c10366f83d29aaacc3dfa"
+  }
+]

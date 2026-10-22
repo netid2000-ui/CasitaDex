@@ -1,0 +1,226 @@
+[
+    {
+        "file":  "20261020T165723241-emulator-5580-smoke2-prepare-marker.json",
+        "scenario":  "smoke2",
+        "action":  null,
+        "pass":  null,
+        "phase":  "prepared"
+    },
+    {
+        "file":  "20261020T165744474-emulator-5580-after_v4_reminder_write-prepare-marker.json",
+        "scenario":  "after_v4_reminder_write",
+        "action":  null,
+        "pass":  null,
+        "phase":  "prepared"
+    },
+    {
+        "file":  "20261020T165752072-emulator-5580-after_v4_reminder_write-restore-marker.json",
+        "scenario":  "after_v4_reminder_write",
+        "action":  null,
+        "pass":  null,
+        "phase":  "after-v4-reminder-write"
+    },
+    {
+        "file":  "20261020T165759715-emulator-5580-after_v4_reminder_write-verify-before-incoming-.json",
+        "scenario":  "after_v4_reminder_write",
+        "action":  "verify",
+        "pass":  true,
+        "phase":  null
+    },
+    {
+        "file":  "20261020T165812211-emulator-5580-after_v4_reminder_write-restore-before-incoming-.json",
+        "scenario":  "after_v4_reminder_write",
+        "action":  "restore",
+        "pass":  true,
+        "phase":  null
+    },
+    {
+        "file":  "20261020T165828322-emulator-5580-after_v4_reminder_write-verify-after-incoming-.json",
+        "scenario":  "after_v4_reminder_write",
+        "action":  "verify",
+        "pass":  true,
+        "phase":  null
+    },
+    {
+        "file":  "20261020T165848141-emulator-5580-after_v4_reminder_write-recover-before-incoming-.json",
+        "scenario":  "after_v4_reminder_write",
+        "action":  "recover",
+        "pass":  true,
+        "phase":  null
+    },
+    {
+        "file":  "20261020T165905722-emulator-5580-after_v4_reminder_write-recover-before-incoming-.json",
+        "scenario":  "after_v4_reminder_write",
+        "action":  "recover",
+        "pass":  true,
+        "phase":  null
+    },
+    {
+        "file":  "20261020T165923563-emulator-5580-after_v4_reminder_write-recover-before-incoming-.json",
+        "scenario":  "after_v4_reminder_write",
+        "action":  "recover",
+        "pass":  true,
+        "phase":  null
+    },
+    {
+        "file":  "20261020T165940161-emulator-5580-after_v4_eng_write-prepare-marker.json",
+        "scenario":  "after_v4_eng_write",
+        "action":  null,
+        "pass":  null,
+        "phase":  "prepared"
+    },
+    {
+        "file":  "20261020T165954166-emulator-5580-after_v4_eng_write-restore-marker.json",
+        "scenario":  "after_v4_eng_write",
+        "action":  null,
+        "pass":  null,
+        "phase":  "after-v4-eng-write"
+    },
+    {
+        "file":  "20261020T170005788-emulator-5580-after_v4_eng_write-verify-before-incoming-.json",
+        "scenario":  "after_v4_eng_write",
+        "action":  "verify",
+        "pass":  true,
+        "phase":  null
+    },
+    {
+        "file":  "20261020T170019192-emulator-5580-after_v4_eng_write-restore-before-incoming-.json",
+        "scenario":  "after_v4_eng_write",
+        "action":  "restore",
+        "pass":  true,
+        "phase":  null
+    },
+    {
+        "file":  "20261020T170034932-emulator-5580-after_v4_eng_write-verify-after-incoming-.json",
+        "scenario":  "after_v4_eng_write",
+        "action":  "verify",
+        "pass":  true,
+        "phase":  null
+    },
+    {
+        "file":  "20261020T170047506-emulator-5580-after_v4_eng_write-recover-before-incoming-.json",
+        "scenario":  "after_v4_eng_write",
+        "action":  "recover",
+        "pass":  true,
+        "phase":  null
+    },
+    {
+        "file":  "20261020T170100756-emulator-5580-after_v4_eng_write-recover-before-incoming-.json",
+        "scenario":  "after_v4_eng_write",
+        "action":  "recover",
+        "pass":  true,
+        "phase":  null
+    },
+    {
+        "file":  "20261020T170120522-emulator-5580-after_v4_eng_write-recover-before-incoming-.json",
+        "scenario":  "after_v4_eng_write",
+        "action":  "recover",
+        "pass":  true,
+        "phase":  null
+    },
+    {
+        "file":  "20261020T170133904-emulator-5580-after_commit-prepare-marker.json",
+        "scenario":  "after_commit",
+        "action":  null,
+        "pass":  null,
+        "phase":  "prepared"
+    },
+    {
+        "file":  "20261020T170146385-emulator-5580-after_commit-restore-marker.json",
+        "scenario":  "after_commit",
+        "action":  null,
+        "pass":  null,
+        "phase":  "after-commit"
+    },
+    {
+        "file":  "20261020T170156365-emulator-5580-after_commit-verify-after-incoming-.json",
+        "scenario":  "after_commit",
+        "action":  "verify",
+        "pass":  true,
+        "phase":  null
+    },
+    {
+        "file":  "20261020T170208820-emulator-5580-after_commit-recover-before-incoming-.json",
+        "scenario":  "after_commit",
+        "action":  "recover",
+        "pass":  true,
+        "phase":  null
+    },
+    {
+        "file":  "20261020T170219538-emulator-5580-after_commit-recover-before-incoming-.json",
+        "scenario":  "after_commit",
+        "action":  "recover",
+        "pass":  true,
+        "phase":  null
+    },
+    {
+        "file":  "20261020T170233094-emulator-5580-after_commit-recover-before-incoming-.json",
+        "scenario":  "after_commit",
+        "action":  "recover",
+        "pass":  true,
+        "phase":  null
+    },
+    {
+        "file":  "20261020T170243638-emulator-5580-cancel-prepare-marker.json",
+        "scenario":  "cancel",
+        "action":  null,
+        "pass":  null,
+        "phase":  "prepared"
+    },
+    {
+        "file":  "20261020T170254967-emulator-5580-cancel-restore-before-cancel-.json",
+        "scenario":  "cancel",
+        "action":  "restore",
+        "pass":  true,
+        "phase":  null
+    },
+    {
+        "file":  "20261020T170309202-emulator-5580-cancel-verify-before-incoming-.json",
+        "scenario":  "cancel",
+        "action":  "verify",
+        "pass":  true,
+        "phase":  null
+    },
+    {
+        "file":  "20261020T170319637-emulator-5580-keep-prepare-marker.json",
+        "scenario":  "keep",
+        "action":  null,
+        "pass":  null,
+        "phase":  "prepared"
+    },
+    {
+        "file":  "20261020T170332149-emulator-5580-keep-restore-before-keep-.json",
+        "scenario":  "keep",
+        "action":  "restore",
+        "pass":  true,
+        "phase":  null
+    },
+    {
+        "file":  "20261020T170340755-emulator-5580-stale_eng-prepare-marker.json",
+        "scenario":  "stale_eng",
+        "action":  null,
+        "pass":  null,
+        "phase":  "prepared"
+    },
+    {
+        "file":  "20261020T170347980-emulator-5580-stale_eng-restore-before-incoming-eng.json",
+        "scenario":  "stale_eng",
+        "action":  "restore",
+        "pass":  true,
+        "phase":  null
+    },
+    {
+        "file":  "20261020T170354890-emulator-5580-stale_reminder-prepare-marker.json",
+        "scenario":  "stale_reminder",
+        "action":  null,
+        "pass":  null,
+        "phase":  "prepared"
+    },
+    {
+        "file":  "20261020T170402317-emulator-5580-stale_reminder-restore-before-incoming-reminder.json",
+        "scenario":  "stale_reminder",
+        "action":  "restore",
+        "pass":  true,
+        "phase":  null
+    }
+]

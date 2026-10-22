@@ -1,0 +1,7 @@
+# SOP and Figma continuation 20261021
+SOP v1.0: 62 checks, ten phases, reviewer/date/status/evidence fields. Word and PDF reviewed. Reusable Markdown copied to both standards locations; SHA256 0624AC33A565DF1DD130A0D8D87A6952143EADFD72EAFAE4E36320CA5DEC590F.
+Shared patterns on page 28:2: Home action 33:7; Memory card 33:12; Photo card 33:17; Reminder row 33:23; Search answer 33:27; Search input 33:30. Eighteen instances adopted on each platform page 28:37 and 28:264 (36 total). Original frames retained hidden. Page 12 baseline untouched. Shared note 28:36 corrected.
+Apple kit import denied: Not permitted to upsert from library. Material set 33:251 imported; variant 33:254 is height 12 with absent text descendants, so not adopted. Neither platform adaptation is verified or accepted.
+Pending: component states, token bindings, typography, Auto Layout, exact branding and photos, platform kits, prototypes, owner review, implementation and fresh Android/iOS QA.
+No app code, protected device, accepted emulator, commits, pushes or deployments changed. Existing working tree preserved. Earlier test report remains historical.
+Downloadable DOCX/PDF/MD attached in originating command-center conversation.

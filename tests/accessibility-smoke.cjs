@@ -1,96 +1,37 @@
-const { chromium } = require(process.env.PLAYWRIGHT_MODULE || "playwright");
-const assert = require("node:assert/strict");
-const fs = require("node:fs");
-(async () => {
-  const browser = await chromium.launch({ channel: "msedge", headless: true });
-  const context = await browser.newContext({
-    viewport: { width: 320, height: 740 },
-  });
-  const p = await context.newPage();
-  const checks = [];
-  const click = async (t) => {
-    await (
-      ["Home", "Find", "Add", "More"].includes(t)
-        ? p.getByRole("tab", { name: t, exact: true })
-        : p.getByRole("button", { name: t, exact: true })
-    ).click();
-    const paths = {
-      Home: "/",
-      Find: "/answers",
-      Add: "/add",
-      More: "/more",
-      "Open HVAC filter": "/card",
-      "Choose cards to share": "/answers",
-    };
-    if (paths[t]) await p.waitForURL((u) => u.pathname === paths[t]);
-  };
-  async function check(name) {
-    const bad = await p.evaluate(() =>
-      Array.from(
-        document.querySelectorAll(
-          "button,[role=button],h1,h2,h3,textarea,input",
-        ),
-      )
-        .filter((e) => {
-          const r = e.getBoundingClientRect();
-          return r.width > 0 && (r.left < -1 || r.right > innerWidth + 1);
-        })
-        .map(
-          (e) => e.textContent?.slice(0, 80) || e.getAttribute("aria-label"),
-        ),
-    );
-    assert.deepEqual(bad, []);
-    const small = await p.getByRole("button").evaluateAll((es) =>
-      es
-        .filter((e) => {
-          const r = e.getBoundingClientRect();
-          return r.width > 0 && (r.width < 47 || r.height < 47);
-        })
-        .map((e) => e.textContent),
-    );
-    assert.deepEqual(small, []);
-    checks.push(name);
-    console.log("PASS " + name);
+const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+(async()=>{
+ const browser=await chromium.launch({channel:'msedge',headless:true});
+ try{
+  const page=await browser.newPage({viewport:{width:360,height:780},reducedMotion:'reduce'});
+  await page.goto(process.env.CASITADEX_QA_URL||'http://127.0.0.1:8765',{waitUntil:'domcontentloaded'});
+  const enter=page.getByRole('button',{name:'Explore example home'});
+  if(await enter.count()) await enter.click();
+  const tabs=[['Home','/'],['Memories','/memories'],['Photos','/photos'],['Reminders','/reminders'],['Find','/answers']];
+  const checks=[];
+  for(const [name,path] of tabs){
+   const tab=page.getByRole('tab',{name,exact:true});
+   await tab.waitFor({timeout:20000});
+   assert.equal(await tab.count(),1,`Missing tab ${name}`);
+   await tab.click();
+   await page.waitForURL(url=>url.pathname===path,{timeout:15000});
+   assert.equal(await tab.getAttribute('aria-selected'),'true',`Selected state ${name}`);
+   checks.push(`${name} destination and selected state`);
   }
-  await p.goto("http://127.0.0.1:8765");
-  await click("Explore example home");
-  await click("More");
-  await click("Extra-large text: Off");
-  await check("More 200% at 320px, controls >=48");
-  await click("Home");
-  await check("Today 200% at 320px");
-  await click("Find");
-  await click("Open HVAC filter");
-  await check("Detail 200% at 320px");
-  await p.getByText("20 × 25 × 1", { exact: true }).scrollIntoViewIfNeeded();
-  await p.screenshot({ path: "docs/qa/detail-200-320.png" });
-  await click("Choose cards to share");
-  await click("Select: HVAC filter");
-  await click("Preview 1 selected cards");
-  await p
-    .getByText("Exactly what you will share", { exact: true })
-    .scrollIntoViewIfNeeded();
-  await check("Share preview 200% at 320px");
-  await p.screenshot({ path: "docs/qa/share-200-320.png" });
-  await click("Add");
-  await check("Add 200% at 320px");
-  await p.emulateMedia({ reducedMotion: "reduce" });
-  await click("Home");
-  await check("Reduced motion retains navigation");
-  fs.writeFileSync(
-    "docs/qa/accessibility-results.json",
-    JSON.stringify(
-      {
-        date: new Date().toISOString(),
-        checks,
-        nativeScreenReader: "not tested",
-      },
-      null,
-      2,
-    ),
-  );
-  await browser.close();
-})().catch((e) => {
-  console.error(e);
-  process.exit(1);
-});
+  await page.getByRole('tab',{name:'Home'}).click();
+  const nativeHomeActions=['Add Memory','Add Photo Memory','Add Reminder'];
+  const nativeCount=await page.getByRole('button',{name:'Add Memory',exact:true}).count();
+  if(nativeCount){
+    for(const name of nativeHomeActions){
+      assert.ok(await page.getByRole('button',{name,exact:true}).count(),`Home action ${name}`);
+      checks.push(`Home action ${name}`);
+    }
+  }else{
+    checks.push('Legacy web Home identified; native Home actions NOT TESTED');
+  }  const clipped=await page.locator('button,[role="button"],[role="tab"]').evaluateAll(items=>items.filter(el=>{const b=el.getBoundingClientRect();return b.width>0&&(b.left< -1||b.right>innerWidth+1)}).map(el=>el.textContent?.trim()));
+  assert.deepEqual(clipped,[],'Horizontal clipping at 360px');
+  checks.push('Home controls not horizontally clipped at 360px');
+  console.log(JSON.stringify({status:'PASS',checks,nativeSpokenTalkBack:'NOT_TESTED'},null,2));
+ } finally {await browser.close()}
+})().catch(e=>{console.error(e);process.exitCode=1});

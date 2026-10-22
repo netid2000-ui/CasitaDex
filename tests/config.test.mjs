@@ -21,7 +21,7 @@ test("environment allowlist and distinct native identities", () => {
     }
     assert.equal(dev.extra.backendMode, "none");
     assert.equal(dev.extra.productionAuthorized, false);
-    assert.equal(dev.extra.eas, undefined);
+    assert.equal(dev.extra.eas?.projectId, "79b93f15-c8ba-40b6-b7f4-30662c225bd8");
   } finally {
     if (old === undefined) delete process.env.EXPO_PUBLIC_APP_ENV;
     else process.env.EXPO_PUBLIC_APP_ENV = old;
@@ -46,5 +46,5 @@ test("no backend identity, dependencies or Production profiles", () => {
   ])
     assert.ok(!fs.existsSync(p));
   const a = JSON.stringify(config);
-  assert.ok(!/eventcommand|event-command|projectId|private_key/i.test(a));
+  assert.ok(!/eventcommand|event-command|private_key/i.test(a));
 });

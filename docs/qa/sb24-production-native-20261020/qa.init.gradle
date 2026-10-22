@@ -1,0 +1,9 @@
+allprojects { p ->
+ p.afterEvaluate {
+  if (p.name == 'app') {
+   p.android.defaultConfig.applicationId = 'com.designsbyfa.casitadex.sb24qa'
+   p.android.buildTypes.release.debuggable = true
+   p.extensions.getByName("react").getEntryFile().set(new File('C:/cdr/a/sb24-qa-entry.tsx'))
+  }
+ }
+}

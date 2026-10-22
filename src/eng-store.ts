@@ -1,3 +1,8 @@
+import {fullRestoreCapacity} from "./storage-safety.ts";
+import {qaGroups,qaAnswers,qaCount} from "./sb26-qa-seed.ts";
+import {replaceReminderRowsInTransaction} from "./reminder-restore-v4.ts";
+import {validateReminderBackupSection} from "./reminder-backup-v4.ts";
+import type {ReminderBackupSection} from "./reminder-backup-v4.ts";
 import { fromLegacyV1, validateV2, type DataV2, type MemoryV2 } from "./sb20-contract.ts";
 import { validateMediaManifest, type MediaEntry } from "./media-manifest.ts";
 import { sniffImageMime, verifyMediaBytes } from "./media-integrity.ts";
@@ -131,6 +136,7 @@ export function createEngStore(db:Database,files:EngFiles,migrate:()=>Promise<En
       const current=await read(tx);
       if(JSON.stringify(current)!==JSON.stringify(before))throw Error("Collection changed; reload before retrying");
       if(recovery)await tx.runAsync("INSERT OR REPLACE INTO eng_recovery_v2(slot,payload) VALUES(1,?)",JSON.stringify(before));
+      if(recovery){const marker=await tx.getFirstAsync<{name:string}>("SELECT name FROM sqlite_master WHERE type='table' AND name='eng_reminder_recovery_v4'");if(marker)await tx.runAsync("DELETE FROM eng_reminder_recovery_v4 WHERE slot=1");}
       await tx.runAsync("UPDATE eng_state_v2 SET payload=? WHERE slot=1",JSON.stringify(valid));
       for(const mediaId of mediaIds)await tx.runAsync("UPDATE eng_media_ops_v2 SET phase='committed' WHERE id=?",mediaId);
     });
@@ -152,6 +158,7 @@ export function createEngStore(db:Database,files:EngFiles,migrate:()=>Promise<En
       const current=await tx.getFirstAsync<{payload:string}>("SELECT payload FROM eng_state_v2 WHERE slot=1");
       if((current?.payload??null)!==raw)throw Error("Collection changed during recovery; review and retry");
       await tx.runAsync("INSERT INTO eng_damaged_v2(payload,reason) VALUES(?,'Explicit recovery of unreadable full snapshot')",raw??"");
+      const marker=await tx.getFirstAsync<{name:string}>("SELECT name FROM sqlite_master WHERE type='table' AND name='eng_reminder_recovery_v4'");if(marker)await tx.runAsync("DELETE FROM eng_reminder_recovery_v4 WHERE slot=1");
       // The previous known-good full recovery is deliberately not replaced with damaged bytes.
       await tx.runAsync("INSERT OR REPLACE INTO eng_state_v2(slot,payload) VALUES(1,?)",text);
     });
@@ -181,7 +188,28 @@ export function createEngStore(db:Database,files:EngFiles,migrate:()=>Promise<En
       return entry;
   }
   return {
-    load:()=>serial(loaded),
+    seedSyntheticQa:()=>serial(()=>mutate(s=>{
+      if(qaCount!==90||qaAnswers.length!==qaGroups.length)throw Error("QA fixture catalog incomplete");
+      if(s.data.memories.some(m=>m.id.startsWith("sb26qa_")))throw Error("SB26 sample records already exist; nothing added");
+      const spaces=["Sample Home","Sample Garage","Sample Office"].map((name,i)=>({id:`sb26space_${i}`,name}));
+      for(const space of spaces)if(!s.data.spaces.some(x=>x.id===space.id))s.data.spaces.push(space);
+      qaGroups.forEach(([name,items],i)=>{
+        if(items.length!==6||qaAnswers[i]?.length!==6)throw Error("QA fixture group incomplete");
+        const categoryId=`sb26cat_${i}`;
+        if(!s.data.categories.some(c=>c.id===categoryId))s.data.categories.push({id:categoryId,name});
+        items.forEach((title,j)=>{
+          const index=i*6+j;
+          const at=new Date(Date.UTC(2026,7,1+index)).toISOString();
+          const due=index%7===0?new Date(Date.UTC(2026,9,22+(index%24))).toISOString().slice(0,10):undefined;
+          s.data.memories.push({id:`sb26qa_${String(index+1).padStart(3,"0")}`,title:`[SAMPLE] ${title}`,
+            answer:`${qaAnswers[i][j]}. This is a fictional example, not a verified household location.`,
+            location:qaAnswers[i][j],notes:"Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+            source:"CasitaDex synthetic QA fixture",confidence:"Unknown",spaceId:spaces[i%3].id,
+            categoryIds:[categoryId],legacyContext:null,history:[],lifecycle:"active",mediaIds:[],demo:true,
+            createdAt:at,updatedAt:at,...(due?{due}:{})});
+        });
+      });
+    })),    load:()=>serial(loaded),
     checkpoint:(input:EngDraft)=>serial(async()=>{
       const before=await loaded(),next=clone(before),d=validateEngDraft(input,before.data);
       if(Object.hasOwn(before.attempts,d.attempt))throw Error("Draft was already saved");
@@ -285,7 +313,16 @@ export function createEngStore(db:Database,files:EngFiles,migrate:()=>Promise<En
       m.confidence="Needs checking";delete m.verifiedAt;event(m,"answer_edited",{note:"Photo added"});
       return commit(before,next,true,[entry.id]);
     }),
-    removeMemoryPhoto:(memoryId:string,photoId:string)=>serial(()=>mutate(s=>{
+    replaceMemoryPhoto:(memoryId:string,photoId:string,bytes:Uint8Array)=>serial(async()=>{
+      const before=await loaded(),next=clone(before),m=next.data.memories.find(m=>m.id===memoryId);
+      if(!m||m.lifecycle==="recently_deleted"||!m.mediaIds.includes(photoId))throw Error("Photo unavailable for replacement");
+      const entry=await stagePhoto(memoryId,bytes);
+      m.mediaIds=m.mediaIds.map(id=>id===photoId?entry.id:id);
+      next.data.media.media=next.data.media.media.filter(p=>!(p.id===photoId&&p.cardId===memoryId));
+      next.data.media.media.push(entry);
+      m.confidence="Needs checking";delete m.verifiedAt;event(m,"answer_edited",{note:"Photo replaced"});
+      return commit(before,next,true,[entry.id]);
+    }),    removeMemoryPhoto:(memoryId:string,photoId:string)=>serial(()=>mutate(s=>{
       const m=s.data.memories.find(m=>m.id===memoryId);if(!m)throw Error("Memory unavailable");
       if(!m.answer.trim()&&m.mediaIds.length<=1)throw Error("Add a written answer before removing the last photo");
       if(!m.mediaIds.includes(photoId))throw Error("Photo unavailable");
@@ -383,6 +420,87 @@ export function createEngStore(db:Database,files:EngFiles,migrate:()=>Promise<En
         delete next.attempts[next.draft.attempt];
       }
       return commit(before,next);
+    }),
+    reminderRestoreToken:()=>serial(async()=>{await init();const table=await db.getFirstAsync<{name:string}>("SELECT name FROM sqlite_master WHERE type='table' AND name='standalone_reminders_v1'");if(!table)return tokenFor("[]");const rows=await db.getAllAsync("SELECT * FROM standalone_reminders_v1 ORDER BY id");return tokenFor(JSON.stringify(rows));}),
+    restoreV4:(incoming:EngSnapshot,reminders:ReminderBackupSection,conflict:DraftConflict,expectedToken:string,expectedReminderToken?:string)=>serial(async()=>{
+      if(conflict==="cancel")return loaded();
+      await init();
+      const raw=await rawPrimary();
+      if(expectedToken!==await tokenFor(raw))throw restoreChanged();
+      const next=validateEngSnapshot(incoming);
+      await verifyEngSnapshot(next,files);
+      const current=await read(db);
+      if(current.draft&&conflict==="keep"){
+        if(next.data.memories.some(m=>m.id===current.draft!.memoryId))throw Error("Draft identity conflicts with incoming memory");
+        next.draft=clone(current.draft);
+        if(next.draft.spaceId&&!next.data.spaces.some(s=>s.id===next.draft!.spaceId)){
+          const space=current.data.spaces.find(s=>s.id===next.draft!.spaceId);
+          if(!space)throw Error("Missing draft Space");next.data.spaces.push(space);
+        }
+        for(const id of next.draft.categoryIds)if(!next.data.categories.some(c=>c.id===id)){
+          const category=current.data.categories.find(c=>c.id===id);
+          if(!category)throw Error("Missing draft category");next.data.categories.push(category);
+        }
+        delete next.attempts[next.draft.attempt];
+      }
+      next.revision=current.revision+1;
+      const valid=validateEngSnapshot(next);
+      await verifyEngSnapshot(valid,files);
+      const oldBytes=JSON.stringify(current),newBytes=JSON.stringify(valid);
+      const checkedReminders=validateReminderBackupSection(reminders);
+      const reminderTable=await db.getFirstAsync("SELECT name FROM sqlite_master WHERE name='standalone_reminders_v1'");
+      const reminderRows=reminderTable?await db.getAllAsync("SELECT * FROM standalone_reminders_v1 ORDER BY id"):[];
+      await files.capacity(fullRestoreCapacity(oldBytes,newBytes,JSON.stringify(reminderRows),JSON.stringify(checkedReminders)));
+      await options.fault?.("before-v4-transaction");
+      await db.withExclusiveTransactionAsync(async tx=>{
+        await tx.runAsync("CREATE TABLE IF NOT EXISTS standalone_reminders_v1 (id TEXT PRIMARY KEY,title TEXT NOT NULL,notes TEXT NOT NULL,due_date TEXT NOT NULL,completed INTEGER NOT NULL DEFAULT 0,created_at TEXT NOT NULL,updated_at TEXT NOT NULL,due_time TEXT NOT NULL DEFAULT '09:00',anchor_day INTEGER NOT NULL DEFAULT 0,repeat TEXT NOT NULL DEFAULT 'once')");
+        const reviewedReminderRows=await tx.getAllAsync("SELECT * FROM standalone_reminders_v1 ORDER BY id");
+        if(expectedReminderToken&&expectedReminderToken!==await tokenFor(JSON.stringify(reviewedReminderRows)))throw Error("Standalone reminders changed since backup review. Review again; no data changed.");
+        const columns=await tx.getAllAsync<{name:string}>("PRAGMA table_info(standalone_reminders_v1)");
+        for(const [column,definition] of [["due_time","TEXT NOT NULL DEFAULT '09:00'"],["anchor_day","INTEGER NOT NULL DEFAULT 0"],["repeat","TEXT NOT NULL DEFAULT 'once'"]] as const){if(!columns.some(c=>c.name===column))await tx.runAsync(`ALTER TABLE standalone_reminders_v1 ADD COLUMN ${column} ${definition}`);}
+        const row=await tx.getFirstAsync<{payload:string}>("SELECT payload FROM eng_state_v2 WHERE slot=1");
+        if((row?.payload??null)!==raw)throw restoreChanged();
+        await tx.runAsync("INSERT OR REPLACE INTO eng_recovery_v2(slot,payload) VALUES(1,?)",oldBytes);
+        await tx.runAsync("CREATE TABLE IF NOT EXISTS eng_reminder_recovery_v4 (slot INTEGER PRIMARY KEY CHECK(slot=1),payload TEXT NOT NULL)");
+        const prior=await tx.getAllAsync<{id:string;title:string;notes:string;due_date:string;due_time:string;repeat:string;anchor_day:number;completed:number;created_at:string;updated_at:string}>("SELECT * FROM standalone_reminders_v1 ORDER BY id");
+
+        const saved={version:1 as const,rows:prior.map(r=>({id:r.id,title:r.title,notes:r.notes,dueDate:r.due_date,dueTime:r.due_time,repeat:r.repeat as ReminderBackupSection['rows'][number]['repeat'],anchorDay:r.anchor_day||Number(r.due_date.slice(-2)),completed:r.completed===1,createdAt:r.created_at,updatedAt:r.updated_at}))};
+        await tx.runAsync("INSERT OR REPLACE INTO eng_reminder_recovery_v4(slot,payload) VALUES(1,?)",JSON.stringify(saved));
+        await files.capacity(fullRestoreCapacity(oldBytes,newBytes,JSON.stringify(prior),JSON.stringify(checkedReminders)));
+        await replaceReminderRowsInTransaction(tx,checkedReminders);
+        await options.fault?.("after-v4-reminder-write");
+        await tx.runAsync("UPDATE eng_state_v2 SET payload=? WHERE slot=1",newBytes);
+        await options.fault?.("after-v4-eng-write");
+      });
+      verifiedRevision=valid.revision;
+      return valid;
+    }),    hasV4Recovery:()=>serial(async()=>{await init();const table=await db.getFirstAsync<{name:string}>("SELECT name FROM sqlite_master WHERE type='table' AND name='eng_reminder_recovery_v4'");if(!table)return false;return !!await db.getFirstAsync("SELECT payload FROM eng_reminder_recovery_v4 WHERE slot=1");}),
+    recoverV4:()=>serial(async()=>{
+      await init();
+      const current=await loaded();
+      const table=await db.getFirstAsync<{name:string}>("SELECT name FROM sqlite_master WHERE type='table' AND name='eng_reminder_recovery_v4'");
+      if(!table)throw Error("No previous Full v4 state available; current data kept");
+      const previous=await db.getFirstAsync<{payload:string}>("SELECT payload FROM eng_recovery_v2 WHERE slot=1");
+      const reminders=await db.getFirstAsync<{payload:string}>("SELECT payload FROM eng_reminder_recovery_v4 WHERE slot=1");
+      if(!previous||!reminders)throw Error("No previous Full v4 state available; current data kept");
+      const target=validateEngSnapshot(JSON.parse(previous.payload));target.revision=current.revision+1;
+      await verifyEngSnapshot(target,files);
+      const checked=validateReminderBackupSection(JSON.parse(reminders.payload));
+      const reminderRows=await db.getAllAsync("SELECT * FROM standalone_reminders_v1 ORDER BY id");
+      await files.capacity(fullRestoreCapacity(JSON.stringify(current),JSON.stringify(target),JSON.stringify(reminderRows),JSON.stringify(checked)));
+      await db.withExclusiveTransactionAsync(async tx=>{
+        const row=await tx.getFirstAsync<{payload:string}>("SELECT payload FROM eng_state_v2 WHERE slot=1");
+        if(row?.payload!==JSON.stringify(current))throw restoreChanged();
+        const prior=await tx.getAllAsync<{id:string;title:string;notes:string;due_date:string;due_time:string;repeat:string;anchor_day:number;completed:number;created_at:string;updated_at:string}>("SELECT * FROM standalone_reminders_v1 ORDER BY id");
+
+        const saved={version:1 as const,rows:prior.map(r=>({id:r.id,title:r.title,notes:r.notes,dueDate:r.due_date,dueTime:r.due_time,repeat:r.repeat as ReminderBackupSection['rows'][number]['repeat'],anchorDay:r.anchor_day||Number(r.due_date.slice(-2)),completed:r.completed===1,createdAt:r.created_at,updatedAt:r.updated_at}))};
+        await files.capacity(fullRestoreCapacity(JSON.stringify(current),JSON.stringify(target),JSON.stringify(prior),JSON.stringify(checked)));
+        await tx.runAsync("UPDATE eng_reminder_recovery_v4 SET payload=? WHERE slot=1",JSON.stringify(saved));
+        await replaceReminderRowsInTransaction(tx,checked);
+        await tx.runAsync("UPDATE eng_recovery_v2 SET payload=? WHERE slot=1",JSON.stringify(current));
+        await tx.runAsync("UPDATE eng_state_v2 SET payload=? WHERE slot=1",JSON.stringify(target));
+      });
+      verifiedRevision=target.revision;return target;
     }),
     recover:()=>serial(async()=>{
       await init();const raw=await rawPrimary(),row=await db.getFirstAsync<{payload:string}>("SELECT payload FROM eng_recovery_v2 WHERE slot=1");

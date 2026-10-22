@@ -1,0 +1,128 @@
+import {usableNativeSpace,requireNativeCapacity} from "./src/storage-space.native";
+import {protectedStorageReport} from "./src/storage-safety";
+import {sqliteWriteTransaction} from "./src/sqlite-write-transaction";
+import React,{useEffect,useState} from 'react';
+import {Text,ScrollView} from 'react-native';
+import {registerRootComponent} from 'expo';
+import {openDatabaseAsync} from 'expo-sqlite';
+import {File,Directory,Paths} from 'expo-file-system';
+import {createEngStore,legacyEngSnapshot,newEngDraft,allEngMedia} from './src/eng-store';
+import {empty} from './src/model';
+import {sha256Media as hash} from './src/media-hash.native';
+import {createNativeMediaStore} from './src/media-store.native';
+import {mediaFileByPath} from './src/media-attachment.native';
+import {stageMedia} from './src/media-staging';
+import {openEngStreamCompatible,writeEngStreamV4} from './src/eng-stream-v4';
+const file=(n:string)=>new File(Paths.document,n);
+const put=(n:string,v:any)=>file(n).write(JSON.stringify(v));
+const get=async(n:string)=>JSON.parse(await file(n).text());
+const assert=(v:any,m:string)=>{if(!v)throw Error(m)};
+const rem=(title:string)=>({version:1 as const,rows:[{id:'r_qa_reminder',title,notes:'qa only',dueDate:'2026-10-20',dueTime:'09:00',repeat:'once' as const,anchorDay:20,completed:false,createdAt:'2026-10-20T00:00:00Z',updatedAt:'2026-10-20T00:00:00Z'}]});
+async function run(){
+ const cmd=await get('command.json'),name=cmd.scenario;
+ assert(/^[a-z0-9_-]+$/.test(name),'unsafe scenario');
+ const raw=await openDatabaseAsync('qa-'+name+'.db');
+ await raw.execAsync('PRAGMA journal_mode=WAL; PRAGMA synchronous=FULL;');
+ const mark=(phase:string)=>put('marker.json',{scenario:name,phase,free:Paths.availableDiskSpace});
+ const hold=async(phase:string)=>{mark(phase);await new Promise(()=>{});};
+ const db:any={execAsync:raw.execAsync.bind(raw),runAsync:raw.runAsync.bind(raw),getFirstAsync:raw.getFirstAsync.bind(raw),getAllAsync:raw.getAllAsync.bind(raw),
+ withExclusiveTransactionAsync:async(fn:any)=>{await sqliteWriteTransaction(raw,fn);if(cmd.stop==='after-commit'&&cmd.action==='restore')await hold('after-commit');}};
+ const base=empty();base.cards=[{id:'qa_memory',title:'Before',answer:'Before answer',spaceId:'home',context:'Maintain',location:'QA shelf',notes:'QA',confidence:'Unknown',source:'',history:[]}];
+ const initial=legacyEngSnapshot(JSON.stringify(base));
+ const port={hash,read:async(p:string)=>mediaFileByPath(p).bytes(),put:async(e:any,b:Uint8Array)=>stageMedia(createNativeMediaStore(),e,b,hash),capacity:requireNativeCapacity};
+ const store=createEngStore(db,port,async()=>initial,{fault:async phase=>{
+ if(cmd.action==='restore'&&cmd.exhaust&&phase==='before-v4-transaction'){
+ file('enospc-reserve.bin').write(new Uint8Array(8*1024*1024));mark('exhaust-ready');
+ while(!file('release.json').exists)await new Promise(r=>setTimeout(r,250));
+}
+ if(cmd.action==='restore'&&cmd.stop===phase)await hold(phase);
+ }});
+ async function state(){
+ const s=await store.load(),tables:any={};
+ for(const table of ['eng_state_v2','standalone_reminders_v1','eng_recovery_v2','eng_reminder_recovery_v4','eng_media_ops_v2','eng_damaged_v2']){
+ const exists=await raw.getFirstAsync("SELECT name FROM sqlite_master WHERE type='table' AND name=?",table);
+ tables[table]=exists?await raw.getAllAsync('SELECT * FROM '+table):null;
+ }
+ const audit=await store.audit();
+ return {snapshot:s,tables,audit,integrity:await raw.getFirstAsync('PRAGMA integrity_check'),free:Paths.availableDiskSpace};
+ }
+ if(cmd.action==='storage'){
+ await store.load();
+ const before={reported:Paths.availableDiskSpace,usable:await usableNativeSpace(),total:Paths.totalDiskSpace};
+ let sample:any=null,error:string|null=null;
+ if(cmd.exhaust){
+ file('enospc-reserve.bin').write(new Uint8Array(8*1024*1024));mark('exhaust-ready');
+ while(!file('release.json').exists)await new Promise(r=>setTimeout(r,250));
+ sample={reported:Paths.availableDiskSpace,usable:await usableNativeSpace()};
+ try{await requireNativeCapacity(4000000);}catch(e){error=String(e);}
+ assert(error,'Full filesystem must deny operation capacity');
+ while(!file('report-release.json').exists)await new Promise(r=>setTimeout(r,250));
+ file('enospc-reserve.bin').delete();
+ }else{
+ const temp=file('calibration-owned-'+name+'.bin'),bytes=new Uint8Array(1048576).fill(42);
+ try{temp.write(bytes);assert(await hash(await temp.bytes())===await hash(bytes),'calibration readback mismatch');sample={bytes:temp.size,usableAfterWrite:await usableNativeSpace()};}
+ finally{if(temp.exists)temp.delete();}
+ sample.usableAfterDelete=await usableNativeSpace();
+ }
+ const ownership=protectedStorageReport(await store.audit());
+ assert(ownership.cleanupAllowed===false,'cleanup must stay disabled');
+ put('result.json',{scenario:name,action:cmd.action,pass:true,before,sample,error,ownership});mark('finished');
+ }else if(cmd.action==='prepare'){
+ assert(!file(name+'-before.json').exists,'scenario already prepared');
+ await store.load();
+ await raw.execAsync("CREATE TABLE standalone_reminders_v1(id TEXT PRIMARY KEY,title TEXT,notes TEXT,due_date TEXT,due_time TEXT,repeat TEXT,anchor_day INTEGER,completed INTEGER,created_at TEXT,updated_at TEXT)");
+ const r=rem('Before reminder').rows[0];
+ await raw.runAsync('INSERT INTO standalone_reminders_v1 VALUES(?,?,?,?,?,?,?,?,?,?)',r.id,r.title,r.notes,r.dueDate,r.dueTime,r.repeat,r.anchorDay,0,r.createdAt,r.updatedAt);
+ const d={...newEngDraft(),checkpoint:1,title:'Before draft',answer:'QA answer'};
+ await store.checkpoint(d);
+ await store.addPhoto(d.id,Uint8Array.from([137,80,78,71,13,10,26,10,0,0,0,13,73,72,68,82,0,0,0,1,0,0,0,1,8,4,0,0,0,181,28,12,2,0,0,0,11,73,68,65,84,120,218,99,252,255,31,0,3,3,2,0,239,163,45,153,0,0,0,0,73,69,78,68,174,66,96,130]));
+ const before=await state();put(name+'-before.json',before);
+ const target=JSON.parse(JSON.stringify(before.snapshot));target.data.memories[0].title='After';target.draft.title='Incoming draft';if(name.startsWith('enospc')){target.data.memories=Array.from({length:400},(_,i)=>({...target.data.memories[0],id:'qa_memory_'+i,notes:'x'.repeat(3900)}));}
+ const chunks:Uint8Array[]=[];
+ await writeEngStreamV4(target,rem('After reminder'),port.read,hash,{write:async b=>{chunks.push(b.slice())}});
+ const bytes=new Uint8Array(chunks.reduce((n,b)=>n+b.length,0));let at=0;for(const b of chunks){bytes.set(b,at);at+=b.length;}
+ file(name+'.cdxe').write(bytes);put(name+'-target.json',target);
+ mark('prepared');
+ }else if(cmd.action==='restore'){
+ const f=file(name+'.cdxe'),bytes=await f.bytes();
+ const opened=await openEngStreamCompatible({size:bytes.length,read:async(o:number,n:number)=>bytes.slice(o,o+n)},hash);
+ const token=await store.restoreToken(),rt=await store.reminderRestoreToken();
+ if(cmd.stale==='eng')await store.checkpoint({...((await store.load()).draft!),checkpoint:((await store.load()).draft!.checkpoint)+1,notes:'changed'});
+ if(cmd.stale==='reminder')await raw.runAsync("UPDATE standalone_reminders_v1 SET title='Changed while reviewing'");
+ const pre=await state();put(name+'-pre-restore.json',pre);
+ let error:string|null=null;
+ try{
+ await store.stageRestore(opened.snapshot,opened.read,token);
+ await store.restoreV4(opened.snapshot,opened.reminders!,cmd.choice??'incoming',token,rt);
+ }catch(e){error=String(e);console.warn('SB24_RESTORE_CAUGHT',error);if(cmd.exhaust&&file('enospc-reserve.bin').exists){while(!file('report-release.json').exists)await new Promise(r=>setTimeout(r,250));file('enospc-reserve.bin').delete();}}
+ if(cmd.expectError)assert(error,'expected restore rejection');
+ else if(error)throw Error(error);
+ if(cmd.choice==='cancel'||cmd.expectError){const after=await state();assert(JSON.stringify(after.tables)===JSON.stringify(pre.tables),'failed/canceled restore mutated tables');assert(JSON.stringify(after.snapshot)===JSON.stringify(pre.snapshot),'failed/canceled restore mutated state');}
+ if(cmd.choice!=='cancel'&&!cmd.expectError){const s=await state();assert(s.snapshot.data.memories[0].title==='After','successful restore ENG mismatch');assert(s.tables.standalone_reminders_v1[0].title==='After reminder','successful restore reminder mismatch');assert(s.snapshot.draft?.title===(cmd.choice==='keep'?'Before draft':'Incoming draft'),'draft choice mismatch');assert(s.audit.every((x:any)=>x.verdict==='verified'),'restored media hash mismatch');}
+put('result.json',{scenario:name,action:cmd.action,pass:true,error,state:await state()});mark('finished');
+ }else if(cmd.action==='verify'){
+ const before=await get(name+'-before.json'),s=await state();
+ const title=cmd.expected==='after'?'After':'Before';
+ assert(s.snapshot.data.memories[0].title===title,'ENG mismatch');
+ assert(s.tables.standalone_reminders_v1[0].title===(cmd.expected==='after'?'After reminder':'Before reminder'),'reminder mismatch');
+ assert(s.snapshot.draft?.title===(cmd.expected==='after'?'Incoming draft':'Before draft'),'draft mismatch');
+ assert(s.audit.every((x:any)=>x.verdict==='verified'),'protected media mismatch');
+ assert(Object.values(s.integrity)[0]==='ok','integrity failure');
+ if(cmd.expected==='before')assert(JSON.stringify(s.tables)===JSON.stringify(before.tables),'rollback/recovery rows mismatch');
+ else {assert(JSON.parse(s.tables.eng_recovery_v2[0].payload).draft.title==='Before draft','ENG recovery mismatch');assert(JSON.parse(s.tables.eng_reminder_recovery_v4[0].payload).rows[0].title==='Before reminder','reminder recovery mismatch');}
+ put('result.json',{scenario:name,action:cmd.action,pass:true,state:s});mark('finished');
+ }else if(cmd.action==='recover'){
+ const old=await state();await store.recoverV4();const s=await state();
+assert(s.snapshot.data.memories[0].title!==old.snapshot.data.memories[0].title,'recovery did not alternate ENG');
+assert(s.tables.standalone_reminders_v1[0].title!==old.tables.standalone_reminders_v1[0].title,'recovery did not alternate reminders');
+assert(s.snapshot.draft?.title!==old.snapshot.draft?.title,'recovery did not alternate draft');
+assert(s.audit.every((x:any)=>x.verdict==='verified'),'recovery media hash failed');
+assert(Object.values(s.integrity)[0]==='ok','recovery integrity failed');
+put('result.json',{scenario:name,action:cmd.action,pass:true,state:s});mark('finished');
+ }else if(cmd.action==='audit'){
+ put('result.json',{scenario:name,action:cmd.action,pass:true,state:await state()});mark('finished');
+ }
+ await raw.closeAsync();
+}
+function App(){const [text,setText]=useState('QA running');useEffect(()=>{run().then(()=>setText('QA complete')).catch(e=>{put('result.json',{pass:false,error:String(e),stack:e.stack});setText(String(e));});},[]);return <ScrollView><Text accessibilityRole="header">{text}</Text></ScrollView>}
+registerRootComponent(App);

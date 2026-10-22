@@ -1,6 +1,6 @@
 // Evergreen identity with neutral surfaces; semantic roles keep dark mode legible.
 export const lightColors = {
-  paper: "#F6F7F4", ink: "#18382F", muted: "#52645C", line: "#718377", separator: "#D7DFD9",
+  paper: "#F7F2E8", ink: "#18382F", muted: "#52645C", line: "#718377", separator: "#D7DFD9",
   white: "#FFFFFF", accent: "#E3EDE4", primary: "#245C47", onPrimary: "#FFFFFF", focus: "#41735C",
 };
 export const darkColors = {

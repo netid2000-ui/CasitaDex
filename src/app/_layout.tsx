@@ -5,18 +5,19 @@ import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { Slot, router, usePathname } from "expo-router";
 import { Provider } from "../state";
 import { useTheme } from "../ui";
+import { BrandWebMeta } from "../brand-web-meta";
 
-import { NavigationIcon } from "../navigation-icon";
+import { AcceptedNavigationIcon as NavigationIcon } from "../accepted-navigation-icon";
 import { guardedNavigate } from "../eng-navigation";
 
-type Route = "/" | "/answers" | "/add" | "/more";
-const destinations: { label: "Home" | "Find" | "Add" | "More"; route: Route }[] = [
+type Route = "/" | "/memories" | "/photos" | "/reminders" | "/answers";
+const destinations: { label: "Home" | "Memories" | "Photos" | "Reminders" | "Find"; route: Route }[] = [
   { label: "Home", route: "/" },
+  { label: "Memories", route: "/memories" },
+  { label: "Photos", route: "/photos" },
+  { label: "Reminders", route: "/reminders" },
   { label: "Find", route: "/answers" },
-  { label: "Add", route: "/add" },
-  { label: "More", route: "/more" },
 ];
-
 function Shell() {
   const path = usePathname();
   const { colors, s, dark } = useTheme();
@@ -25,6 +26,7 @@ function Shell() {
       edges={["top"]}
       style={{ flex: 1, backgroundColor: colors.paper }}
     >
+      <BrandWebMeta />
       <StatusBar style={dark ? "light" : "dark"} />
       <View style={{ flex: 1 }}>
         <Slot />
@@ -36,13 +38,14 @@ function Shell() {
         <View style={s.nav} accessibilityLabel="Primary navigation">
           {destinations.map(({ label, route }) => {
             const active =
-              path === route || (route === "/answers" && path === "/card");
+              path === route || (route === "/memories" && path === "/card");
             return (
               <Pressable
                 key={route}
                 accessibilityRole="tab"
                 accessibilityLabel={label}
                 accessibilityState={{ selected: active }}
+                aria-selected={active}
                 onPress={() => guardedNavigate(() => router.navigate(route))}
                 style={({ pressed }) => [
                   s.navTab,

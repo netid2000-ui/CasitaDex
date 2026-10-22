@@ -88,7 +88,7 @@ export function Button({
         primary && s.primary,
         focused && { borderColor: colors.focus, borderWidth: 2 },
         pressed && { opacity: 0.82, elevation: 0, shadowOpacity: 0, transform: [{ translateY: 1 }] },
-        disabled && { opacity: 0.55 },
+        disabled && { opacity: 1, borderStyle: "dashed" as const },
       ]}
     >
       <Copy kind={compact ? "small" : "body"} style={primary ? { color: colors.onPrimary, fontWeight: "700", textAlign: "center" } : selected ? { color: colors.ink, fontWeight: "700", textAlign: "center" } : { fontWeight: "600", textAlign: "center" }}>
@@ -138,7 +138,7 @@ export function Field({
         style={[
           s.input,
           focused && { borderColor: colors.focus, borderWidth: 2 },
-          disabled && { opacity: 0.55 },
+          disabled && { opacity: 1, borderStyle: "dashed" as const },
           { fontSize: large ? 34 : 17, minHeight: multiline ? 120 : 52 },
         ]}
       />
@@ -240,7 +240,7 @@ const makeStyles = (colors: typeof lightColors) =>
       borderColor: colors.line,
       borderBottomWidth: 1,
       borderBottomColor: colors.line,
-      backgroundColor: colors.accent,
+      backgroundColor: colors.white,
       elevation: 1,
       shadowColor: "#000000",
       shadowOffset: { width: 0, height: 1 },

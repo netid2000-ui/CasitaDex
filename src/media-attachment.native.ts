@@ -43,6 +43,7 @@ export async function pickAndAttachImage(environment:string,cardId:string){
  return true;
 }
 export async function removeCardImage(environment:string,cardId:string,imageId:string){
+  if(environment==="development")throw Error("Physical photo cleanup is disabled. Use current memory controls; draft and recoverable photo files are kept.");
  const db=await database(environment);await prepareMediaTable(db);
  let path:string|undefined;
  await db.withExclusiveTransactionAsync(async tx=>{

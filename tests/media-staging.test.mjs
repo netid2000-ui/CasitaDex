@@ -17,3 +17,13 @@ test("failed promotion cleans temporary",async()=>{const h=harness("promote");aw
 test("invalid bytes never reach store",async()=>{const h=harness();await assert.rejects(stageMedia(h.store,entry,Uint8Array.of(0),hash));assert.deepEqual(h.events,[])});
 test("orphan cleanup preserves referenced",async()=>{const h=harness();await sweepMediaOrphans(h.store,["media/test.png","media/old.jpg"],new Set(["media/test.png"]));assert.deepEqual(h.events,["media/old.jpg"])});
 test("unsafe cleanup path rejected",async()=>{const h=harness();await assert.rejects(sweepMediaOrphans(h.store,["../secret"],new Set()));assert.deepEqual(h.events,[])});
+test("ENOSPC during temporary media write does not promote or commit media",async()=>{
+ const events=[];const store={writeTemporary:async()=>{events.push("write");throw Object.assign(new Error("No space left on device"),{code:"ENOSPC"})},readTemporary:async()=>{events.push("read");return bytes},promote:async()=>events.push("promote"),removeTemporary:async()=>events.push("cleanup"),removeUnreferenced:async()=>events.push("delete")};
+ await assert.rejects(stageMedia(store,entry,bytes,hash),e=>e.code==="ENOSPC");
+ assert.deepEqual(events,["write","cleanup"]);
+});
+test("ENOSPC during media promotion requests temporary cleanup and prevents success",async()=>{
+ const events=[];const store={writeTemporary:async()=>events.push("write"),readTemporary:async()=>{events.push("read");return bytes},promote:async()=>{events.push("promote");throw Object.assign(new Error("No space left on device"),{code:"ENOSPC"})},removeTemporary:async()=>events.push("cleanup"),removeUnreferenced:async()=>events.push("delete")};
+ await assert.rejects(stageMedia(store,entry,bytes,hash),e=>e.code==="ENOSPC");
+ assert.deepEqual(events,["write","read","promote","cleanup"]);
+});
