@@ -1,0 +1,7 @@
+# SB-28 Branded CTA Contrast Candidates — 2026-10-23
+
+Figma UI master 39uzN0SZX8nlmcGDcHdQhr, isolated review board 188:57. Four review-only CasitaDex candidates using semantic action/primary (VariableID:29:5) and action/on-primary (VariableID:46:2), paint-level variable bindings, explicit Light/Dark semantic modes. Labels `Add Photo Memory`, Inter Medium 16, width 260. Apple Light 188:59 and Dark 188:62 height 52; Android Light 188:65 and Dark 188:68 height 56. Rounded Apple 13, Android 24. Screenshot render succeeded.
+
+Resolved approved semantic token contrast: Light white on dark green 9.87:1; Dark dark green on light sage 8.46:1; both exceed WCAG AA normal text 4.5:1. This is a token-color contrast pass, not proof of screenshot pixels or runtime accessibility. Candidates are bespoke branded review frames, NOT native linked Apple/Material instances, and do not supersede the Apple/Android source-kit reference boards.
+
+Gate: Review appearance against Warm Editorial A.2, label overflow/dynamic type, disabled/focused/pressed states, effective touch targets and native runtime accessibility. Do not promote to platform authority or app before acceptance. Approved source CTA and screens preserved. No push or production deployment.
