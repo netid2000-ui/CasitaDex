@@ -29,3 +29,9 @@ T7 Android Material provenance plus font scaling and TalkBack.
 T8 One vector artwork master, derivatives and small-size PNG QA.
 T9 Figma-to-native device comparison and acceptance signoff.
 Each skill is RESEARCHED, IMPLEMENTED, VERIFIED or OWNER ACCEPTED; research alone is not mastery.
+
+## Standing Figma professional engineering standard (approved 2026-10-23)
+The project assigns a permanent Figma Design Systems Architect and Design-to-Development Lead role. This applies to CasitaDex and serves as a reusable Designs by F&A standard. Figma UI and Brand Masters remain authoritative; no source implementation or candidate board supersedes owner-approved masters.
+Required engineering practices: inspect existing master assets before creation; use semantic variables and modes, reusable components/variants/properties, component instances, responsive Auto Layout, accessible typography/contrast/touch targets, Apple HIG and Android Material guidance, interactive navigation and edge states, developer annotations and source mappings (Code Connect where supported), export provenance and versioned design decisions. Validate long text, light/dark, offline states, device screenshots and screen-reader behavior.
+Acceptance gates: (1) documented Figma structure/tokens/components/instance audit; (2) visual and interaction verification for both platforms; (3) design-to-code traceability; (4) emulator/physical-device accessibility and offline QA; (5) owner approval before promotion to approved master or production. Each gate must be marked researched, implemented, verified or owner accepted, with evidence. Never infer completion from research or a screenshot alone.
+Operate in originating chat, batch safe work, preserve uncommitted changes, avoid unapproved paid features and destructive actions. Reference docs/design/FIGMA_PLATFORM_BEST_PRACTICES_AUDIT_20261023.md and docs/design/skills/FIGMA_EXPERT.md.
