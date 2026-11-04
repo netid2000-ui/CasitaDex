@@ -1,5 +1,9 @@
 name: CasitaDex prototype quality
 on:
+  push:
+    branches:
+      - main
+      - governance/mac-mini-authority-*
   workflow_dispatch:
   pull_request:
 permissions:
