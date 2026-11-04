@@ -410,7 +410,7 @@ function LabelManager({e}:{e:ReturnType<typeof useEng>}){
  {impact?<><Copy>Remove “{impact.name}” from {impact.memories} saved memories and {impact.draft?"the unfinished draft":"no draft"}? Memories and photos are kept. Removed Spaces become Unassigned.</Copy><Button label="Confirm remove label only" disabled={e.busy} onPress={()=>void e.run(async store=>{await store.removeTaxonomy(impact.kind,impact.id,impact.revision);setSelected("");setImpact(null);setName("");})} /><Button label="Cancel label removal" onPress={()=>setImpact(null)} /></>:null}</>:null}</View>;
 }
 export function EngMore(){
-  const e=useEng(),preferences=useData();const [reminderRestoreToken,setReminderRestoreToken]=useState<string|null>(null),[incoming,setIncoming]=useState<EngBackup|null>(null),[conflict,setConflict]=useState<"keep"|"incoming"|null>(null),[confirmRecovery,setConfirmRecovery]=useState(false);const [restoreToken,setRestoreToken]=useState<string|null>(null);const [textReview,setTextReview]=useState<{snapshot:EngSnapshot;token:string}|null>(null);const [section,setSection]=useState<"storage"|"labels"|"backup"|"preferences"|"help"|null>(null);
+  const e=useEng(),preferences=useData();const [reminderRestoreToken,setReminderRestoreToken]=useState<string|null>(null),[incoming,setIncoming]=useState<EngBackup|null>(null),[conflict,setConflict]=useState<"keep"|"incoming"|null>(null),[confirmRecovery,setConfirmRecovery]=useState(false);const [restoreToken,setRestoreToken]=useState<string|null>(null);const [textReview,setTextReview]=useState<{snapshot:EngSnapshot;token:string}|null>(null);const [section,setSection]=useState<"storage"|"labels"|"backup"|"preferences"|"help"|"premium"|null>(null);
   useEffect(()=>{if(!section)return;const h=BackHandler.addEventListener("hardwareBackPress",()=>{setSection(null);return true;});return()=>h.remove();},[section]);
   return <Page key={section??"menu"} independent hideHeading title="More">
  <BrandHeader />
@@ -422,8 +422,9 @@ export function EngMore(){
     <Button label="Recently Deleted memories" onPress={()=>{findCache={query:"",filter:{...defaultFilter(),lifecycle:"recently_deleted"},page:0,y:0,expanded:false};router.push("/answers");}} />
     <Button label="Manage Spaces & Categories" onPress={()=>setSection("labels")} />
     <Copy accessibilityRole="header">Data protection</Copy><Button label="Backup & Restore" onPress={()=>setSection("backup")} />
-    <Copy accessibilityRole="header">Preferences & help</Copy><Button label="Appearance & Accessibility" onPress={()=>setSection("preferences")} /><Button label="Help & About" onPress={()=>setSection("help")} />
+    <Copy accessibilityRole="header">Preferences & help</Copy><Button label="Appearance & Accessibility" onPress={()=>setSection("preferences")} /><Button label="Help & About" onPress={()=>setSection("help")} /><Button label="Optional premium information" onPress={()=>setSection("premium")} />
     </>:null}{section?<Button label="Back to More" onPress={()=>setSection(null)} />:null}
+    {section==="premium"?<><Copy accessibilityRole="header">Optional premium</Copy><Copy>Your saved memories, photos, search and reminders remain available without a purchase.</Copy><Copy>Premium purchases are not available yet. No payment will be taken. Purchase and Restore will be enabled only after Apple and Google store verification is implemented and tested.</Copy></>:null}
     {section==="storage"?<><Copy accessibilityRole="header">Storage & Cleanup</Copy>    <Button label="Measure device storage" disabled={e.busy} onPress={()=>void e.run(async()=>{
       const storage=await getEngStorage();
       const free=Number.isFinite(storage.free)?`${storage.free} bytes`:"Unavailable";
