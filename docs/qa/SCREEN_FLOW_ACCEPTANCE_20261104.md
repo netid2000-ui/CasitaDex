@@ -36,3 +36,8 @@ For every row verify normal path, cancellation/back, keyboard/save reachability,
 - Added automated click-through for Home, Photos, Reminders and Find, verifying route URL, selected state, horizontal fit, and no runtime page errors. All four pass against the locally served current web export.
 - Initial attempt incorrectly expected a fifth Memories tab; current approved UI exposes four bottom tabs. The browser role query also returned no tabs, so tests use explicit `[role=tab][aria-label]` selectors and verify `aria-selected`.
 - These are browser checks only; native touch, screen-reader behavior and CRUD remain pending.
+
+## Create/edit browser boundary — 2026-11-04
+- Attempted browser Add -> title -> answer -> Save -> Details -> Edit -> Save test. Browser `/add` intentionally renders `Full ENG requires the native Development app`, with no editor input fields. The test failed waiting for the title textbox; this is a platform capability boundary, **not evidence of a native Save defect**.
+- Replaced the invalid web CRUD assertion with a passing check that Add navigation opens `/add` and correctly displays the native-only gate.
+- Native create/edit/save/return and persistence remain PENDING. They require native simulator interaction tooling and screenshots before sign-off.

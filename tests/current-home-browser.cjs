@@ -23,6 +23,10 @@ const assert = require("node:assert/strict");
       assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false,label+" horizontal overflow");
       console.log("PASS navigation "+label+" "+route);
     }
+    await page.getByRole("button",{name:"Add Memory",exact:true}).click();
+    await page.waitForURL(url=>url.pathname==="/add");
+    await page.getByText("Full ENG requires the native Development app",{exact:true}).waitFor();
+    console.log("PASS Add route opens; native-only editor correctly gated on web");
     assert.deepEqual(errors,[],"Browser runtime errors");
     console.log("PASS no browser page errors");
   } finally {await browser.close();}
