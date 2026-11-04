@@ -1,0 +1,17 @@
+appId: com.designsbyfa.casitadex.dev
+---
+- launchApp
+- tapOn: "Memories"
+- assertVisible: "Open .*Maestro QA memory 20261104.*"
+- tapOn: "Open .*Maestro QA memory 20261104.*"
+- assertVisible: "Maestro native answer"
+- scrollUntilVisible:
+    element: "Edit memory"
+    direction: DOWN
+- tapOn: "Edit memory"
+- assertVisible: "Memory name"
+- scrollUntilVisible:
+    element: "Save changes"
+    direction: DOWN
+- tapOn: "Save changes"
+- assertVisible: "Maestro native answer"

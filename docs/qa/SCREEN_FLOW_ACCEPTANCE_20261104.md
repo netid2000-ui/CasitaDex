@@ -64,3 +64,9 @@ For every row verify normal path, cancellation/back, keyboard/save reachability,
 - Initial post-rebuild Maestro title assertion failed because tapping the visible label did not focus the actual input. Hierarchy showed separate label `[20,273][382,295]` and TextInput `[21,304][381,354]` bounds. Changing the tap to the input area yielded PASS, job `aca15f8c5f5779b8`, exit 0.
 - Draft-aware create test now handles Resume Draft -> Continue Editing, targets the actual title and answer TextInputs, saves and asserts the answer on the resulting screen. PASS, job `a8418399b4867ca5`, exit 0; log `/tmp/casitadex-sb41-create-save-c.log`.
 - This closes the native create/save subgate only. Edit/save/return/relaunch persistence still pending, as do Android parity and owner physical iPhone sign-off.
+
+## CD-SB41 — Detail/Edit/Save navigation smoke (2026-11-04)
+- Native simulator was shutdown between sessions; rebooted the isolated QA simulator without wiping data.
+- Saved memory persists after app relaunch. The actual saved title is `Native input diagnosticMaestro QA memory 20261104 20261104` (the draft was resumed and typing appended), and the saved answer is `Maestro native answer`.
+- `.maestro/casitadex-native-edit-return.yaml` uses the saved-memory accessibility label, opens Details, asserts answer, scrolls to Edit memory, opens editor, locates Save changes, saves without modifications, and asserts the original answer. PASS: job `7e5177295ffc7c4a`, exit 0, log `/tmp/casitadex-sb41-edit-existing.log`.
+- This verifies relaunch persistence and edit screen/navigation smoke, **not** actual edited-field persistence; that subgate remains OPEN. Need input targeting and a changed-value assertion after relaunch.
