@@ -15,6 +15,14 @@ const assert = require("node:assert/strict");
     }
     assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false,"Horizontal overflow on mobile Home");
     console.log("PASS mobile Home horizontal fit");
+    for (const [label, route] of [["Photos","/photos"],["Reminders","/reminders"],["Find","/answers"],["Home","/"]]) {
+      const tab=page.locator(`[role="tab"][aria-label="${label}"]`);
+      await tab.click();
+      await page.waitForURL(url=>url.pathname===route,{timeout:12000});
+      assert.equal(await tab.getAttribute("aria-selected"),"true",label+" selected state");
+      assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false,label+" horizontal overflow");
+      console.log("PASS navigation "+label+" "+route);
+    }
     assert.deepEqual(errors,[],"Browser runtime errors");
     console.log("PASS no browser page errors");
   } finally {await browser.close();}

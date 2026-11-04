@@ -31,3 +31,8 @@ For every row verify normal path, cancellation/back, keyboard/save reachability,
 - Current-home browser test `tests/current-home-browser.cjs` passed: Add Memory, Add Photo Memory, Add Reminder visible; mobile width fits; no page errors.
 - `npm run test:browser` now targets current home; `npm run test:browser:legacy` retains the older scenario for historical comparison. This does **not** establish full current workflow coverage.
 - Next: implement deterministic interactions for create/edit/save/return, photo viewer, reminders, search and settings; run on native simulator and Android with evidence.
+
+## Current four-tab browser navigation — 2026-11-04
+- Added automated click-through for Home, Photos, Reminders and Find, verifying route URL, selected state, horizontal fit, and no runtime page errors. All four pass against the locally served current web export.
+- Initial attempt incorrectly expected a fifth Memories tab; current approved UI exposes four bottom tabs. The browser role query also returned no tabs, so tests use explicit `[role=tab][aria-label]` selectors and verify `aria-selected`.
+- These are browser checks only; native touch, screen-reader behavior and CRUD remain pending.
