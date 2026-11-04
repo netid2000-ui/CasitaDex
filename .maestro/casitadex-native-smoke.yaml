@@ -1,0 +1,9 @@
+appId: com.designsbyfa.casitadex.dev
+---
+- launchApp
+- assertVisible: "Home"
+- assertVisible: "Add Memory"
+- assertVisible: "Add Photo Memory"
+- assertVisible: "Add Reminder"
+- tapOn: "Add Memory"
+- assertVisible: "Add Memory"

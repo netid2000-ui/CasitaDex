@@ -41,3 +41,9 @@ For every row verify normal path, cancellation/back, keyboard/save reachability,
 - Attempted browser Add -> title -> answer -> Save -> Details -> Edit -> Save test. Browser `/add` intentionally renders `Full ENG requires the native Development app`, with no editor input fields. The test failed waiting for the title textbox; this is a platform capability boundary, **not evidence of a native Save defect**.
 - Replaced the invalid web CRUD assertion with a passing check that Add navigation opens `/add` and correctly displays the native-only gate.
 - Native create/edit/save/return and persistence remain PENDING. They require native simulator interaction tooling and screenshots before sign-off.
+
+## Maestro native iOS acceptance — 2026-11-04
+- Installed Maestro CLI 2.12.1 discovered at `~/.maestro/bin/maestro`; requires `JAVA_HOME=/opt/homebrew/opt/openjdk@21` and Java 21 in PATH.
+- `.maestro/casitadex-native-smoke.yaml` PASS (exit 0) on isolated iOS 27.0 simulator: launch, Home, three primary actions, Add Memory tap and Add screen.
+- `.maestro/casitadex-native-create.yaml` FAIL (exit 1): title and answer input commands, keyboard dismissal, Save button scroll and tap completed; expected answer did not appear. Post-failure UI hierarchy remained on Add screen with message `Add a name and either an answer or a photo`. Evidence: `~/.maestro/tests/2026-11-04_153230/casitadex-native-create/` and `/tmp/casitadex-maestro-create-20261104.log` on Mac mini.
+- **Open defect / investigation:** determine whether native input events failed to persist to the draft, a draft checkpoint race occurred, or the save attempt validated empty fields. Do not claim save/edit acceptance until reproduced, fixed and rerun.

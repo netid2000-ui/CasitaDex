@@ -1,0 +1,15 @@
+appId: com.designsbyfa.casitadex.dev
+---
+- launchApp
+- tapOn: "Add Memory"
+- assertVisible: "What do you want to remember?"
+- tapOn: "What do you want to remember?"
+- inputText: "Maestro QA memory 20261104"
+- tapOn: "The answer (or add a photo)"
+- inputText: "Maestro native answer"
+- hideKeyboard
+- scrollUntilVisible:
+    element: "Save memory"
+    direction: DOWN
+- tapOn: "Save memory"
+- assertVisible: "Maestro native answer"
