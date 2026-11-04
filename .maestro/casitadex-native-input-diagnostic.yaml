@@ -8,7 +8,7 @@ appId: com.designsbyfa.casitadex.dev
       - tapOn: "Resume Draft"
 - runFlow:
     when:
-      notVisible: "Resume Draft"
+      visible: "The details that matter."
     commands:
       - tapOn: "Add Memory"
 - runFlow:
@@ -17,7 +17,8 @@ appId: com.designsbyfa.casitadex.dev
     commands:
       - tapOn: "Continue Editing"
 - assertVisible: "What do you want to remember?"
-- tapOn: "What do you want to remember?"
+- tapOn:
+    point: "50%,38%"
 - inputText: "Native input diagnostic 20261104"
 - takeScreenshot: casitadex-native-title-entered
 - assertVisible: "Native input diagnostic 20261104"

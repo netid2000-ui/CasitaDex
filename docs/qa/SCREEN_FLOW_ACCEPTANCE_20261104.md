@@ -58,3 +58,9 @@ For every row verify normal path, cancellation/back, keyboard/save reachability,
 - Updated `.maestro/casitadex-native-input-diagnostic.yaml` to branch on Resume Draft and Continue Editing without deleting data. Reached the native title input, entered text, and captured a screenshot.
 - Exact-text assertion still failed; the captured accessibility hierarchy lists the title input under its accessibility label but does not expose the entered string as an accessibility text/value. This does not by itself prove text input was lost. Need inspect screenshot and persisted draft state or add testable native field identifiers before diagnosing Save.
 - Latest Maestro evidence: `~/.maestro/tests/2026-11-04_155105/`; job log `/tmp/casitadex-title-input-b.log`. Native create/save remains PENDING.
+
+## CD-SB41 — Native create/save recovery PASS (2026-11-04)
+- Xcode simulator rebuild PASS, job `02b85744fe853690`, exit 0; installed on isolated iOS simulator, `simctl install` exit 0.
+- Initial post-rebuild Maestro title assertion failed because tapping the visible label did not focus the actual input. Hierarchy showed separate label `[20,273][382,295]` and TextInput `[21,304][381,354]` bounds. Changing the tap to the input area yielded PASS, job `aca15f8c5f5779b8`, exit 0.
+- Draft-aware create test now handles Resume Draft -> Continue Editing, targets the actual title and answer TextInputs, saves and asserts the answer on the resulting screen. PASS, job `a8418399b4867ca5`, exit 0; log `/tmp/casitadex-sb41-create-save-c.log`.
+- This closes the native create/save subgate only. Edit/save/return/relaunch persistence still pending, as do Android parity and owner physical iPhone sign-off.
