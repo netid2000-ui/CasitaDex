@@ -47,3 +47,8 @@ For every row verify normal path, cancellation/back, keyboard/save reachability,
 - `.maestro/casitadex-native-smoke.yaml` PASS (exit 0) on isolated iOS 27.0 simulator: launch, Home, three primary actions, Add Memory tap and Add screen.
 - `.maestro/casitadex-native-create.yaml` FAIL (exit 1): title and answer input commands, keyboard dismissal, Save button scroll and tap completed; expected answer did not appear. Post-failure UI hierarchy remained on Add screen with message `Add a name and either an answer or a photo`. Evidence: `~/.maestro/tests/2026-11-04_153230/casitadex-native-create/` and `/tmp/casitadex-maestro-create-20261104.log` on Mac mini.
 - **Open defect / investigation:** determine whether native input events failed to persist to the draft, a draft checkpoint race occurred, or the save attempt validated empty fields. Do not claim save/edit acceptance until reproduced, fixed and rerun.
+
+## Native input diagnostic follow-up — 2026-11-04
+- Reconnected AI Commander Mac mini successfully (agent 1.6.4); previous remote execution blockage cleared.
+- Ran `.maestro/casitadex-native-input-diagnostic.yaml` to assert the title field before typing. The Add Memory tap command completed but the title-field assertion failed. Maestro hierarchy at `~/.maestro/tests/2026-11-04_153748/` showed the **Home** screen, not Add. This introduces an intermittent or state-dependent navigation concern; the initial native smoke had successfully reached Add.
+- No reset/clear-data was performed. Preserve the existing isolated simulator data and investigate navigation guards, draft restoration, and app initialization before treating text input as root cause.

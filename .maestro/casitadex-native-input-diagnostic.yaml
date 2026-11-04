@@ -1,0 +1,9 @@
+appId: com.designsbyfa.casitadex.dev
+---
+- launchApp
+- tapOn: "Add Memory"
+- assertVisible: "What do you want to remember?"
+- tapOn: "What do you want to remember?"
+- inputText: "Native input diagnostic 20261104"
+- takeScreenshot: /tmp/casitadex-native-title-entered
+- assertVisible: "Native input diagnostic 20261104"
