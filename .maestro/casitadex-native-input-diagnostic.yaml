@@ -1,9 +1,23 @@
 appId: com.designsbyfa.casitadex.dev
 ---
 - launchApp
-- tapOn: "Add Memory"
+- runFlow:
+    when:
+      visible: "Resume Draft"
+    commands:
+      - tapOn: "Resume Draft"
+- runFlow:
+    when:
+      notVisible: "Resume Draft"
+    commands:
+      - tapOn: "Add Memory"
+- runFlow:
+    when:
+      visible: "Continue Editing"
+    commands:
+      - tapOn: "Continue Editing"
 - assertVisible: "What do you want to remember?"
 - tapOn: "What do you want to remember?"
 - inputText: "Native input diagnostic 20261104"
-- takeScreenshot: /tmp/casitadex-native-title-entered
+- takeScreenshot: casitadex-native-title-entered
 - assertVisible: "Native input diagnostic 20261104"

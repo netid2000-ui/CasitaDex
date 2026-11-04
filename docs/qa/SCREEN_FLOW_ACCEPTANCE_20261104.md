@@ -52,3 +52,9 @@ For every row verify normal path, cancellation/back, keyboard/save reachability,
 - Reconnected AI Commander Mac mini successfully (agent 1.6.4); previous remote execution blockage cleared.
 - Ran `.maestro/casitadex-native-input-diagnostic.yaml` to assert the title field before typing. The Add Memory tap command completed but the title-field assertion failed. Maestro hierarchy at `~/.maestro/tests/2026-11-04_153748/` showed the **Home** screen, not Add. This introduces an intermittent or state-dependent navigation concern; the initial native smoke had successfully reached Add.
 - No reset/clear-data was performed. Preserve the existing isolated simulator data and investigate navigation guards, draft restoration, and app initialization before treating text input as root cause.
+
+## Draft-aware Maestro rerun — 2026-11-04
+- Source inspection: Home deliberately disables Add Memory when `e.snapshot.draft` exists and instead shows Resume Draft. The earlier navigation failure is consistent with this state, not proof of a navigation regression.
+- Updated `.maestro/casitadex-native-input-diagnostic.yaml` to branch on Resume Draft and Continue Editing without deleting data. Reached the native title input, entered text, and captured a screenshot.
+- Exact-text assertion still failed; the captured accessibility hierarchy lists the title input under its accessibility label but does not expose the entered string as an accessibility text/value. This does not by itself prove text input was lost. Need inspect screenshot and persisted draft state or add testable native field identifiers before diagnosing Save.
+- Latest Maestro evidence: `~/.maestro/tests/2026-11-04_155105/`; job log `/tmp/casitadex-title-input-b.log`. Native create/save remains PENDING.
