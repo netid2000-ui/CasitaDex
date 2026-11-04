@@ -91,7 +91,8 @@ export function EngHome(){
  <HomeAction primary title="Add Memory" detail="Capture a useful detail" icon="Memories" disabled={!!draft||!e.snapshot} onPress={()=>router.push("/add")} />
  <HomeAction title="Add Photo Memory" detail="Start with an image" icon="Photos" disabled={!!draft||!e.snapshot} onPress={()=>router.push("/add?mode=photo")} />
  <HomeAction title="Add Reminder" detail="Remember the next step" icon="Reminders" onPress={()=>router.push("/reminders?mode=new")} />
- </View> {(homeReminders.length>0||!!home?.due.length)?<Copy kind="section" accessibilityRole="header">Upcoming reminders</Copy>:null}
+ </View>
+ {(homeReminders.length>0||!!home?.due.length)?<Copy kind="section" accessibilityRole="header">Upcoming reminders</Copy>:null}
  {homeReminders.length||home?.due.length?<>{homeReminders.map(r=><View key={r.id} style={s.panel}><Copy style={{fontWeight:"700"}}>{r.title}</Copy><Copy kind="small">{r.dueDate} at {r.dueTime}</Copy></View>)}{home?.due.slice(0,Math.max(0,3-homeReminders.length)).map(m=><MemoryLink key={m.id} memory={m} />)}<Button label="View all reminders" onPress={()=>router.push("/reminders")} /></>:null}
  <Status text={e.status} />
  </Page>;

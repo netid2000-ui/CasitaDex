@@ -13,7 +13,7 @@ const illustrations = {
 export function BrandLogo({ width = 96 }: { width?: number }) {
   const { dark } = useTheme();
   return <Image source={dark ? require("../assets/brand/logo-color-dark.png") : require("../assets/brand/logo-color-light.png")}
-    resizeMode="contain" accessibilityLabel="CasitaDex" style={{ width, height: width * 416 / 480, flexShrink: 0 }} />;
+    resizeMode="contain" accessibilityLabel="CasitaDex" style={{ width, height: width * 550 / 545, flexShrink: 0 }} />;
 }
 function LocalDate() {
   const [now, setNow] = useState(() => new Date());
