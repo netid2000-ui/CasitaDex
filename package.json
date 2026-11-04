@@ -15,8 +15,9 @@
     "doctor": "expo-doctor",
     "export:web": "expo export --platform web --max-workers 2",
     "preview": "node scripts/preview.mjs",
-    "test:browser": "node tests/browser-smoke.cjs",
-    "test:current-home": "node tests/current-home-browser.cjs"
+    "test:browser": "node tests/current-home-browser.cjs",
+    "test:current-home": "node tests/current-home-browser.cjs",
+    "test:browser:legacy": "node tests/browser-smoke.cjs"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "2.2.0",

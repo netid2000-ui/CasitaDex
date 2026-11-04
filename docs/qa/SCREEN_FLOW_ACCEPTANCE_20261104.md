@@ -25,3 +25,9 @@ For every row verify normal path, cancellation/back, keyboard/save reachability,
 3. Reproduce failures, add a regression test, fix and commit; rerun the affected path and whole QA suite.
 4. Repeat high-risk save/return, linked reminders, photo viewer, offline restart and restore on Android and physical iPhone.
 5. Do not mark device or store release PASS from build success, a static screenshot, or unit tests alone.
+
+## Browser smoke triage — 2026-11-04
+- Original `tests/browser-smoke.cjs` timed out waiting for `Explore example home`; this label belongs to the legacy `src/screens.tsx` example UI, not the current Expo Router `src/app/index.tsx` which renders `EngHome`.
+- Current-home browser test `tests/current-home-browser.cjs` passed: Add Memory, Add Photo Memory, Add Reminder visible; mobile width fits; no page errors.
+- `npm run test:browser` now targets current home; `npm run test:browser:legacy` retains the older scenario for historical comparison. This does **not** establish full current workflow coverage.
+- Next: implement deterministic interactions for create/edit/save/return, photo viewer, reminders, search and settings; run on native simulator and Android with evidence.
