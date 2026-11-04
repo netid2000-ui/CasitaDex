@@ -122,6 +122,7 @@ export function Field({
       <Copy style={{ fontWeight: "600" }}>{label}</Copy>
       <TextInput
         accessibilityLabel={label}
+        accessibilityValue={{ text: value }}
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
         selectionColor={colors.focus}
