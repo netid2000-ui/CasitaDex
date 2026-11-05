@@ -1,14 +1,15 @@
 import { enableReminderAlerts, getReminderPermission, type ReminderPermission } from "./reminder-alerts";
 import type { RepeatSchedule } from "./reminder-recurrence";
+import { backupReviewReducer, emptyBackupReview } from "./backup-review";
 import { reminderNotificationTarget } from "./reminder-notification-target";
 import { listLinkedReminderMemories } from "./reminder-notification-projection";
 import DateTimePicker, { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
-import React, { useCallback, useEffect, useRef, useState, useMemo } from "react";
+import React, { useCallback, useEffect, useRef, useState, useMemo, useReducer } from "react";
 import { Platform, Alert, AppState, BackHandler, Image, Linking, Modal, Pressable, ScrollView, Share, View, useWindowDimensions } from "react-native";
 import { router, useFocusEffect, useLocalSearchParams } from "expo-router";
 import { Button, Copy, Field, Page, useTheme } from "./ui";
 import { useData } from "./state";
-import { getEngStore, getEngStorage, chooseEngPhoto, engPhotoUri, writeEngBackup, pickEngBackup, shareEngPhotos, writeEngText, type EngStore, type EngBackup } from "./eng-runtime";
+import { getEngStore, getEngStorage, chooseEngPhoto, engPhotoUri, writeEngBackup, pickEngBackup, shareEngPhotos, writeEngText, type EngStore } from "./eng-runtime";
 import { newEngDraft } from "./eng-store";
 import { listStandaloneReminders,saveStandaloneReminder,completeStandaloneReminder,deleteStandaloneReminder,type StandaloneReminder } from "./standalone-reminders";
 import type { EngDraft, EngSnapshot } from "./eng-types";
@@ -561,8 +562,15 @@ function LabelManager({e}:{e:ReturnType<typeof useEng>}){
  {impact?<><Copy>Remove “{impact.name}” from {impact.memories} saved memories and {impact.draft?"the unfinished draft":"no draft"}? Memories and photos are kept. Removed Spaces become Unassigned.</Copy><Button label="Confirm remove label only" disabled={e.busy} onPress={()=>void e.run(async store=>{await store.removeTaxonomy(impact.kind,impact.id,impact.revision);setSelected("");setImpact(null);setName("");})} /><Button label="Cancel label removal" onPress={()=>setImpact(null)} /></>:null}</>:null}</View>;
 }
 export function EngMore(){
-  const e=useEng(),preferences=useData();const [reminderRestoreToken,setReminderRestoreToken]=useState<string|null>(null),[incoming,setIncoming]=useState<EngBackup|null>(null),[conflict,setConflict]=useState<"keep"|"incoming"|null>(null),[confirmRecovery,setConfirmRecovery]=useState(false);const [restoreToken,setRestoreToken]=useState<string|null>(null);const [textReview,setTextReview]=useState<{snapshot:EngSnapshot;token:string}|null>(null);const [section,setSection]=useState<"storage"|"labels"|"backup"|"preferences"|"help"|"premium"|null>(null);
-  useEffect(()=>{if(!section)return;const h=BackHandler.addEventListener("hardwareBackPress",()=>{setSection(null);return true;});return()=>h.remove();},[section]);
+  const e=useEng(),preferences=useData();
+  const [{incoming,restoreToken,reminderRestoreToken,conflict,textReview,confirmRecovery},review]=useReducer(backupReviewReducer,undefined,emptyBackupReview);
+  const selection=useRef<object|null>(null);
+  const [section,setSection]=useState<"storage"|"labels"|"backup"|"preferences"|"help"|"premium"|null>(null);
+  const clearReview=useCallback(()=>{selection.current=null;review({type:"reset"});},[]);
+  const backupBusy=e.busy,setBackupStatus=e.setStatus;
+  const leaveSection=useCallback(()=>{if(backupBusy)return;clearReview();setSection(null);setBackupStatus("");},[backupBusy,setBackupStatus,clearReview]);
+  useFocusEffect(useCallback(()=>()=>{clearReview();},[clearReview]));
+  useEffect(()=>{if(!section)return;const h=BackHandler.addEventListener("hardwareBackPress",()=>{leaveSection();return true;});return()=>h.remove();},[section,leaveSection]);
   return <Page key={section??"menu"} independent hideHeading title="More">
  <BrandHeader />
     <Copy accessibilityRole="header" kind="title">More</Copy>
@@ -574,7 +582,7 @@ export function EngMore(){
     <Button label="Manage Spaces & Categories" onPress={()=>setSection("labels")} />
     <Copy accessibilityRole="header">Data protection</Copy><Button label="Backup & Restore" onPress={()=>setSection("backup")} />
     <Copy accessibilityRole="header">Preferences & help</Copy><Button label="Appearance & Accessibility" onPress={()=>setSection("preferences")} /><Button label="Help & About" onPress={()=>setSection("help")} /><Button label="Optional premium information" onPress={()=>setSection("premium")} />
-    </>:null}{section?<Button label="Back to More" onPress={()=>setSection(null)} />:null}
+    </>:null}{section?<Button label="Back to More" disabled={e.busy} onPress={leaveSection} />:null}
     {section==="premium"?<><Copy accessibilityRole="header">Optional premium</Copy><Copy>Your saved memories, photos, search and reminders remain available without a purchase.</Copy><Copy>Premium purchases are not available yet. No payment will be taken. Purchase and Restore will be enabled only after Apple and Google store verification is implemented and tested.</Copy></>:null}
     {section==="storage"?<><Copy accessibilityRole="header">Storage & Cleanup</Copy>    <Button label="Measure device storage" disabled={e.busy} onPress={()=>void e.run(async()=>{
       const storage=await getEngStorage();
@@ -590,27 +598,27 @@ export function EngMore(){
     {section==="backup"?<>
     <View style={{flexDirection:"row",alignItems:"center",gap:16}}><BrandArt name="backup" size={80} /><Copy accessibilityRole="header" kind="section" style={{flex:1}}>Back up your memories</Copy></View><Copy>Full v4 backups include standalone reminders. Before restoring, keep a second verified backup. Full v4 restore replaces current standalone reminders after explicit review and confirmation. Text backups still exclude standalone reminders. Full backups include active, archived and recently deleted memories, photos, categories, Spaces, and your unfinished draft. Full backups support all currently permitted collection and draft photos, up to 154 MB.</Copy>
     <Button primary label="Save full backup (with draft and photos)" disabled={e.busy} onPress={()=>void e.run(async store=>{const b=await store.backup();e.setStatus(await writeEngBackup(b));},"")} />
-    <Button label="Review limited text backup (photos excluded)" disabled={e.busy} onPress={()=>void e.run(async store=>{const b=await store.backup();setTextReview({snapshot:b.snapshot,token:await store.restoreToken()});},"")} />
-    {textReview?<View><Copy>PHOTOS EXCLUDED. Includes {textBackupPreview(textReview.snapshot).included} written-answer memories with lifecycle, labels, notes, source, history and reminders. Omits {textBackupPreview(textReview.snapshot).omitted.length} photo-only saved memories and all {textBackupPreview(textReview.snapshot).savedPhotos} saved / {textBackupPreview(textReview.snapshot).draftPhotos} draft photos. Draft text is retained; it may need a new photo before saving. Use a full backup for complete recovery.</Copy>{textBackupPreview(textReview.snapshot).omitted.map(m=><Copy key={m.id}>Excluded: {m.title} ({m.lifecycle})</Copy>)}<Button primary label="Confirm save limited text backup" disabled={e.busy} onPress={()=>void e.run(async store=>{if(await store.restoreToken()!==textReview.token)throw Error("Collection changed. Review the text backup again.");e.setStatus(await writeEngText(createTextBackup(textReview.snapshot),true));setTextReview(null);},"")} /><Button label="Cancel text backup" onPress={()=>setTextReview(null)} /></View>:null}
+    <Button label="Review limited text backup (photos excluded)" disabled={e.busy} onPress={()=>void e.run(async store=>{const request={};selection.current=request;review({type:"begin",request});const b=await store.backup();const token=await store.restoreToken();if(selection.current===request)review({type:"text",request,value:{snapshot:b.snapshot,token}});},"")} />
+    {textReview?<View><Copy>PHOTOS EXCLUDED. Includes {textBackupPreview(textReview.snapshot).included} written-answer memories with lifecycle, labels, notes, source, history and reminders. Omits {textBackupPreview(textReview.snapshot).omitted.length} photo-only saved memories and all {textBackupPreview(textReview.snapshot).savedPhotos} saved / {textBackupPreview(textReview.snapshot).draftPhotos} draft photos. Draft text is retained; it may need a new photo before saving. Use a full backup for complete recovery.</Copy>{textBackupPreview(textReview.snapshot).omitted.map(m=><Copy key={m.id}>Excluded: {m.title} ({m.lifecycle})</Copy>)}<Button primary label="Confirm save limited text backup" disabled={e.busy} onPress={()=>void e.run(async store=>{if(await store.restoreToken()!==textReview.token)throw Error("Collection changed. Review the text backup again.");e.setStatus(await writeEngText(createTextBackup(textReview.snapshot),true));clearReview();},"")} /><Button label="Cancel text backup" disabled={e.busy} onPress={clearReview} /></View>:null}
     <Copy>Text export is a readable report of all states and draft text. It includes private written metadata and history, excludes photo bytes, and cannot restore a collection. Use a full backup for recovery.</Copy>
     <Button label="Save text report (no photos; not a backup)" disabled={e.busy} onPress={()=>void e.run(async store=>{const b=await store.backup();const text=JSON.stringify({format:"CasitaDex readable text report — not restorable",exportedAt:new Date().toISOString(),memories:b.snapshot.data.memories,spaces:b.snapshot.data.spaces,categories:b.snapshot.data.categories,draft:b.snapshot.draft?{...b.snapshot.draft,photos:b.snapshot.draft.photos.map(p=>({id:p.id,note:"Photo bytes excluded"}))}:null},null,2);e.setStatus(await writeEngText(text));},"")} />
-    <Button label="Choose backup to review" disabled={e.busy} onPress={()=>void e.run(async store=>{const backup=await pickEngBackup();setIncoming(backup);setRestoreToken(backup?await store.restoreToken():null);setReminderRestoreToken(backup?.reminders?await store.reminderRestoreToken():null);setConflict(null);e.setStatus(backup?"Backup checked. Review before replacing your collection.":"Backup selection canceled. Current data kept.");},"")} />
+    <Button label="Choose backup to review" disabled={e.busy} onPress={()=>void e.run(async store=>{const request={};selection.current=request;review({type:"begin",request});e.setStatus("");const backup=await pickEngBackup();const token=backup?await store.restoreToken():null;const reminderToken=backup?.reminders?await store.reminderRestoreToken():null;if(selection.current!==request)return;review({type:"selected",request,incoming:backup,restoreToken:token,reminderRestoreToken:reminderToken});e.setStatus(backup?"Backup checked. Review before replacing your collection.":"Backup selection canceled. Current data kept.");},"")} />
     {incoming?<>
       <Copy>{incoming.source}</Copy>{incoming.reminders?<Copy>Standalone reminders in backup: {incoming.reminders.rows.length}. Confirming replaces all current standalone reminders.</Copy>:<Copy>Legacy archive: current standalone reminders will be kept.</Copy>}<Copy>{incoming.snapshot.data.memories.length} memories, {incoming.snapshot.data.media.media.length} saved photos, {incoming.snapshot.draft?"1 unfinished draft":"no unfinished draft"}, {incoming.snapshot.draft?.photos.length??0} draft photos.</Copy>
       <Copy>Active: {incoming.snapshot.data.memories.filter(m=>m.lifecycle==="active").length}; Archived: {incoming.snapshot.data.memories.filter(m=>m.lifecycle==="archived").length}; Recently Deleted: {incoming.snapshot.data.memories.filter(m=>m.lifecycle==="recently_deleted").length}.</Copy>
       <Copy>Replacing the collection keeps the current full state as a recoverable previous save.</Copy>
       {e.snapshot?.draft?<>
         <Copy>You already have an unfinished draft. Choose which one to use.</Copy>
-        <Button label="Keep current draft" disabled={e.busy} selected={conflict==="keep"} onPress={()=>setConflict("keep")} />
-        <Button label="Use backed-up draft (previous state recoverable)" disabled={e.busy} selected={conflict==="incoming"} onPress={()=>setConflict("incoming")} />
+        <Button label="Keep current draft" disabled={e.busy} selected={conflict==="keep"} onPress={()=>review({type:"draft",value:"keep"})} />
+        <Button label="Use backed-up draft (previous state recoverable)" disabled={e.busy} selected={conflict==="incoming"} onPress={()=>review({type:"draft",value:"incoming"})} />
       </>:null}
-      <Button primary label="Confirm replace with reviewed backup" disabled={e.busy||!!(e.snapshot?.draft&&!conflict)} onPress={()=>void e.run(async store=>{if(!restoreToken)throw Error("Review this backup again");await store.stageRestore(incoming.snapshot,incoming.read,restoreToken);if(incoming.reminders)await store.restoreV4(incoming.snapshot,incoming.reminders,conflict??"incoming",restoreToken,reminderRestoreToken??undefined);else await store.restore(incoming.snapshot,conflict??"incoming",restoreToken);setIncoming(null);},"Full collection restored and verified.")} />
-      <Button label="Cancel restore" disabled={e.busy} onPress={()=>{setIncoming(null);e.setStatus("Restore canceled. Your collection and draft are kept.");}} />
+      <Button primary label="Confirm replace with reviewed backup" disabled={e.busy||!!(e.snapshot?.draft&&!conflict)} onPress={()=>void e.run(async store=>{if(!restoreToken)throw Error("Review this backup again");await store.stageRestore(incoming.snapshot,incoming.read,restoreToken);if(incoming.reminders)await store.restoreV4(incoming.snapshot,incoming.reminders,conflict??"incoming",restoreToken,reminderRestoreToken??undefined);else await store.restore(incoming.snapshot,conflict??"incoming",restoreToken);clearReview();},"Full collection restored and verified.")} />
+      <Button label="Cancel restore" disabled={e.busy} onPress={()=>{clearReview();e.setStatus("Restore canceled. Your collection and draft are kept.");}} />
     </>:null}
-    <Button label="Recover previous full save" disabled={e.busy} onPress={()=>setConfirmRecovery(true)} />
+    <Button label="Recover previous full save" disabled={e.busy} onPress={()=>review({type:"recovery"})} />
     {confirmRecovery?<><Copy>Recover the previous Full v4 collection, draft, photos and standalone reminders? Your current state becomes the recoverable previous save.</Copy>
-      <Button label="Confirm full recovery" disabled={e.busy} onPress={()=>void e.run(async store=>{if(await store.hasV4Recovery())await store.recoverV4();else await store.recover();setConfirmRecovery(false);},"Previous full save recovered and verified.")} />
-      <Button label="Cancel recovery" onPress={()=>setConfirmRecovery(false)} />
+      <Button label="Confirm full recovery" disabled={e.busy} onPress={()=>void e.run(async store=>{if(await store.hasV4Recovery())await store.recoverV4();else await store.recover();clearReview();},"Previous full save recovered and verified.")} />
+      <Button label="Cancel recovery" disabled={e.busy} onPress={clearReview} />
     </>:null}
     </>:null}
     {section==="help"?<><BrandLogo width={180} /><Copy accessibilityRole="header">Help & About</Copy><Copy>CasitaDex Development 0.1.0. Memories and photos stay on this device unless you export or share them. Keep a verified full backup in a second location. Text backups from earlier versions can be reviewed with Choose backup. They cannot contain photos or an unfinished draft.</Copy><Copy>Verification records what you checked against a source. It is not a guarantee of correctness. Editing an answer or its source requires checking again. Archive pauses reminders; Recently Deleted keeps recovery available. Cleanup does not run automatically in this build.</Copy>
