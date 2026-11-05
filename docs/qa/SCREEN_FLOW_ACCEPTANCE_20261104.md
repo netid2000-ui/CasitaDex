@@ -70,3 +70,8 @@ For every row verify normal path, cancellation/back, keyboard/save reachability,
 - Saved memory persists after app relaunch. The actual saved title is `Native input diagnosticMaestro QA memory 20261104 20261104` (the draft was resumed and typing appended), and the saved answer is `Maestro native answer`.
 - `.maestro/casitadex-native-edit-return.yaml` uses the saved-memory accessibility label, opens Details, asserts answer, scrolls to Edit memory, opens editor, locates Save changes, saves without modifications, and asserts the original answer. PASS: job `7e5177295ffc7c4a`, exit 0, log `/tmp/casitadex-sb41-edit-existing.log`.
 - This verifies relaunch persistence and edit screen/navigation smoke, **not** actual edited-field persistence; that subgate remains OPEN. Need input targeting and a changed-value assertion after relaunch.
+
+## CD-SB41 edited-title persistence attempt — unresolved
+- Mac mini isolated iOS simulator was booted. Maestro `.maestro/casitadex-native-edit-persist.yaml` entered a replacement title and tapped Save changes; the next answer assertion FAILED (job `73fdf6bd271c8ec2`, log `/tmp/casitadex-sb41-edit-persist-b.log`).
+- Failure hierarchy still showed the edit form and Save changes, rather than Details. This may be a validation failure or incorrect input targeting. Do not mark edited-field persistence PASS.
+- Follow-up: inspect field accessibility values and error status immediately after Save, replace percentage-coordinate tapping with a stable input testID, then rerun including stop/launch and persisted-value assertions. Preserve QA data.
