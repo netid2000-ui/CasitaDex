@@ -83,3 +83,16 @@ The nine original super-batches and six milestones remain above. Both apps remai
 | WORK-SB67 Release | PARTIAL | CasitaDex dependency, store, distribution and privacy gates remain open. |
 
 Evidence: WORK_SB65_EXECUTION.md and WORK_SB66_EXECUTION.md. Canonical return: Event Command docs/qa/DESIGNS_BY_FA_WORK_SB64_67_RETURN_REPORT.md.
+
+## WORK-SB68–71 — November 5, 2026 (America/Chicago)
+
+The original nine batches, six milestones and prior acceptance remain recorded above. Both apps remain release **NO-GO**.
+
+| Workstream | Result | Evidence and next gate |
+| --- | --- | --- |
+| SB68 Event Command | PARTIAL | iOS anchored guest edit, task lifecycle, full timeline edit, and keyboard-open Budget verified. Offline, collaboration and event-day acceptance remain open. |
+| SB69 CasitaDex | PARTIAL | Firebase-free Android scheduling implemented, and the iOS bridge artifact built. Simulator I/O, install and XCTest block iOS product acceptance. Notification delivery and reboot remain open. |
+| SB70 Accessibility | PARTIAL | Both Android candidates rebuilt with accessibility changes. Full assistive and platform acceptance remain open. |
+| SB71 Release | PARTIAL | Verified tooling patches cleared six Event Command root advisory instances. Security, distribution, privacy, store, and sandbox billing gates remain open. |
+
+Canonical return: Event Command docs/qa/DESIGNS_BY_FA_WORK_SB68_71_RETURN_REPORT.md.
