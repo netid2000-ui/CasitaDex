@@ -16,6 +16,7 @@ import { defaultFilter, findMemories, searchIndex, homeMemories, type FindFilter
 import { textBackupPreview, createTextBackup } from "./eng-text-backup";
 import { duplicateCandidates } from "./eng-duplicates";
 import { registerEditGuard } from "./eng-navigation";
+import { isReminderDraftDirty, newReminderDraft, type ReminderDraft } from "./standalone-reminder-draft";
 import { clampPhotoIndex, clampPhotoZoom, photoSwipeStep, touchDistance } from "./photo-viewer-state";
 import { BrandHeader, BrandLogo, BrandArt } from "./brand";
 import { HomeAction } from "./home-action";
@@ -180,6 +181,8 @@ export function EngReminders(){
  const {s}=useTheme(),params=useLocalSearchParams<{mode?:string}>();
  const [items,setItems]=useState<StandaloneReminder[]>([]),[expandedReminder,setExpandedReminder]=useState<string|null>(null),[editing,setEditing]=useState<string|null>(params.mode==="new"?"new":null);
  const [title,setTitle]=useState(""),[notes,setNotes]=useState(""),[dueDate,setDueDate]=useState(day()),[dueTime,setDueTime]=useState("09:00"),[repeat,setRepeat]=useState<RepeatSchedule>("once"),[iosPicker,setIosPicker]=useState<"date"|"time"|null>(null),[status,setStatus]=useState(""),[busy,setBusy]=useState(false);
+ const [baseline,setBaseline]=useState<ReminderDraft>(()=>newReminderDraft(dueDate));
+ const operation=useRef(false);
  const refresh=useCallback(async()=>{try{setItems(await listStandaloneReminders());}catch(e){setStatus(message(e));}},[]);
  const [permission,setPermission]=useState<ReminderPermission>("unavailable");
  const refreshPermission=useCallback(async()=>{
@@ -206,11 +209,40 @@ export function EngReminders(){
    }});
   }else setIosPicker(mode);
  }
- const reminderDirty=editing!==null&&(title.trim().length>0||notes.trim().length>0||dueDate!==day()||dueTime!=="09:00"||repeat!=="once");
-  const leaveReminder=useCallback(()=>{if(!reminderDirty){setEditing(null);return;}Alert.alert("Discard reminder changes?","Your unsaved reminder changes will be lost.",[{text:"Keep editing",style:"cancel"},{text:"Discard changes",style:"destructive",onPress:()=>setEditing(null)}]);},[reminderDirty]);
-  useEffect(()=>{if(editing===null)return;const h=BackHandler.addEventListener("hardwareBackPress",()=>{leaveReminder();return true;});return()=>h.remove();},[editing,leaveReminder]);
-  function edit(r?:StandaloneReminder){setEditing(r?.id??"new");setTitle(r?.title??"");setNotes(r?.notes??"");setDueDate(r?.dueDate??day());setDueTime(r?.dueTime??"09:00");setRepeat(r?.repeat??"once");setStatus("");}
- async function act(task:()=>Promise<void>,success:string){if(busy)return;setBusy(true);try{await task();await refresh();setEditing(null);setStatus(success);}catch(e){setStatus(message(e));}finally{setBusy(false);}}
+ const reminderDirty=editing!==null&&isReminderDraftDirty({title,notes,dueDate,dueTime,repeat},baseline);
+ function closeEditor(){setEditing(null);setIosPicker(null);}
+ const leaveReminder=useCallback(()=>{
+  if(operation.current)return;
+  if(!reminderDirty){closeEditor();return;}
+  Alert.alert("Discard reminder changes?","Your unsaved reminder changes will be lost.",[
+   {text:"Keep editing",style:"cancel"},{text:"Discard changes",style:"destructive",onPress:closeEditor},
+  ]);
+ },[reminderDirty]);
+ useFocusEffect(useCallback(()=>{
+  if(editing===null)return;
+  const unregister=registerEditGuard(()=>operation.current||reminderDirty,"reminder");
+  const back=BackHandler.addEventListener("hardwareBackPress",()=>{leaveReminder();return true;});
+  return()=>{unregister();back.remove();};
+ },[editing,leaveReminder,reminderDirty]));
+ function edit(r?:StandaloneReminder){
+  if(operation.current||editing!==null)return;
+  const original=r??newReminderDraft(day());
+  setBaseline(original);setEditing(r?.id??"new");
+  setTitle(original.title);setNotes(original.notes);setDueDate(original.dueDate);
+  setDueTime(original.dueTime);setRepeat(original.repeat);setIosPicker(null);setStatus("");
+ }
+ async function act(task:()=>Promise<void>,success:string){
+  if(operation.current)return;
+  operation.current=true;setBusy(true);setStatus("");
+  try{
+   await task();
+   closeEditor();
+   setExpandedReminder(null);
+   try{setItems(await listStandaloneReminders());setStatus(success);}
+   catch{setStatus("Reminder change saved on this device. Reopen Reminders to refresh the list.");}
+  }catch(e){setStatus(message(e));}
+  finally{operation.current=false;setBusy(false);}
+ }
  return <Page independent title="Reminders" hideHeading><BrandHeader /><EditorialIntro eyebrow="A little help remembering" title="What needs attention." description="The right details, at the right time." />
  <Copy>Reminders are saved locally. {permission==="allowed"
    ?"Phone notifications are enabled. Linked reminders are scheduled for 9:00 AM local time."
@@ -220,20 +252,20 @@ export function EngReminders(){
  {permission==="undetermined"?<Button label="Enable reminder notifications" onPress={()=>void enableAlerts()}/>:null}
  {editing!==null?<View style={s.panel}>
   <Copy kind="section">{editing==="new"?"New reminder":"Edit reminder"}</Copy>
-  <Field label="Reminder title" value={title} onChangeText={setTitle} maxLength={200}/>
-  <Field label="Notes (optional)" value={notes} onChangeText={setNotes} multiline maxLength={4000}/>
-  <Copy>Due: {dueDate} at {dueTime}</Copy><Button label="Select Date" onPress={()=>choosePicker("date")}/><Button label="Select Time" onPress={()=>choosePicker("time")}/>{iosPicker?<DateTimePicker value={new Date(dueDate+"T"+dueTime+":00")} mode={iosPicker} onChange={(_,selected)=>{if(!selected)return;if(iosPicker==="date")setDueDate([selected.getFullYear(),String(selected.getMonth()+1).padStart(2,"0"),String(selected.getDate()).padStart(2,"0")].join("-"));else setDueTime([String(selected.getHours()).padStart(2,"0"),String(selected.getMinutes()).padStart(2,"0")].join(":"));}}/>:null}{iosPicker?<Button label="Done Selecting" onPress={()=>setIosPicker(null)}/>:null}
-  <Copy>Repeat: {repeat}</Copy>{(["once","daily","weekly","monthly","yearly"] as RepeatSchedule[]).map(option=><Button key={option} label={option==="once"?"Once":option[0].toUpperCase()+option.slice(1)} selected={repeat===option} onPress={()=>setRepeat(option)}/>)}<Button label="Save Reminder" disabled={busy||!title.trim()} onPress={()=>void act(()=>saveStandaloneReminder({id:editing==="new"?undefined:editing,title,notes,dueDate,dueTime,repeat}),"Reminder saved on this device.")}/>
-  <Button label="Cancel" onPress={leaveReminder}/>
+  <Field disabled={busy} label="Reminder title" value={title} onChangeText={setTitle} maxLength={200}/>
+  <Field disabled={busy} label="Notes (optional)" value={notes} onChangeText={setNotes} multiline maxLength={4000}/>
+  <Copy>Due: {dueDate} at {dueTime}</Copy><Button disabled={busy} label="Select Date" onPress={()=>choosePicker("date")}/><Button disabled={busy} label="Select Time" onPress={()=>choosePicker("time")}/>{iosPicker?<DateTimePicker value={new Date(dueDate+"T"+dueTime+":00")} mode={iosPicker} onChange={(_,selected)=>{if(!selected)return;if(iosPicker==="date")setDueDate([selected.getFullYear(),String(selected.getMonth()+1).padStart(2,"0"),String(selected.getDate()).padStart(2,"0")].join("-"));else setDueTime([String(selected.getHours()).padStart(2,"0"),String(selected.getMinutes()).padStart(2,"0")].join(":"));}}/>:null}{iosPicker?<Button label="Done Selecting" onPress={()=>setIosPicker(null)}/>:null}
+  <Copy>Repeat: {repeat}</Copy>{(["once","daily","weekly","monthly","yearly"] as RepeatSchedule[]).map(option=><Button key={option} disabled={busy} label={option==="once"?"Once":option[0].toUpperCase()+option.slice(1)} selected={repeat===option} onPress={()=>setRepeat(option)}/>)}<Button label="Save Reminder" disabled={busy||!title.trim()} onPress={()=>void act(()=>saveStandaloneReminder({id:editing==="new"?undefined:editing,title,notes,dueDate,dueTime,repeat}),"Reminder saved on this device.")}/>
+  <Button label="Cancel" disabled={busy} onPress={leaveReminder}/>
  </View>:<Button primary label="Create Reminder" onPress={()=>edit()}/>}
- {items.map(r=><View key={r.id} style={s.panel}>
+ {editing===null?items.map(r=><View key={r.id} style={s.panel}>
   <Copy style={{fontWeight:"700"}}>{r.title}</Copy><Copy>{r.dueDate} at {r.dueTime} · {r.repeat}{r.completed?" · Completed":""}</Copy>
   {r.notes?<Copy kind="small">{r.notes}</Copy>:null}
   <Button variant="quiet" label={expandedReminder===r.id?"Close actions":"Manage reminder"} onPress={()=>setExpandedReminder(old=>old===r.id?null:r.id)}/>
   {expandedReminder===r.id?<>  <Button label="Edit" disabled={busy} onPress={()=>edit(r)}/>
   <Button label={r.completed?"Mark Incomplete":"Mark Complete"} disabled={busy} onPress={()=>void act(()=>completeStandaloneReminder(r.id,!r.completed),"Reminder updated.")}/>
   <Button label="Delete Reminder" disabled={busy} onPress={()=>Alert.alert("Delete reminder?","This standalone reminder will be permanently deleted. Saved memories are not affected.",[{text:"Cancel",style:"cancel"},{text:"Delete",style:"destructive",onPress:()=>void act(()=>deleteStandaloneReminder(r.id),"Reminder deleted.")}])}/> </>:null}
- </View>)}
+ </View>):null}
  <Status text={status}/></Page>;
 }
 export function EngMemories(){
