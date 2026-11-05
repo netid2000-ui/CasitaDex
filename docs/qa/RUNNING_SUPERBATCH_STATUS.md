@@ -70,3 +70,16 @@ The original nine batches, six milestones and prior acceptance remain recorded a
 | WORK-SB63 Release | PARTIAL | Scan findings triaged. CasitaDex decoder advisory, distribution signing, privacy, store assets and sandbox purchases/restore remain open. |
 
 Evidence: WORK_SB61_EXECUTION.md, WORK_SB62_EXECUTION.md and WORK_SB63_EXECUTION.md. Canonical cross-project return: Event Command docs/qa/DESIGNS_BY_FA_WORK_SB60_63_RETURN_REPORT.md.
+
+## WORK-SB64–67 — November 4, 2026 (America/Chicago)
+
+The nine original super-batches and six milestones remain above. Both apps remain release **NO-GO**.
+
+| Workstream | Result | CasitaDex checkpoint |
+| --- | --- | --- |
+| WORK-SB64 Event Command | PARTIAL | See the Event Command return for isolated native workflow and rules evidence. |
+| WORK-SB65 CasitaDex | PARTIAL | Firebase-free iOS reminder source and pod integration verified. Stock iOS 27.1 Photos and XCTest are blocked. Device-level delivery, Android scheduling, photo and offline acceptance remain open. |
+| WORK-SB66 Android and accessibility | PARTIAL | Android baseline APK build, install, launch and responsive smoke passed. Bottom-tab text wraps at 200% and opaque icon exports render as tinted squares. Full assistive acceptance remains open. |
+| WORK-SB67 Release | PARTIAL | CasitaDex dependency, store, distribution and privacy gates remain open. |
+
+Evidence: WORK_SB65_EXECUTION.md and WORK_SB66_EXECUTION.md. Canonical return: Event Command docs/qa/DESIGNS_BY_FA_WORK_SB64_67_RETURN_REPORT.md.
