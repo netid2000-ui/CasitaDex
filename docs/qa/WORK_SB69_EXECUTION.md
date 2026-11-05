@@ -32,7 +32,11 @@ Raw evidence is on FA-Development at `QA-Evidence/WORK-SB69/`, including `stock-
 
 ## iOS reminder bridge candidate
 
-Cold Xcode build job `75633873b3a39a0f` uses the SB65 prebuilt source archive at `8a6d3f512ee923bf5f90cd6d81da883ca13cd3e5`, matched npm and CocoaPods lock hashes, simulator Release configuration, development app identity and no signing. This archive includes the iOS UserNotifications bridge and predates the Android module and delayed-alarm projection changes. The job reserves the shared native heavy-compile lock. Logs are in `QA-Evidence/WORK-SB69/ios-build.log`. Build results and native launch evidence, when available, follow below.
+Cold Xcode build job `75633873b3a39a0f` uses the SB65 prebuilt source archive at `8a6d3f512ee923bf5f90cd6d81da883ca13cd3e5`, matched npm and CocoaPods lock hashes, simulator Release configuration, development app identity and no signing. This archive includes the iOS UserNotifications bridge and predates the Android module and delayed-alarm projection changes. The job held the shared native heavy-compile lock until **BUILD SUCCEEDED**, then yielded to SB70. Artifact: `Apple-Builds/CasitaDex-WORK-SB65/DerivedData/Build/Products/Release-iphonesimulator/CasitaDexDev.app`, app ID `com.designsbyfa.casitadex.dev` v0.1.0 (1). Binary SHA-256 `e66046366758c64e19fff9080b3aab6b79ed0517ae219b253c39c4064e6761fe`. Embedded JS SHA-256 `6de1072972eaf22d30bcf980406c126ca3e13b384440cc85e016b8e7a8c27b24`. Linked Swift symbols confirmed the notification bridge is present. Logs and checksums are in `QA-Evidence/WORK-SB69/`.
+
+Candidate install on the new disposable UUID only timed out at 25 seconds (job `996e2a7d22793ba9`, step exit 142). Follow-up get-app-container also timed out at 15 seconds (job `b17c02393af581a2`, step exit 142). Installation could not be confirmed and no app launch was attempted. Reminder permission or scheduling behavior cannot be inferred from compilation.
+
+The first combined Android candidate build stopped during Gradle configuration because the Expo module requires `android.defaultConfig.versionName`. Commit `74bd2bc3d4cdde30e25cf8142eaf52c669733f37` adds version 1.0.0 and code 1, consistent with the iOS pod version. SB70 owns the isolated Android retry.
 
 ## Next actions
 
