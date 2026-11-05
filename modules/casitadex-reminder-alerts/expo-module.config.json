@@ -1,7 +1,19 @@
 {
-  "platforms": ["apple"],
+  "platforms": [
+    "apple",
+    "android"
+  ],
   "apple": {
-    "modules": ["CasitaDexReminderAlertsModule"],
-    "appDelegateSubscribers": ["CasitaDexReminderAlertsAppDelegateSubscriber"]
+    "modules": [
+      "CasitaDexReminderAlertsModule"
+    ],
+    "appDelegateSubscribers": [
+      "CasitaDexReminderAlertsAppDelegateSubscriber"
+    ]
+  },
+  "android": {
+    "modules": [
+      "expo.modules.casitadexreminderalerts.CasitaDexReminderAlertsModule"
+    ]
   }
 }

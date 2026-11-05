@@ -6,9 +6,9 @@ export type ReminderNotification={identifier:string;kind:"memory"|"standalone";s
 export const REMINDER_NOTIFICATION_PREFIX="casitadex:unified-reminder-v1:";
 /** Pure local-calendar projection. Caller must select the linked time and platform capacity policy.
  * Recurrence is already advanced by persistence; notifications are single occurrences.
- * Invalid/nonexistent local times and overdue occurrences are excluded without rewriting storage. */
+ * Invalid/nonexistent local times are excluded. An overdue occurrence is kept only while its original native alarm is pending. */
 export function projectReminderNotifications(memories:readonly LinkedNotificationMemory[],standalone:readonly StandaloneNotificationReminder[],
- options:{now:number;linkedDueTime:string;limit:number}):ReminderNotification[]{
+ options:{now:number;linkedDueTime:string;limit:number;pendingTimes?:ReadonlyMap<string,number>}):ReminderNotification[]{
  if(!Number.isFinite(options.now)||!Number.isInteger(options.limit)||options.limit<0)throw Error("Invalid reminder projection options");
  const output:ReminderNotification[]=[];
  const ids=new Set<string>();
@@ -16,8 +16,9 @@ export function projectReminderNotifications(memories:readonly LinkedNotificatio
   if(!id||!title.trim()||!day||!validReminderDay(day)||!/^([01]\d|2[0-3]):[0-5]\d$/.test(time))return;
   const [y,m,d]=day.split("-").map(Number),[h,min]=time.split(":").map(Number);
   const date=new Date(0);date.setFullYear(y,m-1,d);date.setHours(h,min,0,0);
-  if(date.getFullYear()!==y||date.getMonth()!==m-1||date.getDate()!==d||date.getHours()!==h||date.getMinutes()!==min||date.getTime()<=options.now)return;
+  if(date.getFullYear()!==y||date.getMonth()!==m-1||date.getDate()!==d||date.getHours()!==h||date.getMinutes()!==min)return;
   const identifier=REMINDER_NOTIFICATION_PREFIX+kind+":"+encodeURIComponent(id);
+  if(date.getTime()<=options.now&&options.pendingTimes?.get(identifier)!==date.getTime())return;
   if(ids.has(identifier))throw Error("Duplicate reminder identity");
   ids.add(identifier);output.push({identifier,kind,sourceId:id,title,at:date.getTime()});
  }

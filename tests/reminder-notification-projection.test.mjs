@@ -75,3 +75,16 @@ test("linked reminder mutations notify only after the SQLite commit", async () =
     x.close();
   }
 });
+
+test("delayed native alarms survive reconciliation only for the unchanged active occurrence", () => {
+  const [pending] = project([memory()], [], options);
+  const overdue = {
+    ...options,
+    now: pending.at + 60000,
+    pendingTimes: new Map([[pending.identifier, pending.at]]),
+  };
+  assert.deepEqual(project([memory()], [], overdue), [pending]);
+  assert.deepEqual(project([memory({lifecycle:"archived"})], [], overdue), []);
+  assert.deepEqual(project([memory({due:"2026-11-04"})], [], overdue), []);
+  assert.deepEqual(project([memory()], [], {...overdue,pendingTimes:new Map()}), []);
+});

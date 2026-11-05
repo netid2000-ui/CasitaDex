@@ -12,13 +12,13 @@ import type { ReminderPermission } from "./reminder-alerts";
 
 type ReminderBridge = {
   permission(): Promise<Exclude<ReminderPermission, "unavailable">>;
-  requestPermission(): Promise<boolean>;
+  requestPermission(): Promise<unknown>;
   pending(): Promise<{ reminders: ReminderNotification[]; otherCount: number; invalidOwned: string[] }>;
   cancel(identifiers: string[]): Promise<void>;
   schedule(identifier: string, kind: string, sourceId: string, at: number): Promise<void>;
 };
 
-const bridge = Platform.OS === "ios" && engEnabled
+const bridge = (Platform.OS === "ios" || Platform.OS === "android") && engEnabled
   ? requireOptionalNativeModule<ReminderBridge>("CasitaDexReminderAlerts")
   : null;
 
@@ -43,7 +43,12 @@ function reconcile(): Promise<void> {
           ? projectReminderNotifications(
             (await (await getEngStore()).load()).data.memories,
             await listStandaloneReminders(),
-            { now: Date.now(), linkedDueTime: "09:00", limit: Math.max(0, 48 - previous.otherCount) },
+            {
+              now: Date.now(),
+              linkedDueTime: "09:00",
+              limit: Math.max(0, 48 - previous.otherCount),
+              pendingTimes: new Map(previous.reminders.map(item => [item.identifier, item.at])),
+            },
           ).map(item => ({ ...item, title: "CasitaDex reminder" }))
           : [];
         const { cancel, schedule } = reconcileReminderNotificationProjection(previous.reminders, desired);
