@@ -1,4 +1,4 @@
-import { validReminderDay } from "./reminder-recurrence.ts";
+import { reminderLocalTimestamp, validReminderDay } from "./reminder-recurrence.ts";
 import type { MemoryV2 } from "./sb20-contract.ts";
 export type LinkedNotificationMemory=Pick<MemoryV2,"id"|"title"|"due"|"lifecycle"|"demo">;
 export type StandaloneNotificationReminder={id:string;title:string;dueDate:string;dueTime:string;completed:boolean};
@@ -25,14 +25,13 @@ export function projectReminderNotifications(memories:readonly LinkedNotificatio
  const output:ReminderNotification[]=[];
  const ids=new Set<string>();
  function add(kind:"memory"|"standalone",id:string,title:string,day:string|undefined,time:string){
-  if(!id||!title.trim()||!day||!validReminderDay(day)||!/^([01]\d|2[0-3]):[0-5]\d$/.test(time))return;
-  const [y,m,d]=day.split("-").map(Number),[h,min]=time.split(":").map(Number);
-  const date=new Date(0);date.setFullYear(y,m-1,d);date.setHours(h,min,0,0);
-  if(date.getFullYear()!==y||date.getMonth()!==m-1||date.getDate()!==d||date.getHours()!==h||date.getMinutes()!==min)return;
+  if (!id || !title.trim() || !day) return;
+  const at = reminderLocalTimestamp(day, time);
+  if (at === null) return;
   const identifier=REMINDER_NOTIFICATION_PREFIX+kind+":"+encodeURIComponent(id);
-  if(date.getTime()<=options.now&&options.pendingTimes?.get(identifier)!==date.getTime())return;
+  if(at<=options.now&&options.pendingTimes?.get(identifier)!==at)return;
   if(ids.has(identifier))throw Error("Duplicate reminder identity");
-  ids.add(identifier);output.push({identifier,kind,sourceId:id,title,at:date.getTime()});
+  ids.add(identifier);output.push({identifier,kind,sourceId:id,title,at});
  }
  for(const memory of listLinkedReminderMemories(memories))add("memory",memory.id,memory.title,memory.due,options.linkedDueTime);
  for(const reminder of standalone)if(!reminder.completed)add("standalone",reminder.id,reminder.title,reminder.dueDate,reminder.dueTime);

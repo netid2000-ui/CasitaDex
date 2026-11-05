@@ -1,5 +1,5 @@
 import { notifyReminderChanges } from "./reminder-notification-changes";
-import { nextReminderDay, validReminderDay, type RepeatSchedule } from "./reminder-recurrence";
+import { nextReminderDay, reminderLocalTimestamp, validReminderDay, type RepeatSchedule } from "./reminder-recurrence";
 import { openDatabaseAsync } from "expo-sqlite";
 export type StandaloneReminder={id:string;title:string;notes:string;dueDate:string;dueTime:string;repeat:RepeatSchedule;completed:boolean;createdAt:string;updatedAt:string};
 let database:ReturnType<typeof openDatabaseAsync>|undefined;
@@ -16,7 +16,7 @@ function db(){
  database??=initialize().catch(error=>{database=undefined;throw error;});
  return database;
 }
-function valid(title:string,notes:string,date:string,time:string){
+function valid(title:string,notes:string,date:string){
  if(!title.trim()||title.length>200||notes.length>4000)throw Error("Enter a title (up to 200 characters) and notes (up to 4000 characters).");
  if(!validReminderDay(date))throw Error("Enter a valid date as YYYY-MM-DD.");
 }
@@ -26,8 +26,11 @@ export async function listStandaloneReminders():Promise<StandaloneReminder[]>{
  return rows.map(r=>({id:r.id,title:r.title,notes:r.notes,dueDate:r.due_date,dueTime:r.due_time,repeat:r.repeat as RepeatSchedule,completed:r.completed===1,createdAt:r.created_at,updatedAt:r.updated_at}));
 }
 export async function saveStandaloneReminder(input:{id?:string;title:string;notes:string;dueDate:string;dueTime:string;repeat:RepeatSchedule}){
- valid(input.title,input.notes,input.dueDate,input.dueTime);
+ valid(input.title,input.notes,input.dueDate);
  if(!/^([01]\d|2[0-3]):[0-5]\d$/.test(input.dueTime))throw Error("Select a valid time.");
+ if (reminderLocalTimestamp(input.dueDate, input.dueTime) === null) {
+  throw Error("That time does not occur on the selected date in your device time zone. Choose another time.");
+ }
  if(!["once","daily","weekly","monthly","yearly"].includes(input.repeat))throw Error("Invalid repeat schedule.");
  const d=await db(),now=new Date().toISOString();
  if(input.id){
