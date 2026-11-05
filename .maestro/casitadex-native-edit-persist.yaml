@@ -1,27 +1,46 @@
 appId: com.designsbyfa.casitadex.dev
 ---
+- stopApp
 - launchApp
+- assertVisible: "Add Memory"
+- waitForAnimationToEnd
 - tapOn: "Memories"
+- runFlow:
+    when:
+      visible: "Add Memory"
+    commands:
+      - tapOn: "Memories"
 - assertVisible: "Your memories."
-- assertVisible: "Open .*Maestro QA memory 20261104.*"
-- tapOn: "Open .*Maestro QA memory 20261104.*"
+- assertVisible: "Open .*(Maestro QA memory 20261104|CasitaDex verified edit 20261104).*"
+- tapOn: "Open .*(Maestro QA memory 20261104|CasitaDex verified edit 20261104).*"
 - assertVisible: "Maestro native answer"
 - scrollUntilVisible:
     element: "Edit memory"
     direction: DOWN
+    centerElement: true
 - tapOn: "Edit memory"
 - assertVisible: "Memory name"
 - tapOn:
-    point: "50%,38%"
-- eraseText
+    text: "Memory name"
+    index: 1
+- longPressOn:
+    text: "Memory name"
+    index: 1
+- tapOn: "Select All"
+- eraseText: 1
 - inputText: "CasitaDex verified edit 20261104"
 - hideKeyboard
 - scrollUntilVisible:
     element: "Save changes"
     direction: DOWN
+    centerElement: true
 - tapOn: "Save changes"
 - assertVisible: "Maestro native answer"
 
+- scrollUntilVisible:
+    element: "CasitaDex verified edit 20261104"
+    direction: UP
+    centerElement: true
 - assertVisible: "CasitaDex verified edit 20261104"
 - stopApp
 - launchApp
