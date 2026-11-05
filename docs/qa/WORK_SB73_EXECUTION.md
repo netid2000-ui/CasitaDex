@@ -106,3 +106,15 @@ for the remaining engineering checks.
 | --- | --- | --- | --- | --- | --- |
 | Standalone reminder DST validation | SQLite save validates that the selected wall time exists in the device time zone. Notification projection uses the same local timestamp conversion. Ambiguous fall time uses the first occurrence. | PASS, 19 focused recurrence, projection, backup and restore tests. Typecheck and lint PASS. | Open | Current-source validation open. | Native validation announcement and release remain open. |
 | Notification permission transition | Existing Reminders permission control and native bridge. | Existing source coverage. | Open | Disposable API 35 job `b48a9c5afb96fb68` verified OS grant, revoke, and regrant and captured a screenshot. This reused the earlier SB89 APK, SHA-256 `1c439006129fecfda24f4751ebd6775a58dcfe6abbba19c5ae0b52d502052acd`. | App UI permission recovery and delivered notification after regrant remain open. |
+
+## SB101 current-source Android candidate
+
+| Workflow | Implementation and persistence | Automated | Native iOS | Native Android | Accessibility and release |
+| --- | --- | --- | --- | --- | --- |
+| Standalone reminder | Existing SQLite reminder and notification projection from source 172729d61845f4d534bb728d4652656298c7f3e5 | PASS, typecheck and 19 focused recurrence, projection, backup and restore tests. | BLOCKED, Simulator.app absent from selected Xcode. | PASS for save, one active alarm, actual notification after process death and advanced-clock trigger, tap to Reminders, exact persisted title and note. Job 56d9664fa10f1bb7, API 35 emulator-5588. | Current native DST error, Settings recovery, reschedule, cancel, completion, reboot, normal-clock window and assistive tests open. |
+| Notification permission | Existing OS authorization and native permission control. | Prior source evidence retained. | BLOCKED | PASS for OS grant, revoke, regrant on current APK in job bf37850ac4a22cb0. A separate fresh target granted permission through the app and delivered a standalone reminder. | In-app Settings recovery after revocation remains open. |
+| Memories, photos, backup and restore | Existing local persistence paths retained. | Focused backup and restore tests passed. | BLOCKED | Full current-source native journeys open. | Release open. |
+
+Build job 86923e0e482aeada produced the ARM64 development release-mode QA APK, package com.designsbyfa.casitadex.dev, SHA-256 6e7b99d7bfe73a5c5d86365ec9f99150b612a4609be85a69d2418de55428a6ee, debug signer SHA-256 fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c. Logs, alarm dump, notification dump, UI screenshots and exact readback are in QA-Evidence/WORK-SB101 on FA-Development. The test advanced only the disposable device clock from 08:30 to 09:25. Native linked reminder evidence from the older APK retains its prior scope.
+
+The proposed decode-uri-component 0.5.1 override failed an isolated query-string 7.1.3 test with an ordinary percent-encoded parameter. The shipped dependency chain remains open for remediation through a compatible parent upgrade.
