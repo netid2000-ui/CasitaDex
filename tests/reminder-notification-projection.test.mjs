@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import {projectReminderNotifications as project,reconcileReminderNotificationProjection as reconcile,REMINDER_NOTIFICATION_PREFIX as prefix} from "../src/reminder-notification-projection.ts";
+import {listLinkedReminderMemories,projectReminderNotifications as project,reconcileReminderNotificationProjection as reconcile,REMINDER_NOTIFICATION_PREFIX as prefix} from "../src/reminder-notification-projection.ts";
 const options={now:new Date(2026,10,4,8).getTime(),linkedDueTime:"09:00",limit:48};
 const memory=(extra={})=>({id:"same",title:"Filter",due:"2026-11-05",lifecycle:"active",...extra});
 const reminder=(extra={})=>({id:"same",title:"Water",dueDate:"2026-11-05",dueTime:"10:30",completed:false,...extra});
@@ -87,4 +87,17 @@ test("delayed native alarms survive reconciliation only for the unchanged active
   assert.deepEqual(project([memory({lifecycle:"archived"})], [], overdue), []);
   assert.deepEqual(project([memory({due:"2026-11-04"})], [], overdue), []);
   assert.deepEqual(project([memory()], [], {...overdue,pendingTimes:new Map()}), []);
+});
+
+test("linked reminder list keeps past dates and omits completed, archived and sample memories", () => {
+ const old = memory({ id: "old", due: "2026-11-03" });
+ const upcoming = memory({ id: "upcoming" });
+ const memories = [
+  upcoming, old, memory({ id: "complete", due: undefined }),
+  memory({ id: "archived", lifecycle: "archived" }),
+  memory({ id: "sample", demo: true }), memory({ id: "invalid", due: "2026-02-30" }),
+ ];
+ assert.deepEqual(listLinkedReminderMemories(memories), [old, upcoming]);
+ assert.equal(memories[0], upcoming);
+ assert.deepEqual(project(memories, [], options).map(item => item.sourceId), ["upcoming"]);
 });

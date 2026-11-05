@@ -4,6 +4,7 @@ import { getEngStore, engEnabled } from "./eng-runtime.native";
 import { listStandaloneReminders } from "./standalone-reminders.native";
 import { subscribeReminderChanges } from "./reminder-notification-changes";
 import {
+  LINKED_REMINDER_TIME,
   projectReminderNotifications,
   reconcileReminderNotificationProjection,
   type ReminderNotification,
@@ -45,7 +46,7 @@ function reconcile(): Promise<void> {
             await listStandaloneReminders(),
             {
               now: Date.now(),
-              linkedDueTime: "09:00",
+              linkedDueTime: LINKED_REMINDER_TIME,
               limit: Math.max(0, 48 - previous.otherCount),
               pendingTimes: new Map(previous.reminders.map(item => [item.identifier, item.at])),
             },

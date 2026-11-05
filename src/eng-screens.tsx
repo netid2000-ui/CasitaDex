@@ -1,5 +1,6 @@
 import { enableReminderAlerts, getReminderPermission, type ReminderPermission } from "./reminder-alerts";
 import type { RepeatSchedule } from "./reminder-recurrence";
+import { listLinkedReminderMemories } from "./reminder-notification-projection";
 import DateTimePicker, { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
 import React, { useCallback, useEffect, useRef, useState, useMemo } from "react";
 import { Platform, Alert, AppState, BackHandler, Image, Linking, Modal, Pressable, ScrollView, Share, View, useWindowDimensions } from "react-native";
@@ -192,6 +193,20 @@ export function EngPhotos(){
 }
 export function EngReminders(){
  const {s}=useTheme(),params=useLocalSearchParams<{mode?:string}>();
+ const memories = useEng();
+ const linkedReminders = listLinkedReminderMemories(memories.snapshot?.data.memories ?? []);
+ const today = day();
+ const upcoming = linkedReminders.filter(memory => memory.due >= today);
+ const overdue = linkedReminders.filter(memory => memory.due < today);
+
+ function linkedSection(title: string, rows: typeof linkedReminders) {
+  if (!rows.length) return null;
+  return <View style={s.panel}>
+   <Copy kind="section" accessibilityRole="header">{title}</Copy>
+   {rows.map(memory => <Button key={memory.id} label={`${memory.title} · ${memory.due}`}
+    onPress={() => router.push({ pathname: "/card", params: { id: memory.id } })} />)}
+  </View>;
+ }
  const [items,setItems]=useState<StandaloneReminder[]>([]),[expandedReminder,setExpandedReminder]=useState<string|null>(null),[editing,setEditing]=useState<string|null>(params.mode==="new"?"new":null);
  const [title,setTitle]=useState(""),[notes,setNotes]=useState(""),[dueDate,setDueDate]=useState(()=>defaultReminderDay()),[dueTime,setDueTime]=useState("09:00"),[repeat,setRepeat]=useState<RepeatSchedule>("once"),[iosPicker,setIosPicker]=useState<"date"|"time"|null>(null),[status,setStatus]=useState(""),[busy,setBusy]=useState(false);
  const [baseline,setBaseline]=useState<ReminderDraft>(()=>newReminderDraft(dueDate));
@@ -272,6 +287,18 @@ export function EngReminders(){
   <Copy>Repeat: {repeat}</Copy>{(["once","daily","weekly","monthly","yearly"] as RepeatSchedule[]).map(option=><Button key={option} disabled={busy} label={option==="once"?"Once":option[0].toUpperCase()+option.slice(1)} selected={repeat===option} onPress={()=>setRepeat(option)}/>)}<Button label="Save Reminder" disabled={busy||!title.trim()} onPress={()=>void act(()=>saveStandaloneReminder({id:editing==="new"?undefined:editing,title,notes,dueDate,dueTime,repeat}),"Reminder saved on this device.")}/>
   <Button label="Cancel" disabled={busy} onPress={leaveReminder}/>
  </View>:<Button primary label="Create Reminder" onPress={()=>edit()}/>}
+ {editing===null ? <>
+  {linkedSection("Upcoming memory reminders", upcoming)}
+  {linkedSection("Past-due memory reminders", overdue)}
+  {memories.status ? <View style={s.panel}>
+   <Status text="Memory reminders could not refresh." />
+   <Button label="Retry memory reminders" onPress={() => {
+    memories.setStatus("");
+    void memories.refresh();
+   }} />
+  </View> : null}
+  {linkedReminders.length > 0 && items.length > 0 ? <Copy kind="section" accessibilityRole="header">Standalone reminders</Copy> : null}
+ </> : null}
  {editing===null?items.map(r=><View key={r.id} style={s.panel}>
   <Copy style={{fontWeight:"700"}}>{r.title}</Copy><Copy>{r.dueDate} at {r.dueTime} · {r.repeat}{r.completed?" · Completed":""}</Copy>
   {r.notes?<Copy kind="small">{r.notes}</Copy>:null}
