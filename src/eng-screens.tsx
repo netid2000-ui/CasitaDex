@@ -16,7 +16,7 @@ import { defaultFilter, findMemories, searchIndex, type FindFilter } from "./eng
 import { textBackupPreview, createTextBackup } from "./eng-text-backup";
 import { duplicateCandidates } from "./eng-duplicates";
 import { registerEditGuard } from "./eng-navigation";
-import { isReminderDraftDirty, newReminderDraft, type ReminderDraft } from "./standalone-reminder-draft";
+import { defaultReminderDay, isReminderDraftDirty, newReminderDraft, type ReminderDraft } from "./standalone-reminder-draft";
 import { clampPhotoIndex, clampPhotoZoom, photoSwipeStep, touchDistance } from "./photo-viewer-state";
 import { BrandHeader, BrandLogo, BrandArt } from "./brand";
 import { HomeAction } from "./home-action";
@@ -193,7 +193,7 @@ export function EngPhotos(){
 export function EngReminders(){
  const {s}=useTheme(),params=useLocalSearchParams<{mode?:string}>();
  const [items,setItems]=useState<StandaloneReminder[]>([]),[expandedReminder,setExpandedReminder]=useState<string|null>(null),[editing,setEditing]=useState<string|null>(params.mode==="new"?"new":null);
- const [title,setTitle]=useState(""),[notes,setNotes]=useState(""),[dueDate,setDueDate]=useState(day()),[dueTime,setDueTime]=useState("09:00"),[repeat,setRepeat]=useState<RepeatSchedule>("once"),[iosPicker,setIosPicker]=useState<"date"|"time"|null>(null),[status,setStatus]=useState(""),[busy,setBusy]=useState(false);
+ const [title,setTitle]=useState(""),[notes,setNotes]=useState(""),[dueDate,setDueDate]=useState(()=>defaultReminderDay()),[dueTime,setDueTime]=useState("09:00"),[repeat,setRepeat]=useState<RepeatSchedule>("once"),[iosPicker,setIosPicker]=useState<"date"|"time"|null>(null),[status,setStatus]=useState(""),[busy,setBusy]=useState(false);
  const [baseline,setBaseline]=useState<ReminderDraft>(()=>newReminderDraft(dueDate));
  const operation=useRef(false);
  const refresh=useCallback(async()=>{try{setItems(await listStandaloneReminders());}catch(e){setStatus(message(e));}},[]);
@@ -239,7 +239,7 @@ export function EngReminders(){
  },[editing,leaveReminder,reminderDirty]));
  function edit(r?:StandaloneReminder){
   if(operation.current||editing!==null)return;
-  const original=r??newReminderDraft(day());
+  const original=r??newReminderDraft(defaultReminderDay());
   setBaseline(original);setEditing(r?.id??"new");
   setTitle(original.title);setNotes(original.notes);setDueDate(original.dueDate);
   setDueTime(original.dueTime);setRepeat(original.repeat);setIosPicker(null);setStatus("");
