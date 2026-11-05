@@ -57,3 +57,16 @@ These current results supersede older pending descriptions while retaining the n
 | WORK-SB59 Security/release | **BLOCKED/NO-GO:** redacted source/history scans, OSV root/functions, MASVS checklist, 10/1000 isolated Firestore rerun2/2. Billing safety CD1/1, EC3/3. | Triage findings, sandbox purchase/restore, distribution signing, privacy/assets, accessibility and native scenario gates. |
 
 M1 advances with bounded iOS native evidence; M2 full native scenarios remain open; M3 native/Figma parity remains in progress; M4/M6 blocked; M5 security/native parity still in progress. Both apps NO-GO. No existing evidence or accepted test overwritten. Canonical return: docs/qa/DESIGNS_BY_FA_WORK_SB56_59_RETURN_REPORT.md.
+
+## WORK-SB60–63 — November 4, 2026 (America/Chicago)
+
+The original nine batches, six milestones and prior acceptance remain recorded above. Both apps remain release **NO-GO**.
+
+| Workstream | Result | Evidence and next gate |
+| --- | --- | --- |
+| WORK-SB60 Event Command | PARTIAL | See the Event Command return report for exact native and emulator results. |
+| WORK-SB61 CasitaDex | PARTIAL | Photo slot order regression passes across SQLite reopen. Disposable iOS driver failed before app steps. Recover XCTest before photo/offline acceptance and implement a Firebase-free notification bridge. |
+| WORK-SB62 Platforms and accessibility | PARTIAL | Android 15/API35 disposable AVD passed boot and screenshot. CasitaDex prebuild passed, Gradle failed on a missing cached Kotlin parcelize dependency. Install and native parity/accessibility are open. |
+| WORK-SB63 Release | PARTIAL | Scan findings triaged. CasitaDex decoder advisory, distribution signing, privacy, store assets and sandbox purchases/restore remain open. |
+
+Evidence: WORK_SB61_EXECUTION.md, WORK_SB62_EXECUTION.md and WORK_SB63_EXECUTION.md. Canonical cross-project return: Event Command docs/qa/DESIGNS_BY_FA_WORK_SB60_63_RETURN_REPORT.md.
