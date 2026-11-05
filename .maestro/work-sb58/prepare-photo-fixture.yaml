@@ -1,0 +1,9 @@
+appId: com.designsbyfa.casitadex.dev
+---
+- launchApp
+- waitForAnimationToEnd
+- tapOn: "Home"
+- assertNotVisible: "Resume Draft"
+- tapOn: "Add Photo Memory"
+- tapOn: "Choose photo"
+- takeScreenshot: sb58-native-picker

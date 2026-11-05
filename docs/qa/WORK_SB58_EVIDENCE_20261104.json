@@ -1,0 +1,305 @@
+{
+  "date": "2026-11-04 America/Chicago",
+  "branch": "work/cd-sb41-edit-targeting-20261104",
+  "startingCommit": "8c3fbfa55376ef0a4cfd7dc8075021f1d453977d",
+  "device": {
+    "udid": "879C620A-5318-4BDF-98B9-904EE635B053",
+    "name": "CasitaDex FigmaFirst Isolated QA",
+    "runtime": "iOS 27.0",
+    "bundleId": "com.designsbyfa.casitadex.dev",
+    "version": "0.1.0",
+    "build": "1",
+    "sdk": "iphonesimulator27.2",
+    "xcodeBuild": "27B52",
+    "debugDylibSha256": "64759bbae40cb74524dc797cdf8a4b282289ae0809a58624964d73dbca945380"
+  },
+  "metro": {
+    "pid": 1580,
+    "port": 8081,
+    "sourceRoot": "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/app",
+    "preserved": true
+  },
+  "tests": [
+    {
+      "scope": "iOS Cancel edits, Return to Details, Relaunch",
+      "result": "PASS",
+      "job": "5634f22b15f92b5c",
+      "exit": 0
+    },
+    {
+      "scope": "Initial Cancel helper (navigation stayed Home)",
+      "result": "FAIL",
+      "job": "beb31ba38f016d6b",
+      "exit": 1,
+      "resolution": "Additive helper retries and asserts Memories before opening known QA fixture"
+    },
+    {
+      "scope": "Photo fixture native setup",
+      "result": "BLOCKED",
+      "job": "a7b64d5161e137a2",
+      "exit": 1,
+      "error": "IOSDriverTimeoutException: iOS driver not ready in time; no app commands executed"
+    },
+    {
+      "scope": "Final TypeScript and focused ESLint",
+      "result": "PASS"
+    },
+    {
+      "scope": "Viewer state and media/durability regressions",
+      "result": "PASS",
+      "count": 31,
+      "log": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB58-20261104/viewer-regressions-final.log"
+    },
+    {
+      "scope": "Unified reminder projection, recurrence and viewer state",
+      "result": "PASS",
+      "count": 11,
+      "log": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB58-20261104/reminder-projection-validation.log",
+      "nativeIntegration": false
+    },
+    {
+      "scope": "Exclusive native photo setup with180s timeout after stale runner cleanup",
+      "result": "BLOCKED",
+      "job": "988c2d0dc219a66c",
+      "exit": 1,
+      "error": "IOSDriverTimeoutException before app commands",
+      "endedUtc": "2026-11-05T04:30:20.490Z"
+    },
+    {
+      "scope": "Fresh iOS native launch/draft/Save/relaunch",
+      "result": "BLOCKED",
+      "job": "687e2a6ab6296cf6",
+      "exit": 1,
+      "endedUtc": "2026-11-05T04:47:54.928Z",
+      "error": "20s simctl openurl timeout, then 120s IOSDriverTimeoutException before app commands"
+    }
+  ],
+  "sourceHashes": {
+    "src/eng-screens.tsx": "feb80710e2be47310fcceb77252a1c23a35d826a00ff76f3b24ebfb37bb5b3e7",
+    "src/photo-viewer-state.ts": "10675e61360fbc3d95c7611b7803b1c8cb1ed4752f2fc076381098f426f384c5",
+    "tests/photo-viewer-state.test.mjs": "cc9719742a789953e8f04d74fb142164705fad691b072646bde7e10badf47d9c",
+    "package-lock.json": "41f589351110c71dc95d05d90397dcdfd5091d30ed75fff8cb73ba76955fc30a",
+    "src/reminder-notification-projection.ts": "5a2e8dfff3626781825ea86740559b61e4f048a0e8d3bc94eaf0628d6444c70f",
+    "tests/reminder-notification-projection.test.mjs": "fa8d949331524c76b72dc3fe4d29a7fb5c64bf3238227a5c1707fc1cc6be6904",
+    "docs/qa/WORK_SB58_EXECUTION_20261104.md": "f2d286d4a1ac482eb346602a6bba59538c5d3a8f2a0852b9f67aaf566b990c75",
+    ".maestro/work-sb58/prepare-photo-fixture.yaml": "0ce654ecbcb13128c22e7aa52f9f169345b7d72bdf3303e1a61da693ad717896",
+    ".maestro/work-sb58/README.md": "c4cecb5c638f7ea11311851692635a3771c2f786159111b8f9caa7dc3d85ddb7",
+    ".maestro/work-sb58/cancel-return.yaml": "be02e64c81124c87888deed19d47c4819edcbb0fcc0037bfdb5e0dab2e596d6e",
+    ".maestro/work-sb58/open-accepted-fixture.yaml": "53626f5437f3ffb334778f9d2b07257272af73968cece863e32e57004368d4bf",
+    ".maestro/work-sb58/photo-navigation.yaml": "1fb60c62f64e89bb3d7eb0d3697aa637fe6ddb0296ad889a590a2877a90c8676",
+    ".maestro/work-sb58/fresh-create-relaunch.yaml": "b182e9c1e82eaac1319541af518a7d9cc79d444463df6848dbdbf1acaf65c107"
+  },
+  "evidence": [
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB58-20261104/photo-setup-exclusive.log",
+      "bytes": 2282,
+      "sha256": "0ea6112180252303d20127edbe4d636a014f0470000c6e868bf9533ae397c02c"
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB58-20261104/cancel-return.log",
+      "bytes": 1317,
+      "sha256": "85f64c94da2eb5c075c6b941943b3582239b1b4bd17c82080181686db3a57ad4"
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB58-20261104/stale-runner-cleanup.log",
+      "bytes": 1217,
+      "sha256": "abc938e84de2682cb93edab2855a7aa0941508acee7f725504de8b539f29b205"
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB58-20261104/current-preview.png",
+      "bytes": 68404,
+      "sha256": "1badfdd0ca23245fda19b8e047e11b4193a83608fd20466347d54f90bab0502f"
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB58-20261104/viewer-regressions-final.log",
+      "bytes": 5617,
+      "sha256": "5795050cff743f9c809ea49fce4b67a6e724e08107d123715fe0bfd204c560ab"
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB58-20261104/SB58Red.png",
+      "bytes": 719,
+      "sha256": "e6f964afae900ec1de8b42e9920a2fc7ee8690165c27dc376e1f65720fd1ed88"
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB58-20261104/viewer-regressions.log",
+      "bytes": 5622,
+      "sha256": "24c5c57d1aece1d7819be847beb24bdb355226025e040755a22a32da2de55e90"
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB58-20261104/photo-setup.log",
+      "bytes": 2282,
+      "sha256": "0ea6112180252303d20127edbe4d636a014f0470000c6e868bf9533ae397c02c"
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB58-20261104/reminder-projection-validation.log",
+      "bytes": 2667,
+      "sha256": "fcbde73559c2ede57babb748a7b5ead9198dde37c129b0525ae9a0c4eb3602bc"
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB58-20261104/picker-current.png",
+      "bytes": 334238,
+      "sha256": "c78ebe24aa1602ae3ef2c6bfd1c4aaf9d42292e7f174b0b1624c774adcbffd22"
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB58-20261104/current.png",
+      "bytes": 262398,
+      "sha256": "1fdef0b4d088282ae1010eeb53d55a920a81a4ddc0e49f48878e63a40524e629"
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB58-20261104/SB58Blue.png",
+      "bytes": 721,
+      "sha256": "0313b3dc0188b3cccd3b2b7ea3ba3dadb645bee1b824f0c751944bde88adcdb9"
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB58-20261104/cancel-return-v2.log",
+      "bytes": 2107,
+      "sha256": "99516fa91c822f36069157fbaffbd366fb152894e6696598a744672a6745d1c0"
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB58-20261104/photo-setup-retry.log",
+      "bytes": 218,
+      "sha256": "20c3930eae274321e12a483a0f14dee7d82264c38cf56204b35aff4294f09698"
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB58-20261104/preflight.png",
+      "bytes": 331387,
+      "sha256": "0b4b8d0485db85dabd9d57768f5333272d3d91d30ebe12dafcb0289700d5c85d"
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB58-20261104/cancel-return-v2/2026-11-04_221217/xctest_runner_2026-11-04_221217.log",
+      "bytes": 1017844,
+      "sha256": "b0c725c0ecc928be99544092add0ff54ea27531de01b2d6b05976de07ac8c25b"
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB58-20261104/cancel-return-v2/2026-11-04_221217/cancel-return/takeScreenshot/sb58-cancel-preserves.png",
+      "bytes": 289423,
+      "sha256": "762d751adc9be15c72aaff87845e8994d5c3a3b72e9a95ecf0ed4c9f87760615"
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB58-20261104/cancel-return-v2/2026-11-04_221217/cancel-return/logs/device-xctest.log",
+      "bytes": 1017720,
+      "sha256": "ab41ec9f9aaf987bf705df299c6daa158bc46f8f6c097fa67b16d8d39f32b223"
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB58-20261104/cancel-return-v2/2026-11-04_221217/cancel-return/logs/maestro.log",
+      "bytes": 1063376,
+      "sha256": "bd97a1133b9bb4d9fe42224c3886c5677aacf21b62aa61d26cbfa270c63bb6c4"
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB58-20261104/cancel-return-v2/2026-11-04_221217/cancel-return/logs/device-simulator.log",
+      "bytes": 44379475,
+      "sha256": "25887f9fc22fc874748392eb764cdbeee7de689c7c276d12a33480cf5cc3b89d"
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB58-20261104/photo-setup/2026-11-04_221638/xctest_runner_2026-11-04_221639.log",
+      "bytes": 444,
+      "sha256": "a619ec3449af3f06517ceb983cc2f8230baa89a8b186ec02380c0c28fa0c38fb"
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB58-20261104/photo-setup-exclusive/2026-11-04_222718/xctest_runner_2026-11-04_222719.log",
+      "bytes": 444,
+      "sha256": "5746813c6ce9c2e77ac8ae9d6ffb80e4cee8ea1fb37f79d214e8546dc2621bf7"
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB58-20261104/cancel-return/2026-11-04_221057/xctest_runner_2026-11-04_221058.log",
+      "bytes": 365207,
+      "sha256": "64d8b7e8f47a7e52d546b37433d81e8841383d1bf3217b35e59c3ce5831a33af"
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB58-20261104/cancel-return/2026-11-04_221057/cancel-return/screenshots/step-007-scrollUntilVisible-Open_${TITLE}.png",
+      "bytes": 203089,
+      "sha256": "db412648eb1d52d7d3192f2694c0594f9c7cedacf48f8ea1be98298491be1e3e"
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB58-20261104/cancel-return/2026-11-04_221057/cancel-return/screenshots/step-003-runFlow.png",
+      "bytes": 203089,
+      "sha256": "db412648eb1d52d7d3192f2694c0594f9c7cedacf48f8ea1be98298491be1e3e"
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB58-20261104/cancel-return/2026-11-04_221057/cancel-return/logs/device-xctest.log",
+      "bytes": 365083,
+      "sha256": "d3bb7ce63805af1cca33e7249c236545a2b0609c6911f2cd4fd8186b52635983"
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB58-20261104/cancel-return/2026-11-04_221057/cancel-return/logs/maestro.log",
+      "bytes": 272343,
+      "sha256": "fca6bebba6fd03df92c02a1fae153ab2196c9c152e2ecb826b1f4496a3576724"
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB58-20261104/cancel-return/2026-11-04_221057/cancel-return/logs/device-simulator.log",
+      "bytes": 15335933,
+      "sha256": "41a7ac4cb2ae211e7d841628346fad520c88df458fff43ac1c80b163aaa6cf6c"
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB58-20261104/fresh-device-udid.txt",
+      "bytes": 37,
+      "sha256": "7bf60efd610e0f8581bba5fa448dbfb3d495e0adeb6ab0e495ea7bf6462f315d"
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB58-20261104/fresh-device-preflight.log",
+      "bytes": 5388,
+      "sha256": "aab890b82638ed8bf586c9ef3940082c3047753b9973295ef9cb182ec6b7a84b"
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB58-20261104/fresh-native-create.log",
+      "bytes": 2505,
+      "sha256": "7c78cfc8d3cffa97b862199f0ac81734c15f4eebd5457c8dac5b667f873a03bd"
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB58-20261104/fresh-runner-cleanup.log",
+      "bytes": 615,
+      "sha256": "7e640c69ab96d3311b2e9e600c0f70614cfe162730eee42cade66f2a86c3cae8"
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB58-20261104/fresh-native-create/2026-11-04_224552/xctest_runner_2026-11-04_224553.log",
+      "bytes": 444,
+      "sha256": "e789be756beb4e1da22086c86a7f263f3ceeb739eb04e894118a367275e9e3cc"
+    }
+  ],
+  "notAccepted": [
+    "viewer native next/previous/swipe/pinch",
+    "notification delivery",
+    "true offline cold launch",
+    "landscape/XL",
+    "VoiceOver/TalkBack",
+    "Android parity",
+    "owner physical-iPhone signoff"
+  ],
+  "dataPreservation": {
+    "documentsBackup": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB58-20261104/preflight-documents",
+    "existingAcceptedTestsChanged": false,
+    "resetOrReinstall": false,
+    "photoLibrarySampleImport": "Two fictional PNG sample imports attempted with simctl; command timed out, import outcome unverified"
+  },
+  "nativeDriverLane": "released to parent after failed exclusive retry",
+  "orphanRunner": {
+    "pid": 35613,
+    "destination": "879C620A-5318-4BDF-98B9-904EE635B053",
+    "state": "coordinator-authorized scoped TERM; process absence confirmed"
+  },
+  "freshDevice": {
+    "udid": "8FA03782-311F-4B4A-B529-1F63D7E9AEF3",
+    "name": "CasitaDex SB58 Fresh Disposable QA",
+    "deviceType": "iPhone 17 Pro",
+    "runtime": "iOS 27.0 (24A434)",
+    "preflightJob": "a697e6e4b995afc7",
+    "preflightExit": 143,
+    "bootSeconds": 17,
+    "memoryFreePercentBefore": 45,
+    "memoryFreePercentAfter": 37,
+    "binarySha256": "b2b2217c46b10f38207d92826cc7149e4c6cd489508898ed769e7d998e634ae4",
+    "dylibSha256": "64759bbae40cb74524dc797cdf8a4b282289ae0809a58624964d73dbca945380",
+    "bootInstall": "PASS",
+    "addMedia": "BLOCKED: scoped TERM of own stalled import; import outcome unknown",
+    "nativeStatus": "BLOCKED: openurl and iOS driver timed out before app commands",
+    "existingDeviceTouched": false,
+    "nativeJob": "687e2a6ab6296cf6",
+    "nativeExit": 1,
+    "openurlExit": 142,
+    "driverTimeoutMs": 120000,
+    "orphanRunner": {
+      "pid": 39438,
+      "state": "scoped TERM after identity and exit verification; process absent"
+    }
+  }
+}

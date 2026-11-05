@@ -45,3 +45,15 @@ These supporting workstreams preserve the original nine batches and six mileston
 Milestone implications: M1 remains In Progress; M2 Pending native scenarios; M3 In Progress with broader structural/source evidence; M4 Blocked store/verifier configuration; M5 Pending native parity and security triage; M6 Blocked. No release promotion, live billing, production deployment, store submission, simulator reset or owner data deletion.
 
 Canonical current return: docs/qa/DESIGNS_BY_FA_WORK_SB47_50_RETURN_REPORT.md. Hosted remote is named github; origin is a local intake bundle. Resume from pushed feature branches and recorded commits; original chat does not receive this automatically.
+
+## WORK-SB56–59 — November 4, 2026 (America/Chicago)
+These current results supersede older pending descriptions while retaining the nine original super-batches, six milestones and prior evidence.
+
+| Workstream | Evidence-based result | Next gate |
+| --- | --- | --- |
+| WORK-SB56 Event Command isolation and authenticated E2E | **Bounded iOS PASS:** native Auth/Firestore/Functions proof, event create/relaunch, guest create, invalid party size0, keyboard-open guest Edit/Save/Return/relaunch with exact name/count and preserved RSVP/dietary. | Native editor/viewer/account matrix, Android, notifications and full offline remain open. |
+| WORK-SB57 Event Command functional completion | **PARTIAL:** timeline full-payload/preservation/retry/ordering and dirty navigation implemented; native guest Switch event/tab guard PASS; native timeline Save/Return PASS after correction, two same-time rows verified after relaunch. Canonical undated event rules6/6 PASS. | Native full-field edit/optional end clear and both platforms; remaining module lifecycles, crash-durable draft, retry and full E2E. |
+| WORK-SB58 CasitaDex completion | **PARTIAL/BLOCKED:** native Cancel/Details/relaunch PASS on original dedicated device. Viewer gestures/order and unified reminder projection static tests PASS. Native photo path blocked by driver on original and fresh simulator; no authoritative delivery adapter. | Recover CD driver independently; native viewer/picker/offline and accessibility, integrate and prove linked+standalone delivery. |
+| WORK-SB59 Security/release | **BLOCKED/NO-GO:** redacted source/history scans, OSV root/functions, MASVS checklist, 10/1000 isolated Firestore rerun2/2. Billing safety CD1/1, EC3/3. | Triage findings, sandbox purchase/restore, distribution signing, privacy/assets, accessibility and native scenario gates. |
+
+M1 advances with bounded iOS native evidence; M2 full native scenarios remain open; M3 native/Figma parity remains in progress; M4/M6 blocked; M5 security/native parity still in progress. Both apps NO-GO. No existing evidence or accepted test overwritten. Canonical return: docs/qa/DESIGNS_BY_FA_WORK_SB56_59_RETURN_REPORT.md.

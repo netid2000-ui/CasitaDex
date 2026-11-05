@@ -1,0 +1,53 @@
+# Fresh disposable CD simulator only. Uses synthetic values and does not clear app data.
+appId: com.designsbyfa.casitadex.dev
+env:
+  TITLE: "SB58 Fresh QA fixture"
+  ANSWER: "Synthetic blue storage label"
+---
+- launchApp
+- extendedWaitUntil:
+    visible: "The details that matter."
+    timeout: 20000
+- takeScreenshot: sb58-fresh-home
+- assertNotVisible: "Resume Draft"
+- tapOn: "Add Memory"
+- extendedWaitUntil:
+    visible: "What do you want to remember?"
+    timeout: 10000
+- tapOn:
+    text: 'What do you want to remember\?'
+    index: 1
+- inputText: "${TITLE}"
+- tapOn:
+    text: 'The answer \(or add a photo\)'
+    index: 1
+- inputText: "${ANSWER}"
+- scrollUntilVisible:
+    element: "Keep draft and leave"
+    direction: DOWN
+    centerElement: true
+- tapOn: "Keep draft and leave"
+- extendedWaitUntil:
+    visible: "Resume Draft"
+    timeout: 10000
+- stopApp
+- launchApp
+- extendedWaitUntil:
+    visible: "Resume Draft"
+    timeout: 15000
+- tapOn: "Resume Draft"
+- assertVisible: "Unfinished Memory"
+- tapOn: "Continue Editing"
+- assertVisible: "${TITLE}"
+- assertVisible: "${ANSWER}"
+- scrollUntilVisible:
+    element: "Save memory"
+    direction: DOWN
+    centerElement: true
+- tapOn: "Save memory"
+- extendedWaitUntil:
+    visible: "${ANSWER}"
+    timeout: 15000
+- stopApp
+- runFlow: open-accepted-fixture.yaml
+- takeScreenshot: sb58-fresh-save-relaunch

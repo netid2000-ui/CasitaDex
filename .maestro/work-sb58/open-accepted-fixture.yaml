@@ -1,0 +1,18 @@
+appId: com.designsbyfa.casitadex.dev
+---
+- launchApp
+- waitForAnimationToEnd
+- tapOn: "Memories"
+- waitForAnimationToEnd
+- runFlow:
+    when:
+      notVisible: "Your memories."
+    commands:
+      - tapOn: "Memories"
+- assertVisible: "Your memories."
+- scrollUntilVisible:
+    element: "Open ${TITLE}:.*"
+    direction: DOWN
+    centerElement: true
+- tapOn: "Open ${TITLE}:.*"
+- assertVisible: "${ANSWER}"

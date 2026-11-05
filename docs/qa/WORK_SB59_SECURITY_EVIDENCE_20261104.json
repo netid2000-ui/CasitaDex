@@ -1,0 +1,129 @@
+{
+  "date_chicago": "2026-11-04",
+  "machine": "FA-MAC-DEV-01",
+  "job_id": "e3c7ba1c938242ff",
+  "billing_job_id": "208116bc00209caa",
+  "branch": "work/cd-sb41-edit-targeting-20261104",
+  "source_sha": "8c3fbfa55376ef0a4cfd7dc8075021f1d453977d",
+  "scope": "tracked snapshot excluding QA/security docs; tracked files can include concurrent source fixes; Git history separate; OSV root and functions lockfiles",
+  "gitleaks": {
+    "source": {
+      "exit": 0,
+      "finding_count": 0,
+      "detections": []
+    },
+    "history": {
+      "exit": 1,
+      "finding_count": 2,
+      "detections": [
+        {
+          "rule": "generic-api-key",
+          "path": "docs/qa/WORK_SB47_FIGMA_SOURCE_MAP.json",
+          "line": 2,
+          "commit": "7a57d0a0a061097254e5ca78848c50848c02262c",
+          "triage": "public Figma fileKey identifier; false-positive candidate, not a credential"
+        },
+        {
+          "rule": "generic-api-key",
+          "path": "docs/qa/WORK_SB47_FIGMA_INVENTORY.json",
+          "line": 2,
+          "commit": "7a57d0a0a061097254e5ca78848c50848c02262c",
+          "triage": "public Figma fileKey identifier; false-positive candidate, not a credential"
+        }
+      ]
+    }
+  },
+  "osv": [
+    {
+      "path": "package-lock.json",
+      "sha256": "41f589351110c71dc95d05d90397dcdfd5091d30ed75fff8cb73ba76955fc30a",
+      "exit": 1,
+      "advisory_instances": 6,
+      "package_version_rows": 5,
+      "packages": [
+        {
+          "name": "decode-uri-component",
+          "version": "0.2.2",
+          "advisories": [
+            "GHSA-qr28-fpjm-wq7f",
+            "GHSA-vcc3-ghjq-m6fr"
+          ]
+        },
+        {
+          "name": "deepmerge",
+          "version": "4.3.1",
+          "advisories": [
+            "GHSA-gcqx-w48m-w2h4"
+          ]
+        },
+        {
+          "name": "glob",
+          "version": "13.0.6",
+          "advisories": [
+            "GHSA-3g3m-2fjr-6pw4"
+          ]
+        },
+        {
+          "name": "minimatch",
+          "version": "10.2.6",
+          "advisories": [
+            "GHSA-g3hv-75wg-m249"
+          ]
+        },
+        {
+          "name": "zod",
+          "version": "3.25.76",
+          "advisories": [
+            "GHSA-mrhx-c7xc-m3w5"
+          ]
+        }
+      ],
+      "reachability": "NOT VERIFIED; lockfile existence and dev flag do not prove bundled/runtime exploitability"
+    }
+  ],
+  "native_acceptance": "NOT RUN by SB59",
+  "release_verdict": "NO-GO",
+  "billing_safety": {
+    "pass": 1,
+    "fail": 0,
+    "native_store_test": false
+  },
+  "artifacts": [
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB59-20261104/CD/billing-safety.log",
+      "sha256": "07df73b52c49c8d9fc28d4beea6c69d4b6252ec5c557e314eeb90dd357904d44"
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB59-20261104/CD/summary.json",
+      "sha256": "0000c9b856d4458f98531e9887757efe0ba467c35a8bb722db88dcc7a611b53c"
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB59-20261104/CD/gitleaks-history.json",
+      "sha256": "adfbf79970fe9e7fa10fc595f5ba4f47999ca29c0a3df5cc34f5de67762dc0b7"
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB59-20261104/CD/osv-root.json",
+      "sha256": "36edd3b55bb2ade583c6bff6c9084232d3b5d12373c909a1a360238c3acafaa6"
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB59-20261104/CD/gitleaks-source.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB59-20261104/CD/gitleaks-history.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB59-20261104/CD/osv-root.log",
+      "sha256": "77a8a35a61c92374aafd9c0f70a45ed2dadc1b8beeaf1e169660610f00551c37"
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB59-20261104/CD/gitleaks-source.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    }
+  ],
+  "tool_versions": {
+    "gitleaks": "8.30.1",
+    "osv_scanner": "osv-scanner version: 2.7.0\nosv-scalibr version: 0.5.3\ncommit: n/a\nbuilt at: n/a"
+  }
+}

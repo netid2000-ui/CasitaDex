@@ -1,0 +1,38 @@
+# Requires isolated synthetic QA memory with exactly PHOTO_COUNT photos (at least 2).
+# Does not add/remove/reorder attachments. Native execution pending driver recovery.
+appId: com.designsbyfa.casitadex.dev
+env:
+  PHOTO_COUNT: "2"
+---
+- runFlow: open-accepted-fixture.yaml
+- scrollUntilVisible:
+    element: "Open photo 1 to zoom"
+    direction: DOWN
+    centerElement: true
+- tapOn: "Open photo 1 to zoom"
+- assertVisible: "Photo 1 of ${PHOTO_COUNT}"
+- assertVisible: "Zoom 1 times"
+- tapOn: "Next photo"
+- assertVisible: "Photo 2 of ${PHOTO_COUNT}"
+- tapOn: "Zoom in"
+- assertVisible: "Zoom 2 times"
+- tapOn: "Previous photo"
+- assertVisible: "Photo 1 of ${PHOTO_COUNT}"
+- assertVisible: "Zoom 1 times"
+- swipe:
+    start: "85%,70%"
+    end: "15%,70%"
+    duration: 600
+- assertVisible: "Photo 2 of ${PHOTO_COUNT}"
+- takeScreenshot: sb58-viewer-second-photo
+- tapOn: "Close photo"
+- assertVisible: "Open photo 1 to zoom"
+- stopApp
+- runFlow: open-accepted-fixture.yaml
+- scrollUntilVisible:
+    element: "Open photo 1 to zoom"
+    direction: DOWN
+    centerElement: true
+- tapOn: "Open photo 1 to zoom"
+- assertVisible: "Photo 1 of ${PHOTO_COUNT}"
+- tapOn: "Close photo"

@@ -1,0 +1,23 @@
+appId: com.designsbyfa.casitadex.dev
+---
+- runFlow: open-accepted-fixture.yaml
+- scrollUntilVisible:
+    element: "Edit memory"
+    direction: DOWN
+    centerElement: true
+- tapOn: "Edit memory"
+- tapOn:
+    text: "Memory name"
+    index: 1
+- inputText: " SB58 UNSAVED"
+- hideKeyboard
+- scrollUntilVisible:
+    element: "Cancel edits"
+    direction: DOWN
+    centerElement: true
+- tapOn: "Cancel edits"
+- assertNotVisible: "Memory name"
+- stopApp
+- runFlow: open-accepted-fixture.yaml
+- assertNotVisible: ".*SB58 UNSAVED.*"
+- takeScreenshot: sb58-cancel-preserves
