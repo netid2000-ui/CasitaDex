@@ -2,7 +2,7 @@ import { enableReminderAlerts, getReminderPermission, type ReminderPermission } 
 import type { RepeatSchedule } from "./reminder-recurrence";
 import DateTimePicker, { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
 import React, { useCallback, useEffect, useRef, useState, useMemo } from "react";
-import { Platform, Alert, AppState, BackHandler, Image, Modal, Pressable, ScrollView, Share, View, useWindowDimensions } from "react-native";
+import { Platform, Alert, AppState, BackHandler, Image, Linking, Modal, Pressable, ScrollView, Share, View, useWindowDimensions } from "react-native";
 import { router, useFocusEffect, useLocalSearchParams } from "expo-router";
 import { Button, Copy, Field, Page, useTheme } from "./ui";
 import { useData } from "./state";
@@ -169,10 +169,20 @@ export function EngPhotos(){
  {photos.map((p,i)=><View key={p.id} style={s.panel}>
  <Image source={{uri:engPhotoUri(p.path)}} resizeMode="contain" accessibilityLabel={"Saved photo "+(i+1)} style={{width:"100%",height:220}} />
  <Button label={"View photo "+(i+1)} onPress={()=>setPreview({path:p.path,label:"Photo "+(i+1)+" of "+m.title})} />
- <Button label={"Replace photo "+(i+1)} disabled={e.busy} onPress={()=>void e.run(async store=>{const bytes=await chooseEngPhoto(false);if(bytes)await store.replaceMemoryPhoto(m.id,p.id,bytes);},"Photo replacement saved. Previous snapshot retained.")} />
+ <Button label={"Replace photo "+(i+1)} disabled={e.busy} onPress={()=>void e.run(async store=>{
+   const bytes=await chooseEngPhoto(false);
+   if(!bytes){e.setStatus("Replacement canceled. Original photo kept.");return;}
+   await store.replaceMemoryPhoto(m.id,p.id,bytes);
+   e.setStatus("Photo replacement saved. Previous snapshot retained.");
+ },"")} />
  <Button label={"Remove photo "+(i+1)} disabled={e.busy} onPress={()=>Alert.alert("Remove saved photo?","Remove this photo from the memory? Previous full save remains recoverable.",[{text:"Cancel",style:"cancel"},{text:"Remove photo",style:"destructive",onPress:()=>void e.run(store=>store.removeMemoryPhoto(m.id,p.id))}])} />
  </View>)}
- <Button label="Add Photo" disabled={e.busy||m.mediaIds.length>=5} onPress={()=>void e.run(async store=>{const bytes=await chooseEngPhoto(false);if(bytes)await store.addMemoryPhoto(m.id,bytes);},"Photo added to saved memory.")} />
+ <Button label="Add Photo" disabled={e.busy||m.mediaIds.length>=5} onPress={()=>void e.run(async store=>{
+   const bytes=await chooseEngPhoto(false);
+   if(!bytes){e.setStatus("Photo selection canceled. Your memory is kept.");return;}
+   await store.addMemoryPhoto(m.id,bytes);
+   e.setStatus("Photo added to saved memory.");
+ },"")} />
  </>}
  <Status text={e.status} />
  </Page>;
@@ -250,6 +260,7 @@ export function EngReminders(){
    :permission==="undetermined"?"Enable phone notifications to receive reminder alerts."
    :"Phone notifications are unavailable on this build."}</Copy>
  {permission==="undetermined"?<Button label="Enable reminder notifications" onPress={()=>void enableAlerts()}/>:null}
+ {permission==="denied"?<Button label="Open notification settings" onPress={()=>void Linking.openSettings().catch(()=>setStatus("Open CasitaDex in your device Settings to allow notifications."))}/>:null}
  {editing!==null?<View style={s.panel}>
   <Copy kind="section">{editing==="new"?"New reminder":"Edit reminder"}</Copy>
   <Field disabled={busy} label="Reminder title" value={title} onChangeText={setTitle} maxLength={200}/>
