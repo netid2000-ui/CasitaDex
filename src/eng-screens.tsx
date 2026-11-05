@@ -12,7 +12,7 @@ import { listStandaloneReminders,saveStandaloneReminder,completeStandaloneRemind
 import type { EngDraft, EngSnapshot } from "./eng-types";
 import type { MemoryV2 } from "./sb20-contract";
 import { localDay, eventText, orderedMemoryPhotos, sharePreview, type ShareField } from "./eng-domain";
-import { defaultFilter, findMemories, searchIndex, homeMemories, type FindFilter } from "./eng-find";
+import { defaultFilter, findMemories, searchIndex, type FindFilter } from "./eng-find";
 import { textBackupPreview, createTextBackup } from "./eng-text-backup";
 import { duplicateCandidates } from "./eng-duplicates";
 import { registerEditGuard } from "./eng-navigation";
@@ -28,14 +28,22 @@ function useEng(){
   const [snapshot,setSnapshot]=useState<EngSnapshot|null>(null),[status,setStatus]=useState(""),[busy,setBusy]=useState(false);
   const lock=useRef(false),alive=useRef(true);
   useEffect(()=>()=>{alive.current=false;},[]);
-  const refresh=useCallback(async()=>{
-    try{const next=await(await getEngStore()).load();if(alive.current)setSnapshot(next);}
-    catch(e){if(alive.current)setStatus(message(e));}
+  const refresh=useCallback(async():Promise<boolean>=>{
+    try{const next=await(await getEngStore()).load();if(alive.current)setSnapshot(next);return true;}
+    catch(e){if(alive.current)setStatus(message(e));return false;}
   },[]);
   useFocusEffect(useCallback(()=>{alive.current=true;void refresh();},[refresh]));
   async function run(task:(store:EngStore)=>Promise<unknown>,success="Saved on this device."){
     if(lock.current)return false;lock.current=true;setBusy(true);
-    try{await task(await getEngStore());await refresh();if(alive.current&&success)setStatus(success);return true;}
+    try{
+      await task(await getEngStore());
+      const refreshed=await refresh();
+      if(alive.current){
+        if(!refreshed)setStatus("Change saved on this device, but the list could not refresh. Reopen this page to confirm the latest data.");
+        else if(success)setStatus(success);
+      }
+      return refreshed;
+    }
     catch(e){if(alive.current)setStatus(message(e));return false;}
     finally{lock.current=false;if(alive.current)setBusy(false);}
   }
@@ -118,9 +126,6 @@ function PhotoViewer({path,label,photos,onClose}:{path:string;label:string;photo
 let findCache={query:"",filter:defaultFilter(),page:0,y:0,expanded:false};
 export function EngHome(){
  const e=useEng(),{s}=useTheme(),[confirmDelete,setConfirmDelete]=useState(false);
- const home=e.snapshot?homeMemories(e.snapshot.data,day()):null;
- const [homeReminders,setHomeReminders]=useState<StandaloneReminder[]>([]);
- useFocusEffect(useCallback(()=>{let active=true;void listStandaloneReminders().then(items=>{if(active)setHomeReminders(items.filter(r=>!r.completed).sort((a,b)=>(a.dueDate+a.dueTime).localeCompare(b.dueDate+b.dueTime)).slice(0,3));}).catch(()=>{if(active)setHomeReminders([]);});return()=>{active=false;};},[]));
  const draft=e.snapshot?.draft;
 
  function commands(items:{label:string;action:()=>void;disabled?:boolean}[]){return <View style={{flexDirection:"row",gap:10}}>{items.map(item=><View key={item.label} style={{flex:1}}><Button label={item.label} disabled={item.disabled||e.busy} onPress={item.action} /></View>)}</View>;}
@@ -142,8 +147,6 @@ export function EngHome(){
  <HomeAction title="Add Photo Memory" detail="Start with an image" icon="Photos" disabled={!!draft||!e.snapshot} onPress={()=>router.push("/add?mode=photo")} />
  <HomeAction title="Add Reminder" detail="Remember the next step" icon="Reminders" onPress={()=>router.push("/reminders?mode=new")} />
  </View>
- {(homeReminders.length>0||!!home?.due.length)?<Copy kind="section" accessibilityRole="header">Upcoming reminders</Copy>:null}
- {homeReminders.length||home?.due.length?<>{homeReminders.map(r=><View key={r.id} style={s.panel}><Copy style={{fontWeight:"700"}}>{r.title}</Copy><Copy kind="small">{r.dueDate} at {r.dueTime}</Copy></View>)}{home?.due.slice(0,Math.max(0,3-homeReminders.length)).map(m=><MemoryLink key={m.id} memory={m} />)}<Button label="View all reminders" onPress={()=>router.push("/reminders")} /></>:null}
  <Status text={e.status} />
  </Page>;
 }
