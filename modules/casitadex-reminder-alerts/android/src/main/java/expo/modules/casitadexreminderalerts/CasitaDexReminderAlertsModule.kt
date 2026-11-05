@@ -167,7 +167,10 @@ private object ReminderAlerts {
   fun deliver(context: Context, identifier: String) {
     if (!identifier.startsWith(PREFIX)) return
     val store = prefs(context)
-    val at = record(store.all[identifier])?.optLong("at", 0L) ?: return
+    val item = record(store.all[identifier]) ?: return
+    val at = item.optLong("at", 0L)
+    val kind = item.optString("kind")
+    val sourceId = item.optString("sourceId")
     if (at <= 0 || at > System.currentTimeMillis() || !store.edit().remove(identifier).commit()) return
     alarm(context, identifier, PendingIntent.FLAG_NO_CREATE)?.cancel()
     if (permission(context) != "allowed") return
@@ -183,7 +186,17 @@ private object ReminderAlerts {
       // Match the environment-specific Expo scheme and keep the intent package-local.
       val scheme = "casitadex-" + context.packageName.substringAfterLast('.')
       launch.action = Intent.ACTION_VIEW
-      launch.data = Uri.Builder().scheme(scheme).path("/reminders").build()
+      // Data is part of PendingIntent identity, so concurrent alerts keep their own target.
+      val destination = Uri.Builder().scheme(scheme)
+      if (kind == "memory" && sourceId.isNotEmpty()) {
+        destination.path("/card").appendQueryParameter("id", sourceId)
+      } else {
+        destination.path("/reminders")
+        if (kind == "standalone" && sourceId.isNotEmpty()) {
+          destination.appendQueryParameter("reminder", sourceId)
+        }
+      }
+      launch.data = destination.build()
       notification.setContentIntent(PendingIntent.getActivity(
         context, 0, launch, PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
       ))

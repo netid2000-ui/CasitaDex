@@ -39,3 +39,21 @@ test("reminder timestamps reject the spring gap and select the first fall occurr
   else process.env.TZ = previous;
  }
 });
+
+
+test("completion cannot silently advance a repeating reminder into the DST gap", async () => {
+ const { nextReminderOccurrenceDay } = await import("../src/reminder-recurrence.ts");
+ const previous = process.env.TZ;
+ try {
+  process.env.TZ = "America/Chicago";
+  assert.throws(() => nextReminderOccurrenceDay("2026-03-07", "02:30", "daily"), /Edit the reminder time/);
+  assert.throws(() => nextReminderOccurrenceDay("2026-03-01", "02:30", "weekly"), /Edit the reminder time/);
+  assert.equal(nextReminderOccurrenceDay("2026-03-07", "03:30", "daily"), "2026-03-08");
+  assert.equal(nextReminderOccurrenceDay("2026-03-07", "02:30", "once"), null);
+  assert.equal(nextReminderOccurrenceDay("2026-10-31", "01:30", "daily"), "2026-11-01");
+  assert.equal(nextReminderOccurrenceDay("2026-01-31", "09:00", "monthly", 31), "2026-02-28");
+ } finally {
+  if (previous === undefined) delete process.env.TZ;
+  else process.env.TZ = previous;
+ }
+});

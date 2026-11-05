@@ -1,5 +1,5 @@
 import { notifyReminderChanges } from "./reminder-notification-changes";
-import { nextReminderDay, reminderLocalTimestamp, validReminderDay, type RepeatSchedule } from "./reminder-recurrence";
+import { nextReminderOccurrenceDay, reminderLocalTimestamp, validReminderDay, type RepeatSchedule } from "./reminder-recurrence";
 import { openDatabaseAsync } from "expo-sqlite";
 export type StandaloneReminder={id:string;title:string;notes:string;dueDate:string;dueTime:string;repeat:RepeatSchedule;completed:boolean;createdAt:string;updatedAt:string};
 let database:ReturnType<typeof openDatabaseAsync>|undefined;
@@ -43,9 +43,9 @@ export async function saveStandaloneReminder(input:{id?:string;title:string;note
 }
 export async function completeStandaloneReminder(id:string,completed:boolean){
  const d=await db(),now=new Date().toISOString();
- const row=await d.getFirstAsync<{due_date:string;repeat:string;anchor_day:number}>("SELECT due_date,repeat,anchor_day FROM standalone_reminders_v1 WHERE id=?",id);
+ const row=await d.getFirstAsync<{due_date:string;due_time:string;repeat:string;anchor_day:number}>("SELECT due_date,due_time,repeat,anchor_day FROM standalone_reminders_v1 WHERE id=?",id);
  if(!row)throw Error("Reminder no longer exists.");
- const next=completed?nextReminderDay(row.due_date,row.repeat as RepeatSchedule,row.anchor_day||undefined):null;
+ const next=completed?nextReminderOccurrenceDay(row.due_date,row.due_time,row.repeat as RepeatSchedule,row.anchor_day||undefined):null;
  const result=next
   ?await d.runAsync("UPDATE standalone_reminders_v1 SET due_date=?,completed=0,updated_at=? WHERE id=?",next,now,id)
   :await d.runAsync("UPDATE standalone_reminders_v1 SET completed=?,updated_at=? WHERE id=?",completed?1:0,now,id);

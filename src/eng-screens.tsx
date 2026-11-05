@@ -1,5 +1,6 @@
 import { enableReminderAlerts, getReminderPermission, type ReminderPermission } from "./reminder-alerts";
 import type { RepeatSchedule } from "./reminder-recurrence";
+import { reminderNotificationTarget } from "./reminder-notification-target";
 import { listLinkedReminderMemories } from "./reminder-notification-projection";
 import DateTimePicker, { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
 import React, { useCallback, useEffect, useRef, useState, useMemo } from "react";
@@ -192,7 +193,8 @@ export function EngPhotos(){
  </Page>;
 }
 export function EngReminders(){
- const {s}=useTheme(),params=useLocalSearchParams<{mode?:string}>();
+ const {s}=useTheme(),params=useLocalSearchParams<{mode?:string;reminder?:string|string[]}>();
+ const notificationTarget=reminderNotificationTarget(params.reminder);
  const memories = useEng();
  const linkedReminders = listLinkedReminderMemories(memories.snapshot?.data.memories ?? []);
  const today = day();
@@ -211,7 +213,10 @@ export function EngReminders(){
  const [title,setTitle]=useState(""),[notes,setNotes]=useState(""),[dueDate,setDueDate]=useState(()=>defaultReminderDay()),[dueTime,setDueTime]=useState("09:00"),[repeat,setRepeat]=useState<RepeatSchedule>("once"),[iosPicker,setIosPicker]=useState<"date"|"time"|null>(null),[status,setStatus]=useState(""),[busy,setBusy]=useState(false);
  const [baseline,setBaseline]=useState<ReminderDraft>(()=>newReminderDraft(dueDate));
  const operation=useRef(false);
- const refresh=useCallback(async()=>{try{setItems(await listStandaloneReminders());}catch(e){setStatus(message(e));}},[]);
+ const [itemsLoaded,setItemsLoaded]=useState(false);
+ const refresh=useCallback(async()=>{try{setItems(await listStandaloneReminders());setItemsLoaded(true);}catch(e){setStatus(message(e));}},[]);
+ const selectedNotification=notificationTarget ? items.find(item=>item.id===notificationTarget) : undefined;
+ const visibleItems=selectedNotification ? [selectedNotification] : items;
  const [permission,setPermission]=useState<ReminderPermission>("unavailable");
  const refreshPermission=useCallback(async()=>{
   try { setPermission(await getReminderPermission()); }
@@ -287,7 +292,11 @@ export function EngReminders(){
   <Copy>Repeat: {repeat}</Copy>{(["once","daily","weekly","monthly","yearly"] as RepeatSchedule[]).map(option=><Button key={option} disabled={busy} label={option==="once"?"Once":option[0].toUpperCase()+option.slice(1)} selected={repeat===option} onPress={()=>setRepeat(option)}/>)}<Button label="Save Reminder" disabled={busy||!title.trim()} onPress={()=>void act(()=>saveStandaloneReminder({id:editing==="new"?undefined:editing,title,notes,dueDate,dueTime,repeat}),"Reminder saved on this device.")}/>
   <Button label="Cancel" disabled={busy} onPress={leaveReminder}/>
  </View>:<Button primary label="Create Reminder" onPress={()=>edit()}/>}
- {editing===null ? <>
+ {editing===null && params.reminder!==undefined ? <View style={s.panel}>
+  <Copy>{!itemsLoaded ? "Loading your reminder…" : selectedNotification ? "Reminder opened from your notification." : "This notification reminder is unavailable. Your saved reminders are shown below."}</Copy>
+  <Button label="Show all reminders" onPress={()=>router.setParams({reminder:undefined})}/>
+ </View> : null}
+ {editing===null && !selectedNotification ? <>
   {linkedSection("Upcoming memory reminders", upcoming)}
   {linkedSection("Past-due memory reminders", overdue)}
   {memories.status ? <View style={s.panel}>
@@ -299,7 +308,7 @@ export function EngReminders(){
   </View> : null}
   {linkedReminders.length > 0 && items.length > 0 ? <Copy kind="section" accessibilityRole="header">Standalone reminders</Copy> : null}
  </> : null}
- {editing===null?items.map(r=><View key={r.id} style={s.panel}>
+ {editing===null?visibleItems.map(r=><View key={r.id} style={s.panel}>
   <Copy style={{fontWeight:"700"}}>{r.title}</Copy><Copy>{r.dueDate} at {r.dueTime} · {r.repeat}{r.completed?" · Completed":""}</Copy>
   {r.notes?<Copy kind="small">{r.notes}</Copy>:null}
   <Button variant="quiet" label={expandedReminder===r.id?"Close actions":"Manage reminder"} onPress={()=>setExpandedReminder(old=>old===r.id?null:r.id)}/>

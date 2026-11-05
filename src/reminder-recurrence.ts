@@ -33,3 +33,11 @@ export function nextReminderDay(day:string,repeat:RepeatSchedule,anchorDay?:numb
  const last=utc(target.y,target.m,0).getUTCDate();
  return [year(target.y),pad(target.m),pad(Math.min(anchorDay??d,last))].join("-");
 }
+/** Refuse a recurrence that would disappear from the notification projection. */
+export function nextReminderOccurrenceDay(day: string, time: string, repeat: RepeatSchedule, anchorDay?: number) {
+ const next = nextReminderDay(day, repeat, anchorDay);
+ if (next !== null && reminderLocalTimestamp(next, time) === null) {
+  throw Error("The next reminder time does not occur in your device time zone. Edit the reminder time before completing this occurrence.");
+ }
+ return next;
+}
