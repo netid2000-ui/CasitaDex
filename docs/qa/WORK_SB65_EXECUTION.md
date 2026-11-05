@@ -27,11 +27,27 @@ Changed files: `modules/casitadex-reminder-alerts/` module config, podspec and S
 | iOS 27.1 device type validation | The available runtime 24A94425 supports iPhone Duo only. iPhone 17 Pro and 18 Pro attempts returned CoreSimulator code 403, Incompatible device. No devices were created by either attempt. |
 | Fresh disposable boot and Settings launch | Partial. Duo `8F7929BB-D472-41C0-9CA0-9D2D3878610E`, job `cab586cc0121f336`. Settings returned PID 59441. Bootstatus logged Data Migration Failed. Screenshot needs an explicit display on Duo. |
 | Stock screenshot and Photos import | FAIL. Display 1 capture timed out before photo import, job `7b56908a44391ab2`, exit 142. Separate stock Photos launch returned FBSOpenApplicationServiceErrorDomain code 4 and addmedia timed out exit 142, job `a840111a753760d6`. The job wrapper exited 0 after logging those failed step statuses. No usable screenshot. |
-| Exact-source CocoaPods integration | First attempt `6191c0001532a57d` failed on local ExpoModulesCore snapshot compatibility in isolated source. Scoped pod reconciliation retried in `4feee8001adc207a`. |
+| Exact-source CocoaPods integration | PASS after correcting stale isolated Expo pod snapshots. Jobs `6191c0001532a57d` and `4feee8001adc207a` isolated stale ExpoModulesCore and ExpoModulesWorklets snapshots. Job `2049408b5be5f7df` refreshed four local Expo pods with repo updates disabled and installed CasitaDexReminderAlerts 1.0.0. The resulting Podfile.lock has no Firebase or GoogleAppMeasurement entries. |
 | CasitaDex product-native photo and offline checks | BLOCKED in this lane. Stock Photos and screenshot failed before app installation. No product smoke, photo replacement gestures, accessibility or offline/relaunch claim. |
 | Reminder OS delivery, cancel, reschedule, reboot | NOT RUN. Requires an installed candidate and healthy simulator or device. Android scheduler remains open. |
 
 Raw logs are in `/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB65/`. See `automated-final.log`, `swift-typecheck-with-frameworks.log`, `stock-simulator-duo.log`, `stock-photos.log` and `pod-install.log`. The isolated iOS candidate source is under `/Volumes/FA-Development/Designs-by-FA/Apple-Builds/CasitaDex-WORK-SB65/source`.
+
+## Exact-source iOS build checkpoint
+
+The archived source SHA is `8a6d3f512ee923bf5f90cd6d81da883ca13cd3e5`. Candidate npm lock SHA-256 is `41f589351110c71dc95d05d90397dcdfd5091d30ed75fff8cb73ba76955fc30a`; candidate CocoaPods lock SHA-256 is `035ac0b743f9dc49d85828b962089505797522a3ca6096d2e4f2f99652530b35`. The shared heavy compile slot remained reserved for Event Command. No full CasitaDex native candidate build was started in this lane.
+
+Acquire AI Commander locks `mac-native-heavy-compile` and `sb65-ios-candidate` when the earlier builds release them. Then run the following in the existing isolated candidate. This is a simulator Release configuration with development identity and no signing.
+
+```sh
+base=/Volumes/FA-Development/Designs-by-FA/Apple-Builds/CasitaDex-WORK-SB65
+export PATH=/Users/franciscofranco/.nvm/versions/node/v24.22.1/bin:/opt/homebrew/bin:$PATH
+export EXPO_PUBLIC_APP_ENV=development CI=1
+cd "$base/source"
+xcodebuild -workspace ios/CasitaDexDev.xcworkspace -scheme CasitaDexDev \
+  -configuration Release -destination 'generic/platform=iOS Simulator' \
+  -derivedDataPath "$base/DerivedData" -jobs 2 CODE_SIGNING_ALLOWED=NO build
+```
 
 Next, prove boot migration and stock Photos services on an isolated target, then verify app launch, photo replacement, offline relaunch and accessibility. Build the exact reminder source with its native pod, validate granted and denied permission and linked/standalone delivery in the foreground/background, airplane mode, reschedule, cancellation and reboot. Confirm schedule policy after timezone change without app launch and reconcile foreground disclosure. Implement the Android inexact alarm/boot receiver path with the local-only dependency gate. No owner intervention is needed until final physical-iPhone acceptance.
 
