@@ -118,3 +118,17 @@ for the remaining engineering checks.
 Build job 86923e0e482aeada produced the ARM64 development release-mode QA APK, package com.designsbyfa.casitadex.dev, SHA-256 6e7b99d7bfe73a5c5d86365ec9f99150b612a4609be85a69d2418de55428a6ee, debug signer SHA-256 fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c. Logs, alarm dump, notification dump, UI screenshots and exact readback are in QA-Evidence/WORK-SB101 on FA-Development. The test advanced only the disposable device clock from 08:30 to 09:25. Native linked reminder evidence from the older APK retains its prior scope.
 
 The proposed decode-uri-component 0.5.1 override failed an isolated query-string 7.1.3 test with an ordinary percent-encoded parameter. The shipped dependency chain remains open for remediation through a compatible parent upgrade.
+
+
+## SB105 current-source reminder targets and persistence
+
+Mac mini-only execution through AI Commander, with all source/build/evidence on FA-Development. Start `4262059dbb45484951e59779bb164e98f695bd21`; application source `20a9393c5c89b046ee6397723a4938680a8ba947`. Historical worktrees and data preserved.
+
+| Workflow | Implementation and automated evidence | Current Android evidence | iOS / accessibility / release |
+| --- | --- | --- | --- |
+| Source-specific notification opening | Android intent URI retains kind/source ID; standalone view validates decoded parameters and preserves existing editor. 25 focused tests plus one SQLite regression, typecheck and ESLint PASS. | Actual standalone and linked notification taps open exact saved targets; Show all restores ordinary list; malformed and fully percent-encoded existing identifiers verified. Final isolated linked job aed5beaeda11570d exit0. | iOS tap handling and native acceptance open; assistive acceptance open; NO-GO. |
+| Standalone recurrence and completion | Completion rejects next occurrence in a DST gap before SQLite mutation; SQLite test proves row retention and successful retry after editing time. | Save, exact SQLite title/note/date/time, offline force-stop/relaunch, Mark Complete and native cancellation PASS. Native DST error and edited reschedule open. | iOS blocked; permission Settings recovery, reboot-before-launch and normal-clock timing remain open. |
+| Linked memory persistence | Existing local memory Save and notification projection retained. | Current APK verifies linked Save/date, retained fixture across disposable cold boots, notification tap and exact saved answer. | Full memory/media/backup lifecycle, accessibility and iOS remain open. |
+| Dependency compatibility | No incompatible override installed. Installed parser compatibility cases pass; SDK58/router58 parent migration is a candidate, not verified remediation. | Actual encoded/malformed query handling PASS in current app. | Existing OSV findings remain release gates. |
+
+APK SHA-256 `e69f8c0a80a2a49d357e50f00438796909702feae39897d56eb93e7fc6f2bc68`, package com.designsbyfa.casitadex.dev, debug signed. Clock-advanced delivery tests and earlier driver failures are scoped in [SB105 execution](WORK_SB105_EXECUTION.md); do not infer full lifecycle or store acceptance.

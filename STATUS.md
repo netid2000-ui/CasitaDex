@@ -1,13 +1,12 @@
 # CasitaDex — authoritative Mac integration status
 
-Updated November 5, 2026 (America/Chicago). Authority: FA-MAC-DEV-01, FA-Development external SSD. Branch: `work/cd-sb41-edit-targeting-20261104`.
+November 5, 2026 · FA-MAC-DEV-01 exclusively · FA-Development external SSD · authorized branch `work/cd-sb41-edit-targeting-20261104`.
 
-**WORK-SB81 · PARTIAL · release NO-GO.** Linked memory reminders are visible in Reminders and grouped by calendar date. Their rows open the exact saved memory. Source `63abf3e9d6636fdbc4f7df5d5feb4f23b3e0babf` was pushed to GitHub.
+**WORK-SB105 · PARTIAL · Release NO-GO.** Application source `20a9393c5c89b046ee6397723a4938680a8ba947` adds exact Android notification destinations and rejects recurrence into nonexistent DST times before persistence.
 
-- **Verified source:** TypeScript, lint and 348 tests passed; five existing skips. Regression verifies active/archived/demo filtering and past-date visibility independent of alert scheduling.
-- **Verified Android:** Exact debug-signed QA APK; fresh disposable device verified native memory Save, linked grouping, force-stop/relaunch rearming, cold-boot rearming before app launch, exact Details and completion cancellation.
-- **Open:** Actual linked alert delivery and tap destination, permission recovery and reschedule, fresh iOS native acceptance, full photo/memory/backup journeys, both-platform accessibility, verified store purchases and signed distribution.
-- **Design:** Figma `39uzN0SZX8nlmcGDcHdQhr`, linked reminders mapped to `276:3` and Details `257:2` / `257:25`. The linked list layout remains pending Figma reconciliation.
-- **Next:** Verify linked delivery and destination, then carry exact-source Android and iOS through photo and backup/restore journeys. Owner retains final physical iPhone and release signoff.
+- Verified: TypeScript, ESLint, 25 focused tests and one SQLite persistence regression. Current-source Android QA APK built; exact standalone SQLite readback, offline force-stop/relaunch, encoded/malformed links, actual standalone and linked notification taps, Show all, completion and native alarm cancellation passed bounded checks. Final isolated linked job `aed5beaeda11570d` exited0.
+- Evidence: [SB105 execution](docs/qa/WORK_SB105_EXECUTION.md), [functional matrix](docs/qa/WORK_SB73_EXECUTION.md), [artifact manifest](docs/qa/SB105_EVIDENCE_MANIFEST.json). Earlier driver failures and clock-advanced limits remain explicit.
+- Open: iOS response routing and native recovery; reminder edit/reschedule, native DST validation, Settings permission recovery, reboot-before-launch and normal-clock delivery; complete media and backup/restore; Figma selection-state reconciliation, VoiceOver/TalkBack/responsive acceptance; vulnerable dependency parent migration; signed distribution and owner physical-iPhone acceptance.
+- Next: Finish current-source reminder lifecycle and household media/backup journeys, implement iOS exact target response once toolchain qualifies, evaluate supported SDK58/router58 dependency migration in isolation.
 
-See [WORK-SB81 execution and evidence](docs/qa/WORK_SB81_EXECUTION.md) and the [release functional architecture audit](docs/qa/CASITADEX_RELEASE_FUNCTIONAL_ARCHITECTURE_AUDIT.md).
+No production changes, store submissions, live purchases, or other-host jobs.

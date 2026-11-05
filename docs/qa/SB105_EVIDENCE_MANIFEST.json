@@ -1,0 +1,95 @@
+{
+  "machine": "FA-MAC-DEV-01",
+  "sourceCommit": "20a9393c5c89b046ee6397723a4938680a8ba947",
+  "apkSha256": "e69f8c0a80a2a49d357e50f00438796909702feae39897d56eb93e7fc6f2bc68",
+  "finalNativeJob": "aed5beaeda11570d",
+  "finalNativeExitCode": 0,
+  "releaseDecision": "NO-GO",
+  "files": [
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB105/source.txt",
+      "sha256": "7ba3a868236037ad40880313634228c350b11e12f308e14aedc945c5dfabb2a2",
+      "bytes": 41
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB105/apk-sha256.txt",
+      "sha256": "e4f85b3c1a96fdd6f77a7dbbcc362424279e1b6250610e7df5087632649cb7bb",
+      "bytes": 197
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB105/identity.txt",
+      "sha256": "b6d472abcff6b98834dbf07955375427a40bb45545b930e9b432e68e6b0c2795",
+      "bytes": 1292
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB105/typecheck.log",
+      "sha256": "23536ab2c73e0f4bc1eec81fa939e6d9d2e2b1a4e186c1500feb05bad4b0dc74",
+      "bytes": 45
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB105/lint.log",
+      "sha256": "7988ad006928ac862d60f07d7289bfb07c75c0c7ab199908db5f91db3c7cd534",
+      "bytes": 55
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB105/focused-tests.log",
+      "sha256": "d8290e12e48323a08af8a42192160adaaacc06ea6fecce01f08aaa6652526d62",
+      "bytes": 5306
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB105/sqlite-regression.log",
+      "sha256": "a0a09129761a3d05c007b8abcda31f7a3c22275639f23008b198656e690ea329",
+      "bytes": 734
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB105/android-target-resume/run.log",
+      "sha256": "67940e16ad1d4052fd9d0fe48c661fd0d09b210ddadc76d9859372a81726c3af",
+      "bytes": 2039
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB105/android-target-resume/sqlite-exact-readback.json",
+      "sha256": "1a7e8afd9db9b49548ae5baa354b77cca42247a72f9d4c70beff747836816b56",
+      "bytes": 205
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB105/android-target-resume/offline-exact-target.png",
+      "sha256": "609de3e112c5e5cfaf34f1a66b3077b4adfb5bff0d04ee16de3ffa5d265d08ca",
+      "bytes": 240181
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB105/android-target-resume/standalone-notification-target.png",
+      "sha256": "3eff9987653d739755d5955243bee1c681b9e9d5daa1fbe7fef799dba8085978",
+      "bytes": 239942
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB105/android-linked-final/run.log",
+      "sha256": "5594320a93b43b3bd5ad176ddd84e8b06f277fb14c9a70198119a042d9d691e5",
+      "bytes": 1162
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB105/android-linked-final/run.sh",
+      "sha256": "17641b66c74c5c69b749031b1e55d996896f46417a57ffd5ccb82b777a41f9d1",
+      "bytes": 2628
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB105/android-linked-final/delivery.py",
+      "sha256": "fca51579ac3821be0811f19ec90c24abcffdce4632bfb9f383005d7f7d20a77d",
+      "bytes": 5881
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB105/android-linked-final/linked-readback.json",
+      "sha256": "b7cf9a562df1dadb389be0b57043854d60b80ee2df546037c3c09458e5ed0777",
+      "bytes": 148
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB105/android-linked-final/linked-notification-target.png",
+      "sha256": "18a266e7ae941b7816f8c72574ddc3d553ac18a8fd9dc0bda45097e3a52ae6c1",
+      "bytes": 212493
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB105/android-linked-final/percent-encoded-existing-target.png",
+      "sha256": "07a6f0538c58e84508439873f24176891fd43203a3e5e0965b2892636d1c2253",
+      "bytes": 241429
+    }
+  ]
+}
