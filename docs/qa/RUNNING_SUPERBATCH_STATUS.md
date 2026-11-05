@@ -1,31 +1,33 @@
 # Designs by F&A — running super-batch and milestone status
 
-Updated 2026-11-04. Execution authority: FA-MAC-DEV-01 (Mac mini). This is a live checkpoint ledger, not an acceptance certificate. Update on each super-batch boundary, commit and push to GitHub, and link native evidence. Never equate a build with release acceptance.
+Updated November 4, 2026 (America/Chicago), Work return checkpoint. Mac mini FA-MAC-DEV-01 remains sole active execution authority. Status is evidence-based; no release acceptance implied.
 
-| Batch | Scope | Status | Latest evidence / next gate |
-| --- | --- | --- | --- |
-| CD-SB41 | CasitaDex Add, Save, Details, Edit, Return, Relaunch | PARTIAL / EDIT BLOCKED | Create/Save PASS; edit navigation and prior save/relaunch PASS; edited title Save remains on edit form; see SCREEN_FLOW_ACCEPTANCE_20261104.md and commit 7229d2f. Diagnose validation and input target, rerun |
-| CD-SB42 | Photos, linked reminders, offline persistence | PENDING | Native scenarios and notifications |
-| CD-SB43 | Accessibility, landscape, large text, Figma, Android parity | PENDING | Native iOS and Android evidence |
-| EC-SB36 | Guest edit, keyboard-safe Save, permissions | IN PROGRESS / INCOMPLETE | Emulator tests partial; native workflow acceptance outstanding |
-| EC-SB37 | Persistent Run of Show editor | PENDING | Implement, persist, native regression |
-| EC-SB38 | 10-guest birthday, 1000-guest wedding E2E | PENDING FULL E2E | Isolated Firebase and native scenarios |
-| BOTH-SB44 | All Figma screens, interactions, processes and data maps | INCOMPLETE | Reconcile both Figma authorities with app code |
-| BOTH-SB45 | Purchase, restore, entitlement and monetization | INCOMPLETE | Fail-closed until verified native billing |
-| BOTH-SB46 | Security, accessibility, signed iOS/Android store builds | PENDING | Release acceptance evidence and owner signoff |
-
-## Milestones
-| Milestone | Outcome | Status |
+| Batch | Status | Owner / evidence / next gate |
 | --- | --- | --- |
-| M1 | Core CRUD and persistence | PARTIAL |
-| M2 | Complete end-to-end scenarios | OPEN |
-| M3 | Figma authority parity | OPEN |
-| M4 | Monetization | OPEN |
-| M5 | Accessibility, security and native parity | OPEN |
-| M6 | App Store and Play Store readiness | OPEN |
+| CD-SB41 | In Progress; bounded iOS edit persistence Verified | Mac native QA. 0cfc4ef; Maestro job 7cc1e8c06faec23b exit 0: exact replacement title, Save, Details, restart, persisted title and original answer. Android, Cancel, other fields and owner iPhone remain open. |
+| CD-SB42 | Pending | Mac native QA. Photos, linked notifications and offline media/reminder persistence not rerun; preserve existing data. |
+| CD-SB43 | Pending | Mac native QA/design. Landscape, enlarged text, screen readers and Android parity remain unverified. |
+| EC-SB36 | In Progress; native acceptance Blocked | Mac engineering. 7410a07 adds handled keyboard taps and drag dismissal to Guests. Typecheck PASS; guest preservation/permissions included in 28/28 Firestore tests. Restore isolated runtime and verify native keyboard-open Save/relaunch. |
+| EC-SB37 | In Progress; implementation present | Mac engineering/native QA. MoreScreen.tsx and saveRunOfShow.ts already implement create/edit/delete and stable IDs. Domain and rules tests pass; native persistence, ordering, simultaneous activities and offline/reconnect acceptance open. |
+| EC-SB38 | In Progress; full E2E Pending | Mac QA. 10-guest birthday and 1,000-guest wedding domain calculations PASS; native UI/Firestore/multi-role/offline/performance scenarios NOT RUN. |
+| BOTH-SB44 | In Progress; incomplete | Mac design/workflow audit. Both live Figma authorities inspected; priority mappings in WORK_FLOW_RECONCILIATION_20261104.md (EC repo). CasitaDex accepted Edit fixed actions differ from tested bottom Save. Complete every-control matrix and native parity. |
+| BOTH-SB45 | Blocked for operational billing | Mac engineering/commercial. EC purchaseGateway.configured=false; safety tests pass, store purchase/restore NOT configured or verified. Preserve approved lifetime CD and per-event/annual EC direction. |
+| BOTH-SB46 | Pending; release NO-GO | Mac release/security. Signed release provenance, security scans, accessibility, native parity and owner iPhone signoff not established by this checkpoint. |
 
-## Governance
-- Run charter/research/role preflight; assign parallel Mac mini jobs; verify actual simulator/emulator availability and visible UI; implement; run automated and native tests; reconcile Figma; record evidence; commit and push GitHub; report next gate.
-- All development/build/testing jobs remain on Mac mini; Windows is disaster recovery, not an active worker without new approval.
-- GitHub: CasitaDex main; Event Command integration/mac-authority-ec35-20261104 (draft PR #2). Track commits separately from accepted native gates.
-- No production deployment, paid resources, data wipes, or unsupported acceptance claims.
+| Milestone | Status | Next acceptance |
+| --- | --- | --- |
+| M1 Core CRUD/Save/Return/persistence | In Progress | CD bounded iOS edit PASS; EC native guest save and both-platform journeys open. |
+| M2 Complete end-to-end scenarios | Pending | Full native birthday/wedding and CD photos/reminders/offline flows. |
+| M3 Figma authority parity | In Progress | Resolve confirmed Edit-action mismatch; finish all-screen/action mapping. |
+| M4 Monetization | Blocked | Approved product configuration and native sandbox purchase/restore/lifecycle evidence. |
+| M5 Accessibility/security/native parity | Pending | Current artifact scans, VoiceOver/TalkBack, large text, landscape and parity evidence. |
+| M6 Store readiness | Blocked | M1–M5 gates, signed candidate provenance and owner acceptance. |
+
+## References and coordination
+
+- EC change: work/ec-sb36-keyboard-save-20261104, 7410a07bfcc406bc44289371998084090a4ef0c4, based on integration/mac-authority-ec35-20261104 at 2c06011.
+- CD test: work/cd-sb41-edit-targeting-20261104, 0cfc4efe8789aa04a56b803dc8495ae0616a92eb, based on governance/mac-mini-authority-20261104 at 3ae1323 (same remote main at preflight).
+- Canonical return report: Event Command docs/qa/DESIGNS_BY_FA_WORK_RETURN_REPORT_20261104.md. Original command-center chat must receive its separate handoff.
+- External SSD writable, approximately 1.6 TiB available at preflight. Existing source and device data preserved; Windows not assigned new work.
+- EC isolated Auth/Firestore/Functions and dedicated Metro listeners absent at preflight. Temporary Firestore rules run completed and shut down normally; native authenticated testing remains blocked until runtime isolation verified.
+- No production writes, purchases, store submission or release promotion performed. Do not merge feature branches merely from automated checks.
