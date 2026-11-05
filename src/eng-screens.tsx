@@ -15,6 +15,7 @@ import { defaultFilter, findMemories, searchIndex, homeMemories, type FindFilter
 import { textBackupPreview, createTextBackup } from "./eng-text-backup";
 import { duplicateCandidates } from "./eng-duplicates";
 import { registerEditGuard } from "./eng-navigation";
+import { clampPhotoIndex, clampPhotoZoom, photoSwipeStep, touchDistance } from "./photo-viewer-state";
 import { BrandHeader, BrandLogo, BrandArt } from "./brand";
 import { HomeAction } from "./home-action";
 import { EditorialIntro } from "./editorial-intro";
@@ -47,22 +48,68 @@ function MemoryLink({memory,data}:{memory:MemoryV2;data?:EngSnapshot["data"]}){
 
   </Pressable>;
 }
-function PhotoViewer({path,label,onClose}:{path:string;label:string;onClose:()=>void}){
-  const {width,height}=useWindowDimensions(),{colors}=useTheme();const [zoom,setZoom]=useState(1);
-  return <Modal visible onRequestClose={onClose} animationType="slide">
-    <View style={{flex:1,padding:20,paddingTop:48,backgroundColor:colors.paper,gap:12}}>
-      <Copy accessibilityRole="header">{label}</Copy>
+type ViewerPhoto={path:string;label:string};
+function PhotoViewer({path,label,photos,onClose}:{path:string;label:string;photos?:ViewerPhoto[];onClose:()=>void}){
+  const {width,height}=useWindowDimensions(),{colors}=useTheme();
+  const items=useMemo(()=>photos?.length?photos:[{path,label}],[photos,path,label]);
+  const [index,setIndex]=useState(()=>Math.max(0,items.findIndex(p=>p.path===path))),[zoom,setZoom]=useState(1);
+  const zoomRef=useRef(1),pinch=useRef<{distance:number;zoom:number}|null>(null),usedPinch=useRef(false);
+  const vertical=useRef<ScrollView>(null),horizontal=useRef<ScrollView>(null);
+  const selected=items[clampPhotoIndex(index,items.length)];
+  const changeZoom=useCallback((value:number)=>{zoomRef.current=clampPhotoZoom(value);setZoom(zoomRef.current);},[]);
+  const move=useCallback((step:number)=>{
+    setIndex(value=>clampPhotoIndex(value+step,items.length));zoomRef.current=1;setZoom(1);
+    vertical.current?.scrollTo({y:0,animated:false});horizontal.current?.scrollTo({x:0,animated:false});
+  },[items.length]);
+  const origin=useRef<{x:number;y:number}|null>(null);
+  const gestures={
+    onTouchStart:(event:import("react-native").GestureResponderEvent)=>{
+      const touches=event.nativeEvent.touches;
+      if(touches.length===1){origin.current={x:touches[0].pageX,y:touches[0].pageY};usedPinch.current=false;}
+      if(touches.length>=2){
+        const distance=touchDistance(touches);usedPinch.current=true;
+        if(distance&&!pinch.current)pinch.current={distance,zoom:zoomRef.current};
+      }
+    },
+    onStartShouldSetResponderCapture:(event:import("react-native").GestureResponderEvent)=>event.nativeEvent.touches.length>=2,
+    onMoveShouldSetResponderCapture:(event:import("react-native").GestureResponderEvent)=>{
+      const touches=event.nativeEvent.touches;if(touches.length>=2)return true;
+      const start=origin.current,point=touches[0];if(!start||!point||zoomRef.current!==1)return false;
+      const dx=point.pageX-start.x,dy=point.pageY-start.y;
+      return Math.abs(dx)>16&&Math.abs(dx)>Math.abs(dy)*1.5;
+    },
+    onResponderMove:(event:import("react-native").GestureResponderEvent)=>{
+      const distance=touchDistance(event.nativeEvent.touches);if(!distance)return;
+      usedPinch.current=true;
+      if(!pinch.current)pinch.current={distance,zoom:zoomRef.current};
+      changeZoom(pinch.current.zoom*distance/pinch.current.distance);
+    },
+    onResponderRelease:(event:import("react-native").GestureResponderEvent)=>{
+      const start=origin.current,point=event.nativeEvent.changedTouches[0];
+      const step=usedPinch.current||!start||!point?0:photoSwipeStep(point.pageX-start.x,point.pageY-start.y,zoomRef.current);
+      if(step)move(step);pinch.current=null;origin.current=null;
+    },
+    onResponderTerminate:()=>{pinch.current=null;origin.current=null;},
+  };
+  return <Modal visible onRequestClose={onClose} animationType="slide" accessibilityViewIsModal>
+    <ScrollView style={{flex:1,backgroundColor:colors.paper}} contentContainerStyle={{flexGrow:1,padding:20,paddingTop:48,gap:12}}>
+      <Copy accessibilityRole="header">{selected.label}</Copy>
       <Button label="Close photo" onPress={onClose} />
       <View style={{flexDirection:"row",flexWrap:"wrap",gap:10}}>
-        <Button label="Zoom in" disabled={zoom>=4} onPress={()=>setZoom(v=>Math.min(v+1,4))} />
-        <Button label="Zoom out" disabled={zoom<=1} onPress={()=>setZoom(v=>Math.max(v-1,1))} />
-        <Copy accessibilityLiveRegion="polite">Zoom {zoom} times</Copy>
+        <Button label="Previous photo" disabled={index<=0} onPress={()=>move(-1)} />
+        <Button label="Next photo" disabled={index>=items.length-1} onPress={()=>move(1)} />
+        <Copy accessibilityLiveRegion="polite">Photo {index+1} of {items.length}</Copy>
+        <Button label="Zoom in" disabled={zoom>=4} onPress={()=>changeZoom(zoom+1)} />
+        <Button label="Zoom out" disabled={zoom<=1} onPress={()=>changeZoom(zoom-1)} />
+        <Copy accessibilityLiveRegion="polite">Zoom {Math.round(zoom*10)/10} times</Copy>
       </View>
-      <ScrollView style={{flex:1}}><ScrollView horizontal>
-        <Image source={{uri:engPhotoUri(path)}} resizeMode="contain" accessibilityLabel={label}
-          style={{width:Math.max(width-40,200)*zoom,height:Math.max(height-300,200)*zoom}} />
-      </ScrollView></ScrollView>
-    </View>
+      <View style={{height:Math.max(height-360,160)}} {...gestures}>
+        <ScrollView ref={vertical} style={{flex:1}}><ScrollView ref={horizontal} horizontal>
+          <Image source={{uri:engPhotoUri(selected.path)}} resizeMode="contain" accessibilityLabel={selected.label}
+            style={{width:Math.max(width-40,200)*zoom,height:Math.max(height-360,160)*zoom}} />
+        </ScrollView></ScrollView>
+      </View>
+    </ScrollView>
   </Modal>;
 }
 let findCache={query:"",filter:defaultFilter(),page:0,y:0,expanded:false};
@@ -104,7 +151,7 @@ export function EngPhotos(){
  return <Page independent title="Photos" hideHeading>
  <BrandHeader /><EditorialIntro eyebrow="Visual memories" title="Photos with a purpose." description="Every photo stays linked to its memory." />
  <Copy>Select a saved memory to review, add, replace, or remove its photos. Existing photos are preserved until you confirm a change.</Copy>
- {preview?<PhotoViewer path={preview.path} label={preview.label} onClose={()=>setPreview(null)} />:null}
+ {preview?<PhotoViewer path={preview.path} label={preview.label} photos={e.snapshot?.data.media.media.filter(p=>p.cardId===m?.id).map((p,i)=>({path:p.path,label:"Photo "+(i+1)+" of "+m?.title}))} onClose={()=>setPreview(null)} />:null}
  {!m?<>{memories.length===0?<Copy>No saved memories with photos yet.</Copy>:<View style={{ flexDirection:"row",flexWrap:"wrap",gap:12,justifyContent:"space-between" }}>{memories.map(x=>{
  const first=e.snapshot?.data.media.media.find(p=>p.cardId===x.id);
  return <Pressable key={x.id} accessibilityRole="button" accessibilityLabel={`Open ${x.title} photo memory`}
@@ -291,7 +338,7 @@ export function EngAdd(){
       <Field maxLength={1000} label="The answer (or add a photo)" value={form?.answer??""} onChangeText={answer=>change({answer})} />
 
       <Copy>Photos ({form?.photos.length??0}/5)</Copy>
-      <Button label={managePhotos?"Hide saved photos":"View saved photos"} onPress={()=>setManagePhotos(!managePhotos)} />{managePhotos?<> {zoomPhoto?<PhotoViewer path={zoomPhoto.path} label={zoomPhoto.label} onClose={()=>setZoomPhoto(null)} />:null}{form?.photos.map((p,index)=><View key={p.id} style={s.panel}>
+      <Button label={managePhotos?"Hide saved photos":"View saved photos"} onPress={()=>setManagePhotos(!managePhotos)} />{managePhotos?<> {zoomPhoto?<PhotoViewer path={zoomPhoto.path} label={zoomPhoto.label} photos={form?.photos.map((p,i)=>({path:p.path,label:"Draft photo "+(i+1)}))} onClose={()=>setZoomPhoto(null)} />:null}{form?.photos.map((p,index)=><View key={p.id} style={s.panel}>
         <Image source={{uri:engPhotoUri(p.path)}} resizeMode="contain" accessibilityLabel={`Draft photo ${index+1}`} style={{width:"100%",height:260}} />
         <Button label={`Open draft photo ${index+1} to zoom`} onPress={()=>setZoomPhoto({path:p.path,label:`Draft photo ${index+1}`})} /><Button label={`Replace draft photo ${index+1}`} disabled={disabled} onPress={()=>void action(async store=>{const bytes=await chooseEngPhoto(false);if(!bytes){setStatus("Replacement canceled. Original photo kept.");return;}const next=await store.replacePhoto(form.id,p.id,bytes);update(next.draft!);setStatus("Draft photo replaced and verified.");})} /><Button label={`Remove draft photo ${index+1}`} disabled={disabled} onPress={()=>void action(async store=>{const next=await store.removePhoto(form.id,p.id);update(next.draft!);setStatus("Photo removed from draft. Previous save remains recoverable.");})} />
       </View>)}</>:null}
@@ -343,7 +390,7 @@ export function EngDetail(){
   const m=edit??memory;
   function confirm(label:string,task:(store:EngStore)=>Promise<unknown>){Alert.alert(label,"Your previous full save remains recoverable.",[{text:"Cancel",style:"cancel"},{text:label,onPress:()=>void e.run(task)}]);}
   return <Page independent title={m?.title??"Memory"}>
-    {photo?<PhotoViewer path={photo.path} label={photo.label} onClose={()=>setPhoto(null)} />:null}
+    {photo?<PhotoViewer path={photo.path} label={photo.label} photos={e.snapshot?.data.media.media.filter(p=>p.cardId===m?.id).map((p,i)=>({path:p.path,label:"Photo "+(i+1)+" of "+m?.title}))} onClose={()=>setPhoto(null)} />:null}
     {m?<>
       {edit?<>
         <Field disabled={e.busy} maxLength={200} label="Memory name" value={edit.title} onChangeText={title=>setEdit({...edit,title})} />
