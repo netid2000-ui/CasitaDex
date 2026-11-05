@@ -42,9 +42,10 @@ function useEng(){
 function Status({text}:{text:string}){return text ? <Copy kind="small" accessibilityLiveRegion="polite">{text}</Copy> : null;}
 function MemoryLink({memory,data}:{memory:MemoryV2;data?:EngSnapshot["data"]}){
   const {s}=useTheme();
+  const firstPhoto=!memory.answer?orderedMemoryPhotos(memory,data?.media.media)[0]:undefined;
   return <Pressable accessibilityRole="button" accessibilityLabel={`Open ${memory.title}: ${memory.answer||"Photo memory"}`}
     onPress={()=>router.push({pathname:"/card",params:{id:memory.id}})} style={s.panel}>
-    {data?<><Copy kind="answer">{memory.answer||"Photo memory"}</Copy><Copy style={{fontWeight:"700"}}>{memory.title}</Copy>{!memory.answer&&data.media.media.find(p=>p.cardId===memory.id)?<Image source={{uri:engPhotoUri(data.media.media.find(p=>p.cardId===memory.id)!.path)}} accessibilityLabel={`Photo for ${memory.title}`} resizeMode="contain" style={{width:"100%",height:160}} />:null}<Copy kind="small">{data.spaces.find(x=>x.id===memory.spaceId)?.name??"Unassigned"}{memory.categoryIds.length?" · "+memory.categoryIds.map(id=>data.categories.find(x=>x.id===id)?.name).join(", "):""} · {memory.confidence}</Copy></>:<><Copy style={{fontWeight:"700"}}>{memory.title}</Copy><Copy>{memory.answer||"Photo memory"}</Copy></>}
+    {data?<><Copy kind="answer">{memory.answer||"Photo memory"}</Copy><Copy style={{fontWeight:"700"}}>{memory.title}</Copy>{firstPhoto?<Image source={{uri:engPhotoUri(firstPhoto.path)}} accessibilityLabel={`Photo for ${memory.title}`} resizeMode="contain" style={{width:"100%",height:160}} />:null}<Copy kind="small">{data.spaces.find(x=>x.id===memory.spaceId)?.name??"Unassigned"}{memory.categoryIds.length?" · "+memory.categoryIds.map(id=>data.categories.find(x=>x.id===id)?.name).join(", "):""} · {memory.confidence}</Copy></>:<><Copy style={{fontWeight:"700"}}>{memory.title}</Copy><Copy>{memory.answer||"Photo memory"}</Copy></>}
 
   </Pressable>;
 }
