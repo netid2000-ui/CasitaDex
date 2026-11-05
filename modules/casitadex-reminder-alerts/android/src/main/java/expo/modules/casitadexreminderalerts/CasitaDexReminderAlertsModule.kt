@@ -180,6 +180,10 @@ private object ReminderAlerts {
       .setVisibility(Notification.VISIBILITY_PRIVATE)
       .setAutoCancel(true)
     context.packageManager.getLaunchIntentForPackage(context.packageName)?.let { launch ->
+      // Match the environment-specific Expo scheme and keep the intent package-local.
+      val scheme = "casitadex-" + context.packageName.substringAfterLast('.')
+      launch.action = Intent.ACTION_VIEW
+      launch.data = Uri.Builder().scheme(scheme).path("/reminders").build()
       notification.setContentIntent(PendingIntent.getActivity(
         context, 0, launch, PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
       ))
