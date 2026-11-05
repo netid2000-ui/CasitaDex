@@ -42,3 +42,25 @@ State is scoped to actual evidence. Historical and earlier-build evidence is not
 1. Build current CasitaDex source on the established Android QA path, then verify dirty/clean reminder Cancel, Settings recovery, picker cancellation and persistence without data loss.
 2. Run a dedicated Android linked/standalone device flow that verifies notification delivery, process death, rescheduling, cancellation and reboot. Account for Android inexact scheduling delays.
 3. Recover Simulator components in a separate supported toolchain, require stock I/O and XCTest first, then run product gallery, memory and reminder acceptance. No owner action is needed until physical-iPhone signoff.
+
+## SB85–86 acceptance update · November 5, 2026
+
+Application checkpoint `e281adbdb27c26189fd41014f5edc6bfb2873aec`.
+On Xcode 27.2 (27B52), a bounded screenshot of disposable iOS 27.0
+device `7DB01BF8-2C97-486A-A908-DA8F9E81FE8C` timed out after 18
+seconds (exit 142). Log `QA-Evidence/WORK-SB85/screenshot.log`.
+Current-source iOS product acceptance remains BLOCKED. Earlier Android
+linked scheduling, cold-boot rearming, exact navigation from the app,
+and completion cancellation are retained as scoped evidence. Alert delivery
+and tap destination still require an actual posted notification.
+
+| Module | Implementation and durable behavior | Permissions and recovery | Current iOS / Android / accessibility | Next release gate |
+| --- | --- | --- | --- | --- |
+| Memory, labels and Find | SQLite editing, search, archive and recovery paths exist | Local revision guards | Blocked / full journey open / open | Offline Save, Cancel, Return, archive and relaunch |
+| Photos and share | Local media and five-photo policy exist | Picker and user-directed sharing | Blocked / open / open | Import, replacement, viewer, share and offline relaunch |
+| Linked and standalone reminders | Local persistence and native bridges exist | Permission and scheduling paths exist | Blocked / prior bounded linked PASS / open | Delivery, tap, deny/regrant, reschedule, time zone and reboot |
+| Settings, backup and restore | Preferences and local archive/restore exist | Preview and integrity checks exist | Blocked / open / open | Corrupt-file, interruption and media/reminder restore |
+| Premium and distribution | Fail-closed baseline | Trusted sandbox verification open | Open / open / open | Sandbox identities, signed artifacts and owner acceptance |
+
+Earlier automated evidence remains scoped to its recorded source. No new
+CasitaDex application changes or test pass were recorded. Release NO-GO.
