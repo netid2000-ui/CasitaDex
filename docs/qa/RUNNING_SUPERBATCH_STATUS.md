@@ -31,3 +31,17 @@ Updated November 4, 2026 (America/Chicago), Work return checkpoint. Mac mini FA-
 - External SSD writable, approximately 1.6 TiB available at preflight. Existing source and device data preserved; Windows not assigned new work.
 - EC isolated Auth/Firestore/Functions and dedicated Metro listeners absent at preflight. Temporary Firestore rules run completed and shut down normally; native authenticated testing remains blocked until runtime isolation verified.
 - No production writes, purchases, store submission or release promotion performed. Do not merge feature branches merely from automated checks.
+
+## Supporting WORK-SB47–50 — November 4, 2026
+These supporting workstreams preserve the original nine batches and six milestones above. No earlier native acceptance was expanded.
+
+| Supporting workstream | Evidence-based status | Deliverables / next gate |
+| --- | --- | --- |
+| WORK-SB47 Figma parity | Static audit and inventories prepared; full native/visual parity OPEN | 487 source control nodes (CD310/EC177), all source references validated; live CD25 functional pages/5652 rows and EC9 pages/1803 rows. SOURCE_AUDIT/CONTROLS/INVENTORY, FIGMA_INVENTORY and crosswalk/findings. Exact-control and native state parity remain unverified where marked; implement discrepancy tasks then compare native screenshots. |
+| WORK-SB48 CD native QA | Preparation VERIFIED; native NOT RUN | Eight additive Maestro files syntax PASS8/8; accepted tests unchanged. Full photos/offline/reminder/landscape/XL/assistive cards. Viewer navigation and scheduler integration blocked in starting branch. |
+| WORK-SB49 EC functional E2E | Emulator/domain checks VERIFIED; native E2E NOT RUN | Dedicated demo-fa-sb49 Firestore birthday10/wedding1000 PASS2/2; existing targeted regressions PASS42/42; two new Maestro flows parse. Full native19-step scenarios, performance and role/offline cards prepared. Runtime identity/isolation, full payload/retry/reorder, dirty navigation and scale UI remain gates. |
+| WORK-SB50 Monetization/release | Matrices complete; operational gates BLOCKED / release NO-GO | CD billing safety2/2 and EC3/3 PASS; both gateways unconfigured. Root-lock OSV CD6/EC19 package/advisory instances; Gitleaks CD0/EC2 client-key-pattern detections requiring triage/restrictions review. Privacy/signing/assets/accessibility/owner approval tracked separately. |
+
+Milestone implications: M1 remains In Progress; M2 Pending native scenarios; M3 In Progress with broader structural/source evidence; M4 Blocked store/verifier configuration; M5 Pending native parity and security triage; M6 Blocked. No release promotion, live billing, production deployment, store submission, simulator reset or owner data deletion.
+
+Canonical current return: docs/qa/DESIGNS_BY_FA_WORK_SB47_50_RETURN_REPORT.md. Hosted remote is named github; origin is a local intake bundle. Resume from pushed feature branches and recorded commits; original chat does not receive this automatically.

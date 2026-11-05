@@ -1,0 +1,29 @@
+appId: com.designsbyfa.casitadex.dev
+---
+- runFlow: open-fixture.yaml
+- scrollUntilVisible:
+    element: "Edit memory"
+    direction: DOWN
+    centerElement: true
+- tapOn: "Edit memory"
+- tapOn:
+    text: 'Written answer \(optional with a photo\)'
+    index: 1
+- inputText: " SB48 persisted"
+- hideKeyboard
+- scrollUntilVisible:
+    element: "Save changes"
+    direction: DOWN
+    centerElement: true
+- tapOn: "Save changes"
+- assertVisible: "${ANSWER} SB48 persisted"
+- stopApp
+- launchApp
+- tapOn: "Memories"
+- scrollUntilVisible:
+    element: "Open ${TITLE}:.*"
+    direction: DOWN
+    centerElement: true
+- tapOn: "Open ${TITLE}:.*"
+- assertVisible: "${ANSWER} SB48 persisted"
+- takeScreenshot: sb48-offline-edit-restored

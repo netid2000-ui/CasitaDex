@@ -1,0 +1,38 @@
+appId: com.designsbyfa.casitadex.dev
+---
+- launchApp
+- assertNotVisible: "Resume Draft"
+- tapOn: "Add Memory"
+- assertVisible: "What do you want to remember?"
+- tapOn:
+    text: "What do you want to remember?"
+    index: 1
+- inputText: "${TITLE}"
+- tapOn:
+    text: 'The answer \(or add a photo\)'
+    index: 1
+- inputText: "${ANSWER}"
+- hideKeyboard
+- scrollUntilVisible:
+    element: "Keep draft and leave"
+    direction: DOWN
+    centerElement: true
+- tapOn: "Keep draft and leave"
+- assertVisible: "Resume Draft"
+- stopApp
+- launchApp
+- assertVisible: "Resume Draft"
+- tapOn: "Resume Draft"
+- assertVisible: "Unfinished Memory"
+- tapOn: "Continue Editing"
+- assertVisible: "${TITLE}"
+- assertVisible: "${ANSWER}"
+- scrollUntilVisible:
+    element: "Save memory"
+    direction: DOWN
+    centerElement: true
+- tapOn: "Save memory"
+- assertVisible: "${ANSWER}"
+- stopApp
+- runFlow: open-fixture.yaml
+- takeScreenshot: sb48-offline-created-restored

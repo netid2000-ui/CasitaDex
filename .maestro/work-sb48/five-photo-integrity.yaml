@@ -1,0 +1,85 @@
+appId: com.designsbyfa.casitadex.dev
+---
+- runFlow: open-fixture.yaml
+- scrollUntilVisible:
+    element: "Open photo 1 to zoom"
+    direction: DOWN
+    centerElement: true
+- tapOn: "Open photo 1 to zoom"
+- assertVisible: "Photo 1 of ${TITLE}"
+- takeScreenshot: sb48-photo-1
+- tapOn: "Close photo"
+- scrollUntilVisible:
+    element: "Open photo 2 to zoom"
+    direction: DOWN
+    centerElement: true
+- tapOn: "Open photo 2 to zoom"
+- assertVisible: "Photo 2 of ${TITLE}"
+- takeScreenshot: sb48-photo-2
+- tapOn: "Close photo"
+- scrollUntilVisible:
+    element: "Open photo 3 to zoom"
+    direction: DOWN
+    centerElement: true
+- tapOn: "Open photo 3 to zoom"
+- assertVisible: "Photo 3 of ${TITLE}"
+- takeScreenshot: sb48-photo-3
+- tapOn: "Close photo"
+- scrollUntilVisible:
+    element: "Open photo 4 to zoom"
+    direction: DOWN
+    centerElement: true
+- tapOn: "Open photo 4 to zoom"
+- assertVisible: "Photo 4 of ${TITLE}"
+- takeScreenshot: sb48-photo-4
+- tapOn: "Close photo"
+- scrollUntilVisible:
+    element: "Open photo 5 to zoom"
+    direction: DOWN
+    centerElement: true
+- tapOn: "Open photo 5 to zoom"
+- assertVisible: "Photo 5 of ${TITLE}"
+- takeScreenshot: sb48-photo-5
+- tapOn: "Close photo"
+- stopApp
+- runFlow: open-fixture.yaml
+- scrollUntilVisible:
+    element: "Open photo 1 to zoom"
+    direction: DOWN
+    centerElement: true
+- tapOn: "Open photo 1 to zoom"
+- assertVisible: "Photo 1 of ${TITLE}"
+- takeScreenshot: sb48-photo-1-restored
+- tapOn: "Close photo"
+- scrollUntilVisible:
+    element: "Open photo 2 to zoom"
+    direction: DOWN
+    centerElement: true
+- tapOn: "Open photo 2 to zoom"
+- assertVisible: "Photo 2 of ${TITLE}"
+- takeScreenshot: sb48-photo-2-restored
+- tapOn: "Close photo"
+- scrollUntilVisible:
+    element: "Open photo 3 to zoom"
+    direction: DOWN
+    centerElement: true
+- tapOn: "Open photo 3 to zoom"
+- assertVisible: "Photo 3 of ${TITLE}"
+- takeScreenshot: sb48-photo-3-restored
+- tapOn: "Close photo"
+- scrollUntilVisible:
+    element: "Open photo 4 to zoom"
+    direction: DOWN
+    centerElement: true
+- tapOn: "Open photo 4 to zoom"
+- assertVisible: "Photo 4 of ${TITLE}"
+- takeScreenshot: sb48-photo-4-restored
+- tapOn: "Close photo"
+- scrollUntilVisible:
+    element: "Open photo 5 to zoom"
+    direction: DOWN
+    centerElement: true
+- tapOn: "Open photo 5 to zoom"
+- assertVisible: "Photo 5 of ${TITLE}"
+- takeScreenshot: sb48-photo-5-restored
+- tapOn: "Close photo"

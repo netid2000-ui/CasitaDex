@@ -1,0 +1,18 @@
+appId: com.designsbyfa.casitadex.dev
+---
+- runFlow: open-fixture.yaml
+- takeScreenshot: sb48-responsive-detail
+- scrollUntilVisible:
+    element: "Edit memory"
+    direction: DOWN
+    centerElement: true
+- tapOn: "Edit memory"
+- scrollUntilVisible:
+    element: "Save changes"
+    direction: DOWN
+    centerElement: true
+- assertVisible: "Save changes"
+- assertVisible: "Cancel edits"
+- takeScreenshot: sb48-responsive-actions
+- tapOn: "Cancel edits"
+- assertNotVisible: "Memory name"

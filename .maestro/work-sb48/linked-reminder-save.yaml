@@ -1,0 +1,35 @@
+appId: com.designsbyfa.casitadex.dev
+---
+- runFlow: open-fixture.yaml
+- scrollUntilVisible:
+    element: "Edit memory"
+    direction: DOWN
+    centerElement: true
+- tapOn: "Edit memory"
+- scrollUntilVisible:
+    element: "Reminder date (YYYY-MM-DD)"
+    direction: DOWN
+    centerElement: true
+- tapOn:
+    text: 'Reminder date \(YYYY-MM-DD\)'
+    index: 1
+- inputText: "${DUE_DATE}"
+- hideKeyboard
+- scrollUntilVisible:
+    element: "Save changes"
+    direction: DOWN
+    centerElement: true
+- tapOn: "Save changes"
+- scrollUntilVisible:
+    element: "Reminder: ${DUE_DATE}"
+    direction: DOWN
+    centerElement: true
+- assertVisible: "Reminder: ${DUE_DATE}"
+- stopApp
+- runFlow: open-fixture.yaml
+- scrollUntilVisible:
+    element: "Reminder: ${DUE_DATE}"
+    direction: DOWN
+    centerElement: true
+- assertVisible: "Reminder: ${DUE_DATE}"
+- takeScreenshot: sb48-linked-date-restored

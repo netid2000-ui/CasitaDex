@@ -1,0 +1,10 @@
+appId: com.designsbyfa.casitadex.dev
+---
+- launchApp
+- tapOn: "Memories"
+- scrollUntilVisible:
+    element: "Open ${TITLE}:.*"
+    direction: DOWN
+    centerElement: true
+- tapOn: "Open ${TITLE}:.*"
+- assertVisible: "${ANSWER}"

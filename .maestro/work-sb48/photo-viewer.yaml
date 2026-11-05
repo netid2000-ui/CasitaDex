@@ -1,0 +1,26 @@
+appId: com.designsbyfa.casitadex.dev
+---
+- runFlow: open-fixture.yaml
+- scrollUntilVisible:
+    element: "Open photo 1 to zoom"
+    direction: DOWN
+    centerElement: true
+- tapOn: "Open photo 1 to zoom"
+- assertVisible: "Photo 1 of ${TITLE}"
+- assertVisible: "Zoom 1 times"
+- tapOn: "Zoom in"
+- assertVisible: "Zoom 2 times"
+- tapOn: "Zoom out"
+- assertVisible: "Zoom 1 times"
+- tapOn: "Close photo"
+- assertVisible: "Open photo 1 to zoom"
+- stopApp
+- runFlow: open-fixture.yaml
+- scrollUntilVisible:
+    element: "Open photo 1 to zoom"
+    direction: DOWN
+    centerElement: true
+- tapOn: "Open photo 1 to zoom"
+- assertVisible: "Photo 1 of ${TITLE}"
+- takeScreenshot: sb48-photo-restored
+- tapOn: "Close photo"

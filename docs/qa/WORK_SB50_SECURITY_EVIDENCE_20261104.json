@@ -1,0 +1,58 @@
+{
+  "date_chicago": "2026-11-04",
+  "machine": "FA-MAC-DEV-01",
+  "source_sha": "582e3a934d8619413bb5b05d9e40022b465637d9",
+  "lock_sha256": "41f589351110c71dc95d05d90397dcdfd5091d30ed75fff8cb73ba76955fc30a",
+  "job_id": "cd7de48e0f415fd8",
+  "scope": "tracked-file snapshot excluding docs/qa and docs/security; root package-lock only; no history/native/functions lock acceptance",
+  "exit_codes": {
+    "gitleaks": 0,
+    "osv": 1,
+    "billing": 0
+  },
+  "billing_tests": {
+    "passed": 2,
+    "failed": 0,
+    "native_store_test": false
+  },
+  "gitleaks": {
+    "version": "8.30.1",
+    "finding_count": 0,
+    "detections": []
+  },
+  "osv": {
+    "version": "2.7.0",
+    "advisory_instances": 6,
+    "families": {
+      "decode-uri-component": 2,
+      "deepmerge": 1,
+      "glob": 1,
+      "minimatch": 1,
+      "zod": 1
+    }
+  },
+  "artifacts": [
+    {
+      "name": "gitleaks.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB50-20261104/CD/gitleaks.json"
+    },
+    {
+      "name": "osv.json",
+      "sha256": "36edd3b55bb2ade583c6bff6c9084232d3b5d12373c909a1a360238c3acafaa6",
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB50-20261104/CD/osv.json"
+    },
+    {
+      "name": "billing.log",
+      "sha256": "58cd3bae051459ee38b77f0848a6c74c1c904c5c93b88d568fc7f4f20a705511",
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB50-20261104/CD/billing.log"
+    },
+    {
+      "name": "summary.json",
+      "sha256": "45f20052c727c6aee48f3f0fdf87b33c10116fa4d1e2c8301a0997f0eba39c2f",
+      "path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB50-20261104/CD/summary.json"
+    }
+  ],
+  "release_verdict": "NO-GO",
+  "native_acceptance": "NOT RUN"
+}
