@@ -10,7 +10,7 @@ import { newEngDraft } from "./eng-store";
 import { listStandaloneReminders,saveStandaloneReminder,completeStandaloneReminder,deleteStandaloneReminder,type StandaloneReminder } from "./standalone-reminders";
 import type { EngDraft, EngSnapshot } from "./eng-types";
 import type { MemoryV2 } from "./sb20-contract";
-import { localDay, eventText, sharePreview, type ShareField } from "./eng-domain";
+import { localDay, eventText, orderedMemoryPhotos, sharePreview, type ShareField } from "./eng-domain";
 import { defaultFilter, findMemories, searchIndex, homeMemories, type FindFilter } from "./eng-find";
 import { textBackupPreview, createTextBackup } from "./eng-text-backup";
 import { duplicateCandidates } from "./eng-duplicates";
@@ -148,12 +148,13 @@ export function EngPhotos(){
  const e=useEng(),{s}=useTheme(),[selected,setSelected]=useState<string|null>(null),[preview,setPreview]=useState<{path:string;label:string}|null>(null);
  const memories=e.snapshot?.data.memories.filter(m=>m.mediaIds.length>0&&m.lifecycle!=="recently_deleted")??[];
  const m=memories.find(x=>x.id===selected);
+ const manifest=e.snapshot?.data.media.media, photos=orderedMemoryPhotos(m,manifest);
  return <Page independent title="Photos" hideHeading>
  <BrandHeader /><EditorialIntro eyebrow="Visual memories" title="Photos with a purpose." description="Every photo stays linked to its memory." />
  <Copy>Select a saved memory to review, add, replace, or remove its photos. Existing photos are preserved until you confirm a change.</Copy>
- {preview?<PhotoViewer path={preview.path} label={preview.label} photos={e.snapshot?.data.media.media.filter(p=>p.cardId===m?.id).map((p,i)=>({path:p.path,label:"Photo "+(i+1)+" of "+m?.title}))} onClose={()=>setPreview(null)} />:null}
+ {preview?<PhotoViewer path={preview.path} label={preview.label} photos={photos.map((p,i)=>({path:p.path,label:"Photo "+(i+1)+" of "+m?.title}))} onClose={()=>setPreview(null)} />:null}
  {!m?<>{memories.length===0?<Copy>No saved memories with photos yet.</Copy>:<View style={{ flexDirection:"row",flexWrap:"wrap",gap:12,justifyContent:"space-between" }}>{memories.map(x=>{
- const first=e.snapshot?.data.media.media.find(p=>p.cardId===x.id);
+ const first=orderedMemoryPhotos(x,manifest)[0];
  return <Pressable key={x.id} accessibilityRole="button" accessibilityLabel={`Open ${x.title} photo memory`}
  onPress={()=>setSelected(x.id)} style={{width:"47%",minWidth:135,flexGrow:1,backgroundColor:s.panel.backgroundColor,borderWidth:1,borderColor:"#B9C4B9",borderRadius:17,padding:9,gap:9,minHeight:180}}>
   {first?<Image source={{uri:engPhotoUri(first.path)}} resizeMode="cover" accessibilityLabel={`Photo for ${x.title}`} style={{width:"100%",height:130,borderRadius:12,backgroundColor:"#E4EBE4"}}/>:<View style={{width:"100%",height:130,borderRadius:12,backgroundColor:"#E4EBE4",alignItems:"center",justifyContent:"center"}}><Copy>Photo</Copy></View>}
@@ -162,7 +163,7 @@ export function EngPhotos(){
  })}</View>}</>:<>
  <Button label="Back to photo memories" onPress={()=>setSelected(null)} />
  <Copy kind="section">{m.title}</Copy>
- {e.snapshot?.data.media.media.filter(p=>p.cardId===m.id).map((p,i)=><View key={p.id} style={s.panel}>
+ {photos.map((p,i)=><View key={p.id} style={s.panel}>
  <Image source={{uri:engPhotoUri(p.path)}} resizeMode="contain" accessibilityLabel={"Saved photo "+(i+1)} style={{width:"100%",height:220}} />
  <Button label={"View photo "+(i+1)} onPress={()=>setPreview({path:p.path,label:"Photo "+(i+1)+" of "+m.title})} />
  <Button label={"Replace photo "+(i+1)} disabled={e.busy} onPress={()=>void e.run(async store=>{const bytes=await chooseEngPhoto(false);if(bytes)await store.replaceMemoryPhoto(m.id,p.id,bytes);},"Photo replacement saved. Previous snapshot retained.")} />
@@ -388,9 +389,10 @@ export function EngDetail(){
   useEffect(()=>registerEditGuard(()=>dirty),[dirty]);
   useEffect(()=>{if(!dirty)return;const h=BackHandler.addEventListener("hardwareBackPress",()=>{Alert.alert("Keep your edits?","Save or cancel your edits before leaving this memory.");return true;});return()=>h.remove();},[dirty]);
   const m=edit??memory;
+  const photos=orderedMemoryPhotos(m,e.snapshot?.data.media.media);
   function confirm(label:string,task:(store:EngStore)=>Promise<unknown>){Alert.alert(label,"Your previous full save remains recoverable.",[{text:"Cancel",style:"cancel"},{text:label,onPress:()=>void e.run(task)}]);}
   return <Page independent title={m?.title??"Memory"}>
-    {photo?<PhotoViewer path={photo.path} label={photo.label} photos={e.snapshot?.data.media.media.filter(p=>p.cardId===m?.id).map((p,i)=>({path:p.path,label:"Photo "+(i+1)+" of "+m?.title}))} onClose={()=>setPhoto(null)} />:null}
+    {photo?<PhotoViewer path={photo.path} label={photo.label} photos={photos.map((p,i)=>({path:p.path,label:"Photo "+(i+1)+" of "+m?.title}))} onClose={()=>setPhoto(null)} />:null}
     {m?<>
       {edit?<>
         <Field disabled={e.busy} maxLength={200} label="Memory name" value={edit.title} onChangeText={title=>setEdit({...edit,title})} />
@@ -416,7 +418,7 @@ export function EngDetail(){
         <Copy>Categories: {m.categoryIds.map(id=>e.snapshot?.data.categories.find(c=>c.id===id)?.name).join(", ")||"None"}</Copy>
         {m.legacyContext?<Copy>Original category: {m.legacyContext}</Copy>:null}
         {m.due?<><Copy>Reminder: {m.due}{m.lifecycle!=="active"?" (paused)":""}</Copy>{m.lifecycle==="active"?<><Field disabled={e.busy} maxLength={10} label="Next reminder (optional YYYY-MM-DD)" value={nextDue} onChangeText={setNextDue} /><Button label={nextDue?"Complete and reschedule reminder":"Complete reminder"} disabled={e.busy} onPress={()=>void e.run(async store=>{await store.completeReminder(m.id,e.snapshot!.revision,nextDue||undefined);setNextDue("");})} /></>:null}</>:null}
-        {e.snapshot?.data.media.media.filter(p=>p.cardId===m.id).map((p,index)=><View key={p.id} style={s.panel}>
+        {photos.map((p,index)=><View key={p.id} style={s.panel}>
           <Image source={{uri:engPhotoUri(p.path)}} resizeMode="contain" accessibilityLabel={`Saved photo ${index+1} of ${m.title}`} style={{width:"100%",height:320}} />
           <Button label={`Open photo ${index+1} to zoom`} onPress={()=>setPhoto({path:p.path,label:`Photo ${index+1} of ${m.title}`})} />
           {m.lifecycle!=="recently_deleted"?<Button label={`Remove saved photo ${index+1}`} disabled={e.busy} onPress={()=>confirm("Remove photo",store=>store.removeMemoryPhoto(m.id,p.id))} />:null}
@@ -438,7 +440,7 @@ export function EngDetail(){
           <Button label="Record history" disabled={e.busy} onPress={()=>void e.run(async store=>{if(!history.trim())throw Error("Add a history note first");await store.recordHistory(m.id,history.trim(),e.snapshot!.revision);setHistory("");})} />
         </>:null}
         </>:null}<Button label="Share memory" disabled={e.busy} onPress={()=>{setFields([]);setPhotoIds([]);setSharing(true);}} />
-        {sharing?<View style={s.panel}><Copy accessibilityRole="header">Review what to share</Copy><Copy>The name and answer are included. Choose any additional details.</Copy>{(["location","notes","source","space","categories","verification","reminder"] as ShareField[]).map(field=><Button key={field} label={`Include ${field}`} disabled={e.busy} selected={fields.includes(field)} onPress={()=>setFields(old=>old.includes(field)?old.filter(x=>x!==field):[...old,field])} />)}<Copy selectable>{sharePreview(m,e.snapshot!.data,{fields,photoIds}).text}</Copy><Copy>{photoIds.length} photos selected.</Copy>{e.snapshot?.data.media.media.filter(p=>p.cardId===m.id).map((p,i)=><Button key={p.id} label={`Include photo ${i+1}`} disabled={e.busy} selected={photoIds.includes(p.id)} onPress={()=>setPhotoIds(old=>old.includes(p.id)?old.filter(id=>id!==p.id):[...old,p.id])} />)}{photoIds.map(id=>{const p=e.snapshot!.data.media.media.find(p=>p.id===id)!;return <Image key={id} source={{uri:engPhotoUri(p.path)}} resizeMode="contain" accessibilityLabel="Selected photo in share preview" style={{width:"100%",height:160}} />;})}{photoIds.length?<Copy>Selected original photos may contain location or other embedded metadata. The ZIP includes only the reviewed details and selected photos.</Copy>:null}<Button primary label="Open share sheet with reviewed details" disabled={e.busy} onPress={()=>void e.run(async()=>{const preview=sharePreview(m,e.snapshot!.data,{fields,photoIds});if(photoIds.length)e.setStatus(await shareEngPhotos(preview));else{const result=await Share.share({message:preview.text});e.setStatus(result.action===Share.dismissedAction?"Sharing canceled.":"Share sheet opened. Delivery is handled by the selected app.");}setSharing(false);},"")} /><Button label="Cancel sharing" disabled={e.busy} onPress={()=>setSharing(false)} /></View>:null}
+        {sharing?<View style={s.panel}><Copy accessibilityRole="header">Review what to share</Copy><Copy>The name and answer are included. Choose any additional details.</Copy>{(["location","notes","source","space","categories","verification","reminder"] as ShareField[]).map(field=><Button key={field} label={`Include ${field}`} disabled={e.busy} selected={fields.includes(field)} onPress={()=>setFields(old=>old.includes(field)?old.filter(x=>x!==field):[...old,field])} />)}<Copy selectable>{sharePreview(m,e.snapshot!.data,{fields,photoIds}).text}</Copy><Copy>{photoIds.length} photos selected.</Copy>{photos.map((p,i)=><Button key={p.id} label={`Include photo ${i+1}`} disabled={e.busy} selected={photoIds.includes(p.id)} onPress={()=>setPhotoIds(old=>old.includes(p.id)?old.filter(id=>id!==p.id):[...old,p.id])} />)}{photos.filter(p=>photoIds.includes(p.id)).map(p=>{return <Image key={p.id} source={{uri:engPhotoUri(p.path)}} resizeMode="contain" accessibilityLabel="Selected photo in share preview" style={{width:"100%",height:160}} />;})}{photoIds.length?<Copy>Selected original photos may contain location or other embedded metadata. The ZIP includes only the reviewed details and selected photos.</Copy>:null}<Button primary label="Open share sheet with reviewed details" disabled={e.busy} onPress={()=>void e.run(async()=>{const preview=sharePreview(m,e.snapshot!.data,{fields,photoIds});if(photoIds.length)e.setStatus(await shareEngPhotos(preview));else{const result=await Share.share({message:preview.text});e.setStatus(result.action===Share.dismissedAction?"Sharing canceled.":"Share sheet opened. Delivery is handled by the selected app.");}setSharing(false);},"")} /><Button label="Cancel sharing" disabled={e.busy} onPress={()=>setSharing(false)} /></View>:null}
       </>}
     </>:<Copy>{e.snapshot?"This memory is no longer available.":"Reading memory…"}</Copy>}
     <Status text={e.status} />

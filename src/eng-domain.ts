@@ -15,6 +15,14 @@ export function eventText(event: MemoryEvent): string {
   const labels:Record<MemoryEventKind,string>={created:"Memory saved",answer_edited:"Answer edited — needs checking",source_changed:"Source changed — reconfirm the answer",verified:"Answer confirmed against source",verification_changed:"Verification status changed",reminder_scheduled:"Reminder scheduled",reminder_completed:"Reminder completed",reminder_rescheduled:"Reminder rescheduled",archived:"Memory archived",deleted:"Moved to Recently Deleted",restored:"Memory restored",labels_changed:"Organization changed"};
   return [labels[event.type],event.confidence,event.source,event.due,event.note].filter(Boolean).join(" · ");
 }
+/** Saved memory order belongs to mediaIds; manifest order is an implementation detail. */
+export function orderedMemoryPhotos(memory:Pick<MemoryV2,"id"|"mediaIds">|undefined, manifest:readonly DataV2["media"]["media"][number][]=[]){
+  if(!memory)return [];
+  return memory.mediaIds.flatMap(id=>{
+    const photo=manifest.find(p=>p.id===id&&p.cardId===memory.id);
+    return photo?[photo]:[];
+  });
+}
 export type ShareField = "location"|"notes"|"source"|"space"|"categories"|"verification"|"reminder";
 export interface ShareSelection { fields:ShareField[]; photoIds:string[] }
 export function sharePreview(memory:MemoryV2,data:DataV2,selection:ShareSelection={fields:[],photoIds:[]}) {
@@ -34,5 +42,5 @@ export function sharePreview(memory:MemoryV2,data:DataV2,selection:ShareSelectio
     if(f==="verification")lines.push("User verification: "+memory.confidence+(memory.verifiedAt?" · "+memory.verifiedAt:""));
     if(f==="reminder"&&memory.due)lines.push("Reminder: "+memory.due);
   }
-  return {text:lines.join("\n"),photos:data.media.media.filter(p=>selection.photoIds.includes(p.id)),includesPhotos:selection.photoIds.length>0};
+  return {text:lines.join("\n"),photos:orderedMemoryPhotos(memory,data.media.media).filter(p=>selection.photoIds.includes(p.id)),includesPhotos:selection.photoIds.length>0};
 }
