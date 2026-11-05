@@ -96,3 +96,7 @@ The original nine batches, six milestones and prior acceptance remain recorded a
 | SB71 Release | PARTIAL | Verified tooling patches cleared six Event Command root advisory instances. Security, distribution, privacy, store, and sandbox billing gates remain open. |
 
 Canonical return: Event Command docs/qa/DESIGNS_BY_FA_WORK_SB68_71_RETURN_REPORT.md.
+
+## WORK-SB72–75 — November 5, 2026
+
+PARTIAL · release NO-GO. See WORK_SB73_EXECUTION.md for the current CasitaDex functional matrix, reminder and photo source repairs, and native Android scheduling evidence on the earlier QA APK. Exact current build and iOS simulator recovery, native delivery/reboot, gallery, offline, screen-reader, signing and billing gates remain open. Dual-app return is in Event Command docs/qa/DESIGNS_BY_FA_WORK_SB72_75_RETURN_REPORT.md.
