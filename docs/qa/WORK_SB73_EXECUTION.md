@@ -64,3 +64,37 @@ and tap destination still require an actual posted notification.
 
 Earlier automated evidence remains scoped to its recorded source. No new
 CasitaDex application changes or test pass were recorded. Release NO-GO.
+
+## SB89 acceptance update · November 5, 2026
+
+**PARTIAL · Release NO-GO.** Source commit
+`89d9e21851485cee43b15bd6d8b4af939cac0310` makes Android reminder
+notifications open the dedicated Reminders screen. The intent is bound
+to the application activity and matches its configured environment
+scheme. Notification contents remain generic on the lock screen.
+
+| Gate | Result |
+| --- | --- |
+| Starting checkpoint | Clean feature worktree and exact GitHub head `7392254520273e27727f9a0e3221ac7730719913`. The separate historical reconciliation worktree had 15 dirty entries and was preserved. |
+| Automated | 21 focused reminder and backup tests, typecheck, ESLint and diff check passed. Job `176b4e3aaf586a03`. |
+| Android development APK | Exact source archive built successfully in 4m24s, job `265aa4762a0f7b33`. SHA-256 `1c439006129fecfda24f4751ebd6775a58dcfe6abbba19c5ae0b52d502052acd`. Package `com.designsbyfa.casitadex.dev` 0.1.0 (1), target SDK 36, Android Debug signer, verified in job `335b21a63257c8e0`. |
+| Linked delivery, first Android run | Job `5be297885bf6895b` on isolated `emulator-5588`, Pixel 7 Android 15/API 35. Installed exact APK, saved synthetic linked memory, granted permission and observed one pending alarm. At 09:00:41 CST it was still pending with an inexact delivery window of 21m58s. The one-minute observation ended without a posted notification. |
+| Linked delivery, adjusted Android run | PASS for a warm app launched from the notification shade. Job `f84ca551a6235dd7` reused the exact APK on a fresh disposable `emulator-5588` AVD. Moving its local clock to 09:25 exceeded the observed inexact window. The OS posted the linked notification. A real tap opened Reminders, and the linked row opened its exact stored answer `SB89 exact reminder answer`. Raw notification dump, screenshots, UI XML, and `readback.json` are in `android-delivery-window`. |
+| iOS infrastructure | Xcode 27.2 (27B52), Aqua console and CoreSimulator available. Fresh iPhone 17 / iOS 27.1 creation failed as incompatible in `1826823f9f2a6690`. Fresh supported iPhone Duo `E346A7C2-DFD7-4251-91AB-DE40AA74618F` booted in 21s and launched Settings (`2e61f07a28fbb166`). Photos launch returned FBS code 4 (`6693b121624955db)). Explicit primary display screenshot timed out at 18s (`bdcaf6190e52897e`). Fixture import and installation of an earlier diagnostic app both timed out at 15s (`f688e9c232a3ae3b`, `3b596c7963991c83`). Only the new disposable simulator was shut down after testing. |
+| iOS app and accessibility | BLOCKED for iOS app acceptance. No current iOS binary, screenshots or assistive acceptance. Android TalkBack, enlarged text, appearance and orientation acceptance remain open. |
+
+| Module | Implementation and persistence | Permissions and recovery | iOS / Android / accessibility | Remaining release gate |
+| --- | --- | --- | --- | --- |
+| Home, memory editor, Find and taxonomy | Existing local SQLite memory, revision and draft behavior | Existing local validation and edit guard | Blocked / scoped linked fixture save and readback / open | Full offline Save, Cancel, Return, archive, Find and relaunch journeys |
+| Photos and share | Existing local media, five-photo limit and share preview | Existing picker and user-directed sharing | Blocked / open / open | Gallery selection, ordering, replacement, zoom, native share and offline readback |
+| Linked reminders | Local memory date and Android notification destination; shared reminder projection | Android grant verified, prior scoped rearm preserved | Blocked / scoped linked delivery, tap and exact readback PASS / open | Denial/regrant, rescheduling, process death, reboot and calendar behavior on current source |
+| Standalone reminders | Local SQLite recurrence and Android notification destination | Existing notification permission and operation guard | Blocked / current delivery open / open | Standalone delivery and tap, reschedule, complete/cancel and reboot |
+| Settings, backup and restore | Existing local archive, restore preview and corruption checks | Existing media ownership and recovery checks; focused automated suites passed | Blocked / current full restore open / open | Disposable end-to-end restore, media and reminder recovery, low storage and interruption |
+| Premium and distribution | Existing fail-closed development configuration | Trusted sandbox entitlement and signing dependencies remain | Blocked / development APK verified / open | Sandbox IDs, production distribution, privacy and physical iPhone sign-off |
+
+Evidence remains under `QA-Evidence/WORK-SB89`. This cycle reused the
+approved Figma mappings, previous Android fixture runner and earlier boot
+evidence, built once from an exact archive, and changed a test input to
+account for the observed Android alarm window. Prior tests retain their
+original source and artifact scope. No additional owner action is needed
+for the remaining engineering checks.
