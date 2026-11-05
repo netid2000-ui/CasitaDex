@@ -1,3 +1,4 @@
+import { enableReminderAlerts, getReminderPermission, type ReminderPermission } from "./reminder-alerts";
 import type { RepeatSchedule } from "./reminder-recurrence";
 import DateTimePicker, { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
 import React, { useCallback, useEffect, useRef, useState, useMemo } from "react";
@@ -180,7 +181,20 @@ export function EngReminders(){
  const [items,setItems]=useState<StandaloneReminder[]>([]),[expandedReminder,setExpandedReminder]=useState<string|null>(null),[editing,setEditing]=useState<string|null>(params.mode==="new"?"new":null);
  const [title,setTitle]=useState(""),[notes,setNotes]=useState(""),[dueDate,setDueDate]=useState(day()),[dueTime,setDueTime]=useState("09:00"),[repeat,setRepeat]=useState<RepeatSchedule>("once"),[iosPicker,setIosPicker]=useState<"date"|"time"|null>(null),[status,setStatus]=useState(""),[busy,setBusy]=useState(false);
  const refresh=useCallback(async()=>{try{setItems(await listStandaloneReminders());}catch(e){setStatus(message(e));}},[]);
- useFocusEffect(useCallback(()=>{void refresh();},[refresh]));
+ const [permission,setPermission]=useState<ReminderPermission>("unavailable");
+ const refreshPermission=useCallback(async()=>{
+  try { setPermission(await getReminderPermission()); }
+  catch { setPermission("unavailable"); }
+ },[]);
+ useFocusEffect(useCallback(()=>{void refresh();void refreshPermission();},[refresh,refreshPermission]));
+ useEffect(()=>{
+  const listener=AppState.addEventListener("change",state=>{if(state==="active")void refreshPermission();});
+  return ()=>listener.remove();
+ },[refreshPermission]);
+ async function enableAlerts(){
+  try { setPermission(await enableReminderAlerts()); }
+  catch { setStatus("Reminders are saved locally. CasitaDex could not refresh notification schedules."); }
+ }
  function choosePicker(mode:"date"|"time"){
   const parts=dueDate.split("-").map(Number),clock=dueTime.split(":").map(Number);
   const current=new Date(parts[0],parts[1]-1,parts[2],clock[0],clock[1]);
@@ -198,7 +212,12 @@ export function EngReminders(){
   function edit(r?:StandaloneReminder){setEditing(r?.id??"new");setTitle(r?.title??"");setNotes(r?.notes??"");setDueDate(r?.dueDate??day());setDueTime(r?.dueTime??"09:00");setRepeat(r?.repeat??"once");setStatus("");}
  async function act(task:()=>Promise<void>,success:string){if(busy)return;setBusy(true);try{await task();await refresh();setEditing(null);setStatus(success);}catch(e){setStatus(message(e));}finally{setBusy(false);}}
  return <Page independent title="Reminders" hideHeading><BrandHeader /><EditorialIntro eyebrow="A little help remembering" title="What needs attention." description="The right details, at the right time." />
- <Copy>Standalone reminders are saved locally. Repeat schedules are saved locally. Phone notifications are not yet available.</Copy>
+ <Copy>Reminders are saved locally. {permission==="allowed"
+   ?"Phone notifications are enabled. Linked reminders are scheduled for 9:00 AM local time."
+   :permission==="denied"?"To receive alerts, allow CasitaDex notifications in Settings."
+   :permission==="undetermined"?"Enable phone notifications to receive reminder alerts."
+   :"Phone notifications are unavailable on this build."}</Copy>
+ {permission==="undetermined"?<Button label="Enable reminder notifications" onPress={()=>void enableAlerts()}/>:null}
  {editing!==null?<View style={s.panel}>
   <Copy kind="section">{editing==="new"?"New reminder":"Edit reminder"}</Copy>
   <Field label="Reminder title" value={title} onChangeText={setTitle} maxLength={200}/>

@@ -48,3 +48,30 @@ test("DST gap is excluded rather than silently moved; changing timezone reprojec
   assert.equal(new Date(eastern.at).getHours(),3);
  }finally{if(saved===undefined)delete process.env.TZ;else process.env.TZ=saved;}
 });
+
+test("linked reminder mutations notify only after the SQLite commit", async () => {
+  const {setup,add}=await import("./eng-fixture.mjs");
+  const {subscribeReminderChanges}=await import("../src/reminder-notification-changes.ts");
+  const x=setup();
+  const seen=[];
+  const unsubscribe=subscribeReminderChanges(()=>{
+    const row=x.raw.prepare("SELECT payload FROM eng_state_v2 WHERE slot=1").get();
+    seen.push(JSON.parse(row.payload).data.memories.at(-1)?.due);
+  });
+  try{
+    const saved=await add(x.store,{due:"2027-01-10"});
+    const memory=saved.data.memories.at(-1);
+    assert.deepEqual(seen,["2027-01-10"]);
+    x.deny();
+    await assert.rejects(x.store.completeReminder(memory.id,saved.revision,"2027-01-11"));
+    assert.deepEqual(seen,["2027-01-10"]);
+    x.deny(false);
+    const rescheduled=await x.store.completeReminder(memory.id,saved.revision,"2027-01-11");
+    assert.deepEqual(seen,["2027-01-10","2027-01-11"]);
+    await x.store.completeReminder(memory.id,rescheduled.revision);
+    assert.deepEqual(seen,["2027-01-10","2027-01-11",undefined]);
+  }finally{
+    unsubscribe();
+    x.close();
+  }
+});

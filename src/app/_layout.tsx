@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { startReminderAlerts } from "../reminder-alerts";
 import { StatusBar } from "expo-status-bar";
 import { Pressable, Text, View } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
@@ -73,6 +74,7 @@ function Shell() {
 }
 
 export default function Layout() {
+  useEffect(startReminderAlerts, []);
   return (
     <SafeAreaProvider>
       <Provider>

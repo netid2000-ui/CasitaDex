@@ -1,16 +1,20 @@
+import { notifyReminderChanges } from "./reminder-notification-changes";
 import { nextReminderDay, validReminderDay, type RepeatSchedule } from "./reminder-recurrence";
 import { openDatabaseAsync } from "expo-sqlite";
 export type StandaloneReminder={id:string;title:string;notes:string;dueDate:string;dueTime:string;repeat:RepeatSchedule;completed:boolean;createdAt:string;updatedAt:string};
 let database:ReturnType<typeof openDatabaseAsync>|undefined;
-async function db(){
- database??=openDatabaseAsync("casitadex-development-v1.db");
- const d=await database;
+async function initialize(){
+ const d=await openDatabaseAsync("casitadex-development-v1.db");
  await d.execAsync("CREATE TABLE IF NOT EXISTS standalone_reminders_v1 (id TEXT PRIMARY KEY,title TEXT NOT NULL,notes TEXT NOT NULL,due_date TEXT NOT NULL,completed INTEGER NOT NULL DEFAULT 0,created_at TEXT NOT NULL,updated_at TEXT NOT NULL)");
  const columns=await d.getAllAsync<{name:string}>("PRAGMA table_info(standalone_reminders_v1)");
  if(!columns.some(c=>c.name==="due_time"))await d.execAsync("ALTER TABLE standalone_reminders_v1 ADD COLUMN due_time TEXT NOT NULL DEFAULT '09:00'");
  if(!columns.some(c=>c.name==="anchor_day"))await d.execAsync("ALTER TABLE standalone_reminders_v1 ADD COLUMN anchor_day INTEGER NOT NULL DEFAULT 0");
  if(!columns.some(c=>c.name==="repeat"))await d.execAsync("ALTER TABLE standalone_reminders_v1 ADD COLUMN repeat TEXT NOT NULL DEFAULT 'once'");
  return d;
+}
+function db(){
+ database??=initialize().catch(error=>{database=undefined;throw error;});
+ return database;
 }
 function valid(title:string,notes:string,date:string,time:string){
  if(!title.trim()||title.length>200||notes.length>4000)throw Error("Enter a title (up to 200 characters) and notes (up to 4000 characters).");
@@ -32,6 +36,7 @@ export async function saveStandaloneReminder(input:{id?:string;title:string;note
  }else{
   await d.runAsync("INSERT INTO standalone_reminders_v1 (id,title,notes,due_date,due_time,repeat,anchor_day,completed,created_at,updated_at) VALUES (?,?,?,?,?,?,?,0,?,?)","r_"+Date.now().toString(36)+"_"+Math.random().toString(36).slice(2,10),input.title.trim(),input.notes,input.dueDate,input.dueTime,input.repeat,Number(input.dueDate.slice(-2)),now,now);
  }
+ notifyReminderChanges();
 }
 export async function completeStandaloneReminder(id:string,completed:boolean){
  const d=await db(),now=new Date().toISOString();
@@ -42,10 +47,12 @@ export async function completeStandaloneReminder(id:string,completed:boolean){
   ?await d.runAsync("UPDATE standalone_reminders_v1 SET due_date=?,completed=0,updated_at=? WHERE id=?",next,now,id)
   :await d.runAsync("UPDATE standalone_reminders_v1 SET completed=?,updated_at=? WHERE id=?",completed?1:0,now,id);
  if(result.changes!==1)throw Error("Reminder no longer exists.");
+ notifyReminderChanges();
 }
 export async function deleteStandaloneReminder(id:string){
  const result=await (await db()).runAsync("DELETE FROM standalone_reminders_v1 WHERE id=?",id);
  if(result.changes!==1)throw Error("Reminder no longer exists.");
+ notifyReminderChanges();
 }
 /** Read-only consistent reminder export; does not modify existing reminders. */
 export async function snapshotStandaloneRemindersForBackup(){
