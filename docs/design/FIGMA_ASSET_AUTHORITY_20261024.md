@@ -10,11 +10,11 @@
 |---|---|---|
 | assets/brand/logo-color-light.png | 2:4, Primary full logo / light | Figma export applied; app-oriented crop |
 | assets/brand/logo-color-dark.png | 2:15, Reverse full logo / dark | Figma export applied; app-oriented crop |
-| assets/ui-icons/accepted-v1/home.png | 44:3 | Direct Figma export applied |
-| assets/ui-icons/accepted-v1/memories.png | 44:7 | Direct Figma export applied |
-| assets/ui-icons/accepted-v1/photos.png | 44:11 | Direct Figma export applied |
-| assets/ui-icons/accepted-v1/reminders.png | 44:16 | Direct Figma export applied |
-| assets/ui-icons/accepted-v1/find.png | 44:21 | Direct Figma export applied |
+| assets/ui-icons/accepted-v1/home.png | 44:3 | Transparent raster from approved Figma vector export (SB70) |
+| assets/ui-icons/accepted-v1/memories.png | 44:7 | Transparent raster from approved Figma vector export (SB70) |
+| assets/ui-icons/accepted-v1/photos.png | 44:11 | Transparent raster from approved Figma vector export (SB70) |
+| assets/ui-icons/accepted-v1/reminders.png | 44:16 | Transparent raster from approved Figma vector export (SB70) |
+| assets/ui-icons/accepted-v1/find.png | 44:21 | Transparent raster from approved Figma vector export (SB70) |
 
 Original full-logo Figma exports are retained on the Mac encrypted development volume under `Design-Assets/CasitaDex/Figma-Approved-20261024`.
 
@@ -36,3 +36,7 @@ Original full-logo Figma exports are retained on the Mac encrypted development v
 4. Confirm the Apple and Android authorities separately. Verify all Home, Memories, Photos, Reminders, Find and Settings surfaces, including 200% text and accessibility.
 5. Rebuild native icons/splash binaries, verify web favicons/PWA, and run automated checks and emulator/device visual QA before declaring parity.
 6. Preserve the Windows primary source authority; Mac edits remain uncommitted until reviewed and synchronized through an approved path.
+
+## SB70 transparent pictograms
+
+The accepted Figma node shapes are unchanged. The app rasterizes the existing stroke-only evidence exports under `docs/design/evidence/figma-export-test/` with macOS `sips -s format png` at 144 × 144. Home uses `home-44-3-vector.svg`. This preserves a transparent background for runtime tinting.
