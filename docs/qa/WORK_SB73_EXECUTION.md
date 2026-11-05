@@ -99,3 +99,10 @@ evidence, built once from an exact archive, and changed a test input to
 account for the observed Android alarm window. Prior tests retain their
 original source and artifact scope. No additional owner action is needed
 for the remaining engineering checks.
+
+## SB97 reminder evidence
+
+| Workflow | Implementation | Automated | Native iOS | Native Android | Accessibility and release |
+| --- | --- | --- | --- | --- | --- |
+| Standalone reminder DST validation | SQLite save validates that the selected wall time exists in the device time zone. Notification projection uses the same local timestamp conversion. Ambiguous fall time uses the first occurrence. | PASS, 19 focused recurrence, projection, backup and restore tests. Typecheck and lint PASS. | Open | Current-source validation open. | Native validation announcement and release remain open. |
+| Notification permission transition | Existing Reminders permission control and native bridge. | Existing source coverage. | Open | Disposable API 35 job `b48a9c5afb96fb68` verified OS grant, revoke, and regrant and captured a screenshot. This reused the earlier SB89 APK, SHA-256 `1c439006129fecfda24f4751ebd6775a58dcfe6abbba19c5ae0b52d502052acd`. | App UI permission recovery and delivered notification after regrant remain open. |
