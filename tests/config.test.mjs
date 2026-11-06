@@ -111,7 +111,7 @@ test("managed plugin configuration also accepts an absent inherited plugin list"
     process.env.EXPO_PUBLIC_APP_ENV = "development";
     const { plugins: ignored, ...withoutPlugins } = config;
     const actual = configure({ config: withoutPlugins });
-    assert.equal(actual.plugins.length, 5);
+    assert.equal(actual.plugins.length, 6);
     assert.equal(actual.plugins.find((plugin) => Array.isArray(plugin) && plugin[0] === "expo-image-picker")[1].microphonePermission, false);
   } finally {
     if (old === undefined) delete process.env.EXPO_PUBLIC_APP_ENV;
