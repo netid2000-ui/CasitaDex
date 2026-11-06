@@ -1,8 +1,18 @@
+# Current checkpoint: a886 recovery verified, linked delivery pending
+
+Application source a8867c06c7dd3ceab55bd1ac6705064a83de28f2 is pushed and remote-verified. Both current native builds pass. Android real killed-app/foreground/background notification targeting, return and no-replay pass; full Android lint has zero errors and 41 warnings. Current iOS preserving upgrade, ten route cases, actual terminated notification and portrait light/dark Home pass. Combined source checks: 492 tests, 487 pass, five existing skips.
+
+Three current-build linked requests are prepared for November 6 at 15:00 UTC / 09:00 CST; actual delivery remains pending. Current app is terminated and its simulator reserved, with the historical fixture separately preserved. [Current evidence and gates](docs/qa/SB121_A886_RECOVERY_CHECKPOINT.md). [Current scheduled continuation](docs/qa/SB121_CURRENT_LINKED_0900_CONTINUATION.md).
+
+Release remains **NO-GO**: OS-wide offline, current full-draft restore awaiting approval, remaining screen-reader/Figma/accessibility, security disposition, signing and physical/release gates remain open. Scoped app-transport denial passed on the explicitly separate a812 QA derivative. No physical testing before required virtual completion.
+
+## Historical checkpoints retained below
+
 # Current checkpoint: native a812 release fixes verified, release NO-GO
 
 Both exact a8129e8 native artifacts passed targeted current-source acceptance. iOS: five maximum-text audit contexts, ten routing cases and three real normal-clock notification lifecycle taps. Android: 34 retained assertions, five-photo persistence/limits, encoded targets and maximum-text navigation. Existing data and frozen scheduled fixture preserved. [Current evidence and remaining gates](docs/qa/SB121_A812_NATIVE_CHECKPOINT.md).
 
-Full Android lint and scoped-offline preparation continue separately. Strict OS-wide offline, manual screen readers, blocked current full-draft restore, linked09:00 delivery, security disposition, signing and owner physical/release gates remain open. No physical testing before virtual completion.
+Full Android lint and scoped-offline preparation continue separately. Strict OS-wide offline, manual screen readers, blocked current full-draft restore, linked 09:00 delivery, security disposition, signing and owner physical/release gates remain open. No physical testing before virtual completion.
 
 ## Earlier checkpoints, preserved for provenance
 

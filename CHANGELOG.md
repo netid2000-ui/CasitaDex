@@ -1,5 +1,11 @@
 # Changelog
 
+## November 6: cold-notification recovery and Android packaging
+- Recover killed-app Android notification targets before router hydration; actual foreground/background/terminated tray sequences now pass without stale replay.
+- Qualify splash behavior for API 33, verify full Android lint and16 KiB APK/ELF compatibility, and explicitly exclude private data from Android OS backup/transfer while preserving manual export.
+- Explain best-effort Android alert timing without adding exact-alarm permissions.
+- Verify the final ordinary iOS build and prepare separate current-build 09:00 linked fixtures. Preserve earlier evidence and all user/test data; release gates remain open.
+
 ## November 6: verified current native release fixes
 - Fix maximum-text landscape navigation while preserving the approved four-tab visual baseline; verify current iOS/Android native reachability.
 - Verify patched decoder on native cold/warm targets and actual iOS notification delivery/taps.

@@ -1,3 +1,5 @@
+> Historical runtime only. The active November6 continuation targets the separately prepared corrected build described in [current linked continuation](SB121_CURRENT_LINKED_0900_CONTINUATION.md). Preserve this historical fixture unchanged.
+
 # SB121 normal-clock linked-reminder continuation
 
 Status: SETUP VERIFIED, DELIVERY AND TAP ACCEPTANCE PENDING. Prepared November 5 at 19:50–19:51 CST, 2026. Resume November 6 at 08:50 CST (14:50 UTC), before actual delivery at 09:00 CST (15:00 UTC). Never change the host clock, reschedule synthetic immediate alerts in place of this test, or use injected pushes as delivery evidence.

@@ -1,0 +1,89 @@
+{
+  "sourceCommit": "a8867c06c7dd3ceab55bd1ac6705064a83de28f2",
+  "branch": "work/cd-sb41-edit-targeting-20261104",
+  "sourceTests": {
+    "total": 492,
+    "passed": 487,
+    "skipped": 5,
+    "failed": 0
+  },
+  "release": "NO-GO",
+  "artifacts": {
+    "androidApkSha256": "9453355fc59c75135c663c2128e80439c9c7f9a526a6db74ecc3d478f8612a71",
+    "androidJsSha256": "a29609ed99b75f56acbb0e487abc8806f5c1ac33ad5d166e11abc4a11adbce7a",
+    "iosExecutableSha256": "a3af0f51c894a2ba9008aeea2bb37ba5ab585f0ad85653aa6b57ff1b0ce81133",
+    "iosJsSha256": "48477d73eb54470bfce1563e4ca290535b0d846cefcfd5f3da8fe76858b172f4"
+  },
+  "scopedTransportSource": "a8129e81aabb20e0112f39865a046372cb0d5130",
+  "linkedDelivery": "PREPARED; NOT RUN until actual 2026-11-06T15:00:00Z",
+  "ci": "No combined statuses or PR-filtered workflow runs returned; not CI PASS",
+  "evidence": [
+    {
+      "path": "QA-Evidence/WORK-SB121/android-recovery-a8867c0/artifact-provenance.json",
+      "sha256": "92a8aa253ef270b2efdd66beb5817f13dbcb4e31aee013ed3d25fd8959cffac3"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/android-recovery-a8867c0/elf-16k-verification.json",
+      "sha256": "bef280e503fe039c470fde9c68f68161a8523db64ccd6d09c05e509e38242dcc"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/android-recovery-a8867c0/lint-results-release.xml",
+      "sha256": "1fd171d3c15fde4d27ddca83876d5865ae6dd496247034a3ce493cdd0dc5260d"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/ios-recovery-a8867c0/artifact-provenance.json",
+      "sha256": "5663ae5e69a364286b5806b4dddfe6c0fc886590a33727e9b7c9bb842044cd23"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/ios-recovery-a8867c0/native/notification-result.json",
+      "sha256": "d043eb1c4c9390901583397dbc3f1825a4c8d99ce3027bf1b6a94af0557299c0"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/ios-recovery-a8867c0/native/home-pixel-review.json",
+      "sha256": "815f9df5910b181549a0055ba4ae75cb660fc31990daeaf992c51858422df8fd"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/ios-recovery-a8867c0/native/pending-linked-unchanged.json",
+      "sha256": "779ce8fa531f4f4ab5227bb5aad23b9cb0912778d9e54901bb2a78084768d2ad"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/scoped-transport-qa/runtime-rn-close-a8129e8/runtime-result.json",
+      "sha256": "cec81a69a9313c04d9fee13f8e081b79e0e9ade8ccd7123a2421de1b5867161e"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/scoped-transport-qa/runtime-rn-close-a8129e8/photo-pixel-review.json",
+      "sha256": "8b0a318c52e2dde89ecb65e0cc0ca95ca3fd81d07c2df8f392bf95567cdb7374"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/security-runtime-reachability-a8867c0-20261106/REVIEW.md",
+      "sha256": "84882201496fe28c3b70635ce688558a991e87852b97b0577bed40378e2ff787"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/security-runtime-reachability-a8867c0-20261106/evidence.json",
+      "sha256": "df26690246a0adfdc26159da7282de9182fbfdf022d8507ce78fab9bcbc04347"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/android-current-notifications-a8867c0/REPORT.md",
+      "sha256": "8595e8e6d2791a869afd44fd725d4f37a8239bfc994a50a6bdc7f0246b6b0bb5"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/android-current-notifications-a8867c0/notification-acceptance.json",
+      "sha256": "4d44b8588b13a0a2258e9b361c1d4f575f4f1f785c56113af01789533cd5ccb8"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/android-current-notifications-a8867c0/evidence-manifest.json",
+      "sha256": "e34585e6128a80327e6c1aacd8e6f1c29876b41d1771710d5c735d9e1162cb6c"
+    }
+  ],
+  "androidNativeAcceptance": {
+    "passed": 19,
+    "failed": 0,
+    "evidenceHashesVerified": 401,
+    "inexactPostingDelaySeconds": {
+      "terminated": 49.812,
+      "foreground": 39.661,
+      "background": 56.956
+    },
+    "punctualDeliveryClaim": false
+  }
+}
