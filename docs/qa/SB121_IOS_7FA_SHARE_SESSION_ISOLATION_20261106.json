@@ -1,0 +1,43 @@
+{
+  "status": "PASS_BOUNDED_SHARE_SESSION_SELECTION_ISOLATION",
+  "runtime_source": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
+  "completed_utc": "2026-11-06T21:42:56.203222+00:00",
+  "result": {
+    "atUTC": "2026-11-06T21:42:55.271Z",
+    "photoAndNotesOptedIn": true,
+    "reopenResetsPhotoAndNotes": true,
+    "crossRecordNotesDoNotLeak": true,
+    "returnsExactPhotoAndTextRecords": true,
+    "osShareSheetOpened": false
+  },
+  "method": "Native Share entry via registered app route for each retained synthetic record. Select notes and one existing photo, exit using Memory details, reopen and verify default-off selection. Switch to retained text record, select notes, exit to exact detail, then reopen photo record and verify defaults. No native Share selected details action.",
+  "pixel_review": "06-final-photo-defaults.png confirms notes unselected, zero photos selected and Include photo 1 unselected.",
+  "preservation": {
+    "all_ten_tables_equal": true,
+    "media_equal": true,
+    "runtime_equal": true,
+    "final_home": true
+  },
+  "reused_evidence": "Prior owner Android and bb235 photo/export/8cc text-sheet evidence remain source-attributed; no OS sheet/export or successful Save repeated. S03 previously lacked native session-exit isolation evidence.",
+  "remaining": [
+    "S03 asynchronous preparation/background/source-change race coverage remains open; this check covers exit/reopen selection isolation only.",
+    "Optional notes fields in retained fixtures are empty; no nonempty private-field payload disclosure claim.",
+    "Direct registered-route entry does not certify every source navigation path or external delivery.",
+    "Other release and approval-held gates remain open."
+  ],
+  "boundaries": {
+    "builds": 0,
+    "source_changes": 0,
+    "saved_data_writes": 0,
+    "os_share_sheet_opened": false,
+    "other_devices_touched": false,
+    "permissions_changed": false,
+    "job_exit_code": 0,
+    "device_lock_released": true,
+    "release": "NO-GO"
+  },
+  "evidence_directory": "WORK-SB121/ios-7fa-share-session-isolation",
+  "raw_result_sha256": "22c35e0e2978ac2b6a53879fcbab6ec645aadb28756c65ecaae03baf4b46f472",
+  "manifest_sha256": "8c84bb81bf5eac0acbe0b4613f96aeb3168d430df44e392a2927dc72aa8be5c8",
+  "manifest_files": 41
+}

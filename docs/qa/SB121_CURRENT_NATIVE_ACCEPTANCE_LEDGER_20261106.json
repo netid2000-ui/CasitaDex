@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "status": "VERIFIED_PARTIAL_MILESTONE_SNAPSHOT",
-  "updated_at_utc": "2026-11-06T21:37:56.558374+00:00",
+  "updated_at_utc": "2026-11-06T21:42:56.203222+00:00",
   "release": "NO-GO",
   "latest_runtime_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
   "installed_runtime_checkpoint": {
@@ -45,7 +45,8 @@
         "ios_7fa_enlarged_cancel",
         "ios_7fa_maximum_cancel",
         "ios_7fa_maximum_message_coverage",
-        "ios_7fa_maximum_manual_refocus"
+        "ios_7fa_maximum_manual_refocus",
+        "ios_7fa_share_session_isolation"
       ]
     },
     "android": {
@@ -1146,6 +1147,13 @@
       "raw_result_sha256": "9e893903d41543acd99c36e41126ca14190f726a2167f3049e94692ef97e5351",
       "raw_manifest_sha256": "b20443b50054e04289c88e315baf826590836526687173b57055873320c7e9ea",
       "source_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606"
+    },
+    "ios_7fa_share_session_isolation": {
+      "relative_path": "docs/qa/SB121_IOS_7FA_SHARE_SESSION_ISOLATION_20261106.json",
+      "sha256": "8298f4601dc89c2f3a7cbd84bed7e39d4d4e231a2032aa1f609ffbdc337a608b",
+      "raw_result_sha256": "22c35e0e2978ac2b6a53879fcbab6ec645aadb28756c65ecaae03baf4b46f472",
+      "raw_manifest_sha256": "8c84bb81bf5eac0acbe0b4613f96aeb3168d430df44e392a2927dc72aa8be5c8",
+      "source_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606"
     }
   },
   "execution_limits": [
@@ -1520,6 +1528,15 @@
       "scope": "Maximum system text plus app Large: native content drag 35pt remains stable, action region independent, keyboard dismissal and one downward recovery scroll restore focus with same unsaved value; trailing text/caret pixels reviewed. Broad unfocused field/label and human legibility not certified. Ten tables/media/runtime exact.",
       "evidence_refs": [
         "ios_7fa_maximum_manual_refocus"
+      ]
+    },
+    {
+      "id": "IOS_7FA_SHARE_SESSION_SELECTION_ISOLATION",
+      "status": "PASS_BOUNDED_SHARE_SESSION_SELECTION_ISOLATION",
+      "artifact_ref": "ios_7fa",
+      "scope": "Photo/notes opt-in selections reset on exit/reopen and across photo/text records; each native Memory details exit returns exact record. No OS sheet or payload/content-disclosure claim. S03 async/background/source-change gaps remain. Ten tables/media/runtime exact; final Home.",
+      "evidence_refs": [
+        "ios_7fa_share_session_isolation"
       ]
     }
   ],
