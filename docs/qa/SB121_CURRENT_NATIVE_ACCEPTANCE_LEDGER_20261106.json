@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "status": "VERIFIED_PARTIAL_MILESTONE_SNAPSHOT",
-  "updated_at_utc": "2026-11-06T20:31:53.348401+00:00",
+  "updated_at_utc": "2026-11-06T20:42:21.868736+00:00",
   "release": "NO-GO",
   "latest_runtime_commit": "8cc2862eaf2791379518e440d3b9d5833543ab0a",
   "installed_runtime_checkpoint": {
@@ -1237,6 +1237,13 @@
       "raw_result_sha256": "fd5e3faf908ca53595037226f8ff4f950c5c6d77bd70442fe37ac6eed06d03d1",
       "raw_manifest_sha256": "eb5e1044d1c38968810c99e6b6532f3d6eae4d3a8eca54e7cb7da1cf27f7e996",
       "source_commit": "8cc2862eaf2791379518e440d3b9d5833543ab0a"
+    },
+    "ios_8cc_find_text_share_validation": {
+      "relative_path": "docs/qa/SB121_IOS_8CC_FIND_TEXT_SHARE_VALIDATION_20261106.json",
+      "sha256": "65062128523404340c1c963d4b5531efef0d777460e19007848914f0fef7c960",
+      "raw_result_sha256": "8098b985fe13bfc6c163c6f8caf45be57e4e8e6deddf5c9f31ba2915cfd51b27",
+      "raw_manifest_sha256": "9d7bb3b82d3badcf6b6cf93f4e4c0ae06e7ad4900704e0b032404f1343d5d35b",
+      "source_commit": "8cc2862eaf2791379518e440d3b9d5833543ab0a"
     }
   },
   "execution_limits": [
@@ -1548,6 +1555,15 @@
       "scope": "Actual OS delivery while terminated and while editing an unsaved memory; Notification Center Open routes exact cold reminder, preserves dirty editor, then routes exact second reminder after Cancel. Relaunch Home has no stale route. Two additive once reminders retained; all other ten-table baseline content, revision16, runtime and media preserved. Broader reminder and release gates remain open.",
       "evidence_refs": [
         "ios_8cc_work_actual_reminders"
+      ]
+    },
+    {
+      "id": "IOS_8CC_FIND_TEXT_SHARE_AND_INVALID_SAVE_RETENTION",
+      "status": "PASS_BOUNDED_WITH_USABILITY_CONCERN",
+      "artifact_ref": "ios_8cc",
+      "scope": "Filtered Find query retained after native text-share sheet cancellation and exact Detail return. Empty-name Save rejected, editor retained and Cancel restored original detail. All ten tables/media/runtime unchanged. Validation feedback starts below viewport and persists after Cancel; broader accessibility acceptance remains open. Owner prior hands-on evidence must be reconciled before further retests.",
+      "evidence_refs": [
+        "ios_8cc_find_text_share_validation"
       ]
     }
   ],

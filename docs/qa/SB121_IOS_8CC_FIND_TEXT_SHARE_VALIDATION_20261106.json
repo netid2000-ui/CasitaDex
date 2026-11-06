@@ -1,0 +1,71 @@
+{
+  "status": "BOUNDED_FUNCTIONAL_PASS_WITH_USABILITY_CONCERN",
+  "runtime_source": "8cc2862eaf2791379518e440d3b9d5833543ab0a",
+  "completed_utc": "2026-11-06T20:42:21.868736+00:00",
+  "find_and_text_share": {
+    "atUTC": "2026-11-06T20:39:11.244Z",
+    "nativeTextCaptionMatched": true,
+    "nativeSheetCancelledWithoutRecipient": true,
+    "exactDetailReturn": true,
+    "queryPreserved": true,
+    "keyboardAbsent": true,
+    "filteredResultPreserved": true
+  },
+  "invalid_save": {
+    "empty_name_rejected": true,
+    "editor_kept_empty_name_and_original_answer": true,
+    "saved_tables_unchanged": true,
+    "cancel_original_detail_confirmed": true,
+    "limitation": "Validation error initially below viewport, reachable by scrolling; error remains visible in Detail after Cancel. No screen-reader announcement claim."
+  },
+  "automation_setup_limit": "Cancel executed successfully. Immediate exact-title assertion failed because retained scroll offset excluded title; scrolling revealed original title, then cleanup returned Home without repeating save or share. Failed receipt retained.",
+  "preservation": {
+    "ten_logical_tables_equal": true,
+    "media_equal": true,
+    "runtime_equal": true,
+    "two_existing_reminder_fixtures_retained": true,
+    "revision": 16,
+    "final_home": true
+  },
+  "reconciliation": {
+    "new_test_reason": "Ledger D01/S02 current-artifact Find/native-text-sheet gap and D02 invalid-save retention gap; 8cc existing Share covered preview/Cancel only. Older 737 text and bb235 photo-sheet results retained.",
+    "source_changes_since_runtime": false,
+    "reused_without_rerun": [
+      "8cc focused rotation and normal Save/relaunch/Cancel",
+      "8cc actual reminder milestone",
+      "bb235 Android actual restore",
+      "5dc Android strict offline",
+      "bb235 iOS one-photo ZIP workflow",
+      "8cc artifact identities and prior source suite"
+    ],
+    "owner_hands_on_evidence": "Owner reports personally completing prior tests. Treat this as evidence; case-level attribution remains to be reconciled with prior records before further retests. Missing attribution is not proof a test was never done.",
+    "active_tests": 0,
+    "new_builds": 0,
+    "next_test_policy": "Before any additional retest, map owner and automated prior evidence to the proposed case and identify a concrete changed-code or release-gate reason. No blanket current-SHA retesting."
+  },
+  "scope_limits": [
+    "No full Find origin/scroll matrix or optional-field privacy matrix.",
+    "Native sheet accessibility caption matched expected flattened name/answer; no byte-for-byte clipboard or sent-message claim.",
+    "No new photo, restore, offline, maximum-text, XCTest audit, screen-reader or Android test.",
+    "No production actions, device installs, data replacement or source changes."
+  ],
+  "evidence_directory": "WORK-SB121/ios-find-share-8cc-work-continuation",
+  "evidence_hashes": {
+    "04-result.json": "0a53c085a9a956a4798e3962142879d0ef0cb5c0d2f9ba50255542fe28349b68",
+    "03-native-sheet.json": "8e9a488ad7ae864c3e09046363712653cfa67d65b3475517adaf47c7c48ef92a",
+    "03-native-sheet.png": "eb369dc40d6cd93895aa2b0ed7088cedb2068708faa59471bb4c868853599dd0",
+    "03-share-defaults.json": "d61098209cbe812566db5f8c23bf59ea312e436878a559b5e9cff520a2e6fb8a",
+    "04-find-return.json": "86eaf38c400bd59f93d89ee34d1ff70a67fdbf6c1a7e0f2dc7ac6a99ea7987b6",
+    "05-after-invalid-save.json": "3cbd3ce596c22c2790ae538777eee9529ac2dae900bc495d9bf171b1954155f5",
+    "05-after-invalid-save.png": "f9dba6151cd7fc70baf41adc4ed6f8897a052b8796376ae303df601c001b342c",
+    "06-visible-validation-feedback.json": "3821debe8513e8b99e968d2f3dea208bc1a28ff6b3ec0708c5bc565ff257ef4d",
+    "06-visible-validation-feedback.png": "d250fa7a4151836a84277c7a7690539613b076a395fe08f0e0ab0c4ba5e57b3c",
+    "06-stop.json": "6e75f52548603cae93c6ede05e9fa4ba547c978d3fba07129d2b50ed84bf7857",
+    "07-result.json": "691a994abc8767ff125d3d95c46f95f6c31daf5841a6b94acf35ea701001eb9f",
+    "07-cancel-confirmed.json": "99630217eeef6b2bd728916951ba92f9a06e6b355a9a836a4ddc3e072fbdca2d",
+    "07-final-home.png": "5f756fb34353fbb053f85a572b27d2ea9ccadacbdafa4fc81a54873bb20f6012",
+    "final-preservation.json": "820cf955f456cbab00ca260563aba72af9ec7b54e050ee7d659dc9f0b364c19d"
+  },
+  "manifest_sha256": "9d7bb3b82d3badcf6b6cf93f4e4c0ae06e7ad4900704e0b032404f1343d5d35b",
+  "manifest_file_count": 68
+}
