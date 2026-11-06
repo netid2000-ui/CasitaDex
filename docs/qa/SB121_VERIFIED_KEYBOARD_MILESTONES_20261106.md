@@ -1,6 +1,6 @@
 # Verified keyboard milestones — November 6, 2026
 
-This publishes completed source/build milestones, **not native acceptance or release approval**. Private QA receipts remain outside this repository. No device identifiers, personal data, raw logs or binaries are included.
+This publishes completed source/build milestones and the bounded Android keyboard acceptance below, **not full native acceptance or release approval**. Private QA receipts remain outside this repository. No device identifiers, personal data, raw logs or binaries are included.
 
 ## Reviewed source milestones
 
@@ -31,7 +31,7 @@ Unsigned Release ARM64 iOS Simulator builds, not distribution-signed artifacts.
 | --- | --- | --- | --- |
 | 737eac1 | d64f95d9338451b1fe9a0e6aa358efb7c71380d2bc192a5a2eb19b2e12a01016 | 731bdaac0f2424db56ba8561e4bbcd9dca4c01f7134aa9b2225b029904653e0a | Built and installed on current isolated acceptance target |
 | d59bf8d | 83f19b99341362117d02a05a0b0a3ef3eb0f58bbcf041067295826436248c855 | 92b899af2b8043269c40adbd3f2b8560f2e4d8bd090770fc98a65fe6d8054fb8 | Built, not installed |
-| bb235cd | Not built | Not built | Staged; compilation/install held pending Android qualification |
+| bb235cd | Not built | Not built | Staged; compilation/install held through the protected reminder check after Android qualification |
 
 Repository source therefore differs from installed iOS runtime. Source/mock checks do not certify an older installed runtime or an unbuilt candidate.
 
@@ -41,12 +41,21 @@ On 737eac1, normal-size iOS Detail/Edit/Share journeys and automated native acce
 
 Extreme-size testing found real issues: Android 737eac1 fullscreen extraction hid actions; d59bf8d stopped extraction but left the focused field beneath inline Gboard. iOS 737eac1 at system maximum plus app Large Text retained reachable independent actions but partially overlapped the focused field with the keyboard.
 
-The reviewed bb235cd correction now visibly shows the complete Android field above the inline keyboard in the initial 200% landscape focus check. **That is an intermediate result, not completed native acceptance.**
+### bb235cd bounded Android keyboard acceptance: PASS
+
+Completed at 14:54 UTC on the exact installed APK above, using Android API 35 and Gboard with system text at 200% and app Large Text off. Fresh pixels and native IME state verified the result.
+
+- Inline IME remained non-fullscreen. Complete focused name/answer inputs and caret were visible above the keyboard in landscape; portrait refocus also passed.
+- The same dirty editor retained its text through both rotation directions. Android may dismiss the keyboard during rotation; explicit refocus succeeded. Repeated keyboard hide/show passed.
+- Independent action scrolling preserved the content position. Both viewports clipped their own contents correctly. The bounded action region deliberately scrolls at extreme sizes; all actions/header content are not promised simultaneously visible.
+- Cancel from the open keyboard discarded the unsaved marker, verified by reopening the editor. Save from the open keyboard committed the exact replacement value to the same synthetic record.
+- Force-stop/relaunch preserved the saved value and other synthetic fields. Font scale and portrait presentation were restored, with four-tab Home selected.
+
+This closes the specific Android keyboard/rotation regression, not the whole native accessibility or release matrix. Older APKs, rollback data and failure evidence remain preserved. No external recipient, physical device, erase, uninstall or restore was used.
 
 Still OPEN:
-- Exact bb235cd Android dirty-editor rotation both directions, repeated keyboard show/hide, action/caret reachability and Save/Cancel.
 - Final-source iOS build/install and exact extreme text/keyboard/rotation retest after Android qualification.
 - Broader manual accessibility, real-archive/restore and other release-matrix gates retain their separately recorded open/evidenced states.
 - Physical testing remains conditional on required virtual gates. No physical acceptance, release merge, store submission or production deployment is claimed.
 
-Publishing these verified milestones does not close any open gate.
+Publishing these verified milestones does not close the remaining gates above.
