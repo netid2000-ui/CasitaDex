@@ -1,0 +1,41 @@
+{
+  "result": "VERIFIED PASS",
+  "runtimeCommit": "bb235cdf6f2bba63b1760038a379a2c09cdf32ab",
+  "testCheckoutCommit": "2a3b0f31ae1884f623aa507c4c75ba5257413b8f",
+  "apkSha256": "41518e7db8705aec54f66668831097f97e6a052234b34e4295477609fd5e4456",
+  "archive": {
+    "nativeFormat": "Full v4",
+    "bytes": 3241,
+    "sha256": "6df86b906edee3cc42679dfbcea3550ccafc518a4bd5ef9c89e57b6e31b52dc3",
+    "counts": {
+      "savedMemories": 1,
+      "savedPhotos": 0,
+      "drafts": 1,
+      "draftPhotos": 1,
+      "standaloneReminders": 1
+    },
+    "originalAndCopyUnchanged": true,
+    "preexistingSavedDataDeepEqual": true
+  },
+  "tests": {
+    "file": "tests/sb24-real-archive.test.mjs",
+    "fileSha256": "7f68b982a4e49a25f185bbeb59121dde1415d0fc5343522d1d942a62fd45aa0a",
+    "fixtureSha256": "3a85ad6245b38fcd42f4c5fd73f619e47aa336951ec71fc49192b7fff7718844",
+    "node": "v24.22.1",
+    "concurrency": 1,
+    "total": 5,
+    "pass": 5,
+    "fail": 0,
+    "skip": 0,
+    "exit": 0,
+    "actualAppRestore": false
+  },
+  "lockfileSha256": "7767f310cb183d9e2de29deed82d79ee7cd9a08dd29bddf5a979474fe7c856c7",
+  "evidence": {
+    "relativeDirectory": "QA-Evidence/WORK-SB121/android-real-archive-bb235cd-20261106",
+    "qualificationReceiptSha256": "a2369c8df1be60fe3cdeb1696082faef062daf80a6462878b3fef64f7da11a13",
+    "frozenManifestSha256": "38f15a3ef830e9a3a20193862b883c37f4572e4cb322cbb95ba3c030b277cdc4"
+  },
+  "release": "NO-GO",
+  "scope": "Native Android export/photo import plus five isolated engine archive cases. Actual app restore and wider platform/accessibility/release gates remain open."
+}

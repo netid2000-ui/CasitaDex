@@ -1,5 +1,7 @@
 # Verified keyboard milestones — November 6, 2026
 
+Subsequent bounded archive update: [the five opt-in cases passed with a fresh native bb235cd Android Full v4 export](SB121_CURRENT_NATIVE_ARCHIVE_20261106.md). The historical full-suite skips below are unchanged; actual app restore remains untested.
+
 This publishes completed source/build milestones and the bounded Android keyboard acceptance below, **not full native acceptance or release approval**. Private QA receipts remain outside this repository. No device identifiers, personal data, raw logs or binaries are included.
 
 ## Reviewed source milestones

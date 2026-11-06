@@ -1,3 +1,11 @@
+# Latest archive milestone: current Android Full v4 gate verified
+
+November 6, 2026: a fresh native Full v4 export from exact **bb235cdf6f2bba63b1760038a379a2c09cdf32ab** Android runtime passed all five opt-in archive cases: **5 passed, 0 failed, 0 skipped**. Native file import/view/close, local SAF export and draft/reminder restart readback passed. Original archive/copy hashes stayed unchanged; pre-existing saved collection data matched its preserved native baseline. [Verified archive milestone and limits](docs/qa/SB121_CURRENT_NATIVE_ARCHIVE_20261106.md).
+
+Restore/recovery tests ran only in disposable in-memory SQLite with Map photo storage. **No actual app collection restore occurred.** This focused result does not rerun or relabel the prior full-suite skips. Other exact-artifact iOS/native, accessibility, physical and release gates remain open; release **NO-GO**.
+
+## Earlier milestone retained
+
 # Latest reminder milestone: a886 normal-clock linked delivery and taps verified
 
 November 6, 2026: three linked alerts delivered at 09:00 CST / 15:00 UTC with a886 terminated. Exact-target cold/background/foreground **tap** cases and cold-launch no-replay passed; protected data/media/preferences/artifact bytes were preserved. [Verified milestone, evidence hashes and limits](docs/qa/SB121_LINKED_0900_MILESTONE_20261106.md).
