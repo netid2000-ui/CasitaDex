@@ -1,8 +1,236 @@
 {
   "schema_version": 1,
   "status": "VERIFIED_PARTIAL_MILESTONE_SNAPSHOT",
-  "recorded_at_utc": "2026-11-06T15:52:45.588543+00:00",
+  "updated_at_utc": "2026-11-06T18:54:13.030813+00:00",
   "release": "NO-GO",
+  "latest_runtime_commit": "8cc2862eaf2791379518e440d3b9d5833543ab0a",
+  "installed_runtime_checkpoint": {
+    "ios": {
+      "artifact_ref": "ios_8cc",
+      "source_commit": "8cc2862eaf2791379518e440d3b9d5833543ab0a",
+      "native_rotation_status": "PASS_BOUNDED",
+      "remaining_maximum_manual_hold_refocus": "INCOMPLETE",
+      "last_focused_preparation": "NOT_RUN: latest observed-state continuation stopped before editor at bounded record-reach precondition.",
+      "evidence_refs": [
+        "ios_8cc_native"
+      ],
+      "presentation": "Home, portrait, system large, app Large Text off, no keyboard/draft.",
+      "live_desktop_selection": "NOT_VERIFIED; static native evidence reviewed. Remote continuation authorized; no current display hold."
+    },
+    "android": {
+      "artifact_ref": "android_8cc",
+      "source_commit": "8cc2862eaf2791379518e440d3b9d5833543ab0a",
+      "current_smoke_status": "PASS_BOUNDED",
+      "virtual_device_state": "GRACEFULLY_STOPPED_DATA_RETAINED",
+      "evidence_refs": [
+        "android_8cc_native",
+        "android_8cc_installed",
+        "android_8cc_handoff"
+      ],
+      "restore_attribution": "Historical actual restore PASS on bb235, not rerun on 8cc.",
+      "offline_attribution": "Historical strict OS-offline PASS on 5dc, not rerun on 8cc.",
+      "shutdown_verified_utc": "2026-11-06T18:51:48.981240+00:00"
+    },
+    "note": "Both exact installed artifacts now identify 8cc. Native bounded milestones do not close composite, manual-accessibility or release gates."
+  },
+  "current_verified_milestone": {
+    "source_commit": "8cc2862eaf2791379518e440d3b9d5833543ab0a",
+    "overall_release": "NO-GO",
+    "ios": {
+      "artifact_ref": "ios_8cc",
+      "result": "BOUNDED_NATIVE_PASS_WITH_EXPLICIT_GAPS",
+      "cases": [
+        {
+          "id": "same_identity_preserving_upgrade",
+          "status": "PASS",
+          "scope": "Complete previous diagnostic app/data copies, per-file manifests, all 10 tables and media identical immediately after install and stable first launch.",
+          "evidence_refs": [
+            "ios_8cc_native"
+          ]
+        },
+        {
+          "id": "original_maximum_text_focused_portrait_to_landscape",
+          "status": "PASS",
+          "scope": "App Large ON and system accessibility-extra-extra-extra-large before same dirty focused editor rotation. Actual landscape 874x402. Field y5..178, pane y71..178, usable trailing text/caret above keyboard. Initial and repeat settled samples agree.",
+          "evidence_refs": [
+            "ios_8cc_native"
+          ]
+        },
+        {
+          "id": "short_action_intrinsic_height",
+          "status": "PASS",
+          "scope": "Normal detail action height 126 of 707 available points; content retains 581 points.",
+          "evidence_refs": [
+            "ios_8cc_native"
+          ]
+        },
+        {
+          "id": "ordinary_keyboard_key",
+          "status": "PASS",
+          "scope": "Real Space key appends a space to dirty title; text/caret visibly usable.",
+          "evidence_refs": [
+            "ios_8cc_native"
+          ]
+        },
+        {
+          "id": "repeated_keyboard_hide_refocus",
+          "status": "PASS",
+          "scope": "Two hide/refocus cycles retain dirty text. System maximum applied after the editor was mounted at normal size; not broad enlarged-label reachability.",
+          "evidence_refs": [
+            "ios_8cc_native"
+          ]
+        },
+        {
+          "id": "independent_action_scroll_and_clipping",
+          "status": "PASS",
+          "scope": "Action button moves while content field bounds/value remain fixed. Content drag is clipped independently. Actual pixels reviewed.",
+          "evidence_refs": [
+            "ios_8cc_native"
+          ]
+        },
+        {
+          "id": "normal_manual_drag_hold_refocus_and_rotation_return",
+          "status": "PASS",
+          "scope": "Field moves y127 to82; action bounds unchanged. Two-second hold plus three stable samples shows no sampled stale correction. Keyboard hide/refocus and return to portrait retain exact dirty value. No continuous-frame jitter claim.",
+          "evidence_refs": [
+            "ios_8cc_native"
+          ]
+        },
+        {
+          "id": "normal_save_cold_relaunch_restore_title",
+          "status": "PASS",
+          "scope": "Save temporary synthetic title, terminate/launch exact installed bundle, reopen and read persisted state, restore original title through UI Save.",
+          "evidence_refs": [
+            "ios_8cc_native"
+          ]
+        },
+        {
+          "id": "normal_dirty_cancel",
+          "status": "PASS",
+          "scope": "Cancel dirty title with keyboard open restores original saved detail.",
+          "evidence_refs": [
+            "ios_8cc_native"
+          ]
+        },
+        {
+          "id": "share_preview_and_cancel",
+          "status": "PASS",
+          "scope": "Open Share memory selection route, then Cancel sharing returns original detail. No external send or native share-sheet/export claim.",
+          "evidence_refs": [
+            "ios_8cc_native"
+          ]
+        },
+        {
+          "id": "maximum_text_manual_hold_refocus",
+          "status": "INCOMPLETE",
+          "scope": "First attempt stopped on an AX-observation assumption after field clipping. Unfocused manual continuation reached the bounded48-swipe limit. One later short focused preparation attempt stopped before editor because the expected Large text control was not confirmed after navigation. No repeat/extended seek. No new app defect inferred.",
+          "evidence_refs": [
+            "ios_8cc_native"
+          ]
+        },
+        {
+          "id": "final_bounded_focused_maximum_preparation",
+          "status": "NOT_RUN",
+          "scope": "Preparation stopped at the expected app Large OFF control check after Appearance navigation. No editor, AX-maximum setting, drag, hold or refocus test ran. No app defect inferred. This earlier preparation remained NOT_RUN. Cleanup and all10table/media equivalence passed.",
+          "evidence_refs": [
+            "ios_8cc_native"
+          ],
+          "chronology": "Earlier short preparation, before the separately authorized observed-state continuation; not the final cleanup phase."
+        },
+        {
+          "id": "observation_driven_maximum_manual_continuation",
+          "status": "NOT_RUN",
+          "scope": "Stable native Button bounds and destination confirmation successfully reached Appearance and enabled app Large. Browse all memories original-record Button remained y1038..1787 after two bounded setup swipes. Stopped before editor, AX maximum, rotation, manual hold or refocus. No app defect inferred. No setup/test retry.",
+          "evidence_refs": [
+            "ios_8cc_native"
+          ]
+        },
+        {
+          "id": "final_cleanup_and_preservation",
+          "status": "PASS",
+          "scope": "Preference-only recovery after the bounded setup restored app Large OFF, system large, portrait and Home. No editor was entered. All10tables/media exactly equal the prior revision16 baseline; installed runtime unchanged.",
+          "evidence_refs": [
+            "ios_8cc_native"
+          ]
+        }
+      ],
+      "maximum_preparation_limit": "Latest observed-state setup confirmed stable Appearance controls and app Large selection, but original record remained below the viewport after two bounded setup swipes. No editor, system maximum, rotation, manual hold or refocus ran. The attempt is NOT_RUN, no new app defect is inferred, and no further attempt is planned.",
+      "preservation": {
+        "same_identity_upgrade_all_10_tables_media_equal": true,
+        "pre_save_controls_exact": true,
+        "intentional_normal_save_and_title_restoration": {
+          "revision_before": 14,
+          "revision_after": 16,
+          "only_original_updated_at_changed": true,
+          "changed_tables": [
+            "eng_state_v2",
+            "eng_recovery_v2"
+          ],
+          "original_semantic_fields_events_other_data_and_photo_preserved": true
+        },
+        "last_bounded_attempt_all_10_tables_media_exact_against_revision_16": true,
+        "final_counts": {
+          "saved_memories": 2,
+          "photo_files": 1,
+          "draft": null
+        },
+        "final_preference_only_recovery_all_10_tables_media_exact_against_revision_16": true
+      },
+      "display": "Static native evidence verified; live iOS desktop selection unverified. Earlier display hold superseded by remote-continuation authorization.",
+      "final_cleanup_utc": "2026-11-06T18:49:38.537568+00:00"
+    },
+    "android": {
+      "artifact_ref": "android_8cc",
+      "result": "PASS_BOUNDED",
+      "scope": [
+        "Same package/signer preserving upgrade; full semantic collection/draft/reminder and media equality before install, before first launch, after launch, after smoke and after relaunch.",
+        "Home/Photos/Reminders/Find reached; Find opened retained answer; both draft photo viewers/next/Close and Keep draft and leave returned correctly; reminder retained.",
+        "Live desktop Home and second-photo pixels inspected; native image-region comparison supports both retained photos rendered."
+      ],
+      "final_counts": {
+        "saved_memories": 1,
+        "drafts": 1,
+        "draft_photos": 2,
+        "standalone_reminders": 1
+      },
+      "engine_revision_before": 21,
+      "engine_revision_after": 23,
+      "draft_checkpoint": 39,
+      "semantic_change": false,
+      "radios_unchanged": {
+        "airplane": 0,
+        "wifi": 1,
+        "mobile_data": 1
+      },
+      "prior_restore_offline_not_repeated": true,
+      "evidence_refs": [
+        "android_8cc_native",
+        "android_8cc_installed"
+      ],
+      "final_handoff": {
+        "result": "GRACEFULLY_STOPPED_DATA_RETAINED",
+        "session_exit_code": 0,
+        "stopped_utc": "2026-11-06T18:51:14.935Z",
+        "ports_and_processes_absent_verified_utc": "2026-11-06T18:51:48.981240+00:00",
+        "retained_full_app_data_sha256": "d93a6251d2e4e4231a43c70123108f4e4352eb0bb83d9acc3a1caaa6716ae56a",
+        "state": {
+          "engineRevision": 23,
+          "draftCheckpoint": 39,
+          "savedMemories": 1,
+          "unfinishedDrafts": 1,
+          "draftPhotos": 2,
+          "standaloneReminders": 1
+        },
+        "no_reset_uninstall_or_radio_change": true,
+        "evidence_refs": [
+          "android_8cc_handoff"
+        ]
+      }
+    },
+    "historical_results_unchanged": "Prior bb235/5dc/9da results retain exact source/artifact attribution. No prior failure is rewritten as a pass and no composite cell is promoted."
+  },
+  "snapshot_note": "Latest exact installed artifacts are 8cc on both platforms. Original 18-cell bb235 matrix/counts remain unchanged historical evidence; use current_verified_milestone for later bounded results. Maximum-size manual hold/refocus is incomplete, not a newly demonstrated app failure. Overall release remains NO-GO.",
+  "recorded_at_utc": "2026-11-06T15:52:45.588543+00:00",
   "runtime_snapshot_commit": "bb235cdf6f2bba63b1760038a379a2c09cdf32ab",
   "authority_head_observed": "5dc930e280b43e9ffe5553a8c5c63fc6aa86eacb",
   "authority_branch_observed": "work/cd-sb41-edit-targeting-20261104",
@@ -122,6 +350,35 @@
         "ios_9da_rotation_manifest"
       ],
       "platform_scope": "Isolated virtual target; no distribution/physical acceptance"
+    },
+    "ios_8cc": {
+      "source_commit": "8cc2862eaf2791379518e440d3b9d5833543ab0a",
+      "variant": "Uninstrumented unsigned Release arm64 iOS Simulator",
+      "artifact_sha256": "0bf79aa575f0839249e10a4b4c435355a753f73acd494fb8bbf4a84d7a3d969a",
+      "hermes_sha256": "402d084df76a730eab6c7fdfaeb695d24995ca4063a3a4f63ffe0f66d4575e77",
+      "diagnostic_code_absent": true,
+      "native_acceptance": "BOUNDED_PASS_WITH_EXPLICIT_GAPS",
+      "provenance_evidence": [
+        "ios_8cc_build",
+        "ios_8cc_native",
+        "ios_8cc_manifest"
+      ],
+      "platform_scope": "Virtual only; no distribution/physical acceptance"
+    },
+    "android_8cc": {
+      "source_commit": "8cc2862eaf2791379518e440d3b9d5833543ab0a",
+      "variant": "non-debuggable ARM64 release, original QA template signing",
+      "artifact_sha256": "5aa21f511cfa6d0630ac76a4b0ffe854ef04ddeb031e3711073ccad63bac6048",
+      "hermes_sha256": "a046919715a09b6e878c11f111ad48bf9f30f083eb10c206969289797abb107f",
+      "signer_sha256": "fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c",
+      "native_acceptance": "BOUNDED_CURRENT_SOURCE_SMOKE_PASS",
+      "provenance_evidence": [
+        "android_8cc_build",
+        "android_8cc_installed",
+        "android_8cc_native",
+        "android_8cc_manifest"
+      ],
+      "platform_scope": "Virtual only; no 8cc offline/restore rerun or physical acceptance"
     }
   },
   "cases": [
@@ -529,18 +786,19 @@
       "id": "G01",
       "gate": "Source checks at each identified revision",
       "status": "PASS_BOUNDED",
-      "scope": "bb235 full suite: 557 total, 552 passed, 5 skipped, 0 failed; typecheck/lint passed. Newer source-only 5dc930e: 582 total, 577 passed, 5 skipped, 0 failed; 49 focused checks, typecheck/lint passed. Neither closes native acceptance. Newer 9da source-only gate: 586 total, 581 passed, 5 skipped, 0 failed; 53 focused checks, typecheck/lint passed. Native acceptance not implied.",
+      "scope": "bb235 full suite: 557 total, 552 passed, 5 skipped, 0 failed; typecheck/lint passed. Newer source-only 5dc930e: 582 total, 577 passed, 5 skipped, 0 failed; 49 focused checks, typecheck/lint passed. Neither closes native acceptance. Newer 9da source-only gate: 586 total, 581 passed, 5 skipped, 0 failed; 53 focused checks, typecheck/lint passed. Native acceptance not implied. 8cc source gate: 590 total, 585 passed, 5 skipped, 0 failed; 48 focused checks, typecheck and targeted lint passed.",
       "evidence_refs": [
         "doc_keyboard",
         "doc_source_followup",
-        "doc_source_followup_9da"
+        "doc_source_followup_9da",
+        "doc_source_8cc"
       ]
     },
     {
       "id": "G02",
       "gate": "Exact native builds and preserving upgrades",
       "status": "PASS_BOUNDED",
-      "scope": "Exact source builds and same-identity preserving upgrades are evidenced for the identified artifacts. Latest installed iOS 9da native landscape focus FAILED despite source checks and preservation passing; Android 5dc bounded restore/offline remains accepted with its virtual target now gracefully stopped and data retained. No distribution/physical acceptance.",
+      "scope": "Both installed platforms identify exact 8cc artifacts. Preserving upgrades, bounded iOS focused-rotation/normal controls and current Android smoke/relaunch passed. Maximum-size iOS manual hold/refocus incomplete; final short preparation NOT_RUN. No full native/distribution/physical acceptance. Completed Android virtual target was safely stopped with data retained; this does not change its bounded acceptance.",
       "evidence_refs": [
         "android_provenance",
         "ios_upgrade",
@@ -551,7 +809,12 @@
         "android_native_restore_offline",
         "ios_5dc_rotation",
         "ios_9da_rotation",
-        "android_5dc_lane_handoff"
+        "android_5dc_lane_handoff",
+        "ios_8cc_build",
+        "ios_8cc_native",
+        "android_8cc_build",
+        "android_8cc_native",
+        "android_8cc_handoff"
       ]
     },
     {
@@ -568,26 +831,28 @@
       "id": "G04",
       "gate": "Current Android native photo/import/export",
       "status": "PARTIAL",
-      "scope": "One synthetic PNG imported with DocumentsUI, viewed, closed back to draft, Full v4 exported through SAF, embedded bytes exact and draft/photo/reminder restart readback. Camera/library, multi-photo/limit, edit/replace/remove and pinch-zoom not tested in this run.",
+      "scope": "8cc Android retained both draft photos, rendered both native viewers, next-photo/Close/Keep draft return and relaunch with exact media semantics. Prior bb235 import/export/archive cases remain historical. No fresh 8cc backup export, offline/restore rerun, camera, photo-limit or wider edit matrix.",
       "evidence_refs": [
-        "android_archive"
+        "android_archive",
+        "android_8cc_native"
       ]
     },
     {
       "id": "G05",
       "gate": "Current iOS photos",
       "status": "PARTIAL",
-      "scope": "Bounded native one-photo workflow PASS on bb235: actual image, zoom buttons 1 to 2 to 1, Close preserving draft, photo-only Save, exact selected-photo ZIP/native sheet cancel, process-relaunch state/media equality, Find reopened saved photo. No pinch gesture, five-photo limit, camera, replace/remove/multiple-photo, extreme text, screen reader, actual restore or physical acceptance.",
+      "scope": "Historical bb235 one-photo creation/viewer/selected ZIP and relaunch receipt remains bounded. 8cc preserving upgrade and normal controls retain photo bytes; current Share test is preview/Cancel only, not a new native sheet/ZIP test. Broader photo and accessibility gates remain open.",
       "evidence_refs": [
         "ios_photo",
-        "ios_photo_manifest"
+        "ios_photo_manifest",
+        "ios_8cc_native"
       ]
     },
     {
       "id": "G06",
       "gate": "Actual native app restore/recovery",
       "status": "ANDROID_PASS_BOUNDED_IOS_NOT_RUN",
-      "scope": "Approved actual native same-current-state Full v4 restore passed on bb235 Android, with stopped-process recovery copy and post-restore/relaunch semantic/reminder/media equality. iOS native restore, corruption import and previous-save recovery-button acceptance remain untested.",
+      "scope": "Approved actual native same-current-state Full v4 restore passed on bb235 Android, with stopped-process recovery copy and post-restore/relaunch semantic/reminder/media equality. iOS native restore, corruption import and previous-save recovery-button acceptance remain untested. Both current artifacts are 8cc; prior Android result was not repeated or relabeled as 8cc restore.",
       "evidence_refs": [
         "android_native_restore_offline"
       ]
@@ -596,7 +861,7 @@
       "id": "G07",
       "gate": "Strict OS-wide offline acceptance",
       "status": "ANDROID_PASS_BOUNDED_IOS_NOT_RUN",
-      "scope": "Strict emulator OS-offline acceptance passed on exact 5dc Android with HTTP/IP/default-route negative controls, native Find/photo append/local export/relaunch and restored original radios/network. No host-network or physical-device change; strict iOS offline remains untested.",
+      "scope": "Strict emulator OS-offline acceptance passed on exact 5dc Android with HTTP/IP/default-route negative controls, native Find/photo append/local export/relaunch and restored original radios/network. No host-network or physical-device change; strict iOS offline remains untested. Both current artifacts are 8cc; prior Android result was not repeated or relabeled as 8cc offline.",
       "evidence_refs": [
         "android_native_restore_offline"
       ]
@@ -622,7 +887,7 @@
       "id": "G10",
       "gate": "Security and dependency closure",
       "status": "PARTIAL",
-      "scope": "Exact bb235 Android Metro/Hermes package inventory excludes affected build/lint package sources. bb235 iOS map inventory remains unestablished. Newer 5dc iOS exact-build provenance links a 1,269-source composed map with no affected tooling paths to packaged HBC; stock build deleted raw maps, so independent recomposition is unavailable. This closes only the mapped-inventory gap for 5dc, not retroactively bb235 or overall security. Both moderate build-tool advisories remain open. Historical audit counts are not a fresh vulnerability snapshot.",
+      "scope": "Exact bb235 Android Metro/Hermes package inventory excludes affected build/lint package sources. bb235 iOS map inventory remains unestablished. Newer 5dc iOS exact-build provenance links a 1,269-source composed map with no affected tooling paths to packaged HBC; stock build deleted raw maps, so independent recomposition is unavailable. This closes only the mapped-inventory gap for 5dc, not retroactively bb235 or overall security. Both moderate build-tool advisories remain open. Historical audit counts are not a fresh vulnerability snapshot. No new 8cc vulnerability audit or mapped-graph exclusion assessment is claimed by this native milestone.",
       "evidence_refs": [
         "security_review",
         "security_receipt",
@@ -678,6 +943,17 @@
       "skip": 5,
       "fail": 0,
       "native_acceptance": false
+    },
+    "source_8cc_full_suite": {
+      "source_commit": "8cc2862eaf2791379518e440d3b9d5833543ab0a",
+      "total": 590,
+      "pass": 585,
+      "skip": 5,
+      "fail": 0,
+      "focused": 48,
+      "typecheck": "PASS",
+      "targeted_lint": "PASS",
+      "native_acceptance": "Separately bounded; source suite is not native acceptance."
     }
   },
   "evidence_catalog": {
@@ -779,12 +1055,14 @@
     "doc_keyboard": {
       "relative_path": "docs/qa/SB121_VERIFIED_KEYBOARD_MILESTONES_20261106.md",
       "sha256": "437ff64f05b573a802abed2020639454a1f82ce1ee63e43242c612e33420d30e",
-      "scope": "Existing sanitized milestone document or manifest."
+      "scope": "Existing sanitized milestone document or manifest.",
+      "git_revision": "8cc2862eaf2791379518e440d3b9d5833543ab0a"
     },
     "doc_ios": {
       "relative_path": "docs/qa/SB121_IOS_BB235_BUILD_UPGRADE_20261106.md",
       "sha256": "071cf186eebdfb8e736a32e82a793b0883a536b9facc88ba5432994b96834140",
-      "scope": "Existing sanitized milestone document or manifest."
+      "scope": "Existing sanitized milestone document or manifest.",
+      "git_revision": "8cc2862eaf2791379518e440d3b9d5833543ab0a"
     },
     "doc_ios_manifest": {
       "relative_path": "docs/qa/SB121_IOS_BB235_BUILD_UPGRADE_MANIFEST.json",
@@ -794,7 +1072,8 @@
     "doc_archive": {
       "relative_path": "docs/qa/SB121_CURRENT_NATIVE_ARCHIVE_20261106.md",
       "sha256": "9c13ceca43bf13c48117dbcdd680b04980d263cd60166b3cfbefebcf574b7cfd",
-      "scope": "Existing sanitized milestone document or manifest."
+      "scope": "Existing sanitized milestone document or manifest.",
+      "git_revision": "8cc2862eaf2791379518e440d3b9d5833543ab0a"
     },
     "doc_linked": {
       "relative_path": "docs/qa/SB121_LINKED_0900_MILESTONE_20261106.md",
@@ -891,6 +1170,66 @@
       "sha256": "28322093c3c51298fc12a912edf04b5aebfbfbf42e43289f47f13788dc2670ed",
       "scope": "Graceful virtual-device shutdown; exact source/APK and retained state; complete data archive matches receipt. Not an additional functional acceptance test.",
       "source_commit": "5dc930e280b43e9ffe5553a8c5c63fc6aa86eacb"
+    },
+    "ios_8cc_native": {
+      "evidence_filename": "native-acceptance-result.json",
+      "sha256": "bdee90b61e088dac039459a9527997c89a4d7d549a1ba3f13391ca18a9dabda7",
+      "scope": "Final bounded uninstrumented iOS native results; preserves setup-specific limits and intentional Save deltas.",
+      "source_commit": "8cc2862eaf2791379518e440d3b9d5833543ab0a"
+    },
+    "ios_8cc_native_report": {
+      "evidence_filename": "NATIVE_ACCEPTANCE_REPORT.md",
+      "sha256": "0f5ff614146d4930ce82d95f62ac6ca94f5c7b41228c3986defc4511f3f096ce",
+      "scope": "Final private detailed interpretation; raw identifiers/data are not published.",
+      "source_commit": "8cc2862eaf2791379518e440d3b9d5833543ab0a"
+    },
+    "ios_8cc_manifest": {
+      "evidence_filename": "final-evidence-sha256.json",
+      "sha256": "4bde77dbe4a768ed4ec14980e6f4ef389b1c1b14b9cac8e8ed60a3274552ebd0",
+      "scope": "271 final frozen evidence hashes verified; earlier result/report/manifest frozen separately, preserved prior app/data manifests separate.",
+      "source_commit": "8cc2862eaf2791379518e440d3b9d5833543ab0a"
+    },
+    "ios_8cc_build": {
+      "evidence_filename": "build-completion.json",
+      "sha256": "9b079779c0173901de3e9c51b24b1ab37b278b3f74b720df65375cfa0ec81c4a",
+      "scope": "Uninstrumented Release simulator build and exact artifact identities; no new native graph.",
+      "source_commit": "8cc2862eaf2791379518e440d3b9d5833543ab0a"
+    },
+    "android_8cc_native": {
+      "evidence_filename": "current-native-acceptance.json",
+      "sha256": "d90c2d0d2552ff656472447f0fbdd5a942320dd5ba1fb32be25a83ff35de115c",
+      "scope": "Same-signer preserving upgrade, focused current-source smoke and relaunch with semantic/reminder/media equality.",
+      "source_commit": "8cc2862eaf2791379518e440d3b9d5833543ab0a"
+    },
+    "android_8cc_installed": {
+      "evidence_filename": "current-installed-state.json",
+      "sha256": "3a06f4e6a1b13b6ffb5716ffc2ede80d927ae442739eaf423dec281b32038b52",
+      "scope": "Exact later 8cc installation; earlier boot-only readiness receipt remains historical.",
+      "source_commit": "8cc2862eaf2791379518e440d3b9d5833543ab0a"
+    },
+    "android_8cc_manifest": {
+      "evidence_filename": "CHECKSUMS.json",
+      "sha256": "ee160b112ccc43e3e25eef2a3a2ff6bdf06b3fb16bc1f88938282712d8d71ef2",
+      "scope": "12 receipt/report hashes verified.",
+      "source_commit": "8cc2862eaf2791379518e440d3b9d5833543ab0a"
+    },
+    "android_8cc_build": {
+      "evidence_filename": "artifact-provenance.json",
+      "sha256": "fcc1f45c4d0f8f2badad8651563c3a1fbf6a866aae010a7511455369e8b4783e",
+      "scope": "Exact Release APK; 16KiB alignment, unchanged QA signer and bounded native lint reuse.",
+      "source_commit": "8cc2862eaf2791379518e440d3b9d5833543ab0a"
+    },
+    "doc_source_8cc": {
+      "relative_path": "docs/qa/SB121_IOS_SCROLL_EXTENT_SOURCE_FIX_20261106.md",
+      "git_revision": "8cc2862eaf2791379518e440d3b9d5833543ab0a",
+      "sha256": "e76e8963040372617f726a0a48816801e1ccc2c77eb388cbd06eb187449c0b7c",
+      "scope": "Original reviewed 8cc source gate; later top-of-file native-summary link does not alter its historical results."
+    },
+    "android_8cc_handoff": {
+      "evidence_filename": "handoff-result.json",
+      "sha256": "9e571eca91196d1222576bf654c45d460262dceb456461c296fe6534d0d1bec7",
+      "source_commit": "8cc2862eaf2791379518e440d3b9d5833543ab0a",
+      "scope": "Graceful preserving shutdown after completed native acceptance; exact state/source retained, session exit0 and ports/processes independently absent; recovery data hash verified."
     }
   },
   "execution_limits": [
@@ -900,57 +1239,27 @@
     "Documentation-only integration is separately authorized; no release/main merge or runtime acceptance is implied."
   ],
   "newer_source_followup": {
-    "source_commit": "9da76aaa391d423efc25de497c18e44eb2493c0e",
-    "status": "NATIVE_ROTATION_VERIFIED_FAIL",
-    "reviewed_patch_sha256": "e31c99a36b264526643cb5985c738d832a23c0b675544652c49fac3290821a02",
-    "focused_checks": 53,
+    "source_commit": "8cc2862eaf2791379518e440d3b9d5833543ab0a",
+    "status": "BOUNDED_NATIVE_PASS_WITH_EXPLICIT_GAPS",
+    "reviewed_patch_sha256": "53da71fd2bf450865f9746df3afecd6d07bf0e429560984322a7f0a15ad961c4",
+    "focused_checks": 48,
     "full_suite": {
-      "total": 586,
-      "pass": 581,
+      "total": 590,
+      "pass": 585,
       "skip": 5,
       "fail": 0
     },
     "typecheck": "PASS",
-    "lint": "PASS",
+    "targeted_lint": "PASS",
+    "scope": "Bounded outer clipping Views preserve actual iOS ScrollView scroll-axis layout semantics. No telemetry, dependency/native graph, navigation/data or Android behavior change.",
     "evidence_refs": [
-      "doc_source_followup_9da",
-      "ios_9da_rotation"
+      "doc_source_8cc",
+      "ios_8cc_native",
+      "android_8cc_native"
     ],
-    "scope": "Narrow iOS-only source guard passed its source checks but did not close native landscape focus. Exact 9da build and preserving upgrade passed; settled native rotation failed. No further release patch is claimed.",
-    "native_pass_claimed": false,
-    "build_and_preserving_upgrade": "PASS",
-    "native_artifact_ref": "ios_9da",
-    "native_result": "VERIFIED_FAIL"
+    "native_pass_claimed": "Bounded cases only, not full composite/native acceptance."
   },
-  "snapshot_note": "The original bb235 18-cell matrix and counts remain unchanged historical evidence. Later exact-artifact records include Android bb235 restore/5dc offline PASS and both iOS 5dc and 9da native landscape FAIL. The former 9da pending status is superseded; planned diagnostics are not a release fix.",
-  "updated_at_utc": "2026-11-06T16:58:20.853615+00:00",
   "photo_checkpoint_at_utc": "2026-11-06T15:58:24.684128+00:00",
-  "installed_runtime_checkpoint": {
-    "ios": {
-      "artifact_ref": "ios_9da",
-      "source_commit": "9da76aaa391d423efc25de497c18e44eb2493c0e",
-      "evidence_refs": [
-        "ios_9da_rotation"
-      ],
-      "native_rotation_status": "VERIFIED_FAIL",
-      "preserving_upgrade": "PASS",
-      "cleanup": "PASS: normal Home, portrait, system large, app Large Text off, no keyboard, null draft; all ten logical tables/state envelope/photo bytes unchanged."
-    },
-    "android": {
-      "artifact_ref": "android_5dc",
-      "source_commit": "5dc930e280b43e9ffe5553a8c5c63fc6aa86eacb",
-      "evidence_refs": [
-        "android_native_restore_offline",
-        "android_5dc_lane_handoff"
-      ],
-      "restore_status": "PASS_BOUNDED on preceding bb235 runtime",
-      "offline_status": "PASS_BOUNDED on 5dc runtime",
-      "virtual_device_state": "GRACEFULLY_STOPPED_DATA_RETAINED",
-      "shutdown_verified_utc": "2026-11-06T16:52:07.907638+00:00",
-      "no_reset_uninstall_delete": true
-    },
-    "note": "Installed source identity is distinct from whether the preserved virtual target is running. Native failure is not obscured by successful source checks, preserving upgrade or cleanup."
-  },
   "historical_publication_snapshots": [
     {
       "commit": "659f7805b17811a57c0605319d41c866294b0eba",
@@ -1061,6 +1370,61 @@
         "note": "Checkpoint based on final identified receipts. A newer iOS build in progress does not imply preserving upgrade or native acceptance."
       },
       "scope": "Android restore/offline and iOS 5dc failure checkpoint; 9da pending wording superseded by later verified failure."
+    },
+    {
+      "commit": "da584386f1904522d2f6ef7a7f00876ccb7fa6c2",
+      "ledger_sha256": "8ee0b41f513df96016459d077cded8b2db0167e85c44b3dd8e7d4ab478eceb2c",
+      "ledger_url": "https://github.com/netid2000-ui/CasitaDex/blob/da584386f1904522d2f6ef7a7f00876ccb7fa6c2/docs/qa/SB121_CURRENT_NATIVE_ACCEPTANCE_LEDGER_20261106.json",
+      "source_followup_checkpoint": {
+        "source_commit": "9da76aaa391d423efc25de497c18e44eb2493c0e",
+        "status": "NATIVE_ROTATION_VERIFIED_FAIL",
+        "reviewed_patch_sha256": "e31c99a36b264526643cb5985c738d832a23c0b675544652c49fac3290821a02",
+        "focused_checks": 53,
+        "full_suite": {
+          "total": 586,
+          "pass": 581,
+          "skip": 5,
+          "fail": 0
+        },
+        "typecheck": "PASS",
+        "lint": "PASS",
+        "evidence_refs": [
+          "doc_source_followup_9da",
+          "ios_9da_rotation"
+        ],
+        "scope": "Narrow iOS-only source guard passed its source checks but did not close native landscape focus. Exact 9da build and preserving upgrade passed; settled native rotation failed. No further release patch is claimed.",
+        "native_pass_claimed": false,
+        "build_and_preserving_upgrade": "PASS",
+        "native_artifact_ref": "ios_9da",
+        "native_result": "VERIFIED_FAIL"
+      },
+      "installed_runtime_checkpoint": {
+        "ios": {
+          "artifact_ref": "ios_9da",
+          "source_commit": "9da76aaa391d423efc25de497c18e44eb2493c0e",
+          "evidence_refs": [
+            "ios_9da_rotation"
+          ],
+          "native_rotation_status": "VERIFIED_FAIL",
+          "preserving_upgrade": "PASS",
+          "cleanup": "PASS: normal Home, portrait, system large, app Large Text off, no keyboard, null draft; all ten logical tables/state envelope/photo bytes unchanged."
+        },
+        "android": {
+          "artifact_ref": "android_5dc",
+          "source_commit": "5dc930e280b43e9ffe5553a8c5c63fc6aa86eacb",
+          "evidence_refs": [
+            "android_native_restore_offline",
+            "android_5dc_lane_handoff"
+          ],
+          "restore_status": "PASS_BOUNDED on preceding bb235 runtime",
+          "offline_status": "PASS_BOUNDED on 5dc runtime",
+          "virtual_device_state": "GRACEFULLY_STOPPED_DATA_RETAINED",
+          "shutdown_verified_utc": "2026-11-06T16:52:07.907638+00:00",
+          "no_reset_uninstall_delete": true
+        },
+        "note": "Installed source identity is distinct from whether the preserved virtual target is running. Native failure is not obscured by successful source checks, preserving upgrade or cleanup."
+      },
+      "scope": "Verified iOS 9da failure and prior Android stopped checkpoint; unchanged historical outcomes."
     }
   ],
   "subsequent_native_milestones": [
@@ -1139,6 +1503,36 @@
       "evidence_refs": [
         "android_5dc_lane_handoff"
       ]
+    },
+    {
+      "id": "IOS_UNINSTRUMENTED_8CC_BOUNDED_CONTROLS",
+      "status": "PASS_BOUNDED_WITH_EXPLICIT_GAPS",
+      "artifact_ref": "ios_8cc",
+      "scope": "Original maximum-text same-dirty-editor focused rotation passes usable trailing text/caret pixels; real key/repeated hide-refocus/independent clipping and normal manual controls/Save/relaunch/Cancel/Share-preview passed with stated setup limits. Maximum-size manual hold/refocus remains incomplete; final short preparation NOT_RUN.",
+      "evidence_refs": [
+        "ios_8cc_native",
+        "ios_8cc_manifest"
+      ]
+    },
+    {
+      "id": "ANDROID_8CC_PRESERVING_UPGRADE_AND_SMOKE",
+      "status": "PASS_BOUNDED",
+      "artifact_ref": "android_8cc",
+      "scope": "Current-source preserving upgrade, four tabs/Find/two-photo viewer/return/reminder smoke and relaunch; semantic data/media preserved. No repeated offline or restore run.",
+      "evidence_refs": [
+        "android_8cc_native",
+        "android_8cc_installed",
+        "android_8cc_manifest"
+      ]
+    },
+    {
+      "id": "ANDROID_8CC_PRESERVED_HANDOFF",
+      "status": "PRESERVED_OPERATIONAL_HANDOFF",
+      "artifact_ref": "android_8cc",
+      "scope": "Graceful stop after verified Home, complete recovery copy and semantic/reminder/media equality. Owned session exited0; ports/processes independently absent. Exact 8cc artifact/data retained, no reset/uninstall/radio change.",
+      "evidence_refs": [
+        "android_8cc_handoff"
+      ]
     }
   ],
   "current_android_preserved_state": {
@@ -1146,23 +1540,36 @@
     "drafts": 1,
     "draft_photos": 2,
     "standalone_reminders": 1,
-    "current_matching_archive_sha256": "82cbc2865e26c5e6c676e42c78d6f65c4217ab1233a8f4f7a404dbf1d9c8509e",
     "original_saved_collection_draft_text_identity_photo_reminder_preserved": true,
     "do_not_restore_older_one_photo_archive_without_new_authorization": true,
     "evidence_refs": [
-      "android_native_restore_offline"
+      "android_native_restore_offline",
+      "android_8cc_native"
     ],
     "archive_filename": "offline-native-full-v4.cdxe",
     "virtual_device_state": "GRACEFULLY_STOPPED_DATA_RETAINED",
-    "handoff_verified_utc": "2026-11-06T16:52:07.907638+00:00",
     "handoff_evidence_refs": [
-      "android_5dc_lane_handoff"
-    ]
+      "android_8cc_handoff"
+    ],
+    "retained_5dc_archive_sha256": "82cbc2865e26c5e6c676e42c78d6f65c4217ab1233a8f4f7a404dbf1d9c8509e",
+    "archive_provenance": {
+      "created_on_source": "5dc930e280b43e9ffe5553a8c5c63fc6aa86eacb",
+      "archive_revision": 21,
+      "current_native_revision": 23,
+      "current_semantic_state_unchanged": true,
+      "fresh_8cc_export": false
+    },
+    "engine_revision": 23,
+    "draft_checkpoint": 39,
+    "current_artifact_ref": "android_8cc",
+    "previous_handoff_verified_utc": "2026-11-06T16:52:07.907638+00:00",
+    "handoff_verified_utc": "2026-11-06T18:51:48.981240+00:00",
+    "retained_recovery_data_sha256": "d93a6251d2e4e4231a43c70123108f4e4352eb0bb83d9acc3a1caaa6716ae56a"
   },
-  "latest_authority_source_observed": "9da76aaa391d423efc25de497c18e44eb2493c0e",
+  "latest_authority_source_observed": "8cc2862eaf2791379518e440d3b9d5833543ab0a",
   "next_diagnostic": {
-    "status": "PLANNED_NOT_BUILT_OR_ACCEPTED",
-    "scope": "Coordinate-only diagnostic derivative is planned separately. No additional release patch, diagnostic build or native acceptance is claimed in this checkpoint."
+    "status": "HISTORICAL_DIAGNOSTIC_NOT_RELEASE_ACCEPTED",
+    "scope": "Earlier 9da plus 1d0836d coordinate-only diagnostic established native extent 1399 excluded the focused input. It was not release accepted. The later 8cc uninstrumented repair now has separately verified bounded native outcomes."
   },
-  "latest_documentation_base_commit": "7a5bb232748538b1a67c348feacab4a4d60a41fe"
+  "latest_documentation_base_commit": "8cc2862eaf2791379518e440d3b9d5833543ab0a"
 }

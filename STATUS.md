@@ -1,3 +1,15 @@
+# Latest native milestone: both platforms on 8cc2862 — November 6, 2026
+
+**Bounded native PASS; release remains NO-GO.** Both installed platforms identify **8cc2862eaf2791379518e440d3b9d5833543ab0a**. [Current milestone, exact artifacts and limits](docs/qa/SB121_CURRENT_8CC_NATIVE_MILESTONE_20261106.md). [Central evidence ledger](docs/qa/SB121_CURRENT_NATIVE_ACCEPTANCE_LEDGER_20261106.json).
+
+- iOS original maximum-text focused rotation now has verified usable text/caret pixels. Bounded keyboard, clipping, normal manual controls, Save/cold-relaunch/original-title restoration, Cancel and Share-preview/Cancel pass. Maximum-size manual hold/refocus remains INCOMPLETE; final observed-state setup stopped before editor entry, NOT_RUN. Live iOS desktop selection is unverified but is not a current testing hold.
+- Android exact APK **5aa21f511cfa6d0630ac76a4b0ffe854ef04ddeb031e3711073ccad63bac6048** passed preserving upgrade and current-source smoke/relaunch. One saved memory, one draft/two photos and one reminder remain semantically intact; revision 23/checkpoint 39, radios unchanged. The completed target was then gracefully stopped with ports/processes absent and complete recovery data retained; it is no longer live.
+- Actual restore remains the older bb235 result; strict offline remains the older 5dc result, not new 8cc runs. The retained revision-21 two-photo archive is not a fresh revision-23 export.
+
+Original 5dc/9da failures and the planned matrix are preserved. Broader maximum-size, manual accessibility, iOS restore/offline, visual/notification/photo, security, physical/owner and distribution/store gates remain open. No new application tests/build/device actions occurred in this docs-only consolidation.
+
+## Earlier checkpoints retained with original artifact attribution
+
 # Latest native outcome: iOS 9da rotation failed — November 6, 2026
 
 Release **NO-GO**. Exact **9da76aaa391d423efc25de497c18e44eb2493c0e** native maximum-text landscape focus is **VERIFIED FAIL**, superseding the earlier pending status. The focused field stays at y468–641 outside pane y71–178; stable pixels show no input text or caret. [Current ledger and exact hashes](docs/qa/SB121_CURRENT_NATIVE_ACCEPTANCE_20261106.md).

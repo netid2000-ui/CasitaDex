@@ -1,3 +1,5 @@
+**Historical checkpoint.** Historical 5dc/9da source correction and native follow-up. Those failures remain retained; current uninstrumented 8cc bounded acceptance is recorded separately. [Current summary](SB121_CURRENT_8CC_NATIVE_MILESTONE_20261106.md) · [Central ledger](SB121_CURRENT_NATIVE_ACCEPTANCE_LEDGER_20261106.json).
+
 # iOS focus after rotation: reviewed source correction
 
 Date: November 6, 2026. Source milestone only; native acceptance remains OPEN.

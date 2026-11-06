@@ -1,3 +1,10 @@
+## 2026-11-06 - Consolidated current 8cc native milestone
+
+- Record bounded iOS focused-rotation and keyboard/normal-control acceptance on the uninstrumented artifact, retaining incomplete maximum-size interaction and explicit NOT_RUN observed-state preparation.
+- Record exact current Android preserving upgrade, four-tab/Find/two-photo/reminder smoke and relaunch with semantic/media preservation, followed by a verified preserving shutdown. Retain older restore/offline attribution without reruns.
+- Distinguish intentional iOS Save metadata/revision changes and Android technical revision advancement from semantic preservation.
+- Link historical current-looking reports to the central ledger without rewriting old tests, failures or planned matrix. Documentation only; no full native or release approval.
+
 ## 2026-11-06 - Exact iOS 9da native failure recorded
 
 - Replace the current pending status with verified maximum-text landscape focus failure on exact 9da iOS; preserving upgrade, cleanup and all-ten-table/state/photo equality passed. Later acceptance cases remain NOT_RUN.

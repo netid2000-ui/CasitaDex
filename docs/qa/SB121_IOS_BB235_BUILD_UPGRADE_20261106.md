@@ -1,3 +1,5 @@
+**Historical checkpoint.** Historical bb235 build/upgrade and failure checkpoint. Its result remains unchanged; it does not describe the latest installed 8cc artifact. [Current summary](SB121_CURRENT_8CC_NATIVE_MILESTONE_20261106.md) · [Central ledger](SB121_CURRENT_NATIVE_ACCEPTANCE_LEDGER_20261106.json).
+
 # Exact bb235cd iOS build and preserving upgrade — November 6, 2026
 
 ## Verified build and upgrade

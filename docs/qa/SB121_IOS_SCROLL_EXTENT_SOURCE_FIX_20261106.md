@@ -1,3 +1,5 @@
+**Historical checkpoint.** Source-review checkpoint retained below. The then-pending uninstrumented build/native gate now has a separate bounded 8cc milestone; remaining native limits still apply. [Current summary](SB121_CURRENT_8CC_NATIVE_MILESTONE_20261106.md) · [Central ledger](SB121_CURRENT_NATIVE_ACCEPTANCE_LEDGER_20261106.json).
+
 # iOS bounded scroll extent source correction
 
 Status: independently reviewed source milestone. Native acceptance remains pending on an uninstrumented artifact. No production release or physical-device acceptance is claimed.

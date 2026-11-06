@@ -1,3 +1,15 @@
+# Current checkpoint: bounded 8cc native milestones on both platforms
+
+Both exact installed platforms now identify **8cc2862eaf2791379518e440d3b9d5833543ab0a**. [Current consolidated milestone and artifact hashes](SB121_CURRENT_8CC_NATIVE_MILESTONE_20261106.md). **Release remains NO-GO.**
+
+iOS original maximum-text focused rotation and bounded keyboard/normal Save/relaunch/Cancel/Share-preview controls pass. Maximum-size manual hold/refocus remains INCOMPLETE; the final observed-state setup stopped before editor entry at its bounded record-reach check, NOT_RUN rather than a demonstrated app failure. Intentional Save metadata/revision changes are recorded honestly. Android preserving upgrade, current-source smoke, two-photo retention and relaunch pass; the completed virtual target was then safely stopped with all data retained. Prior actual restore remains bb235 and strict offline remains 5dc; neither was repeated on 8cc.
+
+The original planned matrix and historical 18-cell bb235 snapshot remain unchanged. The current [ledger](SB121_CURRENT_NATIVE_ACCEPTANCE_LEDGER_20261106.json) separates latest results from old 5dc/9da failures and earlier passes. No composite promotion, full accessibility, physical or release acceptance follows.
+
+## Historical checkpoint published at da584386, retained unchanged below
+
+Its 9da native failure remains valid history; it is not the current 8cc outcome.
+
 # Current native outcome: iOS 9da rotation failed — November 6, 2026
 
 **VERIFIED FAIL on exact 9da76aaa391d423efc25de497c18e44eb2493c0e. Release remains NO-GO.** This supersedes the earlier pending wording without altering historical snapshots.

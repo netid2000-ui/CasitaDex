@@ -1,3 +1,5 @@
+**Historical checkpoint.** Historical test-only preparation and planned matrix. The JSON plan remains PLANNED_NOT_EXECUTED; subsequent exact-artifact results are recorded in the central ledger, not written back as historical passes. [Current summary](SB121_CURRENT_8CC_NATIVE_MILESTONE_20261106.md) · [Central ledger](SB121_CURRENT_NATIVE_ACCEPTANCE_LEDGER_20261106.json).
+
 # SB121 serial refresh contract and post-reminder preparation
 
 November 6, 2026 UTC. Reviewed baseline 6dbde52a64f76696d291326201d2128c48318014. **No application change or new native build.** Application source remains 737eac13cfacae0086890f98f2197607244036d7; the protected installed reminder runtime remains a8867c06c7dd3ceab55bd1ac6705064a83de28f2.

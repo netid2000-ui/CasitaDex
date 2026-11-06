@@ -1,3 +1,5 @@
+**Historical checkpoint.** Historical bb235 native export plus five isolated engine cases. Later actual native restore is separate; these test results and limits are not rewritten. [Current summary](SB121_CURRENT_8CC_NATIVE_MILESTONE_20261106.md) · [Central ledger](SB121_CURRENT_NATIVE_ACCEPTANCE_LEDGER_20261106.json).
+
 # Current native Full v4 archive acceptance
 
 November 6, 2026, 15:14 UTC test run. **VERIFIED PASS: 5 tests, 5 passed, 0 failed, 0 skipped.** This closes the five opt-in real-archive cases for the current Android runtime and tested engine source. It is not native app restore acceptance or release approval. Release remains **NO-GO**.

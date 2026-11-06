@@ -1,3 +1,5 @@
+**Historical checkpoint.** Historical artifact checkpoint: its “current” bb235 and untested-restore wording describes the earlier run. Later actual Android restore and both-platform 8cc outcomes are separately attributed in the current summary. [Current summary](SB121_CURRENT_8CC_NATIVE_MILESTONE_20261106.md) · [Central ledger](SB121_CURRENT_NATIVE_ACCEPTANCE_LEDGER_20261106.json).
+
 # Verified keyboard milestones — November 6, 2026
 
 Subsequent bounded archive update: [the five opt-in cases passed with a fresh native bb235cd Android Full v4 export](SB121_CURRENT_NATIVE_ARCHIVE_20261106.md). The historical full-suite skips below are unchanged; actual app restore remains untested.
