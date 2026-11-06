@@ -1,0 +1,149 @@
+{
+  "status": "PARTIAL_REMEDIATION_SECURITY_GATE_OPEN",
+  "date": "2026-11-06T22:08:37.350Z",
+  "baseHead": "d602ae9be817cf6268e023cb49c8ccb10e20975d",
+  "owner": "CasitaDex delegated engineering lane",
+  "change": {
+    "file": "package-lock.json",
+    "packagePath": "node_modules/@expo/fingerprint/node_modules/glob",
+    "from": "13.0.6",
+    "to": "13.0.7",
+    "changedEntries": [
+      "node_modules/@expo/fingerprint/node_modules/glob"
+    ],
+    "oldLockSha256": "7767f310cb183d9e2de29deed82d79ee7cd9a08dd29bddf5a979474fe7c856c7",
+    "newLockSha256": "067069932001e98acd12d94cdcd3f26e5c23ffefcfd58b1d605362c465cedc56",
+    "unchangedDependencyRanges": true,
+    "unchangedNodeEngine": true,
+    "noOverrideAdded": true
+  },
+  "verification": {
+    "time": "2026-11-06T22:07:23.075Z",
+    "baseHead": "d602ae9be817cf6268e023cb49c8ccb10e20975d",
+    "node": "v24.22.1",
+    "tarballIntegrityVerified": true,
+    "before": [
+      {
+        "method": "walkCB",
+        "callbacks": 1,
+        "continued": 1,
+        "pass": false
+      },
+      {
+        "method": "walkCB2",
+        "callbacks": 1,
+        "continued": 1,
+        "error": "continued",
+        "pass": false
+      },
+      {
+        "method": "walkCBSync",
+        "callbacks": 1,
+        "continued": 1,
+        "pass": false
+      },
+      {
+        "method": "walkCB2Sync",
+        "callbacks": 1,
+        "continued": 1,
+        "error": "continued",
+        "pass": false
+      }
+    ],
+    "after": [
+      {
+        "method": "walkCB",
+        "callbacks": 1,
+        "continued": 0,
+        "pass": true
+      },
+      {
+        "method": "walkCB2",
+        "callbacks": 1,
+        "continued": 0,
+        "pass": true
+      },
+      {
+        "method": "walkCBSync",
+        "callbacks": 1,
+        "continued": 0,
+        "pass": true
+      },
+      {
+        "method": "walkCB2Sync",
+        "callbacks": 1,
+        "continued": 0,
+        "pass": true
+      }
+    ],
+    "consumerPatternComparison": [
+      {
+        "version": "13.0.6",
+        "asyncResult": [
+          "a/.gitignore",
+          "b/deep/.gitignore",
+          "node_modules/ignored/.gitignore"
+        ],
+        "syncResult": [
+          "a/.gitignore",
+          "b/deep/.gitignore",
+          "node_modules/ignored/.gitignore"
+        ],
+        "esm": true
+      },
+      {
+        "version": "13.0.7",
+        "asyncResult": [
+          "a/.gitignore",
+          "b/deep/.gitignore",
+          "node_modules/ignored/.gitignore"
+        ],
+        "syncResult": [
+          "a/.gitignore",
+          "b/deep/.gitignore",
+          "node_modules/ignored/.gitignore"
+        ],
+        "esm": true
+      }
+    ],
+    "advisoryDatabaseClosure": false
+  },
+  "advisories": [
+    {
+      "id": "GHSA-3g3m-2fjr-6pw4",
+      "cve": "CVE-2026-118773",
+      "severity": "moderate",
+      "disposition": "Published 13.0.7 backports the four missing abort returns; verified packaged code. Advisory currently still declares >=9.0.0 <=14.0.1 affected, so no database closure or waiver claimed.",
+      "source": "https://github.com/isaacs/node-glob/security/advisories/GHSA-3g3m-2fjr-6pw4",
+      "upstreamSource": "https://github.com/isaacs/node-glob/blob/v13.0.7/src/walker.ts"
+    },
+    {
+      "id": "GHSA-g3hv-75wg-m249",
+      "cve": "CVE-2026-118764",
+      "severity": "moderate",
+      "disposition": "OPEN: minimatch10.2.6 retained. Latest fingerprint0.21.9 and typescript-estree8.72.1 still declare ^10.2.2; latest compatible10.x10.2.6 has no fix. Patched minimatch11.0.1+ needs unsupported-major override or upstream supported migration. No low-risk compatible remediation found.",
+      "source": "https://github.com/advisories/GHSA-g3hv-75wg-m249"
+    }
+  ],
+  "exposure": "Build/lint toolchain. Existing current iOS/retained Android mapped-source evidence reused, no native app-input path demonstrated. Fingerprint direct minimatch and inspected typescript-estree use optimization1; nested glob optimization2 receives fixed patterns. No arbitrary untrusted patterns should be introduced. Fingerprint no-Git glob call has no AbortSignal. This does not certify whole-toolchain or native safety.",
+  "reusedEvidence": [
+    "security-runtime-reachability-a8867c0-20261106/REVIEW.md",
+    "security-ios-inventory-7fa012a-20261106/RESULT.json",
+    "security-distribution-8cc2862-20261106/REVIEW.md"
+  ],
+  "limits": [
+    "Lockfile patch only; authoritative existing node_modules remains13.0.6 and installed iOS7fa/Android8cc unchanged. Next ordinary npm ci/install will consume patched lock. Isolated candidate13.0.7 was tested using existing exact dependency versions.",
+    "No broad audit, native rebuild, native retest, device operation, heavy job, paid service or production action. EC isolated emulator run resources were not used.",
+    "No full fingerprint end-to-end acceptance claimed. Standard same-major package behavior comparison and four cancellation regressions are bounded evidence.",
+    "Original assertion failure retained in initial-check-note.txt. Glob ignore literal does not exclude descendant subtree in either version.",
+    "Release remains NO-GO; pending restore/screen-reader approval, iOS offline tool gap and distribution/physical gates unchanged."
+  ],
+  "evidenceDirectory": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB121/dependency-remediation-20261106",
+  "evidenceHashes": {
+    "registry.json": "09c651a42b527e53fea85ef17f06beeccc986f9d4f1cf2105b2e9820bec50b94",
+    "verification.json": "b03ade4a11091ff1ae81b5afc847e4658baf61390ab8dd788282d109d665d159",
+    "verify.cjs": "312a343e96c37f8fd30c8d680d721c458100afcef3d05f51afd9403027e7289d",
+    "glob-13.0.7.tgz": "58342994ba61c09d9c27365d0930195c5583fe31e80c1683544805cebc065fd4",
+    "initial-check-note.txt": "5586e7693265618ea814134664adf2a171ba76bc3a839378a4c063646f060672"
+  }
+}

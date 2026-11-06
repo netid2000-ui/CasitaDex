@@ -730,14 +730,15 @@
       "id": "G10",
       "gate": "Security and dependency closure",
       "status": "PARTIAL",
-      "scope": "Prior exact 8cc Android/iOS security and distribution review recovered and reused. Exact current 7fa iOS HBC/input/map receipt identities and four source controls verified; 1269 mapped sources exclude named affected tooling packages. Raw map recomposition unavailable. Unchanged dependency lock; previously recorded build-tool advisories remain open, no fresh audit or security waiver. Native and distribution security acceptance remains open.",
+      "scope": "Prior exact 8cc Android/iOS security and distribution review recovered and reused. Exact current 7fa iOS HBC/input/map receipt identities and four source controls verified; 1269 mapped sources exclude named affected tooling packages. Raw map recomposition unavailable. Unchanged dependency lock; previously recorded build-tool advisories remain open, no fresh audit or security waiver. Native and distribution security acceptance remains open. Follow-up: compatible glob13.0.6 ->13.0.7 lockfile backport verified by four cancellation regressions and async/sync/ESM consumer-pattern comparison. Advisory database still flags13.x; minimatch10.2.6 remains open. Existing installed artifacts and node_modules are unchanged; historical lock/artifact evidence is not relabeled.",
       "evidence_refs": [
         "security_review",
         "security_receipt",
         "ios_5dc_security",
         "ios_5dc_security_receipt",
         "security_distribution_8cc_reused",
-        "ios_7fa_security_inventory"
+        "ios_7fa_security_inventory",
+        "dependency_glob_backport"
       ]
     },
     {
@@ -1178,7 +1179,8 @@
       "raw_result_sha256": "2aeeb6495b1cf36a470be2e3346ff87da1cab006a8664cf97aaa72a1577031fb",
       "raw_manifest_sha256": "1bb5360d34c40ec1e12888358a34fd59b75409e6e5e4a1273ab416386379b2bf",
       "source_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606"
-    }
+    },
+    "dependency_glob_backport": "docs/qa/SB121_DEPENDENCY_GLOB_BACKPORT_20261106.json"
   },
   "execution_limits": [
     "Receipt consolidation and SHA-256 verification only. No duplicate app tests, builds, device actions or source/index edits.",
@@ -1852,5 +1854,11 @@
     "baseline_evidence_ref": "ios_7fa_share_private_preview",
     "baseline_sha256": "90ce7bf2c37f2788737e647b0c5f35004fabf23a3c098a286a628937c594a82c",
     "note": "Includes one additive synthetic privacy record; original records unchanged. Use this baseline for future preservation checks, not revision16."
+  },
+  "dependency_remediation_followup": {
+    "report": "docs/qa/SB121_DEPENDENCY_GLOB_BACKPORT_20261106.json",
+    "sourceLockSha256": "067069932001e98acd12d94cdcd3f26e5c23ffefcfd58b1d605362c465cedc56",
+    "installedRuntimeLockSha256": "7767f310cb183d9e2de29deed82d79ee7cd9a08dd29bddf5a979474fe7c856c7",
+    "status": "PARTIAL_REMEDIATION_SECURITY_GATE_OPEN"
   }
 }
