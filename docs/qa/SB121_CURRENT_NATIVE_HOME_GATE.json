@@ -1,0 +1,84 @@
+{
+  "recordedAtUtc": "2026-11-06T04:57:31.074547+00:00",
+  "status": "BOUNDED ANDROID HOME RECOVERY PASS; RELEASE NO-GO",
+  "applicationSource": "87cb5b12fac0e36642b070c9b4bc150f740218bc",
+  "branch": "work/cd-sb41-edit-targeting-20261104",
+  "buildSourceCleanAndTrackedFilesIdentical": 705,
+  "apkSha256": "c91444c61aba559e04a03dc366a194d6e8e5618aa4c18ad03137b6f0d316e174",
+  "bundledJsSha256": "9d2ecca234fa9a4db7532af510b880ef3ee4881b68ccf39b0f0f2d2421de2f72",
+  "package": "com.designsbyfa.casitadex.dev",
+  "buildVariant": "Development identity, nondebuggable bundled Release, arm64",
+  "signing": "Published Expo template QA signer; unchanged, not distribution",
+  "device": "Dedicated preserved API35 ARM64 Android emulator on authorized Mac; exact reservation in private operational evidence",
+  "prebuildGate": {
+    "ownerScreenshotSha256": "812fff4b81e6e3b4cc53d06b2dc9885aa358757ceda802f7c8082e7e3be06876",
+    "ownerAndCorrectedPixelsInspected": true,
+    "fourTabs": [
+      "Home",
+      "Photos",
+      "Reminders",
+      "Find"
+    ],
+    "homeActions": [
+      "Find a Memory",
+      "Add Memory",
+      "Add Photo Memory",
+      "Add Reminder"
+    ],
+    "otherWorktree": "Dirty figma-first-native-qa reviewed and preserved; selected original Home recovered",
+    "newerFunctionalFiles": "Unchanged hashes verified for data, media, backup, notification and navigation behavior outside reviewed UI changes",
+    "historicalArtifactsExcluded": "Previous five-tab Android and frozen iOS normal-clock fixture do not qualify corrected UI",
+    "figmaReviewNodes": [
+      "321:36",
+      "321:163"
+    ]
+  },
+  "nativeVerification": {
+    "sameSignerDataPreservingUpgrade": true,
+    "completeStoppedAvdRollbackCloneVerified": true,
+    "installedApkHashMatches": true,
+    "liveDesktopPixelsInspectedAtUtc": "2026-11-06T04:52:24Z",
+    "cases": [
+      {
+        "case": "Corrected native Home: exactly four tabs in owner order, four enabled actions and Settings reachable",
+        "result": "PASS",
+        "utc": "2026-11-06T04:53:07.699370+00:00"
+      },
+      {
+        "case": "Four-tab Find to Browse all memories opens retained pre-upgrade memory and exact answer",
+        "result": "PASS",
+        "utc": "2026-11-06T04:53:44.779860+00:00"
+      },
+      {
+        "case": "Home Settings to Browse all memories remains reachable",
+        "result": "PASS",
+        "utc": "2026-11-06T04:53:54.016938+00:00"
+      }
+    ],
+    "screenshot": {
+      "path": "QA-Evidence/WORK-SB121/android-current-home/corrected-home-native.png",
+      "sha256": "b6af27912b3d9659356ba98fbafcda98cabdbe60d9653bb761a8355ac12d371e"
+    },
+    "returnedHomeScreenshot": {
+      "path": "QA-Evidence/WORK-SB121/android-current-home/corrected-home-after-routes.png",
+      "sha256": "10c81b5b082ce2a9ab53000f54a8e8faf7490eea7f3f7e9f67afad1af224a28c"
+    },
+    "initialHarnessIssue": "UIAutomator flattened navigation children; descendant selector found none. Corrected to navigation bounds containment, preserving exact count/order assertions. No app correction or rebuild required."
+  },
+  "staticEvidence": "410 passed, 5 existing skips; 34 focused; typecheck, lint and browser passed before build",
+  "remoteCi": "No commit status checks or workflow runs returned for this exact application source; no CI-green claim",
+  "boundaries": {
+    "physicalPhonesTested": false,
+    "frozenIosChanged": false,
+    "hostNetworkChanged": false,
+    "oldCheckoutsMovedOrDeleted": false,
+    "productionOrStoreActions": false
+  },
+  "remaining": [
+    "Corrected iOS native build and acceptance after frozen reminder window",
+    "Full native photo, backup/restore, strict offline and screen-reader/large-text/landscape acceptance",
+    "Normal-clock linked 09:00 delivery and tap qualification",
+    "Security and Android full-lint blockers already recorded",
+    "Owner physical-iPhone signoff, virtual gates before all physical-phone testing"
+  ]
+}

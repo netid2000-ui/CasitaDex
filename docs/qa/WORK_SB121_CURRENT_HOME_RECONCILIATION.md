@@ -33,3 +33,6 @@ One bounded corrected native candidate followed by normal/large text, dark/light
 
 ## Editable design reconciliation
 The bounded new Home review frames preserve old masters and the owner-reference changes: [Apple Home](https://www.figma.com/design/39uzN0SZX8nlmcGDcHdQhr?node-id=321-36) and [Android Home](https://www.figma.com/design/39uzN0SZX8nlmcGDcHdQhr?node-id=321-163). They remain REVIEW, not extra owner or native acceptance.
+
+## Corrected Android follow-through — 2026-11-06
+Source 87cb5b12fac0e36642b070c9b4bc150f740218bc is committed and remote-verified. One corrected native APK was built, verified and upgraded on the preserved Android emulator without clearing data. Actual live pixels and three bounded native cases passed. See [the native baseline gate](SB121_CURRENT_NATIVE_HOME_GATE.json) for exact source/artifact/screenshot hashes and retained-memory evidence. Historical five-tab artifacts remain excluded. Broader release gates and the scheduled older iOS reminder fixture remain unchanged.

@@ -1,9 +1,9 @@
 # Changelog
 
-## Uncommitted current Home recovery — 2026-11-06
+## Verified four-tab Home recovery — 2026-11-06
 - Recover the owner-confirmed four-tab Home, horizontal original brand, Settings and Find-first actions.
 - Keep Memories reachable from native Find and Settings; retain draft/navigation/reminder guards and full-date/large-text access.
-- Correct the historical four-tab browser claim and assert exact tab count/order. Native acceptance remains pending.
+- Correct the historical four-tab browser claim and assert exact tab count/order. Bounded Android Home, retained-memory and relocated Browse routes now pass on the corrected APK; broader acceptance remains open.
 
 
 ## November 6, 2026 - WORK-SB121 Android candidate preparation
