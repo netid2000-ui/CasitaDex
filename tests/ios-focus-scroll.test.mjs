@@ -178,3 +178,21 @@ test("end-only event without deferred work does not create a correction loop",()
  for(let i=0;i<3;i++){f.content.props.onMomentumScrollEnd();f.flush();}
  assert.equal(f.calls.length,1);
 });
+
+// Native diagnostic trace SHA256 65ce447b89bfe6f01711175de2e6a77e94400b0c993963e2d9b0da33e46ebce8.
+// This counterexample is source evidence, not a claim that a mock can verify native content extent.
+test("captured short native extent caps focus before its measured descendant; valid extent permits correction", () => {
+ const innerInputY = 1687.667, inputHeight = 177, nativeExtent = 1399, overflowExtent = 8572;
+ assert.ok(innerInputY + inputHeight > nativeExtent);
+ assert.ok(overflowExtent > nativeExtent, "DOM overflow extent is not UIScrollView contentSize");
+ const setup = extent => {
+  const f = fixture(); f.state.viewport = [62,71,750,107]; f.state.field = [82,1694.667,710,inputHeight];
+  f.offset(64); f.size(extent); f.flush(); return f;
+ };
+ const observed = setup(nativeExtent);
+ assert.equal(observed.calls[0].y,1292);
+ assert.ok(Math.abs((1694.667 - (1292 - 64)) - 466.667) < .001);
+ // Hypothetical valid native extent must contain the measured descendant. Do not substitute DOM scrollHeight.
+ const containing = setup(innerInputY + inputHeight);
+ assert.ok(Math.abs(containing.calls[0].y - 1722.667) < .001);
+});

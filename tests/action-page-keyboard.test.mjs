@@ -44,7 +44,8 @@ function fixture(os = "android") {
     flat(tree).find(n => n.props.onLayout).props.onLayout({ nativeEvent: { layout: { width, height } } });
     return render();
   }
-  return { state, calls, save, cancel, editor, flat, render, measure };
+  const parent = (tree, child) => flat(tree).find(n => n.props.children.flat(Infinity).includes(child));
+  return { state, calls, save, cancel, editor, flat, render, measure, parent };
 }
 for (const os of ["android", "ios", "web"]) {
   test(os + " ActionPage uses rotation-safe native padding and current top inset only", () => {
@@ -62,7 +63,19 @@ for (const os of ["android", "ios", "web"]) {
     const f = fixture(os), tree = f.measure(914, 149), nodes = f.flat(tree);
     for (const id of ["memory-action-region", "memory-content-region"]) {
       const n = nodes.find(n => n.props.testID === id);
-      assert.ok(n); assert.equal(n.props.style.overflow, "hidden");
+      assert.ok(n);
+      if (os === "ios") {
+        assert.equal(n.props.style.overflow, "scroll", "Keep native ScrollView scroll-axis measurement semantics");
+        const clip = f.parent(tree, n);
+        assert.equal(clip.type, "View");
+        assert.equal(clip.props.style.overflow, "hidden", "Clip on the bounded parent, never remove visual clipping");
+        assert.equal(clip.props.style.minHeight, 0);
+        assert.equal(clip.props.collapsable, false);
+        assert.equal(clip.props.accessible, false);
+      } else {
+        assert.equal(n.props.style.overflow, "hidden");
+        assert.equal(f.parent(tree, n), tree.props.children[0], "Keep Android/web layout structure unchanged");
+      }
       assert.equal(n.props.style.minHeight, 0);
       assert.equal(n.props.keyboardShouldPersistTaps, "handled");
       assert.equal(n.props.nestedScrollEnabled, true);
@@ -86,4 +99,30 @@ test("actual ActionPage re-budgets after keyboard and both rotation directions w
     assert.equal(nodes.find(n => n.type === "Button" && n.props.label === "Cancel").props.onPress, f.cancel);
   }
   f.save(); f.cancel(); assert.deepEqual(f.calls, ["save", "cancel"]);
+});
+
+for (const os of ["ios", "android", "web"]) test(os + " clips each region without sharing the focus ref or expanding short actions", () => {
+  const f = fixture(os);
+  for (const [width, height] of [[402, 484], [750, 178], [402, 692]]) {
+    const tree = f.measure(width, height), nodes = f.flat(tree);
+    const action = nodes.find(n => n.props.testID === "memory-action-region");
+    const content = nodes.find(n => n.props.testID === "memory-content-region");
+    const actionBound = os === "ios" ? f.parent(tree, action) : action;
+    const contentBound = os === "ios" ? f.parent(tree, content) : content;
+    assert.equal(actionBound.props.style.flexGrow, 0, "Short actions must not request spare space");
+    assert.equal(actionBound.props.style.flexShrink, 1);
+    assert.equal(actionBound.props.style.height, undefined, "No fixed action height, including short content");
+    assert.equal(actionBound.props.style.flexBasis, undefined, "No basis forcing the full action budget");
+    assert.equal(actionBound.props.style.minHeight, 0);
+    assert.equal(actionBound.props.style.maxHeight, Math.floor(height * .4));
+    assert.equal(contentBound.props.style.flex, 1);
+    assert.equal(contentBound.props.style.minHeight, 0);
+    assert.equal(contentBound.props.style.overflow, "hidden");
+    assert.equal(action.props.style.flexGrow, 0);
+    assert.equal(action.props.style.flexShrink, 1);
+    assert.ok(nodes.includes(f.editor), "No editor remount or replaced session");
+    assert.equal(tree.props.key, undefined);
+    assert.equal(nodes.find(n => n.type === "Button" && n.props.label === "Save").props.onPress, f.save);
+    assert.equal(nodes.find(n => n.type === "Button" && n.props.label === "Cancel").props.onPress, f.cancel);
+  }
 });

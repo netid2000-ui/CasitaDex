@@ -14,7 +14,8 @@ test('actual action page has independent bounded scroll and keyboard-safe shrink
  const file=fs.readFileSync(path.join(root,'src/action-page.tsx'),'utf8');
  assert.match(file,/nativeEvent.layout/);assert.match(file,/actionRegionLimit\(bounds.height\)/);
  assert.match(file,/flexGrow: 0, flexShrink: 1, minHeight: 0/);
- assert.match(file,/testID="memory-content-region" style=\{\{ flex: 1, minHeight: 0, overflow: "hidden" \}\}/);
+ assert.match(file,/contentViewport: ViewStyle = \{ flex: 1, minHeight: 0, overflow: "hidden" \}/);
+ assert.match(file,/testID="memory-content-region" style=\{ios \? \{ flex: 1, minHeight: 0, overflow: "scroll" \} : contentViewport\}/);
  assert.match(file,/KeyboardAvoidingView behavior=\{Platform.OS === "ios" \? "padding"/);
  assert.doesNotMatch(file,/maxFontSizeMultiplier|numberOfLines|allowFontScaling=\{false\}|position: "absolute"/);
 });
