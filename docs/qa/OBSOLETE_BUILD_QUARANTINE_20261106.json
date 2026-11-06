@@ -1,0 +1,4540 @@
+{
+  "schema_version": 1,
+  "machine": "FA-MAC-DEV-01",
+  "authoritative_root": "/Volumes/FA-Development/Designs-by-FA",
+  "operation": "reversible same-volume rename of five exact app bundles and two exact APK files",
+  "utc_started": "2026-11-06T14:13:51.009957+00:00",
+  "utc_completed": "2026-11-06T14:18:32.629336+00:00",
+  "count": 7,
+  "total_file_bytes": 595963240,
+  "disk_space_reclaimed_bytes": 0,
+  "release_acceptance_claim": false,
+  "entries": [
+    {
+      "original": "Apple-Builds/CasitaDex-DerivedData/Build/Products/Debug-iphonesimulator/CasitaDexDev.app",
+      "quarantine": "Quarantine/Obsolete-Builds/20261106T1413Z/Apple-Builds/CasitaDex-DerivedData/Build/Products/Debug-iphonesimulator/CasitaDexDev.app.quarantined",
+      "identity": {
+        "CFBundleIdentifier": "com.designsbyfa.casitadex.dev",
+        "CFBundleVersion": "1",
+        "CFBundleShortVersionString": "0.1.0",
+        "CFBundleExecutable": "CasitaDexDev"
+      },
+      "file_bytes": 136212196,
+      "status": "quarantined_and_hash_verified",
+      "files": [
+        {
+          "path": "AppIcon60x60@2x.png",
+          "mode": 420,
+          "mtime_ns": 1792850089471180247,
+          "type": "file",
+          "size": 12891,
+          "sha256": "4aa53e90fd2b673418a2b058c1ed3adc7f9f8c00927a2cd3caadd685439b984c"
+        },
+        {
+          "path": "AppIcon76x76@2x~ipad.png",
+          "mode": 420,
+          "mtime_ns": 1792850089472639298,
+          "type": "file",
+          "size": 18203,
+          "sha256": "f4ee26f2fd09ba287e33224ed7ba768def0f33e3cb86d0061b0593edbca9a791"
+        },
+        {
+          "path": "Assets.car",
+          "mode": 420,
+          "mtime_ns": 1792850090055852503,
+          "type": "file",
+          "size": 513640,
+          "sha256": "a0ad0744aae12cd2a12a73b514bc54cf2e143471b52ce5deb0219957f36e0782"
+        },
+        {
+          "path": "CasitaDexDev",
+          "mode": 493,
+          "mtime_ns": 1792850259096908645,
+          "type": "file",
+          "size": 40224,
+          "sha256": "40ef8d61c3f34b2862b4aa23393c1ef7c511f03372f7a65d160f597a32e711ce"
+        },
+        {
+          "path": "CasitaDexDev.debug.dylib",
+          "mode": 493,
+          "mtime_ns": 1792850259045941371,
+          "type": "file",
+          "size": 47698856,
+          "sha256": "7c0b304f3ab900b017a8b0df08c3a616f43d047fed99dd6e361a6dd856d239fa"
+        },
+        {
+          "path": "EXConstants.bundle",
+          "mode": 493,
+          "mtime_ns": 1792850082000000000,
+          "type": "directory"
+        },
+        {
+          "path": "EXConstants.bundle/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1792850020000000000,
+          "type": "file",
+          "size": 753,
+          "sha256": "6af609f7c5b3cd61ada5e3cca28100991ba272ff88e5d32d488e39cb57aebdb6"
+        },
+        {
+          "path": "EXConstants.bundle/app.config",
+          "mode": 420,
+          "mtime_ns": 1792850257000000000,
+          "type": "file",
+          "size": 1431,
+          "sha256": "81f3597f3d9515a317a42296ab0179f7e8f3ef132a7381c3141cd09f2a245df4"
+        },
+        {
+          "path": "Expo.plist",
+          "mode": 420,
+          "mtime_ns": 1792850088735243593,
+          "type": "file",
+          "size": 173,
+          "sha256": "05ba13f24655445d029d47b626ac23ce8003e2e0722b7f8926b82b89c94ec51b"
+        },
+        {
+          "path": "ExpoConstants_privacy.bundle",
+          "mode": 493,
+          "mtime_ns": 1792850020000000000,
+          "type": "directory"
+        },
+        {
+          "path": "ExpoConstants_privacy.bundle/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1792850020000000000,
+          "type": "file",
+          "size": 775,
+          "sha256": "d79145cf3633bcaa8004e610a0089d857484e60ee92634d5904c2998da3dbbed"
+        },
+        {
+          "path": "ExpoConstants_privacy.bundle/PrivacyInfo.xcprivacy",
+          "mode": 420,
+          "mtime_ns": 1792850020000000000,
+          "type": "file",
+          "size": 607,
+          "sha256": "2b2d8edb71d51c5b1f1ace4cdb28a94baf22fdde9bbf2e2bfc17d187ff7b5f47"
+        },
+        {
+          "path": "ExpoFileSystem_privacy.bundle",
+          "mode": 493,
+          "mtime_ns": 1792850020000000000,
+          "type": "directory"
+        },
+        {
+          "path": "ExpoFileSystem_privacy.bundle/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1792850020000000000,
+          "type": "file",
+          "size": 776,
+          "sha256": "9ff538884061ab2975bcf3f27b1a72a52e80ba576e73921651c7eaddc1b09fa0"
+        },
+        {
+          "path": "ExpoSystemUI_privacy.bundle",
+          "mode": 493,
+          "mtime_ns": 1792850020000000000,
+          "type": "directory"
+        },
+        {
+          "path": "ExpoSystemUI_privacy.bundle/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1792850020000000000,
+          "type": "file",
+          "size": 772,
+          "sha256": "85e23c2b76434cd385ca0824785f1af1a79db48bbebaaf202e2f724a0b81a5d8"
+        },
+        {
+          "path": "ExpoSystemUI_privacy.bundle/PrivacyInfo.xcprivacy",
+          "mode": 420,
+          "mtime_ns": 1792850020000000000,
+          "type": "file",
+          "size": 607,
+          "sha256": "2b2d8edb71d51c5b1f1ace4cdb28a94baf22fdde9bbf2e2bfc17d187ff7b5f47"
+        },
+        {
+          "path": "Frameworks",
+          "mode": 493,
+          "mtime_ns": 1792850096871926833,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ExpoFileSystem.framework",
+          "mode": 493,
+          "mtime_ns": 1792850259258410190,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ExpoFileSystem.framework/ExpoFileSystem",
+          "mode": 493,
+          "mtime_ns": 1792850259258515024,
+          "type": "file",
+          "size": 1883952,
+          "sha256": "6586a2b752fa3f2a973b1ec09ec71c807f8f88650e88b742cf228e1b534b6c49"
+        },
+        {
+          "path": "Frameworks/ExpoFileSystem.framework/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1792849726000000000,
+          "type": "file",
+          "size": 746,
+          "sha256": "5f9a269baff07c93ed53674b76667a8b84b8acd9aa6dd96d94c326bd1e7e6b7d"
+        },
+        {
+          "path": "Frameworks/ExpoFileSystem.framework/_CodeSignature",
+          "mode": 493,
+          "mtime_ns": 1792849726000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ExpoFileSystem.framework/_CodeSignature/CodeResources",
+          "mode": 420,
+          "mtime_ns": 1792849726000000000,
+          "type": "file",
+          "size": 1798,
+          "sha256": "3ae83871cd2b1afb35fff45f2130a05d9cadeb11984ec8075e6d879c0d5b3ee3"
+        },
+        {
+          "path": "Frameworks/ExpoFont.framework",
+          "mode": 493,
+          "mtime_ns": 1792850259286748991,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ExpoFont.framework/ExpoFont",
+          "mode": 493,
+          "mtime_ns": 1792850259286779200,
+          "type": "file",
+          "size": 261056,
+          "sha256": "9f9d782bc51e8165e0352d28c2fc73167720848e9dbecffa0c846a621be33dde"
+        },
+        {
+          "path": "Frameworks/ExpoFont.framework/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1792849726000000000,
+          "type": "file",
+          "size": 728,
+          "sha256": "7f0220334b9f441a188a322be1848cccabfdbf269a11846db72d2ebe2db3fb1a"
+        },
+        {
+          "path": "Frameworks/ExpoFont.framework/_CodeSignature",
+          "mode": 493,
+          "mtime_ns": 1792849726000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ExpoFont.framework/_CodeSignature/CodeResources",
+          "mode": 420,
+          "mtime_ns": 1792849726000000000,
+          "type": "file",
+          "size": 1798,
+          "sha256": "31c71f755e0bfab32d7d59ab5d6fa0ac432864ecbdc952909c831823277e8a97"
+        },
+        {
+          "path": "Frameworks/ExpoModulesCore.framework",
+          "mode": 493,
+          "mtime_ns": 1792850259357935850,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ExpoModulesCore.framework/ExpoModulesCore",
+          "mode": 493,
+          "mtime_ns": 1792850259358346102,
+          "type": "file",
+          "size": 6405536,
+          "sha256": "59d4789427348a57dd3bbb99d259f281361a29a56346a079b2811974142a17dc"
+        },
+        {
+          "path": "Frameworks/ExpoModulesCore.framework/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1792849726000000000,
+          "type": "file",
+          "size": 752,
+          "sha256": "c7a9db6e207f3976f97f4f6c874051386107720fd2b1caeaa303a92298d0ded3"
+        },
+        {
+          "path": "Frameworks/ExpoModulesCore.framework/_CodeSignature",
+          "mode": 493,
+          "mtime_ns": 1792849726000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ExpoModulesCore.framework/_CodeSignature/CodeResources",
+          "mode": 420,
+          "mtime_ns": 1792849726000000000,
+          "type": "file",
+          "size": 1798,
+          "sha256": "be77bfa5f44a69adb5417a40a35157acbef6c348a207f4a96db088fdfdb9abff"
+        },
+        {
+          "path": "Frameworks/ExpoModulesJSI.framework",
+          "mode": 493,
+          "mtime_ns": 1792850259386523111,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ExpoModulesJSI.framework/ExpoModulesJSI",
+          "mode": 493,
+          "mtime_ns": 1792850259386563694,
+          "type": "file",
+          "size": 510656,
+          "sha256": "641da8b4345b4c8eb25c06145832a84c563d57acf3e132fa965369397d4d9b19"
+        },
+        {
+          "path": "Frameworks/ExpoModulesJSI.framework/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1792850036000000000,
+          "type": "file",
+          "size": 741,
+          "sha256": "744cbe6eb990cea632897b6397fa1d1da1c6f91a97b9ef06c77392fa43ff232d"
+        },
+        {
+          "path": "Frameworks/ExpoModulesJSI.framework/_CodeSignature",
+          "mode": 493,
+          "mtime_ns": 1792850037000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ExpoModulesJSI.framework/_CodeSignature/CodeResources",
+          "mode": 420,
+          "mtime_ns": 1792850037000000000,
+          "type": "file",
+          "size": 1798,
+          "sha256": "fafa73030b8197f08a7b5fb9bef285bd521d58e8db4b85562ce3eac4bbadf1c3"
+        },
+        {
+          "path": "Frameworks/ExpoModulesWorklets.framework",
+          "mode": 493,
+          "mtime_ns": 1792850259412787482,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ExpoModulesWorklets.framework/ExpoModulesWorklets",
+          "mode": 493,
+          "mtime_ns": 1792850259412816482,
+          "type": "file",
+          "size": 194624,
+          "sha256": "bf4238b047012ef8d6578d0720be031f99f878278713870b740c096b5bc61904"
+        },
+        {
+          "path": "Frameworks/ExpoModulesWorklets.framework/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1792849727000000000,
+          "type": "file",
+          "size": 764,
+          "sha256": "fc9a8ff5386c6fbf5bfbcdbc48dfa9fec1ad8ca936d6cfd3c6851b7cfcc41ddf"
+        },
+        {
+          "path": "Frameworks/ExpoModulesWorklets.framework/_CodeSignature",
+          "mode": 493,
+          "mtime_ns": 1792849727000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ExpoModulesWorklets.framework/_CodeSignature/CodeResources",
+          "mode": 420,
+          "mtime_ns": 1792849727000000000,
+          "type": "file",
+          "size": 1798,
+          "sha256": "a0283877a2c602a1cff02e9849d60dcd2d58541a764efbd7595d99f96717fef9"
+        },
+        {
+          "path": "Frameworks/React.framework",
+          "mode": 493,
+          "mtime_ns": 1792850259879932675,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/React.framework/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1792849734000000000,
+          "type": "file",
+          "size": 724,
+          "sha256": "c9be56123cc6ba97e94958755e20537471fd84b0c1cd579e4982ae9255816301"
+        },
+        {
+          "path": "Frameworks/React.framework/React",
+          "mode": 420,
+          "mtime_ns": 1792850259896547236,
+          "type": "file",
+          "size": 68953936,
+          "sha256": "864c00e8bdb03f621bae98b49481a0b16d45be1cec60973f2d40d39fc15442fe"
+        },
+        {
+          "path": "Frameworks/React.framework/_CodeSignature",
+          "mode": 493,
+          "mtime_ns": 1792849734000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/React.framework/_CodeSignature/CodeResources",
+          "mode": 420,
+          "mtime_ns": 1792849734000000000,
+          "type": "file",
+          "size": 1798,
+          "sha256": "9f22235918b33cc61280bff9f60b6fc25e491f693db5d1e0589a3e33eb952261"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework",
+          "mode": 493,
+          "mtime_ns": 1792850259950711115,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 761,
+          "sha256": "043d66b265858b73ca23f8cbbf15e7043bb40f97e6104708e4f69d1f9d00fa96"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies",
+          "mode": 420,
+          "mtime_ns": 1792850259950886324,
+          "type": "file",
+          "size": 3589984,
+          "sha256": "9af3e629a9eca31e3db48945107898c18d76de3edb804f5730a8bf056cbe3c9f"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_boost.bundle",
+          "mode": 493,
+          "mtime_ns": 1792849738000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_boost.bundle/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 669,
+          "sha256": "16db1275ce3a9d70994d079ae4fe4e7f8894b2f92fb3c6b33b03fa3a2e5d0971"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_boost.bundle/PrivacyInfo.xcprivacy",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 776,
+          "sha256": "d3559c988dff940d4f758f37a0ba1863208304e33ab0b97c0e3dd5d3762f5f1d"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_boost.bundle/_CodeSignature",
+          "mode": 493,
+          "mtime_ns": 1792849738000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_boost.bundle/_CodeSignature/CodeDirectory",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 156,
+          "sha256": "178f3bdcfed97cc13ad4e518330448c56e00f47360560e105d55cfcd7598d9b8"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_boost.bundle/_CodeSignature/CodeRequirements",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 12,
+          "sha256": "987920904eab650e75788c054aa0b0524e6a80bfc71aa32df8d237a61743f986"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_boost.bundle/_CodeSignature/CodeRequirements-1",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 204,
+          "sha256": "d2393f211df2ea2bc6e03061789759c9818f99ffd177b408422ccf4d0b37f94e"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_boost.bundle/_CodeSignature/CodeResources",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 2032,
+          "sha256": "557fba743e35172838832cca93f1d17e34b8bd696f96eeb3032e529502ea945e"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_boost.bundle/_CodeSignature/CodeSignature",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_folly.bundle",
+          "mode": 493,
+          "mtime_ns": 1792849738000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_folly.bundle/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 669,
+          "sha256": "5abf3977eef24726730e03a648dca022c8f993596e122cd94cf322985ac8ac76"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_folly.bundle/PrivacyInfo.xcprivacy",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 552,
+          "sha256": "0587d155c56a6f4f0647ebc6b6a0bd026615cd610ee8f209a9786b79a96ad335"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_folly.bundle/_CodeSignature",
+          "mode": 493,
+          "mtime_ns": 1792849738000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_folly.bundle/_CodeSignature/CodeDirectory",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 156,
+          "sha256": "25ccd0685a97962d86509fb66694af0eb207890862bcb49c3e14bd3ddbe4ddfc"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_folly.bundle/_CodeSignature/CodeRequirements",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 12,
+          "sha256": "987920904eab650e75788c054aa0b0524e6a80bfc71aa32df8d237a61743f986"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_folly.bundle/_CodeSignature/CodeRequirements-1",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 204,
+          "sha256": "dee967a352e0d990a9bc3d34c5a66c6597254ec4431de379acd35ef3fe94a03b"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_folly.bundle/_CodeSignature/CodeResources",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 2032,
+          "sha256": "be2989a2daf02505cf3117ce99419580ce849fd1a8200c581bd9acdf8409a440"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_folly.bundle/_CodeSignature/CodeSignature",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_glog.bundle",
+          "mode": 493,
+          "mtime_ns": 1792849738000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_glog.bundle/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 667,
+          "sha256": "8b97a53cf72f56810fed094013c2f521c034e5267a495081570a861a0adc4c41"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_glog.bundle/PrivacyInfo.xcprivacy",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 552,
+          "sha256": "0587d155c56a6f4f0647ebc6b6a0bd026615cd610ee8f209a9786b79a96ad335"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_glog.bundle/_CodeSignature",
+          "mode": 493,
+          "mtime_ns": 1792849738000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_glog.bundle/_CodeSignature/CodeDirectory",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 155,
+          "sha256": "d7cb7c11cc0a0c8f4ee3e91df163b072d20f5258f28106b6c71a06a3a5d29383"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_glog.bundle/_CodeSignature/CodeRequirements",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 12,
+          "sha256": "987920904eab650e75788c054aa0b0524e6a80bfc71aa32df8d237a61743f986"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_glog.bundle/_CodeSignature/CodeRequirements-1",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 203,
+          "sha256": "e54537eaff8aa25202925da339bf7d4c92854298ba76e0417eec916e16c2a0ec"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_glog.bundle/_CodeSignature/CodeResources",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 2032,
+          "sha256": "be2989a2daf02505cf3117ce99419580ce849fd1a8200c581bd9acdf8409a440"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_glog.bundle/_CodeSignature/CodeSignature",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/_CodeSignature",
+          "mode": 493,
+          "mtime_ns": 1792849738000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/_CodeSignature/CodeResources",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 1798,
+          "sha256": "1b16b78c80abf2f78f9a3025803a6c9e69fc2484c1f16c84324b38928559bb33"
+        },
+        {
+          "path": "Frameworks/hermesvm.framework",
+          "mode": 493,
+          "mtime_ns": 1792850260016752983,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/hermesvm.framework/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1792849741000000000,
+          "type": "file",
+          "size": 866,
+          "sha256": "0767523a61a3ab293e6e39ea3de61622d833f2dacee418afd89f6a57d67c8119"
+        },
+        {
+          "path": "Frameworks/hermesvm.framework/hermesvm",
+          "mode": 493,
+          "mtime_ns": 1792850260017055527,
+          "type": "file",
+          "size": 6063992,
+          "sha256": "e816e930c2679fa9870779c486ac2caf1b541b8e8038e498ed055f9c6b53ee65"
+        },
+        {
+          "path": "Info.plist",
+          "mode": 420,
+          "mtime_ns": 1792850260045186993,
+          "type": "file",
+          "size": 2388,
+          "sha256": "3e26299ab24047ec1087b41622555d84db0bb9bd74940d48330a990368b87b30"
+        },
+        {
+          "path": "PkgInfo",
+          "mode": 420,
+          "mtime_ns": 1792850090065019810,
+          "type": "file",
+          "size": 8,
+          "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+        },
+        {
+          "path": "PrivacyInfo.xcprivacy",
+          "mode": 420,
+          "mtime_ns": 1792850088734859257,
+          "type": "file",
+          "size": 986,
+          "sha256": "06949f6d09a83cea00c3a4895bb7300f2580d52852c6ade1a9caa169934a1001"
+        },
+        {
+          "path": "RNCAsyncStorage_resources.bundle",
+          "mode": 493,
+          "mtime_ns": 1792850020000000000,
+          "type": "directory"
+        },
+        {
+          "path": "RNCAsyncStorage_resources.bundle/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1792850020000000000,
+          "type": "file",
+          "size": 781,
+          "sha256": "3c5f5ef25668877aef479ba12652165efafac6883ec3db7fe616425ec4f78aef"
+        },
+        {
+          "path": "RNCAsyncStorage_resources.bundle/PrivacyInfo.xcprivacy",
+          "mode": 420,
+          "mtime_ns": 1792850020000000000,
+          "type": "file",
+          "size": 512,
+          "sha256": "0b1287d0e686cf867d38d97cca5dc694b3029f27c4fe4270dd4bd2fd5458a2f0"
+        },
+        {
+          "path": "React-Core_privacy.bundle",
+          "mode": 493,
+          "mtime_ns": 1792850020000000000,
+          "type": "directory"
+        },
+        {
+          "path": "React-Core_privacy.bundle/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1792850020000000000,
+          "type": "file",
+          "size": 768,
+          "sha256": "e6f2af8f0b24fca2406377aba9a6ddb5af8ebaff3a9a7db42ac75fd289915fa8"
+        },
+        {
+          "path": "React-Core_privacy.bundle/PrivacyInfo.xcprivacy",
+          "mode": 420,
+          "mtime_ns": 1792850020000000000,
+          "type": "file",
+          "size": 768,
+          "sha256": "7c08969e459621a6ecec043ccdb9012651f185811945f75517c623dae2e11627"
+        },
+        {
+          "path": "React-cxxreact_privacy.bundle",
+          "mode": 493,
+          "mtime_ns": 1792850020000000000,
+          "type": "directory"
+        },
+        {
+          "path": "React-cxxreact_privacy.bundle/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1792850020000000000,
+          "type": "file",
+          "size": 776,
+          "sha256": "129acc5588e869a4951763fcaa81efa4be3e4fe1eb03dcdb3b3fce2bfd2d8f6a"
+        },
+        {
+          "path": "React-cxxreact_privacy.bundle/PrivacyInfo.xcprivacy",
+          "mode": 420,
+          "mtime_ns": 1792850020000000000,
+          "type": "file",
+          "size": 552,
+          "sha256": "0587d155c56a6f4f0647ebc6b6a0bd026615cd610ee8f209a9786b79a96ad335"
+        },
+        {
+          "path": "React-timing_privacy.bundle",
+          "mode": 493,
+          "mtime_ns": 1792850020000000000,
+          "type": "directory"
+        },
+        {
+          "path": "React-timing_privacy.bundle/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1792850020000000000,
+          "type": "file",
+          "size": 772,
+          "sha256": "22a1a00827d4ffd68a8a81ddd8e315f7cae0be34d3f856f713a1ea9bb163b0c6"
+        },
+        {
+          "path": "React-timing_privacy.bundle/PrivacyInfo.xcprivacy",
+          "mode": 420,
+          "mtime_ns": 1792850020000000000,
+          "type": "file",
+          "size": 553,
+          "sha256": "23ddfa062a6d4392e65882d151fdececbd29904a227ad8918c0144ebc777ee61"
+        },
+        {
+          "path": "SplashScreen.storyboardc",
+          "mode": 493,
+          "mtime_ns": 1792850089077416093,
+          "type": "directory"
+        },
+        {
+          "path": "SplashScreen.storyboardc/EXPO-VIEWCONTROLLER-1-view-EXPO-ContainerView.nib",
+          "mode": 420,
+          "mtime_ns": 1792850089073328000,
+          "type": "file",
+          "size": 2136,
+          "sha256": "59d818250bf8dc3712f63170184354d488baea22fe9c4a8e6f375bab6e70f0d1"
+        },
+        {
+          "path": "SplashScreen.storyboardc/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1792850089075103000,
+          "type": "file",
+          "size": 225,
+          "sha256": "74dbceed6cf0a5e5c69834793328c9783ecab1de482d4954e257ca2132b743af"
+        },
+        {
+          "path": "SplashScreen.storyboardc/SplashScreenViewController.nib",
+          "mode": 420,
+          "mtime_ns": 1792850089075048000,
+          "type": "file",
+          "size": 1004,
+          "sha256": "9c1a34c121d22479408cf0eaacb3491548ced16655799bae3b5f7f2380314ba8"
+        },
+        {
+          "path": "__preview.dylib",
+          "mode": 493,
+          "mtime_ns": 1792850088758967240,
+          "type": "file",
+          "size": 16760,
+          "sha256": "b6320577a5f5c69a8d083854e6181f9791fc11a0fd9034a95290cf6a7f7c413b"
+        }
+      ],
+      "file_manifest_sha256": "10e21705cd4040baea030e8fbff537e78d184698bdb745ac796fe93291db7f6d",
+      "artifact_type": "app_bundle"
+    },
+    {
+      "original": "Apple-Builds/CasitaDex-SB41-20261104/Build/Products/Debug-iphonesimulator/CasitaDexDev.app",
+      "quarantine": "Quarantine/Obsolete-Builds/20261106T1413Z/Apple-Builds/CasitaDex-SB41-20261104/Build/Products/Debug-iphonesimulator/CasitaDexDev.app.quarantined",
+      "identity": {
+        "CFBundleIdentifier": "com.designsbyfa.casitadex.dev",
+        "CFBundleVersion": "1",
+        "CFBundleShortVersionString": "0.1.0",
+        "CFBundleExecutable": "CasitaDexDev"
+      },
+      "file_bytes": 136494854,
+      "status": "quarantined_and_hash_verified",
+      "files": [
+        {
+          "path": "AppIcon60x60@2x.png",
+          "mode": 420,
+          "mtime_ns": 1793830259799745438,
+          "type": "file",
+          "size": 12891,
+          "sha256": "4aa53e90fd2b673418a2b058c1ed3adc7f9f8c00927a2cd3caadd685439b984c"
+        },
+        {
+          "path": "AppIcon76x76@2x~ipad.png",
+          "mode": 420,
+          "mtime_ns": 1793830259798397222,
+          "type": "file",
+          "size": 18203,
+          "sha256": "f4ee26f2fd09ba287e33224ed7ba768def0f33e3cb86d0061b0593edbca9a791"
+        },
+        {
+          "path": "Assets.car",
+          "mode": 420,
+          "mtime_ns": 1793830260318702081,
+          "type": "file",
+          "size": 513640,
+          "sha256": "ec4a96a0145bcf1091334a54fd7f995857d97c41368b103b98ef7769a9e43786"
+        },
+        {
+          "path": "CasitaDexDev",
+          "mode": 493,
+          "mtime_ns": 1793830264979956889,
+          "type": "file",
+          "size": 40144,
+          "sha256": "b2b2217c46b10f38207d92826cc7149e4c6cd489508898ed769e7d998e634ae4"
+        },
+        {
+          "path": "CasitaDexDev.debug.dylib",
+          "mode": 493,
+          "mtime_ns": 1793830264930067378,
+          "type": "file",
+          "size": 47731240,
+          "sha256": "64759bbae40cb74524dc797cdf8a4b282289ae0809a58624964d73dbca945380"
+        },
+        {
+          "path": "EXConstants.bundle",
+          "mode": 493,
+          "mtime_ns": 1793830252000000000,
+          "type": "directory"
+        },
+        {
+          "path": "EXConstants.bundle/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1793830194000000000,
+          "type": "file",
+          "size": 750,
+          "sha256": "9cd8fd3d9eb9685fbd656ce63d5aacb2c7310af3c9be38075c97c1d3a2730aa5"
+        },
+        {
+          "path": "EXConstants.bundle/app.config",
+          "mode": 420,
+          "mtime_ns": 1793830252000000000,
+          "type": "file",
+          "size": 1431,
+          "sha256": "deb0802624b2cd18579e03c6a6fdc0626d71a119fcf496ae6b55f43527e83ba4"
+        },
+        {
+          "path": "Expo.plist",
+          "mode": 420,
+          "mtime_ns": 1793830258383365446,
+          "type": "file",
+          "size": 173,
+          "sha256": "05ba13f24655445d029d47b626ac23ce8003e2e0722b7f8926b82b89c94ec51b"
+        },
+        {
+          "path": "ExpoConstants_privacy.bundle",
+          "mode": 493,
+          "mtime_ns": 1793830194000000000,
+          "type": "directory"
+        },
+        {
+          "path": "ExpoConstants_privacy.bundle/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1793830194000000000,
+          "type": "file",
+          "size": 772,
+          "sha256": "2310294fd1c437e222975bf3cfaf48402700cedfc7317a8126883e5fbe5688a0"
+        },
+        {
+          "path": "ExpoConstants_privacy.bundle/PrivacyInfo.xcprivacy",
+          "mode": 420,
+          "mtime_ns": 1793830194000000000,
+          "type": "file",
+          "size": 607,
+          "sha256": "2b2d8edb71d51c5b1f1ace4cdb28a94baf22fdde9bbf2e2bfc17d187ff7b5f47"
+        },
+        {
+          "path": "ExpoFileSystem_privacy.bundle",
+          "mode": 493,
+          "mtime_ns": 1793830194000000000,
+          "type": "directory"
+        },
+        {
+          "path": "ExpoFileSystem_privacy.bundle/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1793830194000000000,
+          "type": "file",
+          "size": 773,
+          "sha256": "c90da194a28d43790ae6f72e298271e9775901bb89e8844bc8d51f724c12bca9"
+        },
+        {
+          "path": "ExpoSystemUI_privacy.bundle",
+          "mode": 493,
+          "mtime_ns": 1793830194000000000,
+          "type": "directory"
+        },
+        {
+          "path": "ExpoSystemUI_privacy.bundle/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1793830194000000000,
+          "type": "file",
+          "size": 769,
+          "sha256": "eea2e79b416c8b1aa73e8f5c7b95b68407f1ee18167d11b41d79405474f207fd"
+        },
+        {
+          "path": "ExpoSystemUI_privacy.bundle/PrivacyInfo.xcprivacy",
+          "mode": 420,
+          "mtime_ns": 1793830194000000000,
+          "type": "file",
+          "size": 607,
+          "sha256": "2b2d8edb71d51c5b1f1ace4cdb28a94baf22fdde9bbf2e2bfc17d187ff7b5f47"
+        },
+        {
+          "path": "Frameworks",
+          "mode": 493,
+          "mtime_ns": 1793830266194970871,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ExpoFileSystem.framework",
+          "mode": 493,
+          "mtime_ns": 1793830265279970080,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ExpoFileSystem.framework/ExpoFileSystem",
+          "mode": 493,
+          "mtime_ns": 1793830265280073498,
+          "type": "file",
+          "size": 1883952,
+          "sha256": "6586a2b752fa3f2a973b1ec09ec71c807f8f88650e88b742cf228e1b534b6c49"
+        },
+        {
+          "path": "Frameworks/ExpoFileSystem.framework/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1792849726000000000,
+          "type": "file",
+          "size": 746,
+          "sha256": "5f9a269baff07c93ed53674b76667a8b84b8acd9aa6dd96d94c326bd1e7e6b7d"
+        },
+        {
+          "path": "Frameworks/ExpoFileSystem.framework/_CodeSignature",
+          "mode": 493,
+          "mtime_ns": 1792849726000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ExpoFileSystem.framework/_CodeSignature/CodeResources",
+          "mode": 420,
+          "mtime_ns": 1792849726000000000,
+          "type": "file",
+          "size": 1798,
+          "sha256": "3ae83871cd2b1afb35fff45f2130a05d9cadeb11984ec8075e6d879c0d5b3ee3"
+        },
+        {
+          "path": "Frameworks/ExpoFont.framework",
+          "mode": 493,
+          "mtime_ns": 1793830265308510211,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ExpoFont.framework/ExpoFont",
+          "mode": 493,
+          "mtime_ns": 1793830265308548545,
+          "type": "file",
+          "size": 261056,
+          "sha256": "9f9d782bc51e8165e0352d28c2fc73167720848e9dbecffa0c846a621be33dde"
+        },
+        {
+          "path": "Frameworks/ExpoFont.framework/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1792849726000000000,
+          "type": "file",
+          "size": 728,
+          "sha256": "7f0220334b9f441a188a322be1848cccabfdbf269a11846db72d2ebe2db3fb1a"
+        },
+        {
+          "path": "Frameworks/ExpoFont.framework/_CodeSignature",
+          "mode": 493,
+          "mtime_ns": 1792849726000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ExpoFont.framework/_CodeSignature/CodeResources",
+          "mode": 420,
+          "mtime_ns": 1792849726000000000,
+          "type": "file",
+          "size": 1798,
+          "sha256": "31c71f755e0bfab32d7d59ab5d6fa0ac432864ecbdc952909c831823277e8a97"
+        },
+        {
+          "path": "Frameworks/ExpoModulesCore.framework",
+          "mode": 493,
+          "mtime_ns": 1793830265387778525,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ExpoModulesCore.framework/ExpoModulesCore",
+          "mode": 493,
+          "mtime_ns": 1793830265388172194,
+          "type": "file",
+          "size": 6405536,
+          "sha256": "59d4789427348a57dd3bbb99d259f281361a29a56346a079b2811974142a17dc"
+        },
+        {
+          "path": "Frameworks/ExpoModulesCore.framework/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1792849726000000000,
+          "type": "file",
+          "size": 752,
+          "sha256": "c7a9db6e207f3976f97f4f6c874051386107720fd2b1caeaa303a92298d0ded3"
+        },
+        {
+          "path": "Frameworks/ExpoModulesCore.framework/_CodeSignature",
+          "mode": 493,
+          "mtime_ns": 1792849726000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ExpoModulesCore.framework/_CodeSignature/CodeResources",
+          "mode": 420,
+          "mtime_ns": 1792849726000000000,
+          "type": "file",
+          "size": 1798,
+          "sha256": "be77bfa5f44a69adb5417a40a35157acbef6c348a207f4a96db088fdfdb9abff"
+        },
+        {
+          "path": "Frameworks/ExpoModulesJSI.framework",
+          "mode": 493,
+          "mtime_ns": 1793830265427419681,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ExpoModulesJSI.framework/ExpoModulesJSI",
+          "mode": 493,
+          "mtime_ns": 1793830265427492015,
+          "type": "file",
+          "size": 761040,
+          "sha256": "9ca6ea33e935cd924c2c92e388b35ced07cd83bd772b06d70b9b43c55c914888"
+        },
+        {
+          "path": "Frameworks/ExpoModulesJSI.framework/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1793825744000000000,
+          "type": "file",
+          "size": 738,
+          "sha256": "d3c5161cb31e1adbcd31a6158143da0a0d09d4a8e4a48e3658e0143068ae20ba"
+        },
+        {
+          "path": "Frameworks/ExpoModulesJSI.framework/_CodeSignature",
+          "mode": 493,
+          "mtime_ns": 1793825744000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ExpoModulesJSI.framework/_CodeSignature/CodeResources",
+          "mode": 420,
+          "mtime_ns": 1793825744000000000,
+          "type": "file",
+          "size": 1798,
+          "sha256": "c6c636d9816433ee85fd06daa5d56456ee478cb0c2cb61c61cdbf568bcddefa4"
+        },
+        {
+          "path": "Frameworks/ExpoModulesWorklets.framework",
+          "mode": 493,
+          "mtime_ns": 1793830265459211832,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ExpoModulesWorklets.framework/ExpoModulesWorklets",
+          "mode": 493,
+          "mtime_ns": 1793830265459248999,
+          "type": "file",
+          "size": 194624,
+          "sha256": "bf4238b047012ef8d6578d0720be031f99f878278713870b740c096b5bc61904"
+        },
+        {
+          "path": "Frameworks/ExpoModulesWorklets.framework/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1792849727000000000,
+          "type": "file",
+          "size": 764,
+          "sha256": "fc9a8ff5386c6fbf5bfbcdbc48dfa9fec1ad8ca936d6cfd3c6851b7cfcc41ddf"
+        },
+        {
+          "path": "Frameworks/ExpoModulesWorklets.framework/_CodeSignature",
+          "mode": 493,
+          "mtime_ns": 1792849727000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ExpoModulesWorklets.framework/_CodeSignature/CodeResources",
+          "mode": 420,
+          "mtime_ns": 1792849727000000000,
+          "type": "file",
+          "size": 1798,
+          "sha256": "a0283877a2c602a1cff02e9849d60dcd2d58541a764efbd7595d99f96717fef9"
+        },
+        {
+          "path": "Frameworks/React.framework",
+          "mode": 493,
+          "mtime_ns": 1793830266097975325,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/React.framework/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1792849734000000000,
+          "type": "file",
+          "size": 724,
+          "sha256": "c9be56123cc6ba97e94958755e20537471fd84b0c1cd579e4982ae9255816301"
+        },
+        {
+          "path": "Frameworks/React.framework/React",
+          "mode": 420,
+          "mtime_ns": 1793830266114740635,
+          "type": "file",
+          "size": 68953936,
+          "sha256": "864c00e8bdb03f621bae98b49481a0b16d45be1cec60973f2d40d39fc15442fe"
+        },
+        {
+          "path": "Frameworks/React.framework/_CodeSignature",
+          "mode": 493,
+          "mtime_ns": 1792849734000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/React.framework/_CodeSignature/CodeResources",
+          "mode": 420,
+          "mtime_ns": 1792849734000000000,
+          "type": "file",
+          "size": 1798,
+          "sha256": "9f22235918b33cc61280bff9f60b6fc25e491f693db5d1e0589a3e33eb952261"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework",
+          "mode": 493,
+          "mtime_ns": 1793830266182415420,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 761,
+          "sha256": "043d66b265858b73ca23f8cbbf15e7043bb40f97e6104708e4f69d1f9d00fa96"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies",
+          "mode": 420,
+          "mtime_ns": 1793830266182615338,
+          "type": "file",
+          "size": 3589984,
+          "sha256": "9af3e629a9eca31e3db48945107898c18d76de3edb804f5730a8bf056cbe3c9f"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_boost.bundle",
+          "mode": 493,
+          "mtime_ns": 1792849738000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_boost.bundle/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 669,
+          "sha256": "16db1275ce3a9d70994d079ae4fe4e7f8894b2f92fb3c6b33b03fa3a2e5d0971"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_boost.bundle/PrivacyInfo.xcprivacy",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 776,
+          "sha256": "d3559c988dff940d4f758f37a0ba1863208304e33ab0b97c0e3dd5d3762f5f1d"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_boost.bundle/_CodeSignature",
+          "mode": 493,
+          "mtime_ns": 1792849738000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_boost.bundle/_CodeSignature/CodeDirectory",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 156,
+          "sha256": "178f3bdcfed97cc13ad4e518330448c56e00f47360560e105d55cfcd7598d9b8"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_boost.bundle/_CodeSignature/CodeRequirements",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 12,
+          "sha256": "987920904eab650e75788c054aa0b0524e6a80bfc71aa32df8d237a61743f986"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_boost.bundle/_CodeSignature/CodeRequirements-1",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 204,
+          "sha256": "d2393f211df2ea2bc6e03061789759c9818f99ffd177b408422ccf4d0b37f94e"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_boost.bundle/_CodeSignature/CodeResources",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 2032,
+          "sha256": "557fba743e35172838832cca93f1d17e34b8bd696f96eeb3032e529502ea945e"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_boost.bundle/_CodeSignature/CodeSignature",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_folly.bundle",
+          "mode": 493,
+          "mtime_ns": 1792849738000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_folly.bundle/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 669,
+          "sha256": "5abf3977eef24726730e03a648dca022c8f993596e122cd94cf322985ac8ac76"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_folly.bundle/PrivacyInfo.xcprivacy",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 552,
+          "sha256": "0587d155c56a6f4f0647ebc6b6a0bd026615cd610ee8f209a9786b79a96ad335"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_folly.bundle/_CodeSignature",
+          "mode": 493,
+          "mtime_ns": 1792849738000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_folly.bundle/_CodeSignature/CodeDirectory",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 156,
+          "sha256": "25ccd0685a97962d86509fb66694af0eb207890862bcb49c3e14bd3ddbe4ddfc"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_folly.bundle/_CodeSignature/CodeRequirements",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 12,
+          "sha256": "987920904eab650e75788c054aa0b0524e6a80bfc71aa32df8d237a61743f986"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_folly.bundle/_CodeSignature/CodeRequirements-1",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 204,
+          "sha256": "dee967a352e0d990a9bc3d34c5a66c6597254ec4431de379acd35ef3fe94a03b"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_folly.bundle/_CodeSignature/CodeResources",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 2032,
+          "sha256": "be2989a2daf02505cf3117ce99419580ce849fd1a8200c581bd9acdf8409a440"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_folly.bundle/_CodeSignature/CodeSignature",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_glog.bundle",
+          "mode": 493,
+          "mtime_ns": 1792849738000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_glog.bundle/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 667,
+          "sha256": "8b97a53cf72f56810fed094013c2f521c034e5267a495081570a861a0adc4c41"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_glog.bundle/PrivacyInfo.xcprivacy",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 552,
+          "sha256": "0587d155c56a6f4f0647ebc6b6a0bd026615cd610ee8f209a9786b79a96ad335"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_glog.bundle/_CodeSignature",
+          "mode": 493,
+          "mtime_ns": 1792849738000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_glog.bundle/_CodeSignature/CodeDirectory",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 155,
+          "sha256": "d7cb7c11cc0a0c8f4ee3e91df163b072d20f5258f28106b6c71a06a3a5d29383"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_glog.bundle/_CodeSignature/CodeRequirements",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 12,
+          "sha256": "987920904eab650e75788c054aa0b0524e6a80bfc71aa32df8d237a61743f986"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_glog.bundle/_CodeSignature/CodeRequirements-1",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 203,
+          "sha256": "e54537eaff8aa25202925da339bf7d4c92854298ba76e0417eec916e16c2a0ec"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_glog.bundle/_CodeSignature/CodeResources",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 2032,
+          "sha256": "be2989a2daf02505cf3117ce99419580ce849fd1a8200c581bd9acdf8409a440"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_glog.bundle/_CodeSignature/CodeSignature",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/_CodeSignature",
+          "mode": 493,
+          "mtime_ns": 1792849738000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/_CodeSignature/CodeResources",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 1798,
+          "sha256": "1b16b78c80abf2f78f9a3025803a6c9e69fc2484c1f16c84324b38928559bb33"
+        },
+        {
+          "path": "Frameworks/hermesvm.framework",
+          "mode": 493,
+          "mtime_ns": 1793830266266338345,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/hermesvm.framework/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1792849741000000000,
+          "type": "file",
+          "size": 866,
+          "sha256": "0767523a61a3ab293e6e39ea3de61622d833f2dacee418afd89f6a57d67c8119"
+        },
+        {
+          "path": "Frameworks/hermesvm.framework/hermesvm",
+          "mode": 493,
+          "mtime_ns": 1793830266266694055,
+          "type": "file",
+          "size": 6063992,
+          "sha256": "e816e930c2679fa9870779c486ac2caf1b541b8e8038e498ed055f9c6b53ee65"
+        },
+        {
+          "path": "Info.plist",
+          "mode": 420,
+          "mtime_ns": 1793830260330651028,
+          "type": "file",
+          "size": 2385,
+          "sha256": "6ea867b4a034127b10dd22681c73979cd080ed1a8b4ae855e63402e48693ae88"
+        },
+        {
+          "path": "PkgInfo",
+          "mode": 420,
+          "mtime_ns": 1793830260330716070,
+          "type": "file",
+          "size": 8,
+          "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+        },
+        {
+          "path": "PrivacyInfo.xcprivacy",
+          "mode": 420,
+          "mtime_ns": 1793830258383894949,
+          "type": "file",
+          "size": 986,
+          "sha256": "06949f6d09a83cea00c3a4895bb7300f2580d52852c6ade1a9caa169934a1001"
+        },
+        {
+          "path": "RNCAsyncStorage_resources.bundle",
+          "mode": 493,
+          "mtime_ns": 1793830194000000000,
+          "type": "directory"
+        },
+        {
+          "path": "RNCAsyncStorage_resources.bundle/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1793830194000000000,
+          "type": "file",
+          "size": 778,
+          "sha256": "1a4470821edfbe37b14b43c96c85ce425fd334f1c219c4652ae04a3c031cc59b"
+        },
+        {
+          "path": "RNCAsyncStorage_resources.bundle/PrivacyInfo.xcprivacy",
+          "mode": 420,
+          "mtime_ns": 1793830194000000000,
+          "type": "file",
+          "size": 512,
+          "sha256": "0b1287d0e686cf867d38d97cca5dc694b3029f27c4fe4270dd4bd2fd5458a2f0"
+        },
+        {
+          "path": "React-Core_privacy.bundle",
+          "mode": 493,
+          "mtime_ns": 1793830194000000000,
+          "type": "directory"
+        },
+        {
+          "path": "React-Core_privacy.bundle/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1793830194000000000,
+          "type": "file",
+          "size": 765,
+          "sha256": "bfae13aff4b1d92bf6d896e19e882be7764302217acd8365934fd55baf613f25"
+        },
+        {
+          "path": "React-Core_privacy.bundle/PrivacyInfo.xcprivacy",
+          "mode": 420,
+          "mtime_ns": 1793830194000000000,
+          "type": "file",
+          "size": 768,
+          "sha256": "7c08969e459621a6ecec043ccdb9012651f185811945f75517c623dae2e11627"
+        },
+        {
+          "path": "React-cxxreact_privacy.bundle",
+          "mode": 493,
+          "mtime_ns": 1793830194000000000,
+          "type": "directory"
+        },
+        {
+          "path": "React-cxxreact_privacy.bundle/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1793830194000000000,
+          "type": "file",
+          "size": 773,
+          "sha256": "4ab32951f004d675c6ea07e500514aeb3abbe3bf16cd1ee2d1067454165376a9"
+        },
+        {
+          "path": "React-cxxreact_privacy.bundle/PrivacyInfo.xcprivacy",
+          "mode": 420,
+          "mtime_ns": 1793830194000000000,
+          "type": "file",
+          "size": 552,
+          "sha256": "0587d155c56a6f4f0647ebc6b6a0bd026615cd610ee8f209a9786b79a96ad335"
+        },
+        {
+          "path": "React-timing_privacy.bundle",
+          "mode": 493,
+          "mtime_ns": 1793830194000000000,
+          "type": "directory"
+        },
+        {
+          "path": "React-timing_privacy.bundle/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1793830194000000000,
+          "type": "file",
+          "size": 769,
+          "sha256": "a5e7adc8abd948a36cd2e4be724bc725046f08b92269e07cbcc03056dc25566e"
+        },
+        {
+          "path": "React-timing_privacy.bundle/PrivacyInfo.xcprivacy",
+          "mode": 420,
+          "mtime_ns": 1793830194000000000,
+          "type": "file",
+          "size": 553,
+          "sha256": "23ddfa062a6d4392e65882d151fdececbd29904a227ad8918c0144ebc777ee61"
+        },
+        {
+          "path": "SplashScreen.storyboardc",
+          "mode": 493,
+          "mtime_ns": 1793830258828507683,
+          "type": "directory"
+        },
+        {
+          "path": "SplashScreen.storyboardc/EXPO-VIEWCONTROLLER-1-view-EXPO-ContainerView.nib",
+          "mode": 420,
+          "mtime_ns": 1793830258822587000,
+          "type": "file",
+          "size": 2136,
+          "sha256": "59d818250bf8dc3712f63170184354d488baea22fe9c4a8e6f375bab6e70f0d1"
+        },
+        {
+          "path": "SplashScreen.storyboardc/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1793830258825953000,
+          "type": "file",
+          "size": 225,
+          "sha256": "74dbceed6cf0a5e5c69834793328c9783ecab1de482d4954e257ca2132b743af"
+        },
+        {
+          "path": "SplashScreen.storyboardc/SplashScreenViewController.nib",
+          "mode": 420,
+          "mtime_ns": 1793830258825897000,
+          "type": "file",
+          "size": 1004,
+          "sha256": "9c1a34c121d22479408cf0eaacb3491548ced16655799bae3b5f7f2380314ba8"
+        },
+        {
+          "path": "__preview.dylib",
+          "mode": 493,
+          "mtime_ns": 1793830258419094370,
+          "type": "file",
+          "size": 16760,
+          "sha256": "55d0f58e2619a609d087012fefbbf05051392d69f4ede9c863455542ebb0560a"
+        }
+      ],
+      "file_manifest_sha256": "a484a0de7f8474edddeb36b8d5c619bd6207d35f8ed57e7e00f18a297bc8876e",
+      "artifact_type": "app_bundle"
+    },
+    {
+      "original": "Apple-Builds/CasitaDex-Scene-QA-20261104/Build/Products/Debug-iphonesimulator/CasitaDexDev.app",
+      "quarantine": "Quarantine/Obsolete-Builds/20261106T1413Z/Apple-Builds/CasitaDex-Scene-QA-20261104/Build/Products/Debug-iphonesimulator/CasitaDexDev.app.quarantined",
+      "identity": {
+        "CFBundleIdentifier": "com.designsbyfa.casitadex.dev",
+        "CFBundleVersion": "1",
+        "CFBundleShortVersionString": "0.1.0",
+        "CFBundleExecutable": "CasitaDexDev"
+      },
+      "file_bytes": 136497494,
+      "status": "quarantined_and_hash_verified",
+      "files": [
+        {
+          "path": "AppIcon60x60@2x.png",
+          "mode": 420,
+          "mtime_ns": 1793825800085232463,
+          "type": "file",
+          "size": 12891,
+          "sha256": "4aa53e90fd2b673418a2b058c1ed3adc7f9f8c00927a2cd3caadd685439b984c"
+        },
+        {
+          "path": "AppIcon76x76@2x~ipad.png",
+          "mode": 420,
+          "mtime_ns": 1793825800083815955,
+          "type": "file",
+          "size": 18203,
+          "sha256": "f4ee26f2fd09ba287e33224ed7ba768def0f33e3cb86d0061b0593edbca9a791"
+        },
+        {
+          "path": "Assets.car",
+          "mode": 420,
+          "mtime_ns": 1793825800589363194,
+          "type": "file",
+          "size": 513640,
+          "sha256": "f84f6c8e18da21b5e1a0a9c741d70dece3779f41ec77df599d34fe439a9f0ea1"
+        },
+        {
+          "path": "CasitaDexDev",
+          "mode": 493,
+          "mtime_ns": 1793825805234518741,
+          "type": "file",
+          "size": 40144,
+          "sha256": "b2b2217c46b10f38207d92826cc7149e4c6cd489508898ed769e7d998e634ae4"
+        },
+        {
+          "path": "CasitaDexDev.debug.dylib",
+          "mode": 493,
+          "mtime_ns": 1793825805187185711,
+          "type": "file",
+          "size": 47733880,
+          "sha256": "db32e984a19a054cd56d6364d9ce05967422710245aad78ff68bafc19e499993"
+        },
+        {
+          "path": "EXConstants.bundle",
+          "mode": 493,
+          "mtime_ns": 1793825792000000000,
+          "type": "directory"
+        },
+        {
+          "path": "EXConstants.bundle/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1793825730000000000,
+          "type": "file",
+          "size": 750,
+          "sha256": "9cd8fd3d9eb9685fbd656ce63d5aacb2c7310af3c9be38075c97c1d3a2730aa5"
+        },
+        {
+          "path": "EXConstants.bundle/app.config",
+          "mode": 420,
+          "mtime_ns": 1793825792000000000,
+          "type": "file",
+          "size": 1431,
+          "sha256": "deb0802624b2cd18579e03c6a6fdc0626d71a119fcf496ae6b55f43527e83ba4"
+        },
+        {
+          "path": "Expo.plist",
+          "mode": 420,
+          "mtime_ns": 1793825798679752070,
+          "type": "file",
+          "size": 173,
+          "sha256": "05ba13f24655445d029d47b626ac23ce8003e2e0722b7f8926b82b89c94ec51b"
+        },
+        {
+          "path": "ExpoConstants_privacy.bundle",
+          "mode": 493,
+          "mtime_ns": 1793825731000000000,
+          "type": "directory"
+        },
+        {
+          "path": "ExpoConstants_privacy.bundle/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1793825730000000000,
+          "type": "file",
+          "size": 772,
+          "sha256": "2310294fd1c437e222975bf3cfaf48402700cedfc7317a8126883e5fbe5688a0"
+        },
+        {
+          "path": "ExpoConstants_privacy.bundle/PrivacyInfo.xcprivacy",
+          "mode": 420,
+          "mtime_ns": 1793825730000000000,
+          "type": "file",
+          "size": 607,
+          "sha256": "2b2d8edb71d51c5b1f1ace4cdb28a94baf22fdde9bbf2e2bfc17d187ff7b5f47"
+        },
+        {
+          "path": "ExpoFileSystem_privacy.bundle",
+          "mode": 493,
+          "mtime_ns": 1793825731000000000,
+          "type": "directory"
+        },
+        {
+          "path": "ExpoFileSystem_privacy.bundle/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1793825730000000000,
+          "type": "file",
+          "size": 773,
+          "sha256": "c90da194a28d43790ae6f72e298271e9775901bb89e8844bc8d51f724c12bca9"
+        },
+        {
+          "path": "ExpoSystemUI_privacy.bundle",
+          "mode": 493,
+          "mtime_ns": 1793825730000000000,
+          "type": "directory"
+        },
+        {
+          "path": "ExpoSystemUI_privacy.bundle/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1793825730000000000,
+          "type": "file",
+          "size": 769,
+          "sha256": "eea2e79b416c8b1aa73e8f5c7b95b68407f1ee18167d11b41d79405474f207fd"
+        },
+        {
+          "path": "ExpoSystemUI_privacy.bundle/PrivacyInfo.xcprivacy",
+          "mode": 420,
+          "mtime_ns": 1793825730000000000,
+          "type": "file",
+          "size": 607,
+          "sha256": "2b2d8edb71d51c5b1f1ace4cdb28a94baf22fdde9bbf2e2bfc17d187ff7b5f47"
+        },
+        {
+          "path": "Frameworks",
+          "mode": 493,
+          "mtime_ns": 1793825806532173330,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ExpoFileSystem.framework",
+          "mode": 493,
+          "mtime_ns": 1793825805549509311,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ExpoFileSystem.framework/ExpoFileSystem",
+          "mode": 493,
+          "mtime_ns": 1793825805549614645,
+          "type": "file",
+          "size": 1883952,
+          "sha256": "6586a2b752fa3f2a973b1ec09ec71c807f8f88650e88b742cf228e1b534b6c49"
+        },
+        {
+          "path": "Frameworks/ExpoFileSystem.framework/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1792849726000000000,
+          "type": "file",
+          "size": 746,
+          "sha256": "5f9a269baff07c93ed53674b76667a8b84b8acd9aa6dd96d94c326bd1e7e6b7d"
+        },
+        {
+          "path": "Frameworks/ExpoFileSystem.framework/_CodeSignature",
+          "mode": 493,
+          "mtime_ns": 1792849726000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ExpoFileSystem.framework/_CodeSignature/CodeResources",
+          "mode": 420,
+          "mtime_ns": 1792849726000000000,
+          "type": "file",
+          "size": 1798,
+          "sha256": "3ae83871cd2b1afb35fff45f2130a05d9cadeb11984ec8075e6d879c0d5b3ee3"
+        },
+        {
+          "path": "Frameworks/ExpoFont.framework",
+          "mode": 493,
+          "mtime_ns": 1793825805582353297,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ExpoFont.framework/ExpoFont",
+          "mode": 493,
+          "mtime_ns": 1793825805582398131,
+          "type": "file",
+          "size": 261056,
+          "sha256": "9f9d782bc51e8165e0352d28c2fc73167720848e9dbecffa0c846a621be33dde"
+        },
+        {
+          "path": "Frameworks/ExpoFont.framework/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1792849726000000000,
+          "type": "file",
+          "size": 728,
+          "sha256": "7f0220334b9f441a188a322be1848cccabfdbf269a11846db72d2ebe2db3fb1a"
+        },
+        {
+          "path": "Frameworks/ExpoFont.framework/_CodeSignature",
+          "mode": 493,
+          "mtime_ns": 1792849726000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ExpoFont.framework/_CodeSignature/CodeResources",
+          "mode": 420,
+          "mtime_ns": 1792849726000000000,
+          "type": "file",
+          "size": 1798,
+          "sha256": "31c71f755e0bfab32d7d59ab5d6fa0ac432864ecbdc952909c831823277e8a97"
+        },
+        {
+          "path": "Frameworks/ExpoModulesCore.framework",
+          "mode": 493,
+          "mtime_ns": 1793825805668574349,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ExpoModulesCore.framework/ExpoModulesCore",
+          "mode": 493,
+          "mtime_ns": 1793825805668998601,
+          "type": "file",
+          "size": 6405536,
+          "sha256": "59d4789427348a57dd3bbb99d259f281361a29a56346a079b2811974142a17dc"
+        },
+        {
+          "path": "Frameworks/ExpoModulesCore.framework/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1792849726000000000,
+          "type": "file",
+          "size": 752,
+          "sha256": "c7a9db6e207f3976f97f4f6c874051386107720fd2b1caeaa303a92298d0ded3"
+        },
+        {
+          "path": "Frameworks/ExpoModulesCore.framework/_CodeSignature",
+          "mode": 493,
+          "mtime_ns": 1792849726000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ExpoModulesCore.framework/_CodeSignature/CodeResources",
+          "mode": 420,
+          "mtime_ns": 1792849726000000000,
+          "type": "file",
+          "size": 1798,
+          "sha256": "be77bfa5f44a69adb5417a40a35157acbef6c348a207f4a96db088fdfdb9abff"
+        },
+        {
+          "path": "Frameworks/ExpoModulesJSI.framework",
+          "mode": 493,
+          "mtime_ns": 1793825805709006338,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ExpoModulesJSI.framework/ExpoModulesJSI",
+          "mode": 493,
+          "mtime_ns": 1793825805709083088,
+          "type": "file",
+          "size": 761040,
+          "sha256": "9ca6ea33e935cd924c2c92e388b35ced07cd83bd772b06d70b9b43c55c914888"
+        },
+        {
+          "path": "Frameworks/ExpoModulesJSI.framework/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1793825744000000000,
+          "type": "file",
+          "size": 738,
+          "sha256": "d3c5161cb31e1adbcd31a6158143da0a0d09d4a8e4a48e3658e0143068ae20ba"
+        },
+        {
+          "path": "Frameworks/ExpoModulesJSI.framework/_CodeSignature",
+          "mode": 493,
+          "mtime_ns": 1793825744000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ExpoModulesJSI.framework/_CodeSignature/CodeResources",
+          "mode": 420,
+          "mtime_ns": 1793825744000000000,
+          "type": "file",
+          "size": 1798,
+          "sha256": "c6c636d9816433ee85fd06daa5d56456ee478cb0c2cb61c61cdbf568bcddefa4"
+        },
+        {
+          "path": "Frameworks/ExpoModulesWorklets.framework",
+          "mode": 493,
+          "mtime_ns": 1793825805741733573,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ExpoModulesWorklets.framework/ExpoModulesWorklets",
+          "mode": 493,
+          "mtime_ns": 1793825805741776490,
+          "type": "file",
+          "size": 194624,
+          "sha256": "bf4238b047012ef8d6578d0720be031f99f878278713870b740c096b5bc61904"
+        },
+        {
+          "path": "Frameworks/ExpoModulesWorklets.framework/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1792849727000000000,
+          "type": "file",
+          "size": 764,
+          "sha256": "fc9a8ff5386c6fbf5bfbcdbc48dfa9fec1ad8ca936d6cfd3c6851b7cfcc41ddf"
+        },
+        {
+          "path": "Frameworks/ExpoModulesWorklets.framework/_CodeSignature",
+          "mode": 493,
+          "mtime_ns": 1792849727000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ExpoModulesWorklets.framework/_CodeSignature/CodeResources",
+          "mode": 420,
+          "mtime_ns": 1792849727000000000,
+          "type": "file",
+          "size": 1798,
+          "sha256": "a0283877a2c602a1cff02e9849d60dcd2d58541a764efbd7595d99f96717fef9"
+        },
+        {
+          "path": "Frameworks/React.framework",
+          "mode": 493,
+          "mtime_ns": 1793825806433877040,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/React.framework/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1792849734000000000,
+          "type": "file",
+          "size": 724,
+          "sha256": "c9be56123cc6ba97e94958755e20537471fd84b0c1cd579e4982ae9255816301"
+        },
+        {
+          "path": "Frameworks/React.framework/React",
+          "mode": 420,
+          "mtime_ns": 1793825806450590430,
+          "type": "file",
+          "size": 68953936,
+          "sha256": "864c00e8bdb03f621bae98b49481a0b16d45be1cec60973f2d40d39fc15442fe"
+        },
+        {
+          "path": "Frameworks/React.framework/_CodeSignature",
+          "mode": 493,
+          "mtime_ns": 1792849734000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/React.framework/_CodeSignature/CodeResources",
+          "mode": 420,
+          "mtime_ns": 1792849734000000000,
+          "type": "file",
+          "size": 1798,
+          "sha256": "9f22235918b33cc61280bff9f60b6fc25e491f693db5d1e0589a3e33eb952261"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework",
+          "mode": 493,
+          "mtime_ns": 1793825806520022008,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 761,
+          "sha256": "043d66b265858b73ca23f8cbbf15e7043bb40f97e6104708e4f69d1f9d00fa96"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies",
+          "mode": 420,
+          "mtime_ns": 1793825806520257551,
+          "type": "file",
+          "size": 3589984,
+          "sha256": "9af3e629a9eca31e3db48945107898c18d76de3edb804f5730a8bf056cbe3c9f"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_boost.bundle",
+          "mode": 493,
+          "mtime_ns": 1792849738000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_boost.bundle/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 669,
+          "sha256": "16db1275ce3a9d70994d079ae4fe4e7f8894b2f92fb3c6b33b03fa3a2e5d0971"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_boost.bundle/PrivacyInfo.xcprivacy",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 776,
+          "sha256": "d3559c988dff940d4f758f37a0ba1863208304e33ab0b97c0e3dd5d3762f5f1d"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_boost.bundle/_CodeSignature",
+          "mode": 493,
+          "mtime_ns": 1792849738000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_boost.bundle/_CodeSignature/CodeDirectory",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 156,
+          "sha256": "178f3bdcfed97cc13ad4e518330448c56e00f47360560e105d55cfcd7598d9b8"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_boost.bundle/_CodeSignature/CodeRequirements",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 12,
+          "sha256": "987920904eab650e75788c054aa0b0524e6a80bfc71aa32df8d237a61743f986"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_boost.bundle/_CodeSignature/CodeRequirements-1",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 204,
+          "sha256": "d2393f211df2ea2bc6e03061789759c9818f99ffd177b408422ccf4d0b37f94e"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_boost.bundle/_CodeSignature/CodeResources",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 2032,
+          "sha256": "557fba743e35172838832cca93f1d17e34b8bd696f96eeb3032e529502ea945e"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_boost.bundle/_CodeSignature/CodeSignature",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_folly.bundle",
+          "mode": 493,
+          "mtime_ns": 1792849738000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_folly.bundle/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 669,
+          "sha256": "5abf3977eef24726730e03a648dca022c8f993596e122cd94cf322985ac8ac76"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_folly.bundle/PrivacyInfo.xcprivacy",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 552,
+          "sha256": "0587d155c56a6f4f0647ebc6b6a0bd026615cd610ee8f209a9786b79a96ad335"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_folly.bundle/_CodeSignature",
+          "mode": 493,
+          "mtime_ns": 1792849738000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_folly.bundle/_CodeSignature/CodeDirectory",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 156,
+          "sha256": "25ccd0685a97962d86509fb66694af0eb207890862bcb49c3e14bd3ddbe4ddfc"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_folly.bundle/_CodeSignature/CodeRequirements",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 12,
+          "sha256": "987920904eab650e75788c054aa0b0524e6a80bfc71aa32df8d237a61743f986"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_folly.bundle/_CodeSignature/CodeRequirements-1",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 204,
+          "sha256": "dee967a352e0d990a9bc3d34c5a66c6597254ec4431de379acd35ef3fe94a03b"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_folly.bundle/_CodeSignature/CodeResources",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 2032,
+          "sha256": "be2989a2daf02505cf3117ce99419580ce849fd1a8200c581bd9acdf8409a440"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_folly.bundle/_CodeSignature/CodeSignature",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_glog.bundle",
+          "mode": 493,
+          "mtime_ns": 1792849738000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_glog.bundle/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 667,
+          "sha256": "8b97a53cf72f56810fed094013c2f521c034e5267a495081570a861a0adc4c41"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_glog.bundle/PrivacyInfo.xcprivacy",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 552,
+          "sha256": "0587d155c56a6f4f0647ebc6b6a0bd026615cd610ee8f209a9786b79a96ad335"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_glog.bundle/_CodeSignature",
+          "mode": 493,
+          "mtime_ns": 1792849738000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_glog.bundle/_CodeSignature/CodeDirectory",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 155,
+          "sha256": "d7cb7c11cc0a0c8f4ee3e91df163b072d20f5258f28106b6c71a06a3a5d29383"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_glog.bundle/_CodeSignature/CodeRequirements",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 12,
+          "sha256": "987920904eab650e75788c054aa0b0524e6a80bfc71aa32df8d237a61743f986"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_glog.bundle/_CodeSignature/CodeRequirements-1",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 203,
+          "sha256": "e54537eaff8aa25202925da339bf7d4c92854298ba76e0417eec916e16c2a0ec"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_glog.bundle/_CodeSignature/CodeResources",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 2032,
+          "sha256": "be2989a2daf02505cf3117ce99419580ce849fd1a8200c581bd9acdf8409a440"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_glog.bundle/_CodeSignature/CodeSignature",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/_CodeSignature",
+          "mode": 493,
+          "mtime_ns": 1792849738000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/_CodeSignature/CodeResources",
+          "mode": 420,
+          "mtime_ns": 1792849738000000000,
+          "type": "file",
+          "size": 1798,
+          "sha256": "1b16b78c80abf2f78f9a3025803a6c9e69fc2484c1f16c84324b38928559bb33"
+        },
+        {
+          "path": "Frameworks/hermesvm.framework",
+          "mode": 493,
+          "mtime_ns": 1793825806602322828,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/hermesvm.framework/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1792849741000000000,
+          "type": "file",
+          "size": 866,
+          "sha256": "0767523a61a3ab293e6e39ea3de61622d833f2dacee418afd89f6a57d67c8119"
+        },
+        {
+          "path": "Frameworks/hermesvm.framework/hermesvm",
+          "mode": 493,
+          "mtime_ns": 1793825806602799955,
+          "type": "file",
+          "size": 6063992,
+          "sha256": "e816e930c2679fa9870779c486ac2caf1b541b8e8038e498ed055f9c6b53ee65"
+        },
+        {
+          "path": "Info.plist",
+          "mode": 420,
+          "mtime_ns": 1793825800601165972,
+          "type": "file",
+          "size": 2385,
+          "sha256": "6ea867b4a034127b10dd22681c73979cd080ed1a8b4ae855e63402e48693ae88"
+        },
+        {
+          "path": "PkgInfo",
+          "mode": 420,
+          "mtime_ns": 1793825800601228889,
+          "type": "file",
+          "size": 8,
+          "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+        },
+        {
+          "path": "PrivacyInfo.xcprivacy",
+          "mode": 420,
+          "mtime_ns": 1793825798679487735,
+          "type": "file",
+          "size": 986,
+          "sha256": "06949f6d09a83cea00c3a4895bb7300f2580d52852c6ade1a9caa169934a1001"
+        },
+        {
+          "path": "RNCAsyncStorage_resources.bundle",
+          "mode": 493,
+          "mtime_ns": 1793825731000000000,
+          "type": "directory"
+        },
+        {
+          "path": "RNCAsyncStorage_resources.bundle/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1793825730000000000,
+          "type": "file",
+          "size": 778,
+          "sha256": "1a4470821edfbe37b14b43c96c85ce425fd334f1c219c4652ae04a3c031cc59b"
+        },
+        {
+          "path": "RNCAsyncStorage_resources.bundle/PrivacyInfo.xcprivacy",
+          "mode": 420,
+          "mtime_ns": 1793825730000000000,
+          "type": "file",
+          "size": 512,
+          "sha256": "0b1287d0e686cf867d38d97cca5dc694b3029f27c4fe4270dd4bd2fd5458a2f0"
+        },
+        {
+          "path": "React-Core_privacy.bundle",
+          "mode": 493,
+          "mtime_ns": 1793825730000000000,
+          "type": "directory"
+        },
+        {
+          "path": "React-Core_privacy.bundle/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1793825730000000000,
+          "type": "file",
+          "size": 765,
+          "sha256": "bfae13aff4b1d92bf6d896e19e882be7764302217acd8365934fd55baf613f25"
+        },
+        {
+          "path": "React-Core_privacy.bundle/PrivacyInfo.xcprivacy",
+          "mode": 420,
+          "mtime_ns": 1793825730000000000,
+          "type": "file",
+          "size": 768,
+          "sha256": "7c08969e459621a6ecec043ccdb9012651f185811945f75517c623dae2e11627"
+        },
+        {
+          "path": "React-cxxreact_privacy.bundle",
+          "mode": 493,
+          "mtime_ns": 1793825730000000000,
+          "type": "directory"
+        },
+        {
+          "path": "React-cxxreact_privacy.bundle/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1793825730000000000,
+          "type": "file",
+          "size": 773,
+          "sha256": "4ab32951f004d675c6ea07e500514aeb3abbe3bf16cd1ee2d1067454165376a9"
+        },
+        {
+          "path": "React-cxxreact_privacy.bundle/PrivacyInfo.xcprivacy",
+          "mode": 420,
+          "mtime_ns": 1793825730000000000,
+          "type": "file",
+          "size": 552,
+          "sha256": "0587d155c56a6f4f0647ebc6b6a0bd026615cd610ee8f209a9786b79a96ad335"
+        },
+        {
+          "path": "React-timing_privacy.bundle",
+          "mode": 493,
+          "mtime_ns": 1793825730000000000,
+          "type": "directory"
+        },
+        {
+          "path": "React-timing_privacy.bundle/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1793825730000000000,
+          "type": "file",
+          "size": 769,
+          "sha256": "a5e7adc8abd948a36cd2e4be724bc725046f08b92269e07cbcc03056dc25566e"
+        },
+        {
+          "path": "React-timing_privacy.bundle/PrivacyInfo.xcprivacy",
+          "mode": 420,
+          "mtime_ns": 1793825730000000000,
+          "type": "file",
+          "size": 553,
+          "sha256": "23ddfa062a6d4392e65882d151fdececbd29904a227ad8918c0144ebc777ee61"
+        },
+        {
+          "path": "SplashScreen.storyboardc",
+          "mode": 493,
+          "mtime_ns": 1793825799134153715,
+          "type": "directory"
+        },
+        {
+          "path": "SplashScreen.storyboardc/EXPO-VIEWCONTROLLER-1-view-EXPO-ContainerView.nib",
+          "mode": 420,
+          "mtime_ns": 1793825799128077000,
+          "type": "file",
+          "size": 2136,
+          "sha256": "59d818250bf8dc3712f63170184354d488baea22fe9c4a8e6f375bab6e70f0d1"
+        },
+        {
+          "path": "SplashScreen.storyboardc/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1793825799131285000,
+          "type": "file",
+          "size": 225,
+          "sha256": "74dbceed6cf0a5e5c69834793328c9783ecab1de482d4954e257ca2132b743af"
+        },
+        {
+          "path": "SplashScreen.storyboardc/SplashScreenViewController.nib",
+          "mode": 420,
+          "mtime_ns": 1793825799131218000,
+          "type": "file",
+          "size": 1004,
+          "sha256": "9c1a34c121d22479408cf0eaacb3491548ced16655799bae3b5f7f2380314ba8"
+        },
+        {
+          "path": "__preview.dylib",
+          "mode": 493,
+          "mtime_ns": 1793825798713257226,
+          "type": "file",
+          "size": 16760,
+          "sha256": "55d0f58e2619a609d087012fefbbf05051392d69f4ede9c863455542ebb0560a"
+        }
+      ],
+      "file_manifest_sha256": "7806df6c1500e6966d7bbe24253297f7afbaa243afa14b9f33d52c6897ef7180",
+      "artifact_type": "app_bundle"
+    },
+    {
+      "original": "Apple-Builds/CasitaDex-WORK-SB117/DerivedData/Build/Products/Release-iphonesimulator/CasitaDexDev.app",
+      "quarantine": "Quarantine/Obsolete-Builds/20261106T1413Z/Apple-Builds/CasitaDex-WORK-SB117/DerivedData/Build/Products/Release-iphonesimulator/CasitaDexDev.app.quarantined",
+      "identity": {
+        "CFBundleIdentifier": "com.designsbyfa.casitadex.dev",
+        "CFBundleVersion": "1",
+        "CFBundleShortVersionString": "0.1.0",
+        "CFBundleExecutable": "CasitaDexDev"
+      },
+      "file_bytes": 48915726,
+      "status": "quarantined_and_hash_verified",
+      "files": [
+        {
+          "path": "AppIcon60x60@2x.png",
+          "mode": 420,
+          "mtime_ns": 1793918788337477951,
+          "type": "file",
+          "size": 12891,
+          "sha256": "4aa53e90fd2b673418a2b058c1ed3adc7f9f8c00927a2cd3caadd685439b984c"
+        },
+        {
+          "path": "AppIcon76x76@2x~ipad.png",
+          "mode": 420,
+          "mtime_ns": 1793918788338904834,
+          "type": "file",
+          "size": 18203,
+          "sha256": "f4ee26f2fd09ba287e33224ed7ba768def0f33e3cb86d0061b0593edbca9a791"
+        },
+        {
+          "path": "Assets.car",
+          "mode": 420,
+          "mtime_ns": 1793918788800023004,
+          "type": "file",
+          "size": 1004360,
+          "sha256": "f06c00b8f361b7f885c0c1c29d13e63710e5c4227b7f6ccf9f535b5e20592db7"
+        },
+        {
+          "path": "CasitaDexDev",
+          "mode": 493,
+          "mtime_ns": 1793918794642935486,
+          "type": "file",
+          "size": 19291680,
+          "sha256": "08449d0ffa5c3e09c2efd712eb673890c63f634ca9f673240fd676dde6b9920d"
+        },
+        {
+          "path": "EXConstants.bundle",
+          "mode": 493,
+          "mtime_ns": 1793918780000000000,
+          "type": "directory"
+        },
+        {
+          "path": "EXConstants.bundle/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1793913244000000000,
+          "type": "file",
+          "size": 750,
+          "sha256": "9cd8fd3d9eb9685fbd656ce63d5aacb2c7310af3c9be38075c97c1d3a2730aa5"
+        },
+        {
+          "path": "EXConstants.bundle/app.config",
+          "mode": 420,
+          "mtime_ns": 1793918780000000000,
+          "type": "file",
+          "size": 1431,
+          "sha256": "deb0802624b2cd18579e03c6a6fdc0626d71a119fcf496ae6b55f43527e83ba4"
+        },
+        {
+          "path": "Expo.plist",
+          "mode": 420,
+          "mtime_ns": 1793918787347674357,
+          "type": "file",
+          "size": 173,
+          "sha256": "05ba13f24655445d029d47b626ac23ce8003e2e0722b7f8926b82b89c94ec51b"
+        },
+        {
+          "path": "ExpoConstants_privacy.bundle",
+          "mode": 493,
+          "mtime_ns": 1793918603000000000,
+          "type": "directory"
+        },
+        {
+          "path": "ExpoConstants_privacy.bundle/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1793913244000000000,
+          "type": "file",
+          "size": 772,
+          "sha256": "2310294fd1c437e222975bf3cfaf48402700cedfc7317a8126883e5fbe5688a0"
+        },
+        {
+          "path": "ExpoConstants_privacy.bundle/PrivacyInfo.xcprivacy",
+          "mode": 420,
+          "mtime_ns": 1793918603000000000,
+          "type": "file",
+          "size": 607,
+          "sha256": "2b2d8edb71d51c5b1f1ace4cdb28a94baf22fdde9bbf2e2bfc17d187ff7b5f47"
+        },
+        {
+          "path": "ExpoFileSystem_privacy.bundle",
+          "mode": 493,
+          "mtime_ns": 1793918603000000000,
+          "type": "directory"
+        },
+        {
+          "path": "ExpoFileSystem_privacy.bundle/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1793913244000000000,
+          "type": "file",
+          "size": 773,
+          "sha256": "c90da194a28d43790ae6f72e298271e9775901bb89e8844bc8d51f724c12bca9"
+        },
+        {
+          "path": "ExpoSystemUI_privacy.bundle",
+          "mode": 493,
+          "mtime_ns": 1793918603000000000,
+          "type": "directory"
+        },
+        {
+          "path": "ExpoSystemUI_privacy.bundle/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1793913244000000000,
+          "type": "file",
+          "size": 769,
+          "sha256": "eea2e79b416c8b1aa73e8f5c7b95b68407f1ee18167d11b41d79405474f207fd"
+        },
+        {
+          "path": "ExpoSystemUI_privacy.bundle/PrivacyInfo.xcprivacy",
+          "mode": 420,
+          "mtime_ns": 1793918603000000000,
+          "type": "file",
+          "size": 607,
+          "sha256": "2b2d8edb71d51c5b1f1ace4cdb28a94baf22fdde9bbf2e2bfc17d187ff7b5f47"
+        },
+        {
+          "path": "Frameworks",
+          "mode": 493,
+          "mtime_ns": 1793918800999909059,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ExpoFileSystem.framework",
+          "mode": 493,
+          "mtime_ns": 1793918800634696678,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ExpoFileSystem.framework/ExpoFileSystem",
+          "mode": 493,
+          "mtime_ns": 1793918800634770803,
+          "type": "file",
+          "size": 1156032,
+          "sha256": "ce9aa0c44def0dd8bfe164ee1fd7b4e5fdaae80a45ab70d987e84c6cfdf42bd1"
+        },
+        {
+          "path": "Frameworks/ExpoFileSystem.framework/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1789125827000000000,
+          "type": "file",
+          "size": 746,
+          "sha256": "5f9a269baff07c93ed53674b76667a8b84b8acd9aa6dd96d94c326bd1e7e6b7d"
+        },
+        {
+          "path": "Frameworks/ExpoFileSystem.framework/_CodeSignature",
+          "mode": 493,
+          "mtime_ns": 1789125828000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ExpoFileSystem.framework/_CodeSignature/CodeResources",
+          "mode": 420,
+          "mtime_ns": 1789125828000000000,
+          "type": "file",
+          "size": 1798,
+          "sha256": "3ae83871cd2b1afb35fff45f2130a05d9cadeb11984ec8075e6d879c0d5b3ee3"
+        },
+        {
+          "path": "Frameworks/ExpoFont.framework",
+          "mode": 493,
+          "mtime_ns": 1793918800668303116,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ExpoFont.framework/ExpoFont",
+          "mode": 493,
+          "mtime_ns": 1793918800668336824,
+          "type": "file",
+          "size": 227024,
+          "sha256": "47660b3c298dbcd2344d2a4f64ed3fe546ccc1cd29eb7e5a3ada2cb5b9264563"
+        },
+        {
+          "path": "Frameworks/ExpoFont.framework/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1789125818000000000,
+          "type": "file",
+          "size": 728,
+          "sha256": "7f0220334b9f441a188a322be1848cccabfdbf269a11846db72d2ebe2db3fb1a"
+        },
+        {
+          "path": "Frameworks/ExpoFont.framework/_CodeSignature",
+          "mode": 493,
+          "mtime_ns": 1789125818000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ExpoFont.framework/_CodeSignature/CodeResources",
+          "mode": 420,
+          "mtime_ns": 1789125818000000000,
+          "type": "file",
+          "size": 1798,
+          "sha256": "31c71f755e0bfab32d7d59ab5d6fa0ac432864ecbdc952909c831823277e8a97"
+        },
+        {
+          "path": "Frameworks/ExpoModulesCore.framework",
+          "mode": 493,
+          "mtime_ns": 1793918800730984968,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ExpoModulesCore.framework/ExpoModulesCore",
+          "mode": 493,
+          "mtime_ns": 1793918800731200136,
+          "type": "file",
+          "size": 3803648,
+          "sha256": "f9b222838226636de216dae0f18fc2f39ba7273b45fd998777d55f590cb12e60"
+        },
+        {
+          "path": "Frameworks/ExpoModulesCore.framework/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1791995288000000000,
+          "type": "file",
+          "size": 752,
+          "sha256": "c7a9db6e207f3976f97f4f6c874051386107720fd2b1caeaa303a92298d0ded3"
+        },
+        {
+          "path": "Frameworks/ExpoModulesCore.framework/_CodeSignature",
+          "mode": 493,
+          "mtime_ns": 1791995288000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ExpoModulesCore.framework/_CodeSignature/CodeResources",
+          "mode": 420,
+          "mtime_ns": 1791995288000000000,
+          "type": "file",
+          "size": 1798,
+          "sha256": "be77bfa5f44a69adb5417a40a35157acbef6c348a207f4a96db088fdfdb9abff"
+        },
+        {
+          "path": "Frameworks/ExpoModulesJSI.framework",
+          "mode": 493,
+          "mtime_ns": 1793918800769589893,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ExpoModulesJSI.framework/ExpoModulesJSI",
+          "mode": 493,
+          "mtime_ns": 1793918800769650101,
+          "type": "file",
+          "size": 761040,
+          "sha256": "9ca6ea33e935cd924c2c92e388b35ced07cd83bd772b06d70b9b43c55c914888"
+        },
+        {
+          "path": "Frameworks/ExpoModulesJSI.framework/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1793825744000000000,
+          "type": "file",
+          "size": 738,
+          "sha256": "d3c5161cb31e1adbcd31a6158143da0a0d09d4a8e4a48e3658e0143068ae20ba"
+        },
+        {
+          "path": "Frameworks/ExpoModulesJSI.framework/_CodeSignature",
+          "mode": 493,
+          "mtime_ns": 1793825744000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ExpoModulesJSI.framework/_CodeSignature/CodeResources",
+          "mode": 420,
+          "mtime_ns": 1793825744000000000,
+          "type": "file",
+          "size": 1798,
+          "sha256": "c6c636d9816433ee85fd06daa5d56456ee478cb0c2cb61c61cdbf568bcddefa4"
+        },
+        {
+          "path": "Frameworks/ExpoModulesWorklets.framework",
+          "mode": 493,
+          "mtime_ns": 1793918800799657978,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ExpoModulesWorklets.framework/ExpoModulesWorklets",
+          "mode": 493,
+          "mtime_ns": 1793918800799698603,
+          "type": "file",
+          "size": 164656,
+          "sha256": "24758b82fd3e35a3b5220198f52521c1340c575c77edb08d971c456829469827"
+        },
+        {
+          "path": "Frameworks/ExpoModulesWorklets.framework/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1791995309000000000,
+          "type": "file",
+          "size": 764,
+          "sha256": "fc9a8ff5386c6fbf5bfbcdbc48dfa9fec1ad8ca936d6cfd3c6851b7cfcc41ddf"
+        },
+        {
+          "path": "Frameworks/ExpoModulesWorklets.framework/_CodeSignature",
+          "mode": 493,
+          "mtime_ns": 1791995309000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ExpoModulesWorklets.framework/_CodeSignature/CodeResources",
+          "mode": 420,
+          "mtime_ns": 1791995309000000000,
+          "type": "file",
+          "size": 1798,
+          "sha256": "a0283877a2c602a1cff02e9849d60dcd2d58541a764efbd7595d99f96717fef9"
+        },
+        {
+          "path": "Frameworks/React.framework",
+          "mode": 493,
+          "mtime_ns": 1793918800937391625,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/React.framework/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1787581676000000000,
+          "type": "file",
+          "size": 724,
+          "sha256": "c9be56123cc6ba97e94958755e20537471fd84b0c1cd579e4982ae9255816301"
+        },
+        {
+          "path": "Frameworks/React.framework/React",
+          "mode": 420,
+          "mtime_ns": 1793918800938609091,
+          "type": "file",
+          "size": 12081392,
+          "sha256": "6bb7c4b8c0fcadd038a422c2580a581041777145575e7622dc8ce5947f893e04"
+        },
+        {
+          "path": "Frameworks/React.framework/_CodeSignature",
+          "mode": 493,
+          "mtime_ns": 1787581676000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/React.framework/_CodeSignature/CodeResources",
+          "mode": 420,
+          "mtime_ns": 1787581676000000000,
+          "type": "file",
+          "size": 1798,
+          "sha256": "9f22235918b33cc61280bff9f60b6fc25e491f693db5d1e0589a3e33eb952261"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework",
+          "mode": 493,
+          "mtime_ns": 1793918800988092701,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1787580424000000000,
+          "type": "file",
+          "size": 761,
+          "sha256": "043d66b265858b73ca23f8cbbf15e7043bb40f97e6104708e4f69d1f9d00fa96"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies",
+          "mode": 420,
+          "mtime_ns": 1793918800988167993,
+          "type": "file",
+          "size": 1261792,
+          "sha256": "fac8e1599978a2296991770cb5f3588df82591fe9a46b862684bb10a2fc572f7"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_boost.bundle",
+          "mode": 493,
+          "mtime_ns": 1787580435000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_boost.bundle/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1787580435000000000,
+          "type": "file",
+          "size": 669,
+          "sha256": "16db1275ce3a9d70994d079ae4fe4e7f8894b2f92fb3c6b33b03fa3a2e5d0971"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_boost.bundle/PrivacyInfo.xcprivacy",
+          "mode": 420,
+          "mtime_ns": 1787580435000000000,
+          "type": "file",
+          "size": 776,
+          "sha256": "d3559c988dff940d4f758f37a0ba1863208304e33ab0b97c0e3dd5d3762f5f1d"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_boost.bundle/_CodeSignature",
+          "mode": 493,
+          "mtime_ns": 1787580435000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_boost.bundle/_CodeSignature/CodeDirectory",
+          "mode": 420,
+          "mtime_ns": 1787580435000000000,
+          "type": "file",
+          "size": 156,
+          "sha256": "178f3bdcfed97cc13ad4e518330448c56e00f47360560e105d55cfcd7598d9b8"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_boost.bundle/_CodeSignature/CodeRequirements",
+          "mode": 420,
+          "mtime_ns": 1787580435000000000,
+          "type": "file",
+          "size": 12,
+          "sha256": "987920904eab650e75788c054aa0b0524e6a80bfc71aa32df8d237a61743f986"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_boost.bundle/_CodeSignature/CodeRequirements-1",
+          "mode": 420,
+          "mtime_ns": 1787580435000000000,
+          "type": "file",
+          "size": 204,
+          "sha256": "d2393f211df2ea2bc6e03061789759c9818f99ffd177b408422ccf4d0b37f94e"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_boost.bundle/_CodeSignature/CodeResources",
+          "mode": 420,
+          "mtime_ns": 1787580435000000000,
+          "type": "file",
+          "size": 2032,
+          "sha256": "557fba743e35172838832cca93f1d17e34b8bd696f96eeb3032e529502ea945e"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_boost.bundle/_CodeSignature/CodeSignature",
+          "mode": 420,
+          "mtime_ns": 1787580435000000000,
+          "type": "file",
+          "size": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_folly.bundle",
+          "mode": 493,
+          "mtime_ns": 1787580436000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_folly.bundle/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1787580436000000000,
+          "type": "file",
+          "size": 669,
+          "sha256": "5abf3977eef24726730e03a648dca022c8f993596e122cd94cf322985ac8ac76"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_folly.bundle/PrivacyInfo.xcprivacy",
+          "mode": 420,
+          "mtime_ns": 1787580436000000000,
+          "type": "file",
+          "size": 552,
+          "sha256": "0587d155c56a6f4f0647ebc6b6a0bd026615cd610ee8f209a9786b79a96ad335"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_folly.bundle/_CodeSignature",
+          "mode": 493,
+          "mtime_ns": 1787580436000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_folly.bundle/_CodeSignature/CodeDirectory",
+          "mode": 420,
+          "mtime_ns": 1787580436000000000,
+          "type": "file",
+          "size": 156,
+          "sha256": "25ccd0685a97962d86509fb66694af0eb207890862bcb49c3e14bd3ddbe4ddfc"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_folly.bundle/_CodeSignature/CodeRequirements",
+          "mode": 420,
+          "mtime_ns": 1787580436000000000,
+          "type": "file",
+          "size": 12,
+          "sha256": "987920904eab650e75788c054aa0b0524e6a80bfc71aa32df8d237a61743f986"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_folly.bundle/_CodeSignature/CodeRequirements-1",
+          "mode": 420,
+          "mtime_ns": 1787580436000000000,
+          "type": "file",
+          "size": 204,
+          "sha256": "dee967a352e0d990a9bc3d34c5a66c6597254ec4431de379acd35ef3fe94a03b"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_folly.bundle/_CodeSignature/CodeResources",
+          "mode": 420,
+          "mtime_ns": 1787580436000000000,
+          "type": "file",
+          "size": 2032,
+          "sha256": "be2989a2daf02505cf3117ce99419580ce849fd1a8200c581bd9acdf8409a440"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_folly.bundle/_CodeSignature/CodeSignature",
+          "mode": 420,
+          "mtime_ns": 1787580436000000000,
+          "type": "file",
+          "size": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_glog.bundle",
+          "mode": 493,
+          "mtime_ns": 1787580435000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_glog.bundle/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1787580435000000000,
+          "type": "file",
+          "size": 667,
+          "sha256": "8b97a53cf72f56810fed094013c2f521c034e5267a495081570a861a0adc4c41"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_glog.bundle/PrivacyInfo.xcprivacy",
+          "mode": 420,
+          "mtime_ns": 1787580435000000000,
+          "type": "file",
+          "size": 552,
+          "sha256": "0587d155c56a6f4f0647ebc6b6a0bd026615cd610ee8f209a9786b79a96ad335"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_glog.bundle/_CodeSignature",
+          "mode": 493,
+          "mtime_ns": 1787580435000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_glog.bundle/_CodeSignature/CodeDirectory",
+          "mode": 420,
+          "mtime_ns": 1787580435000000000,
+          "type": "file",
+          "size": 155,
+          "sha256": "d7cb7c11cc0a0c8f4ee3e91df163b072d20f5258f28106b6c71a06a3a5d29383"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_glog.bundle/_CodeSignature/CodeRequirements",
+          "mode": 420,
+          "mtime_ns": 1787580435000000000,
+          "type": "file",
+          "size": 12,
+          "sha256": "987920904eab650e75788c054aa0b0524e6a80bfc71aa32df8d237a61743f986"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_glog.bundle/_CodeSignature/CodeRequirements-1",
+          "mode": 420,
+          "mtime_ns": 1787580435000000000,
+          "type": "file",
+          "size": 203,
+          "sha256": "e54537eaff8aa25202925da339bf7d4c92854298ba76e0417eec916e16c2a0ec"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_glog.bundle/_CodeSignature/CodeResources",
+          "mode": 420,
+          "mtime_ns": 1787580435000000000,
+          "type": "file",
+          "size": 2032,
+          "sha256": "be2989a2daf02505cf3117ce99419580ce849fd1a8200c581bd9acdf8409a440"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_glog.bundle/_CodeSignature/CodeSignature",
+          "mode": 420,
+          "mtime_ns": 1787580435000000000,
+          "type": "file",
+          "size": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/_CodeSignature",
+          "mode": 493,
+          "mtime_ns": 1787580424000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/_CodeSignature/CodeResources",
+          "mode": 420,
+          "mtime_ns": 1787580424000000000,
+          "type": "file",
+          "size": 1798,
+          "sha256": "1b16b78c80abf2f78f9a3025803a6c9e69fc2484c1f16c84324b38928559bb33"
+        },
+        {
+          "path": "Frameworks/hermesvm.framework",
+          "mode": 493,
+          "mtime_ns": 1793918801062280409,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/hermesvm.framework/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1787307008000000000,
+          "type": "file",
+          "size": 866,
+          "sha256": "0767523a61a3ab293e6e39ea3de61622d833f2dacee418afd89f6a57d67c8119"
+        },
+        {
+          "path": "Frameworks/hermesvm.framework/hermesvm",
+          "mode": 493,
+          "mtime_ns": 1793918801062516952,
+          "type": "file",
+          "size": 5094168,
+          "sha256": "d93d6fb893ffcdd49017168c2381d527cd81fd924f95fcdf9129b602a8c51dc8"
+        },
+        {
+          "path": "Info.plist",
+          "mode": 420,
+          "mtime_ns": 1793918794182917155,
+          "type": "file",
+          "size": 2385,
+          "sha256": "6ea867b4a034127b10dd22681c73979cd080ed1a8b4ae855e63402e48693ae88"
+        },
+        {
+          "path": "PkgInfo",
+          "mode": 420,
+          "mtime_ns": 1793918794183005572,
+          "type": "file",
+          "size": 8,
+          "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+        },
+        {
+          "path": "PrivacyInfo.xcprivacy",
+          "mode": 420,
+          "mtime_ns": 1793918787346476642,
+          "type": "file",
+          "size": 986,
+          "sha256": "06949f6d09a83cea00c3a4895bb7300f2580d52852c6ade1a9caa169934a1001"
+        },
+        {
+          "path": "RNCAsyncStorage_resources.bundle",
+          "mode": 493,
+          "mtime_ns": 1793918603000000000,
+          "type": "directory"
+        },
+        {
+          "path": "RNCAsyncStorage_resources.bundle/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1793913244000000000,
+          "type": "file",
+          "size": 778,
+          "sha256": "1a4470821edfbe37b14b43c96c85ce425fd334f1c219c4652ae04a3c031cc59b"
+        },
+        {
+          "path": "RNCAsyncStorage_resources.bundle/PrivacyInfo.xcprivacy",
+          "mode": 420,
+          "mtime_ns": 1793918603000000000,
+          "type": "file",
+          "size": 512,
+          "sha256": "0b1287d0e686cf867d38d97cca5dc694b3029f27c4fe4270dd4bd2fd5458a2f0"
+        },
+        {
+          "path": "React-Core_privacy.bundle",
+          "mode": 493,
+          "mtime_ns": 1793918603000000000,
+          "type": "directory"
+        },
+        {
+          "path": "React-Core_privacy.bundle/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1793913244000000000,
+          "type": "file",
+          "size": 765,
+          "sha256": "bfae13aff4b1d92bf6d896e19e882be7764302217acd8365934fd55baf613f25"
+        },
+        {
+          "path": "React-Core_privacy.bundle/PrivacyInfo.xcprivacy",
+          "mode": 420,
+          "mtime_ns": 1793918603000000000,
+          "type": "file",
+          "size": 768,
+          "sha256": "7c08969e459621a6ecec043ccdb9012651f185811945f75517c623dae2e11627"
+        },
+        {
+          "path": "React-cxxreact_privacy.bundle",
+          "mode": 493,
+          "mtime_ns": 1793918603000000000,
+          "type": "directory"
+        },
+        {
+          "path": "React-cxxreact_privacy.bundle/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1793913244000000000,
+          "type": "file",
+          "size": 773,
+          "sha256": "4ab32951f004d675c6ea07e500514aeb3abbe3bf16cd1ee2d1067454165376a9"
+        },
+        {
+          "path": "React-cxxreact_privacy.bundle/PrivacyInfo.xcprivacy",
+          "mode": 420,
+          "mtime_ns": 1793918603000000000,
+          "type": "file",
+          "size": 552,
+          "sha256": "0587d155c56a6f4f0647ebc6b6a0bd026615cd610ee8f209a9786b79a96ad335"
+        },
+        {
+          "path": "React-timing_privacy.bundle",
+          "mode": 493,
+          "mtime_ns": 1793918603000000000,
+          "type": "directory"
+        },
+        {
+          "path": "React-timing_privacy.bundle/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1793913244000000000,
+          "type": "file",
+          "size": 769,
+          "sha256": "a5e7adc8abd948a36cd2e4be724bc725046f08b92269e07cbcc03056dc25566e"
+        },
+        {
+          "path": "React-timing_privacy.bundle/PrivacyInfo.xcprivacy",
+          "mode": 420,
+          "mtime_ns": 1793918603000000000,
+          "type": "file",
+          "size": 553,
+          "sha256": "23ddfa062a6d4392e65882d151fdececbd29904a227ad8918c0144ebc777ee61"
+        },
+        {
+          "path": "SplashScreen.storyboardc",
+          "mode": 493,
+          "mtime_ns": 1793918788532784005,
+          "type": "directory"
+        },
+        {
+          "path": "SplashScreen.storyboardc/EXPO-VIEWCONTROLLER-1-view-EXPO-ContainerView.nib",
+          "mode": 420,
+          "mtime_ns": 1793918788529048000,
+          "type": "file",
+          "size": 2136,
+          "sha256": "59d818250bf8dc3712f63170184354d488baea22fe9c4a8e6f375bab6e70f0d1"
+        },
+        {
+          "path": "SplashScreen.storyboardc/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1793918788530740000,
+          "type": "file",
+          "size": 225,
+          "sha256": "74dbceed6cf0a5e5c69834793328c9783ecab1de482d4954e257ca2132b743af"
+        },
+        {
+          "path": "SplashScreen.storyboardc/SplashScreenViewController.nib",
+          "mode": 420,
+          "mtime_ns": 1793918788530690000,
+          "type": "file",
+          "size": 1004,
+          "sha256": "9c1a34c121d22479408cf0eaacb3491548ced16655799bae3b5f7f2380314ba8"
+        },
+        {
+          "path": "assets",
+          "mode": 493,
+          "mtime_ns": 1793918797696083445,
+          "type": "directory"
+        },
+        {
+          "path": "assets/assets",
+          "mode": 493,
+          "mtime_ns": 1793918797697306368,
+          "type": "directory"
+        },
+        {
+          "path": "assets/assets/brand",
+          "mode": 493,
+          "mtime_ns": 1793918797697194034,
+          "type": "directory"
+        },
+        {
+          "path": "assets/assets/brand/illustration-backup.jpg",
+          "mode": 420,
+          "mtime_ns": 1793918797697028575,
+          "type": "file",
+          "size": 27998,
+          "sha256": "adb0af77832991800ff2162f4ca06b7096c2d09156d78aa1dc64f536b26aec0b"
+        },
+        {
+          "path": "assets/assets/brand/illustration-find.jpg",
+          "mode": 420,
+          "mtime_ns": 1793918797696910408,
+          "type": "file",
+          "size": 22588,
+          "sha256": "9c2bcd79b380ee3ab9fad37e38a139a5e99ff598239b22d5bebcfc141844557e"
+        },
+        {
+          "path": "assets/assets/brand/illustration-home.jpg",
+          "mode": 420,
+          "mtime_ns": 1793918797696799448,
+          "type": "file",
+          "size": 27949,
+          "sha256": "832b177dc2998c19df870d4d17e5bb3acafbd89eb7175efd89c7ce2ec06d11be"
+        },
+        {
+          "path": "assets/assets/brand/logo-color-dark.png",
+          "mode": 420,
+          "mtime_ns": 1793918797697133200,
+          "type": "file",
+          "size": 26569,
+          "sha256": "5a392325cd9ad1cf291c5794807493b66e2feaa8a672ca1130792409932b1c26"
+        },
+        {
+          "path": "assets/assets/brand/logo-color-light.png",
+          "mode": 420,
+          "mtime_ns": 1793918797697238451,
+          "type": "file",
+          "size": 26675,
+          "sha256": "e58f214b02280805e6c241cf9754132749769150e4c3a8e2f38007c03da70cb1"
+        },
+        {
+          "path": "assets/assets/house-trees-header.png",
+          "mode": 420,
+          "mtime_ns": 1793918797697658162,
+          "type": "file",
+          "size": 690383,
+          "sha256": "fabc37306d38315d1e3f5dd464d4d0c45353a4b948f088f77b4d8cef8fde794b"
+        },
+        {
+          "path": "assets/assets/ui-icons",
+          "mode": 493,
+          "mtime_ns": 1793918797696154153,
+          "type": "directory"
+        },
+        {
+          "path": "assets/assets/ui-icons/accepted-v1",
+          "mode": 493,
+          "mtime_ns": 1793918797696617531,
+          "type": "directory"
+        },
+        {
+          "path": "assets/assets/ui-icons/accepted-v1/find.png",
+          "mode": 420,
+          "mtime_ns": 1793918797696651948,
+          "type": "file",
+          "size": 3832,
+          "sha256": "de4b08ed636923fd36d87d9abf9515aec4eea4839d2c026dab0761861e39ad9d"
+        },
+        {
+          "path": "assets/assets/ui-icons/accepted-v1/home.png",
+          "mode": 420,
+          "mtime_ns": 1793918797696238904,
+          "type": "file",
+          "size": 2643,
+          "sha256": "89c4f2f8c74e3103f229c2265191cd325f5520036fdfabd3b7bad380fd4db8f1"
+        },
+        {
+          "path": "assets/assets/ui-icons/accepted-v1/memories.png",
+          "mode": 420,
+          "mtime_ns": 1793918797696353696,
+          "type": "file",
+          "size": 2428,
+          "sha256": "286a4adf697378427b7c0fafbb3f28f6b164255e6781d548b4bc2812fccbe2c7"
+        },
+        {
+          "path": "assets/assets/ui-icons/accepted-v1/photos.png",
+          "mode": 420,
+          "mtime_ns": 1793918797696454655,
+          "type": "file",
+          "size": 3363,
+          "sha256": "98a9888bc1ffafb46b04ef3a47c88c56c8f87a34cce3f77448dbef75d93bec55"
+        },
+        {
+          "path": "assets/assets/ui-icons/accepted-v1/reminders.png",
+          "mode": 420,
+          "mtime_ns": 1793918797696546697,
+          "type": "file",
+          "size": 2917,
+          "sha256": "3d7db85c661eac0a652268c1e98e1edff6b5c0f024244c0ad432d5c092ea80e2"
+        },
+        {
+          "path": "assets/node_modules",
+          "mode": 493,
+          "mtime_ns": 1793918797685948013,
+          "type": "directory"
+        },
+        {
+          "path": "assets/node_modules/expo-router",
+          "mode": 493,
+          "mtime_ns": 1793918797686033930,
+          "type": "directory"
+        },
+        {
+          "path": "assets/node_modules/expo-router/assets",
+          "mode": 493,
+          "mtime_ns": 1793918797695997527,
+          "type": "directory"
+        },
+        {
+          "path": "assets/node_modules/expo-router/assets/arrow_down.png",
+          "mode": 420,
+          "mtime_ns": 1793918797695928110,
+          "type": "file",
+          "size": 9456,
+          "sha256": "6deca32b56b97fa1fa87facd6996b46cc45190a553400e7febdf1d2093099b57"
+        },
+        {
+          "path": "assets/node_modules/expo-router/assets/error.png",
+          "mode": 420,
+          "mtime_ns": 1793918797695204065,
+          "type": "file",
+          "size": 469,
+          "sha256": "c15ec72a74d13957211808313d5c35deb7f7606c6d22dbddceb0000d4e0547ad"
+        },
+        {
+          "path": "assets/node_modules/expo-router/assets/file.png",
+          "mode": 420,
+          "mtime_ns": 1793918797695361357,
+          "type": "file",
+          "size": 138,
+          "sha256": "a69a2edb5b6c60b8433d5b6d23c69f520ccd8a602f3f60e7996e489718bc175c"
+        },
+        {
+          "path": "assets/node_modules/expo-router/assets/forward.png",
+          "mode": 420,
+          "mtime_ns": 1793918797695677692,
+          "type": "file",
+          "size": 188,
+          "sha256": "708a79cf561b8a2a4850ce0254584d3a5231046be08fb7fadf4b6edfdb31178b"
+        },
+        {
+          "path": "assets/node_modules/expo-router/assets/pkg.png",
+          "mode": 420,
+          "mtime_ns": 1793918797695539400,
+          "type": "file",
+          "size": 364,
+          "sha256": "27f4d229d440925bf7212d5dfffa45d596b2c7b3bb2905c96b839b2081a1dbeb"
+        },
+        {
+          "path": "assets/node_modules/expo-router/assets/react-navigation",
+          "mode": 493,
+          "mtime_ns": 1793918797686289765,
+          "type": "directory"
+        },
+        {
+          "path": "assets/node_modules/expo-router/assets/react-navigation/elements",
+          "mode": 493,
+          "mtime_ns": 1793918797694953730,
+          "type": "directory"
+        },
+        {
+          "path": "assets/node_modules/expo-router/assets/react-navigation/elements/back-icon-mask.png",
+          "mode": 420,
+          "mtime_ns": 1793918797688457818,
+          "type": "file",
+          "size": 653,
+          "sha256": "9adb8c5efca932e2b732b293da813bd2e31952263056bce9e2517fec0f0b6a76"
+        },
+        {
+          "path": "assets/node_modules/expo-router/assets/react-navigation/elements/back-icon.png",
+          "mode": 420,
+          "mtime_ns": 1793918797688998905,
+          "type": "file",
+          "size": 290,
+          "sha256": "2cdfeb8e5ccde7976f7012fb8cce73af2229029ee21d4f1509fed114871c6cd8"
+        },
+        {
+          "path": "assets/node_modules/expo-router/assets/react-navigation/elements/back-icon@2x.png",
+          "mode": 420,
+          "mtime_ns": 1793918797689562408,
+          "type": "file",
+          "size": 405,
+          "sha256": "2b7443a9a58e92ca11a575bdc11598615a57dde305cd8ce70d602606b302cd98"
+        },
+        {
+          "path": "assets/node_modules/expo-router/assets/react-navigation/elements/back-icon@3x.png",
+          "mode": 420,
+          "mtime_ns": 1793918797689816534,
+          "type": "file",
+          "size": 761,
+          "sha256": "3ddd0773ed27e23d25789f301731b3ac455ad8be5aa27a0a1b838f89c6d27225"
+        },
+        {
+          "path": "assets/node_modules/expo-router/assets/react-navigation/elements/clear-icon.png",
+          "mode": 420,
+          "mtime_ns": 1793918797690306662,
+          "type": "file",
+          "size": 220,
+          "sha256": "d03a5cd7a66ef10c5147916f9d5878b2d0a0a5ad46f405a31cd9967efaa55afd"
+        },
+        {
+          "path": "assets/node_modules/expo-router/assets/react-navigation/elements/clear-icon@2x.png",
+          "mode": 420,
+          "mtime_ns": 1793918797690524247,
+          "type": "file",
+          "size": 334,
+          "sha256": "ab5613d2ce70fa67c5926e831353664945199fc195fa6fe76c5fe3cec452e31a"
+        },
+        {
+          "path": "assets/node_modules/expo-router/assets/react-navigation/elements/clear-icon@3x.png",
+          "mode": 420,
+          "mtime_ns": 1793918797693735306,
+          "type": "file",
+          "size": 502,
+          "sha256": "c4e54e6a0a7de636aa153378fbc62ea4a41695bfedf807f90df7b18ffd733f67"
+        },
+        {
+          "path": "assets/node_modules/expo-router/assets/react-navigation/elements/close-icon.png",
+          "mode": 420,
+          "mtime_ns": 1793918797694176475,
+          "type": "file",
+          "size": 141,
+          "sha256": "b1bc1810ca23e2c38cd76971c43591d726161061240d8b792b05757196ddb528"
+        },
+        {
+          "path": "assets/node_modules/expo-router/assets/react-navigation/elements/close-icon@2x.png",
+          "mode": 420,
+          "mtime_ns": 1793918797694389602,
+          "type": "file",
+          "size": 201,
+          "sha256": "cbdf9213e55f65c48d076acd8423b7c9aee4f1b81101ff6c95a38c4cd8a86461"
+        },
+        {
+          "path": "assets/node_modules/expo-router/assets/react-navigation/elements/close-icon@3x.png",
+          "mode": 420,
+          "mtime_ns": 1793918797694543811,
+          "type": "file",
+          "size": 266,
+          "sha256": "d05c9d30d79f45a78e5585a2e7ec67c6a06a883dd9137e1d5059e8c87b33ce76"
+        },
+        {
+          "path": "assets/node_modules/expo-router/assets/react-navigation/elements/search-icon.png",
+          "mode": 420,
+          "mtime_ns": 1793918797694699937,
+          "type": "file",
+          "size": 317,
+          "sha256": "dc56b976bd45638e1125f6689743525e6886ae0bef2c8f4651994833685a831f"
+        },
+        {
+          "path": "assets/node_modules/expo-router/assets/react-navigation/elements/search-icon@2x.png",
+          "mode": 420,
+          "mtime_ns": 1793918797694875104,
+          "type": "file",
+          "size": 589,
+          "sha256": "ef13fc0dfc52ec23817585fd7e109fbdf593a3b2549c40ce71ac9b0eda12cc2c"
+        },
+        {
+          "path": "assets/node_modules/expo-router/assets/react-navigation/elements/search-icon@3x.png",
+          "mode": 420,
+          "mtime_ns": 1793918797695021772,
+          "type": "file",
+          "size": 839,
+          "sha256": "b434a7cf18c2d4ce747c70942ea2fee2d4412d93967ed92b372f810bb9261ea5"
+        },
+        {
+          "path": "assets/node_modules/expo-router/assets/sitemap.png",
+          "mode": 420,
+          "mtime_ns": 1793918797695799984,
+          "type": "file",
+          "size": 465,
+          "sha256": "acf691957a3bcce7d195856dce98a5cf14dce10bea28aa5c10b3550c078e23b5"
+        },
+        {
+          "path": "assets/node_modules/expo-router/assets/unmatched.png",
+          "mode": 420,
+          "mtime_ns": 1793918797696041486,
+          "type": "file",
+          "size": 4752,
+          "sha256": "efc79da3c4c97dfb1571bff6202958ab0529c5aa31e8392600578b3e359d1447"
+        },
+        {
+          "path": "main.jsbundle",
+          "mode": 420,
+          "mtime_ns": 1793918799972866424,
+          "type": "file",
+          "size": 3132289,
+          "sha256": "01e019e5e5e8205acbbfb59801c31215989983730884aa7e07ba746e4c993108"
+        }
+      ],
+      "file_manifest_sha256": "695e788aa1a88d319524abd613feec22e8a0e084d521d092368e8bc2f9ba55ab",
+      "artifact_type": "app_bundle"
+    },
+    {
+      "original": "Apple-Builds/CasitaDex-SB121-Readiness-3b526f6/DerivedData/Build/Products/Release-iphonesimulator/CasitaDexDev.app",
+      "quarantine": "Quarantine/Obsolete-Builds/20261106T1413Z/Apple-Builds/CasitaDex-SB121-Readiness-3b526f6/DerivedData/Build/Products/Release-iphonesimulator/CasitaDexDev.app.quarantined",
+      "identity": {
+        "CFBundleIdentifier": "com.designsbyfa.casitadex.dev",
+        "CFBundleVersion": "1",
+        "CFBundleShortVersionString": "0.1.0",
+        "CFBundleExecutable": "CasitaDexDev"
+      },
+      "file_bytes": 49012626,
+      "status": "quarantined_and_hash_verified",
+      "files": [
+        {
+          "path": "AppIcon60x60@2x.png",
+          "mode": 420,
+          "mtime_ns": 1793933449961110349,
+          "type": "file",
+          "size": 12891,
+          "sha256": "4aa53e90fd2b673418a2b058c1ed3adc7f9f8c00927a2cd3caadd685439b984c"
+        },
+        {
+          "path": "AppIcon76x76@2x~ipad.png",
+          "mode": 420,
+          "mtime_ns": 1793933449966378376,
+          "type": "file",
+          "size": 18203,
+          "sha256": "f4ee26f2fd09ba287e33224ed7ba768def0f33e3cb86d0061b0593edbca9a791"
+        },
+        {
+          "path": "Assets.car",
+          "mode": 420,
+          "mtime_ns": 1793933450406543167,
+          "type": "file",
+          "size": 1004360,
+          "sha256": "3f26848bfa7bf0ea078d11a80517fb19831c343d4b5ea1c534fcb1578c362440"
+        },
+        {
+          "path": "CasitaDexDev",
+          "mode": 493,
+          "mtime_ns": 1793933456780337965,
+          "type": "file",
+          "size": 19381184,
+          "sha256": "9d7c35b41f5a7a65457b91f3772c380a9fa58fa101288ac77b7ca2fd64165a3a"
+        },
+        {
+          "path": "EXConstants.bundle",
+          "mode": 493,
+          "mtime_ns": 1793933443000000000,
+          "type": "directory"
+        },
+        {
+          "path": "EXConstants.bundle/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1793933262000000000,
+          "type": "file",
+          "size": 750,
+          "sha256": "add826e367dd0d32782da494dc6c18425060a072d59af88798efad22d5fffc4b"
+        },
+        {
+          "path": "EXConstants.bundle/app.config",
+          "mode": 420,
+          "mtime_ns": 1793933443000000000,
+          "type": "file",
+          "size": 1493,
+          "sha256": "c5184c29e21dfb5ad5b6721443e968ee7d3209f24b7b2737a1af513e84bd86e7"
+        },
+        {
+          "path": "Expo.plist",
+          "mode": 420,
+          "mtime_ns": 1793933448263395064,
+          "type": "file",
+          "size": 173,
+          "sha256": "05ba13f24655445d029d47b626ac23ce8003e2e0722b7f8926b82b89c94ec51b"
+        },
+        {
+          "path": "ExpoConstants_privacy.bundle",
+          "mode": 493,
+          "mtime_ns": 1793933262000000000,
+          "type": "directory"
+        },
+        {
+          "path": "ExpoConstants_privacy.bundle/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1793933262000000000,
+          "type": "file",
+          "size": 772,
+          "sha256": "d73a6114d74ce274457698c1cecd16ddda9ceef3d1375e52368608b876722120"
+        },
+        {
+          "path": "ExpoConstants_privacy.bundle/PrivacyInfo.xcprivacy",
+          "mode": 420,
+          "mtime_ns": 1793933262000000000,
+          "type": "file",
+          "size": 607,
+          "sha256": "2b2d8edb71d51c5b1f1ace4cdb28a94baf22fdde9bbf2e2bfc17d187ff7b5f47"
+        },
+        {
+          "path": "ExpoFileSystem_privacy.bundle",
+          "mode": 493,
+          "mtime_ns": 1793933262000000000,
+          "type": "directory"
+        },
+        {
+          "path": "ExpoFileSystem_privacy.bundle/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1793933262000000000,
+          "type": "file",
+          "size": 773,
+          "sha256": "c90da194a28d43790ae6f72e298271e9775901bb89e8844bc8d51f724c12bca9"
+        },
+        {
+          "path": "ExpoSystemUI_privacy.bundle",
+          "mode": 493,
+          "mtime_ns": 1793933262000000000,
+          "type": "directory"
+        },
+        {
+          "path": "ExpoSystemUI_privacy.bundle/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1793933262000000000,
+          "type": "file",
+          "size": 769,
+          "sha256": "eea2e79b416c8b1aa73e8f5c7b95b68407f1ee18167d11b41d79405474f207fd"
+        },
+        {
+          "path": "ExpoSystemUI_privacy.bundle/PrivacyInfo.xcprivacy",
+          "mode": 420,
+          "mtime_ns": 1793933262000000000,
+          "type": "file",
+          "size": 607,
+          "sha256": "2b2d8edb71d51c5b1f1ace4cdb28a94baf22fdde9bbf2e2bfc17d187ff7b5f47"
+        },
+        {
+          "path": "Frameworks",
+          "mode": 493,
+          "mtime_ns": 1793933461038084627,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ExpoFileSystem.framework",
+          "mode": 493,
+          "mtime_ns": 1793933460564282061,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ExpoFileSystem.framework/ExpoFileSystem",
+          "mode": 493,
+          "mtime_ns": 1793933460564368145,
+          "type": "file",
+          "size": 1156032,
+          "sha256": "ce9aa0c44def0dd8bfe164ee1fd7b4e5fdaae80a45ab70d987e84c6cfdf42bd1"
+        },
+        {
+          "path": "Frameworks/ExpoFileSystem.framework/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1789125827000000000,
+          "type": "file",
+          "size": 746,
+          "sha256": "5f9a269baff07c93ed53674b76667a8b84b8acd9aa6dd96d94c326bd1e7e6b7d"
+        },
+        {
+          "path": "Frameworks/ExpoFileSystem.framework/_CodeSignature",
+          "mode": 493,
+          "mtime_ns": 1789125828000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ExpoFileSystem.framework/_CodeSignature/CodeResources",
+          "mode": 420,
+          "mtime_ns": 1789125828000000000,
+          "type": "file",
+          "size": 1798,
+          "sha256": "3ae83871cd2b1afb35fff45f2130a05d9cadeb11984ec8075e6d879c0d5b3ee3"
+        },
+        {
+          "path": "Frameworks/ExpoFont.framework",
+          "mode": 493,
+          "mtime_ns": 1793933460606309156,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ExpoFont.framework/ExpoFont",
+          "mode": 493,
+          "mtime_ns": 1793933460606343198,
+          "type": "file",
+          "size": 227024,
+          "sha256": "47660b3c298dbcd2344d2a4f64ed3fe546ccc1cd29eb7e5a3ada2cb5b9264563"
+        },
+        {
+          "path": "Frameworks/ExpoFont.framework/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1789125818000000000,
+          "type": "file",
+          "size": 728,
+          "sha256": "7f0220334b9f441a188a322be1848cccabfdbf269a11846db72d2ebe2db3fb1a"
+        },
+        {
+          "path": "Frameworks/ExpoFont.framework/_CodeSignature",
+          "mode": 493,
+          "mtime_ns": 1789125818000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ExpoFont.framework/_CodeSignature/CodeResources",
+          "mode": 420,
+          "mtime_ns": 1789125818000000000,
+          "type": "file",
+          "size": 1798,
+          "sha256": "31c71f755e0bfab32d7d59ab5d6fa0ac432864ecbdc952909c831823277e8a97"
+        },
+        {
+          "path": "Frameworks/ExpoModulesCore.framework",
+          "mode": 493,
+          "mtime_ns": 1793933460682163637,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ExpoModulesCore.framework/ExpoModulesCore",
+          "mode": 493,
+          "mtime_ns": 1793933460682427097,
+          "type": "file",
+          "size": 3803648,
+          "sha256": "e739b7f6f92ff44bc7c3e873ae681469a1030f8bc2810577f13ddaf98781352d"
+        },
+        {
+          "path": "Frameworks/ExpoModulesCore.framework/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1793870908000000000,
+          "type": "file",
+          "size": 752,
+          "sha256": "c7a9db6e207f3976f97f4f6c874051386107720fd2b1caeaa303a92298d0ded3"
+        },
+        {
+          "path": "Frameworks/ExpoModulesCore.framework/_CodeSignature",
+          "mode": 493,
+          "mtime_ns": 1793870909000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ExpoModulesCore.framework/_CodeSignature/CodeResources",
+          "mode": 420,
+          "mtime_ns": 1793870909000000000,
+          "type": "file",
+          "size": 1798,
+          "sha256": "be77bfa5f44a69adb5417a40a35157acbef6c348a207f4a96db088fdfdb9abff"
+        },
+        {
+          "path": "Frameworks/ExpoModulesJSI.framework",
+          "mode": 493,
+          "mtime_ns": 1793933460724575484,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ExpoModulesJSI.framework/ExpoModulesJSI",
+          "mode": 493,
+          "mtime_ns": 1793933460724631818,
+          "type": "file",
+          "size": 761040,
+          "sha256": "9ca6ea33e935cd924c2c92e388b35ced07cd83bd772b06d70b9b43c55c914888"
+        },
+        {
+          "path": "Frameworks/ExpoModulesJSI.framework/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1793825744000000000,
+          "type": "file",
+          "size": 738,
+          "sha256": "d3c5161cb31e1adbcd31a6158143da0a0d09d4a8e4a48e3658e0143068ae20ba"
+        },
+        {
+          "path": "Frameworks/ExpoModulesJSI.framework/_CodeSignature",
+          "mode": 493,
+          "mtime_ns": 1793825744000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ExpoModulesJSI.framework/_CodeSignature/CodeResources",
+          "mode": 420,
+          "mtime_ns": 1793825744000000000,
+          "type": "file",
+          "size": 1798,
+          "sha256": "c6c636d9816433ee85fd06daa5d56456ee478cb0c2cb61c61cdbf568bcddefa4"
+        },
+        {
+          "path": "Frameworks/ExpoModulesWorklets.framework",
+          "mode": 493,
+          "mtime_ns": 1793933460761593428,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ExpoModulesWorklets.framework/ExpoModulesWorklets",
+          "mode": 493,
+          "mtime_ns": 1793933460761631262,
+          "type": "file",
+          "size": 164656,
+          "sha256": "24758b82fd3e35a3b5220198f52521c1340c575c77edb08d971c456829469827"
+        },
+        {
+          "path": "Frameworks/ExpoModulesWorklets.framework/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1793870930000000000,
+          "type": "file",
+          "size": 764,
+          "sha256": "fc9a8ff5386c6fbf5bfbcdbc48dfa9fec1ad8ca936d6cfd3c6851b7cfcc41ddf"
+        },
+        {
+          "path": "Frameworks/ExpoModulesWorklets.framework/_CodeSignature",
+          "mode": 493,
+          "mtime_ns": 1793870930000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ExpoModulesWorklets.framework/_CodeSignature/CodeResources",
+          "mode": 420,
+          "mtime_ns": 1793870930000000000,
+          "type": "file",
+          "size": 1798,
+          "sha256": "a0283877a2c602a1cff02e9849d60dcd2d58541a764efbd7595d99f96717fef9"
+        },
+        {
+          "path": "Frameworks/React.framework",
+          "mode": 493,
+          "mtime_ns": 1793933460952184635,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/React.framework/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1787581676000000000,
+          "type": "file",
+          "size": 724,
+          "sha256": "c9be56123cc6ba97e94958755e20537471fd84b0c1cd579e4982ae9255816301"
+        },
+        {
+          "path": "Frameworks/React.framework/React",
+          "mode": 420,
+          "mtime_ns": 1793933460953539725,
+          "type": "file",
+          "size": 12081392,
+          "sha256": "6bb7c4b8c0fcadd038a422c2580a581041777145575e7622dc8ce5947f893e04"
+        },
+        {
+          "path": "Frameworks/React.framework/_CodeSignature",
+          "mode": 493,
+          "mtime_ns": 1787581676000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/React.framework/_CodeSignature/CodeResources",
+          "mode": 420,
+          "mtime_ns": 1787581676000000000,
+          "type": "file",
+          "size": 1798,
+          "sha256": "9f22235918b33cc61280bff9f60b6fc25e491f693db5d1e0589a3e33eb952261"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework",
+          "mode": 493,
+          "mtime_ns": 1793933461020598202,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1787580424000000000,
+          "type": "file",
+          "size": 761,
+          "sha256": "043d66b265858b73ca23f8cbbf15e7043bb40f97e6104708e4f69d1f9d00fa96"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies",
+          "mode": 420,
+          "mtime_ns": 1793933461020680911,
+          "type": "file",
+          "size": 1261792,
+          "sha256": "fac8e1599978a2296991770cb5f3588df82591fe9a46b862684bb10a2fc572f7"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_boost.bundle",
+          "mode": 493,
+          "mtime_ns": 1787580435000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_boost.bundle/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1787580435000000000,
+          "type": "file",
+          "size": 669,
+          "sha256": "16db1275ce3a9d70994d079ae4fe4e7f8894b2f92fb3c6b33b03fa3a2e5d0971"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_boost.bundle/PrivacyInfo.xcprivacy",
+          "mode": 420,
+          "mtime_ns": 1787580435000000000,
+          "type": "file",
+          "size": 776,
+          "sha256": "d3559c988dff940d4f758f37a0ba1863208304e33ab0b97c0e3dd5d3762f5f1d"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_boost.bundle/_CodeSignature",
+          "mode": 493,
+          "mtime_ns": 1787580435000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_boost.bundle/_CodeSignature/CodeDirectory",
+          "mode": 420,
+          "mtime_ns": 1787580435000000000,
+          "type": "file",
+          "size": 156,
+          "sha256": "178f3bdcfed97cc13ad4e518330448c56e00f47360560e105d55cfcd7598d9b8"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_boost.bundle/_CodeSignature/CodeRequirements",
+          "mode": 420,
+          "mtime_ns": 1787580435000000000,
+          "type": "file",
+          "size": 12,
+          "sha256": "987920904eab650e75788c054aa0b0524e6a80bfc71aa32df8d237a61743f986"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_boost.bundle/_CodeSignature/CodeRequirements-1",
+          "mode": 420,
+          "mtime_ns": 1787580435000000000,
+          "type": "file",
+          "size": 204,
+          "sha256": "d2393f211df2ea2bc6e03061789759c9818f99ffd177b408422ccf4d0b37f94e"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_boost.bundle/_CodeSignature/CodeResources",
+          "mode": 420,
+          "mtime_ns": 1787580435000000000,
+          "type": "file",
+          "size": 2032,
+          "sha256": "557fba743e35172838832cca93f1d17e34b8bd696f96eeb3032e529502ea945e"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_boost.bundle/_CodeSignature/CodeSignature",
+          "mode": 420,
+          "mtime_ns": 1787580435000000000,
+          "type": "file",
+          "size": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_folly.bundle",
+          "mode": 493,
+          "mtime_ns": 1787580436000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_folly.bundle/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1787580436000000000,
+          "type": "file",
+          "size": 669,
+          "sha256": "5abf3977eef24726730e03a648dca022c8f993596e122cd94cf322985ac8ac76"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_folly.bundle/PrivacyInfo.xcprivacy",
+          "mode": 420,
+          "mtime_ns": 1787580436000000000,
+          "type": "file",
+          "size": 552,
+          "sha256": "0587d155c56a6f4f0647ebc6b6a0bd026615cd610ee8f209a9786b79a96ad335"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_folly.bundle/_CodeSignature",
+          "mode": 493,
+          "mtime_ns": 1787580436000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_folly.bundle/_CodeSignature/CodeDirectory",
+          "mode": 420,
+          "mtime_ns": 1787580436000000000,
+          "type": "file",
+          "size": 156,
+          "sha256": "25ccd0685a97962d86509fb66694af0eb207890862bcb49c3e14bd3ddbe4ddfc"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_folly.bundle/_CodeSignature/CodeRequirements",
+          "mode": 420,
+          "mtime_ns": 1787580436000000000,
+          "type": "file",
+          "size": 12,
+          "sha256": "987920904eab650e75788c054aa0b0524e6a80bfc71aa32df8d237a61743f986"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_folly.bundle/_CodeSignature/CodeRequirements-1",
+          "mode": 420,
+          "mtime_ns": 1787580436000000000,
+          "type": "file",
+          "size": 204,
+          "sha256": "dee967a352e0d990a9bc3d34c5a66c6597254ec4431de379acd35ef3fe94a03b"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_folly.bundle/_CodeSignature/CodeResources",
+          "mode": 420,
+          "mtime_ns": 1787580436000000000,
+          "type": "file",
+          "size": 2032,
+          "sha256": "be2989a2daf02505cf3117ce99419580ce849fd1a8200c581bd9acdf8409a440"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_folly.bundle/_CodeSignature/CodeSignature",
+          "mode": 420,
+          "mtime_ns": 1787580436000000000,
+          "type": "file",
+          "size": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_glog.bundle",
+          "mode": 493,
+          "mtime_ns": 1787580435000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_glog.bundle/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1787580435000000000,
+          "type": "file",
+          "size": 667,
+          "sha256": "8b97a53cf72f56810fed094013c2f521c034e5267a495081570a861a0adc4c41"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_glog.bundle/PrivacyInfo.xcprivacy",
+          "mode": 420,
+          "mtime_ns": 1787580435000000000,
+          "type": "file",
+          "size": 552,
+          "sha256": "0587d155c56a6f4f0647ebc6b6a0bd026615cd610ee8f209a9786b79a96ad335"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_glog.bundle/_CodeSignature",
+          "mode": 493,
+          "mtime_ns": 1787580435000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_glog.bundle/_CodeSignature/CodeDirectory",
+          "mode": 420,
+          "mtime_ns": 1787580435000000000,
+          "type": "file",
+          "size": 155,
+          "sha256": "d7cb7c11cc0a0c8f4ee3e91df163b072d20f5258f28106b6c71a06a3a5d29383"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_glog.bundle/_CodeSignature/CodeRequirements",
+          "mode": 420,
+          "mtime_ns": 1787580435000000000,
+          "type": "file",
+          "size": 12,
+          "sha256": "987920904eab650e75788c054aa0b0524e6a80bfc71aa32df8d237a61743f986"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_glog.bundle/_CodeSignature/CodeRequirements-1",
+          "mode": 420,
+          "mtime_ns": 1787580435000000000,
+          "type": "file",
+          "size": 203,
+          "sha256": "e54537eaff8aa25202925da339bf7d4c92854298ba76e0417eec916e16c2a0ec"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_glog.bundle/_CodeSignature/CodeResources",
+          "mode": 420,
+          "mtime_ns": 1787580435000000000,
+          "type": "file",
+          "size": 2032,
+          "sha256": "be2989a2daf02505cf3117ce99419580ce849fd1a8200c581bd9acdf8409a440"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/ReactNativeDependencies_glog.bundle/_CodeSignature/CodeSignature",
+          "mode": 420,
+          "mtime_ns": 1787580435000000000,
+          "type": "file",
+          "size": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/_CodeSignature",
+          "mode": 493,
+          "mtime_ns": 1787580424000000000,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/ReactNativeDependencies.framework/_CodeSignature/CodeResources",
+          "mode": 420,
+          "mtime_ns": 1787580424000000000,
+          "type": "file",
+          "size": 1798,
+          "sha256": "1b16b78c80abf2f78f9a3025803a6c9e69fc2484c1f16c84324b38928559bb33"
+        },
+        {
+          "path": "Frameworks/hermesvm.framework",
+          "mode": 493,
+          "mtime_ns": 1793933461126299881,
+          "type": "directory"
+        },
+        {
+          "path": "Frameworks/hermesvm.framework/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1787307008000000000,
+          "type": "file",
+          "size": 866,
+          "sha256": "0767523a61a3ab293e6e39ea3de61622d833f2dacee418afd89f6a57d67c8119"
+        },
+        {
+          "path": "Frameworks/hermesvm.framework/hermesvm",
+          "mode": 493,
+          "mtime_ns": 1793933461126598924,
+          "type": "file",
+          "size": 5094168,
+          "sha256": "d93d6fb893ffcdd49017168c2381d527cd81fd924f95fcdf9129b602a8c51dc8"
+        },
+        {
+          "path": "Info.plist",
+          "mode": 420,
+          "mtime_ns": 1793933456478412845,
+          "type": "file",
+          "size": 2385,
+          "sha256": "6ea867b4a034127b10dd22681c73979cd080ed1a8b4ae855e63402e48693ae88"
+        },
+        {
+          "path": "PkgInfo",
+          "mode": 420,
+          "mtime_ns": 1793933456478491845,
+          "type": "file",
+          "size": 8,
+          "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+        },
+        {
+          "path": "PrivacyInfo.xcprivacy",
+          "mode": 420,
+          "mtime_ns": 1793933448260924010,
+          "type": "file",
+          "size": 986,
+          "sha256": "06949f6d09a83cea00c3a4895bb7300f2580d52852c6ade1a9caa169934a1001"
+        },
+        {
+          "path": "RNCAsyncStorage_resources.bundle",
+          "mode": 493,
+          "mtime_ns": 1793933262000000000,
+          "type": "directory"
+        },
+        {
+          "path": "RNCAsyncStorage_resources.bundle/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1793933262000000000,
+          "type": "file",
+          "size": 778,
+          "sha256": "1a4470821edfbe37b14b43c96c85ce425fd334f1c219c4652ae04a3c031cc59b"
+        },
+        {
+          "path": "RNCAsyncStorage_resources.bundle/PrivacyInfo.xcprivacy",
+          "mode": 420,
+          "mtime_ns": 1793933262000000000,
+          "type": "file",
+          "size": 512,
+          "sha256": "0b1287d0e686cf867d38d97cca5dc694b3029f27c4fe4270dd4bd2fd5458a2f0"
+        },
+        {
+          "path": "React-Core_privacy.bundle",
+          "mode": 493,
+          "mtime_ns": 1793933262000000000,
+          "type": "directory"
+        },
+        {
+          "path": "React-Core_privacy.bundle/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1793933262000000000,
+          "type": "file",
+          "size": 765,
+          "sha256": "bfae13aff4b1d92bf6d896e19e882be7764302217acd8365934fd55baf613f25"
+        },
+        {
+          "path": "React-Core_privacy.bundle/PrivacyInfo.xcprivacy",
+          "mode": 420,
+          "mtime_ns": 1793933262000000000,
+          "type": "file",
+          "size": 768,
+          "sha256": "7c08969e459621a6ecec043ccdb9012651f185811945f75517c623dae2e11627"
+        },
+        {
+          "path": "React-cxxreact_privacy.bundle",
+          "mode": 493,
+          "mtime_ns": 1793933262000000000,
+          "type": "directory"
+        },
+        {
+          "path": "React-cxxreact_privacy.bundle/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1793933262000000000,
+          "type": "file",
+          "size": 773,
+          "sha256": "4ab32951f004d675c6ea07e500514aeb3abbe3bf16cd1ee2d1067454165376a9"
+        },
+        {
+          "path": "React-cxxreact_privacy.bundle/PrivacyInfo.xcprivacy",
+          "mode": 420,
+          "mtime_ns": 1793933262000000000,
+          "type": "file",
+          "size": 552,
+          "sha256": "0587d155c56a6f4f0647ebc6b6a0bd026615cd610ee8f209a9786b79a96ad335"
+        },
+        {
+          "path": "React-timing_privacy.bundle",
+          "mode": 493,
+          "mtime_ns": 1793933262000000000,
+          "type": "directory"
+        },
+        {
+          "path": "React-timing_privacy.bundle/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1793933262000000000,
+          "type": "file",
+          "size": 769,
+          "sha256": "a5e7adc8abd948a36cd2e4be724bc725046f08b92269e07cbcc03056dc25566e"
+        },
+        {
+          "path": "React-timing_privacy.bundle/PrivacyInfo.xcprivacy",
+          "mode": 420,
+          "mtime_ns": 1793933262000000000,
+          "type": "file",
+          "size": 553,
+          "sha256": "23ddfa062a6d4392e65882d151fdececbd29904a227ad8918c0144ebc777ee61"
+        },
+        {
+          "path": "SplashScreen.storyboardc",
+          "mode": 493,
+          "mtime_ns": 1793933450106727231,
+          "type": "directory"
+        },
+        {
+          "path": "SplashScreen.storyboardc/EXPO-VIEWCONTROLLER-1-view-EXPO-ContainerView.nib",
+          "mode": 420,
+          "mtime_ns": 1793933450101527000,
+          "type": "file",
+          "size": 2136,
+          "sha256": "59d818250bf8dc3712f63170184354d488baea22fe9c4a8e6f375bab6e70f0d1"
+        },
+        {
+          "path": "SplashScreen.storyboardc/Info.plist",
+          "mode": 420,
+          "mtime_ns": 1793933450103971000,
+          "type": "file",
+          "size": 225,
+          "sha256": "74dbceed6cf0a5e5c69834793328c9783ecab1de482d4954e257ca2132b743af"
+        },
+        {
+          "path": "SplashScreen.storyboardc/SplashScreenViewController.nib",
+          "mode": 420,
+          "mtime_ns": 1793933450103922000,
+          "type": "file",
+          "size": 1004,
+          "sha256": "9c1a34c121d22479408cf0eaacb3491548ced16655799bae3b5f7f2380314ba8"
+        },
+        {
+          "path": "assets",
+          "mode": 493,
+          "mtime_ns": 1793933458168256306,
+          "type": "directory"
+        },
+        {
+          "path": "assets/assets",
+          "mode": 493,
+          "mtime_ns": 1793933458171131321,
+          "type": "directory"
+        },
+        {
+          "path": "assets/assets/brand",
+          "mode": 493,
+          "mtime_ns": 1793933458170830861,
+          "type": "directory"
+        },
+        {
+          "path": "assets/assets/brand/illustration-backup.jpg",
+          "mode": 420,
+          "mtime_ns": 1793933458170272942,
+          "type": "file",
+          "size": 27998,
+          "sha256": "adb0af77832991800ff2162f4ca06b7096c2d09156d78aa1dc64f536b26aec0b"
+        },
+        {
+          "path": "assets/assets/brand/illustration-find.jpg",
+          "mode": 420,
+          "mtime_ns": 1793933458170069357,
+          "type": "file",
+          "size": 22588,
+          "sha256": "9c2bcd79b380ee3ab9fad37e38a139a5e99ff598239b22d5bebcfc141844557e"
+        },
+        {
+          "path": "assets/assets/brand/illustration-home.jpg",
+          "mode": 420,
+          "mtime_ns": 1793933458169820773,
+          "type": "file",
+          "size": 27949,
+          "sha256": "832b177dc2998c19df870d4d17e5bb3acafbd89eb7175efd89c7ce2ec06d11be"
+        },
+        {
+          "path": "assets/assets/brand/logo-color-dark.png",
+          "mode": 420,
+          "mtime_ns": 1793933458170657986,
+          "type": "file",
+          "size": 26569,
+          "sha256": "5a392325cd9ad1cf291c5794807493b66e2feaa8a672ca1130792409932b1c26"
+        },
+        {
+          "path": "assets/assets/brand/logo-color-light.png",
+          "mode": 420,
+          "mtime_ns": 1793933458170955695,
+          "type": "file",
+          "size": 26675,
+          "sha256": "e58f214b02280805e6c241cf9754132749769150e4c3a8e2f38007c03da70cb1"
+        },
+        {
+          "path": "assets/assets/house-trees-header.png",
+          "mode": 420,
+          "mtime_ns": 1793933458171914534,
+          "type": "file",
+          "size": 690383,
+          "sha256": "fabc37306d38315d1e3f5dd464d4d0c45353a4b948f088f77b4d8cef8fde794b"
+        },
+        {
+          "path": "assets/assets/ui-icons",
+          "mode": 493,
+          "mtime_ns": 1793933458168392182,
+          "type": "directory"
+        },
+        {
+          "path": "assets/assets/ui-icons/accepted-v1",
+          "mode": 493,
+          "mtime_ns": 1793933458169288353,
+          "type": "directory"
+        },
+        {
+          "path": "assets/assets/ui-icons/accepted-v1/find.png",
+          "mode": 420,
+          "mtime_ns": 1793933458169385562,
+          "type": "file",
+          "size": 3832,
+          "sha256": "de4b08ed636923fd36d87d9abf9515aec4eea4839d2c026dab0761861e39ad9d"
+        },
+        {
+          "path": "assets/assets/ui-icons/accepted-v1/home.png",
+          "mode": 420,
+          "mtime_ns": 1793933458168572391,
+          "type": "file",
+          "size": 2643,
+          "sha256": "89c4f2f8c74e3103f229c2265191cd325f5520036fdfabd3b7bad380fd4db8f1"
+        },
+        {
+          "path": "assets/assets/ui-icons/accepted-v1/memories.png",
+          "mode": 420,
+          "mtime_ns": 1793933458168753392,
+          "type": "file",
+          "size": 2428,
+          "sha256": "286a4adf697378427b7c0fafbb3f28f6b164255e6781d548b4bc2812fccbe2c7"
+        },
+        {
+          "path": "assets/assets/ui-icons/accepted-v1/photos.png",
+          "mode": 420,
+          "mtime_ns": 1793933458168985685,
+          "type": "file",
+          "size": 3363,
+          "sha256": "98a9888bc1ffafb46b04ef3a47c88c56c8f87a34cce3f77448dbef75d93bec55"
+        },
+        {
+          "path": "assets/assets/ui-icons/accepted-v1/reminders.png",
+          "mode": 420,
+          "mtime_ns": 1793933458169163936,
+          "type": "file",
+          "size": 2917,
+          "sha256": "3d7db85c661eac0a652268c1e98e1edff6b5c0f024244c0ad432d5c092ea80e2"
+        },
+        {
+          "path": "assets/node_modules",
+          "mode": 493,
+          "mtime_ns": 1793933458159827887,
+          "type": "directory"
+        },
+        {
+          "path": "assets/node_modules/expo-router",
+          "mode": 493,
+          "mtime_ns": 1793933458160439807,
+          "type": "directory"
+        },
+        {
+          "path": "assets/node_modules/expo-router/assets",
+          "mode": 493,
+          "mtime_ns": 1793933458167969638,
+          "type": "directory"
+        },
+        {
+          "path": "assets/node_modules/expo-router/assets/arrow_down.png",
+          "mode": 420,
+          "mtime_ns": 1793933458167795012,
+          "type": "file",
+          "size": 9456,
+          "sha256": "6deca32b56b97fa1fa87facd6996b46cc45190a553400e7febdf1d2093099b57"
+        },
+        {
+          "path": "assets/node_modules/expo-router/assets/error.png",
+          "mode": 420,
+          "mtime_ns": 1793933458166603798,
+          "type": "file",
+          "size": 469,
+          "sha256": "c15ec72a74d13957211808313d5c35deb7f7606c6d22dbddceb0000d4e0547ad"
+        },
+        {
+          "path": "assets/node_modules/expo-router/assets/file.png",
+          "mode": 420,
+          "mtime_ns": 1793933458166812132,
+          "type": "file",
+          "size": 138,
+          "sha256": "a69a2edb5b6c60b8433d5b6d23c69f520ccd8a602f3f60e7996e489718bc175c"
+        },
+        {
+          "path": "assets/node_modules/expo-router/assets/forward.png",
+          "mode": 420,
+          "mtime_ns": 1793933458167265051,
+          "type": "file",
+          "size": 188,
+          "sha256": "708a79cf561b8a2a4850ce0254584d3a5231046be08fb7fadf4b6edfdb31178b"
+        },
+        {
+          "path": "assets/node_modules/expo-router/assets/pkg.png",
+          "mode": 420,
+          "mtime_ns": 1793933458167020258,
+          "type": "file",
+          "size": 364,
+          "sha256": "27f4d229d440925bf7212d5dfffa45d596b2c7b3bb2905c96b839b2081a1dbeb"
+        },
+        {
+          "path": "assets/node_modules/expo-router/assets/react-navigation",
+          "mode": 493,
+          "mtime_ns": 1793933458160778892,
+          "type": "directory"
+        },
+        {
+          "path": "assets/node_modules/expo-router/assets/react-navigation/elements",
+          "mode": 493,
+          "mtime_ns": 1793933458166291088,
+          "type": "directory"
+        },
+        {
+          "path": "assets/node_modules/expo-router/assets/react-navigation/elements/back-icon-mask.png",
+          "mode": 420,
+          "mtime_ns": 1793933458162094566,
+          "type": "file",
+          "size": 653,
+          "sha256": "9adb8c5efca932e2b732b293da813bd2e31952263056bce9e2517fec0f0b6a76"
+        },
+        {
+          "path": "assets/node_modules/expo-router/assets/react-navigation/elements/back-icon.png",
+          "mode": 420,
+          "mtime_ns": 1793933458162719569,
+          "type": "file",
+          "size": 290,
+          "sha256": "2cdfeb8e5ccde7976f7012fb8cce73af2229029ee21d4f1509fed114871c6cd8"
+        },
+        {
+          "path": "assets/node_modules/expo-router/assets/react-navigation/elements/back-icon@2x.png",
+          "mode": 420,
+          "mtime_ns": 1793933458163202238,
+          "type": "file",
+          "size": 405,
+          "sha256": "2b7443a9a58e92ca11a575bdc11598615a57dde305cd8ce70d602606b302cd98"
+        },
+        {
+          "path": "assets/node_modules/expo-router/assets/react-navigation/elements/back-icon@3x.png",
+          "mode": 420,
+          "mtime_ns": 1793933458163453865,
+          "type": "file",
+          "size": 761,
+          "sha256": "3ddd0773ed27e23d25789f301731b3ac455ad8be5aa27a0a1b838f89c6d27225"
+        },
+        {
+          "path": "assets/node_modules/expo-router/assets/react-navigation/elements/clear-icon.png",
+          "mode": 420,
+          "mtime_ns": 1793933458163893700,
+          "type": "file",
+          "size": 220,
+          "sha256": "d03a5cd7a66ef10c5147916f9d5878b2d0a0a5ad46f405a31cd9967efaa55afd"
+        },
+        {
+          "path": "assets/node_modules/expo-router/assets/react-navigation/elements/clear-icon@2x.png",
+          "mode": 420,
+          "mtime_ns": 1793933458164146535,
+          "type": "file",
+          "size": 334,
+          "sha256": "ab5613d2ce70fa67c5926e831353664945199fc195fa6fe76c5fe3cec452e31a"
+        },
+        {
+          "path": "assets/node_modules/expo-router/assets/react-navigation/elements/clear-icon@3x.png",
+          "mode": 420,
+          "mtime_ns": 1793933458164372703,
+          "type": "file",
+          "size": 502,
+          "sha256": "c4e54e6a0a7de636aa153378fbc62ea4a41695bfedf807f90df7b18ffd733f67"
+        },
+        {
+          "path": "assets/node_modules/expo-router/assets/react-navigation/elements/close-icon.png",
+          "mode": 420,
+          "mtime_ns": 1793933458164842872,
+          "type": "file",
+          "size": 141,
+          "sha256": "b1bc1810ca23e2c38cd76971c43591d726161061240d8b792b05757196ddb528"
+        },
+        {
+          "path": "assets/node_modules/expo-router/assets/react-navigation/elements/close-icon@2x.png",
+          "mode": 420,
+          "mtime_ns": 1793933458165093956,
+          "type": "file",
+          "size": 201,
+          "sha256": "cbdf9213e55f65c48d076acd8423b7c9aee4f1b81101ff6c95a38c4cd8a86461"
+        },
+        {
+          "path": "assets/node_modules/expo-router/assets/react-navigation/elements/close-icon@3x.png",
+          "mode": 420,
+          "mtime_ns": 1793933458165304666,
+          "type": "file",
+          "size": 266,
+          "sha256": "d05c9d30d79f45a78e5585a2e7ec67c6a06a883dd9137e1d5059e8c87b33ce76"
+        },
+        {
+          "path": "assets/node_modules/expo-router/assets/react-navigation/elements/search-icon.png",
+          "mode": 420,
+          "mtime_ns": 1793933458165500250,
+          "type": "file",
+          "size": 317,
+          "sha256": "dc56b976bd45638e1125f6689743525e6886ae0bef2c8f4651994833685a831f"
+        },
+        {
+          "path": "assets/node_modules/expo-router/assets/react-navigation/elements/search-icon@2x.png",
+          "mode": 420,
+          "mtime_ns": 1793933458165791252,
+          "type": "file",
+          "size": 589,
+          "sha256": "ef13fc0dfc52ec23817585fd7e109fbdf593a3b2549c40ce71ac9b0eda12cc2c"
+        },
+        {
+          "path": "assets/node_modules/expo-router/assets/react-navigation/elements/search-icon@3x.png",
+          "mode": 420,
+          "mtime_ns": 1793933458166384130,
+          "type": "file",
+          "size": 839,
+          "sha256": "b434a7cf18c2d4ce747c70942ea2fee2d4412d93967ed92b372f810bb9261ea5"
+        },
+        {
+          "path": "assets/node_modules/expo-router/assets/sitemap.png",
+          "mode": 420,
+          "mtime_ns": 1793933458167626470,
+          "type": "file",
+          "size": 465,
+          "sha256": "acf691957a3bcce7d195856dce98a5cf14dce10bea28aa5c10b3550c078e23b5"
+        },
+        {
+          "path": "assets/node_modules/expo-router/assets/unmatched.png",
+          "mode": 420,
+          "mtime_ns": 1793933458168171056,
+          "type": "file",
+          "size": 4752,
+          "sha256": "efc79da3c4c97dfb1571bff6202958ab0529c5aa31e8392600578b3e359d1447"
+        },
+        {
+          "path": "main.jsbundle",
+          "mode": 420,
+          "mtime_ns": 1793933460282461209,
+          "type": "file",
+          "size": 3139623,
+          "sha256": "c694559dd0db70f0de1685b3247d852eb8e594643c03dbfbf7306c65ad3ce68a"
+        }
+      ],
+      "file_manifest_sha256": "79fa6abc7885718d29e48ac629e919497ac2ecb2c31214e89bc5d1db89da85bc",
+      "artifact_type": "app_bundle"
+    },
+    {
+      "original": "Android-Builds/CasitaDex-SB121-Development-9fd52ae/source/android/app/build/outputs/apk/release/app-release.apk",
+      "quarantine": "Quarantine/Obsolete-Builds/20261106T1413Z/Android-Builds/CasitaDex-SB121-Development-9fd52ae/source/android/app/build/outputs/apk/release/app-release.apk.quarantined",
+      "status": "quarantined_and_hash_verified",
+      "artifact_type": "apk_file",
+      "file_bytes": 44415164,
+      "files": [
+        {
+          "type": "file",
+          "size": 44415164,
+          "sha256": "89a201dd5808dd07fd4eba32fb6d3623988c81b827830932152011e2c4a7c828",
+          "mode": 420,
+          "mtime_ns": 1793937670048702400,
+          "path": "."
+        }
+      ],
+      "file_manifest_sha256": "1ef015e7a5c38741c5012c98e039d410815558f55d09f8c7b0ca18002dd81fd1"
+    },
+    {
+      "original": "Android-Builds/CasitaDex-SB121-Physical-9fd52ae/source/android/app/build/outputs/apk/release/app-release.apk",
+      "quarantine": "Quarantine/Obsolete-Builds/20261106T1413Z/Android-Builds/CasitaDex-SB121-Physical-9fd52ae/source/android/app/build/outputs/apk/release/app-release.apk.quarantined",
+      "status": "quarantined_and_hash_verified",
+      "artifact_type": "apk_file",
+      "file_bytes": 44415180,
+      "files": [
+        {
+          "type": "file",
+          "size": 44415180,
+          "sha256": "330b9acd883f4a6b6469a94b026dcc5aec049ac96f9b7123fb1371f17dcfe93d",
+          "mode": 420,
+          "mtime_ns": 1793935180974610134,
+          "path": "."
+        }
+      ],
+      "file_manifest_sha256": "23ba11dd9a01e432fc697fbcb99c75477299ca64ab607c297c87af763f1f48e5"
+    }
+  ]
+}
