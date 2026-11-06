@@ -1,21 +1,21 @@
 {
   "schema_version": 1,
   "status": "VERIFIED_PARTIAL_MILESTONE_SNAPSHOT",
-  "updated_at_utc": "2026-11-06T20:42:21.868736+00:00",
+  "updated_at_utc": "2026-11-06T21:03:21.527222+00:00",
   "release": "NO-GO",
-  "latest_runtime_commit": "8cc2862eaf2791379518e440d3b9d5833543ab0a",
+  "latest_runtime_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
   "installed_runtime_checkpoint": {
     "ios": {
-      "artifact_ref": "ios_8cc",
-      "source_commit": "8cc2862eaf2791379518e440d3b9d5833543ab0a",
-      "native_rotation_status": "PASS_BOUNDED",
+      "artifact_ref": "ios_7fa",
+      "source_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
+      "native_validation_status": "BOUNDED_NATIVE_PASS_WITH_ENLARGED_CANCEL_AND_MAXIMUM_GAPS",
+      "prior_rotation_attribution": "8cc bounded result retained, not rerun on 7fa",
       "remaining_maximum_manual_hold_refocus": "INCOMPLETE",
-      "last_focused_preparation": "NOT_RUN: latest observed-state continuation stopped before editor at bounded record-reach precondition.",
       "evidence_refs": [
-        "ios_8cc_native"
+        "ios_7fa_validation_native"
       ],
       "presentation": "Home, portrait, system large, app Large Text off, no keyboard/draft.",
-      "live_desktop_selection": "NOT_VERIFIED; static native evidence reviewed. Remote continuation authorized; no current display hold."
+      "live_desktop_selection": "Not established; native screenshots reviewed."
     },
     "android": {
       "artifact_ref": "android_8cc",
@@ -31,203 +31,24 @@
       "offline_attribution": "Historical strict OS-offline PASS on 5dc, not rerun on 8cc.",
       "shutdown_verified_utc": "2026-11-06T18:51:48.981240+00:00"
     },
-    "note": "Both exact installed artifacts now identify 8cc. Native bounded milestones do not close composite, manual-accessibility or release gates."
+    "note": "iOS now 7fa012a after one preserving candidate build/upgrade. Retained Android remains 8cc; Event Command owns separate active Android lane. Prior native results remain source-attributed."
   },
   "current_verified_milestone": {
-    "source_commit": "8cc2862eaf2791379518e440d3b9d5833543ab0a",
+    "source_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
     "overall_release": "NO-GO",
     "ios": {
-      "artifact_ref": "ios_8cc",
-      "result": "BOUNDED_NATIVE_PASS_WITH_EXPLICIT_GAPS",
-      "cases": [
-        {
-          "id": "same_identity_preserving_upgrade",
-          "status": "PASS",
-          "scope": "Complete previous diagnostic app/data copies, per-file manifests, all 10 tables and media identical immediately after install and stable first launch.",
-          "evidence_refs": [
-            "ios_8cc_native"
-          ]
-        },
-        {
-          "id": "original_maximum_text_focused_portrait_to_landscape",
-          "status": "PASS",
-          "scope": "App Large ON and system accessibility-extra-extra-extra-large before same dirty focused editor rotation. Actual landscape 874x402. Field y5..178, pane y71..178, usable trailing text/caret above keyboard. Initial and repeat settled samples agree.",
-          "evidence_refs": [
-            "ios_8cc_native"
-          ]
-        },
-        {
-          "id": "short_action_intrinsic_height",
-          "status": "PASS",
-          "scope": "Normal detail action height 126 of 707 available points; content retains 581 points.",
-          "evidence_refs": [
-            "ios_8cc_native"
-          ]
-        },
-        {
-          "id": "ordinary_keyboard_key",
-          "status": "PASS",
-          "scope": "Real Space key appends a space to dirty title; text/caret visibly usable.",
-          "evidence_refs": [
-            "ios_8cc_native"
-          ]
-        },
-        {
-          "id": "repeated_keyboard_hide_refocus",
-          "status": "PASS",
-          "scope": "Two hide/refocus cycles retain dirty text. System maximum applied after the editor was mounted at normal size; not broad enlarged-label reachability.",
-          "evidence_refs": [
-            "ios_8cc_native"
-          ]
-        },
-        {
-          "id": "independent_action_scroll_and_clipping",
-          "status": "PASS",
-          "scope": "Action button moves while content field bounds/value remain fixed. Content drag is clipped independently. Actual pixels reviewed.",
-          "evidence_refs": [
-            "ios_8cc_native"
-          ]
-        },
-        {
-          "id": "normal_manual_drag_hold_refocus_and_rotation_return",
-          "status": "PASS",
-          "scope": "Field moves y127 to82; action bounds unchanged. Two-second hold plus three stable samples shows no sampled stale correction. Keyboard hide/refocus and return to portrait retain exact dirty value. No continuous-frame jitter claim.",
-          "evidence_refs": [
-            "ios_8cc_native"
-          ]
-        },
-        {
-          "id": "normal_save_cold_relaunch_restore_title",
-          "status": "PASS",
-          "scope": "Save temporary synthetic title, terminate/launch exact installed bundle, reopen and read persisted state, restore original title through UI Save.",
-          "evidence_refs": [
-            "ios_8cc_native"
-          ]
-        },
-        {
-          "id": "normal_dirty_cancel",
-          "status": "PASS",
-          "scope": "Cancel dirty title with keyboard open restores original saved detail.",
-          "evidence_refs": [
-            "ios_8cc_native"
-          ]
-        },
-        {
-          "id": "share_preview_and_cancel",
-          "status": "PASS",
-          "scope": "Open Share memory selection route, then Cancel sharing returns original detail. No external send or native share-sheet/export claim.",
-          "evidence_refs": [
-            "ios_8cc_native"
-          ]
-        },
-        {
-          "id": "maximum_text_manual_hold_refocus",
-          "status": "INCOMPLETE",
-          "scope": "First attempt stopped on an AX-observation assumption after field clipping. Unfocused manual continuation reached the bounded48-swipe limit. One later short focused preparation attempt stopped before editor because the expected Large text control was not confirmed after navigation. No repeat/extended seek. No new app defect inferred.",
-          "evidence_refs": [
-            "ios_8cc_native"
-          ]
-        },
-        {
-          "id": "final_bounded_focused_maximum_preparation",
-          "status": "NOT_RUN",
-          "scope": "Preparation stopped at the expected app Large OFF control check after Appearance navigation. No editor, AX-maximum setting, drag, hold or refocus test ran. No app defect inferred. This earlier preparation remained NOT_RUN. Cleanup and all10table/media equivalence passed.",
-          "evidence_refs": [
-            "ios_8cc_native"
-          ],
-          "chronology": "Earlier short preparation, before the separately authorized observed-state continuation; not the final cleanup phase."
-        },
-        {
-          "id": "observation_driven_maximum_manual_continuation",
-          "status": "NOT_RUN",
-          "scope": "Stable native Button bounds and destination confirmation successfully reached Appearance and enabled app Large. Browse all memories original-record Button remained y1038..1787 after two bounded setup swipes. Stopped before editor, AX maximum, rotation, manual hold or refocus. No app defect inferred. No setup/test retry.",
-          "evidence_refs": [
-            "ios_8cc_native"
-          ]
-        },
-        {
-          "id": "final_cleanup_and_preservation",
-          "status": "PASS",
-          "scope": "Preference-only recovery after the bounded setup restored app Large OFF, system large, portrait and Home. No editor was entered. All10tables/media exactly equal the prior revision16 baseline; installed runtime unchanged.",
-          "evidence_refs": [
-            "ios_8cc_native"
-          ]
-        }
-      ],
-      "maximum_preparation_limit": "Latest observed-state setup confirmed stable Appearance controls and app Large selection, but original record remained below the viewport after two bounded setup swipes. No editor, system maximum, rotation, manual hold or refocus ran. The attempt is NOT_RUN, no new app defect is inferred, and no further attempt is planned.",
-      "preservation": {
-        "same_identity_upgrade_all_10_tables_media_equal": true,
-        "pre_save_controls_exact": true,
-        "intentional_normal_save_and_title_restoration": {
-          "revision_before": 14,
-          "revision_after": 16,
-          "only_original_updated_at_changed": true,
-          "changed_tables": [
-            "eng_state_v2",
-            "eng_recovery_v2"
-          ],
-          "original_semantic_fields_events_other_data_and_photo_preserved": true
-        },
-        "last_bounded_attempt_all_10_tables_media_exact_against_revision_16": true,
-        "final_counts": {
-          "saved_memories": 2,
-          "photo_files": 1,
-          "draft": null
-        },
-        "final_preference_only_recovery_all_10_tables_media_exact_against_revision_16": true
-      },
-      "display": "Static native evidence verified; live iOS desktop selection unverified. Earlier display hold superseded by remote-continuation authorization.",
-      "final_cleanup_utc": "2026-11-06T18:49:38.537568+00:00"
+      "artifact_ref": "ios_7fa",
+      "result": "BOUNDED_NATIVE_PASS_WITH_ENLARGED_CANCEL_AND_MAXIMUM_GAPS",
+      "scope": "Normal validation feedback and Cancel PASS; app Large feedback readable after one action scroll; enlarged Cancel and combined maximum acceptance incomplete. Ten tables/media preserved.",
+      "evidence_refs": [
+        "ios_7fa_validation_native"
+      ]
     },
     "android": {
       "artifact_ref": "android_8cc",
-      "result": "PASS_BOUNDED",
-      "scope": [
-        "Same package/signer preserving upgrade; full semantic collection/draft/reminder and media equality before install, before first launch, after launch, after smoke and after relaunch.",
-        "Home/Photos/Reminders/Find reached; Find opened retained answer; both draft photo viewers/next/Close and Keep draft and leave returned correctly; reminder retained.",
-        "Live desktop Home and second-photo pixels inspected; native image-region comparison supports both retained photos rendered."
-      ],
-      "final_counts": {
-        "saved_memories": 1,
-        "drafts": 1,
-        "draft_photos": 2,
-        "standalone_reminders": 1
-      },
-      "engine_revision_before": 21,
-      "engine_revision_after": 23,
-      "draft_checkpoint": 39,
-      "semantic_change": false,
-      "radios_unchanged": {
-        "airplane": 0,
-        "wifi": 1,
-        "mobile_data": 1
-      },
-      "prior_restore_offline_not_repeated": true,
-      "evidence_refs": [
-        "android_8cc_native",
-        "android_8cc_installed"
-      ],
-      "final_handoff": {
-        "result": "GRACEFULLY_STOPPED_DATA_RETAINED",
-        "session_exit_code": 0,
-        "stopped_utc": "2026-11-06T18:51:14.935Z",
-        "ports_and_processes_absent_verified_utc": "2026-11-06T18:51:48.981240+00:00",
-        "retained_full_app_data_sha256": "d93a6251d2e4e4231a43c70123108f4e4352eb0bb83d9acc3a1caaa6716ae56a",
-        "state": {
-          "engineRevision": 23,
-          "draftCheckpoint": 39,
-          "savedMemories": 1,
-          "unfinishedDrafts": 1,
-          "draftPhotos": 2,
-          "standaloneReminders": 1
-        },
-        "no_reset_uninstall_or_radio_change": true,
-        "evidence_refs": [
-          "android_8cc_handoff"
-        ]
-      }
+      "result": "REUSED_PRIOR_BOUNDED_PASS_DEVICE_UNTOUCHED"
     },
-    "historical_results_unchanged": "Prior bb235/5dc/9da results retain exact source/artifact attribution. No prior failure is rewritten as a pass and no composite cell is promoted."
+    "historical_results_unchanged": "Existing owner, 8cc and earlier native results retained with their original attribution; no broad retest."
   },
   "snapshot_note": "Latest exact installed artifacts are 8cc on both platforms. Original 18-cell bb235 matrix/counts remain unchanged historical evidence; use current_verified_milestone for later bounded results. Maximum-size manual hold/refocus is incomplete, not a newly demonstrated app failure. Overall release remains NO-GO.",
   "recorded_at_utc": "2026-11-06T15:52:45.588543+00:00",
@@ -379,6 +200,17 @@
         "android_8cc_manifest"
       ],
       "platform_scope": "Virtual only; no 8cc offline/restore rerun or physical acceptance"
+    },
+    "ios_7fa": {
+      "source_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
+      "variant": "unsigned Release arm64 iOS Simulator",
+      "artifact_sha256": "4d61ae4af382ac6734902f9c3f18e5672068c27c58acccf9f9f79fee847e22b7",
+      "hermes_sha256": "058e8319d15583abbe7c42a901f83ddd800a3a13be68c279a8d23ce8828c3ca2",
+      "native_acceptance": "BOUNDED_NATIVE_PASS_WITH_ENLARGED_CANCEL_AND_MAXIMUM_GAPS",
+      "provenance_evidence": [
+        "ios_7fa_validation_native"
+      ],
+      "platform_scope": "Virtual only; no distribution/physical acceptance"
     }
   },
   "cases": [
@@ -798,7 +630,7 @@
       "id": "G02",
       "gate": "Exact native builds and preserving upgrades",
       "status": "PASS_BOUNDED",
-      "scope": "Both installed platforms identify exact 8cc artifacts. Preserving upgrades, bounded iOS focused-rotation/normal controls and current Android smoke/relaunch passed. Maximum-size iOS manual hold/refocus incomplete; final short preparation NOT_RUN. No full native/distribution/physical acceptance. Completed Android virtual target was safely stopped with data retained; this does not change its bounded acceptance.",
+      "scope": "Installed iOS is now exact 7fa012a after one preserving upgrade; normal validation feedback/Cancel pass and enlarged feedback is readable, with enlarged Cancel and combined maximum gaps. Android retains 8cc, stopped and preserved. Prior 8cc focused rotation/normal controls and Android smoke remain source-attributed and were not repeated. No full distribution/physical acceptance.",
       "evidence_refs": [
         "android_provenance",
         "ios_upgrade",
@@ -814,7 +646,8 @@
         "ios_8cc_native",
         "android_8cc_build",
         "android_8cc_native",
-        "android_8cc_handoff"
+        "android_8cc_handoff",
+        "ios_7fa_validation_native"
       ]
     },
     {
@@ -1244,6 +1077,13 @@
       "raw_result_sha256": "8098b985fe13bfc6c163c6f8caf45be57e4e8e6deddf5c9f31ba2915cfd51b27",
       "raw_manifest_sha256": "9d7bb3b82d3badcf6b6cf93f4e4c0ae06e7ad4900704e0b032404f1343d5d35b",
       "source_commit": "8cc2862eaf2791379518e440d3b9d5833543ab0a"
+    },
+    "ios_7fa_validation_native": {
+      "relative_path": "docs/qa/SB121_IOS_7FA_VALIDATION_NATIVE_20261106.json",
+      "sha256": "446682cb8802f37686a3dcfed1a3088d407c51a15751fb6037c137e4b45e3705",
+      "raw_result_sha256": "a6a131e3160eac349111341bf3906123cac764a7c17a0a39d50d103848c80fc2",
+      "raw_manifest_sha256": "6f2cc1ad9ec471411224cc4fa0a64006713626be85207032e2cb5a6656ac0b6b",
+      "source_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606"
     }
   },
   "execution_limits": [
@@ -1565,6 +1405,15 @@
       "evidence_refs": [
         "ios_8cc_find_text_share_validation"
       ]
+    },
+    {
+      "id": "IOS_7FA_VALIDATION_FEEDBACK_NATIVE",
+      "status": "BOUNDED_NATIVE_PASS_WITH_ENLARGED_CANCEL_AND_MAXIMUM_GAPS",
+      "artifact_ref": "ios_7fa",
+      "scope": "Normal validation feedback and Cancel PASS; app Large feedback readable after one action scroll; enlarged Cancel and combined maximum acceptance incomplete. Ten tables/media preserved.",
+      "evidence_refs": [
+        "ios_7fa_validation_native"
+      ]
     }
   ],
   "current_android_preserved_state": {
@@ -1603,13 +1452,218 @@
     "status": "HISTORICAL_DIAGNOSTIC_NOT_RELEASE_ACCEPTED",
     "scope": "Earlier 9da plus 1d0836d coordinate-only diagnostic established native extent 1399 excluded the focused input. It was not release accepted. The later 8cc uninstrumented repair now has separately verified bounded native outcomes."
   },
-  "latest_documentation_base_commit": "8cc2862eaf2791379518e440d3b9d5833543ab0a",
+  "latest_documentation_base_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
   "validation_feedback_source_followup": {
     "status": "SOURCE_VERIFIED_NATIVE_PENDING",
     "source_base": "ba3693282c31c7758d641fed48db9f960bd159c3",
     "installed_runtime_unchanged": "8cc2862eaf2791379518e440d3b9d5833543ab0a",
     "report_path": "docs/qa/SB121_VALIDATION_FEEDBACK_SOURCE_REPAIR_20261106.json",
     "report_sha256": "4a1de66fd1658e292df90115c35055ce7bd91548cca648acdfc774b66fbd1608",
-    "scope": "Edit validation feedback placed beside fixed actions and cleared on Cancel; 43 focused source tests/typecheck/targeted lint pass. Candidate native proof pending; prior runtime acceptance unchanged."
-  }
+    "scope": "Edit validation feedback placed beside fixed actions and cleared on Cancel; 43 focused source tests/typecheck/targeted lint pass. Candidate native proof pending; prior runtime acceptance unchanged.",
+    "native_followup": {
+      "status": "BOUNDED_NATIVE_PASS_WITH_ENLARGED_CANCEL_AND_MAXIMUM_GAPS",
+      "source_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
+      "evidence_refs": [
+        "ios_7fa_validation_native"
+      ]
+    }
+  },
+  "historical_verified_native_milestones": [
+    {
+      "source_commit": "8cc2862eaf2791379518e440d3b9d5833543ab0a",
+      "overall_release": "NO-GO",
+      "ios": {
+        "artifact_ref": "ios_8cc",
+        "result": "BOUNDED_NATIVE_PASS_WITH_EXPLICIT_GAPS",
+        "cases": [
+          {
+            "id": "same_identity_preserving_upgrade",
+            "status": "PASS",
+            "scope": "Complete previous diagnostic app/data copies, per-file manifests, all 10 tables and media identical immediately after install and stable first launch.",
+            "evidence_refs": [
+              "ios_8cc_native"
+            ]
+          },
+          {
+            "id": "original_maximum_text_focused_portrait_to_landscape",
+            "status": "PASS",
+            "scope": "App Large ON and system accessibility-extra-extra-extra-large before same dirty focused editor rotation. Actual landscape 874x402. Field y5..178, pane y71..178, usable trailing text/caret above keyboard. Initial and repeat settled samples agree.",
+            "evidence_refs": [
+              "ios_8cc_native"
+            ]
+          },
+          {
+            "id": "short_action_intrinsic_height",
+            "status": "PASS",
+            "scope": "Normal detail action height 126 of 707 available points; content retains 581 points.",
+            "evidence_refs": [
+              "ios_8cc_native"
+            ]
+          },
+          {
+            "id": "ordinary_keyboard_key",
+            "status": "PASS",
+            "scope": "Real Space key appends a space to dirty title; text/caret visibly usable.",
+            "evidence_refs": [
+              "ios_8cc_native"
+            ]
+          },
+          {
+            "id": "repeated_keyboard_hide_refocus",
+            "status": "PASS",
+            "scope": "Two hide/refocus cycles retain dirty text. System maximum applied after the editor was mounted at normal size; not broad enlarged-label reachability.",
+            "evidence_refs": [
+              "ios_8cc_native"
+            ]
+          },
+          {
+            "id": "independent_action_scroll_and_clipping",
+            "status": "PASS",
+            "scope": "Action button moves while content field bounds/value remain fixed. Content drag is clipped independently. Actual pixels reviewed.",
+            "evidence_refs": [
+              "ios_8cc_native"
+            ]
+          },
+          {
+            "id": "normal_manual_drag_hold_refocus_and_rotation_return",
+            "status": "PASS",
+            "scope": "Field moves y127 to82; action bounds unchanged. Two-second hold plus three stable samples shows no sampled stale correction. Keyboard hide/refocus and return to portrait retain exact dirty value. No continuous-frame jitter claim.",
+            "evidence_refs": [
+              "ios_8cc_native"
+            ]
+          },
+          {
+            "id": "normal_save_cold_relaunch_restore_title",
+            "status": "PASS",
+            "scope": "Save temporary synthetic title, terminate/launch exact installed bundle, reopen and read persisted state, restore original title through UI Save.",
+            "evidence_refs": [
+              "ios_8cc_native"
+            ]
+          },
+          {
+            "id": "normal_dirty_cancel",
+            "status": "PASS",
+            "scope": "Cancel dirty title with keyboard open restores original saved detail.",
+            "evidence_refs": [
+              "ios_8cc_native"
+            ]
+          },
+          {
+            "id": "share_preview_and_cancel",
+            "status": "PASS",
+            "scope": "Open Share memory selection route, then Cancel sharing returns original detail. No external send or native share-sheet/export claim.",
+            "evidence_refs": [
+              "ios_8cc_native"
+            ]
+          },
+          {
+            "id": "maximum_text_manual_hold_refocus",
+            "status": "INCOMPLETE",
+            "scope": "First attempt stopped on an AX-observation assumption after field clipping. Unfocused manual continuation reached the bounded48-swipe limit. One later short focused preparation attempt stopped before editor because the expected Large text control was not confirmed after navigation. No repeat/extended seek. No new app defect inferred.",
+            "evidence_refs": [
+              "ios_8cc_native"
+            ]
+          },
+          {
+            "id": "final_bounded_focused_maximum_preparation",
+            "status": "NOT_RUN",
+            "scope": "Preparation stopped at the expected app Large OFF control check after Appearance navigation. No editor, AX-maximum setting, drag, hold or refocus test ran. No app defect inferred. This earlier preparation remained NOT_RUN. Cleanup and all10table/media equivalence passed.",
+            "evidence_refs": [
+              "ios_8cc_native"
+            ],
+            "chronology": "Earlier short preparation, before the separately authorized observed-state continuation; not the final cleanup phase."
+          },
+          {
+            "id": "observation_driven_maximum_manual_continuation",
+            "status": "NOT_RUN",
+            "scope": "Stable native Button bounds and destination confirmation successfully reached Appearance and enabled app Large. Browse all memories original-record Button remained y1038..1787 after two bounded setup swipes. Stopped before editor, AX maximum, rotation, manual hold or refocus. No app defect inferred. No setup/test retry.",
+            "evidence_refs": [
+              "ios_8cc_native"
+            ]
+          },
+          {
+            "id": "final_cleanup_and_preservation",
+            "status": "PASS",
+            "scope": "Preference-only recovery after the bounded setup restored app Large OFF, system large, portrait and Home. No editor was entered. All10tables/media exactly equal the prior revision16 baseline; installed runtime unchanged.",
+            "evidence_refs": [
+              "ios_8cc_native"
+            ]
+          }
+        ],
+        "maximum_preparation_limit": "Latest observed-state setup confirmed stable Appearance controls and app Large selection, but original record remained below the viewport after two bounded setup swipes. No editor, system maximum, rotation, manual hold or refocus ran. The attempt is NOT_RUN, no new app defect is inferred, and no further attempt is planned.",
+        "preservation": {
+          "same_identity_upgrade_all_10_tables_media_equal": true,
+          "pre_save_controls_exact": true,
+          "intentional_normal_save_and_title_restoration": {
+            "revision_before": 14,
+            "revision_after": 16,
+            "only_original_updated_at_changed": true,
+            "changed_tables": [
+              "eng_state_v2",
+              "eng_recovery_v2"
+            ],
+            "original_semantic_fields_events_other_data_and_photo_preserved": true
+          },
+          "last_bounded_attempt_all_10_tables_media_exact_against_revision_16": true,
+          "final_counts": {
+            "saved_memories": 2,
+            "photo_files": 1,
+            "draft": null
+          },
+          "final_preference_only_recovery_all_10_tables_media_exact_against_revision_16": true
+        },
+        "display": "Static native evidence verified; live iOS desktop selection unverified. Earlier display hold superseded by remote-continuation authorization.",
+        "final_cleanup_utc": "2026-11-06T18:49:38.537568+00:00"
+      },
+      "android": {
+        "artifact_ref": "android_8cc",
+        "result": "PASS_BOUNDED",
+        "scope": [
+          "Same package/signer preserving upgrade; full semantic collection/draft/reminder and media equality before install, before first launch, after launch, after smoke and after relaunch.",
+          "Home/Photos/Reminders/Find reached; Find opened retained answer; both draft photo viewers/next/Close and Keep draft and leave returned correctly; reminder retained.",
+          "Live desktop Home and second-photo pixels inspected; native image-region comparison supports both retained photos rendered."
+        ],
+        "final_counts": {
+          "saved_memories": 1,
+          "drafts": 1,
+          "draft_photos": 2,
+          "standalone_reminders": 1
+        },
+        "engine_revision_before": 21,
+        "engine_revision_after": 23,
+        "draft_checkpoint": 39,
+        "semantic_change": false,
+        "radios_unchanged": {
+          "airplane": 0,
+          "wifi": 1,
+          "mobile_data": 1
+        },
+        "prior_restore_offline_not_repeated": true,
+        "evidence_refs": [
+          "android_8cc_native",
+          "android_8cc_installed"
+        ],
+        "final_handoff": {
+          "result": "GRACEFULLY_STOPPED_DATA_RETAINED",
+          "session_exit_code": 0,
+          "stopped_utc": "2026-11-06T18:51:14.935Z",
+          "ports_and_processes_absent_verified_utc": "2026-11-06T18:51:48.981240+00:00",
+          "retained_full_app_data_sha256": "d93a6251d2e4e4231a43c70123108f4e4352eb0bb83d9acc3a1caaa6716ae56a",
+          "state": {
+            "engineRevision": 23,
+            "draftCheckpoint": 39,
+            "savedMemories": 1,
+            "unfinishedDrafts": 1,
+            "draftPhotos": 2,
+            "standaloneReminders": 1
+          },
+          "no_reset_uninstall_or_radio_change": true,
+          "evidence_refs": [
+            "android_8cc_handoff"
+          ]
+        }
+      },
+      "historical_results_unchanged": "Prior bb235/5dc/9da results retain exact source/artifact attribution. No prior failure is rewritten as a pass and no composite cell is promoted."
+    }
+  ]
 }

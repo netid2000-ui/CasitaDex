@@ -1,0 +1,133 @@
+{
+  "status": "BOUNDED_NATIVE_PASS_WITH_ENLARGED_CANCEL_AND_MAXIMUM_GAPS",
+  "runtime_source": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
+  "completed_utc": "2026-11-06T21:03:21.527222+00:00",
+  "build": {
+    "count": 1,
+    "exit_code": 0,
+    "start_utc": "2026-11-06T20:52:19.676Z",
+    "end_utc": "2026-11-06T20:55:46.518Z",
+    "variant": "unsigned Release arm64 iOS Simulator",
+    "binary_sha256": "4d61ae4af382ac6734902f9c3f18e5672068c27c58acccf9f9f79fee847e22b7",
+    "hermes_sha256": "058e8319d15583abbe7c42a901f83ddd800a3a13be68c279a8d23ce8828c3ca2",
+    "tracked_files_verified": 791,
+    "native_inputs_verified": 101,
+    "new_native_graph": false
+  },
+  "preserving_upgrade": "PASS: same bundle identity, complete prior app/data copies retained; ten tables/media exact before install, immediately after install and after first launch",
+  "normal_validation": {
+    "atUTC": "2026-11-06T20:56:43.242Z",
+    "feedback": {
+      "x": 20,
+      "y": 150,
+      "width": 362,
+      "height": 36
+    },
+    "actionViewport": {
+      "x": 0,
+      "y": 62,
+      "width": 402,
+      "height": 189
+    },
+    "errorVisibleWithoutFormScroll": true,
+    "emptyNameRetained": true,
+    "cancelClearedFeedback": true
+  },
+  "enlarged_validation": {
+    "system_size": "large",
+    "app_large_text": true,
+    "invalid_empty_name_retained": true,
+    "feedback_visible": "PASS: full error readable after one independent action-region scroll; native screenshot reviewed",
+    "error_bounds": {
+      "x": 20,
+      "y": 123,
+      "width": 362,
+      "height": 145
+    },
+    "action_viewport": {
+      "x": 0,
+      "y": 62,
+      "width": 402,
+      "height": 282
+    },
+    "cancel": "INCOMPLETE: helper could not find offscreen Cancel after action scrolling; no app failure inferred",
+    "filename_note": "05-maximum-* filenames inherited from harness; actual tested setting is system large plus app Large Text, NOT system maximum"
+  },
+  "stopped_attempts": [
+    {
+      "case": "Combined system accessibility-extra-extra-extra-large and app Large Text",
+      "result": "NOT_RUN for validation: native field fill failed before Save; original name retained."
+    },
+    {
+      "case": "First app Large Text setup",
+      "result": "Stopped before Save: field-filling helper crossed keyboard reflow and returned Detail. Corrected once with stable field/keyboard geometry and explicit empty-field guard."
+    },
+    {
+      "case": "Stable app Large Text",
+      "result": "Feedback/retention verified, then Cancel locator exhausted bounds while offscreen; record remains PARTIAL."
+    },
+    {
+      "case": "Preference cleanup",
+      "result": "Normal-size Cancel completed; first Appearance locator bound was too short. Continued from current Settings and restored app Large OFF; no test repeated."
+    }
+  ],
+  "preservation": {
+    "all_ten_tables_equal": true,
+    "media_equal": true,
+    "installed_runtime_matches_candidate": true,
+    "revision": 16,
+    "saved_memories": 2,
+    "photo_files": 1,
+    "draft": null,
+    "standalone_reminders": 2,
+    "final_home": true,
+    "portrait": true,
+    "system_large": true,
+    "app_large_off": true,
+    "keyboard_absent": true
+  },
+  "reused_evidence": [
+    "Owner Samsung offline/search/edit/reboot/reconnection acceptance remains attributed to Android Staging 19ca392 checkpoint.",
+    "Prior 8cc focused-rotation, Save/relaunch, reminders and Find/share results remain attributed to 8cc; not rerun or relabeled.",
+    "Android actual restore bb235 and strict offline 5dc retained; Android device untouched.",
+    "43 focused source tests/typecheck/targeted lint from source repair reused; full suite not rerun."
+  ],
+  "remaining": [
+    "Enlarged Cancel reachability/cleanup in the changed action layout remains unverified by this bounded test.",
+    "Combined maximum-text validation, broad accessibility and actual screen readers remain open.",
+    "Previously recorded iOS restore/offline, security/distribution and other release gates remain open; owner approvals still required where recorded."
+  ],
+  "boundaries": {
+    "release": "NO-GO",
+    "production_actions": false,
+    "host_clock_network_changed": false,
+    "screen_reader_enabled": false,
+    "other_devices_touched": false,
+    "heavy_build_lock_released": true
+  },
+  "evidence_directory": "WORK-SB121/ios-validation-7fa012a",
+  "evidence_hashes": {
+    "artifact-provenance.json": "6a5ae00fa900018dee8c432f6e0c4e0cfe526b10b7e6c7318e20199dc81a73d1",
+    "baseline-gate.json": "c8527327bf6d154049259e62d6e1113b42f0d83d1a153f04d596562eb84f1be4",
+    "build-start.txt": "2c330e0660552f3bdb8fff2114fb5921a77a27b56f947ea6e5b6bd137d42217f",
+    "build-end.txt": "92224f8c2884ec904b04016d68472a6bb1baa172228c722a7d660f152ac6812c",
+    "native/upgrade-result.json": "a2211c06f65dee908c6c47ed1040f0424650b0c9d1d85b375e8b7b1a9b0b7bff",
+    "native/01-result.json": "be0972f487e175fc0627ccfb9b03dbe3bf761e901b3a304fdda39e8311f26e44",
+    "native/01-normal-error.png": "7b2b1d2a6df4a1a64609967a15e022111e831ed91946537025ec5e68394067c4",
+    "native/01-normal-cancel.png": "dadbf979c726905e9378dea1fe00a51ab32826b21c11349a5401e5bf8112d763",
+    "native/02-app-large.json": "4c1fd8660cf068e4fe88c630c5099bd96a8a69088ffb3b5af2bd34d5dd0385d1",
+    "native/03-stop.json": "cb1a702f16e5f2d50e9f21d9bf05bcbcdcbda223e8c71246db68cf580d68ee77",
+    "native/04-stop.json": "96e839d2a636276da93d7e1a9ca1baa9c215204135062d732467d5bd8cfca63e",
+    "native/05-empty-ready.json": "6ba493d4bd0090ad999f1b3ae15f7524b0cbca0bc90daf62ef708e2167e275c0",
+    "native/05-feedback-geometry.json": "c30cbac6a39b6739e1e3c3d6a105e062c16609c24ada08b520d2a3af8c8e2dc3",
+    "native/05-maximum-visible-error.png": "b449ef65461129fae7c56c1e2000080548e9f2719aef7d62dcf9ada15195d1d3",
+    "native/FAIL-target-Cancel.json": "f2c1a44a13e354142e9aa2b2c5cd1e4b5ca50b695711d8b201e8945272e482c8",
+    "native/91-cleanup-result.json": "83471a531414c41e051512dfad7058e21615f9daf99c7acc5d1f6566b29c75a5",
+    "native/final-preservation.json": "ccdf72b65adde8c137164cfa191a120f5e73b9fe67b75146d0fc2238591e9b3d",
+    "native/91-final-home.png": "c11dfadc32016310d6e2eadbc41449bab3905d9b9b8d85104c58dbd2041f38f4",
+    "native/preserved-8cc-app.app-manifest.json": "f6d4116ce2821e74499a18e1c71e62b4e80457a86022acafc52cdee5202f4a00",
+    "native/preserved-8cc-data-manifest.json": "609f3e955585a5aa4436f5a64ef544fd3e1898676d2cf6241916d139405293b2"
+  },
+  "manifest_sha256": "6f2cc1ad9ec471411224cc4fa0a64006713626be85207032e2cb5a6656ac0b6b",
+  "manifest_files": 104
+}
