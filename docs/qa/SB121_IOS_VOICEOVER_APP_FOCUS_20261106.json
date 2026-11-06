@@ -1,0 +1,45 @@
+{
+  "status": "PARTIAL_ACTUAL_APP_FOCUS_ACTIVATION_TOOL_BLOCKED",
+  "source_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
+  "completed_utc": "2026-11-06T23:41:57.273438+00:00",
+  "release": "NO-GO",
+  "verified": [
+    "VoiceOver enabled through observed Settings switch and running process verified",
+    "After app relaunch, native VoiceOver cursor focuses Find a Memory on CasitaDex Home",
+    "VoiceOver restored OFF and process absent",
+    "All10logical tables/media/runtime exact at revision54; pending notification exact; Android untouched"
+  ],
+  "not_verified": [
+    "Spoken output, ordered app traversal, activation and return"
+  ],
+  "blocker": "Single timed double tap rejected by device.io.gesture: RPC -32602 Finger 0 has release before end of sequence at index1. Higher-level doubleTap uses two separate RPC requests without guaranteed timing.",
+  "setup_stops": [
+    "Preference-only activation did not start VoiceOver, so excluded. Empty editor opened without saved changes or persisted draft; data exact.",
+    "Short1.2s readiness check failed before traversal. Observed Settings activation with3s wait subsequently confirmed process.",
+    "Initial swipe focus rectangles did not consistently match visible app controls; not counted as ordered traversal. Cold-app direct exploration selected Find a Memory."
+  ],
+  "final_state": "Home, VoiceOver OFF; revision54; no fixture/schedule changes",
+  "jobs": [
+    "205053fb3c741ebd",
+    "7b07cf3d647357f5",
+    "58fc63421dc04327",
+    "6cc1a8bbbe64b850"
+  ],
+  "evidence_directory": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB121/ios-7fa-voiceover-traversal",
+  "hashes": {
+    "baseline.json": "aca97a34f9a5b765cbe4a2e131f4e33682a6dc3dff0e9d91a62bedfa971897c5",
+    "after-setup-state.json": "cff10683a655068c3ff9b6d328776f2f964c256037fb52f2c217b5e3ec8a4d13",
+    "after-actual-state.json": "cff10683a655068c3ff9b6d328776f2f964c256037fb52f2c217b5e3ec8a4d13",
+    "final-state.json": "cff10683a655068c3ff9b6d328776f2f964c256037fb52f2c217b5e3ec8a4d13",
+    "pending-before.json": "a37effd2cfe5a8202e6853ddf0d50c0aef81b648c999de986d94aed9a133be17",
+    "pending-final.json": "160861a439afd0641e16c43e052821f4bf94c4893f06a095789ebc24e09e8e29",
+    "final-voiceover-value.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "final-voiceover-service.txt": "31f2ba43892b10a630698ebc66743c3543fbbc23b40f182fcb61b8bb5aea09e8",
+    "09-actual-next-0.png": "f41025d59b13056741222bf23f56d014a05935b474a883ad1538579158b9665f",
+    "09-actual-next-1.png": "383e7e867e8920a5b4b612701f01b22fa0f8aa4f4dfdc7e9ceb6100cadb26d5d",
+    "09-actual-next-3.png": "53a0e88c2a8aa9e1994392be4c815b8d19c999e0f4308936ade7ce5ffc9c00cc",
+    "11-find-selected.png": "0c8b80823fcd9024097ed053bc37172a99bc60fc023f0b6d6d1956f7a39d04f6",
+    "actual-traversal.mjs": "89fada58977c3883112788046734401b0cd7ef685ca578cc5b8ad29147065dca",
+    "activate-current-app.mjs": "b829092fcc284348bb032ef600f03342ef4ba3bcb9d50193d399bfb436681b9e"
+  }
+}

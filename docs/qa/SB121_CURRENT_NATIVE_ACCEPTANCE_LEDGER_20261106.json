@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "status": "VERIFIED_PARTIAL_MILESTONE_SNAPSHOT",
-  "updated_at_utc": "2026-11-06T23:31:07.146645+00:00",
+  "updated_at_utc": "2026-11-06T23:41:57.273438+00:00",
   "release": "NO-GO",
   "latest_runtime_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
   "installed_runtime_checkpoint": {
@@ -729,9 +729,10 @@
       "id": "G08",
       "gate": "Manual native screen readers",
       "status": "PARTIAL_TOOL_LIMITED",
-      "scope": "Owner permission obtained and both actual readers enabled then restored OFF. iOS focus limited to first-use system dialog; Android initial app logo focus captured, audio disabled in retained emulator. App speech, ordered traversal and return not verified.",
+      "scope": "Both readers approved and restored OFF. Actual iOS7fa VoiceOver directly focuses Find a Memory after app relaunch; timed activation rejected by gesture backend. App speech, ordered traversal and return unverified. Android initial logo focus captured; retained emulator audio disabled. No full reader pass.",
       "evidence_refs": [
-        "approved_restore_readers"
+        "approved_restore_readers",
+        "ios_7fa_actual_voiceover_focus"
       ]
     },
     {
@@ -1212,6 +1213,11 @@
       "relative_path": "docs/qa/SB121_APPROVED_RESTORE_READERS_20261106.json",
       "sha256": "a651a7e0638e0db643201f8d0d65d502c414e189c82d853a29ed59f6c1c452ed",
       "scope": "IOS_NATIVE_RESTORE_PASS_SCREEN_READERS_PARTIAL"
+    },
+    "ios_7fa_actual_voiceover_focus": {
+      "relative_path": "docs/qa/SB121_IOS_VOICEOVER_APP_FOCUS_20261106.json",
+      "sha256": "f0580f5ebb38f2789f0e8d25b99cf522ec50b14b914664121b64cd6f14cae807",
+      "source_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606"
     }
   },
   "execution_limits": [
@@ -1935,5 +1941,10 @@
     "evidence_ref": "approved_restore_readers",
     "permission_pending": false,
     "tool_limited_screen_reader_acceptance": true
+  },
+  "voiceover_app_focus_followup": {
+    "status": "PARTIAL_ACTUAL_APP_FOCUS_ACTIVATION_TOOL_BLOCKED",
+    "evidence_ref": "ios_7fa_actual_voiceover_focus",
+    "preserved_revision": 54
   }
 }
