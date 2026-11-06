@@ -1,5 +1,8 @@
 # Changelog
 
+## November 6: photo limit controls
+- Disable draft and saved-memory photo import/camera controls at five photos, with a readable recovery hint. Existing photos and replacement/removal behavior are preserved. Native rebuilt verification pending.
+
 ## Verified four-tab Home recovery — 2026-11-06
 - Verify corrected iOS Home, native Save/relaunch/Find and Settings/Browse on a separate simulator; default-Home XCTest accessibility audit passes. Frozen reminder device and all previous app data remain preserved.
 - Recover the owner-confirmed four-tab Home, horizontal original brand, Settings and Find-first actions.

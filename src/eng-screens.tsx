@@ -445,7 +445,8 @@ export function EngAdd(){
       <Button variant="quiet" expanded={discard} label="Draft options" disabled={disabled} onPress={()=>setDiscard(true)} />
     </>:null}
     {mode==="edit"?<>
-      {photoFirst?<><Copy kind="section">Start with a photo</Copy><Copy>Take a photo or choose one from your device, then add a title and optional details.</Copy><View style={s.row}><Button label="Take photo" disabled={disabled} onPress={()=>void photo(true)} /><Button label="Choose photo" disabled={disabled} onPress={()=>void photo(false)} /></View></>:null}
+      {(form?.photos.length??0)>=5?<Copy kind="small" accessibilityLiveRegion="polite">Five photos added. Remove a photo before adding another.</Copy>:null}
+      {photoFirst?<><Copy kind="section">Start with a photo</Copy><Copy>Take a photo or choose one from your device, then add a title and optional details.</Copy><View style={s.row}><Button label="Take photo" disabled={disabled||(form?.photos.length??0)>=5} onPress={()=>void photo(true)} /><Button label="Choose photo" disabled={disabled||(form?.photos.length??0)>=5} onPress={()=>void photo(false)} /></View></>:null}
       <Field maxLength={200} label="What do you want to remember?" value={form?.title??""} onChangeText={title=>change({title})} />
       <Field maxLength={1000} label="The answer (or add a photo)" value={form?.answer??""} onChangeText={answer=>change({answer})} />
 
@@ -535,8 +536,9 @@ export function EngDetail(){
           {m.lifecycle!=="recently_deleted"?<Button label={`Remove saved photo ${index+1}`} disabled={e.busy} onPress={()=>confirm("Remove photo",store=>store.removeMemoryPhoto(m.id,p.id))} />:null}
         </View>)}
         {m.lifecycle!=="recently_deleted"?<>
-          <Button label="Add a photo" disabled={e.busy} onPress={()=>void e.run(async store=>{const bytes=await chooseEngPhoto(false);if(!bytes){e.setStatus("Photo selection canceled. Your memory is kept.");return;}await store.addMemoryPhoto(m.id,bytes);e.setStatus("Photo saved with this memory.");},"")} />
-          <Button label="Take another photo" disabled={e.busy} onPress={()=>void e.run(async store=>{const bytes=await chooseEngPhoto(true);if(!bytes){e.setStatus("Camera canceled. Your memory is kept.");return;}await store.addMemoryPhoto(m.id,bytes);e.setStatus("Photo saved with this memory.");},"")} />
+          {m.mediaIds.length>=5?<Copy kind="small" accessibilityLiveRegion="polite">Five photos attached. Remove a photo before adding another.</Copy>:null}
+          <Button label="Add a photo" disabled={e.busy||m.mediaIds.length>=5} onPress={()=>void e.run(async store=>{const bytes=await chooseEngPhoto(false);if(!bytes){e.setStatus("Photo selection canceled. Your memory is kept.");return;}await store.addMemoryPhoto(m.id,bytes);e.setStatus("Photo saved with this memory.");},"")} />
+          <Button label="Take another photo" disabled={e.busy||m.mediaIds.length>=5} onPress={()=>void e.run(async store=>{const bytes=await chooseEngPhoto(true);if(!bytes){e.setStatus("Camera canceled. Your memory is kept.");return;}await store.addMemoryPhoto(m.id,bytes);e.setStatus("Photo saved with this memory.");},"")} />
           <Button label="Edit memory" disabled={e.busy} onPress={()=>{setEdit(JSON.parse(JSON.stringify(m)));setRevision(e.snapshot!.revision);}} />
           <Button label={m.lifecycle==="active"?"Archive memory":"Return to Active"} disabled={e.busy} onPress={()=>void e.run(store=>store.lifecycle(m.id,m.lifecycle==="active"?"archived":"active",day()))} />
           <Button label="Move to Recently Deleted" disabled={e.busy} onPress={()=>confirm("Move to Recently Deleted",store=>store.lifecycle(m.id,"recently_deleted",day()))} />

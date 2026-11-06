@@ -2,6 +2,14 @@
 
 November 6, 2026 UTC. FA-MAC-DEV-01 exclusively. Authorized branch `work/cd-sb41-edit-targeting-20261104`. **Release NO-GO.**
 
+## Photo-limit recovery in progress
+
+Current corrected iOS native testing saved five photos, preserved their bytes through process relaunch, and passed viewer Next/Previous/Close. A sixth import was safely rejected by the data layer, but the picker buttons remained enabled. The bounded fix now disables all seven draft/detail picker entry points at five and explains how to add another, while preserving removal and replacement.
+
+- PASS: 419 automated tests (414 pass, 5 existing skips), 4 focused photo-limit cases, typecheck, lint and diff checks.
+- Native acceptance of this source change is PENDING a rebuilt artifact. Earlier corrected runtime photo results belong to `87cb5b1`, not this new fix.
+- No source deletion, physical testing, production change or frozen reminder mutation.
+
 ## Corrected four-tab Android Home verified and visible
 Application source `87cb5b12fac0e36642b070c9b4bc150f740218bc` is pushed and remote-verified. The owner-confirmed Home was selectively recovered from the preserved dirty prototype, retaining newer functional fixes. The explicit baseline gate compares owner pixels, editable Figma review frames, actual source/browser behavior, separate worktree inputs and the installed artifact, not SHA alone.
 
