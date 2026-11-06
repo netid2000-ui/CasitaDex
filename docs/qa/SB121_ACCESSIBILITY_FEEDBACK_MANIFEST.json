@@ -1,0 +1,110 @@
+{
+  "recordedAtUtc": "2026-11-06T10:18:15.783258+00:00",
+  "sourceCommit": "7d0dd6626287fd56d30b990f4a9c14036801a9a2",
+  "baseCommit": "7c09d57e55ae585974783b33a58449c62521268c",
+  "nativeRuntimeUnchanged": "a8867c06c7dd3ceab55bd1ac6705064a83de28f2",
+  "sourceTests": {
+    "total": 503,
+    "pass": 498,
+    "skip": 5,
+    "fail": 0
+  },
+  "focused": {
+    "pass": 35,
+    "fail": 0
+  },
+  "independentSyntheticReview": {
+    "pass": 11,
+    "fail": 0
+  },
+  "typecheck": "PASS",
+  "lint": "PASS zero warnings",
+  "scopedGitleaks": "PASS",
+  "nativeAcceptanceOfNewSource": "NOT RUN",
+  "evidence": [
+    {
+      "path": "QA-Evidence/WORK-SB121/accessibility-source-review-20261106/REPORT.md",
+      "sha256": "c385aa0070732cb9c29fd390e2c23f621f2364b45229d6abea7c24d86c1392ab"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/accessibility-source-review-20261106/CANDIDATE_HANDOFF.md",
+      "sha256": "5aed23e74250c2cc199063297ba08a662785141272603e9eb8e2a030287d444f"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/accessibility-source-review-20261106/candidate-manifest.json",
+      "sha256": "1a884ab151bd78bff38d9c26f14d119b17fd234f7c68569f848e16b6b6daa482"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/accessibility-source-review-20261106/candidate-baseline-regression.log",
+      "sha256": "8edd7a026c1bc781c7b279809cd374f3003ea04aaf99583c12001981c0b174ec"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/accessibility-source-review-20261106/candidate-focused-tests-v2.log",
+      "sha256": "7b8cbd2a21b8ba970e7d125acb75b02f35c2c2fdac0e5c69a426060070db7a2a"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/accessibility-source-review-20261106/candidate-typecheck-v2.log",
+      "sha256": "23536ab2c73e0f4bc1eec81fa939e6d9d2e2b1a4e186c1500feb05bad4b0dc74"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/accessibility-source-review-20261106/candidate-lint-v2.log",
+      "sha256": "7988ad006928ac862d60f07d7289bfb07c75c0c7ab199908db5f91db3c7cd534"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/accessibility-source-review-20261106/full-source-regression.log",
+      "sha256": "b043c8d32361bc05f1b0abb6383b06b8a2a6d5707e2d4bfde2a1356c989a4749"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/accessibility-source-review-20261106/integration-receipt.json",
+      "sha256": "1beaa56b55de985e9b4d46c595f223e33d4751b2305d7df67c0a978203b7a08e"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/accessibility-source-review-20261106/publication-source-gitleaks.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/figma-current-reconciliation-20261106/source-design-review.json",
+      "sha256": "9488e31b1f53f1d89c78d77509b6ee6f7d389eb9e666f271f960ccf4135c41bc"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/figma-current-reconciliation-20261106/declared-source-contrast.json",
+      "sha256": "ecbe11916cf5c6400469c16e7205a957b3a843f1ae4a9a74cb8bfc1dfd05914f"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/security-runtime-reachability-a8867c0-20261106/REVIEW.md",
+      "sha256": "84882201496fe28c3b70635ce688558a991e87852b97b0577bed40378e2ff787"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/security-runtime-reachability-a8867c0-20261106/evidence.json",
+      "sha256": "df26690246a0adfdc26159da7282de9182fbfdf022d8507ce78fab9bcbc04347"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/accessibility-feedback-peer-review-20261106/REPORT.md",
+      "sha256": "99a3abd398a573fd69be595b7877a49648b8817ef1c55ca650486d803ec26ef8"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/accessibility-feedback-peer-review-20261106/independent-checks.json",
+      "sha256": "76e92a10a8f49c20846e721d9cb716a5e8b09621e2fc4e4111f5c8615619b5c4"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/accessibility-feedback-peer-review-20261106/provenance.json",
+      "sha256": "5885abc7ae2017303af18be6ce63f4363b73c41cdc0f888d77f0be654c345f74"
+    }
+  ],
+  "figma": {
+    "file": "39uzN0SZX8nlmcGDcHdQhr",
+    "freshlyInspectedNodes": [
+      "321:36",
+      "263:2",
+      "263:120"
+    ],
+    "canvasWrites": false
+  },
+  "boundaries": {
+    "deviceActions": false,
+    "hostNetworkChanges": false,
+    "restoreActions": false,
+    "dependencyChanges": false,
+    "productionActions": false
+  }
+}

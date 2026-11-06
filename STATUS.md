@@ -1,3 +1,11 @@
+# Latest source: focused accessibility feedback fixes; native acceptance pending
+
+Source 7d0dd6626287fd56d30b990f4a9c14036801a9a2 fixes three bounded accessibility feedback gaps. Source verification: 503 tests, 498 pass, five existing skips; TypeScript, lint and scoped Gitleaks pass. No new native build/install. [Source review and evidence](docs/qa/SB121_ACCESSIBILITY_FEEDBACK_REVIEW.md).
+
+The installed/current scheduled runtime remains **a8867c0**, preserved and terminated for the existing November 6 15:00 UTC linked-reminder test. Do not replace it with this unbuilt source before that test. Release remains **NO-GO**; approval and native/manual gates below remain open.
+
+## Previously verified native checkpoint
+
 # Current checkpoint: a886 recovery verified, linked delivery pending
 
 Application source a8867c06c7dd3ceab55bd1ac6705064a83de28f2 is pushed and remote-verified. Both current native builds pass. Android real killed-app/foreground/background notification targeting, return and no-replay pass; full Android lint has zero errors and 41 warnings. Current iOS preserving upgrade, ten route cases, actual terminated notification and portrait light/dark Home pass. Combined source checks: 492 tests, 487 pass, five existing skips.

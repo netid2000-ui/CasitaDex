@@ -1,3 +1,9 @@
+## 2026-11-06 - Bounded accessibility feedback correction
+
+- Add scoped feedback for newly visible linked-reminder refresh and reading-setting persistence failures.
+- Make disabled Home action hints match the visible disabled reason.
+- Preserve layout, data, reminder scheduling and privacy/deduplication behavior. Source tests pass; native speech acceptance is pending.
+
 # Changelog
 
 ## November 6: cold-notification recovery and Android packaging
