@@ -1,0 +1,48 @@
+{
+  "status": "PASS_BOUNDED_MAXIMUM_TEXT_CANCEL",
+  "runtime_source": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
+  "completed_utc": "2026-11-06T21:26:05.338322+00:00",
+  "result": {
+    "atUTC": "2026-11-06T21:25:35.846Z",
+    "systemEnlarged": true,
+    "systemSize": "accessibility-extra-extra-extra-large",
+    "appLargeText": true,
+    "feedbackReadability": "NOT_VERIFIED",
+    "emptyNameRetained": true,
+    "cancelScrolls": 0,
+    "cancelReachable": true,
+    "cancelClearedFeedback": true
+  },
+  "setup": "Empty field prepared at system large; same editor changed to system accessibility-extra-extra-extra-large with app Large Text ON before Save. Maximum setting rechecked immediately before Cancel.",
+  "scope": "Save rejects empty name; retained unsaved editor can Cancel at maximum text and clears feedback. No successful Save. Native post-Cancel screenshot reviewed; not full layout/readability acceptance.",
+  "preservation": {
+    "ten_tables_equal": true,
+    "media_equal": true,
+    "runtime_equal": true
+  },
+  "cleanup": {
+    "atUTC": "2026-11-06T21:26:05.141Z",
+    "home": true,
+    "portrait": true,
+    "systemLarge": true,
+    "appLargeOff": true,
+    "keyboardAbsent": true
+  },
+  "remaining": [
+    "Full segmented validation-message readability at maximum text remains unverified.",
+    "Maximum-size field editing and extended manual hold/refocus remain incomplete.",
+    "Other existing release and approval-dependent gates unchanged."
+  ],
+  "boundaries": {
+    "new_builds": 0,
+    "other_devices_touched": false,
+    "permissions_changed": false,
+    "job_exit_code": 0,
+    "device_lock_released": true,
+    "release": "NO-GO"
+  },
+  "evidence_directory": "WORK-SB121/ios-validation-7fa012a-maximum-cancel",
+  "raw_result_sha256": "b535a6494d5b53df8ff3cdd7cd299372fbf408e320a624c743f02f0e616fce11",
+  "manifest_sha256": "40d87e871d96e4b8d9e5b97ee14ae35de6164725160ed7a6ac32be392f91d99f",
+  "manifest_files": 57
+}

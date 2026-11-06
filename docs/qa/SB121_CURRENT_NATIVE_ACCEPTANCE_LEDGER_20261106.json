@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "status": "VERIFIED_PARTIAL_MILESTONE_SNAPSHOT",
-  "updated_at_utc": "2026-11-06T21:23:21.170219+00:00",
+  "updated_at_utc": "2026-11-06T21:26:05.338322+00:00",
   "release": "NO-GO",
   "latest_runtime_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
   "installed_runtime_checkpoint": {
@@ -39,10 +39,11 @@
     "ios": {
       "artifact_ref": "ios_7fa",
       "result": "BOUNDED_NATIVE_PASS_WITH_MAXIMUM_GAP",
-      "scope": "Normal validation and Cancel PASS; app Large Text feedback and Cancel PASS with bounded action scrolling. Combined system maximum acceptance incomplete. Ten tables/media preserved.",
+      "scope": "Normal and app Large validation/Cancel PASS; combined system maximum Cancel PASS. Maximum message readability and field/manual editing remain incomplete. Ten tables/media preserved.",
       "evidence_refs": [
         "ios_7fa_validation_native",
-        "ios_7fa_enlarged_cancel"
+        "ios_7fa_enlarged_cancel",
+        "ios_7fa_maximum_cancel"
       ]
     },
     "android": {
@@ -1122,6 +1123,13 @@
       "sha256": "ec88f287ec47203fa050065b96cf0ebe36be4c5e8b0f6460e8d84dfb6e85730b",
       "raw_result_sha256": "0ffe9681af296b3f2e54f64c99fdeef83d06502f62eab103620154e0a0591cf8",
       "source_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606"
+    },
+    "ios_7fa_maximum_cancel": {
+      "relative_path": "docs/qa/SB121_IOS_7FA_MAXIMUM_CANCEL_20261106.json",
+      "sha256": "487bc08a8061f6d2e4aed3848ef96993868777d51ecaf91d2cfa91ff9b0a8a63",
+      "raw_result_sha256": "b535a6494d5b53df8ff3cdd7cd299372fbf408e320a624c743f02f0e616fce11",
+      "raw_manifest_sha256": "40d87e871d96e4b8d9e5b97ee14ae35de6164725160ed7a6ac32be392f91d99f",
+      "source_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606"
     }
   },
   "execution_limits": [
@@ -1469,6 +1477,15 @@
       "scope": "Prepared empty editor survives maximum text and Save rejection. Full segmented error readability and maximum Cancel unverified after accessibility-node/helper stop; normal baseline and all ten tables/media/runtime restored. No new build.",
       "evidence_refs": [
         "ios_7fa_maximum_feedback"
+      ]
+    },
+    {
+      "id": "IOS_7FA_MAXIMUM_CANCEL",
+      "status": "PASS_BOUNDED_MAXIMUM_TEXT_CANCEL",
+      "artifact_ref": "ios_7fa",
+      "scope": "Maximum system text plus app Large Text: Save rejection retains editor; Cancel closes editor and clears validation feedback. Full maximum readability/editing not certified. Normal baseline restored and ten tables/media/runtime exact.",
+      "evidence_refs": [
+        "ios_7fa_maximum_cancel"
       ]
     }
   ],
