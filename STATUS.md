@@ -11,6 +11,14 @@ Application source `87cb5b12fac0e36642b070c9b4bc150f740218bc` is pushed and remo
 - Scope is bounded Home recovery. Other native journeys, corrected iOS acceptance, accessibility and release gates remain OPEN. No physical testing, old-source deletion, host-network change or frozen iOS mutation occurred. Exact operational reservation and raw device evidence remain private on the Mac.
 - [Native baseline gate and evidence](docs/qa/SB121_CURRENT_NATIVE_HOME_GATE.json). [Source reconciliation](docs/qa/WORK_SB121_CURRENT_HOME_RECONCILIATION.md). No remote status checks/workflows were returned for the application commit.
 
+## Corrected four-tab iOS Home and save/relaunch verified
+Source `04f320257082c928706a6d6b1734c849f1c5ac92` is runtime-equivalent to `87cb5b1`. One Release arm64 simulator build passed in 3m08; installed executable and JS bytes match. Existing native project/locks, tracked source and frozen reminder artifacts remain unchanged.
+
+- PASS: actual native Home pixels and exact four-tab labels independently confirmed by official XCTest; one Home accessibility audit, zero issues, default text only.
+- PASS: Home Add Memory -> Save -> process relaunch -> Find -> Browse -> exact answer. Settings -> Browse also retains the saved item. Returned app to Home on the separate simulator.
+- Display limitation: Device Hub still selects a stopped older device; live current-window selection is not claimed. Select the top current-four-tab QA row. Native tests and captured screenshot review completed independently.
+- [iOS evidence and explicit limits](docs/qa/SB121_CURRENT_IOS_HOME_GATE.json). Full app, large-text/landscape, manual screen-reader, photo/backup/offline and release gates remain open. No physical testing or frozen-device mutation occurred.
+
 ## Historical security/readiness source candidate
 
 Source `3b526f6976d0d9becafd16ede2fd12ba89216ff4` adds a supported dev-only Zod advisory fix, preserves inherited iOS scene configuration, and adds bounded accessibility semantics.

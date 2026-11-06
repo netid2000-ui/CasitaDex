@@ -1,0 +1,75 @@
+{
+  "recordedAtUtc": "2026-11-06T05:22:17.920700+00:00",
+  "status": "BOUNDED CORRECTED IOS HOME AND SAVE/RELAUNCH PASS; RELEASE NO-GO",
+  "source": "04f320257082c928706a6d6b1734c849f1c5ac92",
+  "runtimeEquivalent": "87cb5b12fac0e36642b070c9b4bc150f740218bc",
+  "build": "Release arm64 iOS Simulator, signing disabled, fresh external DerivedData, existing verified native graph",
+  "bundleIdentifier": "com.designsbyfa.casitadex.dev",
+  "executableSha256": "d319893245a92a5fbe0e68b3416a35fb6c600cba11ff8fa4025d91dd0e44a471",
+  "jsSha256": "0f35e89d12c3a2f3107b207b3871c0da3fa657cf2f72c85c276159ea8fcaad18",
+  "installedByteIdentity": "PASS",
+  "sourceNativeProjectAndLocksUnchanged": true,
+  "frozenArtifactsUnchanged": true,
+  "target": "Fresh separate iPhone 17 Pro / iOS 27.0 simulator; no physical-phone testing",
+  "baselineGate": "Owner reference pixels, preserved dirty prototype, Figma review frames 321:36/321:163 and current source/installed artifact reconciled; older five-tab fixtures excluded",
+  "nativeVerification": {
+    "fourTabs": [
+      "Home",
+      "Photos",
+      "Reminders",
+      "Find"
+    ],
+    "homePixelsInspected": true,
+    "cases": [
+      {
+        "utc": "2026-11-06T05:18:33.298Z",
+        "case": "Corrected iOS Home Add Memory -> Save -> process relaunch -> Find -> Browse -> exact saved answer",
+        "result": "PASS"
+      },
+      {
+        "utc": "2026-11-06T05:18:38.316Z",
+        "case": "Corrected iOS Home Settings -> Browse all memories retains saved item",
+        "result": "PASS"
+      }
+    ],
+    "xctestAccessibilityAudit": {
+      "tests": 1,
+      "failures": 0,
+      "reportedIssues": 0,
+      "scope": "Current Home at default text only; not manual VoiceOver or full-app accessibility acceptance"
+    },
+    "mobilewrightLimitation": "Its hierarchy omits tab-role Other elements. Independent official XCTest hierarchy confirms all four labels and selected Home. Functional tab taps used those exact XCTest bounds."
+  },
+  "screenshots": [
+    {
+      "path": "QA-Evidence/WORK-SB121/ios-current-home/current-home-screen.png",
+      "sha256": "5a3d59d4e7b9023af57a7e44718859ebbf9b79e1b784229fe4b532a30fc70e70"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/ios-current-home/current-ios-home-after-routes.png",
+      "sha256": "88e207f41d1a8f8b163eb60cd6f352915b2c8f0d6156eb445a1de63e452c97ca"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/ios-current-home/current-ios-restored-memory.png",
+      "sha256": "4464d64094c4c68f2d0b2f5d87bf0a1c407252c6688dc576403c4dd1745e87ee"
+    }
+  ],
+  "localEvidence": "QA-Evidence/WORK-SB121/ios-current-home/",
+  "display": {
+    "appRunningInSeparateSimulator": true,
+    "deviceHubLiveSelection": "NOT VERIFIED: Device Hub still selects stopped iPhone Duo. Select top CasitaDex Current Four Tab QA 04f3202 row; existing GUI accessibility access unavailable. Native tests and captured pixel review completed independently.",
+    "staticPreviewNotClaimedAsLiveDisplay": true
+  },
+  "setupNotes": [
+    "iOS 27.1 did not support this selected device type; no device created by that failed attempt. Verified supported iOS 27.0 used instead.",
+    "Native QA driver installed only on new synthetic simulator; app relaunched after driver setup.",
+    "Previously displayed Android AVD gracefully stopped with data preserved for memory budget."
+  ],
+  "remaining": [
+    "Live Device Hub selection",
+    "Full current-build photo, backup/restore and strict offline journeys",
+    "Large text, landscape and manual VoiceOver/TalkBack acceptance",
+    "Scheduled 09:00 linked delivery and tap qualification on preserved older fixture",
+    "Recorded security, full Android lint, signing/distribution and owner release gates"
+  ]
+}
