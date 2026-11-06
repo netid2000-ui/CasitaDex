@@ -1,0 +1,68 @@
+{
+  "status": "PASS_BOUNDED_NOT_RELEASE_ACCEPTANCE",
+  "runtime_source": "8cc2862eaf2791379518e440d3b9d5833543ab0a",
+  "documentation_base": "88a0c635204f8a959f59053825dd157f9377ecb7",
+  "completed_utc": "2026-11-06T20:31:53.348401+00:00",
+  "cold_delivery": {
+    "scheduled_utc": "2026-11-06T20:21:00Z",
+    "first_observed_utc": "2026-11-06T20:21:04.925086+00:00",
+    "app_absent_through_delivery": true,
+    "notification_open_exact_target": true,
+    "opened_utc": "2026-11-06T20:25:38.205Z"
+  },
+  "dirty_memory_delivery": {
+    "scheduled_utc": "2026-11-06T20:29:00Z",
+    "observed_utc": "2026-11-06T20:29:02.006Z",
+    "same_foreground_process": true,
+    "unsaved_edit_preserved_after_notification_open": true,
+    "exact_target_opened_after_cancel": true
+  },
+  "preservation": {
+    "logical_tables_compared": 10,
+    "changed_tables": [
+      "standalone_reminders_v1"
+    ],
+    "only_change": "Two additive synthetic once reminders retained",
+    "saved_memories": 2,
+    "photo_count": 1,
+    "draft": null,
+    "engine_revision": 16,
+    "runtime_media_equal": true,
+    "final_pending": 0,
+    "final_delivered": 0,
+    "home_no_stale_route_after_relaunch": true
+  },
+  "scope_limits": [
+    "Standalone once reminders only; linked-memory, repeat, timezone/DST, Android notification and broader cases remain open.",
+    "Actual Notification Center Open action used after right swipe; plain wrapper taps did not open.",
+    "Picker, observer null-root handling and offscreen notification setup failures retained; no app repair inferred.",
+    "No rebuild, install, clock change, restore, screen-reader enablement, Android or production action.",
+    "Device Hub UI access timed out; native screenshots and Mobilewright used.",
+    "Historical composite counts and remaining release gates remain unchanged."
+  ],
+  "evidence_directory": "WORK-SB121/ios-reminder-routing-8cc-work-continuation",
+  "evidence_hashes": {
+    "accepted-fixtures.json": "2eef83732864e4d0d8b74a2448565bb7f656df6cff6d81601551f7315b756d45",
+    "accepted-pending.json": "ad97540d31ac0e270411351edf6b20044d4a10fe46fecedb5c0dc203a83f9de1",
+    "cold-observer.json": "c2e4f01a7b5e29f4c1f91a4e6c1fb6ac07a66ff43be074ec5829b3df5befd9de",
+    "cold-actual-delivered.json": "db520239dfe51588953811a31818a387d20fd50ca87b33e734b9cb1e7c76b301",
+    "24-cold-tap-proof.json": "52a0cfed454815363cc5fed6cc500650a440efddcc1d9d32d3a9e2f12901f066",
+    "24-cold-tap-result.json": "16dc81a3cdc9df09690d81d81901d7bedc89a63333f2584e8adb04099f49a4af",
+    "24-cold-tap-result.png": "85245005e88ff978ade02977a8870d14d2eacc97e932ff785cf6d8c90afe5bb4",
+    "dirty-delivery-result.json": "4d0353bb895e80ad6fc34a2e8ccab4086cfb030d5728ada30ca0d0621d247642",
+    "dirty-actual-delivered.json": "278699b3d3095011ca92e3dbccbe70d3905464db3f88e3324617751b06e4703a",
+    "dirty-actual-delivery-screen.png": "41df8e17a62b4f4b141a92424aaf6eb57b43b28b5c64c636e8e23748593087b0",
+    "32-deferral-proof.json": "53ecd560a6bf699175e39173ffe40d9409b87391fe00ce6d9f32e0bcdfb9034f",
+    "32-deferral-result.json": "ea651b884c3c7ffad3750fdb0d4c12177c00bbf8155ce8c142b49f1a194314e5",
+    "32-dirty-after-open.png": "0cc37beed2a06d491c753aaa3f80cdcd50356ad97877d425fdfdcc614447dd87",
+    "32-deferred-target.png": "76e35174f3b7c9dd7e0baeb8499216f4b75bd1e6859265977c06303a08643d19",
+    "final-preservation.json": "a7b0aff033b4042dad3ddb7b838ccce467452a791afa4ffa0d7c9b4ee3f8303a",
+    "final-state.json": "df515aa915e43db199af45793a3c588514985ea498682370c0f670c628c48fd5",
+    "final-delivered.json": "d154415efd6b7f8168c3413e9d1c7cd4a3806f9505489e5b2bd2423fd120e21f",
+    "final-pending.json": "3c365b7c484a7358bcc2ea76403d06aca4295a9deb102f34cea4b9bd47d90604",
+    "40-relaunch-proof.json": "60a7ac1ea512c2c9be81b5f51e2b4ab4d99be4348f4bb076b4ea35c06dc77dd0",
+    "40-final-home.png": "d7716106f43afbc28db1f6e99982a558cdc4a1ee712a8ec95b8d3fdb5aabc523"
+  },
+  "manifest_sha256": "eb5e1044d1c38968810c99e6b6532f3d6eae4d3a8eca54e7cb7da1cf27f7e996",
+  "manifest_file_count": 216
+}

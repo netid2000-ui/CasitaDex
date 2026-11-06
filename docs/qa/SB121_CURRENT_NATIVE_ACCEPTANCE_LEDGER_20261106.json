@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "status": "VERIFIED_PARTIAL_MILESTONE_SNAPSHOT",
-  "updated_at_utc": "2026-11-06T18:54:13.030813+00:00",
+  "updated_at_utc": "2026-11-06T20:31:53.348401+00:00",
   "release": "NO-GO",
   "latest_runtime_commit": "8cc2862eaf2791379518e440d3b9d5833543ab0a",
   "installed_runtime_checkpoint": {
@@ -1230,6 +1230,13 @@
       "sha256": "9e571eca91196d1222576bf654c45d460262dceb456461c296fe6534d0d1bec7",
       "source_commit": "8cc2862eaf2791379518e440d3b9d5833543ab0a",
       "scope": "Graceful preserving shutdown after completed native acceptance; exact state/source retained, session exit0 and ports/processes independently absent; recovery data hash verified."
+    },
+    "ios_8cc_work_actual_reminders": {
+      "relative_path": "docs/qa/SB121_IOS_8CC_ACTUAL_REMINDER_WORK_20261106.json",
+      "sha256": "630cadc6825d7d46720c7b9e706cc80a6cc3b55d740922d73b91e3a01079342e",
+      "raw_result_sha256": "fd5e3faf908ca53595037226f8ff4f950c5c6d77bd70442fe37ac6eed06d03d1",
+      "raw_manifest_sha256": "eb5e1044d1c38968810c99e6b6532f3d6eae4d3a8eca54e7cb7da1cf27f7e996",
+      "source_commit": "8cc2862eaf2791379518e440d3b9d5833543ab0a"
     }
   },
   "execution_limits": [
@@ -1532,6 +1539,15 @@
       "scope": "Graceful stop after verified Home, complete recovery copy and semantic/reminder/media equality. Owned session exited0; ports/processes independently absent. Exact 8cc artifact/data retained, no reset/uninstall/radio change.",
       "evidence_refs": [
         "android_8cc_handoff"
+      ]
+    },
+    {
+      "id": "IOS_8CC_ACTUAL_ONCE_REMINDER_DELIVERY_AND_DIRTY_MEMORY_DEFERRAL",
+      "status": "PASS_BOUNDED",
+      "artifact_ref": "ios_8cc",
+      "scope": "Actual OS delivery while terminated and while editing an unsaved memory; Notification Center Open routes exact cold reminder, preserves dirty editor, then routes exact second reminder after Cancel. Relaunch Home has no stale route. Two additive once reminders retained; all other ten-table baseline content, revision16, runtime and media preserved. Broader reminder and release gates remain open.",
+      "evidence_refs": [
+        "ios_8cc_work_actual_reminders"
       ]
     }
   ],
