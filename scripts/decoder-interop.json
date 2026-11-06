@@ -1,0 +1,9 @@
+{
+  "queryVersion": "7.1.3",
+  "decoderVersion": "0.5.1",
+  "before": "caa3f2c8b45dfe1e91db22ae10743af68de8d96f26515132bb52485ec0f037fa",
+  "after": "3f69491ee99938c72da8db242a62837d5b253604eab441994b802731e83c8a3e",
+  "decoder": "6a86ac891edf15c5efa0841ebb31935e3669d58b98318b57d7b08a4530317cb0",
+  "old": "const decodeComponent = require('decode-uri-component');",
+  "replacement": "// F&A interop: official fixed decoder 0.5.1 is ESM; preserve query-string 7's plus semantics.\nconst decoderModule = require('decode-uri-component');\nconst fixedDecodeComponent = typeof decoderModule === 'function' ? decoderModule : decoderModule.default;\nif (typeof fixedDecodeComponent !== 'function') {\n\tthrow new TypeError('Expected the pinned decode-uri-component function');\n}\nconst decodeComponent = input => fixedDecodeComponent(typeof input === 'string' ? input.replace(/\\+/g, ' ') : input);"
+}

@@ -17,7 +17,14 @@
     "preview": "node scripts/preview.mjs",
     "test:browser": "node tests/current-home-browser.cjs",
     "test:current-home": "node tests/current-home-browser.cjs",
-    "test:browser:legacy": "node tests/browser-smoke.cjs"
+    "test:browser:legacy": "node tests/browser-smoke.cjs",
+    "postinstall": "node scripts/decoder-interop.cjs --apply",
+    "pretest": "node scripts/decoder-interop.cjs --check",
+    "prestart": "node scripts/decoder-interop.cjs --check",
+    "preexport:web": "node scripts/decoder-interop.cjs --check",
+    "preandroid": "node scripts/decoder-interop.cjs --check",
+    "preios": "node scripts/decoder-interop.cjs --check",
+    "preweb": "node scripts/decoder-interop.cjs --check"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "2.2.0",
@@ -54,5 +61,10 @@
     "playwright": "1.62.1",
     "prettier": "3.9.9",
     "typescript": "~6.0.3"
+  },
+  "overrides": {
+    "query-string@7.1.3": {
+      "decode-uri-component": "0.5.1"
+    }
   }
 }

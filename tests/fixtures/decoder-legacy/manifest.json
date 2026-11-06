@@ -1,0 +1,26 @@
+{
+  "query-string.cjs": {
+    "sha256": "caa3f2c8b45dfe1e91db22ae10743af68de8d96f26515132bb52485ec0f037fa",
+    "version": "7.1.3",
+    "resolved": "https://registry.npmjs.org/query-string/-/query-string-7.1.3.tgz",
+    "integrity": "sha512-hh2WYhq4fi8+b+/2Kg9CEge4fDPvHS534aOOvOZeQ3+Vf2mCFsaFBYj0i+iXcAq6I9Vzp5fjMFBlONvayDC1qg=="
+  },
+  "query-string.LICENSE": {
+    "sha256": "846c2349412e40c3c33095b2903f6a311ef4b30ccd26c214044a2cdc24fdc5cc",
+    "version": "7.1.3",
+    "resolved": "https://registry.npmjs.org/query-string/-/query-string-7.1.3.tgz",
+    "integrity": "sha512-hh2WYhq4fi8+b+/2Kg9CEge4fDPvHS534aOOvOZeQ3+Vf2mCFsaFBYj0i+iXcAq6I9Vzp5fjMFBlONvayDC1qg=="
+  },
+  "decode-uri-component.cjs": {
+    "sha256": "3b8ba0a765e1089d11bba9a919d0d8789ecd9a6833ea078d8d9114e1db093863",
+    "version": "0.2.2",
+    "resolved": "https://registry.npmjs.org/decode-uri-component/-/decode-uri-component-0.2.2.tgz",
+    "integrity": "sha512-FqUYQ+8o158GyGTrMFJms9qh3CqTKvAqgqsTnkLI8sKu0028orqBhxNMFkFen0zGyg6epACD32pjVk58ngIErQ=="
+  },
+  "decode-uri-component.LICENSE": {
+    "sha256": "ed7a9a0f74e43951b2520efe1a4349cb9ed5f3dff0b0f268e2e51a4d38df7ea4",
+    "version": "0.2.2",
+    "resolved": "https://registry.npmjs.org/decode-uri-component/-/decode-uri-component-0.2.2.tgz",
+    "integrity": "sha512-FqUYQ+8o158GyGTrMFJms9qh3CqTKvAqgqsTnkLI8sKu0028orqBhxNMFkFen0zGyg6epACD32pjVk58ngIErQ=="
+  }
+}
