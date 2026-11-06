@@ -1,3 +1,9 @@
+# Latest iOS milestone: exact build and preserving upgrade verified
+
+November 6, 2026: **bb235cdf6f2bba63b1760038a379a2c09cdf32ab** iOS Release simulator build and preserving upgrade passed; current iOS and Android QA artifacts now match this source. Prior app/data retained and logical data/media unchanged. Portrait maximum-text ordinary typing/repeated focus passed after settling, but a persistent iOS landscape rotation focus-scroll defect remains **OPEN**. [Build, upgrade, hashes and limits](docs/qa/SB121_IOS_BB235_BUILD_UPGRADE_20261106.md). Release **NO-GO**.
+
+## Earlier verified milestones retained
+
 # Latest archive milestone: current Android Full v4 gate verified
 
 November 6, 2026: a fresh native Full v4 export from exact **bb235cdf6f2bba63b1760038a379a2c09cdf32ab** Android runtime passed all five opt-in archive cases: **5 passed, 0 failed, 0 skipped**. Native file import/view/close, local SAF export and draft/reminder restart readback passed. Original archive/copy hashes stayed unchanged; pre-existing saved collection data matched its preserved native baseline. [Verified archive milestone and limits](docs/qa/SB121_CURRENT_NATIVE_ARCHIVE_20261106.md).

@@ -31,11 +31,11 @@ Unsigned Release ARM64 iOS Simulator builds, not distribution-signed artifacts.
 
 | Source | Executable SHA-256 | JavaScript SHA-256 | Checkpoint status |
 | --- | --- | --- | --- |
-| 737eac1 | d64f95d9338451b1fe9a0e6aa358efb7c71380d2bc192a5a2eb19b2e12a01016 | 731bdaac0f2424db56ba8561e4bbcd9dca4c01f7134aa9b2225b029904653e0a | Built and installed on current isolated acceptance target |
+| 737eac1 | d64f95d9338451b1fe9a0e6aa358efb7c71380d2bc192a5a2eb19b2e12a01016 | 731bdaac0f2424db56ba8561e4bbcd9dca4c01f7134aa9b2225b029904653e0a | Historical installed baseline; app/data retained after preserving upgrade |
 | d59bf8d | 83f19b99341362117d02a05a0b0a3ef3eb0f58bbcf041067295826436248c855 | 92b899af2b8043269c40adbd3f2b8560f2e4d8bd090770fc98a65fe6d8054fb8 | Built, not installed |
-| bb235cd | Not built | Not built | Staged; compilation/install held through the protected reminder check after Android qualification |
+| bb235cd | 92fafba2cb7340092388e9baf5bda9f37223e0707111823aaa010c02278441c8 | 6fe506779d254a58231c3d521cd85c05f45691bcb316da3f3fee40d1931330ba | Built and installed with unchanged logical data/media; landscape focus defect open |
 
-Repository source therefore differs from installed iOS runtime. Source/mock checks do not certify an older installed runtime or an unbuilt candidate.
+Current virtual iOS and Android runtimes now both match bb235cd. [Verified iOS build and preserving upgrade, with open landscape defect](SB121_IOS_BB235_BUILD_UPGRADE_20261106.md). Source/mock checks do not replace exact-artifact native acceptance.
 
 ## Native results and remaining gates
 
@@ -56,7 +56,7 @@ Completed at 14:54 UTC on the exact installed APK above, using Android API 35 an
 This closes the specific Android keyboard/rotation regression, not the whole native accessibility or release matrix. Older APKs, rollback data and failure evidence remain preserved. No external recipient, physical device, erase, uninstall or restore was used.
 
 Still OPEN:
-- Final-source iOS build/install and exact extreme text/keyboard/rotation retest after Android qualification.
+- Exact iOS build/install now passed; extreme text/keyboard/rotation acceptance remains open because landscape focus-scroll fails. See the linked iOS milestone.
 - Broader manual accessibility, real-archive/restore and other release-matrix gates retain their separately recorded open/evidenced states.
 - Physical testing remains conditional on required virtual gates. No physical acceptance, release merge, store submission or production deployment is claimed.
 
