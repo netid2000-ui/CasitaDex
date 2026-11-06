@@ -1,0 +1,132 @@
+{
+  "createdUtc": "2026-11-06T03:28:34.021361+00:00",
+  "sourceSha": "9fd52ae1fac7d38babb57b393acebd426d830159",
+  "files": [
+    {
+      "path": "QA-Evidence/WORK-SB121/android-physical-preparation/apk-badging.txt",
+      "bytes": 6155,
+      "sha256": "5b6b3a413e70ee51c4e15f913086c02c0fe7638be51150c9f958261c65c44727"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/android-physical-preparation/apk-manifest.txt",
+      "bytes": 20411,
+      "sha256": "d75f3981473ff35848d072dfc9d85e7c08a98bd29d4cbcf1f08df0e2b7f4d684"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/android-physical-preparation/apk.sha256",
+      "bytes": 213,
+      "sha256": "5afdaa0a6fbb6e13621c5b2a4c66301b1c4ab01465838fe1f003cd586f45873e"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/android-physical-preparation/apksigner-verify.txt",
+      "bytes": 990,
+      "sha256": "779b75b032a8f23d45d558b304ab6276bf5894001fa1fafb79c17eaf8f89a272"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/android-physical-preparation/artifact-proof.json",
+      "bytes": 5877,
+      "sha256": "fc8cab899bb8fbe51d53c72a91867721a41338f355a0acb2e6e3ee3f592618db"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/android-physical-preparation/build-android-release-v2.log",
+      "bytes": 2429,
+      "sha256": "fa33f3ec270e50b5dacca0be3fddf7f909f167feea51b0dabb071585a0ccf721"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/android-physical-preparation/build-android-release-v3.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/android-physical-preparation/build-android-release-v3.log",
+      "bytes": 87510,
+      "sha256": "91476c53bae09fa71a9c2d63fee044102c16333f78246465e36f71eed8d39f1c"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/android-physical-preparation/build-android-release.log",
+      "bytes": 38368,
+      "sha256": "16e5c5937b4ff859dfdcde06e57abff0daaa9902ecd1ce2ca17e6a93033efa5c"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/android-physical-preparation/build-preflight.log",
+      "bytes": 493,
+      "sha256": "c15e5a9ee204b567928f40c0caba024a82ee2082bfab2a2f04b77c75053c5241"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/android-physical-preparation/devicehub-visible-window.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/android-physical-preparation/generated-AndroidManifest.xml",
+      "bytes": 2448,
+      "sha256": "e01b81207b2ec25394e55396088bfc0cb3dc70cfc8d7af4734f9a5f0266c7552"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/android-physical-preparation/generated-app-build.gradle",
+      "bytes": 8228,
+      "sha256": "74fd5ccd1a98fe3bc7079be7b20efe780f26e48d1d65e39ac7a28e3147c40a66"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/android-physical-preparation/generated-gradle.properties",
+      "bytes": 2567,
+      "sha256": "d02b52da10bf3abb24279fd102df47694b8130a6b7fe6110cc47a9476ac8673c"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/android-physical-preparation/generated-root-build.gradle",
+      "bytes": 556,
+      "sha256": "bdb916d3fe7085c9e9f3bb45bd5eacb97f5d2c5a2b2af965642f7d904739ca68"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/android-physical-preparation/generated-source-hashes.txt",
+      "bytes": 361,
+      "sha256": "d6bdff1df2d4feb23da7971298cb17c299621be853362603062005b4648bb7a6"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/android-physical-preparation/generation-preflight.log",
+      "bytes": 614,
+      "sha256": "a7484a83fbce086b40d378fa8c6a6be97db76592f182141cadfb57652c1c41b7"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/android-physical-preparation/gradle-wrapper.properties",
+      "bytes": 252,
+      "sha256": "a180163249c7252412ddaee1c7adcf59f6494b1183136f690fbd9a3b8aaed00e"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/android-physical-preparation/isolated-cache-seed.log",
+      "bytes": 378,
+      "sha256": "c318653df93d7255fa6628b7704a0e6739dc7491682ad1624bb123c0e2db1fad"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/android-physical-preparation/prebuild-android.log",
+      "bytes": 172,
+      "sha256": "d5e4be0a0c10691bffa446716505e068d943d1fca32f0d93d5af6f817e29c4e4"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/android-physical-preparation/release-runtime-proof.json",
+      "bytes": 12438,
+      "sha256": "b031b5cf03494646f2e6a737561f46ff954746f8bedd498e893ed2d35df29d3f"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/android-physical-preparation/simulator-visible-before.txt",
+      "bytes": 132,
+      "sha256": "5bf20e8f5a8f09017923d562669b55e4e809f0915afe15a8d5d4db91df1f51cb"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/android-physical-preparation/verify-qa-release-v2.gradle",
+      "bytes": 2224,
+      "sha256": "503e442f3b33c26998220724fbf65d573fb916f1f4f51d327922c3abe041e0fb"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/android-physical-preparation/verify-qa-release.gradle",
+      "bytes": 2060,
+      "sha256": "728b17e6ca45707d48a435fbdd278ba7c658712bfbfad0c41f485e60981606f5"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/android-physical-preparation/zipalign-16k.txt",
+      "bytes": 63229,
+      "sha256": "74548d9eee653c5b6711b13b84652184bfd3cec60d8491c911b2c5ba07169071"
+    }
+  ],
+  "count": 25
+}

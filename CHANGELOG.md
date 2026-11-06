@@ -1,5 +1,11 @@
 # Changelog
 
+## November 6, 2026 - WORK-SB121 Android candidate preparation
+
+- Build and verify the current staging Release Android QA artifact in an isolated external workspace/cache. No application-source change.
+- Record complete no-Firebase release dependencies, QA signing, bundled source and 16 KiB packaging/ELF evidence.
+- Preserve current simulator reminders and make the owner's virtual-testing-before-physical-testing gate explicit. Native acceptance is still pending.
+
 ## November 6, 2026 - WORK-SB121 readiness candidate
 
 - Patch the supported development-only Zod advisory without changing runtime dependencies.

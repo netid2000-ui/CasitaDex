@@ -11,6 +11,14 @@ Source `3b526f6976d0d9becafd16ede2fd12ba89216ff4` adds a supported dev-only Zod 
 - Candidate is not installed or native/VoiceOver accepted. Compiler ad-hoc signature is not distribution signing. See [security/accessibility/readiness report](docs/qa/WORK_SB121_SECURITY_ACCESSIBILITY_READINESS.md) and [manifest](docs/qa/SB121_READINESS_EVIDENCE_MANIFEST.json).
 - npm inventory reduced 15 to 14 affected entries; OSV independently confirms the same four remaining advisories. Decoder reachability and tooling compatibility caveats remain, with security disposition open.
 
+## Current Android artifact and virtual-first gate
+
+- Fresh isolated staging Release arm64 APK built from clean snapshot `9fd52ae1fac7d38babb57b393acebd426d830159`; all 698 tracked files matched. SHA-256 `330b9acd883f4a6b6469a94b026dcc5aec049ac96f9b7123fb1371f17dcfe93d`.
+- PASS: build, complete 217-component release graph without Firebase, non-debuggable staging identity, public QA signature verification, APK 16 KiB alignment and all 23 native ELF alignments. This is not a store-signed artifact or native acceptance.
+- Current APK emulator tests NOT RUN; fresh dedicated virtual device is prepared, not booted, pending the shared Android lane. Prior Android runtime evidence remains historical.
+- **Owner restriction: complete all required emulator/simulator tests before any physical-phone testing.** No physical install/test occurred. All builds and tests remain exclusively on the Mac mini. Host networking stays unchanged.
+- See [Android preparation and remaining gates](docs/qa/WORK_SB121_ANDROID_CANDIDATE_PREPARATION.md) and [artifact manifest](docs/qa/SB121_ANDROID_CANDIDATE_EVIDENCE_MANIFEST.json).
+
 ## Frozen scheduled native test
 
 Installed runtime remains `c2d123977b5fff3c20e695070340a90b2d4b6e1c`, with the previously verified photo, backup preparation/share, five bounded official accessibility contexts and actual maximum-text Add/Save/persistence evidence. Historical b30c951 provider-save/restore and notification evidence remains separately scoped.
