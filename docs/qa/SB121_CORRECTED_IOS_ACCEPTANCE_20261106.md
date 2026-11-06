@@ -1,6 +1,8 @@
-# CasitaDex corrected iOS acceptance, 2026-11-06
+# CasitaDex preceding corrected iOS acceptance, 2026-11-06
 
-## Exact current runtime
+This record remains attributed to 9e53d5b. Current a812 runtime results are in [the new native checkpoint](SB121_A812_NATIVE_CHECKPOINT.md).
+
+## Exact preceding runtime
 - Feature source: 9e53d5bd14e4a96d63da9f7d9a6faee7a8073307, work/cd-sb41-edit-targeting-20261104.
 - Development-only unsigned Release arm64 iOS simulator application, built on the authorized Mac mini.
 - Executable SHA256: 0fb367e7375f68d165558cfa0715f770f6fa3c0254839bee5bd3dea5c1b5339b.
@@ -8,7 +10,7 @@
 - Exact installed bytes verified. Source is pushed. GitHub connector returned no statuses and no pull-request workflow runs for this commit; this is not a CI pass.
 - The approved Home / Photos / Reminders / Find visual baseline is preserved. The earlier linked-09:00 runtime is a separate frozen fixture, not this artifact.
 
-## Verified on current runtime
+## Verified on this preceding runtime
 - Data-preserving upgrade retained two memories, five saved-photo hashes and the existing reminder.
 - All seven draft/saved photo picker controls are disabled at five photos with a readable explanation. Native replacement Cancel preserved all five draft media identities and bytes.
 - Real normal-clock notification delivery and visible-banner taps opened the exact unique standalone reminder from foreground, background and terminated states. Identities included literal percent escapes and Unicode. Native pending/delivered records, before/after screenshots and exact target assertions are retained. No host clock change, push simulation or direct route injection was used for delivery/tap acceptance.

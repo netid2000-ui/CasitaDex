@@ -1,0 +1,105 @@
+{
+  "runtimeSource": "a8129e81aabb20e0112f39865a046372cb0d5130",
+  "branch": "work/cd-sb41-edit-targeting-20261104",
+  "lockfileSha256": "7767f310cb183d9e2de29deed82d79ee7cd9a08dd29bddf5a979474fe7c856c7",
+  "ios": {
+    "variant": "Development unsigned Release arm64 simulator",
+    "binarySha256": "cf6eb29756bb7c9030036a5e0fe55a44b9b0407a01e5689915a5f7e37a283caa",
+    "hermesSha256": "40f36f89a3646642e140629e7204470b7c0c16efebbd31723d68ddaebbb5d29f",
+    "build": "PASS",
+    "preservedUpgrade": "PASS",
+    "maxTextNativeScenarios": [
+      "home-max-landscape",
+      "photos-max-landscape",
+      "reminders-max-landscape",
+      "find-max-landscape",
+      "backup-max-portrait"
+    ],
+    "nativeRouteAssertions": 10,
+    "normalClockNotificationStates": [
+      "foreground",
+      "background",
+      "terminated"
+    ],
+    "deliveryTimesUTC": [
+      "2026-11-06T07:52:00Z",
+      "2026-11-06T07:53:00Z",
+      "2026-11-06T07:54:00Z"
+    ]
+  },
+  "android": {
+    "variant": "Development nondebuggable Release arm64 emulator, QA signed",
+    "apkSha256": "53338b00ca5684fcee3672538c0007e341dff9b1e5f8c403457c5ec05ad29019",
+    "hermesSha256": "64afd775770c5e993076cba22c335a6c7e239e198bcc9874e581c3052892610b",
+    "nativeAssertions": 34,
+    "notificationTrayDelivery": "NOT RUN"
+  },
+  "sourceChecks": {
+    "total": 463,
+    "passed": 458,
+    "skipped": 5,
+    "failed": 0,
+    "typecheck": "PASS",
+    "eslint": "PASS",
+    "responsiveGeometryProxies": 8,
+    "expoDoctor": "20/21: CocoaPods version check blocked in Swift-only environment",
+    "portableSQLiteFixtureScenarios": 19
+  },
+  "release": "NO-GO",
+  "remainingGates": [
+    "protected normal-clock linked09:00 delivery and taps",
+    "strict OS-wide offline; scoped transport candidate not yet built",
+    "manual VoiceOver and TalkBack; broader accessibility and Figma parity",
+    "current Android real notification tray delivery",
+    "current full-draft restore acceptance blocked at confirmation; earlier corrected-runtime restore remains separately scoped",
+    "full Android lint pending toolchain/dependency recovery",
+    "remaining moderate dependency-security disposition",
+    "distribution signing, owner physical acceptance after all virtual gates, release approval"
+  ],
+  "evidence": [
+    {
+      "path": "QA-Evidence/WORK-SB121/ios-current-journeys/native-a11y-a812-home-max-landscape-viewport/test.log",
+      "sha256": "10554ba317ce2f15ffbf9656ad08c96355303f94f439fd03beda0df13ee36046"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/ios-current-journeys/native-a11y-a812-photos-max-landscape-viewport/test.log",
+      "sha256": "5ddeccb8be60c3901f36cc1aba6486b191fea6cd01bc9a019e39c3ca08050828"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/ios-current-journeys/native-a11y-a812-reminders-max-landscape-viewport/test.log",
+      "sha256": "8be684f5d80359f1839b42884ee1ac41b01157f8ef902b975a4fecd650ef5395"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/ios-current-journeys/native-a11y-a812-find-max-landscape-viewport/test.log",
+      "sha256": "3f81ed89ccecb1463e47ecda142d2dca823494d8aa43403382195325286ed682"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/ios-current-journeys/native-a11y-a812-backup-max-portrait-viewport/test.log",
+      "sha256": "10696b2cf69e18f5da469128cb8ea7fbf95e853327e4abd9f74e27be97242c29"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/ios-current-journeys/a812-routing/assertions.jsonl",
+      "sha256": "6e10d0658d8499deb4ba525f1f19e0be76726338384563bacca31f9178b6814e"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/ios-current-journeys/a812-notifications/assertions.jsonl",
+      "sha256": "cd55abeded33d5dad65ad7092249fa58cf973b699fda7fe45de05d1c6e941d3c"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/ios-current-journeys/a812-upgrade/current-home.png",
+      "sha256": "31d5fee3f94f2850d369c5c04aa603422b47f9ecd765b0728789146e0cf70edf"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/ios-current-journeys/a812-max-landscape-pixel.png",
+      "sha256": "fb60ef2367e9cb848e01a4c033f57c5ead446678a72f57ac89f1160a8b1b4cf7"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/android-current-acceptance-a8129e8/native-acceptance.json",
+      "sha256": "4ac0e764c3fc1c287c284e64b4c909c63eccc0ed33249bb73d8416acf5718320"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/android-current-acceptance-a8129e8/evidence-manifest.json",
+      "sha256": "b8ef8bc5b4a2c104ff8d0e45a7d789d7eaf2e7b9c0b4a6b9a6d8f371ea058e72"
+    }
+  ]
+}

@@ -1,5 +1,11 @@
 # Changelog
 
+## November 6: verified current native release fixes
+- Fix maximum-text landscape navigation while preserving the approved four-tab visual baseline; verify current iOS/Android native reachability.
+- Verify patched decoder on native cold/warm targets and actual iOS notification delivery/taps.
+- Preserve five-photo and draft data through native upgrades; verify current Android picker limits and persistence.
+- Add guarded Swift-only SQLite preparation and isolated recovery tests; release gates remain open.
+
 ## November 6: photo limit controls
 - Disable draft and saved-memory photo import/camera controls at five photos, with a readable recovery hint. Existing photos and replacement/removal behavior are preserved. Native rebuilt verification pending.
 

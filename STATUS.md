@@ -1,3 +1,11 @@
+# Current checkpoint: native a812 release fixes verified, release NO-GO
+
+Both exact a8129e8 native artifacts passed targeted current-source acceptance. iOS: five maximum-text audit contexts, ten routing cases and three real normal-clock notification lifecycle taps. Android: 34 retained assertions, five-photo persistence/limits, encoded targets and maximum-text navigation. Existing data and frozen scheduled fixture preserved. [Current evidence and remaining gates](docs/qa/SB121_A812_NATIVE_CHECKPOINT.md).
+
+Full Android lint and scoped-offline preparation continue separately. Strict OS-wide offline, manual screen readers, blocked current full-draft restore, linked09:00 delivery, security disposition, signing and owner physical/release gates remain open. No physical testing before virtual completion.
+
+## Earlier checkpoints, preserved for provenance
+
 # CasitaDex - authoritative Mac integration status
 
 November 6, 2026 UTC. FA-MAC-DEV-01 exclusively. Authorized branch `work/cd-sb41-edit-targeting-20261104`. **Release NO-GO.**
@@ -58,5 +66,5 @@ No production deployment, release merge, store submission, live purchase, produc
 - Security source commit: 408d5958d1083f62b97c254e392a1981457b0140. Official decoder 0.5.1 replaces vulnerable 0.2.2 through a hash-guarded compatibility bridge; native package versions and Xcode/Pod inputs unchanged. Clean install, source integrity, negative drift, frozen differential oracle and actual Metro-load guards verified. Remaining moderate tooling advisories are open.
 - Large-text landscape source: replaced percentage tab wrapping with explicit one-row/four-tab or two-row/two-tab layout, preserving Home, Photos, Reminders and Find. Browser geometry is supporting evidence, not native acceptance.
 - Combined source: 463 tests, 458 passed, five existing skipped, zero failed; TypeScript, ESLint, eight geometry proxies and iOS reminder-integration guards pass. Expo Doctor is 20/21 in the authoritative Swift-only environment: CocoaPods version check fails. No Ruby/Pod installation or native regeneration was attempted.
-- Installed and native-qualified runtime remains 9e53d5b until the new artifact is built and accepted. Its actual normal-clock foreground/background/terminated notification taps and maximum-text portrait Home audit passed. Landscape defect is not yet closed natively. See docs/qa/SB121_CORRECTED_IOS_ACCEPTANCE_20261106.md.
+- At that earlier checkpoint the installed runtime was 9e53d5b; the current a812 acceptance above supersedes this pending-build status. Its actual normal-clock foreground/background/terminated notification taps and maximum-text portrait Home audit passed. The landscape defect was then awaiting native verification; the current checkpoint above records its native closure. See docs/qa/SB121_CORRECTED_IOS_ACCEPTANCE_20261106.md.
 - Release remains NO-GO: current iOS/Android native regression, landscape, offline, remaining accessibility/security, protected09:00 delivery, signing and owner physical acceptance gates remain open. No production or physical-phone action authorized by this checkpoint.
