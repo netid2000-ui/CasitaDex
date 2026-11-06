@@ -1,0 +1,73 @@
+{
+  "status": "PARTIAL_MAXIMUM_UNFOCUSED_FIELDS_USABILITY_OPEN",
+  "runtime_source": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
+  "source_head": "602e6a81cbf6a06c67cc07ef7c6aae3e8bf0dfcf",
+  "reason": "Prior maximum test focused Memory name before enlargement. This check opened editor after app Large and system maximum were already applied; no focus, edits or saves. Prior owner Android tests and prior iOS focused/scroll acceptance do not establish this profile.",
+  "profile": "App Large ON and system AX maximum before editor mounts; portrait; no field focused or edited",
+  "verified_fields": [
+    "Memory name",
+    "Written answer (optional with a photo)",
+    "Location",
+    "Notes",
+    "Source"
+  ],
+  "not_reached_within_bound": [
+    "Reminder date (YYYY-MM-DD)",
+    "Create a Space or Category without leaving edits"
+  ],
+  "bound": {
+    "views": 18,
+    "maximum_swipes": 18,
+    "actual_swipes": 18,
+    "viewport_points": 319
+  },
+  "interpretation": "At least35pt of each reported input intersected the viewport unfocused. Missing fields are not proven unreachable: final tree locates reminder date at y963 and create-Space/Category at y6826, below viewport bottom593. No failure of scrolling or dead-end was established.",
+  "pixel_review": {
+    "files": [
+      "view-00.png",
+      "view-09.png"
+    ],
+    "observations": "Cancel and heading extend outside the bounded viewport; written answer visibly ellipsizes. Geometry reachability is not full-label/value readability or comfortable usability. A single viewport screenshot does not prove permanently inaccessible text.",
+    "source_review": "src/ui.tsx Copy and Field double base font for app Large while native system scaling remains enabled; ActionPage independently bounds action/content scroll regions. No narrow implementation error established by this check; do not silently cap accessibility scaling to manufacture a pass."
+  },
+  "reused_evidence": [
+    "docs/qa/SB121_IOS_7FA_MAXIMUM_MANUAL_REFOCUS_20261106.json",
+    "docs/qa/SB121_IOS_7FA_MAXIMUM_MESSAGE_COVERAGE_20261106.json"
+  ],
+  "preservation": {
+    "ten_tables_equal": true,
+    "media_equal": true,
+    "runtime_equal": true,
+    "revision43_fixture_retained": true
+  },
+  "cleanup": {
+    "atUTC": "2026-11-06T22:12:49.863Z",
+    "home": true,
+    "portrait": true,
+    "systemLarge": true,
+    "appLargeOff": true,
+    "keyboardAbsent": true
+  },
+  "boundaries": {
+    "builds": 0,
+    "source_changes": 0,
+    "edits": 0,
+    "saves": 0,
+    "permissions_changed": false,
+    "android_touched": false,
+    "heavy_resources_used": false,
+    "job": "bc13cce00484d3f0",
+    "job_exit": 0,
+    "device_lock_released": true,
+    "release": "NO-GO"
+  },
+  "remaining": [
+    "Lower two unfocused fields and broad label/value readability remain open; current bounded run does not justify a speculative code fix.",
+    "Actual VoiceOver/TalkBack and iOS restore await owner approval; strict per-simulator offline proof remains tool-blocked.",
+    "Android work requires coordinated device handoff; physical and distribution gates held.",
+    "Dependency followup602e6a8 remains partial; source lock differs from installed artifact lock."
+  ],
+  "evidence_directory": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB121/ios-7fa-maximum-unfocused-fields",
+  "raw_result_sha256": "492e63f17ec5cc1468305e2b8ecba9bfbe6a84dc7d3a81edb22caa16b33b350c",
+  "manifest_sha256": "d39be08f5234ce7fd5f9a8d952274a736eed09c4d8aedf4006298849d82b263a"
+}

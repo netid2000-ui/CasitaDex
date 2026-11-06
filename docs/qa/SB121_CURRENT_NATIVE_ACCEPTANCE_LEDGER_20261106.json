@@ -39,7 +39,7 @@
     "ios": {
       "artifact_ref": "ios_7fa",
       "result": "BOUNDED_NATIVE_PASS_WITH_MAXIMUM_GAP",
-      "scope": "Normal and app Large validation/Cancel PASS; combined maximum message scroll coverage, Cancel and bounded manual drag/hold/refocus PASS. Broad field/label reachability and human legibility remain incomplete. Ten tables/media preserved.",
+      "scope": "Normal and app Large validation/Cancel PASS; combined maximum message scroll coverage, Cancel and bounded manual drag/hold/refocus PASS. Broad field/label reachability and human legibility remain incomplete. Ten tables/media preserved. Follow-up maximum-before-editor portrait check reached five unfocused fields; reminder-date and new-Space/Category inputs remain below the bounded18-view traversal. Broader label/value readability stays open; no code defect or global accessibility pass inferred.",
       "evidence_refs": [
         "ios_7fa_validation_native",
         "ios_7fa_enlarged_cancel",
@@ -49,7 +49,8 @@
         "ios_7fa_share_session_isolation",
         "ios_7fa_share_private_preview",
         "ios_7fa_share_private_native_sheet",
-        "ios_7fa_share_native_background"
+        "ios_7fa_share_native_background",
+        "ios_7fa_maximum_unfocused_fields"
       ]
     },
     "android": {
@@ -1180,7 +1181,8 @@
       "raw_manifest_sha256": "1bb5360d34c40ec1e12888358a34fd59b75409e6e5e4a1273ab416386379b2bf",
       "source_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606"
     },
-    "dependency_glob_backport": "docs/qa/SB121_DEPENDENCY_GLOB_BACKPORT_20261106.json"
+    "dependency_glob_backport": "docs/qa/SB121_DEPENDENCY_GLOB_BACKPORT_20261106.json",
+    "ios_7fa_maximum_unfocused_fields": "docs/qa/SB121_IOS_7FA_MAXIMUM_UNFOCUSED_FIELDS_20261106.json"
   },
   "execution_limits": [
     "Receipt consolidation and SHA-256 verification only. No duplicate app tests, builds, device actions or source/index edits.",
