@@ -4,6 +4,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Button, Copy, useTheme } from "./ui";
 import { useData } from "./state";
 import { actionColumns, actionRegionLimit } from "./action-page-layout";
+import { useIOSFocusScroll } from "./use-ios-focus-scroll";
 
 type Action = { label: string; onPress: () => void; disabled?: boolean; primary?: boolean };
 /** Fixed action region, not fixed-height buttons. Extreme layouts scroll actions independently. */
@@ -12,6 +13,7 @@ export function ActionPage({ title, actions, children }: { title: string; action
   const { large } = useData();
   const { fontScale } = useWindowDimensions();
   const { top } = useSafeAreaInsets();
+  const focusScroll = useIOSFocusScroll();
   const [bounds, setBounds] = useState({ width: 0, height: 0 });
   const columns = actionColumns(bounds.width - 40, fontScale, large);
   // Shell places this view directly below its top safe area; keyboard coordinates are screen-relative.
@@ -31,7 +33,7 @@ export function ActionPage({ title, actions, children }: { title: string; action
           <Copy accessibilityRole="header" kind="section" style={{ textAlign: "center", fontWeight: "700", borderTopWidth: 1, borderBottomWidth: 1, borderColor: colors.muted, paddingVertical: 8 }}>{title}</Copy>
         </View>
       </ScrollView>
-      <ScrollView testID="memory-content-region" style={{ flex: 1, minHeight: 0, overflow: "hidden" }} keyboardShouldPersistTaps="handled" automaticallyAdjustKeyboardInsets={Platform.OS !== "ios"} nestedScrollEnabled contentContainerStyle={s.page}>
+      <ScrollView testID="memory-content-region" style={{ flex: 1, minHeight: 0, overflow: "hidden" }} {...focusScroll} keyboardShouldPersistTaps="handled" automaticallyAdjustKeyboardInsets={Platform.OS !== "ios"} nestedScrollEnabled contentContainerStyle={s.page}>
         <View style={s.container}>{children}</View>
       </ScrollView>
     </View>

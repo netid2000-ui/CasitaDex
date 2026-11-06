@@ -31,6 +31,7 @@ function fixture(os = "android") {
     "./ui": { Button: "Button", Copy: "Copy", useTheme: () => ({ colors: { paper: "paper", muted: "muted" }, s: { page: {}, container: {} } }) },
     "./state": { useData: () => ({ large: state.large }) },
     "./action-page-layout": layout,
+    "./use-ios-focus-scroll": { useIOSFocusScroll: () => undefined },
   });
   const calls = [], save = () => calls.push("save"), cancel = () => calls.push("cancel");
   const editor = { type: "EditorProbe", props: { session: { id: "same-edit" }, children: [] } };
