@@ -1,3 +1,5 @@
+import { createReminderResponseDrain, type ReminderResponse, type ReminderResponseRoute } from "./reminder-response-routing";
+import { subscribeNavigationGuardChanges } from "./eng-navigation";
 import { requireOptionalNativeModule } from "expo";
 import { AppState, Platform } from "react-native";
 import { getEngStore, engEnabled } from "./eng-runtime.native";
@@ -12,6 +14,9 @@ import {
 import type { ReminderPermission } from "./reminder-alerts";
 
 type ReminderBridge = {
+  pendingResponse?(): Promise<ReminderResponse | null>;
+  acknowledgeResponse?(token: string): Promise<void>;
+  addListener?(event: "onReminderResponse", listener: () => void): { remove(): void };
   permission(): Promise<Exclude<ReminderPermission, "unavailable">>;
   requestPermission(): Promise<unknown>;
   pending(): Promise<{ reminders: ReminderNotification[]; otherCount: number; invalidOwned: string[] }>;
@@ -93,4 +98,20 @@ export async function enableReminderAlerts(): Promise<ReminderPermission> {
   if (await bridge.permission() === "undetermined") await bridge.requestPermission();
   await reconcile();
   return bridge.permission();
+}
+
+/** iOS response support is optional so Android and older development clients keep working. */
+export function startReminderResponses(navigate: (route: ReminderResponseRoute) => boolean) {
+  if (!bridge?.pendingResponse || !bridge.acknowledgeResponse || !bridge.addListener) return () => {};
+  const native = bridge;
+  const drain = createReminderResponseDrain({
+    pendingResponse: () => native.pendingResponse!(),
+    acknowledgeResponse: token => native.acknowledgeResponse!(token),
+  }, navigate);
+  const refresh = () => { void drain.refresh().catch(() => console.warn("CasitaDex could not open a reminder notification.")); };
+  const response = native.addListener!("onReminderResponse", refresh);
+  const foreground = AppState.addEventListener("change", state => { if (state === "active") refresh(); });
+  const guard = subscribeNavigationGuardChanges(refresh);
+  refresh();
+  return () => { drain.stop(); response.remove(); foreground.remove(); guard(); };
 }

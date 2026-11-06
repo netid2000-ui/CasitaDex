@@ -1,15 +1,15 @@
 import React, { useEffect } from "react";
-import { startReminderAlerts } from "../reminder-alerts";
+import { startReminderAlerts, startReminderResponses } from "../reminder-alerts";
 import { StatusBar } from "expo-status-bar";
 import { Pressable, Text, View, useWindowDimensions } from "react-native";
 import { SafeAreaProvider, SafeAreaView, useSafeAreaInsets } from "react-native-safe-area-context";
-import { Slot, router, usePathname } from "expo-router";
+import { Slot, router, usePathname, useRootNavigationState } from "expo-router";
 import { Provider } from "../state";
 import { useTheme } from "../ui";
 import { BrandWebMeta } from "../brand-web-meta";
 
 import { AcceptedNavigationIcon as NavigationIcon } from "../accepted-navigation-icon";
-import { guardedNavigate } from "../eng-navigation";
+import { guardedNavigate, navigationIsGuarded } from "../eng-navigation";
 
 type Route = "/" | "/memories" | "/photos" | "/reminders" | "/answers";
 const destinations: { label: "Home" | "Memories" | "Photos" | "Reminders" | "Find"; route: Route }[] = [
@@ -21,6 +21,15 @@ const destinations: { label: "Home" | "Memories" | "Photos" | "Reminders" | "Fin
 ];
 function Shell() {
   const path = usePathname();
+  const rootState = useRootNavigationState();
+  useEffect(() => {
+    if (!rootState?.key) return;
+    return startReminderResponses(route => {
+      if (navigationIsGuarded()) return false;
+      router.push(route);
+      return true;
+    });
+  }, [rootState?.key]);
   const { colors, s, dark } = useTheme();
   const { width, fontScale } = useWindowDimensions();
   const { left, right } = useSafeAreaInsets();
