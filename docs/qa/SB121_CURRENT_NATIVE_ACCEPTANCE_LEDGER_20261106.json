@@ -1,0 +1,872 @@
+{
+  "schema_version": 1,
+  "status": "VERIFIED_PARTIAL_MILESTONE_SNAPSHOT",
+  "recorded_at_utc": "2026-11-06T15:52:45.588543+00:00",
+  "release": "NO-GO",
+  "runtime_snapshot_commit": "bb235cdf6f2bba63b1760038a379a2c09cdf32ab",
+  "authority_head_observed": "5dc930e280b43e9ffe5553a8c5c63fc6aa86eacb",
+  "authority_branch_observed": "work/cd-sb41-edit-targeting-20261104",
+  "authority_status_observed": "",
+  "dependency_lock_sha256": "7767f310cb183d9e2de29deed82d79ee7cd9a08dd29bddf5a979474fe7c856c7",
+  "historical_plan": {
+    "path": "docs/qa/SB121_POST_REMINDER_DETAIL_SHARE_MATRIX.json",
+    "sha256": "423010d4e1f01842c42fd52b4041e20df6444df24065169a4e9568b12c6a03ee",
+    "preserved_unchanged": true,
+    "historical_prepared_for_source": "737eac13cfacae0086890f98f2197607244036d7",
+    "all_historical_results_remain": "NOT_RUN",
+    "purpose": "Historical planned matrix remains immutable; this new ledger records subsequent bounded evidence."
+  },
+  "status_definitions": {
+    "PASS": "Entire named case is evidenced on exact current artifact.",
+    "PARTIAL": "Some subcases evidenced, but composite case remains open; not a PASS.",
+    "FAIL": "At least one reproduced product failure remains open.",
+    "NOT_RUN": "No qualifying current-artifact receipt for this named journey. Historical evidence is separated.",
+    "HELD_FOR_APPROVAL": "Action not executed because required approval is held.",
+    "IN_PROGRESS": "Work ongoing; no result inferred."
+  },
+  "counting": {
+    "unit": "The original 9 composite journeys x 2 platforms = 18 cells. Counts are evidence coverage, not executed test counts.",
+    "counts": {
+      "FAIL": 1,
+      "NOT_RUN": 8,
+      "PARTIAL": 9
+    },
+    "current_complete_case_passes": 0,
+    "note": "No overall native pass percentage. Ancestor receipts do not close current cases. Additional gates are not added to this denominator."
+  },
+  "artifacts": {
+    "android_bb235": {
+      "source_commit": "bb235cdf6f2bba63b1760038a379a2c09cdf32ab",
+      "variant": "Non-debuggable Release ARM64 development-identity QA APK",
+      "artifact_sha256": "41518e7db8705aec54f66668831097f97e6a052234b34e4295477609fd5e4456",
+      "hermes_sha256": "aa26242793e755dc29301b08d31e2bf50bfaf74fb4a1c1be37ee01abfff7d1e1",
+      "platform_scope": "Android API 35 isolated virtual target; no physical acceptance",
+      "provenance_evidence": [
+        "android_provenance",
+        "android_keyboard",
+        "android_archive"
+      ]
+    },
+    "ios_bb235": {
+      "source_commit": "bb235cdf6f2bba63b1760038a379a2c09cdf32ab",
+      "variant": "Unsigned Release arm64 iOS Simulator",
+      "artifact_sha256": "92fafba2cb7340092388e9baf5bda9f37223e0707111823aaa010c02278441c8",
+      "hermes_sha256": "6fe506779d254a58231c3d521cd85c05f45691bcb316da3f3fee40d1931330ba",
+      "platform_scope": "Isolated iOS Simulator only; no distribution signature or physical acceptance",
+      "provenance_evidence": [
+        "ios_upgrade",
+        "doc_ios_manifest"
+      ]
+    },
+    "android_737": {
+      "source_commit": "737eac13cfacae0086890f98f2197607244036d7",
+      "artifact_sha256": "d092403b7ec59382b63499f984675002b541482ff8e18ae12d200e08c52b814c",
+      "hermes_sha256": "bcc97e1800fad09e333754c19d1596a4893c8b6df55f987c5ea13ff5e1b3d21d",
+      "historical_only": true,
+      "provenance_evidence": [
+        "android_737",
+        "doc_keyboard"
+      ]
+    },
+    "ios_737": {
+      "source_commit": "737eac13cfacae0086890f98f2197607244036d7",
+      "artifact_sha256": "d64f95d9338451b1fe9a0e6aa358efb7c71380d2bc192a5a2eb19b2e12a01016",
+      "hermes_sha256": "731bdaac0f2424db56ba8561e4bbcd9dca4c01f7134aa9b2225b029904653e0a",
+      "historical_only": true,
+      "provenance_evidence": [
+        "ios_737",
+        "doc_keyboard"
+      ]
+    },
+    "ios_a886": {
+      "source_commit": "a8867c06c7dd3ceab55bd1ac6705064a83de28f2",
+      "artifact_sha256": "a3af0f51c894a2ba9008aeea2bb37ba5ab585f0ad85653aa6b57ff1b0ce81133",
+      "hermes_sha256": "48477d73eb54470bfce1563e4ca290535b0d846cefcfd5f3da8fe76858b172f4",
+      "historical_only": true,
+      "provenance_evidence": [
+        "ios_a886_linked",
+        "doc_linked"
+      ]
+    },
+    "ios_5dc_build_upgrade": {
+      "source_commit": "5dc930e280b43e9ffe5553a8c5c63fc6aa86eacb",
+      "variant": "Unsigned Release arm64 iOS Simulator",
+      "artifact_sha256": "5ccb166102dbfc6bfa9bf8c27e2cb972df96db8709a2c837d0c7381d5a8d4543",
+      "hermes_sha256": "69b3b8a61de0d03f78310aeae628641c3d8a6ea7ba98ae3c6eda3e24debb547c",
+      "native_acceptance": "SEPARATE_IN_PROGRESS_NOT_IN_THIS_SNAPSHOT",
+      "provenance_evidence": [
+        "ios_5dc_security",
+        "ios_5dc_security_receipt",
+        "ios_5dc_upgrade"
+      ]
+    }
+  },
+  "cases": [
+    {
+      "id": "D01",
+      "journey": "Detail origin, exact identity and Find context",
+      "results": {
+        "ios": {
+          "status": "PARTIAL",
+          "artifact_ref": "ios_bb235",
+          "covered_scope": [
+            "Current preserving upgrade and native Detail/Edit entry on the synthetic saved record.",
+            "After process relaunch, Find reopened the correct saved photo title/image."
+          ],
+          "remaining_scope": [
+            "Full current origin matrix and filtered Find query/scroll restoration not established."
+          ],
+          "evidence_refs": [
+            "ios_upgrade",
+            "ios_portrait",
+            "ios_photo"
+          ],
+          "historical_context": [
+            {
+              "artifact_ref": "ios_737",
+              "summary": "Historical exact detail and keyboard-free filtered Find return passed.",
+              "evidence_refs": [
+                "ios_737"
+              ],
+              "counts_toward_current_pass": false
+            }
+          ]
+        },
+        "android": {
+          "status": "PARTIAL",
+          "artifact_ref": "android_bb235",
+          "covered_scope": [
+            "Current saved record reopened; edit identity and saved fields read back after relaunch."
+          ],
+          "remaining_scope": [
+            "Current Find query and origin/scroll round trip not established."
+          ],
+          "evidence_refs": [
+            "android_keyboard"
+          ],
+          "historical_context": [
+            {
+              "artifact_ref": "android_737",
+              "summary": "Historical one-result Find visible scroll returned; hidden query was not independently reread.",
+              "evidence_refs": [
+                "android_737"
+              ],
+              "counts_toward_current_pass": false
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "D02",
+      "journey": "Edit Cancel, durable Save, validation failure and relaunch",
+      "results": {
+        "ios": {
+          "status": "PARTIAL",
+          "artifact_ref": "ios_bb235",
+          "covered_scope": [
+            "Current dirty-edit Cancel preserves saved collection and draft snapshots.",
+            "Current photo-only creation Save cleared draft; original saved memory unchanged; process relaunch retained entire eng_state_v2 and exact media bytes."
+          ],
+          "remaining_scope": [
+            "Current regular-record edit Save validation-failure/failed-save retention remain untested by these bounded receipts."
+          ],
+          "evidence_refs": [
+            "ios_after_cancel",
+            "ios_before_upgrade",
+            "ios_photo"
+          ],
+          "historical_context": [
+            {
+              "artifact_ref": "ios_737",
+              "summary": "Historical durable Save, nonmutating Cancel and relaunch passed.",
+              "evidence_refs": [
+                "ios_737"
+              ],
+              "counts_toward_current_pass": false
+            }
+          ]
+        },
+        "android": {
+          "status": "PARTIAL",
+          "artifact_ref": "android_bb235",
+          "covered_scope": [
+            "Cancel from keyboard discards unsaved marker; exact replacement Save and force-stop/relaunch readback pass."
+          ],
+          "remaining_scope": [
+            "Native validation failure and failed-save retention remain untested."
+          ],
+          "evidence_refs": [
+            "android_keyboard"
+          ],
+          "historical_context": [
+            {
+              "artifact_ref": "android_737",
+              "summary": "Historical Cancel/Save/relaunch also passed.",
+              "evidence_refs": [
+                "android_737"
+              ],
+              "counts_toward_current_pass": false
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "S01",
+      "journey": "Separate Share defaults, selection and correct return",
+      "results": {
+        "ios": {
+          "status": "PARTIAL",
+          "artifact_ref": "ios_bb235",
+          "covered_scope": [
+            "Current one-photo share selection/preview and native popup dismissal return to exact detail, with complete eng_state_v2 preserved."
+          ],
+          "remaining_scope": [
+            "Full defaults/nonempty optional-field privacy and origin matrix not established by photo-only fixture with empty optional fields."
+          ],
+          "evidence_refs": [
+            "ios_photo"
+          ],
+          "historical_context": [
+            {
+              "artifact_ref": "ios_737",
+              "summary": "Historical opt-in/zero-photo defaults and return passed; optional fields were empty.",
+              "evidence_refs": [
+                "ios_737"
+              ],
+              "counts_toward_current_pass": false
+            }
+          ]
+        },
+        "android": {
+          "status": "NOT_RUN",
+          "artifact_ref": "android_bb235",
+          "covered_scope": [],
+          "remaining_scope": [
+            "Current separate Share defaults, selection and exact return not established."
+          ],
+          "evidence_refs": [],
+          "historical_context": [
+            {
+              "artifact_ref": "android_737",
+              "summary": "Historical private-field opt-in/default exclusion and route return passed.",
+              "evidence_refs": [
+                "android_737"
+              ],
+              "counts_toward_current_pass": false
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "S02",
+      "journey": "OS text/photo sheet cancellation and exact local payload",
+      "results": {
+        "ios": {
+          "status": "PARTIAL",
+          "artifact_ref": "ios_bb235",
+          "covered_scope": [
+            "Current native selected-photo ZIP popup opened and canceled with no recipient. ZIP contains exactly reviewed Details.txt and one byte-identical Photo-1.png."
+          ],
+          "remaining_scope": [
+            "Current text-only variant and wider combinations/cancellation matrix remain untested."
+          ],
+          "evidence_refs": [
+            "ios_photo"
+          ],
+          "historical_context": [
+            {
+              "artifact_ref": "ios_737",
+              "summary": "Historical text sheet matched name/answer and dismissed without recipient; photo flow not run.",
+              "evidence_refs": [
+                "ios_737"
+              ],
+              "counts_toward_current_pass": false
+            }
+          ]
+        },
+        "android": {
+          "status": "NOT_RUN",
+          "artifact_ref": "android_bb235",
+          "covered_scope": [],
+          "remaining_scope": [
+            "Current OS text/photo sheet and exact payload cancellation remain untested; current SAF archive export is not a share-sheet test."
+          ],
+          "evidence_refs": [],
+          "historical_context": [
+            {
+              "artifact_ref": "android_737",
+              "summary": "Historical opt-in text exactly matched OS sheet and cancellation returned; selected-photo ZIP not run.",
+              "evidence_refs": [
+                "android_737"
+              ],
+              "counts_toward_current_pass": false
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "S03",
+      "journey": "Repeated exits, background/stale preparation and source change",
+      "results": {
+        "ios": {
+          "status": "NOT_RUN",
+          "artifact_ref": "ios_bb235",
+          "covered_scope": [],
+          "remaining_scope": [
+            "Current repeated exits, background/stale preparation and source-change native matrix remain untested."
+          ],
+          "evidence_refs": [],
+          "historical_context": []
+        },
+        "android": {
+          "status": "NOT_RUN",
+          "artifact_ref": "android_bb235",
+          "covered_scope": [],
+          "remaining_scope": [
+            "Current repeated exits, background/stale preparation and source-change native matrix remain untested."
+          ],
+          "evidence_refs": [],
+          "historical_context": []
+        }
+      }
+    },
+    {
+      "id": "A01",
+      "journey": "Detail/Edit/Share maximum text, landscape, keyboard and contrast",
+      "results": {
+        "ios": {
+          "status": "FAIL",
+          "artifact_ref": "ios_bb235",
+          "covered_scope": [
+            "Settled portrait typing and repeated focus at OS maximum plus app Large Text passed."
+          ],
+          "remaining_scope": [
+            "Landscape rotation persists with focused field outside content viewport. Repair and exact-artifact retest required. Wider Detail/Share, contrast, theme and oversized-field cases remain open."
+          ],
+          "evidence_refs": [
+            "ios_portrait",
+            "ios_landscape",
+            "ios_landscape_pixels",
+            "doc_ios"
+          ],
+          "historical_context": [
+            {
+              "artifact_ref": "ios_737",
+              "summary": "Three automated native .all audits passed at normal sizes; maximum-text keyboard overlap failed. Not manual VoiceOver.",
+              "evidence_refs": [
+                "ios_737"
+              ],
+              "counts_toward_current_pass": false
+            }
+          ]
+        },
+        "android": {
+          "status": "PARTIAL",
+          "artifact_ref": "android_bb235",
+          "covered_scope": [
+            "Bounded 200% system text, app Large Text off: inline IME, caret/name/answer visibility, both rotations, refocus, show/hide, independent clipped action scrolling, Cancel/Save/relaunch passed."
+          ],
+          "remaining_scope": [
+            "Combined app Large Text plus system maximum, Share/Detail wider accessibility, contrast/themes and manual reader remain open."
+          ],
+          "evidence_refs": [
+            "android_keyboard"
+          ],
+          "historical_context": [
+            {
+              "artifact_ref": "android_737",
+              "summary": "Historical fullscreen-extraction defect is superseded only by current bounded keyboard pass.",
+              "evidence_refs": [
+                "android_737"
+              ],
+              "counts_toward_current_pass": false
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "A02",
+      "journey": "Actual screen-reader focus, speech and return",
+      "results": {
+        "ios": {
+          "status": "NOT_RUN",
+          "artifact_ref": "ios_bb235",
+          "covered_scope": [],
+          "remaining_scope": [
+            "Actual VoiceOver focus, speech and return not executed. Automated accessibility audit does not substitute."
+          ],
+          "evidence_refs": [],
+          "historical_context": []
+        },
+        "android": {
+          "status": "NOT_RUN",
+          "artifact_ref": "android_bb235",
+          "covered_scope": [],
+          "remaining_scope": [
+            "Actual TalkBack focus, speech and return not executed."
+          ],
+          "evidence_refs": [],
+          "historical_context": []
+        }
+      }
+    },
+    {
+      "id": "R01",
+      "journey": "Notification target routing and dirty-edit deferral",
+      "results": {
+        "ios": {
+          "status": "NOT_RUN",
+          "artifact_ref": "ios_bb235",
+          "covered_scope": [],
+          "remaining_scope": [
+            "Current notification target routing, literal Return and dirty-edit deferral need native acceptance."
+          ],
+          "evidence_refs": [],
+          "historical_context": [
+            {
+              "artifact_ref": "ios_a886",
+              "summary": "Three real 09:00 alerts delivered while terminated. Actual cold/background/foreground taps and no stale replay passed. Background/foreground are tap states, not separate delivery states; literal Return not tested.",
+              "evidence_refs": [
+                "ios_a886_linked"
+              ],
+              "counts_toward_current_pass": false
+            }
+          ]
+        },
+        "android": {
+          "status": "NOT_RUN",
+          "artifact_ref": "android_bb235",
+          "covered_scope": [],
+          "remaining_scope": [
+            "Current notification target routing, dirty-edit deferral and origin matrix not executed. Standalone reminder restart readback is not notification delivery."
+          ],
+          "evidence_refs": [],
+          "historical_context": []
+        }
+      }
+    },
+    {
+      "id": "P01",
+      "journey": "Pre-existing record, draft, media and reminder preservation",
+      "results": {
+        "ios": {
+          "status": "PARTIAL",
+          "artifact_ref": "ios_bb235",
+          "covered_scope": [
+            "Logical data/media equality verified across preserving upgrade. Later Cancel preserves collection and draft.",
+            "One-photo workflow preserved original saved memory; viewer Close, native share cancel and process relaunch preserve complete eng_state_v2; media bytes unchanged."
+          ],
+          "remaining_scope": [
+            "Upgrade baseline had no media/standalone reminders. Preservation receipt covers eng_state_v2 and media, not exhaustive all-table backup or actual app restore."
+          ],
+          "evidence_refs": [
+            "ios_upgrade",
+            "ios_before_upgrade",
+            "ios_after_upgrade",
+            "ios_after_cancel",
+            "ios_photo"
+          ],
+          "historical_context": [
+            {
+              "artifact_ref": "ios_a886",
+              "summary": "Historical linked checkpoint preserved collection, draft, reminders and ten photo bytes; cannot relabel current.",
+              "evidence_refs": [
+                "ios_a886_linked"
+              ],
+              "counts_toward_current_pass": false
+            }
+          ]
+        },
+        "android": {
+          "status": "PARTIAL",
+          "artifact_ref": "android_bb235",
+          "covered_scope": [
+            "Saved collection deep-equal before/after fresh native archive; newly created draft/photo/reminder retained after force-stop/relaunch. Existing saved record survives keyboard Save/relaunch."
+          ],
+          "remaining_scope": [
+            "Archive baseline had no draft, photo or standalone reminder; preservation of pre-existing nonempty domains across upgrade/restore not established. Actual app restore not run."
+          ],
+          "evidence_refs": [
+            "android_keyboard",
+            "android_archive",
+            "android_restart"
+          ],
+          "historical_context": []
+        }
+      }
+    }
+  ],
+  "additional_gates": [
+    {
+      "id": "G01",
+      "gate": "Source checks at each identified revision",
+      "status": "PASS_BOUNDED",
+      "scope": "bb235 full suite: 557 total, 552 passed, 5 skipped, 0 failed; typecheck/lint passed. Newer source-only 5dc930e: 582 total, 577 passed, 5 skipped, 0 failed; 49 focused checks, typecheck/lint passed. Neither closes native acceptance.",
+      "evidence_refs": [
+        "doc_keyboard",
+        "doc_source_followup"
+      ]
+    },
+    {
+      "id": "G02",
+      "gate": "Exact native builds and preserving upgrades",
+      "status": "PASS_BOUNDED",
+      "scope": "Native matrix covers exact bb235 virtual artifacts. Separately, newer 5dc unsigned Release iOS build and preserving upgrade passed: prior app/data retained and nine logical tables/media equal immediately and after first launch. 5dc rotation/keyboard acceptance remains pending. Android QA signer, iOS Simulator only; no distribution/physical acceptance.",
+      "evidence_refs": [
+        "android_provenance",
+        "ios_upgrade",
+        "doc_ios_manifest",
+        "doc_keyboard",
+        "ios_5dc_upgrade",
+        "ios_5dc_security_receipt"
+      ]
+    },
+    {
+      "id": "G03",
+      "gate": "Real archive engine cases",
+      "status": "PASS_BOUNDED",
+      "scope": "Separate focused run: 5 total, 5 pass, 0 fail, 0 skip using fresh current Android Full v4 export. Tests use disposable SQLite/media; do not change historical full-suite skips or certify actual app restore.",
+      "evidence_refs": [
+        "android_archive",
+        "doc_archive"
+      ]
+    },
+    {
+      "id": "G04",
+      "gate": "Current Android native photo/import/export",
+      "status": "PARTIAL",
+      "scope": "One synthetic PNG imported with DocumentsUI, viewed, closed back to draft, Full v4 exported through SAF, embedded bytes exact and draft/photo/reminder restart readback. Camera/library, multi-photo/limit, edit/replace/remove and pinch-zoom not tested in this run.",
+      "evidence_refs": [
+        "android_archive"
+      ]
+    },
+    {
+      "id": "G05",
+      "gate": "Current iOS photos",
+      "status": "PARTIAL",
+      "scope": "Bounded native one-photo workflow PASS on bb235: actual image, zoom buttons 1 to 2 to 1, Close preserving draft, photo-only Save, exact selected-photo ZIP/native sheet cancel, process-relaunch state/media equality, Find reopened saved photo. No pinch gesture, five-photo limit, camera, replace/remove/multiple-photo, extreme text, screen reader, actual restore or physical acceptance.",
+      "evidence_refs": [
+        "ios_photo",
+        "ios_photo_manifest"
+      ]
+    },
+    {
+      "id": "G06",
+      "gate": "Actual native app restore/recovery",
+      "status": "ANDROID_IN_PROGRESS_IOS_NOT_RUN",
+      "scope": "Approved Android native restore/recovery work is in progress separately; no final result is incorporated here. iOS native restore remains untested. The earlier five engine tests use disposable state and do not close native restore.",
+      "evidence_refs": [
+        "android_archive"
+      ]
+    },
+    {
+      "id": "G07",
+      "gate": "Strict OS-wide offline acceptance",
+      "status": "ANDROID_IN_PROGRESS_IOS_NOT_RUN",
+      "scope": "Approved Android offline work is in progress separately; no final result is incorporated here. Strict iOS offline acceptance remains open and untested. No host-wide network change or all-platform offline acceptance is implied.",
+      "evidence_refs": []
+    },
+    {
+      "id": "G08",
+      "gate": "Manual native screen readers",
+      "status": "NOT_RUN",
+      "scope": "Actual VoiceOver/TalkBack speech, focus order and return remain untested.",
+      "evidence_refs": []
+    },
+    {
+      "id": "G09",
+      "gate": "Figma/native reconciliation",
+      "status": "REVIEW_COMPLETED_PARITY_OPEN",
+      "scope": "Editable Detail/Edit/Share REVIEW board 334:120 completed with preserved masters. Source-derived current review and historical 737 native pixels are explicitly separated. Dark/max-text/landscape, Android visual parity, manual screen readers and owner acceptance remain unverified. Historical compact-thumbnail/searchable-selector differences have mandatory current status NOT ESTABLISHED and add no new release gate.",
+      "evidence_refs": [
+        "figma_report",
+        "figma_manifest"
+      ]
+    },
+    {
+      "id": "G10",
+      "gate": "Security and dependency closure",
+      "status": "PARTIAL",
+      "scope": "Exact bb235 Android Metro/Hermes package inventory excludes affected build/lint package sources. bb235 iOS map inventory remains unestablished. Newer 5dc iOS exact-build provenance links a 1,269-source composed map with no affected tooling paths to packaged HBC; stock build deleted raw maps, so independent recomposition is unavailable. This closes only the mapped-inventory gap for 5dc, not retroactively bb235 or overall security. Both moderate build-tool advisories remain open. Historical audit counts are not a fresh vulnerability snapshot.",
+      "evidence_refs": [
+        "security_review",
+        "security_receipt",
+        "ios_5dc_security",
+        "ios_5dc_security_receipt"
+      ]
+    },
+    {
+      "id": "G11",
+      "gate": "Physical devices and owner iPhone signoff",
+      "status": "HELD",
+      "scope": "Required virtual gates remain incomplete; no physical-device acceptance or owner signoff.",
+      "evidence_refs": []
+    },
+    {
+      "id": "G12",
+      "gate": "Distribution/store release",
+      "status": "OPEN",
+      "scope": "Final distribution signing, physical gates and release approval incomplete. NO-GO; no merge, production deployment or store submission.",
+      "evidence_refs": []
+    }
+  ],
+  "source_test_runs": {
+    "full_suite": {
+      "source_commit": "bb235cdf6f2bba63b1760038a379a2c09cdf32ab",
+      "total": 557,
+      "pass": 552,
+      "skip": 5,
+      "fail": 0
+    },
+    "separate_real_archive_run": {
+      "runtime_commit": "bb235cdf6f2bba63b1760038a379a2c09cdf32ab",
+      "checkout_commit": "2a3b0f31ae1884f623aa507c4c75ba5257413b8f",
+      "total": 5,
+      "pass": 5,
+      "skip": 0,
+      "fail": 0,
+      "actual_app_restore": false
+    },
+    "aggregation_forbidden": "Do not relabel either historical 557 or newer 582 full suite as all passed. Five real-archive cases are a separate run on the identified bb235 runtime/test inputs.",
+    "newer_source_full_suite": {
+      "source_commit": "5dc930e280b43e9ffe5553a8c5c63fc6aa86eacb",
+      "total": 582,
+      "pass": 577,
+      "skip": 5,
+      "fail": 0,
+      "native_acceptance": false
+    }
+  },
+  "evidence_catalog": {
+    "android_keyboard": {
+      "relative_path": "QA-Evidence/WORK-SB121/android-keyboard-bb235cd/native-qualification-results.json",
+      "sha256": "6d962659b4c378c477dbd52e231c52c159bd7961e75dd58ae4f4db7b847603ef",
+      "scope": "Current bb235 Android keyboard, rotation, Cancel, Save and relaunch receipt."
+    },
+    "android_provenance": {
+      "relative_path": "QA-Evidence/WORK-SB121/android-keyboard-bb235cd/artifact-provenance.json",
+      "sha256": "67d89185ef5883fd170395168144bc7c72dafd7cabe68a59ecbb363f0b197a5b",
+      "scope": "Current Android exact build and artifact receipt."
+    },
+    "android_keyboard_manifest": {
+      "relative_path": "QA-Evidence/WORK-SB121/android-keyboard-bb235cd/native-evidence-sha256.json",
+      "sha256": "1e91878174d73aaeef6f57dd41e72d749fbe761fc3e233999849ea130d4aa7eb",
+      "scope": "Frozen 67-file native evidence manifest."
+    },
+    "ios_upgrade": {
+      "relative_path": "QA-Evidence/WORK-SB121/ios-detail-share-bb235cd/native/upgrade-result.json",
+      "sha256": "00bbd35bec3f1c03c5e4f111921915df4334094bef81ca95acd0d720e02e098d",
+      "scope": "Current iOS exact installed artifact and preserving upgrade."
+    },
+    "ios_portrait": {
+      "relative_path": "QA-Evidence/WORK-SB121/ios-detail-share-bb235cd/native/12-refocus-2-geometry.json",
+      "sha256": "95203e35777cf8e8aaa43e6c849180a2b50912bf3588cdcb07edeff5493075a9",
+      "scope": "Current settled portrait focus geometry; not manual accessibility."
+    },
+    "ios_landscape": {
+      "relative_path": "QA-Evidence/WORK-SB121/ios-detail-share-bb235cd/native/13-landscape-dirty-geometry.json",
+      "sha256": "6a3c56268f21553e88fd91d5a191af1d5f602d8e890e94fc2c28c36161b5df32",
+      "scope": "Current landscape focused field outside viewport."
+    },
+    "ios_landscape_pixels": {
+      "relative_path": "QA-Evidence/WORK-SB121/ios-detail-share-bb235cd/native/14-landscape-settled.png",
+      "sha256": "edd350b93a56d2637d42ec3e7a05a0c1cf804087a716391cc27391ba95b9ba5f",
+      "scope": "Retained native pixels supporting persistent landscape failure."
+    },
+    "ios_before_upgrade": {
+      "relative_path": "QA-Evidence/WORK-SB121/ios-detail-share-bb235cd/native/state-before-upgrade.json",
+      "sha256": "0e3099b75f0b7bac4ad022bc3fed5b43a064f131852e1cebab4b38bbc8d28608",
+      "scope": "Private logical snapshot; contents not copied into this ledger."
+    },
+    "ios_after_upgrade": {
+      "relative_path": "QA-Evidence/WORK-SB121/ios-detail-share-bb235cd/native/state-after-upgrade.json",
+      "sha256": "0e3099b75f0b7bac4ad022bc3fed5b43a064f131852e1cebab4b38bbc8d28608",
+      "scope": "Private logical snapshot; contents not copied into this ledger."
+    },
+    "ios_after_cancel": {
+      "relative_path": "QA-Evidence/WORK-SB121/ios-detail-share-bb235cd/native/state-after-layout-cancel.json",
+      "sha256": "73423fce886c4a2faca21af40c4a647a5cf2f3a61a29c365707c8b4de7f4b4f3",
+      "scope": "Private Cancel snapshot; contents not copied into this ledger."
+    },
+    "android_archive": {
+      "relative_path": "QA-Evidence/WORK-SB121/android-real-archive-bb235cd-20261106/native-archive-qualification.json",
+      "sha256": "a2369c8df1be60fe3cdeb1696082faef062daf80a6462878b3fef64f7da11a13",
+      "scope": "Fresh native export, preserved saved data, one synthetic draft photo/reminder and five isolated archive tests."
+    },
+    "android_archive_manifest": {
+      "relative_path": "QA-Evidence/WORK-SB121/android-real-archive-bb235cd-20261106/evidence-sha256.json",
+      "sha256": "38f15a3ef830e9a3a20193862b883c37f4572e4cb322cbb95ba3c030b277cdc4",
+      "scope": "Frozen 69-file archive evidence manifest."
+    },
+    "android_restart": {
+      "relative_path": "QA-Evidence/WORK-SB121/android-real-archive-bb235cd-20261106/native-restart-verification.json",
+      "sha256": "b925e06f2b956e7845ff7b3ccab49bca1a5e9583a59be617630a89fb51f28d49",
+      "scope": "Current draft title/photo count and reminder restart readback."
+    },
+    "ios_737": {
+      "relative_path": "QA-Evidence/WORK-SB121/ios-detail-share-737eac1/native/qualification-results.json",
+      "sha256": "ed421d2f873aad6c44cf902f97bd804ccf02b7d8c69851885631202909eaff62",
+      "scope": "Historical 737 Detail/Edit/Share/Find and automated audit results; not current artifact acceptance."
+    },
+    "android_737": {
+      "relative_path": "QA-Evidence/WORK-SB121/android-detail-share-737eac1/native/qualification-results.json",
+      "sha256": "4170c9b2b51703cff45f5c56e0ba193e050bc18ab7ab4c2c79727916dc1b3041",
+      "scope": "Historical 737 Detail/Edit/Share results with limits; not current artifact acceptance."
+    },
+    "ios_a886_linked": {
+      "relative_path": "QA-Evidence/WORK-SB121/ios-recovery-a8867c0/native/linked-0900-20261106/linked-normal-clock-results.json",
+      "sha256": "96a3fa24c77c6e8be738c40f01224a8affe490e8224273bda62022f814226492",
+      "scope": "Historical a886 normal-clock delivery and actual Notification Center cold/background/foreground taps."
+    },
+    "ios_a886_manifest": {
+      "relative_path": "QA-Evidence/WORK-SB121/ios-recovery-a8867c0/native/linked-0900-20261106/evidence-sha256.json",
+      "sha256": "02b604660ce19bdf4d1ddd014fe25bbe209c2472a6b4920697f759f953d06643",
+      "scope": "Frozen 86-file linked reminder evidence manifest."
+    },
+    "security_review": {
+      "relative_path": "QA-Evidence/WORK-SB121/security-runtime-reachability-bb235cd-20261106/REVIEW.md",
+      "sha256": "f8cee9077b884baa99c0b6b2e95a85a00dea260b0c5279e2e7cbbe74b286a131",
+      "scope": "Exact Android packaged JavaScript advisory exclusion; iOS inventory exclusion not established; build dependency risk remains open."
+    },
+    "security_receipt": {
+      "relative_path": "QA-Evidence/WORK-SB121/security-runtime-reachability-bb235cd-20261106/evidence.json",
+      "sha256": "2b0b30d887a5fc71c8632202f8bb80c2c36dc58bca4c08c07a199ac61ab88b2e",
+      "scope": "Private security reachability provenance; not a new vulnerability scan."
+    },
+    "doc_keyboard": {
+      "relative_path": "Development/CasitaDex/app/docs/qa/SB121_VERIFIED_KEYBOARD_MILESTONES_20261106.md",
+      "sha256": "437ff64f05b573a802abed2020639454a1f82ce1ee63e43242c612e33420d30e",
+      "scope": "Existing sanitized milestone document or manifest."
+    },
+    "doc_ios": {
+      "relative_path": "Development/CasitaDex/app/docs/qa/SB121_IOS_BB235_BUILD_UPGRADE_20261106.md",
+      "sha256": "071cf186eebdfb8e736a32e82a793b0883a536b9facc88ba5432994b96834140",
+      "scope": "Existing sanitized milestone document or manifest."
+    },
+    "doc_ios_manifest": {
+      "relative_path": "Development/CasitaDex/app/docs/qa/SB121_IOS_BB235_BUILD_UPGRADE_MANIFEST.json",
+      "sha256": "7ed74216adb78828b4e0b60d96fbb97f4cd28fbfcb9be145571ccda408f170fc",
+      "scope": "Existing sanitized milestone document or manifest."
+    },
+    "doc_archive": {
+      "relative_path": "Development/CasitaDex/app/docs/qa/SB121_CURRENT_NATIVE_ARCHIVE_20261106.md",
+      "sha256": "9c13ceca43bf13c48117dbcdd680b04980d263cd60166b3cfbefebcf574b7cfd",
+      "scope": "Existing sanitized milestone document or manifest."
+    },
+    "doc_linked": {
+      "relative_path": "Development/CasitaDex/app/docs/qa/SB121_LINKED_0900_MILESTONE_20261106.md",
+      "sha256": "601d12a75377b437882f36f9a39551e22076f5a39861b38189a3cb402fbc2134",
+      "scope": "Existing sanitized milestone document or manifest."
+    },
+    "doc_source_followup": {
+      "relative_path": "Development/CasitaDex/app/docs/qa/SB121_IOS_FOCUS_REFLOW_SOURCE_FIX_20261106.md",
+      "sha256": "262057513b44f08079b06da911d17bd10854766e59d14c5be1c0ed57cb6e3bbb",
+      "scope": "Newer 5dc930e source-only reviewed iOS focus repair. No installed-artifact acceptance."
+    },
+    "ios_photo": {
+      "relative_path": "QA-Evidence/WORK-SB121/ios-detail-share-bb235cd/native/photo-workflow-result.json",
+      "sha256": "5de2260916472c90a23fb4200c5eaf45e3ced95d163d4b512d0fc109d5c83666",
+      "scope": "Current bb235 iOS bounded one-photo native workflow, exact state/media and payload preservation."
+    },
+    "ios_photo_manifest": {
+      "relative_path": "QA-Evidence/WORK-SB121/ios-detail-share-bb235cd/native/photo-workflow-evidence-sha256.json",
+      "sha256": "b519b4a50a0f3c00dafa08dbe2bcd227b4e33b4d7a2851b984dd0030c253d8dc",
+      "scope": "Frozen 56-file current iOS photo evidence manifest."
+    },
+    "ios_5dc_security": {
+      "relative_path": "QA-Evidence/WORK-SB121/security-ios-reachability-5dc930e-20261106/REVIEW.md",
+      "sha256": "a6a91653486dcb27d4bd4fd120254d9145aaeb41f2a90dfefd3ba12f66a8d70e",
+      "scope": "New exact 5dc iOS mapped packaged-JavaScript inventory evidence; not bb235 retroactive certification or native acceptance."
+    },
+    "ios_5dc_security_receipt": {
+      "relative_path": "QA-Evidence/WORK-SB121/security-ios-reachability-5dc930e-20261106/evidence.json",
+      "sha256": "36437c818babeeb09279311597336d48f35fa57742b6fe0affad6a80e4821d33",
+      "scope": "New exact 5dc iOS mapped packaged-JavaScript inventory evidence; not bb235 retroactive certification or native acceptance."
+    },
+    "ios_5dc_upgrade": {
+      "relative_path": "QA-Evidence/WORK-SB121/ios-detail-share-5dc930e/native/upgrade-result.json",
+      "sha256": "4c25667966810a35e3009c34ea110c8fd4ad5e762212dc5ad4b752e80762aa77",
+      "scope": "Newer exact 5dc preserving same-identity upgrade; nine logical tables/media equal after install and first launch; not rotation acceptance."
+    },
+    "figma_report": {
+      "relative_path": "docs/qa/SB121_FIGMA_CURRENT_REVIEW_20261106.md",
+      "sha256": "446072b798128dbd81aa4b16936fce3438a5592ccf2acf10dffc7b677ef4e8e8",
+      "scope": "Editable Figma REVIEW reconciliation; no approved-master mutation or current native/owner acceptance."
+    },
+    "figma_manifest": {
+      "relative_path": "docs/qa/SB121_FIGMA_CURRENT_REVIEW_MANIFEST.json",
+      "sha256": "aa7cd4bed7ce5bda60eea8db70165a4a1a2060d2acf252afe9fdfaae963a1beb",
+      "scope": "Editable Figma REVIEW reconciliation; no approved-master mutation or current native/owner acceptance."
+    }
+  },
+  "execution_limits": [
+    "Receipt consolidation and SHA-256 verification only. No duplicate app tests, builds, device actions or source/index edits.",
+    "No app data or raw private receipt contents copied into this sanitized ledger.",
+    "Source repair and photo/Figma work may change later status; this snapshot is not final source freeze.",
+    "Documentation-only integration is separately authorized; no release/main merge or runtime acceptance is implied."
+  ],
+  "newer_source_followup": {
+    "source_commit": "5dc930e280b43e9ffe5553a8c5c63fc6aa86eacb",
+    "status": "SOURCE_BUILD_UPGRADE_VERIFIED_ROTATION_ACCEPTANCE_PENDING",
+    "reviewed_patch_sha256": "ce5b54ef869dacdf1fb24501714afc11851785f4aea1fbfe9731f9fb341c61be",
+    "focused_checks": 49,
+    "full_suite": {
+      "total": 582,
+      "pass": 577,
+      "skip": 5,
+      "fail": 0
+    },
+    "typecheck": "PASS",
+    "lint": "PASS",
+    "evidence_refs": [
+      "doc_source_followup"
+    ],
+    "limits": [
+      "Does not close current bb235 native landscape FAIL.",
+      "No new native artifact or physical acceptance inferred.",
+      "Oversized-field caret usability requires native evidence."
+    ],
+    "native_status_note": "Exact 5dc source build and preserving upgrade are evidenced separately. Rotation/keyboard acceptance is in progress and has no result incorporated here.",
+    "native_snapshot_commit": "bb235cdf6f2bba63b1760038a379a2c09cdf32ab",
+    "new_build_artifact_ref": "ios_5dc_build_upgrade",
+    "upgrade": {
+      "at_utc": "2026-11-06T16:00:16.384922+00:00",
+      "same_identity": "PASS",
+      "previous_app_data_preserved": true,
+      "logical_tables_compared": 9,
+      "immediate_and_first_launch_data_media_equal": true,
+      "actual_restore": false,
+      "evidence_refs": [
+        "ios_5dc_upgrade"
+      ]
+    }
+  },
+  "snapshot_note": "bb235 installed-artifact evidence through the photo checkpoint, not a claim that runtime equals latest source HEAD. Newer 5dc930e source/new-build acceptance is separate and not closed here.",
+  "updated_at_utc": "2026-11-06T16:07:27.236423+00:00",
+  "photo_checkpoint_at_utc": "2026-11-06T15:58:24.684128+00:00",
+  "installed_runtime_checkpoint": {
+    "ios": {
+      "artifact_ref": "ios_5dc_build_upgrade",
+      "source_commit": "5dc930e280b43e9ffe5553a8c5c63fc6aa86eacb",
+      "evidence_refs": [
+        "ios_5dc_upgrade"
+      ],
+      "native_rotation_status": "IN_PROGRESS"
+    },
+    "android": {
+      "artifact_ref": "android_bb235",
+      "source_commit": "bb235cdf6f2bba63b1760038a379a2c09cdf32ab",
+      "evidence_refs": [
+        "android_provenance",
+        "android_archive"
+      ],
+      "restore_offline_status": "APPROVED_IN_PROGRESS_NO_FINAL_RESULT_INCORPORATED"
+    },
+    "note": "Current installed pair differs from the historical bb235 composite matrix. Newer native/restore/offline outcomes require their own final receipts."
+  }
+}

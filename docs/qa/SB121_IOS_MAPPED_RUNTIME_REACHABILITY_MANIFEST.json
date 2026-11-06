@@ -1,0 +1,61 @@
+{
+  "dateUtc": "2026-11-06T16:00:01.901851+00:00",
+  "runtimeCommit": "5dc930e280b43e9ffe5553a8c5c63fc6aa86eacb",
+  "checks": {
+    "binaryReceiptHashMatch": true,
+    "hbcReceiptHashMatch": true,
+    "inputReceiptHashMatch": true,
+    "mapReceiptHashMatch": true,
+    "inputSha1MatchesPackagedHbc": true,
+    "sourceMapUrlNamesComposedMap": true
+  },
+  "binarySha256": "5ccb166102dbfc6bfa9bf8c27e2cb972df96db8709a2c837d0c7381d5a8d4543",
+  "hermesSha256": "69b3b8a61de0d03f78310aeae628641c3d8a6ea7ba98ae3c6eda3e24debb547c",
+  "preHermesSha256": "e7a9d162f672e2e596a17e5c50831ece3a03ec954d32e71a8fb6a188ea6e217b",
+  "composedMapSha256": "5b71240638b4a056b684bf932da36e8e8b0bbbd401a3aedacb30bbdfaa9c6bbe",
+  "preHermesSha1": "f4b72643b3f0722f2836b55c8b33c6802558da90",
+  "hbcInputSha1": "f4b72643b3f0722f2836b55c8b33c6802558da90",
+  "mapSources": 1269,
+  "mapFunctionOffsetsCount": 12692,
+  "hbcFunctionCount": 12692,
+  "affectedPackageSources": [],
+  "positiveControls": {
+    "src/use-ios-focus-scroll.ts": {
+      "mapSha256": "bd0c4e559dc8350b2aa134e9ed23a252a52d8676e5af02dd13c8ed55de099b6b",
+      "installedSha256": "bd0c4e559dc8350b2aa134e9ed23a252a52d8676e5af02dd13c8ed55de099b6b",
+      "equal": true
+    },
+    "node_modules/query-string/index.js": {
+      "mapSha256": "3f69491ee99938c72da8db242a62837d5b253604eab441994b802731e83c8a3e",
+      "installedSha256": "3f69491ee99938c72da8db242a62837d5b253604eab441994b802731e83c8a3e",
+      "equal": true
+    },
+    "node_modules/decode-uri-component/index.js": {
+      "mapSha256": "6a86ac891edf15c5efa0841ebb31935e3669d58b98318b57d7b08a4530317cb0",
+      "installedSha256": "6a86ac891edf15c5efa0841ebb31935e3669d58b98318b57d7b08a4530317cb0",
+      "equal": true
+    }
+  },
+  "receiptSha256": "1e2420439de350637d082286415a70d0f3acdb8c66faeb8e562e654e77cdd2b4",
+  "buildLogSha256": "a12ea9dbb978324717770f8cd6b4daf4507cae8c7f960f213a93241553116efe",
+  "rnScriptSha256": "cc41a3b726ed066a77afd6fe1828a7b7584f2f844ae2c7f2acb6c7864c7b0345",
+  "rawMapsMissing": [
+    "Apple-Builds/CasitaDex-SB121-DetailShare-5dc930e/DerivedData/Build/Products/Release-iphonesimulator/main.composed.jsbundle.map",
+    "Apple-Builds/CasitaDex-SB121-DetailShare-5dc930e/DerivedData/Build/Products/Release-iphonesimulator/CasitaDexDev.app/main.jsbundle.map"
+  ],
+  "rawMapRecomposition": "NOT RUN: stock script removed intermediate maps",
+  "confidence": "Strong exact-build provenance plus cryptographic JS-to-HBC input binding; not independent raw-map recomposition or signed tamper-resistant attestation.",
+  "lockSha256": "7767f310cb183d9e2de29deed82d79ee7cd9a08dd29bddf5a979474fe7c856c7",
+  "authorityHead": "5dc930e280b43e9ffe5553a8c5c63fc6aa86eacb",
+  "status": "BOUNDED_MAPPED_GRAPH_EXCLUSION_VERIFIED",
+  "securityReleaseGate": "OPEN",
+  "buildToolAdvisories": [
+    "GHSA-3g3m-2fjr-6pw4",
+    "GHSA-g3hv-75wg-m249"
+  ],
+  "privateEvidenceHashes": {
+    "REVIEW.md": "a6a91653486dcb27d4bd4fd120254d9145aaeb41f2a90dfefd3ba12f66a8d70e",
+    "evidence.json": "36437c818babeeb09279311597336d48f35fa57742b6fe0affad6a80e4821d33",
+    "build-chain-log-excerpts.json": "68a54363621befabd6f55442b2c1e16ab252f83dd46e91384a3cf4934a8825dd"
+  }
+}

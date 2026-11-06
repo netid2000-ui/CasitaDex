@@ -1,3 +1,10 @@
+## 2026-11-06 - Verified partial native and review milestones
+
+- Record exact bb235 native receipt coverage without rewriting the historical planned matrix or relabeling older a886/737 results. Bounded iOS photo Save, selected-photo ZIP cancellation and relaunch persistence now verified.
+- Separate reviewed 5dc focus source/build/preserving-upgrade evidence from still-pending rotation acceptance; retain full-suite skips and separate five-case archive results.
+- Add editable Figma REVIEW provenance without promoting masters or imposing historical thumbnail/selector patterns as new gates.
+- Record exact 5dc iOS mapped-graph tooling exclusion with its raw-map reproducibility limit and unresolved build-tool advisories. No application change or release approval in this documentation milestone.
+
 ## 2026-11-06 - Test-only release preparation
 
 - Add deterministic coverage of serialized local refresh/save ordering; no application defect was reproduced or runtime patch introduced.

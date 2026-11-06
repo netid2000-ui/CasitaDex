@@ -1,3 +1,15 @@
+# Verified native evidence ledger and source follow-up — November 6, 2026
+
+Release **NO-GO**. [Timestamped native acceptance ledger](docs/qa/SB121_CURRENT_NATIVE_ACCEPTANCE_20261106.md) preserves exact artifact attribution and the original planned matrix. The 18 bb235 composite cells are **9 PARTIAL, 1 FAIL, 8 NOT_RUN**, not a test-pass percentage. Android keyboard/rotation and both platforms' bounded one-photo workflows have verified receipts; the bb235 iOS landscape focus failure remains recorded.
+
+Newer source **5dc930e280b43e9ffe5553a8c5c63fc6aa86eacb** has reviewed focus repair and **582 tests: 577 passed, 5 skipped, 0 failed**, plus typecheck/lint. Its exact iOS build and preserving upgrade passed, including equality of nine logical tables and media. The installed pair is iOS 5dc930e and Android bb235; iOS rotation/keyboard native acceptance is separately in progress. This docs-only checkpoint does not equate source/build success with native acceptance.
+
+- [Figma REVIEW board reconciliation](docs/qa/SB121_FIGMA_CURRENT_REVIEW_20261106.md): editable Detail/Edit/Share, masters untouched. Historical thumbnail/selector differences add no new release gates.
+- [Exact 5dc iOS mapped-JavaScript assessment](docs/qa/SB121_IOS_MAPPED_RUNTIME_REACHABILITY_20261106.md): affected tooling absent from 1,269 mapped sources; raw-map recomposition unavailable; both moderate build-tool advisories remain open.
+- Approved Android native restore/offline work is separately in progress; no final result is recorded here. iOS restore/offline gates remain open. Manual screen-reader, wider native/visual, physical/owner, signing and store gates remain open.
+
+## Historical checkpoints below retain their original dates, artifacts and wording
+
 # Latest iOS milestone: exact build and preserving upgrade verified
 
 November 6, 2026: **bb235cdf6f2bba63b1760038a379a2c09cdf32ab** iOS Release simulator build and preserving upgrade passed; current iOS and Android QA artifacts now match this source. Prior app/data retained and logical data/media unchanged. Portrait maximum-text ordinary typing/repeated focus passed after settling, but a persistent iOS landscape rotation focus-scroll defect remains **OPEN**. [Build, upgrade, hashes and limits](docs/qa/SB121_IOS_BB235_BUILD_UPGRADE_20261106.md). Release **NO-GO**.
