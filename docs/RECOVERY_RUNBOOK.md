@@ -243,3 +243,23 @@ Checklist and execution evidence: docs/design/standards/SOP-v1.0-20261021
 Shared copy: E:\Designs-by-FA\Standards\Figma-Expert\SOP-v1.0-20261021
 
 ## Linux-first compilation policy (owner-approved 2026-10-21)`r`nAll supported project compilation, Android APK/AAB builds, JavaScript/TypeScript build pipelines, and native build tooling MUST run in Ubuntu WSL2/Linux by default. Use Linux-native paths and SDK/caches; keep large build artifacts off Windows C:. Windows is for emulator/device QA, Windows-only tools, and artifact transfer. Exceptions require explicit owner approval and documented technical justification. Preserve Git history, uncommitted work, QA evidence, WSL disks and backups. Record build commands, artifact hashes and QA evidence in super-batch handoffs.
+
+## SB120 — Mandatory iOS reminder integration gate
+
+Before every CasitaDex iOS Xcode build, after the approved CocoaPods installation completes, run from the authoritative app checkout:
+
+```sh
+node scripts/verify-ios-reminder-integration.mjs
+```
+
+An isolated iOS tree can be checked explicitly:
+
+```sh
+node scripts/verify-ios-reminder-integration.mjs /absolute/path/to/ios
+```
+
+This read-only gate must exit 0 before starting the build. It requires the installed `CasitaDexReminderAlerts` pod in `ios/Podfile.lock`, its import and module registration in `Pods/Target Support Files/Pods-CasitaDexDev/ExpoModulesProvider.swift`, and its app-delegate subscriber registration. A successful autolinking resolve or Xcode build alone does not establish this integration. Missing files or registrations fail closed with exit 1; usage errors exit 2.
+
+If it fails, stop the build, inspect the checkout and CocoaPods integration, run the approved pod installation for that checkout, and rerun the gate. Do not manually patch generated providers, delete user data, or treat this check as authorization to reset the simulator. Save the preflight output beside the build's immutable source and artifact evidence. This checks generated integration, not native compilation, installed-binary identity, notification permission, delivery, or tap routing; those remain separate native acceptance gates.
+
+Regression check: `node --test tests/ios-reminder-integration.test.mjs`.
