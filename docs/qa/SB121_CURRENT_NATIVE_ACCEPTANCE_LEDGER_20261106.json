@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "status": "VERIFIED_PARTIAL_MILESTONE_SNAPSHOT",
-  "updated_at_utc": "2026-11-06T21:13:36.276424+00:00",
+  "updated_at_utc": "2026-11-06T21:16:43.803372+00:00",
   "release": "NO-GO",
   "latest_runtime_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
   "installed_runtime_checkpoint": {
@@ -1108,6 +1108,13 @@
       "sha256": "abfc73a67cd9b625f8bda478dd636dbaf2a28ee6eeae2a4bcf61e243186cf266",
       "receipt_sha256": "ff939a8c2ea1777c5ce2b75b11af3421639a43e76fea7c7ef3b3822190387740",
       "scope": "Previously completed exact 8cc Android/iOS mapped inventory and distribution prerequisites; reused without repeating."
+    },
+    "ios_7fa_maximum_feedback": {
+      "relative_path": "docs/qa/SB121_IOS_7FA_MAXIMUM_FEEDBACK_20261106.json",
+      "sha256": "12a19931b86db1ea961b1cecdb3e67cc9da6666df27127fceb8a1abb646c7d52",
+      "raw_result_sha256": "ced1ae84999c72724c82255e8cc477934f42d26185067e8f74ccfdb154dc4c3e",
+      "raw_manifest_sha256": "a3b49d0d083da643fb5c87b26ba4c2ab79095b869d96b0605618387d45711e7a",
+      "source_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606"
     }
   },
   "execution_limits": [
@@ -1446,6 +1453,15 @@
       "scope": "App Large Text with system large: full validation feedback and Cancel reachable; Cancel clears feedback; ten tables/media/runtime exact and normal Home/preferences restored. Combined maximum still unverified.",
       "evidence_refs": [
         "ios_7fa_enlarged_cancel"
+      ]
+    },
+    {
+      "id": "IOS_7FA_MAXIMUM_FEEDBACK_PARTIAL",
+      "status": "PARTIAL_MAXIMUM_VALIDATION_HELPER_STOP",
+      "artifact_ref": "ios_7fa",
+      "scope": "Prepared empty editor survives maximum text and Save rejection. Full segmented error readability and maximum Cancel unverified after accessibility-node/helper stop; normal baseline and all ten tables/media/runtime restored. No new build.",
+      "evidence_refs": [
+        "ios_7fa_maximum_feedback"
       ]
     }
   ],

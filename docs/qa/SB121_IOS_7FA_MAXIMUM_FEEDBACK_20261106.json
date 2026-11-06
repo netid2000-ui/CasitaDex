@@ -1,0 +1,55 @@
+{
+  "status": "PARTIAL_MAXIMUM_VALIDATION_HELPER_STOP",
+  "runtime_source": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
+  "completed_utc": "2026-11-06T21:16:43.803372+00:00",
+  "profile": {
+    "system_content_size": "accessibility-extra-extra-extra-large",
+    "app_large_text": true
+  },
+  "setup": "Empty field prepared at system large, then same unsaved editor changed to maximum system text before Save. Does not certify maximum-size field editing.",
+  "verified": {
+    "save_reached_validation": true,
+    "empty_editor_retained": true,
+    "error_bounds": {
+      "x": 20,
+      "y": 273,
+      "width": 362,
+      "height": 1820
+    },
+    "stop_action_viewport": {
+      "width": 402,
+      "height": 212
+    },
+    "stop_screenshot_reviewed": true
+  },
+  "blocker": "Helper required the entire 1820-point message to fit in the action viewport, then stopped with Missing error/pane when the accessibility node disappeared during scrolling. Full segmented readability and maximum Cancel remain unverified; not classified as app failure.",
+  "remaining": [
+    "Maximum message segmented readability and Cancel",
+    "Maximum field editing and extended manual hold/refocus",
+    "Other ledger release gates unchanged"
+  ],
+  "cleanup": {
+    "atUTC": "2026-11-06T21:16:43.611Z",
+    "home": true,
+    "portrait": true,
+    "systemLarge": true,
+    "appLargeOff": true,
+    "keyboardAbsent": true
+  },
+  "preservation": {
+    "ten_tables_equal": true,
+    "media_equal": true,
+    "runtime_equal": true
+  },
+  "boundaries": {
+    "new_builds": 0,
+    "successful_saves": 0,
+    "other_devices_touched": false,
+    "permissions_changed": false,
+    "release": "NO-GO"
+  },
+  "evidence_directory": "WORK-SB121/ios-validation-7fa012a-maximum-feedback",
+  "raw_result_sha256": "ced1ae84999c72724c82255e8cc477934f42d26185067e8f74ccfdb154dc4c3e",
+  "manifest_sha256": "a3b49d0d083da643fb5c87b26ba4c2ab79095b869d96b0605618387d45711e7a",
+  "manifest_files": 54
+}
