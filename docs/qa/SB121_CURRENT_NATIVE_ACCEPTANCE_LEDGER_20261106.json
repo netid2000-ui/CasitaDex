@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "status": "VERIFIED_PARTIAL_MILESTONE_SNAPSHOT",
-  "updated_at_utc": "2026-11-06T21:08:28.909927+00:00",
+  "updated_at_utc": "2026-11-06T21:13:36.276424+00:00",
   "release": "NO-GO",
   "latest_runtime_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
   "installed_runtime_checkpoint": {
@@ -631,7 +631,7 @@
       "id": "G02",
       "gate": "Exact native builds and preserving upgrades",
       "status": "PASS_BOUNDED",
-      "scope": "Installed iOS is now exact 7fa012a after one preserving upgrade; normal validation feedback/Cancel pass and enlarged feedback is readable, with enlarged Cancel and combined maximum gaps. Android retains 8cc, stopped and preserved. Prior 8cc focused rotation/normal controls and Android smoke remain source-attributed and were not repeated. No full distribution/physical acceptance.",
+      "scope": "Installed iOS is now exact 7fa012a after one preserving upgrade; normal validation feedback/Cancel pass and enlarged feedback is readable, with combined maximum gap; enlarged Cancel now passes. Android retains 8cc, stopped and preserved. Prior 8cc focused rotation/normal controls and Android smoke remain source-attributed and were not repeated. No full distribution/physical acceptance.",
       "evidence_refs": [
         "android_provenance",
         "ios_upgrade",
@@ -648,7 +648,8 @@
         "android_8cc_build",
         "android_8cc_native",
         "android_8cc_handoff",
-        "ios_7fa_validation_native"
+        "ios_7fa_validation_native",
+        "ios_7fa_enlarged_cancel"
       ]
     },
     {
@@ -686,7 +687,7 @@
       "id": "G06",
       "gate": "Actual native app restore/recovery",
       "status": "ANDROID_PASS_BOUNDED_IOS_NOT_RUN",
-      "scope": "Approved actual native same-current-state Full v4 restore passed on bb235 Android, with stopped-process recovery copy and post-restore/relaunch semantic/reminder/media equality. iOS native restore, corruption import and previous-save recovery-button acceptance remain untested. Both current artifacts are 8cc; prior Android result was not repeated or relabeled as 8cc restore.",
+      "scope": "Approved actual native same-current-state Full v4 restore passed on bb235 Android, with stopped-process recovery copy and post-restore/relaunch semantic/reminder/media equality. iOS native restore, corruption import and previous-save recovery-button acceptance remain untested. Current iOS is 7fa; Android retains 8cc; prior Android result was not repeated or relabeled as 8cc restore.",
       "evidence_refs": [
         "android_native_restore_offline"
       ]
@@ -695,7 +696,7 @@
       "id": "G07",
       "gate": "Strict OS-wide offline acceptance",
       "status": "ANDROID_PASS_BOUNDED_IOS_NOT_RUN",
-      "scope": "Strict emulator OS-offline acceptance passed on exact 5dc Android with HTTP/IP/default-route negative controls, native Find/photo append/local export/relaunch and restored original radios/network. No host-network or physical-device change; strict iOS offline remains untested. Both current artifacts are 8cc; prior Android result was not repeated or relabeled as 8cc offline.",
+      "scope": "Strict emulator OS-offline acceptance passed on exact 5dc Android with HTTP/IP/default-route negative controls, native Find/photo append/local export/relaunch and restored original radios/network. No host-network or physical-device change; strict iOS offline remains untested. Current iOS is 7fa; Android retains 8cc; prior Android result was not repeated or relabeled as 8cc offline.",
       "evidence_refs": [
         "android_native_restore_offline"
       ]
@@ -721,12 +722,14 @@
       "id": "G10",
       "gate": "Security and dependency closure",
       "status": "PARTIAL",
-      "scope": "Exact bb235 Android Metro/Hermes package inventory excludes affected build/lint package sources. bb235 iOS map inventory remains unestablished. Newer 5dc iOS exact-build provenance links a 1,269-source composed map with no affected tooling paths to packaged HBC; stock build deleted raw maps, so independent recomposition is unavailable. This closes only the mapped-inventory gap for 5dc, not retroactively bb235 or overall security. Both moderate build-tool advisories remain open. Historical audit counts are not a fresh vulnerability snapshot. No new 8cc vulnerability audit or mapped-graph exclusion assessment is claimed by this native milestone.",
+      "scope": "Prior exact 8cc Android/iOS security and distribution review recovered and reused. Exact current 7fa iOS HBC/input/map receipt identities and four source controls verified; 1269 mapped sources exclude named affected tooling packages. Raw map recomposition unavailable. Unchanged dependency lock; previously recorded build-tool advisories remain open, no fresh audit or security waiver. Native and distribution security acceptance remains open.",
       "evidence_refs": [
         "security_review",
         "security_receipt",
         "ios_5dc_security",
-        "ios_5dc_security_receipt"
+        "ios_5dc_security_receipt",
+        "security_distribution_8cc_reused",
+        "ios_7fa_security_inventory"
       ]
     },
     {
@@ -1092,6 +1095,19 @@
       "raw_result_sha256": "7c717c0080a26c4b673f69c947d0e13eaee56f64009912e2bda7ab9dfe564000",
       "raw_manifest_sha256": "2f3059736276805df380da272215368335c7739782f76f238ed61b6a0c65f8a0",
       "source_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606"
+    },
+    "ios_7fa_security_inventory": {
+      "relative_path": "docs/qa/SB121_IOS_7FA_SECURITY_INVENTORY_20261106.json",
+      "sha256": "5338253e6d1084cbf64079851516d34e8893ab10a5205abbb88b64a70300711f",
+      "source_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
+      "raw_result_sha256": "b84b339a3a411b07d5379dd89edee746cfcad4a7c603d48b702e0c74bb47f47e",
+      "raw_manifest_sha256": "9cbf9f3882fca5d1dc2edf900af665fd832803cb8fd4fda161556e27ec7c6c03"
+    },
+    "security_distribution_8cc_reused": {
+      "evidence_filename": "security-distribution-8cc2862-20261106/REVIEW.md",
+      "sha256": "abfc73a67cd9b625f8bda478dd636dbaf2a28ee6eeae2a4bcf61e243186cf266",
+      "receipt_sha256": "ff939a8c2ea1777c5ce2b75b11af3421639a43e76fea7c7ef3b3822190387740",
+      "scope": "Previously completed exact 8cc Android/iOS mapped inventory and distribution prerequisites; reused without repeating."
     }
   },
   "execution_limits": [

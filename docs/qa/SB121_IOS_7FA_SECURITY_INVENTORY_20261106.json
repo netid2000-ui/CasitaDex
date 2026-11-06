@@ -1,0 +1,43 @@
+{
+  "status": "PASS_BOUNDED_MAPPED_INVENTORY_SECURITY_RELEASE_STILL_OPEN",
+  "completed_utc": "2026-11-06T21:13:36.276424+00:00",
+  "runtime_source": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
+  "artifact_matches_build_receipt": true,
+  "binary_sha256": "4d61ae4af382ac6734902f9c3f18e5672068c27c58acccf9f9f79fee847e22b7",
+  "hbc_sha256": "058e8319d15583abbe7c42a901f83ddd800a3a13be68c279a8d23ce8828c3ca2",
+  "map_sha256": "6a9a1f45538ed01bd4bf07af11a3b6316688095d0680e62909875713b4d7a5a1",
+  "pre_hermes_sha256": "3af36be5309924b9bd8c3eb28c9f564526c9d989b47883168aa3e6445e6d7ee4",
+  "hbc_embedded_input_sha1_matches": true,
+  "map_source_count": 1269,
+  "affected_package_source_hits": {
+    "glob": [],
+    "minimatch": [],
+    "@expo/fingerprint": [],
+    "@typescript-eslint": [],
+    "eslint-config-expo": [],
+    "eslint-plugin-expo": []
+  },
+  "positive_control_source_sha256": {
+    "src/action-page.tsx": "141d8cc7040ccb8d45b17a286c879f5ad761c325d7664cf03db7afa5eef47f76",
+    "src/eng-screens.tsx": "3552d4b3c1abe7de79068a00ba1e51d47278ef6f6930c0a8288dfd9e02ab836e",
+    "node_modules/query-string/index.js": "3f69491ee99938c72da8db242a62837d5b253604eab441994b802731e83c8a3e",
+    "node_modules/decode-uri-component/index.js": "6a86ac891edf15c5efa0841ebb31935e3669d58b98318b57d7b08a4530317cb0"
+  },
+  "unchanged_dependency_lock_sha256": "7767f310cb183d9e2de29deed82d79ee7cd9a08dd29bddf5a979474fe7c856c7",
+  "prior_review_reused": {
+    "directory": "WORK-SB121/security-distribution-8cc2862-20261106",
+    "review_sha256": "abfc73a67cd9b625f8bda478dd636dbaf2a28ee6eeae2a4bcf61e243186cf266",
+    "receipt_sha256": "ff939a8c2ea1777c5ce2b75b11af3421639a43e76fea7c7ef3b3822190387740"
+  },
+  "limits": [
+    "Excludes named affected package paths from this exact mapped JavaScript graph only; not native-library safety or a fresh advisory scan.",
+    "Raw Metro/compiler maps were deleted by the stock build; independent recomposition unavailable. Original build-chain provenance supports the retained composed map.",
+    "Previously recorded build-tool advisories remain open, unsuppressed; no dependency upgrade or risk waiver.",
+    "Unsigned simulator artifact remains unsuitable for physical/store delivery; prior distribution prerequisites retained, not re-tested."
+  ],
+  "preservation": "Read-only existing artifact/source inspection; no builds, devices, credentials, network settings or app data changed.",
+  "release": "NO-GO",
+  "evidence_directory": "WORK-SB121/security-ios-inventory-7fa012a-20261106",
+  "raw_result_sha256": "b84b339a3a411b07d5379dd89edee746cfcad4a7c603d48b702e0c74bb47f47e",
+  "manifest_sha256": "9cbf9f3882fca5d1dc2edf900af665fd832803cb8fd4fda161556e27ec7c6c03"
+}
