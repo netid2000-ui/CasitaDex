@@ -1,3 +1,5 @@
+> Completed November 6, 2026: [09:00 normal-clock delivery and tap milestone](SB121_LINKED_0900_MILESTONE_20261106.md). The preparation and continuation instructions below are historical; do not rerun the expired schedule or treat them as a current device reservation. Acceptance belongs to a886, not later source.
+
 # iOS a886 current native checkpoint
 Source: a8867c06c7dd3ceab55bd1ac6705064a83de28f2. Unsigned arm64 iOS Simulator Release.
 Evidence: QA-Evidence/WORK-SB121/ios-recovery-a8867c0/native.

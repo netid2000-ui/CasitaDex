@@ -1,3 +1,11 @@
+# Latest reminder milestone: a886 normal-clock linked delivery and taps verified
+
+November 6, 2026: three linked alerts delivered at 09:00 CST / 15:00 UTC with a886 terminated. Exact-target cold/background/foreground **tap** cases and cold-launch no-replay passed; protected data/media/preferences/artifact bytes were preserved. [Verified milestone, evidence hashes and limits](docs/qa/SB121_LINKED_0900_MILESTONE_20261106.md).
+
+Reminder evidence belongs to **a8867c0**, not latest application source **bb235cdf6f2bba63b1760038a379a2c09cdf32ab**. Changed detail/navigation/keyboard UI still needs its own exact-artifact acceptance. Literal Return was not tested. [Latest source/build and bounded Android keyboard milestone](docs/qa/SB121_VERIFIED_KEYBOARD_MILESTONES_20261106.md). Release remains **NO-GO**; physical/store gates remain open.
+
+## Historical checkpoints retained below
+
 # Release preparation: refresh contract verified; native plan not executed
 
 Application source remains **737eac13cfacae0086890f98f2197607244036d7**. The suspected refresh-order race was not reproduced: actual store serialization is covered by eight new deterministic tests. Full combined regression: **541 tests, 536 pass, five existing skips**. No application patch or native rebuild. [Finding and reviewed post-reminder plan](docs/qa/SB121_REFRESH_CONTRACT_PREPARATION.md).
