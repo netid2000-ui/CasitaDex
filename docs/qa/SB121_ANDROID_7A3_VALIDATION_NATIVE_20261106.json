@@ -1,0 +1,122 @@
+{
+  "status": "PASS_BOUNDED_NORMAL_AND_APP_LARGE_VALIDATION",
+  "source_commit": "7a3d78f26da28ad7eebf3bc5bfdf8f340dc05491",
+  "completed_utc": "2026-11-06T23:10:32.095033+00:00",
+  "release": "NO-GO",
+  "build": {
+    "sourceCommit": "7a3d78f26da28ad7eebf3bc5bfdf8f340dc05491",
+    "apkPath": "/Volumes/FA-Development/Designs-by-FA/Android-Builds/CasitaDex-SB121-Validation-7a3d78f/source/android/app/build/outputs/apk/release/app-release.apk",
+    "apkSha256": "9d425f9a8519be35eea5b88fb87fd1775c50a7ad704dd18317f250dcb61ace5c",
+    "apkBytes": 44429660,
+    "javascriptSha256": "d8db89691d4e5ca89ce16fb1dee7d5ca93a86f6f35589bfa349ffa8e1f5d0c6a",
+    "signerSha256": "fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c",
+    "variant": "non-debuggable ARM64 release, original QA template signing",
+    "packageName": "com.designsbyfa.casitadex.dev",
+    "minSdk": 24,
+    "targetSdk": 36,
+    "compileSdk": "android-36",
+    "elfCount": 23,
+    "zipAndElf16KiB": "PASS",
+    "noFirebaseGraph": "PASS",
+    "preHermesCaptured": true,
+    "nativeAcceptance": "NOT RUN in this build task; inherited acceptance is not current-source acceptance.",
+    "release": "NO-GO",
+    "sourceHashesVerified": 808,
+    "nativeLintReuse": {
+      "result": "PASS",
+      "nativeFilesIdentical": 54,
+      "baseline": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB121/android-detail-share-737eac1/generated-native-final-parity.json",
+      "reusedLint": {
+        "errors": 0,
+        "warnings": 41
+      },
+      "reason": "Validation-feedback JS changed; glob13.0.7 build-tool backport included. Generated native files must match retained lint baseline."
+    },
+    "packagedBackupPrivacy": "PASS",
+    "buildExit": 0,
+    "approvedWorkflowSourceGate": "Approved four-tab baseline retained; narrow validation-feedback change and glob backport; prior workflow evidence reused."
+  },
+  "upgrade": {
+    "result": "PASS",
+    "source": "7a3d78f26da28ad7eebf3bc5bfdf8f340dc05491",
+    "apkSha256": "9d425f9a8519be35eea5b88fb87fd1775c50a7ad704dd18317f250dcb61ace5c",
+    "samePackageSigner": true,
+    "installMethod": "install -r",
+    "beforeFirstLaunchEquality": true,
+    "afterLaunchEquality": true,
+    "noResetUninstall": true
+  },
+  "normal": {
+    "feedbackBounds": [
+      53,
+      296,
+      1028,
+      392
+    ],
+    "actionRegion": [
+      0,
+      63,
+      1080,
+      561
+    ],
+    "feedbackActionScrolls": 0,
+    "errorInActionRegion": true,
+    "emptyNameBeforeSave": true,
+    "cancelClearsFeedback": true
+  },
+  "app_large": {
+    "profile": "App Large Text ON; system font scale unchanged, not OS maximum",
+    "initial_view": "Final line clipped at action viewport; XML bounds alone insufficient",
+    "one_action_scroll": "Full message visually reviewed after one independent action-region swipe",
+    "cancel": "Returns original detail and clears error"
+  },
+  "preservation": {
+    "all_11_logical_tables_exact": true,
+    "media_bytes_equal": true,
+    "engine_revision": 23,
+    "draft_checkpoint": 39,
+    "saved_memories": 1,
+    "draft_photos": 2,
+    "standalone_reminders": 1,
+    "final": "Home, app Large OFF; visible retained emulator; iOS untouched"
+  },
+  "reuse": [
+    "Prior owner offline/edit/search/reboot evidence retains original source attribution",
+    "Android restore bb235 and strict offline5dc reused; no repeat",
+    "808 tracked inputs verified; 54 native inputs identical to lint baseline; 0 errors/41 warnings reused"
+  ],
+  "harness_stops": [
+    "Initial archive extraction unsupported Python filter argument; corrected before build",
+    "First native attempt duplicate accessible parent/child match stopped before edit",
+    "Second attempt exact Memory name label mismatch stopped before mutation; prefix observed-label match corrected",
+    "Initial enlarged XML bounds hid clipping; pixel review required one bounded scroll followup"
+  ],
+  "limits": [
+    "No Android OS maximum or screen reader acceptance",
+    "No broad workflow retest or release pass",
+    "iOS linked Nov7 09:00 CST delivery/tap pending; fixture revision53 preserved",
+    "iOS restore and screen-reader changes await owner approval; strict iOS offline tooling gap and dependency/security/distribution gates remain"
+  ],
+  "device": {
+    "job": "095f9ef2143e956b",
+    "adb_port": 5072,
+    "emulator_port": 5576,
+    "avd": "fa_casitadex_sb121_detailshare_737_api35",
+    "heavy_build_lock": "released"
+  },
+  "evidence_hashes": {
+    "android-validation-native-7a3d78f/upgrade-receipt.json": "d2d40d0e48b2f38309d1fe3909859cfd9a86cc2dd78f7b9498403d3d428f4c01",
+    "android-validation-native-7a3d78f/preboot-copy-verification.json": "ece4012cfd1839c624c7641b95c55c0d516d90eeeaff9ff11e93b49b270876c6",
+    "android-validation-native-7a3d78f/validation-result.json": "42eba408f7cac0bdf0dff85d97317ada70418c49a74173da90113a62c5d872bf",
+    "android-validation-native-7a3d78f/large-scroll-result.json": "bee2bb250c27de0baf3fdf7505fea0ec47f7e27f28f6002132e097c4c6e8ebb8",
+    "android-validation-native-7a3d78f/after-large-scroll-equality.json": "3a1a747eaada17e0af9900711e9f3ea81f58790ebbe4dd9a20607a39f35083a3",
+    "android-validation-native-7a3d78f/after-large-scroll/logical.json": "78233bd94daeba9e4e89eccd4cf10aab2d4c401b501bdba597a73afaca6f92c0",
+    "android-validation-native-7a3d78f/04-normal-error.png": "d745797b386b090171688caa7b4d36b034fb717c36a5c378c1d80be89ebeed2f",
+    "android-validation-native-7a3d78f/06-large-error.png": "867d2722b24da9971fb23040715b78925a147ee2c81eb23943cae5aa4bddda4e",
+    "android-validation-native-7a3d78f/07-large-scroll-error-scrolled.png": "9dcb2116c319c301fd1ea4a65149ad558583f5c11b675a93230c0b77c533b676",
+    "android-validation-native-7a3d78f/07-large-scroll-cancel.png": "42645d4174557b0b7e40dcaacd796cf741f0db8b3c44314468821b61838e0f77",
+    "android-validation-native-7a3d78f/91-scroll-final-home.png": "4ccf14e874d3b980d622c1ed744ae9a2c00339ae3035fba843544031c7230784",
+    "android-validation-7a3d78f/artifact-provenance.json": "dee2d470783a1c1374ee09175a51b8a3ef05eaa2e2d2c250a78ed4a9871e41a3",
+    "android-validation-7a3d78f/native-lint-reuse.json": "0a3e877c78917e51a8073d49d7924c42a4f01e61dc1972b5021a956732d7dceb"
+  }
+}

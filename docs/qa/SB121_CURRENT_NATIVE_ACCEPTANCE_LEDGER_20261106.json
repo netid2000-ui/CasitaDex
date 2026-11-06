@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "status": "VERIFIED_PARTIAL_MILESTONE_SNAPSHOT",
-  "updated_at_utc": "2026-11-06T22:00:27.548183+00:00",
+  "updated_at_utc": "2026-11-06T23:10:32.095033+00:00",
   "release": "NO-GO",
   "latest_runtime_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
   "installed_runtime_checkpoint": {
@@ -18,20 +18,17 @@
       "live_desktop_selection": "Not established; native screenshots reviewed."
     },
     "android": {
-      "artifact_ref": "android_8cc",
-      "source_commit": "8cc2862eaf2791379518e440d3b9d5833543ab0a",
-      "current_smoke_status": "PASS_BOUNDED",
-      "virtual_device_state": "GRACEFULLY_STOPPED_DATA_RETAINED",
+      "artifact_ref": "android_7a3",
+      "source_commit": "7a3d78f26da28ad7eebf3bc5bfdf8f340dc05491",
+      "native_validation_status": "PASS_BOUNDED_NORMAL_AND_APP_LARGE_VALIDATION",
+      "virtual_device_state": "VISIBLE_RUNNING_DATA_RETAINED",
       "evidence_refs": [
-        "android_8cc_native",
-        "android_8cc_installed",
-        "android_8cc_handoff"
+        "android_7a3_validation_native"
       ],
-      "restore_attribution": "Historical actual restore PASS on bb235, not rerun on 8cc.",
-      "offline_attribution": "Historical strict OS-offline PASS on 5dc, not rerun on 8cc.",
-      "shutdown_verified_utc": "2026-11-06T18:51:48.981240+00:00"
+      "restore_attribution": "Historical bb235 PASS reused",
+      "offline_attribution": "Historical5dc PASS reused"
     },
-    "note": "iOS now 7fa012a after one preserving candidate build/upgrade. Retained Android remains 8cc; Event Command owns separate active Android lane. Prior native results remain source-attributed."
+    "note": "Android 7a3 current-source targeted validation passed after preserving upgrade. iOS remains7fa with revision53 linked reminder unchanged. Prior tests retain original source attribution."
   },
   "current_verified_milestone": {
     "source_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
@@ -56,8 +53,12 @@
       ]
     },
     "android": {
-      "artifact_ref": "android_8cc",
-      "result": "REUSED_PRIOR_BOUNDED_PASS_DEVICE_UNTOUCHED"
+      "artifact_ref": "android_7a3",
+      "result": "PASS_BOUNDED_NORMAL_AND_APP_LARGE_VALIDATION",
+      "scope": "Normal and app Large invalid empty name feedback/Cancel; full enlarged message after one action scroll; all11tables/media unchanged. No OS maximum claim.",
+      "evidence_refs": [
+        "android_7a3_validation_native"
+      ]
     },
     "historical_results_unchanged": "Existing owner, 8cc and earlier native results retained with their original attribution; no broad retest."
   },
@@ -222,6 +223,15 @@
         "ios_7fa_validation_native"
       ],
       "platform_scope": "Virtual only; no distribution/physical acceptance"
+    },
+    "android_7a3": {
+      "source_commit": "7a3d78f26da28ad7eebf3bc5bfdf8f340dc05491",
+      "artifact_sha256": "9d425f9a8519be35eea5b88fb87fd1775c50a7ad704dd18317f250dcb61ace5c",
+      "hermes_sha256": "d8db89691d4e5ca89ce16fb1dee7d5ca93a86f6f35589bfa349ffa8e1f5d0c6a",
+      "variant": "non-debuggable ARM64 release, original QA template signing",
+      "provenance_evidence": [
+        "android_7a3_validation_native"
+      ]
     }
   },
   "cases": [
@@ -1187,7 +1197,12 @@
     "ios_7fa_maximum_unfocused_fields": "docs/qa/SB121_IOS_7FA_MAXIMUM_UNFOCUSED_FIELDS_20261106.json",
     "ios_7fa_maximum_lower_fields": "docs/qa/SB121_IOS_7FA_MAXIMUM_LOWER_FIELDS_20261106.json",
     "ios_7fa_maximum_date_format": "docs/qa/SB121_IOS_7FA_MAXIMUM_DATE_FORMAT_20261106.json",
-    "ios_7fa_linked_nov7_preparation": "docs/qa/SB121_IOS_7FA_LINKED_REMINDER_PREPARATION_20261107.json"
+    "ios_7fa_linked_nov7_preparation": "docs/qa/SB121_IOS_7FA_LINKED_REMINDER_PREPARATION_20261107.json",
+    "android_7a3_validation_native": {
+      "relative_path": "docs/qa/SB121_ANDROID_7A3_VALIDATION_NATIVE_20261106.json",
+      "sha256": "eec8ac700b3a6339780a66e065177bf84e36d4ba7a98ad7169f7dcafb7b95712",
+      "source_commit": "7a3d78f26da28ad7eebf3bc5bfdf8f340dc05491"
+    }
   },
   "execution_limits": [
     "Receipt consolidation and SHA-256 verification only. No duplicate app tests, builds, device actions or source/index edits.",
@@ -1609,10 +1624,11 @@
     "do_not_restore_older_one_photo_archive_without_new_authorization": true,
     "evidence_refs": [
       "android_native_restore_offline",
-      "android_8cc_native"
+      "android_8cc_native",
+      "android_7a3_validation_native"
     ],
     "archive_filename": "offline-native-full-v4.cdxe",
-    "virtual_device_state": "GRACEFULLY_STOPPED_DATA_RETAINED",
+    "virtual_device_state": "VISIBLE_RUNNING_DATA_RETAINED",
     "handoff_evidence_refs": [
       "android_8cc_handoff"
     ],
@@ -1626,10 +1642,17 @@
     },
     "engine_revision": 23,
     "draft_checkpoint": 39,
-    "current_artifact_ref": "android_8cc",
+    "current_artifact_ref": "android_7a3",
     "previous_handoff_verified_utc": "2026-11-06T16:52:07.907638+00:00",
     "handoff_verified_utc": "2026-11-06T18:51:48.981240+00:00",
-    "retained_recovery_data_sha256": "d93a6251d2e4e4231a43c70123108f4e4352eb0bb83d9acc3a1caaa6716ae56a"
+    "retained_recovery_data_sha256": "d93a6251d2e4e4231a43c70123108f4e4352eb0bb83d9acc3a1caaa6716ae56a",
+    "active_session": {
+      "job": "095f9ef2143e956b",
+      "adb_port": 5072,
+      "emulator_port": 5576,
+      "avd": "fa_casitadex_sb121_detailshare_737_api35",
+      "heavy_build_lock": "released"
+    }
   },
   "latest_authority_source_observed": "8cc2862eaf2791379518e440d3b9d5833543ab0a",
   "next_diagnostic": {
@@ -1650,7 +1673,14 @@
       "evidence_refs": [
         "ios_7fa_validation_native",
         "ios_7fa_enlarged_cancel"
-      ]
+      ],
+      "android": {
+        "artifact_ref": "android_7a3",
+        "status": "PASS_BOUNDED_NORMAL_AND_APP_LARGE_VALIDATION",
+        "evidence_refs": [
+          "android_7a3_validation_native"
+        ]
+      }
     }
   },
   "historical_verified_native_milestones": [
@@ -1866,7 +1896,8 @@
     "report": "docs/qa/SB121_DEPENDENCY_GLOB_BACKPORT_20261106.json",
     "sourceLockSha256": "067069932001e98acd12d94cdcd3f26e5c23ffefcfd58b1d605362c465cedc56",
     "installedRuntimeLockSha256": "7767f310cb183d9e2de29deed82d79ee7cd9a08dd29bddf5a979474fe7c856c7",
-    "status": "PARTIAL_REMEDIATION_SECURITY_GATE_OPEN"
+    "status": "PARTIAL_REMEDIATION_SECURITY_GATE_OPEN",
+    "android_installed_lock_sha256": "067069932001e98acd12d94cdcd3f26e5c23ffefcfd58b1d605362c465cedc56"
   },
   "linked_reminder_current_followup": {
     "status": "PREPARED_NATIVE_PENDING_VERIFIED_DELIVERY_NOT_YET_DUE",
