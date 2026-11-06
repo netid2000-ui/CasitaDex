@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "status": "VERIFIED_PARTIAL_MILESTONE_SNAPSHOT",
-  "updated_at_utc": "2026-11-06T21:31:02.107973+00:00",
+  "updated_at_utc": "2026-11-06T21:37:56.558374+00:00",
   "release": "NO-GO",
   "latest_runtime_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
   "installed_runtime_checkpoint": {
@@ -39,12 +39,13 @@
     "ios": {
       "artifact_ref": "ios_7fa",
       "result": "BOUNDED_NATIVE_PASS_WITH_MAXIMUM_GAP",
-      "scope": "Normal and app Large validation/Cancel PASS; combined maximum message scroll coverage and Cancel PASS. Human maximum readability and field/manual editing remain incomplete. Ten tables/media preserved.",
+      "scope": "Normal and app Large validation/Cancel PASS; combined maximum message scroll coverage, Cancel and bounded manual drag/hold/refocus PASS. Broad field/label reachability and human legibility remain incomplete. Ten tables/media preserved.",
       "evidence_refs": [
         "ios_7fa_validation_native",
         "ios_7fa_enlarged_cancel",
         "ios_7fa_maximum_cancel",
-        "ios_7fa_maximum_message_coverage"
+        "ios_7fa_maximum_message_coverage",
+        "ios_7fa_maximum_manual_refocus"
       ]
     },
     "android": {
@@ -1138,6 +1139,13 @@
       "raw_result_sha256": "b772164844d03bb0357f5cbdda5a24e9c9726c9e712abfbf86638e1284977c34",
       "raw_manifest_sha256": "c7a893ce0c2133975b3b1a523441399e180cac493adf3b4eb079a362c011cc17",
       "source_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606"
+    },
+    "ios_7fa_maximum_manual_refocus": {
+      "relative_path": "docs/qa/SB121_IOS_7FA_MAXIMUM_MANUAL_REFOCUS_20261106.json",
+      "sha256": "02294da3d379031f0ff6b9ea3832829f4402c557ac6d01596da00433cd161572",
+      "raw_result_sha256": "9e893903d41543acd99c36e41126ca14190f726a2167f3049e94692ef97e5351",
+      "raw_manifest_sha256": "b20443b50054e04289c88e315baf826590836526687173b57055873320c7e9ea",
+      "source_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606"
     }
   },
   "execution_limits": [
@@ -1503,6 +1511,15 @@
       "scope": "18 overlapping views geometrically cover full 1820-point message in 212-point action viewport; beginning/middle/end pixels reviewed. Cancel after traversal clears error. Not full human legibility or maximum field/manual editing acceptance. Ten tables/media/runtime preserved.",
       "evidence_refs": [
         "ios_7fa_maximum_message_coverage"
+      ]
+    },
+    {
+      "id": "IOS_7FA_MAXIMUM_MANUAL_DRAG_HOLD_REFOCUS",
+      "status": "PASS_BOUNDED_MAXIMUM_MANUAL_DRAG_HOLD_REFOCUS",
+      "artifact_ref": "ios_7fa",
+      "scope": "Maximum system text plus app Large: native content drag 35pt remains stable, action region independent, keyboard dismissal and one downward recovery scroll restore focus with same unsaved value; trailing text/caret pixels reviewed. Broad unfocused field/label and human legibility not certified. Ten tables/media/runtime exact.",
+      "evidence_refs": [
+        "ios_7fa_maximum_manual_refocus"
       ]
     }
   ],

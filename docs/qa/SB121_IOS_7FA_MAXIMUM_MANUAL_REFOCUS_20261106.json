@@ -1,0 +1,56 @@
+{
+  "status": "PASS_BOUNDED_MAXIMUM_MANUAL_DRAG_HOLD_REFOCUS",
+  "runtime_source": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
+  "completed_utc": "2026-11-06T21:37:56.558374+00:00",
+  "preparation": "App Large ON at normal system size, dirty field focused, system AX maximum applied after mount, then landscape.",
+  "verified": {
+    "native_content_drag_points": 35,
+    "hold_seconds": 2,
+    "held_position_stable": true,
+    "actions_independent": true,
+    "keyboard_hidden_and_refocused": true,
+    "directional_recovery_scrolls": 1,
+    "recovery_scroll_bound": 4,
+    "same_unsaved_text_retained": true,
+    "refocused_pixel_review": "Trailing MANUAL text and caret visible above keyboard; native selection menu partly overlays upper text. Whole oversized field does not fit."
+  },
+  "raw_field_correction": "interaction-result.json retains legacy maxRecoveryScrolls=2 from earlier script; actual new helper bound is 4 and observed count is 1, established by tap receipt.",
+  "stopped_attempt": {
+    "directory": "WORK-SB121/ios-7fa-maximum-manual-interaction",
+    "job_exit_code": 1,
+    "reason": "Earlier helper defaulted up after field disappeared above viewport; refocus not reached. Drag/hold and cleanup passed. Corrected direction only for followup.",
+    "preservation_sha256": "aace8584a18aaacd89b32e2a50a5517375cef9eb6ccf6cc01162ee87ade94983",
+    "manifest_sha256": "ba449f2f7a8537b93ea9e33c122beac4d72b5e93ee792040379f8085a6399ce3"
+  },
+  "preservation": {
+    "all_ten_tables_equal": true,
+    "media_equal": true,
+    "runtime_equal": true
+  },
+  "cleanup": {
+    "atUTC": "2026-11-06T21:37:56.368Z",
+    "home": true,
+    "portrait": true,
+    "systemLarge": true,
+    "appLargeOff": true,
+    "keyboardAbsent": true
+  },
+  "remaining": [
+    "Broad maximum-size unfocused field and enlarged-label reachability not certified.",
+    "Comfortable reading/full human legibility and actual screen-reader acceptance remain separate.",
+    "Other existing release and approval-held gates unchanged."
+  ],
+  "boundaries": {
+    "builds": 0,
+    "source_changes": 0,
+    "successful_saves": 0,
+    "other_devices_touched": false,
+    "permissions_changed": false,
+    "job_exit_code": 0,
+    "device_lock_released": true,
+    "release": "NO-GO"
+  },
+  "evidence_directory": "WORK-SB121/ios-7fa-maximum-manual-refocus",
+  "raw_result_sha256": "9e893903d41543acd99c36e41126ca14190f726a2167f3049e94692ef97e5351",
+  "manifest_sha256": "b20443b50054e04289c88e315baf826590836526687173b57055873320c7e9ea"
+}
