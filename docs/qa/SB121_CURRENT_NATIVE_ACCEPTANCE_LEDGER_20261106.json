@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "status": "VERIFIED_PARTIAL_MILESTONE_SNAPSHOT",
-  "updated_at_utc": "2026-11-06T21:16:43.803372+00:00",
+  "updated_at_utc": "2026-11-06T21:23:21.170219+00:00",
   "release": "NO-GO",
   "latest_runtime_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
   "installed_runtime_checkpoint": {
@@ -676,11 +676,12 @@
       "id": "G05",
       "gate": "Current iOS photos",
       "status": "PARTIAL",
-      "scope": "Historical bb235 one-photo creation/viewer/selected ZIP and relaunch receipt remains bounded. 8cc preserving upgrade and normal controls retain photo bytes; current Share test is preview/Cancel only, not a new native sheet/ZIP test. Broader photo and accessibility gates remain open.",
+      "scope": "bb235 one-photo creation/viewer/selected ZIP/native sheet Cancel/relaunch remains historical bounded evidence. Exact comparison to 7fa verifies unchanged photo, export and storage implementation, dependency/config inputs and four relevant screen blocks; no duplicate native run needed solely for revision change. Shared action/focus layout changed and broader photo/accessibility cases remain separate gaps. Current preserved photo bytes match historical receipt.",
       "evidence_refs": [
         "ios_photo",
         "ios_photo_manifest",
-        "ios_8cc_native"
+        "ios_8cc_native",
+        "ios_photo_evidence_reuse_7fa"
       ]
     },
     {
@@ -1114,6 +1115,12 @@
       "sha256": "12a19931b86db1ea961b1cecdb3e67cc9da6666df27127fceb8a1abb646c7d52",
       "raw_result_sha256": "ced1ae84999c72724c82255e8cc477934f42d26185067e8f74ccfdb154dc4c3e",
       "raw_manifest_sha256": "a3b49d0d083da643fb5c87b26ba4c2ab79095b869d96b0605618387d45711e7a",
+      "source_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606"
+    },
+    "ios_photo_evidence_reuse_7fa": {
+      "relative_path": "docs/qa/SB121_IOS_PHOTO_EVIDENCE_REUSE_20261106.json",
+      "sha256": "ec88f287ec47203fa050065b96cf0ebe36be4c5e8b0f6460e8d84dfb6e85730b",
+      "raw_result_sha256": "0ffe9681af296b3f2e54f64c99fdeef83d06502f62eab103620154e0a0591cf8",
       "source_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606"
     }
   },

@@ -1,0 +1,62 @@
+{
+  "status": "PHOTO_EVIDENCE_APPLICABILITY_RECONCILED_NOT_FRESH_NATIVE_PASS",
+  "completed_utc": "2026-11-06T21:23:21.170219+00:00",
+  "historical_source": "bb235cdf6f2bba63b1760038a379a2c09cdf32ab",
+  "current_ios_source": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
+  "historical_receipt_sha256": "5de2260916472c90a23fb4200c5eaf45e3ced95d163d4b512d0fc109d5c83666",
+  "unchanged_file_sha256": {
+    "src/eng-runtime.native.ts": "c7f8be9b439bad902edc3d9bc5634370923976dfb0e2b92ca2f64b899d1e7ebd",
+    "src/eng-runtime.ts": "e144b3433205fbf740132746fb2d33ec50f6c27c9145d6b679b75b69499ef9db",
+    "src/eng-share.ts": "56181be6ea7c838acc1022605cc7aa72fe2470405ce2b9246f49b392c27877c1",
+    "src/share-session.ts": "0a3a0c8ddce1b9654d43959f5c041c66d2c198fc71b6cca52cbfada354560013",
+    "src/photo-viewer-state.ts": "c38363531b7a3356b22eacd8c7254f47669142c635fd762860393aba25b82903",
+    "src/eng-store.ts": "5aee95f0463f24d5ae8c9465241253086481e333e643d7e034f52a4ad1893854",
+    "src/eng-domain.ts": "fb76e9bc4c9c23f19c9a709af5ea185e5749f32e06237e69b1b0ec680e334574",
+    "src/media-backup-v2.ts": "d5817132467e83fc1d790d213caede34a12a17a6b9d581e7405200d4e1cd5196",
+    "src/eng-backup.ts": "322fde954a4f5bf01cc4f073322941ef42f28e2e2871ede811a80465aeecae46",
+    "package-lock.json": "7767f310cb183d9e2de29deed82d79ee7cd9a08dd29bddf5a979474fe7c856c7",
+    "app.json": "9d88442a872b049c0a3d1478361fb121ae65a4acff9f10cdf90262f8395df2e7",
+    "app.config.js": "35b406ccd6298af8479ab11e9d1e416e1b654ed46694dc55e7b55097497fe0d0"
+  },
+  "unchanged_screen_block_sha256": {
+    "PhotoViewer": "ed7707143bc22e8c21cd5cf300de07e823346123ea8f632acafb79c7d470576a",
+    "EngPhotos": "4aad0bb10c9ae41fbcf8a3c933a98e27423f78dfdc54adf0c2f6a294cdcc083d",
+    "EngAdd": "df0a13ba07d5e2ed4ab9eb0547ac919c788167374a51ac389a8449641dc09118",
+    "ShareSession": "5bc46e4dece6b602cf5e05356b9ece50afa5c6caa69cb4bc974c72da9adfa05d"
+  },
+  "changed_sources": [
+    "src/action-page.tsx",
+    "src/eng-screens.tsx",
+    "src/use-ios-focus-scroll.ts"
+  ],
+  "reused_cases": {
+    "draft_viewer_close_preserves_entire_eng_state": true,
+    "original_memory_byte_equivalent_logical_object": true,
+    "photo_only_new_memory_saved": true,
+    "draft_cleared": true,
+    "native_share_cancel_preserves_entire_eng_state": true,
+    "process_relaunch_preserves_entire_eng_state": true,
+    "media_bytes_and_hash_unchanged": true,
+    "selected_zip_only_reviewed_title_and_one_photo": true,
+    "native_share_popup_dismissed_to_detail": true,
+    "find_reopens_saved_photo_after_relaunch": true
+  },
+  "reuse_scope": "Retain original bounded bb235 one-photo creation/viewer/selected-ZIP/native-sheet Cancel/relaunch evidence for unchanged implementation. This comparison supports avoiding duplicate runs; it does not relabel historical native observations as current-build acceptance.",
+  "current_preservation": "Latest 7fa snapshot still contains the exact historical photo hash; latest all-ten-table preservation already passed. No new device read or test.",
+  "current_layout_limit": "Shared ActionPage and iOS focus-scroll changes affect Detail/Share layout; current normal controls and validation have separate 8cc/7fa evidence. Prior photo result alone does not establish maximum-text or other layout combinations.",
+  "remaining": [
+    "Five-photo limits, replace/remove, multi-photo iOS navigation and pinch/camera are outside this bounded historical receipt; check other specific evidence before assigning any case.",
+    "Maximum-text/readability and screen-reader gates remain separately open.",
+    "No external recipient/delivery/Save to Files acceptance is inferred."
+  ],
+  "owner_evidence": "Previously located owner Samsung offline/search/edit/restart record retained with Android attribution; it is not evidence for this iOS photo/export case. No claim of exhaustive owner-history reconciliation.",
+  "boundaries": {
+    "native_tests": 0,
+    "builds": 0,
+    "device_actions": 0,
+    "source_changes": 0,
+    "release": "NO-GO"
+  },
+  "evidence_directory": "WORK-SB121/ios-photo-evidence-reuse-7fa012a-20261106",
+  "raw_result_sha256": "0ffe9681af296b3f2e54f64c99fdeef83d06502f62eab103620154e0a0591cf8"
+}
