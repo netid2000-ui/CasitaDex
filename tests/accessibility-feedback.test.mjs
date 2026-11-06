@@ -181,7 +181,7 @@ test("photo modal begins without slide before motion preference resolves and esc
   "./photo-viewer-state": { clampPhotoIndex: (i,n) => Math.max(0,Math.min(i,n-1)), clampPhotoZoom: v => Math.max(1,Math.min(4,v)) },
   "./eng-find": { defaultFilter: () => ({}) }, "./eng-domain": { localDay: () => "" },
   "./eng-runtime": { engPhotoUri: value => value } };
-  for (const name of ["./reminder-alerts", "./backup-review", "./reminder-notification-target", "./reminder-notification-projection", "@react-native-community/datetimepicker", "expo-router", "./state", "./eng-store", "./standalone-reminders", "./eng-text-backup", "./eng-duplicates", "./eng-navigation", "./standalone-reminder-draft", "./brand", "./home-action", "./editorial-intro", "./model"]) mocks[name] ??= {};
+  for (const name of ["./memory-navigation", "./action-page", "./share-session", "./reminder-alerts", "./backup-review", "./reminder-notification-target", "./reminder-notification-projection", "@react-native-community/datetimepicker", "expo-router", "./state", "./eng-store", "./standalone-reminders", "./eng-text-backup", "./eng-duplicates", "./eng-navigation", "./standalone-reminder-draft", "./brand", "./home-action", "./editorial-intro", "./model"]) mocks[name] ??= {};
   const api = load("eng-screens.tsx", mocks, "\nmodule.exports.testPhotoViewer = PhotoViewer;");
   const onClose = () => closed++;
   const modal = api.testPhotoViewer({ path: "local.jpg", label: "PRIVATE CONTENT", onClose });

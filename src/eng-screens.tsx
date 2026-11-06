@@ -7,7 +7,7 @@ import { listLinkedReminderMemories } from "./reminder-notification-projection";
 import DateTimePicker, { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
 import React, { useCallback, useEffect, useRef, useState, useMemo, useReducer } from "react";
 import { Platform, Alert, AppState, BackHandler, Image, Linking, Modal, Pressable, ScrollView, Share, View, useWindowDimensions } from "react-native";
-import { router, useFocusEffect, useLocalSearchParams, usePathname } from "expo-router";
+import { router, useFocusEffect, useLocalSearchParams, usePathname, useRootNavigationState } from "expo-router";
 import { Button, Copy, Field, Page, useTheme } from "./ui";
 import { useData } from "./state";
 import { getEngStore, getEngStorage, chooseEngPhoto, engPhotoUri, writeEngBackup, pickEngBackup, shareEngPhotos, writeEngText, type EngStore } from "./eng-runtime";
@@ -15,11 +15,14 @@ import { newEngDraft } from "./eng-store";
 import { listStandaloneReminders,saveStandaloneReminder,completeStandaloneReminder,deleteStandaloneReminder,type StandaloneReminder } from "./standalone-reminders";
 import type { EngDraft, EngSnapshot } from "./eng-types";
 import type { MemoryV2 } from "./sb20-contract";
-import { localDay, eventText, orderedMemoryPhotos, sharePreview, type ShareField } from "./eng-domain";
+import { localDay, eventText, orderedMemoryPhotos, type ShareField } from "./eng-domain";
 import { defaultFilter, findMemories, searchIndex, type FindFilter } from "./eng-find";
 import { textBackupPreview, createTextBackup } from "./eng-text-backup";
 import { duplicateCandidates } from "./eng-duplicates";
-import { registerEditGuard } from "./eng-navigation";
+import { hasMatchingDetailHistory } from "./memory-navigation";
+import { ActionPage } from "./action-page";
+import { reviewedShare, validateReviewedShare } from "./share-session";
+import { registerEditGuard, navigationIsGuarded } from "./eng-navigation";
 import { defaultReminderDay, isReminderDraftDirty, newReminderDraft, type ReminderDraft } from "./standalone-reminder-draft";
 import { clampPhotoIndex, clampPhotoZoom, photoSwipeStep, touchDistance } from "./photo-viewer-state";
 import { BrandHeader, BrandLogo, BrandArt } from "./brand";
@@ -495,19 +498,52 @@ export function EngAdd(){
   </Page>;
 }
 export function EngDetail(){
-  const e=useEng(),{s}=useTheme(),{id}=useLocalSearchParams<{id:string}>();
+  const params=useLocalSearchParams<{id:string|string[]}>();
+  const requestedId=typeof params.id==="string"?params.id:"";
+  const [id,setId]=useState(requestedId);
+  const blocked=requestedId!==id&&navigationIsGuarded();
+  // Preserve a dirty/in-flight session even if a deep link changes params directly.
+  if(requestedId!==id&&!blocked)setId(requestedId);
+  useEffect(()=>{if(blocked){router.setParams({id});Alert.alert("Keep your edits?","Save or cancel your edits before opening another memory.");}},[blocked,id]);
+  return <DetailSession key={id} id={id} />;
+}
+function DetailSession({id}:{id:string}){
+  const e=useEng(),{s}=useTheme();
   const memory=e.snapshot?.data.memories.find(m=>m.id===id);
   const [photo,setPhoto]=useState<{path:string;label:string}|null>(null);
   const [edit,setEdit]=useState<MemoryV2|null>(null),[revision,setRevision]=useState(0),[history,setHistory]=useState("");
-  const [review,setReview]=useState(false),[source,setSource]=useState(""),[sharing,setSharing]=useState(false),[fields,setFields]=useState<ShareField[]>([]),[photoIds,setPhotoIds]=useState<string[]>([]);
+  const [review,setReview]=useState(false),[source,setSource]=useState("");
   const [nextDue,setNextDue]=useState(""),[labelName,setLabelName]=useState("");
   const dirty=!!edit&&JSON.stringify(edit)!==JSON.stringify(memory);
-  useEffect(()=>registerEditGuard(()=>dirty),[dirty]);
-  useEffect(()=>{if(!dirty)return;const h=BackHandler.addEventListener("hardwareBackPress",()=>{Alert.alert("Keep your edits?","Save or cancel your edits before leaving this memory.");return true;});return()=>h.remove();},[dirty]);
+  const saving=useRef(false),focused=useRef(false),openingShare=useRef(false),leaving=useRef(false);
+  useFocusEffect(useCallback(()=>{focused.current=true;openingShare.current=false;leaving.current=false;return()=>{focused.current=false;};},[]));
+  useFocusEffect(useCallback(()=>registerEditGuard(()=>dirty||saving.current||e.busy),[dirty,e.busy]));
+  useEffect(()=>{if(!dirty&&!e.busy)return;const h=BackHandler.addEventListener("hardwareBackPress",()=>{Alert.alert("Keep your edits?","Save or cancel your edits before leaving this memory.");return true;});return()=>h.remove();},[dirty,e.busy]);
   const m=edit??memory;
   const photos=orderedMemoryPhotos(m,e.snapshot?.data.media.media);
   function confirm(label:string,task:(store:EngStore)=>Promise<unknown>){Alert.alert(label,"Your previous full save remains recoverable.",[{text:"Cancel",style:"cancel"},{text:label,onPress:()=>void e.run(task)}]);}
-  return <Page independent title={m?.title??"Memory"}>
+  function beginEdit(){if(!memory||e.busy||saving.current||leaving.current||!focused.current)return;setReview(false);setEdit(JSON.parse(JSON.stringify(memory)));setRevision(e.snapshot!.revision);}
+  async function saveEdit(){
+    if(!edit||!memory||memory.lifecycle==="recently_deleted"||saving.current||e.busy||leaving.current||!focused.current)return;
+    saving.current=true;
+    try{
+      // run's boolean describes refresh, not persistence. Keep the committed snapshot even if readback fails.
+      let committed:EngSnapshot|undefined;
+      const refreshed=await e.run(async store=>{committed=await store.updateMemory(edit,revision);});
+      if(committed&&focused.current){if(!refreshed)e.setSnapshot(committed);setEdit(null);setLabelName("");}
+    }
+    finally{saving.current=false;}
+  }
+  function backToOrigin(){if(e.busy||saving.current||leaving.current)return;leaving.current=true;if(router.canGoBack())router.back();else router.replace("/answers");}
+  const actions=edit?[
+    {label:"Cancel",disabled:e.busy,onPress:()=>{if(!saving.current&&!e.busy&&!leaving.current&&focused.current){setEdit(null);setLabelName("");}}},
+    {label:"Save & return to details",primary:true,disabled:e.busy||!memory||memory.lifecycle==="recently_deleted",onPress:()=>void saveEdit()},
+  ]:[
+    {label:router.canGoBack()?"Back":"Find memories",disabled:e.busy,onPress:backToOrigin},
+    ...(memory&&memory.lifecycle!=="recently_deleted"?[{label:"Edit memory",primary:true,disabled:e.busy,onPress:beginEdit}]:[]),
+  ];
+  return <ActionPage title={edit?"Editing memory":"Memory details"} actions={actions}>
+    {m?<Copy accessibilityRole="header" kind="title">{m.title}</Copy>:null}
     {photo?<PhotoViewer path={photo.path} label={photo.label} photos={photos.map((p,i)=>({path:p.path,label:"Photo "+(i+1)+" of "+m?.title}))} onClose={()=>setPhoto(null)} />:null}
     {m?<>
       {edit?<>
@@ -518,14 +554,12 @@ export function EngDetail(){
         <Field disabled={e.busy} maxLength={200} label="Source" value={edit.source} onChangeText={source=>setEdit({...edit,source})} />
         <Field disabled={e.busy} maxLength={10} label="Reminder date (YYYY-MM-DD)" value={edit.due??""} onChangeText={value=>setEdit({...edit,due:value||undefined})} />
         <Copy>Answer or source changes require checking again. Confirm verification separately in Review.</Copy>
-        <Copy>Space</Copy><View style={s.row}><Button label="Unassigned" selected={edit.spaceId===null} onPress={()=>setEdit({...edit,spaceId:null})} />
-          {e.snapshot?.data.spaces.map(x=><Button key={x.id} label={x.name} selected={edit.spaceId===x.id} onPress={()=>setEdit({...edit,spaceId:x.id})} />)}</View>
-        <Copy>Categories</Copy><View style={s.row}>{e.snapshot?.data.categories.map(x=><Button key={x.id} label={x.name} selected={edit.categoryIds.includes(x.id)} onPress={()=>setEdit({...edit,categoryIds:edit.categoryIds.includes(x.id)?edit.categoryIds.filter(id=>id!==x.id):[...edit.categoryIds,x.id]})} />)}</View>
+        <Copy>Space</Copy><View style={s.row}><Button label="Unassigned" disabled={e.busy} selected={edit.spaceId===null} onPress={()=>setEdit({...edit,spaceId:null})} />
+          {e.snapshot?.data.spaces.map(x=><Button key={x.id} label={x.name} disabled={e.busy} selected={edit.spaceId===x.id} onPress={()=>setEdit({...edit,spaceId:x.id})} />)}</View>
+        <Copy>Categories</Copy><View style={s.row}>{e.snapshot?.data.categories.map(x=><Button key={x.id} label={x.name} disabled={e.busy} selected={edit.categoryIds.includes(x.id)} onPress={()=>setEdit({...edit,categoryIds:edit.categoryIds.includes(x.id)?edit.categoryIds.filter(id=>id!==x.id):[...edit.categoryIds,x.id]})} />)}</View>
         <Field disabled={e.busy} label="Create a Space or Category without leaving edits" value={labelName} onChangeText={setLabelName} />
         {(["space","category"] as const).map(kind=><Button key={kind} label={kind==="space"?"Create and select Space":"Create and select Category"} disabled={e.busy} onPress={()=>void e.run(async store=>{const next=await store.taxonomy(kind,labelName,revision);const label=(kind==="space"?next.data.spaces:next.data.categories).at(-1)!;setEdit({...edit,...(kind==="space"?{spaceId:label.id}:{categoryIds:[...edit.categoryIds,label.id]})});setRevision(next.revision);setLabelName("");})} />)}
         {edit.spaceId?<Button label="Rename selected Space using label name" disabled={e.busy} onPress={()=>void e.run(async store=>{const next=await store.renameTaxonomy("space",edit.spaceId!,labelName,revision);setRevision(next.revision);setLabelName("");})} />:null}{edit.categoryIds.map(id=><Button key={`rename-${id}`} label={`Rename ${e.snapshot?.data.categories.find(c=>c.id===id)?.name} using label name`} disabled={e.busy} onPress={()=>void e.run(async store=>{const next=await store.renameTaxonomy("category",id,labelName,revision);setRevision(next.revision);setLabelName("");})} />)}
-        <Button primary label="Save changes" disabled={e.busy} onPress={()=>void e.run(async store=>{await store.updateMemory(edit,revision);setEdit(null);})} />
-        <Button label="Cancel edits" disabled={e.busy} onPress={()=>setEdit(null)} />
       </>:<>
         {m.answer?<Copy selectable kind="answer">{m.answer}</Copy>:<Copy>Photo memory</Copy>}
         <Copy>{m.confidence}{m.source?" · "+m.source:""}{m.verifiedAt?" · Last verified "+m.verifiedAt:""}</Copy>{m.location?<Copy>{m.location}</Copy>:null}{m.notes?<Copy>{m.notes}</Copy>:null}
@@ -543,7 +577,6 @@ export function EngDetail(){
           {m.mediaIds.length>=5?<Copy kind="small" accessibilityLiveRegion="polite">Five photos attached. Remove a photo before adding another.</Copy>:null}
           <Button label="Add a photo" disabled={e.busy||m.mediaIds.length>=5} onPress={()=>void e.run(async store=>{const bytes=await chooseEngPhoto(false);if(!bytes){e.setStatus("Photo selection canceled. Your memory is kept.");return;}await store.addMemoryPhoto(m.id,bytes);e.setStatus("Photo saved with this memory.");},"")} />
           <Button label="Take another photo" disabled={e.busy||m.mediaIds.length>=5} onPress={()=>void e.run(async store=>{const bytes=await chooseEngPhoto(true);if(!bytes){e.setStatus("Camera canceled. Your memory is kept.");return;}await store.addMemoryPhoto(m.id,bytes);e.setStatus("Photo saved with this memory.");},"")} />
-          <Button label="Edit memory" disabled={e.busy} onPress={()=>{setEdit(JSON.parse(JSON.stringify(m)));setRevision(e.snapshot!.revision);}} />
           <Button label={m.lifecycle==="active"?"Archive memory":"Return to Active"} disabled={e.busy} onPress={()=>void e.run(store=>store.lifecycle(m.id,m.lifecycle==="active"?"archived":"active",day()))} />
           <Button label="Move to Recently Deleted" disabled={e.busy} onPress={()=>confirm("Move to Recently Deleted",store=>store.lifecycle(m.id,"recently_deleted",day()))} />
         </>:<>
@@ -556,13 +589,88 @@ export function EngDetail(){
         {m.lifecycle!=="recently_deleted"?<><Field disabled={e.busy} label="History note" value={history} onChangeText={setHistory} />
           <Button label="Record history" disabled={e.busy} onPress={()=>void e.run(async store=>{if(!history.trim())throw Error("Add a history note first");await store.recordHistory(m.id,history.trim(),e.snapshot!.revision);setHistory("");})} />
         </>:null}
-        </>:null}<Button expanded={sharing} label="Share memory" disabled={e.busy} onPress={()=>{setFields([]);setPhotoIds([]);setSharing(true);}} />
-        {sharing?<View style={s.panel}><Copy accessibilityRole="header">Review what to share</Copy><Copy>The name and answer are included. Choose any additional details.</Copy>{(["location","notes","source","space","categories","verification","reminder"] as ShareField[]).map(field=><Button key={field} label={`Include ${field}`} disabled={e.busy} selected={fields.includes(field)} onPress={()=>setFields(old=>old.includes(field)?old.filter(x=>x!==field):[...old,field])} />)}<Copy selectable>{sharePreview(m,e.snapshot!.data,{fields,photoIds}).text}</Copy><Copy>{photoIds.length} photos selected.</Copy>{photos.map((p,i)=><Button key={p.id} label={`Include photo ${i+1}`} disabled={e.busy} selected={photoIds.includes(p.id)} onPress={()=>setPhotoIds(old=>old.includes(p.id)?old.filter(id=>id!==p.id):[...old,p.id])} />)}{photos.filter(p=>photoIds.includes(p.id)).map(p=>{return <Image key={p.id} source={{uri:engPhotoUri(p.path)}} resizeMode="contain" accessibilityLabel="Selected photo in share preview" style={{width:"100%",height:160}} />;})}{photoIds.length?<Copy>Selected original photos may contain location or other embedded metadata. The ZIP includes only the reviewed details and selected photos.</Copy>:null}<Button primary label="Open share sheet with reviewed details" disabled={e.busy} onPress={()=>void e.run(async()=>{const preview=sharePreview(m,e.snapshot!.data,{fields,photoIds});if(photoIds.length)e.setStatus(await shareEngPhotos(preview));else{const result=await Share.share({message:preview.text});e.setStatus(result.action===Share.dismissedAction?"Sharing canceled.":"Share sheet opened. Delivery is handled by the selected app.");}setSharing(false);},"")} /><Button label="Cancel sharing" disabled={e.busy} onPress={()=>setSharing(false)} /></View>:null}
+        </>:null}{m.lifecycle!=="recently_deleted"?<Button label="Share memory" disabled={e.busy} onPress={()=>{
+          if(openingShare.current||e.busy||leaving.current||!focused.current)return;openingShare.current=true;
+          router.push({pathname:"/share",params:{id:m.id}});
+        }} />:null}
       </>}
     </>:<Copy>{e.snapshot?"This memory is no longer available.":"Reading memory…"}</Copy>}
     <Status text={e.status} />
-  </Page>;
+  </ActionPage>;
 }
+export function EngShare(){
+  const params=useLocalSearchParams<{id:string|string[]}>();
+  const id=typeof params.id==="string"?params.id:"";
+  return <ShareSession key={id} id={id} />;
+}
+function ShareSession({id}:{id:string}){
+  const e=useEng(),{s}=useTheme(),navigationState=useRootNavigationState();
+  const [fields,setFields]=useState<ShareField[]>([]),[photoIds,setPhotoIds]=useState<string[]>([]);
+  const [expanded,setExpanded]=useState(true),[busy,setBusy]=useState(false),[status,setStatus]=useState("");
+  const focused=useRef(false),epoch=useRef(0),lock=useRef(false),leaving=useRef(false);
+  useFocusEffect(useCallback(()=>{focused.current=true;leaving.current=false;return()=>{focused.current=false;epoch.current+=1;};},[]));
+  const memory=e.snapshot?.data.memories.find(m=>m.id===id&&m.lifecycle!=="recently_deleted");
+  const photos=orderedMemoryPhotos(memory,e.snapshot?.data.media.media);
+  const review=(()=>{
+    if(!e.snapshot||!memory)return null;
+    try{return {value:reviewedShare(e.snapshot,id,{fields,photoIds}),error:""};}
+    catch(error){return {value:null,error:message(error)};}
+  })();
+  const returnToDetails=useCallback(()=>{
+    if(leaving.current)return;leaving.current=true;epoch.current+=1;
+    if(hasMatchingDetailHistory(navigationState,id)&&router.canGoBack())router.back();
+    else if(id)router.replace({pathname:"/card",params:{id}});
+    else router.replace("/answers");
+  },[navigationState,id]);
+  useFocusEffect(useCallback(()=>{const listener=BackHandler.addEventListener("hardwareBackPress",()=>{returnToDetails();return true;});return()=>listener.remove();},[returnToDetails]));
+  async function shareReviewed(){
+    if(lock.current||leaving.current||!review?.value||!focused.current)return;
+    lock.current=true;setBusy(true);setStatus("");
+    const generation=epoch.current,payload=review.value;
+    const current=()=>focused.current&&epoch.current===generation;
+    async function beforePresent(){
+      if(!current()||AppState.currentState!=="active")throw Error("Sharing canceled. Return to this screen to share when ready.");
+      const snapshot=await(await getEngStore()).load();
+      if(!current()||AppState.currentState!=="active")throw Error("Sharing canceled. Return to this screen to share when ready.");
+      validateReviewedShare(payload,snapshot);
+    }
+    try{
+      await beforePresent();
+      if(payload.preview.photos.length){await shareEngPhotos(payload.preview,beforePresent);}
+      else{
+        // No asynchronous work between this final validation and native presentation.
+        await beforePresent();
+        await Share.share({message:payload.preview.text});
+      }
+      // Native completion/dismissal returns only to the same memory. No delivery claim.
+      if(current())returnToDetails();
+    }catch(error){if(current())setStatus(message(error));}
+    finally{lock.current=false;if(focused.current)setBusy(false);}
+  }
+  return <ActionPage title="Share memory" actions={[
+    {label:"Memory details",onPress:returnToDetails},
+    {label:busy?"Preparing share…":"Share selected details",primary:true,disabled:busy||!review?.value,onPress:()=>void shareReviewed()},
+  ]}>
+    {memory?<>
+      <Copy accessibilityRole="header" kind="section">Review what to share</Copy>
+      <Copy>Name and answer are always included. Other details and photos are opt-in.</Copy>
+      {(["location","notes","source","space","categories","verification","reminder"] as ShareField[]).map(field=><Button key={field} label={`Include ${field}`} disabled={busy} selected={fields.includes(field)} onPress={()=>setFields(old=>old.includes(field)?old.filter(x=>x!==field):[...old,field])} />)}
+      <Copy accessibilityRole="header" kind="section">Photos to include</Copy>
+      <Copy>{photoIds.length} photos selected.</Copy>
+      {photos.map((p,i)=><Button key={p.id} label={`Include photo ${i+1}`} disabled={busy} selected={photoIds.includes(p.id)} onPress={()=>setPhotoIds(old=>old.includes(p.id)?old.filter(x=>x!==p.id):[...old,p.id])} />)}
+      {photoIds.length?<Copy>Selected original photos may contain location or other embedded metadata. The ZIP includes only the reviewed details and selected photos.</Copy>:null}
+      <Button label={expanded?"Hide sharing preview":"Show sharing preview"} expanded={expanded} onPress={()=>setExpanded(!expanded)} />
+      {expanded&&review?.value?<View style={s.panel}>
+        <Copy accessibilityRole="header" kind="section">Sharing preview</Copy>
+        <Copy selectable>{review.value.preview.text}</Copy>
+        {review.value.preview.photos.map((photo,index)=><Image key={photo.id} source={{uri:engPhotoUri(photo.path)}} resizeMode="contain" accessibilityLabel={`Selected photo ${index+1} in share preview`} style={{width:"100%",height:160}} />)}
+      </View>:null}
+    </>:<Copy>{e.snapshot?"This memory is no longer available for sharing.":"Reading memory…"}</Copy>}
+    <Status text={status||review?.error||e.status} />
+    <Button label="Cancel sharing" onPress={returnToDetails} />
+  </ActionPage>;
+}
+
 function LabelManager({e}:{e:ReturnType<typeof useEng>}){
  const {s}=useTheme();const [kind,setKind]=useState<"space"|"category">("space"),[selected,setSelected]=useState(""),[name,setName]=useState("");
  const [impact,setImpact]=useState<Awaited<ReturnType<EngStore["taxonomyImpact"]>>|null>(null);

@@ -69,7 +69,7 @@ function Shell() {
                 const active =
                   path === route ||
                   (route === "/answers" &&
-                    (path === "/memories" || path === "/card"));
+                    (path === "/memories" || path === "/card" || path === "/share"));
                 return (
                   <Pressable
                     key={route}

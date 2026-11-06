@@ -68,6 +68,7 @@ function fixture({ screen = "EngReminders", os = "ios", initialError = "", rows 
     "./brand":{BrandHeader:"BrandHeader",BrandLogo:"BrandLogo",BrandArt:"BrandArt"},
     "./editorial-intro":{EditorialIntro:"EditorialIntro"},
     "./eng-navigation":{registerEditGuard:()=>()=>{}},
+    "./memory-navigation":{},"./action-page":{ActionPage:"ActionPage"},"./share-session":{},
   };
   for(const name of ["./reminder-alerts","@react-native-community/datetimepicker","./eng-runtime","./eng-store","./standalone-reminders","./eng-text-backup","./eng-duplicates","./photo-viewer-state","./home-action","./model"])mocks[name]??={};
   const screens=load("eng-screens.tsx",mocks,"\nmodule.exports.__setEng = value => { useEng = () => value; };");

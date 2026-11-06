@@ -141,13 +141,13 @@ export async function getEngStorage(){
   return {free:await usableNativeSpace(),total:Paths.totalDiskSpace,...report};
 }
 
-export async function shareEngPhotos(preview:{text:string;photos:import('./media-manifest').MediaEntry[]}){
+export async function shareEngPhotos(preview:{text:string;photos:import('./media-manifest').MediaEntry[]},beforePresent?:()=>Promise<void>){
   const Sharing=await import('expo-sharing');
   if(!await Sharing.isAvailableAsync())throw Error('No sharing app is available. Your memory is kept.');
   const bytes=preview.photos.reduce((n,p)=>n+p.bytes,0)+new TextEncoder().encode(preview.text).length+4096;
   await requireNativeCapacity(bytes+4_000_000);
   const file=new File(Paths.cache,'CasitaDex-share-'+Date.now()+'.zip');file.create();
-  try{const {writeShareZip}=await import('./eng-share');await writeShareZip(preview.text,preview.photos,async path=>mediaFileByPath(path).bytes(),sha256Media,async chunk=>file.write(chunk,{append:true}));await Sharing.shareAsync(file.uri,{mimeType:'application/zip',dialogTitle:'Share reviewed memory'});return 'Share sheet opened. Delivery is handled by the selected app.';}
+  try{const {writeShareZip}=await import('./eng-share');await writeShareZip(preview.text,preview.photos,async path=>mediaFileByPath(path).bytes(),sha256Media,async chunk=>file.write(chunk,{append:true}));await beforePresent?.();await Sharing.shareAsync(file.uri,{mimeType:'application/zip',dialogTitle:'Share reviewed memory'});return 'Share sheet opened. Delivery is handled by the selected app.';}
   catch(e){if(file.exists)file.delete();throw e;}
   // Keep successful cache file available to the selected receiving app; Android may reclaim cache later.
 }

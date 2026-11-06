@@ -25,7 +25,14 @@ function isDisabled(expression, values) {
   return Function(...Object.keys(values), `return (${expression});`)(...Object.values(values));
 }
 const draft = buttons('EngAdd').filter(b => ['Take photo', 'Choose photo', 'Browse image files'].includes(b.label));
-const saved = buttons('EngDetail').filter(b => ['Add a photo', 'Take another photo'].includes(b.label));
+const saved = buttons('DetailSession').filter(b => ['Add a photo', 'Take another photo'].includes(b.label));
+
+test('detail route mounts the session that owns saved-memory photo controls', () => {
+  const detail = tree.statements.find(n => ts.isFunctionDeclaration(n) && n.name?.text === 'EngDetail');
+  assert.ok(detail);
+  assert.match(detail.getText(tree), /return <DetailSession key=\{id\} id=\{id\} \/>/);
+});
+
 
 test('all five draft picker entry points stop at five, allow below limit, and retain busy protection', () => {
   assert.equal(draft.length, 5); // Photo-first camera/library plus lower camera/files/library.
@@ -43,7 +50,7 @@ test('both saved-memory pickers count attached IDs, including unavailable image 
   }
 });
 test('removal and draft replacement remain available at the limit and blocked while busy', () => {
-  for (const [name, values] of [['EngAdd', { disabled: false, form: { photos: Array(5) } }], ['EngDetail', { e: { busy: false }, m: { mediaIds: Array(5) } }]]) {
+  for (const [name, values] of [['EngAdd', { disabled: false, form: { photos: Array(5) } }], ['DetailSession', { e: { busy: false }, m: { mediaIds: Array(5) } }]]) {
     const controls = buttons(name).filter(b => /Remove (draft|saved) photo|Replace draft photo/.test(b.label));
     assert.equal(controls.length, name === 'EngAdd' ? 2 : 1);
     for (const control of controls) {

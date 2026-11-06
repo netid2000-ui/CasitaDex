@@ -37,7 +37,7 @@ function screens(snapshot, pathname = "/") {
  "./eng-find":{defaultFilter:()=>({categories:[]}),searchIndex:()=>[],findMemories:()=>[]},
  "./eng-domain":{localDay:()=>""},
  };
- for(const name of ["./accessibility-feedback","./reminder-alerts","./backup-review","./reminder-notification-target","./reminder-notification-projection","@react-native-community/datetimepicker","./eng-runtime","./eng-store","./standalone-reminders","./eng-text-backup","./eng-duplicates","./eng-navigation","./standalone-reminder-draft","./brand","./editorial-intro","./model","./photo-viewer-state"])mocks[name]??={};
+ for(const name of ["./memory-navigation","./action-page","./share-session","./accessibility-feedback","./reminder-alerts","./backup-review","./reminder-notification-target","./reminder-notification-projection","@react-native-community/datetimepicker","./eng-runtime","./eng-store","./standalone-reminders","./eng-text-backup","./eng-duplicates","./eng-navigation","./standalone-reminder-draft","./brand","./editorial-intro","./model","./photo-viewer-state"])mocks[name]??={};
  const api=load("eng-screens.tsx",mocks,"\nmodule.exports.setFixture = fixture => { useEng = () => fixture; };");
  api.setFixture({snapshot,status:"",busy:false,run:()=>{throw Error("Unexpected storage mutation");}});
  return {api,routes};
