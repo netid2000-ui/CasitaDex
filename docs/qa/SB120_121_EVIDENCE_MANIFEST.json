@@ -1,0 +1,668 @@
+{
+  "schema_version": 1,
+  "project": "CasitaDex",
+  "milestones": [
+    "SB120",
+    "SB121"
+  ],
+  "release_decision": "NO-GO",
+  "machine": "FA-MAC-DEV-01",
+  "evidence_root": "/Volumes/FA-Development/Designs-by-FA",
+  "branch": "work/cd-sb41-edit-targeting-20261104",
+  "starting_sha": "08398127d44fa346db6cbabe5aa30f0d33723aa6",
+  "runtime_source_sha": "b30c95148136373d7079902013e5389d11152c64",
+  "build": {
+    "job_id": "97dc5d606c19ca3c",
+    "exit_code": 0,
+    "type": "Release arm64 iOS simulator; not signed distribution",
+    "bundle_id": "com.designsbyfa.casitadex.dev",
+    "simulator_udid": "7DB01BF8-2C97-486A-A908-DA8F9E81FE8C",
+    "executable_sha256": "cbb2d1df7c53321da85fdbcbb24eaf080d5b95376c8e2426d39f11d84896ab3f",
+    "js_bundle_sha256": "b52629236893e40c54169d69b218b7fd0bfb10cc465a88e614d22619773d7067"
+  },
+  "checks": {
+    "typecheck": "pass",
+    "lint": "pass",
+    "unit_tests": {
+      "total": 389,
+      "passed": 384,
+      "skipped": 5,
+      "failed": 0,
+      "skip_reason": "CASITADEX_SB24_ARCHIVE was not supplied; five optional real-archive gates require reminder/photo/draft fixture."
+    },
+    "web_export": "pass",
+    "native_integration_preflight": "pass",
+    "scoped_gitleaks": "pass",
+    "online_expo_doctor": {
+      "passed": 20,
+      "total": 21,
+      "result": "fail",
+      "reason": "Seven SDK patch mismatches"
+    },
+    "offline_doctor": "21/21, not used to override online failure"
+  },
+  "native_cases": {
+    "standalone_notification_foreground": "pass; real normal-clock; final source; adversarial SQL fixture",
+    "standalone_notification_background": "pass; real normal-clock; final source; adversarial SQL fixture",
+    "standalone_notification_terminated": "pass; real normal-clock; final source; adversarial SQL fixture",
+    "dirty_memory_edit_notification": "pass; unsaved answer retained; Cancel opened queued exact target; deferred Save untested",
+    "ios_photo_backup_restore": "bounded pass on bc552aa; real Save to Files and reviewed restore with byte comparison",
+    "current_photo_and_share_smoke": "bounded pass; viewer Next/Previous/Close, persisted answer, landscape screenshot, verified share sheet and honest cancel wording",
+    "maximum_text_add_save": "bounded pass, persistence rechecked on final source",
+    "strict_ios_offline": "not run",
+    "linked_memory_native_0900": "not run",
+    "full_accessibility": "not accepted",
+    "owner_physical_iphone": "owner gate"
+  },
+  "fixture_limit": "Notification fixtures intentionally bypassed backup ID/anchor-day validation. Backup correctly refused them. Only seven known synthetic rows were normalized, retaining before evidence and row contents. No important project data was changed.",
+  "prepared_backup": {
+    "prepared_by_application_source": "b30c95148136373d7079902013e5389d11152c64",
+    "filename": "CasitaDex-full-2026-11-06T01-27-15-859Z-1fjbbk6d5xf.cdxe",
+    "bytes": 4689,
+    "sha256": "32f29bd81530a1ab6347cdf3dfab85018398309456689d6df39db40d5e12e624",
+    "external_save_claimed": false,
+    "note": "Final normalized synthetic collection: three memories, two photos, seven reminders. Earlier Save to Files and restore proof is separate."
+  },
+  "artifacts": [
+    {
+      "path": "QA-Evidence/WORK-SB120/build-final/app-files.sha256",
+      "bytes": 27353,
+      "sha256": "4f5e5b3f74bb72f7ff904aca5aa57fb0cdd6eef6edf49a23bb80a1e578d99b19"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/build-final/finished.txt",
+      "bytes": 29,
+      "sha256": "898168c3d10933d194803674f487a1928d12314adf1a765bbce0924c844e33b9"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/build-final/integration-preflight.log",
+      "bytes": 141,
+      "sha256": "51b236456c37bad4c0c9e5ee9ad3c0d1e44485ab52c062d9043020a6fd208cee"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/build-final/lockfiles.sha256",
+      "bytes": 167,
+      "sha256": "d3fca5a3ae1d5d69ad5006af69b9673e512c83169cb34cf80c4cb549cdde56bf"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/build-final/source.txt",
+      "bytes": 41,
+      "sha256": "09504d8952996bd0befac3465d4492a68ea9643a02e607d74924a0f7ad607a14"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/build-final/started.txt",
+      "bytes": 29,
+      "sha256": "d4516ff3ae732e425f0c5574d6719c4bc41e7d6e780f9913ff3e141277a232e4"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/build-final/xcodebuild.log",
+      "bytes": 807795,
+      "sha256": "62b8ebb25b8702e59bc145968a46af69756405f094e4aad67886ddbc69dac170"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/background-failed-target.json",
+      "bytes": 36951,
+      "sha256": "ba1a6233f5c44b91f8e118eed7fe0bab7df71a9fdde8f06ee93f3237815806ed"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/background-failed-target.png",
+      "bytes": 281264,
+      "sha256": "b6cc7da74fca615624ecbd8b8bca0090b0983c51f5405e6c8635d15704368558"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/baseline-ios-export-result.json",
+      "bytes": 13558,
+      "sha256": "04a9973c22c862724984e922358951c3839b3ce9aa52ee38431585c4e983a65d"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/baseline-ios-export-result.png",
+      "bytes": 367574,
+      "sha256": "1f2fe565741059891f2f5d3d9b8ae95e9111a9662fb4c9d30571d1d46c20b35d"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/dirty-cancel-deferred-exact-target.json",
+      "bytes": 29417,
+      "sha256": "3b724dd521924daf87145a15467ec68663c400032fa85fea77bd42797216e4d1"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/dirty-cancel-deferred-exact-target.png",
+      "bytes": 276626,
+      "sha256": "52c76f0184360f4cc54f39c86334435b38167b3a60c60faa62383af39f9e8f47"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/dirty-editor-before-notification.json",
+      "bytes": 54216,
+      "sha256": "1d4c9d1c2973c0cc2e9e96f45dd0347a3cbb2acfef3cedb3df8c9633f63c03a9"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/dirty-editor-before-notification.png",
+      "bytes": 180791,
+      "sha256": "3abfd4e4ee0b527d48f380bfdd1fc5d12a7ad2894d0118d391fd6f0b887de4dd"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/dirty-editor-cancel-native.log",
+      "bytes": 2918,
+      "sha256": "81157b0dd421de46792f839c0f2624500b9b293633b560b11af0501fb1fdfbae"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/dirty-editor-native.log",
+      "bytes": 2110,
+      "sha256": "a439618405d9c0803c67a868d25871f48d8ad39a077a93e58124a1eecedfb64a"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/dirty-editor-preserved-after-tap.json",
+      "bytes": 54318,
+      "sha256": "949e6c8369e30f3b093436158759c76988503f69a2d8a55692d1a38794ec41f0"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/dirty-editor-preserved-after-tap.png",
+      "bytes": 181092,
+      "sha256": "00049e87a10c10cb11c17d108b70c71e59305a0bfc64b9f8bc42ba433c4fc34d"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/dirty-editor-resume-native.log",
+      "bytes": 13948,
+      "sha256": "52db1e925a20507aa2a2d0d7b6f8580a65ed21c4a70d1ec9ede5f9ceafe692f0"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/dirty-fixture.json",
+      "bytes": 166,
+      "sha256": "f35e19ccfbc778bfbec7fe67766cb859d500e19db7ce20ed2d481f8dd629042b"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/dirty-missing-control.json",
+      "bytes": 34790,
+      "sha256": "490b30ef3f5684140775c054be1571553d0ba61639ce1eddfa72cab0138655b9"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/dirty-missing-control.png",
+      "bytes": 296690,
+      "sha256": "11a977c2de3bb29558d005ad27144a173cfb8e7a05c5b2eb8a6ecefeb292f15f"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/dirty-notification-card.json",
+      "bytes": 266162,
+      "sha256": "e2652d845b559c17d42107b7e96a3531e2b0f49d48c1b042244c4a0f3e6b8723"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/dirty-notification-card.png",
+      "bytes": 3023897,
+      "sha256": "cf937284d820c676048ff810682e6e5a1f0a265f8d5a4175dae62b58e35d2f92"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-actual-export-share-sheet.json",
+      "bytes": 23218,
+      "sha256": "6259988c3dd3dc837b4b10f2a075f4afdff9d67526569f7e57ff82d6f126a008"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-actual-export-share-sheet.png",
+      "bytes": 371830,
+      "sha256": "7d5aba5b99313f0ef7effd773b5739a592730d57d9a601a31b34e0fdaf8ce80b"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-background-before-delivery.json",
+      "bytes": 17230,
+      "sha256": "67f1b136e11d6a11767aabe9f4a2c3b870178e3024510f98d5ce3e7976069659"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-background-before-delivery.png",
+      "bytes": 3130884,
+      "sha256": "60b2b73956720ed7a528e80d8108bf88c230407da52cabdb38da9d8514a2a8bc"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-background-exact-target.json",
+      "bytes": 29428,
+      "sha256": "444a757af76b0934350f510f9fffc7974bc237798c2eb08657dbbb4e5fb61bd6"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-background-exact-target.png",
+      "bytes": 272090,
+      "sha256": "0f055e60e72151a5cb436a52add42c0c8365d60e325a84e349b982749d26cff4"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-background-fixture.json",
+      "bytes": 181,
+      "sha256": "991087c3b0f12b9f402c6784ca2cdd20e5231a2147cbe6d71a4940eb9a8bb2df"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-background-notification-center.json",
+      "bytes": 131510,
+      "sha256": "2307923a2b571ef8de4b3bd42e09b2b44673b6204eed9c8736c20f85141fb83f"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-background-notification-center.png",
+      "bytes": 3056249,
+      "sha256": "bfc29ef4083b6c4b1a443b192c1562ab1b01a7de3e9401fc58175609e4897ed0"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-background-scheduled.json",
+      "bytes": 17230,
+      "sha256": "67f1b136e11d6a11767aabe9f4a2c3b870178e3024510f98d5ce3e7976069659"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-background-scheduled.png",
+      "bytes": 202165,
+      "sha256": "aacf710d34114ff19c42e3c325fd3c75df3a9be065500f7645a34d47d2b913e3"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-export-share-sheet.json",
+      "bytes": 174376,
+      "sha256": "5d7a371d1c06a074f7c3852d69451d87a30de3c6331e798d62a5d11ea6e20c02"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-export-share-sheet.png",
+      "bytes": 668918,
+      "sha256": "318634f5b321f928d5d6cd2f3142902e65c2150eb7416f781b461d722e910a4d"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-foreground-before-delivery.json",
+      "bytes": 17230,
+      "sha256": "f9b5c46c249d3c4b1acdefdcee45c51f776368374f4a9ff149e09adcb19852a7"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-foreground-before-delivery.png",
+      "bytes": 201933,
+      "sha256": "9d0f70330d5d5a2ea60e6fdcce28e966f877f10558bdf35679f070db211a4f1b"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-foreground-center-retry.json",
+      "bytes": 266819,
+      "sha256": "6dcfc184325d59bad3a92de57a2b4032a5c05b0e3c27d894c1a24de26429bc2f"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-foreground-center-retry.png",
+      "bytes": 3180734,
+      "sha256": "ddc71f2d6598b09a2c717028528043273288efc296779f0ae6034b7adb38a432"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-foreground-center-visible.json",
+      "bytes": 266892,
+      "sha256": "f40e45ccf943d365c5fed0bf36d2b3ee5040f7112b78ef9609a39ee7d789de66"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-foreground-center-visible.png",
+      "bytes": 3025195,
+      "sha256": "4d2cd7652d1cd9f218f2545cdafb313a19200f71280d590fac532400fe8e7365"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-foreground-exact-target.json",
+      "bytes": 29428,
+      "sha256": "aa3c2ba102ab255827eb6331b184cd785f7bb90d26dbb9af2a1fc45abfa9730e"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-foreground-exact-target.png",
+      "bytes": 271366,
+      "sha256": "6da31ca64ef5eeb5218974033224f57d5118ebb668e49c7de69b4c4f2f14e12e"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-foreground-fixture.json",
+      "bytes": 181,
+      "sha256": "f8cfe4cea6be6322af17fc708d1a9f75d9c9e8daf6ed5821dcd8fa245c6fedfb"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-foreground-notification-center.json",
+      "bytes": 17230,
+      "sha256": "e80c949acf635e6e39222360b9e599945bf1459a8a79f8884cc35013938129a7"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-foreground-notification-center.png",
+      "bytes": 289841,
+      "sha256": "4ab01c337a8ca4bc51d2924ce4ebe4feec764cd24dfd019a6ff376216a516eeb"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-foreground-scheduled.json",
+      "bytes": 17230,
+      "sha256": "f9b5c46c249d3c4b1acdefdcee45c51f776368374f4a9ff149e09adcb19852a7"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-foreground-scheduled.png",
+      "bytes": 201933,
+      "sha256": "9d0f70330d5d5a2ea60e6fdcce28e966f877f10558bdf35679f070db211a4f1b"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-landscape-memory.json",
+      "bytes": 16034,
+      "sha256": "331d014a63168de5d8af59b327b34a18d25798a20aa2172197bc9180a876d578"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-landscape-memory.png",
+      "bytes": 144372,
+      "sha256": "5d0920c8e1b06657601a3ac8b9a778da368794a0cfecedceeb8bac58245f615a"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-large-text-persisted-detail.json",
+      "bytes": 18707,
+      "sha256": "21fa77a079a19f663be28d13cdd0ce4a7da9f65d1a230ce3e8f49ef09e2f63e2"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-large-text-persisted-detail.png",
+      "bytes": 277341,
+      "sha256": "a047447315db04c300dcfbc043723f3b7b56bda5a2792846afa605f1b81c2a84"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-media-smoke-resume.log",
+      "bytes": 4071,
+      "sha256": "31cc371805aaf52a8d019c0dae64f3b391fe1447da59e06ff1d7c0c0a4059760"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-media-smoke-resume.mjs",
+      "bytes": 2140,
+      "sha256": "831a762710a33a635c4873ecbe07548332cfa73a4a98173b62c639c0d1877c08"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-media-smoke-tail.log",
+      "bytes": 12296,
+      "sha256": "9ed2997a8da182eaa3e89ca09069bbe37502f8e5c4f609f1d5d573cd2dc7bdbe"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-media-smoke-tail.mjs",
+      "bytes": 1922,
+      "sha256": "fffebca6d493437f793e3876d937002b90f9bfd474ed7f950a141948c2099528"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-media-smoke.log",
+      "bytes": 684,
+      "sha256": "0f02f90b9ce266d68d71c8e554baa7411c31dc3d0142fba9b26734e3601fe0bc"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-media-smoke.mjs",
+      "bytes": 2190,
+      "sha256": "6ef210595b6670ad324b19eae0e206ab2594de1a3dc4b43c888dae46b7a1835d"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-persistence-readback.json",
+      "bytes": 1207,
+      "sha256": "b8446ebc67b3097bd781957cb02a7b59a8f40b80b47898ed26d252fcba00d8cf"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-photo-inspect.json",
+      "bytes": 15760,
+      "sha256": "3b5b25a13d9b5c41f2ae6f0d27c55183595ef1acf4d5dff27e0c9feaa842614d"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-photo-inspect.png",
+      "bytes": 177298,
+      "sha256": "b5fba8a656005663df51da4c9332dff97acc98f79772af6b6d4c3f1a3946208d"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-photo-return.json",
+      "bytes": 15760,
+      "sha256": "74414d2916b767e5f9dc4be330db8d1d265e3e1ed36751e269732c8142c1199d"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-photo-return.png",
+      "bytes": 176704,
+      "sha256": "54dd98b34a67b184f4439867650becd24c5cd27b690ff92c80e77d85759a6c87"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-photo-two.json",
+      "bytes": 12067,
+      "sha256": "ae04972360574b0368039c430b56aac12650b89c21e6b1e495a6513ec56cfe77"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-photo-two.png",
+      "bytes": 250692,
+      "sha256": "5486f5d9f7c38822b3c90aac9cf4939d65d9c1be187a69f8ca668f1d9e1355f7"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-post-cancel-readback.json",
+      "bytes": 517,
+      "sha256": "06053d7983e63f8b9874c5e4f70d7fa27203600dd54ea56037995a2adc5c1998"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-prepared-backup.cdxe",
+      "bytes": 4689,
+      "sha256": "32f29bd81530a1ab6347cdf3dfab85018398309456689d6df39db40d5e12e624"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-prepared-backup.json",
+      "bytes": 438,
+      "sha256": "6b43915e07a7a954c2b66c92c2b7072182b67a70c9dfcc57f21aeba0f087ea53"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-share-dismissed.json",
+      "bytes": 26173,
+      "sha256": "04c9e94b7e346bc1161ca44dbb7501c78bcc71dbbbfc0758ebc47f9305af8239"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-share-dismissed.png",
+      "bytes": 371327,
+      "sha256": "7dac32bbb84bf7611e582d0365bb6d28187c91991c1cac854d0ab812b3820fc8"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-smoke-missing-expected.json",
+      "bytes": 23218,
+      "sha256": "adda648a18129ec5e2a4eb886d2ef5ae21050826a95b7c082da309d7acef8892"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-smoke-missing-expected.png",
+      "bytes": 371304,
+      "sha256": "f2f9d1989d7708ad8759de233a4f085ae09799bdb26f87ee987f9f7ee313560a"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-terminated-before-delivery.json",
+      "bytes": 65097,
+      "sha256": "aafc8cda0d08502accd5d24b50dedad1abbdb271fac669442d8fcf25de8f1a3c"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-terminated-before-delivery.png",
+      "bytes": 3088959,
+      "sha256": "45a1754f3f3bd5a7a802daf05e038d079bc79da18976a5910057575248ce1284"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-terminated-exact-target.json",
+      "bytes": 29428,
+      "sha256": "eafd525d2e8c69ecd82643cedab43e50ae18df0950f1fc8369a6b357c5afbf6b"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-terminated-exact-target.png",
+      "bytes": 269815,
+      "sha256": "0f835e99a8a2a79f513143e2c07d441cc44060831982f4b9349b03466fd1ca5d"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-terminated-fixture.json",
+      "bytes": 181,
+      "sha256": "03cacad7748e943cb329ae8715835b95b7e7cd8dee5060d80f3864931dd4e8b2"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-terminated-notification-center.json",
+      "bytes": 131510,
+      "sha256": "9f16d17203dd0d52bb5b62505eaaf3e6f25faa7ed0987111dad018e6764b110a"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-terminated-notification-center.png",
+      "bytes": 3056025,
+      "sha256": "abc477528ca453e64bbbf314911d276d0f35af113b16dced7ac5bfd4c9b0793e"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-terminated-scheduled.json",
+      "bytes": 17230,
+      "sha256": "ba1d2527460d02312ac8819b4037def6b22edcd099bf49562e02f12105d04508"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-terminated-scheduled.png",
+      "bytes": 201049,
+      "sha256": "81797ace5f2237d3f5df0ea06a3a7fd084a67f239726b448202c585ae570d586"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-validated-export.log",
+      "bytes": 4915,
+      "sha256": "e6524e0037d302945597d89119f53b76e87c208019076599cd1759345515e587"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-validated-export.mjs",
+      "bytes": 1478,
+      "sha256": "3ee928a570c06e088312de20d9e41977d6d7f189daa2c6355221cefdc5624692"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/final-visible-export.log",
+      "bytes": 3068,
+      "sha256": "a5fef170e31ebab7eec9e302285827dd3864a18eff4441b2c23fc660c2db4eee"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/fixed-ios-export-share-sheet.json",
+      "bytes": 174376,
+      "sha256": "3f2606ed10d4c6392a8c738f949cee0f02207c5fae6395b03042515c7a91abd8"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/fixed-ios-export-share-sheet.png",
+      "bytes": 594355,
+      "sha256": "46139059fa1509efd902afe7551dfc0714ec267e5a49e8f79af6de226d93b34c"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/ios-two-photo-saved.json",
+      "bytes": 21963,
+      "sha256": "b4458c75efe8c3af905d81e1d4826b87c1356ea78e1535df7cd6729ff4de54e9"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/maximum-text-save-result.json",
+      "bytes": 18791,
+      "sha256": "70ae70491a3440db2d78ebe60ed3cc3eeb491a15cd3022ffaf6eef50615b8649"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/maximum-text-save-result.png",
+      "bytes": 172467,
+      "sha256": "dd43f5793b84a9019f30c43c493e283b4a93853296530cded533cbb810dded4e"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/notification-fixture-normalization.json",
+      "bytes": 4617,
+      "sha256": "c90a9246c883e3a38b6bd22cc5428d196134ad681cc752f5f0c29a77f67269b6"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/notification-fixtures-before-normalization.json",
+      "bytes": 2802,
+      "sha256": "607523c53d690366fa2f9edb6e1292bb9ec8f26b9c7a02ed66754f4852b2cd16"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/notification-springboard.log",
+      "bytes": 1954816,
+      "sha256": "f38e14b2c9437a814645257f4e9ea872b8ebf22426af408f6d3e3887bb66f120"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/notification-system.log",
+      "bytes": 567460,
+      "sha256": "bbacd318b8bf79acd366f3eb8164605c6ff08ec0e2c363beca5e0dcdface9fa8"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/reminder-cold-ascii.mjs",
+      "bytes": 2761,
+      "sha256": "23b494b4af477b57ec8118ae348c29cd83f50099350b727a1561155ee74997fa"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/reminder-dirty-editor-resume.mjs",
+      "bytes": 2683,
+      "sha256": "7ec6838650d38ffb068edb7257d68c3ddce1d6a4f56bf3826f30ff9d66526e25"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/reminder-dirty-editor.mjs",
+      "bytes": 3864,
+      "sha256": "5c16c701fb9a783ac587399d5317a9ba559826f3451349d0679553c2834fa338"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/reminder-final-background-cold.mjs",
+      "bytes": 3426,
+      "sha256": "640340c0098c1176ee62974c5ef58563a6d3568fd1e9a7cc43f114442e38f24c"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/reminder-final-lifecycle.mjs",
+      "bytes": 2944,
+      "sha256": "d7546e502a652d98264808846fd6ca018d594f7241f089562c62b09e738b2049"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/reminder-foreground.mjs",
+      "bytes": 1954,
+      "sha256": "dedd2d09325d4c0c2025ccffb0953019b675d1c7d74b5a6c4b1c1494bb82c281"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/reminder-lifecycle.mjs",
+      "bytes": 2782,
+      "sha256": "7fa7b3e4dab2b7fe2a65396290cb3f8eb8d29e8a239c750864068439c5a12ae3"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/restore-media-readback.json",
+      "bytes": 420,
+      "sha256": "aa059bef1371210a927691472d9c03467092f08b78f0621af8c6751363725b52"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/restored-confirmation.json",
+      "bytes": 11941,
+      "sha256": "a8b95b2b74d0595ec6a44029c928a411615d5f5afc7ac3ea3dfdd2c598e02d9d"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/restored-confirmation.png",
+      "bytes": 351741,
+      "sha256": "d57db6437b24fae519acc23070465cf09eaf86830a0c7eebc3682048d5322a56"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/restored-photo-two.json",
+      "bytes": 12067,
+      "sha256": "ce9c055cefa2453b225af0b59e2959ddcd2bdf15e6f04280af3775d4454bf023"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/restored-photo-two.png",
+      "bytes": 250740,
+      "sha256": "c1a1d318044b66968cf9716efcdd8beff4f014dc4efdbb0ad413c3ae6665c588"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB120/mobilewright/saved-backup-paths.sha256",
+      "bytes": 622,
+      "sha256": "8f4bf7dc7c1685b43e86f76cb07d3400a142f9b7c1c6e7ae79ed2ebfc9032903"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/final/check-exits.txt",
+      "bytes": 49,
+      "sha256": "c3fd088a5cb117a2d1bcb5df4b0fa1a9c0265587159e6c542020683b7aba7a2a"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/final/doctor-online.log",
+      "bytes": 1576,
+      "sha256": "ba575e7531737e0604478f0de2c48436a8dad3f4740d58363b1486e475025195"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/final/doctor.log",
+      "bytes": 119,
+      "sha256": "d3ab5adbc6d0d1a3c94d96c407ecb3c92ee3c46c1c49df6bd56845090b219358"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/final/export-web.log",
+      "bytes": 2430,
+      "sha256": "866b26c9f2f68e122308804254ab1626076b4c720330c216f3f79438f6d39c44"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/final/gitleaks.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/final/gitleaks.log",
+      "bytes": 371,
+      "sha256": "c5cf3f05d175f0f43684caa68090cf002e564b8aa82f62e161d3194e98cee93a"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/final/lint.log",
+      "bytes": 55,
+      "sha256": "7988ad006928ac862d60f07d7289bfb07c75c0c7ab199908db5f91db3c7cd534"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/final/native-integration.log",
+      "bytes": 141,
+      "sha256": "51b236456c37bad4c0c9e5ee9ad3c0d1e44485ab52c062d9043020a6fd208cee"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/final/source.txt",
+      "bytes": 41,
+      "sha256": "09504d8952996bd0befac3465d4492a68ea9643a02e607d74924a0f7ad607a14"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/final/tests.log",
+      "bytes": 55802,
+      "sha256": "d9c653063d881dc65dae4d73a4f0fdfc2336bf7b86d5acd58611392674779805"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/final/typecheck.log",
+      "bytes": 45,
+      "sha256": "23536ab2c73e0f4bc1eec81fa939e6d9d2e2b1a4e186c1500feb05bad4b0dc74"
+    }
+  ]
+}

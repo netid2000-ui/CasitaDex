@@ -1,12 +1,14 @@
 # CasitaDex — authoritative Mac integration status
 
-November 5, 2026 · FA-MAC-DEV-01 exclusively · FA-Development external SSD · authorized branch `work/cd-sb41-edit-targeting-20261104`.
+November 5–6, 2026 · FA-MAC-DEV-01 exclusively · FA-Development external SSD · authorized branch `work/cd-sb41-edit-targeting-20261104`.
 
-**WORK-SB105 · PARTIAL · Release NO-GO.** Application source `20a9393c5c89b046ee6397723a4938680a8ba947` adds exact Android notification destinations and rejects recurrence into nonexistent DST times before persistence.
+**WORK-SB120–121 · PARTIAL QUALIFICATION · Release NO-GO.** Current application source `b30c95148136373d7079902013e5389d11152c64` adds iOS notification response delivery/routing, verified iOS backup sharing, mandatory native-module integration verification, and literal-percent/Unicode notification identity preservation.
 
-- Verified: TypeScript, ESLint, 25 focused tests and one SQLite persistence regression. Current-source Android QA APK built; exact standalone SQLite readback, offline force-stop/relaunch, encoded/malformed links, actual standalone and linked notification taps, Show all, completion and native alarm cancellation passed bounded checks. Final isolated linked job `aed5beaeda11570d` exited0.
-- Evidence: [SB105 execution](docs/qa/WORK_SB105_EXECUTION.md), [functional matrix](docs/qa/WORK_SB73_EXECUTION.md), [artifact manifest](docs/qa/SB105_EVIDENCE_MANIFEST.json). Earlier driver failures and clock-advanced limits remain explicit.
-- Open: iOS response routing and native recovery; reminder edit/reschedule, native DST validation, Settings permission recovery, reboot-before-launch and normal-clock delivery; complete media and backup/restore; Figma selection-state reconciliation, VoiceOver/TalkBack/responsive acceptance; vulnerable dependency parent migration; signed distribution and owner physical-iPhone acceptance.
-- Next: Finish current-source reminder lifecycle and household media/backup journeys, implement iOS exact target response once toolchain qualifies, evaluate supported SDK58/router58 dependency migration in isolation.
+- Verified source gates: TypeScript, ESLint, 389 tests (384 pass, 5 skipped), current web export, native integration check, scoped secret scan and Release/arm64 simulator build.
+- Native iOS: real normal-clock standalone notification exact targets passed foreground/background/terminated, plus dirty-edit preservation and Cancel-to-deferred-target; real Photos import, full-backup Save to Files and reviewed restore, restored media hashes, maximum-text Add/Save and persisted data passed bounded checks. Prior Android photo/backup/offline evidence remains preserved.
+- Evidence: [SB120–121 execution](docs/qa/WORK_SB120_121_EXECUTION.md), [artifact manifest](docs/qa/SB120_121_EVIDENCE_MANIFEST.json), and prior [SB116–119 return report](https://github.com/netid2000-ui/event-command-by-fa/blob/94d19d40ee6af6e8953ed22af80ee1cccbf764aa/docs/qa/DESIGNS_BY_FA_WORK_SB116_119_RETURN_REPORT.md).
+- Open release gates: real iOS linked-memory 09:00 notification lifecycle, permission recovery, strict iOS offline, full accessibility/responsive/Figma acceptance, online SDK patch alignment and dependency security, signed distribution and owner physical-iPhone signoff. Separate Android/in-app literal-percent routing is not newly accepted.
+- Online Expo Doctor remains 20/21 because seven SDK patch versions differ from expected. Offline doctor success does not clear that gate.
+- Next: close the report’s explicit native and owner acceptance gates, then qualify supported dependency updates separately.
 
-No production changes, store submissions, live purchases, or other-host jobs.
+No production changes, release merge, store submission, live purchase, other-host job or production Firebase write.
