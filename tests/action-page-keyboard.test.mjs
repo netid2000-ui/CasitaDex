@@ -45,7 +45,7 @@ function fixture(os = "android") {
     return render();
   }
   const parent = (tree, child) => flat(tree).find(n => n.props.children.flat(Infinity).includes(child));
-  return { state, calls, save, cancel, editor, flat, render, measure, parent };
+  return { state, calls, save, cancel, editor, flat, render, measure, parent, props };
 }
 for (const os of ["android", "ios", "web"]) {
   test(os + " ActionPage uses rotation-safe native padding and current top inset only", () => {
@@ -125,4 +125,12 @@ for (const os of ["ios", "android", "web"]) test(os + " clips each region withou
     assert.equal(nodes.find(n => n.type === "Button" && n.props.label === "Save").props.onPress, f.save);
     assert.equal(nodes.find(n => n.type === "Button" && n.props.label === "Cancel").props.onPress, f.cancel);
   }
+});
+
+for(const os of ['ios','android','web'])test(os+' edit feedback stays with actions independently of form scrolling',()=>{
+ const f=fixture(os),feedback={type:'FeedbackProbe',props:{children:[]}};f.props.feedback=feedback;
+ const tree=f.measure(402,692),nodes=f.flat(tree);
+ const actions=nodes.find(n=>n.props.testID==='memory-action-region'),content=nodes.find(n=>n.props.testID==='memory-content-region');
+ assert.ok(f.flat(actions).includes(feedback));assert.ok(!f.flat(content).includes(feedback));
+ assert.equal(nodes.filter(n=>n===feedback).length,1);assert.ok(nodes.includes(f.editor));
 });

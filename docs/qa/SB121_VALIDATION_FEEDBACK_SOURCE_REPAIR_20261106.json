@@ -1,0 +1,56 @@
+{
+  "status": "SOURCE_VERIFIED_NATIVE_PENDING",
+  "source_base": "ba3693282c31c7758d641fed48db9f960bd159c3",
+  "installed_runtime_unchanged": "8cc2862eaf2791379518e440d3b9d5833543ab0a",
+  "problem": "Failed edit status was below the form viewport and survived Cancel into Detail. Exact 8cc native evidence retained in the preceding Find/share/validation report.",
+  "change": [
+    "Optional ActionPage feedback slot beside fixed actions, within the existing bounded independently scrollable action region.",
+    "Detail edit status renders once in that slot; normal Detail status and committed-save readback warnings remain in their existing path.",
+    "Begin edit, Save attempt and Cancel clear prior edit status. No persistence, navigation-guard, dependency, permission or schema changes."
+  ],
+  "verification": {
+    "counterexample": "Four new regression cases failed before the patch (feedback absent from action region).",
+    "focused_suite": {
+      "total": 43,
+      "pass": 43,
+      "fail": 0,
+      "skip": 0
+    },
+    "typecheck": "PASS",
+    "targeted_lint": "PASS",
+    "diff_check": "PASS",
+    "existing_committed_save_readback_warning_case": "PASS",
+    "native_candidate": "NOT_BUILT_NOT_INSTALLED_NOT_TESTED"
+  },
+  "evidence_reconciliation": {
+    "owner_hands_on": {
+      "document": "docs/ANDROID_BACKUP_PHASE_A_ACCEPTANCE.md",
+      "document_sha256": "3310c2658fa9cfc78f402261fc39d9c61fa5b5d5ba5d03c194c14e649abc1f2c",
+      "date": "2026-10-09",
+      "branch": "prototype/bootstrap",
+      "starting_commit": "19ca392",
+      "scope": "Owner-confirmed Samsung Android Staging offline launch, record creation/retrieval/search/edit, full shutdown/restart, edited-record retention and Wi-Fi reconnection. Preserve this attribution; no rerun.",
+      "not_claimed": "This record does not specify the later iOS validation-message placement or Cancel status lifetime."
+    },
+    "other_owner_records": "Targeted current-room user-message searches for validation and cancel returned no specific case record; owner general prior-test statement remains acknowledged. This is not proof that no further owner evidence exists.",
+    "source_history": "Existing 3b526f6 semantic-feedback work is retained, including Status/useStatusAnnouncement. No replacement announcer or screen-reader toggles.",
+    "reused_native": "Prior 8cc failed-save data preservation and visible offscreen/stale-status evidence; all passed reminder, Find/share, Save/relaunch and Android offline/restore evidence retained.",
+    "repeat_rule": "Only changed feedback rendering/lifetime merits a new candidate native check; no blanket current-SHA regression.",
+    "next_native_scope": "On a preserving candidate upgrade, verify empty-name failure keeps the editor/data and feedback is reachable beside Save/Cancel; Cancel clears it. At enlarged text, verify the same bounded action region remains usable. Do not rerun unrelated journeys."
+  },
+  "react_review": "No new hooks, effects, network work or dependencies; existing status announcement component reused once per rendered mode; event-driven clearing; optional ReactNode slot leaves callers without feedback unchanged.",
+  "limits": [
+    "Native pixel placement and enlarged-text reachability of the patch remain unverified.",
+    "No build, simulator/emulator operation, data mutation or permission change occurred during this source repair.",
+    "System Settings window assistance was denied by Computer Use; request subsequently cancelled; no retry.",
+    "Release remains NO-GO."
+  ],
+  "reviewed_patch_sha256": "16ec792b354a753e8d04edb79adbc8b2027bed7a887f345ca6cb8444bc03470e",
+  "evidence_hashes": {
+    "before-fix.log": "41db1b5bab22b0a448e468136284c1acb1960f87f909d61f41cc9778cae18dc5",
+    "focused-tests.log": "c1678dddbc0a84c73ab15deb39968bb03da93fcd6d35a928935e94e521605b0d",
+    "typecheck.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "lint.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "reviewed.patch": "16ec792b354a753e8d04edb79adbc8b2027bed7a887f345ca6cb8444bc03470e"
+  }
+}

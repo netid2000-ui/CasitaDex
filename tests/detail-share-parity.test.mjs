@@ -82,3 +82,18 @@ test('leaving sessions cannot start new sharing, editing or saving before blur',
  const s=fixture('EngShare');s.render();const send=s.node('Share selected details').props.onPress;s.node('Cancel sharing').props.onPress();send();await settle();assert.equal(s.shares.length,0);s.unmount();
  const d=fixture();d.render();const share=d.node('Share memory').props.onPress,edit=d.node('Edit memory').props.onPress;d.node('Back').props.onPress();share();edit();d.render();assert.equal(d.nav.length,1);assert.equal(d.node('Memory name'),undefined);d.unmount();
 });
+
+
+test('failed edit feedback belongs beside actions and clears on Cancel without changing data',async()=>{
+ const f=fixture('EngDetail',true);f.render();await settle();f.render();
+ const original=structuredClone(f.snapshot);f.press('Edit memory');f.change('Memory name','');f.saveError='Synthetic validation failure';
+ f.press('Save & return to details');await settle();const failed=f.render();
+ assert.equal(f.node('Memory name').props.value,'');
+ assert.equal(failed.props.feedback?.props.text,'Synthetic validation failure');
+ assert.deepEqual(f.snapshot,original);
+ f.press('Cancel');const detail=f.render();
+ assert.equal(detail.props.feedback,null);assert.equal(f.node('Memory name'),undefined);
+ assert.ok(!f.nodes().some(n=>n.type==='Copy'&&n.props.children.includes('Synthetic validation failure')));
+ f.press('Edit memory');assert.equal(f.render().props.feedback.props.text,'');
+ assert.equal(f.node('Memory name').props.value,'Memory one');assert.deepEqual(f.snapshot,original);f.unmount();
+});

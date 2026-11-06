@@ -8,7 +8,7 @@ import { useIOSFocusScroll } from "./use-ios-focus-scroll";
 
 type Action = { label: string; onPress: () => void; disabled?: boolean; primary?: boolean };
 /** Fixed action region, not fixed-height buttons. Extreme layouts scroll actions independently. */
-export function ActionPage({ title, actions, children }: { title: string; actions: Action[]; children: React.ReactNode }) {
+export function ActionPage({ title, actions, feedback, children }: { title: string; actions: Action[]; feedback?: React.ReactNode; children: React.ReactNode }) {
   const { colors, s } = useTheme();
   const { large } = useData();
   const { fontScale } = useWindowDimensions();
@@ -38,6 +38,7 @@ export function ActionPage({ title, actions, children }: { title: string; action
           <View style={{ flexDirection: columns === 2 ? "row" : "column", gap: 10 }}>
             {actions.map(action => <View key={action.label} style={{ flex: columns === 2 ? 1 : undefined, minWidth: 0 }}><Button {...action} /></View>)}
           </View>
+          {feedback}
           <Copy accessibilityRole="header" kind="section" style={{ textAlign: "center", fontWeight: "700", borderTopWidth: 1, borderBottomWidth: 1, borderColor: colors.muted, paddingVertical: 8 }}>{title}</Copy>
         </View>
       </ScrollView>)}

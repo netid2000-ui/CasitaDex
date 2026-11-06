@@ -1603,5 +1603,13 @@
     "status": "HISTORICAL_DIAGNOSTIC_NOT_RELEASE_ACCEPTED",
     "scope": "Earlier 9da plus 1d0836d coordinate-only diagnostic established native extent 1399 excluded the focused input. It was not release accepted. The later 8cc uninstrumented repair now has separately verified bounded native outcomes."
   },
-  "latest_documentation_base_commit": "8cc2862eaf2791379518e440d3b9d5833543ab0a"
+  "latest_documentation_base_commit": "8cc2862eaf2791379518e440d3b9d5833543ab0a",
+  "validation_feedback_source_followup": {
+    "status": "SOURCE_VERIFIED_NATIVE_PENDING",
+    "source_base": "ba3693282c31c7758d641fed48db9f960bd159c3",
+    "installed_runtime_unchanged": "8cc2862eaf2791379518e440d3b9d5833543ab0a",
+    "report_path": "docs/qa/SB121_VALIDATION_FEEDBACK_SOURCE_REPAIR_20261106.json",
+    "report_sha256": "4a1de66fd1658e292df90115c35055ce7bd91548cca648acdfc774b66fbd1608",
+    "scope": "Edit validation feedback placed beside fixed actions and cleared on Cancel; 43 focused source tests/typecheck/targeted lint pass. Candidate native proof pending; prior runtime acceptance unchanged."
+  }
 }

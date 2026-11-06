@@ -522,10 +522,10 @@ function DetailSession({id}:{id:string}){
   const m=edit??memory;
   const photos=orderedMemoryPhotos(m,e.snapshot?.data.media.media);
   function confirm(label:string,task:(store:EngStore)=>Promise<unknown>){Alert.alert(label,"Your previous full save remains recoverable.",[{text:"Cancel",style:"cancel"},{text:label,onPress:()=>void e.run(task)}]);}
-  function beginEdit(){if(!memory||e.busy||saving.current||leaving.current||!focused.current)return;setReview(false);setEdit(JSON.parse(JSON.stringify(memory)));setRevision(e.snapshot!.revision);}
+  function beginEdit(){if(!memory||e.busy||saving.current||leaving.current||!focused.current)return;e.setStatus("");setReview(false);setEdit(JSON.parse(JSON.stringify(memory)));setRevision(e.snapshot!.revision);}
   async function saveEdit(){
     if(!edit||!memory||memory.lifecycle==="recently_deleted"||saving.current||e.busy||leaving.current||!focused.current)return;
-    saving.current=true;
+    saving.current=true;e.setStatus("");
     try{
       // run's boolean describes refresh, not persistence. Keep the committed snapshot even if readback fails.
       let committed:EngSnapshot|undefined;
@@ -536,13 +536,13 @@ function DetailSession({id}:{id:string}){
   }
   function backToOrigin(){if(e.busy||saving.current||leaving.current)return;leaving.current=true;if(router.canGoBack())router.back();else router.replace("/answers");}
   const actions=edit?[
-    {label:"Cancel",disabled:e.busy,onPress:()=>{if(!saving.current&&!e.busy&&!leaving.current&&focused.current){setEdit(null);setLabelName("");}}},
+    {label:"Cancel",disabled:e.busy,onPress:()=>{if(!saving.current&&!e.busy&&!leaving.current&&focused.current){setEdit(null);setLabelName("");e.setStatus("");}}},
     {label:"Save & return to details",primary:true,disabled:e.busy||!memory||memory.lifecycle==="recently_deleted",onPress:()=>void saveEdit()},
   ]:[
     {label:router.canGoBack()?"Back":"Find memories",disabled:e.busy,onPress:backToOrigin},
     ...(memory&&memory.lifecycle!=="recently_deleted"?[{label:"Edit memory",primary:true,disabled:e.busy,onPress:beginEdit}]:[]),
   ];
-  return <ActionPage title={edit?"Editing memory":"Memory details"} actions={actions}>
+  return <ActionPage title={edit?"Editing memory":"Memory details"} actions={actions} feedback={edit?<Status text={e.status} />:null}>
     {m?<Copy accessibilityRole="header" kind="title">{m.title}</Copy>:null}
     {photo?<PhotoViewer path={photo.path} label={photo.label} photos={photos.map((p,i)=>({path:p.path,label:"Photo "+(i+1)+" of "+m?.title}))} onClose={()=>setPhoto(null)} />:null}
     {m?<>
@@ -595,7 +595,7 @@ function DetailSession({id}:{id:string}){
         }} />:null}
       </>}
     </>:<Copy>{e.snapshot?"This memory is no longer available.":"Reading memory…"}</Copy>}
-    <Status text={e.status} />
+    {edit?null:<Status text={e.status} />}
   </ActionPage>;
 }
 export function EngShare(){
