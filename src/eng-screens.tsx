@@ -286,7 +286,9 @@ export function EngReminders(){
  }
  return <Page independent title="Reminders" hideHeading><BrandHeader /><EditorialIntro eyebrow="A little help remembering" title="What needs attention." description="The right details, at the right time." />
  <Copy>Reminders are saved locally. {permission==="allowed"
-   ?"Phone notifications are enabled. Linked reminders are scheduled for 9:00 AM local time."
+   ?(Platform.OS==="android"
+     ?"Phone notifications are enabled. Android may delay alerts. Linked reminders use 9:00 AM local time."
+     :"Phone notifications are enabled. Linked reminders are scheduled for 9:00 AM local time.")
    :permission==="denied"?"To receive alerts, allow CasitaDex notifications in Settings."
    :permission==="undetermined"?"Enable phone notifications to receive reminder alerts."
    :"Phone notifications are unavailable on this build."}</Copy>
