@@ -1186,7 +1186,8 @@
     "dependency_glob_backport": "docs/qa/SB121_DEPENDENCY_GLOB_BACKPORT_20261106.json",
     "ios_7fa_maximum_unfocused_fields": "docs/qa/SB121_IOS_7FA_MAXIMUM_UNFOCUSED_FIELDS_20261106.json",
     "ios_7fa_maximum_lower_fields": "docs/qa/SB121_IOS_7FA_MAXIMUM_LOWER_FIELDS_20261106.json",
-    "ios_7fa_maximum_date_format": "docs/qa/SB121_IOS_7FA_MAXIMUM_DATE_FORMAT_20261106.json"
+    "ios_7fa_maximum_date_format": "docs/qa/SB121_IOS_7FA_MAXIMUM_DATE_FORMAT_20261106.json",
+    "ios_7fa_linked_nov7_preparation": "docs/qa/SB121_IOS_7FA_LINKED_REMINDER_PREPARATION_20261107.json"
   },
   "execution_limits": [
     "Receipt consolidation and SHA-256 verification only. No duplicate app tests, builds, device actions or source/index edits.",
@@ -1852,19 +1853,29 @@
   ],
   "current_ios_preserved_state": {
     "source_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
-    "revision": 43,
-    "saved_memories": 3,
+    "revision": 53,
+    "saved_memories": 4,
     "photo_files": 1,
     "standalone_reminders": 2,
     "draft": null,
-    "baseline_evidence_ref": "ios_7fa_share_private_preview",
-    "baseline_sha256": "90ce7bf2c37f2788737e647b0c5f35004fabf23a3c098a286a628937c594a82c",
-    "note": "Includes one additive synthetic privacy record; original records unchanged. Use this baseline for future preservation checks, not revision16."
+    "baseline_evidence_ref": "ios_7fa_linked_nov7_preparation",
+    "baseline_sha256": "95706d9a2146b8281eab5eed10c75487515e6d9f3df5bfe83bc198e5d96e0ec6",
+    "note": "Includes additive linked Nov7 09:00 synthetic memory and prior privacy fixture. All original memories, standalone reminders and media unchanged. One pending linked notification retained. Use revision53 final-state baseline for future preservation checks, not revision43/16."
   },
   "dependency_remediation_followup": {
     "report": "docs/qa/SB121_DEPENDENCY_GLOB_BACKPORT_20261106.json",
     "sourceLockSha256": "067069932001e98acd12d94cdcd3f26e5c23ffefcfd58b1d605362c465cedc56",
     "installedRuntimeLockSha256": "7767f310cb183d9e2de29deed82d79ee7cd9a08dd29bddf5a979474fe7c856c7",
     "status": "PARTIAL_REMEDIATION_SECURITY_GATE_OPEN"
+  },
+  "linked_reminder_current_followup": {
+    "status": "PREPARED_NATIVE_PENDING_VERIFIED_DELIVERY_NOT_YET_DUE",
+    "evidence_ref": "ios_7fa_linked_nov7_preparation",
+    "scheduled_local": "2026-11-07T09:00:00-06:00",
+    "scheduled_utc": "2026-11-07T15:00:00+00:00",
+    "memory_id": "e_mw5juou6_clvi90vgve",
+    "notification_identifier": "casitadex:unified-reminder-v1:memory:e_mw5juou6_clvi90vgve",
+    "delivery": "NOT_YET_DUE",
+    "tap": "NOT_RUN"
   }
 }

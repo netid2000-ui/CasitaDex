@@ -1,0 +1,88 @@
+{
+  "status": "PREPARED_NATIVE_PENDING_VERIFIED_DELIVERY_NOT_YET_DUE",
+  "runtime_source": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
+  "device": "C88DEF5E-63F3-426C-9B50-8CF131C3C58F",
+  "bundle": "com.designsbyfa.casitadex.dev",
+  "notification_identifier": "casitadex:unified-reminder-v1:memory:e_mw5juou6_clvi90vgve",
+  "scheduled_local": "2026-11-07T09:00:00-06:00",
+  "scheduled_utc": "2026-11-07T15:00:00+00:00",
+  "scheduled_epoch_ms": 1794063600000,
+  "native_trigger_fire_epoch_seconds": 1794063600.0084321,
+  "native_trigger_error_seconds": 0.008432149887084961,
+  "native_user_info": {
+    "kind": "memory",
+    "at": 1794063600000.0,
+    "sourceId": "e_mw5juou6_clvi90vgve"
+  },
+  "native_repeats": false,
+  "prior_pending_preserved": true,
+  "prior_delivered_preserved": true,
+  "pending_count_before": 0,
+  "pending_count_after": 1,
+  "preservation": {
+    "capturedUTC": "2026-11-06T22:32:51.031442+00:00",
+    "originalMemoriesEqual": true,
+    "otherDataDomainsEqual": true,
+    "otherEightTablesEqual": true,
+    "mediaEqual": true,
+    "runtimeEqual": true,
+    "addedMemories": [
+      {
+        "id": "e_mw5juou6_clvi90vgve",
+        "title": "SB121 7fa linked routing 2026-11-07",
+        "answer": "Synthetic linked notification target. Preserve this memory for routing verification.",
+        "location": "",
+        "notes": "",
+        "spaceId": null,
+        "categoryIds": [],
+        "legacyContext": null,
+        "confidence": "Unknown",
+        "source": "",
+        "history": [],
+        "lifecycle": "active",
+        "mediaIds": [],
+        "createdAt": "2026-11-06T22:32:49.196Z",
+        "due": "2026-11-07",
+        "updatedAt": "2026-11-06T22:32:49.196Z",
+        "events": [
+          {
+            "id": "e_mw5jvqjw_pdmt4gycbb",
+            "type": "created",
+            "at": "2026-11-06T22:32:49.196Z"
+          },
+          {
+            "id": "e_mw5jvqjw_kd5ugnz2kk",
+            "type": "reminder_scheduled",
+            "at": "2026-11-06T22:32:49.196Z",
+            "due": "2026-11-07"
+          }
+        ]
+      }
+    ],
+    "draft": null,
+    "oldRevision": 43,
+    "newRevision": 53
+  },
+  "host_clock_observed": "2026-11-06 16:33:13 CST -0600",
+  "clock_modified": false,
+  "evidence_directory": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB121/ios-7fa-linked-20261107-preparation",
+  "delivery_acceptance": "NOT_RUN_FUTURE_EVENT",
+  "tap_acceptance": "NOT_RUN",
+  "release": "NO-GO",
+  "fixture": {
+    "id": "e_mw5juou6_clvi90vgve",
+    "title": "SB121 7fa linked routing 2026-11-07",
+    "answer": "Synthetic linked notification target. Preserve this memory for routing verification.",
+    "due": "2026-11-07",
+    "lifecycle": "active",
+    "mediaIds": []
+  },
+  "job": {
+    "id": "ecd2f2c92d0947be",
+    "exit": 0,
+    "device_lock_released": true
+  },
+  "evidence_manifest_sha256": "f78ebfbbb42a7b42b2ee841f198cda7aee50e9a02ea68bda280ccd3f41ba1363",
+  "final_state_sha256": "95706d9a2146b8281eab5eed10c75487515e6d9f3df5bfe83bc198e5d96e0ec6",
+  "handoff": "Before09:00CST, verify exact device/build/fixture and pending request, coordinate device lock, and establish desired app lifecycle. After15:00UTC observe actual delivered identifier, use actual Notification Center Open, verify exact memory title/answer and no stale replay. Do not inject, alter clock, reschedule behind app, or delete existing fixtures. Preparation alone is not delivery/tap acceptance. Current app returned Home; cold delivery state has not been established."
+}
