@@ -1,0 +1,49 @@
+{
+  "status": "PASS_BOUNDED_NATIVE_NONEMPTY_PRIVATE_FIELD_SHEET",
+  "runtime_source": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
+  "completed_utc": "2026-11-06T21:56:53.078782+00:00",
+  "result": {
+    "atUTC": "2026-11-06T21:56:52.007Z",
+    "previewMatched": true,
+    "nativeCaptionMatchedExactly": true,
+    "unselectedNonemptyLocationSourceExcluded": true,
+    "osSheetCanceledWithoutRecipient": true,
+    "exactDetailReturned": true
+  },
+  "native_caption": {
+    "expected": "SB121 7fa Share privacy synthetic PUBLIC ANSWER SB121 Notes: PRIVATE NOTES SB121",
+    "actual": "SB121 7fa Share privacy synthetic PUBLIC ANSWER SB121 Notes: PRIVATE NOTES SB121"
+  },
+  "scope": "Actual iOS LP.CaptionBar.BottomCaption matches the reviewed synthetic name/answer/notes after newline-to-space normalization. Nonempty unselected location/source excluded. Native sheet dismissed through observed PopoverDismissRegion without recipient, Copy, Save to Files or external delivery. Exact record return verified. Not byte-level exported-file capture.",
+  "preservation": {
+    "all_ten_tables_equal": true,
+    "media_equal": true,
+    "runtime_equal": true,
+    "revision": 43,
+    "saved_memories": 3,
+    "photo_files": 1,
+    "standalone_reminders": 2,
+    "draft": null,
+    "final_home": true
+  },
+  "reused_evidence": "Existing preview default/opt-in/deselection run and source exact-message forwarding tests reused; this is only the missing current native OS handoff/cancel check with nonempty optional fields.",
+  "remaining": [
+    "Asynchronous preparation/background/source-change races remain source-tested but not fully native-qualified.",
+    "Other optional-field/photo combinations, actual external delivery and other recorded release gates not certified."
+  ],
+  "boundaries": {
+    "builds": 0,
+    "source_changes": 0,
+    "saved_data_writes": 0,
+    "recipient_selected": false,
+    "other_devices_touched": false,
+    "permissions_changed": false,
+    "job_exit_code": 0,
+    "device_lock_released": true,
+    "release": "NO-GO"
+  },
+  "evidence_directory": "WORK-SB121/ios-7fa-share-private-native-sheet",
+  "raw_result_sha256": "a01ead37148e087fd3bb33e25b8740ed8e8c8a15cbd9c65a5df98a3cba305fd8",
+  "manifest_sha256": "a4abfff62769d45834afccbe2a190d24a365f4f35f5907a672c8d72223bbe9a8",
+  "manifest_files": 27
+}

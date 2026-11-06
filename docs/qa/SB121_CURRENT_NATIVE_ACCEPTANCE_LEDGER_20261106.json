@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "status": "VERIFIED_PARTIAL_MILESTONE_SNAPSHOT",
-  "updated_at_utc": "2026-11-06T21:53:37.624643+00:00",
+  "updated_at_utc": "2026-11-06T21:56:53.078782+00:00",
   "release": "NO-GO",
   "latest_runtime_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
   "installed_runtime_checkpoint": {
@@ -47,7 +47,8 @@
         "ios_7fa_maximum_message_coverage",
         "ios_7fa_maximum_manual_refocus",
         "ios_7fa_share_session_isolation",
-        "ios_7fa_share_private_preview"
+        "ios_7fa_share_private_preview",
+        "ios_7fa_share_private_native_sheet"
       ]
     },
     "android": {
@@ -1162,6 +1163,13 @@
       "raw_result_sha256": "027c41513f91d64f1d4205cb0f7c7541bbfd7741658fa408316ae53dcaf6e219",
       "raw_manifest_sha256": "7fa2abb8b33582dea9c380fb52810119d16db56de0622f9c75d8ead721362cf2",
       "source_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606"
+    },
+    "ios_7fa_share_private_native_sheet": {
+      "relative_path": "docs/qa/SB121_IOS_7FA_SHARE_PRIVATE_NATIVE_SHEET_20261106.json",
+      "sha256": "e793ebe294de258ba068a2eb3f1ba3361e729645126a42579dc2d8ede9192e6a",
+      "raw_result_sha256": "a01ead37148e087fd3bb33e25b8740ed8e8c8a15cbd9c65a5df98a3cba305fd8",
+      "raw_manifest_sha256": "a4abfff62769d45834afccbe2a190d24a365f4f35f5907a672c8d72223bbe9a8",
+      "source_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606"
     }
   },
   "execution_limits": [
@@ -1554,6 +1562,15 @@
       "scope": "Native default preview excludes synthetic nonempty notes/location/source; notes-only opt-in and deselect produce exact expected preview strings. One additive synthetic memory retained. Original records/eight other tables/media/runtime unchanged; state/recovery advance revision16 to43; no draft. No OS-sheet/external delivery claim.",
       "evidence_refs": [
         "ios_7fa_share_private_preview"
+      ]
+    },
+    {
+      "id": "IOS_7FA_NONEMPTY_PRIVATE_NATIVE_SHEET",
+      "status": "PASS_BOUNDED_NATIVE_NONEMPTY_PRIVATE_FIELD_SHEET",
+      "artifact_ref": "ios_7fa",
+      "scope": "Actual native text-sheet caption matches reviewed name/answer/notes with normalized newlines, excluding nonempty location/source. Cancel returns exact fixture; no recipient or external delivery. Ten tables/media/runtime exact at revision43. Async races remain separate.",
+      "evidence_refs": [
+        "ios_7fa_share_private_native_sheet"
       ]
     }
   ],
