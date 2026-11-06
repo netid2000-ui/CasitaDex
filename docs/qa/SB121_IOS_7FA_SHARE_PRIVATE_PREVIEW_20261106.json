@@ -1,0 +1,84 @@
+{
+  "status": "PASS_BOUNDED_NATIVE_NONEMPTY_PRIVATE_FIELD_PREVIEW",
+  "runtime_source": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
+  "completed_utc": "2026-11-06T21:53:37.624643+00:00",
+  "result": {
+    "atUTC": "2026-11-06T21:53:36.565Z",
+    "defaultExcludesNonemptyNotesLocationSource": true,
+    "notesOptInIncludesOnlyNotes": true,
+    "deselectionRemovesNotes": true,
+    "returnsExactSyntheticMemory": true,
+    "osShareSheetOpened": false,
+    "fixtureRetained": true
+  },
+  "native_preview_text": {
+    "03-default-payload.txt": "SB121 7fa Share privacy synthetic\nPUBLIC ANSWER SB121",
+    "04-notes-only-payload.txt": "SB121 7fa Share privacy synthetic\nPUBLIC ANSWER SB121\nNotes: PRIVATE NOTES SB121",
+    "05-deselected-payload.txt": "SB121 7fa Share privacy synthetic\nPUBLIC ANSWER SB121"
+  },
+  "scope": "Actual native accessibility preview strings inspected for synthetic nonempty notes/location/source. Default excludes all three; notes-only opt-in adds exactly Notes; deselection restores exact original preview. Screenshot confirms selected toggle state; full preview lies below captured fold. No OS-sheet payload or delivery claim.",
+  "preservation": {
+    "original_memories_equal": true,
+    "other_data_domains_equal": true,
+    "other_eight_tables_equal": true,
+    "media_equal": true,
+    "runtime_equal": true,
+    "added_synthetic_memories": 1,
+    "saved_memories_now": 3,
+    "photo_files": 1,
+    "standalone_reminders": 2,
+    "draft": null,
+    "old_revision": 16,
+    "new_revision": 43,
+    "changed_tables": [
+      "eng_state_v2",
+      "eng_recovery_v2"
+    ]
+  },
+  "retained_fixture": {
+    "id": "e_mw5i8d1s_1o3674pd2s",
+    "title": "SB121 7fa Share privacy synthetic",
+    "purpose": "Native opt-in privacy acceptance; retain without deletion"
+  },
+  "new_preservation_baseline": {
+    "path": "WORK-SB121/ios-7fa-share-private-preview-bounded/final-state.json",
+    "sha256": "90ce7bf2c37f2788737e647b0c5f35004fabf23a3c098a286a628937c594a82c"
+  },
+  "setup_stops": [
+    {
+      "directory": "ios-7fa-share-private-preview",
+      "reason": "Page scrolling overlapped keyboard suggestions and altered only new draft answer; stopped before Save. Answer subsequently corrected.",
+      "manifest_sha256": "e0abb22465e0f7259b6499de48fca6cb74a16399a6add8d76b3619ba1222e709"
+    },
+    {
+      "directory": "ios-7fa-share-private-preview-resume",
+      "reason": "Add Memory disabled with existing draft; switched to observed Resume Draft, no duplicate created.",
+      "manifest_sha256": "0a5ef34764ab88a7b83e3c2f895a6df0991dcf4790879e1ad700d3f9803d3ce7"
+    },
+    {
+      "directory": "ios-7fa-share-private-preview-continue",
+      "reason": "Keyboard-position guard stopped during animation after correcting answer. Continued same draft using settled background-tap dismissal.",
+      "manifest_sha256": "2b586caec05c3d11479c72e07e8dfc52d13671f7a40f4d73d338562a15dc218b"
+    }
+  ],
+  "reused_evidence": "Existing source tests establish exact selected payload forwarding and stale/background guards; not rerun. Earlier owner records and native photo/text-sheet results retain attribution.",
+  "remaining": [
+    "Native OS-sheet payload with these nonempty fields, other optional-field combinations and asynchronous preparation/background/source-change races not established by this run.",
+    "Other release and approval-held gates remain open."
+  ],
+  "boundaries": {
+    "builds": 0,
+    "source_changes": 0,
+    "other_devices_touched": false,
+    "permissions_changed": false,
+    "external_transmission": false,
+    "job_exit_code": 0,
+    "device_lock_released": true,
+    "final_home": true,
+    "release": "NO-GO"
+  },
+  "evidence_directory": "WORK-SB121/ios-7fa-share-private-preview-bounded",
+  "raw_result_sha256": "027c41513f91d64f1d4205cb0f7c7541bbfd7741658fa408316ae53dcaf6e219",
+  "manifest_sha256": "7fa2abb8b33582dea9c380fb52810119d16db56de0622f9c75d8ead721362cf2",
+  "manifest_files": 60
+}

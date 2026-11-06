@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "status": "VERIFIED_PARTIAL_MILESTONE_SNAPSHOT",
-  "updated_at_utc": "2026-11-06T21:42:56.203222+00:00",
+  "updated_at_utc": "2026-11-06T21:53:37.624643+00:00",
   "release": "NO-GO",
   "latest_runtime_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
   "installed_runtime_checkpoint": {
@@ -46,7 +46,8 @@
         "ios_7fa_maximum_cancel",
         "ios_7fa_maximum_message_coverage",
         "ios_7fa_maximum_manual_refocus",
-        "ios_7fa_share_session_isolation"
+        "ios_7fa_share_session_isolation",
+        "ios_7fa_share_private_preview"
       ]
     },
     "android": {
@@ -1154,6 +1155,13 @@
       "raw_result_sha256": "22c35e0e2978ac2b6a53879fcbab6ec645aadb28756c65ecaae03baf4b46f472",
       "raw_manifest_sha256": "8c84bb81bf5eac0acbe0b4613f96aeb3168d430df44e392a2927dc72aa8be5c8",
       "source_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606"
+    },
+    "ios_7fa_share_private_preview": {
+      "relative_path": "docs/qa/SB121_IOS_7FA_SHARE_PRIVATE_PREVIEW_20261106.json",
+      "sha256": "7ebfcee8938fe39aa68f0546e4a168ef8e6f6257b00c88fae200bdc64ee22ac8",
+      "raw_result_sha256": "027c41513f91d64f1d4205cb0f7c7541bbfd7741658fa408316ae53dcaf6e219",
+      "raw_manifest_sha256": "7fa2abb8b33582dea9c380fb52810119d16db56de0622f9c75d8ead721362cf2",
+      "source_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606"
     }
   },
   "execution_limits": [
@@ -1538,6 +1546,15 @@
       "evidence_refs": [
         "ios_7fa_share_session_isolation"
       ]
+    },
+    {
+      "id": "IOS_7FA_NONEMPTY_PRIVATE_PREVIEW",
+      "status": "PASS_BOUNDED_NATIVE_NONEMPTY_PRIVATE_FIELD_PREVIEW",
+      "artifact_ref": "ios_7fa",
+      "scope": "Native default preview excludes synthetic nonempty notes/location/source; notes-only opt-in and deselect produce exact expected preview strings. One additive synthetic memory retained. Original records/eight other tables/media/runtime unchanged; state/recovery advance revision16 to43; no draft. No OS-sheet/external delivery claim.",
+      "evidence_refs": [
+        "ios_7fa_share_private_preview"
+      ]
     }
   ],
   "current_android_preserved_state": {
@@ -1790,5 +1807,16 @@
       },
       "historical_results_unchanged": "Prior bb235/5dc/9da results retain exact source/artifact attribution. No prior failure is rewritten as a pass and no composite cell is promoted."
     }
-  ]
+  ],
+  "current_ios_preserved_state": {
+    "source_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
+    "revision": 43,
+    "saved_memories": 3,
+    "photo_files": 1,
+    "standalone_reminders": 2,
+    "draft": null,
+    "baseline_evidence_ref": "ios_7fa_share_private_preview",
+    "baseline_sha256": "90ce7bf2c37f2788737e647b0c5f35004fabf23a3c098a286a628937c594a82c",
+    "note": "Includes one additive synthetic privacy record; original records unchanged. Use this baseline for future preservation checks, not revision16."
+  }
 }
