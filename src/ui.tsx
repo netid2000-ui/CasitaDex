@@ -54,6 +54,7 @@ export function Button({
   label,
   onPress,
   selected,
+  expanded,
   disabled = false,
   primary = false,
   variant = "tonal",
@@ -62,6 +63,7 @@ export function Button({
   label: string;
   onPress: () => void;
   selected?: boolean;
+  expanded?: boolean;
   disabled?: boolean;
   primary?: boolean;
   variant?: "tonal" | "quiet";
@@ -75,8 +77,9 @@ export function Button({
       onBlur={() => setFocused(false)}
       accessibilityRole="button"
       aria-pressed={Platform.OS === "web" ? selected : undefined}
+      aria-expanded={Platform.OS === "web" ? expanded : undefined}
       accessibilityState={
-        Platform.OS === "web" ? { disabled } : { selected, disabled }
+        Platform.OS === "web" ? { disabled } : { selected, disabled, expanded }
       }
       disabled={disabled}
       onPress={onPress}

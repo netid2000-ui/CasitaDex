@@ -1,3 +1,4 @@
+import { observeReduceMotion, useStatusAnnouncement } from "./accessibility-feedback";
 import { enableReminderAlerts, getReminderPermission, type ReminderPermission } from "./reminder-alerts";
 import type { RepeatSchedule } from "./reminder-recurrence";
 import { backupReviewReducer, emptyBackupReview } from "./backup-review";
@@ -52,7 +53,7 @@ function useEng(){
   }
   return {snapshot,setSnapshot,status,setStatus,busy,run,refresh};
 }
-function Status({text}:{text:string}){return text ? <Copy kind="small" accessibilityLiveRegion="polite">{text}</Copy> : null;}
+function Status({text}:{text:string}){useStatusAnnouncement(text);return text ? <Copy kind="small" accessibilityLiveRegion="polite">{text}</Copy> : null;}
 function MemoryLink({memory,data}:{memory:MemoryV2;data?:EngSnapshot["data"]}){
   const {s}=useTheme();
   const firstPhoto=!memory.answer?orderedMemoryPhotos(memory,data?.media.media)[0]:undefined;
@@ -65,6 +66,8 @@ function MemoryLink({memory,data}:{memory:MemoryV2;data?:EngSnapshot["data"]}){
 type ViewerPhoto={path:string;label:string};
 function PhotoViewer({path,label,photos,onClose}:{path:string;label:string;photos?:ViewerPhoto[];onClose:()=>void}){
   const {width,height}=useWindowDimensions(),{colors}=useTheme();
+  const [reduceMotion,setReduceMotion]=useState(true);
+  useEffect(()=>observeReduceMotion(setReduceMotion),[]);
   const items=useMemo(()=>photos?.length?photos:[{path,label}],[photos,path,label]);
   const [index,setIndex]=useState(()=>Math.max(0,items.findIndex(p=>p.path===path))),[zoom,setZoom]=useState(1);
   const zoomRef=useRef(1),pinch=useRef<{distance:number;zoom:number}|null>(null),usedPinch=useRef(false);
@@ -105,8 +108,8 @@ function PhotoViewer({path,label,photos,onClose}:{path:string;label:string;photo
     },
     onResponderTerminate:()=>{pinch.current=null;origin.current=null;},
   };
-  return <Modal visible onRequestClose={onClose} animationType="slide" accessibilityViewIsModal>
-    <ScrollView style={{flex:1,backgroundColor:colors.paper}} contentContainerStyle={{flexGrow:1,padding:20,paddingTop:48,gap:12}}>
+  return <Modal visible onRequestClose={onClose} animationType={reduceMotion?"none":"slide"} accessibilityViewIsModal>
+    <ScrollView onAccessibilityEscape={onClose} style={{flex:1,backgroundColor:colors.paper}} contentContainerStyle={{flexGrow:1,padding:20,paddingTop:48,gap:12}}>
       <Copy accessibilityRole="header">{selected.label}</Copy>
       <Button label="Close photo" onPress={onClose} />
       <View style={{flexDirection:"row",flexWrap:"wrap",gap:10}}>
@@ -312,7 +315,7 @@ export function EngReminders(){
  {editing===null?visibleItems.map(r=><View key={r.id} style={s.panel}>
   <Copy style={{fontWeight:"700"}}>{r.title}</Copy><Copy>{r.dueDate} at {r.dueTime} · {r.repeat}{r.completed?" · Completed":""}</Copy>
   {r.notes?<Copy kind="small">{r.notes}</Copy>:null}
-  <Button variant="quiet" label={expandedReminder===r.id?"Close actions":"Manage reminder"} onPress={()=>setExpandedReminder(old=>old===r.id?null:r.id)}/>
+  <Button variant="quiet" expanded={expandedReminder===r.id} label={expandedReminder===r.id?"Close actions":"Manage reminder"} onPress={()=>setExpandedReminder(old=>old===r.id?null:r.id)}/>
   {expandedReminder===r.id?<>  <Button label="Edit" disabled={busy} onPress={()=>edit(r)}/>
   <Button label={r.completed?"Mark Incomplete":"Mark Complete"} disabled={busy} onPress={()=>void act(()=>completeStandaloneReminder(r.id,!r.completed),"Reminder updated.")}/>
   <Button label="Delete Reminder" disabled={busy} onPress={()=>Alert.alert("Delete reminder?","This standalone reminder will be permanently deleted. Saved memories are not affected.",[{text:"Cancel",style:"cancel"},{text:"Delete",style:"destructive",onPress:()=>void act(()=>deleteStandaloneReminder(r.id),"Reminder deleted.")}])}/> </>:null}
@@ -359,7 +362,7 @@ export function EngMemories(){
  <ScrollView horizontal showsHorizontalScrollIndicator contentContainerStyle={{flexDirection:"row",gap:8,paddingBottom:4}}>{(["active","archived","recently_deleted"] as const).map(value=><Button compact key={value} label={value==="active"?"Active":value==="archived"?"Archived":"Recently Deleted"} selected={f.lifecycle===value} onPress={()=>filter({lifecycle:value,reminder:"all"})} />)}</ScrollView>
  <View style={{gap:6}}><Copy kind="small" style={{fontWeight:"600"}}>Space</Copy><ScrollView horizontal showsHorizontalScrollIndicator contentContainerStyle={{flexDirection:"row",gap:8,paddingBottom:4}}><Button compact label="All spaces" selected={f.space==="all"} onPress={()=>filter({space:"all"})} /><Button compact label="Unassigned" selected={f.space===null} onPress={()=>filter({space:null})} />{e.snapshot?.data.spaces.map(x=><Button compact key={x.id} label={x.name} selected={f.space===x.id} onPress={()=>filter({space:x.id})} />)}</ScrollView></View>
  <View style={{gap:6}}><Copy kind="small" style={{fontWeight:"600"}}>Categories (any selected)</Copy><ScrollView horizontal showsHorizontalScrollIndicator contentContainerStyle={{flexDirection:"row",gap:8,paddingBottom:4}}><Button compact label="All categories" selected={!f.categories.length&&!f.uncategorized} onPress={()=>filter({categories:[],uncategorized:false})} /><Button compact label="Uncategorized" selected={f.uncategorized} onPress={()=>filter({categories:[],uncategorized:true})} />{e.snapshot?.data.categories.map(x=><Button compact key={x.id} label={x.name} selected={f.categories.includes(x.id)} onPress={()=>filter({uncategorized:false,categories:f.categories.includes(x.id)?f.categories.filter(id=>id!==x.id):[...f.categories,x.id]})} />)}</ScrollView></View>
- <Button compact label={filters?"Hide more filters":"More filters"} onPress={()=>setFilters(!filters)} />{filters?<>
+ <Button compact expanded={filters} label={filters?"Hide more filters":"More filters"} onPress={()=>setFilters(!filters)} />{filters?<>
  <Copy>Verification</Copy><View style={s.row}>{["all",...confidences].map(value=><Button compact key={value} label={value==="all"?"Any verification":value} selected={f.confidence===value} onPress={()=>filter({confidence:value})} />)}</View>
  <Copy>Reminders (active memories)</Copy><View style={s.row}>{["all","due","overdue","today","future","none"].map(value=><Button compact key={value} label={value==="all"?"Any reminder":value} selected={f.reminder===value} onPress={()=>filter({reminder:value})} />)}</View>
  <Copy>Attachments</Copy><View style={s.row}>{["all","photos","text"].map(value=><Button compact key={value} label={value==="all"?"Any attachment":value==="text"?"Without photos":"With photos"} selected={f.attachment===value} onPress={()=>filter({attachment:value})} />)}</View>
@@ -434,7 +437,7 @@ export function EngAdd(){
     {mode==="resume"?<><Copy kind="answer">{form?.title||"Unfinished memory"}</Copy>
       <Copy>{form?.photos.length??0} saved photos. Your draft is safe on this device.</Copy>
       <Button primary label="Continue Editing" disabled={disabled} onPress={()=>setMode("edit")} />
-      <Button variant="quiet" label="Draft options" disabled={disabled} onPress={()=>setDiscard(true)} />
+      <Button variant="quiet" expanded={discard} label="Draft options" disabled={disabled} onPress={()=>setDiscard(true)} />
     </>:null}
     {mode==="edit"?<>
       {photoFirst?<><Copy kind="section">Start with a photo</Copy><Copy>Take a photo or choose one from your device, then add a title and optional details.</Copy><View style={s.row}><Button label="Take photo" disabled={disabled} onPress={()=>void photo(true)} /><Button label="Choose photo" disabled={disabled} onPress={()=>void photo(false)} /></View></>:null}
@@ -442,13 +445,13 @@ export function EngAdd(){
       <Field maxLength={1000} label="The answer (or add a photo)" value={form?.answer??""} onChangeText={answer=>change({answer})} />
 
       <Copy>Photos ({form?.photos.length??0}/5)</Copy>
-      <Button label={managePhotos?"Hide saved photos":"View saved photos"} onPress={()=>setManagePhotos(!managePhotos)} />{managePhotos?<> {zoomPhoto?<PhotoViewer path={zoomPhoto.path} label={zoomPhoto.label} photos={form?.photos.map((p,i)=>({path:p.path,label:"Draft photo "+(i+1)}))} onClose={()=>setZoomPhoto(null)} />:null}{form?.photos.map((p,index)=><View key={p.id} style={s.panel}>
+      <Button expanded={managePhotos} label={managePhotos?"Hide saved photos":"View saved photos"} onPress={()=>setManagePhotos(!managePhotos)} />{managePhotos?<> {zoomPhoto?<PhotoViewer path={zoomPhoto.path} label={zoomPhoto.label} photos={form?.photos.map((p,i)=>({path:p.path,label:"Draft photo "+(i+1)}))} onClose={()=>setZoomPhoto(null)} />:null}{form?.photos.map((p,index)=><View key={p.id} style={s.panel}>
         <Image source={{uri:engPhotoUri(p.path)}} resizeMode="contain" accessibilityLabel={`Draft photo ${index+1}`} style={{width:"100%",height:260}} />
         <Button label={`Open draft photo ${index+1} to zoom`} onPress={()=>setZoomPhoto({path:p.path,label:`Draft photo ${index+1}`})} /><Button label={`Replace draft photo ${index+1}`} disabled={disabled} onPress={()=>void action(async store=>{const bytes=await chooseEngPhoto(false);if(!bytes){setStatus("Replacement canceled. Original photo kept.");return;}const next=await store.replacePhoto(form.id,p.id,bytes);update(next.draft!);setStatus("Draft photo replaced and verified.");})} /><Button label={`Remove draft photo ${index+1}`} disabled={disabled} onPress={()=>void action(async store=>{const next=await store.removePhoto(form.id,p.id);update(next.draft!);setStatus("Photo removed from draft. Previous save remains recoverable.");})} />
       </View>)}</>:null}
       <Button label="Take photo" disabled={disabled||(form?.photos.length??0)>=5} onPress={()=>void photo(true)} />
       <Button label="Browse image files" disabled={disabled||(form?.photos.length??0)>=5} onPress={()=>void photo("files")} /><Button label="Choose photo" disabled={disabled||(form?.photos.length??0)>=5} onPress={()=>void photo(false)} />
-      <Button label={organize?"Hide organization":"Organize (optional)"} onPress={()=>setOrganize(!organize)} />{organize?<><Copy>Space (optional)</Copy><View style={s.row}>
+      <Button expanded={organize} label={organize?"Hide organization":"Organize (optional)"} onPress={()=>setOrganize(!organize)} />{organize?<><Copy>Space (optional)</Copy><View style={s.row}>
         <Button label="Unassigned" selected={!form?.spaceId} disabled={disabled} onPress={()=>change({spaceId:null})} />
         {e.snapshot?.data.spaces.map(x=><Button key={x.id} label={x.name} selected={form?.spaceId===x.id} disabled={disabled} onPress={()=>change({spaceId:x.id})} />)}
       </View>
@@ -464,10 +467,10 @@ export function EngAdd(){
       <Field label="New Category name" value={newCategory} onChangeText={setNewCategory} />
       {form?.categoryIds.map(id=><Button key={`rename-${id}`} label={`Rename ${e.snapshot?.data.categories.find(c=>c.id===id)?.name} using new Category name`} disabled={disabled} onPress={()=>void action(async store=>{const snapshot=await store.load();await store.renameTaxonomy("category",id,newCategory,snapshot.revision);setNewCategory("");setStatus("Category renamed. Draft kept.");})} />)}
       <Button label="Create Category" disabled={disabled} onPress={()=>void action(async store=>{await store.taxonomy("category",newCategory);setNewCategory("");setStatus("Category created. Select it to add it to your memory.");})} />
-      </>:null}<Button label={details?"Hide more details":"More details (optional)"} onPress={()=>setDetails(!details)} />{details?<><Field maxLength={4000} label="Where it is (optional)" value={form?.location??""} onChangeText={location=>change({location})} /><Field maxLength={4000} label="Notes (optional)" multiline value={form?.notes??""} onChangeText={notes=>change({notes})} /><Field maxLength={200} label="Source (optional)" value={form?.source??""} onChangeText={source=>change({source})} /><Field maxLength={10} label="Reminder date (YYYY-MM-DD, optional)" value={form?.due??""} onChangeText={due=>change({due:due||undefined})} /></>:null}
+      </>:null}<Button expanded={details} label={details?"Hide more details":"More details (optional)"} onPress={()=>setDetails(!details)} />{details?<><Field maxLength={4000} label="Where it is (optional)" value={form?.location??""} onChangeText={location=>change({location})} /><Field maxLength={4000} label="Notes (optional)" multiline value={form?.notes??""} onChangeText={notes=>change({notes})} /><Field maxLength={200} label="Source (optional)" value={form?.source??""} onChangeText={source=>change({source})} /><Field maxLength={10} label="Reminder date (YYYY-MM-DD, optional)" value={form?.due??""} onChangeText={due=>change({due:due||undefined})} /></>:null}
 
       <Button primary label={working?"Saving…":"Save memory"} disabled={disabled} onPress={()=>void save()} />
-      {form?<Button variant="quiet" label="Draft options" disabled={disabled} onPress={()=>setDiscard(true)} />:null}
+      {form?<Button variant="quiet" expanded={discard} label="Draft options" disabled={disabled} onPress={()=>setDiscard(true)} />:null}
     </>:null}
     {duplicate?<View style={s.panel}><Copy>Possible duplicate. Your draft is safe. Review the existing memory or save anyway.</Copy>{(form&&e.snapshot?duplicateCandidates(form,e.snapshot):[]).map(m=><View key={m.id}><Copy>Existing {m.lifecycle==="recently_deleted"?"Recently Deleted":m.lifecycle} memory</Copy><MemoryLink memory={m} /></View>)}
       <Button primary label="Return to editing" onPress={()=>setDuplicate(false)} />
@@ -516,7 +519,7 @@ export function EngDetail(){
       </>:<>
         {m.answer?<Copy selectable kind="answer">{m.answer}</Copy>:<Copy>Photo memory</Copy>}
         <Copy>{m.confidence}{m.source?" · "+m.source:""}{m.verifiedAt?" · Last verified "+m.verifiedAt:""}</Copy>{m.location?<Copy>{m.location}</Copy>:null}{m.notes?<Copy>{m.notes}</Copy>:null}
-        {m.lifecycle!=="recently_deleted"?<><Button label={review?"Close review":"Review answer"} onPress={()=>{setSource(m.source);setReview(!review);}} />{review?<View style={s.panel}><Copy>Confirm against a source you checked. Opening a memory does not verify it.</Copy><Field disabled={e.busy} maxLength={200} label="Source checked" value={source} onChangeText={setSource} />{confidences.map(confidence=><Button key={confidence} label={confidence==="Verified"?"Confirm Verified":`Set ${confidence}`} disabled={e.busy} onPress={()=>void e.run(async store=>{await store.reviewMemory(m.id,{source,confidence},e.snapshot!.revision);setReview(false);})} />)}</View>:null}</>:null}
+        {m.lifecycle!=="recently_deleted"?<><Button expanded={review} label={review?"Close review":"Review answer"} onPress={()=>{setSource(m.source);setReview(!review);}} />{review?<View style={s.panel}><Copy>Confirm against a source you checked. Opening a memory does not verify it.</Copy><Field disabled={e.busy} maxLength={200} label="Source checked" value={source} onChangeText={setSource} />{confidences.map(confidence=><Button key={confidence} label={confidence==="Verified"?"Confirm Verified":`Set ${confidence}`} disabled={e.busy} onPress={()=>void e.run(async store=>{await store.reviewMemory(m.id,{source,confidence},e.snapshot!.revision);setReview(false);})} />)}</View>:null}</>:null}
         <Copy>Space: {e.snapshot?.data.spaces.find(s=>s.id===m.spaceId)?.name??"Unassigned"}</Copy>
         <Copy>Categories: {m.categoryIds.map(id=>e.snapshot?.data.categories.find(c=>c.id===id)?.name).join(", ")||"None"}</Copy>
         {m.legacyContext?<Copy>Original category: {m.legacyContext}</Copy>:null}
@@ -537,12 +540,12 @@ export function EngDetail(){
           <Button label="Restore memory" disabled={e.busy} onPress={()=>void e.run(store=>store.lifecycle(m.id,"active",day()))} />
           <Copy>Permanent cleanup is unavailable in this Development build. Deleted memories and photos remain recoverable.</Copy>
         </>}
-        {m.lifecycle==="recently_deleted"?<Button label={review?"Hide history":"Show history"} onPress={()=>setReview(!review)} />:null}
+        {m.lifecycle==="recently_deleted"?<Button expanded={review} label={review?"Hide history":"Show history"} onPress={()=>setReview(!review)} />:null}
         {review?<><Copy>History</Copy>{[...m.history.map((h,index)=>({id:`old-${index}-${h.id}`,order:h.date,text:`${h.date}: ${h.action}`})),...(m.events??[]).map(event=>({id:event.id,order:event.at,text:`${new Date(event.at).toLocaleString()}: ${eventText(event)}`}))].sort((a,b)=>a.order.localeCompare(b.order)).map(row=><Copy key={row.id}>{row.text}</Copy>)}
         {m.lifecycle!=="recently_deleted"?<><Field disabled={e.busy} label="History note" value={history} onChangeText={setHistory} />
           <Button label="Record history" disabled={e.busy} onPress={()=>void e.run(async store=>{if(!history.trim())throw Error("Add a history note first");await store.recordHistory(m.id,history.trim(),e.snapshot!.revision);setHistory("");})} />
         </>:null}
-        </>:null}<Button label="Share memory" disabled={e.busy} onPress={()=>{setFields([]);setPhotoIds([]);setSharing(true);}} />
+        </>:null}<Button expanded={sharing} label="Share memory" disabled={e.busy} onPress={()=>{setFields([]);setPhotoIds([]);setSharing(true);}} />
         {sharing?<View style={s.panel}><Copy accessibilityRole="header">Review what to share</Copy><Copy>The name and answer are included. Choose any additional details.</Copy>{(["location","notes","source","space","categories","verification","reminder"] as ShareField[]).map(field=><Button key={field} label={`Include ${field}`} disabled={e.busy} selected={fields.includes(field)} onPress={()=>setFields(old=>old.includes(field)?old.filter(x=>x!==field):[...old,field])} />)}<Copy selectable>{sharePreview(m,e.snapshot!.data,{fields,photoIds}).text}</Copy><Copy>{photoIds.length} photos selected.</Copy>{photos.map((p,i)=><Button key={p.id} label={`Include photo ${i+1}`} disabled={e.busy} selected={photoIds.includes(p.id)} onPress={()=>setPhotoIds(old=>old.includes(p.id)?old.filter(id=>id!==p.id):[...old,p.id])} />)}{photos.filter(p=>photoIds.includes(p.id)).map(p=>{return <Image key={p.id} source={{uri:engPhotoUri(p.path)}} resizeMode="contain" accessibilityLabel="Selected photo in share preview" style={{width:"100%",height:160}} />;})}{photoIds.length?<Copy>Selected original photos may contain location or other embedded metadata. The ZIP includes only the reviewed details and selected photos.</Copy>:null}<Button primary label="Open share sheet with reviewed details" disabled={e.busy} onPress={()=>void e.run(async()=>{const preview=sharePreview(m,e.snapshot!.data,{fields,photoIds});if(photoIds.length)e.setStatus(await shareEngPhotos(preview));else{const result=await Share.share({message:preview.text});e.setStatus(result.action===Share.dismissedAction?"Sharing canceled.":"Share sheet opened. Delivery is handled by the selected app.");}setSharing(false);},"")} /><Button label="Cancel sharing" disabled={e.busy} onPress={()=>setSharing(false)} /></View>:null}
       </>}
     </>:<Copy>{e.snapshot?"This memory is no longer available.":"Reading memory…"}</Copy>}
