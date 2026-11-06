@@ -1,0 +1,49 @@
+{
+  "status": "PASS_BOUNDED_REMINDER_DATE_FORMAT_PIXEL_COVERAGE",
+  "runtime_source": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
+  "base_head": "509dc6523bdb199f94b616590935bab760516ae2",
+  "profile": "App Large ON and system accessibility-extra-extra-extra-large before editor mount; portrait; no focus or keyboard.",
+  "verified": "New missing-date-format.png clearly renders -MM- and overlaps (YYYY above and DD below. Combined with reused previous start/end views, Reminder date (YYYY-MM-DD) is visually reconstructable across native scrolling views. This closes the specific missing middle-format pixel gap.",
+  "new_capture_sha256": "10cfda2cb0f36722b89f49749397099df34dacc0c110c234074b06a3611f02fe",
+  "reused_capture_sha256": {
+    "ios-7fa-maximum-unfocused-fields/view-15.png": "6561f51dcec8f4c03df934c7a86824b151dd45b73b4fe389112f16aced5c3d5b",
+    "ios-7fa-maximum-unfocused-fields/view-16.png": "6e58fcb9902551236daf299b2c0de4ba3f40cc0f6730707145186b00397a517d",
+    "ios-7fa-maximum-unfocused-fields/view-17.png": "90dee53e0eb51978da7d2377da20c5e94a6d9a37ecc46396942714a3203d24a6",
+    "ios-7fa-maximum-two-lower-fields/target-0-field.png": "f02dd09b1ec3a24c998465e97ed8e562a0a8d5bfd1ca2a99fea2eba4465d751b"
+  },
+  "scope_limits": [
+    "Not simultaneous full-label display, comfortable human reading or actual screen-reader acceptance.",
+    "No new field-reachability, focus/edit, Save, reminder scheduling or delivery test; those prior results remain separately attributed.",
+    "Oversized StaticText node remains absent in this AX capture although glyphs are present; no full AX label-geometry claim.",
+    "No app defect established, no source/scaling change warranted. Other release gates remain open."
+  ],
+  "execution": {
+    "job": "dd59ebc28c8b8ec7",
+    "exit": 0,
+    "navigation_swipes": 11,
+    "new_target_captures": 1,
+    "builds": 0,
+    "source_changes": 0,
+    "edits": 0,
+    "saves": 0,
+    "other_devices_or_heavy_lane_used": false,
+    "device_lock_released": true
+  },
+  "preservation": {
+    "all_ten_tables_equal": true,
+    "media_equal": true,
+    "runtime_equal": true,
+    "revision43_baseline_retained": true
+  },
+  "cleanup": {
+    "atUTC": "2026-11-06T22:26:32.808Z",
+    "home": true,
+    "portrait": true,
+    "systemLarge": true,
+    "appLargeOff": true,
+    "keyboardAbsent": true
+  },
+  "evidence_directory": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB121/ios-7fa-maximum-date-format",
+  "manifest_sha256": "5d2d73ccca6ced4ee376b8ee30a2491cb9a328374731b5aae15cec6f959125bf",
+  "release": "NO-GO"
+}
