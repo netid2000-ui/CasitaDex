@@ -1,9 +1,11 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AccessibilityInfo, AppState, Platform } from "react-native";
 
 // Only app-owned copy is spoken automatically. Unknown errors may contain file
 // paths or saved memory text, so direct users to the visible status instead.
 const spokenStatuses = new Set([
+  "This reading setting applies now but could not be saved. Select it again to retry.",
+  "Your reading settings could not be loaded. Choose them again to save.",
   "Saved on this device.",
   "Reminder saved on this device.",
   "Reminder updated.",
@@ -83,6 +85,48 @@ export function useStatusAnnouncement(text: string) {
     return () => { current.stop(); if (announcer.current === current) announcer.current = null; };
   }, []);
   useEffect(() => { announcer.current?.update(text); }, [text]);
+}
+
+
+// A conditional panel may mount with an old error. Consume hidden updates and
+// visibility transitions without replay; only a change while visible is new.
+export function createVisibleStatusAnnouncer(initialText = "", initiallyVisible = false) {
+  let current = createStatusAnnouncer(initialText), wasVisible = initiallyVisible, stopped = false;
+  return {
+    update(text: string, visible: boolean) {
+      if (stopped) return;
+      if (!visible || !wasVisible) {
+        current.stop();
+        current = createStatusAnnouncer(text);
+      } else current.update(text);
+      wasVisible = visible;
+    },
+    stop() { stopped = true; current.stop(); },
+  };
+}
+export function useVisibleStatusAnnouncement(text: string, visible: boolean): "polite" | "none" {
+  const initial = useRef({ text: text.trim(), visible });
+  const announcer = useRef<ReturnType<typeof createVisibleStatusAnnouncer> | null>(null);
+  const active = AppState.currentState === "active", currentText = text.trim();
+  const [observed, setObserved] = useState(() => ({
+    text: currentText, visible, active, liveRegion: "none" as "polite" | "none",
+  }));
+  let liveRegion = observed.liveRegion;
+  if (observed.text !== currentText || observed.visible !== visible || observed.active !== active) {
+    liveRegion = Platform.OS === "android" && active && observed.active &&
+      visible && observed.visible && observed.text !== currentText &&
+      statusAnnouncement(text) !== null ? "polite" : "none";
+    setObserved({ text: currentText, visible, active, liveRegion });
+  }
+  useEffect(() => {
+    const current = createVisibleStatusAnnouncer(initial.current.text, initial.current.visible);
+    announcer.current = current;
+    return () => { current.stop(); if (announcer.current === current) announcer.current = null; };
+  }, []);
+  useEffect(() => { announcer.current?.update(text, visible); }, [text, visible]);
+  // Keep an eligible Android live region stable until its input changes. Old
+  // mounted/revealed errors and background transitions remain non-live.
+  return liveRegion;
 }
 
 // Start conservatively before the asynchronous OS preference resolves. An event

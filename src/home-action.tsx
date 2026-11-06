@@ -32,7 +32,7 @@ export function HomeAction({ title, detail, icon, primary=false, disabled=false,
   const palette = isDark ? dark : light;
   const scale = large ? 2 : 1;
   const ink = primary ? "#FFFFFF" : palette.heading;
-  return <Pressable accessibilityRole="button" accessibilityLabel={title} accessibilityHint={detail}
+  return <Pressable accessibilityRole="button" accessibilityLabel={title} accessibilityHint={disabled ? disabledDetail : detail}
     disabled={disabled} accessibilityState={{disabled}} onPress={onPress} style={({pressed})=>({
       backgroundColor:primary?palette.action:palette.surface,borderRadius:17,
       borderWidth:disabled?1:0,borderColor:colors.muted,borderStyle:disabled?"dashed":"solid",

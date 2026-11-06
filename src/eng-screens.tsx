@@ -1,4 +1,4 @@
-import { observeReduceMotion, useStatusAnnouncement } from "./accessibility-feedback";
+import { observeReduceMotion, useStatusAnnouncement, useVisibleStatusAnnouncement } from "./accessibility-feedback";
 import { enableReminderAlerts, getReminderPermission, type ReminderPermission } from "./reminder-alerts";
 import type { RepeatSchedule } from "./reminder-recurrence";
 import { backupReviewReducer, emptyBackupReview } from "./backup-review";
@@ -7,7 +7,7 @@ import { listLinkedReminderMemories } from "./reminder-notification-projection";
 import DateTimePicker, { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
 import React, { useCallback, useEffect, useRef, useState, useMemo, useReducer } from "react";
 import { Platform, Alert, AppState, BackHandler, Image, Linking, Modal, Pressable, ScrollView, Share, View, useWindowDimensions } from "react-native";
-import { router, useFocusEffect, useLocalSearchParams } from "expo-router";
+import { router, useFocusEffect, useLocalSearchParams, usePathname } from "expo-router";
 import { Button, Copy, Field, Page, useTheme } from "./ui";
 import { useData } from "./state";
 import { getEngStore, getEngStorage, chooseEngPhoto, engPhotoUri, writeEngBackup, pickEngBackup, shareEngPhotos, writeEngText, type EngStore } from "./eng-runtime";
@@ -202,6 +202,7 @@ export function EngPhotos(){
 }
 export function EngReminders(){
  const {s}=useTheme(),params=useLocalSearchParams<{mode?:string;reminder?:string|string[]}>();
+ const routeVisible=usePathname()==="/reminders";
  const notificationTarget=reminderNotificationTarget(params.reminder);
  const memories = useEng();
  const linkedReminders = listLinkedReminderMemories(memories.snapshot?.data.memories ?? []);
@@ -284,6 +285,7 @@ export function EngReminders(){
   }catch(e){setStatus(message(e));}
   finally{operation.current=false;setBusy(false);}
  }
+ const linkedErrorLiveRegion=useVisibleStatusAnnouncement(memories.status?"Memory reminders could not refresh.":"",routeVisible&&editing===null&&!selectedNotification);
  return <Page independent title="Reminders" hideHeading><BrandHeader /><EditorialIntro eyebrow="A little help remembering" title="What needs attention." description="The right details, at the right time." />
  <Copy>Reminders are saved locally. {permission==="allowed"
    ?(Platform.OS==="android"
@@ -310,7 +312,7 @@ export function EngReminders(){
   {linkedSection("Upcoming memory reminders", upcoming)}
   {linkedSection("Past-due memory reminders", overdue)}
   {memories.status ? <View style={s.panel}>
-   <Status text="Memory reminders could not refresh." />
+   <Copy kind="small" accessibilityLiveRegion={linkedErrorLiveRegion}>Memory reminders could not refresh.</Copy>
    <Button label="Retry memory reminders" onPress={() => {
     memories.setStatus("");
     void memories.refresh();
@@ -575,6 +577,7 @@ function LabelManager({e}:{e:ReturnType<typeof useEng>}){
 }
 export function EngMore(){
   const e=useEng(),preferences=useData();
+  const routeVisible=usePathname()==="/more";
   const [{incoming,restoreToken,reminderRestoreToken,conflict,textReview,confirmRecovery},review]=useReducer(backupReviewReducer,undefined,emptyBackupReview);
   const selection=useRef<object|null>(null);
   const [section,setSection]=useState<"storage"|"labels"|"backup"|"preferences"|"help"|"premium"|null>(null);
@@ -583,6 +586,7 @@ export function EngMore(){
   const leaveSection=useCallback(()=>{if(backupBusy)return;clearReview();setSection(null);setBackupStatus("");},[backupBusy,setBackupStatus,clearReview]);
   useFocusEffect(useCallback(()=>()=>{clearReview();},[clearReview]));
   useEffect(()=>{if(!section)return;const h=BackHandler.addEventListener("hardwareBackPress",()=>{leaveSection();return true;});return()=>h.remove();},[section,leaveSection]);
+  const preferenceLiveRegion=useVisibleStatusAnnouncement(preferences.preferenceError,routeVisible&&section==="preferences");
   return <Page key={section??"menu"} independent hideHeading title="More">
  <BrandHeader />
     <Copy accessibilityRole="header" kind="title">More</Copy>
@@ -636,7 +640,7 @@ export function EngMore(){
     {section==="help"?<><BrandLogo width={180} /><Copy accessibilityRole="header">Help & About</Copy><Copy>CasitaDex Development 0.1.0. Memories and photos stay on this device unless you export or share them. Keep a verified full backup in a second location. Text backups from earlier versions can be reviewed with Choose backup. They cannot contain photos or an unfinished draft.</Copy><Copy>Verification records what you checked against a source. It is not a guarantee of correctness. Editing an answer or its source requires checking again. Archive pauses reminders; Recently Deleted keeps recovery available. Cleanup does not run automatically in this build.</Copy>
     </>:null}{section==="preferences"?<><Copy accessibilityRole="header">Appearance & Accessibility</Copy><Button label="Large text" selected={preferences.large} onPress={()=>preferences.setLarge(!preferences.large)} />
     {(["System","Light","Dark"] as const).map(value=><Button key={value} label={value+" appearance"} selected={preferences.appearance===value} onPress={()=>preferences.setAppearance(value)} />)}
-    <Copy>{preferences.preferenceError}</Copy></>:null}<Status text={e.status} />
+    <Copy accessibilityLiveRegion={preferenceLiveRegion}>{preferences.preferenceError}</Copy></>:null}<Status text={e.status} />
     {!e.snapshot?<Button label="Reload full collection" disabled={e.busy} onPress={()=>void e.refresh()} />:null}
   </Page>;
 }

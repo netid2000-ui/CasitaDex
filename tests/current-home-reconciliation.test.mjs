@@ -26,12 +26,13 @@ function all(node) {
  if(Array.isArray(node))return node.flatMap(all);
  return [node,...all(node.props?.children)];
 }
-function screens(snapshot) {
+function screens(snapshot, pathname = "/") {
  const routes=[];
  const mocks={react,"react-native":{Platform:{OS:"ios"},View:"View",ScrollView:"ScrollView",useWindowDimensions:()=>({width:390,height:844})},
- "expo-router":{router:{push:route=>routes.push(route)},useFocusEffect:()=>{}},
+ "expo-router":{router:{push:route=>routes.push(route)},useFocusEffect:()=>{},usePathname:()=>pathname},
  "./ui":{Page:"Page",Button:"Button",Copy:"Copy",Field:"Field",useTheme:()=>({s:{panel:{}},colors:{paper:"#F7F2E8",white:"#fff"}})},
- "./state":{useData:()=>({large:false})},
+ "./state":{useData:()=>({large:false,preferenceError:""})},
+ "./accessibility-feedback":{useVisibleStatusAnnouncement:()=>"none"},
  "./home-action":{HomeAction:"HomeAction",HomeIntro:"HomeIntro"},
  "./eng-find":{defaultFilter:()=>({categories:[]}),searchIndex:()=>[],findMemories:()=>[]},
  "./eng-domain":{localDay:()=>""},
@@ -61,12 +62,12 @@ test("Home preserves loading and saved draft protections while Find and Settings
  }
 });
 test("Find and Settings both retain a direct Browse all memories route",()=>{
- const f=screens(null);
- for(const component of [f.api.EngFind,f.api.EngMore]){
-  const browse=all(component()).find(n=>n.props?.label==="Browse all memories");
+ for(const [name,pathname] of [["EngFind","/answers"],["EngMore","/more"]]){
+  const f=screens(null,pathname);
+  const browse=all(f.api[name]()).find(n=>n.props?.label==="Browse all memories");
   assert.ok(browse);browse.props.onPress();
+  assert.deepEqual(f.routes,["/memories"]);
  }
- assert.deepEqual(f.routes,["/memories","/memories"]);
 });
 test("all four tab presses still use the navigation guard and notification responses stay blocked during edits",()=>{
  const routes=[],effects=[];let blocked=true,responseHandler,guarded=0;
