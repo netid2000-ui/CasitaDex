@@ -1,0 +1,48 @@
+{
+  "status": "PASS_BOUNDED_NATIVE_SHARE_BACKGROUND_RESUME",
+  "runtime_source": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
+  "completed_utc": "2026-11-06T22:00:27.548183+00:00",
+  "result": {
+    "atUTC": "2026-11-06T22:00:26.347Z",
+    "previewSelectionSurvivesBackground": true,
+    "sameProcessAcrossBothBackgrounds": true,
+    "sheetResumeOutcome": "SHEET_PRESERVED",
+    "resumedPayloadMatches": true,
+    "cancelReturnsExactRecord": true,
+    "noStaleSheetOrRouteOnOtherRecord": true,
+    "recipientSelected": false,
+    "raceWindowTested": false
+  },
+  "scope": "Native HOME backgrounds the app before presentation and again while the OS text sheet is open. SpringBoard icons observed both times; same PID across foreground activations. Preview selection retained; sheet preserved and caption unchanged after resume. Cancel returns exact synthetic record; another existing record opens without stale sheet or route. No recipient selected.",
+  "preservation": {
+    "all_ten_tables_equal": true,
+    "media_equal": true,
+    "runtime_equal": true,
+    "revision": 43,
+    "saved_memories": 3,
+    "photo_files": 1,
+    "standalone_reminders": 2,
+    "draft": null,
+    "final_home": true
+  },
+  "race_limit": "Preparation race NOT TESTED. Existing tiny fixture offers no deterministic observable asynchronous window through native commands; no artificial delay, instrumentation or new build introduced. Existing source race tests retain their source-only attribution.",
+  "remaining": [
+    "Native interruption during asynchronous preparation and concurrent source mutation remain unverified.",
+    "Other recorded release and approval-held gates remain open."
+  ],
+  "boundaries": {
+    "builds": 0,
+    "source_changes": 0,
+    "saved_data_writes": 0,
+    "recipient_selected": false,
+    "other_devices_touched": false,
+    "permissions_changed": false,
+    "job_exit_code": 0,
+    "device_lock_released": true,
+    "release": "NO-GO"
+  },
+  "evidence_directory": "WORK-SB121/ios-7fa-share-native-background",
+  "raw_result_sha256": "2aeeb6495b1cf36a470be2e3346ff87da1cab006a8664cf97aaa72a1577031fb",
+  "manifest_sha256": "1bb5360d34c40ec1e12888358a34fd59b75409e6e5e4a1273ab416386379b2bf",
+  "manifest_files": 39
+}

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "status": "VERIFIED_PARTIAL_MILESTONE_SNAPSHOT",
-  "updated_at_utc": "2026-11-06T21:56:53.078782+00:00",
+  "updated_at_utc": "2026-11-06T22:00:27.548183+00:00",
   "release": "NO-GO",
   "latest_runtime_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
   "installed_runtime_checkpoint": {
@@ -48,7 +48,8 @@
         "ios_7fa_maximum_manual_refocus",
         "ios_7fa_share_session_isolation",
         "ios_7fa_share_private_preview",
-        "ios_7fa_share_private_native_sheet"
+        "ios_7fa_share_private_native_sheet",
+        "ios_7fa_share_native_background"
       ]
     },
     "android": {
@@ -1170,6 +1171,13 @@
       "raw_result_sha256": "a01ead37148e087fd3bb33e25b8740ed8e8c8a15cbd9c65a5df98a3cba305fd8",
       "raw_manifest_sha256": "a4abfff62769d45834afccbe2a190d24a365f4f35f5907a672c8d72223bbe9a8",
       "source_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606"
+    },
+    "ios_7fa_share_native_background": {
+      "relative_path": "docs/qa/SB121_IOS_7FA_SHARE_NATIVE_BACKGROUND_20261106.json",
+      "sha256": "b3c5072e988522bf54354cf873f70b62087cb423a019346fb6a3fdcc2e6d953f",
+      "raw_result_sha256": "2aeeb6495b1cf36a470be2e3346ff87da1cab006a8664cf97aaa72a1577031fb",
+      "raw_manifest_sha256": "1bb5360d34c40ec1e12888358a34fd59b75409e6e5e4a1273ab416386379b2bf",
+      "source_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606"
     }
   },
   "execution_limits": [
@@ -1571,6 +1579,15 @@
       "scope": "Actual native text-sheet caption matches reviewed name/answer/notes with normalized newlines, excluding nonempty location/source. Cancel returns exact fixture; no recipient or external delivery. Ten tables/media/runtime exact at revision43. Async races remain separate.",
       "evidence_refs": [
         "ios_7fa_share_private_native_sheet"
+      ]
+    },
+    {
+      "id": "IOS_7FA_SHARE_NATIVE_BACKGROUND_RESUME",
+      "status": "PASS_BOUNDED_NATIVE_SHARE_BACKGROUND_RESUME",
+      "artifact_ref": "ios_7fa",
+      "scope": "Same-process native HOME/resume before presentation preserves selection, during OS sheet preserves exact reviewed caption. Cancel exact-return and no stale sheet/route after opening another record. Preparation/source-mutation race not tested. Ten tables/media/runtime exact at revision43.",
+      "evidence_refs": [
+        "ios_7fa_share_native_background"
       ]
     }
   ],
