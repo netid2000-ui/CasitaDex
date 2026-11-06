@@ -1,0 +1,136 @@
+{
+  "status": "PASS_BOUNDED_MAXIMUM_MESSAGE_SCROLL_COVERAGE",
+  "runtime_source": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
+  "completed_utc": "2026-11-06T21:31:02.107973+00:00",
+  "profile": {
+    "system_content_size": "accessibility-extra-extra-extra-large",
+    "app_large_text": true
+  },
+  "method": "Supported native action-region swipes. Following heading used as measured scroll anchor after offscreen error node disappears. Existing error text and editor preserved. No whole-message-in-one-viewport requirement.",
+  "coverage": {
+    "screenshots": 18,
+    "message_height_points": 1820,
+    "viewport_height_points": 212,
+    "measured_step_points": 110,
+    "overlap_points": 102,
+    "ranges_relative_to_message": [
+      [
+        -211,
+        1
+      ],
+      [
+        -101,
+        111
+      ],
+      [
+        9,
+        221
+      ],
+      [
+        119,
+        331
+      ],
+      [
+        229,
+        441
+      ],
+      [
+        339,
+        551
+      ],
+      [
+        449,
+        661
+      ],
+      [
+        559,
+        771
+      ],
+      [
+        669,
+        881
+      ],
+      [
+        779,
+        991
+      ],
+      [
+        889,
+        1101
+      ],
+      [
+        999,
+        1211
+      ],
+      [
+        1109,
+        1321
+      ],
+      [
+        1219,
+        1431
+      ],
+      [
+        1329,
+        1541
+      ],
+      [
+        1439,
+        1651
+      ],
+      [
+        1549,
+        1761
+      ],
+      [
+        1659,
+        1871
+      ]
+    ],
+    "entire_message_height_covered": true,
+    "pixel_samples_reviewed": [
+      "segment-02.png: Check and the",
+      "segment-10.png: dates and beginning of before",
+      "segment-17.png: final is kept. and divider"
+    ],
+    "full_human_reading_acceptance": false
+  },
+  "cancel_after_traversal": {
+    "scrolls_to_return": 12,
+    "reachable": true,
+    "cleared_feedback": true
+  },
+  "preservation": {
+    "all_ten_tables_equal": true,
+    "media_equal": true,
+    "runtime_equal": true
+  },
+  "cleanup": {
+    "atUTC": "2026-11-06T21:31:01.905Z",
+    "home": true,
+    "portrait": true,
+    "systemLarge": true,
+    "appLargeOff": true,
+    "keyboardAbsent": true
+  },
+  "reused_evidence": "8cc prior maximum focused-rotation/caret and two hide/refocus cycles retain their original setup scope; not repeated. 7fa maximum Save/Cancel proof reused except required return after message traversal.",
+  "finding": "No unscrollable validation-message defect established. All vertical message positions are reachable; sampled native pixels corroborate beginning/middle/end. Eighteen captures and twelve return swipes show a substantial interaction burden, not comfortable-reading acceptance. No narrow code defect established; no source or typography policy changed.",
+  "remaining": [
+    "Full human legibility/comfortable reading acceptance at combined maximum text remains open.",
+    "Maximum-size field editing and extended manual hold/refocus remain incomplete; current method does not establish them.",
+    "Other release and approval-held gates unchanged."
+  ],
+  "boundaries": {
+    "builds": 0,
+    "source_changes": 0,
+    "other_devices_touched": false,
+    "permissions_changed": false,
+    "job_exit_code": 0,
+    "device_lock_released": true,
+    "release": "NO-GO"
+  },
+  "evidence_directory": "WORK-SB121/ios-validation-7fa012a-maximum-segments",
+  "raw_result_sha256": "b772164844d03bb0357f5cbdda5a24e9c9726c9e712abfbf86638e1284977c34",
+  "manifest_sha256": "c7a893ce0c2133975b3b1a523441399e180cac493adf3b4eb079a362c011cc17",
+  "manifest_files": 76
+}
