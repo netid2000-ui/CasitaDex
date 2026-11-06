@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import vm from "node:vm";
 import ts from "typescript";
+import { primaryNavigationRows } from "../src/primary-navigation-layout.ts";
 
 const react = {
  createElement:(type,props,...children)=>({type,props:{...props,children}}),
@@ -77,6 +78,7 @@ test("all four tab presses still use the navigation guard and notification respo
   "expo-status-bar":{StatusBar:"StatusBar"},"../state":{Provider:"Provider"},
   "../ui":{useTheme:()=>({colors:{},s:{}})},"../brand-web-meta":{BrandWebMeta:"BrandWebMeta"},
   "../accepted-navigation-icon":{AcceptedNavigationIcon:"NavigationIcon"},
+  "../primary-navigation-layout":{primaryNavigationRows},
   "../eng-navigation":{guardedNavigate:fn=>{guarded++;if(!blocked)fn();},navigationIsGuarded:()=>blocked},
   "../reminder-alerts":{startReminderResponses:fn=>{responseHandler=fn;return()=>{};},startReminderAlerts:()=>{}},
  },"\nmodule.exports.Shell = Shell;");

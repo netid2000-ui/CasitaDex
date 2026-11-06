@@ -1,0 +1,66 @@
+{
+  "status": "SOURCE_AND_BROWSER_PROXY_PASS_NATIVE_PENDING",
+  "created_utc": "2026-11-06T06:49:14.927268+00:00",
+  "machine": "FA-MAC-DEV-01",
+  "source_base": "9e53d5bd14e4a96d63da9f7d9a6faee7a8073307",
+  "branch": "work/cd-sb41-edit-targeting-20261104",
+  "isolated_source": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB121/landscape-navigation-9e53d5b/source",
+  "evidence_root": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB121/landscape-navigation-9e53d5b",
+  "lockfile_sha256": "9497dfde8721e0ac91ea3d7acf7a597117917d7cd5b1b94bc1d433f49a5282ac",
+  "implementation_patch_sha256": "39a3f1e53c8d19d3caacb1ae134bb64b14ace2447fa86c335a2c316ead8247db",
+  "tests": {
+    "typecheck": "PASS",
+    "lint": "PASS",
+    "focused": {
+      "passed": 22,
+      "failed": 0
+    },
+    "full": {
+      "total": 432,
+      "passed": 427,
+      "skipped": 5,
+      "failed": 0
+    },
+    "web_export": "PASS",
+    "current_home_browser": "PASS",
+    "scaled_browser_geometry": {
+      "cases": 8,
+      "status": "PASS",
+      "not_native_acceptance": true
+    },
+    "native_build_and_runtime": "NOT_RUN_BY_THIS_WORKER",
+    "independent_pixel_review": "NOT_RUN_TRANSFER_DENIED"
+  },
+  "files": {
+    "preflight.txt": {
+      "sha256": "73e7f73a3189c067b43846662554ef699da8ba4e557e490074172d7c3f94cc4b"
+    },
+    "focused-tests.log": {
+      "sha256": "af5f751f7a1fcd30ed90b0fd2da11132639b3d7efc01d2187707a14e72fe717f"
+    },
+    "full-tests.log": {
+      "sha256": "fb40ad11a1a44f73a833a269b3065bfbd1c544f43743d1739ea6f46b10328023"
+    },
+    "typecheck.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "lint.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "export-web.log": {
+      "sha256": "c63a972fc66eada0c623c866d9685bc5d0e1b11d00c60c685af3e4dbdad5632e"
+    },
+    "current-home-browser.log": {
+      "sha256": "3f8c5de4910b964c96790d8484a275f9982ddb835d99b01657b2ac2c2f6b60ac"
+    },
+    "geometry.log": {
+      "sha256": "1d8523d02836519ab724997b5500281f849a8a0feb3a0e55c5850d4925f4fe03"
+    },
+    "geometry/geometry-results.json": {
+      "sha256": "69aec86905affde256969b094e0884e45bb793dd28089c8cefd16de5125d8624"
+    },
+    "current-home-web.png": {
+      "sha256": "79d6bf8cbf7872ef089686d7eb9defaabb253c5625d7b82f216de8f1b4222e8d"
+    }
+  }
+}

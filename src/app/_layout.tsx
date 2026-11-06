@@ -1,8 +1,15 @@
 import React, { useEffect } from "react";
-import { startReminderAlerts, startReminderResponses } from "../reminder-alerts";
+import {
+  startReminderAlerts,
+  startReminderResponses,
+} from "../reminder-alerts";
 import { StatusBar } from "expo-status-bar";
 import { Pressable, Text, View, useWindowDimensions } from "react-native";
-import { SafeAreaProvider, SafeAreaView, useSafeAreaInsets } from "react-native-safe-area-context";
+import {
+  SafeAreaProvider,
+  SafeAreaView,
+  useSafeAreaInsets,
+} from "react-native-safe-area-context";
 import { Slot, router, usePathname, useRootNavigationState } from "expo-router";
 import { Provider } from "../state";
 import { useTheme } from "../ui";
@@ -10,9 +17,13 @@ import { BrandWebMeta } from "../brand-web-meta";
 
 import { AcceptedNavigationIcon as NavigationIcon } from "../accepted-navigation-icon";
 import { guardedNavigate, navigationIsGuarded } from "../eng-navigation";
+import { primaryNavigationRows } from "../primary-navigation-layout";
 
 type Route = "/" | "/photos" | "/reminders" | "/answers";
-const destinations: { label: "Home" | "Photos" | "Reminders" | "Find"; route: Route }[] = [
+const destinations: {
+  label: "Home" | "Photos" | "Reminders" | "Find";
+  route: Route;
+}[] = [
   { label: "Home", route: "/" },
   { label: "Photos", route: "/photos" },
   { label: "Reminders", route: "/reminders" },
@@ -23,7 +34,7 @@ function Shell() {
   const rootState = useRootNavigationState();
   useEffect(() => {
     if (!rootState?.key) return;
-    return startReminderResponses(route => {
+    return startReminderResponses((route) => {
       if (navigationIsGuarded()) return false;
       router.push(route);
       return true;
@@ -32,7 +43,11 @@ function Shell() {
   const { colors, s, dark } = useTheme();
   const { width, fontScale } = useWindowDimensions();
   const { left, right } = useSafeAreaInsets();
-  const useTwoRows = width - left - right < 365 * Math.max(1, fontScale);
+  const rows = primaryNavigationRows(
+    destinations,
+    width - left - right,
+    fontScale,
+  );
   return (
     <SafeAreaView
       edges={["top", "left", "right"]}
@@ -47,37 +62,47 @@ function Shell() {
         edges={["bottom"]}
         style={{ backgroundColor: colors.white }}
       >
-        <View style={[s.nav, useTwoRows && s.navWrapped]} accessibilityLabel="Primary navigation">
-          {destinations.map(({ label, route }) => {
-            const active =
-              path === route || (route === "/answers" && (path === "/memories" || path === "/card"));
-            return (
-              <Pressable
-                key={route}
-                accessibilityRole="tab"
-                accessibilityLabel={label}
-                accessibilityState={{ selected: active }}
-                aria-selected={active}
-                onPress={() => guardedNavigate(() => router.navigate(route))}
-                style={({ pressed }) => [
-                  s.navTab,
-                  useTwoRows && s.navTabWrapped,
-                  active && s.navTabActive,
-                  pressed && { opacity: 0.75 },
-                ]}
-              >
-                <NavigationIcon name={label} color={active ? colors.ink : colors.muted} />
-                <Text
-                  style={[
-                    s.navLabel,
-                    { color: active ? colors.ink : colors.muted },
-                  ]}
-                >
-                  {label}
-                </Text>
-              </Pressable>
-            );
-          })}
+        <View style={s.nav} accessibilityLabel="Primary navigation">
+          {rows.map((row, rowIndex) => (
+            <View key={rowIndex} style={s.navRow}>
+              {row.map(({ label, route }) => {
+                const active =
+                  path === route ||
+                  (route === "/answers" &&
+                    (path === "/memories" || path === "/card"));
+                return (
+                  <Pressable
+                    key={route}
+                    accessibilityRole="tab"
+                    accessibilityLabel={label}
+                    accessibilityState={{ selected: active }}
+                    aria-selected={active}
+                    onPress={() =>
+                      guardedNavigate(() => router.navigate(route))
+                    }
+                    style={({ pressed }) => [
+                      s.navTab,
+                      active && s.navTabActive,
+                      pressed && { opacity: 0.75 },
+                    ]}
+                  >
+                    <NavigationIcon
+                      name={label}
+                      color={active ? colors.ink : colors.muted}
+                    />
+                    <Text
+                      style={[
+                        s.navLabel,
+                        { color: active ? colors.ink : colors.muted },
+                      ]}
+                    >
+                      {label}
+                    </Text>
+                  </Pressable>
+                );
+              })}
+            </View>
+          ))}
         </View>
       </SafeAreaView>
     </SafeAreaView>
