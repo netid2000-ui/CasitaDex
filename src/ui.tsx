@@ -126,6 +126,8 @@ export function Field({
     <View style={s.gap}>
       <Copy style={{ fontWeight: "600" }}>{label}</Copy>
       <TextInput
+        // Keep the app actions and context available beside the Android keyboard.
+        disableFullscreenUI={Platform.OS === "android" ? true : undefined}
         accessibilityLabel={label}
         accessibilityValue={{ text: value }}
         onFocus={() => setFocused(true)}
