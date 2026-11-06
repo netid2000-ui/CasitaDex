@@ -23,7 +23,7 @@ import { registerEditGuard } from "./eng-navigation";
 import { defaultReminderDay, isReminderDraftDirty, newReminderDraft, type ReminderDraft } from "./standalone-reminder-draft";
 import { clampPhotoIndex, clampPhotoZoom, photoSwipeStep, touchDistance } from "./photo-viewer-state";
 import { BrandHeader, BrandLogo, BrandArt } from "./brand";
-import { HomeAction } from "./home-action";
+import { HomeAction, HomeIntro } from "./home-action";
 import { EditorialIntro } from "./editorial-intro";
 import { confidences } from "./model";
 const day=localDay;
@@ -131,13 +131,15 @@ function PhotoViewer({path,label,photos,onClose}:{path:string;label:string;photo
 }
 let findCache={query:"",filter:defaultFilter(),page:0,y:0,expanded:false};
 export function EngHome(){
- const e=useEng(),{s}=useTheme(),[confirmDelete,setConfirmDelete]=useState(false);
+ const e=useEng(),{s,colors}=useTheme(),[confirmDelete,setConfirmDelete]=useState(false);
  const draft=e.snapshot?.draft;
+ const disabledDetail=draft?undefined:Platform.OS==="web"?"Memory editing is available in the native app":"Opening your memories…";
 
- function commands(items:{label:string;action:()=>void;disabled?:boolean}[]){return <View style={{flexDirection:"row",gap:10}}>{items.map(item=><View key={item.label} style={{flex:1}}><Button label={item.label} disabled={item.disabled||e.busy} onPress={item.action} /></View>)}</View>;}
- return <Page independent title="" hideHeading>
- <BrandHeader />
- <EditorialIntro eyebrow="Your personal reference" title="The details that matter." description="A calmer place to keep useful things." />
+ function commands(items:{label:string;action:()=>void;disabled?:boolean}[]){return <View style={{flexDirection:"row",flexWrap:"wrap",gap:10}}>{items.map(item=><View key={item.label} style={{flex:1,minWidth:140}}><Button label={item.label} disabled={item.disabled||e.busy} onPress={item.action} /></View>)}</View>;}
+ return <Page independent title="" hideHeading contentContainerStyle={{paddingHorizontal:0,paddingTop:0,paddingBottom:0}} containerStyle={{gap:0}}>
+ <View style={{backgroundColor:colors.white,paddingHorizontal:12,paddingVertical:6}}><BrandHeader /></View>
+ <View style={{backgroundColor:colors.paper,padding:16,paddingBottom:40,gap:12}}>
+ <HomeIntro onSettings={()=>router.push("/more")} />
  {draft?<View style={s.panel}>
    <Copy kind="answer">Unfinished Memory (Draft)</Copy>
    <Copy style={{fontWeight:"700"}}>{draft.title.trim()||"Untitled memory"}</Copy>
@@ -149,11 +151,13 @@ export function EngHome(){
    </View>:null}
  </View>:null}
  <View style={{gap:12}}>
- <HomeAction primary title="Add Memory" detail="Capture a useful detail" icon="Memories" disabled={!!draft||!e.snapshot} onPress={()=>router.push("/add")} />
- <HomeAction title="Add Photo Memory" detail="Start with an image" icon="Photos" disabled={!!draft||!e.snapshot} onPress={()=>router.push("/add?mode=photo")} />
+ <HomeAction title="Find a Memory" detail="Get an answer in seconds" icon="Find" onPress={()=>router.push("/answers")} />
+ <HomeAction primary title="Add Memory" detail="Capture a useful detail" icon="Memories" disabled={!!draft||!e.snapshot} disabledDetail={disabledDetail} onPress={()=>router.push("/add")} />
+ <HomeAction title="Add Photo Memory" detail="Start with an image" icon="Photos" disabled={!!draft||!e.snapshot} disabledDetail={disabledDetail} onPress={()=>router.push("/add?mode=photo")} />
  <HomeAction title="Add Reminder" detail="Remember the next step" icon="Reminders" onPress={()=>router.push("/reminders?mode=new")} />
  </View>
  <Status text={e.status} />
+ </View>
  </Page>;
 }
 export function EngPhotos(){
@@ -358,6 +362,7 @@ export function EngMemories(){
  return <Page key={returnScroll.key} independent hideHeading title="Find an answer" restoreScrollY={returnScroll.y} restoreReady={!!e.snapshot} onScrollY={y=>{if(focused.current)findCache.y=y;}}>
  <BrandHeader />
  <EditorialIntro eyebrow="Your answers, ready" title="Find it in seconds." description="Search the details you have saved." />
+ <Button variant="quiet" label="Browse all memories" onPress={()=>router.push("/memories")} />
  <Field label="Search your memories" value={query} onChangeText={q=>{setQuery(q);setPage(0);}} />
  <ScrollView horizontal showsHorizontalScrollIndicator contentContainerStyle={{flexDirection:"row",gap:8,paddingBottom:4}}>{(["active","archived","recently_deleted"] as const).map(value=><Button compact key={value} label={value==="active"?"Active":value==="archived"?"Archived":"Recently Deleted"} selected={f.lifecycle===value} onPress={()=>filter({lifecycle:value,reminder:"all"})} />)}</ScrollView>
  <View style={{gap:6}}><Copy kind="small" style={{fontWeight:"600"}}>Space</Copy><ScrollView horizontal showsHorizontalScrollIndicator contentContainerStyle={{flexDirection:"row",gap:8,paddingBottom:4}}><Button compact label="All spaces" selected={f.space==="all"} onPress={()=>filter({space:"all"})} /><Button compact label="Unassigned" selected={f.space===null} onPress={()=>filter({space:null})} />{e.snapshot?.data.spaces.map(x=><Button compact key={x.id} label={x.name} selected={f.space===x.id} onPress={()=>filter({space:x.id})} />)}</ScrollView></View>
@@ -579,7 +584,7 @@ export function EngMore(){
     <Copy accessibilityRole="header" kind="title">More</Copy>
      {!section?<>
     <Copy>Memories stay on this device. A local save is not a separate backup.</Copy>
-    <Copy accessibilityRole="header">Memory management</Copy><Button label="Storage & Cleanup" onPress={()=>setSection("storage")} />
+    <Copy accessibilityRole="header">Memory management</Copy><Button label="Browse all memories" onPress={()=>router.push("/memories")} /><Button label="Storage & Cleanup" onPress={()=>setSection("storage")} />
     <Button label="Archived memories" onPress={()=>{findCache={query:"",filter:{...defaultFilter(),lifecycle:"archived"},page:0,y:0,expanded:false};router.push("/answers");}} />
     <Button label="Recently Deleted memories" onPress={()=>{findCache={query:"",filter:{...defaultFilter(),lifecycle:"recently_deleted"},page:0,y:0,expanded:false};router.push("/answers");}} />
     <Button label="Manage Spaces & Categories" onPress={()=>setSection("labels")} />

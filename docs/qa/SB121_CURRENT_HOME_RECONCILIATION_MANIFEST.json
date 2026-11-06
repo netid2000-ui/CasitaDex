@@ -1,0 +1,208 @@
+{
+  "recordedAtUtc": "2026-11-06T04:33:29.369510+00:00",
+  "status": "REVIEWED SOURCE AND STATIC/BROWSER TESTS PASS; NATIVE ACCEPTANCE PENDING; RELEASE NO-GO",
+  "baseHead": "7e60b138c8e620e7c318d5b622fb66da0a6eec1d",
+  "branch": "work/cd-sb41-edit-targeting-20261104",
+  "candidateFingerprint": "8b14277537d22f5895eeebf9ab6f0c8e1f7471884c6814c66ae16eed56b67412",
+  "fingerprintMethod": "SHA256 of sorted application/test/asset path + two spaces + per-file SHA256 + newline",
+  "files": {
+    "assets/brand/logo-art-dark.png": "b4111eb5ec2099d18827742ba5feb24e99b504c181ebac6abed5bd8aca9758f5",
+    "assets/brand/logo-art-light.png": "fb8ae723923e7b9e933b67074d25aaf54bae480e126020915d2efa29c3d7d40f",
+    "src/app/_layout.tsx": "aefd13f4d4790f643debb22c643d8776a6f211a81c8d227e5fb62a1f7f0932f5",
+    "src/brand.tsx": "30156cf523aceb40e70f84e1053c1cf8092a07bc02a79aa628261c0a879d90d2",
+    "src/brand.web.tsx": "30156cf523aceb40e70f84e1053c1cf8092a07bc02a79aa628261c0a879d90d2",
+    "src/eng-screens.tsx": "36fb34112a76810377488dca1bd9c87b4e9ab4ef3a4137c994d4705938d633b9",
+    "src/home-action.tsx": "8c8fb84358ff6bb1eb874b7f260a5a4b19f3004bab5a856c7135f03f23960270",
+    "src/ui.tsx": "1be191a1d54e5dd0d6a2132bd305e2083054a1b2be8c824a791eeced1f440083",
+    "tests/current-home-browser.cjs": "ae721f6ca8d4aeacee0ba87786c99aa55305f5ef83aef09ee25b5bb27db2e6b5",
+    "tests/current-home-reconciliation.test.mjs": "5ed82c64416a3ea665cbfee1b37edb0791b666158244e569e84105f1059de6a1",
+    "tests/sb26-ia-accessibility.test.mjs": "61da4013746d42ba9cdccbe8f1f5f23c8dbd147d614626a8b0e74ff2350ede7e"
+  },
+  "dependencyLockSha256": "9497dfde8721e0ac91ea3d7acf7a597117917d7cd5b1b94bc1d433f49a5282ac",
+  "ownerReference": {
+    "evidencePath": "QA-Evidence/WORK-SB121/owner-visual-reference/IMG_0758.png",
+    "sha256": "812fff4b81e6e3b4cc53d06b2dc9885aa358757ceda802f7c8082e7e3be06876",
+    "actualPixelsInspectedOnMac": true
+  },
+  "preservedSource": {
+    "path": "Development/CasitaDex/figma-first-native-qa",
+    "head": "d9fde466c76fab9212d881cbeb2e033aea95ab2a",
+    "dirtyWorktreeUnchanged": true,
+    "selectedFileDigests": [
+      {
+        "path": "src/figma-first/FigmaHome.tsx",
+        "sha256": "e68ffc24cfd35be01be606822140829a2241ba8b47a6796b73272113e289540a"
+      },
+      {
+        "path": "src/figma-first/HomeActionCard.tsx",
+        "sha256": "761772da38f59345e6abec6d0494e1404650f75ad302ff5aea2f948658c00774"
+      },
+      {
+        "path": "src/figma-first/tokens.ts",
+        "sha256": "8ac53496108c283f9ad721141f4a9b5e65bb0508d71bd1e9c744e8dee5ac734f"
+      },
+      {
+        "path": "src/brand.tsx",
+        "sha256": "b42627497967cf4e80e1c5d66938c2241b2a62a383d58eedbcea70d2ef5ea23c"
+      },
+      {
+        "path": "src/app/_layout.tsx",
+        "sha256": "d0fe14d8d6c4fa2fab090c6b638af571571c7893b6b17efa4fbf0392235a4ed5"
+      },
+      {
+        "path": "docs/qa/figma-brand-transfer-20261025/brand-transfer-manifest.json",
+        "sha256": "feb4d962752e73445d46cdc46f08ea171a447251be18eb425098f1cc0af2f3f3"
+      },
+      {
+        "path": "assets/brand/logo-art-light.png",
+        "sha256": "fb8ae723923e7b9e933b67074d25aaf54bae480e126020915d2efa29c3d7d40f"
+      },
+      {
+        "path": "assets/brand/logo-art-dark.png",
+        "sha256": "b4111eb5ec2099d18827742ba5feb24e99b504c181ebac6abed5bd8aca9758f5"
+      },
+      {
+        "path": "assets/ui-icons/figma-approved-v1/home.png",
+        "sha256": "58cc70e58daa07efda86784c7d399282e41e7ad7ff571f59f25bf2aae3c2ff6e"
+      },
+      {
+        "path": "assets/ui-icons/figma-approved-v1/memories.png",
+        "sha256": "680e6238a3d4cdff2253aaaffe4c200c6ea9e5fc2ebe00a2d1a6b12ea3a75d83"
+      },
+      {
+        "path": "assets/ui-icons/figma-approved-v1/photos.png",
+        "sha256": "a6d55e57ecd19077ac668f5d2443dfb7ca05ade2b45738282c10f8bca19fddb9"
+      },
+      {
+        "path": "assets/ui-icons/figma-approved-v1/reminders.png",
+        "sha256": "7db9b54d5cfb986cea4f1c57b1f36c65973c997b0e66c0ca42ac439853ee1650"
+      },
+      {
+        "path": "assets/ui-icons/figma-approved-v1/find.png",
+        "sha256": "95e1e5cfff24f31e4790eeb720df46ca2caf6aa06c33a032523eeeceaa506c5d"
+      }
+    ]
+  },
+  "assets": {
+    "brandMaster": "PGhz4VYfakXbLh5BFev1PH",
+    "logos": [
+      {
+        "path": "assets/brand/logo-art-light.png",
+        "sha256": "fb8ae723923e7b9e933b67074d25aaf54bae480e126020915d2efa29c3d7d40f",
+        "originalPath": "figma-first-native-qa/assets/brand/logo-art-light.png",
+        "brandMasterNode": "2:5",
+        "sourceSvgSha256": "0011544bd28909c40bad530fd779841e6e8ed575176b379e0b91fd9a880dab7c",
+        "dimensions": [
+          495,
+          366
+        ]
+      },
+      {
+        "path": "assets/brand/logo-art-dark.png",
+        "sha256": "b4111eb5ec2099d18827742ba5feb24e99b504c181ebac6abed5bd8aca9758f5",
+        "originalPath": "figma-first-native-qa/assets/brand/logo-art-dark.png",
+        "brandMasterNode": "2:16",
+        "sourceSvgSha256": "467fb75f63709ec028c4f5334a99cb6f3a95a0ea076aeb3bc255a0bf67902b5f",
+        "dimensions": [
+          495,
+          366
+        ]
+      }
+    ],
+    "icons": [
+      {
+        "path": "assets/ui-icons/accepted-v1/home.png",
+        "sha256": "89c4f2f8c74e3103f229c2265191cd325f5520036fdfabd3b7bad380fd4db8f1",
+        "brandMasterNode": "44:3",
+        "authority": "Existing outline/alpha repair 6069d6fc2bd5168cd9f7c3e308496cc32df62f60 retained byte-for-byte"
+      },
+      {
+        "path": "assets/ui-icons/accepted-v1/memories.png",
+        "sha256": "286a4adf697378427b7c0fafbb3f28f6b164255e6781d548b4bc2812fccbe2c7",
+        "brandMasterNode": "44:7",
+        "authority": "Existing outline/alpha repair 6069d6fc2bd5168cd9f7c3e308496cc32df62f60 retained byte-for-byte"
+      },
+      {
+        "path": "assets/ui-icons/accepted-v1/photos.png",
+        "sha256": "98a9888bc1ffafb46b04ef3a47c88c56c8f87a34cce3f77448dbef75d93bec55",
+        "brandMasterNode": "44:11",
+        "authority": "Existing outline/alpha repair 6069d6fc2bd5168cd9f7c3e308496cc32df62f60 retained byte-for-byte"
+      },
+      {
+        "path": "assets/ui-icons/accepted-v1/reminders.png",
+        "sha256": "3d7db85c661eac0a652268c1e98e1edff6b5c0f024244c0ad432d5c092ea80e2",
+        "brandMasterNode": "44:16",
+        "authority": "Existing outline/alpha repair 6069d6fc2bd5168cd9f7c3e308496cc32df62f60 retained byte-for-byte"
+      },
+      {
+        "path": "assets/ui-icons/accepted-v1/find.png",
+        "sha256": "de4b08ed636923fd36d87d9abf9515aec4eea4839d2c026dab0761861e39ad9d",
+        "brandMasterNode": "44:21",
+        "authority": "Existing outline/alpha repair 6069d6fc2bd5168cd9f7c3e308496cc32df62f60 retained byte-for-byte"
+      }
+    ],
+    "sourceBrandReceipt": "figma-first-native-qa/docs/qa/figma-brand-transfer-20261025/brand-transfer-manifest.json"
+  },
+  "visualEvidence": {
+    "path": "QA-Evidence/WORK-SB121/current-home-reconciliation/current-home-web.png",
+    "sha256": "60e0af7a018ecf389816ec590dd67459d72c2447ef3d0aa7a7285fa43fe667c5",
+    "viewport": [
+      390,
+      844
+    ],
+    "scope": "Home layout/brand/nav only; native ENG editor disabled on web; no native parity claim"
+  },
+  "tests": {
+    "focused": {
+      "total": 34,
+      "passed": 34
+    },
+    "full": {
+      "total": 415,
+      "passed": 410,
+      "skipped": 5,
+      "failed": 0
+    },
+    "typecheck": "PASS",
+    "lint": "PASS",
+    "webBrowser": "PASS",
+    "nativeBuild": "NOT RUN",
+    "nativeQa": "NOT RUN"
+  },
+  "logs": [
+    {
+      "path": "QA-Evidence/WORK-SB121/current-home-reconciliation/web-export.log",
+      "sha256": "25db7a900ca7baf9b1f318ff220dbb58c3614ba3ae166be935bb8fd2351e349d"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/current-home-reconciliation/browser.log",
+      "sha256": "3f8c5de4910b964c96790d8484a275f9982ddb835d99b01657b2ac2c2f6b60ac"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/current-home-reconciliation/focused-tests.log",
+      "sha256": "561f8e82de93e960e91522c14495e9f00174f719b7ad117642c4e08943e5bd90"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/current-home-reconciliation/typecheck.log",
+      "sha256": "23536ab2c73e0f4bc1eec81fa939e6d9d2e2b1a4e186c1500feb05bad4b0dc74"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/current-home-reconciliation/lint.log",
+      "sha256": "7988ad006928ac862d60f07d7289bfb07c75c0c7ab199908db5f91db3c7cd534"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/current-home-reconciliation/full-tests.log",
+      "sha256": "da46f4041c6c3f43749da107d40ef1157f05dc732c49bf3a0d4d4e21aace7a9a"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/current-home-reconciliation/test-exit-codes.json",
+      "sha256": "f13f8f8f839a85a3d263b4310a8845fe4f18e782fe0c668fc29bf8a020c2df9c"
+    }
+  ],
+  "boundaries": {
+    "newNativeBuildOrDeviceAction": false,
+    "protectedRuntimeChanged": false,
+    "dependenciesOrStorageOrNotificationPipelineChanged": false,
+    "commitOrPush": false
+  }
+}

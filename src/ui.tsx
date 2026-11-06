@@ -9,6 +9,8 @@ import {
   TextInput,
   View,
   type TextProps,
+  type StyleProp,
+  type ViewStyle,
 } from "react-native";
 import { useData } from "./state";
 import { lightColors, darkColors } from "./theme";
@@ -157,6 +159,8 @@ export function Page({
   restoreScrollY = 0,
   restoreReady = true,
   onScrollY,
+  contentContainerStyle,
+  containerStyle,
   children,
 }: {
   title: string;
@@ -166,6 +170,8 @@ export function Page({
   restoreScrollY?:number;
   restoreReady?:boolean;
   onScrollY?:(y:number)=>void;
+  contentContainerStyle?: StyleProp<ViewStyle>;
+  containerStyle?: StyleProp<ViewStyle>;
   children: React.ReactNode;
 }) {
   const scroll=useRef<ScrollView>(null),restored=useRef(false),viewport=useRef(0),contentHeight=useRef(0);
@@ -181,9 +187,9 @@ export function Page({
       onContentSizeChange={(_width,height)=>{contentHeight.current=height;restorePosition();}}
       keyboardShouldPersistTaps="handled"
       automaticallyAdjustKeyboardInsets
-      contentContainerStyle={s.page}
+      contentContainerStyle={[s.page, contentContainerStyle]}
     >
-      <View style={s.container}>
+      <View style={[s.container, containerStyle]}>
         {!hideHeading ? <Copy
           kind="small"
           style={{ color: colors.muted, fontWeight: "600", letterSpacing: 0.7 }}
@@ -287,7 +293,7 @@ const makeStyles = (colors: typeof lightColors) =>
       borderRadius: 14,
       paddingVertical: 5,
     },
-    navTabWrapped: { flexBasis: "30%" },
+    navTabWrapped: { flexBasis: "45%" },
     navTabActive: { backgroundColor: colors.accent, borderWidth: 1, borderColor: colors.focus },
     navIcon: { fontSize: 25, lineHeight: 28, fontWeight: "600" },
     navLabel: { fontSize: 12, fontWeight: "700", textAlign: "center" },

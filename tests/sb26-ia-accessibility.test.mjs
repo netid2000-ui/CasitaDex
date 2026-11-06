@@ -3,10 +3,9 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 const shell=fs.readFileSync("src/app/_layout.tsx","utf8");
 const eng=fs.readFileSync("src/eng-screens.tsx","utf8");
-test("five distinct labeled accessible primary destinations",()=>{
- for(const [name,route] of [["Home","/"],["Memories","/memories"],["Photos","/photos"],["Reminders","/reminders"],["Find","/answers"]]){
-  assert.ok(shell.includes(`label: "${name}", route: "${route}"`),name);
- }
+test("exactly four owner-approved primary destinations in order, with no extra tab",()=>{
+ const actual=[...shell.matchAll(/\{ label: "([^"]+)", route: "([^"]+)" \}/g)].map(match=>[match[1],match[2]]);
+ assert.deepEqual(actual,[["Home","/"],["Photos","/photos"],["Reminders","/reminders"],["Find","/answers"]]);
  assert.match(shell,/accessibilityRole="tab"/);
  assert.match(shell,/accessibilityState=\{\{ selected: active \}\}/);
 });

@@ -11,10 +11,9 @@ import { BrandWebMeta } from "../brand-web-meta";
 import { AcceptedNavigationIcon as NavigationIcon } from "../accepted-navigation-icon";
 import { guardedNavigate, navigationIsGuarded } from "../eng-navigation";
 
-type Route = "/" | "/memories" | "/photos" | "/reminders" | "/answers";
-const destinations: { label: "Home" | "Memories" | "Photos" | "Reminders" | "Find"; route: Route }[] = [
+type Route = "/" | "/photos" | "/reminders" | "/answers";
+const destinations: { label: "Home" | "Photos" | "Reminders" | "Find"; route: Route }[] = [
   { label: "Home", route: "/" },
-  { label: "Memories", route: "/memories" },
   { label: "Photos", route: "/photos" },
   { label: "Reminders", route: "/reminders" },
   { label: "Find", route: "/answers" },
@@ -51,7 +50,7 @@ function Shell() {
         <View style={[s.nav, useTwoRows && s.navWrapped]} accessibilityLabel="Primary navigation">
           {destinations.map(({ label, route }) => {
             const active =
-              path === route || (route === "/memories" && path === "/card");
+              path === route || (route === "/answers" && (path === "/memories" || path === "/card"));
             return (
               <Pressable
                 key={route}

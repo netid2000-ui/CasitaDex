@@ -2,6 +2,9 @@
 
 November 6, 2026 UTC. FA-MAC-DEV-01 exclusively. Authorized branch `work/cd-sb41-edit-targeting-20261104`. **Release NO-GO.**
 
+## Current Home recovery, pending review
+The owner-confirmed four-tab Home existed in a separate dirty checkout. It is now selectively reconciled into this uncommitted candidate without replacing newer data/reminder/accessibility fixes. PASS: inspected web layout, exact tab/actions/browse checks, 34 focused tests, 415 full tests (410 pass, 5 existing skips), typecheck and lint. Native builds/acceptance NOT RUN for this candidate. [Reconciliation and correction](docs/qa/WORK_SB121_CURRENT_HOME_RECONCILIATION.md). Release remains NO-GO; frozen scheduled iOS runtime is unchanged.
+
 ## Verified source candidate
 
 Source `3b526f6976d0d9becafd16ede2fd12ba89216ff4` adds a supported dev-only Zod advisory fix, preserves inherited iOS scene configuration, and adds bounded accessibility semantics.

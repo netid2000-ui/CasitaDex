@@ -1,7 +1,7 @@
-// Web Image already supplies an accessible img; do not duplicate its role on the wrapper.
 import React, { useEffect, useState } from "react";
-import { AppState, Image, View } from "react-native";
+import { AppState, Image, Text, View, useWindowDimensions } from "react-native";
 import { Copy, useTheme } from "./ui";
+import { useData } from "./state";
 
 const illustrations = {
   home: require("../assets/brand/illustration-home.jpg"),
@@ -9,13 +9,26 @@ const illustrations = {
   backup: require("../assets/brand/illustration-backup.jpg"),
 };
 
-/** Approved full-color master, selected by appearance; never redraw geometry. */
-export function BrandLogo({ width = 96 }: { width?: number }) {
+/** Original Figma vector artwork rasterized without path edits; name remains real accessible text. */
+export function BrandLogo({ width = 160 }: { width?: number }) {
   const { dark } = useTheme();
-  return <Image source={dark ? require("../assets/brand/logo-color-dark.png") : require("../assets/brand/logo-color-light.png")}
-    resizeMode="contain" accessibilityLabel="CasitaDex" style={{ width, height: width * 550 / 545, flexShrink: 0 }} />;
+  const markWidth = Math.round(width * 0.39);
+  const markHeight = markWidth * (366.3 / 495);
+  const wordSize = Math.min(18, Math.max(12, width * 0.103));
+  const wordColor = dark ? "#FFF9EC" : "#003F30";
+  return <View accessible accessibilityRole="image" accessibilityLabel="CasitaDex, Designs by F and A"
+    style={{ width, minHeight: 52, flexDirection: "row", alignItems: "center", gap: 6, flexShrink: 0 }}>
+    <Image source={dark ? require("../assets/brand/logo-art-dark.png") : require("../assets/brand/logo-art-light.png")}
+      accessible={false} accessibilityElementsHidden importantForAccessibility="no-hide-descendants" aria-hidden resizeMode="contain" style={{ width: markWidth, height: markHeight, flexShrink: 0 }} />
+    <View accessible={false} accessibilityElementsHidden importantForAccessibility="no-hide-descendants" aria-hidden style={{ flex: 1, minWidth: 0, justifyContent: "center", gap: 3 }}>
+      <Text allowFontScaling={false} numberOfLines={1}
+        style={{ color: wordColor, fontSize: wordSize, fontWeight: "700", letterSpacing: -0.25 }}>CasitaDex</Text>
+      <Text allowFontScaling={false} numberOfLines={1}
+        style={{ color: wordColor, fontSize: Math.min(9, Math.max(7, width * 0.051)), fontWeight: "700", letterSpacing: 0.2 }}>DESIGNS BY F&A</Text>
+    </View>
+  </View>;
 }
-function LocalDate() {
+function LocalDate({ stacked = false }: { stacked?: boolean }) {
   const [now, setNow] = useState(() => new Date());
   useEffect(() => {
     const refresh = () => setNow(new Date());
@@ -24,18 +37,21 @@ function LocalDate() {
     return () => { clearInterval(timer); listener.remove(); };
   }, []);
   const { colors } = useTheme();
-  return <View accessibilityLabel={now.toLocaleDateString(undefined, { dateStyle: "full" })} style={{ alignItems: "flex-end", flexShrink: 1 }}>
+  return <View accessibilityLabel={now.toLocaleDateString(undefined, { dateStyle: "full" })} style={{ alignItems: stacked ? "center" : "flex-end", flexShrink: 1, maxWidth: "100%" }}>
     <Copy kind="small" style={{ color: colors.muted }}>{now.toLocaleDateString(undefined, { weekday: "long" })}</Copy>
-    <Copy style={{ fontWeight: "700", textAlign: "right" }}>{now.toLocaleDateString(undefined, { month: "long", day: "numeric" })}</Copy>
+    <Copy style={{ fontWeight: "700", textAlign: stacked ? "center" : "right" }}>{now.toLocaleDateString(undefined, { month: "long", day: "numeric" })}</Copy>
     <Copy kind="small" style={{ color: colors.muted }}>{now.getFullYear()}</Copy>
   </View>;
 }
 
 export function BrandHeader() {
   const { colors } = useTheme();
-  return <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between", gap: 12, width: "100%", borderWidth: 1, borderColor: colors.muted, borderRadius: 16, paddingHorizontal: 12, paddingVertical: 8 }}>
-    <BrandLogo width={96} />
-    <LocalDate />
+  const { width, fontScale } = useWindowDimensions();
+  const { large } = useData();
+  const stacked = large || fontScale >= 1.35 || width < 365;
+  return <View style={{ flexDirection: stacked ? "column" : "row", alignItems: "center", justifyContent: "space-between", gap: stacked ? 6 : 12, width: "100%", backgroundColor: colors.white, borderWidth: 1, borderColor: colors.muted, borderRadius: 16, minHeight: 81, paddingHorizontal: 12, paddingVertical: 8 }}>
+    <BrandLogo width={stacked ? 150 : 176} />
+    <LocalDate stacked={stacked} />
   </View>;
 }
 /** Decorative; nearby live text conveys the meaning at every text size. */
