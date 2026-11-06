@@ -147,3 +147,34 @@ test("actual native content clamp can acknowledge a pending command",()=>{
  assert.equal(f.calls.length,2,"Clamped acknowledgment permits the deferred fresh measurement");
  assert.equal(f.calls[1].y,72);
 });
+
+test("Fabric nonanimated scroll end preserves queued reflow correction after partial outcome",()=>{
+ const f=fixture();f.size();f.flush();assert.equal(f.calls[0].y,1417);
+ // Reflow moves the content during the first native command; settled input is y468, as captured.
+ f.state.field[1]=1885;f.size();
+ f.state.field[1]-=1417;f.offset(1417);
+ f.content.props.onMomentumScrollEnd();
+ f.flush();
+ assert.equal(f.calls.length,2,"End-only native event must not cancel the fresh measurement");
+ assert.equal(f.calls[1].y,1847,"Correct the remaining430pt from actual observed geometry");
+ f.state.field[1]-=430;f.offset(1847);f.content.props.onMomentumScrollEnd();f.flush();
+ assert.equal(f.calls.length,2);assert.equal(f.state.field[1],38,"Oversized control is centered, not claimed fully visible");
+});
+test("duplicate forced same-offset scroll before end does not cancel queued reflow",()=>{
+ const f=fixture();f.size();f.flush();f.state.field[1]=1885;f.size();
+ f.state.field[1]-=1417;f.offset(1417);f.offset(1417);
+ f.content.props.onMomentumScrollEnd();f.content.props.onMomentumScrollEnd();f.flush();
+ assert.equal(f.calls.length,2);assert.equal(f.calls[1].y,1847);
+});
+test("real user drag and inertia end still cancel work without snapping focus back",()=>{
+ const f=fixture();f.size();f.content.props.onScrollBeginDrag();f.flush();
+ f.content.props.onScrollEndDrag();
+ f.content.props.onMomentumScrollBegin();f.size();f.event("keyboardDidChangeFrame");f.flush();
+ f.content.props.onMomentumScrollEnd();f.content.props.onMomentumScrollEnd();f.flush();
+ assert.equal(f.calls.length,0);assert.equal(f.frames.size,0);
+});
+test("end-only event without deferred work does not create a correction loop",()=>{
+ const f=fixture();f.size();f.flush();f.state.field[1]-=1417;f.offset(1417);
+ for(let i=0;i<3;i++){f.content.props.onMomentumScrollEnd();f.flush();}
+ assert.equal(f.calls.length,1);
+});

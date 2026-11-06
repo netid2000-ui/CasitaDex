@@ -98,7 +98,12 @@ export function useIOSFocusScroll() {
   const startDrag = () => {
     state.current.dragging = true; state.current.pending = null; state.current.reconcileAfterScroll = false; invalidate();
   };
-  const stopDrag = () => { state.current.dragging = false; invalidate(); };
+  // Fabric also sends momentum-end after nonanimated scrollTo, without a user gesture.
+  const stopDrag = () => {
+    if (!state.current.dragging) return;
+    state.current.dragging = false;
+    invalidate();
+  };
   return ios ? {
     ref,
     onLayout: schedule,
