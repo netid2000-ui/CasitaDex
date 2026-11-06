@@ -8,8 +8,14 @@ export function reminderResponseRoute(value: unknown): ReminderResponseRoute | n
   const response = value as Partial<ReminderResponse>;
   const sourceId = reminderNotificationTarget(response.sourceId);
   if (!sourceId || typeof response.token !== "string" || !response.token) return null;
-  if (response.kind === "memory") return { pathname: "/card", params: { id: sourceId } };
-  if (response.kind === "standalone") return { pathname: "/reminders", params: { reminder: sourceId } };
+  // Expo Router 57 decodes query values in both parseQueryParams and
+  // useLocalSearchParams. Preserve literal percent sequences through that second
+  // decode by adding one transport layer before resolveHref adds URL encoding.
+  // Installed-router regression tests pin this contract for both destinations.
+  let routeId: string;
+  try { routeId = encodeURIComponent(sourceId); } catch { return null; }
+  if (response.kind === "memory") return { pathname: "/card", params: { id: routeId } };
+  if (response.kind === "standalone") return { pathname: "/reminders", params: { reminder: routeId } };
   return null;
 }
 

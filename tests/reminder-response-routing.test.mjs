@@ -13,10 +13,10 @@ function fixture(rows=[response()]) {
  const drain=createReminderResponseDrain(inbox, route=>{if(guarded)return false;navigations.push(route);return true;});
  return {rows,navigations,acks,drain,setGuard:value=>guarded=value,failAck:()=>failAck=true};
 }
-test('validated response routes retain exact decoded identity and distinguish linked/standalone',()=>{
+test('validated response routes protect identity for the installed router and distinguish linked/standalone',()=>{
  for(const id of ['r_one','hall light','café & filter','literal%20value','a/b?c#d']) {
-  assert.deepEqual(reminderResponseRoute(response('one','standalone',id)),{pathname:'/reminders',params:{reminder:id}});
-  assert.deepEqual(reminderResponseRoute(response('one','memory',id)),{pathname:'/card',params:{id}});
+  assert.deepEqual(reminderResponseRoute(response('one','standalone',id)),{pathname:'/reminders',params:{reminder:encodeURIComponent(id)}});
+  assert.deepEqual(reminderResponseRoute(response('one','memory',id)),{pathname:'/card',params:{id:encodeURIComponent(id)}});
  }
  for(const input of [null,{},response('','memory','a'),response('x','unknown','a'),response('x','memory',''),response('x','memory','x\n'),response('x','memory','x'.repeat(513))]) assert.equal(reminderResponseRoute(input),null);
 });
