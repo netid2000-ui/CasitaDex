@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "status": "VERIFIED_PARTIAL_MILESTONE_SNAPSHOT",
-  "updated_at_utc": "2026-11-06T21:03:21.527222+00:00",
+  "updated_at_utc": "2026-11-06T21:08:28.909927+00:00",
   "release": "NO-GO",
   "latest_runtime_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
   "installed_runtime_checkpoint": {
@@ -38,10 +38,11 @@
     "overall_release": "NO-GO",
     "ios": {
       "artifact_ref": "ios_7fa",
-      "result": "BOUNDED_NATIVE_PASS_WITH_ENLARGED_CANCEL_AND_MAXIMUM_GAPS",
-      "scope": "Normal validation feedback and Cancel PASS; app Large feedback readable after one action scroll; enlarged Cancel and combined maximum acceptance incomplete. Ten tables/media preserved.",
+      "result": "BOUNDED_NATIVE_PASS_WITH_MAXIMUM_GAP",
+      "scope": "Normal validation and Cancel PASS; app Large Text feedback and Cancel PASS with bounded action scrolling. Combined system maximum acceptance incomplete. Ten tables/media preserved.",
       "evidence_refs": [
-        "ios_7fa_validation_native"
+        "ios_7fa_validation_native",
+        "ios_7fa_enlarged_cancel"
       ]
     },
     "android": {
@@ -1084,6 +1085,13 @@
       "raw_result_sha256": "a6a131e3160eac349111341bf3906123cac764a7c17a0a39d50d103848c80fc2",
       "raw_manifest_sha256": "6f2cc1ad9ec471411224cc4fa0a64006713626be85207032e2cb5a6656ac0b6b",
       "source_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606"
+    },
+    "ios_7fa_enlarged_cancel": {
+      "relative_path": "docs/qa/SB121_IOS_7FA_ENLARGED_CANCEL_20261106.json",
+      "sha256": "84042d3bed92a3ceb63ebdda47802f5adb1e71b4ab9a1e840d70451dedc8b470",
+      "raw_result_sha256": "7c717c0080a26c4b673f69c947d0e13eaee56f64009912e2bda7ab9dfe564000",
+      "raw_manifest_sha256": "2f3059736276805df380da272215368335c7739782f76f238ed61b6a0c65f8a0",
+      "source_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606"
     }
   },
   "execution_limits": [
@@ -1414,6 +1422,15 @@
       "evidence_refs": [
         "ios_7fa_validation_native"
       ]
+    },
+    {
+      "id": "IOS_7FA_ENLARGED_CANCEL_DIRECTIONAL",
+      "status": "PASS_BOUNDED_ENLARGED_CANCEL",
+      "artifact_ref": "ios_7fa",
+      "scope": "App Large Text with system large: full validation feedback and Cancel reachable; Cancel clears feedback; ten tables/media/runtime exact and normal Home/preferences restored. Combined maximum still unverified.",
+      "evidence_refs": [
+        "ios_7fa_enlarged_cancel"
+      ]
     }
   ],
   "current_android_preserved_state": {
@@ -1461,10 +1478,11 @@
     "report_sha256": "4a1de66fd1658e292df90115c35055ce7bd91548cca648acdfc774b66fbd1608",
     "scope": "Edit validation feedback placed beside fixed actions and cleared on Cancel; 43 focused source tests/typecheck/targeted lint pass. Candidate native proof pending; prior runtime acceptance unchanged.",
     "native_followup": {
-      "status": "BOUNDED_NATIVE_PASS_WITH_ENLARGED_CANCEL_AND_MAXIMUM_GAPS",
+      "status": "BOUNDED_NATIVE_PASS_WITH_MAXIMUM_GAP",
       "source_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
       "evidence_refs": [
-        "ios_7fa_validation_native"
+        "ios_7fa_validation_native",
+        "ios_7fa_enlarged_cancel"
       ]
     }
   },

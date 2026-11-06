@@ -1,0 +1,52 @@
+{
+  "status": "PASS_BOUNDED_ENLARGED_CANCEL",
+  "runtime_source": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
+  "completed_utc": "2026-11-06T21:08:28.909927+00:00",
+  "profile": {
+    "system_content_size": "large",
+    "app_large_text": true,
+    "combined_system_maximum": false
+  },
+  "reason": "Close previously incomplete Cancel path for changed validation feedback; prior helper scrolled the wrong direction when Cancel was above the action viewport.",
+  "method": "Supported native tap and bounded directional swipe within the measured action viewport; stable control geometry and explicit empty-field guard.",
+  "result": {
+    "feedback_fully_reachable": true,
+    "empty_name_retained": true,
+    "feedback_scrolls": 1,
+    "cancel_scrolls": 1,
+    "cancel_reachable": true,
+    "cancel_cleared_feedback": true,
+    "native_cancel_screenshot_reviewed": true
+  },
+  "preservation": {
+    "all_ten_tables_equal": true,
+    "media_equal": true,
+    "runtime_equal": true,
+    "cleanup": {
+      "atUTC": "2026-11-06T21:08:28.716Z",
+      "home": true,
+      "portrait": true,
+      "systemLarge": true,
+      "appLargeOff": true,
+      "keyboardAbsent": true
+    }
+  },
+  "reuse": "Existing 7fa build and prior normal-size/source evidence reused; earlier owner and 8cc acceptance retained with original attribution. No build or broad regression repeated.",
+  "remaining": [
+    "Combined maximum-system-text validation and extended manual hold/refocus remain incomplete.",
+    "Actual screen reader and iOS restore remain pending owner approvals; no permissions changed.",
+    "Other recorded iOS offline, security and distribution gates remain open; overall release NO-GO."
+  ],
+  "boundaries": {
+    "new_builds": 0,
+    "successful_saves": 0,
+    "other_devices_touched": false,
+    "permissions_changed": false,
+    "device_job_exit_code": 0,
+    "device_lock_released": true
+  },
+  "evidence_directory": "WORK-SB121/ios-validation-7fa012a-enlarged-cancel",
+  "raw_result_sha256": "7c717c0080a26c4b673f69c947d0e13eaee56f64009912e2bda7ab9dfe564000",
+  "manifest_sha256": "2f3059736276805df380da272215368335c7739782f76f238ed61b6a0c65f8a0",
+  "manifest_files": 58
+}
