@@ -1,3 +1,21 @@
+# Current native outcome: iOS 9da rotation failed — November 6, 2026
+
+**VERIFIED FAIL on exact 9da76aaa391d423efc25de497c18e44eb2493c0e. Release remains NO-GO.** This supersedes the earlier pending wording without altering historical snapshots.
+
+- Exact iOS executable: b057e7461918c4f208eda1e71d91b95a30683885827d3ca722279adb5c08ef9a. Packaged Hermes: 86b03cf441231fa68115ec372a83d4d88536c0624eb9d18a83bc871ef5ab69bf.
+- With maximum system text and app Large Text enabled, the same focused dirty editor remains outside the settled landscape content pane: field y468–641 versus pane y71–178. Stable samples and a later independent capture show no input text or caret. This is a native failure, not a whole-control-fit assertion or transient frame.
+- Preserving upgrade, normal Home/four-tab baseline and cleanup passed. All ten logical tables, entire state envelope and photo bytes remained identical. Normal Home, portrait, system large, app Large Text off, no keyboard and null draft were restored.
+- Ordinary-key editing, repeated keyboard/manual-drag/rotation controls, Save/relaunch, XCTest and manual screen-reader speech remain **NOT_RUN** after the stop.
+- A coordinate-only diagnostic derivative is planned separately. No diagnostic build, new release patch or native acceptance is claimed.
+
+Android retains the bounded results described below: actual native restore on **bb235**, then preserving upgrade and strict offline checks on **5dc930e**. The two-photo draft and matching archive remain unchanged. Its virtual device was gracefully stopped at 16:52 UTC; shutdown was verified at 16:52:07.907 UTC. Complete app data was retained with a verified archive hash. No reset, uninstall or deletion occurred; stopping the virtual device does not revoke or expand prior exact-artifact acceptance.
+
+Receipt SHA-256: 8736418a9eac4449d38a551a82a2a81b8dfd72b4ed64a23c5a2880372269d8f6. The 56-entry native manifest matched in full. Android handoff receipt SHA-256: 28322093c3c51298fc12a912edf04b5aebfbfbf42e43289f47f13788dc2670ed. Exact filenames/hashes and scope are retained in [the ledger](SB121_CURRENT_NATIVE_ACCEPTANCE_LEDGER_20261106.json); raw private receipts, identifiers and data are not published.
+
+## Historical checkpoint published at 7a5bb232, retained unchanged below
+
+Its “9da pending” wording was accurate at that checkpoint and is superseded by the verified failure above.
+
 # Acceptance update: Android restore/offline and iOS rotation — November 6, 2026
 
 **Release remains NO-GO.** This update adds later exact-artifact milestones without changing the historical bb235 matrix below.

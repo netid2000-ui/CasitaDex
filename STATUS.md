@@ -1,3 +1,13 @@
+# Latest native outcome: iOS 9da rotation failed — November 6, 2026
+
+Release **NO-GO**. Exact **9da76aaa391d423efc25de497c18e44eb2493c0e** native maximum-text landscape focus is **VERIFIED FAIL**, superseding the earlier pending status. The focused field stays at y468–641 outside pane y71–178; stable pixels show no input text or caret. [Current ledger and exact hashes](docs/qa/SB121_CURRENT_NATIVE_ACCEPTANCE_20261106.md).
+
+Preserving upgrade and cleanup passed. All ten logical tables, full state envelope and photo bytes remained unchanged; normal Home/preferences and null draft were restored. Broader keyboard/control/Save/audit cases stopped as NOT_RUN. A coordinate-only diagnostic derivative is planned separately; no new release patch or diagnostic acceptance is claimed.
+
+Android **5dc930e**, APK **1d7ebf35cf1e90c5d0df8952bf4ad845bcdb8778c26ee6965fc7ef47e2a9706e**, retains its bounded preserving-upgrade/offline acceptance, with actual restore attributed to preceding bb235. Its virtual device was gracefully stopped at 16:52 UTC, with complete app data and the one-memory/one-draft/two-photo/one-reminder state retained. No reset, uninstall or deletion. The matching archive remains **82cbc2865e26c5e6c676e42c78d6f65c4217ab1233a8f4f7a404dbf1d9c8509e**.
+
+## Earlier checkpoints retained; prior pending wording is historical
+
 # Latest verified acceptance: Android restore/offline; iOS repair pending — November 6, 2026
 
 Release **NO-GO**. [Updated acceptance ledger](docs/qa/SB121_CURRENT_NATIVE_ACCEPTANCE_20261106.md) preserves the original bb235 composite matrix and adds later exact-artifact receipts.

@@ -1,3 +1,9 @@
+## 2026-11-06 - Exact iOS 9da native failure recorded
+
+- Replace the current pending status with verified maximum-text landscape focus failure on exact 9da iOS; preserving upgrade, cleanup and all-ten-table/state/photo equality passed. Later acceptance cases remain NOT_RUN.
+- Preserve prior snapshots and Android's bounded results while recording its graceful virtual-device shutdown with all data retained. No reset, uninstall or deletion.
+- Keep coordinate-only diagnostic planning separate from release source and native acceptance. Documentation only; no application, build or test changes.
+
 ## 2026-11-06 - Android native restore and strict offline milestone
 
 - Record approved actual native same-current-state restore on bb235 and preserving upgrade/offline Find, photo append, local Full v4 export and relaunch on exact 5dc Android. Verify original radios/network restoration and retained two-photo draft archive.
