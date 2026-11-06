@@ -39,7 +39,7 @@
     "ios": {
       "artifact_ref": "ios_7fa",
       "result": "BOUNDED_NATIVE_PASS_WITH_MAXIMUM_GAP",
-      "scope": "Normal and app Large validation/Cancel PASS; combined maximum message scroll coverage, Cancel and bounded manual drag/hold/refocus PASS. Broad field/label reachability and human legibility remain incomplete. Ten tables/media preserved. Follow-up maximum-before-editor portrait check reached five unfocused fields; reminder-date and new-Space/Category inputs remain below the bounded18-view traversal. Broader label/value readability stays open; no code defect or global accessibility pass inferred.",
+      "scope": "Normal and app Large validation/Cancel PASS; combined maximum message scroll coverage, Cancel and bounded manual drag/hold/refocus PASS. Broad field/label reachability and human legibility remain incomplete. Ten tables/media preserved. Follow-up maximum-before-editor portrait check reached five unfocused fields; reminder-date and new-Space/Category inputs remain below the bounded18-view traversal. Broader label/value readability stays open; no code defect or global accessibility pass inferred. Later targeted followup closes the two missing unfocused field-reachability gaps in the same maximum portrait profile. Combined with reused prior five-field evidence, all seven inputs have been reached. Space/Category label reconstructed across nine views; full reminder-date format readability and practical accessibility remain partial. One AX-label harness stop preserved; no app fix inferred.",
       "evidence_refs": [
         "ios_7fa_validation_native",
         "ios_7fa_enlarged_cancel",
@@ -50,7 +50,8 @@
         "ios_7fa_share_private_preview",
         "ios_7fa_share_private_native_sheet",
         "ios_7fa_share_native_background",
-        "ios_7fa_maximum_unfocused_fields"
+        "ios_7fa_maximum_unfocused_fields",
+        "ios_7fa_maximum_lower_fields"
       ]
     },
     "android": {
@@ -1182,7 +1183,8 @@
       "source_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606"
     },
     "dependency_glob_backport": "docs/qa/SB121_DEPENDENCY_GLOB_BACKPORT_20261106.json",
-    "ios_7fa_maximum_unfocused_fields": "docs/qa/SB121_IOS_7FA_MAXIMUM_UNFOCUSED_FIELDS_20261106.json"
+    "ios_7fa_maximum_unfocused_fields": "docs/qa/SB121_IOS_7FA_MAXIMUM_UNFOCUSED_FIELDS_20261106.json",
+    "ios_7fa_maximum_lower_fields": "docs/qa/SB121_IOS_7FA_MAXIMUM_LOWER_FIELDS_20261106.json"
   },
   "execution_limits": [
     "Receipt consolidation and SHA-256 verification only. No duplicate app tests, builds, device actions or source/index edits.",

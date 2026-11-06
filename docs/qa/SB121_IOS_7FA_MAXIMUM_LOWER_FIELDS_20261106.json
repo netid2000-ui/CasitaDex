@@ -1,0 +1,108 @@
+{
+  "status": "BOTH_LOWER_FIELDS_REACHED_READABILITY_PARTIAL",
+  "runtime_source": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
+  "base_head": "3d9191fed5f182949a4b8a7e83400fefce2db831",
+  "profile": "Portrait; app Large ON plus system accessibility-extra-extra-extra-large applied before editor mount. No keyboard, focus, text edits or saves.",
+  "results": [
+    {
+      "directory": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB121/ios-7fa-maximum-two-lower-fields",
+      "target": "Reminder date (YYYY-MM-DD)",
+      "unfocused_field_visible_points": 143,
+      "navigation_swipes": 13,
+      "bounds": {
+        "x": 21,
+        "y": 444,
+        "width": 360,
+        "height": 173
+      },
+      "viewport": {
+        "x": 0,
+        "y": 274,
+        "width": 402,
+        "height": 319
+      },
+      "preservation": {
+        "all_ten_tables_equal": true,
+        "media_equal": true,
+        "runtime_equal": true
+      },
+      "cleanup": {
+        "atUTC": "2026-11-06T22:19:22.154Z",
+        "home": true,
+        "portrait": true,
+        "systemLarge": true,
+        "appLargeOff": true,
+        "keyboardAbsent": true
+      },
+      "manifest_sha256": "2645b8f207bb3efbe69d6b9a5c0d863d1260c0a89bb14a51d2b892fa190fd4f3"
+    },
+    {
+      "directory": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB121/ios-7fa-maximum-last-field",
+      "target": "Create a Space or Category without leaving edits",
+      "unfocused_field_visible_points": 122,
+      "navigation_swipes": 22,
+      "bounds": {
+        "x": 21,
+        "y": 465,
+        "width": 360,
+        "height": 173
+      },
+      "viewport": {
+        "x": 0,
+        "y": 274,
+        "width": 402,
+        "height": 319
+      },
+      "preservation": {
+        "all_ten_tables_equal": true,
+        "media_equal": true,
+        "runtime_equal": true
+      },
+      "cleanup": {
+        "atUTC": "2026-11-06T22:22:30.918Z",
+        "home": true,
+        "portrait": true,
+        "systemLarge": true,
+        "appLargeOff": true,
+        "keyboardAbsent": true
+      },
+      "manifest_sha256": "6ba18abea8e8376b73767a5810854a95298d8b6839d23873fddbef4de10ee26f"
+    }
+  ],
+  "pixel_review": {
+    "space_category": "All nine retained label views00-08 inspected. Create a Space or Category without leaving edits can be reconstructed across scrolling views; words wrap across lines. Not simultaneous full-label readability or owner comfortable-reading acceptance.",
+    "reminder_date": "Existing prior view15-17 reused for Reminder/date/(YYYY beginning; new target field screenshot shows ending DD) and field. Middle date-format characters were not fully captured for visual certification. Full readability remains partial.",
+    "ax_limitation": "Oversized StaticText labels disappear from the returned AX tree while their lower glyphs remain visibly on screen. First run stopped at Label absent after successfully reaching reminder input. Last-field followup tolerates absence and retains screenshots; coverage start/end null means unavailable, not zero or full coverage."
+  },
+  "first_run": {
+    "job": "88b65a8438a83923",
+    "exit": 1,
+    "classification": "HARNESS_STOP_NOT_APP_FAILURE",
+    "error": "Error: Label absent at check.mjs:9:82",
+    "cleanup_and_preservation_passed": true
+  },
+  "last_field_run": {
+    "job": "0b0870d572549ebd",
+    "exit": 0,
+    "label_views": 9,
+    "observed_label_height_points": 1578,
+    "measured_ax_coverage_only": "0..509pt; other views lack AX label bounds. No full geometric coverage claim."
+  },
+  "reused_evidence": [
+    "docs/qa/SB121_IOS_7FA_MAXIMUM_UNFOCUSED_FIELDS_20261106.json",
+    "ios-7fa-maximum-unfocused-fields/view-15.png",
+    "ios-7fa-maximum-unfocused-fields/view-16.png",
+    "ios-7fa-maximum-unfocused-fields/view-17.png"
+  ],
+  "decision": "No unreachable-field defect established, so no app source fix or scaling cap introduced. The specific two missing field-reachability gaps are closed for this profile. Reminder full-format pixels, practical readability, focus/editing, landscape and actual screen-reader acceptance remain distinct open scopes. Stop further traversal instead of relabeling partial readability as accessibility acceptance.",
+  "boundaries": {
+    "source_changes": 0,
+    "builds": 0,
+    "edits": 0,
+    "saves": 0,
+    "permissions_changed": false,
+    "android_or_heavy_lane_touched": false,
+    "device_locks_released": true,
+    "release": "NO-GO"
+  }
+}
