@@ -1,3 +1,16 @@
+# Latest verified acceptance: Android restore/offline; iOS repair pending — November 6, 2026
+
+Release **NO-GO**. [Updated acceptance ledger](docs/qa/SB121_CURRENT_NATIVE_ACCEPTANCE_20261106.md) preserves the original bb235 composite matrix and adds later exact-artifact receipts.
+
+- **PASS, bounded Android:** actual same-current-state native restore on bb235; preserving upgrade and strict emulator OS-offline Find/photo append/local export/relaunch on **5dc930e**, APK **1d7ebf35cf1e90c5d0df8952bf4ad845bcdb8778c26ee6965fc7ef47e2a9706e**. Radios/network restored and watchdog exited 0. [Milestone](docs/qa/SB121_ANDROID_NATIVE_RESTORE_OFFLINE_20261106.md).
+- Android retained state now contains one saved memory, one unfinished draft with **two photos**, one reminder. Matching archive **82cbc2865e26c5e6c676e42c78d6f65c4217ab1233a8f4f7a404dbf1d9c8509e**; older one-photo archives must not replace it without new authorization.
+- **VERIFIED FAIL, iOS 5dc930e:** settled landscape focus remained outside the visible pane. Normal baseline and cleanup/data preservation passed; later acceptance cases were NOT_RUN.
+- Latest source **9da76aaa391d423efc25de497c18e44eb2493c0e** is a narrow iOS-only follow-up: **586 tests, 581 passed, 5 skipped, 0 failed**; 53 focused checks, typecheck/lint passed. New iOS build/native acceptance is separate and not yet claimed.
+
+iOS restore/offline, manual screen-reader, wider native/visual, physical/owner, signing and store gates remain open. No app source or tests changed in this documentation update.
+
+## Earlier published checkpoints retained with original artifact scope
+
 # Verified native evidence ledger and source follow-up — November 6, 2026
 
 Release **NO-GO**. [Timestamped native acceptance ledger](docs/qa/SB121_CURRENT_NATIVE_ACCEPTANCE_20261106.md) preserves exact artifact attribution and the original planned matrix. The 18 bb235 composite cells are **9 PARTIAL, 1 FAIL, 8 NOT_RUN**, not a test-pass percentage. Android keyboard/rotation and both platforms' bounded one-photo workflows have verified receipts; the bb235 iOS landscape focus failure remains recorded.

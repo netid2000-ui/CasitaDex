@@ -1,3 +1,20 @@
+# Acceptance update: Android restore/offline and iOS rotation — November 6, 2026
+
+**Release remains NO-GO.** This update adds later exact-artifact milestones without changing the historical bb235 matrix below.
+
+- **Android native restore PASS, bounded, on bb235:** fresh same-current-state Full v4 archive, complete stopped-process recovery copy, actual reviewed replacement, and semantic/reminder/media equality after restore and relaunch.
+- **Android preserving upgrade and strict OS-offline PASS, bounded, on 5dc:** exact APK 1d7ebf35cf1e90c5d0df8952bf4ad845bcdb8778c26ee6965fc7ef47e2a9706e. HTTP/IP/default-route negative controls verified isolation; Find, draft photo append, native local export and relaunch passed. Original radios restored in 277.264 seconds; network returned in 280.800 seconds; independent watchdog exited 0. [Report and limits](SB121_ANDROID_NATIVE_RESTORE_OFFLINE_20261106.md).
+- **iOS 5dc landscape focus VERIFIED FAIL:** exact executable 5ccb166102dbfc6bfa9bf8c27e2cb972df96db8709a2c837d0c7381d5a8d4543 / Hermes 69b3b8a61de0d03f78310aeae628641c3d8a6ea7ba98ae3c6eda3e24debb547c. Settled field y468–641 remained outside pane y71–178 with keyboard open. Normal navigation and cleanup/data preservation passed; later keyboard/Save/audit cases stopped as NOT_RUN.
+- **Newer source 9da76aaa391d423efc25de497c18e44eb2493c0e is not native-accepted:** narrow iOS-only guard, 586 source tests: 581 passed, 5 skipped, 0 failed; 53 focused checks, typecheck/lint passed. New iOS build/acceptance is tracked separately; no native pass follows from source tests.
+
+Current Android synthetic state is one saved memory, one unfinished draft with **two photos**, and one standalone reminder. The matching native archive is SHA-256 **82cbc2865e26c5e6c676e42c78d6f65c4217ab1233a8f4f7a404dbf1d9c8509e**. Do not substitute the older one-photo archive.
+
+Android's bounded pass does not close iOS restore/offline, manual screen readers, wider native/accessibility, physical/owner, signing or store gates. The historical source-suite skips remain distinct from later archive/native runs. New receipt integrity: Android checksum manifest 9/9 and iOS rotation manifest 89/89 match.
+
+## Historical checkpoint published at 659f7805, retained unchanged below
+
+Earlier “in progress” wording below describes that checkpoint, not the completed later outcomes above.
+
 # Current native acceptance ledger — November 6, 2026
 
 **Verified partial milestone snapshot. Release remains NO-GO.**

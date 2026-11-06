@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "completed_utc": "2026-11-06T16:31:57.405953+00:00",
+  "result": "PASS_BOUNDED_ANDROID_EMULATOR_ONLY",
+  "release": "NO-GO",
+  "native_restore": {
+    "source_commit": "bb235cdf6f2bba63b1760038a379a2c09cdf32ab",
+    "apk_sha256": "41518e7db8705aec54f66668831097f97e6a052234b34e4295477609fd5e4456",
+    "fresh_same_state_archive_sha256": "42bea3491d6d43908afcfd9fd697677c1811d9f426674a89c156032317a9f2e7",
+    "actual_native_replace_collection": true,
+    "stopped_process_recovery_copy_retained": true,
+    "restore_and_relaunch_semantic_reminder_media_equality": true
+  },
+  "preserving_upgrade_and_offline": {
+    "source_commit": "5dc930e280b43e9ffe5553a8c5c63fc6aa86eacb",
+    "apk_sha256": "1d7ebf35cf1e90c5d0df8952bf4ad845bcdb8778c26ee6965fc7ef47e2a9706e",
+    "same_signer_sha256": "fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c",
+    "full_data_media_equal_before_first_launch_and_after_launch": true,
+    "native_find_photo_append_export_relaunch": "PASS",
+    "http_ip_default_route_negative_controls": "PASS",
+    "original_radio_settings_restored": {
+      "airplane": 0,
+      "wifi": 1,
+      "mobile_data": 1
+    },
+    "settings_restored_seconds": 277.264,
+    "network_returned_seconds": 280.8,
+    "watchdog_exit_code": 0
+  },
+  "current_matching_archive": {
+    "sha256": "82cbc2865e26c5e6c676e42c78d6f65c4217ab1233a8f4f7a404dbf1d9c8509e",
+    "saved_memories": 1,
+    "drafts": 1,
+    "draft_photos": 2,
+    "standalone_reminders": 1,
+    "do_not_reuse_older_one_photo_archive": true
+  },
+  "private_evidence_relative_directory": "QA-Evidence/WORK-SB121/android-offline-restore-bb235cd-20261106",
+  "private_original_checksums": {
+    "offline-native-full-v4.cdxe": "82cbc2865e26c5e6c676e42c78d6f65c4217ab1233a8f4f7a404dbf1d9c8509e",
+    "native-restore-receipt.json": "59ffd355784f310605accdd82475529bc4c726d330ed12e3499c96012099df3d",
+    "post-reconnect-preservation.json": "e6bd46cf55e584db7239827a694895f7489fe9a14afef0dae62246f9bdd12fc6",
+    "preserving-upgrade-receipt.json": "181ee3f99958d10d9fbc3954f3265683e3fd7fe8cfb1e3d81408e5dfd3135128",
+    "radios-final.json": "9b2e745e9b8eada0f08e4a63255d6bc2990dac8c340b34cac1ae32d0824d8290",
+    "current-native-full-v4.cdxe": "42bea3491d6d43908afcfd9fd697677c1811d9f426674a89c156032317a9f2e7",
+    "offline-export-equality.json": "197a94a0f35466fc3cfdd1ac6ce004ab3f2c5827cdd15ff55fb58fa69ccc6afa",
+    "android-offline-restore-acceptance.json": "c36315d4a774e5fe280a42ce477e3be6a8ebcf562521ec0d54c886000f26ca74",
+    "publication/ANDROID_NATIVE_RESTORE_OFFLINE_20261106.md": "e894cd3f2d4333c94f27db79c7180eca2c93ec2ec4f63a10cefd0d51d604b8dd"
+  },
+  "private_checksum_manifest_sha256": "5cc9e863ae9eeacbac83fd7e912030dccd3fcc3781f34d51d42afc349c39b254",
+  "published_summary_sha256": "1b18a9e943da37811d1122858734354a98f64665f94784f3d14b96012f04f79f",
+  "limits": [
+    "Android emulator only; no iOS or physical-device offline proof",
+    "No notification-delivery claim; existing reminder retained but permission unchanged",
+    "No network isolation firewall or host changes",
+    "No corrupted backup import or previous-save recovery-button test",
+    "No new broad unit/regression-suite count",
+    "Overall release remains NO-GO and owner physical acceptance is still required"
+  ]
+}

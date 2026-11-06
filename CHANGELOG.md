@@ -1,3 +1,9 @@
+## 2026-11-06 - Android native restore and strict offline milestone
+
+- Record approved actual native same-current-state restore on bb235 and preserving upgrade/offline Find, photo append, local Full v4 export and relaunch on exact 5dc Android. Verify original radios/network restoration and retained two-photo draft archive.
+- Preserve the prior bb235 matrix while recording later 5dc iOS landscape failure, successful cleanup and stopped NOT_RUN cases.
+- Distinguish the newer 9da iOS-only source correction and pending native build/acceptance from verified Android outcomes. No runtime change or release approval in this docs-only update.
+
 ## 2026-11-06 - Verified partial native and review milestones
 
 - Record exact bb235 native receipt coverage without rewriting the historical planned matrix or relabeling older a886/737 results. Bounded iOS photo Save, selected-photo ZIP cancellation and relaunch persistence now verified.

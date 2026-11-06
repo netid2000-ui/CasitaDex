@@ -93,11 +93,22 @@
       "variant": "Unsigned Release arm64 iOS Simulator",
       "artifact_sha256": "5ccb166102dbfc6bfa9bf8c27e2cb972df96db8709a2c837d0c7381d5a8d4543",
       "hermes_sha256": "69b3b8a61de0d03f78310aeae628641c3d8a6ea7ba98ae3c6eda3e24debb547c",
-      "native_acceptance": "SEPARATE_IN_PROGRESS_NOT_IN_THIS_SNAPSHOT",
+      "native_acceptance": "FAIL: settled landscape focus reveal; normal navigation and preserving cleanup pass. Later cases NOT_RUN.",
       "provenance_evidence": [
         "ios_5dc_security",
         "ios_5dc_security_receipt",
-        "ios_5dc_upgrade"
+        "ios_5dc_upgrade",
+        "ios_5dc_rotation"
+      ]
+    },
+    "android_5dc": {
+      "source_commit": "5dc930e280b43e9ffe5553a8c5c63fc6aa86eacb",
+      "variant": "Non-debuggable Release ARM64 development-identity QA APK",
+      "artifact_sha256": "1d7ebf35cf1e90c5d0df8952bf4ad845bcdb8778c26ee6965fc7ef47e2a9706e",
+      "signer_sha256": "fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c",
+      "platform_scope": "Android API35 isolated emulator only; no physical/distribution acceptance",
+      "provenance_evidence": [
+        "android_native_restore_offline"
       ]
     }
   },
@@ -506,24 +517,27 @@
       "id": "G01",
       "gate": "Source checks at each identified revision",
       "status": "PASS_BOUNDED",
-      "scope": "bb235 full suite: 557 total, 552 passed, 5 skipped, 0 failed; typecheck/lint passed. Newer source-only 5dc930e: 582 total, 577 passed, 5 skipped, 0 failed; 49 focused checks, typecheck/lint passed. Neither closes native acceptance.",
+      "scope": "bb235 full suite: 557 total, 552 passed, 5 skipped, 0 failed; typecheck/lint passed. Newer source-only 5dc930e: 582 total, 577 passed, 5 skipped, 0 failed; 49 focused checks, typecheck/lint passed. Neither closes native acceptance. Newer 9da source-only gate: 586 total, 581 passed, 5 skipped, 0 failed; 53 focused checks, typecheck/lint passed. Native acceptance not implied.",
       "evidence_refs": [
         "doc_keyboard",
-        "doc_source_followup"
+        "doc_source_followup",
+        "doc_source_followup_9da"
       ]
     },
     {
       "id": "G02",
       "gate": "Exact native builds and preserving upgrades",
       "status": "PASS_BOUNDED",
-      "scope": "Native matrix covers exact bb235 virtual artifacts. Separately, newer 5dc unsigned Release iOS build and preserving upgrade passed: prior app/data retained and nine logical tables/media equal immediately and after first launch. 5dc rotation/keyboard acceptance remains pending. Android QA signer, iOS Simulator only; no distribution/physical acceptance.",
+      "scope": "Exact bb235 historical native artifacts retained. Both later 5dc artifacts received preserving upgrades. Android data/reminder/media equality passed; iOS upgrade and normal baseline passed but landscape focus FAILED. Newer 9da iOS-only source/build acceptance remains pending; no distribution/physical acceptance.",
       "evidence_refs": [
         "android_provenance",
         "ios_upgrade",
         "doc_ios_manifest",
         "doc_keyboard",
         "ios_5dc_upgrade",
-        "ios_5dc_security_receipt"
+        "ios_5dc_security_receipt",
+        "android_native_restore_offline",
+        "ios_5dc_rotation"
       ]
     },
     {
@@ -558,18 +572,20 @@
     {
       "id": "G06",
       "gate": "Actual native app restore/recovery",
-      "status": "ANDROID_IN_PROGRESS_IOS_NOT_RUN",
-      "scope": "Approved Android native restore/recovery work is in progress separately; no final result is incorporated here. iOS native restore remains untested. The earlier five engine tests use disposable state and do not close native restore.",
+      "status": "ANDROID_PASS_BOUNDED_IOS_NOT_RUN",
+      "scope": "Approved actual native same-current-state Full v4 restore passed on bb235 Android, with stopped-process recovery copy and post-restore/relaunch semantic/reminder/media equality. iOS native restore, corruption import and previous-save recovery-button acceptance remain untested.",
       "evidence_refs": [
-        "android_archive"
+        "android_native_restore_offline"
       ]
     },
     {
       "id": "G07",
       "gate": "Strict OS-wide offline acceptance",
-      "status": "ANDROID_IN_PROGRESS_IOS_NOT_RUN",
-      "scope": "Approved Android offline work is in progress separately; no final result is incorporated here. Strict iOS offline acceptance remains open and untested. No host-wide network change or all-platform offline acceptance is implied.",
-      "evidence_refs": []
+      "status": "ANDROID_PASS_BOUNDED_IOS_NOT_RUN",
+      "scope": "Strict emulator OS-offline acceptance passed on exact 5dc Android with HTTP/IP/default-route negative controls, native Find/photo append/local export/relaunch and restored original radios/network. No host-network or physical-device change; strict iOS offline remains untested.",
+      "evidence_refs": [
+        "android_native_restore_offline"
+      ]
     },
     {
       "id": "G08",
@@ -637,6 +653,14 @@
       "source_commit": "5dc930e280b43e9ffe5553a8c5c63fc6aa86eacb",
       "total": 582,
       "pass": 577,
+      "skip": 5,
+      "fail": 0,
+      "native_acceptance": false
+    },
+    "newer_9da_full_suite": {
+      "source_commit": "9da76aaa391d423efc25de497c18e44eb2493c0e",
+      "total": 586,
+      "pass": 581,
       "skip": 5,
       "fail": 0,
       "native_acceptance": false
@@ -766,7 +790,8 @@
     "doc_source_followup": {
       "relative_path": "Development/CasitaDex/app/docs/qa/SB121_IOS_FOCUS_REFLOW_SOURCE_FIX_20261106.md",
       "sha256": "262057513b44f08079b06da911d17bd10854766e59d14c5be1c0ed57cb6e3bbb",
-      "scope": "Newer 5dc930e source-only reviewed iOS focus repair. No installed-artifact acceptance."
+      "scope": "Newer 5dc930e source-only reviewed iOS focus repair. No installed-artifact acceptance.",
+      "git_revision": "5dc930e280b43e9ffe5553a8c5c63fc6aa86eacb"
     },
     "ios_photo": {
       "relative_path": "QA-Evidence/WORK-SB121/ios-detail-share-bb235cd/native/photo-workflow-result.json",
@@ -802,6 +827,32 @@
       "relative_path": "docs/qa/SB121_FIGMA_CURRENT_REVIEW_MANIFEST.json",
       "sha256": "aa7cd4bed7ce5bda60eea8db70165a4a1a2060d2acf252afe9fdfaae963a1beb",
       "scope": "Editable Figma REVIEW reconciliation; no approved-master mutation or current native/owner acceptance."
+    },
+    "android_native_restore_offline": {
+      "relative_path": "QA-Evidence/WORK-SB121/android-offline-restore-bb235cd-20261106/android-offline-restore-acceptance.json",
+      "sha256": "c36315d4a774e5fe280a42ce477e3be6a8ebcf562521ec0d54c886000f26ca74",
+      "scope": "Approved actual native restore on bb235; preserving upgrade and strict OS-offline checks on 5dc. Not full regression."
+    },
+    "android_restore_offline_checksums": {
+      "relative_path": "QA-Evidence/WORK-SB121/android-offline-restore-bb235cd-20261106/publication/CHECKSUMS.json",
+      "sha256": "5cc9e863ae9eeacbac83fd7e912030dccd3fcc3781f34d51d42afc349c39b254",
+      "scope": "Nine immutable receipt/archive hashes independently verified."
+    },
+    "ios_5dc_rotation": {
+      "relative_path": "QA-Evidence/WORK-SB121/ios-detail-share-5dc930e/native/rotation-focus-result.json",
+      "sha256": "2ef58ca748530994eeafe27f373678aeb876061f957a58878264d245b8d6fe7a",
+      "scope": "5dc settled landscape focus VERIFIED FAIL; normal baseline and cleanup/preservation passed."
+    },
+    "ios_5dc_rotation_manifest": {
+      "relative_path": "QA-Evidence/WORK-SB121/ios-detail-share-5dc930e/native/rotation-evidence-sha256.json",
+      "sha256": "c4454ba63db443a52dabc7238710f8cd98cc288cdc3521b3ab0e90abe75d775f",
+      "scope": "89 retained native evidence hashes independently verified."
+    },
+    "doc_source_followup_9da": {
+      "relative_path": "Development/CasitaDex/app/docs/qa/SB121_IOS_FOCUS_REFLOW_SOURCE_FIX_20261106.md",
+      "sha256": "8acf84e99ecf27b5801465ac29e1d1a4d2693225662b025b96182e16550d13f1",
+      "scope": "Reviewed iOS-only follow-up source guard, 586 total / 581 pass / 5 skipped; new native acceptance pending.",
+      "git_revision": "9da76aaa391d423efc25de497c18e44eb2493c0e"
     }
   },
   "execution_limits": [
@@ -811,62 +862,172 @@
     "Documentation-only integration is separately authorized; no release/main merge or runtime acceptance is implied."
   ],
   "newer_source_followup": {
-    "source_commit": "5dc930e280b43e9ffe5553a8c5c63fc6aa86eacb",
-    "status": "SOURCE_BUILD_UPGRADE_VERIFIED_ROTATION_ACCEPTANCE_PENDING",
-    "reviewed_patch_sha256": "ce5b54ef869dacdf1fb24501714afc11851785f4aea1fbfe9731f9fb341c61be",
-    "focused_checks": 49,
+    "source_commit": "9da76aaa391d423efc25de497c18e44eb2493c0e",
+    "status": "SOURCE_VERIFIED_NEW_IOS_BUILD_ACCEPTANCE_PENDING",
+    "reviewed_patch_sha256": "e31c99a36b264526643cb5985c738d832a23c0b675544652c49fac3290821a02",
+    "focused_checks": 53,
     "full_suite": {
-      "total": 582,
-      "pass": 577,
+      "total": 586,
+      "pass": 581,
       "skip": 5,
       "fail": 0
     },
     "typecheck": "PASS",
     "lint": "PASS",
     "evidence_refs": [
-      "doc_source_followup"
+      "doc_source_followup_9da"
     ],
-    "limits": [
-      "Does not close current bb235 native landscape FAIL.",
-      "No new native artifact or physical acceptance inferred.",
-      "Oversized-field caret usability requires native evidence."
-    ],
-    "native_status_note": "Exact 5dc source build and preserving upgrade are evidenced separately. Rotation/keyboard acceptance is in progress and has no result incorporated here.",
-    "native_snapshot_commit": "bb235cdf6f2bba63b1760038a379a2c09cdf32ab",
-    "new_build_artifact_ref": "ios_5dc_build_upgrade",
-    "upgrade": {
-      "at_utc": "2026-11-06T16:00:16.384922+00:00",
-      "same_identity": "PASS",
-      "previous_app_data_preserved": true,
-      "logical_tables_compared": 9,
-      "immediate_and_first_launch_data_media_equal": true,
-      "actual_restore": false,
-      "evidence_refs": [
-        "ios_5dc_upgrade"
-      ]
-    }
+    "scope": "Narrow iOS-only guard preserves reconciliation after programmatic scroll end without a genuine drag begin. Source counterexample proven, sole native cause and repair acceptance not yet proven.",
+    "native_pass_claimed": false
   },
-  "snapshot_note": "bb235 installed-artifact evidence through the photo checkpoint, not a claim that runtime equals latest source HEAD. Newer 5dc930e source/new-build acceptance is separate and not closed here.",
-  "updated_at_utc": "2026-11-06T16:07:27.236423+00:00",
+  "snapshot_note": "Original 18-cell bb235 matrix and counts remain historical, unchanged. Subsequent milestones explicitly identify Android bb235 restore, Android 5dc upgrade/offline, iOS 5dc failure and newer 9da source/build pending; no cross-artifact pass transfer.",
+  "updated_at_utc": "2026-11-06T16:38:04.856492+00:00",
   "photo_checkpoint_at_utc": "2026-11-06T15:58:24.684128+00:00",
   "installed_runtime_checkpoint": {
     "ios": {
       "artifact_ref": "ios_5dc_build_upgrade",
       "source_commit": "5dc930e280b43e9ffe5553a8c5c63fc6aa86eacb",
       "evidence_refs": [
-        "ios_5dc_upgrade"
+        "ios_5dc_upgrade",
+        "ios_5dc_rotation"
       ],
-      "native_rotation_status": "IN_PROGRESS"
+      "native_rotation_status": "VERIFIED_FAIL",
+      "newer_source_build": "9da76aaa391d423efc25de497c18e44eb2493c0e; no native result incorporated"
     },
     "android": {
-      "artifact_ref": "android_bb235",
-      "source_commit": "bb235cdf6f2bba63b1760038a379a2c09cdf32ab",
+      "artifact_ref": "android_5dc",
+      "source_commit": "5dc930e280b43e9ffe5553a8c5c63fc6aa86eacb",
       "evidence_refs": [
-        "android_provenance",
-        "android_archive"
+        "android_native_restore_offline"
       ],
-      "restore_offline_status": "APPROVED_IN_PROGRESS_NO_FINAL_RESULT_INCORPORATED"
+      "restore_status": "PASS_BOUNDED on preceding bb235 runtime",
+      "offline_status": "PASS_BOUNDED on 5dc runtime"
     },
-    "note": "Current installed pair differs from the historical bb235 composite matrix. Newer native/restore/offline outcomes require their own final receipts."
-  }
+    "note": "Checkpoint based on final identified receipts. A newer iOS build in progress does not imply preserving upgrade or native acceptance."
+  },
+  "historical_publication_snapshots": [
+    {
+      "commit": "659f7805b17811a57c0605319d41c866294b0eba",
+      "ledger_sha256": "d028ac6fda592d4d0fd6e61a498e3bb255237765851517a608fe129c25f58bb2",
+      "ledger_url": "https://github.com/netid2000-ui/CasitaDex/blob/659f7805b17811a57c0605319d41c866294b0eba/docs/qa/SB121_CURRENT_NATIVE_ACCEPTANCE_LEDGER_20261106.json",
+      "installed_runtime_checkpoint": {
+        "ios": {
+          "artifact_ref": "ios_5dc_build_upgrade",
+          "source_commit": "5dc930e280b43e9ffe5553a8c5c63fc6aa86eacb",
+          "evidence_refs": [
+            "ios_5dc_upgrade"
+          ],
+          "native_rotation_status": "IN_PROGRESS"
+        },
+        "android": {
+          "artifact_ref": "android_bb235",
+          "source_commit": "bb235cdf6f2bba63b1760038a379a2c09cdf32ab",
+          "evidence_refs": [
+            "android_provenance",
+            "android_archive"
+          ],
+          "restore_offline_status": "APPROVED_IN_PROGRESS_NO_FINAL_RESULT_INCORPORATED"
+        },
+        "note": "Current installed pair differs from the historical bb235 composite matrix. Newer native/restore/offline outcomes require their own final receipts."
+      },
+      "source_followup_checkpoint": {
+        "source_commit": "5dc930e280b43e9ffe5553a8c5c63fc6aa86eacb",
+        "status": "SOURCE_BUILD_UPGRADE_VERIFIED_ROTATION_ACCEPTANCE_PENDING",
+        "reviewed_patch_sha256": "ce5b54ef869dacdf1fb24501714afc11851785f4aea1fbfe9731f9fb341c61be",
+        "focused_checks": 49,
+        "full_suite": {
+          "total": 582,
+          "pass": 577,
+          "skip": 5,
+          "fail": 0
+        },
+        "typecheck": "PASS",
+        "lint": "PASS",
+        "evidence_refs": [
+          "doc_source_followup"
+        ],
+        "limits": [
+          "Does not close current bb235 native landscape FAIL.",
+          "No new native artifact or physical acceptance inferred.",
+          "Oversized-field caret usability requires native evidence."
+        ],
+        "native_status_note": "Exact 5dc source build and preserving upgrade are evidenced separately. Rotation/keyboard acceptance is in progress and has no result incorporated here.",
+        "native_snapshot_commit": "bb235cdf6f2bba63b1760038a379a2c09cdf32ab",
+        "new_build_artifact_ref": "ios_5dc_build_upgrade",
+        "upgrade": {
+          "at_utc": "2026-11-06T16:00:16.384922+00:00",
+          "same_identity": "PASS",
+          "previous_app_data_preserved": true,
+          "logical_tables_compared": 9,
+          "immediate_and_first_launch_data_media_equal": true,
+          "actual_restore": false,
+          "evidence_refs": [
+            "ios_5dc_upgrade"
+          ]
+        }
+      },
+      "scope": "Original bb235 composite case results and earlier source/build milestones retained unchanged."
+    }
+  ],
+  "subsequent_native_milestones": [
+    {
+      "id": "ANDROID_ACTUAL_NATIVE_RESTORE_BB235",
+      "status": "PASS_BOUNDED",
+      "artifact_ref": "android_bb235",
+      "fresh_archive_sha256": "42bea3491d6d43908afcfd9fd697677c1811d9f426674a89c156032317a9f2e7",
+      "scope": "Actual Full v4 same-current-state native replace-collection restore, backed-up draft chosen, with complete stopped-process recovery copy; semantic collection/reminder/media equality after restore and relaunch. Not corruption import or previous-save recovery-button acceptance.",
+      "evidence_refs": [
+        "android_native_restore_offline",
+        "android_restore_offline_checksums"
+      ]
+    },
+    {
+      "id": "ANDROID_PRESERVING_UPGRADE_5DC",
+      "status": "PASS_BOUNDED",
+      "artifact_ref": "android_5dc",
+      "scope": "Same package/signer preserving upgrade; complete semantic state/reminder/media equality before first launch and after launch. Prior recovery snapshot and old APK retained.",
+      "evidence_refs": [
+        "android_native_restore_offline"
+      ]
+    },
+    {
+      "id": "ANDROID_STRICT_OS_OFFLINE_5DC",
+      "status": "PASS_BOUNDED",
+      "artifact_ref": "android_5dc",
+      "scope": "Emulator-only airplane/Wi-Fi/data isolation with no default network/route, interface-down and HTTP/two-IP negative controls, positive network controls before/after. Offline Find, additional draft photo, native local Full v4 export and relaunch retained state/media/reminder. Host network unchanged.",
+      "radio_settings_restored_seconds": 277.264,
+      "network_returned_seconds": 280.8,
+      "independent_watchdog_exit": 0,
+      "evidence_refs": [
+        "android_native_restore_offline",
+        "android_restore_offline_checksums"
+      ]
+    },
+    {
+      "id": "IOS_ROTATION_FOCUS_5DC",
+      "status": "FAIL",
+      "artifact_ref": "ios_5dc_build_upgrade",
+      "scope": "Combined system maximum/app Large Text same-editor landscape focus remained outside pane: field y468-641 vs pane y71-178, with keyboard open and no visible input text/caret in settled pixels. Normal four tabs and Detail/Edit/Cancel/Share baseline passed.",
+      "later_cases": "Ordinary-key typing, repeat hide/refocus/manual drag, Save/relaunch and XCTest all audit NOT_RUN after stop. Manual screen reader NOT_RUN.",
+      "cleanup": "PASS: Home, portrait, system large, app Large Text off, keyboard closed, null draft; state envelope, nine existing logical tables and media exact. Opening Reminders initialized one empty standalone-reminder table, no record.",
+      "evidence_refs": [
+        "ios_5dc_rotation",
+        "ios_5dc_rotation_manifest"
+      ]
+    }
+  ],
+  "current_android_preserved_state": {
+    "saved_memories": 1,
+    "drafts": 1,
+    "draft_photos": 2,
+    "standalone_reminders": 1,
+    "current_matching_archive_sha256": "82cbc2865e26c5e6c676e42c78d6f65c4217ab1233a8f4f7a404dbf1d9c8509e",
+    "archive_relative_path": "QA-Evidence/WORK-SB121/android-offline-restore-bb235cd-20261106/offline-native-full-v4.cdxe",
+    "original_saved_collection_draft_text_identity_photo_reminder_preserved": true,
+    "do_not_restore_older_one_photo_archive_without_new_authorization": true,
+    "evidence_refs": [
+      "android_native_restore_offline"
+    ]
+  },
+  "latest_authority_source_observed": "9da76aaa391d423efc25de497c18e44eb2493c0e"
 }
