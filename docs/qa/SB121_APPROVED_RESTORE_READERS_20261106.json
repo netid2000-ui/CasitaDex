@@ -1,0 +1,97 @@
+{
+  "status": "IOS_NATIVE_RESTORE_PASS_SCREEN_READERS_PARTIAL",
+  "release": "NO-GO",
+  "completed_utc": "2026-11-06T23:31:07.146645+00:00",
+  "ios_source": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
+  "android_source": "7a3d78f26da28ad7eebf3bc5bfdf8f340dc05491",
+  "authorization": "Owner approved temporary VoiceOver/TalkBack and same-current-synthetic-data restore with recovery copy; no longer awaiting these permissions.",
+  "restore": {
+    "result": "PASS_BOUNDED",
+    "native_ui_message": "Full collection restored and verified.",
+    "recovery_copy": "ios-7fa-approved-restore/recovery-data;14 original files hash-matched before restore",
+    "fresh_full_v4_archive_sha256": "4db7391b867cd16a6e20b048ac3437e28925338d8495af4f055c92c2bc47c792",
+    "immediate_pre_restore": "Fresh archive revalidated and all10logical tables/media/runtime matched revision53 baseline immediately before Confirm",
+    "after_restore": {
+      "result": "PASS",
+      "oldRevision": 53,
+      "newRevision": 54,
+      "dataDraftRemindersMediaRuntimeEqual": true,
+      "pendingDecodedExact": true
+    },
+    "cold_relaunch": "All10logical tables/media/runtime exact against post-restore revision54",
+    "saved_memories": 4,
+    "saved_photos": 1,
+    "standalone_reminders": 2,
+    "draft": null,
+    "linked_notification": "Entire decoded pending notification record exactly unchanged before restore, after restore, after cold relaunch and after accessibility check",
+    "limitations": [
+      "No corruption-import or previous-save recovery-button acceptance claimed"
+    ]
+  },
+  "voiceover": {
+    "status": "PARTIAL_SYSTEM_FOCUS_ONLY_APP_SPEECH_NOT_VERIFIED",
+    "enabled_through": "Observed iOS Settings > Accessibility > VoiceOver switch",
+    "runtime_confirmed": "VoiceOverTouchEnabled=1, VOTIsRunningKey=1 and running com.apple.VoiceOverTouch",
+    "observed_focus": "First-use VoiceOver Gestures alert heading then OK; supported raw gestures did not dismiss it while reader enabled",
+    "tool_limit": "AX viewTree call timed out at first-use dialog; no app focus order, speech, return or successful gesture activation claim",
+    "cleanup": "Scoped VoiceOverTouchEnabled false and preference notification stopped VoiceOver process; enabled=0, VOTIsRunningKey absent, launchctl PID absent; tutorial dismissed with reader OFF; app Home",
+    "data": "Revision54 and pending notification exactly preserved"
+  },
+  "talkback": {
+    "status": "PARTIAL_INITIAL_APP_FOCUS_ONLY_SPEECH_NOT_VERIFIED",
+    "enabled_service": "com.google.android.marvin.talkback/com.google.android.marvin.talkback.TalkBackService",
+    "observed": "Native service bound, touch exploration enabled, green focus on CasitaDex logo",
+    "speech_limit": "Retained emulator was launched -no-audio; logs show TTS connected and startup not-ready error, no verified spoken app output",
+    "navigation_limit": "Three injected swipes did not establish a distinct verified focus sequence",
+    "permission": "Accessibility Suite notification prompt not approved or changed",
+    "cleanup": "All three original secure settings restored exactly: services null, accessibility0, touch exploration0",
+    "data": "All11logical tables and media exact; revision23, draft checkpoint39"
+  },
+  "android_handoff": {
+    "status": "RELEASED_PRESERVED",
+    "display_job": "095f9ef2143e956b",
+    "display_exit_code": 0,
+    "display_end_utc": "2026-11-06T23:24:27.848Z",
+    "preservation_job": "cb2d7ae2e960abea",
+    "preservation_exit_code": 0,
+    "ports_closed": [
+      5072,
+      5576,
+      5577
+    ],
+    "installed_apk_sha256": "9d425f9a8519be35eea5b88fb87fd1775c50a7ad704dd18317f250dcb61ace5c",
+    "no_reset_uninstall_data_delete": true,
+    "heavy_slot": "free"
+  },
+  "remaining": [
+    "Linked reminder Nov7 09:00 CST delivery/tap pending",
+    "Actual screen-reader app speech, traversal and return require supported audio/gesture capture, not new permission",
+    "Strict iOS OS-offline proof tooling gap",
+    "Remaining security/dependency and distribution/owner gates; no full release pass"
+  ],
+  "evidence_hashes": {
+    "ios-7fa-approved-restore/baseline.json": "95706d9a2146b8281eab5eed10c75487515e6d9f3df5bfe83bc198e5d96e0ec6",
+    "ios-7fa-approved-restore/recovery-manifest.json": "ce13b1e2a2258f31c3298203140a61b56441707232183baf13bc201f48b18068",
+    "ios-7fa-approved-restore/backup-verification.json": "7c27efc1e02094b1f49ef8bc3dab896ac566169c75ac83c70f6fa4993966448f",
+    "ios-7fa-approved-restore/verified-current-full.cdxe": "4db7391b867cd16a6e20b048ac3437e28925338d8495af4f055c92c2bc47c792",
+    "ios-7fa-approved-restore/immediate-pre-restore.json": "95706d9a2146b8281eab5eed10c75487515e6d9f3df5bfe83bc198e5d96e0ec6",
+    "ios-7fa-approved-restore/native-restore-success.json": "625b4d6e2876e9e46ddd414bb0d6dda28ac4738e262dfedf9ed86b6042ddec6d",
+    "ios-7fa-approved-restore/restore-preservation.json": "10331c00bb264ca0c02c4a7042332f0f417f156b7fe22d8a5e002c6302e5eec5",
+    "ios-7fa-approved-restore/final-state.json": "cff10683a655068c3ff9b6d328776f2f964c256037fb52f2c217b5e3ec8a4d13",
+    "ios-7fa-approved-restore/pending-before.json": "9a6df78ba8024750466807b83f32fd8c7cb2f3f03044b46b6bb1a3f32a75d2d5",
+    "ios-7fa-approved-restore/pending-after-accessibility.json": "c6906f5a8c319119115e237880b04f5f623bcfccc1f245d6faf775ff1ca4ce21",
+    "ios-7fa-approved-restore/voiceover-cleanup.json": "1d7fdb57913b93dff05eb6ed5356fe53c582bc252bd2872d4341b45d52594ad8",
+    "ios-7fa-approved-restore/08-restored.png": "e48f19e0804485a1bd432a14a652e0c21429d938d9b842921eb10af1f380536f",
+    "ios-7fa-approved-restore/09-restored-cold-home.png": "7a9b7cbea81452fc81a3122575cd14ed122f3a0804fb64abc0d947a37a2ee90a",
+    "ios-7fa-approved-restore/13-voiceover-enabled-observation.png": "77a858c2c07ffbf42c5b81790f93881b9ad1966724964982f47b753cce2ed5b7",
+    "ios-7fa-approved-restore/18-voiceover-next.png": "93ea4ba8d08a29f6c690007e3204f5242632d43fef67949ea3155952e5e1a0d2",
+    "ios-7fa-approved-restore/20-final-home.png": "6ce733d2eedb1cc66aa84501aeda5485f6f0dbb4efce028c36e0338feb6614ef",
+    "android-7a3-talkback/enabled-accessibility.txt": "6886752288ebdb61c5a706da898c0d20c12d037437e7f102098abc6b27ab39f1",
+    "android-7a3-talkback/focus-2.png": "4621e13ac07195e421bfd7d2aaa659773b1b8534f59c4bbd8bf0b0790586eac3",
+    "android-7a3-talkback/talkback-log.txt": "dcfdc903d0052d1b336a425c4db001514857c1b98dbbb82e5e91605764eb85de",
+    "android-7a3-talkback/settings-before.json": "a20c7f79051c82faadcbaa3e9fbda11f55736db7b1258943ee223d55514380e4",
+    "android-7a3-talkback/settings-after.json": "a20c7f79051c82faadcbaa3e9fbda11f55736db7b1258943ee223d55514380e4",
+    "android-validation-native-7a3d78f/after-talkback-equality.json": "7ac6bf3ecfe5786a012af5199a4df138f96b814b4201aebcaf750b1467d8b189",
+    "android-validation-native-7a3d78f/after-talkback/logical.json": "78233bd94daeba9e4e89eccd4cf10aab2d4c401b501bdba597a73afaca6f92c0"
+  }
+}

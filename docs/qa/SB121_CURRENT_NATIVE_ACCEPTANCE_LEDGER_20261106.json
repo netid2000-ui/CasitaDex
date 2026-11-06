@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "status": "VERIFIED_PARTIAL_MILESTONE_SNAPSHOT",
-  "updated_at_utc": "2026-11-06T23:10:32.095033+00:00",
+  "updated_at_utc": "2026-11-06T23:31:07.146645+00:00",
   "release": "NO-GO",
   "latest_runtime_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
   "installed_runtime_checkpoint": {
@@ -21,14 +21,14 @@
       "artifact_ref": "android_7a3",
       "source_commit": "7a3d78f26da28ad7eebf3bc5bfdf8f340dc05491",
       "native_validation_status": "PASS_BOUNDED_NORMAL_AND_APP_LARGE_VALIDATION",
-      "virtual_device_state": "VISIBLE_RUNNING_DATA_RETAINED",
+      "virtual_device_state": "GRACEFULLY_STOPPED_DATA_RETAINED",
       "evidence_refs": [
         "android_7a3_validation_native"
       ],
       "restore_attribution": "Historical bb235 PASS reused",
       "offline_attribution": "Historical5dc PASS reused"
     },
-    "note": "Android 7a3 current-source targeted validation passed after preserving upgrade. iOS remains7fa with revision53 linked reminder unchanged. Prior tests retain original source attribution."
+    "note": "iOS7fa revision54 after approved native restore; Android7a3 stopped preserving data after bounded TalkBack. No screen-reader speech acceptance."
   },
   "current_verified_milestone": {
     "source_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
@@ -651,7 +651,7 @@
       "id": "G02",
       "gate": "Exact native builds and preserving upgrades",
       "status": "PASS_BOUNDED",
-      "scope": "Installed iOS is now exact 7fa012a after one preserving upgrade; normal validation feedback/Cancel pass and enlarged feedback is readable, with combined maximum gap; enlarged Cancel now passes. Android retains 8cc, stopped and preserved. Prior 8cc focused rotation/normal controls and Android smoke remain source-attributed and were not repeated. No full distribution/physical acceptance.",
+      "scope": "Exact iOS7fa and Android7a3 installed; targeted normal/appLarge validation/Cancel passes. Android now gracefully stopped. Prior rotation, restore/offline, and other unchanged tests retain original source attribution; no physical/distribution pass.",
       "evidence_refs": [
         "android_provenance",
         "ios_upgrade",
@@ -669,7 +669,9 @@
         "android_8cc_native",
         "android_8cc_handoff",
         "ios_7fa_validation_native",
-        "ios_7fa_enlarged_cancel"
+        "ios_7fa_enlarged_cancel",
+        "android_7a3_validation_native",
+        "approved_restore_readers"
       ]
     },
     {
@@ -707,10 +709,11 @@
     {
       "id": "G06",
       "gate": "Actual native app restore/recovery",
-      "status": "ANDROID_PASS_BOUNDED_IOS_NOT_RUN",
-      "scope": "Approved actual native same-current-state Full v4 restore passed on bb235 Android, with stopped-process recovery copy and post-restore/relaunch semantic/reminder/media equality. iOS native restore, corruption import and previous-save recovery-button acceptance remain untested. Current iOS is 7fa; Android retains 8cc; prior Android result was not repeated or relabeled as 8cc restore.",
+      "status": "BOTH_PLATFORMS_PASS_BOUNDED_RESTORE",
+      "scope": "Current7fa iOS same-current-data native Fullv4 restore and cold relaunch PASS; full recovery copy and fresh archive verified immediately beforehand. Four memories/photo/two reminders unchanged, pending linked notification exact, revision54. Historical Androidbb235 restore reused. Corruption import and previous-save recovery-button scope remains open.",
       "evidence_refs": [
-        "android_native_restore_offline"
+        "android_native_restore_offline",
+        "approved_restore_readers"
       ]
     },
     {
@@ -725,9 +728,11 @@
     {
       "id": "G08",
       "gate": "Manual native screen readers",
-      "status": "NOT_RUN",
-      "scope": "Actual VoiceOver/TalkBack speech, focus order and return remain untested.",
-      "evidence_refs": []
+      "status": "PARTIAL_TOOL_LIMITED",
+      "scope": "Owner permission obtained and both actual readers enabled then restored OFF. iOS focus limited to first-use system dialog; Android initial app logo focus captured, audio disabled in retained emulator. App speech, ordered traversal and return not verified.",
+      "evidence_refs": [
+        "approved_restore_readers"
+      ]
     },
     {
       "id": "G09",
@@ -1202,6 +1207,11 @@
       "relative_path": "docs/qa/SB121_ANDROID_7A3_VALIDATION_NATIVE_20261106.json",
       "sha256": "eec8ac700b3a6339780a66e065177bf84e36d4ba7a98ad7169f7dcafb7b95712",
       "source_commit": "7a3d78f26da28ad7eebf3bc5bfdf8f340dc05491"
+    },
+    "approved_restore_readers": {
+      "relative_path": "docs/qa/SB121_APPROVED_RESTORE_READERS_20261106.json",
+      "sha256": "a651a7e0638e0db643201f8d0d65d502c414e189c82d853a29ed59f6c1c452ed",
+      "scope": "IOS_NATIVE_RESTORE_PASS_SCREEN_READERS_PARTIAL"
     }
   },
   "execution_limits": [
@@ -1628,7 +1638,7 @@
       "android_7a3_validation_native"
     ],
     "archive_filename": "offline-native-full-v4.cdxe",
-    "virtual_device_state": "VISIBLE_RUNNING_DATA_RETAINED",
+    "virtual_device_state": "GRACEFULLY_STOPPED_DATA_RETAINED",
     "handoff_evidence_refs": [
       "android_8cc_handoff"
     ],
@@ -1646,12 +1656,22 @@
     "previous_handoff_verified_utc": "2026-11-06T16:52:07.907638+00:00",
     "handoff_verified_utc": "2026-11-06T18:51:48.981240+00:00",
     "retained_recovery_data_sha256": "d93a6251d2e4e4231a43c70123108f4e4352eb0bb83d9acc3a1caaa6716ae56a",
-    "active_session": {
-      "job": "095f9ef2143e956b",
-      "adb_port": 5072,
-      "emulator_port": 5576,
-      "avd": "fa_casitadex_sb121_detailshare_737_api35",
-      "heavy_build_lock": "released"
+    "active_session": null,
+    "latest_handoff": {
+      "status": "RELEASED_PRESERVED",
+      "display_job": "095f9ef2143e956b",
+      "display_exit_code": 0,
+      "display_end_utc": "2026-11-06T23:24:27.848Z",
+      "preservation_job": "cb2d7ae2e960abea",
+      "preservation_exit_code": 0,
+      "ports_closed": [
+        5072,
+        5576,
+        5577
+      ],
+      "installed_apk_sha256": "9d425f9a8519be35eea5b88fb87fd1775c50a7ad704dd18317f250dcb61ace5c",
+      "no_reset_uninstall_data_delete": true,
+      "heavy_slot": "free"
     }
   },
   "latest_authority_source_observed": "8cc2862eaf2791379518e440d3b9d5833543ab0a",
@@ -1883,14 +1903,15 @@
   ],
   "current_ios_preserved_state": {
     "source_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
-    "revision": 53,
+    "revision": 54,
     "saved_memories": 4,
     "photo_files": 1,
     "standalone_reminders": 2,
     "draft": null,
-    "baseline_evidence_ref": "ios_7fa_linked_nov7_preparation",
-    "baseline_sha256": "95706d9a2146b8281eab5eed10c75487515e6d9f3df5bfe83bc198e5d96e0ec6",
-    "note": "Includes additive linked Nov7 09:00 synthetic memory and prior privacy fixture. All original memories, standalone reminders and media unchanged. One pending linked notification retained. Use revision53 final-state baseline for future preservation checks, not revision43/16."
+    "baseline_evidence_ref": "approved_restore_readers",
+    "baseline_sha256": "cff10683a655068c3ff9b6d328776f2f964c256037fb52f2c217b5e3ec8a4d13",
+    "note": "Approved same-current-state restore advanced revision53 to54; collection/draft/reminders/media equal. Entire prepared Nov7 pending notification unchanged. Use final-state revision54 baseline; VoiceOver restored OFF.",
+    "baseline_path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB121/ios-7fa-approved-restore/final-state.json"
   },
   "dependency_remediation_followup": {
     "report": "docs/qa/SB121_DEPENDENCY_GLOB_BACKPORT_20261106.json",
@@ -1908,5 +1929,11 @@
     "notification_identifier": "casitadex:unified-reminder-v1:memory:e_mw5juou6_clvi90vgve",
     "delivery": "NOT_YET_DUE",
     "tap": "NOT_RUN"
+  },
+  "approved_restore_screen_reader_followup": {
+    "status": "IOS_NATIVE_RESTORE_PASS_SCREEN_READERS_PARTIAL",
+    "evidence_ref": "approved_restore_readers",
+    "permission_pending": false,
+    "tool_limited_screen_reader_acceptance": true
   }
 }
