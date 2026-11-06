@@ -1,3 +1,11 @@
+# Latest source: fixed memory actions and separate sharing; native acceptance pending
+
+Application source **737eac13cfacae0086890f98f2197607244036d7** implements detail/edit action placement and a separate selected-sharing flow while preserving the approved four tabs. Full source gate: **533 tests, 528 pass, five existing skips**, TypeScript/lint, Doctor21/21, web export and scoped Gitleaks PASS. Independent source review PASS. [Source report and remaining gates](docs/qa/SB121_DETAIL_SHARE_SOURCE_PARITY.md).
+
+**Latest qualified and scheduled native runtime remains a8867c0.** No native build/install occurred for this source. Preserve the current15:00UTC reminder fixture and complete its existing handoff before any runtime replacement. Release **NO-GO**; native UI/keyboard/screen-reader/share acceptance and all earlier approval gates remain open.
+
+## Previous source checkpoint retained
+
 # Latest source: focused accessibility feedback fixes; native acceptance pending
 
 Source 7d0dd6626287fd56d30b990f4a9c14036801a9a2 fixes three bounded accessibility feedback gaps. Source verification: 503 tests, 498 pass, five existing skips; TypeScript, lint and scoped Gitleaks pass. No new native build/install. [Source review and evidence](docs/qa/SB121_ACCESSIBILITY_FEEDBACK_REVIEW.md).

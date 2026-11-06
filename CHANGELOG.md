@@ -1,3 +1,10 @@
+## 2026-11-06 - Memory actions and separate sharing source
+
+- Keep detail/edit actions above independent content scrolling with an uncapped-text adaptation.
+- Separate sharing selection/preview from details; validate the exact reviewed payload before presentation and preserve the correct return destination.
+- Guard repeated exits and stale completions, and distinguish durable Save from refresh failure.
+- Preserve four tabs, user data and current reminder runtime. Automated source checks pass; rebuilt native acceptance is pending.
+
 ## 2026-11-06 - Bounded accessibility feedback correction
 
 - Add scoped feedback for newly visible linked-reminder refresh and reading-setting persistence failures.
