@@ -2,6 +2,10 @@
 
 Status: SETUP VERIFIED, DELIVERY AND TAP ACCEPTANCE PENDING. Prepared November 5 at 19:50–19:51 CST, 2026. Resume November 6 at 08:50 CST (14:50 UTC), before actual delivery at 09:00 CST (15:00 UTC). Never change the host clock, reschedule synthetic immediate alerts in place of this test, or use injected pushes as delivery evidence.
 
+## Candidate-source freeze warning
+
+Later source candidates through `3b526f6976d0d9becafd16ede2fd12ba89216ff4` add security, config and accessibility changes. They were built separately but NOT installed. Do not install current HEAD before completing this scheduled normal-clock test. The simulator still uses c2d1239; its independent frozen copy is `QA-Evidence/WORK-SB121/security-continuation/frozen-c2d1239/CasitaDexDev.app`. See [candidate readiness report](WORK_SB121_SECURITY_ACCESSIBILITY_READINESS.md) for exact separation of built versus native-tested revisions.
+
 ## Authorized environment and exact runtime
 
 Use AI Commander on FA-MAC-DEV-01 only. Root: `/Volumes/FA-Development/Designs-by-FA`. Repository: `Development/CasitaDex/app`, branch `work/cd-sb41-edit-targeting-20261104`. Figma remains design authority. Preserve production, release-merge, store, billing, Firebase and important-data approval restrictions. Owner physical-iPhone final signoff remains open.

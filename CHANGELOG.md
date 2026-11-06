@@ -1,5 +1,12 @@
 # Changelog
 
+## November 6, 2026 - WORK-SB121 readiness candidate
+
+- Patch the supported development-only Zod advisory without changing runtime dependencies.
+- Preserve declared iOS scene-support configuration during fresh native generation.
+- Add expanded disclosure state, bounded foreground iOS status announcements, and photo escape/Reduce Motion support.
+- Build the new candidate separately; leave the scheduled 09:00 reminder runtime untouched. Native VoiceOver, Figma parity and distribution gates remain open. See docs/qa/WORK_SB121_SECURITY_ACCESSIBILITY_READINESS.md.
+
 ## November 6, 2026 · WORK-SB121 follow-up
 
 - Align seven supported Expo SDK 57 patch versions and rebuild/requalify the native graph; online Doctor now passes 21/21.
