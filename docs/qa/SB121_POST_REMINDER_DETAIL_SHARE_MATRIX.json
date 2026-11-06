@@ -1,0 +1,211 @@
+{
+  "schema_version": 1,
+  "status": "PLANNED_NOT_EXECUTED",
+  "prepared_for_application_source": "737eac13cfacae0086890f98f2197607244036d7",
+  "prepared_from_repository_head": "6dbde52a64f76696d291326201d2128c48318014",
+  "final_source_freeze_required": true,
+  "source_refresh_order_investigation": "NOT_REPRODUCED; test-only contract coverage",
+  "required_lockfile_sha256": "7767f310cb183d9e2de29deed82d79ee7cd9a08dd29bddf5a979474fe7c856c7",
+  "protected_runtime": "a8867c06c7dd3ceab55bd1ac6705064a83de28f2",
+  "protected_delivery_utc": "2026-11-06T15:00:00Z",
+  "admission_requires": [
+    "normal-clock delivery/taps checkpointed and coordinator release",
+    "final reviewed source and clean worktree",
+    "approved screen/workflow baseline verified, not SHA alone",
+    "native input equivalence or separately reviewed repair",
+    "real successful new native builds",
+    "same-identity preserving upgrade and data comparison",
+    "exact installed artifact hash verification",
+    "no preserved draft replacement; use an authorized unprotected synthetic record or mark write-dependent cases BLOCKED"
+  ],
+  "artifacts": {
+    "android": {
+      "source_commit": null,
+      "apk_sha256": null,
+      "embedded_js_sha256": null,
+      "signer_sha256": null,
+      "build_exit_code": null,
+      "native_accepted": false
+    },
+    "ios": {
+      "source_commit": null,
+      "app_executable_sha256": null,
+      "main_jsbundle_sha256": null,
+      "bundle_id": null,
+      "build_exit_code": null,
+      "native_accepted": false
+    }
+  },
+  "cases": [
+    {
+      "id": "D01",
+      "journey": "Detail origin, exact identity and Find context",
+      "results": {
+        "ios": {
+          "status": "NOT_RUN",
+          "source_commit": null,
+          "installed_artifact_sha256": null,
+          "evidence": []
+        },
+        "android": {
+          "status": "NOT_RUN",
+          "source_commit": null,
+          "installed_artifact_sha256": null,
+          "evidence": []
+        }
+      }
+    },
+    {
+      "id": "D02",
+      "journey": "Edit Cancel, durable Save, validation failure and relaunch",
+      "results": {
+        "ios": {
+          "status": "NOT_RUN",
+          "source_commit": null,
+          "installed_artifact_sha256": null,
+          "evidence": []
+        },
+        "android": {
+          "status": "NOT_RUN",
+          "source_commit": null,
+          "installed_artifact_sha256": null,
+          "evidence": []
+        }
+      }
+    },
+    {
+      "id": "S01",
+      "journey": "Separate Share defaults, selection and correct return",
+      "results": {
+        "ios": {
+          "status": "NOT_RUN",
+          "source_commit": null,
+          "installed_artifact_sha256": null,
+          "evidence": []
+        },
+        "android": {
+          "status": "NOT_RUN",
+          "source_commit": null,
+          "installed_artifact_sha256": null,
+          "evidence": []
+        }
+      }
+    },
+    {
+      "id": "S02",
+      "journey": "OS text/photo sheet cancellation and exact local payload",
+      "results": {
+        "ios": {
+          "status": "NOT_RUN",
+          "source_commit": null,
+          "installed_artifact_sha256": null,
+          "evidence": []
+        },
+        "android": {
+          "status": "NOT_RUN",
+          "source_commit": null,
+          "installed_artifact_sha256": null,
+          "evidence": []
+        }
+      }
+    },
+    {
+      "id": "S03",
+      "journey": "Repeated exits, background/stale preparation and source change",
+      "results": {
+        "ios": {
+          "status": "NOT_RUN",
+          "source_commit": null,
+          "installed_artifact_sha256": null,
+          "evidence": []
+        },
+        "android": {
+          "status": "NOT_RUN",
+          "source_commit": null,
+          "installed_artifact_sha256": null,
+          "evidence": []
+        }
+      }
+    },
+    {
+      "id": "A01",
+      "journey": "Detail/Edit/Share maximum text, landscape, keyboard and contrast",
+      "results": {
+        "ios": {
+          "status": "NOT_RUN",
+          "source_commit": null,
+          "installed_artifact_sha256": null,
+          "evidence": []
+        },
+        "android": {
+          "status": "NOT_RUN",
+          "source_commit": null,
+          "installed_artifact_sha256": null,
+          "evidence": []
+        }
+      }
+    },
+    {
+      "id": "A02",
+      "journey": "Actual screen-reader focus, speech and return",
+      "results": {
+        "ios": {
+          "status": "NOT_RUN",
+          "source_commit": null,
+          "installed_artifact_sha256": null,
+          "evidence": []
+        },
+        "android": {
+          "status": "NOT_RUN",
+          "source_commit": null,
+          "installed_artifact_sha256": null,
+          "evidence": []
+        }
+      }
+    },
+    {
+      "id": "R01",
+      "journey": "Notification target routing and dirty-edit deferral",
+      "results": {
+        "ios": {
+          "status": "NOT_RUN",
+          "source_commit": null,
+          "installed_artifact_sha256": null,
+          "evidence": []
+        },
+        "android": {
+          "status": "NOT_RUN",
+          "source_commit": null,
+          "installed_artifact_sha256": null,
+          "evidence": []
+        }
+      }
+    },
+    {
+      "id": "P01",
+      "journey": "Pre-existing record, draft, media and reminder preservation",
+      "results": {
+        "ios": {
+          "status": "NOT_RUN",
+          "source_commit": null,
+          "installed_artifact_sha256": null,
+          "evidence": []
+        },
+        "android": {
+          "status": "NOT_RUN",
+          "source_commit": null,
+          "installed_artifact_sha256": null,
+          "evidence": []
+        }
+      }
+    }
+  ],
+  "prepared_at_utc": "2026-11-06T11:23:10.914182+00:00",
+  "source_contract_checks": {
+    "total": 8,
+    "pass": 8,
+    "fail": 0,
+    "limitation": "React ports and in-memory DB; native singleton is a structural source assertion, not executable native proof."
+  },
+  "revised_at_utc": "2026-11-06T11:27:18.604203+00:00"
+}

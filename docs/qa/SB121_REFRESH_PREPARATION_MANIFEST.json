@@ -1,0 +1,66 @@
+{
+  "baseline_head": "6dbde52a64f76696d291326201d2128c48318014",
+  "application_source_unchanged": "737eac13cfacae0086890f98f2197607244036d7",
+  "protected_installed_runtime_unchanged": "a8867c06c7dd3ceab55bd1ac6705064a83de28f2",
+  "result": "Hypothesis NOT_REPRODUCED; no application patch",
+  "new_test": {
+    "path": "tests/refresh-order-contract.test.mjs",
+    "sha256": "eb1d41deed0bb0a5358340e21bcdac546d32da0dbb39bbebd58237872ab1cd72",
+    "focused_pass": 8,
+    "independent_pass": 8
+  },
+  "full_regression": {
+    "total": 541,
+    "pass": 536,
+    "skip": 5,
+    "fail": 0,
+    "job": "593f759b809ee77a"
+  },
+  "prior_tracked_files_identical": 762,
+  "plan": {
+    "path": "docs/qa/SB121_POST_REMINDER_DETAIL_SHARE_PLAN.md",
+    "sha256": "a7d52599cc1f31c6449791c23a94f7fc39549194ae573484c63efc6573e66852",
+    "matrix_path": "docs/qa/SB121_POST_REMINDER_DETAIL_SHARE_MATRIX.json",
+    "matrix_sha256": "423010d4e1f01842c42fd52b4041e20df6444df24065169a4e9568b12c6a03ee",
+    "platform_cases": 18,
+    "execution": "NOT_RUN"
+  },
+  "evidence": [
+    {
+      "path": "QA-Evidence/WORK-SB121/refresh-order-review-20261106/contract-tests.log",
+      "bytes": 1417,
+      "sha256": "c4bc6ff9684054e541c1b85d824c4879c36d534c04cc66e6386566b2218be571"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/refresh-order-review-20261106/full-regression.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/refresh-order-review-20261106/full-regression.log",
+      "bytes": 74865,
+      "sha256": "2e8f0947152178e200eb8a3198aa9c2de074f8f113de8771b8bc3c14aac975b8"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/refresh-order-review-20261106/manifest.json",
+      "bytes": 1180,
+      "sha256": "0700c229f426b5292106913f8031f07d252bc48e441d4ceaff48798253d37e60"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/refresh-order-review-20261106/review.md",
+      "bytes": 2971,
+      "sha256": "9069b790588014d2d3eac9f1400932e4ab56586241db52b83abdc579d5ae62c0"
+    },
+    {
+      "path": "QA-Evidence/WORK-SB121/refresh-contract-peer-review-20261106/review.md",
+      "bytes": 5067,
+      "sha256": "dadbf5ef8f20edc53a90f1eef9545bf381ce13e9bc86421a275bf72e24f08e29"
+    }
+  ],
+  "limitations": [
+    "Simplified React ports and in-memory database, not native SQLite",
+    "Native singleton assertion is structural, not executable native proof",
+    "No native artifacts created or accepted",
+    "Unchanged source typecheck/lint/Doctor/export reused, not rerun"
+  ]
+}

@@ -1,3 +1,8 @@
+## 2026-11-06 - Test-only release preparation
+
+- Add deterministic coverage of serialized local refresh/save ordering; no application defect was reproduced or runtime patch introduced.
+- Prepare a reviewed, exact-artifact post-reminder Detail/Edit/Share matrix with separate platform results, preserved drafts and explicit pending native gates.
+
 ## 2026-11-06 - Memory actions and separate sharing source
 
 - Keep detail/edit actions above independent content scrolling with an uncapped-text adaptation.

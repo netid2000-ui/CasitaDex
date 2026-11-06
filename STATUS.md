@@ -1,8 +1,16 @@
+# Release preparation: refresh contract verified; native plan not executed
+
+Application source remains **737eac13cfacae0086890f98f2197607244036d7**. The suspected refresh-order race was not reproduced: actual store serialization is covered by eight new deterministic tests. Full combined regression: **541 tests, 536 pass, five existing skips**. No application patch or native rebuild. [Finding and reviewed post-reminder plan](docs/qa/SB121_REFRESH_CONTRACT_PREPARATION.md).
+
+The protected installed runtime remains **a8867c0** for the current 15:00 UTC test. New native artifact hashes are deliberately unset. Release remains **NO-GO**; no device or fixture action occurred.
+
+## Previous source checkpoint retained
+
 # Latest source: fixed memory actions and separate sharing; native acceptance pending
 
-Application source **737eac13cfacae0086890f98f2197607244036d7** implements detail/edit action placement and a separate selected-sharing flow while preserving the approved four tabs. Full source gate: **533 tests, 528 pass, five existing skips**, TypeScript/lint, Doctor21/21, web export and scoped Gitleaks PASS. Independent source review PASS. [Source report and remaining gates](docs/qa/SB121_DETAIL_SHARE_SOURCE_PARITY.md).
+Application source **737eac13cfacae0086890f98f2197607244036d7** implements detail/edit action placement and a separate selected-sharing flow while preserving the approved four tabs. Full source gate: **533 tests, 528 pass, five existing skips**, TypeScript/lint, Doctor 21/21, web export and scoped Gitleaks PASS. Independent source review PASS. [Source report and remaining gates](docs/qa/SB121_DETAIL_SHARE_SOURCE_PARITY.md).
 
-**Latest qualified and scheduled native runtime remains a8867c0.** No native build/install occurred for this source. Preserve the current15:00UTC reminder fixture and complete its existing handoff before any runtime replacement. Release **NO-GO**; native UI/keyboard/screen-reader/share acceptance and all earlier approval gates remain open.
+**Latest qualified and scheduled native runtime remains a8867c0.** No native build/install occurred for this source. Preserve the current 15:00 UTC reminder fixture and complete its existing handoff before any runtime replacement. Release **NO-GO**; native UI/keyboard/screen-reader/share acceptance and all earlier approval gates remain open.
 
 ## Previous source checkpoint retained
 
