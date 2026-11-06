@@ -28,13 +28,14 @@ All three were created using Add Memory, More details, reminder date `2026-11-06
 
 Each native request identifier is `casitadex:unified-reminder-v1:memory:` followed by the exact source ID. All have userInfo kind `memory`, sourceId equal to that ID, and at `1793977200000`. Native pending-request plist readback confirmed all three, and request date plus trigger interval independently matches 15:00 UTC within one second. This proves setup, not delivery. Copy is intentionally generic: “CasitaDex reminder” / “Open CasitaDex to review your reminders.”
 
-Original three memories, seven standalone reminders, and both app-local photo files were compared and unchanged after the native reinstall and additions. There are now six memories. Do not clear app storage, restore the old three-memory archive, complete these linked reminders, or delete these fixtures before delivery qualification.
+Original three memories, seven standalone reminders, and both app-local photo files were compared and unchanged after the native reinstall and additions. There are now seven memories after a later maximum-text Add/Save check created the separate synthetic record `e_mw4cew75_5315guphpy` (“SB121 maximum text follow-up”). All previous six records remain unchanged. Do not clear app storage, restore the old three-memory archive, complete these linked reminders, or delete these fixtures before delivery qualification.
 
 ## Evidence and read-only retrieval
 
 Evidence root: `QA-Evidence/WORK-SB121/linked-0900`.
 
-- `fixture-manifest.json`: full generated fixture records, due epoch, source and preservation assertions.
+- `fixture-manifest.json`: initial generated fixture records, due epoch, source and setup preservation assertions.
+- `final-current-state.json` and `pending-notifications-final.json`: final seven-memory state, all previous six records unchanged, and three exact linked requests still scheduled. Final state at 02:17 UTC: app terminated, simulator booted, portrait and default large text category restored.
 - `create-fixtures.mjs`, `create-fixtures.log`, `fixture-0/1/2-before-save.{json,png}`, `fixture-0/1/2-after-save.{json,png}`: real native UI creation evidence.
 - `pending-notifications-setup.plist` and `.json`: native OS request readback.
 - `before-install.sqlite`, `before-install-eng-state.json`, `before-install-media-hashes.json`, `after-fixtures-eng-state.json`: local synthetic preservation evidence.
@@ -44,7 +45,7 @@ Evidence root: `QA-Evidence/WORK-SB121/linked-0900`.
 ## Resume procedure and honest acceptance
 
 1. Read master/product charters and current jobs. Reserve `casitadex-ios-7DB01BF8` and `mobilecli-12220`. Heavy builds require `fa-mac-heavy-build`. Preserve Event Command's Android resources and jobs. Do not use Maestro's global device enumeration.
-2. Verify real clock/time zone, simulator boot state, installed artifact, six-memory fixture readback and all three pending native requests. Check notifications remain enabled using the app's notification UI if necessary. Capture these facts before 09:00.
+2. Verify real clock/time zone, simulator boot state, installed artifact, seven-memory fixture readback and all three pending native requests. Check notifications remain enabled using the app's notification UI if necessary. Capture these facts before 09:00.
 3. Keep simulator booted. Put the app into a verified terminated state before delivery for the first cold-start tap. Do not shut down the simulator. Capture actual OS delivery and DeliveredNotifications metadata after 09:00, not just an app due-list entry.
 4. Tap one delivered alert while the app is terminated. Capture the opened memory title/answer and compare it with the specific delivered request's sourceId. Before/after delivered-request identifier differences can identify the tapped generic alert once the OS flushes its plist. If correlation is ambiguous, report that limitation instead of claiming exact-target proof.
 5. Background the app, open Notification Center, and tap a second delivered alert. Then leave the app foregrounded, open Notification Center and tap the third. Capture each pre-tap lifecycle state, notification evidence and exact opened target. A Notification Center tap while the app is foregrounded is foreground response handling, not foreground-time banner delivery.

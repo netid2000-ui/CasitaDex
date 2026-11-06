@@ -1,5 +1,12 @@
 # Changelog
 
+## November 6, 2026 · WORK-SB121 follow-up
+
+- Align seven supported Expo SDK 57 patch versions and rebuild/requalify the native graph; online Doctor now passes 21/21.
+- Add official per-view XCTest accessibility evidence, with real cold-launch maximum-text geometry and explicit capture limits.
+- Preserve exact linked-memory fixtures and a normal-clock 09:00 continuation handoff.
+- Recheck native photo/persistence and full-backup preparation/share. Security, offline, complete accessibility and owner release gates remain open; see docs/qa/WORK_SB121_FOLLOWUP_QUALIFICATION.md.
+
 ## November 5–6, 2026 · WORK-SB120–121
 
 - iOS local notification taps are retained until navigation is ready and open exact saved destinations; unsaved edit guards defer navigation.
