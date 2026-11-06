@@ -1,0 +1,111 @@
+{
+  "status": "PARTIAL_HOME_ORDER_AND_SPOKEN_TEXT_ACTIVATION_TOOL_LIMITED",
+  "source_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
+  "completed_utc": "2026-11-06T23:52:59.986049+00:00",
+  "release": "NO-GO",
+  "method": "Actual VoiceOver enabled through Settings; documented Control+Option+Right for next item and Control+Option+Shift+C for last spoken text. Physical key events delivered by Mobilecli.",
+  "documentation": "https://support.apple.com/en-ie/guide/iphone/iph6c494dc6/27/ios/27",
+  "verified": [
+    "Ordered app logo, date, Settings button and hint, personal reference, heading, subtitle, Find a Memory button and hint",
+    "Reader-generated last-spoken text captured; this is not an audio fidelity test",
+    "VoiceOver OFF; app Home; all ten tables/media/runtime and pending notification exact at revision54"
+  ],
+  "trace": [
+    {
+      "index": 0,
+      "text": "Settings Accessibility"
+    },
+    {
+      "index": 1,
+      "text": "CasitaDex Dev CasitaDex, Designs by F and A \u00a0 Image"
+    },
+    {
+      "index": 2,
+      "text": "Friday"
+    },
+    {
+      "index": 3,
+      "text": "November 6"
+    },
+    {
+      "index": 4,
+      "text": "2026"
+    },
+    {
+      "index": 5,
+      "text": "Settings Button Opens settings, backup and recovery"
+    },
+    {
+      "index": 6,
+      "text": "YOUR PERSONAL REFERENCE"
+    },
+    {
+      "index": 7,
+      "text": "The details that matter. Heading"
+    },
+    {
+      "index": 8,
+      "text": "A calmer place to keep useful things."
+    },
+    {
+      "index": 9,
+      "text": "Find a Memory Button Get an answer in seconds"
+    }
+  ],
+  "blocker": "Control+Option+Space did not activate either focused CasitaDex Find or iOS Settings Accessibility Back. System control comparison indicates remote-input limitation, not an established CasitaDex defect. No malformed gesture retries or speculative code repair.",
+  "not_verified": [
+    "Activation and return",
+    "Editor/Detail/Share full reader traversal",
+    "Actual audio fidelity"
+  ],
+  "preservation": {
+    "allTenTablesMediaRuntimeExact": true,
+    "pendingNotificationExact": true,
+    "voiceOverOff": true,
+    "readerRunningKeyNotOne": true,
+    "originalClipboardRestored": false,
+    "clipboardLimitation": "Original text empty; simctl pbcopy empty input was a no-op. Simulator clipboard retains only copied Settings accessibility label. No personal clipboard contents were captured.",
+    "revision": 54
+  },
+  "jobs": [
+    "30a1199440d2010c",
+    "035a25f1750fa152",
+    "36023e6b8dbb99d8"
+  ],
+  "stops": "Traversal job exited1 when Home target was not confirmed after failed activation; finally restored reader OFF. System comparison exited0 with unchanged page, not activation pass.",
+  "evidence_directory": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB121/ios-7fa-voiceover-keyboard",
+  "next_requirement": "Supported VoiceOver activation input or human simulator reader traversal. Android lane belongs to Event Command. Linked reminder remains scheduled Nov7 09:00 CST /15:00UTC.",
+  "hashes": {
+    "01-find-focused.png": "b73232b80a8304fd673b6aaed877643d9ba61a194f8e8b9a47b08c84ac6caab0",
+    "01-find-speech.txt": "9d6a42d45340a64de089610ac17149a41b9ed5ba9af791d6e5e705d88dbb9f23",
+    "02-after-activate-speech.txt": "8adc8ac4a9a9980314977d1f5e3e87bcf311f0fdbe944fd74ee0b06008f86007",
+    "02-after-keyboard-activate.png": "b73232b80a8304fd673b6aaed877643d9ba61a194f8e8b9a47b08c84ac6caab0",
+    "03-next-focus.png": "fa3f509d8dc4d0df97d83ef6b3446f2c93942feef71d0ecf8c69b0933efd619a",
+    "03-next-speech.txt": "e21f3f372a46d4be7b49f6809fc91baefeadae004af06485518e124a142c0271",
+    "04-find-keyboard-selected.png": "6b0d3dd30a794d190f482c26796e22944ae8535d16c415d0f1c5b8a4b7d1d92f",
+    "05-find-keyboard-opened.png": "6b0d3dd30a794d190f482c26796e22944ae8535d16c415d0f1c5b8a4b7d1d92f",
+    "05-find-opened-speech.txt": "1644f42a6b36f590095c28f5cfd39345e0891ea9d31c5fb10dcd058f183aa31e",
+    "06-home-target-speech.txt": "1644f42a6b36f590095c28f5cfd39345e0891ea9d31c5fb10dcd058f183aa31e",
+    "08-system-back-selected.png": "ec4caee3c1c9ad7bbb6c0440f90967d1b8ba2fe5552c381ebfa84c51b4bfee67",
+    "09-system-after-activate.png": "ec4caee3c1c9ad7bbb6c0440f90967d1b8ba2fe5552c381ebfa84c51b4bfee67",
+    "09-system-after-speech.txt": "6a488015347d07adbd101379f0a40c6e84ebe785cd61dc593ad26f32d58f4184",
+    "10-final-app.png": "112cb89151b74f8ce3875556fe1b2bc3acb3c246e7de72c10bd31aaa760d9107",
+    "baseline.json": "aca97a34f9a5b765cbe4a2e131f4e33682a6dc3dff0e9d91a62bedfa971897c5",
+    "capture-current.py": "0a1b865e6ab9a5479ff6672210002e79518597511ae3fc5f6d4d447dcf063e84",
+    "final-state.json": "cff10683a655068c3ff9b6d328776f2f964c256037fb52f2c217b5e3ec8a4d13",
+    "helpers.mjs": "5519867c5d02b7e6f48997c8e14ee6e0560cc7ba27f67d6b958d7b2a1d4ed031",
+    "home-traversal.json": "004df04afaba8a187d9fc7fa13986e85d852899a3b629364694e6095ce042307",
+    "keyboard.mjs": "9bc9686edc56bdbac54a97b5bab34d2f92540110cf260acccec5a797c2c2ad30",
+    "pending-after.json": "5d985c7be0357c20df579ae2e6dd268c3221fc8ce4cdd3a3aea34798f6155e5e",
+    "pending-before.json": "9646dd397680152847758a4547e24855648451c7797f88b3a92462636923d06d",
+    "preservation.json": "862fd8c804faf96d6bd4d64bb4e24befc3d9211cf4250487aa000c1b291b9591",
+    "read-notifications.py": "26194f2a87cdd79ded40026f938e14fb552cb6953e8e5b59dfd02c892e5c3a56",
+    "reader-running-after.txt": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+    "system-control-trace.json": "aa14379a076c4df8a33617c687dfee7674fb057f3dd0d281379720ef7b472f36",
+    "system-control.mjs": "da29269a92636b2f2504941b0e17fe03a5e07100df88fb3aadd37d2518eff8c0",
+    "system-current.txt": "5d99d1bdc3c6087733b7285cec6fd5e7ff8be6cdf2994dd71ba30e44d4e7dd49",
+    "system-reader-running-after.txt": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+    "traverse-current.txt": "ce349a5b5a597c3ff41c437583eb482acbec9ca19e4c46e7d4d21c9afeef9057",
+    "traverse-keyboard.mjs": "70022f5c251cdd2f1b5658734810d831d7133aaf2c6b5029291a81bdd8670cb2"
+  }
+}

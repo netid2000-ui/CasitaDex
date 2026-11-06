@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "status": "VERIFIED_PARTIAL_MILESTONE_SNAPSHOT",
-  "updated_at_utc": "2026-11-06T23:41:57.273438+00:00",
+  "updated_at_utc": "2026-11-06T23:52:59.986049+00:00",
   "release": "NO-GO",
   "latest_runtime_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
   "installed_runtime_checkpoint": {
@@ -729,10 +729,11 @@
       "id": "G08",
       "gate": "Manual native screen readers",
       "status": "PARTIAL_TOOL_LIMITED",
-      "scope": "Both readers approved and restored OFF. Actual iOS7fa VoiceOver directly focuses Find a Memory after app relaunch; timed activation rejected by gesture backend. App speech, ordered traversal and return unverified. Android initial logo focus captured; retained emulator audio disabled. No full reader pass.",
+      "scope": "Both readers approved and restored OFF. Actual iOS7fa Home ordered focus and reader-generated spoken text verified through Find. Control+Option+Space failed on app and system Back control; activation/return and full traversal remain tool-limited. Captured text is not audio-fidelity proof. Android initial logo focus only; emulator audio disabled. No full reader pass.",
       "evidence_refs": [
         "approved_restore_readers",
-        "ios_7fa_actual_voiceover_focus"
+        "ios_7fa_actual_voiceover_focus",
+        "ios_7fa_voiceover_keyboard"
       ]
     },
     {
@@ -1218,6 +1219,10 @@
       "relative_path": "docs/qa/SB121_IOS_VOICEOVER_APP_FOCUS_20261106.json",
       "sha256": "f0580f5ebb38f2789f0e8d25b99cf522ec50b14b914664121b64cd6f14cae807",
       "source_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606"
+    },
+    "ios_7fa_voiceover_keyboard": {
+      "path": "docs/qa/SB121_IOS_VOICEOVER_KEYBOARD_20261106.json",
+      "sha256": "89ad8b6c2591a3d01dedbcfe390252fa4ce6f930c36421175b1e117e725b6e02"
     }
   },
   "execution_limits": [
@@ -1946,5 +1951,12 @@
     "status": "PARTIAL_ACTUAL_APP_FOCUS_ACTIVATION_TOOL_BLOCKED",
     "evidence_ref": "ios_7fa_actual_voiceover_focus",
     "preserved_revision": 54
+  },
+  "voiceover_keyboard_followup": {
+    "status": "PARTIAL_HOME_ORDER_AND_SPOKEN_TEXT_ACTIVATION_TOOL_LIMITED",
+    "evidence_ref": "ios_7fa_voiceover_keyboard",
+    "preserved_revision": 54,
+    "activation": "TOOL_LIMITED_SYSTEM_CONTROL_ALSO_FAILED",
+    "clipboard_restore": "EMPTY_INPUT_NO_OP_SYNTHETIC_LABEL_REMAINS"
   }
 }
