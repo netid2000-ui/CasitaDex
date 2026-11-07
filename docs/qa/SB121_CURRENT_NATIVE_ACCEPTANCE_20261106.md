@@ -1,3 +1,16 @@
+# Latest isolated iOS checkpoint: c2cc335 import and recovery acceptance
+
+The separately built **c2cc335** iPhone 17 / iOS 27.0 simulator candidate passes bounded native import and previous-save recovery acceptance. The protected original iOS **7fa012a** simulator remains unchanged at **revision 54**, with its November 7 **09:00 Central** linked reminder intact. Earlier runtime attributions below remain historical. Release stays **NO-GO**.
+
+- Real damaged-file selection shows the exact safe recovery guidance, removes stale restore controls and exposes no raw parser/path diagnostic. Picker cancellation preserves all tables/media/runtime.
+- Recovery Cancel preserves state. Confirmed previous-save recovery changes the copied four-memory, one-photo, two-reminder fixture to its prior empty collection, then restores every field/photo/reminder exactly. Cold app relaunch preserves all database tables and hashes. This fixture has no unfinished draft.
+- The candidate uses the already retained glob 13.0.7 tarball verified against committed lockfile integrity. Main checkout node_modules intentionally remain unchanged. Remaining security advisories are not waived.
+- New simulator is shut down without erasing data; its dedicated QA control server is cancelled. Original simulator and other test jobs were not stopped. VoiceOver announcement/full traversal, strict iOS offline, original reminder delivery/tap, physical and release gates remain open.
+
+[Structured evidence and limits](SB121_IOS_ISOLATED_IMPORT_RECOVERY_20261107.json) · [Safe feedback screenshot](ios-c2cc335-import-recovery-20261107/08-safe-rejection.png) · [Recovery success screenshot](ios-c2cc335-import-recovery-20261107/13-previous-full-recovered.png).
+
+---
+
 # Current checkpoint: bounded 8cc native milestones on both platforms
 
 Both exact installed platforms now identify **8cc2862eaf2791379518e440d3b9d5833543ab0a**. [Current consolidated milestone and artifact hashes](SB121_CURRENT_8CC_NATIVE_MILESTONE_20261106.md). **Release remains NO-GO.**

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "status": "VERIFIED_PARTIAL_MILESTONE_SNAPSHOT",
-  "updated_at_utc": "2026-11-07T01:57:40.413676+00:00",
+  "updated_at_utc": "2026-11-07T02:52:32.634026+00:00",
   "release": "NO-GO",
   "latest_runtime_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
   "installed_runtime_checkpoint": {
@@ -232,6 +232,15 @@
       "provenance_evidence": [
         "android_7a3_validation_native"
       ]
+    },
+    "ios_c2cc335": {
+      "configuration": "unsigned Release arm64 iOS Simulator",
+      "result": "PASS",
+      "source_commit": "c2cc335ff6c6269b1e2116f7b66b901769466d9c",
+      "binary_sha256": "27066ba054cd20d06193db2892401d984e75a8a690aa4896bf13452a24aba854",
+      "hermes_sha256": "7a49d5421503053c1abebb2d25ac131a24518befbab23a3b1c3dd0a969b80e1b",
+      "device": "separate iPhone17 iOS27.0 simulator; shut down with data retained",
+      "evidence_ref": "ios_c2cc335_isolated_import_recovery"
     }
   },
   "cases": [
@@ -709,12 +718,13 @@
     {
       "id": "G06",
       "gate": "Actual native app restore/recovery",
-      "status": "BOTH_PLATFORMS_PASS_BOUNDED_RESTORE",
-      "scope": "Current7fa iOS same-current-data native Fullv4 restore and cold relaunch PASS; full recovery copy and fresh archive verified immediately beforehand. Four memories/photo/two reminders unchanged, pending linked notification exact, revision54. Historical Androidbb235 restore reused. Corruption import and previous-save recovery-button scope remains open. Follow-up current7fa native one-byte photo corruption rejection and valid-to-damaged stale-review clearing PASS without data mutation. Previous-save recovery-button remains open.",
+      "status": "BOTH_PLATFORMS_PASS_BOUNDED_RESTORE_IOS_RECOVERY",
+      "scope": "Historical Android bb235 native restore PASS is retained. Protected iOS7fa same-current-data Full v4 restore/cold relaunch and damaged-file/stale-review rejection PASS; original previous-save recovery remains NOT_RUN to preserve revision54 and its linked reminder. A separate c2cc335 iOS simulator now passes bounded previous-save recovery-button acceptance: Cancel preserves exact state; confirmed recovery changes the copied four-memory, one-photo, two-reminder collection to its prior empty state, then restores every field/photo/reminder exactly. Cold launch preserves all tables/media/runtime. No draft in this fixture; broader recovery/fault cases are not closed.",
       "evidence_refs": [
         "android_native_restore_offline",
         "approved_restore_readers",
-        "ios_7fa_corrupt_backup_native"
+        "ios_7fa_corrupt_backup_native",
+        "ios_c2cc335_isolated_import_recovery"
       ]
     },
     {
@@ -751,7 +761,7 @@
       "id": "G10",
       "gate": "Security and dependency closure",
       "status": "PARTIAL",
-      "scope": "Prior exact 8cc Android/iOS security and distribution review recovered and reused. Exact current 7fa iOS HBC/input/map receipt identities and four source controls verified; 1269 mapped sources exclude named affected tooling packages. Raw map recomposition unavailable. Unchanged dependency lock; previously recorded build-tool advisories remain open, no fresh audit or security waiver. Native and distribution security acceptance remains open. Follow-up: compatible glob13.0.6 ->13.0.7 lockfile backport verified by four cancellation regressions and async/sync/ESM consumer-pattern comparison. Advisory database still flags13.x; minimatch10.2.6 remains open. Existing installed artifacts and node_modules are unchanged; historical lock/artifact evidence is not relabeled.",
+      "scope": "Prior exact 8cc Android/iOS security and distribution review recovered and reused. Exact current 7fa iOS HBC/input/map receipt identities and four source controls verified; 1269 mapped sources exclude named affected tooling packages. Raw map recomposition unavailable. Unchanged dependency lock; previously recorded build-tool advisories remain open, no fresh audit or security waiver. Native and distribution security acceptance remains open. Follow-up: compatible glob13.0.6 ->13.0.7 lockfile backport verified by four cancellation regressions and async/sync/ESM consumer-pattern comparison. Advisory database still flags13.x; minimatch10.2.6 remains open. Existing installed artifacts and node_modules are unchanged; historical lock/artifact evidence is not relabeled. The separate c2cc335 candidate materialized retained glob13.0.7 with lockfile tarball integrity verified and built successfully. The original checkout node_modules and protected7fa artifact remain unchanged. This does not close remaining advisories or full security acceptance.",
       "evidence_refs": [
         "security_review",
         "security_receipt",
@@ -759,7 +769,8 @@
         "ios_5dc_security_receipt",
         "security_distribution_8cc_reused",
         "ios_7fa_security_inventory",
-        "dependency_glob_backport"
+        "dependency_glob_backport",
+        "ios_c2cc335_isolated_import_recovery"
       ]
     },
     {
@@ -1232,6 +1243,10 @@
     "ios_7fa_native_photo_audit": {
       "path": "docs/qa/SB121_IOS_NATIVE_PHOTO_AUDIT_20261107.json",
       "sha256": "44c5c519bb3b4e91981cc32a648f81eec30f11baa399128fe0aeef0765d75651"
+    },
+    "ios_c2cc335_isolated_import_recovery": {
+      "path": "docs/qa/SB121_IOS_ISOLATED_IMPORT_RECOVERY_20261107.json",
+      "sha256": "fe0ac4c9f55cbf2a703e26552e7b2ea9686802c44d768c3dc49e2a4b1554daa8"
     }
   },
   "execution_limits": [
@@ -1979,7 +1994,12 @@
     "previous_revision": 53,
     "only_snapshot_difference": "revision",
     "execution": "NOT_RUN",
-    "reason": "recoverV4 writes current.revision+1, swaps recovery rows, replaces standalone reminder rows and invokes notifyReminderChanges. Confirming conflicts with exact revision54 preservation; no confirmation was pressed."
+    "reason": "recoverV4 writes current.revision+1, swaps recovery rows, replaces standalone reminder rows and invokes notifyReminderChanges. Confirming conflicts with exact revision54 preservation; no confirmation was pressed.",
+    "independent_followup": {
+      "status": "PASS_BOUNDED_ON_SEPARATE_SIMULATOR",
+      "evidence_ref": "ios_c2cc335_isolated_import_recovery",
+      "note": "Protected original preflight remains NOT_RUN. Separate candidate cancel/empty/full recovery and cold launch passed; four memories, one photo, two reminders, no draft."
+    }
   },
   "native_protected_photo_followup": {
     "status": "PASS_BOUNDED_NATIVE_PROTECTED_PHOTO_AUDIT",
@@ -1987,8 +2007,19 @@
     "preserved_revision": 54
   },
   "backup_import_feedback_source_followup": {
-    "status": "SOURCE_VERIFIED_NATIVE_PENDING",
+    "status": "SOURCE_AND_BOUNDED_NATIVE_VERIFIED",
     "report": "docs/qa/SB121_BACKUP_IMPORT_FEEDBACK_SOURCE_20261107.json",
-    "installed_runtime_unchanged": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606"
+    "installed_runtime_unchanged": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
+    "native_source_commit": "c2cc335ff6c6269b1e2116f7b66b901769466d9c",
+    "native_evidence_ref": "ios_c2cc335_isolated_import_recovery",
+    "native_scope": "Visual safe wording after real damaged archive, stale-review clearing and picker cancellation. Actual reader announcement remains open."
+  },
+  "isolated_native_import_recovery_followup": {
+    "status": "PASS_BOUNDED_ISOLATED_NATIVE_IMPORT_AND_PREVIOUS_SAVE_RECOVERY",
+    "source_commit": "c2cc335ff6c6269b1e2116f7b66b901769466d9c",
+    "evidence_ref": "ios_c2cc335_isolated_import_recovery",
+    "protected_original_runtime": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
+    "protected_original_revision": 54,
+    "release": "NO-GO"
   }
 }

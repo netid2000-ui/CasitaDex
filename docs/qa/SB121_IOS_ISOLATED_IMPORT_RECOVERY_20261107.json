@@ -1,0 +1,112 @@
+{
+  "status": "PASS_BOUNDED_ISOLATED_NATIVE_IMPORT_AND_PREVIOUS_SAVE_RECOVERY",
+  "completed_utc": "2026-11-07T02:48:46.268728+00:00",
+  "source_commit": "c2cc335ff6c6269b1e2116f7b66b901769466d9c",
+  "release": "NO-GO",
+  "tracked_source_files_verified": 816,
+  "import": {
+    "safeMessageExact": true,
+    "staleReviewCleared": true,
+    "rawDiagnosticAbsent": true,
+    "expected": "This backup could not be verified. Your current memories, photos and reminders are unchanged. Choose another backup, or copy the file again and retry."
+  },
+  "picker_cancel": {
+    "cancellationGuidance": true,
+    "noRestoreControls": true
+  },
+  "import_preservation": {
+    "all_tables_media_runtime_unchanged": true
+  },
+  "recovery": {
+    "cancelNoMutation": true,
+    "restoreFixtureMatchesProtectedCopy": true,
+    "previousEmptyRecovered": true,
+    "previousFullRecovered": true,
+    "allMemoryFieldsExact": true,
+    "allPhotoHashesExact": true,
+    "standaloneRemindersExact": true,
+    "emptyBaselineRevision": 0,
+    "restoredRevision": 1,
+    "recoveredEmptyRevision": 2,
+    "recoveredFullRevision": 3,
+    "memoryCount": 4,
+    "physicalPhotoFiles": 1,
+    "standaloneReminderCount": 2,
+    "harnessCorrection": "Initial empty database has no standalone_reminders_v1 table until first restore; absent and empty are semantically equivalent. First recovery completed once, then resumed only reverse recovery; no tests rerun."
+  },
+  "preservation": {
+    "isolated_cold_launch_all_tables_media_runtime_exact": true,
+    "protected_all_tables_media_runtime_exact": true,
+    "protected_revision": 54,
+    "protected_pending_exact": true,
+    "protected_reminder_count": 1,
+    "protected_scheduled_utc": "2026-11-07T15:00:00Z"
+  },
+  "dependency_materialization": {
+    "source_checkout_actual": "13.0.6",
+    "lockfile_expected": "13.0.7",
+    "candidate_actual": "13.0.7",
+    "tarball_integrity_matches_lockfile": true,
+    "original_checkout_changed": false,
+    "native_graph_changed": false
+  },
+  "boundaries": {
+    "host_clock_changed": false,
+    "host_network_changed": false,
+    "protected_simulator_installed_or_relaunched": false,
+    "physical_devices_used": false,
+    "production_or_release_actions": false,
+    "other_jobs_stopped": false
+  },
+  "limitations": [
+    "Visual native error wording is verified. VoiceOver announcement fidelity and full reader acceptance are not verified.",
+    "Injected picker, constructor and metadata failure coverage remains attributed to the existing focused source tests; this native run selected a real damaged archive.",
+    "Previous-save recovery uses four copied memories, one saved photo, two standalone reminders and no unfinished draft. This is bounded fixture acceptance, not every recovery matrix case.",
+    "Strict iOS offline, pending original linked notification delivery/tap, remaining security dependencies and distribution/physical gates remain open.",
+    "The main checkout intentionally retains its prior node_modules. Only the isolated build snapshot materialized glob 13.0.7 from the already retained tarball after verifying the committed lockfile integrity."
+  ],
+  "harness_notes": [
+    "First build preparation stopped before compilation when preserved node_modules glob 13.0.6 did not match lockfile 13.0.7. Original copy retained; isolated materialization fixed the build input.",
+    "Native Files filename tap did not open the document; observed icon tap selected it. No failed application behavior inferred.",
+    "Recovery harness normalized absent initial reminders table to empty rows and continued only the unfinished reverse recovery. Completed native steps were not rerun."
+  ],
+  "post_cleanup_preservation": "PASS: original all tables, media, runtime and pending notification remain exact after shutting down only the new simulator; dedicated port 12226 closed",
+  "machine": "FA-MAC-DEV-01",
+  "build": {
+    "configuration": "unsigned Release arm64 iOS Simulator",
+    "result": "PASS",
+    "source_commit": "c2cc335ff6c6269b1e2116f7b66b901769466d9c",
+    "binary_sha256": "27066ba054cd20d06193db2892401d984e75a8a690aa4896bf13452a24aba854",
+    "hermes_sha256": "7a49d5421503053c1abebb2d25ac131a24518befbab23a3b1c3dd0a969b80e1b"
+  },
+  "isolated_device": {
+    "name": "CasitaDex c2cc335 Isolated Import QA 20261107",
+    "runtime": "iOS 27.0 / iPhone 17",
+    "udid": "A6A585A2-FF49-40EA-B32F-09E8D510C4A8",
+    "final_state": "Shutdown",
+    "data_erased": false,
+    "dedicated_control_server": "cancelled after evidence capture; port verified closed"
+  },
+  "scope_note": "Current candidate acceptance on a separate simulator. Original 7fa simulator and its revision54 pending reminder are not upgraded, re-run or relabeled as c2cc335.",
+  "evidence_directory": "QA-Evidence/WORK-SB121/ios-c2cc335-isolated-import-20261107",
+  "local_evidence_hashes": {
+    "RESULT.json": "30fbb7246e93b719484e17edf3c1219cdb5af6e467d5e54236c16231008cf918",
+    "REPORT.md": "a7b8e9223b22d036c7194845dcf151f25191bb2259dcccab69a41adfabb07ad1",
+    "import-result.json": "4eef102093f561afd0a794deb660db4b2c3d8b1da4c6ae7ef939513d671e00b1",
+    "cancel-result.json": "24e46f498fb673e663f1cb9e4627908cb16f3adc840e727b15c8c332982d37e1",
+    "recovery-result.json": "a6af05e8a81d16ae8cfd1b784bf991397403f7362eb87dc1d20384a75b98a9eb",
+    "preservation-result.json": "a20fa830455bd4ec5ac55b8b3392f4d14fd70191fec6ff29911cd8a88d382c53",
+    "artifact-sha256.txt": "fc876ed2b21006fea3bb8de7ea82a8f4ab64ba0bbdbc834da49236a2cd586c1d",
+    "source-manifest.json": "7ac8537738523fb93bd961800c702c3e9cdcb57db3717cd0e93283ff33700cca",
+    "dependency-materialization.json": "1d860d3de664c8588e0c58b73085b5d0240f6b2adcb20f23f0fddac5600ba69e",
+    "08-safe-rejection.png": "9804800b47d89a9f6c912f51726f5ac528f30979ced9351a533f92801ac4e130",
+    "13-previous-full-recovered.png": "7198fc8e2239d9f42c9668d068d9882ef47de6eb1f46a594ac3179b12dc2fe56",
+    "14-cold-home.png": "df7512a307abe11ab125c64ef521677c2ee145577f3139e02a8244f15a281083"
+  },
+  "screenshots": {
+    "ios-c2cc335-import-recovery-20261107/08-safe-rejection.png": "9804800b47d89a9f6c912f51726f5ac528f30979ced9351a533f92801ac4e130",
+    "ios-c2cc335-import-recovery-20261107/09-picker-canceled.png": "16d4582abddd28001310c3dabdff5f1ef21f301fa12a09e7813d6c8472a6d73a",
+    "ios-c2cc335-import-recovery-20261107/13-previous-full-recovered.png": "7198fc8e2239d9f42c9668d068d9882ef47de6eb1f46a594ac3179b12dc2fe56",
+    "ios-c2cc335-import-recovery-20261107/14-cold-home.png": "df7512a307abe11ab125c64ef521677c2ee145577f3139e02a8244f15a281083"
+  }
+}
