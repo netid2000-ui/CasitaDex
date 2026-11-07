@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "status": "VERIFIED_PARTIAL_MILESTONE_SNAPSHOT",
-  "updated_at_utc": "2026-11-07T01:51:02.762636+00:00",
+  "updated_at_utc": "2026-11-07T01:54:15.427072+00:00",
   "release": "NO-GO",
   "latest_runtime_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
   "installed_runtime_checkpoint": {
@@ -1228,6 +1228,10 @@
     "ios_7fa_corrupt_backup_native": {
       "path": "docs/qa/SB121_IOS_CORRUPT_BACKUP_NATIVE_20261107.json",
       "sha256": "4bcf819d06f8771e36b06fff1d3c489c54aa85aff9950ca4bcb28e9209af1c4c"
+    },
+    "ios_7fa_native_photo_audit": {
+      "path": "docs/qa/SB121_IOS_NATIVE_PHOTO_AUDIT_20261107.json",
+      "sha256": "44c5c519bb3b4e91981cc32a648f81eec30f11baa399128fe0aeef0765d75651"
     }
   },
   "execution_limits": [
@@ -1927,7 +1931,8 @@
     "baseline_evidence_ref": "approved_restore_readers",
     "baseline_sha256": "cff10683a655068c3ff9b6d328776f2f964c256037fb52f2c217b5e3ec8a4d13",
     "note": "Approved same-current-state restore advanced revision53 to54; collection/draft/reminders/media equal. Entire prepared Nov7 pending notification unchanged. Use final-state revision54 baseline; VoiceOver restored OFF.",
-    "baseline_path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB121/ios-7fa-approved-restore/final-state.json"
+    "baseline_path": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB121/ios-7fa-approved-restore/final-state.json",
+    "table_count_clarification": "Earlier prose used ten tables. Capture dictionaries include eleven SQLite tables: ten application tables plus sqlite_sequence. Whole-dictionary equality checks covered all eleven; no comparison was omitted."
   },
   "dependency_remediation_followup": {
     "report": "docs/qa/SB121_DEPENDENCY_GLOB_BACKPORT_20261106.json",
@@ -1967,6 +1972,18 @@
   "corrupt_backup_native_followup": {
     "status": "PASS_BOUNDED_NATIVE_CORRUPTION_AND_STALE_REVIEW_REJECTION",
     "evidence_ref": "ios_7fa_corrupt_backup_native",
+    "preserved_revision": 54
+  },
+  "previous_save_recovery_preflight": {
+    "current_revision": 54,
+    "previous_revision": 53,
+    "only_snapshot_difference": "revision",
+    "execution": "NOT_RUN",
+    "reason": "recoverV4 writes current.revision+1, swaps recovery rows, replaces standalone reminder rows and invokes notifyReminderChanges. Confirming conflicts with exact revision54 preservation; no confirmation was pressed."
+  },
+  "native_protected_photo_followup": {
+    "status": "PASS_BOUNDED_NATIVE_PROTECTED_PHOTO_AUDIT",
+    "evidence_ref": "ios_7fa_native_photo_audit",
     "preserved_revision": 54
   }
 }

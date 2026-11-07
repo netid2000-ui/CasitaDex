@@ -1,0 +1,46 @@
+{
+  "status": "PASS_BOUNDED_NATIVE_PROTECTED_PHOTO_AUDIT",
+  "release": "NO-GO",
+  "completed_utc": "2026-11-07T01:54:15.427072+00:00",
+  "source_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
+  "native_result": "3 protected photo references checked. 0 need attention. No files removed.",
+  "preservation": {
+    "all_sqlite_tables_equal": true,
+    "table_count_including_sqlite_sequence": 11,
+    "application_table_count": 10,
+    "media_and_runtime_exact": true,
+    "pending_notification_exact": true,
+    "revision": 54,
+    "final_screen": "Home"
+  },
+  "recovery_preflight": {
+    "current_revision": 54,
+    "previous_revision": 53,
+    "only_snapshot_difference": "revision",
+    "execution": "NOT_RUN",
+    "reason": "recoverV4 writes current.revision+1, swaps recovery rows, replaces standalone reminder rows and invokes notifyReminderChanges. Confirming conflicts with exact revision54 preservation; no confirmation was pressed."
+  },
+  "prior_evidence": "Existing photo import/view/export and corruption engine/native evidence reused. No native protected-owner audit receipt found in targeted SB121 ledger/report search; this verifies actual installed UI audit, not another import or restore.",
+  "limits": [
+    "One retained photo with three protected references; no new corrupted/deleted files introduced",
+    "Recovery confirmation, strict iOS offline and full reader acceptance remain unverified"
+  ],
+  "table_count_clarification": "Earlier prose used ten tables. Capture dictionaries include eleven SQLite tables: ten application tables plus sqlite_sequence. Whole-dictionary equality checks covered all eleven; no comparison was omitted.",
+  "evidence_directory": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB121/ios-7fa-native-storage-integrity",
+  "hashes": {
+    "01-storage.json": "dfb0ea9c17169f6b772003bbac52c29340caa46740cd34f4efbe39649809f0d1",
+    "01-storage.png": "027e96f5ea6e0a26fd86fb1dd7090b9925df54e71d64f55081da6385866117a0",
+    "02-integrity-result.json": "1acecac1d9f46a29d9ddf5474a3c82c9347ce1fa2d373b2df00c5758f059a92c",
+    "02-integrity-result.png": "5f0315e9ee413520d2786cf77042864b1a9be75e22da8b5468b25b4c7dd79c7b",
+    "03-home.json": "e309be569c3f3267b5990e6d416012a648ed9355958af97f2cc5eb532d9700e9",
+    "03-home.png": "60ae6ff46ab9e48b49ee3ef614608436a496b229856513eb6206804c4ff8c326",
+    "baseline.json": "cff10683a655068c3ff9b6d328776f2f964c256037fb52f2c217b5e3ec8a4d13",
+    "capture-current.py": "0a1b865e6ab9a5479ff6672210002e79518597511ae3fc5f6d4d447dcf063e84",
+    "final-state.json": "cff10683a655068c3ff9b6d328776f2f964c256037fb52f2c217b5e3ec8a4d13",
+    "helpers.mjs": "5519867c5d02b7e6f48997c8e14ee6e0560cc7ba27f67d6b958d7b2a1d4ed031",
+    "inspect.mjs": "66b3e0170b33003222347bd821d471b62a802e9502813047fcd1b3e0ac1d977f",
+    "pending-after.json": "765ed0a857a6b2fdeec7aa9c4daa89a95e7286b1c9c36abc70bf351783b63b00",
+    "pending-before.json": "4255103013ce229dfff42decfe4885610da85cd62fe8262228d56f140704c30b",
+    "read-notifications.py": "26194f2a87cdd79ded40026f938e14fb552cb6953e8e5b59dfd02c892e5c3a56"
+  }
+}
