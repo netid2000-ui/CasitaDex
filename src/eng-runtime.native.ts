@@ -127,10 +127,13 @@ export async function pickEngBackup(){
   if(result.canceled)return null;
   const asset=result.assets[0];if(!asset)throw Error("No backup selected");
   const file=new File(asset.uri);if(file.size>fullBackupLimit)throw Error("Full backup exceeds 154 MB");
-  const opened=await openEngStreamCompatible(reader(file),sha256Media);
-  // Archive validation always completes before any consumer restore preview.
-  // SB24 production-path interruption and genuine Android ENOSPC acceptance passed.
-  return opened;
+  try {
+    // Validate before returning any restore preview. Do not surface parser or
+    // filesystem diagnostics that may contain private archive content or paths.
+    return await openEngStreamCompatible(reader(file),sha256Media);
+  } catch {
+    throw Error("This backup could not be verified. Your current memories, photos and reminders are unchanged. Choose another backup, or copy the file again and retry.");
+  }
 }
 export type EngStore=Awaited<ReturnType<typeof getEngStore>>;
 export type EngBackup={snapshot:EngSnapshot;source:string;read:(path:string)=>Promise<Uint8Array>;reminders:import("./reminder-backup-v4").ReminderBackupSection|null};

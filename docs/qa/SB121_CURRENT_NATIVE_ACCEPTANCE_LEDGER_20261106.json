@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "status": "VERIFIED_PARTIAL_MILESTONE_SNAPSHOT",
-  "updated_at_utc": "2026-11-07T01:54:15.427072+00:00",
+  "updated_at_utc": "2026-11-07T01:57:40.413676+00:00",
   "release": "NO-GO",
   "latest_runtime_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
   "installed_runtime_checkpoint": {
@@ -1985,5 +1985,10 @@
     "status": "PASS_BOUNDED_NATIVE_PROTECTED_PHOTO_AUDIT",
     "evidence_ref": "ios_7fa_native_photo_audit",
     "preserved_revision": 54
+  },
+  "backup_import_feedback_source_followup": {
+    "status": "SOURCE_VERIFIED_NATIVE_PENDING",
+    "report": "docs/qa/SB121_BACKUP_IMPORT_FEEDBACK_SOURCE_20261107.json",
+    "installed_runtime_unchanged": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606"
   }
 }

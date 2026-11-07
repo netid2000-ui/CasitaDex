@@ -1,0 +1,43 @@
+{
+  "status": "SOURCE_VERIFIED_NATIVE_PENDING",
+  "release": "NO-GO",
+  "completed_utc": "2026-11-07T01:57:40.413676+00:00",
+  "base_commit": "8d9755aac2653c46437f0bed7ce602921769d623",
+  "issue": "Observed native damaged archive displayed raw Media SHA-256 mismatch without recovery guidance. Source boundary also propagated arbitrary filesystem error text, including paths.",
+  "change": "Wrap archive parsing/read verification at pickEngBackup boundary in a stable nontechnical error. Existing cancellation, file-size limit, valid preview and engine checks unchanged. No parser or path diagnostics are included in displayed failure.",
+  "message": "This backup could not be verified. Your current memories, photos and reminders are unchanged. Choose another backup, or copy the file again and retry.",
+  "verification": {
+    "before_new_tests": {
+      "pass": 2,
+      "fail": 2,
+      "failures": [
+        "Raw Media SHA-256 mismatch",
+        "Injected filesystem error exposed private path"
+      ]
+    },
+    "after_focused_tests": {
+      "pass": 21,
+      "fail": 0,
+      "skip": 0,
+      "files": [
+        "backup-import-feedback.test.mjs",
+        "backup-review.test.mjs",
+        "full-eng-stream.test.mjs",
+        "reminder-backup-v4.test.mjs",
+        "ios-native-export.test.mjs"
+      ]
+    },
+    "typecheck": "PASS",
+    "targeted_eslint": "PASS",
+    "diff_check": "PASS"
+  },
+  "test_scope": "Actual transpiled native import function with mocked native file/picker ports, real Full v4 writer/parser and photo hash verification. Valid, canceled, damaged, truncated, malformed JSON and read-failure inputs covered; read handles close. No simulator UI claim.",
+  "reused_evidence": "SB121_IOS_CORRUPT_BACKUP_NATIVE_20261107.json verifies old installed7fa native rejection/stale-review clearing; not relabeled as verification of new wording. Dependency report reused without repeated audit.",
+  "installed_runtime": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
+  "protected_baseline": "No device operations, no build/install, no database or notification actions; revision54/Nov7 09:00 Central fixture left untouched.",
+  "remaining": "Native wording/announcement acceptance in next authorized candidate. Glob/minimatch advisory dispositions unchanged; no full security closure.",
+  "hashes": {
+    "src/eng-runtime.native.ts": "a303d96d5e129f46b8e71d28c65570a1b7cacedecd07112f9a8f3543078e0daf",
+    "tests/backup-import-feedback.test.mjs": "e1f9d9d31aa46052988de14c1a5957938838cd8dc7ce585cb056a326491e0c77"
+  }
+}
