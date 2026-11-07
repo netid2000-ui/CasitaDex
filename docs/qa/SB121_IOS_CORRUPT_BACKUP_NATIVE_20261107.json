@@ -1,0 +1,59 @@
+{
+  "status": "PASS_BOUNDED_NATIVE_CORRUPTION_AND_STALE_REVIEW_REJECTION",
+  "release": "NO-GO",
+  "completed_utc": "2026-11-07T01:51:02.762636+00:00",
+  "source_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
+  "scope": [
+    "One-byte photo payload corruption in copy of retained synthetic Full v4 archive rejected through native Files picker",
+    "Valid backup review followed by damaged selection removes prior restore confirmation and Cancel restore controls",
+    "No restore was confirmed; all ten tables/media/runtime remain exact at revision54; complete pending linked notification unchanged; final Home"
+  ],
+  "prior_evidence_reused": "Existing five real-archive engine cases establish corruption rejection and stale token handling in isolated storage; approved native valid restore reused. This run adds the previously unverified native picker/error/stale-review surface, not another restore. No owner record found certifying this exact negative path.",
+  "observed_message": "Media SHA-256 mismatch",
+  "limitations": [
+    "Only one damaged photo payload tested, not every malformed archive class",
+    "Previous-save recovery-button acceptance remains open",
+    "Raw integrity error lacks plain-language recovery advice; no data-loss defect observed"
+  ],
+  "fixture": {
+    "original_sha256": "4db7391b867cd16a6e20b048ac3437e28925338d8495af4f055c92c2bc47c792",
+    "damaged_sha256": "b22338543270ca9edfbc350fbb4c9f1c3a457bb0bc3b2cdae201096574ff107b",
+    "changed_offsets": [
+      3493
+    ],
+    "provider": "/Users/franciscofranco/Library/Developer/CoreSimulator/Devices/C88DEF5E-63F3-426C-9B50-8CF131C3C58F/data/Containers/Shared/AppGroup/85520D0E-4B3E-4D64-B5B7-B51C1B337B3B/File Provider Storage/SB121-damaged-copy-do-not-restore.cdxe"
+  },
+  "retained_test_copy": "Additive damaged archive clearly named SB121-damaged-copy-do-not-restore.cdxe remains in simulator Files; authoritative original unchanged.",
+  "evidence_directory": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/WORK-SB121/ios-7fa-corrupt-backup-native",
+  "jobs": [
+    "8081331f7cb5def9",
+    "03063d6c211a9133"
+  ],
+  "hashes": {
+    "01-picker.json": "ec2d2e6fee29b8a24b8d7394263a8364bd304a9b9dd7762b9a3e195571544bc5",
+    "01-picker.png": "cd3542e6c268656e4f9a34c3e9a53380ed1486780b81f64a44b49d5d4baebf36",
+    "02-picker-observed.json": "f08c8a6c0d509a2f210d7b0e15e28d349868ab31120ff097384af207316fac2b",
+    "02-picker-observed.png": "b538e017b17674ab08da5642cb5d89d4eb63fb69d14b738883a228c9e41f920c",
+    "03-browse.json": "56d87e5bc341e0651bc56b204335bfed99db856921ba123bc7e621417b34f655",
+    "03-browse.png": "cb08e2d5a510f9ca71ebdf16b2e2606d4d3701cc8b05f160b3b36e49ca5138fc",
+    "04-rejected.json": "bf1a21a9a59537c849ccad5c898fffcf20ff7ff3b036fa76ad0312a4dcec53c6",
+    "04-rejected.png": "b741c025574d4477731db45296b8811b1b0ef0cf996aa5922446bd2c5458716e",
+    "05-valid-review.json": "88c7867b6d748d7dec4ce22a856e1e43b1c8b9d8419bc4b27c01a0c4efebe45d",
+    "05-valid-review.png": "6adac60d879919dc27549da0c98e95f3aa8c4a26fe06c0ee1d10b1fc271f415b",
+    "06-stale-review-rejected.json": "92a8cd84a53d3e2287c66e4509748d0c04d349fa66b229f3a3c4a36cb8ae9f47",
+    "06-stale-review-rejected.png": "e47d23391a68e5d1c9006a9b9d5cc129bfb9e36635609f2ef9d3050af7124ebf",
+    "07-home.json": "9d959dcce0a9bb4850856a37652d45d57b0d45d4ced84f9d17fff379ad2f5e09",
+    "07-home.png": "984d7dac5b165d8b400d7f1239ad6717345bfba4cf2f3ed1810f28ae3f3df40e",
+    "baseline.json": "cff10683a655068c3ff9b6d328776f2f964c256037fb52f2c217b5e3ec8a4d13",
+    "capture-current.py": "0a1b865e6ab9a5479ff6672210002e79518597511ae3fc5f6d4d447dcf063e84",
+    "damaged-copy.cdxe": "b22338543270ca9edfbc350fbb4c9f1c3a457bb0bc3b2cdae201096574ff107b",
+    "final-state.json": "cff10683a655068c3ff9b6d328776f2f964c256037fb52f2c217b5e3ec8a4d13",
+    "fixture.json": "1bbd348e017cd3f4f113d8139c6f494d9b45c0786e58cf4f08c406e93a8a10c8",
+    "helpers.mjs": "5519867c5d02b7e6f48997c8e14ee6e0560cc7ba27f67d6b958d7b2a1d4ed031",
+    "open-picker.mjs": "7b91de9c9dc5739dacffccbf6144fee752995e264dc9ac62e0ec3864272d024a",
+    "pending-after.json": "7a1884244f3156aa414478863bce20ea37724c4971c79a79f739c01b73f9892f",
+    "pending-before.json": "8f3dcaabcff7d6f16f0096e76c68a46e9a00c51dece4b5f4da6c9035bfcaa044",
+    "pick.mjs": "f62a6cf7173554b2f152ed2d1c49c794a431545f2ddec9f33b7277403d36eb79",
+    "read-notifications.py": "26194f2a87cdd79ded40026f938e14fb552cb6953e8e5b59dfd02c892e5c3a56"
+  }
+}

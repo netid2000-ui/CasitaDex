@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "status": "VERIFIED_PARTIAL_MILESTONE_SNAPSHOT",
-  "updated_at_utc": "2026-11-06T23:52:59.986049+00:00",
+  "updated_at_utc": "2026-11-07T01:51:02.762636+00:00",
   "release": "NO-GO",
   "latest_runtime_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
   "installed_runtime_checkpoint": {
@@ -710,10 +710,11 @@
       "id": "G06",
       "gate": "Actual native app restore/recovery",
       "status": "BOTH_PLATFORMS_PASS_BOUNDED_RESTORE",
-      "scope": "Current7fa iOS same-current-data native Fullv4 restore and cold relaunch PASS; full recovery copy and fresh archive verified immediately beforehand. Four memories/photo/two reminders unchanged, pending linked notification exact, revision54. Historical Androidbb235 restore reused. Corruption import and previous-save recovery-button scope remains open.",
+      "scope": "Current7fa iOS same-current-data native Fullv4 restore and cold relaunch PASS; full recovery copy and fresh archive verified immediately beforehand. Four memories/photo/two reminders unchanged, pending linked notification exact, revision54. Historical Androidbb235 restore reused. Corruption import and previous-save recovery-button scope remains open. Follow-up current7fa native one-byte photo corruption rejection and valid-to-damaged stale-review clearing PASS without data mutation. Previous-save recovery-button remains open.",
       "evidence_refs": [
         "android_native_restore_offline",
-        "approved_restore_readers"
+        "approved_restore_readers",
+        "ios_7fa_corrupt_backup_native"
       ]
     },
     {
@@ -1223,6 +1224,10 @@
     "ios_7fa_voiceover_keyboard": {
       "path": "docs/qa/SB121_IOS_VOICEOVER_KEYBOARD_20261106.json",
       "sha256": "89ad8b6c2591a3d01dedbcfe390252fa4ce6f930c36421175b1e117e725b6e02"
+    },
+    "ios_7fa_corrupt_backup_native": {
+      "path": "docs/qa/SB121_IOS_CORRUPT_BACKUP_NATIVE_20261107.json",
+      "sha256": "4bcf819d06f8771e36b06fff1d3c489c54aa85aff9950ca4bcb28e9209af1c4c"
     }
   },
   "execution_limits": [
@@ -1958,5 +1963,10 @@
     "preserved_revision": 54,
     "activation": "TOOL_LIMITED_SYSTEM_CONTROL_ALSO_FAILED",
     "clipboard_restore": "EMPTY_INPUT_NO_OP_SYNTHETIC_LABEL_REMAINS"
+  },
+  "corrupt_backup_native_followup": {
+    "status": "PASS_BOUNDED_NATIVE_CORRUPTION_AND_STALE_REVIEW_REJECTION",
+    "evidence_ref": "ios_7fa_corrupt_backup_native",
+    "preserved_revision": 54
   }
 }
