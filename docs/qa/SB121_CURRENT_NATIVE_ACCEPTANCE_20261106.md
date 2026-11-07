@@ -1,3 +1,13 @@
+# Additional bounded checkpoint: maximum-text backup feedback
+
+The isolated **c2cc335** iOS candidate displays the complete safe damaged-backup message at maximum system text plus app Large Text. The wording is readable by vertical scrolling through the final “retry.” line; long words wrap across lines. This verifies visual reachability, not reading ease, VoiceOver or full-screen accessibility.
+
+Both databases, media and runtime hashes remain exact: isolated revision **3**, original revision **54**. The original November 7 **09:00 Central** reminder is unchanged. The isolated display settings were restored, normal Home verified and only the isolated simulator shut down with data retained. Strict iOS offline and full VoiceOver remain **NOT_RUN** for the exact reasons in the report. Release remains **NO-GO**.
+
+[Structured result, screenshots and limits](SB121_IOS_MAXIMUM_BACKUP_FEEDBACK_20261107.json) · [Final reachable guidance](ios-c2cc335-maximum-feedback-20261107/09-maximum-feedback-21.png) · [Restored Home](ios-c2cc335-maximum-feedback-20261107/12-final-home-settled.png).
+
+---
+
 # Latest isolated iOS checkpoint: c2cc335 import and recovery acceptance
 
 The separately built **c2cc335** iPhone 17 / iOS 27.0 simulator candidate passes bounded native import and previous-save recovery acceptance. The protected original iOS **7fa012a** simulator remains unchanged at **revision 54**, with its November 7 **09:00 Central** linked reminder intact. Earlier runtime attributions below remain historical. Release stays **NO-GO**.

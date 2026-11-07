@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "status": "VERIFIED_PARTIAL_MILESTONE_SNAPSHOT",
-  "updated_at_utc": "2026-11-07T02:52:32.634026+00:00",
+  "updated_at_utc": "2026-11-07T03:13:10.830481+00:00",
   "release": "NO-GO",
   "latest_runtime_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
   "installed_runtime_checkpoint": {
@@ -1714,7 +1714,7 @@
     "status": "HISTORICAL_DIAGNOSTIC_NOT_RELEASE_ACCEPTED",
     "scope": "Earlier 9da plus 1d0836d coordinate-only diagnostic established native extent 1399 excluded the focused input. It was not release accepted. The later 8cc uninstrumented repair now has separately verified bounded native outcomes."
   },
-  "latest_documentation_base_commit": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
+  "latest_documentation_base_commit": "0e492761746c56233461676ece4ed218ea6f6c0b",
   "validation_feedback_source_followup": {
     "status": "SOURCE_VERIFIED_NATIVE_PENDING",
     "source_base": "ba3693282c31c7758d641fed48db9f960bd159c3",
@@ -2021,5 +2021,26 @@
     "protected_original_runtime": "7fa012a378ccbf6b8419ea7f7019cf28d7da2606",
     "protected_original_revision": 54,
     "release": "NO-GO"
+  },
+  "isolated_native_maximum_feedback_followup": {
+    "status": "PASS_BOUNDED_MAXIMUM_TEXT_BACKUP_FEEDBACK",
+    "source_commit": "c2cc335ff6c6269b1e2116f7b66b901769466d9c",
+    "completed_utc": "2026-11-07T03:13:10.830481+00:00",
+    "report": "docs/qa/SB121_IOS_MAXIMUM_BACKUP_FEEDBACK_20261107.json",
+    "report_sha256": "64b89d349477d413fcd09f05439500101434f2ca44ae28feae61f15c6e6ffb01",
+    "scope": "Complete safe damaged-backup message visually readable through vertical scrolling at maximum system text plus app Large Text. Not full accessibility, screen-reader, strict offline or release acceptance.",
+    "preservation": "Isolated revision 3 and original revision 54 tables/media/runtime exact; original pending 09:00 Central reminder unchanged. Original display settings restored, only isolated simulator shut down, dedicated server cancelled.",
+    "remaining": {
+      "strict_ios_offline": {
+        "status": "NOT_RUN",
+        "reason": "Current simctl UI/IO and Mobilewright settings expose no per-simulator network isolation. Host network/firewall/security changes would require approval and could affect other work; none attempted.",
+        "denied": false,
+        "uncertain_action_outcome": false
+      },
+      "voiceover": {
+        "status": "NOT_RUN",
+        "reason": "No new supported activation or independently captured speech route found. Retained 7fa focus evidence stays separate from incomplete timed double-tap/system-control experiments; unchanged attempts were not repeated."
+      }
+    }
   }
 }

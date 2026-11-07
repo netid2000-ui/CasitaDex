@@ -1,0 +1,151 @@
+{
+  "status": "PASS_BOUNDED_MAXIMUM_TEXT_BACKUP_FEEDBACK",
+  "completed_utc": "2026-11-07T03:13:10.830481+00:00",
+  "source_commit": "c2cc335ff6c6269b1e2116f7b66b901769466d9c",
+  "release": "NO-GO",
+  "test_machine": "FA-MAC-DEV-01",
+  "profile": {
+    "simulator": "Separate iPhone 17 / iOS 27.0",
+    "orientation": "portrait",
+    "system_content_size": "accessibility-extra-extra-extra-large",
+    "app_large_text": true
+  },
+  "runtime_sha256": {
+    "CasitaDexDev": "27066ba054cd20d06193db2892401d984e75a8a690aa4896bf13452a24aba854",
+    "main.jsbundle": "7a49d5421503053c1abebb2d25ac131a24518befbab23a3b1c3dd0a969b80e1b"
+  },
+  "results": {
+    "real_damaged_file_selected": true,
+    "exact_error_label_observed": true,
+    "expected_error": "This backup could not be verified. Your current memories, photos and reminders are unchanged. Choose another backup, or copy the file again and retry.",
+    "complete_message_visually_readable_across_scroll_sequence": true,
+    "final_retry_line_reachable_above_navigation": true,
+    "visual_review": "Screenshots 8 through 21 reviewed in sequence; long words wrap across lines at this extreme combined scale. Entire message is reachable through vertical scrolling. This does not assess reading ease or the rest of the screen.",
+    "error_native_bounds_when_top_visible": {
+      "x": 20,
+      "y": 258,
+      "width": 362,
+      "height": 2990
+    },
+    "full_voiceover_or_announcement_acceptance": "NOT_RUN"
+  },
+  "preservation": {
+    "captured_utc": "2026-11-07T03:11:54.379431+00:00",
+    "isolated": {
+      "logical": true,
+      "media": true,
+      "runtime": true
+    },
+    "isolated_revision": 3,
+    "protected": {
+      "logical": true,
+      "media": true,
+      "runtime": true
+    },
+    "protected_revision": 54,
+    "protected_pending_exact": true,
+    "restored_system_size": "large"
+  },
+  "cleanup": {
+    "system_size_restored": "large",
+    "app_large_text_restored": false,
+    "normal_home_visually_verified": true,
+    "isolated_simulator": "Shutdown; all data retained",
+    "protected_simulator": "Booted and unchanged",
+    "dedicated_control_server": "Cancelled; process gone, no exit marker",
+    "dedicated_port_closed": true
+  },
+  "remaining": {
+    "strict_ios_offline": {
+      "status": "NOT_RUN",
+      "reason": "Current simctl UI/IO and Mobilewright settings expose no per-simulator network isolation. Host network/firewall/security changes would require approval and could affect other work; none attempted.",
+      "denied": false,
+      "uncertain_action_outcome": false
+    },
+    "voiceover": {
+      "status": "NOT_RUN",
+      "reason": "No new supported activation or independently captured speech route found. Retained 7fa focus evidence stays separate from incomplete timed double-tap/system-control experiments; unchanged attempts were not repeated."
+    }
+  },
+  "boundaries": {
+    "host_clock_changed": false,
+    "host_network_or_security_changed": false,
+    "protected_simulator_installed_relaunched_or_acted_on": false,
+    "physical_devices_used": false,
+    "production_or_release_actions": false,
+    "other_jobs_stopped": false
+  },
+  "harness_notes": [
+    "First driver connection brought Springboard forward; setup resumed after explicit app launch. No collection mutations.",
+    "Maximum-size navigation required a smaller observed swipe viewport and longer page traversal. Partial bounded navigation attempts continued from their actual positions, without repeating import/recovery acceptance.",
+    "After the system font change, cold launch established current layout. Native picker presentation was slower than initial short checks; its actual open state was inspected before selecting the file.",
+    "The accessibility snapshot omitted the oversized status node once its top scrolled away. Screenshot review completed the remaining visual check; no screen-reader claim follows."
+  ],
+  "screenshots": [
+    {
+      "file": "docs/qa/ios-c2cc335-maximum-feedback-20261107/09-maximum-feedback-8.png",
+      "sha256": "a262a69d86116ad0b7a0b69a2b1339888da0e6ae065d046177ada22221a7a5f3"
+    },
+    {
+      "file": "docs/qa/ios-c2cc335-maximum-feedback-20261107/09-maximum-feedback-9.png",
+      "sha256": "cd61a3c3754f3b0508527f19c3dbd23484a927c325c4f3f12457762550a05e4b"
+    },
+    {
+      "file": "docs/qa/ios-c2cc335-maximum-feedback-20261107/09-maximum-feedback-10.png",
+      "sha256": "05fb56f6e9d9914d174598173b7c8ceecabab64ce28cf583b7ff7f86cc327c1f"
+    },
+    {
+      "file": "docs/qa/ios-c2cc335-maximum-feedback-20261107/09-maximum-feedback-11.png",
+      "sha256": "62d6f97a307049332a7f621c4d611f7cd5697e72a936e7800472a92e38207a58"
+    },
+    {
+      "file": "docs/qa/ios-c2cc335-maximum-feedback-20261107/09-maximum-feedback-12.png",
+      "sha256": "982f986450f29d2632d8e1326c6b4b2c1cb00c3300a9c2a29fcdc29aa101e89d"
+    },
+    {
+      "file": "docs/qa/ios-c2cc335-maximum-feedback-20261107/09-maximum-feedback-13.png",
+      "sha256": "38c9d6d1046379f211ad060dda0fa1f554218b23d7bfbf026d3ddb3c64201767"
+    },
+    {
+      "file": "docs/qa/ios-c2cc335-maximum-feedback-20261107/09-maximum-feedback-14.png",
+      "sha256": "a3fa1a77850f61d67825ca214811af291ddb479a95d5f5e688452eb7a8947429"
+    },
+    {
+      "file": "docs/qa/ios-c2cc335-maximum-feedback-20261107/09-maximum-feedback-15.png",
+      "sha256": "635b52ab015f08c76fbc0521d6a750ca675859cfd77ada47a2b1389960d3d4a7"
+    },
+    {
+      "file": "docs/qa/ios-c2cc335-maximum-feedback-20261107/09-maximum-feedback-16.png",
+      "sha256": "4119ff67ecd2a0a1888f2b98dadcb263cbdc91ec6d05244c0a353e05caf40dbb"
+    },
+    {
+      "file": "docs/qa/ios-c2cc335-maximum-feedback-20261107/09-maximum-feedback-17.png",
+      "sha256": "c0ef4cdf14615fce5dca5d3481f31d0f73ddca654394279f32673eda84a13a27"
+    },
+    {
+      "file": "docs/qa/ios-c2cc335-maximum-feedback-20261107/09-maximum-feedback-18.png",
+      "sha256": "e643df4f31eb2988447fc126d105e2523195b5bb41f7bafc50ac66b48369155a"
+    },
+    {
+      "file": "docs/qa/ios-c2cc335-maximum-feedback-20261107/09-maximum-feedback-19.png",
+      "sha256": "f56ccf3893fe79fca99fff5818ea34a47e1104a8235783f2c9ab5d47aa2b2316"
+    },
+    {
+      "file": "docs/qa/ios-c2cc335-maximum-feedback-20261107/09-maximum-feedback-20.png",
+      "sha256": "c66f006a76c4703e7ffb1cef11bb1a954e3bf49e784e7625a06bf98d1304e27e"
+    },
+    {
+      "file": "docs/qa/ios-c2cc335-maximum-feedback-20261107/09-maximum-feedback-21.png",
+      "sha256": "c66f006a76c4703e7ffb1cef11bb1a954e3bf49e784e7625a06bf98d1304e27e"
+    },
+    {
+      "file": "docs/qa/ios-c2cc335-maximum-feedback-20261107/10-preferences-restored.png",
+      "sha256": "f9308d288789de8631b64c59ec2c4078c17850c1641606bc2da7e0aa9494f103"
+    },
+    {
+      "file": "docs/qa/ios-c2cc335-maximum-feedback-20261107/12-final-home-settled.png",
+      "sha256": "bdb9e74b4a05d218d91c2bc584193c39d99c02866011a0b2c5d34a4f3fbc6b2e"
+    }
+  ],
+  "evidence_manifest_sha256": "8f4b5919c498f9be0877b1e701f81988204c09e3dc1ba788df1c3087a7127f2f"
+}
