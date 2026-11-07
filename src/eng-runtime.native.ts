@@ -123,15 +123,18 @@ export async function writeEngBackup(source:EngBackupSource){
   }finally{if(readback.exists)readback.delete();}
 }
 export async function pickEngBackup(){
-  const result=await DocumentPicker.getDocumentAsync({type:"*/*",copyToCacheDirectory:true,multiple:false});
-  if(result.canceled)return null;
-  const asset=result.assets[0];if(!asset)throw Error("No backup selected");
-  const file=new File(asset.uri);if(file.size>fullBackupLimit)throw Error("Full backup exceeds 154 MB");
+  const oversized=Error("Full backup exceeds 154 MB");
   try {
-    // Validate before returning any restore preview. Do not surface parser or
-    // filesystem diagnostics that may contain private archive content or paths.
+    const result=await DocumentPicker.getDocumentAsync({type:"*/*",copyToCacheDirectory:true,multiple:false});
+    if(result.canceled)return null;
+    const asset=result.assets[0];if(!asset)throw Error("No backup selected");
+    const file=new File(asset.uri);if(file.size>fullBackupLimit)throw oversized;
+    // Validate before returning any restore preview. Native picker, metadata,
+    // filesystem and parser diagnostics may contain private content or paths.
     return await openEngStreamCompatible(reader(file),sha256Media);
-  } catch {
+  } catch(error) {
+    // Only this locally created limit error is safe to display verbatim.
+    if(error===oversized)throw oversized;
     throw Error("This backup could not be verified. Your current memories, photos and reminders are unchanged. Choose another backup, or copy the file again and retry.");
   }
 }

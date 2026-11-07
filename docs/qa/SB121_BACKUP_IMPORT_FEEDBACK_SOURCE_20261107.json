@@ -37,7 +37,35 @@
   "protected_baseline": "No device operations, no build/install, no database or notification actions; revision54/Nov7 09:00 Central fixture left untouched.",
   "remaining": "Native wording/announcement acceptance in next authorized candidate. Glob/minimatch advisory dispositions unchanged; no full security closure.",
   "hashes": {
-    "src/eng-runtime.native.ts": "a303d96d5e129f46b8e71d28c65570a1b7cacedecd07112f9a8f3543078e0daf",
-    "tests/backup-import-feedback.test.mjs": "e1f9d9d31aa46052988de14c1a5957938838cd8dc7ce585cb056a326491e0c77"
+    "src/eng-runtime.native.ts": "d6be67d35491f6f1c885c4cbc57c630bc177d4d718e12e0305bfa2a0d4b5c635",
+    "tests/backup-import-feedback.test.mjs": "dcbbc1db7473f5ba158d7445791dbcd63ef30f79afbc78c3fd3ad21272905eb3"
+  },
+  "boundary_followup": {
+    "completed_utc": "2026-11-07T01:59:54.342253+00:00",
+    "base_commit": "1b3060cdacaa94932d77e911bb18b373fc58fba2",
+    "finding": "Initial guard covered parsing and reads but native picker, File constructor and size getter remained outside it. Injected picker error reproduced raw private diagnostic propagation.",
+    "fix": "Guard entire selection/metadata/verification operation. Cancellation still returns null; only a locally created oversized-file error is displayed verbatim, by object identity. Other diagnostics use the stable recovery guidance.",
+    "before": {
+      "passed": 5,
+      "failed": 1
+    },
+    "after": {
+      "focused_passed": 11,
+      "failed": 0,
+      "skipped": 0,
+      "typecheck": "PASS",
+      "targeted_lint": "PASS",
+      "diff_check": "PASS"
+    },
+    "coverage": [
+      "Picker rejection",
+      "File constructor failure",
+      "File size getter failure",
+      "Oversize rejected before reading",
+      "Existing valid/cancel/corrupt/truncated/read-error cases",
+      "Existing stale review reducer cases"
+    ],
+    "native": "NOT_RUN; simulator and pending notification untouched",
+    "prior_unaffected_checks": "Original 21-test stream/export/reminder checks reused; only changed boundary and review checks rerun."
   }
 }
