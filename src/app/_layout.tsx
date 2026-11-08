@@ -50,8 +50,9 @@ function Shell() {
   };
   const pageHeading=headings[path];
   const { colors, s, dark } = useTheme();
-  const { fontScale, width } = useWindowDimensions();
+  const { fontScale, width, height } = useWindowDimensions();
   const {large:inAppLarge}=useData();
+  const compactDraftHeader = path === "/add" && height < 500 && (fontScale >= 1.35 || inAppLarge);
   const stackedHeader=inAppLarge||fontScale>=1.35||width<360;
   return (
     <SafeAreaView
@@ -60,11 +61,15 @@ function Shell() {
     >
       <BrandWebMeta />
       <StatusBar style={dark ? "light" : "dark"} />
-      <View style={{minHeight:64, flexDirection:stackedHeader?"column":"row",alignItems:"center",justifyContent:"space-between",paddingHorizontal:12,paddingVertical:6,backgroundColor:colors.white,borderBottomWidth:1,borderBottomColor:colors.separator}}>
+      {compactDraftHeader ? (
+        <Pressable accessibilityRole="button" accessibilityLabel="Go to Home" onPress={() => guardedNavigate(() => router.navigate("/"))} style={{ minHeight: 48, paddingHorizontal: 16, justifyContent: "center" }}>
+          <Text style={{ color: colors.ink, fontSize: 16 }}>Home</Text>
+        </Pressable>
+      ) : <View style={{minHeight:64, flexDirection:stackedHeader?"column":"row",alignItems:"center",justifyContent:"space-between",paddingHorizontal:12,paddingVertical:6,backgroundColor:colors.white,borderBottomWidth:1,borderBottomColor:colors.separator}}>
         <Pressable accessibilityRole="button" accessibilityLabel="CasitaDex logo, go to Home" accessibilityHint="Opens the Home screen" onPress={() => guardedNavigate(() => router.navigate("/"))} style={{width:stackedHeader?"100%":undefined,flex:stackedHeader?undefined:1,marginRight:stackedHeader?0:8,minWidth:0}}><BrandHeader /></Pressable>
 
-      </View>
-      {pageHeading?<View style={{paddingHorizontal:16,paddingVertical:9,backgroundColor:colors.white,borderBottomWidth:1,borderBottomColor:colors.separator,gap:3}}><Text accessibilityRole="header" style={{color:colors.ink,fontSize:20,fontWeight:"700"}}>{pageHeading[0]}</Text><Text style={{color:colors.muted,fontSize:13}}>{pageHeading[1]}</Text></View>:null}
+      </View>}
+      {pageHeading?<View style={{paddingHorizontal:16,paddingVertical:9,backgroundColor:colors.white,borderBottomWidth:1,borderBottomColor:colors.separator,gap:3}}><Text accessibilityRole="header" style={{color:colors.ink,fontSize:20,fontWeight:"700"}}>{pageHeading[0]}</Text>{!compactDraftHeader && <Text style={{color:colors.muted,fontSize:13}}>{pageHeading[1]}</Text>}</View>:null}
       <View style={{ flex: 1 }}>
         <Slot />
       </View>

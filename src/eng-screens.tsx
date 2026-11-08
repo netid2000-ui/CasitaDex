@@ -304,10 +304,17 @@ export function EngAdd(){
   const addCardStyle={backgroundColor:colors.accent,borderWidth:1,borderColor:colors.line,borderRadius:14,padding:10,gap:4} as const;
   const resumedDraft=!!form&&!!e.snapshot?.draft&&form.id===e.snapshot.draft.id;
   const editingPhotoDraft=photoFirst||(resumedDraft&&(form?.photos.length??0)>0);
-  return <Page independent hideHeading title={editingPhotoDraft?"Add a Photo Memory":"Add a Memory"} stickyActions={mode==="edit"?<View style={{maxWidth:720,width:"100%",alignSelf:"center"}}>      <View style={{flexDirection:"row",gap:10,alignItems:"stretch"}}>
+  const {height, fontScale} = useWindowDimensions();
+  const {large} = useData();
+  const scrollActions = height < 500 && (fontScale >= 1.35 || large);
+  const actions = mode === "edit" ? (
+    <View style={{maxWidth:720,width:"100%",alignSelf:"center"}}>      <View style={{flexDirection:"row",gap:10,alignItems:"stretch"}}>
        <View style={{flex:1}}><Button variant="quiet" label="Cancel" disabled={disabled} onPress={()=>void flush().then(()=>router.replace("/")).catch(error=>setStatus(message(error)))}/></View>
        <View style={{flex:1}}><Button primary label={working?"Saving…":"Save"} disabled={disabled||!form?.title.trim()||(!form.answer.trim()&&!form.photos.length)||(editingPhotoDraft&&!form.photos.length)} onPress={()=>void save()} /></View>
-      </View></View>:undefined}>
+      </View></View>
+  ) : undefined;
+  return <Page independent hideHeading title={editingPhotoDraft?"Add a Photo Memory":"Add a Memory"} stickyActions={scrollActions ? undefined : actions}>
+    {scrollActions && actions}
      {mode==="loading"?<Copy>Reading your draft…</Copy>:null}
     {mode==="edit"?<>
 
