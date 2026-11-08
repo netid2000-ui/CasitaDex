@@ -1,0 +1,7 @@
+appId: ${APP_ID}
+name: SB40 final bundle core regression
+---
+- tapOn: "CasitaDex logo, go to Home"
+- runFlow: /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-authority-source-20261108/.maestro/sb40-parity/capture.yaml
+- runFlow: /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-authority-source-20261108/.maestro/sb40-parity/journey.yaml
+- runFlow: /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-authority-source-20261108/.maestro/sb40-parity/photos-preview.yaml

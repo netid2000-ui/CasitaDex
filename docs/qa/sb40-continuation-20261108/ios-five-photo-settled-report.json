@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "sourceRevision": "872266348dbed915d6d5056e6e67f9dc912e21bf",
+  "installedJavaScript": "2b2022f",
+  "count": 5,
+  "addPhotoEnabled": false,
+  "original168RecordsAndMedia": "UNCHANGED",
+  "draft": null,
+  "scope": "Saved-memory native iOS cap; draft limit, Android cap and direct sixth-store rejection not newly run",
+  "priorFailure": "Initial assertion captured picker dismissal animation; retained as failure. Read-only settled inspection confirms cap; no additions retried."
+}

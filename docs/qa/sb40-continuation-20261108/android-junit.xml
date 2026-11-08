@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="sb40_four_items" tests="1" failures="1" time="51.62" timestamp="2026-11-08T14:44:42">
+    <testcase id="SB40 final bundle core regression" name="SB40 final bundle core regression" classname="SB40 final bundle core regression" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/CasitaDex/sb40-continuation-20261108/regression.yaml" time="51.609" timestamp="2026-11-08T14:44:42" status="ERROR">
+      <failure>No visible element found: "Description", Index: 1</failure>
+    </testcase>
+  </testsuite>
+</testsuites>

@@ -1,0 +1,13 @@
+{
+  "sourceRevision": "872266348dbed915d6d5056e6e67f9dc912e21bf",
+  "installedJavaScript": "2b2022f",
+  "functional": "FAIL",
+  "scope": "core capture, inline editing, fictional create/find/reminder return, photo preview; not full release qualification",
+  "identity": {
+    "status": "PASS",
+    "device": "emulator-5554",
+    "appId": "com.designsbyfa.casitadex.sb40qa",
+    "apkSha256": "40daff35fb0a941ac6da8b90522e2b661b2f943a0bb365b1e32d2eddb94b4f17"
+  },
+  "exitCode": 1
+}
