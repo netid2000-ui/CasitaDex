@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="sb40_four_items" tests="1" failures="0" time="8.732" timestamp="2026-11-08T13:42:58">
+    <testcase id="SB40 final shared viewer source chooser Cancel" name="SB40 final shared viewer source chooser Cancel" classname="SB40 final shared viewer source chooser Cancel" file=".maestro/sb40-parity/photos-cancel.yaml" time="8.726" timestamp="2026-11-08T13:42:58" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="sb40_four_items" tests="1" failures="0" time="10.838" timestamp="2026-11-08T13:43:48">
+    <testcase id="SB40 updated photo workspace preview" name="SB40 updated photo workspace preview" classname="SB40 updated photo workspace preview" file=".maestro/sb40-parity/photos-preview.yaml" time="10.832" timestamp="2026-11-08T13:43:48" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

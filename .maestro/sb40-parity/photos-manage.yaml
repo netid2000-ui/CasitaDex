@@ -1,0 +1,67 @@
+appId: ${APP_ID}
+name: SB40 Android saved photo actions and cover order
+---
+- tapOn: "^SB40-QA-green\\.png.*"
+- assertVisible: "Photo 1 of 2.*"
+- scrollUntilVisible:
+    element: "Add Photo"
+    direction: DOWN
+    centerElement: false
+- tapOn: "Add Photo"
+- tapOn: "Browse Files"
+- tapOn: "^SB40-QA-red\\.png.*"
+- assertVisible: "Photo 1 of 3.*"
+- scrollUntilVisible:
+    element: "Next photo"
+    direction: UP
+    centerElement: false
+- tapOn: "Next photo"
+- assertVisible: "Photo 2 of 3.*"
+- scrollUntilVisible:
+    element: "Use as cover photo"
+    direction: DOWN
+    centerElement: false
+- tapOn: "Use as cover photo"
+- assertVisible: "Photo 1 of 3.*Cover"
+- takeScreenshot: cover-saved
+- scrollUntilVisible:
+    element: "Move photo later"
+    direction: DOWN
+    centerElement: false
+- tapOn: "Move photo later"
+- assertVisible: "Photo 2 of 3.*"
+- tapOn: "Move photo earlier"
+- assertVisible: "Photo 1 of 3.*Cover"
+- scrollUntilVisible:
+    element: "Replace this photo"
+    direction: UP
+    centerElement: false
+- tapOn: "Replace this photo"
+- tapOn: "Cancel"
+- assertVisible: "Photo 1 of 3.*Cover"
+- tapOn: "Replace this photo"
+- tapOn: "Browse Files"
+- tapOn: "^SB40-QA-blue\\.png.*"
+- assertVisible: "Photo 1 of 3.*Cover"
+- scrollUntilVisible:
+    element: "Remove this photo"
+    direction: DOWN
+    centerElement: false
+- tapOn: "Remove this photo"
+- tapOn: "Cancel"
+- assertVisible: "Photo 1 of 3.*Cover"
+- tapOn: "Remove this photo"
+- tapOn: "Remove photo"
+- assertVisible: "Photo 1 of 2.*Cover"
+- takeScreenshot: photo-actions-complete
+- tapOn: "Close photo"
+- assertVisible: "Grid photo view"
+- tapOn: "Compact photo view"
+- stopApp
+- launchApp:
+    clearState: false
+- tapOn: "Photos"
+- assertVisible:
+    text: "Compact photo view"
+    selected: true
+- takeScreenshot: compact-after-relaunch

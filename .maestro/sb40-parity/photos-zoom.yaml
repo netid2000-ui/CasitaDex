@@ -1,0 +1,11 @@
+appId: ${APP_ID}
+name: SB40 shared viewer native zoom controls
+---
+- assertVisible: "Manage photos"
+- takeScreenshot: photo-before-zoom
+- doubleTapOn:
+    point: "50%,45%"
+- takeScreenshot: photo-double-zoom
+- tapOn: "Reset photo zoom"
+- takeScreenshot: photo-reset-zoom
+- tapOn: "Close photo"

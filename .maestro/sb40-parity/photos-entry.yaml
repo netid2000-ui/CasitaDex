@@ -1,0 +1,23 @@
+appId: ${APP_ID}
+name: SB40 fictional Android photo draft entry
+---
+- launchApp:
+    clearState: false
+- tapOn: "Add Photo Memory"
+- tapOn:
+    text: "Memory name \\(Required\\)"
+    index: 1
+- inputText: "SB40 Photo Workspace Acceptance"
+- pressKey: Enter
+- scrollUntilVisible:
+    element:
+      text: "Description"
+      index: 1
+    direction: DOWN
+    centerElement: false
+- tapOn:
+    text: "Description"
+    index: 1
+- inputText: "Fictional photo-workspace acceptance record. Colored QA images only."
+- tapOn: "+ Add Photo"
+- tapOn: "Browse Files"

@@ -1,0 +1,17 @@
+appId: ${APP_ID}
+name: SB40 final shared viewer source chooser Cancel
+---
+- assertVisible: "Hide photo actions"
+- swipe:
+    start: "50%,92%"
+    end: "50%,72%"
+    duration: 600
+- tapOn: "Replace this photo"
+- assertVisible: "Take Photo"
+- assertVisible: "Choose from Library"
+- assertVisible: "Browse Files"
+- assertVisible: "Cancel"
+- takeScreenshot: photo-sources-final
+- tapOn: "Cancel"
+- takeScreenshot: photo-source-canceled-final
+- tapOn: "Close photo"

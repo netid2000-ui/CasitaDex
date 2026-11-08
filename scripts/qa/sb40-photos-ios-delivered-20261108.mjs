@@ -1,0 +1,17 @@
+import {d,label,field,read,title,capture,log,foreground,fill,tap,out} from './sb40-photos-ios-helper-20261108.mjs';import fs from 'node:fs';import assert from 'node:assert/strict';import {createRequire} from 'node:module';
+const require=createRequire('/Volumes/FA-Development/Designs-by-FA/Tools/ParityTools/package.json'),{PNG}=require('pngjs');
+function diff(a,b){const p=PNG.sync.read(a),q=PNG.sync.read(b);let n=0;for(let y=Math.floor(p.height*.2);y<Math.floor(p.height*.62);y++)for(let x=0;x<p.width;x++){const i=(y*p.width+x)*4;if(Math.abs(p.data[i]-q.data[i])+Math.abs(p.data[i+1]-q.data[i+1])+Math.abs(p.data[i+2]-q.data[i+2])>40)n++;}return n;}
+const settle=()=>new Promise(r=>setTimeout(r,700));
+try{
+await foreground();await label('CasitaDex logo, go to Home').tap();await label('Find a memory').tap();await fill(field('Search memories'),title);await label('Open photo memory '+title).tap();await tap(label('Open photo 1 of '+title),315);await label('Reset photo zoom').tap();await settle();
+const original=await d.screen.screenshot();fs.writeFileSync(out+'/ios-delivered-zoom-original.png',original);
+await label('Zoom photo in').tap();await settle();const zoomed=await d.screen.screenshot();fs.writeFileSync(out+'/ios-delivered-zoom-plus.png',zoomed);assert.ok(diff(original,zoomed)>1000);log('delivered-native-zoom-plus-visible',{changedPixels:diff(original,zoomed)});
+await label('Reset photo zoom').tap();await settle();assert.ok(diff(original,await d.screen.screenshot())<100);log('delivered-native-reset-restores-image');
+await label('Zoom photo in').tap();await settle();const doubled=await d.screen.screenshot();
+await d.screen.gesture({pointers:[[{x:200,y:400,time:0},{x:260,y:400,time:500}]]});await settle();assert.ok(diff(doubled,await d.screen.screenshot())>1000);log('delivered-native-zoom-pan-visible');
+
+await label('Reset photo zoom').tap();
+async function control(t){for(let i=0;i<14;i++){let found;const walk=nodes=>{for(const n of nodes){if(n.label===t&&n.type==='Button')found=n;walk(n.children??[]);}};walk(await d.screen.viewTree());const box=found?.bounds,y=box?box.y+box.height/2:null;if(box&&y>=580&&y<=830){await label(t).tap();await settle();return;}const down=y===null?['Next photo','Previous photo','Manage photos'].includes(t):y<580;await d.screen.gesture({pointers:[[{x:200,y:down?620:805,time:0},{x:200,y:down?805:620,time:500}]]});}throw Error('Unreachable viewer control '+t);}
+await control('Manage photos');await control('Replace this photo');await label('Take Photo').waitFor({state:'visible'});await label('Choose from Library').waitFor({state:'visible'});await label('Browse Files').waitFor({state:'visible'});await label('Cancel').tap();log('delivered-source-chooser-all-options-and-cancel');await label('Close photo').tap();
+const before=JSON.parse(fs.readFileSync(out+'/ios-before.json','utf8')),after=read();for(const m of before.data.memories)assert.deepEqual(after.data.memories.find(x=>x.id===m.id),m);for(const p of before.data.media.media)assert.deepEqual(after.data.media.media.find(x=>x.id===p.id),p);assert.equal(after.data.memories.length,169);assert.equal(after.draft,null);assert.equal(after.data.memories.find(m=>m.title===title).mediaIds.length,2);fs.writeFileSync(out+'/ios-delivered-after.json',JSON.stringify(after));log('delivered-original168-records-and-media-unchanged',{totalMemories:169,qaFixturePhotos:2,draft:null});await capture('ios-delivered-details');
+}catch(e){await capture('ios-delivered-failure');throw e;}finally{await d.close();}

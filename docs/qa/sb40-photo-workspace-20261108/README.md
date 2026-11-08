@@ -1,0 +1,1 @@
+Image-region comparisons count pixels with summed RGB delta >40, across full width and rows 20%–62% of screenshot height. This excludes status and control areas. Reset residual must be <100; visible zoom must exceed 1,000. Native command success alone is insufficient. Raw failed runs remain on the external SSD.

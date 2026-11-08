@@ -1,0 +1,51 @@
+appId: ${APP_ID}
+name: SB40 Android photo preferences and Find separation
+---
+- tapOn: "CasitaDex logo, go to Home"
+- extendedWaitUntil:
+    visible: "The details that matter."
+    timeout: 15000
+- tapOn:
+    point: "38%,93%"
+- assertVisible:
+    text: "Compact photo view"
+    selected: true
+- takeScreenshot: compact-persistence
+- tapOn: "CasitaDex logo, go to Home"
+- tapOn: "Find a memory"
+- tapOn: "Search memories"
+- eraseText: 200
+- inputText: "SB40 Parity shared-journey-v3-20261108"
+- pressKey: Enter
+- assertVisible: "Open regular memory SB40 Parity shared-journey-v3-20261108"
+- tapOn: "With photos"
+- assertVisible: "0 memories found"
+- tapOn: "With photos"
+- assertVisible: "Open regular memory SB40 Parity shared-journey-v3-20261108"
+- tapOn: "Search memories"
+- eraseText: 200
+- inputText: "SB40 Photo Workspace Acceptance"
+- pressKey: Enter
+- tapOn: "With photos"
+- assertVisible: "Open photo memory SB40 Photo Workspace Acceptance"
+- takeScreenshot: find-with-photos
+- stopApp
+- launchApp:
+    clearState: false
+- extendedWaitUntil:
+    visible: "The details that matter."
+    timeout: 15000
+- tapOn:
+    point: "38%,93%"
+- assertVisible:
+    text: "Compact photo view"
+    selected: true
+- scrollUntilVisible:
+    element: "View photo 1 of SB40 Photo Workspace Acceptance full screen"
+    direction: DOWN
+    centerElement: false
+- tapOn: "View photo 1 of SB40 Photo Workspace Acceptance full screen"
+- assertVisible: "Photo 1 of 2.*Cover"
+- assertVisible: "Manage photos"
+- takeScreenshot: restored-cover-after-relaunch
+- tapOn: "Close photo"

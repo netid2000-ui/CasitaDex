@@ -1,0 +1,18 @@
+{
+  "platform": "android",
+  "role": "candidate",
+  "runId": "photos-delivered-preview-20261108",
+  "sourceCommit": "2b2022f",
+  "candidateSourceCommit": "2b2022f",
+  "flow": "photos-preview",
+  "identity": {
+    "status": "PASS",
+    "device": "emulator-5554",
+    "appId": "com.designsbyfa.casitadex.sb40qa",
+    "apkSha256": "40daff35fb0a941ac6da8b90522e2b661b2f943a0bb365b1e32d2eddb94b4f17"
+  },
+  "functional": "PASS",
+  "visual": "NOT_RUN",
+  "baselinePromotion": "NEVER_AUTOMATIC",
+  "maestroExitCode": 0
+}

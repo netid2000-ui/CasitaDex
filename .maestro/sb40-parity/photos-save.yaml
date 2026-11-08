@@ -1,0 +1,35 @@
+appId: ${APP_ID}
+name: SB40 Android photo workspace draft and views
+---
+- assertVisible: "Save"
+- tapOn: "Cancel"
+- tapOn: "Photos"
+- assertVisible: "Resume unfinished photo memory"
+- takeScreenshot: unfinished-photo-memory
+- tapOn: "Resume unfinished photo memory"
+- tapOn: "Save"
+- extendedWaitUntil:
+    visible: "The details that matter."
+    timeout: 15000
+- tapOn: "Photos"
+- assertVisible: "Grid photo view"
+- takeScreenshot: photo-grid
+- tapOn: "Compact photo view"
+- takeScreenshot: photo-compact
+- tapOn: "Recently added"
+- tapOn: "Recently updated"
+- tapOn: "Grid photo view"
+- scrollUntilVisible:
+    element: "View photo 1 of SB40 Photo Workspace Acceptance full screen"
+    direction: DOWN
+    centerElement: false
+- tapOn: "View photo 1 of SB40 Photo Workspace Acceptance full screen"
+- assertVisible: "Manage photos"
+- takeScreenshot: shared-viewer
+- tapOn: "Manage photos"
+- scrollUntilVisible:
+    element: "Add Photo"
+    direction: DOWN
+    centerElement: false
+- tapOn: "Add Photo"
+- tapOn: "Browse Files"

@@ -1,3 +1,9 @@
+# Current SB40 authority checkpoint — November 8, 2026
+
+Accepted baseline remains owner SB40. Current QA source is 2b2022f, with the Photos workspace implemented. Read [the checked Photos report](docs/qa/SB40_PHOTO_WORKSPACE_20261108.md) and [SB40 authority correction](docs/qa/SB40_OWNER_AUTHORITY_CORRECTION_20261108.md) before using older build references below. These QA updates do not replace the owner iPhone or promote a store release.
+
+---
+
 # Latest native milestone: both platforms on 8cc2862 — November 6, 2026
 
 **Bounded native PASS; release remains NO-GO.** Both installed platforms identify **8cc2862eaf2791379518e440d3b9d5833543ab0a**. [Current milestone, exact artifacts and limits](docs/qa/SB121_CURRENT_8CC_NATIVE_MILESTONE_20261106.md). [Central evidence ledger](docs/qa/SB121_CURRENT_NATIVE_ACCEPTANCE_LEDGER_20261106.json).

@@ -40,3 +40,12 @@ python3 scripts/parity/summarize.py
 Capture file hashes are checked against their reports. Dimensions must match. Differences above the threshold require review; no automatic baseline promotion. Pixel differences between iOS and Android are not a valid visual baseline because native system rendering differs. Inspect visual masks and diff images before accepting any result.
 
 This initial suite does not establish full release readiness, offline/media coverage, full accessibility acceptance, or Event Command parity. Historical `.dev` flows were withdrawn to docs/qa/withdrawn-maestro-dev-20261108 because they target the wrong baseline.
+
+
+## Photos workspace checkpoint — November 8
+
+The candidate manifest now pins photo workspace source 2b2022f. See [checked report](../../docs/qa/SB40_PHOTO_WORKSPACE_20261108.md). This is an SB40 QA-shell update, not a new accepted reference or store build.
+
+Photo entry/save/manage/order/finish/check YAML files are historical, phase-specific Android fixture operations. They assume the fictional SB40 Photo Workspace Acceptance record and particular photo counts, selection and current screen. They are not a single replayable suite and must not run against owner data. Earlier failed outputs remain in raw evidence; the checked report distinguishes product defects from harness calibration.
+
+photos-cancel starts in the expanded shared viewer and confirms all source choices plus Cancel; it uses native Maestro swipes because ADB-only clipped-node taps were unreliable. photos-preview is a read-only gallery view/sort smoke (preferences change); photos-zoom starts in the shared viewer and checks native command completion. A separate image-region pixel comparison is required to certify visible zoom. Maestro success alone does not prove that an image enlarged. iOS uses the scoped Mobilewright helper and source-hash guard for final viewer and preservation checks. Multi-touch pinch cannot be driven by this Mobilewright driver and remains manual acceptance.

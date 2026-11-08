@@ -1,0 +1,19 @@
+appId: ${APP_ID}
+name: SB40 updated photo workspace preview
+---
+- tapOn: "CasitaDex logo, go to Home"
+- extendedWaitUntil:
+    visible: "The details that matter."
+    timeout: 15000
+- tapOn:
+    point: "38%,93%"
+- scrollUntilVisible:
+    element: "Grid photo view"
+    direction: UP
+    centerElement: false
+- tapOn: "Grid photo view"
+- tapOn: "Recently updated"
+- takeScreenshot: photo-grid-current
+- tapOn: "Compact photo view"
+- takeScreenshot: photo-compact-current
+- tapOn: "Grid photo view"

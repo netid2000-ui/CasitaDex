@@ -1,0 +1,75 @@
+appId: ${APP_ID}
+name: SB40 Android shared photo actions and details parity
+---
+- launchApp:
+    clearState: false
+- tapOn: "Photos"
+- scrollUntilVisible:
+    element: "View photo 1 of SB40 Photo Workspace Acceptance full screen"
+    direction: DOWN
+    centerElement: false
+- tapOn: "View photo 1 of SB40 Photo Workspace Acceptance full screen"
+- tapOn: "Manage photos"
+- swipe:
+    start: "50%,92%"
+    end: "50%,72%"
+    duration: 500
+- assertVisible: "Current cover photo"
+- tapOn: "Move photo later"
+- assertVisible: "Photo 2 of 3.*"
+- tapOn: "Move photo earlier"
+- assertVisible: "Photo 1 of 3.*Cover"
+- tapOn: "Replace this photo"
+- assertVisible: "Choose from Library"
+- assertVisible: "Browse Files"
+- assertVisible: "Cancel"
+- tapOn: "Cancel"
+- swipe:
+    start: "50%,92%"
+    end: "50%,72%"
+    duration: 500
+- tapOn: "Replace this photo"
+- tapOn: "Browse Files"
+- tapOn: "^SB40-QA-blue\\.png.*"
+- assertVisible: "Photo 1 of 3.*Cover"
+- swipe:
+    start: "50%,92%"
+    end: "50%,72%"
+    duration: 500
+- tapOn: "Remove this photo"
+- tapOn: "Cancel"
+- assertVisible: "Photo 1 of 3.*Cover"
+- tapOn: "Remove this photo"
+- tapOn: "Remove photo"
+- assertVisible: "Photo 1 of 2.*Cover"
+- takeScreenshot: actions-complete
+- swipe:
+    start: "50%,72%"
+    end: "50%,92%"
+    duration: 500
+- tapOn: "View associated memory details"
+- assertVisible: "Edit memory"
+- scrollUntilVisible:
+    element: "Open photo 1 of SB40 Photo Workspace Acceptance"
+    direction: DOWN
+    centerElement: false
+- tapOn: "Open photo 1 of SB40 Photo Workspace Acceptance"
+- assertVisible: "Manage photos"
+- assertVisible: "Photo 1 of 2.*Cover"
+- takeScreenshot: details-shared-viewer
+- tapOn: "Close photo"
+- tapOn: "CasitaDex logo, go to Home"
+- tapOn: "Photos"
+- scrollUntilVisible:
+    element: "Compact photo view"
+    direction: UP
+    centerElement: false
+- tapOn: "Compact photo view"
+- stopApp
+- launchApp:
+    clearState: false
+- tapOn: "Photos"
+- assertVisible:
+    text: "Compact photo view"
+    selected: true
+- takeScreenshot: compact-after-relaunch

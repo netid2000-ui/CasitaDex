@@ -1,0 +1,53 @@
+appId: ${APP_ID}
+name: SB40 Android photo cover and actions acceptance
+---
+- launchApp:
+    clearState: false
+- tapOn: "Photos"
+- scrollUntilVisible:
+    element: "View photo 1 of SB40 Photo Workspace Acceptance full screen"
+    direction: DOWN
+    centerElement: false
+- tapOn: "View photo 1 of SB40 Photo Workspace Acceptance full screen"
+- tapOn: "Manage photos"
+- tapOn: "Next photo"
+- assertVisible: "Photo 2 of 3.*"
+- swipe:
+    start: "50%,92%"
+    end: "50%,72%"
+    duration: 500
+- tapOn: "Use as cover photo"
+- assertVisible: "Photo 1 of 3.*Cover"
+- takeScreenshot: cover-saved
+- tapOn: "Move photo later"
+- assertVisible: "Photo 2 of 3.*"
+- tapOn: "Move photo earlier"
+- assertVisible: "Photo 1 of 3.*Cover"
+- tapOn: "Replace this photo"
+- tapOn: "Cancel"
+- assertVisible: "Photo 1 of 3.*Cover"
+- tapOn: "Replace this photo"
+- tapOn: "Browse Files"
+- tapOn: "^SB40-QA-blue\\.png.*"
+- assertVisible: "Photo 1 of 3.*Cover"
+- tapOn: "Remove this photo"
+- tapOn: "Cancel"
+- assertVisible: "Photo 1 of 3.*Cover"
+- tapOn: "Remove this photo"
+- tapOn: "Remove photo"
+- assertVisible: "Photo 1 of 2.*Cover"
+- takeScreenshot: actions-complete
+- tapOn: "Close photo"
+- scrollUntilVisible:
+    element: "Compact photo view"
+    direction: UP
+    centerElement: false
+- tapOn: "Compact photo view"
+- stopApp
+- launchApp:
+    clearState: false
+- tapOn: "Photos"
+- assertVisible:
+    text: "Compact photo view"
+    selected: true
+- takeScreenshot: compact-after-relaunch

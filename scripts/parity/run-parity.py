@@ -28,8 +28,9 @@ def gate(platform,target):
   assert actual['apkSha256']==target['apkSha256'],'APK mismatch; UI execution blocked'
  return {'status':'PASS','device':device,'appId':appid,**actual}
 def main():
- p=argparse.ArgumentParser();p.add_argument('platform',choices=['ios','android']);p.add_argument('--reference',action='store_true');p.add_argument('--prove-guard-rejects',action='store_true');p.add_argument('--flow',choices=['capture','journey','lifecycle'],default='capture');p.add_argument('--run-id');args=p.parse_args()
+ p=argparse.ArgumentParser();p.add_argument('platform',choices=['ios','android']);p.add_argument('--reference',action='store_true');p.add_argument('--prove-guard-rejects',action='store_true');p.add_argument('--flow',choices=['capture','journey','lifecycle','photos-entry','photos-save','photos-manage','photos-order','photos-finish','photos-check','photos-zoom','photos-preview','photos-cancel'],default='capture');p.add_argument('--run-id');args=p.parse_args()
  assert not(args.platform!='android' and args.flow=='lifecycle'),'Lifecycle fixture flow is currently Android-only'
+ assert not(args.platform!='android' and args.flow in ['photos-entry','photos-save','photos-manage','photos-order','photos-finish','photos-check']),'Phase-specific photo fixture flows are Android-only'
  assert not(args.reference and args.flow!='capture'),'Reference devices are read-only capture targets'
  role='reference' if args.reference else 'candidate';target=copy.deepcopy(CONFIG['references' if args.reference else 'targets'][args.platform])
  runid=args.run_id or datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%dT%H%M%SZ')
