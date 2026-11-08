@@ -1,0 +1,62 @@
+{
+  "result": "PASS",
+  "verifiedAtUtc": "2026-11-08T15:01:08.122183+00:00",
+  "scope": "Bounded native SB40 household organization continuation; not broad release acceptance.",
+  "bundle": "com.designsbyfa.casitadex.sb40qa",
+  "simulator": "A4ED0D8B-C90A-4940-9B71-4F570D7DC597",
+  "memoryCountBefore": 165,
+  "memoryCountAfter": 165,
+  "unchangedMemoryCount": 164,
+  "targetMemoryTitle": "HVAC return filter size",
+  "targetMemoryId": "e_mw7fa5zc_n2srfp3rgt",
+  "targetChangedFields": [
+    "categoryIds",
+    "events",
+    "spaceId",
+    "updatedAt"
+  ],
+  "titlesAndDescriptionsUnchanged": 165,
+  "mediaFileCount": 4,
+  "mediaHashesUnchanged": true,
+  "standaloneRemindersUnchanged": true,
+  "catalogAdditions": {
+    "space": "House75 QA Home",
+    "category": "House75 Maintenance"
+  },
+  "revisionBefore": 608,
+  "revisionAfter": 611,
+  "changedLogicalTables": [
+    "eng_recovery_v2",
+    "eng_state_v2"
+  ],
+  "newSpaceCatalogDidNotPrematurelyAssignMemory": true,
+  "findQueryPreserved": "HVAC return filter size",
+  "checks": {
+    "cancel_all_persisted_state_unchanged": true,
+    "cold_relaunch_all_persisted_state_unchanged": true,
+    "save_to_final_identical": true,
+    "original_sb40_reference_unchanged": true,
+    "protected_shutdown_device_file_hashes_unchanged": true
+  },
+  "runtimeHashes": {
+    "CasitaDexSB40QA": "8ad89040f3a092c4a57b1d4bf7747a55e1afdd19cfa264f0b3fe136c02ba9b4d",
+    "main.jsbundle": "83326efc8d67c50748539becbe4f4f306e70efa233e8e3d44a5249260f9fb7aa"
+  },
+  "harnessOnlyStops": [
+    "wrong plural label",
+    "overly conservative viewport bound",
+    "offscreen control absent from accessibility tree"
+  ],
+  "releaseGatesStillOpen": [
+    "source-to-binary reproducibility",
+    "current Android parity",
+    "dimension-query normalization",
+    "linked reminder return routing",
+    "full organization rename/removal coverage",
+    "strict OS-offline behavior",
+    "full large-text and screen-reader acceptance",
+    "remaining backup/restore and photo matrix",
+    "notification delivery/tap acceptance",
+    "physical-device and security/release gates"
+  ]
+}

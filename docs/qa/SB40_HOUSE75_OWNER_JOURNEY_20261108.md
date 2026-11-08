@@ -92,3 +92,7 @@ The earlier complaint that Save was below the fold came from the wrong .dev buil
 Evidence is on the Mac mini external SSD under QA-Evidence/CasitaDex/sb40-house75-owner-journey-20261108. The JSON verification records exact counts and outcomes. Scripts are under scripts/qa with sb40-house75 names; they are device/artifact-bound acceptance scripts, not general CI tests. Replay only against an isolated SB40 QA container with matching artifact identity and reviewed initial state.
 
 No source changes to the app, production deployment, live purchase, store submission, simulator wipe, original-data overwrite or physical-device modification occurred.
+
+## Later bounded organization continuation
+
+The [2026-11-08 organization continuation](SB40_HOUSE75_ORGANIZATION_CONTINUATION_20261108.md) subsequently verified native full-Edit Space/Category creation, selection, Save, Cancel, query return and cold-relaunch persistence on one of the existing 75 household memories. All 165 titles/descriptions and the other 164 memory objects remain unchanged. One household memory now has a structured Space/Category assignment; the other 74 remain unassigned. This supersedes only the earlier unverified creation/assignment probe, not the remaining organization or release gates.

@@ -36,3 +36,7 @@ Evidence directory: `QA-Evidence/CasitaDex/sb40-source-checkpoint-20261108` on F
 ## Publication boundary
 
 The existing GitHub repository is public. This checkpoint publishes only the authorized recovered runtime/configuration/tests/assets/native inputs plus sanitized evidence and existing governance updates. Historical/private-seeming documentation is not included. `publication-review.json` records exact comparison with public base `db129dee01acd63559929d7cbcfc59f9dbccfa3d`. Publication remains contingent on final review and explicit remote SHA verification; no force push or release merge.
+
+### Current publication status
+
+The narrow source checkpoint is committed locally at `6434397f0169c8b53bfc2c820d6652be03b2f83f`. Publication to the public repository is held pending explicit owner approval for the recovered source payload. No push executed. Local regression and evidence work may continue independently; no remote or release state has changed.
