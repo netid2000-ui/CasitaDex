@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "checks": [
+    "sticky controls while gallery moves",
+    "48pt control targets",
+    "view and sort actions",
+    "With photos only label and toggle"
+  ]
+}

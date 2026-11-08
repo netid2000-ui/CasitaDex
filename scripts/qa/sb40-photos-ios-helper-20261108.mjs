@@ -2,7 +2,7 @@ import {connectDevice} from '/Volumes/FA-Development/Designs-by-FA/Tools/Mobilew
 import fs from 'node:fs';import {execFileSync} from 'node:child_process';import {createHash} from 'node:crypto';import assert from 'node:assert/strict';
 export const out='/Volumes/FA-Development/Designs-by-FA/QA-Evidence/CasitaDex/sb40-photo-workspace-20261108',uid='A4ED0D8B-C90A-4940-9B71-4F570D7DC597',bid='com.designsbyfa.casitadex.sb40qa',title='SB40 Photo Workspace Acceptance';
 const container=k=>execFileSync('xcrun',['simctl','get_app_container',uid,bid,k],{encoding:'utf8'}).trim();
-const sha=p=>createHash('sha256').update(fs.readFileSync(p)).digest('hex');assert.equal(sha(container('app')+'/main.jsbundle'),sha(out+'/ios-delivered.hbc'));
+const sha=p=>createHash('sha256').update(fs.readFileSync(p)).digest('hex');assert.equal(sha(container('app')+'/main.jsbundle'),JSON.parse(fs.readFileSync(new URL('../parity/sb40-targets.json',import.meta.url),'utf8')).targets.ios.bundleSha256);
 export const read=()=>JSON.parse(execFileSync('python3',['-c',"import pathlib,sqlite3,sys; p=next(pathlib.Path(sys.argv[1]).rglob('casitadex-development-v1.db')); c=sqlite3.connect(p.as_uri()+'?mode=ro',uri=True); print(c.execute('SELECT payload FROM eng_state_v2 WHERE slot=1').fetchone()[0]);c.close()",container('data')],{encoding:'utf8'}));
 export const d=await connectDevice({platform:'ios',deviceId:uid,actionTimeout:8000});
 export const label=t=>d.screen.getByLabel(t,{exact:true}),field=t=>d.screen.getByType('TextField').and(label(t));

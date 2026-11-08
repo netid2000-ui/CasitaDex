@@ -1,0 +1,4 @@
+{
+  "ios": "PASS: complete saved snapshot unchanged",
+  "android": "BLOCKED: run-as rejects package as not debuggable; before/after .tar files contain denial text, not backups. No private-data access bypass attempted. Data-preserving install -r succeeded; full Android snapshot equality NOT VERIFIED."
+}
