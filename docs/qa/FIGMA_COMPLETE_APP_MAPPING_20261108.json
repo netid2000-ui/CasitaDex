@@ -1,0 +1,276 @@
+{
+  "dateUTC": "2026-11-08",
+  "dateLocal": "2026-11-07 America/Chicago",
+  "project": "CasitaDex",
+  "sessionId": "d6db8867-dc1f-4338-86fb-6e13b15a2a53",
+  "source": {
+    "branch": "work/cd-sb41-edit-targeting-20261104",
+    "baseCommit": "6b392cd8c032e4e37373757f0de9da256e57e848",
+    "dirty": true,
+    "fileSHA256": {
+      "src/app/_layout.tsx": "ff51e6b013983486b47ce514e46517416f54d05acf21cfa1736e1c1824f71d5e",
+      "src/eng-screens.tsx": "33c40a3fdb48e369191e788cda6da6be9b7d60546cdd967b1d6706fdfd4efd56",
+      "src/ui.tsx": "2cf6a0adb72591daf0a2a82b07fd827b41a4d329b053f1379cd63917b2b65562"
+    }
+  },
+  "figma": {
+    "fileKey": "39uzN0SZX8nlmcGDcHdQhr",
+    "mapPage": "351:2",
+    "specs": [
+      {
+        "id": "354:2",
+        "title": "CasitaDex \u00b7 Screen and action contracts"
+      },
+      {
+        "id": "354:703",
+        "title": "CasitaDex \u00b7 Source control register"
+      }
+    ],
+    "monetizationPage": "355:2",
+    "monetizationBoard": "355:3",
+    "visualAuthority": "347:2"
+  },
+  "coverage": {
+    "viewsPerPlatform": 44,
+    "totalViews": 88,
+    "jsxInteractionDeclarations": 270,
+    "alertSites": 8,
+    "prototypeNavigationLinks": 606
+  },
+  "screens": [
+    {
+      "key": "home",
+      "ios": "353:2",
+      "android": "353:1442"
+    },
+    {
+      "key": "photos",
+      "ios": "353:27",
+      "android": "353:1467"
+    },
+    {
+      "key": "reminders",
+      "ios": "353:48",
+      "android": "353:1488"
+    },
+    {
+      "key": "find",
+      "ios": "353:75",
+      "android": "353:1515"
+    },
+    {
+      "key": "add",
+      "ios": "353:102",
+      "android": "353:1542"
+    },
+    {
+      "key": "addphoto",
+      "ios": "353:143",
+      "android": "353:1583"
+    },
+    {
+      "key": "detail",
+      "ios": "353:181",
+      "android": "353:1621"
+    },
+    {
+      "key": "edit",
+      "ios": "353:214",
+      "android": "353:1654"
+    },
+    {
+      "key": "managephotos",
+      "ios": "353:255",
+      "android": "353:1695"
+    },
+    {
+      "key": "viewer",
+      "ios": "353:284",
+      "android": "353:1724"
+    },
+    {
+      "key": "reminderedit",
+      "ios": "353:311",
+      "android": "353:1751"
+    },
+    {
+      "key": "linked",
+      "ios": "353:348",
+      "android": "353:1788"
+    },
+    {
+      "key": "filters",
+      "ios": "353:378",
+      "android": "353:1818"
+    },
+    {
+      "key": "bulk",
+      "ios": "353:411",
+      "android": "353:1851"
+    },
+    {
+      "key": "lifecycle",
+      "ios": "353:436",
+      "android": "353:1876"
+    },
+    {
+      "key": "history",
+      "ios": "353:461",
+      "android": "353:1901"
+    },
+    {
+      "key": "share",
+      "ios": "353:490",
+      "android": "353:1930"
+    },
+    {
+      "key": "sharepreview",
+      "ios": "353:514",
+      "android": "353:1954"
+    },
+    {
+      "key": "settings",
+      "ios": "353:537",
+      "android": "353:1977"
+    },
+    {
+      "key": "browse",
+      "ios": "353:565",
+      "android": "353:2005"
+    },
+    {
+      "key": "storage",
+      "ios": "353:592",
+      "android": "353:2032"
+    },
+    {
+      "key": "labels",
+      "ios": "353:621",
+      "android": "353:2061"
+    },
+    {
+      "key": "labelimpact",
+      "ios": "353:649",
+      "android": "353:2089"
+    },
+    {
+      "key": "backup",
+      "ios": "353:670",
+      "android": "353:2110"
+    },
+    {
+      "key": "restore",
+      "ios": "353:699",
+      "android": "353:2139"
+    },
+    {
+      "key": "recovery",
+      "ios": "353:723",
+      "android": "353:2163"
+    },
+    {
+      "key": "backupresult",
+      "ios": "353:744",
+      "android": "353:2184"
+    },
+    {
+      "key": "appearance",
+      "ios": "353:765",
+      "android": "353:2205"
+    },
+    {
+      "key": "help",
+      "ios": "353:789",
+      "android": "353:2229"
+    },
+    {
+      "key": "premium",
+      "ios": "353:810",
+      "android": "353:2250"
+    },
+    {
+      "key": "offer",
+      "ios": "353:833",
+      "android": "353:2273"
+    },
+    {
+      "key": "purchase",
+      "ios": "353:856",
+      "android": "353:2296"
+    },
+    {
+      "key": "restorepurchase",
+      "ios": "353:879",
+      "android": "353:2319"
+    },
+    {
+      "key": "billingerror",
+      "ios": "353:902",
+      "android": "353:2342"
+    },
+    {
+      "key": "roadmap",
+      "ios": "353:925",
+      "android": "353:2365"
+    },
+    {
+      "key": "packs",
+      "ios": "353:950",
+      "android": "353:2390"
+    },
+    {
+      "key": "cloud",
+      "ios": "353:971",
+      "android": "353:2411"
+    },
+    {
+      "key": "business",
+      "ios": "353:992",
+      "android": "353:2432"
+    },
+    {
+      "key": "discard",
+      "ios": "353:1013",
+      "android": "353:2453"
+    },
+    {
+      "key": "confirm",
+      "ios": "353:1034",
+      "android": "353:2474"
+    },
+    {
+      "key": "picker",
+      "ios": "353:1055",
+      "android": "353:2495"
+    },
+    {
+      "key": "permission",
+      "ios": "353:1078",
+      "android": "353:2518"
+    },
+    {
+      "key": "datepicker",
+      "ios": "353:1099",
+      "android": "353:2539"
+    },
+    {
+      "key": "sharesheet",
+      "ios": "353:1120",
+      "android": "353:2560"
+    }
+  ],
+  "acceptance": {
+    "editableMap": "VERIFIED",
+    "sourceRegisters": "VERIFIED_CAPTURE",
+    "representativeRender": "VERIFIED_AFTER_WRAPPING_FIX",
+    "allScreensPixelParity": "NOT_CLAIMED",
+    "nativeFunctionalAcceptance": "NOT_RUN_BY_THIS_DESIGN_TASK",
+    "release": "NO-GO"
+  },
+  "limits": [
+    "Mapped source declarations include conditional/generated/helper/legacy/QA surfaces, not a count of runtime consumer buttons.",
+    "Functional map does not replace approved visual masters.",
+    "Context-specific Return/Cancel follows initiating route; overview links illustrate relationships.",
+    "No new app build, data mutation, live purchase, production deployment or store submission."
+  ]
+}
