@@ -24,7 +24,10 @@ name: SB40 shared create-find-reminder journey
     when:
       platform: Android
     commands:
-      - hideKeyboard
+      - swipe:
+          start: "50%,55%"
+          end: "50%,38%"
+          duration: 500
 - scrollUntilVisible:
     element:
       text: "Description"
@@ -47,7 +50,10 @@ name: SB40 shared create-find-reminder journey
     when:
       platform: Android
     commands:
-      - hideKeyboard
+      - swipe:
+          start: "50%,55%"
+          end: "50%,38%"
+          duration: 500
 - assertVisible:
     text: "Save"
     enabled: true
@@ -70,7 +76,10 @@ name: SB40 shared create-find-reminder journey
     when:
       platform: Android
     commands:
-      - hideKeyboard
+      - swipe:
+          start: "50%,55%"
+          end: "50%,38%"
+          duration: 500
 - assertVisible: "Open regular memory ${FIXTURE_TITLE}"
 - tapOn: "Open regular memory ${FIXTURE_TITLE}"
 - assertVisible: "Edit memory"

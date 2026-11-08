@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "method": "Native full v4 exports parsed and every saved photo verified; no run-as or privilege bypass",
+  "beforeMemories": 95,
+  "afterMemories": 96,
+  "existingNonFixtureMemories": "UNCHANGED",
+  "existingMediaMetadata": "UNCHANGED",
+  "existingReminders": "UNCHANGED",
+  "spacesAndCategories": "UNCHANGED",
+  "newMemories": 1,
+  "newLinkedReminders": 1,
+  "newQaPhotos": 3,
+  "draft": null,
+  "scope": "Current native app exports before/after this resumed journey and photo-cap work. Cannot retroactively prove snapshot equality across the earlier sticky-controls install."
+}

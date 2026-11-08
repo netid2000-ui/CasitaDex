@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "installedSource": "c5eb43d",
+  "steps": [
+    "resumed preserved QA draft instead of duplicating",
+    "entered description using drag keyboard dismissal",
+    "saved memory",
+    "found and opened same memory",
+    "saved linked reminder",
+    "returned to originating Memory Details"
+  ],
+  "earlierFailure": "Android Back used by keyboard dismissal navigated away from Add; draft preserved. Correct harness uses on-drag dismissal. Original failure retained."
+}

@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "installedSource": "c5eb43d",
+  "scope": "native Android saved QA memory from two to five; Add Photo disabled at five",
+  "fixture": "SB40 Photo Workspace Acceptance",
+  "count": 5,
+  "draftCap": "NOT_RUN",
+  "sixthStoreCall": "SOURCE_EVIDENCE_ONLY"
+}
