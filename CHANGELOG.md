@@ -1,3 +1,9 @@
+## 2026-11-08 - Preserve owner-agreed SB40 source provenance
+
+- Add a dedicated archival SB40 source/config/lock/asset/native-project/test baseline and reproducible hash verifier, without replacing root runtime source. Exclude the archive from root TypeScript inputs and EAS uploads.
+- Verify retained accepted iOS executable, packaged JS and Android APK hashes; distinguish dirty archive lineage and the older different SB40 worker APK.
+- Preserve the original seven-file dirty checkout and recovered source, record synthetic QA seed provenance and explicit build-equivalence limitations. No new app behavior, test rerun, deployment or release approval.
+
 ## 2026-11-06 - Consolidated current 8cc native milestone
 
 - Record bounded iOS focused-rotation and keyboard/normal-control acceptance on the uninstrumented artifact, retaining incomplete maximum-size interaction and explicit NOT_RUN observed-state preparation.

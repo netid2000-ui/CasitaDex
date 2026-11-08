@@ -1,0 +1,33 @@
+{
+  "cli": { "version": ">= 24.8.0", "appVersionSource": "remote" },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "env": {
+        "EXPO_PUBLIC_APP_ENV": "development",
+        "EXPO_PUBLIC_ENABLE_FIREBASE_DATA": "false",
+        "EXPO_PUBLIC_ENABLE_FIREBASE_STORAGE": "false"
+      }
+    },
+    "staging": {
+      "distribution": "internal",
+      "env": {
+        "EXPO_PUBLIC_APP_ENV": "staging",
+        "EXPO_PUBLIC_ENABLE_FIREBASE_DATA": "false",
+        "EXPO_PUBLIC_ENABLE_FIREBASE_STORAGE": "false"
+      },
+      "android": { "buildType": "apk" }
+    },
+    "ios-simulator-dev": { "distribution": "internal", "ios": { "simulator": true }, "env": { "EXPO_PUBLIC_APP_ENV": "development", "EXPO_PUBLIC_ENABLE_FIREBASE_DATA": "false", "EXPO_PUBLIC_ENABLE_FIREBASE_STORAGE": "false" } },
+    "staging-ios": {
+      "distribution": "internal",
+      "credentialsSource": "local",
+      "env": {
+        "EXPO_PUBLIC_APP_ENV": "staging",
+        "EXPO_PUBLIC_ENABLE_FIREBASE_DATA": "false",
+        "EXPO_PUBLIC_ENABLE_FIREBASE_STORAGE": "false"
+      }
+    }
+  }
+}

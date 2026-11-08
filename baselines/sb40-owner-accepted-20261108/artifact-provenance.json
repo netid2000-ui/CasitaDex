@@ -1,0 +1,135 @@
+{
+  "recorded_at_utc": "2026-11-08T14:50:45.117237+00:00",
+  "method": "Read retained files only. No build, install, device read/write or test rerun.",
+  "artifacts": [
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-simulator-parity-20261108/build/ios-sb40qa-release/Build/Products/Release-iphonesimulator/CasitaDexSB40QA.app/CasitaDexSB40QA",
+      "size": 40093456,
+      "sha256": "8ad89040f3a092c4a57b1d4bf7747a55e1afdd19cfa264f0b3fe136c02ba9b4d",
+      "expected_sha256": "8ad89040f3a092c4a57b1d4bf7747a55e1afdd19cfa264f0b3fe136c02ba9b4d",
+      "status": "VERIFIED_MATCH"
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-simulator-parity-20261108/build/ios-sb40qa-release/Build/Products/Release-iphonesimulator/CasitaDexSB40QA.app/main.jsbundle",
+      "size": 4614358,
+      "sha256": "83326efc8d67c50748539becbe4f4f306e70efa233e8e3d44a5249260f9fb7aa",
+      "expected_sha256": "83326efc8d67c50748539becbe4f4f306e70efa233e8e3d44a5249260f9fb7aa",
+      "status": "VERIFIED_MATCH"
+    },
+    {
+      "path": "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-simulator-parity-20261108/android/app/build/outputs/apk/release/app-release.apk",
+      "size": 108935210,
+      "sha256": "01e40085176127b815b0870fabbd4d915f463acdea5d8d4e0eb830871467d3bf",
+      "expected_sha256": "01e40085176127b815b0870fabbd4d915f463acdea5d8d4e0eb830871467d3bf",
+      "status": "VERIFIED_MATCH"
+    }
+  ],
+  "ios_info": {
+    "CFBundleIdentifier": "com.designsbyfa.casitadex.sb40qa",
+    "CFBundleShortVersionString": "0.1.0",
+    "CFBundleVersion": "1",
+    "CFBundleExecutable": "CasitaDexSB40QA",
+    "DTXcode": "2720",
+    "DTXcodeBuild": "27B52",
+    "DTSDKName": "iphonesimulator27.2",
+    "DTSDKBuild": "24B8118",
+    "MinimumOSVersion": "16.4"
+  },
+  "ios_embedded_expo_config": {
+    "name": "CasitaDex SB40 QA",
+    "slug": "casitadex",
+    "scheme": "casitadex-sb40qa",
+    "version": "0.1.0",
+    "orientation": "default",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.designsbyfa.casitadex.sb40qa",
+      "icon": {
+        "light": "./assets/brand/icon-light.png",
+        "dark": "./assets/brand/icon-dark.png",
+        "tinted": "./assets/brand/icon-tinted.png"
+      }
+    },
+    "android": {
+      "package": "com.designsbyfa.casitadex.sb40qa",
+      "allowBackup": false,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/brand/adaptive-color.png",
+        "monochromeImage": "./assets/brand/adaptive-outline.png",
+        "backgroundColor": "#FAF8F2"
+      }
+    },
+    "extra": {
+      "appEnvironment": "development",
+      "backendMode": "none",
+      "productionAuthorized": false,
+      "router": {},
+      "eas": {
+        "projectId": "79b93f15-c8ba-40b6-b7f4-30662c225bd8"
+      },
+      "parityQaSeed": true
+    },
+    "sdkVersion": "57.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "owner": "netid2000-10",
+    "icon": "./assets/brand/icon-light.png",
+    "plugins": [
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "enableSceneSupport": true
+          }
+        }
+      ],
+      "expo-router",
+      "@react-native-community/datetimepicker",
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/brand/adaptive-outline.png",
+          "color": "#003F30"
+        }
+      ],
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/brand/splash-light.png",
+          "imageWidth": 160,
+          "resizeMode": "contain",
+          "backgroundColor": "#F6F7F4",
+          "dark": {
+            "image": "./assets/brand/splash-dark.png",
+            "backgroundColor": "#101C17"
+          }
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "cameraPermission": "Allow CasitaDex to take a photo for your memory.",
+          "photosPermission": "Allow CasitaDex to choose a photo for your memory.",
+          "microphonePermission": false
+        }
+      ]
+    ],
+    "web": {
+      "bundler": "metro",
+      "output": "single",
+      "favicon": "./public/brand/favicon-light-32.png"
+    }
+  },
+  "ios_embedded_expo_config_sha256": "d0b7b63ecc98e1c2b2e2352fc0460066194b8bd2f020648252acc46d1df1937a",
+  "android_packaged_js_sha256": "90ec186824f37d79d90ce42b0ba0a8200247f2f61238f7057f5b2fb814f341cc",
+  "package_lock_sha256": "e9b51355797d4d02769b04f61d2d2fe7acde74b2b9b47b24315f2befc841482d",
+  "podfile_lock_sha256": "08420699fd05e5b92cce732ce715425453d4ed97d4f81e7b800b3b4159a2d540",
+  "older_sb40_worker_apk_sha256": "8256ec581ca1d7bb5062906fc7170c311aa68805de947fdfca206bc196879221",
+  "older_worker_apk_is_accepted_artifact": false,
+  "reproducible_build_established": false,
+  "release": "NO-GO"
+}

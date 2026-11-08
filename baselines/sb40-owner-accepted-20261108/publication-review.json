@@ -1,0 +1,2241 @@
+{
+  "repository": "netid2000-ui/CasitaDex",
+  "visibility_verified": "public",
+  "verified_public_base": "db129dee01acd63559929d7cbcfc59f9dbccfa3d",
+  "target_branch": "work/cd-sb40-runtime-checkpoint-20261108",
+  "authorization_scope": "Verified recovered SB40 runtime/config/tests/assets/native-input checkpoint on an authorized feature branch. No historical design or private documentation is included. No release merge or deployment.",
+  "input_comparison_counts": {
+    "already_identical": 168,
+    "not_in_public_base": 155,
+    "changed": 46
+  },
+  "input_comparison": [
+    {
+      "path": ".easignore",
+      "status": "already_identical",
+      "public_base_blob": "7eda7d44f6a269e64ccffbc3814bfc054dcdc0fd",
+      "snapshot_blob": "7eda7d44f6a269e64ccffbc3814bfc054dcdc0fd"
+    },
+    {
+      "path": ".gitignore",
+      "status": "already_identical",
+      "public_base_blob": "57b5755dc9e5a4647150b45304dd64576d3f83ed",
+      "snapshot_blob": "57b5755dc9e5a4647150b45304dd64576d3f83ed"
+    },
+    {
+      "path": ".prettierignore",
+      "status": "already_identical",
+      "public_base_blob": "0fb95a38e4e26c5f03783ce7b5ee458226d85577",
+      "snapshot_blob": "0fb95a38e4e26c5f03783ce7b5ee458226d85577"
+    },
+    {
+      "path": "STARTER_BOOTSTRAP.json",
+      "status": "already_identical",
+      "public_base_blob": "7ca04a5a7e70da417b4d1539a30dfb33d0da2b7b",
+      "snapshot_blob": "7ca04a5a7e70da417b4d1539a30dfb33d0da2b7b"
+    },
+    {
+      "path": "android/.gitignore",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "1ea9b6464ec56cd616ceb85d046175d99bb8289f"
+    },
+    {
+      "path": "android/app/build.gradle",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "6b9474750f4b6922ea11e614b013038045f69917"
+    },
+    {
+      "path": "android/app/proguard-rules.pro",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "551eb41da24268637f6d9ceb38ea1b5359bf734d"
+    },
+    {
+      "path": "android/app/src/debug/AndroidManifest.xml",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "3ec2507bab7c58dda1f8467f9137b02bdbd87b50"
+    },
+    {
+      "path": "android/app/src/debugOptimized/AndroidManifest.xml",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "3ec2507bab7c58dda1f8467f9137b02bdbd87b50"
+    },
+    {
+      "path": "android/app/src/main/AndroidManifest.xml",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "5965768c6f53cafc5d4325ee23a1bb182748667b"
+    },
+    {
+      "path": "android/app/src/main/java/com/designsbyfa/casitadex/sb40qa/MainActivity.kt",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "28bc2d7cc41313de34b902468c5cec1aac5693cd"
+    },
+    {
+      "path": "android/app/src/main/java/com/designsbyfa/casitadex/sb40qa/MainApplication.kt",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "aec6926245b950505631efb0a659f6b63a1bc8f0"
+    },
+    {
+      "path": "android/app/src/main/res/drawable-hdpi/notification_icon.png",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "e18f82c4217a6a9d9cf8e35b7aa1657f87637d08"
+    },
+    {
+      "path": "android/app/src/main/res/drawable-hdpi/splashscreen_logo.png",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "0496f82700869bc680a1e19d938123e7578fa453"
+    },
+    {
+      "path": "android/app/src/main/res/drawable-mdpi/notification_icon.png",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "4a7964fa01f2005608ceae6f0792e7d91a520423"
+    },
+    {
+      "path": "android/app/src/main/res/drawable-mdpi/splashscreen_logo.png",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "f8d6034a8acada52ec48c77111edf6bb205ae7ca"
+    },
+    {
+      "path": "android/app/src/main/res/drawable-night-hdpi/splashscreen_logo.png",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "9ff8dad15e61f5ab96b383ab1f52f17d205ce8ec"
+    },
+    {
+      "path": "android/app/src/main/res/drawable-night-mdpi/splashscreen_logo.png",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "211441f22d4a6030938bf4b2a333fff147abc80d"
+    },
+    {
+      "path": "android/app/src/main/res/drawable-night-xhdpi/splashscreen_logo.png",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "1c14349b367cd2d0232f11fc3b999a2106cf40c9"
+    },
+    {
+      "path": "android/app/src/main/res/drawable-night-xxhdpi/splashscreen_logo.png",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "6acaeafa05b0251f27a5e2fc0b341b1d0b27995c"
+    },
+    {
+      "path": "android/app/src/main/res/drawable-night-xxxhdpi/splashscreen_logo.png",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "43ba179bbfb016fbdef36dc632f0f8652cd3bd00"
+    },
+    {
+      "path": "android/app/src/main/res/drawable-xhdpi/notification_icon.png",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "deda158e57ec5cf82bf0b02918ac7dc50b9ef6a1"
+    },
+    {
+      "path": "android/app/src/main/res/drawable-xhdpi/splashscreen_logo.png",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "33cfec8b8483acb3cfa1cdc56515ea93e5336ad2"
+    },
+    {
+      "path": "android/app/src/main/res/drawable-xxhdpi/notification_icon.png",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "d45aa3a8c5dbfcfc8704bb63ed4d8bb5e6392241"
+    },
+    {
+      "path": "android/app/src/main/res/drawable-xxhdpi/splashscreen_logo.png",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "1cd28ae90aa3467998970854205ea597efb2900c"
+    },
+    {
+      "path": "android/app/src/main/res/drawable-xxxhdpi/notification_icon.png",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "c3e28565dafbf8d7a0ce29086cfab4899e02ec17"
+    },
+    {
+      "path": "android/app/src/main/res/drawable-xxxhdpi/splashscreen_logo.png",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "ed5decb7db38070ce2fe53e3df758da48d48b555"
+    },
+    {
+      "path": "android/app/src/main/res/drawable/ic_launcher_background.xml",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "883b2a080f3a9981ce0fdc780f34f24ede704236"
+    },
+    {
+      "path": "android/app/src/main/res/drawable/rn_edit_text_material.xml",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "5c25e728ea2ce7724bd9ef08c87ce7ee89c77103"
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "d6dc75a53bb8435825b83d528f70f9bb5700f71f"
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "d6dc75a53bb8435825b83d528f70f9bb5700f71f"
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-hdpi/ic_launcher.webp",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "1a3c0aeb1b578d2cd57bff4bbe519fa6757cd224"
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-hdpi/ic_launcher_foreground.webp",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "1242dcd381d28355f8a3788164714fce0a921e8b"
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-hdpi/ic_launcher_monochrome.webp",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "d193e632b38108b9fd2249b6d5cdf8389816a0b9"
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "0853488ec0bb384e141c76f26a3c42fa8efcd1ff"
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-mdpi/ic_launcher.webp",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "08dcc4425536a2f84dc9af8bc4d40c7213ac5c76"
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-mdpi/ic_launcher_foreground.webp",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "373e1e1f9d705cb8bbe22f4a20bbb133bc913b16"
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-mdpi/ic_launcher_monochrome.webp",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "a1a656027b613755d9fa27d220891f5cf34f9624"
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "28fa8ced6e53930845f9888446de4f0c721f4ec4"
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-xhdpi/ic_launcher.webp",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "56964113458441abe05ee2b20e03157addaad532"
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.webp",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "300dbe88bdfd49c936c66099cf3b3e59e7fb1d9b"
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-xhdpi/ic_launcher_monochrome.webp",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "413e731229fdf9ae5b454542cdf2d0a79c81f3ad"
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "8f97bb8bd26c8c0a57cc0510c1d72b53044207a7"
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "88f5ec8ba99c0550773192b58e35f56e9ea09722"
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.webp",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "1bc37aa6b27c8c9c77d2401d4f1a507b73bcf580"
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-xxhdpi/ic_launcher_monochrome.webp",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "90b0ae0a87451a0ceb012d2cbe7b852d358135ce"
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "7cc877ba9fcbbe3bea4a0d8703886336428daf87"
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "c9585c0110ac9428526943d56e048cf71e9784ff"
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.webp",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "1e007691557320035369cb5adaf4ead84afedc14"
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_monochrome.webp",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "904617afb5e53db5138fcf3aa55e83c199d1f29f"
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "a81aba0408403d77da38aa5797b3bb377eb70119"
+    },
+    {
+      "path": "android/app/src/main/res/values-night/colors.xml",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "e063e35e7af9c34572e83bc488d6b3ce0811b8eb"
+    },
+    {
+      "path": "android/app/src/main/res/values/colors.xml",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "f5c66df35e8500f637e974f8f4d7f605f8ef7d28"
+    },
+    {
+      "path": "android/app/src/main/res/values/strings.xml",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "3563b6c6ff66660ddb0fa07c47f6ef8c67d1c257"
+    },
+    {
+      "path": "android/app/src/main/res/values/styles.xml",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "1a134df18b8ccf06747d3481b510a0079e1025e2"
+    },
+    {
+      "path": "android/build.gradle",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "0554dd156c12f9be47224be2fe763937962a4fb2"
+    },
+    {
+      "path": "android/gradle.properties",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "a16c21f2526aa08db4688e8f9038e53469d5be08"
+    },
+    {
+      "path": "android/gradle/wrapper/gradle-wrapper.properties",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "37f78a6af8379e9ac907b8527c9c68807bf42d20"
+    },
+    {
+      "path": "android/gradlew",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "adff685a0348c64b2b64f0b302f1f82b28eeaaea"
+    },
+    {
+      "path": "android/gradlew.bat",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "39baf4d68461f299bd7851d170dec9ebdaccea2d"
+    },
+    {
+      "path": "android/settings.gradle",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "49915cac1091103911af64d7127cc6aacee0f606"
+    },
+    {
+      "path": "app.config.js",
+      "status": "changed",
+      "public_base_blob": "4751d3c664700e2fba23d83e06666f6b4745635b",
+      "snapshot_blob": "49600dc29723c74b201605ed42e39e43ce80c85c"
+    },
+    {
+      "path": "app.identity.json",
+      "status": "already_identical",
+      "public_base_blob": "1a476cd870303de1624be4fea468112b2395f449",
+      "snapshot_blob": "1a476cd870303de1624be4fea468112b2395f449"
+    },
+    {
+      "path": "app.json",
+      "status": "changed",
+      "public_base_blob": "af8a28aa37c11599c163706740b9efbdab4151cc",
+      "snapshot_blob": "d0769112adf5231dca8fd1ec1325eeecebdb453d"
+    },
+    {
+      "path": "assets/brand/adaptive-color.png",
+      "status": "already_identical",
+      "public_base_blob": "cf6061d4365866122aadfd415de061499150cdf5",
+      "snapshot_blob": "cf6061d4365866122aadfd415de061499150cdf5"
+    },
+    {
+      "path": "assets/brand/adaptive-outline.png",
+      "status": "already_identical",
+      "public_base_blob": "e813573d58b6f6a98d1c3c08641f84041c5285f6",
+      "snapshot_blob": "e813573d58b6f6a98d1c3c08641f84041c5285f6"
+    },
+    {
+      "path": "assets/brand/figma-originals/artwork-dark.svg",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "a631d6d3b17e7c5c39f95e525da5c94ac5fbcff7"
+    },
+    {
+      "path": "assets/brand/figma-originals/artwork-icon.svg",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "12c6e4c0ecaf8bf25c684b7c0f6445bb9865c474"
+    },
+    {
+      "path": "assets/brand/figma-originals/artwork-light.svg",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "b6dbeb34a5eb58e688b318d29cc1890f45fe16d9"
+    },
+    {
+      "path": "assets/brand/icon-dark.png",
+      "status": "changed",
+      "public_base_blob": "e1062c1cae83ff0b5086a030a982a1b488c85f43",
+      "snapshot_blob": "4e084a8906fbae92a5feb5b66128fd6a6eafd84d"
+    },
+    {
+      "path": "assets/brand/icon-light.png",
+      "status": "changed",
+      "public_base_blob": "75f15e809b71fcfc9f7295bdcd0103ded5f43c69",
+      "snapshot_blob": "615e33a4c5288c6bc5762d0014fcd53d96e860ac"
+    },
+    {
+      "path": "assets/brand/icon-tinted.png",
+      "status": "changed",
+      "public_base_blob": "5796f1533b3f04fb81895b351b5c3d0b2a4701cc",
+      "snapshot_blob": "2ed0ee56a5392b9e13559fd99a88272707490f7c"
+    },
+    {
+      "path": "assets/brand/illustration-backup.jpg",
+      "status": "already_identical",
+      "public_base_blob": "b19e139aa526ef1e3e85b8e1335d159cb4ca86e7",
+      "snapshot_blob": "b19e139aa526ef1e3e85b8e1335d159cb4ca86e7"
+    },
+    {
+      "path": "assets/brand/illustration-find.jpg",
+      "status": "already_identical",
+      "public_base_blob": "a04396d2eebc4b951c75d94d67830c5587528448",
+      "snapshot_blob": "a04396d2eebc4b951c75d94d67830c5587528448"
+    },
+    {
+      "path": "assets/brand/illustration-home.jpg",
+      "status": "already_identical",
+      "public_base_blob": "89faccdfe1ba85634716aa15d042b73f1f298bbc",
+      "snapshot_blob": "89faccdfe1ba85634716aa15d042b73f1f298bbc"
+    },
+    {
+      "path": "assets/brand/logo-art-dark.png",
+      "status": "already_identical",
+      "public_base_blob": "ad9d4655f26090c4d13dee6d7943cbe3d05563e9",
+      "snapshot_blob": "ad9d4655f26090c4d13dee6d7943cbe3d05563e9"
+    },
+    {
+      "path": "assets/brand/logo-art-light.png",
+      "status": "already_identical",
+      "public_base_blob": "29435e7c369a4ea3bcc5d16b4970e44676d58ef5",
+      "snapshot_blob": "29435e7c369a4ea3bcc5d16b4970e44676d58ef5"
+    },
+    {
+      "path": "assets/brand/logo-color-dark.png",
+      "status": "changed",
+      "public_base_blob": "c3f1cf19c757977ba11f925559a4136c710881ac",
+      "snapshot_blob": "5c6898f4b71d7e2e0d0630ae74821d0e7aea5f0c"
+    },
+    {
+      "path": "assets/brand/logo-color-light.png",
+      "status": "changed",
+      "public_base_blob": "0584e707d433c92756226146bb6d4c02aaa68b0e",
+      "snapshot_blob": "61532c7133260b92bd0b85bdd9bd52847bf41751"
+    },
+    {
+      "path": "assets/brand/logo-outline-dark.png",
+      "status": "already_identical",
+      "public_base_blob": "8cfc85ca1ecd3f3ad390c85091d3af318d9dd7a1",
+      "snapshot_blob": "8cfc85ca1ecd3f3ad390c85091d3af318d9dd7a1"
+    },
+    {
+      "path": "assets/brand/logo-outline-light.png",
+      "status": "already_identical",
+      "public_base_blob": "576f2e67603ac7e3e68d8c7bee5d27511a51dae4",
+      "snapshot_blob": "576f2e67603ac7e3e68d8c7bee5d27511a51dae4"
+    },
+    {
+      "path": "assets/brand/single-card-candidate.png",
+      "status": "already_identical",
+      "public_base_blob": "314e527aa07cc85e6ce85945e51dbf1c209fca77",
+      "snapshot_blob": "314e527aa07cc85e6ce85945e51dbf1c209fca77"
+    },
+    {
+      "path": "assets/brand/splash-dark.png",
+      "status": "already_identical",
+      "public_base_blob": "ce95c53c639922dbabc1627d04969dd6e80d4c2a",
+      "snapshot_blob": "ce95c53c639922dbabc1627d04969dd6e80d4c2a"
+    },
+    {
+      "path": "assets/brand/splash-light.png",
+      "status": "already_identical",
+      "public_base_blob": "bd8bbc699c8ea7f539c7a87dfd86d8841748a1a7",
+      "snapshot_blob": "bd8bbc699c8ea7f539c7a87dfd86d8841748a1a7"
+    },
+    {
+      "path": "assets/branding/CasitaDex-Branded-With-Text.png",
+      "status": "already_identical",
+      "public_base_blob": "d39a65c302a1ae01be57d595fc9d60c0b12d5bd6",
+      "snapshot_blob": "d39a65c302a1ae01be57d595fc9d60c0b12d5bd6"
+    },
+    {
+      "path": "assets/branding/CasitaDex-Landscape.png",
+      "status": "already_identical",
+      "public_base_blob": "3b70b4431fc81eb9f5f455342b9d1b7450a9dcfa",
+      "snapshot_blob": "3b70b4431fc81eb9f5f455342b9d1b7450a9dcfa"
+    },
+    {
+      "path": "assets/casitadex-branded-banner.png",
+      "status": "already_identical",
+      "public_base_blob": "d39a65c302a1ae01be57d595fc9d60c0b12d5bd6",
+      "snapshot_blob": "d39a65c302a1ae01be57d595fc9d60c0b12d5bd6"
+    },
+    {
+      "path": "assets/house-landscape.png",
+      "status": "already_identical",
+      "public_base_blob": "3b70b4431fc81eb9f5f455342b9d1b7450a9dcfa",
+      "snapshot_blob": "3b70b4431fc81eb9f5f455342b9d1b7450a9dcfa"
+    },
+    {
+      "path": "assets/house-trees-header.png",
+      "status": "already_identical",
+      "public_base_blob": "3bb23f38310f6328acb450758280632cff2d20e8",
+      "snapshot_blob": "3bb23f38310f6328acb450758280632cff2d20e8"
+    },
+    {
+      "path": "assets/ui-icons/accepted-v1/find.png",
+      "status": "changed",
+      "public_base_blob": "7cb1b4b01830bfd52ae74739a31667c7066f137c",
+      "snapshot_blob": "8cbbb301ef1b26d5a2c96792e9e7d8936972f0bc"
+    },
+    {
+      "path": "assets/ui-icons/accepted-v1/home.png",
+      "status": "changed",
+      "public_base_blob": "550a226dc766c29b704d8d8707359b9040975c58",
+      "snapshot_blob": "a58290687986fc84fe125eb8d68d4d220a0ef513"
+    },
+    {
+      "path": "assets/ui-icons/accepted-v1/memories.png",
+      "status": "changed",
+      "public_base_blob": "b127850e302e2c847a1a544611e0b10b32be2fe9",
+      "snapshot_blob": "42c2accd140b9f588cbe6a6f98f94d952beaf920"
+    },
+    {
+      "path": "assets/ui-icons/accepted-v1/photos.png",
+      "status": "changed",
+      "public_base_blob": "5530db5ca193f3dbc86c350a360924d49860ec3a",
+      "snapshot_blob": "0a3a8457eb6916832087c27bc992354d69d39e73"
+    },
+    {
+      "path": "assets/ui-icons/accepted-v1/reminders.png",
+      "status": "changed",
+      "public_base_blob": "2bc971c4ae222ef8d3580bbccefef1aa5adda91e",
+      "snapshot_blob": "454d9f05fc28544aac6b3f9f63b6c8968e54c6f4"
+    },
+    {
+      "path": "assets/ui-icons/figma-approved-v1/find.png",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "1df010577cadd3108da71e90c24c47d086964d6e"
+    },
+    {
+      "path": "assets/ui-icons/figma-approved-v1/home.png",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "0931480efed31fd351b30cdf6600a3ac428eed8b"
+    },
+    {
+      "path": "assets/ui-icons/figma-approved-v1/memories.png",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "ef31bec17df963e3891a8f9e2f2ff89dac8b4d13"
+    },
+    {
+      "path": "assets/ui-icons/figma-approved-v1/photos.png",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "4e81a79b23e44303ff3dea796a4af895f483361c"
+    },
+    {
+      "path": "assets/ui-icons/figma-approved-v1/reminders.png",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "73261381be0e87c37e80bbd3d9c594c4e42a0b16"
+    },
+    {
+      "path": "assets/ui-icons/figma-originals-20261025/find.svg",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "ff32a65fb0fc7d0533ed4602ae8c0ddfe023b069"
+    },
+    {
+      "path": "assets/ui-icons/figma-originals-20261025/home.svg",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "49b1206618cdb17c13d5eaca9e860b20b06392d8"
+    },
+    {
+      "path": "assets/ui-icons/figma-originals-20261025/memories.svg",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "e55fdb7402467bea5f87ab1ba1b2b086a7f671f9"
+    },
+    {
+      "path": "assets/ui-icons/figma-originals-20261025/photos.svg",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "fcf169a06984b2f8be48a0bb6d58e4d647981c76"
+    },
+    {
+      "path": "assets/ui-icons/figma-originals-20261025/reminders.svg",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "4df816de91ad6f5f23db2eb69e3a9ae959050365"
+    },
+    {
+      "path": "eas.json",
+      "status": "already_identical",
+      "public_base_blob": "80b7ae0a5a1479a0ea389c9d943f26ade00893b9",
+      "snapshot_blob": "80b7ae0a5a1479a0ea389c9d943f26ade00893b9"
+    },
+    {
+      "path": "eslint.config.js",
+      "status": "already_identical",
+      "public_base_blob": "270216ab65e0b214f3685c6963a085c62dc7f3f7",
+      "snapshot_blob": "270216ab65e0b214f3685c6963a085c62dc7f3f7"
+    },
+    {
+      "path": "ios/.gitignore",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "8beb344303ffdb5a918513f1962d5061bd764589"
+    },
+    {
+      "path": "ios/.xcode.env",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "3d5782c71568d32eec2fe71b034efcde053305f9"
+    },
+    {
+      "path": "ios/CasitaDexSB40QA.xcodeproj/project.pbxproj",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "07e1d523311882ee3c970c04f129f9a751d0c0fd"
+    },
+    {
+      "path": "ios/CasitaDexSB40QA.xcodeproj/project.xcworkspace/contents.xcworkspacedata",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "919434a6254f0e9651f402737811be6634a03e9c"
+    },
+    {
+      "path": "ios/CasitaDexSB40QA.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "18d981003d68d0546c4804ac2ff47dd97c6e7921"
+    },
+    {
+      "path": "ios/CasitaDexSB40QA.xcodeproj/xcshareddata/xcschemes/CasitaDexSB40QA.xcscheme",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "b7ff901e57318991e2bd9a87e0f9aee36878ee0f"
+    },
+    {
+      "path": "ios/CasitaDexSB40QA.xcworkspace/contents.xcworkspacedata",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "d48ff0ac37921f0da23f521d8c97efa48165098e"
+    },
+    {
+      "path": "ios/CasitaDexSB40QA/AppDelegate.swift",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "77a74bee344808a29c4bec4177793f88b9690b5a"
+    },
+    {
+      "path": "ios/CasitaDexSB40QA/CasitaDexSB40QA-Bridging-Header.h",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "8361941afc2fb739367ffa08707b9b5932f17bfe"
+    },
+    {
+      "path": "ios/CasitaDexSB40QA/CasitaDexSB40QA.entitlements",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "018a6e20cc1f2ff29ac7af1f8c1c789c128b4507"
+    },
+    {
+      "path": "ios/CasitaDexSB40QA/Images.xcassets/AppIcon.appiconset/App-Icon-1024x1024@1x.png",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "7294435cefb2cc48d97dc7ffcdf5178e5c95c491"
+    },
+    {
+      "path": "ios/CasitaDexSB40QA/Images.xcassets/AppIcon.appiconset/App-Icon-dark-1024x1024@1x.png",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "e1cb70e344abb1ca0ebaaa25deb7b21278027a1d"
+    },
+    {
+      "path": "ios/CasitaDexSB40QA/Images.xcassets/AppIcon.appiconset/App-Icon-tinted-1024x1024@1x.png",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "7d7276ccbf82dd3051fbb57f1009d1eee7d07cd5"
+    },
+    {
+      "path": "ios/CasitaDexSB40QA/Images.xcassets/AppIcon.appiconset/Contents.json",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "ce769c155d0dfa842b7847374af0b801ed4631f6"
+    },
+    {
+      "path": "ios/CasitaDexSB40QA/Images.xcassets/Contents.json",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "ed285c2e5f162b08ef745fdb14857f495bf6e685"
+    },
+    {
+      "path": "ios/CasitaDexSB40QA/Images.xcassets/SplashScreenBackground.colorset/Contents.json",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "b3f85575b59f0ef4541c6259af2790d183632082"
+    },
+    {
+      "path": "ios/CasitaDexSB40QA/Images.xcassets/SplashScreenLogo.imageset/Contents.json",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "59e79411563fc7538ed0850d7fe00a4be40c66f4"
+    },
+    {
+      "path": "ios/CasitaDexSB40QA/Images.xcassets/SplashScreenLogo.imageset/dark_image.png",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "ee083a141b5ad6040559a1a4a356e2ee107d0da4"
+    },
+    {
+      "path": "ios/CasitaDexSB40QA/Images.xcassets/SplashScreenLogo.imageset/dark_image@2x.png",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "53181de1e18c5c7cc3cacacfedb665d807d40dc1"
+    },
+    {
+      "path": "ios/CasitaDexSB40QA/Images.xcassets/SplashScreenLogo.imageset/dark_image@3x.png",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "0481cb6315c3751b592ccce19fc99552923b20df"
+    },
+    {
+      "path": "ios/CasitaDexSB40QA/Images.xcassets/SplashScreenLogo.imageset/image.png",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "b24c21c58a62d6eb905d765ee741922de261d351"
+    },
+    {
+      "path": "ios/CasitaDexSB40QA/Images.xcassets/SplashScreenLogo.imageset/image@2x.png",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "53a64adfac5160fd857e1fcc41c869432755e804"
+    },
+    {
+      "path": "ios/CasitaDexSB40QA/Images.xcassets/SplashScreenLogo.imageset/image@3x.png",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "0871040ce4ef327cc337c2be17ad4df2e693c379"
+    },
+    {
+      "path": "ios/CasitaDexSB40QA/Info.plist",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "36a53c29dd27c3027ccc28e0d31f6fc5ea469f73"
+    },
+    {
+      "path": "ios/CasitaDexSB40QA/PrivacyInfo.xcprivacy",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "41b8317f0652b9dafb97cd3dd3d245d0e74e1bf8"
+    },
+    {
+      "path": "ios/CasitaDexSB40QA/SplashScreen.storyboard",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "4899cf495252f8e6b9c7c1b4e926765d83ca7061"
+    },
+    {
+      "path": "ios/CasitaDexSB40QA/Supporting/Expo.plist",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "2324695525d137c8e50b1f4e931ebe3126bc7c23"
+    },
+    {
+      "path": "ios/Podfile",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "4722e1c571648c2beae40c560951409a991db95f"
+    },
+    {
+      "path": "ios/Podfile.lock",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "366c8b768c72772e87b4dbe670abdefba7ecbf70"
+    },
+    {
+      "path": "ios/Podfile.properties.json",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "d08569a4117adc0a09580acf2769c3025ce885a9"
+    },
+    {
+      "path": "package-lock.json",
+      "status": "changed",
+      "public_base_blob": "5b5091f0e222d7a60d2153d95107dc0f47a87bd1",
+      "snapshot_blob": "97320b0cc65e06198343a658631be87a0da469e9"
+    },
+    {
+      "path": "package.json",
+      "status": "changed",
+      "public_base_blob": "2ee7610a73a1d773e4a106010fb1f16c4c5dc399",
+      "snapshot_blob": "898c55b5873779768aff11ea6443a1490465ca9b"
+    },
+    {
+      "path": "plugins/with-ios-scene-factory.js",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "e418e5757c317ec93b8513c2448a6d4a7407d28c"
+    },
+    {
+      "path": "public/brand/apple-touch-icon.png",
+      "status": "already_identical",
+      "public_base_blob": "a38adc1b35f566ce5eb826105d072a6f5ede6a26",
+      "snapshot_blob": "a38adc1b35f566ce5eb826105d072a6f5ede6a26"
+    },
+    {
+      "path": "public/brand/favicon-dark-32.png",
+      "status": "already_identical",
+      "public_base_blob": "b2aaab9ec5dee8f97e0f7d7e555b2e1237cacd04",
+      "snapshot_blob": "b2aaab9ec5dee8f97e0f7d7e555b2e1237cacd04"
+    },
+    {
+      "path": "public/brand/favicon-light-32.png",
+      "status": "already_identical",
+      "public_base_blob": "aa72840ee1aa5c6342b5b806c2fdc14999060fa8",
+      "snapshot_blob": "aa72840ee1aa5c6342b5b806c2fdc14999060fa8"
+    },
+    {
+      "path": "public/brand/icon-192.png",
+      "status": "already_identical",
+      "public_base_blob": "99759483ceccfd7b805452dd25eca1233c0086cd",
+      "snapshot_blob": "99759483ceccfd7b805452dd25eca1233c0086cd"
+    },
+    {
+      "path": "public/brand/icon-512.png",
+      "status": "already_identical",
+      "public_base_blob": "1caae3d2d870387465e2b1723ca64ae8c4b6aa28",
+      "snapshot_blob": "1caae3d2d870387465e2b1723ca64ae8c4b6aa28"
+    },
+    {
+      "path": "public/brand/icon-maskable-512.png",
+      "status": "already_identical",
+      "public_base_blob": "b54d72ef295df04c2d049fae2f395c5bc8394bd2",
+      "snapshot_blob": "b54d72ef295df04c2d049fae2f395c5bc8394bd2"
+    },
+    {
+      "path": "public/favicon.ico",
+      "status": "already_identical",
+      "public_base_blob": "bd576aa471f617925b22206c18994d87bdfc9ad4",
+      "snapshot_blob": "bd576aa471f617925b22206c18994d87bdfc9ad4"
+    },
+    {
+      "path": "public/index.html",
+      "status": "already_identical",
+      "public_base_blob": "cca18b1b1eec1e8e53d123f88c4629ba0dcb2c67",
+      "snapshot_blob": "cca18b1b1eec1e8e53d123f88c4629ba0dcb2c67"
+    },
+    {
+      "path": "public/manifest.webmanifest",
+      "status": "already_identical",
+      "public_base_blob": "5efa478dca0787b70dfb4614edd83a2dbd7c17fe",
+      "snapshot_blob": "5efa478dca0787b70dfb4614edd83a2dbd7c17fe"
+    },
+    {
+      "path": "sb40-quarantined-tests/reminder-edge.candidate.test.mjs",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "67b4de770bdd107bcb2e2862c654dee64413dc71"
+    },
+    {
+      "path": "scripts/android-qa.cjs",
+      "status": "already_identical",
+      "public_base_blob": "9bd01ec15fa55fb3c63689d7e27654931e14ecfe",
+      "snapshot_blob": "9bd01ec15fa55fb3c63689d7e27654931e14ecfe"
+    },
+    {
+      "path": "scripts/build-android-staging-shortpath.ps1",
+      "status": "already_identical",
+      "public_base_blob": "7da44e4346ef6371a0f1047a8b2facda5977b2bf",
+      "snapshot_blob": "7da44e4346ef6371a0f1047a8b2facda5977b2bf"
+    },
+    {
+      "path": "scripts/create-household-scenarios.mjs",
+      "status": "already_identical",
+      "public_base_blob": "ae392c0e694a484486a807ef290e8637ad450c79",
+      "snapshot_blob": "ae392c0e694a484486a807ef290e8637ad450c79"
+    },
+    {
+      "path": "scripts/create-photo-stress-scenario.mjs",
+      "status": "already_identical",
+      "public_base_blob": "011cf997da571751b2872694b530ce3f9095f9bd",
+      "snapshot_blob": "011cf997da571751b2872694b530ce3f9095f9bd"
+    },
+    {
+      "path": "scripts/preview.mjs",
+      "status": "already_identical",
+      "public_base_blob": "9e802db9cdac10137b83fa1c7901a3bfe9f651b0",
+      "snapshot_blob": "9e802db9cdac10137b83fa1c7901a3bfe9f651b0"
+    },
+    {
+      "path": "scripts/run-casitadex-linux-qa-20261021.sh",
+      "status": "already_identical",
+      "public_base_blob": "e9f6c0768a947c4848fc9866409f3aa9985a52dd",
+      "snapshot_blob": "e9f6c0768a947c4848fc9866409f3aa9985a52dd"
+    },
+    {
+      "path": "scripts/verify-local-only.gradle",
+      "status": "already_identical",
+      "public_base_blob": "5ec4dca0b1337c0845f8d49344e32302b9b65d3a",
+      "snapshot_blob": "5ec4dca0b1337c0845f8d49344e32302b9b65d3a"
+    },
+    {
+      "path": "scripts/verify-qa-backup-roundtrip.mjs",
+      "status": "already_identical",
+      "public_base_blob": "653dd7f279e4732f739933021560f21a27951248",
+      "snapshot_blob": "653dd7f279e4732f739933021560f21a27951248"
+    },
+    {
+      "path": "src/accepted-navigation-icon.tsx",
+      "status": "changed",
+      "public_base_blob": "263ed4df7d8ead2c3b4eb7d3b4f96f862f051fb9",
+      "snapshot_blob": "c503defe010dc865f3d61627f75ee999341696f1"
+    },
+    {
+      "path": "src/app/_layout.tsx",
+      "status": "changed",
+      "public_base_blob": "5b9a3efc06ae03c407d8fa646f4d966210322ff9",
+      "snapshot_blob": "c21e04022100861e3283ff0d60d98696785e4c53"
+    },
+    {
+      "path": "src/app/add.tsx",
+      "status": "already_identical",
+      "public_base_blob": "b563488b93fff353530ab85d37ca7b0e41d28584",
+      "snapshot_blob": "b563488b93fff353530ab85d37ca7b0e41d28584"
+    },
+    {
+      "path": "src/app/answers.tsx",
+      "status": "changed",
+      "public_base_blob": "cb13ec2e5a38db5fbea239d77b700eac844f7a71",
+      "snapshot_blob": "d87ecf7045eb460fd9446e5deb62e1b296120302"
+    },
+    {
+      "path": "src/app/card.tsx",
+      "status": "already_identical",
+      "public_base_blob": "cec47e8653382b4122fdcdf6ff17bfc4b4a16cd4",
+      "snapshot_blob": "cec47e8653382b4122fdcdf6ff17bfc4b4a16cd4"
+    },
+    {
+      "path": "src/app/index.tsx",
+      "status": "changed",
+      "public_base_blob": "87e6d54395c2b828e261a6ecf6c4e7b4662b5192",
+      "snapshot_blob": "f7ae07334908324d5690a59ccf8b9ce369b690cc"
+    },
+    {
+      "path": "src/app/memories.tsx",
+      "status": "changed",
+      "public_base_blob": "f6a78e8d84b3c3b08d59a0640d30114812009c52",
+      "snapshot_blob": "59d30dff3079b622ce727c84b1d781c08c0329a5"
+    },
+    {
+      "path": "src/app/more.tsx",
+      "status": "changed",
+      "public_base_blob": "ecc0e5509794dacc30c64e1d6db1963cc1d38a58",
+      "snapshot_blob": "17f11758bb1ea9a351d48d397cf60907937c73b2"
+    },
+    {
+      "path": "src/app/photo-viewer.tsx",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "1ea9e9ba508e2acad073b3536766837a77a9fc87"
+    },
+    {
+      "path": "src/app/photos-manage.tsx",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "61304b0ba289729758aff42ba6e9625bac7b365d"
+    },
+    {
+      "path": "src/app/photos.tsx",
+      "status": "changed",
+      "public_base_blob": "15c4d2e75f138889415c2c6a18dce458e6987706",
+      "snapshot_blob": "3397d6d8bcbd0bf3540fd600224e60444d111403"
+    },
+    {
+      "path": "src/app/reminders-manage.tsx",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "8ccc3f4ad73dd0f942092205445d69f34d5e52f4"
+    },
+    {
+      "path": "src/app/reminders.tsx",
+      "status": "changed",
+      "public_base_blob": "fc5c473b0d62dadc2ee3f739019df044bc397f73",
+      "snapshot_blob": "f2b202c1edbe1cb6ca7d41346419127abeb6e160"
+    },
+    {
+      "path": "src/app/sb29-review.tsx",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "813ed7b161de9e7733011cebfb49d2c6547a7b9a"
+    },
+    {
+      "path": "src/app/settings-manage.tsx",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "897ebf1cf40d1ae463f47dbfd3570f8043d3a58b"
+    },
+    {
+      "path": "src/app/share-memory.tsx",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "78d9b852d9fb791ca6c88ed6e35209f57d45e8b6"
+    },
+    {
+      "path": "src/backup-files.native.ts",
+      "status": "already_identical",
+      "public_base_blob": "84a275fa0cee5f9b958e98ccbec4b0410f19a6b1",
+      "snapshot_blob": "84a275fa0cee5f9b958e98ccbec4b0410f19a6b1"
+    },
+    {
+      "path": "src/backup-files.ts",
+      "status": "already_identical",
+      "public_base_blob": "543ea748b747d6daaf711dd0544debf5b436f873",
+      "snapshot_blob": "543ea748b747d6daaf711dd0544debf5b436f873"
+    },
+    {
+      "path": "src/brand-web-meta.tsx",
+      "status": "already_identical",
+      "public_base_blob": "00e2b95a7b1d6423db9559a378d5fb4c7e1c6518",
+      "snapshot_blob": "00e2b95a7b1d6423db9559a378d5fb4c7e1c6518"
+    },
+    {
+      "path": "src/brand-web-meta.web.tsx",
+      "status": "already_identical",
+      "public_base_blob": "78042768adeaa450d40126eb8fc3e9973e390bd9",
+      "snapshot_blob": "78042768adeaa450d40126eb8fc3e9973e390bd9"
+    },
+    {
+      "path": "src/brand.tsx",
+      "status": "changed",
+      "public_base_blob": "7de72d0582e8300fd6368f7a5340feea62b07421",
+      "snapshot_blob": "d709bb105e93aa4fd8d2865210fc1704dc17aa5b"
+    },
+    {
+      "path": "src/brand.web.tsx",
+      "status": "changed",
+      "public_base_blob": "7de72d0582e8300fd6368f7a5340feea62b07421",
+      "snapshot_blob": "0e792f69ea44e1d9f3492f02b4019765e76cf1a8"
+    },
+    {
+      "path": "src/draft-add.tsx",
+      "status": "already_identical",
+      "public_base_blob": "cb4fd0a322fd6d345da87e576ce85c04a1293afc",
+      "snapshot_blob": "cb4fd0a322fd6d345da87e576ce85c04a1293afc"
+    },
+    {
+      "path": "src/draft-sqlite.ts",
+      "status": "already_identical",
+      "public_base_blob": "52ea1162bef10f4005e33054ee41e3378267f0f3",
+      "snapshot_blob": "52ea1162bef10f4005e33054ee41e3378267f0f3"
+    },
+    {
+      "path": "src/draft-types.ts",
+      "status": "already_identical",
+      "public_base_blob": "5aa291faa1eedf3c9e673428f69b991a24f7f9ee",
+      "snapshot_blob": "5aa291faa1eedf3c9e673428f69b991a24f7f9ee"
+    },
+    {
+      "path": "src/editorial-intro.tsx",
+      "status": "changed",
+      "public_base_blob": "fc52c53908337f0226fcdb32ded90ee1336d11da",
+      "snapshot_blob": "76841d07c147a9a320c97c8477d853c7a661e142"
+    },
+    {
+      "path": "src/eng-backup.ts",
+      "status": "already_identical",
+      "public_base_blob": "d4966459c227581bb536551c2c8c8ab17ce40d82",
+      "snapshot_blob": "d4966459c227581bb536551c2c8c8ab17ce40d82"
+    },
+    {
+      "path": "src/eng-domain.ts",
+      "status": "changed",
+      "public_base_blob": "a0baacf397d85d7f27beb13691ec4bc445e19821",
+      "snapshot_blob": "112d3675ba3fb0b1e36b973adad17b89ad5314c5"
+    },
+    {
+      "path": "src/eng-duplicates.ts",
+      "status": "already_identical",
+      "public_base_blob": "574da817506c58a45a0038a6411b9b69260cbedd",
+      "snapshot_blob": "574da817506c58a45a0038a6411b9b69260cbedd"
+    },
+    {
+      "path": "src/eng-find.ts",
+      "status": "already_identical",
+      "public_base_blob": "bd1a7d03aa6c0b9a66600b1a018bc842cd86d11e",
+      "snapshot_blob": "bd1a7d03aa6c0b9a66600b1a018bc842cd86d11e"
+    },
+    {
+      "path": "src/eng-navigation.ts",
+      "status": "changed",
+      "public_base_blob": "fa7b4d643fea6d99928dcf3fb480014e366c7f89",
+      "snapshot_blob": "215ce0fd20d6afa0832f9fd16e707578b10f286b"
+    },
+    {
+      "path": "src/eng-runtime.native.ts",
+      "status": "changed",
+      "public_base_blob": "6fe6a53cfa713f4decfbb65e4dacafa20c433d3d",
+      "snapshot_blob": "73a6cbdf58b0f28b372bcd15397c7222a9e7b4f8"
+    },
+    {
+      "path": "src/eng-runtime.ts",
+      "status": "changed",
+      "public_base_blob": "b5189712bc301b9802b5ad9efaa707816a595b1c",
+      "snapshot_blob": "47f5b85f99dfc70577eccdacacf162330b5624cc"
+    },
+    {
+      "path": "src/eng-screens.tsx",
+      "status": "changed",
+      "public_base_blob": "3235a422e53c01b918c8cfa400f860f1908dce57",
+      "snapshot_blob": "a0c83cdbbbcc645a0f5f847e73b25c2d6566bcec"
+    },
+    {
+      "path": "src/eng-share.ts",
+      "status": "already_identical",
+      "public_base_blob": "6653b129f0ebe49598b808a85121163c075b6181",
+      "snapshot_blob": "6653b129f0ebe49598b808a85121163c075b6181"
+    },
+    {
+      "path": "src/eng-store.ts",
+      "status": "changed",
+      "public_base_blob": "8489fa59e7180576462ff41b20757489c0e68e55",
+      "snapshot_blob": "71747c09a26ceaf52fa84840b8d289fc2fb2a94e"
+    },
+    {
+      "path": "src/eng-stream-v4.ts",
+      "status": "already_identical",
+      "public_base_blob": "6662ab1ad98e4b32c3a0fdb12580221e4f5e6982",
+      "snapshot_blob": "6662ab1ad98e4b32c3a0fdb12580221e4f5e6982"
+    },
+    {
+      "path": "src/eng-stream.ts",
+      "status": "already_identical",
+      "public_base_blob": "163b84f5f9fe26bf915a7ad6d4e5c390a85aefbc",
+      "snapshot_blob": "163b84f5f9fe26bf915a7ad6d4e5c390a85aefbc"
+    },
+    {
+      "path": "src/eng-text-backup.ts",
+      "status": "already_identical",
+      "public_base_blob": "da4aec15143b594691de1b80e7accc18d03d4e12",
+      "snapshot_blob": "da4aec15143b594691de1b80e7accc18d03d4e12"
+    },
+    {
+      "path": "src/eng-types.ts",
+      "status": "already_identical",
+      "public_base_blob": "a0b60c9d3f80b380bdc1f3fd05e2ff26530d9135",
+      "snapshot_blob": "a0b60c9d3f80b380bdc1f3fd05e2ff26530d9135"
+    },
+    {
+      "path": "src/figma-first/FigmaFind.tsx",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "f5da4ad5780304a0e29079fa41457ff71d8b4ea6"
+    },
+    {
+      "path": "src/figma-first/FigmaHome.tsx",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "82ce467275a75196b9d4a197ca727d4fab2668d4"
+    },
+    {
+      "path": "src/figma-first/FigmaMemories.tsx",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "45f73ddb660e8574a4a2400165e3b402cc8778d0"
+    },
+    {
+      "path": "src/figma-first/FigmaPhotos.tsx",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "336c5ae836339d1ba343bd030c3a544a081147b5"
+    },
+    {
+      "path": "src/figma-first/FigmaReminders.tsx",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "b62ac90aae6a5256a16adc4ba4447f95d222d623"
+    },
+    {
+      "path": "src/figma-first/FigmaSettings.tsx",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "1b9565663fac35570776d1b5bcabaf916c1d5159"
+    },
+    {
+      "path": "src/figma-first/HomeActionCard.tsx",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "02c83f57488171b3d23b6b413acbd24d25f3c6f4"
+    },
+    {
+      "path": "src/figma-first/PrimaryCta.tsx",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "c38d115facdb91e92b75e2fd27c61e455314e36f"
+    },
+    {
+      "path": "src/figma-first/ReminderPreview.tsx",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "f2a9f74d36e7822aa47009359b58710d1aa7ea32"
+    },
+    {
+      "path": "src/figma-first/SecondaryScreenHeading.tsx",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "a8ebce732c9e86b8e60399b30c3d3d1b19fda801"
+    },
+    {
+      "path": "src/figma-first/photo-summaries.ts",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "421838c38845142dfd181f2fd0addcd6febd18c6"
+    },
+    {
+      "path": "src/figma-first/tokens.ts",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "d83a85f00d190b033bfbb1d2f0408d9e75bdb477"
+    },
+    {
+      "path": "src/figma-first/view-models.ts",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "f5258856f12e277c9e14fc33d0c077e823a655c9"
+    },
+    {
+      "path": "src/home-action.tsx",
+      "status": "changed",
+      "public_base_blob": "c887dc7617f62f1050c54ef7ee4a4c9685cc4c47",
+      "snapshot_blob": "30121ad4a3e0cbc54c19e513f1b00722d6f9cd4c"
+    },
+    {
+      "path": "src/media-attachment.native.ts",
+      "status": "already_identical",
+      "public_base_blob": "4395cbbb8d5a7edd6e8c2bb6835f6771f8305ca5",
+      "snapshot_blob": "4395cbbb8d5a7edd6e8c2bb6835f6771f8305ca5"
+    },
+    {
+      "path": "src/media-attachment.ts",
+      "status": "already_identical",
+      "public_base_blob": "3eef651d11409a038557090d2d2b6bb3cc484f0c",
+      "snapshot_blob": "3eef651d11409a038557090d2d2b6bb3cc484f0c"
+    },
+    {
+      "path": "src/media-backup-v2.ts",
+      "status": "already_identical",
+      "public_base_blob": "ca120c6d9f018111fbe9d4206d746d1c40e4fd58",
+      "snapshot_blob": "ca120c6d9f018111fbe9d4206d746d1c40e4fd58"
+    },
+    {
+      "path": "src/media-coordinator.ts",
+      "status": "already_identical",
+      "public_base_blob": "5708d8ea9b7b7970a6c0e83cf7cc0db483f9b461",
+      "snapshot_blob": "5708d8ea9b7b7970a6c0e83cf7cc0db483f9b461"
+    },
+    {
+      "path": "src/media-hash.native.ts",
+      "status": "already_identical",
+      "public_base_blob": "11ac09ceb9c2524eac7b9b41cd531f4bf13b3e7b",
+      "snapshot_blob": "11ac09ceb9c2524eac7b9b41cd531f4bf13b3e7b"
+    },
+    {
+      "path": "src/media-integrity.ts",
+      "status": "already_identical",
+      "public_base_blob": "3cc1a2192df231447aba6c3457d1df5d1bfabfbf",
+      "snapshot_blob": "3cc1a2192df231447aba6c3457d1df5d1bfabfbf"
+    },
+    {
+      "path": "src/media-journal-flow.ts",
+      "status": "already_identical",
+      "public_base_blob": "cfcebc11599591dd24081fe339d2c244d843f305",
+      "snapshot_blob": "cfcebc11599591dd24081fe339d2c244d843f305"
+    },
+    {
+      "path": "src/media-journal.ts",
+      "status": "already_identical",
+      "public_base_blob": "9413fc534edb7e14023c0b8bff0f5deedb702d54",
+      "snapshot_blob": "9413fc534edb7e14023c0b8bff0f5deedb702d54"
+    },
+    {
+      "path": "src/media-manifest.ts",
+      "status": "already_identical",
+      "public_base_blob": "a0f5cc9062c6c23254a952e99ca254c29ebccf28",
+      "snapshot_blob": "a0f5cc9062c6c23254a952e99ca254c29ebccf28"
+    },
+    {
+      "path": "src/media-portable-container.ts",
+      "status": "already_identical",
+      "public_base_blob": "dd7785b4789257daeb5616909f04b74f477c4f67",
+      "snapshot_blob": "dd7785b4789257daeb5616909f04b74f477c4f67"
+    },
+    {
+      "path": "src/media-recovery.ts",
+      "status": "already_identical",
+      "public_base_blob": "74288d4235ab5cef96ea5a24854edf86afcdbb3a",
+      "snapshot_blob": "74288d4235ab5cef96ea5a24854edf86afcdbb3a"
+    },
+    {
+      "path": "src/media-restore-gate.ts",
+      "status": "already_identical",
+      "public_base_blob": "8908d7135e0ab9d45ba824bbc9efd6d4ac4bb164",
+      "snapshot_blob": "8908d7135e0ab9d45ba824bbc9efd6d4ac4bb164"
+    },
+    {
+      "path": "src/media-sqlite.ts",
+      "status": "already_identical",
+      "public_base_blob": "29f2d5e22cb0d011ef4eb13faa5aaac705622a22",
+      "snapshot_blob": "29f2d5e22cb0d011ef4eb13faa5aaac705622a22"
+    },
+    {
+      "path": "src/media-staging.ts",
+      "status": "already_identical",
+      "public_base_blob": "34483bd62599f7fae4a776c26b9c4e6eee86029c",
+      "snapshot_blob": "34483bd62599f7fae4a776c26b9c4e6eee86029c"
+    },
+    {
+      "path": "src/media-store.native.ts",
+      "status": "already_identical",
+      "public_base_blob": "434ffe7b6f046aa62fd2156485653c0f283c9b0b",
+      "snapshot_blob": "434ffe7b6f046aa62fd2156485653c0f283c9b0b"
+    },
+    {
+      "path": "src/media-transfer.native.ts",
+      "status": "already_identical",
+      "public_base_blob": "02bdabe17d04b03f427ba5c255a353f53c48fd46",
+      "snapshot_blob": "02bdabe17d04b03f427ba5c255a353f53c48fd46"
+    },
+    {
+      "path": "src/media-transfer.ts",
+      "status": "already_identical",
+      "public_base_blob": "44591e651d6446dc25e4c6e7f65587463f5b0355",
+      "snapshot_blob": "44591e651d6446dc25e4c6e7f65587463f5b0355"
+    },
+    {
+      "path": "src/model.ts",
+      "status": "already_identical",
+      "public_base_blob": "56c6f4b6650a6c402d82cc823238f2a5f3e39af2",
+      "snapshot_blob": "56c6f4b6650a6c402d82cc823238f2a5f3e39af2"
+    },
+    {
+      "path": "src/navigation-icon.tsx",
+      "status": "already_identical",
+      "public_base_blob": "b1fe5051e0af2af62b18f2d89711a4a670d63545",
+      "snapshot_blob": "b1fe5051e0af2af62b18f2d89711a4a670d63545"
+    },
+    {
+      "path": "src/persistence.native.ts",
+      "status": "already_identical",
+      "public_base_blob": "06fd35f38b3e1cc8dbec1403fe99ac112a9c2499",
+      "snapshot_blob": "06fd35f38b3e1cc8dbec1403fe99ac112a9c2499"
+    },
+    {
+      "path": "src/persistence.ts",
+      "status": "already_identical",
+      "public_base_blob": "6a070cc4de75c10c6e9f8b8826b8af91cdf7ea62",
+      "snapshot_blob": "6a070cc4de75c10c6e9f8b8826b8af91cdf7ea62"
+    },
+    {
+      "path": "src/preferences.ts",
+      "status": "already_identical",
+      "public_base_blob": "39d6e5395c676fe8bdf3c89dc7281a3c7e24c20e",
+      "snapshot_blob": "39d6e5395c676fe8bdf3c89dc7281a3c7e24c20e"
+    },
+    {
+      "path": "src/qa-illustration-bytes.ts",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "06c811c4656e8fd8ef9aa11222f0df38a2a0ede5"
+    },
+    {
+      "path": "src/reminder-alert-plan.ts",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "4e2fc91221161b25d07f0520539bc82f2e1d3545"
+    },
+    {
+      "path": "src/reminder-alerts.native.ts",
+      "status": "changed",
+      "public_base_blob": "435266dc17ea22751c258f31f4e05e8259c2b74f",
+      "snapshot_blob": "d5ebf37f2dbcc14ba6f1b491d40dca0ee0736a99"
+    },
+    {
+      "path": "src/reminder-backup-v4.ts",
+      "status": "changed",
+      "public_base_blob": "8a9cbec032fc332ba558d1f3d96e544ddd67bf93",
+      "snapshot_blob": "bc2798bd2d27497b63182bcb5f2fd866e65391fd"
+    },
+    {
+      "path": "src/reminder-recurrence.ts",
+      "status": "changed",
+      "public_base_blob": "864c0b4b8e734bdfc76c706bd3646a027b6ff81c",
+      "snapshot_blob": "afbb30597cb7149c5cca696835092690c0ccb552"
+    },
+    {
+      "path": "src/reminder-restore-v4.ts",
+      "status": "changed",
+      "public_base_blob": "01dea74d41d178492d07c24b1e46b64a3d041e90",
+      "snapshot_blob": "03678230aee850a6070e183b55eae81af57fd090"
+    },
+    {
+      "path": "src/repository.ts",
+      "status": "already_identical",
+      "public_base_blob": "15c9a2ec0136ddcb93aa2613039d37c6a2d47371",
+      "snapshot_blob": "15c9a2ec0136ddcb93aa2613039d37c6a2d47371"
+    },
+    {
+      "path": "src/sb20-contract.ts",
+      "status": "already_identical",
+      "public_base_blob": "4ed3c50f22c6ff4862a66fd48cb1d15ed36a8fea",
+      "snapshot_blob": "4ed3c50f22c6ff4862a66fd48cb1d15ed36a8fea"
+    },
+    {
+      "path": "src/sb20-draft-media.ts",
+      "status": "already_identical",
+      "public_base_blob": "c1bda56719fe730dd6d3965333c515ab16363c90",
+      "snapshot_blob": "c1bda56719fe730dd6d3965333c515ab16363c90"
+    },
+    {
+      "path": "src/sb20-eng-f-b-journal.mjs",
+      "status": "already_identical",
+      "public_base_blob": "2f1a91097ec8993971be11a189bf255a3ce540bb",
+      "snapshot_blob": "2f1a91097ec8993971be11a189bf255a3ce540bb"
+    },
+    {
+      "path": "src/sb20-eng-f-c-coordinator.mjs",
+      "status": "already_identical",
+      "public_base_blob": "d2763eb4fb07503ab3a86726e912bf64545e9697",
+      "snapshot_blob": "d2763eb4fb07503ab3a86726e912bf64545e9697"
+    },
+    {
+      "path": "src/sb20-eng-f-d-async.ts",
+      "status": "already_identical",
+      "public_base_blob": "d766fbed1f4c8c27b8409c10e8be6d8501e9d485",
+      "snapshot_blob": "d766fbed1f4c8c27b8409c10e8be6d8501e9d485"
+    },
+    {
+      "path": "src/sb20-eng-f-e-bridge.ts",
+      "status": "already_identical",
+      "public_base_blob": "59a9e999d4c1e84315d8ebeca7234bb34cbbaee5",
+      "snapshot_blob": "59a9e999d4c1e84315d8ebeca7234bb34cbbaee5"
+    },
+    {
+      "path": "src/sb20-eng-f-f-ownership.ts",
+      "status": "already_identical",
+      "public_base_blob": "3928b2886bdaf426906757c39d7506ca9ebd2521",
+      "snapshot_blob": "3928b2886bdaf426906757c39d7506ca9ebd2521"
+    },
+    {
+      "path": "src/sb20-eng-f-g-enumerator.ts",
+      "status": "already_identical",
+      "public_base_blob": "94adab248853f3b3084226e84fa91978f68a96b4",
+      "snapshot_blob": "94adab248853f3b3084226e84fa91978f68a96b4"
+    },
+    {
+      "path": "src/sb20-eng-f-h-verifier.ts",
+      "status": "already_identical",
+      "public_base_blob": "f0ee510cd7517f0a355454869c24665129bb6a35",
+      "snapshot_blob": "f0ee510cd7517f0a355454869c24665129bb6a35"
+    },
+    {
+      "path": "src/sb20-eng-f-i-hardening.ts",
+      "status": "already_identical",
+      "public_base_blob": "e72de19f872f90c99e6ed9325c8453e929bf4a3c",
+      "snapshot_blob": "e72de19f872f90c99e6ed9325c8453e929bf4a3c"
+    },
+    {
+      "path": "src/sb20-expo-ports.ts",
+      "status": "already_identical",
+      "public_base_blob": "571f5e04240363261ed19d284336cac186f3a02d",
+      "snapshot_blob": "571f5e04240363261ed19d284336cac186f3a02d"
+    },
+    {
+      "path": "src/sb20-expo-runtime.native.ts",
+      "status": "already_identical",
+      "public_base_blob": "cd50ba3ceda9357ae702f2bba57b2fdb547c9bfe",
+      "snapshot_blob": "cd50ba3ceda9357ae702f2bba57b2fdb547c9bfe"
+    },
+    {
+      "path": "src/sb20-native-adapter.ts",
+      "status": "already_identical",
+      "public_base_blob": "939e5694b94ac17c1fffbaee79a2ec062dd83986",
+      "snapshot_blob": "939e5694b94ac17c1fffbaee79a2ec062dd83986"
+    },
+    {
+      "path": "src/sb20-native-fixture.mjs",
+      "status": "already_identical",
+      "public_base_blob": "0f05abb4598812e1fd0d82ccf7b6e474289f66ec",
+      "snapshot_blob": "0f05abb4598812e1fd0d82ccf7b6e474289f66ec"
+    },
+    {
+      "path": "src/sb26-qa-seed.ts",
+      "status": "already_identical",
+      "public_base_blob": "a777fff608954b159b921a209daf1263cb288ee1",
+      "snapshot_blob": "a777fff608954b159b921a209daf1263cb288ee1"
+    },
+    {
+      "path": "src/screens.tsx",
+      "status": "already_identical",
+      "public_base_blob": "dc6b4359acbc2a3a55b76579e9239819702a8220",
+      "snapshot_blob": "dc6b4359acbc2a3a55b76579e9239819702a8220"
+    },
+    {
+      "path": "src/sqlite-repository.ts",
+      "status": "already_identical",
+      "public_base_blob": "65bdbd45dd3e9242074d03691136f38e1f6c2c36",
+      "snapshot_blob": "65bdbd45dd3e9242074d03691136f38e1f6c2c36"
+    },
+    {
+      "path": "src/sqlite-write-transaction.ts",
+      "status": "already_identical",
+      "public_base_blob": "794f9b1b72a6afef32553f4b74169f9794c26822",
+      "snapshot_blob": "794f9b1b72a6afef32553f4b74169f9794c26822"
+    },
+    {
+      "path": "src/standalone-reminders.native.ts",
+      "status": "changed",
+      "public_base_blob": "32bdf32ef3d0138bf97bd3be1de8eab71eaa2d09",
+      "snapshot_blob": "3b1fb5d87eb02d5bbcccb93c917e56afc74e636d"
+    },
+    {
+      "path": "src/standalone-reminders.ts",
+      "status": "changed",
+      "public_base_blob": "1bbebe866952d7fcfaaeaa9a62c40e792302e550",
+      "snapshot_blob": "41cb3191df66d6d1eb2174390eeb5292f61aa1f5"
+    },
+    {
+      "path": "src/state.tsx",
+      "status": "already_identical",
+      "public_base_blob": "cbf67bd0035b4cb2b779c83dfe70c927d10cfc8e",
+      "snapshot_blob": "cbf67bd0035b4cb2b779c83dfe70c927d10cfc8e"
+    },
+    {
+      "path": "src/storage-safety.ts",
+      "status": "already_identical",
+      "public_base_blob": "d3208cb61e1eedfa64566c245341e386093a125c",
+      "snapshot_blob": "d3208cb61e1eedfa64566c245341e386093a125c"
+    },
+    {
+      "path": "src/storage-space.native.ts",
+      "status": "already_identical",
+      "public_base_blob": "1a5d2dd6d36c2e3c38b02c89fdadb6cd3cfe659c",
+      "snapshot_blob": "1a5d2dd6d36c2e3c38b02c89fdadb6cd3cfe659c"
+    },
+    {
+      "path": "src/theme.ts",
+      "status": "already_identical",
+      "public_base_blob": "0d3f61b14700b416e21752f22fbc3d49f4721599",
+      "snapshot_blob": "0d3f61b14700b416e21752f22fbc3d49f4721599"
+    },
+    {
+      "path": "src/ui.tsx",
+      "status": "changed",
+      "public_base_blob": "4c85be51ecb9f5590e0c4dcf4e6ec4f7a8410334",
+      "snapshot_blob": "aa5963c428574f770930b864a1d7c2efc6b4d2ba"
+    },
+    {
+      "path": "tests/accessibility-smoke.cjs",
+      "status": "already_identical",
+      "public_base_blob": "a127c72bce0c2ee42167801e8da00f7b4f3b1fc0",
+      "snapshot_blob": "a127c72bce0c2ee42167801e8da00f7b4f3b1fc0"
+    },
+    {
+      "path": "tests/android-build-contract.test.mjs",
+      "status": "already_identical",
+      "public_base_blob": "169f8d739714cf3e1496b79ccea002e04060b410",
+      "snapshot_blob": "169f8d739714cf3e1496b79ccea002e04060b410"
+    },
+    {
+      "path": "tests/android-native.cjs",
+      "status": "already_identical",
+      "public_base_blob": "4964148350f0bc0a93bc4dfc946c9d9b86b03b43",
+      "snapshot_blob": "4964148350f0bc0a93bc4dfc946c9d9b86b03b43"
+    },
+    {
+      "path": "tests/appearance-browser.cjs",
+      "status": "already_identical",
+      "public_base_blob": "f9338a52c61e88f87f687acc1e5b8cf3b042361f",
+      "snapshot_blob": "f9338a52c61e88f87f687acc1e5b8cf3b042361f"
+    },
+    {
+      "path": "tests/backup-files.test.mjs",
+      "status": "already_identical",
+      "public_base_blob": "7e67273c5ae805abe4a269bd718bfd9b968e68b1",
+      "snapshot_blob": "7e67273c5ae805abe4a269bd718bfd9b968e68b1"
+    },
+    {
+      "path": "tests/brand-browser.cjs",
+      "status": "already_identical",
+      "public_base_blob": "37237ff6165e34e008c384ea3f007b7f46c2e70f",
+      "snapshot_blob": "37237ff6165e34e008c384ea3f007b7f46c2e70f"
+    },
+    {
+      "path": "tests/browser-smoke.cjs",
+      "status": "already_identical",
+      "public_base_blob": "4f17f4e3436575b19b55862ee76ada76fd902ddb",
+      "snapshot_blob": "4f17f4e3436575b19b55862ee76ada76fd902ddb"
+    },
+    {
+      "path": "tests/config.test.mjs",
+      "status": "changed",
+      "public_base_blob": "65499f5cd8efb1a0f94a882912bf5e6284741813",
+      "snapshot_blob": "605ac4959715caf8eeb080a73a092d677f1d6281"
+    },
+    {
+      "path": "tests/domain.test.mjs",
+      "status": "already_identical",
+      "public_base_blob": "5dbedc5f10d880c8dc56f4635a319e44b3c59d31",
+      "snapshot_blob": "5dbedc5f10d880c8dc56f4635a319e44b3c59d31"
+    },
+    {
+      "path": "tests/durability-browser.cjs",
+      "status": "already_identical",
+      "public_base_blob": "2188aacdf4344ee7445eb3b4c4bda393409a4fce",
+      "snapshot_blob": "2188aacdf4344ee7445eb3b4c4bda393409a4fce"
+    },
+    {
+      "path": "tests/durability.test.mjs",
+      "status": "already_identical",
+      "public_base_blob": "25971651c09d30e8c9fe2d282fdc0285ed6a8065",
+      "snapshot_blob": "25971651c09d30e8c9fe2d282fdc0285ed6a8065"
+    },
+    {
+      "path": "tests/editor-layout-contract.test.mjs",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "7d38cbe6ae7a2857ef3889053cc6f3ce46e24913"
+    },
+    {
+      "path": "tests/eng-completion.test.mjs",
+      "status": "already_identical",
+      "public_base_blob": "b7440f5540d9ecaefd772f5a709e09e96b01ee05",
+      "snapshot_blob": "b7440f5540d9ecaefd772f5a709e09e96b01ee05"
+    },
+    {
+      "path": "tests/eng-consumer-media.test.mjs",
+      "status": "changed",
+      "public_base_blob": "fe6f2aa8eec42ea94d6e1dac05b9d9bb118e2b26",
+      "snapshot_blob": "947d49de22d47d631c4fc4ac4ec860830c0d86cf"
+    },
+    {
+      "path": "tests/eng-disk-roundtrip.test.mjs",
+      "status": "already_identical",
+      "public_base_blob": "f0fd19a10ea7355b4990858948558b2460c98d02",
+      "snapshot_blob": "f0fd19a10ea7355b4990858948558b2460c98d02"
+    },
+    {
+      "path": "tests/eng-find.test.mjs",
+      "status": "already_identical",
+      "public_base_blob": "8fdf8ae28f4fd1569d1b0467614cd26f1b496cd5",
+      "snapshot_blob": "8fdf8ae28f4fd1569d1b0467614cd26f1b496cd5"
+    },
+    {
+      "path": "tests/eng-fixture.mjs",
+      "status": "already_identical",
+      "public_base_blob": "f53d59ce8c74b6df85ac0c3127e1147ec709133b",
+      "snapshot_blob": "f53d59ce8c74b6df85ac0c3127e1147ec709133b"
+    },
+    {
+      "path": "tests/eng-share.test.mjs",
+      "status": "already_identical",
+      "public_base_blob": "d2bd4205a49a2bee5a2dc528ce904cc6cc1f2f3c",
+      "snapshot_blob": "d2bd4205a49a2bee5a2dc528ce904cc6cc1f2f3c"
+    },
+    {
+      "path": "tests/eng-text-backup.test.mjs",
+      "status": "already_identical",
+      "public_base_blob": "96ceb3e0b920be3dc883781df922fda3429c5ae2",
+      "snapshot_blob": "96ceb3e0b920be3dc883781df922fda3429c5ae2"
+    },
+    {
+      "path": "tests/eng-v4-atomic.test.mjs",
+      "status": "already_identical",
+      "public_base_blob": "3b24f113e2848932d45cddd0a73518628531462c",
+      "snapshot_blob": "3b24f113e2848932d45cddd0a73518628531462c"
+    },
+    {
+      "path": "tests/figma-authority-gate.test.mjs",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "401f64744d504ab8a3d09ec2a7bb5dc08acd967e"
+    },
+    {
+      "path": "tests/figma-brand-assets.test.mjs",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "a335dc02583db0f077269e8e381106904aece2ec"
+    },
+    {
+      "path": "tests/figma-dedicated-pages.test.mjs",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "71fd2883bc2b9ff54468192a1c33476659b961e8"
+    },
+    {
+      "path": "tests/figma-first-boundary.test.mjs",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "2fa4c1043d481a4a09c83f447fd7d1a8b6878577"
+    },
+    {
+      "path": "tests/figma-home-contract.test.mjs",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "4199d2969baf59846466361e8262f4ed6a420cad"
+    },
+    {
+      "path": "tests/figma-manifest-gate.test.mjs",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "45b9f36fb00213fe10700d46d202b58298010495"
+    },
+    {
+      "path": "tests/figma-page-contract.test.mjs",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "904aaf6a149c67dbc59eb3fae91630bcbee0e77e"
+    },
+    {
+      "path": "tests/figma-photo-behavior.test.mjs",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "5a2daa3e74c18636cc8b3169a2f4dcb443c5cf6d"
+    },
+    {
+      "path": "tests/figma-settings-entry.test.mjs",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "03331a91d266d87261288316ed8e8145a939a1f4"
+    },
+    {
+      "path": "tests/figma-store-config.test.mjs",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "dcdd24e057d1fe64e64a9a5b367a8ca74878a6b3"
+    },
+    {
+      "path": "tests/figma-store-evidence.test.mjs",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "5e38af4cedc697fb04fe96bbf5521492be5bb70b"
+    },
+    {
+      "path": "tests/figma-store-readiness.test.mjs",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "e96aac040ca361a557aad8fb6d960f94654e0542"
+    },
+    {
+      "path": "tests/find-keyboard-navigation.test.mjs",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "e013652c3f2c0de828aee1de2375f1565734cdec"
+    },
+    {
+      "path": "tests/fixtures/synthetic-equipment-label.png",
+      "status": "already_identical",
+      "public_base_blob": "75c496b180416ce633009c74ed6f83d085916244",
+      "snapshot_blob": "75c496b180416ce633009c74ed6f83d085916244"
+    },
+    {
+      "path": "tests/full-eng-native-boundaries.test.mjs",
+      "status": "already_identical",
+      "public_base_blob": "2db4159c88c31fda03e23ca307bdb3cc6e2e1506",
+      "snapshot_blob": "2db4159c88c31fda03e23ca307bdb3cc6e2e1506"
+    },
+    {
+      "path": "tests/full-eng-stream.test.mjs",
+      "status": "already_identical",
+      "public_base_blob": "745612125158839ab5a8400ffcc4856cd5f110d3",
+      "snapshot_blob": "745612125158839ab5a8400ffcc4856cd5f110d3"
+    },
+    {
+      "path": "tests/full-eng-v4.test.mjs",
+      "status": "already_identical",
+      "public_base_blob": "542bb3073a073e96878787a83d9d901c96eca2cd",
+      "snapshot_blob": "542bb3073a073e96878787a83d9d901c96eca2cd"
+    },
+    {
+      "path": "tests/full-eng.test.mjs",
+      "status": "already_identical",
+      "public_base_blob": "571803810e78659768fac9c5e98d2e1f1373f874",
+      "snapshot_blob": "571803810e78659768fac9c5e98d2e1f1373f874"
+    },
+    {
+      "path": "tests/home-function-first.test.mjs",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "7ea2248419c0029236b604895225d6c2dfce7c8e"
+    },
+    {
+      "path": "tests/household-fixture.mjs",
+      "status": "already_identical",
+      "public_base_blob": "91a29c898bbfb11303a0b8bd31d19c62430b8058",
+      "snapshot_blob": "91a29c898bbfb11303a0b8bd31d19c62430b8058"
+    },
+    {
+      "path": "tests/household-scenarios.test.mjs",
+      "status": "already_identical",
+      "public_base_blob": "646b2600455e6456e09aa6b555543bb3d1b2905f",
+      "snapshot_blob": "646b2600455e6456e09aa6b555543bb3d1b2905f"
+    },
+    {
+      "path": "tests/legacy-media-cleanup-guard.test.mjs",
+      "status": "already_identical",
+      "public_base_blob": "ea2df53ea28c61962029a6c22a70d30280721a6d",
+      "snapshot_blob": "ea2df53ea28c61962029a6c22a70d30280721a6d"
+    },
+    {
+      "path": "tests/media-atomic.test.mjs",
+      "status": "already_identical",
+      "public_base_blob": "d1d41da817dade6d01b11b59167ff528f2dd4955",
+      "snapshot_blob": "d1d41da817dade6d01b11b59167ff528f2dd4955"
+    },
+    {
+      "path": "tests/media-backup-v2.test.mjs",
+      "status": "already_identical",
+      "public_base_blob": "0253d0322a2d80232ae6671066143684de663032",
+      "snapshot_blob": "0253d0322a2d80232ae6671066143684de663032"
+    },
+    {
+      "path": "tests/media-base64-native.test.mjs",
+      "status": "already_identical",
+      "public_base_blob": "63c20b783a4c38895ff3ae5965741608674b9f3d",
+      "snapshot_blob": "63c20b783a4c38895ff3ae5965741608674b9f3d"
+    },
+    {
+      "path": "tests/media-coordinator.test.mjs",
+      "status": "already_identical",
+      "public_base_blob": "7cd5512e64f1e2ea170b48d54d1e577181148f68",
+      "snapshot_blob": "7cd5512e64f1e2ea170b48d54d1e577181148f68"
+    },
+    {
+      "path": "tests/media-integrity.test.mjs",
+      "status": "already_identical",
+      "public_base_blob": "a543db57ccb7fae94c0165dcce4d17b612e9d4d8",
+      "snapshot_blob": "a543db57ccb7fae94c0165dcce4d17b612e9d4d8"
+    },
+    {
+      "path": "tests/media-journal-durable.test.mjs",
+      "status": "already_identical",
+      "public_base_blob": "b7417848ad3c5300b3dc8708f58d85d42b886a07",
+      "snapshot_blob": "b7417848ad3c5300b3dc8708f58d85d42b886a07"
+    },
+    {
+      "path": "tests/media-journal-flow.test.mjs",
+      "status": "already_identical",
+      "public_base_blob": "06cfed35f8f2e822fd8139a88bd20ebb1913fa95",
+      "snapshot_blob": "06cfed35f8f2e822fd8139a88bd20ebb1913fa95"
+    },
+    {
+      "path": "tests/media-journal.test.mjs",
+      "status": "already_identical",
+      "public_base_blob": "6d2151ed5fa8cec01ee7dc3f3830e49c32c1a14d",
+      "snapshot_blob": "6d2151ed5fa8cec01ee7dc3f3830e49c32c1a14d"
+    },
+    {
+      "path": "tests/media-legacy-replacement-guard.test.mjs",
+      "status": "already_identical",
+      "public_base_blob": "939178b73c6c8e93a860dc9daa7b72bd90eb1d53",
+      "snapshot_blob": "939178b73c6c8e93a860dc9daa7b72bd90eb1d53"
+    },
+    {
+      "path": "tests/media-manifest.test.mjs",
+      "status": "already_identical",
+      "public_base_blob": "07cd830a213f79b2dfb3366377a7838e02987a35",
+      "snapshot_blob": "07cd830a213f79b2dfb3366377a7838e02987a35"
+    },
+    {
+      "path": "tests/media-native-restore-transaction.test.mjs",
+      "status": "already_identical",
+      "public_base_blob": "e2a09b25c02cd35cd92ecc2b1516f5a7a5ace943",
+      "snapshot_blob": "e2a09b25c02cd35cd92ecc2b1516f5a7a5ace943"
+    },
+    {
+      "path": "tests/media-portable-container.test.mjs",
+      "status": "already_identical",
+      "public_base_blob": "4f262ebae612f9fc3cdf2552dd5eb08197965fc4",
+      "snapshot_blob": "4f262ebae612f9fc3cdf2552dd5eb08197965fc4"
+    },
+    {
+      "path": "tests/media-recovery.test.mjs",
+      "status": "already_identical",
+      "public_base_blob": "c7cf0a284c0ae8f32d2b77d3b0f95f8201be59da",
+      "snapshot_blob": "c7cf0a284c0ae8f32d2b77d3b0f95f8201be59da"
+    },
+    {
+      "path": "tests/media-restore-gate.test.mjs",
+      "status": "already_identical",
+      "public_base_blob": "14a93867dd29be64b464e9489c7b53a3350b6416",
+      "snapshot_blob": "14a93867dd29be64b464e9489c7b53a3350b6416"
+    },
+    {
+      "path": "tests/media-sqlite.test.mjs",
+      "status": "already_identical",
+      "public_base_blob": "e9316df75d122c78193885517d8995077573c81d",
+      "snapshot_blob": "e9316df75d122c78193885517d8995077573c81d"
+    },
+    {
+      "path": "tests/media-staging.test.mjs",
+      "status": "already_identical",
+      "public_base_blob": "0298e530b0713c9265444f1000705894f73b5b01",
+      "snapshot_blob": "0298e530b0713c9265444f1000705894f73b5b01"
+    },
+    {
+      "path": "tests/media-store-native.test.mjs",
+      "status": "already_identical",
+      "public_base_blob": "ee511403d2988007856ad42a8ef25c663070d67f",
+      "snapshot_blob": "ee511403d2988007856ad42a8ef25c663070d67f"
+    },
+    {
+      "path": "tests/native-draft.test.mjs",
+      "status": "already_identical",
+      "public_base_blob": "cc2c32d29f000d8f45e30a1ba4f640017f65eb7e",
+      "snapshot_blob": "cc2c32d29f000d8f45e30a1ba4f640017f65eb7e"
+    },
+    {
+      "path": "tests/native-media-await.test.mjs",
+      "status": "already_identical",
+      "public_base_blob": "5e6f98358ab8d5011ac09ab4ad4667a350eb3832",
+      "snapshot_blob": "5e6f98358ab8d5011ac09ab4ad4667a350eb3832"
+    },
+    {
+      "path": "tests/photo-qa-fixture-isolation.test.mjs",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "769530c5b24e9af164b8888721d01b8506c29ec1"
+    },
+    {
+      "path": "tests/reminder-alert-native.test.mjs",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "0cb27ed8593ff038195c4f4e3b5aa7ff461a93a3"
+    },
+    {
+      "path": "tests/reminder-alert-plan.test.mjs",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "e8c54272d16ced053a854084076dfa8655b0b0b5"
+    },
+    {
+      "path": "tests/reminder-backup-v4.test.mjs",
+      "status": "changed",
+      "public_base_blob": "ef42b5a52d919f52e326548fd429a7b708fe00ed",
+      "snapshot_blob": "bc8f4a823cd21733defbd08277060c4160c67a55"
+    },
+    {
+      "path": "tests/reminder-recurrence.test.mjs",
+      "status": "changed",
+      "public_base_blob": "20542ed4bfe956863e0a5874078e00e0337290df",
+      "snapshot_blob": "57a392c7e98bac0c86edb68fa910f2c5a4d09be9"
+    },
+    {
+      "path": "tests/reminder-restore-v4.test.mjs",
+      "status": "changed",
+      "public_base_blob": "26eefcd75893c3ad1de9bcb050b874f57fb7e617",
+      "snapshot_blob": "7dacde124b7da76d1ea276be7857e64261ed7cc4"
+    },
+    {
+      "path": "tests/return-position-contract.test.mjs",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "f85dcd7c6bce586bbdc0cb41501101f6217eff9e"
+    },
+    {
+      "path": "tests/sb20-eng-a.test.mjs",
+      "status": "already_identical",
+      "public_base_blob": "6f640356133f1407eedb447a2fa8f47314e3ea4e",
+      "snapshot_blob": "6f640356133f1407eedb447a2fa8f47314e3ea4e"
+    },
+    {
+      "path": "tests/sb20-eng-b.test.mjs",
+      "status": "already_identical",
+      "public_base_blob": "d8d82f5a6e9af5bcfc3aecb24953f5d6e85387d0",
+      "snapshot_blob": "d8d82f5a6e9af5bcfc3aecb24953f5d6e85387d0"
+    },
+    {
+      "path": "tests/sb20-eng-c.test.mjs",
+      "status": "already_identical",
+      "public_base_blob": "6d46c7ec887217d4e60608b7c0dd7582f7d9a956",
+      "snapshot_blob": "6d46c7ec887217d4e60608b7c0dd7582f7d9a956"
+    },
+    {
+      "path": "tests/sb20-eng-d.test.mjs",
+      "status": "already_identical",
+      "public_base_blob": "2eaed017baa0c6f16943b7ca9fe4c3ed0c0d8df2",
+      "snapshot_blob": "2eaed017baa0c6f16943b7ca9fe4c3ed0c0d8df2"
+    },
+    {
+      "path": "tests/sb20-eng-e.test.mjs",
+      "status": "already_identical",
+      "public_base_blob": "4246e4451d117e1c4b3d6ca7c3711d4eed3fc7b2",
+      "snapshot_blob": "4246e4451d117e1c4b3d6ca7c3711d4eed3fc7b2"
+    },
+    {
+      "path": "tests/sb20-eng-f-b.test.mjs",
+      "status": "already_identical",
+      "public_base_blob": "72e74371b65b6cc59159c623ca929ee7307d8836",
+      "snapshot_blob": "72e74371b65b6cc59159c623ca929ee7307d8836"
+    },
+    {
+      "path": "tests/sb20-eng-f-c.test.mjs",
+      "status": "already_identical",
+      "public_base_blob": "8646766b9f9176722910e55fb18c215acc5d0ad6",
+      "snapshot_blob": "8646766b9f9176722910e55fb18c215acc5d0ad6"
+    },
+    {
+      "path": "tests/sb20-eng-f-d.test.mjs",
+      "status": "already_identical",
+      "public_base_blob": "278d8a7789d11fd53336557069cb3ff5464029ea",
+      "snapshot_blob": "278d8a7789d11fd53336557069cb3ff5464029ea"
+    },
+    {
+      "path": "tests/sb20-eng-f-e.test.mjs",
+      "status": "already_identical",
+      "public_base_blob": "b84666fd23d21d6e2d16d5e39ebfcc3dc5a02f06",
+      "snapshot_blob": "b84666fd23d21d6e2d16d5e39ebfcc3dc5a02f06"
+    },
+    {
+      "path": "tests/sb20-eng-f-f.test.mjs",
+      "status": "already_identical",
+      "public_base_blob": "d879d472ea9fda3117aa0c5dbdcf00992e84908a",
+      "snapshot_blob": "d879d472ea9fda3117aa0c5dbdcf00992e84908a"
+    },
+    {
+      "path": "tests/sb20-eng-f-g.test.mjs",
+      "status": "already_identical",
+      "public_base_blob": "8395b56ac2c4b30d6b16f84716e88172922223a4",
+      "snapshot_blob": "8395b56ac2c4b30d6b16f84716e88172922223a4"
+    },
+    {
+      "path": "tests/sb20-eng-f-h.test.mjs",
+      "status": "already_identical",
+      "public_base_blob": "49af2c99b8fc9be0eb287b45a792e857b46a1f51",
+      "snapshot_blob": "49af2c99b8fc9be0eb287b45a792e857b46a1f51"
+    },
+    {
+      "path": "tests/sb20-eng-f-i.test.mjs",
+      "status": "already_identical",
+      "public_base_blob": "e93fe1fac408035897106254b2eea501601d1aaa",
+      "snapshot_blob": "e93fe1fac408035897106254b2eea501601d1aaa"
+    },
+    {
+      "path": "tests/sb20-eng-f-j.test.mjs",
+      "status": "already_identical",
+      "public_base_blob": "1e8a1c0c854fac8c127f32c6202df80487e66606",
+      "snapshot_blob": "1e8a1c0c854fac8c127f32c6202df80487e66606"
+    },
+    {
+      "path": "tests/sb24-native-restore-gate.test.mjs",
+      "status": "changed",
+      "public_base_blob": "73477ebdf067ef16987e5981baef3e0f238ff09f",
+      "snapshot_blob": "063dc9082dec9384f3699db47911692abb8d35ec"
+    },
+    {
+      "path": "tests/sb24-real-archive.test.mjs",
+      "status": "already_identical",
+      "public_base_blob": "b1469f3f3b9abc6d947f4c8d6373b51be201a3ae",
+      "snapshot_blob": "b1469f3f3b9abc6d947f4c8d6373b51be201a3ae"
+    },
+    {
+      "path": "tests/sb24-sqlite-crash.test.mjs",
+      "status": "already_identical",
+      "public_base_blob": "5a873cf16632281a2984a3fce0294903246af82d",
+      "snapshot_blob": "5a873cf16632281a2984a3fce0294903246af82d"
+    },
+    {
+      "path": "tests/sb26-ia-accessibility.test.mjs",
+      "status": "changed",
+      "public_base_blob": "e8d8fea8ec152ee816a70f851ce6ce47006ecc03",
+      "snapshot_blob": "a96cdc76086d6d49ac1ea74e17f8a08774ac9207"
+    },
+    {
+      "path": "tests/sb26-local-media-privacy.test.mjs",
+      "status": "already_identical",
+      "public_base_blob": "eb6096c196e1c9f071fb5f23cd3ef4c2fd8d11f1",
+      "snapshot_blob": "eb6096c196e1c9f071fb5f23cd3ef4c2fd8d11f1"
+    },
+    {
+      "path": "tests/sb38-installed-release-bundle.test.mjs",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "18880d352936d9f7be567c544590f3e812bd3640"
+    },
+    {
+      "path": "tests/sb38-photo-parity.test.mjs",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "4a2ed8e99b0b92f82995f94d07c302b70fb53138"
+    },
+    {
+      "path": "tests/sb38-photo-safety-contract.test.mjs",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "9e028d8ec16602f73ad8f9f9cd1d2edf26cd8e7c"
+    },
+    {
+      "path": "tests/sb39-dependency-compatibility.test.mjs",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "7cfba9f5ea0e266feee34e6ee5d9a359a9e7305e"
+    },
+    {
+      "path": "tests/sb39-integration-guardrails.test.mjs",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "d704fa95e969c39bb9527def3b0e9832b616a400"
+    },
+    {
+      "path": "tests/sb39-ios-scene-lifecycle.test.mjs",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "c2b88a9c0931f78f08f9f1abe6afe4e812abddbb"
+    },
+    {
+      "path": "tests/sb39-ios-scene-prebuild-plugin.test.mjs",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "dfa7db0bec9abc1f010b748efebfd504fa266534"
+    },
+    {
+      "path": "tests/sb39-native-build-identity.test.mjs",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "c65098a8e78d56e3a2f69f8e9fe8a3ed104d8eba"
+    },
+    {
+      "path": "tests/sb39-platform-reminders-imports.test.mjs",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "7e7c35addb6b738e443764066c4c95e9e8056e5f"
+    },
+    {
+      "path": "tests/sb39-release-security-gates.test.mjs",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "757cb4397c9d53c15a2d57a22b3abc0875c0f86e"
+    },
+    {
+      "path": "tests/sb39-uri-route-safety.test.mjs",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "e9ca9662bf460858a538975ad2b5b41bb2efce41"
+    },
+    {
+      "path": "tests/sb40-edge-web-boundary-smoke.cjs",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "5bc1fbf0c34eca2f9572a35f03f2cc7595d02921"
+    },
+    {
+      "path": "tests/sb40-settings-accessibility-route.test.mjs",
+      "status": "not_in_public_base",
+      "public_base_blob": null,
+      "snapshot_blob": "ee17e874c70b51e98a1c2c3e2d96bcaa6705e2f0"
+    },
+    {
+      "path": "tests/sqlite-failed-write.test.mjs",
+      "status": "already_identical",
+      "public_base_blob": "99b2930611faa382915ab0e074c1a9034bab8370",
+      "snapshot_blob": "99b2930611faa382915ab0e074c1a9034bab8370"
+    },
+    {
+      "path": "tests/storage-safety.test.mjs",
+      "status": "already_identical",
+      "public_base_blob": "1b96eff03278a507b5ee7f12e0e615e607aa0f2e",
+      "snapshot_blob": "1b96eff03278a507b5ee7f12e0e615e607aa0f2e"
+    },
+    {
+      "path": "tests/theme.test.mjs",
+      "status": "already_identical",
+      "public_base_blob": "01a6f2cd173ff5630c191b31d43febcd9febb56e",
+      "snapshot_blob": "01a6f2cd173ff5630c191b31d43febcd9febb56e"
+    },
+    {
+      "path": "tsconfig.json",
+      "status": "already_identical",
+      "public_base_blob": "da7f29cb147f64a0fe2c7df7694db239268bc95f",
+      "snapshot_blob": "da7f29cb147f64a0fe2c7df7694db239268bc95f"
+    }
+  ],
+  "excluded_unrelated_material": {
+    "recovered_historical_document_count": 183,
+    "figma_rasterizer_files": 4,
+    "historical_readme_files": 1,
+    "broader_local_only_checkpoint": "d91bd5c4a4001368dcd62005f9ac6c947eebda1b"
+  },
+  "known_public_identifiers": "EAS project/owner, bundle IDs and Figma-linked asset filenames are non-secret application metadata. Synthetic QA fixtures are explicitly fictional.",
+  "confirmation_status": "WITHIN_AUTHORIZED_NARROW_FEATURE_BRANCH_SOURCE_SCOPE",
+  "runtime_unmodified": true,
+  "root_build_tool_changes": [
+    "tsconfig.json: exclude baselines",
+    " .easignore: exclude baselines upload"
+  ]
+}

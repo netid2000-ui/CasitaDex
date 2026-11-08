@@ -1,0 +1,45 @@
+{
+  "recorded_at_utc": "2026-11-08T15:00:45.897008+00:00",
+  "result": "VERIFIED_NARROW_SOURCE_CHECKPOINT",
+  "source_verifier": {
+    "status": "PASS",
+    "source_files": 369,
+    "original_checked": true,
+    "retained_artifacts_checked": true,
+    "git_index_checked": true,
+    "errors": []
+  },
+  "git_diff_check_exit_code": 0,
+  "root_scope": "Runtime source/tests/locks unchanged. Root TypeScript and EAS ignore gain only baselines exclusions. Governance status additions recorded.",
+  "typescript_input_isolation": {
+    "status": "PASS",
+    "method": "TypeScript configuration parsing and input enumeration only; no typecheck, emit or tests",
+    "typescript": "6.0.3",
+    "rootInputsBefore": 345,
+    "rootInputsAfter": 126,
+    "removedArchiveInputs": 219,
+    "otherInputsChanged": 0,
+    "archiveInputsRemaining": 0
+  },
+  "secret_scan": {
+    "scanner": "gitleaks 8.30.1",
+    "scope": "Final narrow checkpoint directory; default rules and no allowlist",
+    "exit_code": 0,
+    "findings": 0,
+    "report_sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "personal_data_review": "Reviewed source/config/test textual inputs for contact, credential and private-document indicators. Hits were public Android debug-template literals, @Nx asset filenames, safety copy, tests and encoded synthetic illustration content. Fictional fixture header and fixed 90-item catalog confirmed. No owner household database/media or personal records included.",
+    "scope_exclusion": "All recovered historical documentation and Figma rasterizer utilities excluded; no credential/security suppression was added.",
+    "signing_boundary": "No keystore, private key, provisioning profile or machine-local credential file included. Existing Android public template password strings are not usable signing credentials without excluded signing material."
+  },
+  "application_tests": "NOT_RUN; no runtime implementation change",
+  "typecheck_lint": "NOT_RUN; configuration input enumeration only",
+  "builds_installs_devices": "NOT_RUN",
+  "publication": {
+    "repository": "netid2000-ui/CasitaDex",
+    "visibility": "public",
+    "branch": "work/cd-sb40-runtime-checkpoint-20261108",
+    "scope": "Narrow required runtime/config/tests/assets/native inputs only, with sanitized provenance. Broad d91bd5c checkpoint and all recovered historical documents remain local-only.",
+    "remote_verification": "Pending at commit creation; final exact remote SHA receipt is stored in the SSD evidence directory."
+  },
+  "release": "NO-GO"
+}

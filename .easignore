@@ -27,3 +27,6 @@ tests/
 *.pem
 *.key
 DevSetup/
+
+# Archival accepted-source snapshots are not live application/build inputs.
+baselines/

@@ -1,0 +1,20 @@
+// Use with --init-script scripts/verify-local-only.gradle.
+// Resolves the actual native runtime graph; a JS-name check alone is insufficient.
+gradle.projectsEvaluated {
+  def app = gradle.rootProject.findProject(':app')
+  gradle.rootProject.tasks.register('verifyLocalOnlyRuntime') {
+    doLast {
+      def resolution = app.configurations.getByName('debugRuntimeClasspath').incoming.resolutionResult
+      def unresolved = resolution.allDependencies.findAll { it instanceof org.gradle.api.artifacts.result.UnresolvedDependencyResult }
+      if (!unresolved.isEmpty()) throw new GradleException('Cannot verify an incomplete runtime graph: ' + unresolved)
+      def components = resolution.allComponents
+      def coordinates = components.collect { it.moduleVersion?.toString() }.findAll { it != null }.unique().sort()
+      def forbidden = coordinates.findAll { it.startsWith('com.google.firebase:') }
+      if (!forbidden.isEmpty()) throw new GradleException('Firebase runtime dependencies are prohibited: ' + forbidden)
+      def evidence = new File(gradle.rootProject.projectDir.parentFile, 'docs/qa/android-debug-runtime-dependencies.txt')
+      evidence.parentFile.mkdirs()
+      evidence.text = coordinates.join('\n') + '\n'
+      println('PASS local-only runtime: no com.google.firebase artifacts; ' + coordinates.size() + ' components checked')
+    }
+  }
+}

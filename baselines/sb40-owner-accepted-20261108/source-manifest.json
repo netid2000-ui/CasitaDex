@@ -1,0 +1,2224 @@
+{
+  "schema": "designsbyfa.sb40-source-checkpoint.v1",
+  "recorded_at_utc": "2026-11-08T14:50:45.117237+00:00",
+  "source_path": "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-simulator-parity-20261108",
+  "source_is_git_checkout": false,
+  "file_count": 369,
+  "total_bytes": 14421700,
+  "files": [
+    {
+      "path": ".easignore",
+      "size": 301,
+      "sha256": "50885d11d3e5d9d021a29cbf6d64be1c15ca728f9840b436e6a0fe5cb4192f51",
+      "executable": false
+    },
+    {
+      "path": ".gitignore",
+      "size": 153,
+      "sha256": "76618507372f9132099682b36c920bf7f48eca1e976f711454aa11a37d8fdde1",
+      "executable": false
+    },
+    {
+      "path": ".prettierignore",
+      "size": 41,
+      "sha256": "54ce8ad7ca87a95029a598ba1bd0f266ab66d6f8fe56dd179f50b67736be3fe0",
+      "executable": false
+    },
+    {
+      "path": "STARTER_BOOTSTRAP.json",
+      "size": 140,
+      "sha256": "7ce78a06caefc7692f4480539940a6ff545a9ef282cdd29cc22a36d7dc91f639",
+      "executable": false
+    },
+    {
+      "path": "android/.gitignore",
+      "size": 183,
+      "sha256": "ed2e83b6a71e3b048dc2681be0bdf534a5ec81d4eded17012e78a6b252422465",
+      "executable": false
+    },
+    {
+      "path": "android/app/build.gradle",
+      "size": 8226,
+      "sha256": "fcff8b442f2151403952082f821feae9e7622d3a29d0eb101d92cae9187a2796",
+      "executable": false
+    },
+    {
+      "path": "android/app/proguard-rules.pro",
+      "size": 562,
+      "sha256": "8bd4d7b69a1d78e8322b459b5e8d48234adce7481df04da34c0140d52ffb367a",
+      "executable": false
+    },
+    {
+      "path": "android/app/src/debug/AndroidManifest.xml",
+      "size": 374,
+      "sha256": "fb1795032c764d975376e1612ab7022058eca2268a45efbe731a47a5d3ac0f60",
+      "executable": false
+    },
+    {
+      "path": "android/app/src/debugOptimized/AndroidManifest.xml",
+      "size": 374,
+      "sha256": "fb1795032c764d975376e1612ab7022058eca2268a45efbe731a47a5d3ac0f60",
+      "executable": false
+    },
+    {
+      "path": "android/app/src/main/AndroidManifest.xml",
+      "size": 2989,
+      "sha256": "e9445b6952b8e60de196b8bc8dae99955d642d3f311b5652ea97a5128492fe0e",
+      "executable": false
+    },
+    {
+      "path": "android/app/src/main/java/com/designsbyfa/casitadex/sb40qa/MainActivity.kt",
+      "size": 2467,
+      "sha256": "819eb55512a10aa7e4712bc1accd92e977003273023e0c8e8364f0e2dd660994",
+      "executable": false
+    },
+    {
+      "path": "android/app/src/main/java/com/designsbyfa/casitadex/sb40qa/MainApplication.kt",
+      "size": 1504,
+      "sha256": "03326c1db509c7a44e7d3b83fff14d81e4ffe237e13b5547e7094eb3ebaa5403",
+      "executable": false
+    },
+    {
+      "path": "android/app/src/main/res/drawable-hdpi/notification_icon.png",
+      "size": 480,
+      "sha256": "c8de7691a79c04560297ed4d8be98d5080fabac2551642cc4ed8476713323060",
+      "executable": false
+    },
+    {
+      "path": "android/app/src/main/res/drawable-hdpi/splashscreen_logo.png",
+      "size": 34580,
+      "sha256": "aac5403db0dcd20e6257fccfb861e8e40f33c2f4c8cb597c5aec76753b2dd9cf",
+      "executable": false
+    },
+    {
+      "path": "android/app/src/main/res/drawable-mdpi/notification_icon.png",
+      "size": 296,
+      "sha256": "361768e31b8afc5b8e8486fb51fd6b4a36c82a5323f64b2f3dee97fe76c89fd0",
+      "executable": false
+    },
+    {
+      "path": "android/app/src/main/res/drawable-mdpi/splashscreen_logo.png",
+      "size": 21264,
+      "sha256": "259028b6e78c338eeab70daca789271498f81f98170a251496320169c919770a",
+      "executable": false
+    },
+    {
+      "path": "android/app/src/main/res/drawable-night-hdpi/splashscreen_logo.png",
+      "size": 36737,
+      "sha256": "4e5a9528931a3296dbbae585d228a56cdbb5dea0f91c35efa098e32a0d312756",
+      "executable": false
+    },
+    {
+      "path": "android/app/src/main/res/drawable-night-mdpi/splashscreen_logo.png",
+      "size": 22745,
+      "sha256": "65e4db4565cbb150447907acf83d6bc7a5dfc3f1a2ed7aa7412fe76199bb6577",
+      "executable": false
+    },
+    {
+      "path": "android/app/src/main/res/drawable-night-xhdpi/splashscreen_logo.png",
+      "size": 50928,
+      "sha256": "01258eed190472177030fd91a8407ac14a513b1b420e674feaa52d07ad9b83dd",
+      "executable": false
+    },
+    {
+      "path": "android/app/src/main/res/drawable-night-xxhdpi/splashscreen_logo.png",
+      "size": 80103,
+      "sha256": "c97bc0d9f47f311ae9cc31f0567c40a5ab7ff660b1148dc07a41f9ee01615933",
+      "executable": false
+    },
+    {
+      "path": "android/app/src/main/res/drawable-night-xxxhdpi/splashscreen_logo.png",
+      "size": 109752,
+      "sha256": "20de8e12e9e9acf96f013feda4a603900b9dd0fe637d2defbe97fb23aeadb17b",
+      "executable": false
+    },
+    {
+      "path": "android/app/src/main/res/drawable-xhdpi/notification_icon.png",
+      "size": 733,
+      "sha256": "f1ae5d967ce1a84e4ada71dbd239fa2bce6dda078f69816ce71d1f377fbad531",
+      "executable": false
+    },
+    {
+      "path": "android/app/src/main/res/drawable-xhdpi/splashscreen_logo.png",
+      "size": 47594,
+      "sha256": "5b18f1a9be4bbb703b5d32167f24fa24316ef69318bc0733b07596bc3a5b02df",
+      "executable": false
+    },
+    {
+      "path": "android/app/src/main/res/drawable-xxhdpi/notification_icon.png",
+      "size": 1245,
+      "sha256": "403fc86515941bc397e014e4ffc6ed18641e65c0833f126429f2c92cedb33d37",
+      "executable": false
+    },
+    {
+      "path": "android/app/src/main/res/drawable-xxhdpi/splashscreen_logo.png",
+      "size": 74372,
+      "sha256": "82d9eaf04606f14540bfeae71042e08f98498c8d67c8f9291255c4ecf3734997",
+      "executable": false
+    },
+    {
+      "path": "android/app/src/main/res/drawable-xxxhdpi/notification_icon.png",
+      "size": 1984,
+      "sha256": "c69d53e50bcf99d7bbe6c2215b691cbbf982c1848e9bf4a5f6124daf331c24c9",
+      "executable": false
+    },
+    {
+      "path": "android/app/src/main/res/drawable-xxxhdpi/splashscreen_logo.png",
+      "size": 100980,
+      "sha256": "44ed1f062e76d725434d34c190d4e4dacc0896a416a1951d9341100933de2768",
+      "executable": false
+    },
+    {
+      "path": "android/app/src/main/res/drawable/ic_launcher_background.xml",
+      "size": 245,
+      "sha256": "51fca95679d075ddbe2b9fe7ad2efb5ef545c5770a9ad6cafe8bf610c18c67be",
+      "executable": false
+    },
+    {
+      "path": "android/app/src/main/res/drawable/rn_edit_text_material.xml",
+      "size": 1917,
+      "sha256": "738e3aaad53180caba1419a6d5db8465a0742662fe59a4bbaf05f1061cbc3390",
+      "executable": false
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml",
+      "size": 325,
+      "sha256": "a5fae7f093230d6752ec5dbabefbec6b93423c0b43f930e6d0aa6c50c2ce8e35",
+      "executable": false
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml",
+      "size": 325,
+      "sha256": "a5fae7f093230d6752ec5dbabefbec6b93423c0b43f930e6d0aa6c50c2ce8e35",
+      "executable": false
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-hdpi/ic_launcher.webp",
+      "size": 2806,
+      "sha256": "4f3054759724824e61a1d4dd4be2f690757606c6412028365760f6e3aa5fd55f",
+      "executable": false
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-hdpi/ic_launcher_foreground.webp",
+      "size": 7357,
+      "sha256": "f6f8c9ac86bb5b7aaae643db7709aa781ab3af43be97d71c48eb0a5fe046f3d6",
+      "executable": false
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-hdpi/ic_launcher_monochrome.webp",
+      "size": 4300,
+      "sha256": "c48a6f78f271a1b95ca23b3800c394b51e9d46dc82ff00e42dc462677e7d5df8",
+      "executable": false
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp",
+      "size": 3503,
+      "sha256": "80da6a6e75dd03ce4fc8d7583c2d92a01de667e6962ba04a6ccc81eddd330ab9",
+      "executable": false
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-mdpi/ic_launcher.webp",
+      "size": 1796,
+      "sha256": "f7f07c7c2d37ca351615f1c3a520121d479fea2ae6826484697eb833b290eebe",
+      "executable": false
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-mdpi/ic_launcher_foreground.webp",
+      "size": 4020,
+      "sha256": "a354c56d163a5a92f3c4835044ba227ee3c0ab31af8652e0d5db923f996aa063",
+      "executable": false
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-mdpi/ic_launcher_monochrome.webp",
+      "size": 2279,
+      "sha256": "bf1a02463efdfcdc84bf546fdb13abf53f9494a89e2807590674b2721dd9938e",
+      "executable": false
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp",
+      "size": 2283,
+      "sha256": "89e4729ab303edac82561019b91fa92bf31223bc0958499079b868f440ea5ee1",
+      "executable": false
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-xhdpi/ic_launcher.webp",
+      "size": 3838,
+      "sha256": "1cca7b1ec53d9e5ae843aafa0a117408ff1074d586646a9c5eedb087c0a33edf",
+      "executable": false
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.webp",
+      "size": 11045,
+      "sha256": "4127f8e5b1837bed8614f21239249d44ebdbe7ac9c70a23d5c69e09ec51bf55f",
+      "executable": false
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-xhdpi/ic_launcher_monochrome.webp",
+      "size": 6654,
+      "sha256": "bc88101c55485cc3ac10b8cf3f1d5821e44c9d1649dfb01fe5a28200b6ed78d8",
+      "executable": false
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp",
+      "size": 4839,
+      "sha256": "7b3c25a9311cc28e571c9932d09450df7b57a3eb8c78a9fd51874a4bd295bca6",
+      "executable": false
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp",
+      "size": 5885,
+      "sha256": "bc304419d7b255551c88c3bcf9d7077c8ec12df122052c07ec1fe3f4cf7c64f5",
+      "executable": false
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.webp",
+      "size": 20285,
+      "sha256": "c9654ffd4f28572ba48395dc8a6a6bc4416ed903ce3cc363f4fb4cfce2497d12",
+      "executable": false
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-xxhdpi/ic_launcher_monochrome.webp",
+      "size": 12409,
+      "sha256": "53bb52353bb6562b143e57cba8f85e90f7e522593ad208ffaeb8f053e1093b51",
+      "executable": false
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp",
+      "size": 7408,
+      "sha256": "535c7a98936cbade6d9557bf73fd549e2983ae10bfd00c21fba4262011cee198",
+      "executable": false
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp",
+      "size": 7743,
+      "sha256": "97ce37cb5d9e05fa5e09737a754c2e63c35dd5e34a94f1c47ce91356793436ec",
+      "executable": false
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.webp",
+      "size": 31273,
+      "sha256": "963b4f8b4e4587c04bf855818f4e05e26e6cfc2567a0676fb65ec8a737b0a737",
+      "executable": false
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_monochrome.webp",
+      "size": 18869,
+      "sha256": "4a8df747b026f40ccfc0f799b0dceee16b8c6e8e5c965f0ae36f497aca206b9b",
+      "executable": false
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp",
+      "size": 9827,
+      "sha256": "249da69953a3d2d8fd40a21a20c1f591a026b326cead642ae6bb601f9ddfba7c",
+      "executable": false
+    },
+    {
+      "path": "android/app/src/main/res/values-night/colors.xml",
+      "size": 80,
+      "sha256": "20444d84c531b8b452bb2a98cbc73a4541074a14a86c90e68784f3dc5222cbcb",
+      "executable": false
+    },
+    {
+      "path": "android/app/src/main/res/values/colors.xml",
+      "size": 228,
+      "sha256": "aeef036f9da1904cec806eccfe1be4d5dd2f968fd42b127f0c6d11939bf1e2b6",
+      "executable": false
+    },
+    {
+      "path": "android/app/src/main/res/values/strings.xml",
+      "size": 256,
+      "sha256": "3a489a355423436cf3bd064ff3a48f07d4982aa1ece7215e3ec5f00877ba26fb",
+      "executable": false
+    },
+    {
+      "path": "android/app/src/main/res/values/styles.xml",
+      "size": 828,
+      "sha256": "2f5d90f4abc184af9a5ead8e5bf943244daf4e42e8747977266ccb351cd2a537",
+      "executable": false
+    },
+    {
+      "path": "android/build.gradle",
+      "size": 556,
+      "sha256": "bdb916d3fe7085c9e9f3bb45bd5eacb97f5d2c5a2b2af965642f7d904739ca68",
+      "executable": false
+    },
+    {
+      "path": "android/gradle.properties",
+      "size": 2567,
+      "sha256": "d02b52da10bf3abb24279fd102df47694b8130a6b7fe6110cc47a9476ac8673c",
+      "executable": false
+    },
+    {
+      "path": "android/gradle/wrapper/gradle-wrapper.properties",
+      "size": 252,
+      "sha256": "a180163249c7252412ddaee1c7adcf59f6494b1183136f690fbd9a3b8aaed00e",
+      "executable": false
+    },
+    {
+      "path": "android/gradlew",
+      "size": 8618,
+      "sha256": "fb68debc1b1acf8ec55dc0d5e5495e1dedd0bd6b61f304bee61613eeb2bd9b92",
+      "executable": true
+    },
+    {
+      "path": "android/gradlew.bat",
+      "size": 3093,
+      "sha256": "982f1b2979dd2d13505c11e92192ab43eef338242ca61587f86f8d7fbc86f67b",
+      "executable": false
+    },
+    {
+      "path": "android/settings.gradle",
+      "size": 1270,
+      "sha256": "cd9e98792a18a39db6a929f81934e42cec32fc14997474d33f84190f7cb1b352",
+      "executable": false
+    },
+    {
+      "path": "app.config.js",
+      "size": 2403,
+      "sha256": "e3f521b692c427b49433e8cf4d53fdb1911168921f5506e6d4c96a4fbbe55d81",
+      "executable": false
+    },
+    {
+      "path": "app.identity.json",
+      "size": 300,
+      "sha256": "d0862a704450e998ab5a0bf7a7d157bce544373ae0c95d57e91ab09e2e2b7c2c",
+      "executable": false
+    },
+    {
+      "path": "app.json",
+      "size": 592,
+      "sha256": "769135ec6885f8a21b3341d25fbf779b96e70e61113bf4d2e151598040205f25",
+      "executable": false
+    },
+    {
+      "path": "assets/brand/adaptive-color.png",
+      "size": 120498,
+      "sha256": "83e2e5c10b9bc1cf4ef6ff8542c645df60ebc68fbc572d59f046662a1df5c884",
+      "executable": false
+    },
+    {
+      "path": "assets/brand/adaptive-outline.png",
+      "size": 63893,
+      "sha256": "89f259511eedebaaa4bae2648b2dcb2bf042b16797327a5a18d677ca8fa5c7f7",
+      "executable": false
+    },
+    {
+      "path": "assets/brand/figma-originals/artwork-dark.svg",
+      "size": 1638,
+      "sha256": "467fb75f63709ec028c4f5334a99cb6f3a95a0ea076aeb3bc255a0bf67902b5f",
+      "executable": false
+    },
+    {
+      "path": "assets/brand/figma-originals/artwork-icon.svg",
+      "size": 1635,
+      "sha256": "823ce7018c4b90c289e27c35f52f61edc19d872192ed788893b1172f77965a94",
+      "executable": false
+    },
+    {
+      "path": "assets/brand/figma-originals/artwork-light.svg",
+      "size": 1638,
+      "sha256": "0011544bd28909c40bad530fd779841e6e8ed575176b379e0b91fd9a880dab7c",
+      "executable": false
+    },
+    {
+      "path": "assets/brand/icon-dark.png",
+      "size": 31059,
+      "sha256": "3091280c2e8b4a86da13efd4a760420bd803f09345010fe69f0876ac0c19f2d5",
+      "executable": false
+    },
+    {
+      "path": "assets/brand/icon-light.png",
+      "size": 30867,
+      "sha256": "d44bc9e4d402dda77d1909f5323b08aebd5ca79899622a3a3f16466bb61899c9",
+      "executable": false
+    },
+    {
+      "path": "assets/brand/icon-tinted.png",
+      "size": 32327,
+      "sha256": "bfcce24903f426779f9881f8bce847bb2f537f966fb53017e1a16d9f17855e8e",
+      "executable": false
+    },
+    {
+      "path": "assets/brand/illustration-backup.jpg",
+      "size": 27998,
+      "sha256": "adb0af77832991800ff2162f4ca06b7096c2d09156d78aa1dc64f536b26aec0b",
+      "executable": false
+    },
+    {
+      "path": "assets/brand/illustration-find.jpg",
+      "size": 22588,
+      "sha256": "9c2bcd79b380ee3ab9fad37e38a139a5e99ff598239b22d5bebcfc141844557e",
+      "executable": false
+    },
+    {
+      "path": "assets/brand/illustration-home.jpg",
+      "size": 27949,
+      "sha256": "832b177dc2998c19df870d4d17e5bb3acafbd89eb7175efd89c7ce2ec06d11be",
+      "executable": false
+    },
+    {
+      "path": "assets/brand/logo-art-dark.png",
+      "size": 13562,
+      "sha256": "b4111eb5ec2099d18827742ba5feb24e99b504c181ebac6abed5bd8aca9758f5",
+      "executable": false
+    },
+    {
+      "path": "assets/brand/logo-art-light.png",
+      "size": 13272,
+      "sha256": "fb8ae723923e7b9e933b67074d25aaf54bae480e126020915d2efa29c3d7d40f",
+      "executable": false
+    },
+    {
+      "path": "assets/brand/logo-color-dark.png",
+      "size": 134201,
+      "sha256": "e816b0977370b460fa63800fb8cca9604f69ffea39e13cd9dad1fb125bea59c1",
+      "executable": false
+    },
+    {
+      "path": "assets/brand/logo-color-light.png",
+      "size": 136268,
+      "sha256": "737ccdd05df3dd84aea35ad6b2a223582b3552542067d0745b68254e76aac33c",
+      "executable": false
+    },
+    {
+      "path": "assets/brand/logo-outline-dark.png",
+      "size": 138770,
+      "sha256": "6bdc4edba04ef1a8f229e5ec2b4b487b17704a7d348bb9a1d4d8e16e05310943",
+      "executable": false
+    },
+    {
+      "path": "assets/brand/logo-outline-light.png",
+      "size": 126626,
+      "sha256": "c441da36c01b5090b5422cedd0efc7e36bb8a36e368a3e9fc9040defc66b43d1",
+      "executable": false
+    },
+    {
+      "path": "assets/brand/single-card-candidate.png",
+      "size": 23792,
+      "sha256": "0b973fa62cfa43c650868511826196244f06f8416b6ea896b6ec3035b11a79e5",
+      "executable": false
+    },
+    {
+      "path": "assets/brand/splash-dark.png",
+      "size": 40497,
+      "sha256": "c508d4c452db262c7d5ee703dea3081f5f53be8321ee866c6425bec89de673ac",
+      "executable": false
+    },
+    {
+      "path": "assets/brand/splash-light.png",
+      "size": 40839,
+      "sha256": "a3e46679d2c51220a1b92a1491e97a17e433c1e1c8a89ad19b5a3773c2fe3557",
+      "executable": false
+    },
+    {
+      "path": "assets/branding/CasitaDex-Branded-With-Text.png",
+      "size": 2426605,
+      "sha256": "c6882ac7f61f3d364f9851c27358c539b216426fc599ddf747bbc2a1f57ffd7b",
+      "executable": false
+    },
+    {
+      "path": "assets/branding/CasitaDex-Landscape.png",
+      "size": 2451539,
+      "sha256": "e279482bd1f4b6487a34acf6859fed934030588ccf6e0849840de3f6fd3d9674",
+      "executable": false
+    },
+    {
+      "path": "assets/casitadex-branded-banner.png",
+      "size": 2426605,
+      "sha256": "c6882ac7f61f3d364f9851c27358c539b216426fc599ddf747bbc2a1f57ffd7b",
+      "executable": false
+    },
+    {
+      "path": "assets/house-landscape.png",
+      "size": 2451539,
+      "sha256": "e279482bd1f4b6487a34acf6859fed934030588ccf6e0849840de3f6fd3d9674",
+      "executable": false
+    },
+    {
+      "path": "assets/house-trees-header.png",
+      "size": 690383,
+      "sha256": "fabc37306d38315d1e3f5dd464d4d0c45353a4b948f088f77b4d8cef8fde794b",
+      "executable": false
+    },
+    {
+      "path": "assets/ui-icons/accepted-v1/find.png",
+      "size": 627,
+      "sha256": "e543236766762051bd6fa7de90d993068ecd14f21e0f14d9e9d41f3c063f6d64",
+      "executable": false
+    },
+    {
+      "path": "assets/ui-icons/accepted-v1/home.png",
+      "size": 526,
+      "sha256": "ec45a5b6d3841f5b61e94a11e8a3319041caaf41e012909774b49f9aa73e4c07",
+      "executable": false
+    },
+    {
+      "path": "assets/ui-icons/accepted-v1/memories.png",
+      "size": 337,
+      "sha256": "2edfc9d91d716f818de74cfc81bb8f80a82c028e5e9dc543b5999310892c6db6",
+      "executable": false
+    },
+    {
+      "path": "assets/ui-icons/accepted-v1/photos.png",
+      "size": 565,
+      "sha256": "f870facdb919e57be58a52b47cb5c1e8cb15cfe44f11dbbb35c3a87565212408",
+      "executable": false
+    },
+    {
+      "path": "assets/ui-icons/accepted-v1/reminders.png",
+      "size": 490,
+      "sha256": "1b59203d45d2e77e0a2fd4478c7916c584ec3002c3b2a17293f4c90cd12790a3",
+      "executable": false
+    },
+    {
+      "path": "assets/ui-icons/figma-approved-v1/find.png",
+      "size": 2510,
+      "sha256": "95e1e5cfff24f31e4790eeb720df46ca2caf6aa06c33a032523eeeceaa506c5d",
+      "executable": false
+    },
+    {
+      "path": "assets/ui-icons/figma-approved-v1/home.png",
+      "size": 1885,
+      "sha256": "58cc70e58daa07efda86784c7d399282e41e7ad7ff571f59f25bf2aae3c2ff6e",
+      "executable": false
+    },
+    {
+      "path": "assets/ui-icons/figma-approved-v1/memories.png",
+      "size": 1861,
+      "sha256": "680e6238a3d4cdff2253aaaffe4c200c6ea9e5fc2ebe00a2d1a6b12ea3a75d83",
+      "executable": false
+    },
+    {
+      "path": "assets/ui-icons/figma-approved-v1/photos.png",
+      "size": 2419,
+      "sha256": "a6d55e57ecd19077ac668f5d2443dfb7ca05ade2b45738282c10f8bca19fddb9",
+      "executable": false
+    },
+    {
+      "path": "assets/ui-icons/figma-approved-v1/reminders.png",
+      "size": 2067,
+      "sha256": "7db9b54d5cfb986cea4f1c57b1f36c65973c997b0e66c0ca42ac439853ee1650",
+      "executable": false
+    },
+    {
+      "path": "assets/ui-icons/figma-originals-20261025/find.svg",
+      "size": 609,
+      "sha256": "4f74799edc4abe4b8d5eb18daa939e633d079c96345ff45a247b4d03854788c1",
+      "executable": false
+    },
+    {
+      "path": "assets/ui-icons/figma-originals-20261025/home.svg",
+      "size": 674,
+      "sha256": "add9bf33271da907291d5a6595e8149ebf7297adee7c8b0e2fbdf431456ff332",
+      "executable": false
+    },
+    {
+      "path": "assets/ui-icons/figma-originals-20261025/memories.svg",
+      "size": 642,
+      "sha256": "f80bc8990bb44cf8f3c63c12fff5a67e9419d90c0d5ebf33a01d9761a1c122a8",
+      "executable": false
+    },
+    {
+      "path": "assets/ui-icons/figma-originals-20261025/photos.svg",
+      "size": 876,
+      "sha256": "4c0e737472c9ed1de285040d1518174ea2905ddede9e81eea7eb543f73d3bc8d",
+      "executable": false
+    },
+    {
+      "path": "assets/ui-icons/figma-originals-20261025/reminders.svg",
+      "size": 775,
+      "sha256": "2a8c86a21413c25f089c4ecc5950a42339f3df0d865a9e6cb476b47c7d5d15a2",
+      "executable": false
+    },
+    {
+      "path": "eas.json",
+      "size": 1131,
+      "sha256": "b6a72a894ac712449b2a1aa0631a839b1f915386a43f8fcf62989b54d08624d1",
+      "executable": false
+    },
+    {
+      "path": "eslint.config.js",
+      "size": 198,
+      "sha256": "7d3da4dba7fb82df9a8ba450d8d721bf54b9ed2bfdfc9c02f92da2e8548fd279",
+      "executable": false
+    },
+    {
+      "path": "ios/.gitignore",
+      "size": 321,
+      "sha256": "f8042134be9ad24176d8d630255be93f8a0223925ae88c34b603c8989baa8345",
+      "executable": false
+    },
+    {
+      "path": "ios/.xcode.env",
+      "size": 482,
+      "sha256": "3c02dca07775b31ce4e77dfb3bb660d7c6e577474d65a6216f1ea9bef54e1ca6",
+      "executable": false
+    },
+    {
+      "path": "ios/CasitaDexSB40QA.xcodeproj/project.pbxproj",
+      "size": 26183,
+      "sha256": "50dce03441e8f6e9424f8dd73c18999a3acc25181856f20c87300aad2047779e",
+      "executable": false
+    },
+    {
+      "path": "ios/CasitaDexSB40QA.xcodeproj/project.xcworkspace/contents.xcworkspacedata",
+      "size": 135,
+      "sha256": "7f3b00b5c3fdb45242d7b87e1e5c4e25d1fa8129a16c94295ecc4e8ea2235c5f",
+      "executable": false
+    },
+    {
+      "path": "ios/CasitaDexSB40QA.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist",
+      "size": 238,
+      "sha256": "dfa0f9bb85b95ccba9c6811adadf8cb407fb5d52088e89db83ebc308ec448542",
+      "executable": false
+    },
+    {
+      "path": "ios/CasitaDexSB40QA.xcodeproj/xcshareddata/xcschemes/CasitaDexSB40QA.xcscheme",
+      "size": 3366,
+      "sha256": "cc390e91df13c7b45a6a19d337564904b47044b0978af03899a601daf9b795ff",
+      "executable": false
+    },
+    {
+      "path": "ios/CasitaDexSB40QA.xcworkspace/contents.xcworkspacedata",
+      "size": 233,
+      "sha256": "5aecf6211a67c39ede1d53170352c777a8a5e3f6bf29ae8d6f24c12750a4dd64",
+      "executable": false
+    },
+    {
+      "path": "ios/CasitaDexSB40QA/AppDelegate.swift",
+      "size": 2063,
+      "sha256": "248a72ab880e205edd772bc984cccbc59e9b18a1523002e63dd8332de4a096e6",
+      "executable": false
+    },
+    {
+      "path": "ios/CasitaDexSB40QA/CasitaDexSB40QA-Bridging-Header.h",
+      "size": 102,
+      "sha256": "4a625b53abd4333ca454a4161ba62ab1b0cb44e8a4581326c0bcfe03dc26dd5c",
+      "executable": false
+    },
+    {
+      "path": "ios/CasitaDexSB40QA/CasitaDexSB40QA.entitlements",
+      "size": 255,
+      "sha256": "f4b663f5b41b12078a2eeaf7713a11b4ba0c04a1f2109689a8c58dc51aba6e3f",
+      "executable": false
+    },
+    {
+      "path": "ios/CasitaDexSB40QA/Images.xcassets/AppIcon.appiconset/App-Icon-1024x1024@1x.png",
+      "size": 34963,
+      "sha256": "285e0a3f867133a1014138f7aee3a473e855902822d30657134195e911a76b88",
+      "executable": false
+    },
+    {
+      "path": "ios/CasitaDexSB40QA/Images.xcassets/AppIcon.appiconset/App-Icon-dark-1024x1024@1x.png",
+      "size": 39463,
+      "sha256": "6a8ac8cf9d0b894d0db16e1545251574e46c713127fff209a75ca59bf4aa6f0e",
+      "executable": false
+    },
+    {
+      "path": "ios/CasitaDexSB40QA/Images.xcassets/AppIcon.appiconset/App-Icon-tinted-1024x1024@1x.png",
+      "size": 11298,
+      "sha256": "8182395f90ad1304d4fd09c7124ef5b45d465dae79d33fc8c663ad5016239492",
+      "executable": false
+    },
+    {
+      "path": "ios/CasitaDexSB40QA/Images.xcassets/AppIcon.appiconset/Contents.json",
+      "size": 739,
+      "sha256": "c36589e8d94a5fe9ad46b2c913ce21b81266cbd0cae06bd15740301cec080c2b",
+      "executable": false
+    },
+    {
+      "path": "ios/CasitaDexSB40QA/Images.xcassets/Contents.json",
+      "size": 62,
+      "sha256": "632a1481b9e3b957f3b34267728744d61272e3db32751432551b9eb7c58ad7a2",
+      "executable": false
+    },
+    {
+      "path": "ios/CasitaDexSB40QA/Images.xcassets/SplashScreenBackground.colorset/Contents.json",
+      "size": 744,
+      "sha256": "2900bdddfbcdca0014d0860d36753222649578f5288f5ee3c3b03cf6312f3b0b",
+      "executable": false
+    },
+    {
+      "path": "ios/CasitaDexSB40QA/Images.xcassets/SplashScreenLogo.imageset/Contents.json",
+      "size": 1003,
+      "sha256": "badd98377158c311c1bd38d68aecd32335bbfb8f3f3206e1171f007ec1fd2d51",
+      "executable": false
+    },
+    {
+      "path": "ios/CasitaDexSB40QA/Images.xcassets/SplashScreenLogo.imageset/dark_image.png",
+      "size": 21788,
+      "sha256": "73ba7d73be5e165aceea4d486673fd629c83508ffd9e0bdb00933d4ec4947d07",
+      "executable": false
+    },
+    {
+      "path": "ios/CasitaDexSB40QA/Images.xcassets/SplashScreenLogo.imageset/dark_image@2x.png",
+      "size": 48614,
+      "sha256": "686f55cdfc3e9dc001a5d5be6699206049acd812d627252fca5a538a2bda204c",
+      "executable": false
+    },
+    {
+      "path": "ios/CasitaDexSB40QA/Images.xcassets/SplashScreenLogo.imageset/dark_image@3x.png",
+      "size": 76113,
+      "sha256": "df99ab2a42cbd2a0274e1138fe3fd63357c1efc2c2f8e94e152bcc3eb95a2bb9",
+      "executable": false
+    },
+    {
+      "path": "ios/CasitaDexSB40QA/Images.xcassets/SplashScreenLogo.imageset/image.png",
+      "size": 20525,
+      "sha256": "8212f75db3c5bbf0ba9aa3eb23473ed22633dbe67212556b285460dff5055ee3",
+      "executable": false
+    },
+    {
+      "path": "ios/CasitaDexSB40QA/Images.xcassets/SplashScreenLogo.imageset/image@2x.png",
+      "size": 45499,
+      "sha256": "0883f996d23ed7cfc10d7140500cf1ee0cd97517b9049b5a8f2e205339600b38",
+      "executable": false
+    },
+    {
+      "path": "ios/CasitaDexSB40QA/Images.xcassets/SplashScreenLogo.imageset/image@3x.png",
+      "size": 70614,
+      "sha256": "0302fcf3b25e7a09e1e7ca88a6f64f4c4c53f70dc96d6ff40882704b99daa195",
+      "executable": false
+    },
+    {
+      "path": "ios/CasitaDexSB40QA/Info.plist",
+      "size": 3200,
+      "sha256": "cb48597e4bf85f5f3c7678e29ac9220d6b478aebb46628935ddf492f076c306a",
+      "executable": false
+    },
+    {
+      "path": "ios/CasitaDexSB40QA/PrivacyInfo.xcprivacy",
+      "size": 986,
+      "sha256": "b9289ecfec677540a293fba948db7268c02b1d44943fa66b1e7a85ba0c31a252",
+      "executable": false
+    },
+    {
+      "path": "ios/CasitaDexSB40QA/SplashScreen.storyboard",
+      "size": 3444,
+      "sha256": "02e5683b069dee53e296676ac8a294d3b7a48eacdbb12cdfe31c873525a37b76",
+      "executable": false
+    },
+    {
+      "path": "ios/CasitaDexSB40QA/Supporting/Expo.plist",
+      "size": 425,
+      "sha256": "9e93c2a9d202979e3b37d5b3e4e20f4dd6e88c2d48add9769a7ea98bfc7556a8",
+      "executable": false
+    },
+    {
+      "path": "ios/Podfile",
+      "size": 2903,
+      "sha256": "f15243d9adec6956c5360ac149a1f2e7479f038d89396e8bf6fddb02dc0190b3",
+      "executable": false
+    },
+    {
+      "path": "ios/Podfile.lock",
+      "size": 88684,
+      "sha256": "08420699fd05e5b92cce732ce715425453d4ed97d4f81e7b800b3b4159a2d540",
+      "executable": false
+    },
+    {
+      "path": "ios/Podfile.properties.json",
+      "size": 354,
+      "sha256": "3bed4d59768067cc136356414df133784015af45e14e9bd9525ee98368fe3451",
+      "executable": false
+    },
+    {
+      "path": "package-lock.json",
+      "size": 441676,
+      "sha256": "e9b51355797d4d02769b04f61d2d2fe7acde74b2b9b47b24315f2befc841482d",
+      "executable": false
+    },
+    {
+      "path": "package.json",
+      "size": 1831,
+      "sha256": "559651896e10765c149ab5f82b85968bddbcd4ae56573de24e337df995586a97",
+      "executable": false
+    },
+    {
+      "path": "plugins/with-ios-scene-factory.js",
+      "size": 1202,
+      "sha256": "52622b09d07b6567792aec5849dc9b1ca8a7cedbfc4e1e93a73f670dba852185",
+      "executable": false
+    },
+    {
+      "path": "public/brand/apple-touch-icon.png",
+      "size": 21946,
+      "sha256": "5da7f6d3e972177326b2211bc63d091ef06de5fad3f9baf57aa4a16b65e650d9",
+      "executable": false
+    },
+    {
+      "path": "public/brand/favicon-dark-32.png",
+      "size": 1576,
+      "sha256": "8d8c1939472fc2a743f801816374c39b210036281270b4831d6bdb6234defd9b",
+      "executable": false
+    },
+    {
+      "path": "public/brand/favicon-light-32.png",
+      "size": 1534,
+      "sha256": "4872454f4968b23795a436e09b48af68320f2338dc5ace7449d30986c24e4e4e",
+      "executable": false
+    },
+    {
+      "path": "public/brand/icon-192.png",
+      "size": 23981,
+      "sha256": "b1763af675bb0b04ca88c85bcca5d7f680756bd8589ef2e645ddb62b8d26fc55",
+      "executable": false
+    },
+    {
+      "path": "public/brand/icon-512.png",
+      "size": 86277,
+      "sha256": "8f753681aecf42ab2b81dd5e087f1efe4bb55be98fb67b5799698b1d396d1ec2",
+      "executable": false
+    },
+    {
+      "path": "public/brand/icon-maskable-512.png",
+      "size": 54422,
+      "sha256": "1981e071a71db4ed05e28522efc4d5d550c09be6a9b957045c35d2c1e01f4bd7",
+      "executable": false
+    },
+    {
+      "path": "public/favicon.ico",
+      "size": 60053,
+      "sha256": "80f6d4736555e63e7f9ce22491cf086ac9ae4855189e6290263b807b24f8d311",
+      "executable": false
+    },
+    {
+      "path": "public/index.html",
+      "size": 807,
+      "sha256": "b23d21f70c23eed819a6209396c1fa71cc41bd1922193b28d07526728d94f301",
+      "executable": false
+    },
+    {
+      "path": "public/manifest.webmanifest",
+      "size": 585,
+      "sha256": "d993143c4d0befc0a813c224845f5258a9f14d967b65e1c8b7fda1ec1e84d3f7",
+      "executable": false
+    },
+    {
+      "path": "sb40-quarantined-tests/reminder-edge.candidate.test.mjs",
+      "size": 1382,
+      "sha256": "7bb5ca2b8a1fa0d8d39719c59cd6bd68c05636dcb63c510778816128003348e1",
+      "executable": false
+    },
+    {
+      "path": "scripts/android-qa.cjs",
+      "size": 3725,
+      "sha256": "4a2c11ba5a3dc5c77725d9c01cf0a375e67f07b0db79899a0c75a7723cc9da70",
+      "executable": false
+    },
+    {
+      "path": "scripts/build-android-staging-shortpath.ps1",
+      "size": 7053,
+      "sha256": "326a0073df7a21598478482114648d472815b58616d2558f18ce80c3e0eb386a",
+      "executable": false
+    },
+    {
+      "path": "scripts/create-household-scenarios.mjs",
+      "size": 1541,
+      "sha256": "a93df322ad4a1a68fbbccc55bde6c7727053cb589388b6ac15cbdc1ce8d07b59",
+      "executable": false
+    },
+    {
+      "path": "scripts/create-photo-stress-scenario.mjs",
+      "size": 2503,
+      "sha256": "b12dc881ee65b0c65b005050fe16ee0d67596e033c07f8823bbe4d3f29c049f9",
+      "executable": false
+    },
+    {
+      "path": "scripts/preview.mjs",
+      "size": 1109,
+      "sha256": "ef2c13e355d56daddd07c8833dd419049f0f3c02c323aaf95a3040df3a5934d6",
+      "executable": false
+    },
+    {
+      "path": "scripts/run-casitadex-linux-qa-20261021.sh",
+      "size": 633,
+      "sha256": "96754a524ddc07af3ecfb59f62887f26e99c591e0b94271f9dc467802530f7ce",
+      "executable": false
+    },
+    {
+      "path": "scripts/verify-local-only.gradle",
+      "size": 1366,
+      "sha256": "23b9e05815240bcf2c9478845e85f081ba3ae63e548092faebbeabe109cbe6fb",
+      "executable": false
+    },
+    {
+      "path": "scripts/verify-qa-backup-roundtrip.mjs",
+      "size": 3100,
+      "sha256": "fb988cc3116b035fdacd2ea22fd6cce77ee8520cdf2d3d471f5a881f31eea1c2",
+      "executable": false
+    },
+    {
+      "path": "src/accepted-navigation-icon.tsx",
+      "size": 1004,
+      "sha256": "e37a21ad2137e442e5477050088c765380b0ff61b98e20135b8e029439ed1d89",
+      "executable": false
+    },
+    {
+      "path": "src/app/_layout.tsx",
+      "size": 6650,
+      "sha256": "d0fe14d8d6c4fa2fab090c6b638af571571c7893b6b17efa4fbf0392235a4ed5",
+      "executable": false
+    },
+    {
+      "path": "src/app/add.tsx",
+      "size": 52,
+      "sha256": "f4f37ef78898708a3ef57f40caca657a73aba714268a859ecae12da9a84bda48",
+      "executable": false
+    },
+    {
+      "path": "src/app/answers.tsx",
+      "size": 3208,
+      "sha256": "e08b625f27c8913880848b424d5e8c30b3ccf44ca4a6efe6a9d340e81e0f2faf",
+      "executable": false
+    },
+    {
+      "path": "src/app/card.tsx",
+      "size": 55,
+      "sha256": "c0c514ab9b5b01b843c25b9f4ae9387156f28d639b3cecb3c7ff164a7a1cf386",
+      "executable": false
+    },
+    {
+      "path": "src/app/index.tsx",
+      "size": 2735,
+      "sha256": "ca7c2e900dc213525e00bc0ad3ba22f8b206171758c1dc751eefe3511917d0b0",
+      "executable": false
+    },
+    {
+      "path": "src/app/memories.tsx",
+      "size": 1689,
+      "sha256": "4eb4675b0241ea5c4f7018efb4558a5e6b32fc5d1ef088140d48c1b5e30ae742",
+      "executable": false
+    },
+    {
+      "path": "src/app/more.tsx",
+      "size": 444,
+      "sha256": "8f377038aea52dd8891c0f71e961b979bc7badd17778c83ccb250f98c3b8953b",
+      "executable": false
+    },
+    {
+      "path": "src/app/photo-viewer.tsx",
+      "size": 5546,
+      "sha256": "3abfaef871532524c4c5b3eaa64971d0f16eaf9e7e6c60f02736a16fd08d76c9",
+      "executable": false
+    },
+    {
+      "path": "src/app/photos-manage.tsx",
+      "size": 52,
+      "sha256": "7a52b8cdc217c9cde83ba1b296332b010fe0b375e0982ce1013c3e73bb23cf72",
+      "executable": false
+    },
+    {
+      "path": "src/app/photos.tsx",
+      "size": 7752,
+      "sha256": "938f89517de9fd77f546f8cf9f95ed1096e2c22ee8e5c2eb0eed3bc274752dfe",
+      "executable": false
+    },
+    {
+      "path": "src/app/reminders-manage.tsx",
+      "size": 56,
+      "sha256": "9d77478aedbc1c346fa169d9258b7adda59d3edbfa8f2c73b2ce36a95f6d0a0c",
+      "executable": false
+    },
+    {
+      "path": "src/app/reminders.tsx",
+      "size": 2223,
+      "sha256": "509471e2b3d6adc36cb356ee3a9759dc7073ab3dd6c92d6ca587cabd5f030a3c",
+      "executable": false
+    },
+    {
+      "path": "src/app/sb29-review.tsx",
+      "size": 1221,
+      "sha256": "bd59b056840e0621626d325bf64a03dac53d5753f1b8bb6972e7634b215b5ba3",
+      "executable": false
+    },
+    {
+      "path": "src/app/settings-manage.tsx",
+      "size": 278,
+      "sha256": "538785a8f8b9e459d4713a3e8502139d69806c49a18923e59f109accb7c82deb",
+      "executable": false
+    },
+    {
+      "path": "src/app/share-memory.tsx",
+      "size": 58,
+      "sha256": "0acb621fd021ce2cac333be231cd0e4f72b79f2ea3399d33db66466d9b2d03ec",
+      "executable": false
+    },
+    {
+      "path": "src/backup-files.native.ts",
+      "size": 2803,
+      "sha256": "6b4014a0c3efeb74789174eca84a2c76283351487a96d26083025a57af0e1ff8",
+      "executable": false
+    },
+    {
+      "path": "src/backup-files.ts",
+      "size": 337,
+      "sha256": "d32b2e5cc475c0720606eeedb8c40b60b7443bc3d48a8ef27f2a44c2db64bf1b",
+      "executable": false
+    },
+    {
+      "path": "src/brand-web-meta.tsx",
+      "size": 48,
+      "sha256": "9062838108ef1ef9ab77f7294a398e869942e657ff9380cce389e5fe692c6c45",
+      "executable": false
+    },
+    {
+      "path": "src/brand-web-meta.web.tsx",
+      "size": 631,
+      "sha256": "5de58239fa0cbfc318760c3198afcf9becc03488c3f7f53bcb5cd745c4e37d66",
+      "executable": false
+    },
+    {
+      "path": "src/brand.tsx",
+      "size": 4698,
+      "sha256": "b42627497967cf4e80e1c5d66938c2241b2a62a383d58eedbcea70d2ef5ea23c",
+      "executable": false
+    },
+    {
+      "path": "src/brand.web.tsx",
+      "size": 4095,
+      "sha256": "ff33bd8d0cb85af4f902b55144db4ff9e2360c852f26628a926d66937ee38718",
+      "executable": false
+    },
+    {
+      "path": "src/draft-add.tsx",
+      "size": 8361,
+      "sha256": "6de6b75eb35ccbb8d85a1b13661d33e98d4572ab8acc265009f9ea0e24c55a63",
+      "executable": false
+    },
+    {
+      "path": "src/draft-sqlite.ts",
+      "size": 8040,
+      "sha256": "9ad2ee3af25fcc3f0c9bd36cfb691440813f1d21e6569322e6234a9ebd3b9207",
+      "executable": false
+    },
+    {
+      "path": "src/draft-types.ts",
+      "size": 671,
+      "sha256": "80fbe40e71ba8225486c3650cae66e13460b9f21949a074a4e86f6f514df4a58",
+      "executable": false
+    },
+    {
+      "path": "src/editorial-intro.tsx",
+      "size": 806,
+      "sha256": "33569a1e73b241c7ff16797779dcc7a7484e05329b618d938afe9cd2d82686ad",
+      "executable": false
+    },
+    {
+      "path": "src/eng-backup.ts",
+      "size": 3970,
+      "sha256": "322fde954a4f5bf01cc4f073322941ef42f28e2e2871ede811a80465aeecae46",
+      "executable": false
+    },
+    {
+      "path": "src/eng-domain.ts",
+      "size": 3618,
+      "sha256": "b05ceb731e9403d3de662b44d80016dce14ee1bb7314b7605f40965504ff678a",
+      "executable": false
+    },
+    {
+      "path": "src/eng-duplicates.ts",
+      "size": 906,
+      "sha256": "3f4fa5dbc82a4b1efade6f0d654666ba60a6ceab9cd26ae2b1e4b1dff5ce3eca",
+      "executable": false
+    },
+    {
+      "path": "src/eng-find.ts",
+      "size": 2570,
+      "sha256": "6fbb91c9c69746d0641c158bdb6ce61268faa123b8b9c5adb974d7e0fb1f0051",
+      "executable": false
+    },
+    {
+      "path": "src/eng-navigation.ts",
+      "size": 397,
+      "sha256": "58ff7f32cf44454f63d58739f759edf2662667c934a50e2aa38e611ecccb9837",
+      "executable": false
+    },
+    {
+      "path": "src/eng-runtime.native.ts",
+      "size": 11168,
+      "sha256": "2632b85d0f1e8588d6f9b441aa9651609ba71c11de9d79407905a5f40438e4f1",
+      "executable": false
+    },
+    {
+      "path": "src/eng-runtime.ts",
+      "size": 1548,
+      "sha256": "2974357e68b5b7bb47a9096cbb529bdffd18178445659c8f4b3ef2b8c863e052",
+      "executable": false
+    },
+    {
+      "path": "src/eng-screens.tsx",
+      "size": 89220,
+      "sha256": "a12d8be5c53542ccf0f3706aa5884f5bf47b5768848e7589e4e59126d9e74a01",
+      "executable": false
+    },
+    {
+      "path": "src/eng-share.ts",
+      "size": 2070,
+      "sha256": "56181be6ea7c838acc1022605cc7aa72fe2470405ce2b9246f49b392c27877c1",
+      "executable": false
+    },
+    {
+      "path": "src/eng-store.ts",
+      "size": 43219,
+      "sha256": "5760ce54d22bf5b9d9b74046cfb795526e95845fefd205153a10bcb84ae9be07",
+      "executable": false
+    },
+    {
+      "path": "src/eng-stream-v4.ts",
+      "size": 2717,
+      "sha256": "86e1225a4082d54f9ad68974731cceb62733f4c2d48f18fac71003a91b6d1f82",
+      "executable": false
+    },
+    {
+      "path": "src/eng-stream.ts",
+      "size": 4332,
+      "sha256": "1e985399dec3017a42f15335fd61d4debcb355a099bae060d3f62da7710b946c",
+      "executable": false
+    },
+    {
+      "path": "src/eng-text-backup.ts",
+      "size": 2605,
+      "sha256": "892a34400641b2548332394898961847d32b037fa0328b9970ebb15d38591337",
+      "executable": false
+    },
+    {
+      "path": "src/eng-types.ts",
+      "size": 845,
+      "sha256": "c9b81df603669a60af085b512e9284e1cde0de955f1846bba318390cb8740783",
+      "executable": false
+    },
+    {
+      "path": "src/figma-first/FigmaFind.tsx",
+      "size": 3063,
+      "sha256": "60fb3eeec3726ccc394c287c9ea72ccee597121a00220790d4dc46423aa00f53",
+      "executable": false
+    },
+    {
+      "path": "src/figma-first/FigmaHome.tsx",
+      "size": 2406,
+      "sha256": "e68ffc24cfd35be01be606822140829a2241ba8b47a6796b73272113e289540a",
+      "executable": false
+    },
+    {
+      "path": "src/figma-first/FigmaMemories.tsx",
+      "size": 1077,
+      "sha256": "5757879e82fd220eae950e700936c82164a98c3c0116129b80c036441bb49da7",
+      "executable": false
+    },
+    {
+      "path": "src/figma-first/FigmaPhotos.tsx",
+      "size": 2635,
+      "sha256": "12cb0cd115d79bc8e8528991975f2a76e97cfb45914d30576585e40f7310b5d4",
+      "executable": false
+    },
+    {
+      "path": "src/figma-first/FigmaReminders.tsx",
+      "size": 6152,
+      "sha256": "9cf7fbd2a270b9d7887a03103d41fc5604d994d3fd71dbf026a8abc319a48080",
+      "executable": false
+    },
+    {
+      "path": "src/figma-first/FigmaSettings.tsx",
+      "size": 2626,
+      "sha256": "c6bb54035d1403dd8dbdf91b83ca03eeeb0b7baa59aa278e54b605d7a522376e",
+      "executable": false
+    },
+    {
+      "path": "src/figma-first/HomeActionCard.tsx",
+      "size": 2133,
+      "sha256": "761772da38f59345e6abec6d0494e1404650f75ad302ff5aea2f948658c00774",
+      "executable": false
+    },
+    {
+      "path": "src/figma-first/PrimaryCta.tsx",
+      "size": 1781,
+      "sha256": "ba271e79fc90eeb010108a5b8ed82e71511e19f418908c024da93f139e93db5f",
+      "executable": false
+    },
+    {
+      "path": "src/figma-first/ReminderPreview.tsx",
+      "size": 991,
+      "sha256": "5e1c235d11782b63eb76d77d60d48d7a0df4a6207fea627e8c1ef629de95e6f0",
+      "executable": false
+    },
+    {
+      "path": "src/figma-first/SecondaryScreenHeading.tsx",
+      "size": 684,
+      "sha256": "3712acf4de8c06421ebc4fbac2274d5eb1cbc336a3a4f0bcd0462a5f383980e5",
+      "executable": false
+    },
+    {
+      "path": "src/figma-first/photo-summaries.ts",
+      "size": 623,
+      "sha256": "78bbd779cff332d1ba6249e03bf9dd2a8c4147acef8e0202e0e2f489a1afd293",
+      "executable": false
+    },
+    {
+      "path": "src/figma-first/tokens.ts",
+      "size": 1559,
+      "sha256": "8ac53496108c283f9ad721141f4a9b5e65bb0508d71bd1e9c744e8dee5ac734f",
+      "executable": false
+    },
+    {
+      "path": "src/figma-first/view-models.ts",
+      "size": 693,
+      "sha256": "575a4f614a37214315b770d7c73493481ea3e51d8a050bd478537dc34f4bd7ae",
+      "executable": false
+    },
+    {
+      "path": "src/home-action.tsx",
+      "size": 1475,
+      "sha256": "81a4dd972814340d1f95a7bdc4bfdcc245aadb999a52d8a08743a801109d9dde",
+      "executable": false
+    },
+    {
+      "path": "src/media-attachment.native.ts",
+      "size": 4425,
+      "sha256": "ce2870eee5c70eeb44b352ebad9d664ddfbbcad77ef39a58d5910a13016510c7",
+      "executable": false
+    },
+    {
+      "path": "src/media-attachment.ts",
+      "size": 483,
+      "sha256": "20ceca696167acde822cbd0b21b9c1bf06fc9cb4801d2379e79ce09be5869aba",
+      "executable": false
+    },
+    {
+      "path": "src/media-backup-v2.ts",
+      "size": 1167,
+      "sha256": "d5817132467e83fc1d790d213caede34a12a17a6b9d581e7405200d4e1cd5196",
+      "executable": false
+    },
+    {
+      "path": "src/media-coordinator.ts",
+      "size": 1444,
+      "sha256": "b4834e2eaa040f0f30d6c3874ac12393c995e9df8fd0a36eaa9f6f04359767dd",
+      "executable": false
+    },
+    {
+      "path": "src/media-hash.native.ts",
+      "size": 389,
+      "sha256": "3ec242eefd0c8980e00055a44bde5f211029e23583b9d312c6f371f04a32d1bd",
+      "executable": false
+    },
+    {
+      "path": "src/media-integrity.ts",
+      "size": 1297,
+      "sha256": "37e1b323c842e9367efeb088312445b8316844d29ee2e6c0f30dc02678aad769",
+      "executable": false
+    },
+    {
+      "path": "src/media-journal-flow.ts",
+      "size": 1237,
+      "sha256": "0334b9537cd4c323c598d37c266e9959dcf157ece43e6860ef8cb62f14886540",
+      "executable": false
+    },
+    {
+      "path": "src/media-journal.ts",
+      "size": 2252,
+      "sha256": "4108991c4b38b8fec97504f678b3463635fd374cc305f3a15b8d28b661444607",
+      "executable": false
+    },
+    {
+      "path": "src/media-manifest.ts",
+      "size": 2442,
+      "sha256": "ba2499505aafe31a0afa089675c5fa322e815b00d286e994450ee4dc76cb2143",
+      "executable": false
+    },
+    {
+      "path": "src/media-portable-container.ts",
+      "size": 2517,
+      "sha256": "9869b72f6e8e5f7127045bcb125c959e2faae69ad9149c47601ed57778b005c5",
+      "executable": false
+    },
+    {
+      "path": "src/media-recovery.ts",
+      "size": 957,
+      "sha256": "4cbc5d31c8872de1bde64781bba9084077e226903655c045eca231e97a579c71",
+      "executable": false
+    },
+    {
+      "path": "src/media-restore-gate.ts",
+      "size": 668,
+      "sha256": "47f3e2a389dfcb560dc7baaf2f4ad6d4d7ec7de37dc6f563f7fdcc7736747323",
+      "executable": false
+    },
+    {
+      "path": "src/media-sqlite.ts",
+      "size": 2908,
+      "sha256": "880f8b6880d77e4fd3ef7d9aaa584f5b1b9c77a378e78ba1413f89b593e2d889",
+      "executable": false
+    },
+    {
+      "path": "src/media-staging.ts",
+      "size": 1684,
+      "sha256": "67925157b5a4910ea0bf54a5911897049d88df506798013b7c7a54d070283338",
+      "executable": false
+    },
+    {
+      "path": "src/media-store.native.ts",
+      "size": 1768,
+      "sha256": "3cc038597102404dae9f19c6c415247de5abdfe8a22377eebe4613129c8759d7",
+      "executable": false
+    },
+    {
+      "path": "src/media-transfer.native.ts",
+      "size": 8516,
+      "sha256": "9eff37ba2d8bb432decc5f16820aa62c9592189334fb5e75743442c9cae98c73",
+      "executable": false
+    },
+    {
+      "path": "src/media-transfer.ts",
+      "size": 723,
+      "sha256": "a63bca7f59bafb07a36c6ae719ab6a2437c389044e5cf79b608799a314900517",
+      "executable": false
+    },
+    {
+      "path": "src/model.ts",
+      "size": 6958,
+      "sha256": "8899127540e93af116467c8b9300f2e4bf6c4944fee5139524b65c95862f351b",
+      "executable": false
+    },
+    {
+      "path": "src/navigation-icon.tsx",
+      "size": 2281,
+      "sha256": "adf7f197c8d355f7bb10e745e8a7f5fa0bae8ad615bfae32aa6176c352bc59ae",
+      "executable": false
+    },
+    {
+      "path": "src/persistence.native.ts",
+      "size": 2287,
+      "sha256": "0c3ce79b11f6e1b112e91a0a57d0c4966ac47c7e4fefe1f957a91368bd87025c",
+      "executable": false
+    },
+    {
+      "path": "src/persistence.ts",
+      "size": 318,
+      "sha256": "531011b4879562ac15a3d3de6ca1cf4ba2c5d4faab1bc9e5ed997a1c4e03cfba",
+      "executable": false
+    },
+    {
+      "path": "src/preferences.ts",
+      "size": 1050,
+      "sha256": "0905927015d383844b89c0b17c2d963a1e0ddd6c75bc80c3611cb417320bff5c",
+      "executable": false
+    },
+    {
+      "path": "src/qa-illustration-bytes.ts",
+      "size": 105034,
+      "sha256": "eadd8030bb9e31619d48163cb668ad1d1a4ed91036242cf12ba79c2023afe621",
+      "executable": false
+    },
+    {
+      "path": "src/reminder-alert-plan.ts",
+      "size": 1715,
+      "sha256": "56a3fb012549e387d09d857a5837569ea10e2d03a375ad2409c6e8094a010c3a",
+      "executable": false
+    },
+    {
+      "path": "src/reminder-alerts.native.ts",
+      "size": 3508,
+      "sha256": "8f0a54f59070c0ee91674c282d35027c3fcffff7c73c0fb2d5a249abcceacc06",
+      "executable": false
+    },
+    {
+      "path": "src/reminder-backup-v4.ts",
+      "size": 3575,
+      "sha256": "c32a8c89216c91795f353c0c524325ed7b204f8173101c1993ffce06b94e7e16",
+      "executable": false
+    },
+    {
+      "path": "src/reminder-recurrence.ts",
+      "size": 1298,
+      "sha256": "6340d472ed5d40f1b4932877c957ec9ead2d63a1c9a31fad1199f90b799d9226",
+      "executable": false
+    },
+    {
+      "path": "src/reminder-restore-v4.ts",
+      "size": 839,
+      "sha256": "9ad4ca62b09748b28ba988055803d8c85f5325398d18180162ed11890395145d",
+      "executable": false
+    },
+    {
+      "path": "src/repository.ts",
+      "size": 1233,
+      "sha256": "a71c5c578fda8838e35924fc8d19d6422eb960cdab467398b45e3f88bf51671a",
+      "executable": false
+    },
+    {
+      "path": "src/sb20-contract.ts",
+      "size": 8369,
+      "sha256": "1888050b2c7639998417d82d09105ca6fee7cbf80dd991eed0c7567cf8d7be33",
+      "executable": false
+    },
+    {
+      "path": "src/sb20-draft-media.ts",
+      "size": 5713,
+      "sha256": "52ce54532e2c2a448a428ba0f0505b250ecbb4c0e208e16b2511ef9a6dc4bca7",
+      "executable": false
+    },
+    {
+      "path": "src/sb20-eng-f-b-journal.mjs",
+      "size": 1879,
+      "sha256": "986bffcac56a5ab48b7fad73d6fb3d00051cea5ab87eff333853ff5eac39faa6",
+      "executable": false
+    },
+    {
+      "path": "src/sb20-eng-f-c-coordinator.mjs",
+      "size": 4398,
+      "sha256": "af1b32ea83c8fda1c26b331842d5135245f49e36a0562089ac0add03b8a6271e",
+      "executable": false
+    },
+    {
+      "path": "src/sb20-eng-f-d-async.ts",
+      "size": 4108,
+      "sha256": "d90f4ab2e2f4b068f897680f1f4f4bb0b163e2ec50af2228f248bec25a627a8e",
+      "executable": false
+    },
+    {
+      "path": "src/sb20-eng-f-e-bridge.ts",
+      "size": 2967,
+      "sha256": "d9b6b94269a086bbc153ffc2366ca60f995d86f197f70746a98e23d2e3e1eafc",
+      "executable": false
+    },
+    {
+      "path": "src/sb20-eng-f-f-ownership.ts",
+      "size": 3804,
+      "sha256": "5b5bc7e75dd4a7855d62c6b3d589812d16c8368284a14980b02f45ece59e05f6",
+      "executable": false
+    },
+    {
+      "path": "src/sb20-eng-f-g-enumerator.ts",
+      "size": 1871,
+      "sha256": "f4504d6138f4e12d4f4358f7c672b08f00fb0c95eb8af5b6fadef49eb08c7f83",
+      "executable": false
+    },
+    {
+      "path": "src/sb20-eng-f-h-verifier.ts",
+      "size": 2624,
+      "sha256": "57f542d14244cdb8df1ad15d109ffb80f437fc1aa81116c059cc81e5b6dcdfb7",
+      "executable": false
+    },
+    {
+      "path": "src/sb20-eng-f-i-hardening.ts",
+      "size": 3659,
+      "sha256": "1d5731ad28d80746e2ffa2e94dc6369240e1e503665c7b2a5f7f35755e83dd0c",
+      "executable": false
+    },
+    {
+      "path": "src/sb20-expo-ports.ts",
+      "size": 4205,
+      "sha256": "a56f3dbd51386ab8e856f6cc73e916a7c59924a44bdc352b13cc871584f6222d",
+      "executable": false
+    },
+    {
+      "path": "src/sb20-expo-runtime.native.ts",
+      "size": 2479,
+      "sha256": "86760e5f08c8e49d727c466fb1dbc2da1b38fa63eaf51662a3ff56ddb084c692",
+      "executable": false
+    },
+    {
+      "path": "src/sb20-native-adapter.ts",
+      "size": 3225,
+      "sha256": "749da6980c997bd02fd0e810e821711603340b0c9cee85dd1e89f5cbe886221b",
+      "executable": false
+    },
+    {
+      "path": "src/sb20-native-fixture.mjs",
+      "size": 5020,
+      "sha256": "7e6d2eb0e4ae28736651993059a2535894b173cbe4b9c7e381fe19ba3b551219",
+      "executable": false
+    },
+    {
+      "path": "src/sb26-qa-seed.ts",
+      "size": 4745,
+      "sha256": "8d7eb11706279ba5f5e1b09e39d513bf0d5a458af3358207da3b74a6ecefe18c",
+      "executable": false
+    },
+    {
+      "path": "src/screens.tsx",
+      "size": 43507,
+      "sha256": "bd15914fbfe5cc6056103859d15abee1857a16b6372dc36c8d9e031578a3afb7",
+      "executable": false
+    },
+    {
+      "path": "src/sqlite-repository.ts",
+      "size": 8325,
+      "sha256": "67fb84c5aa85fb860dbd30aa7e0edb161101d036ce68a695bc3b5cc8587dd769",
+      "executable": false
+    },
+    {
+      "path": "src/sqlite-write-transaction.ts",
+      "size": 676,
+      "sha256": "40f2e32d04e6756a79526c3b86ab97f7bec2ca42b713955868323478fd0b9f86",
+      "executable": false
+    },
+    {
+      "path": "src/standalone-reminders.native.ts",
+      "size": 6074,
+      "sha256": "6ddecaf29e8029971765136ab3903d29889ecf6fe583bc44adbd1ece9879c520",
+      "executable": false
+    },
+    {
+      "path": "src/standalone-reminders.ts",
+      "size": 973,
+      "sha256": "1fef7cb6ce8e8d81f2ec04e1440536040ad71f77273c1e5807d3e6b408eebd99",
+      "executable": false
+    },
+    {
+      "path": "src/state.tsx",
+      "size": 5417,
+      "sha256": "55e25c5309205395c71b9ea6d0406269959b2d68808276b1cbef2cd9f151e2d1",
+      "executable": false
+    },
+    {
+      "path": "src/storage-safety.ts",
+      "size": 2908,
+      "sha256": "d7429b38667354d639d60cc254b1452de544c387ffd4939d065dc7336267c701",
+      "executable": false
+    },
+    {
+      "path": "src/storage-space.native.ts",
+      "size": 723,
+      "sha256": "09db145588b47c129c9ca440c5853dc01cc7ad8b3c74956812f611e06f12d26f",
+      "executable": false
+    },
+    {
+      "path": "src/theme.ts",
+      "size": 531,
+      "sha256": "fddad0cc35e86aa16cd5c99cccb91a0dff7dc4887b898ae218637089d70a5b50",
+      "executable": false
+    },
+    {
+      "path": "src/ui.tsx",
+      "size": 9567,
+      "sha256": "2b353a28c8d91c7053a32deed5b72763619e7aedc4d051ac1ca084ec61d91a7d",
+      "executable": false
+    },
+    {
+      "path": "tests/accessibility-smoke.cjs",
+      "size": 2186,
+      "sha256": "a704fdc511d104f72afdf85577926e4e7e57f59c6d5f707cfba2e23c1380bab7",
+      "executable": false
+    },
+    {
+      "path": "tests/android-build-contract.test.mjs",
+      "size": 2081,
+      "sha256": "747cbc8055d9734f236b07ddccb4b88bb4f5465fac47a639731d1d753e01d8cd",
+      "executable": false
+    },
+    {
+      "path": "tests/android-native.cjs",
+      "size": 6354,
+      "sha256": "2ff4b6c4be9bdbec1dafb539a2b699a4be6e20cb9edfb53c7cb076a5639a10d1",
+      "executable": false
+    },
+    {
+      "path": "tests/appearance-browser.cjs",
+      "size": 2544,
+      "sha256": "b8c15063ec5753d01f020a0e3b53451bdc42b218bd61881867dfdbc92218ab40",
+      "executable": false
+    },
+    {
+      "path": "tests/backup-files.test.mjs",
+      "size": 5309,
+      "sha256": "411f231f6d45219d442c629346a4173e9e8ed3f43921a6bad35caeb82c55395c",
+      "executable": false
+    },
+    {
+      "path": "tests/brand-browser.cjs",
+      "size": 5150,
+      "sha256": "8d356b8ebd0a26aa2fd23de852524aa02cc6be6761745703728d7974441d0773",
+      "executable": false
+    },
+    {
+      "path": "tests/browser-smoke.cjs",
+      "size": 7251,
+      "sha256": "08024cbb96031e2ca64e143ca81c60d91f3b94c35d099ffccd9792fa81e003e0",
+      "executable": false
+    },
+    {
+      "path": "tests/config.test.mjs",
+      "size": 2162,
+      "sha256": "eceb4d0a7f50e6e750c2503c34d975b9ec3bbc51deb46149c971b3bd63fc18c3",
+      "executable": false
+    },
+    {
+      "path": "tests/domain.test.mjs",
+      "size": 3426,
+      "sha256": "edfdb08969b18b5d9eb1da953df4584d8ba2ed28640c092e81b5a378124f7863",
+      "executable": false
+    },
+    {
+      "path": "tests/durability-browser.cjs",
+      "size": 7592,
+      "sha256": "f04c63e14e003674df2ae316ffaccc4b6c04fb91a9763bd1dd846ee3f63c7947",
+      "executable": false
+    },
+    {
+      "path": "tests/durability.test.mjs",
+      "size": 9218,
+      "sha256": "6cf8b09c19366dc673b71ac1784cad10c6a5086d23e7cf6c492b751ec4819ae7",
+      "executable": false
+    },
+    {
+      "path": "tests/editor-layout-contract.test.mjs",
+      "size": 1383,
+      "sha256": "a88aecc1bf4d9527c9353d55ce74d350758a71ce7cebfdcbe192be14f25a8179",
+      "executable": false
+    },
+    {
+      "path": "tests/eng-completion.test.mjs",
+      "size": 14898,
+      "sha256": "5a235f640fb1a98d503f2db820b0a939f06f4a2472a3ba3a43659e0f7c915512",
+      "executable": false
+    },
+    {
+      "path": "tests/eng-consumer-media.test.mjs",
+      "size": 7075,
+      "sha256": "a2d79e47c4e8bef653626a51cd4891ea771c2d94aa9f1a2bc04585c645689cdb",
+      "executable": false
+    },
+    {
+      "path": "tests/eng-disk-roundtrip.test.mjs",
+      "size": 3399,
+      "sha256": "1f019fb62a44c7dcfe744b0362b96514f5e28de68f0eacb119dae1e73a1981ca",
+      "executable": false
+    },
+    {
+      "path": "tests/eng-find.test.mjs",
+      "size": 3713,
+      "sha256": "b8514afa1dc628759144d8fa2f80ac6b4171f3ba01ff1bee5f6c7396d806ac50",
+      "executable": false
+    },
+    {
+      "path": "tests/eng-fixture.mjs",
+      "size": 2043,
+      "sha256": "3a85ad6245b38fcd42f4c5fd73f619e47aa336951ec71fc49192b7fff7718844",
+      "executable": false
+    },
+    {
+      "path": "tests/eng-share.test.mjs",
+      "size": 1252,
+      "sha256": "f7485c3c444b86fb82281f223522a12c0d1d372c449841b05dddcfbb65e3aaff",
+      "executable": false
+    },
+    {
+      "path": "tests/eng-text-backup.test.mjs",
+      "size": 2628,
+      "sha256": "e7eed4142bd5ab68a5d4f54486d6bda2e434e6ea297bf2a0adf40a352c7e1d78",
+      "executable": false
+    },
+    {
+      "path": "tests/eng-v4-atomic.test.mjs",
+      "size": 11784,
+      "sha256": "add073cac7fe965748d2f96683c3c0faa303ed172a7398e445e5a2b9280a9ad0",
+      "executable": false
+    },
+    {
+      "path": "tests/figma-authority-gate.test.mjs",
+      "size": 884,
+      "sha256": "8f161f386cf9a18c7ff65d66c564cf12c5bba7e98db4722d62644630e99793f8",
+      "executable": false
+    },
+    {
+      "path": "tests/figma-brand-assets.test.mjs",
+      "size": 2739,
+      "sha256": "5ccfe3fb0fd34ff12a1376dd7e31bafb1e7f7961ba52c398beab30c64fa9a11a",
+      "executable": false
+    },
+    {
+      "path": "tests/figma-dedicated-pages.test.mjs",
+      "size": 818,
+      "sha256": "6e83a2baf0a9bb8f1634a54c23fad278d6b7325d3198cf608c853f31b5322d7a",
+      "executable": false
+    },
+    {
+      "path": "tests/figma-first-boundary.test.mjs",
+      "size": 2958,
+      "sha256": "31baf0524d3453376f2f948a9c2be93e0d0bbef41300184d2f776ca2991523d0",
+      "executable": false
+    },
+    {
+      "path": "tests/figma-home-contract.test.mjs",
+      "size": 1971,
+      "sha256": "17eebde47678652e7960651e6459eaeb8117621ae6a10f003ebc1e69c9f0ba9e",
+      "executable": false
+    },
+    {
+      "path": "tests/figma-manifest-gate.test.mjs",
+      "size": 1415,
+      "sha256": "67eba1c8bfd986388ed6404417a92bc81cbcbeda1bbb729583dc52296b90114a",
+      "executable": false
+    },
+    {
+      "path": "tests/figma-page-contract.test.mjs",
+      "size": 852,
+      "sha256": "ac4be172252a130dd13e4f14cf30199699d1f2c63d6c6ed17b92c51d62322580",
+      "executable": false
+    },
+    {
+      "path": "tests/figma-photo-behavior.test.mjs",
+      "size": 2817,
+      "sha256": "ce3607b8a433a11c63b367441de123945ad681c3f8060b404766853390d72fcf",
+      "executable": false
+    },
+    {
+      "path": "tests/figma-settings-entry.test.mjs",
+      "size": 670,
+      "sha256": "5164e081a2720f7bf9b2b9602b6591e9fe023c12d514c76fc688b57c60ed02eb",
+      "executable": false
+    },
+    {
+      "path": "tests/figma-store-config.test.mjs",
+      "size": 741,
+      "sha256": "6eaaf710473b126f515cabf233e2f366d087654885e69fa256055f24e01b9216",
+      "executable": false
+    },
+    {
+      "path": "tests/figma-store-evidence.test.mjs",
+      "size": 1418,
+      "sha256": "774fccfcc634c2be69d09574c89b26ed4a0252149d2a204764b64033b2ce92c3",
+      "executable": false
+    },
+    {
+      "path": "tests/figma-store-readiness.test.mjs",
+      "size": 753,
+      "sha256": "fc451424e0947203169e79d502678b101f961de516bb91f2da033681b4c81a05",
+      "executable": false
+    },
+    {
+      "path": "tests/find-keyboard-navigation.test.mjs",
+      "size": 819,
+      "sha256": "c58334b25f6ad410ffbaefb6c6d5faa13b66da0d9fe01f1bbf966b66e4a4321c",
+      "executable": false
+    },
+    {
+      "path": "tests/fixtures/synthetic-equipment-label.png",
+      "size": 24814,
+      "sha256": "5a38e7765474892b34ba840dcb7873bec9cd361386631ba32bb75c1fbfed5dc5",
+      "executable": false
+    },
+    {
+      "path": "tests/full-eng-native-boundaries.test.mjs",
+      "size": 3946,
+      "sha256": "8bbbe273a42fa84fd47b13b0f9773f3a7ad555f6940b02cf1688ca21f78d5654",
+      "executable": false
+    },
+    {
+      "path": "tests/full-eng-stream.test.mjs",
+      "size": 3378,
+      "sha256": "fb7af7787a00db09403499061f5d38b1f3f03f411380a969ee8ade2e3c77e0ea",
+      "executable": false
+    },
+    {
+      "path": "tests/full-eng-v4.test.mjs",
+      "size": 3497,
+      "sha256": "14146767623e474c35d028e855e69a438d96bcc6c2ef356d06cb42e2798f86d9",
+      "executable": false
+    },
+    {
+      "path": "tests/full-eng.test.mjs",
+      "size": 17417,
+      "sha256": "bb4122c1a938243d3ff4c459197e9b277e4cd18a36e6c01f03661b1e8ce34d1b",
+      "executable": false
+    },
+    {
+      "path": "tests/home-function-first.test.mjs",
+      "size": 870,
+      "sha256": "1360bf563bf0d40c959a39b21325a6ae6c1ed5c61cf80a7e06e6ce0c63eb67cf",
+      "executable": false
+    },
+    {
+      "path": "tests/household-fixture.mjs",
+      "size": 3345,
+      "sha256": "7b18273020e7a34e73f0701935223f54b639e8e089a89b9ae89215f3fc919c04",
+      "executable": false
+    },
+    {
+      "path": "tests/household-scenarios.test.mjs",
+      "size": 3730,
+      "sha256": "ae88f1ec856b1e1a3e68c48ceb892fb17fc0fcaf14f9db56610508a8fb80c19e",
+      "executable": false
+    },
+    {
+      "path": "tests/legacy-media-cleanup-guard.test.mjs",
+      "size": 1641,
+      "sha256": "edb0a3731818ec2f1730ca17be93c2ef1ca753747e513330023edf96ca13e3a7",
+      "executable": false
+    },
+    {
+      "path": "tests/media-atomic.test.mjs",
+      "size": 2644,
+      "sha256": "a11c545ebc819dd33b5dd5e5091adf5883034fc98a93e8781f571fb01876dea8",
+      "executable": false
+    },
+    {
+      "path": "tests/media-backup-v2.test.mjs",
+      "size": 2811,
+      "sha256": "b64e027858e10f2192aeebd84eb824b8d72aa729ff84bc3c8ed7fcd148d4f259",
+      "executable": false
+    },
+    {
+      "path": "tests/media-base64-native.test.mjs",
+      "size": 950,
+      "sha256": "3dd5405d8725119f11e15279e681bd886682cd8351a81803c42dee5a069d18c0",
+      "executable": false
+    },
+    {
+      "path": "tests/media-coordinator.test.mjs",
+      "size": 1950,
+      "sha256": "9fbd0046c6429e7583cd88947c253fb0498d2b813c8e210b24a052db5ad04eb0",
+      "executable": false
+    },
+    {
+      "path": "tests/media-integrity.test.mjs",
+      "size": 2085,
+      "sha256": "c04fd6ae68508bb4a2fd0d28882d14a0bf222cb59c350ae38c3cc38d18c0228e",
+      "executable": false
+    },
+    {
+      "path": "tests/media-journal-durable.test.mjs",
+      "size": 2115,
+      "sha256": "25d2960c91502fb0ad29119f04703faf426f1bb49016c72325987b636470bc21",
+      "executable": false
+    },
+    {
+      "path": "tests/media-journal-flow.test.mjs",
+      "size": 1865,
+      "sha256": "feebd7141e937c5d15913760e03d035d42dae00ba459c1c9cfa1653bc5937115",
+      "executable": false
+    },
+    {
+      "path": "tests/media-journal.test.mjs",
+      "size": 3472,
+      "sha256": "b7a78cdf3e147173dfb5677d1c401ccb1d51718bf4048bb7c6b902a9ffda627d",
+      "executable": false
+    },
+    {
+      "path": "tests/media-legacy-replacement-guard.test.mjs",
+      "size": 646,
+      "sha256": "48ca644788ce8b2b14e563c410e726a32b5155d4aa8f21b96fcb8a5931128973",
+      "executable": false
+    },
+    {
+      "path": "tests/media-manifest.test.mjs",
+      "size": 2163,
+      "sha256": "82eff17f863cabf952d94fbcb9d69a83a0bba9c908f8a3fc992e18cb52a9639d",
+      "executable": false
+    },
+    {
+      "path": "tests/media-native-restore-transaction.test.mjs",
+      "size": 4695,
+      "sha256": "18a06d3577365f6b26e00766291d5547deeb616c676fd4dae3dddd53e9954432",
+      "executable": false
+    },
+    {
+      "path": "tests/media-portable-container.test.mjs",
+      "size": 2233,
+      "sha256": "1d7df3d26dab04d46fbf9fd889de85a8810370eda5356a32cff0e1952397f09e",
+      "executable": false
+    },
+    {
+      "path": "tests/media-recovery.test.mjs",
+      "size": 1230,
+      "sha256": "947412d0302439801e88678b8bd4e5102ace4578778c8b5f8d0d4c744a6c8598",
+      "executable": false
+    },
+    {
+      "path": "tests/media-restore-gate.test.mjs",
+      "size": 1931,
+      "sha256": "9412b69ebf15c3d12cef657858e1b2c22770e8767f82f14248866757119589e8",
+      "executable": false
+    },
+    {
+      "path": "tests/media-sqlite.test.mjs",
+      "size": 2586,
+      "sha256": "d3beca54a5090876c9a34fc0bcfb25217c8e640847fa9973cc9a6edc6ecf5c85",
+      "executable": false
+    },
+    {
+      "path": "tests/media-staging.test.mjs",
+      "size": 3687,
+      "sha256": "0b33f44830c9aa5e46f9a3368615e73914d02c2a8fe0efcf1e0958a36115a1ff",
+      "executable": false
+    },
+    {
+      "path": "tests/media-store-native.test.mjs",
+      "size": 1835,
+      "sha256": "066f459c9a1297c413636b58269d48206d5c810849b7d3dbcdda04af93872a28",
+      "executable": false
+    },
+    {
+      "path": "tests/native-draft.test.mjs",
+      "size": 8221,
+      "sha256": "62501673f3c6cdc81701b6cb2f573021ed8f8355ad98f367a4a9bb24ffd7007b",
+      "executable": false
+    },
+    {
+      "path": "tests/native-media-await.test.mjs",
+      "size": 2037,
+      "sha256": "5266aba81282cb507766126e7d65d8b041be7236ad9ceb0bcd12a4c5f28b2d39",
+      "executable": false
+    },
+    {
+      "path": "tests/photo-qa-fixture-isolation.test.mjs",
+      "size": 499,
+      "sha256": "c71d5cfc179638e99007e45f99e5b510de5d5c8cf494e09e036001c937548820",
+      "executable": false
+    },
+    {
+      "path": "tests/reminder-alert-native.test.mjs",
+      "size": 4245,
+      "sha256": "a9ea7fd423d5d4541928269c07f55aca6974db2d02294fb1f56a5181037aa098",
+      "executable": false
+    },
+    {
+      "path": "tests/reminder-alert-plan.test.mjs",
+      "size": 1983,
+      "sha256": "a22fe9d46420ebc15a4d384249eb3654f5a5de1399f96032ce24e4199b7e8b66",
+      "executable": false
+    },
+    {
+      "path": "tests/reminder-backup-v4.test.mjs",
+      "size": 2011,
+      "sha256": "708410dfe442ad9a21f42b609cf665d122ff19d8d199e56be5cbf476b30d153f",
+      "executable": false
+    },
+    {
+      "path": "tests/reminder-recurrence.test.mjs",
+      "size": 1399,
+      "sha256": "73a2556974c15a3dc3d29cae332873ebf5c9ac8a2d23a74ec4cb903451c5d3ea",
+      "executable": false
+    },
+    {
+      "path": "tests/reminder-restore-v4.test.mjs",
+      "size": 1841,
+      "sha256": "183f34f0dc3f3baccec83036e85f0b189b7aff6d11595fd926e61f4f74edf3f9",
+      "executable": false
+    },
+    {
+      "path": "tests/return-position-contract.test.mjs",
+      "size": 848,
+      "sha256": "e5ba11020dbe579a57f49577e39868a0709285256017c0d5d54e7f3a888ea9c6",
+      "executable": false
+    },
+    {
+      "path": "tests/sb20-eng-a.test.mjs",
+      "size": 4278,
+      "sha256": "993c418f5cae3c2f7f4e5bdd8f0d0d051e0315e8257615e26590f09083373f2b",
+      "executable": false
+    },
+    {
+      "path": "tests/sb20-eng-b.test.mjs",
+      "size": 4185,
+      "sha256": "1de18f194333c138a01411259a5bb4754a73f419e8f830a83de147f5ec0df79d",
+      "executable": false
+    },
+    {
+      "path": "tests/sb20-eng-c.test.mjs",
+      "size": 4455,
+      "sha256": "b89d2a7c97bcbf0c0cafbfcd93cb36ce92dc1f4459f9978440299412fafe3c95",
+      "executable": false
+    },
+    {
+      "path": "tests/sb20-eng-d.test.mjs",
+      "size": 3341,
+      "sha256": "495b465529d8eba05c99b8c7cd34787a6980be92eb8a1da5891a1bb65aeafb39",
+      "executable": false
+    },
+    {
+      "path": "tests/sb20-eng-e.test.mjs",
+      "size": 6509,
+      "sha256": "49f6e91eb33c2b0b0345e2165d7e075bb708b20ca4fd912e7a2346869ffe2633",
+      "executable": false
+    },
+    {
+      "path": "tests/sb20-eng-f-b.test.mjs",
+      "size": 3403,
+      "sha256": "ee9a344c383e4e3aeaae7fd379ed0a429f35884c01234bbf1f674087b3267de4",
+      "executable": false
+    },
+    {
+      "path": "tests/sb20-eng-f-c.test.mjs",
+      "size": 4125,
+      "sha256": "60689dc60a3c7e7c0251f847c95e7b12deb707c613ddf1bfd151428d7641b6f2",
+      "executable": false
+    },
+    {
+      "path": "tests/sb20-eng-f-d.test.mjs",
+      "size": 5443,
+      "sha256": "de80dc9ca12180f548e0f1d26381256e301b203c1de630833f71d22ddb252e98",
+      "executable": false
+    },
+    {
+      "path": "tests/sb20-eng-f-e.test.mjs",
+      "size": 4636,
+      "sha256": "f33ff94d1b3913a1d72ec211616ca2066215106c71df792093b9c0e4039f2e87",
+      "executable": false
+    },
+    {
+      "path": "tests/sb20-eng-f-f.test.mjs",
+      "size": 4916,
+      "sha256": "43ac3558bacf1473e76e666061c6af3a151172b939155b6c27c9beaff7733700",
+      "executable": false
+    },
+    {
+      "path": "tests/sb20-eng-f-g.test.mjs",
+      "size": 4208,
+      "sha256": "83a67fedaa8913c0de9477d484b5295d41e755b57bdfa74560ad533bf6e68776",
+      "executable": false
+    },
+    {
+      "path": "tests/sb20-eng-f-h.test.mjs",
+      "size": 3449,
+      "sha256": "8677d3cba702d41ab66423fb6e2211745e0bcdb3ef41b17545a9bb6d473e8420",
+      "executable": false
+    },
+    {
+      "path": "tests/sb20-eng-f-i.test.mjs",
+      "size": 4356,
+      "sha256": "7eff76331698c29588aa109a2fb99372ff9433d0084558d94c7717799d74f941",
+      "executable": false
+    },
+    {
+      "path": "tests/sb20-eng-f-j.test.mjs",
+      "size": 2655,
+      "sha256": "1347949941234c23a1df3ba6c61238be2cf7729a1d0c8467dd8c4cc3ddeb4031",
+      "executable": false
+    },
+    {
+      "path": "tests/sb24-native-restore-gate.test.mjs",
+      "size": 3763,
+      "sha256": "5bb01b9ab90deb92b3cd8c36ef1259544af9cce42a463d7df6467426d0962703",
+      "executable": false
+    },
+    {
+      "path": "tests/sb24-real-archive.test.mjs",
+      "size": 6360,
+      "sha256": "7f68b982a4e49a25f185bbeb59121dde1415d0fc5343522d1d942a62fd45aa0a",
+      "executable": false
+    },
+    {
+      "path": "tests/sb24-sqlite-crash.test.mjs",
+      "size": 3994,
+      "sha256": "670ffdea6d4316f21d849521bd66750b037ce59fe3afd560373a8cc5fe563aa9",
+      "executable": false
+    },
+    {
+      "path": "tests/sb26-ia-accessibility.test.mjs",
+      "size": 1532,
+      "sha256": "4f5f58594f65a3ced6ef4283cb8a569a78a83b436bf3ce2c0d623f5a3cd8883a",
+      "executable": false
+    },
+    {
+      "path": "tests/sb26-local-media-privacy.test.mjs",
+      "size": 1032,
+      "sha256": "83a6b391e7bc704d98681e550c21bd212c265c0ef36ff84cf901b8a03e038fa1",
+      "executable": false
+    },
+    {
+      "path": "tests/sb38-installed-release-bundle.test.mjs",
+      "size": 880,
+      "sha256": "14f079e9a51116ef7bdab97cacdb9333158c6d528aa35af92e6c8a88b7052a98",
+      "executable": false
+    },
+    {
+      "path": "tests/sb38-photo-parity.test.mjs",
+      "size": 1077,
+      "sha256": "454aacd598b12e502790a13fe9500a699d25d095e794db72028f0c4b23a77466",
+      "executable": false
+    },
+    {
+      "path": "tests/sb38-photo-safety-contract.test.mjs",
+      "size": 1212,
+      "sha256": "4b34df9c5213583bca36a1c939c4f1c4358a5e24b665daef8971a880197fa361",
+      "executable": false
+    },
+    {
+      "path": "tests/sb39-dependency-compatibility.test.mjs",
+      "size": 666,
+      "sha256": "8980c2599c13a6e2ec22bac803a1c1bd487b6155d8b1ff4c646fcd3d5f822b45",
+      "executable": false
+    },
+    {
+      "path": "tests/sb39-integration-guardrails.test.mjs",
+      "size": 1340,
+      "sha256": "5f81bf3c8fbd7875859493cc784bfeaa504266d20190425047f2badabb58b230",
+      "executable": false
+    },
+    {
+      "path": "tests/sb39-ios-scene-lifecycle.test.mjs",
+      "size": 515,
+      "sha256": "ea80c69e85981cfe8114f91e21fb6b88a6e32bcd694503d817e108aa83ddba59",
+      "executable": false
+    },
+    {
+      "path": "tests/sb39-ios-scene-prebuild-plugin.test.mjs",
+      "size": 611,
+      "sha256": "e2a5852516fefc5bd58c71ee1093ca7caa1f4d178ddfa674901d3f3001498ddd",
+      "executable": false
+    },
+    {
+      "path": "tests/sb39-native-build-identity.test.mjs",
+      "size": 1239,
+      "sha256": "7b0085e89e3789848976de1b93e14e582b80912f49a173727e8377522e0b6b92",
+      "executable": false
+    },
+    {
+      "path": "tests/sb39-platform-reminders-imports.test.mjs",
+      "size": 615,
+      "sha256": "084b44538dbbd3cb26530b0d7bf6a8c0857e6c910d325a8a38c2c63622552e65",
+      "executable": false
+    },
+    {
+      "path": "tests/sb39-release-security-gates.test.mjs",
+      "size": 788,
+      "sha256": "7a9d232de64c3a17aedc28bd7d90615d21141200d12f3160da684190eb199a5c",
+      "executable": false
+    },
+    {
+      "path": "tests/sb39-uri-route-safety.test.mjs",
+      "size": 1313,
+      "sha256": "d51b0c4cf9e0c513adc24f07d8eec5f97a1de2157529f5731ecdcc8b1a8e2852",
+      "executable": false
+    },
+    {
+      "path": "tests/sb40-edge-web-boundary-smoke.cjs",
+      "size": 1863,
+      "sha256": "8df1eda673d83b989ce8ed47e30484c2f60bd56a6f79797620ed81b042b78366",
+      "executable": false
+    },
+    {
+      "path": "tests/sb40-settings-accessibility-route.test.mjs",
+      "size": 1333,
+      "sha256": "7e39be8fee26b57ccc88d990fa46ff7e6c247dc475cb6e14f214a73fea0ef066",
+      "executable": false
+    },
+    {
+      "path": "tests/sqlite-failed-write.test.mjs",
+      "size": 3972,
+      "sha256": "aa4b3f8984b480a967a5fa4824fea3a6e440fa0f73b7b46e4a98c14eb914b496",
+      "executable": false
+    },
+    {
+      "path": "tests/storage-safety.test.mjs",
+      "size": 6462,
+      "sha256": "3dfce82e16d7ee91854fe4fe2cef78c015d31c12b50d78f369e022b15ed33838",
+      "executable": false
+    },
+    {
+      "path": "tests/theme.test.mjs",
+      "size": 952,
+      "sha256": "cdd7b5cd1ad69d6b54c8be741cafce7f7694594a4651884bf56011a0e1ac4936",
+      "executable": false
+    },
+    {
+      "path": "tsconfig.json",
+      "size": 701,
+      "sha256": "a25c3c1a3e344959a4657febf130892c3c99ddd26421b04781c75d3b343a689d",
+      "executable": false
+    }
+  ]
+}

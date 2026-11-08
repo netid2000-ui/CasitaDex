@@ -1,0 +1,59 @@
+{
+  "policy": "Only runtime/config/lock/assets/native-source, tests/quarantine and build/QA scripts are included. All recovered historical docs, README and Figma rasterizer tools are excluded. Dependencies, generated binaries/caches, signing material, local environment overrides, CI workflows and raw device data remain excluded.",
+  "root_exclusions": [
+    "node_modules/",
+    "build/",
+    ".expo/",
+    ".github/",
+    ".gitattributes",
+    "docs/",
+    "tools/",
+    "README.md"
+  ],
+  "original_gitattributes_sha256": "23302dd90b8bb74b44d365fafef8df20f809b61cb347023951ecf60a88a29651",
+  "original_gitattributes_text": "* text=auto eol=lf\n*.png binary\n",
+  "observed_exclusions": [
+    {
+      "path": "ios/Pods/",
+      "reason": "dependency, generated cache or symlink"
+    },
+    {
+      "path": "ios/build/",
+      "reason": "dependency, generated cache or symlink"
+    },
+    {
+      "path": "ios/.xcode.env.local",
+      "reason": "machine-local setting, signing material, dependency bootstrap binary or generated artifact"
+    },
+    {
+      "path": "android/.kotlin/",
+      "reason": "dependency, generated cache or symlink"
+    },
+    {
+      "path": "android/.gradle/",
+      "reason": "dependency, generated cache or symlink"
+    },
+    {
+      "path": "android/build/",
+      "reason": "dependency, generated cache or symlink"
+    },
+    {
+      "path": "android/app/.cxx/",
+      "reason": "dependency, generated cache or symlink"
+    },
+    {
+      "path": "android/app/build/",
+      "reason": "dependency, generated cache or symlink"
+    },
+    {
+      "path": "android/app/debug.keystore",
+      "reason": "machine-local setting, signing material, dependency bootstrap binary or generated artifact"
+    },
+    {
+      "path": "android/gradle/wrapper/gradle-wrapper.jar",
+      "reason": "machine-local setting, signing material, dependency bootstrap binary or generated artifact"
+    }
+  ],
+  "historical_source_documents_excluded": 183,
+  "full_archive_manifest": "Retained on SSD; path and SHA-256 in lineage.json, not copied into this narrow checkpoint."
+}

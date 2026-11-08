@@ -1,0 +1,16 @@
+node_modules/
+.expo/
+dist/
+*.log
+credentials/
+.env*
+*.jks
+*.keystore
+*.p12
+*.mobileprovision
+coverage/
+playwright-report/
+test-results/
+
+/android/
+/ios/

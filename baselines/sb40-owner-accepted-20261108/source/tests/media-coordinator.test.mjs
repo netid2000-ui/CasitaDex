@@ -1,0 +1,17 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import fs from "node:fs";
+import vm from "node:vm";
+import ts from "typescript";
+const files=new Set();const events=[];
+const stage=async(_store,entry)=>{events.push("promote");files.add(entry.path)};
+const src=fs.readFileSync(new URL("../src/media-coordinator.ts",import.meta.url),"utf8");
+const js=ts.transpileModule(src,{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;
+const m={exports:{}};vm.runInNewContext(js,{module:m,exports:m.exports,require:()=>({stageMedia:stage}),Set,Error});
+const {addVerifiedAttachment,reconcileMedia}=m.exports;
+const entry={id:"m",cardId:"c",path:"media/m.png"};
+test("promotes before committing metadata",async()=>{events.length=0;await addVerifiedAttachment({},entry,new Uint8Array(),async()=>"",async()=>{events.push("commit")});assert.deepEqual(events,["promote","commit"])});
+test("uncertain DB failure retains file for reconciliation",async()=>{events.length=0;files.clear();await assert.rejects(addVerifiedAttachment({},entry,new Uint8Array(),async()=>"",async()=>{throw Error("DB failed")}),/retained/);assert.equal(files.has(entry.path),true)});
+test("staging failure prevents database calls",async()=>{let committed=false;const mod={exports:{}};vm.runInNewContext(js,{module:mod,exports:mod.exports,require:()=>({stageMedia:async()=>{throw Error("bad media")}}),Set,Error});await assert.rejects(mod.exports.addVerifiedAttachment({},entry,new Uint8Array(),async()=>"",async()=>{committed=true}));assert.equal(committed,false)});
+test("reconciliation only suggests non-protected paths",async()=>{const result=await reconcileMedia({},["media/m.png","media/old.jpg"],async()=>new Set(["media/m.png"]));assert.deepEqual([...result],["media/old.jpg"])});
+test("rejects unsafe reconciliation candidate",async()=>{await assert.rejects(reconcileMedia({},["../secret"],async()=>new Set()),/Unsafe/)});

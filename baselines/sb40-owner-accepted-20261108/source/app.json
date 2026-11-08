@@ -1,0 +1,26 @@
+{
+  "expo": {
+    "name": "CasitaDex",
+    "slug": "casitadex",
+    "scheme": "casitadex",
+    "version": "0.1.0",
+    "orientation": "default",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.designsbyfa.casitadex"
+    },
+    "android": {
+      "package": "com.designsbyfa.casitadex"
+    },
+    "extra": {
+      "appEnvironment": "development",
+      "backendMode": "none",
+      "productionAuthorized": false,
+      "router": {},
+      "eas": {
+        "projectId": "79b93f15-c8ba-40b6-b7f4-30662c225bd8"
+      }
+    }
+  }
+}

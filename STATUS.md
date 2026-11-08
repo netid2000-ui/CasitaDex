@@ -1,3 +1,11 @@
+# Latest authority: SB40 source provenance — November 8, 2026
+
+**SB40 remains the owner-agreed runtime. Release remains NO-GO.** An additive, byte-verified source baseline is now reviewable without overwriting newer root source or the seven existing dirty files. [Checkpoint, exact accepted artifacts and limitations](docs/qa/SB40_SOURCE_PROVENANCE_CHECKPOINT_20261108.md). [75-item native owner journey](docs/qa/SB40_HOUSE75_OWNER_JOURNEY_20261108.md).
+
+The recovered workspace is not Git; its captured files now have a durable source checkpoint. This does not prove a reproducible source-to-binary build, promote root `.dev` source, or close remaining native/physical/release gates. No builds or device tests were repeated. Earlier entries below retain their original artifact attribution and do not supersede SB40 authority.
+
+---
+
 # Latest native milestone: both platforms on 8cc2862 — November 6, 2026
 
 **Bounded native PASS; release remains NO-GO.** Both installed platforms identify **8cc2862eaf2791379518e440d3b9d5833543ab0a**. [Current milestone, exact artifacts and limits](docs/qa/SB121_CURRENT_8CC_NATIVE_MILESTONE_20261106.md). [Central evidence ledger](docs/qa/SB121_CURRENT_NATIVE_ACCEPTANCE_LEDGER_20261106.json).

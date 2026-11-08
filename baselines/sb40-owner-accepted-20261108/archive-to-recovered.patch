@@ -1,0 +1,37 @@
+--- archive/app.config.js
++++ recovered/app.config.js
+@@ -6,11 +6,12 @@
+     );
+   const qa = process.env.CASITADEX_SB29_QA === "1";
+   const sb39 = process.env.CASITADEX_SB39_QA === "1";
+-  if (qa && sb39) throw new Error("Only one isolated QA identity can be selected.");
+-  const suffix = sb39 ? "sb39qa" : qa ? "sb29qa" : env === "development" ? "dev" : "staging";
++  const sb40 = process.env.CASITADEX_SB40_QA === "1";
++  if ([qa, sb39, sb40].filter(Boolean).length > 1) throw new Error("Only one isolated QA identity can be selected.");
++  const suffix = sb40 ? "sb40qa" : sb39 ? "sb39qa" : qa ? "sb29qa" : env === "development" ? "dev" : "staging";
+   return {
+     ...config,
+-    name: "CasitaDex " + (sb39 ? "SB39 QA" : qa ? "SB29 QA" : env === "development" ? "Dev" : "Staging"),
++    name: "CasitaDex " + (sb40 ? "SB40 QA" : sb39 ? "SB39 QA" : qa ? "SB29 QA" : env === "development" ? "Dev" : "Staging"),
+     owner: "netid2000-10",
+     icon: "./assets/brand/icon-light.png",
+     scheme: "casitadex-" + suffix,
+--- archive/src/app/index.tsx
++++ recovered/src/app/index.tsx
+@@ -1,6 +1,5 @@
+ import Constants from "expo-constants";
+-import {Asset} from "expo-asset";
+-import {File} from "expo-file-system";
++import {qaIllustrationBytes} from '../qa-illustration-bytes';
+ import React,{useCallback,useState} from 'react';
+ import {Alert,ScrollView,Text} from 'react-native';
+ import {router,useFocusEffect} from 'expo-router';
+@@ -13,7 +12,7 @@
+  const [error,setError]=useState('');
+  useFocusEffect(useCallback(()=>{
+   let active=true;
+-  getEngStore().then(async store=>{let s=await store.load();if(Constants.expoConfig?.extra?.parityQaSeed===true){if(!s.data.memories.some(m=>m.id.startsWith("sb26qa_"))){await store.seedSyntheticQa();s=await store.load();}const fixtures=[{id:"sb26qa_001",image:require("../../assets/brand/illustration-home.jpg")},{id:"sb26qa_007",image:require("../../assets/brand/illustration-find.jpg")},{id:"sb26qa_013",image:require("../../assets/brand/illustration-backup.jpg")}];for(const item of fixtures){const m=s.data.memories.find(m=>m.id===item.id);if(m&&m.mediaIds.length===0){const asset=Asset.fromModule(item.image);await asset.downloadAsync();if(!asset.localUri)throw Error("Sample image unavailable");await store.addMemoryPhoto(item.id,await new File(asset.localUri).bytes());s=await store.load();}}}return s;}).then(s=>{if(active)setSnapshot(s)}).catch(()=>{if(active)setError('Your saved memories could not be loaded. No data was changed.')});
++  getEngStore().then(async store=>{let s=await store.load();if(Constants.expoConfig?.extra?.parityQaSeed===true){if(!s.data.memories.some(m=>m.id.startsWith("sb26qa_"))){await store.seedSyntheticQa();s=await store.load();}const fixtures=[{id:"sb26qa_001",image:"home"},{id:"sb26qa_007",image:"find"},{id:"sb26qa_013",image:"backup"}];for(const item of fixtures){const m=s.data.memories.find(m=>m.id===item.id);if(m&&m.mediaIds.length===0){await store.addMemoryPhoto(item.id,qaIllustrationBytes(item.image));s=await store.load();}}}return s;}).then(s=>{if(active)setSnapshot(s)}).catch((error)=>{console.warn('SB40 Home startup/load failed',error);if(active)setError('Your saved memories could not be loaded. No data was changed.')});
+   return ()=>{active=false};
+  },[]));
+  const action=(kind:HomeActionKind)=>{

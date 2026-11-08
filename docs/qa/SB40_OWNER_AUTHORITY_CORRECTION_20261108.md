@@ -45,3 +45,7 @@ Only the normal Add and inline Location control were runtime-inspected by this c
 The household run uses the exact SB40 QA artifact, native UI entry only, correct labels and app identity guards. Read-only SQLite corroborates writes after Save; it does not insert data. The SB40 QA package starts with its own 90 synthetic samples; these are baseline fixture data and do not count as newly entered household memories. The 75 requested new items are tracked separately.
 
 No source-port, production deployment, live billing or release approval is implied. Do not substitute a newer branch, matching Home screen, four tabs, simulator name or identical bundle/version for full-flow identity.
+
+## Additive source checkpoint — 2026-11-08
+
+The recovered source is now captured in a separate, additive [source-provenance checkpoint](SB40_SOURCE_PROVENANCE_CHECKPOINT_20261108.md). The recovered folder and newer dirty `.dev` checkout are preserved. The nested baseline is reviewable Git source evidence, not a source-to-binary reproducibility certification or permission to promote the newer root source. Existing SB40 owner authority and native acceptance boundaries remain unchanged.

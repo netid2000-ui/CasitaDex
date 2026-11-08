@@ -1,0 +1,52 @@
+{
+  "recorded_at_utc": "2026-11-08T14:50:45.117237+00:00",
+  "branch": "work/cd-sb41-edit-targeting-20261104",
+  "head": "db129dee01acd63559929d7cbcfc59f9dbccfa3d",
+  "status": " M docs/qa/CURRENT_ANDROID_IOS_VISUAL_AND_ACCEPTANCE_HANDOFF_20261108.md\u0000 M src/editorial-intro.tsx\u0000 M src/eng-screens.tsx\u0000 M src/theme.ts\u0000 M src/ui.tsx\u0000 M tests/accessibility-visible-feedback.test.mjs\u0000 M tests/current-home-reconciliation.test.mjs\u0000",
+  "dirty_files": [
+    {
+      "path": "docs/qa/CURRENT_ANDROID_IOS_VISUAL_AND_ACCEPTANCE_HANDOFF_20261108.md",
+      "size": 29016,
+      "sha256": "3363f2a6ed755ab8996d0127c20f1a72183ab99e4bdf22e492a786552a6d4e97",
+      "executable": false
+    },
+    {
+      "path": "src/editorial-intro.tsx",
+      "size": 744,
+      "sha256": "dddb7373bb75103c0a980d281b4082e48e6e4841233c05186fae32d89899d69c",
+      "executable": false
+    },
+    {
+      "path": "src/eng-screens.tsx",
+      "size": 81908,
+      "sha256": "33c40a3fdb48e369191e788cda6da6be9b7d60546cdd967b1d6706fdfd4efd56",
+      "executable": false
+    },
+    {
+      "path": "src/theme.ts",
+      "size": 579,
+      "sha256": "3a6956b788c60a876c568c192a9fe06bc960871fe717aed798ba741d1de48505",
+      "executable": false
+    },
+    {
+      "path": "src/ui.tsx",
+      "size": 9834,
+      "sha256": "2cf6a0adb72591daf0a2a82b07fd827b41a4d329b053f1379cd63917b2b65562",
+      "executable": false
+    },
+    {
+      "path": "tests/accessibility-visible-feedback.test.mjs",
+      "size": 12801,
+      "sha256": "7828fee21c9f397998f8e355aaf3f12b62d7b1ad63d9358cc7667f5cbca43067",
+      "executable": false
+    },
+    {
+      "path": "tests/current-home-reconciliation.test.mjs",
+      "size": 7541,
+      "sha256": "ded87d986a54adcdc17d66d979573a8f7930404ec2a403e4329c1fd2b2e16ce0",
+      "executable": false
+    }
+  ],
+  "unstaged_diff_sha256": "926c966b0c10b09daecb098b186cee7328bcb1d971e3808395bb90f8131a3cf0",
+  "staged_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}
