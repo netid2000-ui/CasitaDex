@@ -15,3 +15,7 @@ Reproduction: scripts/parity/README.md. Machine-readable evidence: docs/qa/parit
 Executed visual comparison: iOS Home, Add, and inline Location each passed the configured 0.1% threshold (0.05265% differing pixels each). Android reference capture was blocked by a native “System UI isn’t responding” dialog after cold boot, so Android visual comparison is NOT RUN; the guard verified the correct reference APK before this failure. Current QA emulator was restored afterward.
 
 Final revised iOS shared journey: PASS (`shared-journey-v4-20261108`). The exact synthetic v2 draft was saved through native controls after accepting the system Open-link confirmation; no draft database edits or clearing were performed. Android shared journey v3 also PASS. Only the current household QA iOS simulator and current sb40_four_items Android emulator were left running; an unused iOS candidate was shut down without deletion.
+
+## Google Play sign-in follow-up
+
+Owner completed sign-in. Accessibility Scanner 2.5.1.896851528 was installed from the official Google LLC listing and opened on emulator-5554 / sb40_four_items. Its accessibility service and shortcut were configured. The sign-in blocker is resolved. First completed scan remains NOT RUN: scan-control verification is pending, and no accessibility pass is claimed. CasitaDex QA data and installed app were preserved.

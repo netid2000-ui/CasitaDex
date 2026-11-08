@@ -276,7 +276,18 @@
   ],
   "accessibility": {
     "appleInspector": "AVAILABLE_NOT_AUDITED",
-    "googleScanner": "BLOCKED_PLAY_STORE_SIGN_IN"
+    "googleScanner": {
+      "status": "INSTALLED_AND_OPENED",
+      "version": "2.5.1.896851528",
+      "package": "com.google.android.apps.accessibility.auditor",
+      "device": "emulator-5554",
+      "avd": "sb40_four_items",
+      "source": "Official Google Play Store, Google LLC",
+      "verifiedAt": "2026-11-08",
+      "enabledServices": "com.google.android.apps.accessibility.auditor/.ScannerService",
+      "scanResult": "NOT_RUN",
+      "note": "Service and accessibility shortcut configured; first scan controls still require verification. No accessibility pass inferred."
+    }
   },
   "calibrationRecovery": "Exact synthetic iOS v2 draft completed through native UI after Open-link confirmation; no state reset",
   "scope": "CasitaDex pinned SB40 only; Event Command not yet calibrated. Missing checks are not passes."

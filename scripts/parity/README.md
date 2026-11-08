@@ -8,7 +8,7 @@ All tools and evidence stay on FA-Development. These flows target only the pinne
 - Maestro Studio: existing SSD installation, retained; Studio itself was not acceptance-tested.
 - Pixelmatch 8.0.0 and pngjs 7.0.0: installed in Tools/ParityTools. Exact lockfile in tools/parity. Install using `npm ci --ignore-scripts --no-audit --no-fund` in that external tool directory.
 - Apple Accessibility Inspector: available in Xcode Contents/Applications; opened successfully. Availability does not mean an accessibility audit passed.
-- Google Accessibility Scanner: official Play Store listing opened on QA emulator; installation blocked by Play Store sign-in. No credentials entered or APK mirrors used.
+- Google Accessibility Scanner 2.5.1.896851528: installed from the official Google LLC Play Store listing after owner sign-in; opened and service/shortcut configured on sb40_four_items. First completed scan is not verified. No credentials entered by automation or APK mirrors used.
 - Appium: optional second framework, deferred to avoid duplicating Maestro.
 
 ## Execute
