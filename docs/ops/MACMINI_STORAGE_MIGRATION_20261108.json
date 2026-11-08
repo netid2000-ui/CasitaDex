@@ -1,0 +1,146 @@
+{
+  "machine": "FA-MAC-DEV-01",
+  "date": "2026-11-08",
+  "status": "COMPLETE",
+  "internalFreeBytes": 108793610240,
+  "internalFreeGiB": 101.32,
+  "ssdFreeGiB": 1201.3,
+  "migrations": [
+    {
+      "key": "gradle",
+      "source": "/Users/franciscofranco/.gradle",
+      "destination": "/Volumes/FA-Development/Designs-by-FA/Development-Storage/Gradle",
+      "status": "COMPLETE",
+      "started": 1794154602.6602318,
+      "freeBefore": 5174738944,
+      "entries": 191971,
+      "files": 117663,
+      "bytes": 12639128764,
+      "finished": 1794154697.0180511,
+      "freeAfter": 21406216192
+    },
+    {
+      "key": "npm",
+      "source": "/Users/franciscofranco/.npm",
+      "destination": "/Volumes/FA-Development/Designs-by-FA/Development-Storage/npm",
+      "status": "COMPLETE",
+      "started": 1794154697.033061,
+      "freeBefore": 21406212096,
+      "entries": 35768,
+      "files": 26237,
+      "bytes": 2183764231,
+      "finished": 1794154714.518711,
+      "freeAfter": 23671676928
+    },
+    {
+      "key": "avd",
+      "source": "/Users/franciscofranco/.android/avd",
+      "destination": "/Volumes/FA-Development/Designs-by-FA/Android/AVD",
+      "status": "COMPLETE",
+      "started": 1794154714.523555,
+      "freeBefore": 23671672832,
+      "entries": 50,
+      "files": 37,
+      "bytes": 12379899627,
+      "finished": 1794154739.993711,
+      "freeAfter": 35988156416
+    },
+    {
+      "key": "derived",
+      "source": "/Users/franciscofranco/Library/Developer/Xcode/DerivedData",
+      "destination": "/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData",
+      "status": "COMPLETE",
+      "started": 1794154739.994766,
+      "freeBefore": 35988160512,
+      "entries": 41860,
+      "files": 38330,
+      "bytes": 3252976618,
+      "finished": 1794154773.64358,
+      "freeAfter": 39321550848
+    },
+    {
+      "key": "simulators",
+      "source": "/Users/franciscofranco/Library/Developer/CoreSimulator/Devices",
+      "destination": "/Volumes/FA-Development/Designs-by-FA/Apple-Builds/CoreSimulator/Devices",
+      "status": "COMPLETE",
+      "started": 1794154840.175315,
+      "freeBefore": 39325364224,
+      "entries": 768890,
+      "files": 375056,
+      "bytes": 69769172750,
+      "stickyDirectoryModesRepaired": 21,
+      "internalCopyRetained": "/Users/franciscofranco/Library/Developer/CoreSimulator/Devices.verified-internal-20261108",
+      "finished": 1794155730.039177,
+      "freeAfter": 108810301440,
+      "nativeVerification": "PASS",
+      "internalDuplicateRetired": true
+    }
+  ],
+  "downloadInstallers": [
+    {
+      "source": "/Users/franciscofranco/Downloads/googlechrome.dmg",
+      "destination": "/Volumes/FA-Development/Designs-by-FA/Backups/Installers/Downloads-20261108/googlechrome.dmg",
+      "bytes": 286841617,
+      "sha256": "60503842372fba746186bd9e369b01610e7ceb7cbf384203e57cef9baf61c918",
+      "verified": true
+    },
+    {
+      "source": "/Users/franciscofranco/Downloads/ChatGPT.dmg",
+      "destination": "/Volumes/FA-Development/Designs-by-FA/Backups/Installers/Downloads-20261108/ChatGPT.dmg",
+      "bytes": 890464565,
+      "sha256": "56bf3c1ec35029a8f92cd49f27238dc6e4f2484e76c722fe0676f9047aaaa6dc",
+      "verified": true
+    },
+    {
+      "source": "/Users/franciscofranco/Downloads/Xcode_27.1.xip",
+      "destination": "/Volumes/FA-Development/Designs-by-FA/Backups/Installers/Downloads-20261108/Xcode_27.1.xip",
+      "bytes": 2027369056,
+      "sha256": "038ad29cc2cd87e7762aac596833943000fd3d5fb64be530e2ecdbe5449cd660",
+      "verified": true
+    }
+  ],
+  "settings": {
+    "GRADLE_USER_HOME": "/Volumes/FA-Development/Designs-by-FA/Development-Storage/Gradle",
+    "ANDROID_AVD_HOME": "/Volumes/FA-Development/Designs-by-FA/Android/AVD",
+    "ANDROID_HOME": "/Volumes/FA-Development/Designs-by-FA/Android/Sdk",
+    "NPM_CACHE": "/Volumes/FA-Development/Designs-by-FA/Development-Storage/npm",
+    "XCODE_DERIVED_DATA": "/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData",
+    "environmentFile": "/Volumes/FA-Development/Designs-by-FA/Development-Storage/dev-storage.env"
+  },
+  "ios": {
+    "status": "PASS",
+    "deviceIdentityCount": 33,
+    "allDeviceIdentitiesPreserved": true,
+    "allProtectedAppAndSnapshotHashesPreserved": true,
+    "accepted-reference": {
+      "boot": "PASS",
+      "launch": "PASS",
+      "dataUnchanged": "PASS"
+    },
+    "household-qa": {
+      "boot": "PASS",
+      "launch": "PASS",
+      "dataUnchanged": "PASS"
+    },
+    "retainedInternalCopyMayBeRetired": true,
+    "nativeHouseholdHomeUI": "PASS"
+  },
+  "android": {
+    "originalAvdBootFromSSD": "PASS",
+    "originalSb40ApkUnchanged": true,
+    "apkSha256": "01e40085176127b815b0870fabbd4d915f463acdea5d8d4e0eb830871467d3bf",
+    "nativeHomeAndFourTabs": "PASS",
+    "currentQaAvdBootFromCentralSSDPath": "PASS",
+    "currentQaApkSha256": "b4f238cce6e005805673e91eba7827b9577b688b4a17fa9373205313fbc5da57"
+  },
+  "bootedIosDevices": [
+    {
+      "id": "A4ED0D8B-C90A-4940-9B71-4F570D7DC597",
+      "name": "CasitaDex SB40 Household75 QA"
+    }
+  ],
+  "acceptedReferenceMemories": 90,
+  "householdQaMemories": 166,
+  "protectedAppAndDataHashesPreserved": true,
+  "noDeviceEraseOrAppReplacement": true
+}
