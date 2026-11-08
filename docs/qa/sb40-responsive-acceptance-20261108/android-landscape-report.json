@@ -1,0 +1,61 @@
+{
+  "mode": "android-landscape",
+  "installedSource": "c5eb43d",
+  "status": "FAIL",
+  "controls": {
+    "Add Photo Memory": [
+      42,
+      507,
+      1975,
+      633
+    ],
+    "Grid photo view": [
+      1991,
+      507,
+      2123,
+      633
+    ],
+    "Compact photo view": [
+      2139,
+      507,
+      2359,
+      633
+    ],
+    "Recently updated": [
+      42,
+      649,
+      385,
+      775
+    ],
+    "Recently added": [
+      401,
+      649,
+      711,
+      775
+    ]
+  },
+  "scrollBounds": [
+    [
+      0,
+      798,
+      2400,
+      831
+    ]
+  ],
+  "photoBounds": [
+    [
+      74,
+      798,
+      1122,
+      831
+    ],
+    [
+      1217,
+      798,
+      2265,
+      831
+    ]
+  ],
+  "error": "No usable visible thumbnail height",
+  "settingsRestored": true
+}

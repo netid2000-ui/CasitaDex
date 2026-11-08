@@ -1,0 +1,60 @@
+{
+  "mode": "android-landscape-current-final",
+  "installedSource": "0bddc8f5d284aeb4fcef15ee1687e5aa141e38c4",
+  "status": "PASS_BOUNDS_ONLY",
+  "controls": {
+    "Add Photo Memory": [
+      42,
+      507,
+      474,
+      633
+    ],
+    "Grid photo view": [
+      489,
+      507,
+      621,
+      633
+    ],
+    "Compact photo view": [
+      637,
+      507,
+      857,
+      633
+    ],
+    "Recently updated": [
+      872,
+      507,
+      1215,
+      633
+    ],
+    "Recently added": [
+      1231,
+      507,
+      1542,
+      633
+    ]
+  },
+  "scrollBounds": [
+    [
+      0,
+      657,
+      2400,
+      832
+    ]
+  ],
+  "photoBounds": [
+    [
+      74,
+      693,
+      1122,
+      832
+    ],
+    [
+      1217,
+      693,
+      2265,
+      832
+    ]
+  ],
+  "settingsRestored": true
+}

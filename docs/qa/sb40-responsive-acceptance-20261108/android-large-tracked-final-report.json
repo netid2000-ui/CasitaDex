@@ -1,0 +1,54 @@
+{
+  "mode": "android-large-tracked-final",
+  "installedSource": "0bddc8f5d284aeb4fcef15ee1687e5aa141e38c4",
+  "status": "PASS_BOUNDS_ONLY",
+  "controls": {
+    "Add Photo Memory": [
+      42,
+      754,
+      768,
+      885
+    ],
+    "Grid photo view": [
+      783,
+      754,
+      970,
+      885
+    ],
+    "Compact photo view": [
+      723,
+      754,
+      1069,
+      885
+    ],
+    "Recently updated": [
+      368,
+      754,
+      960,
+      885
+    ],
+    "Recently added": [
+      507,
+      754,
+      1038,
+      885
+    ]
+  },
+  "scrollBounds": [
+    [
+      0,
+      909,
+      1080,
+      2110
+    ]
+  ],
+  "photoBounds": [
+    [
+      74,
+      1279,
+      1007,
+      2110
+    ]
+  ],
+  "settingsRestored": true
+}

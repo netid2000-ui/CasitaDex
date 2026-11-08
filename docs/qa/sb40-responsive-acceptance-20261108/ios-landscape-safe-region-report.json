@@ -1,0 +1,67 @@
+{
+  "mode": "ios-landscape-safe-region",
+  "installedSource": "0bddc8f",
+  "status": "PASS_FOCUSED_USABILITY",
+  "originalSize": "large",
+  "orientation": "portrait",
+  "screen": {
+    "width": 874,
+    "height": 402,
+    "scale": 3
+  },
+  "controls": {
+    "Add Photo Memory": {
+      "x": 16,
+      "y": 163,
+      "width": 173,
+      "height": 47
+    },
+    "Grid photo view": {
+      "x": 195,
+      "y": 163,
+      "width": 51,
+      "height": 47
+    },
+    "Compact photo view": {
+      "x": 252,
+      "y": 163,
+      "width": 84,
+      "height": 47
+    },
+    "Recently updated": {
+      "x": 343,
+      "y": 163,
+      "width": 135,
+      "height": 47
+    },
+    "Recently added": {
+      "x": 484,
+      "y": 163,
+      "width": 122,
+      "height": 47
+    }
+  },
+  "galleryInteractionRegion": {
+    "top": 218,
+    "bottom": 277,
+    "height": 59
+  },
+  "photoBefore": {
+    "x": 28,
+    "y": 281,
+    "width": 380,
+    "height": 380
+  },
+  "photoAfter": {
+    "x": 28,
+    "y": 249,
+    "width": 380,
+    "height": 380
+  },
+  "tap": {
+    "x": 218,
+    "y": 272
+  },
+  "restoredContentSize": "large",
+  "restoredOrientation": "portrait"
+}

@@ -1,0 +1,28 @@
+{
+  "appId": "com.designsbyfa.casitadex.sb40qa",
+  "sourceCommit": "0bddc8f5d284aeb4fcef15ee1687e5aa141e38c4",
+  "targets": {
+    "ios": {
+      "device": "A4ED0D8B-C90A-4940-9B71-4F570D7DC597",
+      "executableSha256": "b8208cdd15020cdd0b7aba552b77c25ea15c58d3ed5967458d96bf52583d9759",
+      "bundleSha256": "d07745fbae1174ff2f048ed73fc7b15b87f989ea9815fb5bba52bd4c60d9843c"
+    },
+    "android": {
+      "device": "emulator-5554",
+      "avd": "sb40_four_items",
+      "apkSha256": "dbd8c7ca8d17ff2806e26907ba7a2960d0c6f1ed7396da8a88d5c862fc7130b4"
+    }
+  },
+  "references": {
+    "ios": {
+      "device": "AD06A0B7-D723-4EE9-829C-03508DD1107B",
+      "executableSha256": "8ad89040f3a092c4a57b1d4bf7747a55e1afdd19cfa264f0b3fe136c02ba9b4d",
+      "bundleSha256": "83326efc8d67c50748539becbe4f4f306e70efa233e8e3d44a5249260f9fb7aa"
+    },
+    "android": {
+      "device": "emulator-5554",
+      "avd": "medium_phone",
+      "apkSha256": "01e40085176127b815b0870fabbd4d915f463acdea5d8d4e0eb830871467d3bf"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "snapshot": "UNCHANGED",
+  "standaloneReminders": "UNCHANGED",
+  "photoHashes": "ALL_VERIFIED",
+  "memories": 96,
+  "photos": 8,
+  "draft": false,
+  "method": "Native full v4 archive compared with last verified native export before responsive updates"
+}

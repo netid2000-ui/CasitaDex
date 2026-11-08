@@ -17,3 +17,5 @@ Initial iOS UI run failed to locate the Photos tab by label. The existing pinned
 [Selected screenshots, checks and evidence](sb40-sticky-controls-20261108/). Full artifacts, prior app/data copies and raw logs remain under QA-Evidence/CasitaDex/sb40-sticky-controls-20261108 on FA-Development. No owner-reference/physical artifacts altered. No production access or release action performed.
 
 Next checkpoint: review this presentation, then resume outstanding Android journey triage and photo acceptance gates. Figma reconciliation of this refinement remains open; no owner-reference master was overwritten.
+
+Provenance correction: the retained native code was unchanged, but re-signing changed the signed executable hash. See [independent signature reconciliation and subsequent QA pins](SB40_RESPONSIVE_PHOTOS_ACCEPTANCE_20261108.md).

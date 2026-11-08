@@ -1,16 +1,16 @@
 {
   "appId": "com.designsbyfa.casitadex.sb40qa",
-  "sourceCommit": "c5eb43d59394de9ad04b011309491272ad0b7c15",
+  "sourceCommit": "0bddc8f5d284aeb4fcef15ee1687e5aa141e38c4",
   "targets": {
     "ios": {
       "device": "A4ED0D8B-C90A-4940-9B71-4F570D7DC597",
-      "executableSha256": "220dd2d2ea7317036ec3d69e32b6922461db02b2af6e1e8769fd5888a9c2716a",
-      "bundleSha256": "96ad816e6006b66fac36ff74865df50a22baa4b9d9d3f769728e2617802c3dee"
+      "executableSha256": "b8208cdd15020cdd0b7aba552b77c25ea15c58d3ed5967458d96bf52583d9759",
+      "bundleSha256": "d07745fbae1174ff2f048ed73fc7b15b87f989ea9815fb5bba52bd4c60d9843c"
     },
     "android": {
       "device": "emulator-5554",
       "avd": "sb40_four_items",
-      "apkSha256": "3cef53a60fa63910ad4754eb578471e745bd8019db33ce148fedc8944a362ccf"
+      "apkSha256": "dbd8c7ca8d17ff2806e26907ba7a2960d0c6f1ed7396da8a88d5c862fc7130b4"
     }
   },
   "references": {
