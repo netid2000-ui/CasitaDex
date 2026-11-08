@@ -451,8 +451,8 @@ export function EngMore({initialAction}:{initialAction?:string}={}){
      {!section?<>
     <Copy>Memories stay on this device. A local save is not a separate backup.</Copy>
     <Copy accessibilityRole="header">Memory management</Copy><Button label="Storage & Cleanup" onPress={()=>setSection("storage")} />
-    <Button label="Archived memories" onPress={()=>{findCache={query:"",filter:{...defaultFilter(),lifecycle:"archived"},page:0,y:0,expanded:false};router.push("/answers");}} />
-    <Button label="Recently Deleted memories" onPress={()=>{findCache={query:"",filter:{...defaultFilter(),lifecycle:"recently_deleted"},page:0,y:0,expanded:false};router.push("/answers");}} />
+    <Button label="Archived memories" onPress={()=>{router.push({pathname:"/answers",params:{lifecycle:"archived"}});}} />
+    <Button label="Recently Deleted memories" onPress={()=>{router.push({pathname:"/answers",params:{lifecycle:"recently_deleted"}});}} />
     <Button label="Manage Spaces & Categories" onPress={()=>setSection("labels")} />
     <Copy accessibilityRole="header">Data protection</Copy><Button label="Backup & Restore" onPress={()=>setSection("backup")} />
     <Copy accessibilityRole="header">Preferences & help</Copy><Button label="Appearance & Accessibility" onPress={()=>setSection("preferences")} /><Button label="Help & About" onPress={()=>setSection("help")} />
@@ -467,7 +467,7 @@ export function EngMore({initialAction}:{initialAction?:string}={}){
     {e.snapshot?.data.media.media.slice().sort((a,b)=>b.bytes-a.bytes).slice(0,10).map(p=>{const m=e.snapshot!.data.memories.find(m=>m.id===p.cardId)!;return <View key={p.id}><Copy>Photo {m.mediaIds.indexOf(p.id)+1} · {p.bytes} bytes · {m.lifecycle==="recently_deleted"?"Recently Deleted":m.lifecycle==="archived"?"Archived":"Active"}</Copy><MemoryLink memory={m} /></View>;})}
     <Copy>Exact photo matches are advisory. No files are removed automatically.</Copy>{e.snapshot?.data.media.media.filter((p,i,all)=>all.some((other,j)=>j!==i&&other.sha256===p.sha256)).map(p=><MemoryLink key={p.id} memory={e.snapshot!.data.memories.find(m=>m.id===p.cardId)!} />)}
     {e.snapshot?.draft?<Button label="Review unfinished draft and its photos" onPress={()=>router.push("/add")} />:null}<Copy>Permanent cleanup is unavailable in this Development build. Memories and photos remain recoverable.</Copy></>:null}
-    {section==="recovery"?<><Copy accessibilityRole="header">Recently deleted</Copy><Copy>Recently deleted memories remain recoverable. Open Find to review them.</Copy><Button label="View recently deleted memories" onPress={()=>{findCache={query:"",filter:{...defaultFilter(),lifecycle:"recently_deleted"},page:0,y:0,expanded:false};router.push("/answers");}} /></>:null}
+    {section==="recovery"?<><Copy accessibilityRole="header">Recently deleted</Copy><Copy>Recently deleted memories remain recoverable. Open Find to review them.</Copy><Button label="View recently deleted memories" onPress={()=>{router.push({pathname:"/answers",params:{lifecycle:"recently_deleted"}});}} /></>:null}
     {section==="privacy"?<><Copy accessibilityRole="header">Privacy & security</Copy><Copy>Memories are stored on this device. Backups and sharing are user-initiated. A local save is not a second backup. Review Data protection before exporting private information.</Copy><Button label="Open backup protection" onPress={()=>setSection("backup")} /></>:null}
     {section==="labels"?<LabelManager e={e} />:null}
     {section==="backup"?<>

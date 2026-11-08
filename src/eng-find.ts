@@ -1,5 +1,8 @@
 import type { DataV2, MemoryV2 } from './sb20-contract';
 export type FindFilter={lifecycle:MemoryV2['lifecycle'];space:'all'|string|null;categories:string[];uncategorized:boolean;confidence:string;reminder:string;attachment:string};
+export function findLifecycle(value:unknown):MemoryV2['lifecycle']{
+ return value==='archived'||value==='recently_deleted'?value:'active';
+}
 export const defaultFilter=():FindFilter=>({lifecycle:'active',space:'all',categories:[],uncategorized:false,confidence:'all',reminder:'all',attachment:'all'});
 // Normalize numeric dimensions on both sides without loosening model-number identity.
 const tokens=(s:string)=>s.toLocaleLowerCase()
