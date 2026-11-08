@@ -15,7 +15,7 @@ function harness(profile={}){
  const snapshot={revision:1,data:{memories:[]},draft:{id:'draft',title,photos:Array.from({length:5},(_,i)=>({id:`photo-${i+1}`,path:`private-${i+1}.png`}))}};
  const states=[snapshot],refs=[];let stateIndex=0,refIndex=0,closed=0,returned=0;
  const react={
-  createElement:(type,props,...children)=>({type,props:{...props,children:children.flat(Infinity)}}),
+  createElement:(type,props,...children)=>{const {key=null,...rest}=props??{};return{type,key,props:{...rest,children:children.flat(Infinity)}};},
   useState(initial){const i=stateIndex++;if(!(i in states))states[i]=typeof initial==='function'?initial():initial;return[states[i],next=>{states[i]=typeof next==='function'?next(states[i]):next;}];},
   useRef(initial){const i=refIndex++;return refs[i]??(refs[i]={current:initial});},
   useCallback:fn=>fn,useMemo:fn=>fn(),useEffect:()=>{},
@@ -39,7 +39,9 @@ function assertReflow(tree,expected){
  const controls=byId(tree,'photo-viewer-controls'),summary=byId(tree,'photo-viewer-summary');
  assert.equal(nodes(controls).includes(summary),expected,'Only the unconstrained header may pin the full title');
  assert.equal(contents(summary),`${title}Photo 1 of 5`);
- assert.equal(style(controls).flex,expected?2:undefined);
+ assert.equal(style(controls).flex,undefined);
+ assert.equal(style(controls).flexGrow,expected?1:undefined);
+ assert.equal(style(controls).flexBasis,expected?0:undefined);
  assert.equal(style(controls).maxHeight,expected?undefined:260);
  assert.ok(!nodes(controls).includes(button(tree,'Close photo')),'Close stays outside scrolling content');
  if(expected){
@@ -60,7 +62,7 @@ test('maximum-text portrait and landscape use uncapped controls, intrinsic targe
   const tree=harness(profile).render(),body=byId(tree,'photo-viewer-body'),photo=byId(tree,'photo-viewer-image');
   assertReflow(tree,true);
   assert.equal(style(body).flex,1);assert.equal(style(body).minHeight,0);
-  assert.equal(style(photo).flex,1);assert.equal(style(photo).minHeight,80);
+  assert.equal(style(photo).height,'33.333%');assert.equal(style(photo).flexGrow,0);assert.equal(style(photo).flexShrink,0);assert.equal(style(photo).minHeight,80);
   const safe=nodes(tree).find(n=>n.type==='SafeAreaView');assert.equal(Array.from(safe.props.edges).sort().join(','),'bottom,left,right,top');
   for(const node of nodes(tree)){
    assert.equal(node.props.allowFontScaling,undefined);assert.equal(node.props.maxFontSizeMultiplier,undefined);
@@ -100,4 +102,48 @@ test('five-photo cap, replacement source choices and cancellation remain in the 
  assert.ok(button(tree,'Replace this photo'));
  assert.ok(contents(byId(tree,'photo-viewer-controls')).includes('Photo selection canceled. Saved photos are kept.'));
  assert.equal(h.snapshot.draft.photos.length,5);
+});
+
+
+test('live system/app text changes invalidate text measurements without remounting controls or resetting viewer state',()=>{
+ const h=harness(),before=JSON.stringify(h.snapshot);let tree=h.render();
+ button(tree,'Next photo').props.onPress();tree=h.render();
+ button(tree,'Zoom photo in').props.onPress();tree=h.render();
+ button(tree,'Manage photos').props.onPress();tree=h.render();
+ for(const update of [{fontScale:1.2},{fontScale:3.12},{large:true},{fontScale:1},{large:false}]){
+  const oldCloseText=button(tree,'Close photo').props.children[0];
+  Object.assign(h.viewport,update);tree=h.render();
+  const key=`${h.viewport.fontScale}:${h.viewport.large?1.6:1}`;
+  assert.notEqual(button(tree,'Close photo').props.children[0].key,oldCloseText.key,'Close must get a fresh text measurement even without a reflow-mode change');
+  for(const node of nodes(tree)){
+   if(node.type==='Text')assert.ok(node.key?.endsWith(key),'Every label, title/count and status must renew its measurement');
+   else if(['Pressable','ScrollView'].includes(node.type))assert.equal(node.key,null,'Do not reset native control/scroll state to fix label sizing');
+  }
+  assert.equal(byId(tree,'photo-viewer-image').key,null);
+  assert.equal(contents(byId(tree,'photo-viewer-summary')),`${title}Photo 2 of 5`);
+  assert.equal(style(byId(tree,'photo-viewer-image').props.children[0]).transform.find(v=>'scale'in v).scale,1.5);
+  assert.equal(button(tree,'Hide photo actions').props.accessibilityState.expanded,true);
+ }
+ button(tree,'Replace this photo').props.onPress();tree=h.render();
+ Object.assign(h.viewport,{fontScale:3.12});tree=h.render();
+ for(const label of ['Take Photo','Choose from Library','Browse Files','Cancel'])assert.ok(button(tree,label));
+ assert.equal(contents(byId(tree,'photo-viewer-summary')),`${title}Photo 2 of 5`);
+ assert.equal(JSON.stringify(h.snapshot),before);
+});
+
+test('constrained photo sizing leaves the remaining body to controls despite native ScrollView flex defaults',()=>{
+ const h=harness({width:874,height:402,fontScale:3.12}),tree=h.render();
+ const imageStyle=style(byId(tree,'photo-viewer-image'));
+ // React Native composes explicit flexGrow:1/flexShrink:1 before the supplied style.
+ const scrollStyle={flexGrow:1,flexShrink:1,...style(byId(tree,'photo-viewer-controls'))};
+ assert.equal(imageStyle.height,'33.333%');assert.equal(imageStyle.flexGrow,0);assert.equal(imageStyle.flexShrink,0);
+ assert.equal(scrollStyle.flexGrow,1);assert.equal(scrollStyle.flexShrink,1);assert.equal(scrollStyle.flexBasis,0);
+ assert.equal(scrollStyle.flex,undefined,'A shorthand flex:2 does not override native explicit flexGrow');
+ for(const bodyHeight of [272,668]){
+  const imageHeight=Math.max(imageStyle.minHeight,bodyHeight*parseFloat(imageStyle.height)/100);
+  assert.ok(bodyHeight-imageHeight>=180,'Observed body profiles must leave room for the previously measured 150pt maximum control');
+ }
+ const previousKey=button(tree,'Close photo').props.children[0].key;
+ Object.assign(h.viewport,{width:402,height:874});
+ assert.equal(button(h.render(),'Close photo').props.children[0].key,previousKey,'Orientation alone must not remount text or the gesture surface');
 });

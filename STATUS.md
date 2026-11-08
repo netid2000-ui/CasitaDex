@@ -1,6 +1,6 @@
 # Isolated SB40 viewer accessibility candidate — November 8, 2026
 
-Source-only candidate on `work/cd-sb40-viewer-large-text-20261108`, based exactly on authority `35e411e`. The maximum-text photo viewer reflows without truncating its title or disabling text scaling. TypeScript, web export and 431/437 tests pass (six existing skips); inherited lint findings and Expo SDK patch mismatches remain. Native revalidation is pending on a new disposable simulator. Existing devices and authority checkout are unchanged; release remains **NO-GO**. [Scope, evidence and next acceptance action](docs/qa/SB40_PHOTO_WORKSPACE_20261108.md#isolated-viewer-large-text-source-follow-up--november-8-2026).
+Source-only candidate on `work/cd-sb40-viewer-large-text-20261108`, based exactly on authority `35e411e`. The maximum-text photo viewer reflows without truncating its title or disabling text scaling. The successor to 448ba16 also renews native Text measurements on live scale changes while retaining viewer state and gives controls the intended remaining viewport. TypeScript, web export and 433/439 tests pass (six existing skips); inherited lint findings and Expo SDK patch mismatches remain. Native revalidation is pending on a new disposable simulator. Existing devices and authority checkout are unchanged; release remains **NO-GO**. [Scope, evidence and next acceptance action](docs/qa/SB40_PHOTO_WORKSPACE_20261108.md#isolated-viewer-large-text-source-follow-up--november-8-2026).
 
 # Current SB40 authority checkpoint — November 8, 2026
 

@@ -47,5 +47,47 @@
     "No original simulator, Android emulator, physical device or reference data changed.",
     "No Figma master edits or visual approval, no push/merge/deployment/store/production action.",
     "Full native gesture, screen-reader, physical and release gates stay open."
-  ]
+  ],
+  "initial_candidate_commit": "448ba16bc166b9013141cb5929cc4b4fbc4c91b1",
+  "live_font_successor": {
+    "status": "SOURCE_CHECKED_NATIVE_REVALIDATION_PENDING",
+    "parent_commit": "448ba16bc166b9013141cb5929cc4b4fbc4c91b1",
+    "recorded_at_utc": "2026-11-08T23:43:17.217128+00:00",
+    "evidence_directory": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/CasitaDex/sb40-viewer-large-text-candidate-20261108/source-live-font",
+    "source_files": {
+      "src/photo-memory-viewer.tsx": "2c208d9288dbf730f3e58ff29ea460268764f01003928c6e27fa0f4002323f4b",
+      "tests/photo-viewer-layout.test.mjs": "4c77f0a2fe979b07e10f0dd3dbd44fa9e28443c54fd8179841fb02ffeb52e241"
+    },
+    "confirmed_defect": "448ba16 live large-to-maximum OS text change updates the layout branch/glyph sizes but leaves Close at 82x48pt with cropped text after settling; reopen at the same maximum yields 204.33x86pt. Return/reset also retain stale intrinsic frames. This was observed on the new disposable iOS candidate, not original devices.",
+    "input_evidence": {
+      "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/CasitaDex/sb40-viewer-large-text-candidate-20261108/native-ios/maximum-live-settled.png": "80da5125da5a54e38697b7aaf7a64990a2e5f9b1ca2f4228dce86ffe1465847d",
+      "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/CasitaDex/sb40-viewer-large-text-candidate-20261108/native-ios/maximum-live-settled.json": "b6e71bf503fae6174509ec5dfa7d5728eacca66d610dbffb5a8f8d529c8e6057",
+      "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/CasitaDex/sb40-viewer-large-text-candidate-20261108/native-ios/maximum-reopened.png": "1d4ab4aa079509f8b858592d3ddbf22cee495366aca4453a5fbd5c830415d076",
+      "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/CasitaDex/sb40-viewer-large-text-candidate-20261108/native-ios/maximum-reopened.json": "7ab70f512a2d12559f84748bf588d4187eacfced63f3e099bd54fa74b8e2618f",
+      "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/CasitaDex/sb40-viewer-large-text-candidate-20261108/native-ios/maximum-portrait/03-control-3.png": "ec62e01dc4b916a7347951346f197ba16430e18adfa9d99424f6292b2f9c6a9e",
+      "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/CasitaDex/sb40-viewer-large-text-candidate-20261108/native-ios/maximum-portrait/03-control-3.json": "9d553c63f6f60eadcfeedf620c9913e41d2044875dca1d5ee7a9f1a6a623ffe6"
+    },
+    "cause_and_correction": "The live scale event reaches the component, while unchanged Text nodes retain stale native measurement. Key only the Text nodes by system/app scale so their measurements are rebuilt; keep Pressables, ScrollView, image/gesture surface and all component state mounted. No scaling override or font cap.",
+    "space_allocation": "Native ScrollView composes explicit flexGrow:1/flexShrink:1, so flex:2 shorthand did not yield the intended control share (measured body272pt, photo176pt, controls96pt). Constrained image now has height33.333%, minHeight80 and no growth/shrink; controls use explicit remaining-space flexGrow1/flexShrink1/flexBasis0. This corrects intended allocation, not a proven second total-access failure: native follow-up found 86pt base controls fit the 96pt viewport and full title was readable over two scroll views.",
+    "checks": {
+      "typecheck": "PASS",
+      "tests": {
+        "total": 439,
+        "passed": 433,
+        "failed": 0,
+        "skipped": 6,
+        "viewer_cases": 7
+      },
+      "lint": "Same inherited two PanResponder findings and unchanged unused-function warning",
+      "doctor": "20/21; same eight dependency patch mismatches",
+      "web_export": "PASS",
+      "git_diff_check": "PASS"
+    },
+    "regressions": "Text identity renews for live system/app scale changes, including within one layout mode; Close and every label renew. Buttons/scroller/image keys remain stable; selected photo, zoom, expanded Manage, open replacement chooser and draft remain. Explicit scroll defaults and native observed body profiles are covered structurally, not by native measurement.",
+    "figma_mapping": {
+      "existing_behavior_spec": "https://www.figma.com/design/39uzN0SZX8nlmcGDcHdQhr?node-id=376-1790",
+      "impact": "Responsive accessibility measurement and image/control allocation only; source maps to shared PhotoMemoryViewer. No Figma edit, master promotion, new approval or pixel-parity assertion."
+    },
+    "native_status": "Pending successor packaging/revalidation by native owner; preserve 448ba16 failed/live and passing normal evidence."
+  }
 }

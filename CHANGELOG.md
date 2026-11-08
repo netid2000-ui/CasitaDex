@@ -1,7 +1,7 @@
 ## 2026-11-08 - Isolated photo viewer large-text candidate
 
 - Reflow enlarged-text and short-height photo viewers so the full title scrolls with intrinsic-height controls while Close remains pinned and photo zoom/navigation remain available. Preserve normal portrait and protect all safe-area edges.
-- Add five component regressions. Native revalidation remains pending; no existing app/device update or acceptance promotion is included.
+- Correct stale label measurements when OS text size changes with the viewer open; retain viewer state and make constrained photo/control allocation explicit. Seven component regressions cover the successor. Native revalidation remains pending; no existing app/device update or acceptance promotion is included.
 
 ## 2026-11-06 - Consolidated current 8cc native milestone
 
