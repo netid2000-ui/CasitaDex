@@ -166,3 +166,9 @@ Audited `package-lock.json` SHA-256 `067069932001e98acd12d94cdcd3f26e5c23ffefcfd
 - The full audit additionally flags the ESLint / TypeScript-ESLint development toolchain. No automatic dependency change or override was applied. Audit JSON and stderr are preserved in the SSD `Apple-Builds/CasitaDex/current-branch-9a383ba-ios/dependency-review/` directory.
 
 **Disposition: OPEN / RELEASE BLOCKER.** This audit alone does not prove exploitability in the shipped app bundle: the affected globbing packages are reached through Expo fingerprint/build tooling, and must be assessed against actual runtime inclusion and input exposure. Before release, qualify a vendor-compatible patched dependency set or document a reviewed, tested override and its scope. Do not accept the downgrade suggestion as remediation. No high or critical advisory was reported by this audit.
+
+## Current-source web smoke — 2026-11-08
+
+The guarded `preexport:web` check passed. `npx expo export --platform web --max-workers 2 --output-dir` generated the site under the SSD `Apple-Builds/CasitaDex/current-branch-9a383ba-web/site/` path, outside the repository. `npm run test:browser` then passed against that export using the installed Microsoft Edge browser in headless mode: exact four tabs/order, all four approved Home actions, mobile Home width/no horizontal overflow, single accessible brand, Find and Settings/Browse routes, all four tab routes/selected states, native-only editor gate on web, and no browser page errors. No screenshot was requested or produced. This is web smoke coverage only, not iOS/Android runtime acceptance.
+
+The browser validation ran at source commit `e88d1a7a17687029aa0468cba69a8a1f6344b56f`; commits since native build `9a383ba7fa090aeb3e175bd5a76acf8e0bc7fc5d` changed QA documentation only. Repository status remained clean before this report update.
