@@ -1,0 +1,58 @@
+appId: ${APP_ID}
+name: SB40 lifecycle recovery using existing fictional QA record
+---
+- launchApp:
+    clearState: false
+- tapOn: "CasitaDex logo, go to Home"
+- tapOn: "Find a memory"
+- tapOn: "Search memories"
+- eraseText: 200
+- inputText: "SB40 Parity shared-journey-v3-20261108"
+- pressKey: Enter
+- tapOn: "Open regular memory SB40 Parity shared-journey-v3-20261108"
+- assertVisible: "Edit memory"
+- tapOn: "More ···"
+- tapOn: "Archive memory"
+- tapOn: "CasitaDex logo, go to Home"
+- tapOn: "Settings"
+- scrollUntilVisible:
+    element: "Recently deleted"
+    direction: DOWN
+    centerElement: false
+- tapOn: "Recently deleted"
+- tapOn: "View archived memories"
+- assertVisible: "Archived memories"
+- tapOn: "Open regular memory SB40 Parity shared-journey-v3-20261108"
+- tapOn: "More ···"
+- tapOn: "Return to Active"
+- tapOn: "More ···"
+- tapOn: "Move to Recently Deleted"
+- tapOn: "Move to Recently Deleted"
+- tapOn: "CasitaDex logo, go to Home"
+- tapOn: "Settings"
+- scrollUntilVisible:
+    element: "Recently deleted"
+    direction: DOWN
+    centerElement: false
+- tapOn: "Recently deleted"
+- tapOn: "View recently deleted memories"
+- assertVisible: "Recently Deleted memories"
+- tapOn: "Open regular memory SB40 Parity shared-journey-v3-20261108"
+- scrollUntilVisible:
+    element: "Restore memory"
+    direction: DOWN
+    centerElement: false
+- tapOn: "Restore memory"
+- stopApp
+- launchApp:
+    clearState: false
+- tapOn: "CasitaDex logo, go to Home"
+- tapOn: "Find a memory"
+- tapOn: "Search memories"
+- eraseText: 200
+- inputText: "SB40 Parity shared-journey-v3-20261108"
+- pressKey: Enter
+- tapOn: "Open regular memory SB40 Parity shared-journey-v3-20261108"
+- assertVisible: "Edit memory"
+- assertNotVisible: "Restore memory"
+- takeScreenshot: lifecycle-restored

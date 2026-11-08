@@ -1,0 +1,24 @@
+{
+  "platform": "android",
+  "role": "reference",
+  "runId": "sb40-reference-retry-20261108",
+  "sourceCommit": null,
+  "candidateSourceCommit": "21b82e5b263554929ae89b83233d9f5e0a131582",
+  "flow": "capture",
+  "identity": {
+    "status": "PASS",
+    "device": "emulator-5554",
+    "appId": "com.designsbyfa.casitadex.sb40qa",
+    "apkSha256": "01e40085176127b815b0870fabbd4d915f463acdea5d8d4e0eb830871467d3bf"
+  },
+  "functional": "PASS",
+  "visual": "VERIFIED_ACCEPTED_BUILD_REFERENCE_CAPTURE",
+  "baselinePromotion": "NEVER_AUTOMATIC",
+  "maestroExitCode": 0,
+  "captures": {
+    "home": "36106727374f07a3e2644fac563c95b9c1c4cf4c0ea396767cf60dbac1cd63bb",
+    "add": "46494069c0f942d855e5d32e020e911bec88e84f143a20ad26a2bd89803dd50b",
+    "inline-location": "7efcb9bef97cc510c27df21dfe01908b1be21c64b1d80543593af2f1144e5ca5"
+  },
+  "approval": "Artifact authority only; no new design approval inferred"
+}

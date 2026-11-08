@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="sb40_four_items" tests="1" failures="1" time="47.964" timestamp="2026-11-08T12:19:46">
+    <testcase id="SB40 lifecycle recovery using existing fictional QA record" name="SB40 lifecycle recovery using existing fictional QA record" classname="SB40 lifecycle recovery using existing fictional QA record" file=".maestro/sb40-parity/lifecycle.yaml" time="47.955" timestamp="2026-11-08T12:19:46" status="ERROR">
+      <failure>Element not found: Text matching regex: Open regular memory SB40 Parity shared-journey-v3-20261108</failure>
+    </testcase>
+  </testsuite>
+</testsuites>

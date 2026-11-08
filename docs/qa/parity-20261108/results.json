@@ -36,6 +36,82 @@
       "error": null
     },
     {
+      "runId": "lifecycle-native-20261108",
+      "platform": "android",
+      "role": "candidate",
+      "flow": "lifecycle",
+      "identity": {
+        "status": "PASS",
+        "device": "emulator-5554",
+        "appId": "com.designsbyfa.casitadex.sb40qa",
+        "apkSha256": "d3e8ac734f3902d6d6b0092363d14f431fc061d9b04a74ed5cd8789e1afb4ac4"
+      },
+      "functional": "FAIL",
+      "visual": "NOT_RUN",
+      "error": null
+    },
+    {
+      "runId": "lifecycle-native-v2-20261108",
+      "platform": "android",
+      "role": "candidate",
+      "flow": "lifecycle",
+      "identity": {
+        "status": "PASS",
+        "device": "emulator-5554",
+        "appId": "com.designsbyfa.casitadex.sb40qa",
+        "apkSha256": "d3e8ac734f3902d6d6b0092363d14f431fc061d9b04a74ed5cd8789e1afb4ac4"
+      },
+      "functional": "PASS",
+      "visual": "NOT_RUN",
+      "error": null
+    },
+    {
+      "runId": "lifecycle-primary-20261108",
+      "platform": "android",
+      "role": "candidate",
+      "flow": "capture",
+      "identity": {
+        "status": "PASS",
+        "device": "emulator-5554",
+        "appId": "com.designsbyfa.casitadex.sb40qa",
+        "apkSha256": "d3e8ac734f3902d6d6b0092363d14f431fc061d9b04a74ed5cd8789e1afb4ac4"
+      },
+      "functional": "PASS",
+      "visual": "READY_FOR_EXPLICIT_REFERENCE_COMPARISON",
+      "error": null
+    },
+    {
+      "runId": "lifecycle-primary-20261108",
+      "platform": "ios",
+      "role": "candidate",
+      "flow": "capture",
+      "identity": {
+        "status": "PASS",
+        "device": "A4ED0D8B-C90A-4940-9B71-4F570D7DC597",
+        "appId": "com.designsbyfa.casitadex.sb40qa",
+        "executableSha256": "1e042a61440386a75c7becd054882630c1a5f9d04fec1f9247e9930327eddc06",
+        "bundleSha256": "28ee35e7630018c7501e096d8e825a0d2046981deb039c74e5b9dfd353bb5840"
+      },
+      "functional": "PASS",
+      "visual": "READY_FOR_EXPLICIT_REFERENCE_COMPARISON",
+      "error": null
+    },
+    {
+      "runId": "lifecycle-primary-clean-20261108",
+      "platform": "android",
+      "role": "candidate",
+      "flow": "capture",
+      "identity": {
+        "status": "PASS",
+        "device": "emulator-5554",
+        "appId": "com.designsbyfa.casitadex.sb40qa",
+        "apkSha256": "d3e8ac734f3902d6d6b0092363d14f431fc061d9b04a74ed5cd8789e1afb4ac4"
+      },
+      "functional": "PASS",
+      "visual": "READY_FOR_EXPLICIT_REFERENCE_COMPARISON",
+      "error": null
+    },
+    {
       "runId": "maestro-capture-v2-20261108",
       "platform": "android",
       "role": "candidate",
@@ -92,6 +168,21 @@
         "appId": "com.designsbyfa.casitadex.sb40qa",
         "executableSha256": "8ad89040f3a092c4a57b1d4bf7747a55e1afdd19cfa264f0b3fe136c02ba9b4d",
         "bundleSha256": "83326efc8d67c50748539becbe4f4f306e70efa233e8e3d44a5249260f9fb7aa"
+      },
+      "functional": "PASS",
+      "visual": "VERIFIED_ACCEPTED_BUILD_REFERENCE_CAPTURE",
+      "error": null
+    },
+    {
+      "runId": "sb40-reference-retry-20261108",
+      "platform": "android",
+      "role": "reference",
+      "flow": "capture",
+      "identity": {
+        "status": "PASS",
+        "device": "emulator-5554",
+        "appId": "com.designsbyfa.casitadex.sb40qa",
+        "apkSha256": "01e40085176127b815b0870fabbd4d915f463acdea5d8d4e0eb830871467d3bf"
       },
       "functional": "PASS",
       "visual": "VERIFIED_ACCEPTED_BUILD_REFERENCE_CAPTURE",
@@ -187,6 +278,354 @@
   ],
   "visualComparisons": [
     {
+      "platform": "android",
+      "status": "REVIEW_REQUIRED",
+      "results": [
+        {
+          "name": "home",
+          "status": "REVIEW_REQUIRED",
+          "differentPixels": 4759,
+          "diffRatio": 0.001836033950617284,
+          "maxDiffRatio": 0.001,
+          "masks": [
+            [
+              0,
+              0,
+              1080,
+              70
+            ],
+            [
+              734,
+              70,
+              346,
+              210
+            ],
+            [
+              0,
+              2330,
+              1080,
+              70
+            ]
+          ]
+        },
+        {
+          "name": "add",
+          "status": "REVIEW_REQUIRED",
+          "differentPixels": 4894,
+          "diffRatio": 0.0018881172839506173,
+          "maxDiffRatio": 0.001,
+          "masks": [
+            [
+              0,
+              0,
+              1080,
+              70
+            ],
+            [
+              734,
+              70,
+              346,
+              210
+            ],
+            [
+              0,
+              2330,
+              1080,
+              70
+            ]
+          ]
+        },
+        {
+          "name": "inline-location",
+          "status": "REVIEW_REQUIRED",
+          "differentPixels": 4852,
+          "diffRatio": 0.0018719135802469137,
+          "maxDiffRatio": 0.001,
+          "masks": [
+            [
+              0,
+              0,
+              1080,
+              70
+            ],
+            [
+              734,
+              70,
+              346,
+              210
+            ],
+            [
+              0,
+              2330,
+              1080,
+              70
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "platform": "ios",
+      "status": "PASS",
+      "results": [
+        {
+          "name": "home",
+          "status": "PASS",
+          "differentPixels": 1119,
+          "diffRatio": 0.00035387517029649617,
+          "maxDiffRatio": 0.001,
+          "masks": [
+            [
+              0,
+              0,
+              1206,
+              62
+            ],
+            [
+              820,
+              62,
+              386,
+              95
+            ],
+            [
+              0,
+              2592,
+              1206,
+              30
+            ]
+          ]
+        },
+        {
+          "name": "add",
+          "status": "PASS",
+          "differentPixels": 1119,
+          "diffRatio": 0.00035387517029649617,
+          "maxDiffRatio": 0.001,
+          "masks": [
+            [
+              0,
+              0,
+              1206,
+              62
+            ],
+            [
+              820,
+              62,
+              386,
+              95
+            ],
+            [
+              0,
+              2592,
+              1206,
+              30
+            ]
+          ]
+        },
+        {
+          "name": "inline-location",
+          "status": "PASS",
+          "differentPixels": 1119,
+          "diffRatio": 0.00035387517029649617,
+          "maxDiffRatio": 0.001,
+          "masks": [
+            [
+              0,
+              0,
+              1206,
+              62
+            ],
+            [
+              820,
+              62,
+              386,
+              95
+            ],
+            [
+              0,
+              2592,
+              1206,
+              30
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "platform": "android",
+      "status": "PASS",
+      "results": [
+        {
+          "name": "home",
+          "status": "PASS",
+          "differentPixels": 0,
+          "diffRatio": 0,
+          "maxDiffRatio": 0.001,
+          "masks": [
+            [
+              0,
+              0,
+              1080,
+              70
+            ],
+            [
+              734,
+              70,
+              346,
+              210
+            ],
+            [
+              0,
+              2330,
+              1080,
+              70
+            ]
+          ]
+        },
+        {
+          "name": "add",
+          "status": "PASS",
+          "differentPixels": 0,
+          "diffRatio": 0,
+          "maxDiffRatio": 0.001,
+          "masks": [
+            [
+              0,
+              0,
+              1080,
+              70
+            ],
+            [
+              734,
+              70,
+              346,
+              210
+            ],
+            [
+              0,
+              2330,
+              1080,
+              70
+            ]
+          ]
+        },
+        {
+          "name": "inline-location",
+          "status": "PASS",
+          "differentPixels": 0,
+          "diffRatio": 0,
+          "maxDiffRatio": 0.001,
+          "masks": [
+            [
+              0,
+              0,
+              1080,
+              70
+            ],
+            [
+              734,
+              70,
+              346,
+              210
+            ],
+            [
+              0,
+              2330,
+              1080,
+              70
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "platform": "android",
+      "status": "PASS",
+      "results": [
+        {
+          "name": "home",
+          "status": "PASS",
+          "differentPixels": 0,
+          "diffRatio": 0,
+          "maxDiffRatio": 0.001,
+          "masks": [
+            [
+              0,
+              0,
+              1080,
+              70
+            ],
+            [
+              734,
+              70,
+              346,
+              210
+            ],
+            [
+              0,
+              2330,
+              1080,
+              70
+            ]
+          ]
+        },
+        {
+          "name": "add",
+          "status": "PASS",
+          "differentPixels": 0,
+          "diffRatio": 0,
+          "maxDiffRatio": 0.001,
+          "masks": [
+            [
+              0,
+              0,
+              1080,
+              70
+            ],
+            [
+              734,
+              70,
+              346,
+              210
+            ],
+            [
+              0,
+              2330,
+              1080,
+              70
+            ]
+          ]
+        },
+        {
+          "name": "inline-location",
+          "status": "PASS",
+          "differentPixels": 0,
+          "diffRatio": 0,
+          "maxDiffRatio": 0.001,
+          "masks": [
+            [
+              0,
+              0,
+              1080,
+              70
+            ],
+            [
+              734,
+              70,
+              346,
+              210
+            ],
+            [
+              0,
+              2330,
+              1080,
+              70
+            ]
+          ]
+        }
+      ]
+    },
+    {
       "platform": "ios",
       "status": "PASS",
       "results": [
@@ -277,16 +716,20 @@
   "accessibility": {
     "appleInspector": "AVAILABLE_NOT_AUDITED",
     "googleScanner": {
-      "status": "INSTALLED_AND_OPENED",
+      "status": "VERIFIED_HOME_SNAPSHOT_WITH_FINDINGS",
       "version": "2.5.1.896851528",
       "package": "com.google.android.apps.accessibility.auditor",
       "device": "emulator-5554",
       "avd": "sb40_four_items",
       "source": "Official Google Play Store, Google LLC",
       "verifiedAt": "2026-11-08",
-      "enabledServices": "com.google.android.apps.accessibility.auditor/.ScannerService",
-      "scanResult": "NOT_RUN",
-      "note": "Service and accessibility shortcut configured; first scan controls still require verification. No accessibility pass inferred."
+      "enabledServices": "PAUSED_FOR_FUNCTIONAL_AND_VISUAL_TESTS",
+      "scanResult": "COMPLETED_6_SUGGESTIONS",
+      "note": "Home only: five unexposed-text candidates and one Settings touch-target candidate. Manual screen-reader triage remains pending. Scanner overlay/shortcut paused for clean app screenshots; settings preserved in checkpoint evidence.",
+      "suggestions": {
+        "unexposedTextCandidates": 5,
+        "touchTargetCandidates": 1
+      }
     }
   },
   "calibrationRecovery": "Exact synthetic iOS v2 draft completed through native UI after Open-link confirmation; no state reset",

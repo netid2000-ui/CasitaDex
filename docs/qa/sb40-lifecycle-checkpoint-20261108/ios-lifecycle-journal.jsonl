@@ -1,0 +1,5 @@
+{"case":"archive-synthetic-memory","status":"PASS"}
+{"case":"settings-archive-scope-and-restore","status":"PASS"}
+{"case":"move-synthetic-memory-to-recently-deleted","status":"PASS"}
+{"case":"settings-recently-deleted-scope-and-restore","status":"PASS"}
+{"case":"relaunch-and-unrelated-data-preservation","status":"PASS","memories":168}

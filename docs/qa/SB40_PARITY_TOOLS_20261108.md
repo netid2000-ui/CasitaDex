@@ -1,3 +1,5 @@
+Current checked status: [release checkpoints](RELEASE_CHECKPOINTS_20261108.md). The Google sign-in, first-scan and Android cold-boot blockers recorded below are resolved; first Home scan returned six suggestions for triage.
+
 # SB40 local parity tooling — 2026-11-08
 
 The free local stack is configured on the authoritative Mac mini and external SSD: Maestro CLI/Studio (existing installs), pinned Pixelmatch/pngjs (new isolated install), and Apple Accessibility Inspector (opened). Google Accessibility Scanner installation is blocked by the emulator Play Store sign-in screen. No credentials were entered, no cloud test service enabled, and no physical-device data changed.

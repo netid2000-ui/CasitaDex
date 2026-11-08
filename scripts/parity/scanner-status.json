@@ -1,12 +1,16 @@
 {
-  "status": "INSTALLED_AND_OPENED",
+  "status": "VERIFIED_HOME_SNAPSHOT_WITH_FINDINGS",
   "version": "2.5.1.896851528",
   "package": "com.google.android.apps.accessibility.auditor",
   "device": "emulator-5554",
   "avd": "sb40_four_items",
   "source": "Official Google Play Store, Google LLC",
   "verifiedAt": "2026-11-08",
-  "enabledServices": "com.google.android.apps.accessibility.auditor/.ScannerService",
-  "scanResult": "NOT_RUN",
-  "note": "Service and accessibility shortcut configured; first scan controls still require verification. No accessibility pass inferred."
+  "enabledServices": "PAUSED_FOR_FUNCTIONAL_AND_VISUAL_TESTS",
+  "scanResult": "COMPLETED_6_SUGGESTIONS",
+  "note": "Home only: five unexposed-text candidates and one Settings touch-target candidate. Manual screen-reader triage remains pending. Scanner overlay/shortcut paused for clean app screenshots; settings preserved in checkpoint evidence.",
+  "suggestions": {
+    "unexposedTextCandidates": 5,
+    "touchTargetCandidates": 1
+  }
 }

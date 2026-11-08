@@ -1,0 +1,25 @@
+{
+  "sourceCommit": "b053c44",
+  "baseImplementation": "775cc7d",
+  "baseNativeShell": "Owner-selected SB40 QA, JavaScript-only rebundle; not a native rebuild or store artifact",
+  "ios": {
+    "bundleSha256": "28ee35e7630018c7501e096d8e825a0d2046981deb039c74e5b9dfd353bb5840",
+    "executableSha256": "1e042a61440386a75c7becd054882630c1a5f9d04fec1f9247e9930327eddc06",
+    "device": "A4ED0D8B-C90A-4940-9B71-4F570D7DC597",
+    "nativeLifecycle": "PASS",
+    "preservedMemoryCount": 168,
+    "other167Memories": "UNCHANGED",
+    "mediaMetadata": "UNCHANGED"
+  },
+  "android": {
+    "apkSha256": "d3e8ac734f3902d6d6b0092363d14f431fc061d9b04a74ed5cd8789e1afb4ac4",
+    "bundleSha256": "76e93d7b3187181eed6792fac36a8aaec1e612a1954e294ad780f2a34d3f225b",
+    "certificateSha256": "fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c",
+    "avd": "sb40_four_items",
+    "nativeLifecycle": "PASS",
+    "backup": "/Volumes/FA-Development/Designs-by-FA/Backups/SB40-Lifecycle-20261108/sb40_four_items.avd",
+    "evidenceRun": "lifecycle-native-v2-20261108"
+  },
+  "physicalDevices": "NOT_MODIFIED",
+  "permanentDeletion": "DISABLED, not added"
+}

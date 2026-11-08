@@ -1,0 +1,90 @@
+{
+  "platform": "ios",
+  "referenceDir": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/Parity/CasitaDex/sb40-reference-20261108/ios/reference",
+  "candidateDir": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/Parity/CasitaDex/lifecycle-primary-20261108/ios/candidate",
+  "policy": "Compare each platform to its own accepted artifact; mask only status/date/system bars. Never auto-promote.",
+  "results": [
+    {
+      "name": "home",
+      "status": "PASS",
+      "differentPixels": 1119,
+      "diffRatio": 0.00035387517029649617,
+      "maxDiffRatio": 0.001,
+      "masks": [
+        [
+          0,
+          0,
+          1206,
+          62
+        ],
+        [
+          820,
+          62,
+          386,
+          95
+        ],
+        [
+          0,
+          2592,
+          1206,
+          30
+        ]
+      ]
+    },
+    {
+      "name": "add",
+      "status": "PASS",
+      "differentPixels": 1119,
+      "diffRatio": 0.00035387517029649617,
+      "maxDiffRatio": 0.001,
+      "masks": [
+        [
+          0,
+          0,
+          1206,
+          62
+        ],
+        [
+          820,
+          62,
+          386,
+          95
+        ],
+        [
+          0,
+          2592,
+          1206,
+          30
+        ]
+      ]
+    },
+    {
+      "name": "inline-location",
+      "status": "PASS",
+      "differentPixels": 1119,
+      "diffRatio": 0.00035387517029649617,
+      "maxDiffRatio": 0.001,
+      "masks": [
+        [
+          0,
+          0,
+          1206,
+          62
+        ],
+        [
+          820,
+          62,
+          386,
+          95
+        ],
+        [
+          0,
+          2592,
+          1206,
+          30
+        ]
+      ]
+    }
+  ],
+  "status": "PASS"
+}

@@ -8,8 +8,12 @@ All tools and evidence stay on FA-Development. These flows target only the pinne
 - Maestro Studio: existing SSD installation, retained; Studio itself was not acceptance-tested.
 - Pixelmatch 8.0.0 and pngjs 7.0.0: installed in Tools/ParityTools. Exact lockfile in tools/parity. Install using `npm ci --ignore-scripts --no-audit --no-fund` in that external tool directory.
 - Apple Accessibility Inspector: available in Xcode Contents/Applications; opened successfully. Availability does not mean an accessibility audit passed.
-- Google Accessibility Scanner 2.5.1.896851528: installed from the official Google LLC Play Store listing after owner sign-in; opened and service/shortcut configured on sb40_four_items. First completed scan is not verified. No credentials entered by automation or APK mirrors used.
+- Google Accessibility Scanner 2.5.1.896851528: installed from the official Google LLC Play Store listing after owner sign-in; opened and service/shortcut configured on sb40_four_items. First Home snapshot completed with six suggestions (five unexposed-text candidates, one touch-target candidate). Full audit and manual triage remain pending. No credentials entered by automation or APK mirrors used.
 - Appium: optional second framework, deferred to avoid duplicating Maestro.
+
+Scanner UI note: hierarchy inspection interrupts its accessibility overlay. For Snapshot, operate the observed scanner controls and inspect screenshots without attaching a hierarchy dumper until the results activity appears. Pause the Scanner service and its shortcut overlay for visual comparisons; do not mask app areas to hide testing controls.
+
+The Android-only lifecycle flow uses the existing fictional `SB40 Parity shared-journey-v3-20261108` fixture and returns it to Active. Run only through the pinned guard: `python3 scripts/parity/run-parity.py android --flow lifecycle --run-id UNIQUE_ID`. iOS lifecycle evidence uses the corresponding v4 fictional fixture and the scoped native session script. Never substitute an owner record.
 
 ## Execute
 

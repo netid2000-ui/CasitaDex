@@ -1,0 +1,90 @@
+{
+  "platform": "android",
+  "referenceDir": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/Parity/CasitaDex/sb40-reference-retry-20261108/android/reference",
+  "candidateDir": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/Parity/CasitaDex/lifecycle-primary-clean-20261108/android/candidate",
+  "policy": "Compare each platform to its own accepted artifact; mask only status/date/system bars. Never auto-promote.",
+  "results": [
+    {
+      "name": "home",
+      "status": "PASS",
+      "differentPixels": 0,
+      "diffRatio": 0,
+      "maxDiffRatio": 0.001,
+      "masks": [
+        [
+          0,
+          0,
+          1080,
+          70
+        ],
+        [
+          734,
+          70,
+          346,
+          210
+        ],
+        [
+          0,
+          2330,
+          1080,
+          70
+        ]
+      ]
+    },
+    {
+      "name": "add",
+      "status": "PASS",
+      "differentPixels": 0,
+      "diffRatio": 0,
+      "maxDiffRatio": 0.001,
+      "masks": [
+        [
+          0,
+          0,
+          1080,
+          70
+        ],
+        [
+          734,
+          70,
+          346,
+          210
+        ],
+        [
+          0,
+          2330,
+          1080,
+          70
+        ]
+      ]
+    },
+    {
+      "name": "inline-location",
+      "status": "PASS",
+      "differentPixels": 0,
+      "diffRatio": 0,
+      "maxDiffRatio": 0.001,
+      "masks": [
+        [
+          0,
+          0,
+          1080,
+          70
+        ],
+        [
+          734,
+          70,
+          346,
+          210
+        ],
+        [
+          0,
+          2330,
+          1080,
+          70
+        ]
+      ]
+    }
+  ],
+  "status": "PASS"
+}
