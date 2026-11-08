@@ -127,3 +127,21 @@ Comparison used the installed apps at their ordinary text settings. It is a boun
 - **Reference fixture data parity:** NOT MET; the count differences above are recorded and were not “fixed” by changing user/test data.
 - **Current feature-branch native provenance, broader functional and practical accessibility gates, dependency/security disposition, signing, and release qualification:** remain open. Release stays **NO-GO**.
 - **Next:** continue from the current verified source checkpoint on the authorized branch; address only a concrete release gate, preserve fixture data, and qualify fresh native builds separately before attributing further results.
+
+## Current-branch native build qualification — 2026-11-08
+
+Source was clean at commit `9a383ba7fa090aeb3e175bd5a76acf8e0bc7fc5d` on `work/cd-sb41-edit-targeting-20261104`. The two builds below were produced from that source. Neither candidate was installed over the visible SB40 simulator apps.
+
+| Platform | Build result and artifact | Qualification details |
+| --- | --- | --- |
+| iOS simulator | **PASS** — `/Volumes/FA-Development/Designs-by-FA/Apple-Builds/CasitaDex/current-branch-9a383ba-ios/DerivedData/Build/Products/Release-iphonesimulator/CasitaDexDev.app`; bundle `com.designsbyfa.casitadex.dev`, version `0.1.0 (1)`; executable SHA-256 `d3d3361c62621df7e83c22ebf788bb11e27122d78dfe5fa6f2f66629d24c8cfb` | Xcode 27.2 (27B52), Release simulator configuration, signing disabled. `BUILD SUCCEEDED`; 0 error lines and 4,114 warning lines. Not installed or runtime-tested. |
+| Android | **PASS** — `/Volumes/FA-Development/Designs-by-FA/Android-Builds/CasitaDex/current-branch-9a383ba-android/CasitaDex-current-branch-9a383ba-release-qa-debug-signed.apk`; package `com.designsbyfa.casitadex.dev`, version `0.1.0` / versionCode `1`; 107,189,152 bytes; APK SHA-256 `e330d3c7de98ddb92d307bcbc793d7c7e0f48fc8618f42339538b2b4fa514ec0`; signing certificate SHA-256 `fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c` | Expo prebuild and Gradle `assembleRelease` in an isolated SSD project; Temurin 17.0.20.1 and Android SDK build tools 36.0.0. `BUILD SUCCESSFUL` (655 tasks); APK signature verification exited 0. This uses the generated debug signing config and is only a QA package. Not installed or runtime-tested. |
+
+The first Android Gradle attempt stopped before compilation because detached-job `JAVA_HOME` was absent; a second setup attempt used the JDK bundle root instead of its `Contents/Home` and also stopped before compilation. The supported Temurin 17 runtime already present in the Mac user’s Gradle cache was then selected explicitly and the full Android build passed. No package was installed and no system software was added. Native build output contains Xcode dependency/compiler warnings and Gradle deprecation/native-copy fallback warnings; neither build reported compiler errors.
+
+### What this establishes and what remains
+
+- Current feature-branch source can generate both native simulator/app packages with the pinned Expo/Firebase-related dependencies present in the source workspace.
+- This does **not** establish current-branch simulator/device runtime behavior, parity with owner-supplied screenshots, physical-device acceptance, accessibility acceptance, signing/release qualification, or store readiness. Existing installed simulator evidence remains attributed to the SB40 QA builds above.
+- Preserve the owner reference and sample-data count differences already recorded. No fixture data was modified to make the screenshots match.
+- Release remains **NO-GO** until the remaining functional, accessibility, dependency/security, signing, and owner-device acceptance gates are closed.
