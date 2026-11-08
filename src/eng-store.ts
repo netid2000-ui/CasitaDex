@@ -1,3 +1,4 @@
+import {photoPermutation} from './photo-order.ts';
 import {fullRestoreCapacity} from "./storage-safety.ts";
 import {qaGroups,qaAnswers,qaCount} from "./sb26-qa-seed.ts";
 import {replaceReminderRowsInTransaction} from "./reminder-restore-v4.ts";
@@ -313,6 +314,14 @@ export function createEngStore(db:Database,files:EngFiles,migrate:()=>Promise<En
       m.confidence="Needs checking";delete m.verifiedAt;event(m,"answer_edited",{note:"Photo added"});
       return commit(before,next,true,[entry.id]);
     }),
+    reorderMemoryPhotos:(memoryId:string,photoIds:readonly string[],revision:number)=>serial(()=>mutate(s=>{
+      if(s.revision!==revision)throw Error("Memory changed; reload before arranging photos");
+      const m=s.data.memories.find(m=>m.id===memoryId);
+      if(!m||m.lifecycle==="recently_deleted")throw Error("Memory unavailable for photo arrangement");
+      const ordered=photoPermutation(m.mediaIds,photoIds),entries=new Map(s.data.media.media.filter(p=>p.cardId===memoryId).map(p=>[p.id,p]));
+      m.mediaIds=ordered;let i=0;s.data.media.media=s.data.media.media.map(p=>p.cardId===memoryId?entries.get(ordered[i++])!:p);
+      m.updatedAt=now().toISOString();m.history.push({id:engId(),date:localDay(now()),action:"Photo order changed; first photo is the cover"});
+    })),
     replaceMemoryPhoto:(memoryId:string,photoId:string,bytes:Uint8Array)=>serial(async()=>{
       const before=await loaded(),next=clone(before),m=next.data.memories.find(m=>m.id===memoryId);
       if(!m||m.lifecycle==="recently_deleted"||!m.mediaIds.includes(photoId))throw Error("Photo unavailable for replacement");

@@ -10,8 +10,8 @@ test('iOS photo gallery uses singular label and real saved-photo wording',()=>{
  assert.ok(!s.includes('Sample photo for'));
 });
 test('iOS viewer retains zoom, navigation, safe removal and accessible close',()=>{
- const s=read('src/app/photo-viewer.tsx');
- for(const marker of ['Gesture.Pinch()','numberOfTaps(2)','Previous photo','Next photo','Remove this photo','accessibilityLabel="Close photo"','Alert.alert("Remove photo?"']) assert.ok(s.includes(marker),marker);
+ const s=read('src/photo-memory-viewer.tsx');
+ for(const marker of ['Gesture.Pinch()','numberOfTaps(2)','Previous photo','Next photo','Remove this photo','accessibilityLabel="Close photo"',"Alert.alert('Remove photo?'"]) assert.ok(s.includes(marker),marker);
 });
 test('iOS synthetic QA illustrations do not depend on Android resource URIs',()=>{
  const s=read('src/app/photos.tsx');

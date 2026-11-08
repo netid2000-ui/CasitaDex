@@ -22,11 +22,12 @@ export function FigmaFind({query,onQueryChange,results,onOpen,pageSize,onPageSiz
  </View>;
 }
 
-export function FindSearchControls({query,onQueryChange,results}:Pick<FigmaFindProps,"query"|"onQueryChange"|"results">){
+export function FindSearchControls({query,onQueryChange,results,photosOnly=false,onPhotosOnlyChange}:Pick<FigmaFindProps,"query"|"onQueryChange"|"results">&{photosOnly?:boolean;onPhotosOnlyChange?:(value:boolean)=>void}){
  const fg=useFigmaTheme();
  const filteredCount=results.length;
  return <View style={{backgroundColor:fg.page,padding:12,gap:8,borderBottomWidth:1,borderBottomColor:fg.secondaryInk}}>
   <TextInput accessibilityLabel="Search memories" accessibilityHint="Search titles, answers and details" value={query} onChangeText={onQueryChange} placeholder="Search a memory, place, or part" placeholderTextColor={fg.secondaryInk} returnKeyType="search" onSubmitEditing={()=>Keyboard.dismiss()} style={{borderWidth:1,borderColor:fg.secondaryInk,borderRadius:12,padding:12,minHeight:48,color:fg.headingInk}}/>
+ {onPhotosOnlyChange?<Pressable accessibilityRole="button" accessibilityLabel="With photos" accessibilityState={{selected:photosOnly}} onPress={()=>onPhotosOnlyChange(!photosOnly)} style={{minHeight:48,padding:12,borderWidth:1,borderColor:fg.secondaryInk,borderRadius:12,backgroundColor:photosOnly?fg.actionSurface:fg.page}}><Text style={{color:photosOnly?fg.actionInk:fg.headingInk,fontWeight:"600"}}>With photos{photosOnly?" ✓":""}</Text></Pressable>:null}
  <Text style={{color:fg.secondaryInk}} accessibilityLiveRegion="polite">{filteredCount} {filteredCount===1?"memory":"memories"} found</Text>
  </View>;
 }

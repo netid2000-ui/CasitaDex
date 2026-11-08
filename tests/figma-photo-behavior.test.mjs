@@ -27,8 +27,9 @@ test('orphaned media and unfinished drafts never enter saved Photos gallery',()=
 
 test('gallery viewer provides direct navigation to owning saved memory',()=>{
  const viewer=readFileSync(new URL('../src/app/photo-viewer.tsx',import.meta.url),'utf8');
- assert.match(viewer,/View Memory/);
- assert.match(viewer,/router\.replace\(\{pathname:"\/card",params:\{id:memoryId\}\}\)/);
+ assert.match(viewer,/PhotoMemoryViewer/);
+ assert.match(readFileSync(new URL('../src/photo-memory-viewer.tsx',import.meta.url),'utf8'),/View Memory/);
+ assert.match(viewer,/router\.replace\(\{pathname:'\/card',params:\{id:memoryId\}\}\)/);
 });
 
 test('thumbnail images do not intercept the enclosing photo button touch',()=>{
@@ -39,7 +40,7 @@ test('thumbnail images do not intercept the enclosing photo button touch',()=>{
 
 test('photo tile navigates to the same proven memory details route as its title',()=>{
  const screen=readFileSync(new URL('../src/app/photos.tsx',import.meta.url),'utf8');
- assert.match(screen,/onViewPhoto=\{\(memoryId,photoId\)=>\{resetPhotoZoom\(\);setSelectedPhoto/);
+ assert.match(screen,/onViewPhoto=\{\(memoryId,photoId\)=>\{rememberPhoto\(memoryId\);setSelectedPhoto/);
 });
 
-test('photo gallery opens a local modal rather than switching root navigation layouts',()=>{const screen=readFileSync(new URL('../src/app/photos.tsx',import.meta.url),'utf8');assert.match(screen,/<Modal visible=\{!!selectedPhoto\}/);assert.match(screen,/View Memory/);});
+test('photo gallery opens a local modal rather than switching root navigation layouts',()=>{const screen=readFileSync(new URL('../src/app/photos.tsx',import.meta.url),'utf8');assert.match(screen,/<Modal visible=\{!!selectedPhoto\}/);assert.match(screen,/PhotoMemoryViewer/);});

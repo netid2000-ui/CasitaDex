@@ -17,10 +17,11 @@ test("Home retains the three owner-approved create actions",()=>{
  assert.ok(!home.includes("Recent memories"));
 });
 test("photo viewer provides accessible close and native pinch zoom",()=>{
- const viewer=fs.readFileSync("src/app/photo-viewer.tsx","utf8");
+ const viewer=fs.readFileSync("src/photo-memory-viewer.tsx","utf8");
+ const route=fs.readFileSync("src/app/photo-viewer.tsx","utf8");
  assert.ok(eng.includes('pathname:"/photo-viewer"'));
  assert.match(viewer,/accessibilityLabel="Close photo"/);
  assert.match(viewer,/Gesture\.Pinch\(\)/); assert.match(viewer,/Math\.min\(4,/);
  assert.match(viewer,/Math\.max\(1,/);
- assert.match(viewer,/router\.back\(\)/);
+ assert.match(route,/router\.back\(\)/);
 });
