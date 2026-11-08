@@ -42,3 +42,9 @@ test('With photos composes with Find text and lifecycle without putting search i
  const data={spaces:[],categories:[],memories:[make('a','active',['p1']),make('b','active',[]),make('c','archived',['p2'])],media:{media:[{id:'p1',cardId:'a'},{id:'p2',cardId:'c'}]}};
  const index=searchIndex(data);assert.deepEqual(findMemories(index,'20x25x1',{...defaultFilter(),attachment:'photos'},'2026-11-08').map(m=>m.id),['a']);assert.deepEqual(findMemories(index,'Filter',{...defaultFilter(),lifecycle:'archived',attachment:'photos'},'2026-11-08').map(m=>m.id),['c']);
 });
+
+import {photoZoomScale,touchDistance} from '../src/photo-zoom.ts';
+test('photo zoom clamps to 1–4 and pinch distance handles missing touches',()=>{
+ for(const [input,expected]of [[0,1],[1,1],[2.5,2.5],[9,4],[NaN,1],[Infinity,1]])assert.equal(photoZoomScale(input),expected);
+ assert.equal(touchDistance([]),0);assert.equal(touchDistance([{pageX:0,pageY:0}]),0);assert.equal(touchDistance([{pageX:0,pageY:0},{pageX:3,pageY:4}]),5);
+});

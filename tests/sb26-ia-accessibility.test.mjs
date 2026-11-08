@@ -21,7 +21,6 @@ test("photo viewer provides accessible close and native pinch zoom",()=>{
  const route=fs.readFileSync("src/app/photo-viewer.tsx","utf8");
  assert.ok(eng.includes('pathname:"/photo-viewer"'));
  assert.match(viewer,/accessibilityLabel="Close photo"/);
- assert.match(viewer,/Gesture\.Pinch\(\)/); assert.match(viewer,/Math\.min\(4,/);
- assert.match(viewer,/Math\.max\(1,/);
+ assert.match(viewer,/PanResponder\.create/); assert.match(viewer,/touchDistance/); assert.match(viewer,/Zoom photo in/);
  assert.match(route,/router\.back\(\)/);
 });
