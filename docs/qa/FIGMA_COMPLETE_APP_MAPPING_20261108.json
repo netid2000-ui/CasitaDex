@@ -260,8 +260,8 @@
     }
   ],
   "acceptance": {
-    "editableMap": "VERIFIED",
-    "sourceRegisters": "VERIFIED_CAPTURE",
+    "editableMap": "WITHDRAWN_WRONG_SOURCE",
+    "sourceRegisters": "HISTORICAL_NON_TARGET_DEV_SOURCE",
     "representativeRender": "VERIFIED_AFTER_WRAPPING_FIX",
     "allScreensPixelParity": "NOT_CLAIMED",
     "nativeFunctionalAcceptance": "NOT_RUN_BY_THIS_DESIGN_TASK",
@@ -272,5 +272,11 @@
     "Functional map does not replace approved visual masters.",
     "Context-specific Return/Cancel follows initiating route; overview links illustrate relationships.",
     "No new app build, data mutation, live purchase, production deployment or store submission."
-  ]
+  ],
+  "supersededBy": {
+    "authority": "SB40",
+    "figmaPage": "360:2",
+    "spec": "361:492",
+    "reason": "Wrong .dev Add/Edit flow; SB40 has inline Add editing and sticky Save/Cancel"
+  }
 }

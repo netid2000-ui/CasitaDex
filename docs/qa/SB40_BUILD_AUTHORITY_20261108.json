@@ -1,0 +1,23 @@
+{
+  "ownerDecision": "SB40 is our agreed build",
+  "qaBundle": "com.designsbyfa.casitadex.sb40qa",
+  "qaExecutableSHA256": "8ad89040f3a092c4a57b1d4bf7747a55e1afdd19cfa264f0b3fe136c02ba9b4d",
+  "sourceReference": "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-simulator-parity-20261108",
+  "sourceIsGitCheckout": false,
+  "requiredFlowFingerprint": [
+    "Adding a Memory",
+    "Memory name (Required)",
+    "Description",
+    "SPACE / CATEGORIES Choose",
+    "LOCATION / NOTES / REFERENCE inline Edit and Done",
+    "sticky Save / Cancel",
+    "Save returns Home"
+  ],
+  "withdrawnFigmaPage": "351:2",
+  "correctedFigmaPage": "360:2",
+  "preservedOwnerReferences": "347:2",
+  "wrongCandidateExecutableSHA256": "bdbf220a9dd4d4f60fc1e941f819445a8615ac26d8942219b6b76a95368f906e",
+  "physicalPhoneModified": false,
+  "physicalByteIdentityVerified": false,
+  "release": "NO-GO"
+}

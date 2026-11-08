@@ -1,4 +1,6 @@
-# CasitaDex — complete Figma mapping
+# CasitaDex — complete Figma mapping — WITHDRAWN / WRONG DEV SOURCE
+
+**OWNER CORRECTION: SB40 is the agreed build. This map captured a different .dev implementation and must not drive implementation or testing. See [SB40 authority correction](SB40_OWNER_AUTHORITY_CORRECTION_20261108.md) and corrected Figma page 47.**
 
 November 7, 2026 (America/Chicago).
 
