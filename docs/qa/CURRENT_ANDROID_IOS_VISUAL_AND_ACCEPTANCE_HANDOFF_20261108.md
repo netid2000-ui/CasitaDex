@@ -57,3 +57,29 @@ For an unused **booted** device, graceful `simctl shutdown <UDID>` / emulator sh
 - First reconcile the screenshot baseline against each approved Figma master and current installed iOS/Android screens. Record page-by-page gaps; do not retest already attributed functional workflows.
 - Continue only unproven/changed gates: exact current-branch native build provenance, secondary-page visual/interaction comparison, unresolved current iOS reminder route, strict iOS offline, practical screen-reader/accessibility acceptance, dependency/security disposition, signing and release qualification.
 - Maintain one heavy native build lane on FA-MAC-DEV-01. Preserve app data, report exact source/artifact fingerprints, and keep release NO-GO until remaining gates pass.
+
+## Read-only visual reconciliation — 2026-11-08 01:36 UTC
+
+### Figma authority discrepancy
+
+File `39uzN0SZX8nlmcGDcHdQhr` was inspected read-only. The existing Figma pages do not yet consistently encode the owner-confirmed four-page screenshot baseline:
+
+| Figma location | Figma status | Observed content | Use in this comparison |
+| --- | --- | --- | --- |
+| Page 20, iOS A.2, node `69:109` Home, `69:230` Photos, `69:291` Reminders, `69:355` Find | CURRENTLY APPROVED BASELINE (2026-10-25) | Five-tab bar includes Memories. Home includes upcoming-reminder content; Photos uses a photo grid; Reminders uses Today/Upcoming/Completed; Find uses the earlier popular-questions layout. | Preserve as historical approved A.2 authority. It conflicts with the newer owner-confirmed screenshots and must not drive this four-tab visual pass. |
+| Page 21, Android A.2, node `69:464` Home, `69:585` Photos, `69:646` Reminders, `69:710` Find | CURRENTLY APPROVED BASELINE (2026-10-25) | Same five-tab IA and older screen patterns. | Preserve as historical Android A.2 authority; do not treat it as the current four-tab target. |
+| Page 42, iOS Home node `321:36`; Android Home node `321:163` | REVIEW | Home structure and four tabs match the owner-confirmed Home reference; the page note explicitly says editable review, not another owner approval or platform acceptance. | Visual cross-check only. Francisco has now confirmed the supplied four-tab screenshots as the target; Figma still labels these frames REVIEW. |
+| Page 43, Photos `342:94`, Reminders `342:140`, Find `342:167` | FULL FUNCTION REVIEW · NOT APPROVED | Source-mapped checklists, with five tab labels; these are not finished visual screens. | Use only to understand route/function coverage, never as visual masters. |
+
+The owner-confirmed screenshot set now governs this comparison. It supersedes conflicting five-tab presentation direction for this work, while the Figma file's old master/review labels remain unchanged. This pass made **no Figma edits**.
+
+### Current installed-screen observation
+
+A read-only Mac desktop capture at `2026-11-08T01:36:00Z` showed the Android emulator on Photos and the iOS simulator on Memory Details with Find selected. Both visible navigation bars have exactly Home / Photos / Reminders / Find. Android Photos has the same broad structure as Francisco's Photos screenshot (brand/date header, page heading, Add Photo Memory action, memory cards, bottom tabs). Its local synthetic fixture differs: the simulator showed 3 photo memories and 1 photo on Coffee filters, while the owner screenshot showed 5 photo memories and 5 Coffee filters photos. Treat that as fixture-data variance; no test data was changed. The visible iOS route was Memory Details, so this capture does not directly compare its Home/Photos/Reminders/Find content pages.
+
+### Comparison boundary and next step
+
+- Confirmed: the four-tab owner direction is reflected in the live Android Photos navigation, live iOS detail navigation, and the isolated SB40 Home comparison already recorded above.
+- Not yet verified live on both platforms: a page-by-page capture of Home, Photos, Reminders, and Find at matched text/display settings. No navigation taps were made during this pass; installed app state and data were left unchanged.
+- Figma gap: no approved four-tab visual master currently exists for all four owner-confirmed screens. The approved A.2 masters remain five-tab; only the Home reconstruction is a four-tab REVIEW frame. The next design task is to reconcile all four owner-confirmed pages into editable four-tab Figma frames, clearly classify them as REVIEW/owner-approved, and preserve old A.2 masters.
+- Native gap: do not reinstall or rebuild during that Figma reconciliation. After editable target frames are captured and mapped, run a bounded four-page visual pass on the existing installed builds, navigating only among tabs and leaving records untouched. Compare fixture-independent layout and labels; record fixture differences separately.
