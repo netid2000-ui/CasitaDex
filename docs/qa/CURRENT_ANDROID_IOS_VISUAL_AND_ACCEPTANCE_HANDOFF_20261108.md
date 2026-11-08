@@ -155,3 +155,14 @@ The first Android Gradle attempt stopped before compilation because detached-job
 - `npm run export:web` and browser smoke were **NOT RUN** in this checkpoint. Native source builds are compile/package checks only; no fresh candidate was installed or runtime-tested.
 
 These checks and native builds improve source/build confidence but do not close physical-device acceptance, owner iPhone sign-off, practical VoiceOver/TalkBack, offline/recovery, reminder delivery on this current source build, dependency/security disposition, or release signing. Release stays **NO-GO**.
+
+## Dependency security disposition — 2026-11-08
+
+Audited `package-lock.json` SHA-256 `067069932001e98acd12d94cdcd3f26e5c23ffefcfd58b1d605362c465cedc56` with npm audit, without changing the manifest or lockfile:
+
+- `npm audit --omit=dev`: **4 moderate, 0 high, 0 critical**.
+- Full `npm audit`: **11 moderate, 0 high, 0 critical**.
+- The runtime dependency graph includes Expo 57.0.32 -> `@expo/fingerprint` 0.20.15 -> `glob` 13.0.6 and `minimatch` 10.2.6. These match the affected ranges in [GHSA-3g3m-2fjr-6pw4](https://github.com/advisories/GHSA-3g3m-2fjr-6pw4) and [GHSA-g3hv-75wg-m249](https://github.com/advisories/GHSA-g3hv-75wg-m249). npm's automatic remediation proposes Expo 52.0.49, a major downgrade from the pinned SDK 57; that change was rejected as unsafe without a supported Expo compatibility path.
+- The full audit additionally flags the ESLint / TypeScript-ESLint development toolchain. No automatic dependency change or override was applied. Audit JSON and stderr are preserved in the SSD `Apple-Builds/CasitaDex/current-branch-9a383ba-ios/dependency-review/` directory.
+
+**Disposition: OPEN / RELEASE BLOCKER.** This audit alone does not prove exploitability in the shipped app bundle: the affected globbing packages are reached through Expo fingerprint/build tooling, and must be assessed against actual runtime inclusion and input exposure. Before release, qualify a vendor-compatible patched dependency set or document a reviewed, tested override and its scope. Do not accept the downgrade suggestion as remediation. No high or critical advisory was reported by this audit.
