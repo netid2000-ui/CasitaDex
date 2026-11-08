@@ -9,8 +9,6 @@ import {
   TextInput,
   View,
   type TextProps,
-  type StyleProp,
-  type ViewStyle,
 } from "react-native";
 import { useData } from "./state";
 import { lightColors, darkColors } from "./theme";
@@ -56,7 +54,6 @@ export function Button({
   label,
   onPress,
   selected,
-  expanded,
   disabled = false,
   primary = false,
   variant = "tonal",
@@ -65,7 +62,6 @@ export function Button({
   label: string;
   onPress: () => void;
   selected?: boolean;
-  expanded?: boolean;
   disabled?: boolean;
   primary?: boolean;
   variant?: "tonal" | "quiet";
@@ -79,9 +75,8 @@ export function Button({
       onBlur={() => setFocused(false)}
       accessibilityRole="button"
       aria-pressed={Platform.OS === "web" ? selected : undefined}
-      aria-expanded={Platform.OS === "web" ? expanded : undefined}
       accessibilityState={
-        Platform.OS === "web" ? { disabled } : { selected, disabled, expanded }
+        Platform.OS === "web" ? { disabled } : { selected, disabled }
       }
       disabled={disabled}
       onPress={onPress}
@@ -93,10 +88,10 @@ export function Button({
         primary && s.primary,
         focused && { borderColor: colors.focus, borderWidth: 2 },
         pressed && { opacity: 0.82, elevation: 0, shadowOpacity: 0, transform: [{ translateY: 1 }] },
-        disabled && { opacity: 1, borderStyle: "dashed" as const },
+        disabled && (primary ? { opacity: 0.62, borderStyle: "solid" as const, backgroundColor: colors.primary, borderColor: colors.primary } : { opacity: 1, borderStyle: "dashed" as const, backgroundColor: colors.accent, borderColor: colors.line }),
       ]}
     >
-      <Copy kind={compact ? "small" : "body"} style={primary ? { color: colors.onPrimary, fontWeight: "700", textAlign: "center" } : selected ? { color: colors.ink, fontWeight: "700", textAlign: "center" } : { fontWeight: "600", textAlign: "center" }}>
+      <Copy kind={compact ? "small" : "body"} style={primary ? { color: colors.onPrimary, fontWeight: "700", textAlign: "center" } : { color: colors.ink, fontWeight: "700", textAlign: "center" }}>
         {label}
       </Copy>
     </Pressable>
@@ -107,6 +102,7 @@ export function Field({
   value,
   onChangeText,
   multiline = false,
+  compactMultiline = false,
   onSubmitEditing,
   disabled=false,
   maxLength,
@@ -115,6 +111,7 @@ export function Field({
   value: string;
   onChangeText: (v: string) => void;
   multiline?: boolean;
+  compactMultiline?: boolean;
   onSubmitEditing?: () => void;
   disabled?:boolean;
   maxLength?:number;
@@ -126,10 +123,7 @@ export function Field({
     <View style={s.gap}>
       <Copy style={{ fontWeight: "600" }}>{label}</Copy>
       <TextInput
-        // Keep the app actions and context available beside the Android keyboard.
-        disableFullscreenUI={Platform.OS === "android" ? true : undefined}
         accessibilityLabel={label}
-        accessibilityValue={{ text: value }}
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
         selectionColor={colors.focus}
@@ -147,7 +141,7 @@ export function Field({
           s.input,
           focused && { borderColor: colors.focus, borderWidth: 2 },
           disabled && { opacity: 1, borderStyle: "dashed" as const },
-          { fontSize: large ? 34 : 17, minHeight: multiline ? 120 : 52 },
+          { fontSize: large ? 34 : 17, minHeight: multiline ? (compactMultiline ? 76 : 120) : 52 },
         ]}
       />
     </View>
@@ -161,8 +155,7 @@ export function Page({
   restoreScrollY = 0,
   restoreReady = true,
   onScrollY,
-  contentContainerStyle,
-  containerStyle,
+  stickyActions,
   children,
 }: {
   title: string;
@@ -172,8 +165,7 @@ export function Page({
   restoreScrollY?:number;
   restoreReady?:boolean;
   onScrollY?:(y:number)=>void;
-  contentContainerStyle?: StyleProp<ViewStyle>;
-  containerStyle?: StyleProp<ViewStyle>;
+  stickyActions?:React.ReactNode;
   children: React.ReactNode;
 }) {
   const scroll=useRef<ScrollView>(null),restored=useRef(false),viewport=useRef(0),contentHeight=useRef(0);
@@ -181,17 +173,20 @@ export function Page({
   const { ready, error, busy, reload, recover } = useData();
   const { s, colors } = useTheme();
   return (
+    <View style={{flex:1,backgroundColor:colors.paper}}>
+    {stickyActions?<View style={{paddingHorizontal:20,paddingVertical:10,borderBottomWidth:1,borderBottomColor:colors.line,backgroundColor:colors.paper,zIndex:2}}>{stickyActions}</View>:null}
     <ScrollView
       ref={scroll}
+      keyboardDismissMode="on-drag"
       onLayout={event=>{viewport.current=event.nativeEvent.layout.height;restorePosition();}}
       scrollEventThrottle={100}
       onScroll={onScrollY?event=>{if(restored.current)onScrollY(event.nativeEvent.contentOffset.y);}:undefined}
       onContentSizeChange={(_width,height)=>{contentHeight.current=height;restorePosition();}}
-      keyboardShouldPersistTaps="handled"
+      keyboardShouldPersistTaps="always"
       automaticallyAdjustKeyboardInsets
-      contentContainerStyle={[s.page, contentContainerStyle]}
+      contentContainerStyle={s.page}
     >
-      <View style={[s.container, containerStyle]}>
+      <View style={s.container}>
         {!hideHeading ? <Copy
           kind="small"
           style={{ color: colors.muted, fontWeight: "600", letterSpacing: 0.7 }}
@@ -220,6 +215,7 @@ export function Page({
         {independent || ready ? children : !error ? <Copy>Opening your answers…</Copy> : null}
       </View>
     </ScrollView>
+    </View>
   );
 }
 const makeStyles = (colors: typeof lightColors) =>
@@ -265,7 +261,7 @@ const makeStyles = (colors: typeof lightColors) =>
     compact: { minHeight: 48, paddingHorizontal: 12, paddingVertical: 8, borderRadius: 999, backgroundColor: colors.white, elevation: 0, shadowOpacity: 0 },
     selected: { backgroundColor: colors.accent, borderColor: colors.focus, borderWidth: 2 },
     primary: { backgroundColor: colors.primary, borderColor: colors.primary, borderBottomColor: colors.primary, elevation: 2, shadowOpacity: 0.10 },
-    quiet: { backgroundColor: colors.white, borderColor: colors.line, elevation: 0, shadowOpacity: 0 },
+    quiet: { backgroundColor: colors.accent, borderColor: colors.line, borderWidth: 1.5, elevation: 0, shadowOpacity: 0 },
     input: {
       backgroundColor: colors.white,
       borderColor: colors.muted,
@@ -280,16 +276,13 @@ const makeStyles = (colors: typeof lightColors) =>
       paddingTop: 7,
       paddingBottom: 8,
       paddingHorizontal: 7,
-      flexDirection: "column",
+      flexDirection: "row",
       borderTopWidth: 1,
       borderColor: colors.line,
       gap: 5,
     },
-    navRow: { flexDirection: "row", gap: 5 },
     navTab: {
-      flexGrow: 1,
-      flexBasis: 0,
-      minWidth: 0,
+      flex: 1,
       minHeight: 55,
       alignItems: "center",
       justifyContent: "center",
@@ -298,5 +291,5 @@ const makeStyles = (colors: typeof lightColors) =>
     },
     navTabActive: { backgroundColor: colors.accent, borderWidth: 1, borderColor: colors.focus },
     navIcon: { fontSize: 25, lineHeight: 28, fontWeight: "600" },
-    navLabel: { fontSize: 12, fontWeight: "700", textAlign: "center", alignSelf: "stretch" },
+    navLabel: { fontSize: 12, fontWeight: "700" },
   });

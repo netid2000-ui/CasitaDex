@@ -8,17 +8,6 @@ export function validReminderDay(day:string){
  if(y<1||y>9999||m<1||m>12||d<1)return false;
  return d<=utc(y,m,0).getUTCDate();
 }
-export function reminderLocalTimestamp(day: string, time: string): number | null {
- if (!validReminderDay(day) || !/^([01]\d|2[0-3]):[0-5]\d$/.test(time)) return null;
- const [year, month, date] = day.split("-").map(Number);
- const [hour, minute] = time.split(":").map(Number);
- const local = new Date(0);
- local.setFullYear(year, month - 1, date);
- local.setHours(hour, minute, 0, 0);
- if (local.getFullYear() !== year || local.getMonth() !== month - 1 ||
-     local.getDate() !== date || local.getHours() !== hour || local.getMinutes() !== minute) return null;
- return local.getTime();
-}
 export function nextReminderDay(day:string,repeat:RepeatSchedule,anchorDay?:number){
  if(!validReminderDay(day))throw Error("Invalid reminder date");
  if(repeat==="once")return null;
@@ -32,12 +21,4 @@ export function nextReminderDay(day:string,repeat:RepeatSchedule,anchorDay?:numb
  if(target.y>9999)throw Error("Reminder exceeds supported calendar range");
  const last=utc(target.y,target.m,0).getUTCDate();
  return [year(target.y),pad(target.m),pad(Math.min(anchorDay??d,last))].join("-");
-}
-/** Refuse a recurrence that would disappear from the notification projection. */
-export function nextReminderOccurrenceDay(day: string, time: string, repeat: RepeatSchedule, anchorDay?: number) {
- const next = nextReminderDay(day, repeat, anchorDay);
- if (next !== null && reminderLocalTimestamp(next, time) === null) {
-  throw Error("The next reminder time does not occur in your device time zone. Edit the reminder time before completing this occurrence.");
- }
- return next;
 }

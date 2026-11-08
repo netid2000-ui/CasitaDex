@@ -1,0 +1,68 @@
+{
+    "schemaVersion":  1,
+    "project":  "CasitaDex",
+    "releaseAuthorized":  false,
+    "reviewDate":  "2026-10-24",
+    "gates":  {
+                  "developerAccounts":  {
+                                            "status":  "unverified",
+                                            "evidence":  [
+
+                                                         ]
+                                        },
+                  "privacyDataFlows":  {
+                                           "status":  "unverified",
+                                           "evidence":  [
+
+                                                        ]
+                                       },
+                  "figmaApple":  {
+                                     "status":  "blocked",
+                                     "evidence":  [
+                                                      "docs/design/figma-authority-manifest.json"
+                                                  ]
+                                 },
+                  "figmaAndroid":  {
+                                       "status":  "blocked",
+                                       "evidence":  [
+                                                        "docs/design/figma-authority-manifest.json"
+                                                    ]
+                                   },
+                  "androidTargetSdk":  {
+                                           "status":  "unverified",
+                                           "evidence":  [
+                                                            "docs/design/SB29_NATIVE_STORE_CONFIG_AUDIT_20261024.md"
+                                                        ]
+                                       },
+                  "appleSdkAndSigning":  {
+                                             "status":  "unverified",
+                                             "evidence":  [
+                                                              "docs/design/SB29_NATIVE_STORE_CONFIG_AUDIT_20261024.md"
+                                                          ]
+                                         },
+                  "storeMetadata":  {
+                                        "status":  "unverified",
+                                        "evidence":  [
+
+                                                     ]
+                                    },
+                  "nativeDeviceAcceptance":  {
+                                                 "status":  "blocked",
+                                                 "evidence":  [
+
+                                                              ]
+                                             },
+                  "sb24CancellationSafety":  {
+                                                 "status":  "blocked",
+                                                 "evidence":  [
+
+                                                              ]
+                                             },
+                  "ownerReleaseApproval":  {
+                                               "status":  "blocked",
+                                               "evidence":  [
+
+                                                            ]
+                                           }
+              }
+}

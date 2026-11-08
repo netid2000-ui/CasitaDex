@@ -11,8 +11,8 @@ test('accepted native consumer picker returns only a validated Full v4 archive w
  let opens=0,canceled=false;
  globalThis.__nativePicker={bytes:raw,pick:async()=>canceled?{canceled:true}:{canceled:false,assets:[{uri:'qa://archive'}]},open:async()=>{opens++;throw Error('Picker must not open a database')}};
  const mocks={
- 'react-native':'export const Platform={OS:"ios"};',
- 'expo-sharing':'export const isAvailableAsync=async()=>{throw Error("Picker must not invoke sharing")};export const shareAsync=async()=>{throw Error("Picker must not invoke sharing")};',
+ 'react-native':'export const Platform={OS:"android"};',
+ 'expo-notifications':'export const setNotificationHandler=()=>{};',
  'expo-constants':'export default {expoConfig:{extra:{appEnvironment:"development"}}};',
  '@react-native-async-storage/async-storage':'export default {};',
  'expo-sqlite':'export const openDatabaseAsync=globalThis.__nativePicker.open;',
@@ -22,6 +22,9 @@ test('accepted native consumer picker returns only a validated Full v4 archive w
  'expo-crypto':'import {createHash} from "node:crypto";export const CryptoDigestAlgorithm={SHA256:"sha256"};export const digest=async(_,b)=>Uint8Array.from(createHash("sha256").update(b).digest()).buffer;',
  'expo-file-system': 'export const Paths={document:"private:",cache:"cache:",availableDiskSpace:1000000000,totalDiskSpace:2000000000};export const FileMode={ReadOnly:0};export class Directory{constructor(...p){this.uri=p.join("/")}};export class File{constructor(uri){this.uri=uri}get size(){return globalThis.__nativePicker.bytes.length}open(){return {offset:0,readBytes(n){return globalThis.__nativePicker.bytes.slice(this.offset,this.offset+n)},close(){}}}};'
  };
+ for(const [moduleName,functions] of Object.entries({NotificationsHandler:['setNotificationHandler'],setNotificationChannelAsync:['setNotificationChannelAsync'],NotificationPermissions:['getPermissionsAsync','requestPermissionsAsync'],getAllScheduledNotificationsAsync:['getAllScheduledNotificationsAsync'],scheduleNotificationAsync:['scheduleNotificationAsync'],cancelScheduledNotificationAsync:['cancelScheduledNotificationAsync'], 'Notifications.types':['SchedulableTriggerInputTypes'], 'NotificationChannelManager.types':['AndroidImportance']})){
+  mocks[`expo-notifications/build/${moduleName}`]=functions.map(fn=>`export const ${fn}=${fn==='SchedulableTriggerInputTypes'?'{DATE:"date"}':fn==='AndroidImportance'?'{DEFAULT:3}':'()=>{}'};`).join('\n');
+ }
  const hook=registerHooks({resolve(s,ctx,next){
   if(mocks[s])return{url:'data:text/javascript,'+encodeURIComponent(mocks[s]),shortCircuit:true};
   try{return next(s,ctx)}catch(e){if(s.startsWith('.'))return next(s+'.ts',ctx);throw e}

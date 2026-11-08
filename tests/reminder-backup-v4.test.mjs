@@ -20,3 +20,5 @@ test('restore preflight reports collisions and never mutates records',()=>{
  assert.deepEqual(preflightReminderRestore(incoming,existing),{incoming:1,existing:1,collisions:[row.id],requiresExplicitReplacement:true});
  assert.equal(JSON.stringify(existing),before);
 });
+
+test("linked reminders retain their memory ID through backup encoding",()=>{const linked={...row,memoryId:"sb26qa_001"};assert.deepEqual(decodeReminderBackupSection(encodeReminderBackupSection({version:1,rows:[linked]})).rows[0],linked);assert.throws(()=>validateReminderBackupSection({version:1,rows:[{...row,memoryId:""}]}));});

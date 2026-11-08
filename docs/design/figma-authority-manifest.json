@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "status": "owner-approved-current-baseline-revisable",
+  "uiAuthority": {
+    "fileKey": "39uzN0SZX8nlmcGDcHdQhr",
+    "applePage": "69:108",
+    "androidPage": "69:463",
+    "appleDarkPage": "71:2",
+    "androidDarkPage": "71:357",
+    "completeAppMapPage": "62:122",
+    "detailedSettingsPage": "65:16",
+    "progressiveCreationPages": [
+      "124:2",
+      "124:75",
+      "124:148"
+    ],
+    "priorAuthorityPages": [
+      "25:2",
+      "25:30"
+    ]
+  },
+  "brandAuthority": {
+    "fileKey": "PGhz4VYfakXbLh5BFev1PH",
+    "fullLight": "2:4",
+    "fullDark": "2:15",
+    "iconLight": "2:26",
+    "componentSet": "224:34",
+    "lightVariant": "224:16",
+    "darkVariant": "224:25",
+    "iconComponent": "224:35"
+  },
+  "platforms": {
+    "ios": {
+      "mappingVerification": "live-figma-frames-verified-app-device-parity-pending",
+      "status": "owner-approved-current-baseline-revisable",
+      "screens": {
+        "home": "69:109",
+        "memories": "69:173",
+        "photos": "69:230",
+        "reminders": "69:291",
+        "find": "69:355",
+        "settings": "69:406"
+      },
+      "darkScreens": {
+        "home": "71:3",
+        "memories": "71:67",
+        "photos": "71:124",
+        "reminders": "71:185",
+        "find": "71:249",
+        "settings": "71:300"
+      }
+    },
+    "android": {
+      "mappingVerification": "live-figma-frames-verified-app-device-parity-pending",
+      "status": "owner-approved-current-baseline-revisable",
+      "screens": {
+        "home": "69:464",
+        "memories": "69:528",
+        "photos": "69:585",
+        "reminders": "69:646",
+        "find": "69:710",
+        "settings": "69:761"
+      },
+      "darkScreens": {
+        "home": "71:358",
+        "memories": "71:422",
+        "photos": "71:479",
+        "reminders": "71:540",
+        "find": "71:604",
+        "settings": "71:655"
+      }
+    }
+  },
+  "promotion": {
+    "allowed": false,
+    "reason": "Design approved; Android/iOS visual, accessibility, backup and release QA remain open."
+  },
+  "ownerApproval": {
+    "date": "2026-10-25",
+    "designStatus": "APPROVED_CURRENT_BASELINE_REVISABLE",
+    "deviceAcceptance": "PENDING"
+  },
+  "artworkTransfer": {
+    "placements": 55,
+    "receipt": "docs/qa/figma-brand-transfer-20261025/brand-transfer-manifest.json",
+    "source": "editable-original-vectors",
+    "nativeStage": "isolated-E-CD33"
+  }
+}

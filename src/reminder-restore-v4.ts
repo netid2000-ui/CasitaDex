@@ -4,7 +4,7 @@ export async function replaceReminderRowsInTransaction(tx:{runAsync:(sql:string,
  const checked=validateReminderBackupSection(input);
  await tx.runAsync('DELETE FROM standalone_reminders_v1');
  for(const r of checked.rows){
-  await tx.runAsync('INSERT INTO standalone_reminders_v1 (id,title,notes,due_date,due_time,repeat,anchor_day,completed,created_at,updated_at) VALUES (?,?,?,?,?,?,?,?,?,?)',r.id,r.title,r.notes,r.dueDate,r.dueTime,r.repeat,r.anchorDay,r.completed?1:0,r.createdAt,r.updatedAt);
+  await tx.runAsync('INSERT INTO standalone_reminders_v1 (id,title,notes,memory_id,due_date,due_time,repeat,anchor_day,completed,created_at,updated_at) VALUES (?,?,?,?,?,?,?,?,?,?,?)',r.id,r.title,r.notes,r.memoryId??null,r.dueDate,r.dueTime,r.repeat,r.anchorDay,r.completed?1:0,r.createdAt,r.updatedAt);
  }
  return checked.rows.length;
 }

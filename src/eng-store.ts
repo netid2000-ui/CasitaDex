@@ -1,4 +1,3 @@
-import { notifyReminderChanges } from "./reminder-notification-changes.ts";
 import {fullRestoreCapacity} from "./storage-safety.ts";
 import {qaGroups,qaAnswers,qaCount} from "./sb26-qa-seed.ts";
 import {replaceReminderRowsInTransaction} from "./reminder-restore-v4.ts";
@@ -142,7 +141,6 @@ export function createEngStore(db:Database,files:EngFiles,migrate:()=>Promise<En
       for(const mediaId of mediaIds)await tx.runAsync("UPDATE eng_media_ops_v2 SET phase='committed' WHERE id=?",mediaId);
     });
     if(checkFiles||verifiedRevision===before.revision)verifiedRevision=valid.revision;
-    if (recovery) notifyReminderChanges();
     await options.fault?.("after-state-commit");
     return valid;
   }
@@ -164,7 +162,7 @@ export function createEngStore(db:Database,files:EngFiles,migrate:()=>Promise<En
       // The previous known-good full recovery is deliberately not replaced with damaged bytes.
       await tx.runAsync("INSERT OR REPLACE INTO eng_state_v2(slot,payload) VALUES(1,?)",text);
     });
-    verifiedRevision=valid.revision;notifyReminderChanges();return valid;
+    verifiedRevision=valid.revision;return valid;
   }
   async function loaded(){
     await init();const s=await read(db);
@@ -459,7 +457,7 @@ export function createEngStore(db:Database,files:EngFiles,migrate:()=>Promise<En
         const reviewedReminderRows=await tx.getAllAsync("SELECT * FROM standalone_reminders_v1 ORDER BY id");
         if(expectedReminderToken&&expectedReminderToken!==await tokenFor(JSON.stringify(reviewedReminderRows)))throw Error("Standalone reminders changed since backup review. Review again; no data changed.");
         const columns=await tx.getAllAsync<{name:string}>("PRAGMA table_info(standalone_reminders_v1)");
-        for(const [column,definition] of [["due_time","TEXT NOT NULL DEFAULT '09:00'"],["anchor_day","INTEGER NOT NULL DEFAULT 0"],["repeat","TEXT NOT NULL DEFAULT 'once'"]] as const){if(!columns.some(c=>c.name===column))await tx.runAsync(`ALTER TABLE standalone_reminders_v1 ADD COLUMN ${column} ${definition}`);}
+        for(const [column,definition] of [["due_time","TEXT NOT NULL DEFAULT '09:00'"],["anchor_day","INTEGER NOT NULL DEFAULT 0"],["repeat","TEXT NOT NULL DEFAULT 'once'"],["memory_id","TEXT"]] as const){if(!columns.some(c=>c.name===column))await tx.runAsync(`ALTER TABLE standalone_reminders_v1 ADD COLUMN ${column} ${definition}`);}
         const row=await tx.getFirstAsync<{payload:string}>("SELECT payload FROM eng_state_v2 WHERE slot=1");
         if((row?.payload??null)!==raw)throw restoreChanged();
         await tx.runAsync("INSERT OR REPLACE INTO eng_recovery_v2(slot,payload) VALUES(1,?)",oldBytes);
@@ -475,7 +473,6 @@ export function createEngStore(db:Database,files:EngFiles,migrate:()=>Promise<En
         await options.fault?.("after-v4-eng-write");
       });
       verifiedRevision=valid.revision;
-      notifyReminderChanges();
       return valid;
     }),    hasV4Recovery:()=>serial(async()=>{await init();const table=await db.getFirstAsync<{name:string}>("SELECT name FROM sqlite_master WHERE type='table' AND name='eng_reminder_recovery_v4'");if(!table)return false;return !!await db.getFirstAsync("SELECT payload FROM eng_reminder_recovery_v4 WHERE slot=1");}),
     recoverV4:()=>serial(async()=>{
@@ -503,7 +500,7 @@ export function createEngStore(db:Database,files:EngFiles,migrate:()=>Promise<En
         await tx.runAsync("UPDATE eng_recovery_v2 SET payload=? WHERE slot=1",JSON.stringify(current));
         await tx.runAsync("UPDATE eng_state_v2 SET payload=? WHERE slot=1",JSON.stringify(target));
       });
-      verifiedRevision=target.revision;notifyReminderChanges();return target;
+      verifiedRevision=target.revision;return target;
     }),
     recover:()=>serial(async()=>{
       await init();const raw=await rawPrimary(),row=await db.getFirstAsync<{payload:string}>("SELECT payload FROM eng_recovery_v2 WHERE slot=1");

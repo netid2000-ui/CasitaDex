@@ -1,117 +1,67 @@
-import { createReminderResponseDrain, type ReminderResponse, type ReminderResponseRoute } from "./reminder-response-routing";
-import { subscribeNavigationGuardChanges } from "./eng-navigation";
-import { requireOptionalNativeModule } from "expo";
-import { AppState, Platform } from "react-native";
-import { getEngStore, engEnabled } from "./eng-runtime.native";
-import { listStandaloneReminders } from "./standalone-reminders.native";
-import { subscribeReminderChanges } from "./reminder-notification-changes";
-import {
-  LINKED_REMINDER_TIME,
-  projectReminderNotifications,
-  reconcileReminderNotificationProjection,
-  type ReminderNotification,
-} from "./reminder-notification-projection";
-import type { ReminderPermission } from "./reminder-alerts";
+import { Platform } from "react-native";
+import { setNotificationHandler } from "expo-notifications/build/NotificationsHandler";
+import { setNotificationChannelAsync } from "expo-notifications/build/setNotificationChannelAsync";
+import { getPermissionsAsync, requestPermissionsAsync } from "expo-notifications/build/NotificationPermissions";
+import { getAllScheduledNotificationsAsync } from "expo-notifications/build/getAllScheduledNotificationsAsync";
+import { scheduleNotificationAsync } from "expo-notifications/build/scheduleNotificationAsync";
+import { cancelScheduledNotificationAsync } from "expo-notifications/build/cancelScheduledNotificationAsync";
+import { SchedulableTriggerInputTypes } from "expo-notifications/build/Notifications.types";
+import { AndroidImportance } from "expo-notifications/build/NotificationChannelManager.types";
+import { planReminderAlerts, type ReminderForAlert } from "./reminder-alert-plan";
 
-type ReminderBridge = {
-  pendingResponse?(): Promise<ReminderResponse | null>;
-  acknowledgeResponse?(token: string): Promise<void>;
-  addListener?(event: "onReminderResponse", listener: () => void): { remove(): void };
-  permission(): Promise<Exclude<ReminderPermission, "unavailable">>;
-  requestPermission(): Promise<unknown>;
-  pending(): Promise<{ reminders: ReminderNotification[]; otherCount: number; invalidOwned: string[] }>;
-  cancel(identifiers: string[]): Promise<void>;
-  schedule(identifier: string, kind: string, sourceId: string, at: number): Promise<void>;
-};
+const CHANNEL="casitadex-reminders-v1";
+const OWNER="standalone-v1";
+let pending:Promise<string>=Promise.resolve("Ready");
 
-const bridge = (Platform.OS === "ios" || Platform.OS === "android") && engEnabled
-  ? requireOptionalNativeModule<ReminderBridge>("CasitaDexReminderAlerts")
-  : null;
+setNotificationHandler({
+ handleNotification:async()=>({shouldShowBanner:true,shouldShowList:true,shouldPlaySound:true,shouldSetBadge:false}),
+});
 
-let queue = Promise.resolve();
-let requested = false;
-let pending = false;
-
-function reconcile(): Promise<void> {
-  if (!bridge) return Promise.resolve();
-  const native = bridge;
-  requested = true;
-  if (pending) return queue;
-
-  pending = true;
-  queue = queue.then(async () => {
-    try {
-      while (requested) {
-        requested = false;
-        const permission = await native.permission();
-        const previous = await native.pending();
-        const desired = permission === "allowed"
-          ? projectReminderNotifications(
-            (await (await getEngStore()).load()).data.memories,
-            await listStandaloneReminders(),
-            {
-              now: Date.now(),
-              linkedDueTime: LINKED_REMINDER_TIME,
-              limit: Math.max(0, 48 - previous.otherCount),
-              pendingTimes: new Map(previous.reminders.map(item => [item.identifier, item.at])),
-            },
-          ).map(item => ({ ...item, title: "CasitaDex reminder" }))
-          : [];
-        const { cancel, schedule } = reconcileReminderNotificationProjection(previous.reminders, desired);
-        const removals = [...cancel, ...previous.invalidOwned];
-        if (removals.length > 0) await native.cancel(removals);
-        for (const item of schedule) {
-          await native.schedule(item.identifier, item.kind, item.sourceId, item.at);
-        }
-      }
-    } finally {
-      pending = false;
-    }
-  });
-  const result = queue;
-  queue = queue.catch(() => {});
-  return result;
+async function run(rows:readonly ReminderForAlert[],askPermission:boolean):Promise<string>{
+ try {
+  if(Platform.OS==="android"){
+   await setNotificationChannelAsync(CHANNEL,{
+    name:"CasitaDex reminders",importance:AndroidImportance.DEFAULT,
+    sound:"default",showBadge:false,
+   });
+  }
+  let permission=await getPermissionsAsync();
+  if(!permission.granted&&askPermission&&permission.canAskAgain){
+   permission=await requestPermissionsAsync();
+  }
+  if(!permission.granted)return "Saved locally. Notifications are off; enable alerts in device settings.";
+  const desired=planReminderAlerts(rows);
+  const next=new Map(desired.map(r=>[r.key,r]));
+  const all=await getAllScheduledNotificationsAsync();
+  const owned=all.filter(r=>r.content.data?.casitaDexType===OWNER);
+  const valid=new Set<string>();
+  // Schedule replacements before removing stale alerts to avoid a lost-alert window.
+  for(const alert of desired){
+   const found=owned.find(r=>r.content.data?.casitaDexKey===alert.key&&r.content.body===alert.title&&!valid.has(r.identifier));
+   if(found){valid.add(found.identifier);continue;}
+   const id=await scheduleNotificationAsync({
+    content:{title:"CasitaDex reminder",body:alert.title,sound:"default",
+     data:{casitaDexType:OWNER,casitaDexReminderId:alert.id,casitaDexMemoryId:alert.memoryId??null,casitaDexKey:alert.key}},
+    trigger:{type:SchedulableTriggerInputTypes.DATE,
+     date:new Date(alert.timestamp),...(Platform.OS==="android"?{channelId:CHANNEL}:{})},
+   });
+   valid.add(id);
+  }
+  for(const old of owned){
+   if(!valid.has(old.identifier)||!next.has(String(old.content.data?.casitaDexKey??""))){
+    await cancelScheduledNotificationAsync(old.identifier);
+   }
+  }
+  return desired.length
+   ? "Saved locally. Reminder alerts scheduled; device settings may affect timing."
+   : "Saved locally. No upcoming reminder alert is due.";
+ }catch{
+  // Storage mutations are already committed; native alert errors never erase saved records.
+  return "Saved locally. Alert scheduling needs attention; reopen Reminders to retry.";
+ }
 }
-
-export function startReminderAlerts() {
-  if (!bridge) return () => {};
-  const refresh = () => {
-    void reconcile().catch(() => { console.warn("CasitaDex could not refresh local reminder alerts."); });
-  };
-  const unsubscribe = subscribeReminderChanges(refresh);
-  const foreground = AppState.addEventListener("change", state => {
-    if (state === "active") refresh();
-  });
-  refresh();
-  return () => {
-    unsubscribe();
-    foreground.remove();
-  };
-}
-
-export async function getReminderPermission(): Promise<ReminderPermission> {
-  return bridge ? bridge.permission() : "unavailable";
-}
-
-export async function enableReminderAlerts(): Promise<ReminderPermission> {
-  if (!bridge) return "unavailable";
-  if (await bridge.permission() === "undetermined") await bridge.requestPermission();
-  await reconcile();
-  return bridge.permission();
-}
-
-/** iOS response support is optional so Android and older development clients keep working. */
-export function startReminderResponses(navigate: (route: ReminderResponseRoute) => boolean) {
-  if (!bridge?.pendingResponse || !bridge.acknowledgeResponse || !bridge.addListener) return () => {};
-  const native = bridge;
-  const drain = createReminderResponseDrain({
-    pendingResponse: () => native.pendingResponse!(),
-    acknowledgeResponse: token => native.acknowledgeResponse!(token),
-  }, navigate);
-  const refresh = () => { void drain.refresh().catch(() => console.warn("CasitaDex could not open a reminder notification.")); };
-  const response = native.addListener!("onReminderResponse", refresh);
-  const foreground = AppState.addEventListener("change", state => { if (state === "active") refresh(); });
-  const guard = subscribeNavigationGuardChanges(refresh);
-  refresh();
-  return () => { drain.stop(); response.remove(); foreground.remove(); guard(); };
+export function reconcileReminderNotifications(rows:readonly ReminderForAlert[],askPermission=false):Promise<string>{
+ const next=pending.then(()=>run(rows,askPermission),()=>run(rows,askPermission));
+ pending=next;
+ return next;
 }

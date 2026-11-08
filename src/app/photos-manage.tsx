@@ -1,0 +1,1 @@
+export {EngPhotos as default} from '../eng-screens';

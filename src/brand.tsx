@@ -1,7 +1,7 @@
+import {useData} from './state';
 import React, { useEffect, useState } from "react";
 import { AppState, Image, Text, View, useWindowDimensions } from "react-native";
 import { Copy, useTheme } from "./ui";
-import { useData } from "./state";
 
 const illustrations = {
   home: require("../assets/brand/illustration-home.jpg"),
@@ -19,8 +19,8 @@ export function BrandLogo({ width = 160 }: { width?: number }) {
   return <View accessible accessibilityRole="image" accessibilityLabel="CasitaDex, Designs by F and A"
     style={{ width, minHeight: 52, flexDirection: "row", alignItems: "center", gap: 6, flexShrink: 0 }}>
     <Image source={dark ? require("../assets/brand/logo-art-dark.png") : require("../assets/brand/logo-art-light.png")}
-      accessible={false} accessibilityElementsHidden importantForAccessibility="no-hide-descendants" aria-hidden resizeMode="contain" style={{ width: markWidth, height: markHeight, flexShrink: 0 }} />
-    <View accessible={false} accessibilityElementsHidden importantForAccessibility="no-hide-descendants" aria-hidden style={{ flex: 1, minWidth: 0, justifyContent: "center", gap: 3 }}>
+      accessible={false} resizeMode="contain" style={{ width: markWidth, height: markHeight, flexShrink: 0 }} />
+    <View accessible={false} style={{ flex: 1, minWidth: 0, justifyContent: "center", gap: 3 }}>
       <Text allowFontScaling={false} numberOfLines={1}
         style={{ color: wordColor, fontSize: wordSize, fontWeight: "700", letterSpacing: -0.25 }}>CasitaDex</Text>
       <Text allowFontScaling={false} numberOfLines={1}
@@ -28,7 +28,7 @@ export function BrandLogo({ width = 160 }: { width?: number }) {
     </View>
   </View>;
 }
-function LocalDate({ stacked = false }: { stacked?: boolean }) {
+function LocalDate({compact=false}:{compact?:boolean}) {
   const [now, setNow] = useState(() => new Date());
   useEffect(() => {
     const refresh = () => setNow(new Date());
@@ -37,21 +37,24 @@ function LocalDate({ stacked = false }: { stacked?: boolean }) {
     return () => { clearInterval(timer); listener.remove(); };
   }, []);
   const { colors } = useTheme();
-  return <View accessibilityLabel={now.toLocaleDateString(undefined, { dateStyle: "full" })} style={{ alignItems: stacked ? "center" : "flex-end", flexShrink: 1, maxWidth: "100%" }}>
-    <Copy kind="small" style={{ color: colors.muted }}>{now.toLocaleDateString(undefined, { weekday: "long" })}</Copy>
-    <Copy style={{ fontWeight: "700", textAlign: stacked ? "center" : "right" }}>{now.toLocaleDateString(undefined, { month: "long", day: "numeric" })}</Copy>
-    <Copy kind="small" style={{ color: colors.muted }}>{now.getFullYear()}</Copy>
+  if(compact)return <View accessibilityLabel={now.toLocaleDateString(undefined,{dateStyle:"full"})}>
+    <Copy maxFontSizeMultiplier={1.25} numberOfLines={2} style={{color:colors.ink,textAlign:"center",fontWeight:"600"}}>{now.toLocaleDateString(undefined,{dateStyle:"full"})}</Copy>
+  </View>;
+  return <View accessibilityLabel={now.toLocaleDateString(undefined, { dateStyle: "full" })} style={{ alignItems: "flex-end", flexShrink: 1 }}>
+    <Copy kind="small" maxFontSizeMultiplier={1.35} numberOfLines={1} style={{ color: colors.muted }}>{now.toLocaleDateString(undefined, { weekday: "long" })}</Copy>
+    <Copy maxFontSizeMultiplier={1.35} numberOfLines={1} style={{ fontWeight: "700", textAlign: "right" }}>{now.toLocaleDateString(undefined, { month: "long", day: "numeric" })}</Copy>
+    <Copy kind="small" maxFontSizeMultiplier={1.35} numberOfLines={1} style={{ color: colors.muted }}>{now.getFullYear()}</Copy>
   </View>;
 }
 
 export function BrandHeader() {
   const { colors } = useTheme();
-  const { width, fontScale } = useWindowDimensions();
-  const { large } = useData();
-  const stacked = large || fontScale >= 1.35 || width < 365;
-  return <View style={{ flexDirection: stacked ? "column" : "row", alignItems: "center", justifyContent: "space-between", gap: stacked ? 6 : 12, width: "100%", backgroundColor: colors.white, borderWidth: 1, borderColor: colors.muted, borderRadius: 16, minHeight: 81, paddingHorizontal: 12, paddingVertical: 8 }}>
-    <BrandLogo width={stacked ? 150 : 176} />
-    <LocalDate stacked={stacked} />
+  const {fontScale}=useWindowDimensions();
+  const {large:inAppLarge}=useData();
+  const large=inAppLarge||fontScale>=1.35;
+  return <View style={{ flexDirection:large?"column":"row", alignItems: "center", justifyContent: "space-between", gap:large?6:12, width: "100%", borderWidth: 1, borderColor: colors.muted, borderRadius: 16, minHeight: 81, paddingHorizontal: 12, paddingVertical: 8 }}>
+    <BrandLogo width={large?150:176} />
+    <LocalDate compact={large} />
   </View>;
 }
 /** Decorative; nearby live text conveys the meaning at every text size. */

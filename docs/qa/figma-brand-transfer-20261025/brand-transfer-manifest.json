@@ -1,0 +1,181 @@
+{
+    "date":  "2026-10-25",
+    "status":  "Figma and isolated app artwork transfer COMPLETE; fresh Android APK verification BLOCKED on Gradle worklets configuration",
+    "brandFileKey":  "PGhz4VYfakXbLh5BFev1PH",
+    "uiFileKey":  "39uzN0SZX8nlmcGDcHdQhr",
+    "masterNodeIds":  [
+                          "2:5",
+                          "2:16",
+                          "2:27"
+                      ],
+    "sharedComponentSet":  "224:34",
+    "lightVariant":  "224:16",
+    "darkVariant":  "224:25",
+    "iconComponent":  "224:35",
+    "figmaScreenPlacements":  {
+                                  "69:108":  6,
+                                  "69:463":  6,
+                                  "71:2":  6,
+                                  "71:357":  6,
+                                  "62:122":  19,
+                                  "65:16":  2,
+                                  "28:37":  5,
+                                  "28:264":  5
+                              },
+    "placementCount":  55,
+    "rasterizer":  "@resvg/resvg-js@2.6.2",
+    "source":  "Exact exported editable SVG vectors without path changes",
+    "nativeBuildJob":  "78800cf2c635a6e9",
+    "backupDirectory":  "docs\\qa\\figma-brand-transfer-20261025\\pre-transfer",
+    "originals":  [
+                      {
+                          "path":  "assets\\brand\\figma-originals\\approved-transparent-dark.png",
+                          "bytes":  11751,
+                          "sha256":  "2BB741FEF3A2EA9F31C9F352B00BBA5FEC15070739125A5E2B3F7BC010CCC44F"
+                      },
+                      {
+                          "path":  "assets\\brand\\figma-originals\\approved-transparent-icon.png",
+                          "bytes":  11839,
+                          "sha256":  "295E836C6A5185314176591BD069355D459C28CB35792EDE069BA72B77473938"
+                      },
+                      {
+                          "path":  "assets\\brand\\figma-originals\\approved-transparent-light.png",
+                          "bytes":  11307,
+                          "sha256":  "F4B3B0076820CD6AED351E034AA4F7A941F2E3B1530CC57D77E233B80983615F"
+                      },
+                      {
+                          "path":  "assets\\brand\\figma-originals\\artwork-dark.png",
+                          "bytes":  11318,
+                          "sha256":  "2724F2DA4E52C7E6AB5A4E441156C53C912F6C156837F0213367EDC45DB25B30"
+                      },
+                      {
+                          "path":  "assets\\brand\\figma-originals\\artwork-dark.svg",
+                          "bytes":  1638,
+                          "sha256":  "467FB75F63709EC028C4F5334A99CB6F3A95A0EA076AEB3BC255A0BF67902B5F"
+                      },
+                      {
+                          "path":  "assets\\brand\\figma-originals\\artwork-icon.png",
+                          "bytes":  11638,
+                          "sha256":  "3685A09C7477DE93DC47E9A4C42F66D8D1D006430783CE965AB9035C757AA2B7"
+                      },
+                      {
+                          "path":  "assets\\brand\\figma-originals\\artwork-icon.svg",
+                          "bytes":  1635,
+                          "sha256":  "823CE7018C4B90C289E27C35F52F61EDC19D872192ED788893B1172F77965A94"
+                      },
+                      {
+                          "path":  "assets\\brand\\figma-originals\\artwork-light.png",
+                          "bytes":  11368,
+                          "sha256":  "B896C3236F95936A809DDEC6527D04A40AA3D4EA71F6CB958B73BD465BE29F52"
+                      },
+                      {
+                          "path":  "assets\\brand\\figma-originals\\artwork-light.svg",
+                          "bytes":  1638,
+                          "sha256":  "0011544BD28909C40BAD530FD779841E6E8ED575176B379E0B91FD9A880DAB7C"
+                      },
+                      {
+                          "path":  "assets\\brand\\figma-originals\\full-dark.png",
+                          "bytes":  19762,
+                          "sha256":  "7769A4C2DFDA330AEAF9FF3DA20D6D4162F5A171D11B468C6DC7E944377927BE"
+                      },
+                      {
+                          "path":  "assets\\brand\\figma-originals\\full-light.png",
+                          "bytes":  19995,
+                          "sha256":  "22EBB07008F22289D8CC4C29712C105623F39117D19F40DAA9C962AF4509DB75"
+                      },
+                      {
+                          "path":  "assets\\brand\\figma-originals\\icon-light-frame.png",
+                          "bytes":  14173,
+                          "sha256":  "F3CFA0871F31D3F748B5E5CDAA4ED5B90323B50854BF0C3DCB321CBABAFFDCE3"
+                      }
+                  ],
+    "integrated":  [
+                       {
+                           "path":  "assets\\brand\\logo-art-light.png",
+                           "bytes":  13272,
+                           "sha256":  "FB8AE723923E7B9E933B67074D25AAF54BAE480E126020915D2EFA29C3D7D40F"
+                       },
+                       {
+                           "path":  "assets\\brand\\logo-art-dark.png",
+                           "bytes":  13562,
+                           "sha256":  "B4111EB5EC2099D18827742BA5FEB24E99B504C181EBAC6ABED5BD8ACA9758F5"
+                       },
+                       {
+                           "path":  "assets\\brand\\icon-light.png",
+                           "bytes":  30867,
+                           "sha256":  "D44BC9E4D402DDA77D1909F5323B08AEBD5CA79899622A3A3F16466BB61899C9"
+                       },
+                       {
+                           "path":  "assets\\brand\\icon-dark.png",
+                           "bytes":  31059,
+                           "sha256":  "3091280C2E8B4A86DA13EFD4A760420BD803F09345010FE69F0876AC0C19F2D5"
+                       },
+                       {
+                           "path":  "assets\\brand\\icon-tinted.png",
+                           "bytes":  32327,
+                           "sha256":  "BFCCE24903F426779F9881F8BCE847BB2F537F966FB53017E1A16D9F17855E8E"
+                       },
+                       {
+                           "path":  "assets\\brand\\adaptive-color.png",
+                           "bytes":  30225,
+                           "sha256":  "02BCB7D0134E634941C0A0D8AC7DE2812D5DBB7EFF0B8B211D8BE374E78C4B39"
+                       },
+                       {
+                           "path":  "assets\\brand\\adaptive-outline.png",
+                           "bytes":  32327,
+                           "sha256":  "BFCCE24903F426779F9881F8BCE847BB2F537F966FB53017E1A16D9F17855E8E"
+                       },
+                       {
+                           "path":  "assets\\brand\\splash-light.png",
+                           "bytes":  27183,
+                           "sha256":  "8E3E74F181BC69B002B2E9DECD379DF57C980AB17372235A14E83F59131D7385"
+                       },
+                       {
+                           "path":  "assets\\brand\\splash-dark.png",
+                           "bytes":  27028,
+                           "sha256":  "27A8E1F246D80B54F4B28DFA1F7A67443DDFAAEE84FFACD1B14401AA18373399"
+                       },
+                       {
+                           "path":  "public\\brand\\favicon-light-32.png",
+                           "bytes":  988,
+                           "sha256":  "7F6C1967C449264BA6A85C0BEBBEDC32B6E97CD4D2DC39986124FF7EA3246F10"
+                       },
+                       {
+                           "path":  "public\\brand\\favicon-dark-32.png",
+                           "bytes":  1011,
+                           "sha256":  "C41431E580AEF5CDC5035E963B480BED9D43013270FCD0A2763268F3B4A4B0B4"
+                       },
+                       {
+                           "path":  "public\\brand\\apple-touch-icon.png",
+                           "bytes":  4279,
+                           "sha256":  "9BF42300286A5DBD0C67863C77E69175B175C1D4081C1BD4E369E5AB0BF651ED"
+                       },
+                       {
+                           "path":  "public\\brand\\icon-192.png",
+                           "bytes":  4625,
+                           "sha256":  "70AF300BDF3D3FB696913D065955DE88387B54A2D6C8332FFD8298614D6371AA"
+                       },
+                       {
+                           "path":  "public\\brand\\icon-512.png",
+                           "bytes":  13411,
+                           "sha256":  "A736898A81D0F631FD27F5161F55DABA2EA47D6FE5A4544D697B035345F6A3D4"
+                       },
+                       {
+                           "path":  "public\\brand\\icon-maskable-512.png",
+                           "bytes":  12486,
+                           "sha256":  "D45D56F036667C7CBE12A5452EC8C3ACA1F4693D5B2147B240262EA7A926CFC4"
+                       }
+                   ],
+    "productionAuthorized":  false,
+    "androidVerification":  {
+                                "status":  "BLOCKED",
+                                "firstJob":  "78800cf2c635a6e9",
+                                "firstFailure":  "Missing Android SDK path; now corrected",
+                                "secondJob":  "e6f1c838d8468b81",
+                                "secondExitCode":  1,
+                                "secondFailure":  "react-native-worklets 0.10.1 build.gradle.kts Kotlin plugin DSL unresolved JvmTarget/android/spotless; 63 errors",
+                                "priorSuccessfulDebugReceipt":  "E:\\CD33\\sb33-short-receipt.json",
+                                "newBrandedAPKVerified":  false,
+                                "emulatorDataPreserved":  true
+                            }
+}

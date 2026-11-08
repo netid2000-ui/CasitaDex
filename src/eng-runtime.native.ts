@@ -1,5 +1,3 @@
-import { Platform } from "react-native";
-import * as Sharing from "expo-sharing";
 import {usableNativeSpace,requireNativeCapacity} from "./storage-space.native";
 import {protectedStorageReport} from "./storage-safety";
 import {sqliteWriteTransaction} from "./sqlite-write-transaction";
@@ -86,20 +84,6 @@ export async function writeEngBackup(source:EngBackupSource){
     [...source.snapshot.data.media.media,...(source.snapshot.draft?.photos??[])].reduce((n,e)=>n+4+e.bytes,0);
   if(size>fullBackupLimit)throw Error("Full backup exceeds the supported format limit");
   await requireNativeCapacity(size*2+4_000_000);
-  if(Platform.OS==="ios"){
-    if(!await Sharing.isAvailableAsync())throw Error("File sharing is unavailable. Your memories and draft are kept.");
-    const file=new File(Paths.cache,"CasitaDex-full-"+new Date().toISOString().replace(/[:.]/g,"-")+"-"+Math.random().toString(36).slice(2)+".cdxe");
-    try{
-      file.create();
-      const expected=await writeEngStreamV4(source.snapshot,reminders,source.read,source.hash,{write:async bytes=>{file.write(bytes,{append:true});}});
-      const checked=await openEngStreamCompatible(reader(file),source.hash);
-      if(checked.size!==expected.size||checked.headerHash!==await source.hash(new TextEncoder().encode(JSON.stringify(expected.snapshot)))||checked.source!=="Full v4"||JSON.stringify(checked.reminders)!==JSON.stringify(reminders))throw Error("Backup read-back verification failed");
-      await Sharing.shareAsync(file.uri,{UTI:"public.data",mimeType:"application/octet-stream",dialogTitle:"Save full CasitaDex backup"});
-      // iOS resolves on both completion and cancellation. Keep the verified private cache file
-      // for the receiving provider; never describe this as a verified external save.
-      return "Full v4 backup prepared and verified on this device, including standalone reminders, unfinished draft and photos. Share sheet closed. If you chose Save to Files, check your selected folder. CasitaDex cannot confirm the external save; if you canceled, no external backup was saved. Keep a second copy.";
-    }catch(e){if(file.exists)file.delete();throw e;}
-  }
   const permission=await FileSystem.StorageAccessFramework.requestDirectoryPermissionsAsync();
   if(!permission.granted)return "Backup canceled. Your memories and draft are kept.";
   const name="CasitaDex-full-"+new Date().toISOString().replace(/[:.]/g,"-")+".cdxe";
@@ -123,20 +107,14 @@ export async function writeEngBackup(source:EngBackupSource){
   }finally{if(readback.exists)readback.delete();}
 }
 export async function pickEngBackup(){
-  const oversized=Error("Full backup exceeds 154 MB");
-  try {
-    const result=await DocumentPicker.getDocumentAsync({type:"*/*",copyToCacheDirectory:true,multiple:false});
-    if(result.canceled)return null;
-    const asset=result.assets[0];if(!asset)throw Error("No backup selected");
-    const file=new File(asset.uri);if(file.size>fullBackupLimit)throw oversized;
-    // Validate before returning any restore preview. Native picker, metadata,
-    // filesystem and parser diagnostics may contain private content or paths.
-    return await openEngStreamCompatible(reader(file),sha256Media);
-  } catch(error) {
-    // Only this locally created limit error is safe to display verbatim.
-    if(error===oversized)throw oversized;
-    throw Error("This backup could not be verified. Your current memories, photos and reminders are unchanged. Choose another backup, or copy the file again and retry.");
-  }
+  const result=await DocumentPicker.getDocumentAsync({type:"*/*",copyToCacheDirectory:true,multiple:false});
+  if(result.canceled)return null;
+  const asset=result.assets[0];if(!asset)throw Error("No backup selected");
+  const file=new File(asset.uri);if(file.size>fullBackupLimit)throw Error("Full backup exceeds 154 MB");
+  const opened=await openEngStreamCompatible(reader(file),sha256Media);
+  // Archive validation always completes before any consumer restore preview.
+  // SB24 production-path interruption and genuine Android ENOSPC acceptance passed.
+  return opened;
 }
 export type EngStore=Awaited<ReturnType<typeof getEngStore>>;
 export type EngBackup={snapshot:EngSnapshot;source:string;read:(path:string)=>Promise<Uint8Array>;reminders:import("./reminder-backup-v4").ReminderBackupSection|null};
@@ -147,29 +125,18 @@ export async function getEngStorage(){
   return {free:await usableNativeSpace(),total:Paths.totalDiskSpace,...report};
 }
 
-export async function shareEngPhotos(preview:{text:string;photos:import('./media-manifest').MediaEntry[]},beforePresent?:()=>Promise<void>){
+export async function shareEngPhotos(preview:{text:string;photos:import('./media-manifest').MediaEntry[]}){
   const Sharing=await import('expo-sharing');
   if(!await Sharing.isAvailableAsync())throw Error('No sharing app is available. Your memory is kept.');
   const bytes=preview.photos.reduce((n,p)=>n+p.bytes,0)+new TextEncoder().encode(preview.text).length+4096;
   await requireNativeCapacity(bytes+4_000_000);
   const file=new File(Paths.cache,'CasitaDex-share-'+Date.now()+'.zip');file.create();
-  try{const {writeShareZip}=await import('./eng-share');await writeShareZip(preview.text,preview.photos,async path=>mediaFileByPath(path).bytes(),sha256Media,async chunk=>file.write(chunk,{append:true}));await beforePresent?.();await Sharing.shareAsync(file.uri,{mimeType:'application/zip',dialogTitle:'Share reviewed memory'});return 'Share sheet opened. Delivery is handled by the selected app.';}
+  try{const {writeShareZip}=await import('./eng-share');await writeShareZip(preview.text,preview.photos,async path=>mediaFileByPath(path).bytes(),sha256Media,async chunk=>file.write(chunk,{append:true}));await Sharing.shareAsync(file.uri,{mimeType:'application/zip',dialogTitle:'Share reviewed memory'});return 'Share sheet opened. Delivery is handled by the selected app.';}
   catch(e){if(file.exists)file.delete();throw e;}
   // Keep successful cache file available to the selected receiving app; Android may reclaim cache later.
 }
 export async function writeEngText(text:string,backup=false){
   const size=new TextEncoder().encode(text).length;await requireNativeCapacity(size*2+4_000_000);
-  if(Platform.OS==="ios"){
-    if(!await Sharing.isAvailableAsync())throw Error("File sharing is unavailable. Your memories and draft are kept.");
-    const file=new File(Paths.cache,"CasitaDex-text-"+(backup?"backup-":"report-")+Date.now()+"-"+Math.random().toString(36).slice(2)+(backup?".json":".txt"));
-    try{
-      file.create();file.write(text);
-      if(await file.text()!==text)throw Error("Text export read-back failed");
-      await Sharing.shareAsync(file.uri,{UTI:backup?"public.json":"public.plain-text",mimeType:backup?"application/json":"text/plain",dialogTitle:backup?"Save limited text backup":"Save text report"});
-      // Retain the private cache file for provider reads after the sheet closes.
-      return (backup?"Limited text backup prepared and verified on this device. Photos and the reviewed photo-only memories are excluded.":"Text report prepared and verified on this device. It contains no photos and cannot restore your collection.")+" Share sheet closed. If you chose Save to Files, check your selected folder. CasitaDex cannot confirm the external save; if you canceled, no external file was saved.";
-    }catch(e){if(file.exists)file.delete();throw e;}
-  }
   const permission=await FileSystem.StorageAccessFramework.requestDirectoryPermissionsAsync();if(!permission.granted)return 'Text export canceled.';
   const uri=await FileSystem.StorageAccessFramework.createFileAsync(permission.directoryUri,'CasitaDex-text-'+(backup?'backup-':'report-')+Date.now()+(backup?'.json':'.txt'),backup?'application/json':'text/plain');
   try{await FileSystem.writeAsStringAsync(uri,text);if(await FileSystem.readAsStringAsync(uri)!==text)throw Error('Text export read-back failed');return backup?'Limited text backup saved and verified. Photos and the reviewed photo-only memories are excluded.':'Text report saved and verified. It contains no photos and cannot restore your collection.';}

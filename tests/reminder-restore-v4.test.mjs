@@ -12,9 +12,11 @@ test('replacement is transaction-owned and retains full reminder fields',async()
  assert.equal(await replaceReminderRowsInTransaction(tx,{version:1,rows:[row]}),1);
  assert.match(statements[0].sql,/DELETE FROM standalone_reminders_v1/);
  assert.match(statements[1].sql,/INSERT INTO standalone_reminders_v1/);
- assert.deepEqual(statements[1].args,[row.id,row.title,row.notes,row.dueDate,row.dueTime,row.repeat,row.anchorDay,0,row.createdAt,row.updatedAt]);
+ assert.deepEqual(statements[1].args,[row.id,row.title,row.notes,null,row.dueDate,row.dueTime,row.repeat,row.anchorDay,0,row.createdAt,row.updatedAt]);
 });
 test('SQL failure propagates to owning transaction',async()=>{
  const tx={runAsync:async(sql)=>{if(sql.startsWith('INSERT'))throw Error('injected SQL failure');}};
  await assert.rejects(replaceReminderRowsInTransaction(tx,{version:1,rows:[row]}),/injected SQL failure/);
 });
+
+test("restore writes linked memory identity into its own SQL column",async()=>{const statements=[];await replaceReminderRowsInTransaction({runAsync:async(sql,...args)=>statements.push({sql,args})},{version:1,rows:[{...row,memoryId:"sb26qa_001"}]});assert.match(statements[1].sql,/memory_id/);assert.equal(statements[1].args[3],"sb26qa_001");});

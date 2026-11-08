@@ -1,5 +1,5 @@
 import {validReminderDay, type RepeatSchedule} from "./reminder-recurrence.ts";
-export type ReminderBackupRow={id:string;title:string;notes:string;dueDate:string;dueTime:string;repeat:RepeatSchedule;anchorDay:number;completed:boolean;createdAt:string;updatedAt:string};
+export type ReminderBackupRow={id:string;title:string;notes:string;memoryId?:string|null;dueDate:string;dueTime:string;repeat:RepeatSchedule;anchorDay:number;completed:boolean;createdAt:string;updatedAt:string};
 export type ReminderBackupSection={version:1;rows:ReminderBackupRow[]};
 export function validateReminderBackupSection(input:unknown):ReminderBackupSection {
  if(!input||typeof input!=="object"||Array.isArray(input))throw Error("Invalid reminder backup section");
@@ -15,6 +15,7 @@ export function validateReminderBackupSection(input:unknown):ReminderBackupSecti
   if(typeof r.dueDate!=="string"||!validReminderDay(r.dueDate)||typeof r.dueTime!=="string"||!/^([01]\d|2[0-3]):[0-5]\d$/.test(r.dueTime))throw Error("Invalid reminder date or time");
   if(typeof r.repeat!=="string"||!["once","daily","weekly","monthly","yearly"].includes(r.repeat)||!Number.isInteger(r.anchorDay)||Number(r.anchorDay)<1||Number(r.anchorDay)>31||typeof r.completed!=="boolean")throw Error("Invalid reminder schedule");
   if(typeof r.createdAt!=="string"||typeof r.updatedAt!=="string"||!Number.isFinite(Date.parse(r.createdAt))||!Number.isFinite(Date.parse(r.updatedAt)))throw Error("Invalid reminder timestamps");
+  if(r.memoryId!==undefined&&r.memoryId!==null&&(typeof r.memoryId!=="string"||r.memoryId.length>200||!r.memoryId.trim()))throw Error("Invalid linked memory ID");
   rows.push(r as unknown as ReminderBackupRow);
  }
  return {version:1,rows};

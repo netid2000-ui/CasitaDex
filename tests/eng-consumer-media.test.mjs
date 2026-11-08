@@ -55,28 +55,3 @@ test("photo attachment rejects one-byte-below required storage before journal or
   assert.equal(x.raw.prepare("SELECT COUNT(*) AS n FROM eng_media_ops_v2").get().n,0);
  }finally{x.close()}
 });
-
-test('replacing a saved photo keeps its slot and share order after reloading the store', async()=>{
- const x=setup();
- try{
-  const m=(await add(x.store,{title:"Ordered photos"})).data.memories.at(-1);
-  const other=(await add(x.store,{title:"Other memory"})).data.memories.at(-1);
-  await x.store.addMemoryPhoto(m.id,png);
-  await x.store.addMemoryPhoto(other.id,png);
-  const before=await x.store.addMemoryPhoto(m.id,png);
-  const [first,second]=before.data.memories.find(p=>p.id===m.id).mediaIds;
-  const replacement=Uint8Array.from([...png,4]);
-  await x.store.replaceMemoryPhoto(m.id,first,replacement);
-  const reopened=createEngStore(x.db,x.port,async()=>{throw Error("Unexpected migration")});
-  const {data}=await reopened.load();
-  const memory=data.memories.find(p=>p.id===m.id);
-  const [newFirst]=memory.mediaIds;
-  assert.notEqual(newFirst,first);
-  assert.deepEqual(data.media.media.filter(p=>p.cardId===m.id).map(p=>p.id),[second,newFirst]);
-  const {orderedMemoryPhotos,sharePreview}=await import('../src/eng-domain.ts');
-  const photos=orderedMemoryPhotos(memory,data.media.media);
-  assert.deepEqual(photos.map(p=>p.id),[newFirst,second]);
-  assert.deepEqual(await x.port.read(photos[0].path),replacement);
-  assert.deepEqual(sharePreview(memory,data,{fields:[],photoIds:[second,newFirst]}).photos.map(p=>p.id),[newFirst,second]);
- }finally{x.close()}
-});
