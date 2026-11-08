@@ -145,3 +145,13 @@ The first Android Gradle attempt stopped before compilation because detached-job
 - This does **not** establish current-branch simulator/device runtime behavior, parity with owner-supplied screenshots, physical-device acceptance, accessibility acceptance, signing/release qualification, or store readiness. Existing installed simulator evidence remains attributed to the SB40 QA builds above.
 - Preserve the owner reference and sample-data count differences already recorded. No fixture data was modified to make the screenshots match.
 - Release remains **NO-GO** until the remaining functional, accessibility, dependency/security, signing, and owner-device acceptance gates are closed.
+
+## Source checks — 2026-11-08
+
+- `npm test`: **PASS**, 600 tests; 595 passed, 0 failed, 5 skipped. The five skips require the optional local `CASITADEX_SB24_ARCHIVE` QA fixture, which was not supplied to this run. Node emitted non-failing module-type performance warnings for TypeScript files.
+- `npm run typecheck`: **PASS** (`tsc --noEmit`).
+- `npm run lint`: **PASS** (`eslint src --max-warnings=0`).
+- `npx expo-doctor`: **PASS**, 21/21 checks with the Mac's Homebrew path included; CocoaPods 1.17.0 is installed. An initial run with the detached job's minimal PATH reported CocoaPods unavailable, so it was rerun with `/opt/homebrew/bin` and passed.
+- `npm run export:web` and browser smoke were **NOT RUN** in this checkpoint. Native source builds are compile/package checks only; no fresh candidate was installed or runtime-tested.
+
+These checks and native builds improve source/build confidence but do not close physical-device acceptance, owner iPhone sign-off, practical VoiceOver/TalkBack, offline/recovery, reminder delivery on this current source build, dependency/security disposition, or release signing. Release stays **NO-GO**.
