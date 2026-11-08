@@ -39,7 +39,13 @@
     "visibility": "public",
     "branch": "work/cd-sb40-runtime-checkpoint-20261108",
     "scope": "Narrow required runtime/config/tests/assets/native inputs only, with sanitized provenance. Broad d91bd5c checkpoint and all recovered historical documents remain local-only.",
-    "remote_verification": "Pending at commit creation; final exact remote SHA receipt is stored in the SSD evidence directory."
+    "remote_verification": "VERIFIED_MATCH",
+    "verified_remote_sha": "95f73ec8c873b7c202b1b2f7031b8824ba812396",
+    "verified_at_utc": "2026-11-08T15:07:55.733553+00:00",
+    "commit_url": "https://github.com/netid2000-ui/CasitaDex/commit/95f73ec8c873b7c202b1b2f7031b8824ba812396",
+    "owner_publication_approval": "Explicit approval received before public push",
+    "source_checkpoint": "6434397f0169c8b53bfc2c820d6652be03b2f83f",
+    "publication_status_receipt_scope": "Initial published source/native-evidence head; later documentation-only status commits are separate."
   },
   "release": "NO-GO"
 }

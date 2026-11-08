@@ -2232,10 +2232,12 @@
     "broader_local_only_checkpoint": "d91bd5c4a4001368dcd62005f9ac6c947eebda1b"
   },
   "known_public_identifiers": "EAS project/owner, bundle IDs and Figma-linked asset filenames are non-secret application metadata. Synthetic QA fixtures are explicitly fictional.",
-  "confirmation_status": "WITHIN_AUTHORIZED_NARROW_FEATURE_BRANCH_SOURCE_SCOPE",
+  "confirmation_status": "OWNER_EXPLICITLY_APPROVED_PUBLIC_PUBLICATION",
   "runtime_unmodified": true,
   "root_build_tool_changes": [
     "tsconfig.json: exclude baselines",
     " .easignore: exclude baselines upload"
-  ]
+  ],
+  "verified_remote_sha": "95f73ec8c873b7c202b1b2f7031b8824ba812396",
+  "verified_commit_url": "https://github.com/netid2000-ui/CasitaDex/commit/95f73ec8c873b7c202b1b2f7031b8824ba812396"
 }
