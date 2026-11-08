@@ -4,7 +4,7 @@
   "targets": {
     "ios": {
       "device": "A4ED0D8B-C90A-4940-9B71-4F570D7DC597",
-      "executableSha256": "259383e623f48bbce5fbd5d327fbe7112e42d4acf59deb944468b8ebae3bebd9",
+      "executableSha256": "220dd2d2ea7317036ec3d69e32b6922461db02b2af6e1e8769fd5888a9c2716a",
       "bundleSha256": "96ad816e6006b66fac36ff74865df50a22baa4b9d9d3f769728e2617802c3dee"
     },
     "android": {

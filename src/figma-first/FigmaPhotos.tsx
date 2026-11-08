@@ -1,6 +1,6 @@
 /** Photo workspace. Search and taxonomy filters belong to Find. */
 import React,{useRef} from 'react';
-import {Image,Pressable,Text,View,useWindowDimensions} from 'react-native';
+import {Image,Pressable,ScrollView,Text,View,useWindowDimensions} from 'react-native';
 import {useData} from '../state';
 import {useFigmaTheme} from './tokens';
 export type PhotoSummary={id:string;title:string;photoCount:number;thumbnailUri?:string;photos?:readonly {id:string;uri:string}[]};
@@ -30,13 +30,13 @@ export function FigmaPhotos({items,onAdd,onOpen,onViewPhoto,view='grid',sort='up
 }
 
 export function PhotoWorkspaceControls({onAdd,view='grid',sort='updated',onViewChange,onSortChange}:Pick<FigmaPhotosProps,'onAdd'|'view'|'sort'|'onViewChange'|'onSortChange'>){
- const fg=useFigmaTheme(),{large}=useData();const textScale=large?1.6:1;
+ const fg=useFigmaTheme(),{large}=useData(),{height,fontScale}=useWindowDimensions();const textScale=large?1.6:1;
+ const scrollControls=height<500||fontScale>=1.35||large;
  const control={minHeight:48,paddingVertical:6,paddingHorizontal:10,borderWidth:1,borderColor:fg.secondaryInk,borderRadius:10,justifyContent:'center' as const,alignItems:'center' as const};
- return <View style={{backgroundColor:fg.page,paddingHorizontal:16,paddingVertical:8,gap:6,borderBottomWidth:1,borderBottomColor:fg.secondaryInk}}>
- <View style={{flexDirection:'row',flexWrap:'wrap',gap:6}}>
- <Pressable accessibilityRole="button" accessibilityLabel="Add Photo Memory" onPress={onAdd} style={{backgroundColor:fg.actionSurface,borderRadius:10,minHeight:48,alignItems:'center',justifyContent:'center',paddingVertical:6,paddingHorizontal:10,flexGrow:1}}><Text style={{color:fg.actionInk,fontWeight:'700',fontSize:15*textScale}}>+ Add Photo Memory</Text></Pressable>
-  <View style={{flexDirection:'row',flexWrap:'wrap',gap:6}}>{(['grid','compact'] as const).map(value=><Pressable key={value} accessibilityRole="button" accessibilityLabel={`${value==='grid'?'Grid':'Compact'} photo view`} accessibilityState={{selected:view===value}} onPress={()=>onViewChange?.(value)} style={[control,{backgroundColor:view===value?fg.actionSurface:fg.page}]}><Text style={{color:view===value?fg.actionInk:fg.headingInk,fontSize:15*textScale}}>{value==='grid'?'Grid':'Compact'}</Text></Pressable>)}</View>
- </View>
-  <View style={{flexDirection:'row',flexWrap:'wrap',gap:6}}>{(['updated','added'] as const).map(value=><Pressable key={value} accessibilityRole="button" accessibilityLabel={value==='updated'?'Recently updated':'Recently added'} accessibilityState={{selected:sort===value}} onPress={()=>onSortChange?.(value)} style={[control,{backgroundColor:sort===value?fg.brandSurface:fg.page}]}><Text style={{color:fg.headingInk,fontSize:14*textScale}}>{value==='updated'?'Recently updated':'Recently added'}</Text></Pressable>)}</View>
+ const add=<Pressable accessibilityRole="button" accessibilityLabel="Add Photo Memory" onPress={onAdd} style={{backgroundColor:fg.actionSurface,borderRadius:10,minHeight:48,alignItems:'center',justifyContent:'center',paddingVertical:6,paddingHorizontal:10,flexGrow:scrollControls?0:1}}><Text style={{color:fg.actionInk,fontWeight:'700',fontSize:15*textScale}}>+ Add Photo Memory</Text></Pressable>;
+ const views=<View style={{flexDirection:'row',gap:6}}>{(['grid','compact'] as const).map(value=><Pressable key={value} accessibilityRole="button" accessibilityLabel={`${value==='grid'?'Grid':'Compact'} photo view`} accessibilityState={{selected:view===value}} onPress={()=>onViewChange?.(value)} style={[control,{backgroundColor:view===value?fg.actionSurface:fg.page}]}><Text style={{color:view===value?fg.actionInk:fg.headingInk,fontSize:15*textScale}}>{value==='grid'?'Grid':'Compact'}</Text></Pressable>)}</View>;
+ const ordering=<View style={{flexDirection:'row',gap:6}}>{(['updated','added'] as const).map(value=><Pressable key={value} accessibilityRole="button" accessibilityLabel={value==='updated'?'Recently updated':'Recently added'} accessibilityState={{selected:sort===value}} onPress={()=>onSortChange?.(value)} style={[control,{backgroundColor:sort===value?fg.brandSurface:fg.page}]}><Text style={{color:fg.headingInk,fontSize:14*textScale}}>{value==='updated'?'Recently updated':'Recently added'}</Text></Pressable>)}</View>;
+ return <View style={{backgroundColor:fg.page,borderBottomWidth:1,borderBottomColor:fg.secondaryInk}}>
+ {scrollControls?<ScrollView horizontal showsHorizontalScrollIndicator accessibilityLabel="Photo workspace actions" contentContainerStyle={{paddingHorizontal:16,paddingVertical:8,gap:6,alignItems:'stretch'}}>{add}{views}{ordering}</ScrollView>:<View style={{paddingHorizontal:16,paddingVertical:8,gap:6}}><View style={{flexDirection:'row',flexWrap:'wrap',gap:6}}>{add}{views}</View>{ordering}</View>}
  </View>;
 }
