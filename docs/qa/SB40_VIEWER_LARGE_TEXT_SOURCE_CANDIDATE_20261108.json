@@ -1,0 +1,51 @@
+{
+  "status": "SOURCE_CANDIDATE_ONLY_NATIVE_REVALIDATION_PENDING",
+  "recorded_at_utc": "2026-11-08T23:16:08.804203+00:00",
+  "base_commit": "35e411eeb3757486b7a64432b6ecb24c9faf4823",
+  "branch": "work/cd-sb40-viewer-large-text-20261108",
+  "source_path": "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-viewer-large-text-20261108",
+  "machine": "FA-MAC-DEV-01",
+  "source_files": {
+    "src/photo-memory-viewer.tsx": "9d89f185ae75cd44087d50a31fdabd7bce62fe5d783597d40d805e0cd985cf52",
+    "tests/photo-viewer-layout.test.mjs": "8335d52f6a0e73b866e5645edbe5d0216d8628eaf74c3658467e2a0b8fb7b2f9",
+    "package.json": "559651896e10765c149ab5f82b85968bddbcd4ae56573de24e337df995586a97",
+    "package-lock.json": "e9b51355797d4d02769b04f61d2d2fe7acde74b2b9b47b24315f2befc841482d"
+  },
+  "node_version": "v24.22.1",
+  "dependencies": "Reused the existing SSD sb40-simulator-parity-20261108/node_modules via symlink; no install or lockfile change.",
+  "evidence_directory": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/CasitaDex/sb40-viewer-large-text-candidate-20261108/source",
+  "input_runtime": "0bddc8f5d284aeb4fcef15ee1687e5aa141e38c4 (present in source base)",
+  "input_evidence": {
+    "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/CasitaDex/sb40-draft-viewer-accessibility-20261108/ios/portrait-max.png": "3636d87076501c6276444320e153e6fcab79f77b8a4132e101fe4127ba305581",
+    "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/CasitaDex/sb40-draft-viewer-accessibility-20261108/ios/landscape-max.png": "a90a080dfed191f2e725bb018e1b14b0ce7a01b87e357a6afdddb6dff3b4e5de",
+    "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/CasitaDex/sb40-draft-viewer-accessibility-20261108/ios/portrait-scroll-14.png": "17f91b4b93dba27f36417297bcfbea8f1f09e56b1f7faddcb8aa22b039781f9f",
+    "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/CasitaDex/sb40-draft-viewer-accessibility-20261108/ios/landscape-scroll-14.png": "d7fa4aa182790a20f43f281e5e82969369a9a199a4ae8e4262dcd40268262f24",
+    "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/CasitaDex/sb40-draft-viewer-accessibility-20261108/ios/scroll-report.json": "90d48deddcb25e0d01d0263700e9e44fbfccf1b08f1345a3221454f316ed526f"
+  },
+  "symptom": "Verified long fixed header leaves controls viewport 74pt portrait / 78pt landscape while complete controls need 85-150pt. Close remains usable; not a claim that every action is untappable.",
+  "change": "At system fontScale times in-app scale >=1.5 or window height <600, keep Close pinned, move the full title/count into scrolling controls, use intrinsic-height full-width control rows and flexible 2:1 controls/photo allocation. Photo retains 80pt minimum. Use all safe-area edges. Default portrait composition, handlers, font scaling, media/store/schema and four-tab navigation remain unchanged.",
+  "checks": {
+    "typecheck": "PASS",
+    "tests": {
+      "total": 437,
+      "passed": 431,
+      "failed": 0,
+      "skipped": 6,
+      "new_regressions": 5
+    },
+    "lint": "FAIL: same two inherited PanResponder react-hooks findings plus unchanged eng-screens unused-function warning; no new findings",
+    "doctor": "20/21; eight SDK patch mismatches in unchanged dependencies",
+    "web_export": "PASS",
+    "source_secret_scan": "PASS, zero findings",
+    "tests_secret_scan": "PASS, zero findings",
+    "broad_secret_scan": "11 inherited documentation metadata findings, all matching base bytes (Figma file IDs and one evidence checksum); retained separately",
+    "git_diff_check": "PASS"
+  },
+  "coverage": "Actual component render/state regression harness with mocked native primitives: normal portrait, system/app text scale, short height, uncapped full title, minimum targets, navigation and zoom across rotation, Close/Return, five-photo cap, replacement chooser and cancellation. This does not emulate native text measurement or certify gestures/VoiceOver.",
+  "limits": [
+    "Native geometry and action reachability are NOT RUN on this candidate at commit time; parent owns isolated simulator validation.",
+    "No original simulator, Android emulator, physical device or reference data changed.",
+    "No Figma master edits or visual approval, no push/merge/deployment/store/production action.",
+    "Full native gesture, screen-reader, physical and release gates stay open."
+  ]
+}

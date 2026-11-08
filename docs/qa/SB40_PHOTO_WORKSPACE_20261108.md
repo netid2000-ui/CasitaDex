@@ -47,3 +47,16 @@ The QA artifacts embed production-mode Hermes exports in the preserved SB40 nati
 - [ ] Store release gates remain in the broader release checklist. This checkpoint does not declare store readiness.
 
 The unchanged five-photo limit is source-covered; this checkpoint did not freshly fill a native memory to five. The source chooser correction applies to the shared viewer; older Add Memory / Details add-photo entry points retain their existing picker behavior.
+
+
+## Isolated viewer large-text source follow-up — November 8, 2026
+
+**Source candidate only; native revalidation pending.** From authority base `35e411e`, branch `work/cd-sb40-viewer-large-text-20261108` isolates the reproduced draft-viewer layout failure. Actual maximum-text screenshots and 14-step scroll captures show a 74pt portrait / 78pt landscape controls region against 85–150pt controls. Close remains usable. This does not establish that every action is untappable or certify VoiceOver.
+
+The candidate reflows at system fontScale × in-app text scale ≥1.5 or window height <600. Close stays pinned, the complete title/count moves into the controls scroller, full-width control rows retain intrinsic height, and the controls use two shares of available body height to the photo’s one (photo minimum 80pt). No font suppression or title truncation. Normal portrait composition, source selection, mutation guards, gestures/zoom, navigation and four tabs remain unchanged. Left/right safe-area protection now also applies in landscape.
+
+TypeScript, web export and 437 tests (431 passed, six existing skips, zero failures) pass. Five new component regression cases cover text/height decisions, normal composition, retained navigation/zoom through rotation, five-photo cap and source choices/cancellation. Native primitives are mocked: these tests do not measure native labels. Aggregate lint retains the identical two baseline PanResponder hook-analysis errors and unchanged unused-function warning; Expo Doctor is 20/21 with eight patch-version mismatches. No dependency changes. Source and test Gitleaks scans report zero findings. The broad scan’s 11 inherited documentation metadata findings are recorded separately, not silently discarded.
+
+The next acceptance action is measured portrait/landscape at maximum system text, separately with in-app large text, on a new disposable iOS simulator. Verify every complete control and source chooser can scroll into view, full title remains readable, Close/Return/Previous/Next/zoom still work, and normal portrait remains usable. Existing QA devices, original draft/media and owner-reference artifacts must remain untouched. Broader gesture, screen-reader, Android, physical and release gates remain open. The preserved photo report’s lesson applies: inspect actual pixels, not merely successful automation taps. No separate current lessons file was found in the bounded repository/governance search.
+
+[Source manifest, input evidence hashes and check results](SB40_VIEWER_LARGE_TEXT_SOURCE_CANDIDATE_20261108.json). Native validation is coordinated separately; this appendix is not a new tracker or an acceptance promotion.
