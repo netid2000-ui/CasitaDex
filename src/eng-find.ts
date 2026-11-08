@@ -1,7 +1,10 @@
 import type { DataV2, MemoryV2 } from './sb20-contract';
 export type FindFilter={lifecycle:MemoryV2['lifecycle'];space:'all'|string|null;categories:string[];uncategorized:boolean;confidence:string;reminder:string;attachment:string};
 export const defaultFilter=():FindFilter=>({lifecycle:'active',space:'all',categories:[],uncategorized:false,confidence:'all',reminder:'all',attachment:'all'});
-const tokens=(s:string)=>s.toLocaleLowerCase().match(/[\p{L}\p{N}]+(?:[-/.][\p{L}\p{N}]+)*/gu)??[];
+// Normalize numeric dimensions on both sides without loosening model-number identity.
+const tokens=(s:string)=>s.toLocaleLowerCase()
+ .replace(/(?<![\p{L}\p{N}])\d+(?:\.\d+)?(?:\s*[x×✕]\s*\d+(?:\.\d+)?)+(?![\p{L}\p{N}])/gu,dimension=>dimension.replace(/\s*[x×✕]\s*/gu,' '))
+ .match(/[\p{L}\p{N}]+(?:[-/.][\p{L}\p{N}]+)*/gu)??[];
 export function searchIndex(data:DataV2){
  const spaces=new Map(data.spaces.map(x=>[x.id,x.name])),categories=new Map(data.categories.map(x=>[x.id,x.name]));
  const photos=new Set(data.media.media.map(x=>x.cardId));

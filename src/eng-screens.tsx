@@ -1,3 +1,4 @@
+import {savedReminderDestination} from "./reminder-save-destination";
 import type { RepeatSchedule } from "./reminder-recurrence";
 import DateTimePicker, { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
 import React, { useCallback, useEffect, useRef, useState, useMemo } from "react";
@@ -144,7 +145,7 @@ export function EngReminders(){
   if(duplicate){Alert.alert("Similar reminder already scheduled","A reminder for the same item at this date and time already exists. Keep both reminders?",[{text:"Review reminder",style:"cancel"},{text:"Keep both",onPress:save}]);return;}
   save();
  }
- async function act(task:()=>Promise<unknown>,success:string){if(busy)return;setBusy(true);try{const result=await task();await refresh();setEditing(null);setStatus(typeof result==="string"?result:success);if(editing!==null)router.replace(params.origin==="home"?"/":"/reminders");}catch(e){setStatus(message(e));}finally{setBusy(false);}}
+ async function act(task:()=>Promise<unknown>,success:string){if(busy)return;setBusy(true);try{const result=await task();await refresh();setEditing(null);setStatus(typeof result==="string"?result:success);if(editing!==null)router.replace(savedReminderDestination(params.memoryId,params.origin));}catch(e){setStatus(message(e));}finally{setBusy(false);}}
  return <Page independent title="Reminders" hideHeading stickyActions={editing!==null?<View style={{maxWidth:720,width:"100%",alignSelf:"center"}}>  <View style={{flexDirection:"row",gap:10,alignItems:"stretch"}}>
    <View style={{flex:1}}><Button variant="quiet" label="Cancel" onPress={leaveReminder}/></View>
    <View style={{flex:1}}><Button primary label="Save Reminder" disabled={busy||!title.trim()} onPress={saveReminderWithDuplicateCheck}/></View>

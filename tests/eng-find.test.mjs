@@ -10,3 +10,15 @@ test('Home limits reminders to two oldest due active obligations and recents to 
 test('search index and bounded result production work at 0, 1, 500 and 5000 memories',()=>{const base=fixture();for(const size of [0,1,500,5000]){const d={...base,memories:Array.from({length:size},(_,n)=>({...base.memories[0],id:'m'+n,title:'Filter '+n}))};const start=performance.now(),i=searchIndex(d),result=findMemories(i,'equipment',defaultFilter(),'2026-10-19');assert.equal(result.length,size);console.log('ENG search',size,'memories',Math.round(performance.now()-start)+'ms');}});
 import {duplicateCandidates} from '../src/eng-duplicates.ts';import {newEngDraft} from '../src/eng-store.ts';
 test('duplicate advisory includes trash, exact normalized title/answer, matching photos, but does not flag title alone',()=>{const s=verified(),m=s.data.memories[0],d={...newEngDraft(),title:' filter ',answer:'20x25'};m.lifecycle='recently_deleted';m.deletedAt='2026-10-19';assert.equal(duplicateCandidates(d,s).length,1);assert.equal(duplicateCandidates({...d,answer:'Other'},s).length,0);s.data.media.media=[{cardId:m.id,sha256:'exact'}];assert.equal(duplicateCandidates({...d,title:'Different',answer:'',photos:[{sha256:'exact'}]},s).length,1);});
+
+test('dimension queries normalize x, multiplication signs and spacing in stored values and queries',()=>{
+ for(const value of ['20x25x1','20 X 25 X 1','20×25×1','20 25 1']){
+  const data=fixture();data.memories[0].answer=value;data.memories[1].answer='20x25x10';
+  for(const query of ['20x25x1','20 X 25 X 1','20 × 25 × 1','20✕25✕1','20 25 1'])
+   assert.deepEqual(findMemories(searchIndex(data),query,defaultFilter(),'2026-11-08').map(m=>m.id),['a'],value+' / '+query);
+ }
+ const data=fixture();data.memories[0].answer='AB20x25';
+ assert.equal(findMemories(searchIndex(data),'20x25',defaultFilter(),'2026-11-08').length,0);
+ data.memories[0].answer='1.5x20x25';
+ assert.equal(findMemories(searchIndex(data),'1.5 × 20 × 25',defaultFilter(),'2026-11-08')[0].id,'a');
+});
