@@ -5,19 +5,17 @@ import {useData} from '../state';
 import {useFigmaTheme} from './tokens';
 export type PhotoSummary={id:string;title:string;photoCount:number;thumbnailUri?:string;photos?:readonly {id:string;uri:string}[]};
 export type PhotoView='grid'|'compact';
-export type FigmaPhotosProps={items:readonly PhotoSummary[];onAdd:()=>void;onOpen:(id:string)=>void;onViewPhoto?:(memoryId:string,photoId:string,uri:string,label:string)=>void;view?:PhotoView;sort?:'updated'|'added';onViewChange?:(view:PhotoView)=>void;onSortChange?:(sort:'updated'|'added')=>void;draft?:{title:string;photoCount:number};onResumeDraft?:()=>void;onItemLayout?:(id:string,y:number)=>void};
+export type FigmaPhotosProps={items:readonly PhotoSummary[];onAdd:()=>void;onOpen:(id:string)=>void;onViewPhoto?:(memoryId:string,photoId:string,uri:string,label:string)=>void;view?:PhotoView;sort?:'updated'|'added';onViewChange?:(view:PhotoView)=>void;onSortChange?:(sort:'updated'|'added')=>void;draft?:{title:string;photoCount:number};onResumeDraft?:()=>void;hideControls?:boolean;onItemLayout?:(id:string,y:number)=>void};
 export const photoCountLabel=(count:number)=>count===1?"1 photo":`${count} photos`;
-export function FigmaPhotos({items,onAdd,onOpen,onViewPhoto,view='grid',sort='updated',onViewChange,onSortChange,draft,onResumeDraft,onItemLayout}:FigmaPhotosProps){
+export function FigmaPhotos({items,onAdd,onOpen,onViewPhoto,view='grid',sort='updated',onViewChange,onSortChange,draft,onResumeDraft,onItemLayout,hideControls=false}:FigmaPhotosProps){
  const fg=useFigmaTheme(),{width,fontScale}=useWindowDimensions(),{large}=useData();
  const gridTop=useRef<number|null>(null),itemY=useRef(new Map<string,number>());
  const columns=view==='grid'&&width>=360&&fontScale<1.35&&!large?2:1;
  const textScale=large?1.6:1;
- const control={minHeight:48,padding:12,borderWidth:1,borderColor:fg.secondaryInk,borderRadius:12,justifyContent:'center' as const};
+ const control={minHeight:48,padding:8,borderWidth:1,borderColor:fg.secondaryInk,borderRadius:12,justifyContent:'center' as const};
  return <View style={{backgroundColor:fg.page,padding:16,gap:16}}>
-  <Pressable accessibilityRole="button" accessibilityLabel="Add Photo Memory" onPress={onAdd} style={{backgroundColor:fg.actionSurface,borderRadius:12,minHeight:48,alignItems:'center',justifyContent:'center',padding:12}}><Text style={{color:fg.actionInk,fontWeight:'700',fontSize:16*textScale}}>+ Add Photo Memory</Text></Pressable>
+  {!hideControls?<PhotoWorkspaceControls onAdd={onAdd} view={view} sort={sort} onViewChange={onViewChange} onSortChange={onSortChange}/>:null}
   {draft?<View style={{backgroundColor:fg.brandSurface,borderRadius:12,padding:14,gap:8}}><Text accessibilityRole="header" style={{color:fg.headingInk,fontWeight:'700',fontSize:17*textScale}}>Unfinished photo memory</Text><Text style={{color:fg.secondaryInk,fontSize:15*textScale}}>{draft.title||'Untitled draft'} · {photoCountLabel(draft.photoCount)} · Not saved yet</Text><Pressable accessibilityRole="button" accessibilityLabel="Resume unfinished photo memory" onPress={onResumeDraft} style={control}><Text style={{color:fg.headingInk,fontSize:16*textScale}}>Resume draft</Text></Pressable></View>:null}
-  <View style={{flexDirection:'row',flexWrap:'wrap',gap:8}}>{(['grid','compact'] as const).map(value=><Pressable key={value} accessibilityRole="button" accessibilityLabel={`${value==='grid'?'Grid':'Compact'} photo view`} accessibilityState={{selected:view===value}} onPress={()=>onViewChange?.(value)} style={[control,{backgroundColor:view===value?fg.actionSurface:fg.page}]}><Text style={{color:view===value?fg.actionInk:fg.headingInk,fontSize:15*textScale}}>{value==='grid'?'Grid':'Compact'}</Text></Pressable>)}</View>
-  <View style={{flexDirection:'row',flexWrap:'wrap',gap:8}}>{(['updated','added'] as const).map(value=><Pressable key={value} accessibilityRole="button" accessibilityLabel={value==='updated'?'Recently updated':'Recently added'} accessibilityState={{selected:sort===value}} onPress={()=>onSortChange?.(value)} style={[control,{backgroundColor:sort===value?fg.brandSurface:fg.page}]}><Text style={{color:fg.headingInk,fontSize:14*textScale}}>{value==='updated'?'Recently updated':'Recently added'}</Text></Pressable>)}</View>
   <Text style={{color:fg.secondaryInk,fontSize:14*textScale}}>{items.length} {items.length===1?'photo memory':'photo memories'} · Tap a photo to view it. Tap its title for memory details.</Text>
   {items.length===0?<Text style={{color:fg.secondaryInk,fontSize:16*textScale}}>No saved photo memories yet. Add a photo memory to start your gallery.</Text>:<View onLayout={event=>{gridTop.current=event.nativeEvent.layout.y;for(const [id,y]of itemY.current)onItemLayout?.(id,gridTop.current+y+16);}} style={{flexDirection:'row',flexWrap:'wrap',gap:12}}>{items.map(item=>{
    const photos=item.photos??(item.thumbnailUri?[{id:item.id,uri:item.thumbnailUri}]:[]),photo=photos[0];
@@ -28,5 +26,17 @@ export function FigmaPhotos({items,onAdd,onOpen,onViewPhoto,view='grid',sort='up
     <View style={{flex:compact?1:undefined,gap:4}}><Pressable accessibilityRole="button" accessibilityLabel={`Open memory ${item.title}`} onPress={()=>onOpen(item.id)} style={{minHeight:48,justifyContent:'center'}}><Text style={{fontWeight:'700',fontSize:17*textScale,color:fg.headingInk}}>{item.title}</Text><Text style={{color:fg.secondaryInk,fontSize:14*textScale}}>{photoCountLabel(item.photoCount)} · View memory</Text></Pressable></View>
    </View>;
   })}</View>}
+ </View>;
+}
+
+export function PhotoWorkspaceControls({onAdd,view='grid',sort='updated',onViewChange,onSortChange}:Pick<FigmaPhotosProps,'onAdd'|'view'|'sort'|'onViewChange'|'onSortChange'>){
+ const fg=useFigmaTheme(),{large}=useData();const textScale=large?1.6:1;
+ const control={minHeight:48,paddingVertical:6,paddingHorizontal:10,borderWidth:1,borderColor:fg.secondaryInk,borderRadius:10,justifyContent:'center' as const,alignItems:'center' as const};
+ return <View style={{backgroundColor:fg.page,paddingHorizontal:16,paddingVertical:8,gap:6,borderBottomWidth:1,borderBottomColor:fg.secondaryInk}}>
+ <View style={{flexDirection:'row',flexWrap:'wrap',gap:6}}>
+ <Pressable accessibilityRole="button" accessibilityLabel="Add Photo Memory" onPress={onAdd} style={{backgroundColor:fg.actionSurface,borderRadius:10,minHeight:48,alignItems:'center',justifyContent:'center',paddingVertical:6,paddingHorizontal:10,flexGrow:1}}><Text style={{color:fg.actionInk,fontWeight:'700',fontSize:15*textScale}}>+ Add Photo Memory</Text></Pressable>
+  <View style={{flexDirection:'row',flexWrap:'wrap',gap:6}}>{(['grid','compact'] as const).map(value=><Pressable key={value} accessibilityRole="button" accessibilityLabel={`${value==='grid'?'Grid':'Compact'} photo view`} accessibilityState={{selected:view===value}} onPress={()=>onViewChange?.(value)} style={[control,{backgroundColor:view===value?fg.actionSurface:fg.page}]}><Text style={{color:view===value?fg.actionInk:fg.headingInk,fontSize:15*textScale}}>{value==='grid'?'Grid':'Compact'}</Text></Pressable>)}</View>
+ </View>
+  <View style={{flexDirection:'row',flexWrap:'wrap',gap:6}}>{(['updated','added'] as const).map(value=><Pressable key={value} accessibilityRole="button" accessibilityLabel={value==='updated'?'Recently updated':'Recently added'} accessibilityState={{selected:sort===value}} onPress={()=>onSortChange?.(value)} style={[control,{backgroundColor:sort===value?fg.brandSurface:fg.page}]}><Text style={{color:fg.headingInk,fontSize:14*textScale}}>{value==='updated'?'Recently updated':'Recently added'}</Text></Pressable>)}</View>
  </View>;
 }

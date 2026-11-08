@@ -4,9 +4,9 @@ import {qaIllustrationBytes} from '../qa-illustration-bytes';
 import {getEngStore,engPhotoUri} from '../eng-runtime';
 import React,{useCallback,useEffect,useRef,useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {Alert,Modal,ScrollView,Text} from 'react-native';
+import {Alert,Modal,ScrollView,Text,View} from 'react-native';
 import {router,useFocusEffect} from 'expo-router';
-import {FigmaPhotos,type PhotoView} from '../figma-first/FigmaPhotos';
+import {FigmaPhotos,PhotoWorkspaceControls,type PhotoView} from '../figma-first/FigmaPhotos';
 import {photoSummaries,type PhotoSort} from '../figma-first/photo-summaries';
 import {orderedMemoryPhotos} from '../photo-order';
 import {PhotoMemoryViewer} from '../photo-memory-viewer';
@@ -28,11 +28,11 @@ function NativePhotos(){
  useFocusEffect(useCallback(()=>{let active=true;getEngStore().then(async store=>{let s=await store.load();if(Constants.expoConfig?.extra?.parityQaSeed===true){if(!s.data.memories.some(m=>m.id.startsWith("sb26qa_"))){await store.seedSyntheticQa();s=await store.load();}const fixtures=[{id:"sb26qa_001",image:"home"},{id:"sb26qa_007",image:"find"},{id:"sb26qa_013",image:"backup"}];for(const item of fixtures){try{const m=s.data.memories.find(m=>m.id===item.id);if(m&&m.mediaIds.length===0){await store.addMemoryPhoto(item.id,qaIllustrationBytes(item.image));s=await store.load();}}catch(fixtureError){console.warn('Optional QA sample photo unavailable',item.id,fixtureError);}}}return s;}).then(s=>{if(active){setSnapshot(s);setError('');restorePhotosScroll.current=true;requestAnimationFrame(()=>requestAnimationFrame(()=>galleryScroll.current?.scrollTo({y:preservedPhotosScrollY,animated:false})));}}).catch(photoLoadError=>{console.warn('Photo memories load failed',photoLoadError);if(active)setError('Unable to load photo memories. Your data was not changed.')});return()=>{active=false}},[]));
 
  const addPhotoMemory=()=>{if(!snapshot?.draft){router.push('/add?mode=photo');return;}Alert.alert('Unfinished memory','You already have a draft. Resume it or return to your photos. Your draft will not be replaced.',[{text:'Stay here',style:'cancel'},{text:'Resume draft',onPress:()=>router.push('/add?mode=photo')}]);};
- return <ScrollView ref={galleryScroll} onContentSizeChange={()=>{if(restorePhotosScroll.current){galleryScroll.current?.scrollTo({y:preservedPhotosScrollY,animated:false});restorePhotosScroll.current=false;}}} onScroll={event=>{if(!restorePhotosScroll.current)preservedPhotosScrollY=event.nativeEvent.contentOffset.y;}} scrollEventThrottle={100} contentContainerStyle={{flexGrow:1,backgroundColor:'transparent'}}>
+ return <View style={{flex:1}}><PhotoWorkspaceControls onAdd={addPhotoMemory} view={view} sort={sort} onViewChange={value=>presentation(value,sort)} onSortChange={value=>presentation(view,value)}/><ScrollView ref={galleryScroll} onContentSizeChange={()=>{if(restorePhotosScroll.current){galleryScroll.current?.scrollTo({y:preservedPhotosScrollY,animated:false});restorePhotosScroll.current=false;}}} onScroll={event=>{if(!restorePhotosScroll.current)preservedPhotosScrollY=event.nativeEvent.contentOffset.y;}} scrollEventThrottle={100} contentContainerStyle={{flexGrow:1,backgroundColor:'transparent'}}>
  {error?<Text accessibilityLiveRegion="polite" style={{color:colors.ink}}>{error}</Text>:null}
- <FigmaPhotos onItemLayout={(id,y)=>itemOffsets.current.set(id,y)} view={view} sort={sort} onViewChange={value=>presentation(value,sort)} onSortChange={value=>presentation(view,value)} draft={snapshot?.draft?.photos.length?{title:snapshot.draft.title,photoCount:snapshot.draft.photos.length}:undefined} onResumeDraft={()=>router.push('/add?mode=photo')} items={snapshot?photoSummaries(snapshot.data,sort).map(item=>({...item,photos:orderedMemoryPhotos(snapshot.data,item.id).map(p=>({id:p.id,uri:engPhotoUri(p.path)}))})):[]} onAdd={addPhotoMemory} onOpen={id=>router.push({pathname:'/card',params:{id}})} onViewPhoto={(memoryId,photoId)=>{rememberPhoto(memoryId);setSelectedPhoto({memoryId,photoId});}}/>
+ <FigmaPhotos hideControls onItemLayout={(id,y)=>itemOffsets.current.set(id,y)} view={view} sort={sort} onViewChange={value=>presentation(value,sort)} onSortChange={value=>presentation(view,value)} draft={snapshot?.draft?.photos.length?{title:snapshot.draft.title,photoCount:snapshot.draft.photos.length}:undefined} onResumeDraft={()=>router.push('/add?mode=photo')} items={snapshot?photoSummaries(snapshot.data,sort).map(item=>({...item,photos:orderedMemoryPhotos(snapshot.data,item.id).map(p=>({id:p.id,uri:engPhotoUri(p.path)}))})):[]} onAdd={addPhotoMemory} onOpen={id=>router.push({pathname:'/card',params:{id}})} onViewPhoto={(memoryId,photoId)=>{rememberPhoto(memoryId);setSelectedPhoto({memoryId,photoId});}}/>
  <Modal visible={!!selectedPhoto} transparent={false} animationType="fade" onRequestClose={closeViewer}>{selectedPhoto?<PhotoMemoryViewer memoryId={selectedPhoto.memoryId} initialPhotoId={selectedPhoto.photoId} onClose={closeViewer} onChanged={refreshPhotos} onViewMemory={()=>{const id=selectedPhoto.memoryId;setSelectedPhoto(null);router.push({pathname:'/card',params:{id}});}}/>:null}</Modal>
 
- </ScrollView>;
+ </ScrollView></View>;
 }
 export default function Photos(){return <NativePhotos/>;}
