@@ -1,0 +1,19 @@
+{
+  "sourceBranch": "work/cd-sb40-authority-source-20261108",
+  "nativeShell": "verified SB40 QA iOS simulator artifact",
+  "nativeShellExecutableSha256": "8ad89040f3a092c4a57b1d4bf7747a55e1afdd19cfa264f0b3fe136c02ba9b4d",
+  "oldEmbeddedBundleSha256": "83326efc8d67c50748539becbe4f4f306e70efa233e8e3d44a5249260f9fb7aa",
+  "method": "Rebundle JavaScript-only changes using unchanged verified SB40 native shell; no native compilation or physical-phone replacement",
+  "newEmbeddedBundleSha256": "04daaba5b8027ed1340d82c6ee44c3167928177471afb7ff0c2056e7508a6d92",
+  "sourceCommit": "21b82e5b263554929ae89b83233d9f5e0a131582",
+  "androidPackageSha256": "b4f238cce6e005805673e91eba7827b9577b688b4a17fa9373205313fbc5da57",
+  "androidEmbeddedBundleSha256": "22ba4a0b9b8d92bb939c01ad5f44f3da294293cc1be77fdb496c5bdc8c574f5d",
+  "originalAndroidPackageSha256": "01e40085176127b815b0870fabbd4d915f463acdea5d8d4e0eb830871467d3bf",
+  "typecheck": "PASS",
+  "unitTests": {
+    "total": 422,
+    "passed": 416,
+    "failed": 0,
+    "skipped": 6
+  }
+}

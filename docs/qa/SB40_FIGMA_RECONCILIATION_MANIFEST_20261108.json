@@ -1,0 +1,2184 @@
+{
+  "date": "2026-11-08",
+  "authority": "Owner-selected SB40",
+  "sourceCommit": "21b82e5b263554929ae89b83233d9f5e0a131582",
+  "fileKey": "39uzN0SZX8nlmcGDcHdQhr",
+  "secondaryPage": "372:2",
+  "completionSpec": "376:1790",
+  "scope": "Editable source/control-state reconciliation; not pixel-perfect native screen approval",
+  "states": [
+    {
+      "key": "home",
+      "route": "/",
+      "title": "Home",
+      "source": "FigmaNativeHome / FigmaHome",
+      "controls": [
+        "t:YOUR PERSONAL REFERENCE",
+        "t:The details that matter.",
+        "t:A calmer place to keep useful things.",
+        "b:Settings>settings",
+        "b:Find a Memory>find",
+        "b:Add Memory>add",
+        "b:Add Photo Memory>photo-add",
+        "b:Add Reminder>reminder-new"
+      ]
+    },
+    {
+      "key": "unfinished",
+      "route": "/",
+      "title": "Unfinished memory",
+      "source": "FigmaNativeHome",
+      "controls": [
+        "t:A draft is saved on this device. Resume it, or discard it before starting a new memory. Saved memories will not be deleted.",
+        "b:Cancel>home",
+        "b:Resume draft>add",
+        "b:Discard draft and start new>add"
+      ]
+    },
+    {
+      "key": "find",
+      "route": "/answers",
+      "title": "Finding a Memory",
+      "source": "NativeFind / FigmaFind",
+      "controls": [
+        "f:Search memories|20x25x1",
+        "t:1 memory found",
+        "t:Search results",
+        "b:Regular Memory \u00b7 HVAC return filter size>details"
+      ]
+    },
+    {
+      "key": "find-empty",
+      "route": "/answers",
+      "title": "Finding a Memory",
+      "source": "NativeFind / FigmaFind",
+      "controls": [
+        "f:Search memories|unmatched search",
+        "t:0 memories found",
+        "t:Search results",
+        "t:Try a different search or fewer words."
+      ]
+    },
+    {
+      "key": "find-browse",
+      "route": "/answers",
+      "title": "Finding a Memory",
+      "source": "NativeFind / FigmaFind",
+      "controls": [
+        "f:Search memories|",
+        "t:Browse memories",
+        "b:Regular Memory \u00b7 HVAC return filter size>details",
+        "b:Photo Memory \u00b7 Coffee maker cleaning supplies>details"
+      ]
+    },
+    {
+      "key": "memories",
+      "route": "/memories",
+      "title": "Your Memories",
+      "source": "NativeMemories / FigmaMemories",
+      "controls": [
+        "t:Saved memories on this device",
+        "t:Memories",
+        "b:HVAC return filter size>details"
+      ]
+    },
+    {
+      "key": "memories-empty",
+      "route": "/memories",
+      "title": "Your Memories",
+      "source": "NativeMemories / FigmaMemories",
+      "controls": [
+        "t:0 saved memories on this device",
+        "t:Memories",
+        "t:No memories saved yet."
+      ]
+    },
+    {
+      "key": "details",
+      "route": "/card",
+      "title": "Memory Details",
+      "source": "EngDetail",
+      "controls": [
+        "b:\u2039 Results>find",
+        "b:Edit memory>edit",
+        "b:More \u00b7\u00b7\u00b7>details-more",
+        "t:SAVED MEMORY",
+        "t:HVAC return filter size",
+        "t:SPACE \u00b7 None",
+        "b:Edit \u270e>direct-space",
+        "t:CATEGORIES \u00b7 None",
+        "b:Edit \u270e>direct-category",
+        "t:DESCRIPTION \u00b7 Filter size 20 x 25 x 1",
+        "b:Edit Description>edit",
+        "t:LOCATION \u00b7 Hallway return grille",
+        "b:Edit Location>edit",
+        "t:NOTES \u00b7 None",
+        "b:Edit Notes>edit",
+        "t:REFERENCE \u00b7 OPTIONAL \u00b7 None",
+        "b:Edit \u270e>reference",
+        "t:VERIFICATION STATUS \u00b7 Unknown",
+        "b:Choose \u25be>verification",
+        "t:PHOTOS \u00b7 0 saved",
+        "b:+ Add Photo>photo-source"
+      ]
+    },
+    {
+      "key": "details-more",
+      "route": "/card",
+      "title": "Memory Details \u00b7 actions",
+      "source": "EngDetail",
+      "controls": [
+        "b:\u2039 Results>find",
+        "b:Edit memory>edit",
+        "b:Close \u25b4>details",
+        "b:Remind me later>reminder-linked",
+        "b:Share memory>share",
+        "b:Archive memory>details-archived",
+        "b:Move to Recently Deleted>delete-confirm"
+      ]
+    },
+    {
+      "key": "details-archived",
+      "route": "/card",
+      "title": "Archived memory",
+      "source": "EngDetail",
+      "controls": [
+        "t:Memory retained with photos",
+        "b:Edit memory>edit",
+        "b:Return to Active>details",
+        "b:Move to Recently Deleted>delete-confirm"
+      ]
+    },
+    {
+      "key": "delete-confirm",
+      "route": "/card",
+      "title": "Move to Recently Deleted",
+      "source": "EngDetail",
+      "controls": [
+        "t:Your previous full save remains recoverable.",
+        "b:Cancel>details",
+        "b:Move to Recently Deleted>details-deleted"
+      ]
+    },
+    {
+      "key": "details-deleted",
+      "route": "/card",
+      "title": "Recently deleted memory",
+      "source": "EngDetail",
+      "controls": [
+        "b:\u2039 Results>find",
+        "t:Deleted memory \u00b7 photos stay attached",
+        "t:Recoverable for at least 30 days.",
+        "b:Restore memory>details",
+        "t:Permanent cleanup is unavailable in this Development build. Deleted memories and photos remain recoverable.",
+        "b:Show history>history"
+      ]
+    },
+    {
+      "key": "edit",
+      "route": "/card",
+      "title": "Memory Details \u00b7 edit",
+      "source": "EngDetail",
+      "controls": [
+        "b:Cancel>details",
+        "b:Save & return to details>details",
+        "f:Memory name (Required)|HVAC return filter size",
+        "t:SPACE \u00b7 None",
+        "b:Choose \u25be>edit-space",
+        "t:CATEGORIES \u00b7 None",
+        "b:Choose \u25be>edit-category",
+        "f:Description|Filter size 20 x 25 x 1",
+        "f:Location|Hallway return grille",
+        "f:Notes|",
+        "f:Reference|",
+        "t:VERIFICATION STATUS \u00b7 Unknown",
+        "t:PHOTOS \u00b7 0/5",
+        "b:+ Add Photo>photo-source",
+        "t:Save or cancel your text changes before adding photos."
+      ]
+    },
+    {
+      "key": "edit-space",
+      "route": "/card",
+      "title": "Choose a Space \u00b7 full edit",
+      "source": "EngDetail",
+      "controls": [
+        "b:Cancel>details",
+        "b:Save & return to details>details",
+        "b:Select Space \u25be>edit-space-list",
+        "b:+ Create new Space \u25be>edit-space-create"
+      ]
+    },
+    {
+      "key": "edit-space-list",
+      "route": "/card",
+      "title": "Select Space \u00b7 full edit",
+      "source": "EngDetail",
+      "controls": [
+        "b:None>edit",
+        "b:House75 QA Home>edit",
+        "b:SB40 Acceptance Space>edit",
+        "b:Save & return to details>details",
+        "b:Cancel>details"
+      ]
+    },
+    {
+      "key": "edit-space-create",
+      "route": "/card",
+      "title": "Create Space \u00b7 full edit",
+      "source": "EngDetail",
+      "controls": [
+        "f:New space name|SB40 Acceptance Space",
+        "b:Create and select>edit",
+        "b:Save & return to details>details",
+        "b:Cancel>details"
+      ]
+    },
+    {
+      "key": "edit-category",
+      "route": "/card",
+      "title": "Choose Categories \u00b7 full edit",
+      "source": "EngDetail",
+      "controls": [
+        "b:Select Categories \u25be>edit-category-list",
+        "b:+ Create new Categories \u25be>edit-category-create",
+        "b:Save & return to details>details",
+        "b:Cancel>details"
+      ]
+    },
+    {
+      "key": "edit-category-list",
+      "route": "/card",
+      "title": "Select Categories \u00b7 full edit",
+      "source": "EngDetail",
+      "controls": [
+        "b:None>edit-category-list",
+        "b:SB40 Acceptance Category>edit-category-list",
+        "b:SB40 Acceptance Category B>edit-category-list",
+        "b:Save & return to details>details",
+        "b:Cancel>details"
+      ]
+    },
+    {
+      "key": "edit-category-create",
+      "route": "/card",
+      "title": "Create Category \u00b7 full edit",
+      "source": "EngDetail",
+      "controls": [
+        "f:New category name|SB40 Acceptance Category B",
+        "b:Create and select>edit",
+        "b:Save & return to details>details",
+        "b:Cancel>details"
+      ]
+    },
+    {
+      "key": "direct-space",
+      "route": "/card",
+      "title": "Choose a Space \u00b7 saved memory",
+      "source": "EngDetail",
+      "controls": [
+        "b:Select Space \u25be>direct-space-list",
+        "b:+ Create new Space \u25be>direct-space-create",
+        "b:Close \u25b4>details"
+      ]
+    },
+    {
+      "key": "direct-space-list",
+      "route": "/card",
+      "title": "Select Space \u00b7 saved memory",
+      "source": "EngDetail",
+      "controls": [
+        "b:None>details",
+        "b:House75 QA Home>details",
+        "b:SB40 Acceptance Space>details"
+      ]
+    },
+    {
+      "key": "direct-space-create",
+      "route": "/card",
+      "title": "Create Space \u00b7 saved memory",
+      "source": "EngDetail",
+      "controls": [
+        "f:New Space name|SB40 Acceptance Space",
+        "b:Create and assign>details",
+        "b:Close \u25b4>details"
+      ]
+    },
+    {
+      "key": "direct-category",
+      "route": "/card",
+      "title": "Choose Categories \u00b7 saved memory",
+      "source": "EngDetail",
+      "controls": [
+        "b:SB40 Acceptance Category \u00d7>direct-category",
+        "b:Select Category \u25be>direct-category-list",
+        "b:+ Create new Category \u25be>direct-category-create",
+        "b:Close \u25b4>details"
+      ]
+    },
+    {
+      "key": "direct-category-list",
+      "route": "/card",
+      "title": "Select Categories \u00b7 saved memory",
+      "source": "EngDetail",
+      "controls": [
+        "b:None>direct-category-list",
+        "b:SB40 Acceptance Category>direct-category-list",
+        "b:SB40 Acceptance Category B>direct-category-list",
+        "b:Close \u25b4>details"
+      ]
+    },
+    {
+      "key": "direct-category-create",
+      "route": "/card",
+      "title": "Create Category \u00b7 saved memory",
+      "source": "EngDetail",
+      "controls": [
+        "f:New Category name|SB40 Acceptance Category B",
+        "b:Create and assign>details",
+        "b:Close \u25b4>details"
+      ]
+    },
+    {
+      "key": "reference",
+      "route": "/card",
+      "title": "Reference \u00b7 inline edit",
+      "source": "EngDetail",
+      "controls": [
+        "f:Reference|Manufacturer label",
+        "b:Save reference>details",
+        "b:Cancel>details"
+      ]
+    },
+    {
+      "key": "verification",
+      "route": "/card",
+      "title": "Verification status",
+      "source": "EngDetail",
+      "controls": [
+        "t:Confirm against a reference you checked. Opening a memory does not verify it.",
+        "f:Reference checked|Manufacturer label",
+        "b:Confirm Verified>details",
+        "b:Set Needs checking>details",
+        "b:Set Unknown>details",
+        "b:Close \u25b4>details",
+        "f:History note|",
+        "b:Record history>history"
+      ]
+    },
+    {
+      "key": "history",
+      "route": "/card",
+      "title": "History",
+      "source": "EngDetail",
+      "controls": [
+        "t:Chronological saved actions and events",
+        "f:History note|",
+        "b:Record history>history",
+        "b:Close \u25b4>details"
+      ]
+    },
+    {
+      "key": "memory-date",
+      "route": "/card",
+      "title": "Memory reminder date",
+      "source": "EngDetail",
+      "controls": [
+        "t:Reminder \u00b7 saved date",
+        "f:Next reminder (YYYY-MM-DD)|",
+        "b:Complete reminder>details",
+        "b:Complete and reschedule reminder>details"
+      ]
+    },
+    {
+      "key": "photo-add",
+      "route": "/add?mode=photo",
+      "title": "Adding a Photo Memory",
+      "source": "EngAdd",
+      "controls": [
+        "b:Cancel>home",
+        "b:Save>home",
+        "t:PHOTOS \u00b7 0/5",
+        "b:+ Add Photo>photo-source",
+        "f:Memory name (Required)|",
+        "b:Choose \u25be>add",
+        "b:Choose \u25be>add",
+        "f:Description|",
+        "t:Attach at least one photo; up to five photos per memory."
+      ]
+    },
+    {
+      "key": "add-duplicate",
+      "route": "/add",
+      "title": "Possible duplicate",
+      "source": "EngAdd",
+      "controls": [
+        "t:Your draft is safe. Review the existing memory or save anyway.",
+        "b:Existing memory>details",
+        "b:Return to editing>add",
+        "b:Save as separate memory>home"
+      ]
+    },
+    {
+      "key": "add-draft-options",
+      "route": "/add",
+      "title": "Unfinished memory options",
+      "source": "EngAdd",
+      "controls": [
+        "b:Hide draft options \u25b4>add",
+        "b:Keep draft and leave>home"
+      ]
+    },
+    {
+      "key": "photo-source",
+      "route": "system",
+      "title": "Add Photo",
+      "source": "EngAdd / EngDetail",
+      "controls": [
+        "t:Choose a photo or image source.",
+        "b:Take Photo>camera",
+        "b:Choose from Library>library",
+        "b:Browse Files>files",
+        "b:Cancel>details"
+      ]
+    },
+    {
+      "key": "camera",
+      "route": "system",
+      "title": "Camera handoff",
+      "source": "Native image picker",
+      "controls": [
+        "t:System camera and permission state",
+        "b:Cancel>details",
+        "t:Successful photo returns to originating draft or saved memory."
+      ]
+    },
+    {
+      "key": "library",
+      "route": "system",
+      "title": "Photo library handoff",
+      "source": "Native image picker",
+      "controls": [
+        "t:System photo selection and privacy controls",
+        "b:Cancel>details",
+        "t:Successful selection preserves photo ownership."
+      ]
+    },
+    {
+      "key": "files",
+      "route": "system",
+      "title": "File picker handoff",
+      "source": "Native document picker",
+      "controls": [
+        "t:System document selection",
+        "b:Cancel>details",
+        "t:Cancelled selection keeps current data."
+      ]
+    },
+    {
+      "key": "photos",
+      "route": "/photos",
+      "title": "Your Photos",
+      "source": "NativePhotos / FigmaPhotos",
+      "controls": [
+        "b:+ Add Photo Memory>photo-add",
+        "t:Photo memories \u00b7 Tap a photo to open its saved memory.",
+        "b:Coffee maker cleaning supplies \u00b7 View memory details>details",
+        "b:View photo 1 full screen>gallery-viewer",
+        "b:Manage saved photos>photo-manage"
+      ]
+    },
+    {
+      "key": "photos-empty",
+      "route": "/photos",
+      "title": "Your Photos",
+      "source": "FigmaPhotos",
+      "controls": [
+        "b:+ Add Photo Memory>photo-add",
+        "t:No photo memories yet. Add a photo memory to start your gallery."
+      ]
+    },
+    {
+      "key": "photo-draft-warning",
+      "route": "/photos",
+      "title": "Unfinished photo memory",
+      "source": "NativePhotos",
+      "controls": [
+        "t:Your draft will not be replaced.",
+        "b:Stay here>photos",
+        "b:Resume draft>photo-add"
+      ]
+    },
+    {
+      "key": "gallery-viewer",
+      "route": "/photos#viewer",
+      "title": "Photo \u00b7 full screen",
+      "source": "NativePhotos Modal",
+      "controls": [
+        "b:Close \u00d7>photos",
+        "t:Coffee maker cleaning supplies \u00b7 1 of 2",
+        "t:Saved photo \u00b7 pinch, pan and double tap",
+        "b:\u2039 Previous>gallery-viewer",
+        "b:Next \u203a>gallery-viewer",
+        "b:View Memory>details"
+      ]
+    },
+    {
+      "key": "photo-viewer",
+      "route": "/photo-viewer",
+      "title": "Saved photo",
+      "source": "FullScreenPhoto",
+      "controls": [
+        "t:Photo 1 of 2",
+        "b:Remove>photo-remove",
+        "b:Close photo>details",
+        "b:View Memory>details",
+        "t:Saved photo \u00b7 pinch 1\u20134\u00d7 and double tap",
+        "b:\u2039 Previous>photo-viewer",
+        "b:Next \u203a>photo-viewer"
+      ]
+    },
+    {
+      "key": "photo-remove",
+      "route": "/photo-viewer",
+      "title": "Remove photo?",
+      "source": "FullScreenPhoto",
+      "controls": [
+        "t:The photo will be removed from this memory. Your previous save remains recoverable.",
+        "b:Cancel>photo-viewer",
+        "b:Remove photo>details"
+      ]
+    },
+    {
+      "key": "photo-manage",
+      "route": "/photos-manage",
+      "title": "Photo memories",
+      "source": "EngPhotos",
+      "controls": [
+        "t:Select a saved memory to review, add, replace, or remove its photos.",
+        "b:Open Coffee maker cleaning supplies photo memory>photo-manage-detail"
+      ]
+    },
+    {
+      "key": "photo-manage-detail",
+      "route": "/photos-manage",
+      "title": "Manage saved photos",
+      "source": "EngPhotos",
+      "controls": [
+        "b:Back to photo memories>photo-manage",
+        "t:Coffee maker cleaning supplies",
+        "b:View photo 1>photo-viewer",
+        "b:Replace photo 1>library",
+        "b:Remove photo 1>photo-remove",
+        "b:Add Photo>library"
+      ]
+    },
+    {
+      "key": "reminders",
+      "route": "/reminders",
+      "title": "Reminders",
+      "source": "FigmaReminders",
+      "controls": [
+        "b:+ Add>reminder-new",
+        "b:Upcoming (1)>reminders",
+        "b:Overdue (0)>reminders-overdue",
+        "b:Completed (1)>reminders-completed",
+        "b:Memory dates (0)>reminders-memorydates",
+        "b:Review HVAC return filter size>reminder-edit",
+        "t:Linked memory",
+        "b:\u2713 Complete>reminders-completed",
+        "b:View Memory>details",
+        "b:More \u00b7\u00b7\u00b7>reminders-more"
+      ]
+    },
+    {
+      "key": "reminders-overdue",
+      "route": "/reminders",
+      "title": "Overdue reminders",
+      "source": "FigmaReminders",
+      "controls": [
+        "t:\u25cf Overdue",
+        "b:Edit reminder>reminder-edit",
+        "b:\u2713 Complete>reminders-completed",
+        "b:View Memory>details",
+        "b:More \u00b7\u00b7\u00b7>reminders-more"
+      ]
+    },
+    {
+      "key": "reminders-completed",
+      "route": "/reminders",
+      "title": "Completed reminders",
+      "source": "FigmaReminders",
+      "controls": [
+        "b:Upcoming>reminders",
+        "b:\u21b6 Restore>reminders",
+        "b:View Memory>details",
+        "b:More \u00b7\u00b7\u00b7>reminders-more"
+      ]
+    },
+    {
+      "key": "reminders-memorydates",
+      "route": "/reminders",
+      "title": "Memory dates",
+      "source": "FigmaReminders",
+      "controls": [
+        "t:These dates belong to saved memories. They are not scheduled notifications or completed reminders.",
+        "t:Notification not yet set",
+        "b:Set Alert>reminder-linked",
+        "b:View Memory>details"
+      ]
+    },
+    {
+      "key": "reminders-more",
+      "route": "/reminders",
+      "title": "Reminder actions",
+      "source": "FigmaReminders",
+      "controls": [
+        "b:Edit>reminder-edit",
+        "b:Delete>reminder-delete",
+        "b:Less \u2191>reminders"
+      ]
+    },
+    {
+      "key": "reminder-delete",
+      "route": "/reminders",
+      "title": "Delete reminder?",
+      "source": "NativeReminders",
+      "controls": [
+        "t:Saved memories are not affected.",
+        "b:Cancel>reminders",
+        "b:Delete>reminders"
+      ]
+    },
+    {
+      "key": "reminder-new",
+      "route": "/reminders-manage?mode=new",
+      "title": "Adding a Reminder",
+      "source": "EngReminders",
+      "controls": [
+        "b:Cancel>reminders",
+        "b:Save Reminder>reminders",
+        "f:Reminder title *|",
+        "t:When should we remind you?",
+        "b:Date>reminder-date",
+        "b:Time (AM / PM)>reminder-time",
+        "b:More options \u25be>reminder-options"
+      ]
+    },
+    {
+      "key": "reminder-linked",
+      "route": "/reminders-manage?mode=new&memoryId=\u2026",
+      "title": "Adding a Reminder \u00b7 linked",
+      "source": "EngReminders",
+      "controls": [
+        "b:Cancel>reminders",
+        "b:Save Reminder>details",
+        "b:\u2039 Return to Memory Details>details",
+        "f:Reminder title *|Review HVAC return filter size",
+        "t:When should we remind you?",
+        "b:Date>reminder-date",
+        "b:Time (AM / PM)>reminder-time",
+        "b:More options \u25be>reminder-options"
+      ]
+    },
+    {
+      "key": "reminder-edit",
+      "route": "/reminders-manage?id=\u2026",
+      "title": "Edit reminder",
+      "source": "EngReminders",
+      "controls": [
+        "b:Cancel>reminders",
+        "b:Save Reminder>reminders",
+        "f:Reminder title *|Review HVAC return filter size",
+        "b:Date>reminder-date",
+        "b:Time (AM / PM)>reminder-time",
+        "b:More options \u25be>reminder-options"
+      ]
+    },
+    {
+      "key": "reminder-options",
+      "route": "/reminders-manage",
+      "title": "Reminder options",
+      "source": "EngReminders",
+      "controls": [
+        "b:Hide options \u25b4>reminder-linked",
+        "t:Repeat",
+        "b:Once>reminder-options",
+        "b:Daily>reminder-options",
+        "b:Weekly>reminder-options",
+        "b:Monthly>reminder-options",
+        "b:Yearly>reminder-options",
+        "f:Notes|",
+        "b:Save Reminder>details"
+      ]
+    },
+    {
+      "key": "reminder-date",
+      "route": "system",
+      "title": "Choose a date",
+      "source": "EngReminders / native picker",
+      "controls": [
+        "t:Native date picker; Android Set/Cancel, iOS inline calendar.",
+        "b:Done>reminder-linked"
+      ]
+    },
+    {
+      "key": "reminder-time",
+      "route": "system",
+      "title": "Choose a time",
+      "source": "EngReminders / native picker",
+      "controls": [
+        "t:Native time picker; Android Set/Cancel, iOS spinner.",
+        "b:Done>reminder-linked",
+        "t:Past times warn: choose a future date and time to receive an alert."
+      ]
+    },
+    {
+      "key": "reminder-duplicate",
+      "route": "system",
+      "title": "Similar reminder already scheduled",
+      "source": "EngReminders",
+      "controls": [
+        "t:A reminder for the same item at this date and time already exists. Keep both reminders?",
+        "b:Review reminder>reminder-linked",
+        "b:Keep both>details"
+      ]
+    },
+    {
+      "key": "reminder-discard",
+      "route": "system",
+      "title": "Discard reminder changes?",
+      "source": "EngReminders",
+      "controls": [
+        "t:Your unsaved reminder changes will be lost.",
+        "b:Keep editing>reminder-linked",
+        "b:Discard changes>reminders"
+      ]
+    },
+    {
+      "key": "settings",
+      "route": "/more",
+      "title": "Settings.",
+      "source": "FigmaSettings",
+      "controls": [
+        "t:PREFERENCES & PRIVACY",
+        "t:Your CasitaDex, your way.",
+        "b:Appearance>preferences",
+        "b:Accessibility>preferences",
+        "b:Spaces & categories>labels",
+        "b:Backup & restore>backup",
+        "b:Privacy & storage>storage",
+        "b:Privacy & security>privacy",
+        "b:About CasitaDex>help",
+        "b:Recently deleted>recovery"
+      ]
+    },
+    {
+      "key": "management",
+      "route": "/settings-manage",
+      "title": "More",
+      "source": "EngMore",
+      "controls": [
+        "t:Memories stay on this device. A local save is not a separate backup.",
+        "b:Storage & Cleanup>storage",
+        "b:Archived memories>find",
+        "b:Recently Deleted memories>find",
+        "b:Manage Spaces & Categories>labels",
+        "b:Backup & Restore>backup",
+        "b:Appearance & Accessibility>preferences",
+        "b:Help & About>help"
+      ]
+    },
+    {
+      "key": "storage",
+      "route": "/settings-manage?action=storage",
+      "title": "Storage & Cleanup",
+      "source": "EngMore",
+      "controls": [
+        "b:Back to More>management",
+        "b:Measure device storage>storage",
+        "b:Check photo integrity and protected owners>storage",
+        "t:Largest saved photos",
+        "t:Exact photo matches are advisory. No files are removed automatically.",
+        "b:Review unfinished draft and its photos>add",
+        "t:Permanent cleanup is unavailable in this Development build."
+      ]
+    },
+    {
+      "key": "labels",
+      "route": "/settings-manage?action=labels",
+      "title": "Manage Spaces and Categories",
+      "source": "LabelManager",
+      "controls": [
+        "b:Back to More>management",
+        "b:Spaces>labels",
+        "b:Categories>labels",
+        "b:SB40 Acceptance Space>label-selected",
+        "f:Label name|",
+        "b:Create new label>labels"
+      ]
+    },
+    {
+      "key": "label-selected",
+      "route": "/settings-manage?action=labels",
+      "title": "Manage labels \u00b7 selected",
+      "source": "LabelManager",
+      "controls": [
+        "b:Spaces>labels",
+        "b:Categories>labels",
+        "f:Label name|SB40 Acceptance Space Renamed",
+        "b:Create new label>labels",
+        "b:Rename selected label>labels",
+        "b:Review label removal>label-impact"
+      ]
+    },
+    {
+      "key": "label-impact",
+      "route": "/settings-manage?action=labels",
+      "title": "Review label removal",
+      "source": "LabelManager",
+      "controls": [
+        "t:Remove label from saved memories and unfinished draft? Memories and photos are kept. Removed Spaces become Unassigned.",
+        "b:Confirm remove label only>labels",
+        "b:Cancel label removal>label-selected"
+      ]
+    },
+    {
+      "key": "backup",
+      "route": "/settings-manage?action=backup",
+      "title": "Back up your memories",
+      "source": "EngMore",
+      "controls": [
+        "b:Back to More>management",
+        "t:Full v4 includes standalone reminders, records, taxonomy, draft and photos.",
+        "b:Save full backup (with draft and photos)>files",
+        "b:Review limited text backup (photos excluded)>backup-text",
+        "b:Save text report (no photos; not a backup)>files",
+        "b:Choose backup to review>backup-review",
+        "b:Recover previous full save>backup-recovery"
+      ]
+    },
+    {
+      "key": "backup-text",
+      "route": "/settings-manage?action=backup",
+      "title": "Limited text backup review",
+      "source": "EngMore",
+      "controls": [
+        "t:PHOTOS EXCLUDED \u00b7 omitted photo-only records and all photo bytes",
+        "b:Confirm save limited text backup>files",
+        "b:Cancel text backup>backup"
+      ]
+    },
+    {
+      "key": "backup-review",
+      "route": "/settings-manage?action=backup",
+      "title": "Review incoming backup",
+      "source": "EngMore",
+      "controls": [
+        "t:Review counts, lifecycle states, photos, draft and reminder replacement before confirming.",
+        "b:Keep current draft>backup-review",
+        "b:Use backed-up draft (previous state recoverable)>backup-review",
+        "b:Confirm replace with reviewed backup>backup",
+        "b:Cancel restore>backup"
+      ]
+    },
+    {
+      "key": "backup-recovery",
+      "route": "/settings-manage?action=backup",
+      "title": "Recover previous full save",
+      "source": "EngMore",
+      "controls": [
+        "t:Recover previous collection, draft, photos and standalone reminders? Current state becomes recoverable previous save.",
+        "b:Confirm full recovery>backup",
+        "b:Cancel recovery>backup"
+      ]
+    },
+    {
+      "key": "preferences",
+      "route": "/settings-manage?action=appearance",
+      "title": "Appearance & Accessibility",
+      "source": "EngMore",
+      "controls": [
+        "b:Back to More>management",
+        "b:Large text>preferences",
+        "b:System appearance>preferences",
+        "b:Light appearance>preferences",
+        "b:Dark appearance>preferences",
+        "t:Device text size and VoiceOver/TalkBack supported through system settings."
+      ]
+    },
+    {
+      "key": "privacy",
+      "route": "/settings-manage?action=privacy",
+      "title": "Privacy & security",
+      "source": "EngMore",
+      "controls": [
+        "b:Back to More>management",
+        "t:Memories are stored on this device. Backups and sharing are user-initiated. A local save is not a second backup.",
+        "b:Open backup protection>backup"
+      ]
+    },
+    {
+      "key": "help",
+      "route": "/settings-manage?action=help",
+      "title": "Help & About",
+      "source": "EngMore",
+      "controls": [
+        "b:Back to More>management",
+        "t:CasitaDex Development 0.1.0",
+        "t:Keep a verified full backup in a second location.",
+        "t:Verification records what you checked against a source; it is not a guarantee of correctness."
+      ]
+    },
+    {
+      "key": "recovery",
+      "route": "/settings-manage?action=recovery",
+      "title": "Recently deleted",
+      "source": "EngMore",
+      "controls": [
+        "b:Back to More>management",
+        "t:Recently deleted memories remain recoverable. Open Find to review them.",
+        "b:View recently deleted memories>find"
+      ]
+    },
+    {
+      "key": "share",
+      "route": "/share-memory",
+      "title": "Share memory",
+      "source": "EngShareMemory",
+      "controls": [
+        "b:\u2039 Memory details>details",
+        "b:Share selected details>system-share",
+        "t:Name and description are included by default.",
+        "b:\u2610 Location>share",
+        "b:\u2610 Notes>share",
+        "b:\u2610 Reference / source>share",
+        "b:\u2610 Space>share",
+        "b:\u2610 Categories>share",
+        "b:\u2610 Verification>share",
+        "b:\u2610 Reminder>share",
+        "b:\u2610 Photo 1>share-photo",
+        "b:Review what will be shared \u25be>share-preview",
+        "b:Cancel sharing>details"
+      ]
+    },
+    {
+      "key": "share-preview",
+      "route": "/share-memory",
+      "title": "Sharing preview",
+      "source": "EngShareMemory",
+      "controls": [
+        "b:Hide sharing preview \u25b4>share",
+        "t:MEMORY NAME \u00b7 HVAC return filter size",
+        "t:DESCRIPTION \u00b7 Filter size 20 x 25 x 1",
+        "t:Only selected optional fields and selected photos are included.",
+        "b:Share selected details>system-share",
+        "b:Cancel sharing>details"
+      ]
+    },
+    {
+      "key": "share-photo",
+      "route": "/share-memory",
+      "title": "Selected photos",
+      "source": "EngShareMemory",
+      "controls": [
+        "t:Photos \u00b7 1 of 2 selected",
+        "b:\u2611 Photo 1>share",
+        "b:\u2610 Photo 2>share-photo",
+        "t:Original photos may contain embedded metadata, including location.",
+        "b:Review what will be shared \u25be>share-preview",
+        "b:Share selected details>system-share"
+      ]
+    },
+    {
+      "key": "system-share",
+      "route": "system",
+      "title": "Share selected details",
+      "source": "Native share sheet",
+      "controls": [
+        "t:Native share sheet \u00b7 chosen application controls delivery.",
+        "b:Cancel>share"
+      ]
+    },
+    {
+      "key": "load-error",
+      "route": "shared",
+      "title": "Unable to load saved memories",
+      "source": "Native wrappers / Eng status",
+      "controls": [
+        "t:Your data was not changed.",
+        "b:Reload full collection>management",
+        "t:Loading, unavailable-record, missing-photo and failed-write statuses remain distinct in source."
+      ]
+    },
+    {
+      "key": "qa-review",
+      "route": "/sb29-review",
+      "title": "SB-29 CTA review only",
+      "source": "SB29Review",
+      "controls": [
+        "t:Isolated QA-only route \u00b7 no customer navigation entry",
+        "t:LIGHT / DARK \u00b7 enabled, focus and disabled CTA variants",
+        "b:Add Photo Memory>qa-review"
+      ]
+    },
+    {
+      "key": "reminder-management",
+      "route": "/reminders-manage",
+      "title": "Reminders \u00b7 management route",
+      "source": "EngReminders",
+      "controls": [
+        "t:Reminders are saved locally. Device alerts need permission and a future due time.",
+        "b:Enable device reminder alerts>reminder-management",
+        "b:Create Reminder>reminder-new",
+        "b:View Linked Memory>details",
+        "b:Manage reminder>reminder-management-actions"
+      ]
+    },
+    {
+      "key": "reminder-management-actions",
+      "route": "/reminders-manage",
+      "title": "Manage reminder",
+      "source": "EngReminders",
+      "controls": [
+        "b:Close actions>reminder-management",
+        "b:Edit>reminder-edit",
+        "b:Mark Complete>reminder-management",
+        "b:Mark Incomplete>reminder-management",
+        "b:Delete Reminder>reminder-delete"
+      ]
+    }
+  ],
+  "iOS": [
+    {
+      "key": "home",
+      "id": "373:4612",
+      "name": "iOS \u00b7 SB40 \u00b7 home",
+      "route": "/",
+      "source": "FigmaNativeHome / FigmaHome"
+    },
+    {
+      "key": "unfinished",
+      "id": "373:4648",
+      "name": "iOS \u00b7 SB40 \u00b7 unfinished",
+      "route": "/",
+      "source": "FigmaNativeHome"
+    },
+    {
+      "key": "find",
+      "id": "373:4678",
+      "name": "iOS \u00b7 SB40 \u00b7 find",
+      "route": "/answers",
+      "source": "NativeFind / FigmaFind"
+    },
+    {
+      "key": "find-empty",
+      "id": "373:4708",
+      "name": "iOS \u00b7 SB40 \u00b7 find-empty",
+      "route": "/answers",
+      "source": "NativeFind / FigmaFind"
+    },
+    {
+      "key": "find-browse",
+      "id": "373:4737",
+      "name": "iOS \u00b7 SB40 \u00b7 find-browse",
+      "route": "/answers",
+      "source": "NativeFind / FigmaFind"
+    },
+    {
+      "key": "memories",
+      "id": "373:4768",
+      "name": "iOS \u00b7 SB40 \u00b7 memories",
+      "route": "/memories",
+      "source": "NativeMemories / FigmaMemories"
+    },
+    {
+      "key": "memories-empty",
+      "id": "373:4795",
+      "name": "iOS \u00b7 SB40 \u00b7 memories-empty",
+      "route": "/memories",
+      "source": "NativeMemories / FigmaMemories"
+    },
+    {
+      "key": "details",
+      "id": "373:4821",
+      "name": "iOS \u00b7 SB40 \u00b7 details",
+      "route": "/card",
+      "source": "EngDetail"
+    },
+    {
+      "key": "details-more",
+      "id": "373:4876",
+      "name": "iOS \u00b7 SB40 \u00b7 details-more",
+      "route": "/card",
+      "source": "EngDetail"
+    },
+    {
+      "key": "details-archived",
+      "id": "373:4913",
+      "name": "iOS \u00b7 SB40 \u00b7 details-archived",
+      "route": "/card",
+      "source": "EngDetail"
+    },
+    {
+      "key": "delete-confirm",
+      "id": "373:4943",
+      "name": "iOS \u00b7 SB40 \u00b7 delete-confirm",
+      "route": "/card",
+      "source": "EngDetail"
+    },
+    {
+      "key": "details-deleted",
+      "id": "373:4971",
+      "name": "iOS \u00b7 SB40 \u00b7 details-deleted",
+      "route": "/card",
+      "source": "EngDetail"
+    },
+    {
+      "key": "edit",
+      "id": "373:5003",
+      "name": "iOS \u00b7 SB40 \u00b7 edit",
+      "route": "/card",
+      "source": "EngDetail"
+    },
+    {
+      "key": "edit-space",
+      "id": "373:5056",
+      "name": "iOS \u00b7 SB40 \u00b7 edit-space",
+      "route": "/card",
+      "source": "EngDetail"
+    },
+    {
+      "key": "edit-space-list",
+      "id": "373:5087",
+      "name": "iOS \u00b7 SB40 \u00b7 edit-space-list",
+      "route": "/card",
+      "source": "EngDetail"
+    },
+    {
+      "key": "edit-space-create",
+      "id": "373:5120",
+      "name": "iOS \u00b7 SB40 \u00b7 edit-space-create",
+      "route": "/card",
+      "source": "EngDetail"
+    },
+    {
+      "key": "edit-category",
+      "id": "373:5152",
+      "name": "iOS \u00b7 SB40 \u00b7 edit-category",
+      "route": "/card",
+      "source": "EngDetail"
+    },
+    {
+      "key": "edit-category-list",
+      "id": "373:5183",
+      "name": "iOS \u00b7 SB40 \u00b7 edit-category-list",
+      "route": "/card",
+      "source": "EngDetail"
+    },
+    {
+      "key": "edit-category-create",
+      "id": "373:5216",
+      "name": "iOS \u00b7 SB40 \u00b7 edit-category-create",
+      "route": "/card",
+      "source": "EngDetail"
+    },
+    {
+      "key": "direct-space",
+      "id": "373:5248",
+      "name": "iOS \u00b7 SB40 \u00b7 direct-space",
+      "route": "/card",
+      "source": "EngDetail"
+    },
+    {
+      "key": "direct-space-list",
+      "id": "373:5277",
+      "name": "iOS \u00b7 SB40 \u00b7 direct-space-list",
+      "route": "/card",
+      "source": "EngDetail"
+    },
+    {
+      "key": "direct-space-create",
+      "id": "373:5306",
+      "name": "iOS \u00b7 SB40 \u00b7 direct-space-create",
+      "route": "/card",
+      "source": "EngDetail"
+    },
+    {
+      "key": "direct-category",
+      "id": "373:5336",
+      "name": "iOS \u00b7 SB40 \u00b7 direct-category",
+      "route": "/card",
+      "source": "EngDetail"
+    },
+    {
+      "key": "direct-category-list",
+      "id": "373:5367",
+      "name": "iOS \u00b7 SB40 \u00b7 direct-category-list",
+      "route": "/card",
+      "source": "EngDetail"
+    },
+    {
+      "key": "direct-category-create",
+      "id": "373:5398",
+      "name": "iOS \u00b7 SB40 \u00b7 direct-category-create",
+      "route": "/card",
+      "source": "EngDetail"
+    },
+    {
+      "key": "reference",
+      "id": "373:5428",
+      "name": "iOS \u00b7 SB40 \u00b7 reference",
+      "route": "/card",
+      "source": "EngDetail"
+    },
+    {
+      "key": "verification",
+      "id": "373:5458",
+      "name": "iOS \u00b7 SB40 \u00b7 verification",
+      "route": "/card",
+      "source": "EngDetail"
+    },
+    {
+      "key": "history",
+      "id": "373:5498",
+      "name": "iOS \u00b7 SB40 \u00b7 history",
+      "route": "/card",
+      "source": "EngDetail"
+    },
+    {
+      "key": "memory-date",
+      "id": "373:5529",
+      "name": "iOS \u00b7 SB40 \u00b7 memory-date",
+      "route": "/card",
+      "source": "EngDetail"
+    },
+    {
+      "key": "photo-add",
+      "id": "373:5560",
+      "name": "iOS \u00b7 SB40 \u00b7 photo-add",
+      "route": "/add?mode=photo",
+      "source": "EngAdd"
+    },
+    {
+      "key": "add-duplicate",
+      "id": "373:5601",
+      "name": "iOS \u00b7 SB40 \u00b7 add-duplicate",
+      "route": "/add",
+      "source": "EngAdd"
+    },
+    {
+      "key": "add-draft-options",
+      "id": "373:5631",
+      "name": "iOS \u00b7 SB40 \u00b7 add-draft-options",
+      "route": "/add",
+      "source": "EngAdd"
+    },
+    {
+      "key": "photo-source",
+      "id": "373:5658",
+      "name": "iOS \u00b7 SB40 \u00b7 photo-source",
+      "route": "system",
+      "source": "EngAdd / EngDetail"
+    },
+    {
+      "key": "camera",
+      "id": "373:5671",
+      "name": "iOS \u00b7 SB40 \u00b7 camera",
+      "route": "system",
+      "source": "Native image picker"
+    },
+    {
+      "key": "library",
+      "id": "373:5679",
+      "name": "iOS \u00b7 SB40 \u00b7 library",
+      "route": "system",
+      "source": "Native image picker"
+    },
+    {
+      "key": "files",
+      "id": "373:5687",
+      "name": "iOS \u00b7 SB40 \u00b7 files",
+      "route": "system",
+      "source": "Native document picker"
+    },
+    {
+      "key": "photos",
+      "id": "373:5695",
+      "name": "iOS \u00b7 SB40 \u00b7 photos",
+      "route": "/photos",
+      "source": "NativePhotos / FigmaPhotos"
+    },
+    {
+      "key": "photos-empty",
+      "id": "373:5727",
+      "name": "iOS \u00b7 SB40 \u00b7 photos-empty",
+      "route": "/photos",
+      "source": "FigmaPhotos"
+    },
+    {
+      "key": "photo-draft-warning",
+      "id": "373:5753",
+      "name": "iOS \u00b7 SB40 \u00b7 photo-draft-warning",
+      "route": "/photos",
+      "source": "NativePhotos"
+    },
+    {
+      "key": "gallery-viewer",
+      "id": "373:5781",
+      "name": "iOS \u00b7 SB40 \u00b7 gallery-viewer",
+      "route": "/photos#viewer",
+      "source": "NativePhotos Modal"
+    },
+    {
+      "key": "photo-viewer",
+      "id": "373:5814",
+      "name": "iOS \u00b7 SB40 \u00b7 photo-viewer",
+      "route": "/photo-viewer",
+      "source": "FullScreenPhoto"
+    },
+    {
+      "key": "photo-remove",
+      "id": "373:5849",
+      "name": "iOS \u00b7 SB40 \u00b7 photo-remove",
+      "route": "/photo-viewer",
+      "source": "FullScreenPhoto"
+    },
+    {
+      "key": "photo-manage",
+      "id": "373:5877",
+      "name": "iOS \u00b7 SB40 \u00b7 photo-manage",
+      "route": "/photos-manage",
+      "source": "EngPhotos"
+    },
+    {
+      "key": "photo-manage-detail",
+      "id": "373:5903",
+      "name": "iOS \u00b7 SB40 \u00b7 photo-manage-detail",
+      "route": "/photos-manage",
+      "source": "EngPhotos"
+    },
+    {
+      "key": "reminders",
+      "id": "373:5937",
+      "name": "iOS \u00b7 SB40 \u00b7 reminders",
+      "route": "/reminders",
+      "source": "FigmaReminders"
+    },
+    {
+      "key": "reminders-overdue",
+      "id": "373:5979",
+      "name": "iOS \u00b7 SB40 \u00b7 reminders-overdue",
+      "route": "/reminders",
+      "source": "FigmaReminders"
+    },
+    {
+      "key": "reminders-completed",
+      "id": "373:6011",
+      "name": "iOS \u00b7 SB40 \u00b7 reminders-completed",
+      "route": "/reminders",
+      "source": "FigmaReminders"
+    },
+    {
+      "key": "reminders-memorydates",
+      "id": "373:6042",
+      "name": "iOS \u00b7 SB40 \u00b7 reminders-memorydates",
+      "route": "/reminders",
+      "source": "FigmaReminders"
+    },
+    {
+      "key": "reminders-more",
+      "id": "373:6071",
+      "name": "iOS \u00b7 SB40 \u00b7 reminders-more",
+      "route": "/reminders",
+      "source": "FigmaReminders"
+    },
+    {
+      "key": "reminder-delete",
+      "id": "373:6100",
+      "name": "iOS \u00b7 SB40 \u00b7 reminder-delete",
+      "route": "/reminders",
+      "source": "NativeReminders"
+    },
+    {
+      "key": "reminder-new",
+      "id": "373:6128",
+      "name": "iOS \u00b7 SB40 \u00b7 reminder-new",
+      "route": "/reminders-manage?mode=new",
+      "source": "EngReminders"
+    },
+    {
+      "key": "reminder-linked",
+      "id": "373:6165",
+      "name": "iOS \u00b7 SB40 \u00b7 reminder-linked",
+      "route": "/reminders-manage?mode=new&memoryId=\u2026",
+      "source": "EngReminders"
+    },
+    {
+      "key": "reminder-edit",
+      "id": "373:6204",
+      "name": "iOS \u00b7 SB40 \u00b7 reminder-edit",
+      "route": "/reminders-manage?id=\u2026",
+      "source": "EngReminders"
+    },
+    {
+      "key": "reminder-options",
+      "id": "373:6240",
+      "name": "iOS \u00b7 SB40 \u00b7 reminder-options",
+      "route": "/reminders-manage",
+      "source": "EngReminders"
+    },
+    {
+      "key": "reminder-date",
+      "id": "373:6281",
+      "name": "iOS \u00b7 SB40 \u00b7 reminder-date",
+      "route": "system",
+      "source": "EngReminders / native picker"
+    },
+    {
+      "key": "reminder-time",
+      "id": "373:6288",
+      "name": "iOS \u00b7 SB40 \u00b7 reminder-time",
+      "route": "system",
+      "source": "EngReminders / native picker"
+    },
+    {
+      "key": "reminder-duplicate",
+      "id": "373:6296",
+      "name": "iOS \u00b7 SB40 \u00b7 reminder-duplicate",
+      "route": "system",
+      "source": "EngReminders"
+    },
+    {
+      "key": "reminder-discard",
+      "id": "373:6305",
+      "name": "iOS \u00b7 SB40 \u00b7 reminder-discard",
+      "route": "system",
+      "source": "EngReminders"
+    },
+    {
+      "key": "settings",
+      "id": "373:6314",
+      "name": "iOS \u00b7 SB40 \u00b7 settings",
+      "route": "/more",
+      "source": "FigmaSettings"
+    },
+    {
+      "key": "management",
+      "id": "373:6355",
+      "name": "iOS \u00b7 SB40 \u00b7 management",
+      "route": "/settings-manage",
+      "source": "EngMore"
+    },
+    {
+      "key": "storage",
+      "id": "373:6393",
+      "name": "iOS \u00b7 SB40 \u00b7 storage",
+      "route": "/settings-manage?action=storage",
+      "source": "EngMore"
+    },
+    {
+      "key": "labels",
+      "id": "373:6427",
+      "name": "iOS \u00b7 SB40 \u00b7 labels",
+      "route": "/settings-manage?action=labels",
+      "source": "LabelManager"
+    },
+    {
+      "key": "label-selected",
+      "id": "373:6463",
+      "name": "iOS \u00b7 SB40 \u00b7 label-selected",
+      "route": "/settings-manage?action=labels",
+      "source": "LabelManager"
+    },
+    {
+      "key": "label-impact",
+      "id": "373:6499",
+      "name": "iOS \u00b7 SB40 \u00b7 label-impact",
+      "route": "/settings-manage?action=labels",
+      "source": "LabelManager"
+    },
+    {
+      "key": "backup",
+      "id": "373:6527",
+      "name": "iOS \u00b7 SB40 \u00b7 backup",
+      "route": "/settings-manage?action=backup",
+      "source": "EngMore"
+    },
+    {
+      "key": "backup-text",
+      "id": "373:6563",
+      "name": "iOS \u00b7 SB40 \u00b7 backup-text",
+      "route": "/settings-manage?action=backup",
+      "source": "EngMore"
+    },
+    {
+      "key": "backup-review",
+      "id": "373:6591",
+      "name": "iOS \u00b7 SB40 \u00b7 backup-review",
+      "route": "/settings-manage?action=backup",
+      "source": "EngMore"
+    },
+    {
+      "key": "backup-recovery",
+      "id": "373:6623",
+      "name": "iOS \u00b7 SB40 \u00b7 backup-recovery",
+      "route": "/settings-manage?action=backup",
+      "source": "EngMore"
+    },
+    {
+      "key": "preferences",
+      "id": "373:6651",
+      "name": "iOS \u00b7 SB40 \u00b7 preferences",
+      "route": "/settings-manage?action=appearance",
+      "source": "EngMore"
+    },
+    {
+      "key": "privacy",
+      "id": "373:6685",
+      "name": "iOS \u00b7 SB40 \u00b7 privacy",
+      "route": "/settings-manage?action=privacy",
+      "source": "EngMore"
+    },
+    {
+      "key": "help",
+      "id": "373:6713",
+      "name": "iOS \u00b7 SB40 \u00b7 help",
+      "route": "/settings-manage?action=help",
+      "source": "EngMore"
+    },
+    {
+      "key": "recovery",
+      "id": "373:6741",
+      "name": "iOS \u00b7 SB40 \u00b7 recovery",
+      "route": "/settings-manage?action=recovery",
+      "source": "EngMore"
+    },
+    {
+      "key": "share",
+      "id": "373:6769",
+      "name": "iOS \u00b7 SB40 \u00b7 share",
+      "route": "/share-memory",
+      "source": "EngShareMemory"
+    },
+    {
+      "key": "share-preview",
+      "id": "373:6817",
+      "name": "iOS \u00b7 SB40 \u00b7 share-preview",
+      "route": "/share-memory",
+      "source": "EngShareMemory"
+    },
+    {
+      "key": "share-photo",
+      "id": "373:6849",
+      "name": "iOS \u00b7 SB40 \u00b7 share-photo",
+      "route": "/share-memory",
+      "source": "EngShareMemory"
+    },
+    {
+      "key": "system-share",
+      "id": "373:6882",
+      "name": "iOS \u00b7 SB40 \u00b7 system-share",
+      "route": "system",
+      "source": "Native share sheet"
+    },
+    {
+      "key": "load-error",
+      "id": "373:6889",
+      "name": "iOS \u00b7 SB40 \u00b7 load-error",
+      "route": "shared",
+      "source": "Native wrappers / Eng status"
+    },
+    {
+      "key": "qa-review",
+      "id": "373:6897",
+      "name": "iOS \u00b7 SB40 \u00b7 qa-review",
+      "route": "/sb29-review",
+      "source": "SB29Review"
+    },
+    {
+      "key": "reminder-management",
+      "id": "380:1790",
+      "name": "iOS \u00b7 SB40 \u00b7 reminder-management",
+      "route": "/reminders-manage",
+      "source": "EngReminders"
+    },
+    {
+      "key": "reminder-management-actions",
+      "id": "380:1822",
+      "name": "iOS \u00b7 SB40 \u00b7 reminder-management-actions",
+      "route": "/reminders-manage",
+      "source": "EngReminders"
+    }
+  ],
+  "Android": [
+    {
+      "key": "home",
+      "id": "373:7246",
+      "name": "Android \u00b7 SB40 \u00b7 home",
+      "route": "/",
+      "source": "FigmaNativeHome / FigmaHome"
+    },
+    {
+      "key": "unfinished",
+      "id": "373:7282",
+      "name": "Android \u00b7 SB40 \u00b7 unfinished",
+      "route": "/",
+      "source": "FigmaNativeHome"
+    },
+    {
+      "key": "find",
+      "id": "373:7312",
+      "name": "Android \u00b7 SB40 \u00b7 find",
+      "route": "/answers",
+      "source": "NativeFind / FigmaFind"
+    },
+    {
+      "key": "find-empty",
+      "id": "373:7342",
+      "name": "Android \u00b7 SB40 \u00b7 find-empty",
+      "route": "/answers",
+      "source": "NativeFind / FigmaFind"
+    },
+    {
+      "key": "find-browse",
+      "id": "373:7371",
+      "name": "Android \u00b7 SB40 \u00b7 find-browse",
+      "route": "/answers",
+      "source": "NativeFind / FigmaFind"
+    },
+    {
+      "key": "memories",
+      "id": "373:7402",
+      "name": "Android \u00b7 SB40 \u00b7 memories",
+      "route": "/memories",
+      "source": "NativeMemories / FigmaMemories"
+    },
+    {
+      "key": "memories-empty",
+      "id": "373:7429",
+      "name": "Android \u00b7 SB40 \u00b7 memories-empty",
+      "route": "/memories",
+      "source": "NativeMemories / FigmaMemories"
+    },
+    {
+      "key": "details",
+      "id": "373:7455",
+      "name": "Android \u00b7 SB40 \u00b7 details",
+      "route": "/card",
+      "source": "EngDetail"
+    },
+    {
+      "key": "details-more",
+      "id": "373:7510",
+      "name": "Android \u00b7 SB40 \u00b7 details-more",
+      "route": "/card",
+      "source": "EngDetail"
+    },
+    {
+      "key": "details-archived",
+      "id": "373:7547",
+      "name": "Android \u00b7 SB40 \u00b7 details-archived",
+      "route": "/card",
+      "source": "EngDetail"
+    },
+    {
+      "key": "delete-confirm",
+      "id": "373:7577",
+      "name": "Android \u00b7 SB40 \u00b7 delete-confirm",
+      "route": "/card",
+      "source": "EngDetail"
+    },
+    {
+      "key": "details-deleted",
+      "id": "373:7605",
+      "name": "Android \u00b7 SB40 \u00b7 details-deleted",
+      "route": "/card",
+      "source": "EngDetail"
+    },
+    {
+      "key": "edit",
+      "id": "373:7637",
+      "name": "Android \u00b7 SB40 \u00b7 edit",
+      "route": "/card",
+      "source": "EngDetail"
+    },
+    {
+      "key": "edit-space",
+      "id": "373:7690",
+      "name": "Android \u00b7 SB40 \u00b7 edit-space",
+      "route": "/card",
+      "source": "EngDetail"
+    },
+    {
+      "key": "edit-space-list",
+      "id": "373:7721",
+      "name": "Android \u00b7 SB40 \u00b7 edit-space-list",
+      "route": "/card",
+      "source": "EngDetail"
+    },
+    {
+      "key": "edit-space-create",
+      "id": "373:7754",
+      "name": "Android \u00b7 SB40 \u00b7 edit-space-create",
+      "route": "/card",
+      "source": "EngDetail"
+    },
+    {
+      "key": "edit-category",
+      "id": "373:7786",
+      "name": "Android \u00b7 SB40 \u00b7 edit-category",
+      "route": "/card",
+      "source": "EngDetail"
+    },
+    {
+      "key": "edit-category-list",
+      "id": "373:7817",
+      "name": "Android \u00b7 SB40 \u00b7 edit-category-list",
+      "route": "/card",
+      "source": "EngDetail"
+    },
+    {
+      "key": "edit-category-create",
+      "id": "373:7850",
+      "name": "Android \u00b7 SB40 \u00b7 edit-category-create",
+      "route": "/card",
+      "source": "EngDetail"
+    },
+    {
+      "key": "direct-space",
+      "id": "373:7882",
+      "name": "Android \u00b7 SB40 \u00b7 direct-space",
+      "route": "/card",
+      "source": "EngDetail"
+    },
+    {
+      "key": "direct-space-list",
+      "id": "373:7911",
+      "name": "Android \u00b7 SB40 \u00b7 direct-space-list",
+      "route": "/card",
+      "source": "EngDetail"
+    },
+    {
+      "key": "direct-space-create",
+      "id": "373:7940",
+      "name": "Android \u00b7 SB40 \u00b7 direct-space-create",
+      "route": "/card",
+      "source": "EngDetail"
+    },
+    {
+      "key": "direct-category",
+      "id": "373:7970",
+      "name": "Android \u00b7 SB40 \u00b7 direct-category",
+      "route": "/card",
+      "source": "EngDetail"
+    },
+    {
+      "key": "direct-category-list",
+      "id": "373:8001",
+      "name": "Android \u00b7 SB40 \u00b7 direct-category-list",
+      "route": "/card",
+      "source": "EngDetail"
+    },
+    {
+      "key": "direct-category-create",
+      "id": "373:8032",
+      "name": "Android \u00b7 SB40 \u00b7 direct-category-create",
+      "route": "/card",
+      "source": "EngDetail"
+    },
+    {
+      "key": "reference",
+      "id": "373:8062",
+      "name": "Android \u00b7 SB40 \u00b7 reference",
+      "route": "/card",
+      "source": "EngDetail"
+    },
+    {
+      "key": "verification",
+      "id": "373:8092",
+      "name": "Android \u00b7 SB40 \u00b7 verification",
+      "route": "/card",
+      "source": "EngDetail"
+    },
+    {
+      "key": "history",
+      "id": "373:8132",
+      "name": "Android \u00b7 SB40 \u00b7 history",
+      "route": "/card",
+      "source": "EngDetail"
+    },
+    {
+      "key": "memory-date",
+      "id": "373:8163",
+      "name": "Android \u00b7 SB40 \u00b7 memory-date",
+      "route": "/card",
+      "source": "EngDetail"
+    },
+    {
+      "key": "photo-add",
+      "id": "373:8194",
+      "name": "Android \u00b7 SB40 \u00b7 photo-add",
+      "route": "/add?mode=photo",
+      "source": "EngAdd"
+    },
+    {
+      "key": "add-duplicate",
+      "id": "373:8235",
+      "name": "Android \u00b7 SB40 \u00b7 add-duplicate",
+      "route": "/add",
+      "source": "EngAdd"
+    },
+    {
+      "key": "add-draft-options",
+      "id": "373:8265",
+      "name": "Android \u00b7 SB40 \u00b7 add-draft-options",
+      "route": "/add",
+      "source": "EngAdd"
+    },
+    {
+      "key": "photo-source",
+      "id": "373:8292",
+      "name": "Android \u00b7 SB40 \u00b7 photo-source",
+      "route": "system",
+      "source": "EngAdd / EngDetail"
+    },
+    {
+      "key": "camera",
+      "id": "373:8305",
+      "name": "Android \u00b7 SB40 \u00b7 camera",
+      "route": "system",
+      "source": "Native image picker"
+    },
+    {
+      "key": "library",
+      "id": "373:8313",
+      "name": "Android \u00b7 SB40 \u00b7 library",
+      "route": "system",
+      "source": "Native image picker"
+    },
+    {
+      "key": "files",
+      "id": "373:8321",
+      "name": "Android \u00b7 SB40 \u00b7 files",
+      "route": "system",
+      "source": "Native document picker"
+    },
+    {
+      "key": "photos",
+      "id": "373:8329",
+      "name": "Android \u00b7 SB40 \u00b7 photos",
+      "route": "/photos",
+      "source": "NativePhotos / FigmaPhotos"
+    },
+    {
+      "key": "photos-empty",
+      "id": "373:8361",
+      "name": "Android \u00b7 SB40 \u00b7 photos-empty",
+      "route": "/photos",
+      "source": "FigmaPhotos"
+    },
+    {
+      "key": "photo-draft-warning",
+      "id": "373:8387",
+      "name": "Android \u00b7 SB40 \u00b7 photo-draft-warning",
+      "route": "/photos",
+      "source": "NativePhotos"
+    },
+    {
+      "key": "gallery-viewer",
+      "id": "373:8415",
+      "name": "Android \u00b7 SB40 \u00b7 gallery-viewer",
+      "route": "/photos#viewer",
+      "source": "NativePhotos Modal"
+    },
+    {
+      "key": "photo-viewer",
+      "id": "373:8448",
+      "name": "Android \u00b7 SB40 \u00b7 photo-viewer",
+      "route": "/photo-viewer",
+      "source": "FullScreenPhoto"
+    },
+    {
+      "key": "photo-remove",
+      "id": "373:8483",
+      "name": "Android \u00b7 SB40 \u00b7 photo-remove",
+      "route": "/photo-viewer",
+      "source": "FullScreenPhoto"
+    },
+    {
+      "key": "photo-manage",
+      "id": "373:8511",
+      "name": "Android \u00b7 SB40 \u00b7 photo-manage",
+      "route": "/photos-manage",
+      "source": "EngPhotos"
+    },
+    {
+      "key": "photo-manage-detail",
+      "id": "373:8537",
+      "name": "Android \u00b7 SB40 \u00b7 photo-manage-detail",
+      "route": "/photos-manage",
+      "source": "EngPhotos"
+    },
+    {
+      "key": "reminders",
+      "id": "373:8571",
+      "name": "Android \u00b7 SB40 \u00b7 reminders",
+      "route": "/reminders",
+      "source": "FigmaReminders"
+    },
+    {
+      "key": "reminders-overdue",
+      "id": "373:8613",
+      "name": "Android \u00b7 SB40 \u00b7 reminders-overdue",
+      "route": "/reminders",
+      "source": "FigmaReminders"
+    },
+    {
+      "key": "reminders-completed",
+      "id": "373:8645",
+      "name": "Android \u00b7 SB40 \u00b7 reminders-completed",
+      "route": "/reminders",
+      "source": "FigmaReminders"
+    },
+    {
+      "key": "reminders-memorydates",
+      "id": "373:8676",
+      "name": "Android \u00b7 SB40 \u00b7 reminders-memorydates",
+      "route": "/reminders",
+      "source": "FigmaReminders"
+    },
+    {
+      "key": "reminders-more",
+      "id": "373:8705",
+      "name": "Android \u00b7 SB40 \u00b7 reminders-more",
+      "route": "/reminders",
+      "source": "FigmaReminders"
+    },
+    {
+      "key": "reminder-delete",
+      "id": "373:8734",
+      "name": "Android \u00b7 SB40 \u00b7 reminder-delete",
+      "route": "/reminders",
+      "source": "NativeReminders"
+    },
+    {
+      "key": "reminder-new",
+      "id": "373:8762",
+      "name": "Android \u00b7 SB40 \u00b7 reminder-new",
+      "route": "/reminders-manage?mode=new",
+      "source": "EngReminders"
+    },
+    {
+      "key": "reminder-linked",
+      "id": "373:8799",
+      "name": "Android \u00b7 SB40 \u00b7 reminder-linked",
+      "route": "/reminders-manage?mode=new&memoryId=\u2026",
+      "source": "EngReminders"
+    },
+    {
+      "key": "reminder-edit",
+      "id": "373:8838",
+      "name": "Android \u00b7 SB40 \u00b7 reminder-edit",
+      "route": "/reminders-manage?id=\u2026",
+      "source": "EngReminders"
+    },
+    {
+      "key": "reminder-options",
+      "id": "373:8874",
+      "name": "Android \u00b7 SB40 \u00b7 reminder-options",
+      "route": "/reminders-manage",
+      "source": "EngReminders"
+    },
+    {
+      "key": "reminder-date",
+      "id": "373:8915",
+      "name": "Android \u00b7 SB40 \u00b7 reminder-date",
+      "route": "system",
+      "source": "EngReminders / native picker"
+    },
+    {
+      "key": "reminder-time",
+      "id": "373:8922",
+      "name": "Android \u00b7 SB40 \u00b7 reminder-time",
+      "route": "system",
+      "source": "EngReminders / native picker"
+    },
+    {
+      "key": "reminder-duplicate",
+      "id": "373:8930",
+      "name": "Android \u00b7 SB40 \u00b7 reminder-duplicate",
+      "route": "system",
+      "source": "EngReminders"
+    },
+    {
+      "key": "reminder-discard",
+      "id": "373:8939",
+      "name": "Android \u00b7 SB40 \u00b7 reminder-discard",
+      "route": "system",
+      "source": "EngReminders"
+    },
+    {
+      "key": "settings",
+      "id": "373:8948",
+      "name": "Android \u00b7 SB40 \u00b7 settings",
+      "route": "/more",
+      "source": "FigmaSettings"
+    },
+    {
+      "key": "management",
+      "id": "373:8989",
+      "name": "Android \u00b7 SB40 \u00b7 management",
+      "route": "/settings-manage",
+      "source": "EngMore"
+    },
+    {
+      "key": "storage",
+      "id": "373:9027",
+      "name": "Android \u00b7 SB40 \u00b7 storage",
+      "route": "/settings-manage?action=storage",
+      "source": "EngMore"
+    },
+    {
+      "key": "labels",
+      "id": "373:9061",
+      "name": "Android \u00b7 SB40 \u00b7 labels",
+      "route": "/settings-manage?action=labels",
+      "source": "LabelManager"
+    },
+    {
+      "key": "label-selected",
+      "id": "373:9097",
+      "name": "Android \u00b7 SB40 \u00b7 label-selected",
+      "route": "/settings-manage?action=labels",
+      "source": "LabelManager"
+    },
+    {
+      "key": "label-impact",
+      "id": "373:9133",
+      "name": "Android \u00b7 SB40 \u00b7 label-impact",
+      "route": "/settings-manage?action=labels",
+      "source": "LabelManager"
+    },
+    {
+      "key": "backup",
+      "id": "373:9161",
+      "name": "Android \u00b7 SB40 \u00b7 backup",
+      "route": "/settings-manage?action=backup",
+      "source": "EngMore"
+    },
+    {
+      "key": "backup-text",
+      "id": "373:9197",
+      "name": "Android \u00b7 SB40 \u00b7 backup-text",
+      "route": "/settings-manage?action=backup",
+      "source": "EngMore"
+    },
+    {
+      "key": "backup-review",
+      "id": "373:9225",
+      "name": "Android \u00b7 SB40 \u00b7 backup-review",
+      "route": "/settings-manage?action=backup",
+      "source": "EngMore"
+    },
+    {
+      "key": "backup-recovery",
+      "id": "373:9257",
+      "name": "Android \u00b7 SB40 \u00b7 backup-recovery",
+      "route": "/settings-manage?action=backup",
+      "source": "EngMore"
+    },
+    {
+      "key": "preferences",
+      "id": "373:9285",
+      "name": "Android \u00b7 SB40 \u00b7 preferences",
+      "route": "/settings-manage?action=appearance",
+      "source": "EngMore"
+    },
+    {
+      "key": "privacy",
+      "id": "373:9319",
+      "name": "Android \u00b7 SB40 \u00b7 privacy",
+      "route": "/settings-manage?action=privacy",
+      "source": "EngMore"
+    },
+    {
+      "key": "help",
+      "id": "373:9347",
+      "name": "Android \u00b7 SB40 \u00b7 help",
+      "route": "/settings-manage?action=help",
+      "source": "EngMore"
+    },
+    {
+      "key": "recovery",
+      "id": "373:9375",
+      "name": "Android \u00b7 SB40 \u00b7 recovery",
+      "route": "/settings-manage?action=recovery",
+      "source": "EngMore"
+    },
+    {
+      "key": "share",
+      "id": "373:9403",
+      "name": "Android \u00b7 SB40 \u00b7 share",
+      "route": "/share-memory",
+      "source": "EngShareMemory"
+    },
+    {
+      "key": "share-preview",
+      "id": "373:9451",
+      "name": "Android \u00b7 SB40 \u00b7 share-preview",
+      "route": "/share-memory",
+      "source": "EngShareMemory"
+    },
+    {
+      "key": "share-photo",
+      "id": "373:9483",
+      "name": "Android \u00b7 SB40 \u00b7 share-photo",
+      "route": "/share-memory",
+      "source": "EngShareMemory"
+    },
+    {
+      "key": "system-share",
+      "id": "373:9516",
+      "name": "Android \u00b7 SB40 \u00b7 system-share",
+      "route": "system",
+      "source": "Native share sheet"
+    },
+    {
+      "key": "load-error",
+      "id": "373:9523",
+      "name": "Android \u00b7 SB40 \u00b7 load-error",
+      "route": "shared",
+      "source": "Native wrappers / Eng status"
+    },
+    {
+      "key": "qa-review",
+      "id": "373:9531",
+      "name": "Android \u00b7 SB40 \u00b7 qa-review",
+      "route": "/sb29-review",
+      "source": "SB29Review"
+    },
+    {
+      "key": "reminder-management",
+      "id": "381:2052",
+      "name": "Android \u00b7 SB40 \u00b7 reminder-management",
+      "route": "/reminders-manage",
+      "source": "EngReminders"
+    },
+    {
+      "key": "reminder-management-actions",
+      "id": "381:2084",
+      "name": "Android \u00b7 SB40 \u00b7 reminder-management-actions",
+      "route": "/reminders-manage",
+      "source": "EngReminders"
+    }
+  ],
+  "links": 474,
+  "badDestinations": 0,
+  "preservedPages": {
+    "ownerPrimary": "347:2",
+    "inlineAdd": "360:2",
+    "monetization": "355:2",
+    "withdrawnWrongSource": "351:2"
+  }
+}

@@ -1,0 +1,20 @@
+{"at":"2026-11-08T15:30:31.365Z","case":"dimension-search","status":"PASS","query":"20x25x1"}
+{"at":"2026-11-08T15:30:35.429Z","case":"dimension-search","status":"PASS","query":"20 X 25 X 1"}
+{"at":"2026-11-08T15:30:39.219Z","case":"dimension-search","status":"PASS","query":"20×25×1"}
+{"at":"2026-11-08T15:30:43.019Z","case":"dimension-search","status":"PASS","query":"20 25 1"}
+{"at":"2026-11-08T15:32:37.961Z","case":"add-create-and-assign-space","status":"PASS","value":"SB40 Acceptance Space"}
+{"at":"2026-11-08T15:32:53.810Z","case":"add-create-and-assign-category","status":"PASS","value":"SB40 Acceptance Category"}
+{"at":"2026-11-08T15:33:09.622Z","case":"saved-space-category-associations","status":"PASS","memoryId":"e_mw7zoomc_2sx3s0pmjk"}
+{"at":"2026-11-08T15:33:18.637Z","case":"cancel-taxonomy-assignment-edits","status":"PASS"}
+{"at":"2026-11-08T15:33:22.028Z","case":"linked-reminder-save-returns-originating-memory","status":"PASS","memoryId":"e_mw7zoomc_2sx3s0pmjk"}
+{"at":"2026-11-08T15:33:22.247Z","case":"phase-one-complete","status":"PASS"}
+{"at":"2026-11-08T15:37:45.073Z","case":"direct-details-create-and-assign-second-category","status":"PASS","categories":["SB40 Acceptance Category","SB40 Acceptance Category B"]}
+{"at":"2026-11-08T15:42:08.751Z","case":"full-edit-save-space-unassignment","status":"PASS"}
+{"at":"2026-11-08T15:42:08.754Z","case":"multiple-categories-persist","status":"PASS","count":2}
+{"at":"2026-11-08T15:42:28.082Z","case":"rename-spaces","status":"PASS","from":"SB40 Acceptance Space","to":"SB40 Acceptance Space Renamed"}
+{"at":"2026-11-08T15:42:31.814Z","case":"cancel-label-removal-spaces","status":"PASS"}
+{"at":"2026-11-08T15:42:35.766Z","case":"remove-label-keeps-memory-spaces","status":"PASS"}
+{"at":"2026-11-08T15:42:54.604Z","case":"rename-categories","status":"PASS","from":"SB40 Acceptance Category B","to":"SB40 Acceptance Category B Renamed"}
+{"at":"2026-11-08T15:42:59.831Z","case":"cancel-label-removal-categories","status":"PASS"}
+{"at":"2026-11-08T15:43:04.081Z","case":"remove-label-keeps-memory-categories","status":"PASS"}
+{"at":"2026-11-08T15:43:14.775Z","case":"taxonomy-survives-relaunch","status":"PASS"}

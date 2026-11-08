@@ -1,5 +1,7 @@
 # SB40 route and control reconciliation
 
+Current status: the four-item follow-up is complete for tested native iOS/Android behavior and source/control-state mapping. See [final report](SB40_FOUR_ITEMS_RETURN_REPORT_20261108.md). The recovery-checkpoint text below is historical; current fixes are at 21b82e5, with 416 tests passed, zero failed and six skipped.
+
 Authority: owner-selected SB40. This register describes the recovered source at [773f1c5](https://github.com/netid2000-ui/CasitaDex/tree/773f1c5e9568f17ec6933f41ce408b72b554c23a). It replaces assumptions taken from the withdrawn .dev map. Source-mapped behavior is not fresh native acceptance or pixel-perfect visual approval.
 
 ## Source checkpoint
@@ -15,7 +17,7 @@ The checkpoint contains the recovered JavaScript/configuration/assets; generated
 | / | FigmaNativeHome / FigmaHome | Home commands route regular/photo capture to /add or /add?mode=photo; reminder command to /reminders-manage?mode=new&origin=home. Existing unfinished draft triggers Resume/discard decision. QA identity seeds synthetic baseline fixtures; do not ship this seeding configuration. |
 | /add | EngAdd | Adding a Memory; sticky Cancel and Save; required name, Description, Space/Categories; Location, Notes, Reference inline Edit/Done; photos up to five. See corrected editable variants on this page. |
 | /card?id=… | EngDetail | Sticky Results, Edit memory, More. Saved name/description/location/notes field edits enter full edit; Reference has its own Save reference/Cancel panel. Photos open /photo-viewer. |
-| /answers | NativeFind / FigmaFind | Controlled Search memories; count, Browse memories/Search results, regular/photo memory result rows; open /card. Query/page/scroll preservation belongs to this wrapper. Previous/Next belong to wrapper, not unused EngFind. |
+| /answers | NativeFind / FigmaFind | Controlled Search memories; count, Browse memories/Search results, regular/photo memory result rows; open /card. Query/page/scroll preservation belongs to this wrapper. The active wrapper renders no Previous/Next controls; retained page callbacks are unused. |
 | /photos | NativePhotos / FigmaPhotos | Add Photo Memory; owning-memory title opens Details; each thumbnail has full-screen action; local viewer preserves gallery context. Do not substitute EngPhotos as this tab. |
 | /reminders | NativeReminders / FigmaReminders | Add/edit, completion/restore, linked View Memory, delete confirmation, memory-due projections. Distinct from editor route below. |
 | /more | NativeSettings / FigmaSettings | Eight entries: Appearance, Accessibility, Spaces & categories, Backup & restore, Privacy & storage, Privacy & security, About CasitaDex, Recently deleted. Each passes an action ID to /settings-manage. |
@@ -47,7 +49,7 @@ Required Reminder title *, Date, Time (AM / PM), optional More options with Once
 
 Cancel leaves through a dirty-change confirmation when needed. Linked Return to Memory Details also protects unsaved changes.
 
-**Observed gap:** Save currently returns Home for origin=home, otherwise Reminders; memoryId is correctly persisted, but linked Save does not return to originating Details. Expected owner behavior is return to Memory Details. Keep this issue explicit; do not mark it fixed in Figma.
+**Fixed at 21b82e5:** linked reminder Save returns to the originating Memory Details. Native iOS and Android passed. Unlinked destinations remain context-sensitive.
 
 The 75-item journey verified one linked reminder, View Memory, completion, and persistence. It did not verify scheduled notification delivery or notification-tap routing.
 
@@ -56,7 +58,7 @@ The 75-item journey verified one linked reminder, View Memory, completion, and p
 | **Section** | **Source-mapped controls** | **Acceptance boundary** |
 |---|---|---|
 | Appearance / Accessibility | Large text; System, Light, Dark appearance; device text-size and screen-reader guidance | Actual maximum-size, VoiceOver/TalkBack and landscape checks remain open. |
-| Spaces & categories | Existing label selection, name/create/rename controls, impact review, Confirm remove label only / Cancel label removal | Household organization probe was cancelled; no Space/Category assignment pass is claimed. |
+| Spaces & categories | Existing label selection, name/create/rename controls, impact review, Confirm remove label only / Cancel label removal | The original probe was cancelled. Subsequent native iOS/Android acceptance passed; see the final report. |
 | Privacy & storage | Measure device storage; Check photo integrity and protected owners; largest photos; duplicate advisory; Review unfinished draft and its photos | No automatic cleanup or permanent purge. Archive/delete do not reclaim photo bytes. |
 | Privacy & security | Local storage explanation, user-initiated sharing/backups; Open backup protection | Full security/release review remains independent. |
 | Recently deleted | View recently deleted memories → /answers | Verify the active Find wrapper actually applies requested lifecycle context. Old EngFind cache behavior alone is insufficient evidence. |
@@ -83,7 +85,7 @@ Photo source sheet: Take Photo, Choose from Library, Browse Files, Cancel. Syste
 
 [Household journey report](https://github.com/netid2000-ui/CasitaDex/blob/db129dee01acd63559929d7cbcfc59f9dbccfa3d/docs/qa/SB40_HOUSE75_OWNER_JOURNEY_20261108.md): 75 new records, 165 total including 90 baseline fixtures; 15 search/open/return cases; one structured Location edit; one photo and one linked completed reminder. No taxonomy assignments were made.
 
-Open implementation issues: dimension-query normalization (20x25x1 versus spaced tokens), linked-reminder Save return context, and verify lifecycle-filter handoff to actual Find wrapper. Open reconciliation: remaining secondary editable visual states must be compared against SB40, not cloned from withdrawn page 45. Source route/control coverage does not certify visual parity.
+Dimension normalization and linked reminder Save return are fixed and native-verified. Secondary source/control reconciliation is complete: 160 editable states, 474 valid links and 14 routes. Pixel-level visual parity remains separate. Legacy lifecycle-filter handoff remains an independently open defect.
 
 No store submission, billing activation, release merge or production deployment is authorized by this register. Both source validation and native artifact acceptance remain required before promotion.
 
