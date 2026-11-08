@@ -1,0 +1,9 @@
+{
+  "name": "designs-by-fa-parity-tools",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "pixelmatch": "8.0.0",
+    "pngjs": "7.0.0"
+  }
+}

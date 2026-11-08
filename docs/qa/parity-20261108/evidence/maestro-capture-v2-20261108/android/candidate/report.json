@@ -1,0 +1,23 @@
+{
+  "platform": "android",
+  "role": "candidate",
+  "runId": "maestro-capture-v2-20261108",
+  "sourceCommit": "21b82e5b263554929ae89b83233d9f5e0a131582",
+  "flow": "capture",
+  "identity": {
+    "status": "PASS",
+    "device": "emulator-5554",
+    "appId": "com.designsbyfa.casitadex.sb40qa",
+    "apkSha256": "b4f238cce6e005805673e91eba7827b9577b688b4a17fa9373205313fbc5da57"
+  },
+  "functional": "PASS",
+  "visual": "READY_FOR_EXPLICIT_REFERENCE_COMPARISON",
+  "baselinePromotion": "NEVER_AUTOMATIC",
+  "maestroExitCode": 0,
+  "captures": {
+    "home": "3024c49de4c1bf745100cd32a05cf4f8a946d18e617560ee9f88a41da67721d3",
+    "add": "26dacf77903903b55afee492caa59cf89e8452c90f7c74b4ac1c3ffe107b776a",
+    "inline-location": "3da06705169a198ce22540c89dce4e0575cec1e36da8a9e879e01b3d76b1c823"
+  },
+  "artifactCollectorCorrection": "Nested Maestro 2.12 output layout; no UI rerun or baseline promotion"
+}

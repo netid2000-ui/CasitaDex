@@ -1,0 +1,18 @@
+{
+  "platform": "android",
+  "role": "reference",
+  "runId": "sb40-reference-20261108",
+  "sourceCommit": null,
+  "candidateSourceCommit": "21b82e5b263554929ae89b83233d9f5e0a131582",
+  "flow": "capture",
+  "identity": {
+    "status": "PASS",
+    "device": "emulator-5554",
+    "appId": "com.designsbyfa.casitadex.sb40qa",
+    "apkSha256": "01e40085176127b815b0870fabbd4d915f463acdea5d8d4e0eb830871467d3bf"
+  },
+  "functional": "FAIL",
+  "visual": "NOT_RUN",
+  "baselinePromotion": "NEVER_AUTOMATIC",
+  "maestroExitCode": 1
+}

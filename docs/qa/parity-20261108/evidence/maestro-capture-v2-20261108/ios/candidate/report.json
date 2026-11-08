@@ -1,0 +1,23 @@
+{
+  "platform": "ios",
+  "role": "candidate",
+  "runId": "maestro-capture-v2-20261108",
+  "sourceCommit": "21b82e5b263554929ae89b83233d9f5e0a131582",
+  "flow": "capture",
+  "identity": {
+    "status": "PASS",
+    "device": "A4ED0D8B-C90A-4940-9B71-4F570D7DC597",
+    "appId": "com.designsbyfa.casitadex.sb40qa",
+    "executableSha256": "5f5e15004d2c5b1e548da9547fdd0defcff39cd29b6625b4aa3da896029d0cac",
+    "bundleSha256": "04daaba5b8027ed1340d82c6ee44c3167928177471afb7ff0c2056e7508a6d92"
+  },
+  "functional": "PASS",
+  "visual": "READY_FOR_EXPLICIT_REFERENCE_COMPARISON",
+  "baselinePromotion": "NEVER_AUTOMATIC",
+  "maestroExitCode": 0,
+  "captures": {
+    "home": "a72364654a0d0e0fa7369dd046ec7ce74e1d07eb86fca9c60c522273a27f016a",
+    "add": "819828bcf770c9441d2fa4100e927b744d6b365a692caae7fe4dcd469ab14bb9",
+    "inline-location": "9cdb4d7b0dd2196f8e988529dcfb0b7c46dcb94e6b6cf566fbd0ca9c7e7d46b5"
+  }
+}

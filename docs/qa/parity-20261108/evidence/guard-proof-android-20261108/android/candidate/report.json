@@ -1,0 +1,12 @@
+{
+  "platform": "android",
+  "role": "candidate",
+  "runId": "guard-proof-android-20261108",
+  "sourceCommit": "21b82e5b263554929ae89b83233d9f5e0a131582",
+  "flow": "capture",
+  "identity": "NEGATIVE_TEST_PASS",
+  "functional": "NOT_RUN",
+  "visual": "NOT_RUN",
+  "baselinePromotion": "NEVER_AUTOMATIC",
+  "reason": "APK mismatch; UI execution blocked"
+}

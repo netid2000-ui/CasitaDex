@@ -1,0 +1,13 @@
+{
+  "platform": "ios",
+  "role": "candidate",
+  "runId": "shared-journey-v3-20261108",
+  "sourceCommit": "21b82e5b263554929ae89b83233d9f5e0a131582",
+  "candidateSourceCommit": "21b82e5b263554929ae89b83233d9f5e0a131582",
+  "flow": "journey",
+  "identity": "PENDING",
+  "functional": "BLOCKED",
+  "visual": "NOT_RUN",
+  "baselinePromotion": "NEVER_AUTOMATIC",
+  "error": "Existing draft retained; parity capture blocked"
+}

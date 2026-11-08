@@ -1,0 +1,86 @@
+appId: ${APP_ID}
+name: SB40 shared create-find-reminder journey
+---
+- launchApp:
+    clearState: false
+- extendedWaitUntil:
+    visible: "The details that matter."
+    timeout: 20000
+- tapOn: "Add Memory"
+- assertVisible: "Adding a Memory"
+- tapOn:
+    text: "Memory name \\(Required\\)"
+    index: 1
+- inputText: ${FIXTURE_TITLE}
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+      - swipe:
+          start: "50%,55%"
+          end: "50%,38%"
+          duration: 500
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - hideKeyboard
+- scrollUntilVisible:
+    element:
+      text: "Description"
+      index: 1
+    direction: DOWN
+    centerElement: false
+- tapOn:
+    text: "Description"
+    index: 1
+- inputText: "Fictional shared parity fixture. Filter size 20 x 25 x 1."
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+      - swipe:
+          start: "50%,55%"
+          end: "50%,38%"
+          duration: 500
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - hideKeyboard
+- assertVisible:
+    text: "Save"
+    enabled: true
+- tapOn: "Save"
+- extendedWaitUntil:
+    visible: "The details that matter."
+    timeout: 15000
+- tapOn: "Find a memory"
+- tapOn: "Search memories"
+- inputText: ${FIXTURE_TITLE}
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+      - swipe:
+          start: "50%,55%"
+          end: "50%,38%"
+          duration: 500
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - hideKeyboard
+- assertVisible: "Open regular memory ${FIXTURE_TITLE}"
+- tapOn: "Open regular memory ${FIXTURE_TITLE}"
+- assertVisible: "Edit memory"
+- tapOn: "More ···"
+- tapOn: "Remind me later"
+- assertVisible: "Reminder title.*"
+- tapOn: "Save Reminder"
+- extendedWaitUntil:
+    visible: "Memory Details"
+    timeout: 15000
+- assertVisible: "Edit memory"
+- assertVisible: ${FIXTURE_TITLE}
+- takeScreenshot: journey-return

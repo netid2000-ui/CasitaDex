@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="CasitaDex Approved SB40 Reference - iOS 27.0 - AD06A0B7-D723-4EE9-829C-03508DD1107B" tests="1" failures="0" time="18.809" timestamp="2026-11-08T11:08:40">
+    <testcase id="SB40 guarded capture and inline-edit parity" name="SB40 guarded capture and inline-edit parity" classname="SB40 guarded capture and inline-edit parity" file=".maestro/sb40-parity/capture.yaml" time="18.785" timestamp="2026-11-08T11:08:40" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

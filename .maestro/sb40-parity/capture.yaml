@@ -1,0 +1,37 @@
+appId: ${APP_ID}
+name: SB40 guarded capture and inline-edit parity
+---
+- launchApp:
+    clearState: false
+- extendedWaitUntil:
+    visible: "The details that matter."
+    timeout: 20000
+- assertVisible: "Add Memory"
+- assertVisible: "Add Photo Memory"
+- assertVisible: "Add Reminder"
+- waitForAnimationToEnd
+- takeScreenshot: home
+- tapOn: "Add Memory"
+- extendedWaitUntil:
+    visible: "Adding a Memory"
+    timeout: 15000
+- assertVisible: "Memory name \\(Required\\)"
+- assertVisible: "Description"
+- assertVisible: "Cancel"
+- assertVisible: "Save"
+- assertNotVisible: "What do you want to remember\\?"
+- waitForAnimationToEnd
+- takeScreenshot: add
+- scrollUntilVisible:
+    element: "LOCATION"
+    direction: DOWN
+    centerElement: true
+- tapOn:
+    text: "Edit ✎"
+    index: 0
+- assertVisible: "Edit location"
+- assertVisible: "Done"
+- waitForAnimationToEnd
+- takeScreenshot: inline-location
+- tapOn: "Cancel"
+- assertVisible: "The details that matter."

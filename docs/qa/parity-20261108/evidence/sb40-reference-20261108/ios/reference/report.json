@@ -1,0 +1,25 @@
+{
+  "platform": "ios",
+  "role": "reference",
+  "runId": "sb40-reference-20261108",
+  "sourceCommit": null,
+  "candidateSourceCommit": "21b82e5b263554929ae89b83233d9f5e0a131582",
+  "flow": "capture",
+  "identity": {
+    "status": "PASS",
+    "device": "AD06A0B7-D723-4EE9-829C-03508DD1107B",
+    "appId": "com.designsbyfa.casitadex.sb40qa",
+    "executableSha256": "8ad89040f3a092c4a57b1d4bf7747a55e1afdd19cfa264f0b3fe136c02ba9b4d",
+    "bundleSha256": "83326efc8d67c50748539becbe4f4f306e70efa233e8e3d44a5249260f9fb7aa"
+  },
+  "functional": "PASS",
+  "visual": "VERIFIED_ACCEPTED_BUILD_REFERENCE_CAPTURE",
+  "baselinePromotion": "NEVER_AUTOMATIC",
+  "maestroExitCode": 0,
+  "captures": {
+    "home": "09165e7b461a7ef3f2d5fe0dc6e20642e48a7e502977ed48214ac65d1cf007b0",
+    "add": "ead25f6b511ce26a684f2752ab66ae499e4a310704932cb3bd2cd6d5b4183f44",
+    "inline-location": "164542d860aff2c969001ee814b279d88dac7ab6f5b017383664226ef1bc3280"
+  },
+  "approval": "Artifact authority only; no new design approval inferred"
+}

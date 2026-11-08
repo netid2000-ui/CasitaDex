@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="CasitaDex SB40 Household75 QA - iOS 27.0 - A4ED0D8B-C90A-4940-9B71-4F570D7DC597" tests="1" failures="0" time="31.87" timestamp="2026-11-08T11:12:34">
+    <testcase id="SB40 shared create-find-reminder journey" name="SB40 shared create-find-reminder journey" classname="SB40 shared create-find-reminder journey" file=".maestro/sb40-parity/journey.yaml" time="31.855" timestamp="2026-11-08T11:12:34" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

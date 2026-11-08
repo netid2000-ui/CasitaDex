@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="sb40_four_items" tests="1" failures="0" time="49.833" timestamp="2026-11-08T11:05:04">
+    <testcase id="SB40 shared create-find-reminder journey" name="SB40 shared create-find-reminder journey" classname="SB40 shared create-find-reminder journey" file=".maestro/sb40-parity/journey.yaml" time="49.826" timestamp="2026-11-08T11:05:04" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

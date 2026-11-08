@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="sb40_four_items" tests="1" failures="0" time="13.689" timestamp="2026-11-08T10:54:06">
+    <testcase id="SB40 guarded capture and inline-edit parity" name="SB40 guarded capture and inline-edit parity" classname="SB40 guarded capture and inline-edit parity" file=".maestro/sb40-parity/capture.yaml" time="13.684" timestamp="2026-11-08T10:54:06" status="SUCCESS"/>
+  </testsuite>
+</testsuites>
