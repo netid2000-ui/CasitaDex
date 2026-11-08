@@ -1,0 +1,8 @@
+{
+  "method": "Read-only corroboration after native app process terminate/relaunch",
+  "entireSnapshotUnchanged": true,
+  "memoryCount": 165,
+  "newHouseholdRecords": 75,
+  "baselineRecords": 90,
+  "draftPresent": false
+}

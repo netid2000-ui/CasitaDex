@@ -1,0 +1,60 @@
+{
+  "bundle": "com.designsbyfa.casitadex.sb40qa",
+  "newHouseholdRecords": 75,
+  "newUniqueTitles": 75,
+  "totalMemories": 165,
+  "baselineMemories": 90,
+  "all75DescriptionsExact": true,
+  "baselineMemoriesUnchanged": true,
+  "finalRelaunchSnapshotUnchanged": true,
+  "finalRelaunchRemindersUnchanged": true,
+  "draftPresent": false,
+  "searchOpenReturnCasesPassed": 15,
+  "allSearchQueriesPreserved": true,
+  "savedLocation": "Hallway return grille",
+  "photoMemory": [
+    "e_mw7g8pws_wg041u4j5d"
+  ],
+  "mediaByteChecks": [
+    {
+      "id": "e_mw7f72n1_tgddhfugzh",
+      "verified": true
+    },
+    {
+      "id": "e_mw7f72nl_n3ygwuuiz9",
+      "verified": true
+    },
+    {
+      "id": "e_mw7f72o3_4rluoxx046",
+      "verified": true
+    },
+    {
+      "id": "e_mw7g8pws_wg041u4j5d",
+      "verified": true
+    }
+  ],
+  "allMediaBytesVerified": true,
+  "reminders": [
+    {
+      "id": "r_mw7g9qe9_k72qj2yd",
+      "title": "Review Coffee maker cleaning supplies",
+      "notes": "Descaling supplies in labeled Coffee Care bin; use the actual machine instructions. Location: Kitchen pantry middle shelf. Fictional QA household.",
+      "due_date": "2026-11-08",
+      "completed": 1,
+      "created_at": "2026-11-08T06:27:16.065Z",
+      "updated_at": "2026-11-08T06:28:34.646Z",
+      "due_time": "00:36",
+      "anchor_day": 8,
+      "memory_id": "e_mw7ffs3o_ur52sf9tm2",
+      "repeat": "once"
+    }
+  ],
+  "reminderLinksCorrect": true,
+  "reminderCompleted": true,
+  "structuredSpaceAssignments": 0,
+  "structuredCategoryAssignments": 0,
+  "organizationProbe": "NOT VERIFIED; canceled without claiming product defect",
+  "notificationDelivery": "NOT TESTED",
+  "physicalDeviceMutations": false,
+  "release": "NO-GO"
+}

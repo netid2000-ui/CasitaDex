@@ -1,0 +1,12 @@
+{
+  "enteredThroughNativeUI": 75,
+  "newRecords": 75,
+  "total": 165,
+  "baseline": 90,
+  "uniqueNewTitles": 75,
+  "exactDescriptionMismatches": [],
+  "baselineRecordsUnchanged": true,
+  "draftPresent": false,
+  "automationMedianEntrySeconds": 14.43,
+  "humanTimingClaim": false
+}

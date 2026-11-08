@@ -1,0 +1,19 @@
+
+import {connectDevice} from '/Volumes/FA-Development/Designs-by-FA/Tools/Mobilewright/node_modules/mobilewright/dist/index.js';import fs from 'node:fs/promises';import {execFileSync} from 'node:child_process';
+const out='/Volumes/FA-Development/Designs-by-FA/QA-Evidence/CasitaDex/sb40-house75-owner-journey-20261108';
+const rows=JSON.parse(await fs.readFile(out+'/house75-items.json','utf8'));const uid='A4ED0D8B-C90A-4940-9B71-4F570D7DC597';
+const container=execFileSync('xcrun',['simctl','get_app_container',uid,'com.designsbyfa.casitadex.sb40qa','data'],{encoding:'utf8'}).trim();
+const read=()=>JSON.parse(execFileSync('python3',['-c',"import pathlib,sqlite3,sys; p=next(pathlib.Path(sys.argv[1]).rglob('casitadex-development-v1.db')); c=sqlite3.connect(p.as_uri()+'?mode=ro',uri=True); print(c.execute('SELECT payload FROM eng_state_v2 WHERE slot=1').fetchone()[0]);c.close()",container],{encoding:'utf8'}));
+const d=await connectDevice({platform:'ios',deviceId:uid,actionTimeout:6500});
+const field=label=>d.screen.getByType('TextField').and(d.screen.getByLabel(label,{exact:true}));
+async function log(e){e={at:new Date().toISOString(),...e};await fs.appendFile(out+'/workflow-journal.jsonl',JSON.stringify(e)+'\n');console.log(JSON.stringify(e));}
+async function drag(){await d.screen.gesture({pointers:[[{x:200,y:480,time:0},{x:200,y:330,time:500}]]});}
+async function safe(l){for(let i=0;i<12;i++){const b=await l.boundingBox();const y=b.y+b.height/2;if(y>=315&&y<=700)return;if(y>700)await d.screen.gesture({pointers:[[{x:200,y:680,time:0},{x:200,y:380,time:500}]]});else await d.screen.gesture({pointers:[[{x:200,y:380,time:0},{x:200,y:680,time:500}]]});}throw Error('Control not reachable in content viewport');}
+async function open(r){const q=field('Search memories');await q.fill(r.title);await drag();const l=d.screen.getByLabel('Open regular memory '+r.title,{exact:true});await safe(l);await l.tap();await d.screen.getByLabel('Edit memory',{exact:true}).waitFor({state:'visible',timeout:8000});}
+try{
+ await open(rows[0]);await d.screen.getByLabel('Edit memory',{exact:true}).tap();const f=field('Location');await safe(f);await f.fill(rows[0].location);await drag();await d.screen.getByLabel('Save & return to details',{exact:true}).tap();await d.screen.getByLabel('Edit memory',{exact:true}).waitFor({state:'visible',timeout:8000});
+ let m=read().data.memories.find(m=>m.title===rows[0].title);if(m.location!==rows[0].location)throw Error('Location save mismatch');await log({case:'saved-location-edit',status:'PASS',location:m.location});
+ await d.screen.getByLabel('Edit memory',{exact:true}).tap();await safe(f);await f.fill('SHOULD NOT SAVE - cancel test');await drag();await d.screen.getByLabel('Cancel',{exact:true}).tap();await d.screen.getByLabel('Edit memory',{exact:true}).waitFor({state:'visible',timeout:8000});m=read().data.memories.find(m=>m.title===rows[0].title);if(m.location!==rows[0].location)throw Error('Cancel wrote unsaved location');await log({case:'cancel-location-edit',status:'PASS',location:m.location});
+ await fs.writeFile(out+'/edited-memory.png',await d.screen.screenshot());
+ await d.screen.getByLabel('‹ Results',{exact:true}).tap();await open(rows[8]);const add=d.screen.getByLabel('+ Add Photo',{exact:true});await safe(add);await add.tap();await d.screen.getByLabel('Choose from Library',{exact:true}).tap();await fs.writeFile(out+'/photo-picker.json',JSON.stringify(await d.screen.viewTree(),null,2));await fs.writeFile(out+'/photo-picker.png',await d.screen.screenshot());await log({case:'photo-library-opened',status:'INSPECT_PICKER'});
+}catch(error){await fs.writeFile(out+'/workflow-failure.json',JSON.stringify(await d.screen.viewTree(),null,2));await fs.writeFile(out+'/workflow-failure.png',await d.screen.screenshot());await log({status:'blocked',error:String(error)});throw error;}finally{await d.close();}
