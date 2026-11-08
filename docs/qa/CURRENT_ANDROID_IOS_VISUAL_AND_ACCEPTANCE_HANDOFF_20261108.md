@@ -83,3 +83,47 @@ A read-only Mac desktop capture at `2026-11-08T01:36:00Z` showed the Android emu
 - Not yet verified live on both platforms: a page-by-page capture of Home, Photos, Reminders, and Find at matched text/display settings. No navigation taps were made during this pass; installed app state and data were left unchanged.
 - Figma gap: no approved four-tab visual master currently exists for all four owner-confirmed screens. The approved A.2 masters remain five-tab; only the Home reconstruction is a four-tab REVIEW frame. The next design task is to reconcile all four owner-confirmed pages into editable four-tab Figma frames, clearly classify them as REVIEW/owner-approved, and preserve old A.2 masters.
 - Native gap: do not reinstall or rebuild during that Figma reconciliation. After editable target frames are captured and mapped, run a bounded four-page visual pass on the existing installed builds, navigating only among tabs and leaving records untouched. Compare fixture-independent layout and labels; record fixture differences separately.
+
+## Four-tab Figma reference and installed-build comparison — 2026-11-08 02:10 UTC
+
+### Editable Figma references
+
+Created and rendered four editable screen references on Figma page 44, now named **OWNER REFERENCE · FOUR-TAB SCREENSHOTS · IMPLEMENTATION REVIEW · 2026-11-08**. [Open page 44](https://www.figma.com/design/39uzN0SZX8nlmcGDcHdQhr?node-id=347-2).
+
+| Screen | Node | Reference source |
+| --- | --- | --- |
+| Home | `347:3` | iPhone screenshot |
+| Photos | `347:101` | Android screenshot |
+| Reminders | `347:204` | iPhone screenshot |
+| Find | `347:275` | iPhone screenshot |
+
+Rendered each frame at 390 × 844. The four frames retain the Home / Photos / Reminders / Find order and the owner-reference content. The Photos image tiles are editable placeholders; supplied reference photos were not transferred. Displayed dates and status-bar details are illustrative. Page 44 is an owner-reference implementation review, not platform acceptance or a new formal approval of the old A.2 masters. A.2 pages 20 and 21, page 42, and page 43 were not edited.
+
+### Exact installed QA artifacts inspected
+
+| Platform/device | Package | Installed artifact fingerprint |
+| --- | --- | --- |
+| iOS simulator `AD06A0B7-D723-4EE9-829C-03508DD1107B` (iPhone 18 Pro, iOS 27.0) | `com.designsbyfa.casitadex.sb40qa` v0.1.0 (1) | App executable SHA-256 `8ad89040f3a092c4a57b1d4bf7747a55e1afdd19cfa264f0b3fe136c02ba9b4d` |
+| Android emulator `emulator-5554` (sdk_gphone64_arm64, Android 16) | `com.designsbyfa.casitadex.sb40qa` v0.1.0 / versionCode 1 | Installed `base.apk` SHA-256 `01e40085176127b815b0870fabbd4d915f463acdea5d8d4e0eb830871467d3bf` |
+
+These fingerprints match the existing SB40 handoff records. They are isolated QA artifacts, not a claim that either binary was built from the current feature-branch HEAD. The separately attached physical Samsung was not operated.
+
+### Bounded visual results
+
+Navigated only among the four primary tabs on both installed QA apps; opened the sample Coffee filters detail to restore the iOS screen that had been visible before the pass. No record was edited, created, deleted, or restored; no clock or reminder fixture was touched. Android was returned to Photos. Both simulators remain visible and their app data is preserved.
+
+| Screen | iOS | Android | Fixture-independent comparison |
+| --- | --- | --- | --- |
+| Home | Four-tab navigation and all four actions visible | Four-tab navigation and all four actions visible | Header, hierarchy, action-card composition, and labels align with the confirmed reference at the checked normal text size. |
+| Photos | Three photo memories; Coffee filters has 1 photo | Three photo memories; Coffee filters has 1 photo | Header, heading, Add Photo Memory action, memory cards, thumbnails, and bottom tabs align. Owner screenshot shows five photo memories and five Coffee filters photos; data differs. |
+| Reminders | Upcoming 0; Overdue 0; Completed 0; Memory dates 13 | Same counts | Four category labels, selected state, Add action, and empty-state layout align. Reference counts show Overdue 11, Completed 1, Memory dates 11; data differs. |
+| Find | 90 memories found | 90 memories found | Search, count, Browse memories, sample cards, and four-tab navigation align. Reference shows 94 memories; data differs. |
+
+Comparison used the installed apps at their ordinary text settings. It is a bounded visual pass, not a complete interaction, accessibility, or release test. The Figma page’s Photos content uses placeholder thumbnails, while the installed builds show their own local synthetic photos. No source code, native binary, or installed app was changed by this comparison.
+
+### Gate status
+
+- **Visual structure and four-tab navigation:** PASS for these four screens on the two exact SB40 QA artifacts.
+- **Reference fixture data parity:** NOT MET; the count differences above are recorded and were not “fixed” by changing user/test data.
+- **Current feature-branch native provenance, broader functional and practical accessibility gates, dependency/security disposition, signing, and release qualification:** remain open. Release stays **NO-GO**.
+- **Next:** continue from the current verified source checkpoint on the authorized branch; address only a concrete release gate, preserve fixture data, and qualify fresh native builds separately before attributing further results.
