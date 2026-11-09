@@ -1,0 +1,427 @@
+{
+  "osSize": "accessibility-extra-extra-extra-large",
+  "inAppLarge": true,
+  "scope": "Narrow combined-profile viewer reachability, not full regression or assistive-technology acceptance",
+  "checks": [
+    {
+      "orientation": "portrait",
+      "screen": {
+        "width": 402.0,
+        "height": 874.0
+      },
+      "viewport": {
+        "width": 402,
+        "y": 394.6666717529297,
+        "height": 445.3333435058594,
+        "x": 0
+      },
+      "image": {
+        "height": 222.66665649414062,
+        "width": 402,
+        "x": 0,
+        "y": 172
+      },
+      "close": {
+        "height": 86,
+        "x": 185.6666717529297,
+        "y": 74,
+        "width": 204.3333282470703
+      },
+      "controls": [
+        {
+          "label": "Previous photo",
+          "bounds": {
+            "x": 12,
+            "width": 257,
+            "height": 86,
+            "y": 685.0000152587891
+          },
+          "viewport": {
+            "y": 394.6666717529297,
+            "height": 445.3333435058594,
+            "x": 0,
+            "width": 402
+          },
+          "status": "PASS_FULLY_EXPOSED"
+        },
+        {
+          "label": "Next photo",
+          "bounds": {
+            "y": 750.3333485921223,
+            "width": 257,
+            "x": 12,
+            "height": 86
+          },
+          "viewport": {
+            "y": 394.6666717529297,
+            "height": 445.3333435058594,
+            "width": 402,
+            "x": 0
+          },
+          "status": "PASS_FULLY_EXPOSED"
+        },
+        {
+          "label": "Return to draft",
+          "bounds": {
+            "y": 748.0000152587891,
+            "width": 354.3333435058594,
+            "height": 86,
+            "x": 12
+          },
+          "viewport": {
+            "width": 402,
+            "x": 0,
+            "height": 445.3333435058594,
+            "y": 394.6666717529297
+          },
+          "status": "PASS_FULLY_EXPOSED"
+        },
+        {
+          "label": "Reset photo zoom",
+          "bounds": {
+            "height": 86,
+            "width": 354.3333435058594,
+            "x": 12,
+            "y": 751.3333485921224
+          },
+          "viewport": {
+            "y": 394.6666717529297,
+            "width": 402,
+            "x": 0,
+            "height": 445.3333435058594
+          },
+          "status": "PASS_FULLY_EXPOSED"
+        },
+        {
+          "label": "Zoom photo out",
+          "bounds": {
+            "y": 748.3333180745442,
+            "height": 86,
+            "width": 207.6666717529297,
+            "x": 12
+          },
+          "viewport": {
+            "width": 402,
+            "x": 0,
+            "height": 445.3333435058594,
+            "y": 394.6666717529297
+          },
+          "status": "PASS_FULLY_EXPOSED"
+        },
+        {
+          "label": "Zoom photo in",
+          "bounds": {
+            "y": 751.3333180745442,
+            "x": 12,
+            "width": 207.6666717529297,
+            "height": 86
+          },
+          "viewport": {
+            "x": 0,
+            "height": 445.3333435058594,
+            "y": 394.6666717529297,
+            "width": 402
+          },
+          "status": "PASS_FULLY_EXPOSED"
+        },
+        {
+          "label": "Manage photos",
+          "bounds": {
+            "width": 378,
+            "height": 150,
+            "y": 685.9999847412109,
+            "x": 12
+          },
+          "viewport": {
+            "x": 0,
+            "width": 402,
+            "height": 445.3333435058594,
+            "y": 394.6666717529297
+          },
+          "status": "PASS_FULLY_EXPOSED"
+        },
+        {
+          "label": "Take Photo",
+          "bounds": {
+            "height": 86,
+            "width": 378,
+            "y": 401.00001525878906,
+            "x": 12
+          },
+          "viewport": {
+            "x": 0,
+            "height": 445.3333435058594,
+            "y": 394.6666717529297,
+            "width": 402
+          },
+          "status": "PASS_FULLY_EXPOSED"
+        },
+        {
+          "label": "Choose from Library",
+          "bounds": {
+            "x": 12,
+            "y": 495.00001525878906,
+            "height": 150,
+            "width": 378
+          },
+          "viewport": {
+            "y": 394.6666717529297,
+            "height": 445.3333435058594,
+            "width": 402,
+            "x": 0
+          },
+          "status": "PASS_FULLY_EXPOSED"
+        },
+        {
+          "label": "Browse Files",
+          "bounds": {
+            "width": 378,
+            "height": 86,
+            "x": 12,
+            "y": 653.0000152587891
+          },
+          "viewport": {
+            "height": 445.3333435058594,
+            "y": 394.6666717529297,
+            "x": 0,
+            "width": 402
+          },
+          "status": "PASS_FULLY_EXPOSED"
+        },
+        {
+          "label": "Cancel",
+          "bounds": {
+            "y": 747.0000152587891,
+            "height": 86,
+            "x": 12,
+            "width": 378
+          },
+          "viewport": {
+            "height": 445.3333435058594,
+            "width": 402,
+            "x": 0,
+            "y": 394.6666717529297
+          },
+          "status": "PASS_FULLY_EXPOSED"
+        }
+      ],
+      "title": {
+        "width": 378,
+        "x": 12,
+        "height": 204.66665649414062,
+        "y": 406.6666717529297
+      }
+    },
+    {
+      "orientation": "landscape",
+      "screen": {
+        "width": 874.0,
+        "height": 402.0
+      },
+      "viewport": {
+        "x": 62,
+        "height": 181.3333282470703,
+        "width": 750,
+        "y": 200.66666412353516
+      },
+      "image": {
+        "x": 62,
+        "width": 750,
+        "height": 90.66667175292969,
+        "y": 110
+      },
+      "close": {
+        "y": 12,
+        "height": 86,
+        "width": 204.33331298828125,
+        "x": 595.6666870117188
+      },
+      "controls": [
+        {
+          "label": "Previous photo",
+          "bounds": {
+            "width": 257,
+            "x": 74,
+            "height": 86,
+            "y": 292.99999237060547
+          },
+          "viewport": {
+            "y": 200.66666412353516,
+            "x": 62,
+            "width": 750,
+            "height": 181.3333282470703
+          },
+          "status": "PASS_FULLY_EXPOSED"
+        },
+        {
+          "label": "Next photo",
+          "bounds": {
+            "y": 292.33332570393884,
+            "x": 74,
+            "height": 86,
+            "width": 257
+          },
+          "viewport": {
+            "y": 200.66666412353516,
+            "x": 62,
+            "width": 750,
+            "height": 181.3333282470703
+          },
+          "status": "PASS_FULLY_EXPOSED"
+        },
+        {
+          "label": "Return to draft",
+          "bounds": {
+            "height": 86,
+            "width": 354.3333435058594,
+            "y": 292.33334096272785,
+            "x": 74
+          },
+          "viewport": {
+            "x": 62,
+            "height": 181.3333282470703,
+            "width": 750,
+            "y": 200.66666412353516
+          },
+          "status": "PASS_FULLY_EXPOSED"
+        },
+        {
+          "label": "Reset photo zoom",
+          "bounds": {
+            "y": 292.33334096272785,
+            "width": 354.3333435058594,
+            "height": 86,
+            "x": 74
+          },
+          "viewport": {
+            "width": 750,
+            "x": 62,
+            "height": 181.3333282470703,
+            "y": 200.66666412353516
+          },
+          "status": "PASS_FULLY_EXPOSED"
+        },
+        {
+          "label": "Zoom photo out",
+          "bounds": {
+            "width": 207.66665649414062,
+            "y": 292.3333104451497,
+            "height": 86,
+            "x": 74
+          },
+          "viewport": {
+            "y": 200.66666412353516,
+            "x": 62,
+            "height": 181.3333282470703,
+            "width": 750
+          },
+          "status": "PASS_FULLY_EXPOSED"
+        },
+        {
+          "label": "Zoom photo in",
+          "bounds": {
+            "y": 292.3333104451498,
+            "width": 207.66665649414062,
+            "x": 74,
+            "height": 86
+          },
+          "viewport": {
+            "x": 62,
+            "height": 181.3333282470703,
+            "y": 200.66666412353516,
+            "width": 750
+          },
+          "status": "PASS_FULLY_EXPOSED"
+        },
+        {
+          "label": "Manage photos",
+          "bounds": {
+            "y": 292.3333104451498,
+            "width": 726,
+            "x": 74,
+            "height": 86
+          },
+          "viewport": {
+            "y": 200.66666412353516,
+            "x": 62,
+            "width": 750,
+            "height": 181.3333282470703
+          },
+          "status": "PASS_FULLY_EXPOSED"
+        },
+        {
+          "label": "Take Photo",
+          "bounds": {
+            "width": 726,
+            "height": 86,
+            "y": 203.33332570393878,
+            "x": 74
+          },
+          "viewport": {
+            "width": 750,
+            "height": 181.3333282470703,
+            "y": 200.66666412353516,
+            "x": 62
+          },
+          "status": "PASS_FULLY_EXPOSED"
+        },
+        {
+          "label": "Choose from Library",
+          "bounds": {
+            "x": 74,
+            "height": 86,
+            "width": 726,
+            "y": 292.3333257039388
+          },
+          "viewport": {
+            "y": 200.66666412353516,
+            "height": 181.3333282470703,
+            "width": 750,
+            "x": 62
+          },
+          "status": "PASS_FULLY_EXPOSED"
+        },
+        {
+          "label": "Browse Files",
+          "bounds": {
+            "y": 292.3333257039388,
+            "height": 86,
+            "width": 726,
+            "x": 74
+          },
+          "viewport": {
+            "height": 181.3333282470703,
+            "y": 200.66666412353516,
+            "x": 62,
+            "width": 750
+          },
+          "status": "PASS_FULLY_EXPOSED"
+        },
+        {
+          "label": "Cancel",
+          "bounds": {
+            "height": 86,
+            "width": 726,
+            "y": 292.3333257039388,
+            "x": 74
+          },
+          "viewport": {
+            "y": 200.66666412353516,
+            "height": 181.3333282470703,
+            "width": 750,
+            "x": 62
+          },
+          "status": "PASS_FULLY_EXPOSED"
+        }
+      ],
+      "title": {
+        "height": 136.6666717529297,
+        "width": 726,
+        "x": 74,
+        "y": -355.33333587646484
+      }
+    }
+  ],
+  "status": "PASS_NARROW_GEOMETRY_VISUAL_REVIEW_PENDING",
+  "semanticPreserved": true
+}
