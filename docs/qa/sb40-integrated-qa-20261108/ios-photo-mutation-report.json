@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "source": "c2742bd78f2219fd715d644c855712d880e276a6",
+  "checks": [
+    "add",
+    "replace",
+    "remove"
+  ],
+  "originalPhotosAndSavedMemoriesPreserved": true
+}
