@@ -10,14 +10,16 @@ type Props={memoryId?:string;draftId?:string;initialPhotoId?:string;path?:string
 export function PhotoMemoryViewer({memoryId,draftId,initialPhotoId,path,label,onClose,onViewMemory,onChanged}:Props){
  const [snapshot,setSnapshot]=useState<EngSnapshot|null>(null),[selectedId,setSelectedId]=useState(initialPhotoId??''),[busy,setBusy]=useState(false),[actions,setActions]=useState(false),[status,setStatus]=useState(''),[imageError,setImageError]=useState(false);
  const [sourceMode,setSourceMode]=useState<{replace:boolean;photoId?:string}|null>(null);
- const lock=useRef(false),alive=useRef(true);const {large}=useData();const textScale=large?1.6:1;
+ const lock=useRef(false),alive=useRef(true);const {large}=useData();
  const {height,fontScale}=useWindowDimensions();
+ // Large Text sets a minimum scale. Keep the OS scale when it already exceeds it.
+ const textScale=large?Math.max(1,1.6/Math.max(1,fontScale)):1;
  // A growing fixed title must not squeeze the scroll viewport below a complete button.
  // Keep normal portrait composition; enlarged text/short windows move the full title into the scroller.
  const reflow=fontScale*textScale>=1.5||height<600;
  // Recreate only text measurements on live Dynamic Type changes. Keeping the image,
  // controls and scroller mounted preserves selection, zoom, actions and scroll state.
- const textLayoutKey=`${fontScale}:${textScale}`;
+ const textLayoutKey=`${fontScale}:${textScale}:${large}`;
  const controlRow={flexDirection:reflow?'column' as const:'row' as const,flexWrap:'wrap' as const,gap:8};
  const [zoom,setZoom]=useState({scale:1,x:0,y:0});
  const zoomRef=useRef({scale:1,x:0,y:0}),gestureRef=useRef({distance:0,scale:1,x:0,y:0,pageX:0,pageY:0,pinched:false,moved:false}),lastTap=useRef({at:0,x:0,y:0});

@@ -113,7 +113,12 @@ test('live system/app text changes invalidate text measurements without remounti
  for(const update of [{fontScale:1.2},{fontScale:3.12},{large:true},{fontScale:1},{large:false}]){
   const oldCloseText=button(tree,'Close photo').props.children[0];
   Object.assign(h.viewport,update);tree=h.render();
-  const key=`${h.viewport.fontScale}:${h.viewport.large?1.6:1}`;
+  const closeText=button(tree,'Close photo').props.children[0];
+  const key=closeText.key;
+  if(h.viewport.large&&h.viewport.fontScale===3.12)
+   assert.equal(style(closeText).fontSize,15,'Maximum OS text must keep its native size without an extra in-app multiplier');
+  if(h.viewport.large&&h.viewport.fontScale===1)
+   assert.equal(style(closeText).fontSize,24,'In-app Large Text still enlarges default system text');
   assert.notEqual(button(tree,'Close photo').props.children[0].key,oldCloseText.key,'Close must get a fresh text measurement even without a reflow-mode change');
   for(const node of nodes(tree)){
    if(node.type==='Text')assert.ok(node.key?.endsWith(key),'Every label, title/count and status must renew its measurement');
