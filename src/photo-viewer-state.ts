@@ -14,3 +14,24 @@ export function touchDistance(touches:readonly {pageX:number;pageY:number}[]):nu
   const value=Math.hypot(touches[1].pageX-touches[0].pageX,touches[1].pageY-touches[0].pageY);
   return Number.isFinite(value)&&value>0?value:null;
 }
+
+/** Double-tap is a bounded two-press gesture; false positives must not trigger on swipes. */
+export type PhotoTap={time:number;x:number;y:number};
+export function isPhotoDoubleTap(previous:PhotoTap|null,current:PhotoTap,maxDelay=300,maxDistance=30):boolean {
+  return previous!==null&&Number.isFinite(current.time)&&Number.isFinite(previous.time)&&
+    current.time>=previous.time&&current.time-previous.time<=maxDelay&&
+    Math.hypot(current.x-previous.x,current.y-previous.y)<=maxDistance;
+}
+export function doubleTapPhotoZoom(zoom:number):number {
+  return clampPhotoZoom(zoom)>1?1:2;
+}
+/** Keep every edge of the enlarged image reachable; never pan outside the image bounds. */
+export function clampPhotoPan(
+  x:number,y:number,zoom:number,width:number,height:number,
+):{x:number;y:number} {
+  const z=clampPhotoZoom(zoom);
+  const limitX=Math.max(0,Number.isFinite(width)?width*(z-1)/2:0);
+  const limitY=Math.max(0,Number.isFinite(height)?height*(z-1)/2:0);
+  const clamp=(v:number,max:number)=>Math.max(-max,Math.min(max,Number.isFinite(v)?v:0));
+  return {x:clamp(x,limitX),y:clamp(y,limitY)};
+}

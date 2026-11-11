@@ -24,7 +24,7 @@ import { ActionPage } from "./action-page";
 import { reviewedShare, validateReviewedShare } from "./share-session";
 import { registerEditGuard, navigationIsGuarded } from "./eng-navigation";
 import { defaultReminderDay, isReminderDraftDirty, newReminderDraft, type ReminderDraft } from "./standalone-reminder-draft";
-import { clampPhotoIndex, clampPhotoZoom, photoSwipeStep, touchDistance } from "./photo-viewer-state";
+import { clampPhotoIndex, clampPhotoZoom, photoSwipeStep, touchDistance, isPhotoDoubleTap, doubleTapPhotoZoom, clampPhotoPan, type PhotoTap } from "./photo-viewer-state";
 import { BrandHeader, BrandLogo, BrandArt } from "./brand";
 import { HomeAction, HomeIntro } from "./home-action";
 import { EditorialIntro } from "./editorial-intro";
@@ -74,42 +74,79 @@ function PhotoViewer({path,label,photos,onClose}:{path:string;label:string;photo
   const items=useMemo(()=>photos?.length?photos:[{path,label}],[photos,path,label]);
   const [index,setIndex]=useState(()=>Math.max(0,items.findIndex(p=>p.path===path))),[zoom,setZoom]=useState(1);
   const zoomRef=useRef(1),pinch=useRef<{distance:number;zoom:number}|null>(null),usedPinch=useRef(false);
-  const vertical=useRef<ScrollView>(null),horizontal=useRef<ScrollView>(null);
+  const [pan,setPan]=useState({x:0,y:0}),panRef=useRef({x:0,y:0});
+  const lastTap=useRef<PhotoTap|null>(null),usedPan=useRef(false);
+  const origin=useRef<{x:number;y:number;time:number;pan:{x:number;y:number}}|null>(null);
+  const viewWidth=Math.max(width-40,200),viewHeight=Math.max(height-360,160);
   const selected=items[clampPhotoIndex(index,items.length)];
-  const changeZoom=useCallback((value:number)=>{zoomRef.current=clampPhotoZoom(value);setZoom(zoomRef.current);},[]);
+  const changePan=useCallback((x:number,y:number,z=zoomRef.current)=>{
+    const next=clampPhotoPan(x,y,z,viewWidth,viewHeight);
+    panRef.current=next;setPan(next);
+  },[viewWidth,viewHeight]);
+  const changeZoom=useCallback((value:number)=>{
+    const next=clampPhotoZoom(value);zoomRef.current=next;setZoom(next);
+    changePan(panRef.current.x,panRef.current.y,next);
+  },[changePan]);
   const move=useCallback((step:number)=>{
-    setIndex(value=>clampPhotoIndex(value+step,items.length));zoomRef.current=1;setZoom(1);
-    vertical.current?.scrollTo({y:0,animated:false});horizontal.current?.scrollTo({x:0,animated:false});
-  },[items.length]);
-  const origin=useRef<{x:number;y:number}|null>(null);
+    setIndex(value=>clampPhotoIndex(value+step,items.length));
+    zoomRef.current=1;setZoom(1);changePan(0,0,1);lastTap.current=null;
+  },[items.length,changePan]);
   const gestures={
     onTouchStart:(event:import("react-native").GestureResponderEvent)=>{
       const touches=event.nativeEvent.touches;
-      if(touches.length===1){origin.current={x:touches[0].pageX,y:touches[0].pageY};usedPinch.current=false;}
-      if(touches.length>=2){
-        const distance=touchDistance(touches);usedPinch.current=true;
+      if(touches.length===1){
+        const point=touches[0];
+        origin.current={x:point.pageX,y:point.pageY,time:Date.now(),pan:panRef.current};
+        usedPinch.current=false;usedPan.current=false;
+      }else if(touches.length>=2){
+        const distance=touchDistance(touches);
+        usedPinch.current=true;lastTap.current=null;
         if(distance&&!pinch.current)pinch.current={distance,zoom:zoomRef.current};
       }
     },
+    // Claim taps as well as movement so double-tap can be recognized at exactly 1x.
+    onStartShouldSetResponder:()=>true,
     onStartShouldSetResponderCapture:(event:import("react-native").GestureResponderEvent)=>event.nativeEvent.touches.length>=2,
     onMoveShouldSetResponderCapture:(event:import("react-native").GestureResponderEvent)=>{
       const touches=event.nativeEvent.touches;if(touches.length>=2)return true;
-      const start=origin.current,point=touches[0];if(!start||!point||zoomRef.current!==1)return false;
+      const start=origin.current,point=touches[0];if(!start||!point)return false;
       const dx=point.pageX-start.x,dy=point.pageY-start.y;
-      return Math.abs(dx)>16&&Math.abs(dx)>Math.abs(dy)*1.5;
+      return zoomRef.current>1?Math.hypot(dx,dy)>6:Math.abs(dx)>16&&Math.abs(dx)>Math.abs(dy)*1.5;
     },
     onResponderMove:(event:import("react-native").GestureResponderEvent)=>{
-      const distance=touchDistance(event.nativeEvent.touches);if(!distance)return;
-      usedPinch.current=true;
-      if(!pinch.current)pinch.current={distance,zoom:zoomRef.current};
-      changeZoom(pinch.current.zoom*distance/pinch.current.distance);
+      const touches=event.nativeEvent.touches;
+      const distance=touchDistance(touches);
+      if(distance){
+        usedPinch.current=true;lastTap.current=null;
+        if(!pinch.current)pinch.current={distance,zoom:zoomRef.current};
+        changeZoom(pinch.current.zoom*distance/pinch.current.distance);
+        return;
+      }
+      const start=origin.current,point=touches[0];
+      if(start&&point&&zoomRef.current>1&&!usedPinch.current){
+        const dx=point.pageX-start.x,dy=point.pageY-start.y;
+        if(Math.hypot(dx,dy)>6){
+          usedPan.current=true;lastTap.current=null;
+          changePan(start.pan.x+dx,start.pan.y+dy);
+        }
+      }
     },
     onResponderRelease:(event:import("react-native").GestureResponderEvent)=>{
       const start=origin.current,point=event.nativeEvent.changedTouches[0];
-      const step=usedPinch.current||!start||!point?0:photoSwipeStep(point.pageX-start.x,point.pageY-start.y,zoomRef.current);
-      if(step)move(step);pinch.current=null;origin.current=null;
+      const dx=start&&point?point.pageX-start.x:0,dy=start&&point?point.pageY-start.y:0;
+      if(!usedPinch.current&&!usedPan.current&&start&&point){
+        const step=photoSwipeStep(dx,dy,zoomRef.current);
+        if(step)move(step);
+        else if(Math.hypot(dx,dy)<12&&Date.now()-start.time<=300){
+          const current={time:Date.now(),x:point.pageX,y:point.pageY};
+          if(isPhotoDoubleTap(lastTap.current,current)){
+            changeZoom(doubleTapPhotoZoom(zoomRef.current));lastTap.current=null;
+          }else lastTap.current=current;
+        }else lastTap.current=null;
+      }
+      pinch.current=null;origin.current=null;usedPinch.current=false;usedPan.current=false;
     },
-    onResponderTerminate:()=>{pinch.current=null;origin.current=null;},
+    onResponderTerminate:()=>{pinch.current=null;origin.current=null;usedPinch.current=false;usedPan.current=false;lastTap.current=null;},
   };
   return <Modal visible onRequestClose={onClose} animationType={reduceMotion?"none":"slide"} accessibilityViewIsModal>
     <ScrollView onAccessibilityEscape={onClose} style={{flex:1,backgroundColor:colors.paper}} contentContainerStyle={{flexGrow:1,padding:20,paddingTop:48,gap:12}}>
@@ -123,11 +160,10 @@ function PhotoViewer({path,label,photos,onClose}:{path:string;label:string;photo
         <Button label="Zoom out" disabled={zoom<=1} onPress={()=>changeZoom(zoom-1)} />
         <Copy accessibilityLiveRegion="polite">Zoom {Math.round(zoom*10)/10} times</Copy>
       </View>
-      <View style={{height:Math.max(height-360,160)}} {...gestures}>
-        <ScrollView ref={vertical} style={{flex:1}}><ScrollView ref={horizontal} horizontal>
-          <Image source={{uri:engPhotoUri(selected.path)}} resizeMode="contain" accessibilityLabel={selected.label}
-            style={{width:Math.max(width-40,200)*zoom,height:Math.max(height-360,160)*zoom}} />
-        </ScrollView></ScrollView>
+      <Button label="Reset zoom" disabled={zoom===1&&pan.x===0&&pan.y===0} onPress={()=>{changeZoom(1);changePan(0,0,1);}} />
+      <View style={{height:viewHeight,overflow:"hidden",alignItems:"center",justifyContent:"center"}} {...gestures}>
+        <Image source={{uri:engPhotoUri(selected.path)}} resizeMode="contain" accessibilityLabel={selected.label}
+          style={{width:viewWidth,height:viewHeight,transform:[{translateX:pan.x},{translateY:pan.y},{scale:zoom}]}} />
       </View>
     </ScrollView>
   </Modal>;

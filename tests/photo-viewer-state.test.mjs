@@ -18,3 +18,21 @@ test('pinch zoom uses finite positive two-touch distance and cannot exceed 1x–
  assert.equal(touchDistance([{pageX:0,pageY:0},{pageX:0,pageY:0}]),null);
  assert.equal(clampPhotoZoom(0),1);assert.equal(clampPhotoZoom(8),4);assert.equal(clampPhotoZoom(1.5),1.5);assert.equal(clampPhotoZoom(NaN),1);
 });
+test('double-tap toggles 1x to 2x and any enlarged zoom back to 1x',async()=>{
+ const {isPhotoDoubleTap,doubleTapPhotoZoom}=await import('../src/photo-viewer-state.ts');
+ const a={time:1000,x:20,y:50};
+ assert.equal(isPhotoDoubleTap(a,{time:1200,x:23,y:60}),true);
+ assert.equal(isPhotoDoubleTap(a,{time:1400,x:23,y:60}),false);
+ assert.equal(isPhotoDoubleTap(a,{time:1200,x:65,y:60}),false);
+ assert.equal(isPhotoDoubleTap(null,{time:1200,x:20,y:50}),false);
+ assert.equal(doubleTapPhotoZoom(1),2);
+ assert.equal(doubleTapPhotoZoom(2),1);
+ assert.equal(doubleTapPhotoZoom(4),1);
+});
+test('photo pan remains within enlarged image bounds and resets at 1x',async()=>{
+ const {clampPhotoPan}=await import('../src/photo-viewer-state.ts');
+ assert.deepEqual(clampPhotoPan(999,-999,2,300,400),{x:150,y:-200});
+ assert.deepEqual(clampPhotoPan(-999,999,4,300,400),{x:-450,y:600});
+ assert.deepEqual(clampPhotoPan(100,100,1,300,400),{x:0,y:0});
+ assert.deepEqual(clampPhotoPan(NaN,Infinity,2,300,400),{x:0,y:0});
+});
