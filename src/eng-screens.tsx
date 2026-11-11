@@ -104,8 +104,7 @@ function PhotoViewer({path,label,photos,onClose}:{path:string;label:string;photo
         if(distance&&!pinch.current)pinch.current={distance,zoom:zoomRef.current};
       }
     },
-    // Claim taps as well as movement so double-tap can be recognized at exactly 1x.
-    onStartShouldSetResponder:()=>true,
+    // Let the image Pressable own taps; capture only multi-touch and movement.
     onStartShouldSetResponderCapture:(event:import("react-native").GestureResponderEvent)=>event.nativeEvent.touches.length>=2,
     onMoveShouldSetResponderCapture:(event:import("react-native").GestureResponderEvent)=>{
       const touches=event.nativeEvent.touches;if(touches.length>=2)return true;
@@ -137,17 +136,21 @@ function PhotoViewer({path,label,photos,onClose}:{path:string;label:string;photo
       if(!usedPinch.current&&!usedPan.current&&start&&point){
         const step=photoSwipeStep(dx,dy,zoomRef.current);
         if(step)move(step);
-        else if(Math.hypot(dx,dy)<12&&Date.now()-start.time<=300){
-          const current={time:Date.now(),x:point.pageX,y:point.pageY};
-          if(isPhotoDoubleTap(lastTap.current,current)){
-            changeZoom(doubleTapPhotoZoom(zoomRef.current));lastTap.current=null;
-          }else lastTap.current=current;
-        }else lastTap.current=null;
       }
       pinch.current=null;origin.current=null;usedPinch.current=false;usedPan.current=false;
     },
     onResponderTerminate:()=>{pinch.current=null;origin.current=null;usedPinch.current=false;usedPan.current=false;lastTap.current=null;},
   };
+  function handlePhotoPress(event:import("react-native").GestureResponderEvent){
+    if(usedPinch.current||usedPan.current)return;
+    const {pageX,pageY}=event.nativeEvent;
+    if(!Number.isFinite(pageX)||!Number.isFinite(pageY))return;
+    const current={time:Date.now(),x:pageX,y:pageY};
+    if(isPhotoDoubleTap(lastTap.current,current)){
+      changeZoom(doubleTapPhotoZoom(zoomRef.current));
+      lastTap.current=null;
+    }else lastTap.current=current;
+  }
   return <Modal visible onRequestClose={onClose} animationType={reduceMotion?"none":"slide"} accessibilityViewIsModal>
     <ScrollView onAccessibilityEscape={onClose} style={{flex:1,backgroundColor:colors.paper}} contentContainerStyle={{flexGrow:1,padding:20,paddingTop:48,gap:12}}>
       <Copy accessibilityRole="header">{selected.label}</Copy>
@@ -162,8 +165,10 @@ function PhotoViewer({path,label,photos,onClose}:{path:string;label:string;photo
       </View>
       <Button label="Reset zoom" disabled={zoom===1&&pan.x===0&&pan.y===0} onPress={()=>{changeZoom(1);changePan(0,0,1);}} />
       <View style={{height:viewHeight,overflow:"hidden",alignItems:"center",justifyContent:"center"}} {...gestures}>
-        <Image source={{uri:engPhotoUri(selected.path)}} resizeMode="contain" accessibilityLabel={selected.label}
-          style={{width:viewWidth,height:viewHeight,transform:[{translateX:pan.x},{translateY:pan.y},{scale:zoom}]}} />
+        <Pressable onPress={handlePhotoPress} accessibilityRole="image" accessibilityLabel={selected.label}>
+          <Image source={{uri:engPhotoUri(selected.path)}} resizeMode="contain" accessible={false}
+            style={{width:viewWidth,height:viewHeight,transform:[{translateX:pan.x},{translateY:pan.y},{scale:zoom}]}} />
+        </Pressable>
       </View>
     </ScrollView>
   </Modal>;
