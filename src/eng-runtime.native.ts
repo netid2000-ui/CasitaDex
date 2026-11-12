@@ -8,6 +8,7 @@ import { File, FileMode, Paths } from "expo-file-system";
 import * as FileSystem from "expo-file-system/legacy";
 import * as DocumentPicker from "expo-document-picker";
 import * as ImagePicker from "expo-image-picker";
+import { Platform } from "react-native";
 import { createEngStore, legacyEngSnapshot, validateEngSnapshot } from "./eng-store";
 import { sqliteRepository, type Database } from "./sqlite-repository";
 import { createNativeMediaStore } from "./media-store.native";
@@ -84,6 +85,39 @@ export async function writeEngBackup(source:EngBackupSource){
     [...source.snapshot.data.media.media,...(source.snapshot.draft?.photos??[])].reduce((n,e)=>n+4+e.bytes,0);
   if(size>fullBackupLimit)throw Error("Full backup exceeds the supported format limit");
   await requireNativeCapacity(size*2+4_000_000);
+  const iosName="CasitaDex-full-"+new Date().toISOString().replace(/[:.]/g,"-")+".cdxe";
+  if(Platform.OS==="ios"){
+    // iOS has no Storage Access Framework. Keep a complete, verified Full v4
+    // archive in private app Documents, not directly exposed via iOS Files;
+    // offer only the selected archive through the system share sheet.
+    const localFile=new File(Paths.document,iosName);
+    let verified=false;
+    try{
+      localFile.create();
+      const expected=await writeEngStreamV4(source.snapshot,reminders,source.read,source.hash,{
+        write:async bytes=>{localFile.write(bytes,{append:true});}
+      });
+      const checked=await openEngStreamCompatible(reader(localFile),source.hash);
+      if(checked.size!==expected.size
+        ||checked.headerHash!==await source.hash(new TextEncoder().encode(JSON.stringify(expected.snapshot)))
+        ||checked.source!=="Full v4"
+        ||JSON.stringify(checked.reminders)!==JSON.stringify(reminders))
+        throw Error("Full backup read-back verification failed.");
+      verified=true;
+      const Sharing=await import("expo-sharing");
+      if(!await Sharing.isAvailableAsync())throw Error("iOS file sharing is unavailable. Your memories are unchanged.");
+      await Sharing.shareAsync(localFile.uri,{mimeType:"application/octet-stream",UTI:"public.data",dialogTitle:"Save verified CasitaDex full backup"});
+      // A completed share sheet is not proof that Files saved a second copy.
+      return "Verified Full v4 backup retained privately on this device. Use the share sheet to save a separate copy to Files or another destination, then confirm it exists.";
+    }catch(error){
+      if(localFile.exists)localFile.delete();
+      throw error;
+    }finally{
+      // Keep verified backup in Documents, including if the share sheet is
+      // dismissed. An explicit user action is needed to delete this backup.
+      if(!verified&&localFile.exists)localFile.delete();
+    }
+  }
   const permission=await FileSystem.StorageAccessFramework.requestDirectoryPermissionsAsync();
   if(!permission.granted)return "Backup canceled. Your memories and draft are kept.";
   const name="CasitaDex-full-"+new Date().toISOString().replace(/[:.]/g,"-")+".cdxe";
