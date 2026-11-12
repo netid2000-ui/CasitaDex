@@ -17,7 +17,7 @@ export function touchDistance(touches:readonly {pageX:number;pageY:number}[]):nu
 
 /** Double-tap is a bounded two-press gesture; false positives must not trigger on swipes. */
 export type PhotoTap={time:number;x:number;y:number};
-export function isPhotoDoubleTap(previous:PhotoTap|null,current:PhotoTap,maxDelay=300,maxDistance=30):boolean {
+export function isPhotoDoubleTap(previous:PhotoTap|null,current:PhotoTap,maxDelay=450,maxDistance=30):boolean {
   return previous!==null&&Number.isFinite(current.time)&&Number.isFinite(previous.time)&&
     current.time>=previous.time&&current.time-previous.time<=maxDelay&&
     Math.hypot(current.x-previous.x,current.y-previous.y)<=maxDistance;

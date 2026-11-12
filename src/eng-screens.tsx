@@ -77,6 +77,7 @@ function PhotoViewer({path,label,photos,onClose}:{path:string;label:string;photo
   const [pan,setPan]=useState({x:0,y:0}),panRef=useRef({x:0,y:0});
   const lastTap=useRef<PhotoTap|null>(null),usedPan=useRef(false);
   const origin=useRef<{x:number;y:number;time:number;pan:{x:number;y:number}}|null>(null);
+  const tapOrigin=useRef<{x:number;y:number;time:number}|null>(null);
   const viewWidth=Math.max(width-40,200),viewHeight=Math.max(height-360,160);
   const selected=items[clampPhotoIndex(index,items.length)];
   const changePan=useCallback((x:number,y:number,z=zoomRef.current)=>{
@@ -97,10 +98,11 @@ function PhotoViewer({path,label,photos,onClose}:{path:string;label:string;photo
       if(touches.length===1){
         const point=touches[0];
         origin.current={x:point.pageX,y:point.pageY,time:Date.now(),pan:panRef.current};
+        tapOrigin.current={x:point.pageX,y:point.pageY,time:Date.now()};
         usedPinch.current=false;usedPan.current=false;
       }else if(touches.length>=2){
         const distance=touchDistance(touches);
-        usedPinch.current=true;lastTap.current=null;
+        usedPinch.current=true;lastTap.current=null;tapOrigin.current=null;
         if(distance&&!pinch.current)pinch.current={distance,zoom:zoomRef.current};
       }
     },
@@ -116,7 +118,7 @@ function PhotoViewer({path,label,photos,onClose}:{path:string;label:string;photo
       const touches=event.nativeEvent.touches;
       const distance=touchDistance(touches);
       if(distance){
-        usedPinch.current=true;lastTap.current=null;
+        usedPinch.current=true;lastTap.current=null;tapOrigin.current=null;
         if(!pinch.current)pinch.current={distance,zoom:zoomRef.current};
         changeZoom(pinch.current.zoom*distance/pinch.current.distance);
         return;
@@ -125,7 +127,7 @@ function PhotoViewer({path,label,photos,onClose}:{path:string;label:string;photo
       if(start&&point&&zoomRef.current>1&&!usedPinch.current){
         const dx=point.pageX-start.x,dy=point.pageY-start.y;
         if(Math.hypot(dx,dy)>6){
-          usedPan.current=true;lastTap.current=null;
+          usedPan.current=true;lastTap.current=null;tapOrigin.current=null;
           changePan(start.pan.x+dx,start.pan.y+dy);
         }
       }
@@ -135,20 +137,24 @@ function PhotoViewer({path,label,photos,onClose}:{path:string;label:string;photo
       const dx=start&&point?point.pageX-start.x:0,dy=start&&point?point.pageY-start.y:0;
       if(!usedPinch.current&&!usedPan.current&&start&&point){
         const step=photoSwipeStep(dx,dy,zoomRef.current);
-        if(step)move(step);
+        if(step){tapOrigin.current=null;move(step);}
       }
       pinch.current=null;origin.current=null;usedPinch.current=false;usedPan.current=false;
     },
-    onResponderTerminate:()=>{pinch.current=null;origin.current=null;usedPinch.current=false;usedPan.current=false;lastTap.current=null;},
+    onResponderTerminate:()=>{pinch.current=null;origin.current=null;tapOrigin.current=null;usedPinch.current=false;usedPan.current=false;lastTap.current=null;},
   };
-  function handlePhotoPress(event:import("react-native").GestureResponderEvent){
-    if(usedPinch.current||usedPan.current)return;
-    const {pageX,pageY}=event.nativeEvent;
-    if(!Number.isFinite(pageX)||!Number.isFinite(pageY))return;
-    const current={time:Date.now(),x:pageX,y:pageY};
+  function handlePhotoTouchEnd(event:import("react-native").GestureResponderEvent){
+    // onTouchEnd observes taps even when the parent has not claimed responder ownership.
+    if(usedPinch.current||usedPan.current||pinch.current)return;
+    const start=tapOrigin.current,point=event.nativeEvent.changedTouches[0];
+    if(event.nativeEvent.touches.length>0||!point)return;
+    tapOrigin.current=null;
+    if(!start)return;
+    const dx=point.pageX-start.x,dy=point.pageY-start.y;
+    if(Math.hypot(dx,dy)>=12||Date.now()-start.time>300){lastTap.current=null;return;}
+    const current={time:Date.now(),x:point.pageX,y:point.pageY};
     if(isPhotoDoubleTap(lastTap.current,current)){
-      changeZoom(doubleTapPhotoZoom(zoomRef.current));
-      lastTap.current=null;
+      changeZoom(doubleTapPhotoZoom(zoomRef.current));lastTap.current=null;
     }else lastTap.current=current;
   }
   return <Modal visible onRequestClose={onClose} animationType={reduceMotion?"none":"slide"} accessibilityViewIsModal>
@@ -164,11 +170,10 @@ function PhotoViewer({path,label,photos,onClose}:{path:string;label:string;photo
         <Copy accessibilityLiveRegion="polite">Zoom {Math.round(zoom*10)/10} times</Copy>
       </View>
       <Button label="Reset zoom" disabled={zoom===1&&pan.x===0&&pan.y===0} onPress={()=>{changeZoom(1);changePan(0,0,1);}} />
-      <View style={{height:viewHeight,overflow:"hidden",alignItems:"center",justifyContent:"center"}} {...gestures}>
-        <Pressable onPress={handlePhotoPress} accessibilityRole="image" accessibilityLabel={selected.label}>
-          <Image source={{uri:engPhotoUri(selected.path)}} resizeMode="contain" accessible={false}
-            style={{width:viewWidth,height:viewHeight,transform:[{translateX:pan.x},{translateY:pan.y},{scale:zoom}]}} />
-        </Pressable>
+      <View style={{height:viewHeight,overflow:"hidden",alignItems:"center",justifyContent:"center"}} {...gestures}
+        onTouchEnd={handlePhotoTouchEnd}>
+        <Image source={{uri:engPhotoUri(selected.path)}} resizeMode="contain" accessibilityLabel={selected.label}
+          style={{width:viewWidth,height:viewHeight,transform:[{translateX:pan.x},{translateY:pan.y},{scale:zoom}]}} />
       </View>
     </ScrollView>
   </Modal>;

@@ -22,7 +22,8 @@ test('double-tap toggles 1x to 2x and any enlarged zoom back to 1x',async()=>{
  const {isPhotoDoubleTap,doubleTapPhotoZoom}=await import('../src/photo-viewer-state.ts');
  const a={time:1000,x:20,y:50};
  assert.equal(isPhotoDoubleTap(a,{time:1200,x:23,y:60}),true);
- assert.equal(isPhotoDoubleTap(a,{time:1400,x:23,y:60}),false);
+ assert.equal(isPhotoDoubleTap(a,{time:1400,x:23,y:60}),true);
+ assert.equal(isPhotoDoubleTap(a,{time:1500,x:23,y:60}),false);
  assert.equal(isPhotoDoubleTap(a,{time:1200,x:65,y:60}),false);
  assert.equal(isPhotoDoubleTap(null,{time:1200,x:20,y:50}),false);
  assert.equal(doubleTapPhotoZoom(1),2);
