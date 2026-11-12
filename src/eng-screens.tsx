@@ -107,6 +107,15 @@ function PhotoViewer({path,label,photos,onClose}:{path:string;label:string;photo
       }
     },
     // Let the image Pressable own taps; capture only multi-touch and movement.
+    // Process multi-touch moves even when the native ScrollView does not grant responder ownership.
+    onTouchMove:(event:import("react-native").GestureResponderEvent)=>{
+      const touches=event.nativeEvent.touches;
+      const distance=touchDistance(touches);
+      if(!distance)return;
+      usedPinch.current=true;lastTap.current=null;tapOrigin.current=null;
+      if(!pinch.current)pinch.current={distance,zoom:zoomRef.current};
+      changeZoom(pinch.current.zoom*distance/pinch.current.distance);
+    },
     // At zoom above 1×, own the initial one-finger touch to pan instead of letting the parent ScrollView take it.
     onStartShouldSetResponder:(event:import("react-native").GestureResponderEvent)=>
       zoomRef.current>1||event.nativeEvent.touches.length>=2,

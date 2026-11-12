@@ -172,13 +172,18 @@ test("ordinary buttons do not imply expandable content", () => {
   assert.equal(p.accessibilityState.disabled, false);
 });
 test("photo modal begins without slide before motion preference resolves and escape closes", () => {
-  let closed = 0; const announcementInputs = [];
+  let closed = 0; const announcementInputs = [], zoomSamples = [];
   const mocks = { react, "react-native": {
     Modal: "Modal", ScrollView: "ScrollView", View: "View", Image: "Image",
     useWindowDimensions: () => ({ width: 390, height: 844 }),
   }, "./ui": { Button: "Button", Copy: "Copy", useTheme: () => ({ colors: { paper: "#fff" } }) },
   "./accessibility-feedback": { useStatusAnnouncement: text => announcementInputs.push(text), observeReduceMotion: () => () => {} },
-  "./photo-viewer-state": { clampPhotoIndex: (i,n) => Math.max(0,Math.min(i,n-1)), clampPhotoZoom: v => Math.max(1,Math.min(4,v)) },
+  "./photo-viewer-state": {
+    clampPhotoIndex: (i,n) => Math.max(0,Math.min(i,n-1)),
+    clampPhotoZoom: v => { zoomSamples.push(v); return Math.max(1,Math.min(4,v)); },
+    clampPhotoPan: (x,y) => ({x,y}),
+    touchDistance: ts => ts.length < 2 ? null : Math.hypot(ts[1].pageX-ts[0].pageX,ts[1].pageY-ts[0].pageY),
+  },
   "./eng-find": { defaultFilter: () => ({}) }, "./eng-domain": { localDay: () => "" },
   "./eng-runtime": { engPhotoUri: value => value } };
   for (const name of ["./memory-navigation", "./action-page", "./share-session", "./reminder-alerts", "./backup-review", "./reminder-notification-target", "./reminder-notification-projection", "@react-native-community/datetimepicker", "expo-router", "./state", "./eng-store", "./standalone-reminders", "./eng-text-backup", "./eng-duplicates", "./eng-navigation", "./standalone-reminder-draft", "./brand", "./home-action", "./editorial-intro", "./model"]) mocks[name] ??= {};
@@ -193,4 +198,10 @@ test("photo modal begins without slide before motion preference resolves and esc
   assert.deepEqual(announcementInputs, []);
   const closeButton = scroll.props.children.find(n => n?.props?.label === "Close photo");
   closeButton.props.onPress(); assert.equal(closed, 2);
+  // Regression: real two-finger touchMove must zoom without a JS onResponderMove event.
+  const imageRegion = scroll.props.children.find(n => n?.type === "View" && typeof n.props?.onTouchMove === "function");
+  assert.ok(imageRegion, "photo image exposes direct multitouch move handling");
+  imageRegion.props.onTouchStart({nativeEvent:{touches:[{pageX:0,pageY:0},{pageX:100,pageY:0}]}});
+  imageRegion.props.onTouchMove({nativeEvent:{touches:[{pageX:0,pageY:0},{pageX:200,pageY:0}]}});
+  assert.ok(zoomSamples.includes(2), "pinch-out updates zoom from actual touch movement");
 });
