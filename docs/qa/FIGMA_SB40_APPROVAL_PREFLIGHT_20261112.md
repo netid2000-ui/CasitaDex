@@ -34,7 +34,7 @@ The broad scan returned 413 destination occurrences on 43 dark frames before cor
 ## Remaining design work
 1. Classify actual cross-theme routes, especially Find filter results, Photos compact/sort navigation, label management, storage previews and reminders.
 2. Execute multi-category/create-new lifecycle prototype journeys.
-3. Model and verify repeated photo mutations and cover propagation.
+3. Reconcile prototype photo states to COMPLETED native mutation/cover evidence. Do not rerun completed photo acceptance; see FIGMA_SB40_NATIVE_PHOTO_EVIDENCE_RECONCILIATION_20261112.md.
 4. Verify restore draft choices, confirmation, cancellation and recovery journeys in the prototype.
 5. Finish touch-target/contrast/large-text and reusable-component audit.
 6. Present completed scoped design evidence for owner approval before implementation resumes.
