@@ -1,0 +1,350 @@
+[
+  {
+    "frame": "1079:2",
+    "before": {
+      "node": "1079-2",
+      "buttons": [
+        {
+          "text": "Cancel",
+          "y": 135
+        },
+        {
+          "text": "Save",
+          "y": 135
+        },
+        {
+          "text": "Hallway\n\n\u203a",
+          "y": 386
+        },
+        {
+          "text": "Maintenance\n\n\u203a",
+          "y": 477
+        },
+        {
+          "text": "Location\n\nReturn grille beside the linen closet\n\nEdit \u203a",
+          "y": 694
+        },
+        {
+          "text": "Notes\n\nCheck the airflow arrow before fitting.\n\nEdit \u203a",
+          "y": 771
+        },
+        {
+          "text": "Reference\n\nFilter label \u00b7 MERV 11\n\nEdit \u203a",
+          "y": 848
+        },
+        {
+          "text": "Add Photo\n\n\u203a",
+          "y": 1082
+        }
+      ],
+      "scroll": [
+        {
+          "top": 0,
+          "height": 752,
+          "content": 1014
+        }
+      ]
+    },
+    "after": {
+      "node": "1079-2",
+      "buttons": [
+        {
+          "text": "Cancel",
+          "y": 135
+        },
+        {
+          "text": "Save",
+          "y": 135
+        },
+        {
+          "text": "Hallway\n\n\u203a",
+          "y": 124
+        },
+        {
+          "text": "Maintenance\n\n\u203a",
+          "y": 215
+        },
+        {
+          "text": "Location\n\nReturn grille beside the linen closet\n\nEdit \u203a",
+          "y": 432
+        },
+        {
+          "text": "Notes\n\nCheck the airflow arrow before fitting.\n\nEdit \u203a",
+          "y": 509
+        },
+        {
+          "text": "Reference\n\nFilter label \u00b7 MERV 11\n\nEdit \u203a",
+          "y": 586
+        },
+        {
+          "text": "Add Photo\n\n\u203a",
+          "y": 820
+        }
+      ],
+      "scroll": [
+        {
+          "top": 262,
+          "height": 752,
+          "content": 1014
+        }
+      ]
+    },
+    "headerFixed": true,
+    "contentMoved": true
+  },
+  {
+    "frame": "1066:2",
+    "before": {
+      "node": "1066-2",
+      "buttons": [
+        {
+          "text": "Find",
+          "y": 135
+        },
+        {
+          "text": "Edit",
+          "y": 135
+        },
+        {
+          "text": "View All Photos (3)",
+          "y": 875
+        },
+        {
+          "text": "Add Photo \u203a",
+          "y": 875
+        },
+        {
+          "text": "Set Reminder \u203a",
+          "y": 934
+        },
+        {
+          "text": "Share memory \u203a",
+          "y": 993
+        },
+        {
+          "text": "More memory actions \u203a",
+          "y": 1052
+        }
+      ],
+      "scroll": [
+        {
+          "top": 0,
+          "height": 752,
+          "content": 950
+        }
+      ]
+    },
+    "after": {
+      "node": "1066-2",
+      "buttons": [
+        {
+          "text": "Find",
+          "y": 135
+        },
+        {
+          "text": "Edit",
+          "y": 135
+        },
+        {
+          "text": "View All Photos (3)",
+          "y": 677
+        },
+        {
+          "text": "Add Photo \u203a",
+          "y": 677
+        },
+        {
+          "text": "Set Reminder \u203a",
+          "y": 736
+        },
+        {
+          "text": "Share memory \u203a",
+          "y": 795
+        },
+        {
+          "text": "More memory actions \u203a",
+          "y": 854
+        }
+      ],
+      "scroll": [
+        {
+          "top": 198,
+          "height": 752,
+          "content": 950
+        }
+      ]
+    },
+    "headerFixed": true,
+    "contentMoved": true
+  },
+  {
+    "frame": "975:171",
+    "before": {
+      "node": "975-171",
+      "buttons": [
+        {
+          "text": "Cancel",
+          "y": 135
+        },
+        {
+          "text": "Choose a space\n\n\u203a",
+          "y": 386
+        },
+        {
+          "text": "Choose categories\n\n\u203a",
+          "y": 476.984375
+        },
+        {
+          "text": "Location\n\nEdit \u203a",
+          "y": 694
+        },
+        {
+          "text": "Notes\n\nEdit \u203a",
+          "y": 756
+        },
+        {
+          "text": "Reference\n\nEdit \u203a",
+          "y": 818
+        },
+        {
+          "text": "Add Photo\n\n\u203a",
+          "y": 915
+        }
+      ],
+      "scroll": [
+        {
+          "top": 0,
+          "height": 752,
+          "content": 847
+        }
+      ]
+    },
+    "after": {
+      "node": "975-171",
+      "buttons": [
+        {
+          "text": "Cancel",
+          "y": 135
+        },
+        {
+          "text": "Choose a space\n\n\u203a",
+          "y": 291
+        },
+        {
+          "text": "Choose categories\n\n\u203a",
+          "y": 381.984375
+        },
+        {
+          "text": "Location\n\nEdit \u203a",
+          "y": 599
+        },
+        {
+          "text": "Notes\n\nEdit \u203a",
+          "y": 661
+        },
+        {
+          "text": "Reference\n\nEdit \u203a",
+          "y": 723
+        },
+        {
+          "text": "Add Photo\n\n\u203a",
+          "y": 820
+        }
+      ],
+      "scroll": [
+        {
+          "top": 95,
+          "height": 752,
+          "content": 847
+        }
+      ]
+    },
+    "headerFixed": true,
+    "contentMoved": true
+  },
+  {
+    "frame": "975:217",
+    "before": {
+      "node": "975-217",
+      "buttons": [
+        {
+          "text": "Cancel",
+          "y": 135
+        },
+        {
+          "text": "Add Photo\n\n\u203a",
+          "y": 295
+        },
+        {
+          "text": "Space\n\nChoose a space\n\n\u203a",
+          "y": 472
+        },
+        {
+          "text": "Categories\n\nChoose categories\n\n\u203a",
+          "y": 563
+        },
+        {
+          "text": "Location\n\nEdit \u203a",
+          "y": 803
+        },
+        {
+          "text": "Notes\n\nEdit \u203a",
+          "y": 865
+        },
+        {
+          "text": "Reference\n\nEdit \u203a",
+          "y": 927
+        }
+      ],
+      "scroll": [
+        {
+          "top": 0,
+          "height": 752,
+          "content": 825
+        }
+      ]
+    },
+    "after": {
+      "node": "975-217",
+      "buttons": [
+        {
+          "text": "Cancel",
+          "y": 135
+        },
+        {
+          "text": "Add Photo\n\n\u203a",
+          "y": 222
+        },
+        {
+          "text": "Space\n\nChoose a space\n\n\u203a",
+          "y": 399
+        },
+        {
+          "text": "Categories\n\nChoose categories\n\n\u203a",
+          "y": 490
+        },
+        {
+          "text": "Location\n\nEdit \u203a",
+          "y": 730
+        },
+        {
+          "text": "Notes\n\nEdit \u203a",
+          "y": 792
+        },
+        {
+          "text": "Reference\n\nEdit \u203a",
+          "y": 854
+        }
+      ],
+      "scroll": [
+        {
+          "top": 73,
+          "height": 752,
+          "content": 825
+        }
+      ]
+    },
+    "headerFixed": true,
+    "contentMoved": true
+  }
+]
