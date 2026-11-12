@@ -1,0 +1,214 @@
+[
+  {
+    "action": "Hallway air filter",
+    "node": "1001-2",
+    "text": "Photos\n\nEdit\n\nHallway air filter\n\n20 \u00d7 25 \u00d7 1\n\nReplace every 3 months.\n\nSPACE\n\nHallway\n\nCATEGORY\n\nMaintenance\n\nView All Photos (3)\n\nAdd Photo \u203a\n\nSet Reminder \u203a\n\nShare memory \u203a\n\nMore memory actions \u203a\n\nRestart\nR",
+    "controls": [
+      "Photos",
+      "Edit",
+      "View All Photos (3)",
+      "Add Photo \u203a",
+      "Set Reminder \u203a",
+      "Share memory \u203a",
+      "More memory actions \u203a"
+    ]
+  },
+  {
+    "action": "Edit",
+    "node": "1079-2",
+    "text": "Cancel\n\nSave\n\nEdit Memory\n\nTitle (required)\n\nHallway air filter\n\nSpace\n\nHallway\n\n\u203a\n\nCategories\n\nMaintenance\n\n\u203a\n\nDescription\n\n20 \u00d7 25 \u00d7 1 \u00b7 Replace every 3 months.\n\nLocation\n\nReturn grille beside the linen closet\n\nEdit \u203a\n\nNotes\n\nCheck the airflow arrow before fitting.\n\nEdit \u203a\n\nReference\n\nFilter label \u00b7 MERV 11\n\nEdit \u203a\n\nPhotos \u00b7 3/5\n\nCover\n\nLabel detail\n\nFilter edge\n\nAdd Photo\n\n\u203a\n\nUp to five photos per memory.\n\nRestart\nR",
+    "controls": [
+      "Cancel",
+      "Save",
+      "Hallway\n\n\u203a",
+      "Maintenance\n\n\u203a",
+      "Location\n\nReturn grille beside the linen closet\n\nEdit \u203a",
+      "Notes\n\nCheck the airflow arrow before fitting.\n\nEdit \u203a",
+      "Reference\n\nFilter label \u00b7 MERV 11\n\nEdit \u203a",
+      "Add Photo\n\n\u203a"
+    ]
+  },
+  {
+    "action": "Hallway",
+    "node": "1079-2",
+    "text": "Choose a space\n\nCreate new space \u203aNoneGarageHallway \u2713KitchenOffice\n\nClose\n\nRestart\nR",
+    "controls": [
+      "Create new space \u203a",
+      "None",
+      "Garage",
+      "Hallway \u2713",
+      "Kitchen",
+      "Office",
+      "Close"
+    ]
+  },
+  {
+    "action": "Create new space",
+    "node": "1085-109",
+    "text": "Cancel\n\nCreate Space\n\nSpace name\n\nOffice\n\nUse this Space to organize your memories.\n\nSave\n\nRestart\nR",
+    "controls": [
+      "Cancel",
+      "Save"
+    ]
+  },
+  {
+    "action": "Cancel",
+    "node": "1079-2",
+    "text": "Cancel\n\nSave\n\nEdit Memory\n\nTitle (required)\n\nHallway air filter\n\nSpace\n\nHallway\n\n\u203a\n\nCategories\n\nMaintenance\n\n\u203a\n\nDescription\n\n20 \u00d7 25 \u00d7 1 \u00b7 Replace every 3 months.\n\nLocation\n\nReturn grille beside the linen closet\n\nEdit \u203a\n\nNotes\n\nCheck the airflow arrow before fitting.\n\nEdit \u203a\n\nReference\n\nFilter label \u00b7 MERV 11\n\nEdit \u203a\n\nPhotos \u00b7 3/5\n\nCover\n\nLabel detail\n\nFilter edge\n\nAdd Photo\n\n\u203a\n\nUp to five photos per memory.\n\nRestart\nR",
+    "controls": [
+      "Cancel",
+      "Save",
+      "Hallway\n\n\u203a",
+      "Maintenance\n\n\u203a",
+      "Location\n\nReturn grille beside the linen closet\n\nEdit \u203a",
+      "Notes\n\nCheck the airflow arrow before fitting.\n\nEdit \u203a",
+      "Reference\n\nFilter label \u00b7 MERV 11\n\nEdit \u203a",
+      "Add Photo\n\n\u203a"
+    ]
+  },
+  {
+    "action": "Hallway",
+    "node": "1079-2",
+    "text": "Choose a space\n\nCreate new space \u203aNoneGarageHallway \u2713KitchenOffice\n\nClose\n\nRestart\nR",
+    "controls": [
+      "Create new space \u203a",
+      "None",
+      "Garage",
+      "Hallway \u2713",
+      "Kitchen",
+      "Office",
+      "Close"
+    ]
+  },
+  {
+    "action": "Create new space",
+    "node": "1085-109",
+    "text": "Cancel\n\nCreate Space\n\nSpace name\n\nOffice\n\nUse this Space to organize your memories.\n\nSave\n\nRestart\nR",
+    "controls": [
+      "Cancel",
+      "Save"
+    ]
+  },
+  {
+    "action": "Save",
+    "node": "1079-434",
+    "text": "Cancel\n\nSave\n\nEdit Memory\n\nTitle (required)\n\nHallway air filter\n\nSpace\n\nOffice\n\n\u203a\n\nCategories\n\nMaintenance\n\n\u203a\n\nDescription\n\n20 \u00d7 25 \u00d7 1 \u00b7 Replace every 3 months.\n\nLocation\n\nReturn grille beside the linen closet\n\nEdit \u203a\n\nNotes\n\nCheck the airflow arrow before fitting.\n\nEdit \u203a\n\nReference\n\nFilter label \u00b7 MERV 11\n\nEdit \u203a\n\nPhotos \u00b7 3/5\n\nCover\n\nLabel detail\n\nFilter edge\n\nAdd Photo\n\n\u203a\n\nUp to five photos per memory.\n\nRestart\nR",
+    "controls": [
+      "Cancel",
+      "Save",
+      "Office\n\n\u203a",
+      "Maintenance\n\n\u203a",
+      "Location\n\nReturn grille beside the linen closet\n\nEdit \u203a",
+      "Notes\n\nCheck the airflow arrow before fitting.\n\nEdit \u203a",
+      "Reference\n\nFilter label \u00b7 MERV 11\n\nEdit \u203a",
+      "Add Photo\n\n\u203a"
+    ]
+  },
+  {
+    "action": "Maintenance",
+    "node": "1079-434",
+    "text": "Choose categories\n\nCreate new category \u203aNoneAppliancesMaintenance \u2713ManualsSeasonalWarranties\n\nClose\n\nRestart\nR",
+    "controls": [
+      "Create new category \u203a",
+      "None",
+      "Appliances",
+      "Maintenance \u2713",
+      "Manuals",
+      "Seasonal",
+      "Warranties",
+      "Close"
+    ]
+  },
+  {
+    "action": "Create new category",
+    "node": "1085-125",
+    "text": "Cancel\n\nCreate Category\n\nCategory name\n\nWarranties\n\nUse this category to organize your memories.\n\nSave\n\nRestart\nR",
+    "controls": [
+      "Cancel",
+      "Save"
+    ]
+  },
+  {
+    "action": "Cancel",
+    "node": "1079-434",
+    "text": "Cancel\n\nSave\n\nEdit Memory\n\nTitle (required)\n\nHallway air filter\n\nSpace\n\nOffice\n\n\u203a\n\nCategories\n\nMaintenance\n\n\u203a\n\nDescription\n\n20 \u00d7 25 \u00d7 1 \u00b7 Replace every 3 months.\n\nLocation\n\nReturn grille beside the linen closet\n\nEdit \u203a\n\nNotes\n\nCheck the airflow arrow before fitting.\n\nEdit \u203a\n\nReference\n\nFilter label \u00b7 MERV 11\n\nEdit \u203a\n\nPhotos \u00b7 3/5\n\nCover\n\nLabel detail\n\nFilter edge\n\nAdd Photo\n\n\u203a\n\nUp to five photos per memory.\n\nRestart\nR",
+    "controls": [
+      "Cancel",
+      "Save",
+      "Office\n\n\u203a",
+      "Maintenance\n\n\u203a",
+      "Location\n\nReturn grille beside the linen closet\n\nEdit \u203a",
+      "Notes\n\nCheck the airflow arrow before fitting.\n\nEdit \u203a",
+      "Reference\n\nFilter label \u00b7 MERV 11\n\nEdit \u203a",
+      "Add Photo\n\n\u203a"
+    ]
+  },
+  {
+    "action": "Maintenance",
+    "node": "1079-434",
+    "text": "Choose categories\n\nCreate new category \u203aNoneAppliancesMaintenance \u2713ManualsSeasonalWarranties\n\nClose\n\nRestart\nR",
+    "controls": [
+      "Create new category \u203a",
+      "None",
+      "Appliances",
+      "Maintenance \u2713",
+      "Manuals",
+      "Seasonal",
+      "Warranties",
+      "Close"
+    ]
+  },
+  {
+    "action": "Create new category",
+    "node": "1085-125",
+    "text": "Cancel\n\nCreate Category\n\nCategory name\n\nWarranties\n\nUse this category to organize your memories.\n\nSave\n\nRestart\nR",
+    "controls": [
+      "Cancel",
+      "Save"
+    ]
+  },
+  {
+    "action": "Save",
+    "node": "1079-496",
+    "text": "Cancel\n\nSave\n\nEdit Memory\n\nTitle (required)\n\nHallway air filter\n\nSpace\n\nOffice\n\n\u203a\n\nCategories\n\nMaintenance, Warranties\n\n\u203a\n\nDescription\n\n20 \u00d7 25 \u00d7 1 \u00b7 Replace every 3 months.\n\nLocation\n\nReturn grille beside the linen closet\n\nEdit \u203a\n\nNotes\n\nCheck the airflow arrow before fitting.\n\nEdit \u203a\n\nReference\n\nFilter label \u00b7 MERV 11\n\nEdit \u203a\n\nPhotos \u00b7 3/5\n\nCover\n\nLabel detail\n\nFilter edge\n\nAdd Photo\n\n\u203a\n\nUp to five photos per memory.\n\nRestart\nR",
+    "controls": [
+      "Cancel",
+      "Save",
+      "Office\n\n\u203a",
+      "Maintenance, Warranties\n\n\u203a",
+      "Location\n\nReturn grille beside the linen closet\n\nEdit \u203a",
+      "Notes\n\nCheck the airflow arrow before fitting.\n\nEdit \u203a",
+      "Reference\n\nFilter label \u00b7 MERV 11\n\nEdit \u203a",
+      "Add Photo\n\n\u203a"
+    ]
+  },
+  {
+    "action": "Save",
+    "node": "1079-1058",
+    "text": "Back to results\n\nEdit\n\nHallway air filter\n\n20 \u00d7 25 \u00d7 1\n\nReplace every 3 months.\n\nSPACE\n\nOffice\n\nCATEGORY\n\nMaintenance, Warranties\n\nView All Photos (3)\n\nAdd Photo \u203a\n\nSet Reminder \u203a\n\nShare memory \u203a\n\nMore memory actions \u203a\n\nRestart\nR",
+    "controls": [
+      "Back to results",
+      "Edit",
+      "View All Photos (3)",
+      "Add Photo \u203a",
+      "Set Reminder \u203a",
+      "Share memory \u203a",
+      "More memory actions \u203a"
+    ]
+  },
+  {
+    "action": "Back to results",
+    "node": "975-52",
+    "text": "CasitaDex\n\nPhotos\n\nResume unfinished photo memory\n\nGrid\n\nCompact\n\nSort \u25be\n\nAdd Photo Memory \u203a\n\nHallway air filter\n\n3 photos\n\nWater heater\n\n4 photos\n\nWasher\n\n5 photos\n\nRefrigerator\n\n5 photos\n\nHome\n\nPhotos\n\nReminders\n\nFind\n\nRestart\nR",
+    "controls": [
+      "Resume unfinished photo memory",
+      "Compact",
+      "Sort \u25be",
+      "Add Photo Memory \u203a",
+      "Hallway air filter\n\n3 photos",
+      "Home",
+      "Reminders",
+      "Find"
+    ]
+  }
+]

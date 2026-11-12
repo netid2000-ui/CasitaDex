@@ -1,0 +1,122 @@
+[
+  {
+    "action": "Hallway air filter",
+    "node": "1001-2",
+    "text": "Photos\n\nEdit\n\nHallway air filter\n\n20 \u00d7 25 \u00d7 1\n\nReplace every 3 months.\n\nSPACE\n\nHallway\n\nCATEGORY\n\nMaintenance\n\nView All Photos (3)\n\nAdd Photo \u203a\n\nSet Reminder \u203a\n\nShare memory \u203a\n\nMore memory actions \u203a\n\nRestart\nR",
+    "controls": [
+      "Photos",
+      "Edit",
+      "View All Photos (3)",
+      "Add Photo \u203a",
+      "Set Reminder \u203a",
+      "Share memory \u203a",
+      "More memory actions \u203a"
+    ]
+  },
+  {
+    "action": "More memory",
+    "node": "1001-2",
+    "text": "Memory actions\n\nVerify memory \u203a\n\nView history \u203a\n\nEdit reference \u203a\n\nArchive memory\n\nMove to Recently Deleted \u203a\n\nClose\n\nRestart\nR",
+    "controls": [
+      "Verify memory \u203a",
+      "View history \u203a",
+      "Edit reference \u203a",
+      "Archive memory",
+      "Move to Recently Deleted \u203a",
+      "Close"
+    ]
+  },
+  {
+    "action": "Archive memory",
+    "node": "1086-130",
+    "text": "\u2039 Back to results\n\nArchived Memories\n\nArchived memories are kept here, and their reminders are paused.\n\n\u2315\n\nair filter\n\nSpace \u25be\n\nCategory \u25be\n\nWith photos only\n\n1 result\n\nHallway air filter\n\n20 \u00d7 25 \u00d7 1\n\nHallway \u00b7 Maintenance\n\n\u203a\n\nHome\n\nPhotos\n\nReminders\n\nFind\n\nRestart\nR",
+    "controls": [
+      "\u2039 Back to results",
+      "Hallway air filter\n\n20 \u00d7 25 \u00d7 1\n\nHallway \u00b7 Maintenance\n\n\u203a",
+      "Home",
+      "Photos",
+      "Reminders"
+    ]
+  },
+  {
+    "action": "Hallway air filter",
+    "node": "1086-130",
+    "text": "Archived memory\n\nThis memory remains available in Archived Memories.\n\nReturn to Active\n\nClose\n\nRestart\nR",
+    "controls": [
+      "Return to Active",
+      "Close"
+    ]
+  },
+  {
+    "action": "Return to Active",
+    "node": "1001-2",
+    "text": "Photos\n\nEdit\n\nHallway air filter\n\n20 \u00d7 25 \u00d7 1\n\nReplace every 3 months.\n\nSPACE\n\nHallway\n\nCATEGORY\n\nMaintenance\n\nView All Photos (3)\n\nAdd Photo \u203a\n\nSet Reminder \u203a\n\nShare memory \u203a\n\nMore memory actions \u203a\n\nRestart\nR",
+    "controls": [
+      "Photos",
+      "Edit",
+      "View All Photos (3)",
+      "Add Photo \u203a",
+      "Set Reminder \u203a",
+      "Share memory \u203a",
+      "More memory actions \u203a"
+    ]
+  },
+  {
+    "action": "More memory",
+    "node": "1001-2",
+    "text": "Memory actions\n\nVerify memory \u203a\n\nView history \u203a\n\nEdit reference \u203a\n\nArchive memory\n\nMove to Recently Deleted \u203a\n\nClose\n\nRestart\nR",
+    "controls": [
+      "Verify memory \u203a",
+      "View history \u203a",
+      "Edit reference \u203a",
+      "Archive memory",
+      "Move to Recently Deleted \u203a",
+      "Close"
+    ]
+  },
+  {
+    "action": "Move to Recently Deleted",
+    "node": "1001-2",
+    "text": "Move to Recently Deleted?\n\nThe memory will be available for recovery.\n\nMove to Recently Deleted\n\nCancel\n\nRestart\nR",
+    "controls": [
+      "Move to Recently Deleted",
+      "Cancel"
+    ]
+  },
+  {
+    "action": "Move to Recently Deleted",
+    "node": "1086-181",
+    "text": "\u2039 Back to results\n\nRecently Deleted\n\nDeleted memories are recoverable for at least 30 days.\n\n\u2315\n\nair filter\n\nSpace \u25be\n\nCategory \u25be\n\nWith photos only\n\n1 result\n\nHallway air filter\n\n20 \u00d7 25 \u00d7 1\n\nHallway \u00b7 Maintenance\n\n\u203a\n\nHome\n\nPhotos\n\nReminders\n\nFind\n\nRestart\nR",
+    "controls": [
+      "\u2039 Back to results",
+      "Hallway air filter\n\n20 \u00d7 25 \u00d7 1\n\nHallway \u00b7 Maintenance\n\n\u203a",
+      "Home",
+      "Photos",
+      "Reminders"
+    ]
+  },
+  {
+    "action": "Hallway air filter",
+    "node": "1086-181",
+    "text": "Recently deleted memory\n\nThis memory and its photos can be restored.\n\nRestore memory\n\nView history \u203a\n\nClose\n\nRestart\nR",
+    "controls": [
+      "Restore memory",
+      "View history \u203a",
+      "Close"
+    ]
+  },
+  {
+    "action": "Restore memory",
+    "node": "1001-2",
+    "text": "Photos\n\nEdit\n\nHallway air filter\n\n20 \u00d7 25 \u00d7 1\n\nReplace every 3 months.\n\nSPACE\n\nHallway\n\nCATEGORY\n\nMaintenance\n\nView All Photos (3)\n\nAdd Photo \u203a\n\nSet Reminder \u203a\n\nShare memory \u203a\n\nMore memory actions \u203a\n\nRestart\nR",
+    "controls": [
+      "Photos",
+      "Edit",
+      "View All Photos (3)",
+      "Add Photo \u203a",
+      "Set Reminder \u203a",
+      "Share memory \u203a",
+      "More memory actions \u203a"
+    ]
+  }
+]

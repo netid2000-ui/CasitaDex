@@ -1,0 +1,112 @@
+[
+  {
+    "action": "Hallway air filter",
+    "node": "1066-2",
+    "text": "Find\n\nEdit\n\nHallway air filter\n\n20 \u00d7 25 \u00d7 1\n\nReplace every 3 months.\n\nSPACE\n\nHallway\n\nCATEGORY\n\nMaintenance\n\nView All Photos (3)\n\nAdd Photo \u203a\n\nSet Reminder \u203a\n\nShare memory \u203a\n\nMore memory actions \u203a\n\nRestart\nR",
+    "controls": [
+      "Find",
+      "Edit",
+      "View All Photos (3)",
+      "Add Photo \u203a",
+      "Set Reminder \u203a",
+      "Share memory \u203a",
+      "More memory actions \u203a"
+    ]
+  },
+  {
+    "action": "Edit",
+    "node": "1079-2",
+    "text": "Cancel\n\nSave\n\nEdit Memory\n\nTitle (required)\n\nHallway air filter\n\nSpace\n\nHallway\n\n\u203a\n\nCategories\n\nMaintenance\n\n\u203a\n\nDescription\n\n20 \u00d7 25 \u00d7 1 \u00b7 Replace every 3 months.\n\nLocation\n\nReturn grille beside the linen closet\n\nEdit \u203a\n\nNotes\n\nCheck the airflow arrow before fitting.\n\nEdit \u203a\n\nReference\n\nFilter label \u00b7 MERV 11\n\nEdit \u203a\n\nPhotos \u00b7 3/5\n\nCover\n\nLabel detail\n\nFilter edge\n\nAdd Photo\n\n\u203a\n\nUp to five photos per memory.\n\nRestart\nR",
+    "controls": [
+      "Cancel",
+      "Save",
+      "Hallway\n\n\u203a",
+      "Maintenance\n\n\u203a",
+      "Location\n\nReturn grille beside the linen closet\n\nEdit \u203a",
+      "Notes\n\nCheck the airflow arrow before fitting.\n\nEdit \u203a",
+      "Reference\n\nFilter label \u00b7 MERV 11\n\nEdit \u203a",
+      "Add Photo\n\n\u203a"
+    ]
+  },
+  {
+    "action": "Hallway",
+    "node": "1079-2",
+    "text": "Choose a space\n\nCreate new space \u203aGarageHallway \u2713Kitchen\n\nClose\n\nRestart\nR",
+    "controls": [
+      "Create new space \u203a",
+      "Garage",
+      "Hallway \u2713",
+      "Kitchen",
+      "Close"
+    ]
+  },
+  {
+    "action": "Kitchen",
+    "node": "1079-434",
+    "text": "Cancel\n\nSave\n\nEdit Memory\n\nTitle (required)\n\nHallway air filter\n\nSpace\n\nKitchen\n\n\u203a\n\nCategories\n\nMaintenance\n\n\u203a\n\nDescription\n\n20 \u00d7 25 \u00d7 1 \u00b7 Replace every 3 months.\n\nLocation\n\nReturn grille beside the linen closet\n\nEdit \u203a\n\nNotes\n\nCheck the airflow arrow before fitting.\n\nEdit \u203a\n\nReference\n\nFilter label \u00b7 MERV 11\n\nEdit \u203a\n\nPhotos \u00b7 3/5\n\nCover\n\nLabel detail\n\nFilter edge\n\nAdd Photo\n\n\u203a\n\nUp to five photos per memory.\n\nRestart\nR",
+    "controls": [
+      "Cancel",
+      "Save",
+      "Kitchen\n\n\u203a",
+      "Maintenance\n\n\u203a",
+      "Location\n\nReturn grille beside the linen closet\n\nEdit \u203a",
+      "Notes\n\nCheck the airflow arrow before fitting.\n\nEdit \u203a",
+      "Reference\n\nFilter label \u00b7 MERV 11\n\nEdit \u203a",
+      "Add Photo\n\n\u203a"
+    ]
+  },
+  {
+    "action": "Save",
+    "node": "1079-963",
+    "text": "Back to results\n\nEdit\n\nHallway air filter\n\n20 \u00d7 25 \u00d7 1\n\nReplace every 3 months.\n\nSPACE\n\nKitchen\n\nCATEGORY\n\nMaintenance\n\nView All Photos (3)\n\nAdd Photo \u203a\n\nSet Reminder \u203a\n\nShare memory \u203a\n\nMore memory actions \u203a\n\nRestart\nR",
+    "controls": [
+      "Back to results",
+      "Edit",
+      "View All Photos (3)",
+      "Add Photo \u203a",
+      "Set Reminder \u203a",
+      "Share memory \u203a",
+      "More memory actions \u203a"
+    ]
+  },
+  {
+    "action": "Set Reminder",
+    "node": "1002-2",
+    "text": "Cancel\n\nSave\n\nSet Reminder\n\nLinked memory\n\nHallway air filter\n\nReminder title (Required)\n\nReplace hallway air filter\n\nDate\n\nNovember 15, 2026\n\n\u203a\n\nTime\n\n9:00 AM\n\n\u203a\n\nMore options\n\n\u2304\n\nRestart\nR",
+    "controls": [
+      "Cancel",
+      "Save",
+      "November 15, 2026\n\n\u203a",
+      "9:00 AM\n\n\u203a",
+      "More options\n\n\u2304"
+    ]
+  },
+  {
+    "action": "Save",
+    "node": "1079-963",
+    "text": "Back to results\n\nEdit\n\nHallway air filter\n\n20 \u00d7 25 \u00d7 1\n\nReplace every 3 months.\n\nSPACE\n\nKitchen\n\nCATEGORY\n\nMaintenance\n\nView All Photos (3)\n\nAdd Photo \u203a\n\nSet Reminder \u203a\n\nShare memory \u203a\n\nMore memory actions \u203a\n\nRestart\nR",
+    "controls": [
+      "Back to results",
+      "Edit",
+      "View All Photos (3)",
+      "Add Photo \u203a",
+      "Set Reminder \u203a",
+      "Share memory \u203a",
+      "More memory actions \u203a"
+    ]
+  },
+  {
+    "action": "Back to results",
+    "node": "1040-618",
+    "text": "CasitaDex\n\nFind\n\n\u2315\n\nair filter\n\nHallway \u25be\n\nMaintenance \u25be\n\nWith photos only \u2713\n\n1 result\n\nHallway air filter\n\n20 \u00d7 25 \u00d7 1\n\nHallway \u00b7 Maintenance\n\n\u203a\n\nHome\n\nPhotos\n\nReminders\n\nFind\n\nRestart\nR",
+    "controls": [
+      "Hallway \u25be",
+      "Maintenance \u25be",
+      "With photos only \u2713",
+      "Hallway air filter\n\n20 \u00d7 25 \u00d7 1\n\nHallway \u00b7 Maintenance\n\n\u203a",
+      "Home",
+      "Photos",
+      "Reminders"
+    ]
+  }
+]

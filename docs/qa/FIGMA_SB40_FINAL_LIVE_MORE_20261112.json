@@ -1,0 +1,105 @@
+[
+  {
+    "action": "More memory",
+    "node": "1001-2",
+    "text": "Memory actions\n\nVerify memory \u203a\n\nView history \u203a\n\nEdit reference \u203a\n\nArchive memory\n\nMove to Recently Deleted \u203a\n\nClose\n\nRestart\nR",
+    "controls": [
+      "Verify memory \u203a",
+      "View history \u203a",
+      "Edit reference \u203a",
+      "Archive memory",
+      "Move to Recently Deleted \u203a",
+      "Close"
+    ]
+  },
+  {
+    "action": "Verify memory",
+    "node": "1001-2",
+    "text": "Verify memory\n\nConfirm the detail against a reference you checked.\n\nReference checked\n\nConfirm verified\n\nClose\n\nRestart\nR",
+    "controls": [
+      "Confirm verified",
+      "Close"
+    ]
+  },
+  {
+    "action": "Confirm verified",
+    "node": "1001-2",
+    "text": "Memory verified\n\nVerified against the reference you checked.\n\nClose\n\nRestart\nR",
+    "controls": [
+      "Close"
+    ]
+  },
+  {
+    "action": "Close",
+    "node": "1079-1372",
+    "text": "Back to results\n\nEdit\n\nHallway air filter\n\nVerified \u00b7 Reference checked\n\n20 \u00d7 25 \u00d7 1\n\nReplace every 3 months.\n\nSPACE\n\nHallway\n\nCATEGORY\n\nMaintenance\n\nView All Photos (3)\n\nAdd Photo \u203a\n\nSet Reminder \u203a\n\nShare memory \u203a\n\nMore memory actions \u203a\n\nRestart\nR",
+    "controls": [
+      "Back to results",
+      "Edit",
+      "View All Photos (3)",
+      "Add Photo \u203a",
+      "Set Reminder \u203a",
+      "Share memory \u203a",
+      "More memory actions \u203a"
+    ]
+  },
+  {
+    "action": "More memory",
+    "node": "1079-1372",
+    "text": "Memory actions\n\nVerify memory \u203a\n\nView history \u203a\n\nEdit reference \u203a\n\nArchive memory\n\nMove to Recently Deleted \u203a\n\nClose\n\nRestart\nR",
+    "controls": [
+      "Verify memory \u203a",
+      "View history \u203a",
+      "Edit reference \u203a",
+      "Archive memory",
+      "Move to Recently Deleted \u203a",
+      "Close"
+    ]
+  },
+  {
+    "action": "Edit reference",
+    "node": "1079-1372",
+    "text": "Edit reference\n\nFilter label \u00b7 MERV 11\n\nSave\n\nClose\n\nRestart\nR",
+    "controls": [
+      "Save",
+      "Close"
+    ]
+  },
+  {
+    "action": "Save",
+    "node": "1079-1372",
+    "text": "Reference saved\n\nFilter label \u00b7 MERV 11\n\nClose\n\nRestart\nR",
+    "controls": [
+      "Close"
+    ]
+  },
+  {
+    "action": "Close",
+    "node": "1079-1938",
+    "text": "Back to results\n\nEdit\n\nHallway air filter\n\nVerified \u00b7 Reference checked\n\nReference \u00b7 Filter label \u00b7 MERV 11\n\n20 \u00d7 25 \u00d7 1\n\nReplace every 3 months.\n\nSPACE\n\nHallway\n\nCATEGORY\n\nMaintenance\n\nView All Photos (3)\n\nAdd Photo \u203a\n\nSet Reminder \u203a\n\nShare memory \u203a\n\nMore memory actions \u203a\n\nRestart\nR",
+    "controls": [
+      "Back to results",
+      "Edit",
+      "View All Photos (3)",
+      "Add Photo \u203a",
+      "Set Reminder \u203a",
+      "Share memory \u203a",
+      "More memory actions \u203a"
+    ]
+  },
+  {
+    "action": "Back to results",
+    "node": "975-52",
+    "text": "CasitaDex\n\nPhotos\n\nResume unfinished photo memory\n\nGrid\n\nCompact\n\nSort \u25be\n\nAdd Photo Memory \u203a\n\nHallway air filter\n\n3 photos\n\nWater heater\n\n4 photos\n\nWasher\n\n5 photos\n\nRefrigerator\n\n5 photos\n\nHome\n\nPhotos\n\nReminders\n\nFind\n\nRestart\nR",
+    "controls": [
+      "Resume unfinished photo memory",
+      "Compact",
+      "Sort \u25be",
+      "Add Photo Memory \u203a",
+      "Hallway air filter\n\n3 photos",
+      "Home",
+      "Reminders",
+      "Find"
+    ]
+  }
+]
