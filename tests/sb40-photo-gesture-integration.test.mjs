@@ -24,4 +24,9 @@ test('SB40 approved gallery and management must survive swipe/zoom integration',
  for(const feature of ['PhotoWorkspaceControls','FigmaPhotos','preservedPhotosScrollY','onViewPhoto','onViewMemory','setSelectedPhoto'])assert.ok(gallery.includes(feature),feature);
  assert.match(p,/onTouchEnd=\{swipeAtTouchEnd\}/);
  assert.match(p,/onLayout=\{event=>/);
+ assert.match(p,/if\(success==='Cover photo saved\.'\|\|success==='Photo order saved\.'\)/,
+  'post-arrange save must collapse the actions panel');
+ assert.match(p,/actionsScrollRef\.current\?\.scrollTo\(\{y:0,animated:false\}\)/,
+  'successful rearrangement must restore controls scroll position');
+
 });
