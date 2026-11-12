@@ -107,6 +107,9 @@ function PhotoViewer({path,label,photos,onClose}:{path:string;label:string;photo
       }
     },
     // Let the image Pressable own taps; capture only multi-touch and movement.
+    // At zoom above 1×, own the initial one-finger touch to pan instead of letting the parent ScrollView take it.
+    onStartShouldSetResponder:(event:import("react-native").GestureResponderEvent)=>
+      zoomRef.current>1||event.nativeEvent.touches.length>=2,
     onStartShouldSetResponderCapture:(event:import("react-native").GestureResponderEvent)=>event.nativeEvent.touches.length>=2,
     onMoveShouldSetResponderCapture:(event:import("react-native").GestureResponderEvent)=>{
       const touches=event.nativeEvent.touches;if(touches.length>=2)return true;
@@ -158,7 +161,8 @@ function PhotoViewer({path,label,photos,onClose}:{path:string;label:string;photo
     }else lastTap.current=current;
   }
   return <Modal visible onRequestClose={onClose} animationType={reduceMotion?"none":"slide"} accessibilityViewIsModal>
-    <ScrollView onAccessibilityEscape={onClose} style={{flex:1,backgroundColor:colors.paper}} contentContainerStyle={{flexGrow:1,padding:20,paddingTop:48,gap:12}}>
+    <ScrollView onAccessibilityEscape={onClose} scrollEnabled={zoom<=1}
+      style={{flex:1,backgroundColor:colors.paper}} contentContainerStyle={{flexGrow:1,padding:20,paddingTop:48,gap:12}}>
       <Copy accessibilityRole="header">{selected.label}</Copy>
       <Button label="Close photo" onPress={onClose} />
       <View style={{flexDirection:"row",flexWrap:"wrap",gap:10}}>
