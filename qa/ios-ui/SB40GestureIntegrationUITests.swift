@@ -28,4 +28,20 @@ final class GestureIntegrationUITests: XCTestCase {
   XCTAssertFalse(out.isEnabled,"Reset must remain at 1x")
   print("INTEGRATED_SB40_IOS_NATIVE_PINCH_OUT_IN_PASS")
  }
+
+ @MainActor func testSB40PhotoViewerAccessibilityAudit() throws {
+  let app = XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.sb40gestureqa")
+  app.launch()
+  let photos=app.descendants(matching:.any).matching(identifier:"Photos").firstMatch
+  XCTAssertTrue(photos.waitForExistence(timeout:20))
+  photos.tap()
+  let card=app.descendants(matching:.any).matching(identifier:"View photo 1 of [SAMPLE] Appliance manuals full screen").firstMatch
+  XCTAssertTrue(card.waitForExistence(timeout:15))
+  card.tap()
+  XCTAssertTrue(app.buttons["Close photo"].waitForExistence(timeout:12))
+  if #available(iOS 17.0, *) {
+   try app.performAccessibilityAudit(for:[.sufficientElementDescription,.hitRegion,.textClipped])
+  } else { throw XCTSkip("Native audit needs iOS 17 or newer") }
+  print("IOS_SB40_VIEWER_NATIVE_ACCESSIBILITY_AUDIT_PASS")
+ }
 }
