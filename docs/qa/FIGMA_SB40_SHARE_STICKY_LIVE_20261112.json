@@ -1,0 +1,136 @@
+{
+  "before": {
+    "buttons": [
+      {
+        "text": "\u2039 Memory details",
+        "y": 135
+      },
+      {
+        "text": "Share",
+        "y": 135
+      },
+      {
+        "text": "Location\n\n\u25a1",
+        "y": 388
+      },
+      {
+        "text": "Notes\n\n\u25a1",
+        "y": 459
+      },
+      {
+        "text": "Reference / source\n\n\u25a1",
+        "y": 530
+      },
+      {
+        "text": "Space\n\n\u25a1",
+        "y": 601
+      },
+      {
+        "text": "Categories\n\n\u25a1",
+        "y": 672
+      },
+      {
+        "text": "Verification\n\n\u25a1",
+        "y": 743
+      },
+      {
+        "text": "Reminder\n\n\u25a1",
+        "y": 814
+      },
+      {
+        "text": "\u25a1 Photo 1",
+        "y": 927
+      },
+      {
+        "text": "\u25a1 Photo 2",
+        "y": 927
+      },
+      {
+        "text": "\u25a1 Photo 3",
+        "y": 927
+      },
+      {
+        "text": "Review what will be shared\n\n\u2304",
+        "y": 1044
+      },
+      {
+        "text": "Cancel sharing",
+        "y": 1101
+      }
+    ],
+    "scroll": [
+      {
+        "top": 0,
+        "height": 752,
+        "content": 999
+      }
+    ]
+  },
+  "after": {
+    "buttons": [
+      {
+        "text": "\u2039 Memory details",
+        "y": 135
+      },
+      {
+        "text": "Share",
+        "y": 135
+      },
+      {
+        "text": "Location\n\n\u25a1",
+        "y": 141
+      },
+      {
+        "text": "Notes\n\n\u25a1",
+        "y": 212
+      },
+      {
+        "text": "Reference / source\n\n\u25a1",
+        "y": 283
+      },
+      {
+        "text": "Space\n\n\u25a1",
+        "y": 354
+      },
+      {
+        "text": "Categories\n\n\u25a1",
+        "y": 425
+      },
+      {
+        "text": "Verification\n\n\u25a1",
+        "y": 496
+      },
+      {
+        "text": "Reminder\n\n\u25a1",
+        "y": 567
+      },
+      {
+        "text": "\u25a1 Photo 1",
+        "y": 680
+      },
+      {
+        "text": "\u25a1 Photo 2",
+        "y": 680
+      },
+      {
+        "text": "\u25a1 Photo 3",
+        "y": 680
+      },
+      {
+        "text": "Review what will be shared\n\n\u2304",
+        "y": 797
+      },
+      {
+        "text": "Cancel sharing",
+        "y": 854
+      }
+    ],
+    "scroll": [
+      {
+        "top": 247,
+        "height": 752,
+        "content": 999
+      }
+    ]
+  }
+}
