@@ -172,8 +172,16 @@ test("ordinary buttons do not imply expandable content", () => {
   assert.equal(p.accessibilityState.disabled, false);
 });
 test("photo modal begins without slide before motion preference resolves and escape closes", () => {
-  let closed = 0; const announcementInputs = [], zoomSamples = [];
-  const mocks = { react, "react-native": {
+  let closed = 0; const announcementInputs = [], zoomSamples = [], indexSamples = [];
+  let stateSlot = 0;
+  const photoReact = { ...react, useState: initial => {
+    const slot = ++stateSlot;
+    const value = typeof initial === "function" ? initial() : initial;
+    return [value, update => {
+      if (slot === 2) indexSamples.push(typeof update === "function" ? update(value) : update);
+    }];
+  }};
+  const mocks = { react: photoReact, "react-native": {
     Modal: "Modal", ScrollView: "ScrollView", View: "View", Image: "Image",
     useWindowDimensions: () => ({ width: 390, height: 844 }),
   }, "./ui": { Button: "Button", Copy: "Copy", useTheme: () => ({ colors: { paper: "#fff" } }) },
@@ -182,6 +190,7 @@ test("photo modal begins without slide before motion preference resolves and esc
     clampPhotoIndex: (i,n) => Math.max(0,Math.min(i,n-1)),
     clampPhotoZoom: v => { zoomSamples.push(v); return Math.max(1,Math.min(4,v)); },
     clampPhotoPan: (x,y) => ({x,y}),
+    photoSwipeStep: (dx,dy,zoom) => zoom !== 1 || Math.abs(dx)<60 || Math.abs(dx)<Math.abs(dy)*1.5 ? 0 : dx<0 ? 1 : -1,
     touchDistance: ts => ts.length < 2 ? null : Math.hypot(ts[1].pageX-ts[0].pageX,ts[1].pageY-ts[0].pageY),
   },
   "./eng-find": { defaultFilter: () => ({}) }, "./eng-domain": { localDay: () => "" },
@@ -189,7 +198,8 @@ test("photo modal begins without slide before motion preference resolves and esc
   for (const name of ["./memory-navigation", "./action-page", "./share-session", "./reminder-alerts", "./backup-review", "./reminder-notification-target", "./reminder-notification-projection", "@react-native-community/datetimepicker", "expo-router", "./state", "./eng-store", "./standalone-reminders", "./eng-text-backup", "./eng-duplicates", "./eng-navigation", "./standalone-reminder-draft", "./brand", "./home-action", "./editorial-intro", "./model"]) mocks[name] ??= {};
   const api = load("eng-screens.tsx", mocks, "\nmodule.exports.testPhotoViewer = PhotoViewer;");
   const onClose = () => closed++;
-  const modal = api.testPhotoViewer({ path: "local.jpg", label: "PRIVATE CONTENT", onClose });
+  const modal = api.testPhotoViewer({ path: "local.jpg", label: "PRIVATE CONTENT", onClose,
+    photos: ["local.jpg","photo2","photo3","photo4","photo5"].map(path=>({path,label:"QA photo"})) });
   assert.equal(modal.type, "Modal"); assert.equal(modal.props.animationType, "none");
   assert.equal(modal.props.accessibilityViewIsModal, true);
   assert.equal(modal.props.onRequestClose, onClose);
@@ -201,6 +211,11 @@ test("photo modal begins without slide before motion preference resolves and esc
   // Regression: real two-finger touchMove must zoom without a JS onResponderMove event.
   const imageRegion = scroll.props.children.find(n => n?.type === "View" && typeof n.props?.onTouchMove === "function");
   assert.ok(imageRegion, "photo image exposes direct multitouch move handling");
+  // A horizontal touch-end must move photo index without onResponderRelease (native ScrollView can own the responder).
+  assert.equal(typeof imageRegion.props.onTouchEnd, "function", "direct swipe touch-end handler exists");
+  imageRegion.props.onTouchStart({nativeEvent:{touches:[{pageX:250,pageY:340}]}});
+  imageRegion.props.onTouchEnd({nativeEvent:{touches:[],changedTouches:[{pageX:80,pageY:340}]}});
+  assert.deepEqual(indexSamples,[1],"1x swipe advances five-photo gallery via onTouchEnd");
   imageRegion.props.onTouchStart({nativeEvent:{touches:[{pageX:0,pageY:0},{pageX:100,pageY:0}]}});
   imageRegion.props.onTouchMove({nativeEvent:{touches:[{pageX:0,pageY:0},{pageX:200,pageY:0}]}});
   assert.ok(zoomSamples.includes(2), "pinch-out updates zoom from actual touch movement");

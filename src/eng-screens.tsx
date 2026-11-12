@@ -144,13 +144,9 @@ function PhotoViewer({path,label,photos,onClose}:{path:string;label:string;photo
         }
       }
     },
-    onResponderRelease:(event:import("react-native").GestureResponderEvent)=>{
-      const start=origin.current,point=event.nativeEvent.changedTouches[0];
-      const dx=start&&point?point.pageX-start.x:0,dy=start&&point?point.pageY-start.y:0;
-      if(!usedPinch.current&&!usedPan.current&&start&&point){
-        const step=photoSwipeStep(dx,dy,zoomRef.current);
-        if(step){tapOrigin.current=null;move(step);}
-      }
+    onResponderRelease:()=>{
+      // Single-finger navigation is completed by onTouchEnd, even without responder ownership.
+      // Do not navigate here as both handlers can fire for the same swipe.
       pinch.current=null;origin.current=null;usedPinch.current=false;usedPan.current=false;
     },
     onResponderTerminate:()=>{pinch.current=null;origin.current=null;tapOrigin.current=null;usedPinch.current=false;usedPan.current=false;lastTap.current=null;},
@@ -163,6 +159,10 @@ function PhotoViewer({path,label,photos,onClose}:{path:string;label:string;photo
     tapOrigin.current=null;
     if(!start)return;
     const dx=point.pageX-start.x,dy=point.pageY-start.y;
+    // Native ScrollView may not grant the JS responder on a horizontal swipe.
+    // Touch-end still reaches this photo region; explicitly handle one-finger navigation.
+    const swipe=photoSwipeStep(dx,dy,zoomRef.current);
+    if(swipe){lastTap.current=null;move(swipe);return;}
     if(Math.hypot(dx,dy)>=12||Date.now()-start.time>300){lastTap.current=null;return;}
     const current={time:Date.now(),x:point.pageX,y:point.pageY};
     if(isPhotoDoubleTap(lastTap.current,current)){
