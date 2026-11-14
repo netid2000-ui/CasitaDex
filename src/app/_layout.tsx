@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import { StatusBar } from "expo-status-bar";
 import { Pressable, Text, View, useWindowDimensions } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
-import { Slot, router, useLocalSearchParams, usePathname } from "expo-router";
+import { Slot, router, useLocalSearchParams, useGlobalSearchParams, usePathname } from "expo-router";
 import { Provider, useData } from "../state";
 import { useTheme } from "../ui";
 import { BrandWebMeta } from "../brand-web-meta";
@@ -25,6 +25,7 @@ const destinations: { label: "Home" | "Memories" | "Photos" | "Reminders" | "Fin
 function Shell() {
   const path = usePathname();
   const {mode:entryMode}=useLocalSearchParams<{mode?:string}>();
+  const {mode:reminderMode,id:reminderId}=useGlobalSearchParams<{mode?:string;id?:string}>();
   const [draftHasPhotos,setDraftHasPhotos]=useState(false);
   useEffect(()=>{if(path!=="/add")return;let active=true;void getEngStore().then(store=>store.load()).then(snapshot=>{if(active)setDraftHasPhotos((snapshot.draft?.photos.length??0)>0);}).catch(()=>{});return()=>{active=false;};},[path,entryMode]);
   useEffect(()=>{
@@ -44,7 +45,7 @@ function Shell() {
     "/answers":["Finding a Memory","Search or browse your saved memories."],
     "/photos":["Your Photos","View and manage memory photos."],
     "/reminders":["Your Reminders","Review your upcoming reminders."],
-    "/reminders-manage":["Adding a Reminder","Set a reminder for something important."],
+    "/reminders-manage":reminderId?["Editing a Reminder","Update your saved reminder."]:reminderMode==="new"?["Adding a Reminder","Set a reminder for something important."]:["Your Reminders","Manage reminders saved on this device."],
     "/more":["Settings","Manage your preferences and storage."],
     "/card":["Memory Details","Review a saved memory."],
     "/memories":["Your Memories","Browse your saved memories."],

@@ -379,3 +379,54 @@ extension PlusRecoveryUITests {
   print("LINKED_REMINDER PASS asynchronous prefill, exact insertion, submit, save return to originating details, restart")
  }
 }
+
+extension PlusRecoveryUITests {
+ @MainActor func remainingTaxonomy(_ category:Bool,_ draft:Bool) async throws {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa")
+  let route=URL(string:draft ? "casitadex-plusstoreqa://add" : "casitadex-plusstoreqa://card?id=rapid_edit_fixture")!
+  app.launch();app.open(route)
+  if draft {XCTAssertTrue(app.buttons["Save"].waitForExistence(timeout:15))} else {XCTAssertTrue(app.buttons["Edit memory"].waitForExistence(timeout:15));app.buttons["Edit memory"].tap()}
+  let choose=app.buttons.matching(identifier:"Choose ▾").element(boundBy:category ? 1 : 0);scrollTo(choose,in:app);choose.tap()
+  let kind=category ? (draft ? "Category" : "Categories") : "Space"
+  let create=app.buttons["+ Create new "+kind+" ▾"];scrollTo(create,in:app);create.tap()
+  let label=draft ? (category ? "New Category name" : "New Space name") : (category ? "New category name" : "New space name")
+  let field=app.textViews[label];scrollTo(field,in:app);field.tap()
+  let text=(draft ? "Draft" : "Edit")+" rapid "+(category ? "Category" : "Space")+" 20x25x1"
+  field.typeText(text);XCTAssertEqual(field.value as? String,text);field.typeText("\n")
+  let assign=app.buttons[draft ? "Create and assign" : "Create and select"];scrollTo(assign,in:app);assign.tap()
+  app.buttons[draft ? "Cancel" : "Save & return to details"].tap()
+  if draft {XCTAssertTrue(app.buttons["Add Memory"].waitForExistence(timeout:10))} else {XCTAssertTrue(app.buttons["Edit memory"].waitForExistence(timeout:10))}
+  app.terminate();app.launch();app.open(route)
+  let value=app.staticTexts.containing(NSPredicate(format:"label CONTAINS %@",text)).firstMatch
+  XCTAssertTrue(value.waitForExistence(timeout:15))
+  if !draft {
+   app.buttons["Edit memory"].tap();scrollTo(choose,in:app);choose.tap()
+   let select=app.buttons["Select "+kind+" ▾"];scrollTo(select,in:app);select.tap()
+   let none=app.buttons["None"];scrollTo(none,in:app);none.tap()
+   app.buttons["Cancel"].tap();XCTAssertTrue(app.buttons["Edit memory"].waitForExistence(timeout:10));XCTAssertTrue(value.exists)
+  }
+  print("REMAINING_TAXONOMY PASS "+text+" create, assignment, persistence and "+(draft ? "draft retained on Cancel" : "Cancel rolls back selection"))
+ }
+ @MainActor func testAddSpaceInput() async throws {try await remainingTaxonomy(false,true)}
+ @MainActor func testAddCategoryInput() async throws {try await remainingTaxonomy(true,true)}
+ @MainActor func testFullEditSpaceInput() async throws {try await remainingTaxonomy(false,false)}
+ @MainActor func testFullEditCategoryInput() async throws {try await remainingTaxonomy(true,false)}
+}
+
+extension PlusRecoveryUITests {
+ @MainActor func testReminderRouteHeadings() async throws {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa")
+  app.launch();app.open(URL(string:"casitadex-plusstoreqa://reminders-manage?mode=new")!)
+  XCTAssertTrue(app.staticTexts["Adding a Reminder"].waitForExistence(timeout:15));XCTAssertFalse(app.staticTexts["Editing a Reminder"].exists)
+  app.open(URL(string:"casitadex-plusstoreqa://reminders-manage?id=r_mwgtiw73_fpe8npbq")!)
+  XCTAssertTrue(app.staticTexts["Editing a Reminder"].waitForExistence(timeout:15));XCTAssertFalse(app.staticTexts["Adding a Reminder"].exists)
+  let save=app.buttons["Save Reminder"],cancel=app.buttons["Cancel"]
+  XCTAssertTrue(save.waitForExistence(timeout:10));let y=save.frame.minY;app.swipeUp();XCTAssertEqual(save.frame.minY,y,accuracy:1);XCTAssertTrue(cancel.isHittable)
+  let shot=XCTAttachment(screenshot:app.screenshot());shot.name="Editing reminder heading and fixed actions";shot.lifetime = .keepAlways;add(shot)
+  app.open(URL(string:"casitadex-plusstoreqa://reminders-manage")!)
+  XCTAssertTrue(app.staticTexts["Your Reminders"].waitForExistence(timeout:15))
+  print("REMINDER_HEADINGS PASS create/edit/manage routes and fixed editor actions")
+ }
+}
