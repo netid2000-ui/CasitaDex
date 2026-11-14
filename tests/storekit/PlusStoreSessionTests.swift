@@ -12,6 +12,14 @@ final class PlusStoreSessionTests: XCTestCase {
   XCTFail("Entitlement did not become " + value + " within 5 seconds")
   throw TestFailure.entitlementTimeout
  }
+ func expectBridge(_ value: String) async throws {
+  for _ in 0..<100 {
+   if UserDefaults.standard.string(forKey: "CasitaDexPlusQABridgeState") == "ready:" + value { return }
+   try await Task.sleep(nanoseconds: 100_000_000)
+  }
+  XCTFail("Actual JS bridge state did not become ready:" + value)
+  throw TestFailure.entitlementTimeout
+ }
  func testLocalPurchaseLifecycle() async throws {
   let url = try XCTUnwrap(Bundle(for: Self.self).url(forResource: "CasitaDexPlus", withExtension: "storekit"))
   let session = try SKTestSession(contentsOf: url)
@@ -23,6 +31,7 @@ final class PlusStoreSessionTests: XCTestCase {
   let observer = Task { for await _ in Transaction.updates { if Task.isCancelled { break } } }
   defer { observer.cancel() }
   let reader = try PlusStoreReader.configured()
+  try await expectBridge("free")
   let catalog = try await reader.catalog()
   XCTAssertEqual(catalog["productID"], "local.casitadex.plus.qa")
   try await expectEntitlement("free", reader)
@@ -48,6 +57,11 @@ final class PlusStoreSessionTests: XCTestCase {
   let request = try XCTUnwrap(session.allTransactions().first)
   try session.approveAskToBuyTransaction(identifier: request.identifier)
   try await expectEntitlement("plus", reader)
+  try await expectBridge("plus")
+  try session.refundTransaction(identifier: request.identifier)
+  try await expectEntitlement("free", reader)
+  try await expectBridge("free")
+  print("STOREKIT BRIDGE: actual JS received delayed approval and refund PASS")
   print("STOREKIT: pending, no premature unlock, approval PASS")
 
   session.clearTransactions()

@@ -7,6 +7,7 @@ import { Provider, useData } from "../state";
 import { useTheme } from "../ui";
 import { BrandWebMeta } from "../brand-web-meta";
 import { BrandHeader } from "../brand";
+import {startPlusEntitlements} from "../plus-entitlement-runtime";
 
 import { AcceptedNavigationIcon as NavigationIcon } from "../accepted-navigation-icon";
 import { guardedNavigate } from "../eng-navigation";
@@ -111,6 +112,7 @@ function Shell() {
 }
 
 export default function Layout() {
+  useEffect(()=>startPlusEntitlements(),[]);
   const path = usePathname();
   if (path === "/sb29-review") return <Slot />;
   if (path === "/photo-viewer") return <SafeAreaProvider><Provider><Slot /></Provider></SafeAreaProvider>;

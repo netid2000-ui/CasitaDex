@@ -1,0 +1,31 @@
+import {requireOptionalNativeModule} from 'expo-modules-core';
+import {AppState} from 'react-native';
+import {createPlusEntitlementStore} from './plus-entitlement-store';
+
+type NativeOwnership = {
+ recordLocalQAState?(status:string,entitlement:string): void;
+ isConfigured(): boolean;
+ isLocalTesting(): boolean;
+ verifiedEntitlement(): Promise<unknown>;
+ addListener(event:'entitlementsChanged', listener:()=>void): {remove():void};
+};
+const native=requireOptionalNativeModule<NativeOwnership>('CasitaDexPlusStore');
+const configured=native?.isConfigured?.()===true;
+export const plusEntitlements=createPlusEntitlementStore(configured&&native?{
+ verifiedEntitlement:()=>native.verifiedEntitlement(),
+ subscribe(listener){
+  const subscription=native.addListener('entitlementsChanged',listener);
+  return()=>subscription.remove();
+ },
+}:null);
+/** Start at the app root, including the full-screen viewer route. Never calls purchase or sync. */
+export function startPlusEntitlements(){
+ const log=native?.isLocalTesting?.()===true?plusEntitlements.subscribe(()=>{
+  const s=plusEntitlements.getSnapshot();
+  console.info('[CasitaDex Plus QA]',s.status,s.entitlement);
+  native.recordLocalQAState?.(s.status,s.entitlement);
+ }):()=>{};
+ plusEntitlements.start();
+ const foreground=AppState.addEventListener('change',state=>{if(state==='active')void plusEntitlements.refresh();});
+ return()=>{foreground.remove();plusEntitlements.stop();log();};
+}
