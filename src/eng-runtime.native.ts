@@ -110,7 +110,7 @@ export async function writeEngBackup(source:EngBackupSource){
       // A completed share sheet is not proof that Files saved a second copy.
       return "Verified Full v4 backup retained privately on this device. Use the share sheet to save a separate copy to Files or another destination, then confirm it exists.";
     }catch(error){
-      if(localFile.exists)localFile.delete();
+      if(verified)throw new Error("Sharing did not complete. Your verified backup is kept privately on this device; a separate copy has not been confirmed.",{cause:error});
       throw error;
     }finally{
       // Keep verified backup in Documents, including if the share sheet is
