@@ -95,3 +95,29 @@ extension PlusRecoveryUITests {
   print("PLUS UI: free restore, purchase, owned restore, refund, error, pending approval, settings return PASS")
  }
 }
+
+extension PlusRecoveryUITests {
+ @MainActor func testMemoryLimitNotice() async throws {
+  let url=try XCTUnwrap(Bundle(for:Self.self).url(forResource:"CasitaDexPlus",withExtension:"storekit"))
+  let session=try SKTestSession(contentsOf:url)
+  session.resetToDefaultState();session.clearTransactions();session.disableDialogs=true
+  defer { session.clearTransactions();session.resetToDefaultState() }
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa")
+  app.launch();app.open(URL(string:"casitadex-plusstoreqa://add")!)
+  let notice=app.staticTexts["memory-limit-notice"]
+  XCTAssertTrue(notice.waitForExistence(timeout:15),"Existing QA collection must exceed free limit")
+  let y=app.buttons["View CasitaDex Plus"].frame.minY
+  app.swipeUp()
+  XCTAssertEqual(app.buttons["View CasitaDex Plus"].frame.minY,y,accuracy:1)
+  let shot=XCTAttachment(screenshot:app.screenshot());shot.name="Free memory limit fixed actions";shot.lifetime = .keepAlways;add(shot)
+  app.buttons["View CasitaDex Plus"].tap()
+  XCTAssertTrue(app.buttons["plus-purchase"].waitForExistence(timeout:10))
+  _ = try await session.buyProduct(identifier:"local.casitadex.plus.qa")
+  let ownership=app.staticTexts["plus-ownership"]
+  XCTAssertTrue(XCTWaiter.wait(for:[XCTNSPredicateExpectation(predicate:NSPredicate(format:"label CONTAINS %@","Verified Plus access"),object:ownership)],timeout:15) == .completed)
+  app.open(URL(string:"casitadex-plusstoreqa://add")!)
+  XCTAssertTrue(app.buttons["Save"].waitForExistence(timeout:10))
+  XCTAssertFalse(notice.exists)
+  print("MEMORY LIMIT UI: existing collection preserved, fixed notice and upgrade route, verified Plus removes notice PASS")
+ }
+}

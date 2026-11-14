@@ -1,3 +1,4 @@
+import {requireMemoryCapacity} from './plus-entitlement-runtime';
 import {usableNativeSpace,requireNativeCapacity} from "./storage-space.native";
 import {protectedStorageReport} from "./storage-safety";
 import {sqliteWriteTransaction} from "./sqlite-write-transaction";
@@ -52,7 +53,7 @@ export function getEngStore(){
       const attemptTable=await db.getFirstAsync("SELECT name FROM sqlite_master WHERE type='table' AND name='add_attempt_v1'");
       if(attemptTable){const attempts=await db.getAllAsync<{token:string;memory_id:string}>("SELECT token,memory_id FROM add_attempt_v1");snapshot.attempts=Object.fromEntries(attempts.map(a=>[a.token,a.memory_id]));}
       return validateEngSnapshot(snapshot);
-    });
+    },{requireMemoryCapacity});
   })().catch(e=>{pending=undefined;throw e;});
   return pending;
 }

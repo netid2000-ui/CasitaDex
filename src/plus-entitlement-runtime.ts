@@ -1,3 +1,4 @@
+import {createMemoryLimitGate} from './plus-memory-limit';
 import {requireOptionalNativeModule} from 'expo-modules-core';
 import {AppState} from 'react-native';
 import {createPlusEntitlementStore} from './plus-entitlement-store';
@@ -41,3 +42,5 @@ export function startPlusEntitlements(){
 // Qualify feature gates in isolated QA before enabling them in public builds.
 export const plusFeatureEnforcementEnabled=configured&&native?.isLocalTesting?.()===true;
 export const requirePlusBackup=createPlusBackupGate({enabled:plusFeatureEnforcementEnabled,refresh:plusEntitlements.refresh,getSnapshot:plusEntitlements.getSnapshot});
+
+export const requireMemoryCapacity=createMemoryLimitGate({enabled:plusFeatureEnforcementEnabled,refresh:plusEntitlements.refresh,getSnapshot:plusEntitlements.getSnapshot});
