@@ -444,7 +444,7 @@ function LabelManager({e}:{e:ReturnType<typeof useEng>}){
  const labels=kind==="space"?e.snapshot?.data.spaces:e.snapshot?.data.categories;
  return <View style={s.panel}><Copy accessibilityRole="header">Manage Spaces and Categories</Copy><View style={s.row}>{(["space","category"] as const).map(k=><Button key={k} label={k==="space"?"Spaces":"Categories"} disabled={e.busy} selected={kind===k} onPress={()=>{setKind(k);setSelected("");setImpact(null);setName("");}} />)}</View>
  {labels?.map(x=><Button key={x.id} label={x.name} disabled={e.busy} selected={selected===x.id} onPress={()=>{setSelected(x.id);setName(x.name);setImpact(null);}} />)}
- <Field disabled={e.busy} label="Label name" value={name} onChangeText={setName} />
+ <Field iosTextView={plusFeatureEnforcementEnabled} nativeEditing={plusFeatureEnforcementEnabled} disabled={e.busy} label="Label name" value={name} onChangeText={setName} />
  <Button label="Create new label" disabled={e.busy} onPress={()=>void e.run(store=>store.taxonomy(kind,name))} />
  {selected?<><Button label="Rename selected label" disabled={e.busy} onPress={()=>void e.run(async store=>{await store.renameTaxonomy(kind,selected,name,e.snapshot!.revision);setImpact(null);})} />
  <Button label="Review label removal" disabled={e.busy} onPress={()=>void e.run(async store=>{setImpact(await store.taxonomyImpact(kind,selected));},"")} />

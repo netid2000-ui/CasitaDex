@@ -481,7 +481,7 @@ extension PlusRecoveryUITests {
   XCTAssertTrue(app.staticTexts["Manage Spaces and Categories"].waitForExistence(timeout:15))
   if category {app.buttons["Categories"].tap()}
   let label=app.buttons[original];scrollTo(label,in:app);label.tap()
-  let field=app.textFields["Label name"];scrollTo(field,in:app);XCTAssertEqual(field.value as? String,original);field.tap();field.typeText("RENAMED ")
+  let field=app.textViews["Label name"];scrollTo(field,in:app);XCTAssertEqual(field.value as? String,original);field.tap();field.typeText("RENAMED ")
   let inserted=try XCTUnwrap(field.value as? String);XCTAssertTrue(inserted.contains("RENAMED "),inserted);XCTAssertEqual(inserted.replacingOccurrences(of:"RENAMED ",with:""),original)
   let renamed=inserted.trimmingCharacters(in:.whitespacesAndNewlines)
   field.typeText("\n")
@@ -497,4 +497,32 @@ extension PlusRecoveryUITests {
  }
  @MainActor func testRenameSpaceLabels() async throws {try await renameLabel(false,false);try await renameLabel(false,true)}
  @MainActor func testRenameCategoryLabels() async throws {try await renameLabel(true,false);try await renameLabel(true,true)}
+}
+
+extension PlusRecoveryUITests {
+ @MainActor func testManagerLabelCreateReplace() async throws {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa")
+  let route=URL(string:"casitadex-plusstoreqa://settings-manage?action=labels")!
+  for category in [false,true] {
+   app.launch();app.open(route);XCTAssertTrue(app.staticTexts["Manage Spaces and Categories"].waitForExistence(timeout:15))
+   if category {app.buttons["Categories"].tap()}
+   let field=app.textViews["Label name"];scrollTo(field,in:app);field.tap()
+   let text="Manager new "+(category ? "Category" : "Space")+" 20x25x1"
+   if !app.buttons[text].exists {field.typeText(text);XCTAssertEqual(field.value as? String,text);field.typeText("\n")
+   let create=app.buttons["Create new label"];scrollTo(create,in:app);create.tap()
+   XCTAssertTrue(app.buttons[text].waitForExistence(timeout:10))}
+   app.terminate();app.launch();app.open(route);XCTAssertTrue(app.staticTexts["Manage Spaces and Categories"].waitForExistence(timeout:15));if category {app.buttons["Categories"].tap()}
+   let created=app.buttons[text];scrollTo(created,in:app);created.tap();scrollTo(field,in:app);XCTAssertEqual(field.value as? String,text)
+   field.tap();field.press(forDuration:1.2)
+   let selectAll=app.descendants(matching:.any).matching(identifier:"Select All").firstMatch
+   XCTAssertTrue(selectAll.waitForExistence(timeout:5),app.debugDescription);selectAll.tap()
+   let replacement="Manager replaced "+(category ? "Category" : "Space")+" 20x25x1"
+   field.typeText(replacement);XCTAssertEqual(field.value as? String,replacement);field.typeText("\n")
+   let rename=app.buttons["Rename selected label"];scrollTo(rename,in:app);rename.tap();XCTAssertTrue(app.buttons[replacement].waitForExistence(timeout:10));XCTAssertFalse(app.buttons[text].exists)
+   app.terminate();app.launch();app.open(route);XCTAssertTrue(app.staticTexts["Manage Spaces and Categories"].waitForExistence(timeout:15));if category {app.buttons["Categories"].tap()}
+   XCTAssertTrue(app.buttons[replacement].waitForExistence(timeout:10));app.terminate()
+   print("MANAGER_INPUT PASS create, restart, Select All replacement, rename and restart: "+replacement)
+  }
+ }
 }
