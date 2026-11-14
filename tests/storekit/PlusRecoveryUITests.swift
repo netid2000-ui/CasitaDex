@@ -252,3 +252,76 @@ extension PlusRecoveryUITests {
   print("INLINE_REFERENCE PASS: exact burst, inline save and cold restart")
  }
 }
+
+extension PlusRecoveryUITests {
+ @MainActor func rapidTaxonomy(_ kind:String) async throws {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa")
+  let route=URL(string:"casitadex-plusstoreqa://card?id=rapid_edit_fixture")!
+  app.launch();app.open(route)
+  XCTAssertTrue(app.buttons["Edit memory"].waitForExistence(timeout:15))
+  let edit=app.buttons.matching(identifier:"Edit ✎").element(boundBy:kind=="Space" ? 0 : 1)
+  scrollTo(edit,in:app);edit.tap()
+  let create=app.buttons["+ Create new "+kind+" ▾"];scrollTo(create,in:app);create.tap()
+  let field=app.textViews["New "+kind+" name"];scrollTo(field,in:app);field.tap()
+  let text="Boundary rapid "+kind+" 20x25x1"
+  field.typeText(text);XCTAssertEqual(field.value as? String,text)
+  field.typeText("\n")
+  let save=app.buttons["Create and assign"];scrollTo(save,in:app);save.tap()
+  XCTAssertTrue(app.staticTexts.containing(NSPredicate(format:"label CONTAINS %@",text)).firstMatch.waitForExistence(timeout:10))
+  app.terminate();app.launch();app.open(route)
+  XCTAssertTrue(app.staticTexts.containing(NSPredicate(format:"label CONTAINS %@",text)).firstMatch.waitForExistence(timeout:15))
+  print("TAXONOMY_INPUT PASS: "+kind+" exact burst, assignment and cold restart")
+ }
+ @MainActor func testRapidSpaceInput() async throws {try await rapidTaxonomy("Space")}
+ @MainActor func testRapidCategoryInput() async throws {try await rapidTaxonomy("Category")}
+ @MainActor func testRapidReminderInput() async throws {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa")
+  app.launch();app.open(URL(string:"casitadex-plusstoreqa://reminders-manage?mode=new")!)
+  let field=app.textViews["Reminder title *"]
+  XCTAssertTrue(field.waitForExistence(timeout:15));field.tap()
+  let text="Boundary rapid reminder 20x25x1"
+  field.typeText(text);XCTAssertEqual(field.value as? String,text);field.typeText("\n")
+  app.buttons["More options ▾"].tap()
+  let notes=app.textViews["Notes"];scrollTo(notes,in:app);notes.tap()
+  let body="Garage filter replacement 20x25x1"
+  notes.typeText(body);XCTAssertEqual(notes.value as? String,body)
+  app.buttons["Save Reminder"].tap()
+  XCTAssertTrue(app.buttons["Edit "+text].waitForExistence(timeout:15))
+  app.terminate();app.launch();app.open(URL(string:"casitadex-plusstoreqa://reminders")!)
+  XCTAssertTrue(app.buttons["Edit "+text].waitForExistence(timeout:15))
+  app.buttons["Edit "+text].tap();XCTAssertTrue(field.waitForExistence(timeout:10));XCTAssertEqual(field.value as? String,text);scrollTo(notes,in:app);XCTAssertEqual(notes.value as? String,body)
+  field.tap();field.typeText(" UNSAVED");app.buttons["Cancel"].tap();app.alerts.buttons["Discard changes"].tap()
+  XCTAssertTrue(app.buttons["Edit "+text].waitForExistence(timeout:10))
+  print("REMINDER_INPUT PASS: rapid title and notes, save and cold restart")
+ }
+}
+
+extension PlusRecoveryUITests {
+ @MainActor func testTaxonomyReminderPersistenceAndCancel() async throws {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa")
+  app.launch();app.open(URL(string:"casitadex-plusstoreqa://card?id=rapid_edit_fixture")!)
+  for kind in ["Space","Category"] {XCTAssertTrue(app.staticTexts.containing(NSPredicate(format:"label CONTAINS %@","Boundary rapid "+kind+" 20x25x1")).firstMatch.waitForExistence(timeout:15))}
+  app.open(URL(string:"casitadex-plusstoreqa://reminders")!)
+  let text="Boundary rapid reminder 20x25x1"
+  let open=app.buttons["Edit "+text];XCTAssertTrue(open.waitForExistence(timeout:15));open.tap()
+  let field=app.textViews["Reminder title *"],notes=app.textViews["Notes"]
+  XCTAssertTrue(field.waitForExistence(timeout:10));XCTAssertEqual(field.value as? String,text)
+  scrollTo(notes,in:app);XCTAssertEqual(notes.value as? String,"Garage filter replacement 20x25x1")
+  app.buttons["Save Reminder"].tap()
+  let spring=XCUIApplication(bundleIdentifier:"com.apple.springboard")
+  let allow=spring.buttons["Allow"]
+  if allow.waitForExistence(timeout:5) {allow.tap()}
+  if app.alerts.buttons["Allow"].exists {app.alerts.buttons["Allow"].tap()}
+  XCTAssertTrue(open.waitForExistence(timeout:20),app.debugDescription+spring.debugDescription)
+  open.tap();XCTAssertTrue(field.waitForExistence(timeout:10));field.tap();field.typeText(" UNSAVED")
+  // Cursor placement and insertion order in existing titles are a separately recorded open defect.
+  XCTAssertNotEqual(field.value as? String,text,"Cancel check must begin with an actual unsaved change")
+  app.buttons["Cancel"].tap();app.alerts.buttons["Discard changes"].tap()
+  XCTAssertTrue(open.waitForExistence(timeout:10));open.tap();XCTAssertTrue(field.waitForExistence(timeout:10));XCTAssertEqual(field.value as? String,text)
+  let shot=XCTAttachment(screenshot:app.screenshot());shot.name="Reminder title preserved after cancel";shot.lifetime = .keepAlways;add(shot)
+  print("TAXONOMY_REMINDER PASS: both assignments survive restart; reminder exact title/notes, Save return and Cancel rollback")
+ }
+}
