@@ -10,7 +10,7 @@ function entitlement(value: unknown): PlusEntitlement {
  if(value !== 'free' && value !== 'plus') throw new Error('Invalid native entitlement');
  return value;
 }
-/** Explicit opt-in for an isolated test harness. The public Plus screen stays disconnected.
+/** Explicit opt-in for isolated local QA. Public builds stay disconnected.
  * Native code independently blocks checkout outside Debug/Xcode/local QA identity.
  */
 export function createLocalPlusAdapter(native: PlusNativeModule | null, localTesting: boolean): PlusStoreAdapter | null {
