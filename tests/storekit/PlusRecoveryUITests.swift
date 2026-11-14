@@ -470,3 +470,31 @@ extension PlusRecoveryUITests {
  @MainActor func testSpaceRemovalCancel() async throws {try await labelRemovalCancel(false)}
  @MainActor func testCategoryRemovalCancel() async throws {try await labelRemovalCancel(true)}
 }
+
+extension PlusRecoveryUITests {
+ @MainActor func renameLabel(_ category:Bool,_ draft:Bool) async throws {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa")
+  let route=URL(string:"casitadex-plusstoreqa://settings-manage?action=labels")!
+  let original=(draft ? "Draft" : "Edit")+" rapid "+(category ? "Category" : "Space")+" 20x25x1"
+  app.launch();app.open(route)
+  XCTAssertTrue(app.staticTexts["Manage Spaces and Categories"].waitForExistence(timeout:15))
+  if category {app.buttons["Categories"].tap()}
+  let label=app.buttons[original];scrollTo(label,in:app);label.tap()
+  let field=app.textFields["Label name"];scrollTo(field,in:app);XCTAssertEqual(field.value as? String,original);field.tap();field.typeText("RENAMED ")
+  let inserted=try XCTUnwrap(field.value as? String);XCTAssertTrue(inserted.contains("RENAMED "),inserted);XCTAssertEqual(inserted.replacingOccurrences(of:"RENAMED ",with:""),original)
+  let renamed=inserted.trimmingCharacters(in:.whitespacesAndNewlines)
+  field.typeText("\n")
+  let save=app.buttons["Rename selected label"];scrollTo(save,in:app);save.tap()
+  XCTAssertTrue(app.buttons[renamed].waitForExistence(timeout:10));XCTAssertFalse(app.buttons[original].exists)
+  app.terminate();app.launch();app.open(route)
+  XCTAssertTrue(app.staticTexts["Manage Spaces and Categories"].waitForExistence(timeout:15));if category {app.buttons["Categories"].tap()}
+  let updated=app.buttons[renamed];scrollTo(updated,in:app);updated.tap();scrollTo(field,in:app);XCTAssertEqual(field.value as? String,renamed)
+  app.open(URL(string:draft ? "casitadex-plusstoreqa://add" : "casitadex-plusstoreqa://card?id=rapid_edit_fixture")!)
+  XCTAssertTrue(app.staticTexts.containing(NSPredicate(format:"label CONTAINS %@",renamed)).firstMatch.waitForExistence(timeout:15))
+  print("LABEL_RENAME PASS exact insertion, rename/restart, retained "+(draft ? "draft" : "memory")+" assignment: "+renamed)
+  app.terminate()
+ }
+ @MainActor func testRenameSpaceLabels() async throws {try await renameLabel(false,false);try await renameLabel(false,true)}
+ @MainActor func testRenameCategoryLabels() async throws {try await renameLabel(true,false);try await renameLabel(true,true)}
+}
