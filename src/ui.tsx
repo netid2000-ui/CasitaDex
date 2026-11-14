@@ -106,6 +106,7 @@ export function Field({
   onSubmitEditing,
   disabled=false,
   maxLength,
+  iosTextView=false,
 }: {
   label: string;
   value: string;
@@ -115,10 +116,13 @@ export function Field({
   onSubmitEditing?: () => void;
   disabled?:boolean;
   maxLength?:number;
+  iosTextView?:boolean;
 }) {
   const { large } = useData();
   const { s, colors } = useTheme();
   const [focused, setFocused] = useState(false);
+  // Isolated QA workaround for character loss in iOS single-line native input.
+  const nativeTextView=iosTextView&&Platform.OS==='ios';
   return (
     <View style={s.gap}>
       <Copy style={{ fontWeight: "600" }}>{label}</Copy>
@@ -133,7 +137,8 @@ export function Field({
         editable={!disabled}
         accessibilityState={{disabled}}
         onChangeText={onChangeText}
-        multiline={multiline}
+        multiline={multiline||nativeTextView}
+        submitBehavior={nativeTextView&&!multiline?'blurAndSubmit':undefined}
         onSubmitEditing={onSubmitEditing}
         returnKeyType={onSubmitEditing ? "search" : undefined}
         maxLength={maxLength??(multiline ? 2000000 : 1000)}

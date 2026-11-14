@@ -137,7 +137,7 @@ extension PlusRecoveryUITests {
   app.open(URL(string:"casitadex-plusstoreqa://add")!)
   let notice=app.staticTexts["memory-limit-notice"]
   XCTAssertTrue(notice.waitForExistence(timeout:10));XCTAssertTrue(notice.label.contains("20 of 20"))
-  let name=app.textFields["Memory name (Required)"]
+  let name=app.textViews["Memory name (Required)"]
   XCTAssertTrue(name.waitForExistence(timeout:10));name.tap();for character in "Boundary twenty first memory" { name.typeText(String(character));try await Task.sleep(nanoseconds:150_000_000) }
   XCTAssertEqual(name.value as? String,"Boundary twenty first memory");name.typeText("\n")
   let description=app.textViews["Description"]
@@ -152,5 +152,39 @@ extension PlusRecoveryUITests {
   XCTAssertTrue(name.waitForExistence(timeout:15));XCTAssertEqual(name.value as? String,"Boundary twenty first memory")
   XCTAssertTrue(notice.label.contains("20 of 20"))
   print("NATIVE BOUNDARY PASS: save twentieth, block twenty-first, draft survives cold restart")
+ }
+}
+
+extension PlusRecoveryUITests {
+ @MainActor func testRapidDraftInput() async throws {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa")
+  app.launch();app.open(URL(string:"casitadex-plusstoreqa://add")!)
+  let name=app.textViews["Memory name (Required)"]
+  XCTAssertTrue(name.waitForExistence(timeout:15))
+  let expected="Boundary twenty first memory rapid typing 20x25x1"
+  name.tap();name.typeText(expected)
+  print("RAPID_INPUT immediate title: " + (name.value as? String ?? "nil"))
+  let shot=XCTAttachment(screenshot:app.screenshot());shot.name="Rapid input immediate";shot.lifetime = .keepAlways;add(shot)
+  XCTAssertEqual(name.value as? String,expected,"Burst typing must arrive intact before persistence")
+  name.typeText("\n")
+  let description=app.textViews["Description"]
+  for _ in 0..<8 {if description.isHittable {break};app.scrollViews.firstMatch.swipeUp()}
+  XCTAssertTrue(description.isHittable)
+  let body="Garage shelf: filter size 20x25x1. Keep the replacement beside the water shutoff."
+  description.tap();description.typeText(body)
+  XCTAssertEqual(description.value as? String,body)
+  app.buttons["Cancel"].tap()
+  XCTAssertTrue(app.buttons["Add Memory"].waitForExistence(timeout:10))
+  app.terminate();app.launch();app.open(URL(string:"casitadex-plusstoreqa://add")!)
+  XCTAssertTrue(name.waitForExistence(timeout:15));XCTAssertEqual(name.value as? String,expected)
+  for _ in 0..<8 {if description.isHittable {break};app.scrollViews.firstMatch.swipeUp()}
+  XCTAssertEqual(description.value as? String,body)
+  app.buttons["Save"].tap()
+  XCTAssertTrue(app.buttons["Add Memory"].waitForExistence(timeout:10))
+  app.open(URL(string:"casitadex-plusstoreqa://add")!)
+  let notice=app.staticTexts["memory-limit-notice"]
+  XCTAssertTrue(notice.waitForExistence(timeout:10));XCTAssertTrue(notice.label.contains("20 of 20"))
+  print("RAPID_INPUT PASS: exact burst title and description, cold restart, then twentieth memory saved")
  }
 }

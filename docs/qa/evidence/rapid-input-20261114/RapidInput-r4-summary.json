@@ -1,0 +1,67 @@
+{
+  "devicesAndConfigurations" : [
+    {
+      "device" : {
+        "architecture" : "arm64",
+        "deviceId" : "81FC3CCE-ACEB-4957-BE61-C9C653A4CE56",
+        "deviceName" : "CasitaDex Memory Boundary Isolated QA",
+        "modelName" : "iPhone 18 Pro",
+        "osBuildNumber" : "24A434",
+        "osVersion" : "27.0",
+        "platform" : "iOS Simulator"
+      },
+      "expectedFailures" : 0,
+      "failedTests" : 2,
+      "passedTests" : 0,
+      "skippedTests" : 0,
+      "testPlanConfiguration" : {
+        "configurationId" : "1",
+        "configurationName" : "Test Scheme Action"
+      }
+    }
+  ],
+  "environmentDescription" : "PlusRecoveryUITests · Built with macOS 27.0.1",
+  "expectedFailures" : 0,
+  "failedTests" : 2,
+  "finishTime" : 1794683835.735,
+  "passedTests" : 0,
+  "result" : "Failed",
+  "runtimeWarnings" : [
+    {
+      "issueType" : "Runtime Warning",
+      "message" : "[Internal] Thread running at User-interactive quality-of-service class waiting on a thread without a QoS class specified (base priority 33). Investigate ways to avoid priority inversions"
+    },
+    {
+      "issueType" : "Runtime Warning",
+      "message" : "[Internal] Thread running at User-interactive quality-of-service class waiting on a thread without a QoS class specified (base priority 33). Investigate ways to avoid priority inversions"
+    }
+  ],
+  "skippedTests" : 0,
+  "startTime" : 1794683782.161,
+  "statistics" : [
+
+  ],
+  "testFailures" : [
+    {
+      "failureText" : "XCTAssertEqual failed: (\"Optional(\"Bdary twenty first memory rapid typing 20x25x1\")\") is not equal to (\"Optional(\"Boundary twenty first memory rapid typing 20x25x1\")\") - Burst typing must arrive intact before persistence",
+      "targetName" : "PlusRecoveryUITests",
+      "testIdentifier" : 1,
+      "testIdentifierString" : "PlusRecoveryUITests/testRapidDraftInputAfterKeyboardSettles()",
+      "testIdentifierURL" : "test://com.apple.xcode/CasitaDexPlusStoreQA/PlusRecoveryUITests/PlusRecoveryUITests/testRapidDraftInputAfterKeyboardSettles",
+      "testName" : "testRapidDraftInputAfterKeyboardSettles()"
+    },
+    {
+      "failureText" : "XCTAssertEqual failed: (\"Optional(\"Bndary twenty first memory rapid typing 20x25x1\")\") is not equal to (\"Optional(\"Boundary twenty first memory rapid typing 20x25x1\")\")",
+      "targetName" : "PlusRecoveryUITests",
+      "testIdentifier" : 2,
+      "testIdentifierString" : "PlusRecoveryUITests/testRapidInputControlAfterKeyboardSettles()",
+      "testIdentifierURL" : "test://com.apple.xcode/CasitaDexPlusStoreQA/PlusRecoveryUITests/PlusRecoveryUITests/testRapidInputControlAfterKeyboardSettles",
+      "testName" : "testRapidInputControlAfterKeyboardSettles()"
+    }
+  ],
+  "title" : "Test - PlusRecoveryUITests",
+  "topInsights" : [
+
+  ],
+  "totalTestCount" : 2
+}

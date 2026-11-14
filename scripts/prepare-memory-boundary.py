@@ -14,6 +14,7 @@ s=json.loads((folder/'clone-original.json').read_text());s['data']['memories']=s
 assert len(s['data']['memories'])==19
 for m in s['data']['memories']:m['mediaIds']=[]
 s['data']['media']['media']=[];s['attempts']={};s['draft']={'id':'boundary_draft20','attempt':'boundary_attempt20','memoryId':'boundary_memory20','checkpoint':1,'title':'Boundary twentieth memory','answer':'Native save verification','location':'','notes':'','source':'','spaceId':None,'legacyContext':None,'categoryIds':[],'photos':[]};s['revision']+=1
+if '--empty-draft' in sys.argv:s['draft']['title']='';s['draft']['answer']=''
 with sqlite3.connect(dbpath) as db:db.execute('UPDATE eng_state_v2 SET payload=? WHERE slot=1',(json.dumps(s),))
 (folder/'fixture.json').write_text(json.dumps({'simulator':udid,'database':str(dbpath),'savedCount':19},indent=2))
 print('Prepared boundary simulator copy with 19 saved memories and one draft')

@@ -1,0 +1,32 @@
+
+extension PlusRecoveryUITests {
+ @MainActor func testRapidMultilineInputControl() async throws {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa")
+  app.launch();app.open(URL(string:"casitadex-plusstoreqa://qa-input")!)
+  let field=app.textViews["control-input"]
+  XCTAssertTrue(field.waitForExistence(timeout:15));field.tap();XCTAssertTrue(app.keyboards.firstMatch.waitForExistence(timeout:5));try await Task.sleep(nanoseconds:2_000_000_000)
+  let expected="Boundary twenty first memory rapid typing 20x25x1"
+  field.typeText(expected)
+  print("CONTROL_INPUT actual: " + (field.value as? String ?? "nil"))
+  XCTAssertEqual(field.value as? String,expected)
+ }
+}
+
+extension PlusRecoveryUITests {
+ @MainActor func testRapidSystemSearchControl() async throws {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.apple.Preferences")
+  app.launch()
+  let field=app.searchFields.firstMatch
+  if !field.waitForExistence(timeout:5) {app.swipeDown()}
+  XCTAssertTrue(field.waitForExistence(timeout:10));field.tap()
+  XCTAssertTrue(app.keyboards.firstMatch.waitForExistence(timeout:5))
+  try await Task.sleep(nanoseconds:2_000_000_000)
+  let expected="Boundary twenty first memory rapid typing 20x25x1"
+  field.typeText(expected)
+  print("SYSTEM_INPUT actual: " + (field.value as? String ?? "nil"))
+  let shot=XCTAttachment(screenshot:app.screenshot());shot.name="System Settings rapid input";shot.lifetime = .keepAlways;add(shot)
+  XCTAssertEqual(field.value as? String,expected)
+ }
+}
