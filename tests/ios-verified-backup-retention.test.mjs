@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import vm from 'node:vm';
 import ts from 'typescript';
+import * as capacity from '../src/backup-capacity.ts';
 
 const source=readFileSync(new URL('../src/eng-runtime.native.ts',import.meta.url),'utf8');
 const compiled=ts.transpileModule(source,{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;
@@ -22,7 +23,7 @@ function setup({sharingAvailable=true,shareFails=false,verifyFails=false,names=[
   'expo-file-system':{File,Paths:{document:'private-documents'}},
   'react-native':{Platform:{OS:'ios'}},
   'expo-file-system/legacy':{readDirectoryAsync:async()=>names},
-  './eng-backup':{fullBackupLimit:154010000},
+  './backup-capacity':capacity,
   './standalone-reminders.native':{snapshotStandaloneRemindersForBackup:async()=>reminders},
   './eng-stream-v4':{
    writeEngStreamV4:async(s,r,read,hash,writer)=>{await writer.write(new Uint8Array([1]));return {size:100,snapshot:s};},

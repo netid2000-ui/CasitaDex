@@ -1,3 +1,4 @@
+import {assertStreamedBackupSize,reminderMetadataLimit} from "./backup-capacity.ts";
 import {writeEngStream,openEngStream,type RandomReader,type SequentialWriter} from "./eng-stream.ts";
 import {encodeReminderBackupSection,decodeReminderBackupSection,type ReminderBackupSection} from "./reminder-backup-v4.ts";
 import type {EngSnapshot} from "./eng-types.ts";
@@ -9,18 +10,18 @@ export async function writeEngStreamV4(snapshot:EngSnapshot,reminders:ReminderBa
  const checked=validateEngSnapshot(snapshot);
  const payloadSize=10+new TextEncoder().encode(JSON.stringify(checked)).length+allEngMedia(checked).reduce((sum,e)=>sum+4+e.bytes,0);
  const size=10+section.length+payloadSize;
- if(size>154_010_000)throw Error("Full v4 backup exceeds limit");
+ assertStreamedBackupSize(size);
  await writer.write(magic);await writer.write(frame(section.length));await writer.write(section);
  const result=await writeEngStream(checked,read,hash,writer);
  if(result.size!==payloadSize)throw Error("Full v4 size mismatch");
  return {size,reminders:decodeReminderBackupSection(section),snapshot:result.snapshot};
 }
 export async function openEngStreamV4(file:RandomReader,hash:(b:Uint8Array)=>Promise<string>){
- if(file.size<10||file.size>154_010_000)throw Error("Invalid full v4 backup size");
+ assertStreamedBackupSize(file.size);
  const prefix=await file.read(0,10);
  if(prefix.length!==10||!magic.every((v,i)=>prefix[i]===v))throw Error("Not a Full v4 backup");
  const n=new DataView(prefix.buffer,prefix.byteOffset+6,4).getUint32(0);
- if(n>5_000_000||10+n>=file.size)throw Error("Invalid Full v4 reminder frame");
+ if(n>reminderMetadataLimit||10+n>=file.size)throw Error("Invalid Full v4 reminder frame");
  const section=await file.read(10,n);if(section.length!==n)throw Error("Truncated reminders");
  const reminders=decodeReminderBackupSection(section),offset=10+n;
  const opened=await openEngStream({size:file.size-offset,read:(at,len)=>file.read(offset+at,len)},hash);

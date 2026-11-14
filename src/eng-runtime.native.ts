@@ -16,7 +16,7 @@ import { mediaFileByPath } from "./media-attachment.native";
 import { sha256Media } from "./media-hash.native";
 import { stageMedia } from "./media-staging";
 import { validateAddDraft } from "./draft-sqlite";
-import { fullBackupLimit } from "./eng-backup";
+import {assertStreamedBackupSize,backupWorkingSpace} from "./backup-capacity";
 import { writeEngStreamV4, openEngStreamCompatible } from "./eng-stream-v4";
 import { snapshotStandaloneRemindersForBackup } from "./standalone-reminders.native";
 import type { EngSnapshot } from "./eng-types";
@@ -83,8 +83,7 @@ export async function writeEngBackup(source:EngBackupSource){
   const reminderBytes=new TextEncoder().encode(JSON.stringify(reminders)).length;
   const size=10+reminderBytes+10+new TextEncoder().encode(JSON.stringify(source.snapshot)).length+
     [...source.snapshot.data.media.media,...(source.snapshot.draft?.photos??[])].reduce((n,e)=>n+4+e.bytes,0);
-  if(size>fullBackupLimit)throw Error("Full backup exceeds the supported format limit");
-  await requireNativeCapacity(size*2+4_000_000);
+  await requireNativeCapacity(backupWorkingSpace(size));
   const iosName="CasitaDex-full-"+new Date().toISOString().replace(/[:.]/g,"-")+".cdxe";
   if(Platform.OS==="ios"){
     // iOS has no Storage Access Framework. Keep a complete, verified Full v4
@@ -144,7 +143,7 @@ export async function pickEngBackup(){
   const result=await DocumentPicker.getDocumentAsync({type:"*/*",copyToCacheDirectory:true,multiple:false});
   if(result.canceled)return null;
   const asset=result.assets[0];if(!asset)throw Error("No backup selected");
-  const file=new File(asset.uri);if(file.size>fullBackupLimit)throw Error("Full backup exceeds 154 MB");
+  const file=new File(asset.uri);assertStreamedBackupSize(file.size);
   const opened=await openEngStreamCompatible(reader(file),sha256Media);
   // Archive validation always completes before any consumer restore preview.
   // SB24 production-path interruption and genuine Android ENOSPC acceptance passed.
