@@ -56,6 +56,25 @@ struct PlusStoreReader {
     }
   }
 
+  // Called only after the shared JS state has enabled the qualified local Plus gates.
+  // Re-enumeration also recovers transactions left unfinished by an earlier run.
+  func finishDeliveredLocalTransactions() async throws -> Int {
+    try requireLocalCheckout()
+    guard try await verifiedEntitlement() == "plus" else { throw Failure.invalidTransaction }
+    var finished = 0
+    for await result in Transaction.unfinished {
+      guard case .verified(let transaction) = result else { continue }
+      guard policy.allows(product: transaction.productID, bundle: transaction.appBundleID,
+                          environment: transaction.environment.rawValue, verified: true,
+                          nonConsumable: transaction.productType == .nonConsumable,
+                          revoked: transaction.revocationDate != nil, upgraded: transaction.isUpgraded)
+      else { continue }
+      await transaction.finish()
+      finished += 1
+    }
+    return finished
+  }
+
   func catalog() async throws -> [String: String] {
     guard let product = try await Product.products(for: [policy.productID]).first,
           product.id == policy.productID, product.type == .nonConsumable

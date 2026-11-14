@@ -18,6 +18,7 @@ public final class CasitaDexPlusStoreModule: Module {
       guard let reader = try? PlusStoreReader.configured() else { return }
       guard (try? reader.requireLocalCheckout()) != nil else { return }
       UserDefaults.standard.set(status + ":" + entitlement, forKey: "CasitaDexPlusQABridgeState")
+      UserDefaults.standard.set(ProcessInfo.processInfo.processIdentifier, forKey: "CasitaDexPlusQABridgePID")
     }
     #endif
     OnCreate { [weak self] in
@@ -49,6 +50,24 @@ public final class CasitaDexPlusStoreModule: Module {
     AsyncFunction("purchaseForLocalTesting") { () async throws -> String in
       try await PlusStoreReader.configured().purchaseForLocalTesting()
     }
-    // No production checkout or transaction finishing is exposed.
+    AsyncFunction("finishDeliveredLocalTransactions") { () async throws -> Int in
+      let reader = try PlusStoreReader.configured()
+      try reader.requireLocalCheckout()
+      #if DEBUG
+      // Explicit local-test failure injection: never grants access or affects public builds.
+      if ProcessInfo.processInfo.environment["CASITADEX_DEFER_DELIVERY_QA"] == "1" {
+        throw PlusStoreReader.Failure.invalidTransaction
+      }
+      #endif
+      let count = try await reader.finishDeliveredLocalTransactions()
+      #if DEBUG
+      if count > 0 {
+        UserDefaults.standard.set(ProcessInfo.processInfo.processIdentifier, forKey: "CasitaDexPlusQAFinishPID")
+        UserDefaults.standard.set(count, forKey: "CasitaDexPlusQAFinishCount")
+      }
+      #endif
+      return count
+    }
+    // Production checkout and production transaction finishing remain disabled.
   }
 }
