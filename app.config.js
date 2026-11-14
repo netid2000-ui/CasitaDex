@@ -4,20 +4,22 @@ module.exports = ({ config }) => {
     throw new Error(
       "Production configuration is intentionally unavailable; only development and staging runtime environments are permitted.",
     );
+  const plusStore = process.env.CASITADEX_PLUS_STORE_QA === "1";
   const qa = process.env.CASITADEX_SB29_QA === "1";
   const sb39 = process.env.CASITADEX_SB39_QA === "1";
   const sb40 = process.env.CASITADEX_SB40_QA === "1";
-  if ([qa, sb39, sb40].filter(Boolean).length > 1) throw new Error("Only one isolated QA identity can be selected.");
-  const suffix = sb40 ? "sb40qa" : sb39 ? "sb39qa" : qa ? "sb29qa" : env === "development" ? "dev" : "staging";
+  if ([qa, sb39, sb40, plusStore].filter(Boolean).length > 1) throw new Error("Only one isolated QA identity can be selected.");
+  const suffix = plusStore ? "plusstoreqa" : sb40 ? "sb40qa" : sb39 ? "sb39qa" : qa ? "sb29qa" : env === "development" ? "dev" : "staging";
   return {
     ...config,
-    name: "CasitaDex " + (sb40 ? "SB40 QA" : sb39 ? "SB39 QA" : qa ? "SB29 QA" : env === "development" ? "Dev" : "Staging"),
+    name: "CasitaDex " + (plusStore ? "Plus Store QA" : sb40 ? "SB40 QA" : sb39 ? "SB39 QA" : qa ? "SB29 QA" : env === "development" ? "Dev" : "Staging"),
     owner: "netid2000-10",
     icon: "./assets/brand/icon-light.png",
     scheme: "casitadex-" + suffix,
     ios: {
       ...config.ios,
       icon: { light: "./assets/brand/icon-light.png", dark: "./assets/brand/icon-dark.png", tinted: "./assets/brand/icon-tinted.png" },
+      ...(plusStore ? { infoPlist: { ...config.ios?.infoPlist, CasitaDexPlusProductID: "local.casitadex.plus.qa", CasitaDexPlusStoreEnvironment: "Xcode" } } : {}),
       bundleIdentifier: "com.designsbyfa.casitadex." + suffix,
     },
     android: {
