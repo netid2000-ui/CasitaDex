@@ -121,3 +121,36 @@ extension PlusRecoveryUITests {
   print("MEMORY LIMIT UI: existing collection preserved, fixed notice and upgrade route, verified Plus removes notice PASS")
  }
 }
+
+extension PlusRecoveryUITests {
+ @MainActor func testNativeMemoryBoundary() async throws {
+  continueAfterFailure=false
+  let url=try XCTUnwrap(Bundle(for:Self.self).url(forResource:"CasitaDexPlus",withExtension:"storekit"))
+  let session=try SKTestSession(contentsOf:url)
+  session.resetToDefaultState();session.clearTransactions();session.disableDialogs=true
+  defer { session.clearTransactions();session.resetToDefaultState() }
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa")
+  app.launch();app.open(URL(string:"casitadex-plusstoreqa://add")!)
+  let save=app.buttons["Save"]
+  XCTAssertTrue(save.waitForExistence(timeout:15));XCTAssertTrue(save.isEnabled);save.tap()
+  XCTAssertTrue(app.buttons["Add Memory"].waitForExistence(timeout:15))
+  app.open(URL(string:"casitadex-plusstoreqa://add")!)
+  let notice=app.staticTexts["memory-limit-notice"]
+  XCTAssertTrue(notice.waitForExistence(timeout:10));XCTAssertTrue(notice.label.contains("20 of 20"))
+  let name=app.textFields["Memory name (Required)"]
+  XCTAssertTrue(name.waitForExistence(timeout:10));name.tap();for character in "Boundary twenty first memory" { name.typeText(String(character));try await Task.sleep(nanoseconds:150_000_000) }
+  XCTAssertEqual(name.value as? String,"Boundary twenty first memory");name.typeText("\n")
+  let description=app.textViews["Description"]
+  for _ in 0..<8 { if description.isHittable { break };app.scrollViews.firstMatch.swipeUp() }
+  XCTAssertTrue(description.isHittable);description.tap();for character in "Preserve this native draft" { description.typeText(String(character));try await Task.sleep(nanoseconds:150_000_000) }
+  XCTAssertEqual(description.value as? String,"Preserve this native draft")
+  save.tap()
+  let blocked=app.staticTexts.containing(NSPredicate(format:"label CONTAINS %@","Your free plan includes 20 saved memories")).firstMatch
+  XCTAssertTrue(blocked.waitForExistence(timeout:10))
+  let shot=XCTAttachment(screenshot:app.screenshot());shot.name="Twenty first native save blocked";shot.lifetime = .keepAlways;add(shot)
+  app.terminate();app.launch();app.open(URL(string:"casitadex-plusstoreqa://add")!)
+  XCTAssertTrue(name.waitForExistence(timeout:15));XCTAssertEqual(name.value as? String,"Boundary twenty first memory")
+  XCTAssertTrue(notice.label.contains("20 of 20"))
+  print("NATIVE BOUNDARY PASS: save twentieth, block twenty-first, draft survives cold restart")
+ }
+}
