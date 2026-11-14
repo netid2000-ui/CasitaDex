@@ -1,11 +1,12 @@
+import {DatabaseSync} from 'node:sqlite';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
-import {mkdtemp,open,rm} from 'node:fs/promises';
+import {mkdtemp,open,rm,mkdir,readFile,writeFile} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {empty} from '../src/model.ts';
-import {legacyEngSnapshot} from '../src/eng-store.ts';
+import {legacyEngSnapshot,createEngStore} from '../src/eng-store.ts';
 import {writeEngStreamV4,openEngStreamCompatible} from '../src/eng-stream-v4.ts';
 import {encodeEngBackup} from '../src/eng-backup.ts';
 import {backupWorkingSpace,assertStreamedBackupSize} from '../src/backup-capacity.ts';
@@ -32,6 +33,30 @@ test('170 MB archive streams to disk and verifies without a full archive buffer'
   assert.ok(at>170_000_000);assert.equal(written.size,at);assert.equal(opened.snapshot.data.media.media.length,17);
   assert.ok(maxWrite<=65536);assert.ok(maxRead<=10_000_000);
   assert.deepEqual(await opened.read('media/p16.png'),bytes);
+
+  // Restore into an independent file-backed SQLite database, then reopen it.
+  let target;
+  function openTarget(){
+   const raw=new DatabaseSync(join(dir,'target.sqlite'));
+   const db={execAsync:async q=>raw.exec(q),runAsync:async(q,...a)=>raw.prepare(q).run(...a),getFirstAsync:async(q,...a)=>raw.prepare(q).get(...a)??null,getAllAsync:async(q,...a)=>raw.prepare(q).all(...a),withExclusiveTransactionAsync:async fn=>{
+    raw.exec('BEGIN IMMEDIATE');try{await fn(db);raw.exec('COMMIT');}catch(error){raw.exec('ROLLBACK');throw error;}
+   }};
+   const files={hash,read:async path=>new Uint8Array(await readFile(join(dir,path))),put:async(entry,b)=>{
+    await mkdir(join(dir,'media'),{recursive:true});await writeFile(join(dir,entry.path),b,{flag:'wx'});
+   },capacity:async required=>requireStorageCapacity(1_000_000_000,required)};
+   return {raw,files,store:createEngStore(db,files,async()=>legacyEngSnapshot(JSON.stringify(empty())))};
+  }
+  try{
+   target=openTarget();const token=await target.store.restoreToken(),reminderToken=await target.store.reminderRestoreToken();
+   await target.store.stageRestore(opened.snapshot,opened.read,token);
+   await target.store.restoreV4(opened.snapshot,opened.reminders,'incoming',token,reminderToken);
+   target.raw.close();target=undefined;
+   target=openTarget();const restored=await target.store.load();
+   assert.deepEqual(restored.data,opened.snapshot.data);
+   for(const photo of restored.data.media.media)assert.equal(await hash(await target.files.read(photo.path)),photo.sha256);
+   await target.store.recoverV4();assert.equal((await target.store.load()).data.memories.length,0);
+  }finally{target?.raw.close();}
+
   const before=JSON.stringify(snapshot);
   await assert.rejects(writeEngStreamV4(snapshot,{version:1,rows:[]},async()=>bytes,hash,{write:async()=>{throw Error('disk full');}}),/disk full/);
   assert.equal(JSON.stringify(snapshot),before);

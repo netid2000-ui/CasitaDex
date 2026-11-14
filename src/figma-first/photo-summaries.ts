@@ -11,3 +11,22 @@ export function photoSummaries(data:DataV2,sort?:PhotoSort):PhotoSummary[]{
  if(sort)items.sort((a,b)=>{const date=(m:typeof a.m)=>sort==='added'?m.createdAt:(m.updatedAt??m.createdAt);return (date(b.m)??'').localeCompare(date(a.m)??'')||a.index-b.index;});
  return items.map(({m})=>({id:m.id,title:m.title,photoCount:count.get(m.id)!}));
 }
+
+/** Build gallery metadata once per collection/sort change; never read image bytes. */
+export function photoWorkspaceItems(data:DataV2,sort:PhotoSort,uri:(path:string)=>string):PhotoSummary[]{
+ const mediaByMemory=new Map<string,Map<string,{id:string;path:string}>>();
+ for(const photo of data.media.media){
+  let owned=mediaByMemory.get(photo.cardId);
+  if(!owned){owned=new Map();mediaByMemory.set(photo.cardId,owned);}
+  owned.set(photo.id,photo);
+ }
+ const memories=new Map(data.memories.map(memory=>[memory.id,memory]));
+ return photoSummaries(data,sort).map(item=>{
+  const memory=memories.get(item.id)!,owned=mediaByMemory.get(item.id)!;
+  const ids=memory.mediaIds??[...owned.keys()];
+  return {...item,photos:ids.flatMap(id=>{
+   const photo=owned.get(id);
+   return photo?[{id:photo.id,uri:uri(photo.path)}]:[];
+  })};
+ });
+}
