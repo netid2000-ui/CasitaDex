@@ -1,6 +1,7 @@
 import {requireOptionalNativeModule} from 'expo-modules-core';
 import {AppState} from 'react-native';
 import {createPlusEntitlementStore} from './plus-entitlement-store';
+import {createPlusBackupGate} from './plus-feature-gate';
 
 type NativeOwnership = {
  recordLocalQAState?(status:string,entitlement:string): void;
@@ -29,3 +30,7 @@ export function startPlusEntitlements(){
  const foreground=AppState.addEventListener('change',state=>{if(state==='active')void plusEntitlements.refresh();});
  return()=>{foreground.remove();plusEntitlements.stop();log();};
 }
+
+// Qualify feature gates in isolated QA before enabling them in public builds.
+export const plusFeatureEnforcementEnabled=configured&&native?.isLocalTesting?.()===true;
+export const requirePlusBackup=createPlusBackupGate({enabled:plusFeatureEnforcementEnabled,refresh:plusEntitlements.refresh,getSnapshot:plusEntitlements.getSnapshot});
