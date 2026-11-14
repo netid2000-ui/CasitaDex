@@ -1,0 +1,34 @@
+{
+  "identifier": "CASITADEX-LOCAL-QA",
+  "nonRenewingSubscriptions": [],
+  "products": [
+    {
+      "displayPrice": "19.99",
+      "familyShareable": false,
+      "internalID": "1000001",
+      "localizations": [
+        {
+          "description": "Local testing only",
+          "displayName": "CasitaDex Plus QA",
+          "locale": "en_US"
+        }
+      ],
+      "productID": "local.casitadex.plus.qa",
+      "referenceName": "CasitaDex Plus Local QA",
+      "type": "NonConsumable"
+    }
+  ],
+  "settings": {
+    "_applicationInternalID": "",
+    "_developerTeamID": "",
+    "_failTransactionsEnabled": false,
+    "_locale": "en_US",
+    "_storefront": "USA",
+    "_storeKitErrors": []
+  },
+  "subscriptionGroups": [],
+  "version": {
+    "major": 3,
+    "minor": 0
+  }
+}
