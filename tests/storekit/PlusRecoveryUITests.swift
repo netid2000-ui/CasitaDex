@@ -325,3 +325,57 @@ extension PlusRecoveryUITests {
   print("TAXONOMY_REMINDER PASS: both assignments survive restart; reminder exact title/notes, Save return and Cancel rollback")
  }
 }
+
+extension PlusRecoveryUITests {
+ @MainActor func testReminderExistingTitleInsertion() async throws {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa")
+  let original="Boundary rapid reminder 20x25x1"
+  func locate(_ title:String)->XCUIElement {
+   let row=app.buttons["Edit "+title]
+   if !row.waitForExistence(timeout:2) {let overdue=app.buttons.containing(NSPredicate(format:"label BEGINSWITH %@","Overdue (")).firstMatch;if overdue.exists {overdue.tap()}}
+   XCTAssertTrue(row.waitForExistence(timeout:10));return row
+  }
+  app.launch();app.open(URL(string:"casitadex-plusstoreqa://reminders")!)
+  let open=locate(original);open.tap()
+  let field=app.textViews["Reminder title *"];XCTAssertTrue(field.waitForExistence(timeout:10));XCTAssertEqual(field.value as? String,original)
+  field.tap();field.typeText("INSERT ")
+  let actual=try XCTUnwrap(field.value as? String)
+  XCTAssertTrue(actual.contains("INSERT "),"Insertion order must remain intact: "+actual)
+  XCTAssertEqual(actual.replacingOccurrences(of:"INSERT ",with:""),original)
+  app.buttons["Save Reminder"].tap()
+  _ = locate(actual)
+  app.terminate();app.launch();app.open(URL(string:"casitadex-plusstoreqa://reminders")!)
+  let saved=locate(actual);saved.tap()
+  XCTAssertTrue(field.waitForExistence(timeout:10));XCTAssertEqual(field.value as? String,actual)
+  field.tap();field.typeText("CANCEL ")
+  let dirty=try XCTUnwrap(field.value as? String)
+  XCTAssertTrue(dirty.contains("CANCEL "));XCTAssertEqual(dirty.replacingOccurrences(of:"CANCEL ",with:""),actual)
+  app.buttons["Cancel"].tap();app.alerts.buttons["Discard changes"].tap()
+  _ = locate(actual);saved.tap();XCTAssertTrue(field.waitForExistence(timeout:10));XCTAssertEqual(field.value as? String,actual)
+  let shot=XCTAttachment(screenshot:app.screenshot());shot.name="Existing reminder insertion preserved";shot.lifetime = .keepAlways;add(shot)
+  print("EXISTING_REMINDER PASS exact contiguous insertion, save/restart, second insertion and Cancel rollback: "+actual)
+ }
+}
+
+extension PlusRecoveryUITests {
+ @MainActor func testLinkedReminderPrefillAndReturn() async throws {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa")
+  app.launch();app.open(URL(string:"casitadex-plusstoreqa://reminders-manage?mode=new&memoryId=rapid_edit_fixture")!)
+  let field=app.textViews["Reminder title *"]
+  XCTAssertTrue(field.waitForExistence(timeout:15))
+  let expected="Review Boundary rapid editing 20x25x1"
+  XCTAssertTrue(XCTWaiter.wait(for:[XCTNSPredicateExpectation(predicate:NSPredicate(format:"value == %@",expected),object:field)],timeout:10) == .completed)
+  field.tap();field.typeText("LINKED ")
+  let actual=try XCTUnwrap(field.value as? String);XCTAssertTrue(actual.contains("LINKED "));XCTAssertEqual(actual.replacingOccurrences(of:"LINKED ",with:""),expected)
+  field.typeText("\n");XCTAssertEqual(field.value as? String,actual)
+  app.buttons["Save Reminder"].tap()
+  XCTAssertTrue(app.buttons["Edit memory"].waitForExistence(timeout:15))
+  XCTAssertTrue(app.staticTexts["Boundary rapid editing 20x25x1"].exists)
+  app.terminate();app.launch();app.open(URL(string:"casitadex-plusstoreqa://reminders")!)
+  let row=app.buttons["Edit "+actual];XCTAssertTrue(row.waitForExistence(timeout:15));row.tap()
+  XCTAssertTrue(field.waitForExistence(timeout:10));XCTAssertEqual(field.value as? String,actual)
+  print("LINKED_REMINDER PASS asynchronous prefill, exact insertion, submit, save return to originating details, restart")
+ }
+}

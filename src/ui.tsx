@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useRef } from "react";
+import React, { useState, useMemo, useRef, useEffect } from "react";
 import {
   Platform,
   useColorScheme,
@@ -107,6 +107,7 @@ export function Field({
   disabled=false,
   maxLength,
   iosTextView=false,
+  nativeEditing=false,
 }: {
   label: string;
   value: string;
@@ -117,26 +118,41 @@ export function Field({
   disabled?:boolean;
   maxLength?:number;
   iosTextView?:boolean;
+  nativeEditing?:boolean;
 }) {
   const { large } = useData();
   const { s, colors } = useTheme();
   const [focused, setFocused] = useState(false);
   // Isolated QA workaround for character loss in iOS single-line native input.
   const nativeTextView=iosTextView&&Platform.OS==='ios';
+  // Let UIKit retain its selection during QA reminder edits. Only genuine
+  // external changes (e.g. asynchronous reminder loading) write text back.
+  const nativeOwned=nativeTextView&&nativeEditing;
+  const inputRef=useRef<TextInput>(null);
+  const [initialValue]=useState(value);
+  const latestNativeValue=useRef(value);
+  useEffect(()=>{
+    if(nativeOwned&&latestNativeValue.current!==value){
+      latestNativeValue.current=value;
+      inputRef.current?.setNativeProps({text:value});
+    }
+  },[nativeOwned,value]);
   return (
     <View style={s.gap}>
       <Copy style={{ fontWeight: "600" }}>{label}</Copy>
       <TextInput
+        ref={inputRef}
         accessibilityLabel={label}
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
         selectionColor={colors.focus}
         cursorColor={colors.focus}
         textAlignVertical={multiline ? "top" : "center"}
-        value={value}
+        value={nativeOwned?undefined:value}
+        defaultValue={nativeOwned?initialValue:undefined}
         editable={!disabled}
         accessibilityState={{disabled}}
-        onChangeText={onChangeText}
+        onChangeText={text=>{latestNativeValue.current=text;onChangeText(text);}}
         multiline={multiline||nativeTextView}
         submitBehavior={nativeTextView&&!multiline?'blurAndSubmit':undefined}
         onSubmitEditing={onSubmitEditing}

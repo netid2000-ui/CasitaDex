@@ -156,7 +156,7 @@ export function EngReminders(){
  {editing===null?<><Copy>Reminders are saved locally. Device alerts need permission and a future due time; delivery can vary with device settings.</Copy><Button label="Enable device reminder alerts" onPress={()=>void act(()=>requestStandaloneReminderAlerts(),"Device alerts checked.")}/></>:null}
  {editing!==null?<View style={{gap:12}}>
   {editing==="new"?null:<Copy kind="section">Edit reminder</Copy>}
-  <View style={{backgroundColor:colors.white,borderWidth:1,borderColor:colors.separator,borderRadius:14,padding:16}}><Field iosTextView={plusFeatureEnforcementEnabled} label="Reminder title *" value={title} onChangeText={setTitle} maxLength={200}/></View>
+  <View style={{backgroundColor:colors.white,borderWidth:1,borderColor:colors.separator,borderRadius:14,padding:16}}><Field iosTextView={plusFeatureEnforcementEnabled} nativeEditing={plusFeatureEnforcementEnabled} label="Reminder title *" value={title} onChangeText={setTitle} maxLength={200}/></View>
   <View style={{backgroundColor:colors.white,borderWidth:1,borderColor:colors.separator,borderRadius:14,padding:16,gap:10}}>
    <Copy style={{color:colors.ink,fontWeight:"700"}}>When should we remind you?</Copy>
    <View style={{flexDirection:"row",gap:10}}><View style={{flex:1,gap:6}}><Copy kind="small">Date</Copy><Button label={dueDate} onPress={()=>choosePicker("date")}/></View><View style={{flex:1,gap:6}}><Copy kind="small">Time (AM / PM)</Copy><Button label={new Date(`2000-01-01T${dueTime}:00`).toLocaleTimeString("en-US",{hour:"numeric",minute:"2-digit",hour12:true})} onPress={()=>choosePicker("time")}/></View></View>
