@@ -1,3 +1,5 @@
+> Superseded by CASITADEX_PLUS_APPROVED_VALUE_PACKAGE_20261114.md: owner approved 20 free memories and paid backup/restore, migration, photo-text search, and photo-rich PDFs in $19.99 one-time Plus.
+
 # CasitaDex monetization research and implementation proposal
 Date: 2026-11-13 (America/Chicago)
 Status: Proposed model and price await owner decision. No real billing, store products, or charges enabled.
