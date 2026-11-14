@@ -26,6 +26,21 @@ import StoreKit
   #else
   try check("isolatedqa","local.test.plusstoreqa","local.test.plus",AppStore.Environment.xcode.rawValue,false)
   #endif
-  print("7 StoreKit configuration assertions passed")
+  func checkout(_ product:String,_ bundle:String,_ env:String,_ expected:Bool) {
+   let reader=PlusStoreReader(policy:PlusTransactionPolicy(productID:product,bundleID:bundle,environment:env))
+   let allowed:Bool
+   do {try reader.requireLocalCheckout();allowed=true} catch {allowed=false}
+   precondition(allowed == expected, "Checkout guard: " + product + " / " + env)
+  }
+  checkout("local.casitadex.plus.qa","local.test.plusstoreqa",AppStore.Environment.production.rawValue,false)
+  checkout("local.casitadex.plus.qa","local.test.plusstoreqa",AppStore.Environment.sandbox.rawValue,false)
+  checkout("other.product","local.test.plusstoreqa",AppStore.Environment.xcode.rawValue,false)
+  checkout("local.casitadex.plus.qa","local.test.app",AppStore.Environment.xcode.rawValue,false)
+  #if DEBUG
+  checkout("local.casitadex.plus.qa","local.test.plusstoreqa",AppStore.Environment.xcode.rawValue,true)
+  #else
+  checkout("local.casitadex.plus.qa","local.test.plusstoreqa",AppStore.Environment.xcode.rawValue,false)
+  #endif
+  print("12 StoreKit configuration/checkout assertions passed")
  }
 }

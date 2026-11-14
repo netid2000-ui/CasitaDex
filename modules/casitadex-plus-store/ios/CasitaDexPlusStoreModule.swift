@@ -12,6 +12,9 @@ public final class CasitaDexPlusStoreModule: Module {
     AsyncFunction("restore") { () async throws -> String in
       try await PlusStoreReader.configured().restore()
     }
-    // Checkout remains absent until native transaction delivery/finishing is qualified.
+    AsyncFunction("purchaseForLocalTesting") { () async throws -> String in
+      try await PlusStoreReader.configured().purchaseForLocalTesting()
+    }
+    // No production checkout or transaction finishing is exposed.
   }
 }

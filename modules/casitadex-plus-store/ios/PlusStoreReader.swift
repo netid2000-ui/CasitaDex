@@ -3,7 +3,7 @@ import StoreKit
 
 @available(iOS 16.4, macOS 13.0, *)
 struct PlusStoreReader {
-  enum Failure: Error { case notConfigured, unverified, wrongIdentity, missingProduct }
+  enum Failure: Error { case notConfigured, unverified, wrongIdentity, missingProduct, checkoutDisabled, invalidTransaction }
   let policy: PlusTransactionPolicy
 
   static func configured(bundle: Bundle = .main) throws -> PlusStoreReader {
@@ -21,6 +21,39 @@ struct PlusStoreReader {
       #endif
     }
     return PlusStoreReader(policy: PlusTransactionPolicy(productID: product, bundleID: bundleID, environment: environment))
+  }
+
+  // Until delivery and finishing are qualified, checkout is Xcode-local QA only.
+  func requireLocalCheckout() throws {
+    #if DEBUG
+    guard policy.environment == AppStore.Environment.xcode.rawValue,
+          policy.bundleID.hasSuffix(".plusstoreqa"),
+          policy.productID == "local.casitadex.plus.qa" else { throw Failure.checkoutDisabled }
+    #else
+    throw Failure.checkoutDisabled
+    #endif
+  }
+
+  func purchaseForLocalTesting() async throws -> String {
+    try requireLocalCheckout()
+    guard let product = try await Product.products(for: [policy.productID]).first,
+          product.id == policy.productID, product.type == .nonConsumable
+    else { throw Failure.missingProduct }
+    switch try await product.purchase() {
+    case .userCancelled: return "cancelled"
+    case .pending: return "pending"
+    case .success(let result):
+      guard case .verified(let transaction) = result else { throw Failure.unverified }
+      guard policy.allows(product: transaction.productID, bundle: transaction.appBundleID,
+                          environment: transaction.environment.rawValue, verified: true,
+                          nonConsumable: transaction.productType == .nonConsumable,
+                          revoked: transaction.revocationDate != nil, upgraded: transaction.isUpgraded)
+      else { throw Failure.invalidTransaction }
+      // Do not finish here: the app has not yet delivered Plus features.
+      // StoreKit keeps the transaction unfinished for later delivery/recovery.
+      return "completed"
+    @unknown default: throw Failure.invalidTransaction
+    }
   }
 
   func catalog() async throws -> [String: String] {
