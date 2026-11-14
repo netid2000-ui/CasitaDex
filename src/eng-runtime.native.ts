@@ -176,3 +176,21 @@ export async function writeEngText(text:string,backup=false){
   try{await FileSystem.writeAsStringAsync(uri,text);if(await FileSystem.readAsStringAsync(uri)!==text)throw Error('Text export read-back failed');return backup?'Limited text backup saved and verified. Photos and the reviewed photo-only memories are excluded.':'Text report saved and verified. It contains no photos and cannot restore your collection.';}
   catch(e){await FileSystem.deleteAsync(uri,{idempotent:true});throw e;}
 }
+
+export async function listRetainedEngBackups():Promise<string[]>{
+  if(Platform.OS!=="ios")return [];
+  const names=await FileSystem.readDirectoryAsync(Paths.document.uri);
+  return names.filter(name=>/^CasitaDex-full-\d{4}-\d{2}-\d{2}T\d{2}-\d{2}-\d{2}-\d{3}Z\.cdxe$/.test(name)).sort().reverse();
+}
+export async function shareRetainedEngBackup(name:string):Promise<string>{
+  if(Platform.OS!=="ios")throw Error("Retained backup sharing is available on iPhone.");
+  if(!(await listRetainedEngBackups()).includes(name))throw Error("Saved backup is unavailable. Refresh the list.");
+  const file=new File(Paths.document,name);
+  // Reverify the entire archive before handing it to another app.
+  await openEngStreamCompatible(reader(file),sha256Media);
+  const Sharing=await import("expo-sharing");
+  if(!await Sharing.isAvailableAsync())throw Error("Sharing is unavailable. Your saved backup is kept.");
+  try{await Sharing.shareAsync(file.uri,{mimeType:"application/octet-stream",UTI:"public.data",dialogTitle:"Save retained CasitaDex backup"});}
+  catch(error){throw new Error("Sharing did not complete. Your saved backup is kept. Try again.",{cause:error});}
+  return "Share sheet opened for the selected backup. Your saved copy is kept; confirm a separate copy exists at your chosen destination.";
+}
