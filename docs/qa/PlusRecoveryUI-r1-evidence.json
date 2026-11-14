@@ -1,0 +1,11 @@
+{
+  "transaction": "13",
+  "seedPID": 98149,
+  "seedOwned": true,
+  "seedUnfinished": true,
+  "result": "failed",
+  "restartedPID": 98291,
+  "restartedOwned": true,
+  "sameTransactionFinished": false,
+  "reason": "No new-process finishing evidence with continuous StoreKit session"
+}

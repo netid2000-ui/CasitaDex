@@ -3,6 +3,7 @@ import StoreKit
 
 public final class CasitaDexPlusStoreModule: Module {
   private var updates: Task<Void, Never>?
+  private let deliveryQueue = PlusDeliveryQueue()
 
   public func definition() -> ModuleDefinition {
     Name("CasitaDexPlusStore")
@@ -28,7 +29,9 @@ public final class CasitaDexPlusStoreModule: Module {
           guard !Task.isCancelled else { break }
           let transaction: StoreKit.Transaction
           switch result {
-          case .verified(let value): transaction = value
+          case .verified(let value):
+            transaction = value
+            if value.productID == reader.policy.productID { await self?.deliveryQueue.stage(value) }
           case .unverified(let value, _): transaction = value
           }
           guard transaction.productID == reader.policy.productID else { continue }
@@ -50,16 +53,39 @@ public final class CasitaDexPlusStoreModule: Module {
     AsyncFunction("purchaseForLocalTesting") { () async throws -> String in
       try await PlusStoreReader.configured().purchaseForLocalTesting()
     }
-    AsyncFunction("finishDeliveredLocalTransactions") { () async throws -> Int in
+    AsyncFunction("finishDeliveredLocalTransactions") { [weak self] () async throws -> Int in
+      guard let self else { throw PlusStoreReader.Failure.notConfigured }
       let reader = try PlusStoreReader.configured()
       try reader.requireLocalCheckout()
       #if DEBUG
       // Explicit local-test failure injection: never grants access or affects public builds.
       if ProcessInfo.processInfo.environment["CASITADEX_DEFER_DELIVERY_QA"] == "1" {
+        var pending: [String] = []
+        for await result in StoreKit.Transaction.unfinished {
+          if case .verified(let transaction) = result,
+             reader.policy.allows(product: transaction.productID, bundle: transaction.appBundleID,
+               environment: transaction.environment.rawValue, verified: true,
+               nonConsumable: transaction.productType == .nonConsumable,
+               revoked: transaction.revocationDate != nil, upgraded: transaction.isUpgraded) {
+            pending.append(String(transaction.id))
+          }
+        }
+        UserDefaults.standard.set(pending, forKey: "CasitaDexPlusQADeferredIDs")
+        UserDefaults.standard.set(ProcessInfo.processInfo.processIdentifier, forKey: "CasitaDexPlusQADeferredPID")
         throw PlusStoreReader.Failure.invalidTransaction
       }
       #endif
-      let count = try await reader.finishDeliveredLocalTransactions()
+      let count = try await self.deliveryQueue.finishDelivered(reader: reader) { id in
+        #if DEBUG
+        let defaults = UserDefaults.standard
+        let pid = Int(ProcessInfo.processInfo.processIdentifier)
+        var ids = defaults.integer(forKey: "CasitaDexPlusQAFinishPID") == pid
+          ? defaults.stringArray(forKey: "CasitaDexPlusQAFinishedIDs") ?? [] : []
+        ids.append(String(id))
+        defaults.set(ids, forKey: "CasitaDexPlusQAFinishedIDs")
+        defaults.set(pid, forKey: "CasitaDexPlusQAFinishPID")
+        #endif
+      }
       #if DEBUG
       if count > 0 {
         UserDefaults.standard.set(ProcessInfo.processInfo.processIdentifier, forKey: "CasitaDexPlusQAFinishPID")

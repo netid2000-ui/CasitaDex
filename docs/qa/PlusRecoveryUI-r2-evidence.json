@@ -1,0 +1,11 @@
+{
+  "transaction": "14",
+  "seedPID": 98682,
+  "seedOwned": true,
+  "seedUnfinished": true,
+  "result": "failed",
+  "restartedPID": 98771,
+  "restartedOwned": true,
+  "sameTransactionFinished": false,
+  "reason": "Retaining observer events alone did not cover owned transaction at startup"
+}
