@@ -64,7 +64,7 @@ function Shell() {
         <Pressable accessibilityRole="button" accessibilityLabel="CasitaDex logo, go to Home" accessibilityHint="Opens the Home screen" onPress={() => guardedNavigate(() => router.navigate("/"))} style={{width:stackedHeader?"100%":undefined,flex:stackedHeader?undefined:1,marginRight:stackedHeader?0:8,minWidth:0}}><BrandHeader /></Pressable>
 
       </View>
-      {pageHeading?<View style={{paddingHorizontal:16,paddingVertical:9,backgroundColor:colors.white,borderBottomWidth:1,borderBottomColor:colors.separator,gap:3}}><Text accessibilityRole="header" style={{color:colors.ink,fontSize:20,fontWeight:"700"}}>{pageHeading[0]}</Text><Text style={{color:colors.muted,fontSize:13}}>{pageHeading[1]}</Text></View>:null}
+      {pageHeading?<View style={{paddingHorizontal:16,paddingVertical:9,backgroundColor:colors.white,borderBottomWidth:1,borderBottomColor:colors.separator,gap:3}}><Text key={`heading-${fontScale}`} accessibilityRole="header" style={{color:colors.ink,fontSize:20,fontWeight:"700"}}>{pageHeading[0]}</Text><Text key={`description-${fontScale}`} style={{color:colors.muted,fontSize:13}}>{pageHeading[1]}</Text></View>:null}
       <View style={{ flex: 1 }}>
         <Slot />
       </View>
