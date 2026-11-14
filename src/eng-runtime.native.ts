@@ -170,6 +170,25 @@ export async function shareEngPhotos(preview:{text:string;photos:import('./media
 }
 export async function writeEngText(text:string,backup=false){
   const size=new TextEncoder().encode(text).length;await requireNativeCapacity(size*2+4_000_000);
+  if(Platform.OS==="ios"){
+    const name='CasitaDex-text-'+(backup?'backup-':'report-')+Date.now()+(backup?'.json':'.txt');
+    const file=new File(Paths.document,name);
+    let verified=false;
+    try{
+      file.create();file.write(text);
+      if(await file.text()!==text)throw Error('Text export read-back failed');
+      verified=true;
+      const Sharing=await import('expo-sharing');
+      if(!await Sharing.isAvailableAsync())throw Error('Sharing is unavailable');
+      await Sharing.shareAsync(file.uri,{mimeType:backup?'application/json':'text/plain',UTI:backup?'public.json':'public.plain-text',dialogTitle:backup?'Save limited text backup':'Save readable text report'});
+      return backup
+        ?'Verified limited text backup retained on this device. Photos and reviewed photo-only memories are excluded. Confirm a separate copy exists at your chosen destination.'
+        :'Verified text report retained on this device. It contains no photos and cannot restore your collection. Confirm a separate copy exists at your chosen destination.';
+    }catch(error){
+      if(verified)throw new Error('Sharing did not complete. Your verified text file is kept on this device; a separate copy has not been confirmed.',{cause:error});
+      throw error;
+    }finally{if(!verified&&file.exists)file.delete();}
+  }
   const permission=await FileSystem.StorageAccessFramework.requestDirectoryPermissionsAsync();if(!permission.granted)return 'Text export canceled.';
   const uri=await FileSystem.StorageAccessFramework.createFileAsync(permission.directoryUri,'CasitaDex-text-'+(backup?'backup-':'report-')+Date.now()+(backup?'.json':'.txt'),backup?'application/json':'text/plain');
   try{await FileSystem.writeAsStringAsync(uri,text);if(await FileSystem.readAsStringAsync(uri)!==text)throw Error('Text export read-back failed');return backup?'Limited text backup saved and verified. Photos and the reviewed photo-only memories are excluded.':'Text report saved and verified. It contains no photos and cannot restore your collection.';}

@@ -142,3 +142,34 @@ final class PlusBackupAccessTests: XCTestCase {
   XCTFail("No new full backup produced through the UI within five minutes")
  }
 }
+
+// Holds real local ownership for an explicitly supervised restore acceptance run.
+// The external acceptance record, not this harness, establishes restored data correctness.
+final class PlusRestoreInteractiveTests: XCTestCase {
+ func testOwnedRestoreSession() async throws {
+  guard ProcessInfo.processInfo.environment["CASITADEX_INTERACTIVE_STOREKIT_QA"] == "1" else {
+   throw XCTSkip("Requires supervised isolated restore QA")
+  }
+  let url = try XCTUnwrap(Bundle(for: Self.self).url(forResource: "CasitaDexPlus", withExtension: "storekit"))
+  let session = try SKTestSession(contentsOf: url)
+  session.resetToDefaultState(); session.clearTransactions(); session.disableDialogs = true
+  defer { session.clearTransactions(); session.resetToDefaultState() }
+  let reader = try PlusStoreReader.configured()
+  try reader.requireLocalCheckout()
+  let marker = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("plus-restore-qa-complete.txt")
+  if FileManager.default.fileExists(atPath: marker.path) { try FileManager.default.removeItem(at: marker) }
+  _ = try await session.buyProduct(identifier: "local.casitadex.plus.qa")
+  let access = try await reader.verifiedEntitlement()
+  XCTAssertEqual(access, "plus")
+  print("PLUS RESTORE: local ownership active; awaiting supervised UI acceptance")
+  for _ in 0..<1200 {
+   if FileManager.default.fileExists(atPath: marker.path) {
+    XCTAssertEqual(UserDefaults.standard.string(forKey: "CasitaDexPlusQABridgeState"), "ready:plus")
+    print("PLUS RESTORE: supervisor completed run; consult separate evidence for data assertions")
+    return
+   }
+   try await Task.sleep(nanoseconds: 500_000_000)
+  }
+  XCTFail("Supervised restore did not complete within ten minutes")
+ }
+}

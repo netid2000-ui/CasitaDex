@@ -1,0 +1,13 @@
+{
+  "archiveMatchesRestoredData": true,
+  "revisionBefore": 4,
+  "revisionAfter": 5,
+  "memories": 90,
+  "media": 3,
+  "draftMatches": true,
+  "attemptHistoryMatches": true,
+  "archiveSha256": "bf5b7bd444714a276375e1a9f593ee80eb5b73efa23c491cb2dec0d7a335af96",
+  "previousStateRecoveryMatches": true,
+  "externalFilesCopyMatched": true,
+  "persistedAfterRelaunch": true
+}
