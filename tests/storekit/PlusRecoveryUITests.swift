@@ -430,3 +430,43 @@ extension PlusRecoveryUITests {
   print("REMINDER_HEADINGS PASS create/edit/manage routes and fixed editor actions")
  }
 }
+
+extension PlusRecoveryUITests {
+ @MainActor func duplicateTaxonomy(_ category:Bool) async throws {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa")
+  app.launch();app.open(URL(string:"casitadex-plusstoreqa://card?id=rapid_edit_fixture")!)
+  XCTAssertTrue(app.buttons["Edit memory"].waitForExistence(timeout:15));app.buttons["Edit memory"].tap()
+  let choose=app.buttons.matching(identifier:"Choose ▾").element(boundBy:category ? 1 : 0);scrollTo(choose,in:app);choose.tap()
+  let create=app.buttons[category ? "+ Create new Categories ▾" : "+ Create new Space ▾"];scrollTo(create,in:app);create.tap()
+  let field=app.textViews[category ? "New category name" : "New space name"];scrollTo(field,in:app);field.tap()
+  let text=category ? "  EDIT RAPID CATEGORY 20X25X1  " : "  EDIT RAPID SPACE 20X25X1  "
+  field.typeText(text);XCTAssertEqual(field.value as? String,text);field.typeText("\n")
+  let assign=app.buttons["Create and select"];scrollTo(assign,in:app);assign.tap()
+  let error=app.staticTexts.containing(NSPredicate(format:"label CONTAINS %@","That name already exists")).firstMatch
+  XCTAssertTrue(error.waitForExistence(timeout:10));XCTAssertEqual(field.value as? String,text)
+  app.buttons["Cancel"].tap();XCTAssertTrue(app.buttons["Edit memory"].waitForExistence(timeout:10))
+  print("DUPLICATE_NATIVE PASS "+(category ? "Category" : "Space")+" case/whitespace duplicate rejected; input retained; Cancel returns")
+ }
+ @MainActor func testDuplicateSpaceRefused() async throws {try await duplicateTaxonomy(false)}
+ @MainActor func testDuplicateCategoryRefused() async throws {try await duplicateTaxonomy(true)}
+ @MainActor func labelRemovalCancel(_ category:Bool) async throws {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa")
+  app.launch();app.open(URL(string:"casitadex-plusstoreqa://settings-manage?action=labels")!)
+  XCTAssertTrue(app.staticTexts["Manage Spaces and Categories"].waitForExistence(timeout:15))
+  if category {app.buttons["Categories"].tap()}
+  let name=category ? "Edit rapid Category 20x25x1" : "Edit rapid Space 20x25x1"
+  let label=app.buttons[name];scrollTo(label,in:app);label.tap()
+  let review=app.buttons["Review label removal"];scrollTo(review,in:app);review.tap()
+  let impact=app.staticTexts.containing(NSPredicate(format:"label CONTAINS %@","Remove “"+name+"” from 1 saved memories and no draft?")).firstMatch
+  XCTAssertTrue(impact.waitForExistence(timeout:10));scrollTo(impact,in:app)
+  let cancel=app.buttons["Cancel label removal"];scrollTo(cancel,in:app);cancel.tap()
+  XCTAssertFalse(app.buttons["Confirm remove label only"].exists)
+  app.terminate();app.launch();app.open(URL(string:"casitadex-plusstoreqa://card?id=rapid_edit_fixture")!)
+  XCTAssertTrue(app.staticTexts.containing(NSPredicate(format:"label CONTAINS %@",name)).firstMatch.waitForExistence(timeout:15))
+  print("REMOVAL_CANCEL PASS "+name+" accurate impact, explicit confirmation, Cancel preserves assignment after restart")
+ }
+ @MainActor func testSpaceRemovalCancel() async throws {try await labelRemovalCancel(false)}
+ @MainActor func testCategoryRemovalCancel() async throws {try await labelRemovalCancel(true)}
+}
