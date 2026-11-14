@@ -2,9 +2,10 @@ import React from 'react';
 import {Pressable,Text,View,useWindowDimensions} from 'react-native';
 import {useData} from '../state';
 import {useFigmaTheme} from './tokens';
-export type SettingsAction='storage'|'backup'|'recovery'|'appearance'|'accessibility'|'privacy'|'help'|'labels';
+export type SettingsAction='plus'|'storage'|'backup'|'recovery'|'appearance'|'accessibility'|'privacy'|'help'|'labels';
 export type FigmaSettingsProps={onOpen:(action:SettingsAction)=>void};
 const entries:readonly {id:SettingsAction;title:string;description:string}[]=[
+ {id:'plus',title:'CasitaDex Plus',description:'Explore the one-time upgrade'},
  {id:'appearance',title:'Appearance',description:'Light, dark, or follow your device'},
  {id:'accessibility',title:'Accessibility',description:'Large text and display appearance'},
  {id:'labels',title:'Spaces & categories',description:'Organize saved information'},
