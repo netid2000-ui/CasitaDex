@@ -1,0 +1,29 @@
+appId: com.designsbyfa.casitadex.pluswindowqa
+name: Plus gallery image window targeted native check
+---
+- launchApp:
+    clearState: false
+- tapOn: "Photos"
+- assertVisible: "200 photo memories.*"
+- assertVisible: "Add Photo Memory"
+- tapOn: "Grid photo view"
+- scrollUntilVisible:
+    element: "View photo 1 of .*Gallery 030 full screen"
+    direction: DOWN
+    centerElement: true
+    timeout: 60000
+- assertVisible: "Add Photo Memory"
+- assertVisible: "Grid photo view"
+- takeScreenshot: gallery030-before
+- tapOn: "View photo 1 of .*Gallery 030 full screen"
+- assertVisible: "Close photo"
+- assertVisible: ".*Gallery 030"
+- takeScreenshot: gallery030-viewer
+- tapOn: "Close photo"
+- assertVisible: "View photo 1 of .*Gallery 030 full screen"
+- assertVisible: "Add Photo Memory"
+- takeScreenshot: gallery030-return
+- tapOn: "Compact photo view"
+- assertVisible: "200 photo memories.*"
+- assertVisible: "Add Photo Memory"
+- takeScreenshot: compact-top
