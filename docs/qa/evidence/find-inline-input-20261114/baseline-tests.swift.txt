@@ -1,0 +1,27 @@
+
+extension PlusRecoveryUITests {
+ @MainActor func testRapidFindInput() async throws {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa")
+  app.launch();app.open(URL(string:"casitadex-plusstoreqa://answers")!)
+  let field=app.textFields["Search memories"]
+  XCTAssertTrue(field.waitForExistence(timeout:15));field.tap()
+  let text="Boundary twenty first memory rapid typing 20x25x1"
+  field.typeText(text);print("FIND_INPUT actual: " + (field.value as? String ?? "nil"));XCTAssertEqual(field.value as? String,text)
+ }
+ @MainActor func rapidEditField(_ label:String,_ prefix:String="") async throws {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa")
+  app.launch();app.open(URL(string:"casitadex-plusstoreqa://card?id=rapid_edit_fixture")!)
+  let edit=app.buttons["Edit memory"];XCTAssertTrue(edit.waitForExistence(timeout:15));edit.tap()
+  let field=app.textFields[label]
+  for _ in 0..<16 { if field.isHittable {break};let scroll=app.scrollViews.firstMatch;scroll.coordinate(withNormalizedOffset:CGVector(dx:0.5,dy:0.7)).press(forDuration:0.05,thenDragTo:scroll.coordinate(withNormalizedOffset:CGVector(dx:0.5,dy:0.4))) }
+  XCTAssertTrue(field.isHittable);field.tap()
+  if !prefix.isEmpty {field.typeText(String(repeating:XCUIKeyboardKey.delete.rawValue,count:prefix.count))}
+  let text="Boundary rapid editing 20x25x1"
+  field.typeText(text);print("EDIT_INPUT "+label+" actual: "+(field.value as? String ?? "nil"));XCTAssertEqual(field.value as? String,text)
+ }
+ @MainActor func testRapidEditName() async throws {try await rapidEditField("Memory name (Required)","X")}
+ @MainActor func testRapidEditLocation() async throws {try await rapidEditField("Location")}
+ @MainActor func testRapidEditReference() async throws {try await rapidEditField("Reference")}
+}

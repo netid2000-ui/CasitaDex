@@ -1,6 +1,6 @@
 /** Figma-first Find: controlled query, read-only results and explicit detail navigation. */
 import React from 'react';
-import {Keyboard,Pressable,Text,TextInput,View} from 'react-native';
+import {Keyboard,Platform,Pressable,Text,TextInput,View} from 'react-native';
 import type {MemoryV2} from '../sb20-contract';
 import {useFigmaTheme} from './tokens';
 export type FigmaFindProps={query:string;onQueryChange:(query:string)=>void;results:readonly MemoryV2[];onOpen:(id:string)=>void;pageSize:number;onPageSizeChange:(size:number)=>void;page:number;onPageChange:(page:number)=>void;onResultsLayout?:(y:number)=>void;hideSearchControls?:boolean};
@@ -22,11 +22,11 @@ export function FigmaFind({query,onQueryChange,results,onOpen,pageSize,onPageSiz
  </View>;
 }
 
-export function FindSearchControls({query,onQueryChange,results,photosOnly=false,onPhotosOnlyChange}:Pick<FigmaFindProps,"query"|"onQueryChange"|"results">&{photosOnly?:boolean;onPhotosOnlyChange?:(value:boolean)=>void}){
+export function FindSearchControls({query,onQueryChange,results,photosOnly=false,onPhotosOnlyChange,iosTextView=false}:Pick<FigmaFindProps,"query"|"onQueryChange"|"results">&{iosTextView?:boolean;photosOnly?:boolean;onPhotosOnlyChange?:(value:boolean)=>void}){
  const fg=useFigmaTheme();
  const filteredCount=results.length;
  return <View style={{backgroundColor:fg.page,padding:12,gap:8,borderBottomWidth:1,borderBottomColor:fg.secondaryInk}}>
-  <TextInput accessibilityLabel="Search memories" accessibilityHint="Search titles, answers and details" value={query} onChangeText={onQueryChange} placeholder="Search a memory, place, or part" placeholderTextColor={fg.secondaryInk} returnKeyType="search" onSubmitEditing={()=>Keyboard.dismiss()} style={{borderWidth:1,borderColor:fg.secondaryInk,borderRadius:12,padding:12,minHeight:48,color:fg.headingInk}}/>
+  <TextInput testID="find-query" multiline={iosTextView&&Platform.OS==='ios'} submitBehavior={iosTextView&&Platform.OS==='ios'?'blurAndSubmit':undefined} accessibilityLabel="Search memories" accessibilityHint="Search titles, answers and details" value={query} onChangeText={onQueryChange} placeholder="Search a memory, place, or part" placeholderTextColor={fg.secondaryInk} returnKeyType="search" onSubmitEditing={()=>Keyboard.dismiss()} style={{borderWidth:1,borderColor:fg.secondaryInk,borderRadius:12,padding:12,minHeight:48,color:fg.headingInk}}/>
  {onPhotosOnlyChange?<Pressable accessibilityRole="button" accessibilityLabel="With photos only" accessibilityState={{selected:photosOnly}} onPress={()=>onPhotosOnlyChange(!photosOnly)} style={({pressed})=>({alignSelf:"flex-start",minHeight:48,paddingVertical:8,paddingHorizontal:16,borderWidth:2,borderColor:photosOnly?fg.actionSurface:fg.secondaryInk,borderRadius:12,backgroundColor:photosOnly?fg.actionSurface:fg.brandSurface,justifyContent:"center",opacity:pressed?0.8:1})}><Text style={{color:photosOnly?fg.actionInk:fg.headingInk,fontWeight:"700",textAlign:"center"}}>With photos only{photosOnly?" ✓":""}</Text></Pressable>:null}
  <Text style={{color:fg.secondaryInk}} accessibilityLiveRegion="polite">{filteredCount} {filteredCount===1?"memory":"memories"} found</Text>
  </View>;

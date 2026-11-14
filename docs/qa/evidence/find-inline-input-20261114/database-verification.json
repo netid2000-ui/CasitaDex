@@ -1,0 +1,12 @@
+{
+  "result": "PASS",
+  "savedCount": 19,
+  "exactPersistedEdits": 4,
+  "cancelledTextAbsent": true,
+  "otherAuthoredRecordsUnchanged": 15,
+  "existingAutomaticPhotoFixtures": [
+    "sb26qa_007",
+    "sb26qa_013"
+  ],
+  "draftAbsent": true
+}

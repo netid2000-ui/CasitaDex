@@ -188,3 +188,67 @@ extension PlusRecoveryUITests {
   print("RAPID_INPUT PASS: exact burst title and description, cold restart, then twentieth memory saved")
  }
 }
+
+extension PlusRecoveryUITests {
+ @MainActor func scrollTo(_ field:XCUIElement,in app:XCUIApplication) {
+  for _ in 0..<18 {if field.isHittable {return};let scroll=app.scrollViews.firstMatch;scroll.coordinate(withNormalizedOffset:CGVector(dx:0.5,dy:0.7)).press(forDuration:0.05,thenDragTo:scroll.coordinate(withNormalizedOffset:CGVector(dx:0.5,dy:0.4)))}
+  XCTAssertTrue(field.isHittable)
+ }
+ @MainActor func testRapidFindInput() async throws {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa")
+  app.launch();app.open(URL(string:"casitadex-plusstoreqa://answers")!)
+  let field=app.descendants(matching:.any).matching(identifier:"find-query").firstMatch
+  XCTAssertTrue(field.waitForExistence(timeout:15));field.tap()
+  let text="Boundary twenty first memory rapid typing 20x25x1"
+  field.typeText(text);XCTAssertEqual(field.value as? String,text)
+  field.typeText("\n");XCTAssertEqual(field.value as? String,text)
+  XCTAssertTrue(app.staticTexts["1 memory found"].waitForExistence(timeout:10))
+  let result=app.buttons.matching(NSPredicate(format:"label BEGINSWITH %@","Open regular memory ")).firstMatch
+  scrollTo(result,in:app);result.tap()
+  XCTAssertTrue(app.buttons["Edit memory"].waitForExistence(timeout:10));app.buttons["‹ Results"].tap()
+  XCTAssertTrue(field.waitForExistence(timeout:10));XCTAssertEqual(field.value as? String,text)
+  let shot=XCTAttachment(screenshot:app.screenshot());shot.name="Rapid Find query preserved";shot.lifetime = .keepAlways;add(shot)
+  print("FIND_INPUT PASS: exact burst, submit, one matching result, details and return preserve query")
+ }
+ @MainActor func rapidEditField(_ label:String,_ prefix:String="") async throws {
+  continueAfterFailure=false
+  let identity=label=="Location" ? "rapid_edit_location" : label=="Reference" ? "rapid_edit_reference" : "rapid_edit_fixture"
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa")
+  let route=URL(string:"casitadex-plusstoreqa://card?id="+identity)!
+  app.launch();app.open(route)
+  let edit=app.buttons["Edit memory"];XCTAssertTrue(edit.waitForExistence(timeout:15))
+  if label=="Location" {let inline=app.buttons["Edit Location"];scrollTo(inline,in:app);inline.tap()} else {edit.tap()}
+  let field=label=="Memory name (Required)" ? app.textFields[label] : app.textViews[label]
+  scrollTo(field,in:app);field.tap()
+  if !prefix.isEmpty {field.typeText(String(repeating:XCUIKeyboardKey.delete.rawValue,count:prefix.count))}
+  let text="Boundary rapid editing 20x25x1"
+  field.typeText(text);XCTAssertEqual(field.value as? String,text);field.typeText("\n")
+  app.buttons["Save & return to details"].tap();XCTAssertTrue(edit.waitForExistence(timeout:10))
+  app.terminate();app.launch();app.open(route);XCTAssertTrue(edit.waitForExistence(timeout:15));edit.tap()
+  scrollTo(field,in:app);XCTAssertEqual(field.value as? String,text)
+  field.tap();field.typeText(" UNSAVED");app.buttons["Cancel"].tap()
+  XCTAssertTrue(edit.waitForExistence(timeout:10));edit.tap();scrollTo(field,in:app);XCTAssertEqual(field.value as? String,text)
+  app.buttons["Cancel"].tap()
+  print("EDIT_INPUT PASS: "+label+" exact burst, save, cold restart and cancel rollback")
+ }
+ @MainActor func testRapidEditName() async throws {try await rapidEditField("Memory name (Required)","X")}
+ @MainActor func testRapidEditLocation() async throws {try await rapidEditField("Location")}
+ @MainActor func testRapidEditReference() async throws {try await rapidEditField("Reference")}
+ @MainActor func testRapidInlineReference() async throws {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa")
+  let route=URL(string:"casitadex-plusstoreqa://card?id=rapid_inline_reference")!
+  app.launch();app.open(route);XCTAssertTrue(app.buttons["Edit memory"].waitForExistence(timeout:15))
+  let edit=app.buttons.matching(identifier:"Edit ✎").element(boundBy:2)
+  scrollTo(edit,in:app);edit.tap()
+  let field=app.textViews["Reference"];scrollTo(field,in:app);field.tap()
+  let text="Boundary inline reference 20x25x1"
+  field.typeText(text);XCTAssertEqual(field.value as? String,text);field.typeText("\n")
+  let save=app.buttons["Save reference"];scrollTo(save,in:app);save.tap()
+  XCTAssertTrue(XCTWaiter.wait(for:[XCTNSPredicateExpectation(predicate:NSPredicate(format:"exists == false"),object:save)],timeout:10) == .completed)
+  app.terminate();app.launch();app.open(route);XCTAssertTrue(app.buttons["Edit memory"].waitForExistence(timeout:15));scrollTo(edit,in:app);edit.tap();scrollTo(field,in:app)
+  XCTAssertEqual(field.value as? String,text)
+  print("INLINE_REFERENCE PASS: exact burst, inline save and cold restart")
+ }
+}
