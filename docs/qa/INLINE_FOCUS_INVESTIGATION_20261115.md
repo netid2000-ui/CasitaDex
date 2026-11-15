@@ -12,6 +12,6 @@ Native results retained under QA-Evidence/CasitaDex-Inline-Focus[-r2/-r3/-r4]-20
 
 ## Scope and cleanup
 
-VoiceOver disabled by test cleanup and preference readback confirmed 0. Fresh simulator shut down; prior QA simulator boot restored. Existing accepted installations not rebuilt. No user data edited. Status announcement module compiled into native build, but actual queued announcement playback remains UNVERIFIED: currentSpeech reports focused-element speech, not a reliable queue capture. Opening focus also needs further investigation; reported speech stayed Edit Location after the field appeared.
+Test cleanup did not restore VoiceOver: final preference readback was 1. After shutting down the disposable simulator, VoiceOverTouchEnabled was restored to false in its preference file and read back as false. Runtime behavior after reboot has not been independently checked. Fresh simulator shut down; prior QA simulator boot restored. Existing accepted installations not rebuilt. No user data edited. Status announcement module compiled into native build, but actual queued announcement playback remains UNVERIFIED: currentSpeech reports focused-element speech, not a reliable queue capture. Opening focus also needs further investigation; reported speech stayed Edit Location after the field appeared.
 
 Next: isolate actual focused native element and activation transitions, then fix and pass the retained regression. TalkBack and queued-status audible verification remain open. Release acceptance is not granted.
