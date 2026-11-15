@@ -56,7 +56,7 @@ function Shell() {
   const { fontScale, width } = useWindowDimensions();
   const {large:inAppLarge}=useData();
   const compactHeader=inAppLarge||fontScale>=1.35||width<360;
- const primaryTitle=({"/answers":"Find","/photos":"Photos","/more":"Settings","/reminders":"Reminders","/reminders-manage":pageHeading?.[0]??"Reminders","/memories":"Your Memories"} as Record<string,string>)[path];
+ const primaryTitle=({"/answers":"Find","/photos":"Photos","/more":"Settings","/memories":"Your Memories"} as Record<string,string>)[path];
  void pageHeading; void photoEntry;
   return (
     <SafeAreaView

@@ -148,22 +148,22 @@ export function EngReminders(){
   save();
  }
  async function act(task:()=>Promise<unknown>,success:string){if(busy)return;setBusy(true);try{const result=await task();await refresh();setEditing(null);setStatus(typeof result==="string"?result:success);if(editing!==null)router.replace(savedReminderDestination(params.memoryId,params.origin));}catch(e){setStatus(message(e));}finally{setBusy(false);}}
- return <Page independent title="Reminders" hideHeading stickyActions={editing!==null?<View style={{maxWidth:720,width:"100%",alignSelf:"center"}}>  <View style={{flexDirection:"row",gap:10,alignItems:"stretch"}}>
-   <View style={{flex:1}}><Button variant="quiet" label="Cancel" onPress={leaveReminder}/></View>
-   <View style={{flex:1}}><Button primary label="Save Reminder" disabled={busy||!title.trim()} onPress={saveReminderWithDuplicateCheck}/></View>
+ return <Page independent title="Reminders" hideHeading stickyActions={editing!==null?<View style={{maxWidth:720,width:"100%",alignSelf:"center"}}>  <View style={{flexDirection:"row",gap:10,alignItems:"center",justifyContent:"space-between"}}>
+   <View><Button compact editorial icon={<MemoryEditorIcon name="cancel"/>} variant="quiet" label="Cancel" onPress={leaveReminder}/></View>
+   <View><Button compact editorial primary icon={<MemoryEditorIcon name="save"/>} label="Save Reminder" displayLabel="Save" disabled={busy||!title.trim()} onPress={saveReminderWithDuplicateCheck}/></View>
   </View></View>:undefined}>
  {params.memoryId?<Button compact label="‹ Return to Memory Details" onPress={returnToLinkedMemory}/>:null}
  {editing===null?<><Copy>Reminders are saved locally. Device alerts need permission and a future due time; delivery can vary with device settings.</Copy><Button label="Enable device reminder alerts" onPress={()=>void act(()=>requestStandaloneReminderAlerts(),"Device alerts checked.")}/></>:null}
  {editing!==null?<View style={{gap:12}}>
-  {editing==="new"?null:<Copy kind="section">Edit reminder</Copy>}
-  <View style={{backgroundColor:colors.white,borderWidth:1,borderColor:colors.separator,borderRadius:8,padding:16}}><Field iosTextView={plusFeatureEnforcementEnabled} nativeEditing={plusFeatureEnforcementEnabled} label="Reminder title *" value={title} onChangeText={setTitle} maxLength={200}/></View>
-  <View style={{backgroundColor:colors.white,borderWidth:1,borderColor:colors.separator,borderRadius:8,padding:16,gap:10}}>
-   <Copy style={{color:colors.ink,fontWeight:"700"}}>When should we remind you?</Copy>
-   <View style={{flexDirection:"row",gap:10}}><View style={{flex:1,gap:6}}><Copy kind="small">Date</Copy><Button label={dueDate} onPress={()=>choosePicker("date")}/></View><View style={{flex:1,gap:6}}><Copy kind="small">Time (AM / PM)</Copy><Button label={new Date(`2000-01-01T${dueTime}:00`).toLocaleTimeString("en-US",{hour:"numeric",minute:"2-digit",hour12:true})} onPress={()=>choosePicker("time")}/></View></View>
+  <Copy kind="title">{editing==="new"?"Add Reminder":"Edit Reminder"}</Copy>
+  <View><Field editorial iosTextView={plusFeatureEnforcementEnabled} nativeEditing={plusFeatureEnforcementEnabled} label="Reminder title *" value={title} onChangeText={setTitle} maxLength={200}/></View>
+  <View style={{gap:16}}>
+
+   <View style={{gap:16}}><View style={{gap:6}}><Copy kind="small">Date</Copy><Button label={dueDate} onPress={()=>choosePicker("date")}/></View><View style={{gap:6}}><Copy kind="small">Time (AM / PM)</Copy><Button label={new Date(`2000-01-01T${dueTime}:00`).toLocaleTimeString("en-US",{hour:"numeric",minute:"2-digit",hour12:true})} onPress={()=>choosePicker("time")}/></View></View>
   </View>
   {new Date(`${dueDate}T${dueTime}:00`).getTime()<=Date.now()?<Copy style={{color:colors.ink,fontWeight:"700"}}>This time has already passed. Choose a future date and time to receive an alert.</Copy>:null}
   <Button variant="quiet" label={moreReminderOptions?"Hide options ▴":"More options ▾"} onPress={()=>setMoreReminderOptions(!moreReminderOptions)}/>
-  {moreReminderOptions?<><View style={{gap:8}}><Copy style={{color:colors.ink,fontWeight:"700"}}>Repeat</Copy><View style={{flexDirection:"row",flexWrap:"wrap",gap:8}}>{(["once","daily","weekly","monthly","yearly"] as RepeatSchedule[]).map(option=><Button key={option} compact label={option==="once"?"Once":option[0].toUpperCase()+option.slice(1)} selected={repeat===option} onPress={()=>setRepeat(option)}/>)}</View></View><Field label="Notes" value={notes} onChangeText={setNotes} multiline maxLength={4000}/></>:null}
+  {moreReminderOptions?<><View style={{gap:8}}><Copy style={{color:colors.ink,fontWeight:"700"}}>Repeat</Copy><View style={{flexDirection:"row",flexWrap:"wrap",gap:8}}>{(["once","daily","weekly","monthly","yearly"] as RepeatSchedule[]).map(option=><Button key={option} compact label={option==="once"?"Once":option[0].toUpperCase()+option.slice(1)} selected={repeat===option} onPress={()=>setRepeat(option)}/>)}</View></View><Field editorial iosTextView={plusFeatureEnforcementEnabled} label="Notes" value={notes} onChangeText={setNotes} multiline maxLength={4000}/></>:null}
   <Modal visible={iosPicker!==null} transparent animationType="fade" onRequestClose={()=>setIosPicker(null)}>
    <View style={{flex:1,justifyContent:"center",padding:20,backgroundColor:"rgba(0,0,0,0.48)"}}>
     <View style={{backgroundColor:colors.white,borderRadius:20,padding:18,gap:12}}>
@@ -350,14 +350,14 @@ export function EngAdd(){
     {showDraftActions?<Button compact label="Keep draft and leave" disabled={disabled||mode==="loading"} onPress={()=>void action(async()=>{router.replace("/");})} />:null}
   </Page>;
 }
-  function DetailField({label,value,onEdit}:{label:string;value:string;onEdit?:()=>void}){const {colors}=useTheme();return <View style={{backgroundColor:colors.accent,borderWidth:1,borderColor:colors.line,borderRadius:8,padding:14,gap:6}}><View style={{flexDirection:"row",justifyContent:"space-between",alignItems:"center",gap:8}}><Copy kind="small" style={{fontWeight:"700",color:colors.ink}}>{label.toUpperCase()}</Copy>{onEdit?<Button compact label={`Edit ${label}`} onPress={onEdit}/>:null}</View><Copy selectable style={{fontSize:16,lineHeight:24,color:colors.ink}}>{value}</Copy></View>;}
+  function DetailField({label,value,onEdit}:{label:string;value:string;onEdit?:()=>void}){const {colors}=useTheme();return <View style={{borderBottomWidth:1,borderColor:colors.line,paddingVertical:12,gap:6}}><View style={{flexDirection:"row",justifyContent:"space-between",alignItems:"center",gap:8}}><Copy kind="small" style={{fontWeight:"700",color:colors.ink}}>{label.toUpperCase()}</Copy>{onEdit?<Button compact editorial variant="quiet" label={`Edit ${label}`} displayLabel="Edit ›" onPress={onEdit}/>:null}</View><Copy selectable style={{fontSize:16,lineHeight:24,color:colors.ink}}>{value}</Copy></View>;}
 export function EngDetail(){
   const e=useEng(),{s,colors}=useTheme(),{id}=useLocalSearchParams<{id:string}>();
   const {large}=useData();
   const {width:detailWidth,fontScale:detailFontScale}=useWindowDimensions();
   const stackedDetailActions=large||detailFontScale>=1.35||detailWidth<360;
   const memory=e.snapshot?.data.memories.find(m=>m.id===id);
-   
+
   const [openedEditField,setOpenedEditField]=useState("");
   const [edit,setEdit]=useState<MemoryV2|null>(null),[revision,setRevision]=useState(0),[history,setHistory]=useState("");
   const [review,setReview]=useState(false),[source,setSource]=useState("");

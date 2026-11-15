@@ -1,0 +1,12 @@
+[
+  {
+    "simulator": "879C620A-5318-4BDF-98B9-904EE635B053",
+    "memories": 90,
+    "payload_sha256": "d6ba01f3dfa95a06097d58870a686f85bb2c3373ecc430e20602df3ac3bf93c0"
+  },
+  {
+    "simulator": "81FC3CCE-ACEB-4957-BE61-C9C653A4CE56",
+    "memories": 20,
+    "payload_sha256": "829ae84e387b31d5c7585c026670a2d7a38b8bbb836daea0ce229d739a71bee8"
+  }
+]

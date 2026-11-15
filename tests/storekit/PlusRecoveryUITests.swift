@@ -818,3 +818,41 @@ extension PlusRecoveryUITests {
   print("SAVED ADD READBACK PASS all five values after process restart")
  }
 }
+
+extension PlusRecoveryUITests {
+ @MainActor func testReminderLayoutAndLinkedReturn() async throws {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa");app.launch()
+  let dir=FileManager.default.urls(for:.documentDirectory,in:.userDomainMask)[0]
+  for theme in ["Light","Dark"] {
+   app.open(URL(string:"casitadex-plusstoreqa://settings-manage?action=appearance")!)
+   let appearance=app.buttons[theme+" appearance"];XCTAssertTrue(appearance.waitForExistence(timeout:15));revealEditorControl(appearance,in:app);appearance.tap()
+   app.open(URL(string:"casitadex-plusstoreqa://reminders")!)
+   let add=app.buttons["Add Reminder ›"];XCTAssertTrue(add.waitForExistence(timeout:15))
+   let top=add.frame.minY
+   app.swipeUp();XCTAssertEqual(add.frame.minY,top,accuracy:1)
+   try app.screenshot().pngRepresentation.write(to:dir.appendingPathComponent("reminders-"+theme+".png"))
+   app.open(URL(string:"casitadex-plusstoreqa://card?id=rapid_edit_fixture")!)
+   let location=app.buttons["Edit Location"];revealEditorControl(location,in:app)
+   try app.screenshot().pngRepresentation.write(to:dir.appendingPathComponent("details-"+theme+".png"))
+   location.tap();let done=app.buttons["Done editing Location"];XCTAssertTrue(done.waitForExistence(timeout:5));app.buttons["Cancel"].tap()
+   app.open(URL(string:"casitadex-plusstoreqa://reminders-manage?mode=new&memoryId=rapid_edit_fixture")!)
+   let save=app.buttons["Save Reminder"];XCTAssertTrue(save.waitForExistence(timeout:15))
+   XCTAssertTrue(app.staticTexts["Add Reminder"].exists)
+   let y=save.frame.minY
+   try app.screenshot().pngRepresentation.write(to:dir.appendingPathComponent("reminder-form-"+theme+".png"))
+   app.buttons["More options ▾"].tap();app.swipeUp()
+   XCTAssertEqual(save.frame.minY,y,accuracy:1);XCTAssertTrue(app.buttons["Cancel"].isHittable)
+   app.buttons["‹ Return to Memory Details"].tap()
+   XCTAssertTrue(app.buttons["Edit memory"].waitForExistence(timeout:10))
+  }
+  app.open(URL(string:"casitadex-plusstoreqa://reminders-manage?mode=new&memoryId=rapid_edit_fixture")!)
+  let save=app.buttons["Save Reminder"];XCTAssertTrue(save.waitForExistence(timeout:15));save.tap()
+  if app.alerts["Similar reminder already scheduled"].waitForExistence(timeout:2){app.alerts.buttons["Keep both"].tap()}
+  XCTAssertTrue(app.buttons["Edit memory"].waitForExistence(timeout:15),app.debugDescription)
+  app.open(URL(string:"casitadex-plusstoreqa://settings-manage?action=appearance")!)
+  let system=app.buttons["System appearance"];XCTAssertTrue(system.waitForExistence(timeout:10));revealEditorControl(system,in:app);system.tap()
+  app.open(URL(string:"casitadex-plusstoreqa://")!)
+  print("REMINDER LAYOUT PASS both themes, sticky list/form actions, Details inline edit, linked save return")
+ }
+}

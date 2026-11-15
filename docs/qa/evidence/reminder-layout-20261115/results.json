@@ -1,0 +1,20 @@
+{
+  "typecheck": "PASS",
+  "lint": "PASS",
+  "automated": {
+    "pass": 491,
+    "skip": 6,
+    "fail": 0
+  },
+  "ios": {
+    "result": "PASS",
+    "tests": 1,
+    "failures": 0,
+    "job": "bd36167983e7e595"
+  },
+  "android_build": "PASS",
+  "android_layout": "PASS both themes",
+  "android_linked_return": "PASS after resolving notification prompt",
+  "photo_acceptance": "not repeated",
+  "details_parity": "partial; remaining work documented"
+}

@@ -1,0 +1,11 @@
+{
+  "themes": [
+    "Light",
+    "Dark"
+  ],
+  "fixed_actions": "PASS",
+  "inline_details": "PASS",
+  "linked_save_return": "PASS",
+  "notification_permission": "Allowed in disposable QA app",
+  "appearance": "System"
+}
