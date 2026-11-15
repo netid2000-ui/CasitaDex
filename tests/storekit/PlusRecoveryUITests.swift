@@ -908,3 +908,26 @@ extension PlusRecoveryUITests {
   print("LARGE TEXT scoped checks PASS: reachable fixed Add/Cancel/Edit, horizontally reachable final reminder filter; screenshots for broader review")
  }
 }
+
+// Scoped speech-service probe: disposable simulator only; no collection writes.
+extension PlusRecoveryUITests {
+ @available(iOS 27.0, *)
+ @MainActor func testVoiceOverHomeProbe20261115() async throws {
+  continueAfterFailure = false
+  XCTAssertEqual(ProcessInfo.processInfo.environment["SIMULATOR_UDID"], "81FC3CCE-ACEB-4957-BE61-C9C653A4CE56", "Disposable simulator required")
+  let app = XCUIApplication(bundleIdentifier: "com.designsbyfa.casitadex.plusstoreqa")
+  app.launch(); app.open(URL(string: "casitadex-plusstoreqa://")!)
+  let vo = XCUIDevice.shared.voiceOverService
+  let wasEnabled = vo.isEnabled
+  defer { if !wasEnabled { try? vo.disable() } }
+  print("VOICEOVER_INITIAL: \(vo.debugDescription)")
+  try vo.enable()
+  XCTAssertTrue(vo.isEnabled)
+  for index in 0..<18 {
+   let output = try vo.moveForward()
+   print("VOICEOVER_SPEECH[\(index)]: \(output.utterance)")
+   XCTAssertFalse(output.utterance.isEmpty)
+  }
+  print("VOICEOVER_PROBE: speech captured; full acceptance requires review")
+ }
+}
