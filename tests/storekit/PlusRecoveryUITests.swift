@@ -1041,3 +1041,25 @@ extension PlusRecoveryUITests {
   app.buttons["Cancel"].tap()
  }
 }
+
+extension PlusRecoveryUITests {
+ @MainActor func testLabelManagementNavigation20261115() throws {
+  XCTAssertEqual(ProcessInfo.processInfo.environment["SIMULATOR_UDID"],"189233C4-A360-49D7-AB2A-C9A7F02B9060")
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa");app.launch()
+  app.open(URL(string:"casitadex-plusstoreqa://settings-manage?action=labels")!)
+  XCTAssertTrue(app.buttons["Create new label"].waitForExistence(timeout:15))
+  let list=XCTAttachment(screenshot:app.screenshot());list.name="Label list";list.lifetime = .keepAlways;add(list)
+  app.buttons["Create new label"].tap()
+  XCTAssertTrue(app.staticTexts["Create Space"].waitForExistence(timeout:5))
+  XCTAssertFalse(app.buttons["Save"].isEnabled)
+  let create=XCTAttachment(screenshot:app.screenshot());create.name="Create Space";create.lifetime = .keepAlways;add(create)
+  app.buttons["Cancel"].tap()
+  XCTAssertTrue(app.buttons["Categories"].waitForExistence(timeout:5));app.buttons["Categories"].tap()
+  app.buttons["Create new label"].tap()
+  XCTAssertTrue(app.staticTexts["Create Category"].waitForExistence(timeout:5))
+  XCTAssertFalse(app.buttons["Save"].isEnabled)
+  app.buttons["Cancel"].tap()
+  XCTAssertTrue(app.buttons["Create new label"].waitForExistence(timeout:5))
+  app.open(URL(string:"casitadex-plusstoreqa://")!)
+ }
+}

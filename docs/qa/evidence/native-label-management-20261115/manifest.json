@@ -1,0 +1,26 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "189233C4-A360-49D7-AB2A-C9A7F02B9060",
+        "deviceName" : "CasitaDex Fresh Add Accessibility 20261115",
+        "exportedFileName" : "7AC356DA-C22E-4FD3-B13F-CB794C25259A.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Create Space_0_6D82CE68-0D70-427F-8672-0AF288E7916B.png",
+        "timestamp" : 1794757643.917
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "189233C4-A360-49D7-AB2A-C9A7F02B9060",
+        "deviceName" : "CasitaDex Fresh Add Accessibility 20261115",
+        "exportedFileName" : "72BD9274-4447-4067-8F87-8A23AB35D38D.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Label list_0_6D1D7840-B706-4833-B274-EAEB4308A86C.png",
+        "timestamp" : 1794757642.32
+      }
+    ],
+    "testIdentifier" : "PlusRecoveryUITests/testLabelManagementNavigation20261115()",
+    "testIdentifierURL" : "test://com.apple.xcode/CasitaDexPlusStoreQA/PlusRecoveryUITests/PlusRecoveryUITests/testLabelManagementNavigation20261115"
+  }
+]

@@ -1,3 +1,4 @@
+import {LabelManagement} from "./label-management";
 import {useStatusAnnouncement} from "./use-status-announcement";
 import {ReminderValueControl} from "./reminder-value-control";
 import {MemoryEditorChoice,MemoryEditorIcon} from "./memory-editor-controls";
@@ -440,23 +441,13 @@ export function EngDetail(){
     <Status text={e.status} />
   </Page>;
 }
-function LabelManager({e}:{e:ReturnType<typeof useEng>}){
- const {s}=useTheme();const [kind,setKind]=useState<"space"|"category">("space"),[selected,setSelected]=useState(""),[name,setName]=useState("");
- const [impact,setImpact]=useState<Awaited<ReturnType<EngStore["taxonomyImpact"]>>|null>(null);
- const labels=kind==="space"?e.snapshot?.data.spaces:e.snapshot?.data.categories;
- return <View style={s.panel}><Copy accessibilityRole="header">Manage Spaces and Categories</Copy><View style={s.row}>{(["space","category"] as const).map(k=><Button key={k} label={k==="space"?"Spaces":"Categories"} disabled={e.busy} selected={kind===k} onPress={()=>{setKind(k);setSelected("");setImpact(null);setName("");}} />)}</View>
- {labels?.map(x=><Button key={x.id} label={x.name} disabled={e.busy} selected={selected===x.id} onPress={()=>{setSelected(x.id);setName(x.name);setImpact(null);}} />)}
- <Field iosTextView={plusFeatureEnforcementEnabled} nativeEditing={plusFeatureEnforcementEnabled} disabled={e.busy} label="Label name" value={name} onChangeText={setName} />
- <Button label="Create new label" disabled={e.busy} onPress={()=>void e.run(store=>store.taxonomy(kind,name))} />
- {selected?<><Button label="Rename selected label" disabled={e.busy} onPress={()=>void e.run(async store=>{await store.renameTaxonomy(kind,selected,name,e.snapshot!.revision);setImpact(null);})} />
- <Button label="Review label removal" disabled={e.busy} onPress={()=>void e.run(async store=>{setImpact(await store.taxonomyImpact(kind,selected));},"")} />
- {impact?<><Copy>Remove “{impact.name}” from {impact.memories} saved memories and {impact.draft?"the unfinished draft":"no draft"}? Memories and photos are kept. Removed Spaces become Unassigned.</Copy><Button label="Confirm remove label only" disabled={e.busy} onPress={()=>void e.run(async store=>{await store.removeTaxonomy(impact.kind,impact.id,impact.revision);setSelected("");setImpact(null);setName("");})} /><Button label="Cancel label removal" onPress={()=>setImpact(null)} /></>:null}</>:null}</View>;
-}
+export type LabelEngine = ReturnType<typeof useEng>;
 export function EngMore({initialAction}:{initialAction?:string}={}){
   const plusState=useSyncExternalStore(plusEntitlements.subscribe,plusEntitlements.getSnapshot,plusEntitlements.getSnapshot);
   const [retainedBackups,setRetainedBackups]=useState<string[]|null>(null);
   const e=useEng(),preferences=useData();const [reminderRestoreToken,setReminderRestoreToken]=useState<string|null>(null),[incoming,setIncoming]=useState<EngBackup|null>(null),[conflict,setConflict]=useState<"keep"|"incoming"|null>(null),[confirmRecovery,setConfirmRecovery]=useState(false);const [restoreToken,setRestoreToken]=useState<string|null>(null);const [textReview,setTextReview]=useState<{snapshot:EngSnapshot;token:string}|null>(null);const [section,setSection]=useState<"storage"|"labels"|"backup"|"preferences"|"help"|"privacy"|"recovery"|null>(()=>({storage:"storage",backup:"backup",appearance:"preferences",accessibility:"preferences",help:"help",privacy:"privacy",recovery:"recovery",labels:"labels"} as Record<string,"storage"|"labels"|"backup"|"preferences"|"help"|"privacy"|"recovery">)[initialAction??""]??null);
-  useEffect(()=>{if(!section)return;const h=BackHandler.addEventListener("hardwareBackPress",()=>{setSection(null);return true;});return()=>h.remove();},[section]);
+  useEffect(()=>{if(!section||section==="labels")return;const h=BackHandler.addEventListener("hardwareBackPress",()=>{setSection(null);return true;});return()=>h.remove();},[section]);
+  if(section==="labels")return <LabelManagement e={e}/>;
   return <Page key={section??"menu"} independent hideHeading title="More" stickyActions={section?<View style={{gap:8}}><Button label="‹ Settings" onPress={()=>router.replace("/more")} />{section==="backup"?<Status text={e.status} />:null}</View>:undefined}>
      {!section?<>
     <Copy>Memories stay on this device. A local save is not a separate backup.</Copy>
@@ -470,7 +461,7 @@ export function EngMore({initialAction}:{initialAction?:string}={}){
     {section==="storage"?<PhotoStoragePanel snapshot={e.snapshot} busy={e.busy} onAudit={()=>void e.run(async store=>{const result=await store.audit();const bad=result.filter(x=>x.verdict!=="verified");e.setStatus(`${result.length} protected photo references checked. ${bad.length} need attention. No files removed.`);},"")}/>:null}
     {section==="recovery"?<><Copy accessibilityRole="header">Recently deleted</Copy><Copy>Recently deleted memories remain recoverable. Open Find to review them.</Copy><Button label="View archived memories" onPress={()=>router.push({pathname:"/answers",params:{lifecycle:"archived"}})} /><Button label="View recently deleted memories" onPress={()=>{router.push({pathname:"/answers",params:{lifecycle:"recently_deleted"}});}} /></>:null}
     {section==="privacy"?<><Copy accessibilityRole="header">Privacy & security</Copy><Copy>Memories are stored on this device. Backups and sharing are user-initiated. A local save is not a second backup. Review Data protection before exporting private information.</Copy><Button label="Open backup protection" onPress={()=>setSection("backup")} /></>:null}
-    {section==="labels"?<LabelManager e={e} />:null}
+
     {section==="backup"?<>
     {plusFeatureEnforcementEnabled?<View><Copy accessibilityRole="header">{plusState.entitlement==="plus"?"CasitaDex Plus":"Backup with CasitaDex Plus"}</Copy><Copy>Plus includes backup and restore. Readable text reports and recovery of the previous local save remain available.</Copy>{plusState.entitlement!=="plus"?<Button label="View CasitaDex Plus" onPress={()=>router.push("/plus")} />:null}</View>:null}
     <View style={{flexDirection:"row",alignItems:"center",gap:16}}><BrandArt name="backup" size={80} /><Copy accessibilityRole="header" kind="section" style={{flex:1}}>Back up your memories</Copy></View><Copy>Full v4 backups include standalone reminders. Before restoring, keep a second verified backup. Full v4 restore replaces current standalone reminders after explicit review and confirmation. Text backups still exclude standalone reminders. Full backups include active, archived and recently deleted memories, photos, categories, Spaces, and your unfinished draft. Full backups include supported collection and draft photos. Available device space is checked before export and restore. Individual photo and collection limits still apply.</Copy>
