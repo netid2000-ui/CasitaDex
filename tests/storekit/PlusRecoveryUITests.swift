@@ -279,7 +279,7 @@ extension PlusRecoveryUITests {
   continueAfterFailure=false
   let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa")
   app.launch();app.open(URL(string:"casitadex-plusstoreqa://reminders-manage?mode=new")!)
-  let field=app.textViews["Reminder title *"]
+  let field=app.textViews["Reminder title (Required)"]
   XCTAssertTrue(field.waitForExistence(timeout:15));field.tap()
   let text="Boundary rapid reminder 20x25x1"
   field.typeText(text);XCTAssertEqual(field.value as? String,text);field.typeText("\n")
@@ -307,7 +307,7 @@ extension PlusRecoveryUITests {
   app.open(URL(string:"casitadex-plusstoreqa://reminders")!)
   let text="Boundary rapid reminder 20x25x1"
   let open=app.buttons["Edit "+text];XCTAssertTrue(open.waitForExistence(timeout:15));open.tap()
-  let field=app.textViews["Reminder title *"],notes=app.textViews["Notes"]
+  let field=app.textViews["Reminder title (Required)"],notes=app.textViews["Notes"]
   XCTAssertTrue(field.waitForExistence(timeout:10),app.debugDescription);XCTAssertEqual(field.value as? String,text)
   scrollTo(notes,in:app);XCTAssertEqual(notes.value as? String,"Garage filter replacement 20x25x1")
   app.buttons["Save Reminder"].tap()
@@ -338,7 +338,7 @@ extension PlusRecoveryUITests {
   }
   app.launch();app.open(URL(string:"casitadex-plusstoreqa://reminders")!)
   let open=locate(original);open.tap()
-  let field=app.textViews["Reminder title *"];XCTAssertTrue(field.waitForExistence(timeout:10),app.debugDescription);XCTAssertEqual(field.value as? String,original)
+  let field=app.textViews["Reminder title (Required)"];XCTAssertTrue(field.waitForExistence(timeout:10),app.debugDescription);XCTAssertEqual(field.value as? String,original)
   field.tap();field.typeText("INSERT ")
   let actual=try XCTUnwrap(field.value as? String)
   XCTAssertTrue(actual.contains("INSERT "),"Insertion order must remain intact: "+actual)
@@ -363,7 +363,7 @@ extension PlusRecoveryUITests {
   continueAfterFailure=false
   let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa")
   app.launch();app.open(URL(string:"casitadex-plusstoreqa://reminders-manage?mode=new&memoryId=rapid_edit_fixture")!)
-  let field=app.textViews["Reminder title *"]
+  let field=app.textViews["Reminder title (Required)"]
   XCTAssertTrue(field.waitForExistence(timeout:15))
   let expected="Review Boundary rapid editing 20x25x1"
   XCTAssertTrue(XCTWaiter.wait(for:[XCTNSPredicateExpectation(predicate:NSPredicate(format:"value == %@",expected),object:field)],timeout:10) == .completed)
@@ -854,5 +854,35 @@ extension PlusRecoveryUITests {
   let system=app.buttons["System appearance"];XCTAssertTrue(system.waitForExistence(timeout:10));revealEditorControl(system,in:app);system.tap()
   app.open(URL(string:"casitadex-plusstoreqa://")!)
   print("REMINDER LAYOUT PASS both themes, sticky list/form actions, Details inline edit, linked save return")
+ }
+}
+
+extension PlusRecoveryUITests {
+ @MainActor func testReminderPickerStyling() async throws {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa");app.launch()
+  let dir=FileManager.default.urls(for:.documentDirectory,in:.userDomainMask)[0]
+  for theme in ["Light","Dark"] {
+   app.open(URL(string:"casitadex-plusstoreqa://settings-manage?action=appearance")!)
+   let appearance=app.buttons[theme+" appearance"];XCTAssertTrue(appearance.waitForExistence(timeout:15));revealEditorControl(appearance,in:app);appearance.tap()
+   app.open(URL(string:"casitadex-plusstoreqa://reminders-manage?mode=new")!)
+   XCTAssertTrue(app.staticTexts["Add Reminder"].waitForExistence(timeout:15))
+   let date=app.buttons.matching(NSPredicate(format:"label MATCHES %@", "[0-9]{4}-[0-9]{2}-[0-9]{2}")).firstMatch
+   XCTAssertTrue(date.exists);date.tap();XCTAssertTrue(app.staticTexts["Choose a date"].waitForExistence(timeout:5));app.buttons["Done"].tap()
+   let time=app.buttons.matching(NSPredicate(format:"label MATCHES %@", "[0-9]{1,2}:[0-9]{2} [AP]M")).firstMatch
+   XCTAssertTrue(time.exists);time.tap();XCTAssertTrue(app.staticTexts["Choose a time"].waitForExistence(timeout:5));app.buttons["Done"].tap()
+   try app.screenshot().pngRepresentation.write(to:dir.appendingPathComponent("picker-style-"+theme+".png"))
+   app.buttons["Cancel"].tap()
+   app.open(URL(string:"casitadex-plusstoreqa://card?id=sb26qa_007")!)
+   let edit=app.buttons["Edit memory"];XCTAssertTrue(edit.waitForExistence(timeout:15));let y=edit.frame.minY
+   XCTAssertTrue(app.buttons["Open cover photo of [SAMPLE] Extension cord"].exists);try app.screenshot().pngRepresentation.write(to:dir.appendingPathComponent("detail-cover-"+theme+".png"));let location=app.buttons["Edit Location"];revealEditorControl(location,in:app)
+   XCTAssertEqual(edit.frame.minY,y,accuracy:1)
+   try app.screenshot().pngRepresentation.write(to:dir.appendingPathComponent("detail-style-"+theme+".png"))
+   location.tap();XCTAssertTrue(app.buttons["Done editing Location"].waitForExistence(timeout:5));app.buttons["Cancel"].tap()
+  }
+  app.open(URL(string:"casitadex-plusstoreqa://settings-manage?action=appearance")!)
+  let system=app.buttons["System appearance"];XCTAssertTrue(system.waitForExistence(timeout:10));revealEditorControl(system,in:app);system.tap()
+  app.open(URL(string:"casitadex-plusstoreqa://")!)
+  print("PICKER STYLE PASS: both native pickers, two themes, fixed Details actions and inline editing")
  }
 }

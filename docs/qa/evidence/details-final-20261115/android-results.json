@@ -1,0 +1,13 @@
+{
+  "result": "PASS",
+  "themes": [
+    "Light",
+    "Dark"
+  ],
+  "native_pickers": "open/cancel",
+  "details_inline": "PASS",
+  "fixed_actions": "PASS",
+  "direct_reminder": "PASS",
+  "share_action": "present, not sent",
+  "photos": "not exercised"
+}

@@ -1,0 +1,9 @@
+{
+  "result": "PASS",
+  "tests": 1,
+  "failures": 0,
+  "job": "2fc7594b00b13392",
+  "pre_fix_failure": "Action row shifted when sticky title appeared; fixed by moving title below actions",
+  "photos": "Existing cover rendering only; no viewer/import/edit/gesture acceptance repeated",
+  "data": "both payloads unchanged"
+}

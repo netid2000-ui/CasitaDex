@@ -1,0 +1,30 @@
+[
+  {
+    "file": "assets/approved-refresh/reminder-light-date.svg",
+    "sha256": "b1f86d54454f3ee1886ff5eb4839efb4370475f9120e3d9be918bfd5f87b02c0",
+    "width": "16",
+    "height": "16",
+    "viewBox": "0 0 16 16"
+  },
+  {
+    "file": "assets/approved-refresh/reminder-dark-date.svg",
+    "sha256": "4dfd4ddb2f759522066acd84dc28d9eb5facbfc61aca0bcf2b888c429707446b",
+    "width": "16",
+    "height": "16",
+    "viewBox": "0 0 16 16"
+  },
+  {
+    "file": "assets/approved-refresh/reminder-light-time.svg",
+    "sha256": "4885c37f34d236da460a17c0d9418e90286d6af019fddfa5e49a1d6ca1f7ed96",
+    "width": "16",
+    "height": "16",
+    "viewBox": "0 0 16 16"
+  },
+  {
+    "file": "assets/approved-refresh/reminder-dark-time.svg",
+    "sha256": "2e75846127148f68e4b00c95784342e1b5dbdceaf6a130e021a25563e595fed3",
+    "width": "16",
+    "height": "16",
+    "viewBox": "0 0 16 16"
+  }
+]
