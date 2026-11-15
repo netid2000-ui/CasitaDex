@@ -661,3 +661,34 @@ extension PlusRecoveryUITests {
   print("APPROVED REFRESH: light/dark Home, Find, Photos, Settings, Storage; fixed Settings header; preferences restored; no memory writes or purchases")
  }
 }
+
+extension PlusRecoveryUITests {
+ @MainActor func testOptionalEditorRows() async throws {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa")
+  app.launch();app.open(URL(string:"casitadex-plusstoreqa://card?id=rapid_edit_fixture")!)
+  let edit=app.buttons["Edit memory"];XCTAssertTrue(edit.waitForExistence(timeout:15));edit.tap()
+  var originals:[String:String]=[:]
+  for label in ["Location","Notes","Reference"] {
+   let row=app.buttons["Edit "+label];scrollTo(row,in:app);row.tap()
+   let field=app.textViews[label];XCTAssertTrue(field.waitForExistence(timeout:10));scrollTo(field,in:app)
+   originals[label]=field.value as? String ?? ""
+   field.tap();field.typeText(" QA cancel");app.swipeUp()
+   let done=app.buttons["Done editing "+label];scrollTo(done,in:app);done.tap()
+   XCTAssertTrue(app.buttons["Edit "+label].waitForExistence(timeout:5),app.debugDescription)
+  }
+  let shot=XCTAttachment(screenshot:app.screenshot());shot.name="Optional editor rows";shot.lifetime = .keepAlways;add(shot)
+  let cancel=app.buttons["Cancel"];XCTAssertTrue(cancel.isHittable);cancel.tap()
+  XCTAssertTrue(edit.waitForExistence(timeout:10));edit.tap()
+  for label in ["Location","Notes","Reference"] {
+   let row=app.buttons["Edit "+label];scrollTo(row,in:app);row.tap()
+   let field=app.textViews[label];XCTAssertTrue(field.waitForExistence(timeout:10));XCTAssertEqual(field.value as? String,originals[label])
+   let done=app.buttons["Done editing "+label];scrollTo(done,in:app);done.tap()
+  }
+  cancel.tap();app.terminate();app.launch();app.open(URL(string:"casitadex-plusstoreqa://card?id=rapid_edit_fixture")!)
+  XCTAssertTrue(edit.waitForExistence(timeout:15));edit.tap()
+  let row=app.buttons["Edit Location"];scrollTo(row,in:app);row.tap();XCTAssertEqual(app.textViews["Location"].value as? String,originals["Location"])
+  cancel.tap()
+  print("OPTIONAL EDITOR ROWS PASS: all three expand, edit, close, Cancel rolls back, restart retains original")
+ }
+}
