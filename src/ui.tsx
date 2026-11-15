@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useRef, useEffect } from "react";
 import {
   Platform,
+  Keyboard,
   useColorScheme,
   Pressable,
   ScrollView,
@@ -192,6 +193,7 @@ export function Page({
   restoreReady = true,
   onScrollY,
   stickyActions,
+  androidKeyboardAware = false,
   children,
 }: {
   title: string;
@@ -202,10 +204,34 @@ export function Page({
   restoreReady?:boolean;
   onScrollY?:(y:number)=>void;
   stickyActions?:React.ReactNode;
+  androidKeyboardAware?:boolean;
   children: React.ReactNode;
 }) {
   const scroll=useRef<ScrollView>(null),restored=useRef(false),viewport=useRef(0),contentHeight=useRef(0);
   function restorePosition(){if(!restoreReady||restored.current||viewport.current<=0||contentHeight.current<=0)return;const y=Math.min(restoreScrollY,Math.max(0,contentHeight.current-viewport.current));scroll.current?.scrollTo({y,animated:false});restored.current=true;}
+  const [keyboardInset,setKeyboardInset]=useState(0);
+  const keyboardTop=useRef<number|null>(null),scrollOffset=useRef(0);
+  const revealFocusedInput=React.useCallback(()=>{
+    if(!androidKeyboardAware||Platform.OS!=="android")return;
+    requestAnimationFrame(()=>{
+      const input=TextInput.State.currentlyFocusedInput();
+      const top=Keyboard.metrics()?.screenY??keyboardTop.current;
+      if(input&&top!==null)input.measureInWindow((_x,y,_width,height)=>{
+        const hidden=y+height-top+24;
+        if(hidden>0)scroll.current?.scrollTo({y:scrollOffset.current+hidden,animated:true});
+      });
+    });
+  },[androidKeyboardAware]);
+  useEffect(()=>{
+    if(!androidKeyboardAware||Platform.OS!=="android")return;
+    const shown=Keyboard.addListener("keyboardDidShow",event=>{
+      keyboardTop.current=event.endCoordinates.screenY;
+      setKeyboardInset(event.endCoordinates.height);
+      revealFocusedInput();
+    });
+    const hidden=Keyboard.addListener("keyboardDidHide",()=>{keyboardTop.current=null;setKeyboardInset(0);});
+    return ()=>{shown.remove();hidden.remove();};
+  },[androidKeyboardAware,revealFocusedInput]);
   const { ready, error, busy, reload, recover } = useData();
   const { s, colors } = useTheme();
   return (
@@ -216,11 +242,12 @@ export function Page({
       keyboardDismissMode="on-drag"
       onLayout={event=>{viewport.current=event.nativeEvent.layout.height;restorePosition();}}
       scrollEventThrottle={100}
-      onScroll={onScrollY?event=>{if(restored.current)onScrollY(event.nativeEvent.contentOffset.y);}:undefined}
+      onScroll={event=>{scrollOffset.current=event.nativeEvent.contentOffset.y;if(restored.current)onScrollY?.(scrollOffset.current);}}
       onContentSizeChange={(_width,height)=>{contentHeight.current=height;restorePosition();}}
       keyboardShouldPersistTaps="always"
       automaticallyAdjustKeyboardInsets
-      contentContainerStyle={s.page}
+      onFocus={androidKeyboardAware&&Platform.OS==="android"?revealFocusedInput:undefined}
+      contentContainerStyle={[s.page,keyboardInset>0?{paddingBottom:keyboardInset+24}:undefined]}
     >
       <View style={s.container}>
         {!hideHeading ? <Copy

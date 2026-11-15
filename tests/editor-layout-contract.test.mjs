@@ -25,3 +25,13 @@ test("optional field labels receive the full row at enlarged text sizes",()=>{
  assert.ok(optional.includes("flexDirection:stacked?\"column\":\"row\""));
  assert.ok(optional.includes("flex:stacked?undefined:1"));
 });
+
+const ui=readFileSync(new URL("../src/ui.tsx",import.meta.url),"utf8");
+test("Add opts into Android keyboard reveal without altering iOS keyboard handling",()=>{
+ assert.ok(source.includes("<Page independent hideHeading androidKeyboardAware"));
+ assert.ok(ui.includes('if(!androidKeyboardAware||Platform.OS!=="android")return;'));
+ assert.ok(ui.includes('Keyboard.addListener("keyboardDidShow"'));
+ assert.ok(ui.includes('input.measureInWindow'));
+ assert.ok(ui.includes('scrollOffset.current+hidden'));
+ assert.ok(ui.includes('shown.remove();hidden.remove();'));
+});

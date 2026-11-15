@@ -305,7 +305,7 @@ export function EngAdd(){
   const addCardStyle={gap:6} as const;
   const resumedDraft=!!form&&!!e.snapshot?.draft&&form.id===e.snapshot.draft.id;
   const editingPhotoDraft=photoFirst||(resumedDraft&&(form?.photos.length??0)>0);
-  return <Page independent hideHeading title={editingPhotoDraft?"Add a Photo Memory":"Add a Memory"} stickyActions={mode==="edit"?<View style={{maxWidth:720,width:"100%",alignSelf:"center"}}>      <View style={{flexDirection:"row",gap:10,alignItems:"center",justifyContent:"space-between"}}>
+  return <Page independent hideHeading androidKeyboardAware title={editingPhotoDraft?"Add a Photo Memory":"Add a Memory"} stickyActions={mode==="edit"?<View style={{maxWidth:720,width:"100%",alignSelf:"center"}}>      <View style={{flexDirection:"row",gap:10,alignItems:"center",justifyContent:"space-between"}}>
        <View><Button compact editorial icon={<MemoryEditorIcon name="cancel"/>} variant="quiet" label="Cancel" disabled={disabled} onPress={()=>void flush().then(()=>router.replace("/")).catch(error=>setStatus(message(error)))}/></View>
        <View><Button compact editorial icon={<MemoryEditorIcon name="save"/>} primary label={working?"Saving…":"Save"} disabled={disabled||!form?.title.trim()||(!form.answer.trim()&&!form.photos.length)||(editingPhotoDraft&&!form.photos.length)} onPress={()=>void save()} /></View>
       </View>
