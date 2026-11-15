@@ -20,3 +20,13 @@ Installation returned `INSTALL_FAILED_INSUFFICIENT_STORAGE: Failed to override i
 Display speech output restored OFF via TalkBack preferences and switch state verified. Enabled accessibility services is `null`; accessibility_enabled is `0`; font_scale is unchanged at `1.0`. Existing Refresh QA returned to Home. No production, purchase, release or remote push occurred.
 
 Build logs and original diagnostic captures are retained on the Mac QA evidence volume under CasitaDex-Add-Accessibility-20261115. This checkpoint is local evidence only while publication approval is pending.
+
+## Follow-up: storage resolved; partial native parity verified
+
+A new disposable AVD `casitadex_accessibility_20261115` was created using only the established medium-phone hardware configuration and installed system image, with a fresh 12 GB data partition. No existing userdata was copied or deleted. The original medium_phone was stopped before starting the new device; only one Android emulator ran at a time. New device reported 11 GB free. The new accessibilityqa package installed successfully.
+
+At Android font_scale 2.0: Light Location, Notes and Reference open/Done controls were reachable and exercised; fixed Save/Cancel were reachable (Save correctly disabled on empty form). [Visually inspected native screenshot](evidence/accessibility-gates-20261115/android-2x-light-reference.png) confirms unbroken Reference label with Edit below. Dark Location open/Done passed. Subsequent Dark Notes/Reference checks were interrupted by ADB/UIAutomator transport failures, including exit 255. Resume attempts encountered stale route state and another transport failure. No full Dark parity pass is claimed.
+
+No values were entered, records saved or photo controls activated. Keyboard/value/save behavior is outside this check. The screenshot also shows crowded bottom navigation labels at 2×; this narrow optional-field fix is not a claim that all maximum-text layout is accepted.
+
+ADB initially crashed using libusb; the alternative backend recovered connectivity but interruptions persisted. New QA font_scale restored to 1.0 and enabled_accessibility_services verified null before shutdown. Final QA theme restoration could not be verified after the last transport failure; only the new disposable app may retain Dark. Original emulator data and theme were untouched. Original medium_phone restarted after new emulator stopped.
