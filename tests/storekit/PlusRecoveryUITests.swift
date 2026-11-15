@@ -771,3 +771,50 @@ extension PlusRecoveryUITests {
   print("ADD LAYOUT PASS light/dark, taxonomy panels, fixed Save/Cancel; no memory writes")
  }
 }
+
+extension PlusRecoveryUITests {
+ @MainActor func testAddDraftRecovery() async throws {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa")
+  app.launch();app.open(URL(string:"casitadex-plusstoreqa://add")!)
+  XCTAssertTrue(app.staticTexts["Add Memory"].waitForExistence(timeout:15))
+  let values=[("Memory name (Required)","QA iOS Add Draft 20261115"),("Description","Scoped draft recovery"),("Location","Garage shelf"),("Notes","Retain these notes"),("Reference","Manual reference")]
+  func field(_ label:String)->XCUIElement {
+   let view=app.textViews[label]
+   if view.exists{return view}
+   return app.textFields[label]
+  }
+  for (label,value) in values {
+   if ["Location","Notes","Reference"].contains(label){let row=app.buttons["Edit "+label];revealEditorControl(row,in:app);row.tap();if !app.buttons["Done editing "+label].waitForExistence(timeout:2){row.tap()}}
+   let input=field(label);revealEditorControl(input,in:app);if (input.value as? String ?? "") != value {input.tap();if !(input.value as? String ?? "").isEmpty {input.press(forDuration:1.2);let selectAll=app.descendants(matching:.any).matching(identifier:"Select All").firstMatch;XCTAssertTrue(selectAll.waitForExistence(timeout:5));selectAll.tap()};input.typeText(value)}
+   if ["Location","Notes","Reference"].contains(label){let done=app.buttons["Done editing "+label];revealEditorControl(done,in:app);done.tap()}
+  }
+  app.buttons["Cancel"].tap();app.terminate();app.launch();app.open(URL(string:"casitadex-plusstoreqa://add")!)
+  XCTAssertTrue(app.staticTexts["Add Memory"].waitForExistence(timeout:15))
+  for (label,value) in values {
+   if ["Location","Notes","Reference"].contains(label){let row=app.buttons["Edit "+label];revealEditorControl(row,in:app);row.tap();if !app.buttons["Done editing "+label].waitForExistence(timeout:2){row.tap()}}
+   let input=field(label);revealEditorControl(input,in:app);XCTAssertEqual(input.value as? String,value)
+   if ["Location","Notes","Reference"].contains(label){let done=app.buttons["Done editing "+label];revealEditorControl(done,in:app);done.tap()}
+  }
+  XCTAssertTrue(app.buttons["Save"].isEnabled);app.buttons["Save"].tap()
+  XCTAssertTrue(app.buttons["Add Memory"].firstMatch.waitForExistence(timeout:15))
+  print("ADD DRAFT RECOVERY PASS all five fields survive Cancel and cold restart; Save returns Home")
+ }
+}
+
+extension PlusRecoveryUITests {
+ @MainActor func testSavedAddDraftReadback() async throws {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa")
+  app.launch();app.open(URL(string:"casitadex-plusstoreqa://card?id=e_mwguiyu2_bofwxt8o23")!)
+  let edit=app.buttons["Edit memory"];XCTAssertTrue(edit.waitForExistence(timeout:15));edit.tap()
+  for (label,value) in [("Memory name (Required)","QA iOS Add Draft 20261115"),("Description","Scoped draft recovery"),("Location","Garage shelf"),("Notes","Retain these notes"),("Reference","Manual reference")] {
+   if ["Location","Notes","Reference"].contains(label){let row=app.buttons["Edit "+label];revealEditorControl(row,in:app);row.tap()}
+   let field=app.textViews[label].exists ? app.textViews[label] : app.textFields[label];revealEditorControl(field,in:app);XCTAssertEqual(field.value as? String,value)
+   if ["Location","Notes","Reference"].contains(label){let done=app.buttons["Done editing "+label];revealEditorControl(done,in:app);done.tap()}
+  }
+  let shot=XCTAttachment(screenshot:app.screenshot());shot.name="Saved Add Memory readback";shot.lifetime = .keepAlways;add(shot)
+  app.buttons["Cancel"].tap();app.open(URL(string:"casitadex-plusstoreqa://")!)
+  print("SAVED ADD READBACK PASS all five values after process restart")
+ }
+}

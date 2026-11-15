@@ -1,0 +1,16 @@
+{
+  "draft_cancel_restart": "PASS",
+  "fields": [
+    "Memory name (Required)",
+    "Description",
+    "Location",
+    "Notes",
+    "Reference"
+  ],
+  "themes": [
+    "Light",
+    "Dark"
+  ],
+  "save": "PASS: exactly one Find result after restart, all five saved values match",
+  "appearance": "System"
+}

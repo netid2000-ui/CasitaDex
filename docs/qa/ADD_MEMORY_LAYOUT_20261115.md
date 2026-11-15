@@ -18,3 +18,5 @@ Parent draft checkpoint/save logic, required-field rules, free-plan guard, taxon
 
 ## Remaining
 Android Add Memory visual/interaction check; scoped typed-draft restart/Save verification for the new controls; remaining Details and Reminders layout parity. This is not release acceptance.
+
+Follow-up: Android visual checks and scoped draft/save persistence evidence, including an iOS input correction, are recorded in ADD_MEMORY_RECOVERY_20261115.md.

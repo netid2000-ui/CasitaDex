@@ -1,0 +1,13 @@
+{
+  "r1": "FAIL: optional field expansion synchronization",
+  "r2": "FAIL: iOS rapid input dropped characters",
+  "r3": "FAIL: harness replacement inserted before existing text",
+  "r4": "Recovery exact values and Save committed; overall FAIL at Home StaticText assertion",
+  "database": "PASS: one exact saved memory, draft cleared",
+  "saved_readback_r2": {
+    "result": "PASS",
+    "tests": 1,
+    "failures": 0,
+    "job": "658fafc67969f558"
+  }
+}

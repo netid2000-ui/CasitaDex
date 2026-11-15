@@ -1,0 +1,31 @@
+{
+  "result": "PASS",
+  "count": 1,
+  "memory": {
+    "id": "e_mwguiyu2_bofwxt8o23",
+    "title": "QA iOS Add Draft 20261115",
+    "answer": "Scoped draft recovery",
+    "location": "Garage shelf",
+    "notes": "Retain these notes",
+    "spaceId": "e_mwguje78_9sdq4d5bs5",
+    "categoryIds": [
+      "e_mwguiytq_r9yhbqqhkg"
+    ],
+    "legacyContext": null,
+    "confidence": "Unknown",
+    "source": "Manual reference",
+    "history": [],
+    "lifecycle": "active",
+    "mediaIds": [],
+    "createdAt": "2026-11-15T03:30:48.024Z",
+    "updatedAt": "2026-11-15T03:30:48.024Z",
+    "events": [
+      {
+        "id": "e_mwha1ra0_hw7a2qtn7b",
+        "type": "created",
+        "at": "2026-11-15T03:30:48.024Z"
+      }
+    ]
+  },
+  "draft": null
+}
