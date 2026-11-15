@@ -1,3 +1,4 @@
+import {useStatusAnnouncement} from "./use-status-announcement";
 import {ReminderValueControl} from "./reminder-value-control";
 import {MemoryEditorChoice,MemoryEditorIcon} from "./memory-editor-controls";
 import {MemoryEditOptionalField} from "./memory-edit-optional-field";
@@ -45,7 +46,7 @@ function useEng(){
   }
   return {snapshot,setSnapshot,status,setStatus,busy,run,refresh};
 }
-function Status({text}:{text:string}){return text ? <Copy kind="small" accessibilityLiveRegion="polite">{text}</Copy> : null;}
+function Status({text}:{text:string}){useStatusAnnouncement(text);return text ? <Copy kind="small" accessibilityLiveRegion="polite">{text}</Copy> : null;}
 function MemoryLink({memory,data}:{memory:MemoryV2;data?:EngSnapshot["data"]}){
   const {s}=useTheme();
   return <Pressable accessibilityRole="button" accessibilityLabel={`Open ${memory.title}: ${memory.answer||"Photo memory"}`}
