@@ -5,7 +5,7 @@ import vm from 'node:vm';
 import ts from 'typescript';
 function load(file){
  const jsx=(type,props)=>({type,props:props??{}});
- const mocks={'react':{useState:v=>[v,()=>{}]},'react/jsx-runtime':{jsx,jsxs:jsx},'react-native':{Pressable:'Pressable',View:'View',useWindowDimensions:()=>({fontScale:1})},'react-native-svg':{SvgXml:'SvgXml'},'./state':{useData:()=>({large:false})},'./ui':{Copy:'Copy',Field:'Field',Button:'Button',useTheme:()=>({colors:{},dark:false})}};
+ const mocks={'react':{useState:v=>[v,()=>{}],useRef:v=>({current:v}),useEffect:()=>{}},'react/jsx-runtime':{jsx,jsxs:jsx},'react-native':{Pressable:'Pressable',View:'View',useWindowDimensions:()=>({fontScale:1})},'react-native-svg':{SvgXml:'SvgXml'},'./state':{useData:()=>({large:false})},'./ui':{Copy:'Copy',Field:'Field',Button:'Button',useTheme:()=>({colors:{},dark:false})}};
  const source=fs.readFileSync(new URL('../src/'+file,import.meta.url),'utf8');
  const compiled=ts.transpileModule(source,{compilerOptions:{module:ts.ModuleKind.CommonJS,jsx:ts.JsxEmit.ReactJSX}}).outputText;
  const module={exports:{}};vm.runInNewContext(compiled,{module,exports:module.exports,require:id=>id.endsWith('.svg')?'':mocks[id]});return module.exports;
@@ -25,6 +25,7 @@ test('collapsed optional fields expose their value or None without opening the e
  for(const value of ['Shelf 2','']){
   const b=nodes(MemoryEditOptionalField({label:'Location',value,onChangeText:()=>{},disabled:true})).find(n=>n.type==='Pressable');
   assert.equal(b.props.accessibilityLabel,'Edit Location');assert.equal(b.props.accessibilityValue.text,value||'None');
+  assert.equal(b.props.onAccessibilityTap,undefined);
   assert.equal(b.props.accessibilityState.disabled,true);assert.equal(b.props.accessibilityState.expanded,false);
  }
 });

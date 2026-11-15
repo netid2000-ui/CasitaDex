@@ -1,5 +1,6 @@
 import React, { useState, useMemo, useRef, useEffect } from "react";
 import {
+  AccessibilityInfo,
   Platform,
   Keyboard,
   useColorScheme,
@@ -91,6 +92,7 @@ export function Button({
       }
       disabled={disabled}
       onPress={onPress}
+      onAccessibilityTap={disabled?undefined:onPress}
       style={({ pressed }) => [
         s.button,
         compact && s.compact,
@@ -122,7 +124,9 @@ export function Field({
   iosTextView=false,
   nativeEditing=false,
   editorial=false,
+  accessibilityFocusOnMount=false,
 }: {
+  accessibilityFocusOnMount?:boolean;
   editorial?:boolean;
   label: string;
   value: string;
@@ -144,6 +148,11 @@ export function Field({
   // external changes (e.g. asynchronous reminder loading) write text back.
   const nativeOwned=nativeTextView&&nativeEditing;
   const inputRef=useRef<TextInput>(null);
+  useEffect(()=>{
+    if(!accessibilityFocusOnMount)return;
+    const timer=setTimeout(()=>{if(inputRef.current)AccessibilityInfo.sendAccessibilityEvent(inputRef.current,"focus");},300);
+    return ()=>clearTimeout(timer);
+  },[accessibilityFocusOnMount]);
   const [initialValue]=useState(value);
   const latestNativeValue=useRef(value);
   useEffect(()=>{

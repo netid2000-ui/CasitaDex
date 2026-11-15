@@ -1,0 +1,24 @@
+Edit Location activated=true focus=nil
+Done editing Location activated=true focus=Cancel
+Edit Notes activated=true focus=Edit Location
+Done editing Notes activated=true focus=Notes
+Edit Reference activated=true focus=Edit Notes
+Done editing Reference activated=true focus=Reference
+Edit Location activated=true focus=Cancel
+Done editing Location activated=true focus=Edit Location
+Edit Notes activated=true focus=Notes
+Done editing Notes activated=true focus=Edit Notes
+Edit Reference activated=true focus=Reference
+Done editing Reference activated=true focus=Edit Reference
+Edit Location activated=true focus=Location
+Done editing Location activated=true focus=Edit Location
+Edit Notes activated=true focus=Notes
+Done editing Notes activated=true focus=Edit Notes
+Edit Reference activated=true focus=Edit Notes
+Done editing Reference activated=true focus=Edit Notes
+Edit Location activated=true focus=Location
+Done editing Location activated=true focus=Edit Location
+Edit Notes activated=true focus=Notes
+Done editing Notes activated=true focus=Edit Notes
+Edit Reference activated=true focus=Reference
+Done editing Reference activated=true focus=Edit Reference

@@ -1,0 +1,6 @@
+Edit Location activated=true focus=Location
+Done editing Location activated=true focus=Edit Location, QA Shelf
+Edit Notes activated=true focus=Notes
+Done editing Notes activated=true focus=Edit Notes, None
+Edit Reference activated=true focus=Reference
+Done editing Reference activated=true focus=Edit Reference, None

@@ -1024,3 +1024,20 @@ extension PlusRecoveryUITests {
   try vo.disable();app.open(URL(string:"casitadex-plusstoreqa://")!)
  }
 }
+
+extension PlusRecoveryUITests {
+ @available(iOS 27.0, *)
+ @MainActor func testNativeEditorTree20261115() async throws {
+  XCTAssertEqual(ProcessInfo.processInfo.environment["SIMULATOR_UDID"],"189233C4-A360-49D7-AB2A-C9A7F02B9060")
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa");app.launch()
+  app.open(URL(string:"casitadex-plusstoreqa://card?id=sb26qa_007")!)
+  let edit=app.buttons["Edit memory"];XCTAssertTrue(edit.waitForExistence(timeout:10));edit.tap()
+  let vo=XCUIDevice.shared.voiceOverService
+  defer {try? vo.disable()}
+  try vo.enable()
+  try await Task.sleep(nanoseconds:35_000_000_000)
+  try vo.disable()
+  XCTAssertTrue(app.buttons["Edit Location"].exists)
+  app.buttons["Cancel"].tap()
+ }
+}
