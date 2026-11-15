@@ -1,0 +1,44 @@
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Find
+Tapped Next
+Tapped Previous
+PASS previous-page
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Light appearance
+Tapped Home
+PASS Light-1.0-home
+Tapped Search Memories
+PASS Light-1.0-find
+Tapped Location  ▾
+PASS Light-1.0-location-options
+Tapped All
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Dark appearance
+Tapped Home
+PASS Dark-1.0-home
+Tapped Search Memories
+PASS Dark-1.0-find
+Tapped Location  ▾
+PASS Dark-1.0-location-options
+Tapped All
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Light appearance
+Tapped Home
+PASS Light-2.0-home
+Tapped Search Memories
+PASS Light-2.0-find
+Tapped Location  ▾
+PASS Light-2.0-location-options
+Tapped All
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Dark appearance
+Tapped Home
+PASS Dark-2.0-home
+Tapped Search Memories
+PASS Dark-2.0-find
+Tapped Location  ▾
+PASS Dark-2.0-location-options
+Tapped All
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped System appearance
+Tapped Home

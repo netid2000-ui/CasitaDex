@@ -17,5 +17,16 @@
   "firstCandidateApkSha256": "7297b2138bc0ed09cbae5e37f1d0ed56fff8cf227cd95aa6770d16fd7790a15e",
   "apkSha256": "c59681bd4d5aed47d4ff376506bec7610baea4a217843bf26a93bf6359a499ae",
   "finalDelta": "Correct Next-page scroll offset to keep first result below sticky filters.",
-  "iosInstalledBundleSha256": "7893c87f4809adca4c6e98418df157296430c3fec77f3d75f7e68741a493c544"
+  "iosInstalledBundleSha256": "7893c87f4809adca4c6e98418df157296430c3fec77f3d75f7e68741a493c544",
+  "sourceCommit": "3536a37",
+  "androidInstalled": {
+    "emulator-5554": {
+      "apkSha256": "c59681bd4d5aed47d4ff376506bec7610baea4a217843bf26a93bf6359a499ae",
+      "matchesBuiltApk": true
+    },
+    "R5GL83X0K3N": {
+      "apkSha256": "c59681bd4d5aed47d4ff376506bec7610baea4a217843bf26a93bf6359a499ae",
+      "matchesBuiltApk": true
+    }
+  }
 }

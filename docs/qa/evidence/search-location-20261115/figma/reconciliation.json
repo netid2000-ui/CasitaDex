@@ -32,10 +32,11 @@
     "Primary light/dark screenshots reviewed",
     "Location picker All/selection links",
     "Active query Clear search links",
-    "Context return variables point to active or selected screen"
+    "Context return variables point to active or selected screen",
+    "Native Android Home 1.0 and Find Dark 2.0 plus iOS Find screenshots visually reviewed: controls within viewport. Functional parity is tested; pixel equality is not claimed.",
+    "Samsung final APK screenshots reviewed: Light Home 2.0, Dark Find 2.0, Light Location options 2.0. Labels wrap and controls stay within width."
   ],
   "remaining": [
-    "Older standalone Space/Category/photo-combination prototype variants retain their prior three-filter presentation. They were not broadly redesigned in this scoped correction.",
-    "Native pixel-level visual review remains separate; native screenshots and geometry assertions are captured."
+    "Older standalone Space/Category/photo-combination prototype variants retain their prior three-filter presentation. They were not broadly redesigned in this scoped correction."
   ]
 }

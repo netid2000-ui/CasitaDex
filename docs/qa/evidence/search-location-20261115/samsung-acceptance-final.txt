@@ -1,0 +1,48 @@
+Tapped Light appearance
+Tapped Home
+Tapped Search Memories
+PASS fresh-home
+Tapped Search memories
+Verified input Search memories
+PASS query-entered
+Tapped Open photo memory [SAMPLE] Coffee filters
+PASS details-return-query
+Tapped Home
+Tapped Find
+PASS fresh-tab
+Tapped Search memories
+Verified input Search memories
+Tapped Find
+PASS fresh-current-tab
+Tapped Location  ▾
+Tapped Activity closet craft box · Sample Office
+PASS location-selected
+Tapped Activity closet craft box · Sample Office  ▾
+Tapped All
+PASS location-cleared
+Tapped Space  ▾
+Tapped Sample Office
+Tapped Location  ▾
+Tapped Activity closet craft box
+Tapped Category  ▾
+Tapped Cleaning
+Tapped With photos only
+Tapped Search memories
+Verified input Search memories
+PASS combined-filters
+Tapped Clear search
+PASS clear-query-keeps-filters
+Tapped Home
+Tapped Find
+PASS fresh-clears-filters
+Tapped Next
+PASS next-page
+Tapped Previous
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped System appearance
+Tapped Home
+Traceback (most recent call last):
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/scripts/search-location-20261115/acceptance.py", line 52, in <module>
+    tap('Previous');assert any(re.search(r'Page 1 of',a or '') for a,b in labels());checkmark('previous-page')
+                           ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

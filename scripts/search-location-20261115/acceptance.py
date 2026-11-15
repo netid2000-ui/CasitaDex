@@ -49,6 +49,8 @@ try:
  tap('Next')
  assert any(re.search(r'Page 2 of',a or '') for a,b in labels()),labels()
  checkmark('next-page')
+ # Reveal the top pager before tapping: Next intentionally anchors the first result below sticky filters.
+ run('shell','input','swipe','540','1100','540','1900','350');time.sleep(.5)
  tap('Previous');assert any(re.search(r'Page 1 of',a or '') for a,b in labels());checkmark('previous-page')
  for scale in ['1.0','2.0']:
   run('shell','settings','put','system','font_scale',scale);time.sleep(3)
