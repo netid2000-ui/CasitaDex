@@ -669,10 +669,13 @@ extension PlusRecoveryUITests {
    let top=scroll.frame.minY+16
    let bottom=min(scroll.frame.maxY-16,app.keyboards.firstMatch.exists ? app.keyboards.firstMatch.frame.minY-65 : scroll.frame.maxY-16)
    if element.exists && element.isHittable && element.frame.minY>=top && element.frame.maxY<=bottom{return}
+   // Small, measured corrections avoid bouncing tall controls across both viewport edges.
    let above=element.exists && element.frame.minY<top
-   let low=(bottom-20-scroll.frame.minY)/scroll.frame.height
-   let high=(top+35-scroll.frame.minY)/scroll.frame.height
-   scroll.coordinate(withNormalizedOffset:CGVector(dx:0.5,dy:above ? high : low)).press(forDuration:0.05,thenDragTo:scroll.coordinate(withNormalizedOffset:CGVector(dx:0.5,dy:above ? low : high)))
+   let distance=element.exists ? (above ? top-element.frame.minY : element.frame.maxY-bottom) : 120
+   let step=min(max(distance+12,40),120)/scroll.frame.height
+   let start=CGVector(dx:0.5,dy:0.5)
+   let end=CGVector(dx:0.5,dy:0.5+(above ? step : -step))
+   scroll.coordinate(withNormalizedOffset:start).press(forDuration:0.05,thenDragTo:scroll.coordinate(withNormalizedOffset:end))
   }
   XCTFail("Cannot fully reveal editor control: \(element)\n\(app.debugDescription)")
  }
@@ -929,5 +932,18 @@ extension PlusRecoveryUITests {
    XCTAssertFalse(output.utterance.isEmpty)
   }
   print("VOICEOVER_PROBE: speech captured; full acceptance requires review")
+ }
+}
+
+extension PlusRecoveryUITests {
+ @MainActor func testReferenceLargeTextCapture20261115() async throws {
+  continueAfterFailure=false
+  XCTAssertEqual(ProcessInfo.processInfo.environment["SIMULATOR_UDID"],"189233C4-A360-49D7-AB2A-C9A7F02B9060")
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa");app.launch()
+  app.open(URL(string:"casitadex-plusstoreqa://add")!)
+  let row=app.buttons["Edit Reference"];revealEditorControl(row,in:app)
+  let dir=FileManager.default.urls(for:.documentDirectory,in:.userDomainMask)[0]
+  try app.screenshot().pngRepresentation.write(to:dir.appendingPathComponent("reference-large-fixed.png"))
+  XCTAssertTrue(row.isHittable);app.buttons["Cancel"].tap()
  }
 }

@@ -18,3 +18,10 @@ test('Edit Memory labels its content Description and exposes photo controls',()=
  assert.ok(edit.includes('>Photos · {e.snapshot?.data.media.media.filter'));
  assert.ok(edit.includes('dirty?<Copy kind="small">Save or cancel your text changes'));
 });
+
+const optional=readFileSync(new URL("../src/memory-edit-optional-field.tsx",import.meta.url),"utf8");
+test("optional field labels receive the full row at enlarged text sizes",()=>{
+ assert.ok(optional.includes("const stacked=large||fontScale>=1.35"));
+ assert.ok(optional.includes("flexDirection:stacked?\"column\":\"row\""));
+ assert.ok(optional.includes("flex:stacked?undefined:1"));
+});
