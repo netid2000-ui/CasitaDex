@@ -1,0 +1,15 @@
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Spaces
+Tapped Create new label
+Tapped Space name
+Verified input Space name
+Tapped Save
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Space  ▾
+Tapped QA Samsung Hallway and Seasonal Storage Cabinet
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Traceback (most recent call last):
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/scripts/samsung-ui-corrections-20261115/long-label-check.py", line 14, in <module>
+    label=next(n.get('content-desc') for n in tree().iter('node') if n.get('content-desc','').startswith(name));x,y,a,b=bounds(node(label,scroll=False));assert 0<=x<a<=1080,(label,[x,y,a,b]);shot('selected-space-'+scale)
+StopIteration

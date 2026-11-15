@@ -1,0 +1,21 @@
+{
+  "checks": [
+    "Light-1.0-find",
+    "Light-1.0-reminders",
+    "Light-1.0-photos",
+    "Light-1.0-details-top",
+    "Dark-1.0-find",
+    "Dark-1.0-reminders",
+    "Dark-1.0-photos",
+    "Dark-1.0-details-top",
+    "Light-2.0-find",
+    "Light-2.0-reminders",
+    "Light-2.0-photos",
+    "Light-2.0-details-top",
+    "Dark-2.0-find",
+    "Dark-2.0-reminders",
+    "Dark-2.0-photos",
+    "Dark-2.0-details-top"
+  ],
+  "fontScaleRestored": "1.0"
+}

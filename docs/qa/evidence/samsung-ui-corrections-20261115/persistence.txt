@@ -1,0 +1,12 @@
+Tapped Search memories
+Verified input Search memories
+Tapped Open regular memory QA Samsung Full Sweep 20261115
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped View photo 1 of QA Samsung Photo Sweep full screen
+Tapped Close photo
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Search memories
+Verified input Search memories
+Tapped Open regular memory QA Location Saved Memory
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Final cold restart, text, four photos, Location and restored device settings PASS

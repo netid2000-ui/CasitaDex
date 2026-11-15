@@ -42,6 +42,7 @@ export function Copy({
           fontSize: size,
           lineHeight: size * 1.3,
           flexShrink: 1,
+          minWidth: 0,
         },
         kind === "title" || kind === "answer"
           ? { letterSpacing: -0.4 }
@@ -99,14 +100,14 @@ export function Button({
         variant === "quiet" && s.quiet,
         selected && s.selected,
         primary && s.primary,
-        editorial && {minHeight:44,borderWidth:0,borderBottomWidth:0},
+        editorial && {minHeight:Platform.OS === "android" ? 48 : 44,borderWidth:0,borderBottomWidth:0},
         editorial && variant==="quiet" && {backgroundColor:"transparent"},
         focused && { borderColor: colors.focus, borderWidth: 2 },
         pressed && { opacity: 0.82, elevation: 0, shadowOpacity: 0, transform: [{ translateY: 1 }] },
         disabled && (primary ? { opacity: 0.62, borderStyle: "solid" as const, backgroundColor: colors.primary, borderColor: colors.primary } : { opacity: 1, borderStyle: "dashed" as const, backgroundColor: colors.accent, borderColor: colors.line }),
       ]}
     >
-      <View style={{flexDirection:"row",alignItems:"center",gap:8,width:editorial&&trailing?"100%":undefined}}>{icon}{selected!==undefined?<Text accessible={false} style={{width:20,color:colors.ink,textAlign:"center"}}>{selected?"✓":""}</Text>:null}<Copy kind={editorial?"body":compact ? "small" : "body"} style={editorial?{color:primary?colors.onPrimary:colors.ink,fontWeight:"400",flex:trailing?1:undefined}:primary ? { color: colors.onPrimary, fontWeight: "700", textAlign: "center" } : { color: colors.ink, fontWeight: "700", textAlign: "center" }}>
+      <View style={{flexDirection:"row",alignItems:"center",gap:8,minWidth:0,maxWidth:"100%",flexShrink:1,width:editorial&&trailing?"100%":undefined}}>{icon}{selected!==undefined?<Text accessible={false} style={{width:20,color:colors.ink,textAlign:"center"}}>{selected?"✓":""}</Text>:null}<Copy kind={editorial?"body":compact ? "small" : "body"} style={editorial?{color:primary?colors.onPrimary:colors.ink,fontWeight:"400",flex:trailing?1:undefined}:primary ? { color: colors.onPrimary, fontWeight: "700", textAlign: "center" } : { color: colors.ink, fontWeight: "700", textAlign: "center" }}>
         {displayLabel??label.replace(/^✓\s*/,"")}
       </Copy>{trailing}</View>
     </Pressable>
@@ -311,8 +312,9 @@ const makeStyles = (colors: typeof lightColors) =>
       gap: 11,
     },
     button: {
-      minHeight: 44,
+      minHeight: Platform.OS === "android" ? 48 : 44,
       minWidth: 48,
+      maxWidth: "100%",
       paddingVertical: 8,
       paddingHorizontal: 12,
       borderRadius: 8,

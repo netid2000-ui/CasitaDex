@@ -1,0 +1,27 @@
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Find
+Tapped QA Samsung Hallway and Seasonal Storage Cabinet  ▾
+Tapped QA Samsung Hallway and Seasonal Storage Cabinet
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Find
+Tapped QA Samsung Hallway and Seasonal Storage Cabinet  ▾
+Tapped QA Samsung Hallway and Seasonal Storage Cabinet
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Find
+Tapped QA Samsung Hallway and Seasonal Storage Cabinet  ▾
+Tapped All
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Spaces
+Tapped Search labels
+Verified input Search labels
+Tapped QA Samsung Hallway and Seasonal Storage Cabinet
+Traceback (most recent call last):
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/scripts/samsung-ui-corrections-20261115/long-label-finish.py", line 19, in <module>
+    route('settings-manage?action=labels');tap('Spaces');fill('Search labels',name);tap(name);tap('Review removal ›');tap('Confirm remove label only')
+                                                                                              ~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/scripts/samsung-sweep-20261115/phone.py", line 39, in tap
+    n=node(label);x,y,a,b=bounds(n);run('shell','input','tap',str((x+a)//2),str((y+b)//2));time.sleep(.4);print('Tapped '+label,flush=True)
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/scripts/samsung-sweep-20261115/phone.py", line 37, in node
+    raise AssertionError('Missing '+label+' '+str(labels())[:4000])
+AssertionError: Missing Review removal › [('', '‹ Settings'), ('‹ Settings', ''), ('Manage labels', ''), ('Organize memories with spaces, categories and locations.', ''), ('', 'Spaces'), ('Spaces', ''), ('✓', ''), ('', 'Categories'), ('Categories', ''), ('›', ''), ('', 'Locations'), ('Locations', ''), ('›', ''), ('', 'Create new label'), ('Create new label', ''), ('›', ''), ('Search labels', ''), ('QA Samsung Hallway and Seft ft ft ft ft ft ft ft ft ft ft ft ft ft ft ft ft ftasonal Storage Cabinet', 'Search labels'), ('', 'Primary navigation'), ('', 'Home'), ('Home', ''), ('', 'Photos'), ('Photos', ''), ('', 'Reminders'), ('Reminders', ''), ('', 'Find'), ('Find', '')]

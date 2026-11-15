@@ -1,0 +1,11 @@
+Tapped Light appearance
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Light 1.0 aligned tabs PASS
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped System appearance
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Traceback (most recent call last):
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/scripts/samsung-ui-corrections-20261115/tab-check.py", line 14, in <module>
+    n=next(n for n in t.iter('node') if n.get('content-desc','').startswith(prefix));x,y,a,b=bounds(n);assert 0<=x<a<=1080;rows.setdefault(y,[]).append(b-y)
+StopIteration

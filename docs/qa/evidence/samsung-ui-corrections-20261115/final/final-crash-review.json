@@ -1,0 +1,5 @@
+{
+  "appPackage": "com.designsbyfa.casitadex.refreshqa",
+  "packageMentionedInCrashBuffer": false,
+  "note": "Crash buffer was not cleared; read-only check."
+}

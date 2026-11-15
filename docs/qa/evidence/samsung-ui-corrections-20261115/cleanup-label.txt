@@ -1,0 +1,7 @@
+Tapped Search labels
+Verified input Search labels
+Tapped QA Samsung Hallway and Seasonal Storage Cabinet
+Tapped Review removal ›
+Tapped Confirm remove label only
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Temporary QA Space removed; long-label screenshots verified; collection preserved

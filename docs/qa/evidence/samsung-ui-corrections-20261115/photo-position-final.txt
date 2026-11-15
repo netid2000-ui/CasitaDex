@@ -1,0 +1,19 @@
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Light appearance
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped View photo 1 of [SAMPLE] Extension cord full screen
+Tapped Zoom photo in
+Tapped Reset photo zoom
+Tapped Close photo
+Light fully visible photo position PASS
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Dark appearance
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped View photo 1 of [SAMPLE] Extension cord full screen
+Tapped Zoom photo in
+Tapped Reset photo zoom
+Tapped Close photo
+Dark fully visible photo position PASS
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped System appearance
+Warning: Activity not started, intent has been delivered to currently running top-most instance.

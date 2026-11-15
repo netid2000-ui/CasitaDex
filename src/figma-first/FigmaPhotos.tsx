@@ -41,8 +41,8 @@ export function FigmaPhotos({items,onAdd,onOpen,onViewPhoto,view='grid',sort='up
 
 export function PhotoWorkspaceControls({onAdd,view='grid',sort='updated',onViewChange,onSortChange}:Pick<FigmaPhotosProps,'onAdd'|'view'|'sort'|'onViewChange'|'onSortChange'>){
  const fg=useFigmaTheme(),{large}=useData();const scale=large?1.6:1;
- const control={minHeight:44,paddingVertical:8,paddingHorizontal:10,borderWidth:1,borderColor:fg.secondaryInk,borderRadius:8,justifyContent:'center' as const,flexDirection:'row' as const,alignItems:'center' as const,gap:8,backgroundColor:fg.brandSurface};
- const text={fontFamily:editorialFonts.body,color:fg.headingInk,fontSize:12*scale};
+ const control={minHeight:48,maxWidth:"100%" as const,paddingVertical:8,paddingHorizontal:10,borderWidth:1,borderColor:fg.secondaryInk,borderRadius:8,justifyContent:'center' as const,flexDirection:'row' as const,alignItems:'center' as const,gap:8,backgroundColor:fg.brandSurface};
+ const text={fontFamily:editorialFonts.body,color:fg.headingInk,fontSize:12*scale,flexShrink:1,minWidth:0};
  return <View style={{backgroundColor:fg.page,paddingHorizontal:18,paddingBottom:16,gap:8}}>
  <View style={{flexDirection:'row',flexWrap:'wrap',gap:8}}>{(['grid','compact'] as const).map(value=><Pressable key={value} accessibilityRole="button" accessibilityLabel={value==='grid'?'Grid photo view':'Compact photo view'} accessibilityState={{selected:view===value}} onPress={()=>onViewChange?.(value)} style={[control,view===value?{borderWidth:2}:null]}><PhotoActionIcon name={value}/><Text style={text}>{value==='grid'?'Grid':'Compact'}</Text></Pressable>)}
  <Pressable accessibilityRole="button" accessibilityLabel="Sort photos" accessibilityValue={{text:sort==='updated'?'Recently updated':'Recently added'}} onPress={()=>Alert.alert('Sort photos','',[{text:'Recently updated',onPress:()=>onSortChange?.('updated')},{text:'Recently added',onPress:()=>onSortChange?.('added')},{text:'Cancel',style:'cancel'}])} style={control}><PhotoActionIcon name="sort"/><Text style={text}>Sort ▾</Text></Pressable></View>

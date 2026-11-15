@@ -18,7 +18,7 @@ def labels():return [(n.get('text'),n.get('content-desc')) for n in tree().iter(
 def node(label,scroll=True):
  for _ in range(18 if scroll else 1):
   t=tree();parents={child:parent for parent in t.iter() for child in parent}
-  candidates=[n for n in sorted(t.iter('node'),key=lambda n:n.get('clickable')!='true') if n.get('content-desc')==label or n.get('content-desc','').startswith(label+', ') or n.get('text','').casefold()==label.casefold()]
+  candidates=[n for n in sorted(t.iter('node'),key=lambda n:n.get('clickable')!='true') if n.get('content-desc')==label or n.get('content-desc','').startswith(label+', ') or (not n.get('class','').endswith('EditText') and n.get('text','').casefold()==label.casefold())]
   for n in candidates:
    x,y,a,b=bounds(n)
    if 60<=y<b<2240:return n

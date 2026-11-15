@@ -1,0 +1,51 @@
+Tapped Light appearance
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Light-1.0-find PASS
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Light-1.0-reminders PASS
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Light-1.0-photos PASS
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Light-1.0-details-top PASS
+Tapped Edit Reference
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Dark appearance
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Dark-1.0-find PASS
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Dark-1.0-reminders PASS
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Dark-1.0-photos PASS
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Dark-1.0-details-top PASS
+Tapped Edit Reference
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Light appearance
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Light-2.0-find PASS
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Light-2.0-reminders PASS
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Light-2.0-photos PASS
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Light-2.0-details-top PASS
+Tapped Edit Reference
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Dark appearance
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Dark-2.0-find PASS
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Dark-2.0-reminders PASS
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Dark-2.0-photos PASS
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Dark-2.0-details-top PASS
+Tapped Edit Reference
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped System appearance
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Layout geometry, contextual Edit controls and 48dp photo targets PASS

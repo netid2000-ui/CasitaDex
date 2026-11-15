@@ -1,0 +1,35 @@
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Light appearance
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Compact photo view
+Tapped Sort photos
+Tapped Recently added
+Tapped Grid photo view
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped View photo 1 of QA Samsung Photo Sweep full screen
+Tapped Zoom photo in
+Tapped Reset photo zoom
+Tapped Reset photo zoom
+/sdcard/cd-pinch-Light.mp4: 1 file pulled, 0 skipped. 24.4 MB/s (870090 bytes in 0.034s)
+Tapped Reset photo zoom
+Tapped Close photo
+Light photo grid/compact/sort/sticky/viewer/zoom/double tap PASS
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Dark appearance
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Compact photo view
+Tapped Sort photos
+Tapped Recently added
+Tapped Grid photo view
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped View photo 1 of QA Samsung Photo Sweep full screen
+Tapped Zoom photo in
+Tapped Reset photo zoom
+Tapped Reset photo zoom
+/sdcard/cd-pinch-Dark.mp4: 1 file pulled, 0 skipped. 10.5 MB/s (887072 bytes in 0.080s)
+Tapped Reset photo zoom
+Tapped Close photo
+Dark photo grid/compact/sort/sticky/viewer/zoom/double tap PASS
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped System appearance
+Warning: Activity not started, intent has been delivered to currently running top-most instance.

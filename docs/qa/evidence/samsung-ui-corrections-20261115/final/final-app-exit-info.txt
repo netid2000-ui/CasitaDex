@@ -1,0 +1,68 @@
+ACTIVITY MANAGER PROCESS EXIT INFO (dumpsys activity exit-info)
+Last Timestamp of Persistence Into Persistent Storage: 2026-11-15 16:03:14.396
+  package: com.designsbyfa.casitadex.refreshqa
+    Historical Process Exit for uid=10346
+        ApplicationExitInfo #0:
+          timestamp=2026-11-15 16:11:32.415 pid=15132 realUid=10346 packageUid=10346 definingUid=10346 user=0
+          process=com.designsbyfa.casitadex.refreshqa reason=10 (USER REQUESTED) subreason=21 (FORCE STOP) status=0
+          importance=100 pss=0.00 rss=216MB description=stop com.designsbyfa.casitadex.refreshqa due to from pid 18966 state=empty trace=null
+        ApplicationExitInfo #1:
+          timestamp=2026-11-15 16:02:53.761 pid=12444 realUid=10346 packageUid=10346 definingUid=10346 user=0
+          process=com.designsbyfa.casitadex.refreshqa reason=16 (PACKAGE UPDATED) subreason=0 (UNKNOWN) status=0
+          importance=100 pss=0.00 rss=260MB description=stop com.designsbyfa.casitadex.refreshqa due to installPackageLI state=empty trace=null
+        ApplicationExitInfo #2:
+          timestamp=2026-11-15 15:57:17.909 pid=6079 realUid=10346 packageUid=10346 definingUid=10346 user=0
+          process=com.designsbyfa.casitadex.refreshqa reason=10 (USER REQUESTED) subreason=21 (FORCE STOP) status=0
+          importance=100 pss=0.00 rss=221MB description=stop com.designsbyfa.casitadex.refreshqa due to from pid 12415 state=empty trace=null
+        ApplicationExitInfo #3:
+          timestamp=2026-11-15 15:48:43.589 pid=1113 realUid=10346 packageUid=10346 definingUid=10346 user=0
+          process=com.designsbyfa.casitadex.refreshqa reason=16 (PACKAGE UPDATED) subreason=0 (UNKNOWN) status=0
+          importance=100 pss=0.00 rss=311MB description=stop com.designsbyfa.casitadex.refreshqa due to installPackageLI state=empty trace=null
+        ApplicationExitInfo #4:
+          timestamp=2026-11-15 15:16:48.261 pid=25704 realUid=10346 packageUid=10346 definingUid=10346 user=0
+          process=com.designsbyfa.casitadex.refreshqa reason=8 (PERMISSION CHANGE) subreason=0 (UNKNOWN) status=0
+          importance=100 pss=0.00 rss=209MB description=permissions revoked state=empty trace=null
+        ApplicationExitInfo #5:
+          timestamp=2026-11-15 15:03:18.243 pid=17445 realUid=10346 packageUid=10346 definingUid=10346 user=0
+          process=com.designsbyfa.casitadex.refreshqa reason=10 (USER REQUESTED) subreason=24 (KILL BACKGROUND) status=0
+          importance=400 pss=0.00 rss=299MB description=kill background state=empty trace=null
+        ApplicationExitInfo #6:
+          timestamp=2026-11-15 14:44:01.050 pid=16142 realUid=10346 packageUid=10346 definingUid=10346 user=0
+          process=com.designsbyfa.casitadex.refreshqa reason=10 (USER REQUESTED) subreason=21 (FORCE STOP) status=0
+          importance=100 pss=0.00 rss=227MB description=stop com.designsbyfa.casitadex.refreshqa due to from pid 17416 state=empty trace=null
+        ApplicationExitInfo #7:
+          timestamp=2026-11-15 14:39:47.403 pid=13594 realUid=10346 packageUid=10346 definingUid=10346 user=0
+          process=com.designsbyfa.casitadex.refreshqa reason=10 (USER REQUESTED) subreason=21 (FORCE STOP) status=0
+          importance=100 pss=0.00 rss=299MB description=stop com.designsbyfa.casitadex.refreshqa due to from pid 16106 state=empty trace=null
+        ApplicationExitInfo #8:
+          timestamp=2026-11-15 14:34:18.862 pid=10548 realUid=10346 packageUid=10346 definingUid=10346 user=0
+          process=com.designsbyfa.casitadex.refreshqa reason=10 (USER REQUESTED) subreason=21 (FORCE STOP) status=0
+          importance=100 pss=0.00 rss=210MB description=stop com.designsbyfa.casitadex.refreshqa due to from pid 13564 state=empty trace=null
+        ApplicationExitInfo #9:
+          timestamp=2026-11-15 14:28:05.156 pid=9184 realUid=10346 packageUid=10346 definingUid=10346 user=0
+          process=com.designsbyfa.casitadex.refreshqa reason=10 (USER REQUESTED) subreason=21 (FORCE STOP) status=0
+          importance=100 pss=0.00 rss=219MB description=stop com.designsbyfa.casitadex.refreshqa due to from pid 10514 state=empty trace=null
+        ApplicationExitInfo #10:
+          timestamp=2026-11-15 14:27:03.540 pid=7851 realUid=10346 packageUid=10346 definingUid=10346 user=0
+          process=com.designsbyfa.casitadex.refreshqa reason=10 (USER REQUESTED) subreason=21 (FORCE STOP) status=0
+          importance=100 pss=0.00 rss=256MB description=stop com.designsbyfa.casitadex.refreshqa due to from pid 9156 state=empty trace=null
+        ApplicationExitInfo #11:
+          timestamp=2026-11-15 14:24:57.889 pid=6435 realUid=10346 packageUid=10346 definingUid=10346 user=0
+          process=com.designsbyfa.casitadex.refreshqa reason=10 (USER REQUESTED) subreason=21 (FORCE STOP) status=0
+          importance=100 pss=0.00 rss=254MB description=stop com.designsbyfa.casitadex.refreshqa due to from pid 7815 state=empty trace=null
+        ApplicationExitInfo #12:
+          timestamp=2026-11-15 14:23:07.977 pid=4503 realUid=10346 packageUid=10346 definingUid=10346 user=0
+          process=com.designsbyfa.casitadex.refreshqa reason=10 (USER REQUESTED) subreason=21 (FORCE STOP) status=0
+          importance=100 pss=0.00 rss=265MB description=stop com.designsbyfa.casitadex.refreshqa due to from pid 6374 state=empty trace=null
+        ApplicationExitInfo #13:
+          timestamp=2026-11-15 14:19:59.207 pid=3024 realUid=10346 packageUid=10346 definingUid=10346 user=0
+          process=com.designsbyfa.casitadex.refreshqa reason=10 (USER REQUESTED) subreason=21 (FORCE STOP) status=0
+          importance=100 pss=0.00 rss=299MB description=stop com.designsbyfa.casitadex.refreshqa due to from pid 4462 state=empty trace=null
+        ApplicationExitInfo #14:
+          timestamp=2026-11-15 14:17:15.451 pid=32528 realUid=10346 packageUid=10346 definingUid=10346 user=0
+          process=com.designsbyfa.casitadex.refreshqa reason=10 (USER REQUESTED) subreason=21 (FORCE STOP) status=0
+          importance=100 pss=0.00 rss=243MB description=stop com.designsbyfa.casitadex.refreshqa due to from pid 2941 state=empty trace=null
+        ApplicationExitInfo #15:
+          timestamp=2026-11-15 14:15:20.345 pid=31684 realUid=10346 packageUid=10346 definingUid=10346 user=0
+          process=com.designsbyfa.casitadex.refreshqa reason=10 (USER REQUESTED) subreason=21 (FORCE STOP) status=0
+          importance=100 pss=0.00 rss=217MB description=stop com.designsbyfa.casitadex.refreshqa due to from pid 32507 state=empty trace=null

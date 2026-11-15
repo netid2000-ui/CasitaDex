@@ -1,0 +1,34 @@
+[
+  {
+    "theme": "Light",
+    "label": "View photo 1 of [SAMPLE] Extension cord full screen",
+    "before": [
+      51,
+      1228,
+      520,
+      1731
+    ],
+    "after": [
+      51,
+      1228,
+      520,
+      1731
+    ]
+  },
+  {
+    "theme": "Dark",
+    "label": "View photo 1 of [SAMPLE] Extension cord full screen",
+    "before": [
+      51,
+      1228,
+      520,
+      1731
+    ],
+    "after": [
+      51,
+      1228,
+      520,
+      1731
+    ]
+  }
+]

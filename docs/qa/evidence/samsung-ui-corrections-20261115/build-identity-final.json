@@ -1,0 +1,15 @@
+{
+  "package": "com.designsbyfa.casitadex.refreshqa",
+  "apkSha256": "353914f84b88f0058ce95384349badd9e2c8b1e5c894398150ae4fa380f130fa",
+  "sourceSha256": {
+    "src/ui.tsx": "b7d85a8a99b28e0c3f766a4651d2660b64da6a129661a7d28a53d21340d93cd3",
+    "src/app/photos.tsx": "2d0c2efaea651e6a6f5126fb449a9939ceac4567a18f204546314640ea728d56",
+    "src/eng-screens.tsx": "a7919ba16604247b342c91125545f79f66d87232ec029961ed3e9688e3fdd5e1",
+    "src/figma-first/FigmaFind.tsx": "d906dfb4c4d4946bd37b3765dbd46ce438e266a89ce4c51af01cb5e4fdb7d390",
+    "src/figma-first/FigmaPhotos.tsx": "5e37ea1097e3cfe32883f2c350104b9bc28e13e08a907befeba2481a286cb852",
+    "src/figma-first/FigmaReminders.tsx": "4f6f3b2166893234b1a8ea6a90922ed5ac862a1cfab86e93db1d23b84602fee1"
+  },
+  "finalDeltaFromFirstPass": "FigmaReminders equal row height and centered multiline tab labels only",
+  "buildHost": "FA-MAC-DEV-01",
+  "samsungInstalledSha256": "353914f84b88f0058ce95384349badd9e2c8b1e5c894398150ae4fa380f130fa"
+}

@@ -1,0 +1,15 @@
+{
+  "package": "com.designsbyfa.casitadex.refreshqa",
+  "apkSha256": "5d08164cc07f99b656a95bdc830389c7ab483750c8b25710ab202998c88a76ea",
+  "bytes": 119075027,
+  "sourceMatchesQACopy": [
+    "src/ui.tsx",
+    "src/app/photos.tsx",
+    "src/eng-screens.tsx",
+    "src/figma-first/FigmaFind.tsx",
+    "src/figma-first/FigmaPhotos.tsx",
+    "src/figma-first/FigmaReminders.tsx"
+  ],
+  "buildHost": "FA-MAC-DEV-01",
+  "samsungInstalledSha256": "5d08164cc07f99b656a95bdc830389c7ab483750c8b25710ab202998c88a76ea"
+}

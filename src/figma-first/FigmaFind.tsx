@@ -23,11 +23,11 @@ export function FindSearchControls({query,onQueryChange,photosOnly=false,onPhoto
  const choices=(picker==="space"?data?.spaces:data?.categories)?.slice().sort((a,b)=>a.name.localeCompare(b.name))??[];
  return <View style={{backgroundColor:colors.paper,paddingHorizontal:18,paddingBottom:16,gap:14,borderBottomWidth:1,borderBottomColor:colors.separator}}>
  <TextInput testID="find-query" multiline={iosTextView&&Platform.OS==="ios"} submitBehavior={iosTextView&&Platform.OS==="ios"?"blurAndSubmit":undefined} accessibilityLabel="Search memories" accessibilityHint="Search titles, descriptions and details" value={query} onChangeText={onQueryChange} placeholder="⌕  Search memories…" placeholderTextColor={colors.onPrimary} returnKeyType="search" onSubmitEditing={()=>Keyboard.dismiss()} style={{fontFamily:editorialFonts.body,fontSize:15*scale,borderRadius:8,padding:12,minHeight:48,backgroundColor:colors.primary,color:colors.onPrimary}}/>
- <ScrollView horizontal contentContainerStyle={{gap:8}} showsHorizontalScrollIndicator>
+ <View style={{flexDirection:"row",flexWrap:"wrap",gap:8}}>
  {onSpaceChange?<Button compact label={(data?.spaces.find(s=>s.id===spaceId)?.name??"Space")+"  ▾"} selected={!!spaceId} onPress={()=>setPicker("space")}/>:null}
  {onCategoryChange?<Button compact label={(data?.categories.find(c=>c.id===categoryId)?.name??"Category")+"  ▾"} selected={!!categoryId} onPress={()=>setPicker("category")}/>:null}
  {onPhotosOnlyChange?<Button compact label="With photos only" selected={photosOnly} onPress={()=>onPhotosOnlyChange(!photosOnly)}/>:null}
- </ScrollView>
+ </View>
  <Modal visible={picker!==null} transparent animationType="fade" onRequestClose={()=>setPicker(null)}><View style={{flex:1,backgroundColor:"#0008",justifyContent:"center",padding:24}}><View accessibilityViewIsModal style={{backgroundColor:colors.paper,padding:18,borderRadius:8,gap:12}}><Text accessibilityRole="header" style={{fontFamily:editorialFonts.heading,fontSize:28,color:colors.ink}}>{picker==="space"?"Space":"Category"}</Text><ScrollView style={{maxHeight:240}} keyboardShouldPersistTaps="handled"><Button label="All" selected={picker==="space"?!spaceId:!categoryId} onPress={()=>{(picker==="space"?onSpaceChange:onCategoryChange)?.("");setPicker(null);}}/>{choices.map(c=><Button key={c.id} label={c.name} selected={c.id===(picker==="space"?spaceId:categoryId)} onPress={()=>{(picker==="space"?onSpaceChange:onCategoryChange)?.(c.id);setPicker(null);}}/>)}</ScrollView><Button label="Done" onPress={()=>setPicker(null)}/></View></View></Modal>
  </View>;
 }

@@ -1,0 +1,11 @@
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Light appearance
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Reminders
+Light 1.0 aligned tabs PASS
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Reminders
+Light 2.0 aligned tabs PASS
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped System appearance
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
