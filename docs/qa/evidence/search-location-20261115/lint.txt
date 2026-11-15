@@ -1,0 +1,11 @@
+
+> casitadex@0.1.0 lint
+> eslint src --max-warnings=0
+
+
+/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/app/answers.tsx
+  48:681  warning  React Hook useCallback has an unnecessary dependency: 'params.fresh'. Either exclude it or remove the dependency array  react-hooks/exhaustive-deps
+
+✖ 1 problem (0 errors, 1 warning)
+
+ESLint found too many warnings (maximum: 0).

@@ -1,3 +1,4 @@
+import {filterFindResults,locationAfterSpaceChange} from '../find-filters';
 import {plusFeatureEnforcementEnabled} from '../plus-entitlement-runtime';
 import {getEngStore} from '../eng-runtime';
 import React,{useCallback,useRef,useState} from 'react';
@@ -12,7 +13,7 @@ import type {EngSnapshot} from '../eng-types';
 import {readFindContext,saveFindContext} from '../find-context';
 function NativeFind(){
  const fg=useFigmaTheme();
- const params=useLocalSearchParams<{lifecycle?:string}>();
+ const params=useLocalSearchParams<{lifecycle?:string;fresh?:string}>();
  const lifecycle=findLifecycle(params.lifecycle),context=readFindContext(lifecycle);
  const preservedFindQuery=context.query,preservedFindPage=context.page,preservedFindPageSize=context.pageSize;
  const scrollRef=useRef<ScrollView>(null);
@@ -29,7 +30,7 @@ function NativeFind(){
   saveFindContext(lifecycle,{y:0,page:value});setPage(value);
   // Defer scrolling until React has committed the new page of results.
   requestAnimationFrame(()=>requestAnimationFrame(()=>{
-   if(goingForward)scrollRef.current?.scrollTo({y:listTop.current+resultsTop.current,animated:false});
+   if(goingForward)scrollRef.current?.scrollTo({y:resultsTop.current,animated:false});
    else scrollRef.current?.scrollToEnd({animated:false});
   }));
  };
@@ -37,15 +38,17 @@ function NativeFind(){
  const [photosOnly,setPhotosOnly]=useState(context.photosOnly);
  const togglePhotos=(value:boolean)=>{saveFindContext(lifecycle,{photosOnly:value,y:0,page:0});setPhotosOnly(value);setPage(0);};
  const [spaceId,setSpaceId]=useState(context.spaceId??""),[categoryId,setCategoryId]=useState(context.categoryId??"");
- const changeSpace=(id:string)=>{setSpaceId(id);saveFindContext(lifecycle,{spaceId:id,y:0});};
- const changeCategory=(id:string)=>{setCategoryId(id);saveFindContext(lifecycle,{categoryId:id,y:0});};
- const results=snapshot?findResults(snapshot.data,query,localDay(),lifecycle,photosOnly).filter(m=>(!spaceId||m.spaceId===spaceId)&&(!categoryId||m.categoryIds.includes(categoryId))):[];
+ const [locationId,setLocationId]=useState(context.locationId??"");
+ const changeLocation=(id:string)=>{setLocationId(id);setPage(0);saveFindContext(lifecycle,{locationId:id,y:0,page:0});};
+ const changeSpace=(id:string)=>{const nextLocation=locationAfterSpaceChange(snapshot?.data,locationId,id);setSpaceId(id);setLocationId(nextLocation);setPage(0);saveFindContext(lifecycle,{spaceId:id,locationId:nextLocation,y:0,page:0});};
+ const changeCategory=(id:string)=>{setCategoryId(id);setPage(0);saveFindContext(lifecycle,{categoryId:id,y:0,page:0});};
+ const results=snapshot?filterFindResults(findResults(snapshot.data,query,localDay(),lifecycle,photosOnly),snapshot.data,{spaceId,categoryId,locationId}):[];
  const [error,setError]=useState('');
  const restorePosition=useCallback(()=>{const preservedFindScrollY=readFindContext(lifecycle).y;scrollRef.current?.scrollTo({y:preservedFindScrollY,animated:false});},[lifecycle]);
- useFocusEffect(useCallback(()=>{let active=true;restoreFindScroll.current=true;const context=readFindContext(lifecycle);setError('');setQuery(context.query);setPage(context.page);setPageSize(context.pageSize);setPhotosOnly(context.photosOnly);setSpaceId(context.spaceId??"");setCategoryId(context.categoryId??"");getEngStore().then(s=>s.load()).then(s=>{if(active){setSnapshot(s);restoreFindScroll.current=true;requestAnimationFrame(()=>requestAnimationFrame(()=>{restorePosition();restoreFindScroll.current=false;}));}}).catch(()=>{if(active)setError('Unable to load saved memories. Your data was not changed.')});return()=>{active=false}},[lifecycle,restorePosition,setError,setQuery,setPage,setPageSize,setPhotosOnly,setSpaceId,setCategoryId,setSnapshot]));
+ useFocusEffect(useCallback(()=>{void params.fresh;let active=true;restoreFindScroll.current=true;const context=readFindContext(lifecycle);setError('');setQuery(context.query);setPage(context.page);setPageSize(context.pageSize);setPhotosOnly(context.photosOnly);setSpaceId(context.spaceId??"");setCategoryId(context.categoryId??"");setLocationId(context.locationId??"");getEngStore().then(s=>s.load()).then(s=>{if(active){setSnapshot(s);restoreFindScroll.current=true;requestAnimationFrame(()=>requestAnimationFrame(()=>{restorePosition();restoreFindScroll.current=false;}));}}).catch(()=>{if(active)setError('Unable to load saved memories. Your data was not changed.')});return()=>{active=false}},[lifecycle,params.fresh,restorePosition,setError,setQuery,setPage,setPageSize,setPhotosOnly,setSpaceId,setCategoryId,setSnapshot]));
  return <ScrollView stickyHeaderIndices={[0]} keyboardDismissMode="on-drag" ref={scrollRef} onContentSizeChange={()=>{if(restoreFindScroll.current){restorePosition();restoreFindScroll.current=false;}}} onScroll={event=>{if(!restoreFindScroll.current)saveFindContext(lifecycle,{y:event.nativeEvent.contentOffset.y});}} scrollEventThrottle={100} keyboardShouldPersistTaps="handled" contentContainerStyle={{flexGrow:1,backgroundColor:'transparent'}}>
  <View style={{backgroundColor:fg.page}}>{lifecycle!=="active"?<View style={{padding:12,gap:8}}><Text accessibilityRole="header" style={{color:fg.headingInk,fontSize:19,fontWeight:"700"}}>{lifecycle==="archived"?"Archived memories":"Recently Deleted memories"}</Text><Pressable accessibilityRole="button" accessibilityLabel="Return to active memories" onPress={()=>router.replace({pathname:"/answers",params:{lifecycle:"active"}})} style={{padding:12,minHeight:48}}><Text style={{color:fg.headingInk}}>Return to active memories</Text></Pressable></View>:null}
- <FindSearchControls spaceId={spaceId} categoryId={categoryId} onSpaceChange={changeSpace} onCategoryChange={changeCategory} iosTextView={plusFeatureEnforcementEnabled} photosOnly={photosOnly} onPhotosOnlyChange={togglePhotos} query={query} onQueryChange={updateQuery} results={results} data={snapshot?.data}/></View>
+ <FindSearchControls locationId={locationId} onLocationChange={changeLocation} spaceId={spaceId} categoryId={categoryId} onSpaceChange={changeSpace} onCategoryChange={changeCategory} iosTextView={plusFeatureEnforcementEnabled} photosOnly={photosOnly} onPhotosOnlyChange={togglePhotos} query={query} onQueryChange={updateQuery} results={results} data={snapshot?.data}/></View>
  {error?<Text accessibilityLiveRegion='polite'>{error}</Text>:null}
  <View onLayout={event=>{listTop.current=event.nativeEvent.layout.y;}}><FigmaFind hideSearchControls onResultsLayout={y=>{resultsTop.current=y;}} query={query} onQueryChange={updateQuery} results={results} data={snapshot?.data} onOpen={id=>router.push({pathname:'/card',params:{id}})} page={page} pageSize={pageSize} onPageChange={changePage} onPageSizeChange={changePageSize}/></View>
  </ScrollView>;

@@ -5,9 +5,9 @@ const read=p=>readFileSync(new URL(p,import.meta.url),'utf8');
 test('Home presents one prominent Find action without an orphaned duplicate',()=>{
  const home=read('../src/app/index.tsx');
  const figma=read('../src/figma-first/FigmaHome.tsx');
- assert.match(figma,/accessibilityLabel="Find a memory"/);
+ assert.match(figma,/label="Search Memories"/);
  assert.doesNotMatch(home,/>Find a memory<\/Text>/);
- assert.match(home,/onFind=\{\(\)=>router.push\("\/answers"\)\}/);
+ assert.match(home,/onFind=.*fresh:beginFreshFind\(\)/);
 });
 test('Home never classifies loading snapshot as a draft',()=>{
  const home=read('../src/app/index.tsx');

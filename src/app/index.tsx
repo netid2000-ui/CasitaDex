@@ -1,3 +1,4 @@
+import {beginFreshFind} from "../find-context";
 import Constants from "expo-constants";
 import {qaIllustrationBytes} from '../qa-illustration-bytes';
 import React,{useCallback,useState} from 'react';
@@ -34,7 +35,7 @@ function FigmaNativeHome(){
  return <ScrollView contentContainerStyle={{flexGrow:1,backgroundColor:'transparent'}}>
   {error?<Text accessibilityLiveRegion='polite' style={{padding:16,color:'#7C2929'}}>{error}</Text>:null}
 
-  <FigmaHome draftPending={!!snapshot?.draft} onAction={action} onSettings={()=>router.push("/more")} onFind={()=>router.push("/answers")}/>
+  <FigmaHome draftPending={!!snapshot?.draft} onAction={action} onSettings={()=>router.push("/more")} onFind={()=>router.push({pathname:"/answers",params:{lifecycle:"active",fresh:beginFreshFind()}})}/>
 
  </ScrollView>;
 }

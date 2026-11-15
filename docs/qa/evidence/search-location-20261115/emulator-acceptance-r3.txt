@@ -1,0 +1,81 @@
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Light appearance
+Tapped Home
+Tapped Search Memories
+PASS fresh-home
+Tapped Search memories
+Verified input Search memories
+PASS query-entered
+Tapped Open photo memory [SAMPLE] Coffee filters
+PASS details-return-query
+Tapped Home
+Tapped Find
+PASS fresh-tab
+Tapped Search memories
+Verified input Search memories
+Tapped Find
+PASS fresh-current-tab
+Tapped Location  ▾
+Tapped Activity closet craft box · Sample Office
+PASS location-selected
+Tapped Activity closet craft box · Sample Office  ▾
+Tapped All
+PASS location-cleared
+Tapped Space  ▾
+Tapped Sample Office
+Tapped Location  ▾
+Tapped Activity closet craft box
+Tapped Category  ▾
+Tapped Cleaning
+Tapped With photos only
+Tapped Search memories
+Verified input Search memories
+PASS combined-filters
+Tapped Clear search
+PASS clear-query-keeps-filters
+Tapped Home
+Tapped Find
+PASS fresh-clears-filters
+Tapped Next
+PASS next-page
+Tapped Previous
+PASS previous-page
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Light appearance
+Tapped Home
+PASS Light-1.0-home
+Tapped Search Memories
+PASS Light-1.0-find
+Tapped Location  ▾
+PASS Light-1.0-location-options
+Tapped All
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Dark appearance
+Tapped Home
+PASS Dark-1.0-home
+Tapped Search Memories
+PASS Dark-1.0-find
+Tapped Location  ▾
+PASS Dark-1.0-location-options
+Tapped All
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Light appearance
+Tapped Home
+PASS Light-2.0-home
+Tapped Search Memories
+PASS Light-2.0-find
+Tapped Location  ▾
+PASS Light-2.0-location-options
+Tapped All
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Dark appearance
+Tapped Home
+PASS Dark-2.0-home
+Tapped Search Memories
+PASS Dark-2.0-find
+Tapped Location  ▾
+PASS Dark-2.0-location-options
+Tapped All
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped System appearance
+Tapped Home

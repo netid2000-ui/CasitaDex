@@ -1,0 +1,37 @@
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Light appearance
+Tapped Home
+Tapped Search Memories
+PASS fresh-home
+Tapped Search memories
+Verified input Search memories
+PASS query-entered
+Tapped Open photo memory [SAMPLE] Coffee filters
+PASS details-return-query
+Tapped Home
+Tapped Find
+PASS fresh-tab
+Tapped Search memories
+Verified input Search memories
+Tapped Find
+PASS fresh-current-tab
+Tapped Location  ▾
+Tapped Activity closet craft box · Sample Office
+PASS location-selected
+Tapped Activity closet craft box · Sample Office  ▾
+Tapped All
+PASS location-cleared
+Tapped Space  ▾
+Tapped My Home
+Tapped Location  ▾
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped System appearance
+Tapped Home
+Traceback (most recent call last):
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/scripts/search-location-20261115/acceptance.py", line 45, in <module>
+    space=pick('Space');location=pick('Location');category=pick('Category');tap('With photos only');fill('Search memories','filter');geometry();checkmark('combined-filters')
+                                 ~~~~^^^^^^^^^^^^
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/scripts/search-location-20261115/acceptance.py", line 34, in pick
+    assert options,(kind,labels())
+           ^^^^^^^
+AssertionError: ('Location', [('Location', ''), ('', 'All'), ('✓', ''), ('All', ''), ('', 'Done'), ('Done', '')])

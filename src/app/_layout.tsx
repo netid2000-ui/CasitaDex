@@ -1,3 +1,4 @@
+import {beginFreshFind} from "../find-context";
 import React, {useEffect, useState} from "react";
 import { StatusBar } from "expo-status-bar";
 import { Image, Pressable, Text, View, useWindowDimensions } from "react-native";
@@ -91,7 +92,7 @@ function Shell() {
                 accessibilityLabel={label}
                 accessibilityState={{ selected: active }}
                 aria-selected={active}
-                onPress={() => guardedNavigate(() => router.navigate(route))}
+                onPress={() => guardedNavigate(() => route === "/answers" ? router.navigate({pathname:"/answers",params:{lifecycle:"active",fresh:beginFreshFind()}}) : router.navigate(route))}
                 style={({ pressed }) => [
                   s.navTab,
                   (fontScale >= 1.35 || inAppLarge) && { minHeight: 70 },

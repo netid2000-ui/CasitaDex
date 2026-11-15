@@ -1,0 +1,41 @@
+{
+  "fileKey": "39uzN0SZX8nlmcGDcHdQhr",
+  "home": [
+    "429:2",
+    "950:2"
+  ],
+  "freshFind": [
+    "436:2",
+    "975:2"
+  ],
+  "activeQueryAndClear": [
+    "1563:11",
+    "1563:74"
+  ],
+  "locationPicker": [
+    "1560:65",
+    "1560:135"
+  ],
+  "selectedLocation": [
+    "1560:10",
+    "1560:80"
+  ],
+  "navigation": [
+    "Home",
+    "Photos",
+    "Reminders",
+    "Find"
+  ],
+  "verified": [
+    "Editable layers",
+    "Cormorant Garamond and Inter preserved",
+    "Primary light/dark screenshots reviewed",
+    "Location picker All/selection links",
+    "Active query Clear search links",
+    "Context return variables point to active or selected screen"
+  ],
+  "remaining": [
+    "Older standalone Space/Category/photo-combination prototype variants retain their prior three-filter presentation. They were not broadly redesigned in this scoped correction.",
+    "Native pixel-level visual review remains separate; native screenshots and geometry assertions are captured."
+  ]
+}

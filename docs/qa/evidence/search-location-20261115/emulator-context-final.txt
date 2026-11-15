@@ -1,0 +1,12 @@
+Tapped Search memories
+Verified input Search memories
+Tapped With photos only
+Tapped Open photo memory [SAMPLE] Coffee filters
+Tapped ‹ Results
+Tapped Clear search
+Tapped With photos only
+Tapped Next
+Tapped Open regular memory [SAMPLE] Camping lantern
+Tapped ‹ Results
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+PASS query + photo filter and page two return context

@@ -1,0 +1,4 @@
+Exported 1 attachment for: SearchLocationTests/testPagingReturn():
+File: 3D96908D-0D1D-46A4-B189-1C883010B782.png, suggested name: "ios-page-two-restored_0_63A0F7D1-C73E-4F74-87A9-FD607B19593C.png"
+
+Generated manifest file with attachment details: /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/docs/qa/evidence/search-location-20261115/ios-final-attachments/manifest.json

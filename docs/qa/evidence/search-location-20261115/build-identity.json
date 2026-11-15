@@ -1,0 +1,18 @@
+{
+  "buildHost": "FA-MAC-DEV-01",
+  "baseline": "75398f0",
+  "androidPackage": "com.designsbyfa.casitadex.refreshqa",
+  "apkSha256": "7297b2138bc0ed09cbae5e37f1d0ed56fff8cf227cd95aa6770d16fd7790a15e",
+  "sourceSha256": {
+    "src/app/_layout.tsx": "e49b07b93125af3c651900c6efa68dc2670a20bd8cb5c938f463a09046cc2a77",
+    "src/app/index.tsx": "d69ea78e9fa2d607044c9420829c8d032f10cc82847b20530a8b6f473e83e147",
+    "src/app/answers.tsx": "3c655ebb29a0988f16858289c255d944b54bfd745c878bcf75c0d4da8cc26c5f",
+    "src/figma-first/FigmaHome.tsx": "c090e192c66bebd9256e934d2b15af1e85b35f5fc68fb1456b6831b5eb71d54d",
+    "src/figma-first/FigmaFind.tsx": "bc78cec88cf3b7d291c06eb031c228e2dc078bf8c6d294eb7d95962bbc8c61dd",
+    "src/find-context.ts": "08870d476eb8effc4fe3b1660554d2ecfc0b195dfbc557afb143f9fdd6747167",
+    "src/find-filters.ts": "de9b2e0450ae6753bf5f9058dfe5cadc89ddb682c1d7468fa0943f5c1ab5bebb"
+  },
+  "iosPackage": "com.designsbyfa.casitadex.plusstoreqa",
+  "iosSimulator": "81FC3CCE-ACEB-4957-BE61-C9C653A4CE56",
+  "iosPhysicalAcceptance": "pending owner"
+}

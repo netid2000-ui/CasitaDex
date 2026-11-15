@@ -1,0 +1,13 @@
+Exported 10 attachments for: SearchLocationTests/testSearchContextAndLocation():
+File: 0E1F2504-6384-4EA5-81C8-7A76DBD1A7BE.png, suggested name: "ios-fresh-find_0_85A31280-3865-4177-BBDC-83FEC912E690.png"
+File: 8FE1A526-7E5A-4466-AD58-D45D90D12724.png, suggested name: "ios-photo-filter_0_5273E65C-04A5-4349-85E5-1F689CF3DBC1.png"
+File: 002D2DE1-C62E-461D-B34A-BE7B09D76A12.png, suggested name: "ios-location-options_0_0D9423C9-899B-4489-B081-C8241F79F9CB.png"
+File: 1095F9BC-DD54-44EB-972F-1D9CE36881BB.png, suggested name: "ios-return-query_0_2A3B79E4-C9FC-43EB-A949-6F097569C378.png"
+File: DE6B688D-A1C9-41B5-8D77-6EED42727A11.png, suggested name: "ios-search-entered_0_0953250E-2357-46E6-AB04-DCCCBBE6F8DC.png"
+File: 6FAD522F-055F-4CBA-B594-7770DA22CBE6.png, suggested name: "ios-fresh-find_0_6652080D-3D12-45D6-822E-60819B62CD30.png"
+File: 9B604E54-F9D1-46F4-874D-969B005A88CA.png, suggested name: "ios-photo-filter_0_A758E6B1-5C6B-457E-A964-5A3AD64224DE.png"
+File: CEAFBBB8-D54F-4D37-9E91-A112E4ABEDFF.png, suggested name: "ios-location-options_0_97892896-75A4-423E-BBB4-83AD5DE794C8.png"
+File: 1A928FD5-716A-4A33-B80D-B0D7854ACA6D.png, suggested name: "ios-return-query_0_9635DCED-F542-4F2C-A180-C208358EE038.png"
+File: 16D371DE-DD97-4E30-B2E3-420EEDC4F4A7.png, suggested name: "ios-search-entered_0_C655A1BB-C8DB-4F14-A1AB-74A12F5C8993.png"
+
+Generated manifest file with attachment details: /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/docs/qa/evidence/search-location-20261115/ios-attachments/manifest.json

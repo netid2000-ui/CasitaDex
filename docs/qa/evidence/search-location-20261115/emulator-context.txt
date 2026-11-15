@@ -1,0 +1,19 @@
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Search memories
+Verified input Search memories
+Tapped With photos only
+Tapped Open photo memory [SAMPLE] Coffee filters
+Tapped ‹ Results
+Tapped Clear search
+Tapped With photos only
+Tapped Next
+Tapped Open regular memory [SAMPLE] Camping lantern
+Traceback (most recent call last):
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/scripts/search-location-20261115/extra-context.py", line 11, in <module>
+    result=before[0][0];tap(result);tap('‹ Results');assert any('Page 2 of' in (a or '') for a,b in labels());shot('page-two-return')
+                                    ~~~^^^^^^^^^^^^^
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/scripts/samsung-sweep-20261115/phone.py", line 39, in tap
+    n=node(label);x,y,a,b=bounds(n);run('shell','input','tap',str((x+a)//2),str((y+b)//2));time.sleep(.4);print('Tapped '+label,flush=True)
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/scripts/samsung-sweep-20261115/phone.py", line 37, in node
+    raise AssertionError('Missing '+label+' '+str(labels())[:4000])
+AssertionError: Missing ‹ Results [('', 'CasitaDex logo, go to Home'), ('CasitaDex', ''), ('Find', ''), ('Search memories…', 'Search memories'), ('', 'Space  ▾'), ('Space  ▾', ''), ('', 'Category  ▾'), ('Category  ▾', ''), ('', 'Location  ▾'), ('Location  ▾', ''), ('', 'With photos only'), ('With photos only', ''), ('', 'Open photo memory [SAMPLE] Appliance manuals'), ('', '[SAMPLE] Appliance manuals'), ('Office cabinet, manuals binder. This is a fictional example, not a verified household location.', ''), ('Sample Office · Documents', ''), ('', 'Open regular memory [SAMPLE] Warranty folder'), ('[SAMPLE] Warranty folder', ''), ('Warranty binder on office shelf. This is a fictional example, not a verified household location.', ''), ('›', ''), ('Sample Office · Documents', ''), ('', 'Open regular memory [SAMPLE] Vehicle maintenance log'), ('[SAMPLE] Vehicle maintenance log', ''), ('Vehicle file in office drawer. This is a fictional example, not a verified household location.', ''), ('›', ''), ('Sample Office · Documents', ''), ('', 'Open regular memory [SAMPLE] Home inventory checklist'), ('[SAMPLE] Home inventory checklist', ''), ('Blue inventory binder. This is a fictional example, not a verified household location.', ''), ('›', ''), ('Sample Office · Documents', ''), ('', 'Open regular memory [SAMPLE] Insurance contact template'), ('[SAMPLE] Insurance contact template', ''), ('Emergency binder, blank template. This is a fictional example, not a verified household location.', ''), ('›', ''), ('Sample Office · Documents', ''), ('', 'Open regular memory [SAMPLE] Moving supplies list'), ('[SAMPLE] Moving supplies list', ''), ('Household notebook. This is a fictional example, not a verified household location.', ''), ('›', ''), ('Sample Office · Documents', ''), ('', 'Open regular memory [SAMPLE] HVAC filter size note'), ('[SAMPLE] HVAC filter size note', ''), ('Check installed filter label before purchase. This is a fictional example, not a verified household location.', ''), ('›', ''), ('Sample Home · Maintenance', ''), ('', 'Previous'), ('Previous', ''), ('Page 2 of 10', ''), ('', 'Next'), ('Next', ''), ('', 'Primary navigation'), ('', 'Home'), ('Home', ''), ('', 'Photos'), ('Photos', ''), ('', 'Reminders'), ('Reminders', ''), ('', 'Find'), ('Find', '')]

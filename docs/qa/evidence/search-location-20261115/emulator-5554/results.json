@@ -1,0 +1,28 @@
+{
+  "checks": [
+    "fresh-home",
+    "query-entered",
+    "details-return-query",
+    "fresh-tab",
+    "fresh-current-tab",
+    "location-selected",
+    "location-cleared",
+    "combined-filters",
+    "clear-query-keeps-filters",
+    "fresh-clears-filters",
+    "next-page",
+    "previous-page",
+    "Light-1.0-home",
+    "Light-1.0-find",
+    "Light-1.0-location-options",
+    "Dark-1.0-home",
+    "Dark-1.0-find",
+    "Dark-1.0-location-options",
+    "Light-2.0-home",
+    "Light-2.0-find",
+    "Light-2.0-location-options",
+    "Dark-2.0-home",
+    "Dark-2.0-find",
+    "Dark-2.0-location-options"
+  ]
+}

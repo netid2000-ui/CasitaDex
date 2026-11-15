@@ -1,0 +1,21 @@
+{
+  "buildHost": "FA-MAC-DEV-01",
+  "baseline": "75398f0",
+  "androidPackage": "com.designsbyfa.casitadex.refreshqa",
+  "sourceSha256": {
+    "src/app/_layout.tsx": "e49b07b93125af3c651900c6efa68dc2670a20bd8cb5c938f463a09046cc2a77",
+    "src/app/index.tsx": "d69ea78e9fa2d607044c9420829c8d032f10cc82847b20530a8b6f473e83e147",
+    "src/app/answers.tsx": "06e4de5f5ffdf8b966ebb14a39caec30a79005b212653361360802b36ee95785",
+    "src/figma-first/FigmaHome.tsx": "c090e192c66bebd9256e934d2b15af1e85b35f5fc68fb1456b6831b5eb71d54d",
+    "src/figma-first/FigmaFind.tsx": "bc78cec88cf3b7d291c06eb031c228e2dc078bf8c6d294eb7d95962bbc8c61dd",
+    "src/find-context.ts": "08870d476eb8effc4fe3b1660554d2ecfc0b195dfbc557afb143f9fdd6747167",
+    "src/find-filters.ts": "de9b2e0450ae6753bf5f9058dfe5cadc89ddb682c1d7468fa0943f5c1ab5bebb"
+  },
+  "iosPackage": "com.designsbyfa.casitadex.plusstoreqa",
+  "iosSimulator": "81FC3CCE-ACEB-4957-BE61-C9C653A4CE56",
+  "iosPhysicalAcceptance": "pending owner",
+  "firstCandidateApkSha256": "7297b2138bc0ed09cbae5e37f1d0ed56fff8cf227cd95aa6770d16fd7790a15e",
+  "apkSha256": "c59681bd4d5aed47d4ff376506bec7610baea4a217843bf26a93bf6359a499ae",
+  "finalDelta": "Correct Next-page scroll offset to keep first result below sticky filters.",
+  "iosInstalledBundleSha256": "7893c87f4809adca4c6e98418df157296430c3fec77f3d75f7e68741a493c544"
+}
