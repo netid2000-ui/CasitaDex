@@ -1,0 +1,270 @@
+{
+  "applianceAndReminder": {
+    "createdVariableIds": [
+      "VariableID:1515:10",
+      "VariableID:1515:11",
+      "VariableID:1515:20"
+    ],
+    "mutatedNodeIds": [
+      "901:165",
+      "1440:379",
+      "931:28",
+      "901:175",
+      "1440:389",
+      "931:120",
+      "917:68",
+      "917:212",
+      "975:278",
+      "986:99",
+      "1355:212",
+      "1358:66",
+      "1358:4",
+      "1359:61"
+    ],
+    "entries": [
+      {
+        "node": "901:165",
+        "variable": "VariableID:1515:10",
+        "origin": "901:136",
+        "target": "917:2"
+      },
+      {
+        "node": "1440:379",
+        "variable": "VariableID:1515:10",
+        "origin": "1440:340",
+        "target": "917:2"
+      },
+      {
+        "node": "931:28",
+        "variable": "VariableID:1515:10",
+        "origin": "931:2",
+        "target": "917:2"
+      },
+      {
+        "node": "901:175",
+        "variable": "VariableID:1515:11",
+        "origin": "901:136",
+        "target": "917:146"
+      },
+      {
+        "node": "1440:389",
+        "variable": "VariableID:1515:11",
+        "origin": "1440:340",
+        "target": "917:146"
+      },
+      {
+        "node": "931:120",
+        "variable": "VariableID:1515:11",
+        "origin": "931:94",
+        "target": "917:146"
+      },
+      {
+        "node": "975:278",
+        "variable": "VariableID:1515:20",
+        "origin": "950:2",
+        "target": "1358:2"
+      },
+      {
+        "node": "986:99",
+        "variable": "VariableID:1515:20",
+        "origin": "950:2",
+        "target": "1359:59"
+      },
+      {
+        "node": "1355:212",
+        "variable": "VariableID:1515:20",
+        "origin": "975:119",
+        "target": "1358:2"
+      },
+      {
+        "node": "1358:66",
+        "variable": "VariableID:1515:20",
+        "origin": "975:119",
+        "target": "1359:59"
+      }
+    ],
+    "returns": [
+      {
+        "node": "917:68",
+        "variable": "VariableID:1515:10",
+        "origins": [
+          "901:136",
+          "1440:340",
+          "931:2"
+        ]
+      },
+      {
+        "node": "917:212",
+        "variable": "VariableID:1515:11",
+        "origins": [
+          "901:136",
+          "1440:340",
+          "931:94"
+        ]
+      },
+      {
+        "node": "1358:4",
+        "variable": "VariableID:1515:20",
+        "origins": [
+          "950:2",
+          "975:119"
+        ]
+      },
+      {
+        "node": "1359:61",
+        "variable": "VariableID:1515:20",
+        "origins": [
+          "950:2",
+          "975:119"
+        ]
+      }
+    ],
+    "scope": "Existing full-page appliance previews now return to exact storage or detail origin. Dark standalone filled reminder reuses existing dark examples and preserves expanded state and Home/Reminders cancel origin. Save unchanged."
+  },
+  "olderStorage": {
+    "createdVariableIds": [
+      "VariableID:1515:27"
+    ],
+    "mutatedNodeIds": [
+      "901:20",
+      "901:25",
+      "901:30",
+      "1244:27",
+      "1244:32",
+      "1244:37",
+      "1251:85",
+      "1251:90",
+      "1251:95",
+      "1355:4",
+      "1355:40",
+      "1355:92"
+    ],
+    "entries": [
+      {
+        "node": "901:20",
+        "origin": "901:2",
+        "variable": "VariableID:1515:27",
+        "target": "1351:109"
+      },
+      {
+        "node": "901:25",
+        "origin": "901:2",
+        "variable": "VariableID:1515:27",
+        "target": "1351:126"
+      },
+      {
+        "node": "901:30",
+        "origin": "901:2",
+        "variable": "VariableID:1515:27",
+        "target": "1351:143"
+      },
+      {
+        "node": "1244:27",
+        "origin": "1244:2",
+        "variable": "VariableID:1515:27",
+        "target": "1351:109"
+      },
+      {
+        "node": "1244:32",
+        "origin": "1244:2",
+        "variable": "VariableID:1515:27",
+        "target": "1351:126"
+      },
+      {
+        "node": "1244:37",
+        "origin": "1244:2",
+        "variable": "VariableID:1515:27",
+        "target": "1351:143"
+      },
+      {
+        "node": "1251:85",
+        "origin": "1251:56",
+        "variable": "VariableID:1515:27",
+        "target": "1351:109"
+      },
+      {
+        "node": "1251:90",
+        "origin": "1251:56",
+        "variable": "VariableID:1515:27",
+        "target": "1351:126"
+      },
+      {
+        "node": "1251:95",
+        "origin": "1251:56",
+        "variable": "VariableID:1515:27",
+        "target": "1351:143"
+      }
+    ],
+    "returns": [
+      {
+        "node": "1355:4",
+        "variable": "VariableID:1515:27",
+        "origins": [
+          "901:2",
+          "1244:2",
+          "1251:56"
+        ]
+      },
+      {
+        "node": "1355:40",
+        "variable": "VariableID:1515:27",
+        "origins": [
+          "901:2",
+          "1244:2",
+          "1251:56"
+        ]
+      },
+      {
+        "node": "1355:92",
+        "variable": "VariableID:1515:27",
+        "origins": [
+          "901:2",
+          "1244:2",
+          "1251:56"
+        ]
+      }
+    ]
+  },
+  "metadata": {
+    "mutatedNodeIds": [
+      "1473:167",
+      "1473:168",
+      "1473:175",
+      "1473:176"
+    ],
+    "reason": "Apply prior corrected appliance-photo metadata to the shared dark examples; no invented location."
+  },
+  "validation": {
+    "assertions": 38,
+    "failures": [],
+    "pass": true,
+    "remainingVisible": 4,
+    "hidden": 8,
+    "edges": [
+      {
+        "source": "1000:298",
+        "node": "1000:305",
+        "label": "Resume unfinished photo memory",
+        "destination": "719:144"
+      },
+      {
+        "source": "1000:298",
+        "node": "1000:329",
+        "label": "Hallway air filter",
+        "destination": "729:2"
+      },
+      {
+        "source": "1000:368",
+        "node": "1000:403",
+        "label": "Recently added",
+        "destination": "724:2"
+      },
+      {
+        "source": "1000:368",
+        "node": "1000:406",
+        "label": "Hallway air filter",
+        "destination": "729:116"
+      }
+    ]
+  }
+}
