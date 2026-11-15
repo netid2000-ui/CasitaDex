@@ -1,0 +1,3 @@
+ACTIVATE Edit Location result=false focus=nil
+ACTIVATE Edit Location result=false focus=nil
+ACTIVATE Edit Location windows=3 target=nil result=false focus=nil

@@ -1,0 +1,1021 @@
+import XCTest
+import StoreKitTest
+
+// Separate runner keeps the same StoreKit session alive while only the app restarts.
+// Supervisor compares native transaction IDs/PIDs in app diagnostics before releasing each stage.
+final class PlusRecoveryUITests: XCTestCase {
+ @MainActor func testInterruptedDeliveryAcrossAppRestart() async throws {
+  let url = try XCTUnwrap(Bundle(for: Self.self).url(forResource: "CasitaDexPlus", withExtension: "storekit"))
+  let session = try SKTestSession(contentsOf: url)
+  session.resetToDefaultState(); session.clearTransactions(); session.disableDialogs = true
+  defer { session.clearTransactions(); session.resetToDefaultState() }
+  let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+  let stage = directory.appendingPathComponent("plus-recovery-stage.json")
+  let advance = directory.appendingPathComponent("plus-recovery-advance.txt")
+  if FileManager.default.fileExists(atPath: advance.path) { try FileManager.default.removeItem(at: advance) }
+  func waitForSupervisor(_ expected: String) async throws {
+   for _ in 0..<600 {
+    if (try? String(contentsOf: advance, encoding: .utf8)) == expected { return }
+    try await Task.sleep(nanoseconds: 500_000_000)
+   }
+   XCTFail("Supervisor did not validate " + expected)
+   throw NSError(domain: "PlusRecoveryQA", code: 1)
+  }
+  func record(_ value: String, _ transaction: String) throws {
+   let data = try JSONSerialization.data(withJSONObject: ["stage": value, "transaction": transaction])
+   try data.write(to: stage, options: .atomic)
+  }
+  let app = XCUIApplication(bundleIdentifier: "com.designsbyfa.casitadex.plusstoreqa")
+  app.launchEnvironment = ["CASITADEX_DEFER_DELIVERY_QA": "1"]
+  app.launch()
+  _ = try await session.buyProduct(identifier: "local.casitadex.plus.qa")
+  let transaction = try XCTUnwrap(session.allTransactions().first)
+  let transactionID = String(transaction.identifier)
+  try record("seed", transactionID)
+  print("PLUS UI RECOVERY: seed transaction " + transactionID)
+  try await waitForSupervisor("seed-verified")
+  app.terminate()
+  XCTAssertEqual(app.state, .notRunning)
+  app.launchEnvironment = [:]
+  app.launch()
+  try record("restarted", transactionID)
+  try await waitForSupervisor("recovery-verified")
+  XCTAssertEqual(session.allTransactions().count, 1)
+  XCTAssertEqual(session.allTransactions().first?.identifier, transaction.identifier)
+  try record("complete", transactionID)
+  print("PLUS UI RECOVERY: same StoreKit session and transaction across app restart; supervisor validated native finishing")
+ }
+}
+
+extension PlusRecoveryUITests {
+ @MainActor func testPurchaseAndRestoreControls() async throws {
+  let url = try XCTUnwrap(Bundle(for: Self.self).url(forResource: "CasitaDexPlus", withExtension: "storekit"))
+  let session = try SKTestSession(contentsOf: url)
+  session.resetToDefaultState(); session.clearTransactions(); session.disableDialogs = true
+  defer { session.clearTransactions(); session.resetToDefaultState() }
+  let app = XCUIApplication(bundleIdentifier: "com.designsbyfa.casitadex.plusstoreqa")
+  app.launch()
+  app.open(URL(string: "casitadex-plusstoreqa://plus")!)
+  func expectLabel(_ id: String, _ contains: String) {
+   let element = app.staticTexts[id]
+   let predicate = NSPredicate(format: "exists == true AND label CONTAINS %@", contains)
+   XCTAssertTrue(XCTWaiter.wait(for: [XCTNSPredicateExpectation(predicate: predicate, object: element)], timeout: 15) == .completed, id + " expected " + contains + " got " + element.label)
+  }
+  let purchase=app.buttons["plus-purchase"], restore=app.buttons["plus-restore"]
+  XCTAssertTrue(purchase.waitForExistence(timeout: 15))
+  expectLabel("plus-ownership", "Free plan")
+  XCTAssertTrue(XCTWaiter.wait(for: [XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: purchase)], timeout: 15) == .completed)
+  XCTAssertTrue(purchase.label.contains("$19.99"))
+  restore.tap()
+  expectLabel("plus-status", "No Plus purchase")
+  purchase.tap()
+  expectLabel("plus-ownership", "Verified Plus access")
+  XCTAssertFalse(purchase.isEnabled)
+  let shot = XCTAttachment(screenshot: app.screenshot());shot.name="Plus owned controls";shot.lifetime = .keepAlways;add(shot)
+  restore.tap()
+  expectLabel("plus-status", "Plus is active")
+  let transaction=try XCTUnwrap(session.allTransactions().first)
+  try session.refundTransaction(identifier: transaction.identifier)
+  expectLabel("plus-ownership", "Free plan")
+  expectLabel("plus-status", "no longer active")
+  try await session.setSimulatedError(.generic(.userCancelled), forAPI: .purchase)
+  purchase.tap()
+  expectLabel("plus-status", "Unable to complete")
+  expectLabel("plus-ownership", "Free plan")
+  session.resetToDefaultState();session.disableDialogs=true;session.askToBuyEnabled=true
+  purchase.tap()
+  expectLabel("plus-status", "awaiting approval")
+  expectLabel("plus-ownership", "Free plan")
+  let pending=try XCTUnwrap(session.allTransactions().first(where: { $0.pendingAskToBuyConfirmation }))
+  try session.approveAskToBuyTransaction(identifier: pending.identifier)
+  expectLabel("plus-ownership", "Verified Plus access")
+  let finalShot=XCTAttachment(screenshot:app.screenshot());finalShot.name="Plus approved controls";finalShot.lifetime = .keepAlways;add(finalShot)
+  app.buttons["Back to Settings"].tap()
+  XCTAssertTrue(app.staticTexts["Settings"].waitForExistence(timeout: 10))
+  print("PLUS UI: free restore, purchase, owned restore, refund, error, pending approval, settings return PASS")
+ }
+}
+
+extension PlusRecoveryUITests {
+ @MainActor func testMemoryLimitNotice() async throws {
+  let url=try XCTUnwrap(Bundle(for:Self.self).url(forResource:"CasitaDexPlus",withExtension:"storekit"))
+  let session=try SKTestSession(contentsOf:url)
+  session.resetToDefaultState();session.clearTransactions();session.disableDialogs=true
+  defer { session.clearTransactions();session.resetToDefaultState() }
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa")
+  app.launch();app.open(URL(string:"casitadex-plusstoreqa://add")!)
+  let notice=app.staticTexts["memory-limit-notice"]
+  XCTAssertTrue(notice.waitForExistence(timeout:15),"Existing QA collection must exceed free limit")
+  let y=app.buttons["View CasitaDex Plus"].frame.minY
+  app.swipeUp()
+  XCTAssertEqual(app.buttons["View CasitaDex Plus"].frame.minY,y,accuracy:1)
+  let shot=XCTAttachment(screenshot:app.screenshot());shot.name="Free memory limit fixed actions";shot.lifetime = .keepAlways;add(shot)
+  app.buttons["View CasitaDex Plus"].tap()
+  XCTAssertTrue(app.buttons["plus-purchase"].waitForExistence(timeout:10))
+  _ = try await session.buyProduct(identifier:"local.casitadex.plus.qa")
+  let ownership=app.staticTexts["plus-ownership"]
+  XCTAssertTrue(XCTWaiter.wait(for:[XCTNSPredicateExpectation(predicate:NSPredicate(format:"label CONTAINS %@","Verified Plus access"),object:ownership)],timeout:15) == .completed)
+  app.open(URL(string:"casitadex-plusstoreqa://add")!)
+  XCTAssertTrue(app.buttons["Save"].waitForExistence(timeout:10))
+  XCTAssertFalse(notice.exists)
+  print("MEMORY LIMIT UI: existing collection preserved, fixed notice and upgrade route, verified Plus removes notice PASS")
+ }
+}
+
+extension PlusRecoveryUITests {
+ @MainActor func testNativeMemoryBoundary() async throws {
+  continueAfterFailure=false
+  let url=try XCTUnwrap(Bundle(for:Self.self).url(forResource:"CasitaDexPlus",withExtension:"storekit"))
+  let session=try SKTestSession(contentsOf:url)
+  session.resetToDefaultState();session.clearTransactions();session.disableDialogs=true
+  defer { session.clearTransactions();session.resetToDefaultState() }
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa")
+  app.launch();app.open(URL(string:"casitadex-plusstoreqa://add")!)
+  let save=app.buttons["Save"]
+  XCTAssertTrue(save.waitForExistence(timeout:15));XCTAssertTrue(save.isEnabled);save.tap()
+  XCTAssertTrue(app.buttons["Add Memory"].waitForExistence(timeout:15))
+  app.open(URL(string:"casitadex-plusstoreqa://add")!)
+  let notice=app.staticTexts["memory-limit-notice"]
+  XCTAssertTrue(notice.waitForExistence(timeout:10));XCTAssertTrue(notice.label.contains("20 of 20"))
+  let name=app.textViews["Memory name (Required)"]
+  XCTAssertTrue(name.waitForExistence(timeout:10));name.tap();for character in "Boundary twenty first memory" { name.typeText(String(character));try await Task.sleep(nanoseconds:150_000_000) }
+  XCTAssertEqual(name.value as? String,"Boundary twenty first memory");name.typeText("\n")
+  let description=app.textViews["Description"]
+  for _ in 0..<8 { if description.isHittable { break };app.scrollViews.firstMatch.swipeUp() }
+  XCTAssertTrue(description.isHittable);description.tap();for character in "Preserve this native draft" { description.typeText(String(character));try await Task.sleep(nanoseconds:150_000_000) }
+  XCTAssertEqual(description.value as? String,"Preserve this native draft")
+  save.tap()
+  let blocked=app.staticTexts.containing(NSPredicate(format:"label CONTAINS %@","Your free plan includes 20 saved memories")).firstMatch
+  XCTAssertTrue(blocked.waitForExistence(timeout:10))
+  let shot=XCTAttachment(screenshot:app.screenshot());shot.name="Twenty first native save blocked";shot.lifetime = .keepAlways;add(shot)
+  app.terminate();app.launch();app.open(URL(string:"casitadex-plusstoreqa://add")!)
+  XCTAssertTrue(name.waitForExistence(timeout:15));XCTAssertEqual(name.value as? String,"Boundary twenty first memory")
+  XCTAssertTrue(notice.label.contains("20 of 20"))
+  print("NATIVE BOUNDARY PASS: save twentieth, block twenty-first, draft survives cold restart")
+ }
+}
+
+extension PlusRecoveryUITests {
+ @MainActor func testRapidDraftInput() async throws {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa")
+  app.launch();app.open(URL(string:"casitadex-plusstoreqa://add")!)
+  let name=app.textViews["Memory name (Required)"]
+  XCTAssertTrue(name.waitForExistence(timeout:15))
+  let expected="Boundary twenty first memory rapid typing 20x25x1"
+  name.tap();name.typeText(expected)
+  print("RAPID_INPUT immediate title: " + (name.value as? String ?? "nil"))
+  let shot=XCTAttachment(screenshot:app.screenshot());shot.name="Rapid input immediate";shot.lifetime = .keepAlways;add(shot)
+  XCTAssertEqual(name.value as? String,expected,"Burst typing must arrive intact before persistence")
+  name.typeText("\n")
+  let description=app.textViews["Description"]
+  for _ in 0..<8 {if description.isHittable {break};app.scrollViews.firstMatch.swipeUp()}
+  XCTAssertTrue(description.isHittable)
+  let body="Garage shelf: filter size 20x25x1. Keep the replacement beside the water shutoff."
+  description.tap();description.typeText(body)
+  XCTAssertEqual(description.value as? String,body)
+  app.buttons["Cancel"].tap()
+  XCTAssertTrue(app.buttons["Add Memory"].waitForExistence(timeout:10))
+  app.terminate();app.launch();app.open(URL(string:"casitadex-plusstoreqa://add")!)
+  XCTAssertTrue(name.waitForExistence(timeout:15));XCTAssertEqual(name.value as? String,expected)
+  for _ in 0..<8 {if description.isHittable {break};app.scrollViews.firstMatch.swipeUp()}
+  XCTAssertEqual(description.value as? String,body)
+  app.buttons["Save"].tap()
+  XCTAssertTrue(app.buttons["Add Memory"].waitForExistence(timeout:10))
+  app.open(URL(string:"casitadex-plusstoreqa://add")!)
+  let notice=app.staticTexts["memory-limit-notice"]
+  XCTAssertTrue(notice.waitForExistence(timeout:10));XCTAssertTrue(notice.label.contains("20 of 20"))
+  print("RAPID_INPUT PASS: exact burst title and description, cold restart, then twentieth memory saved")
+ }
+}
+
+extension PlusRecoveryUITests {
+ @MainActor func scrollTo(_ field:XCUIElement,in app:XCUIApplication) {
+  for _ in 0..<18 {if field.isHittable {return};let scroll=app.scrollViews.firstMatch;scroll.coordinate(withNormalizedOffset:CGVector(dx:0.5,dy:0.7)).press(forDuration:0.05,thenDragTo:scroll.coordinate(withNormalizedOffset:CGVector(dx:0.5,dy:0.4)))}
+  XCTAssertTrue(field.isHittable)
+ }
+ @MainActor func testRapidFindInput() async throws {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa")
+  app.launch();app.open(URL(string:"casitadex-plusstoreqa://answers")!)
+  let field=app.descendants(matching:.any).matching(identifier:"find-query").firstMatch
+  XCTAssertTrue(field.waitForExistence(timeout:15));field.tap()
+  let text="Boundary twenty first memory rapid typing 20x25x1"
+  field.typeText(text);XCTAssertEqual(field.value as? String,text)
+  field.typeText("\n");XCTAssertEqual(field.value as? String,text)
+  XCTAssertTrue(app.staticTexts["1 memory found"].waitForExistence(timeout:10))
+  let result=app.buttons.matching(NSPredicate(format:"label BEGINSWITH %@","Open regular memory ")).firstMatch
+  scrollTo(result,in:app);result.tap()
+  XCTAssertTrue(app.buttons["Edit memory"].waitForExistence(timeout:10));app.buttons["‹ Results"].tap()
+  XCTAssertTrue(field.waitForExistence(timeout:10),app.debugDescription);XCTAssertEqual(field.value as? String,text)
+  let shot=XCTAttachment(screenshot:app.screenshot());shot.name="Rapid Find query preserved";shot.lifetime = .keepAlways;add(shot)
+  print("FIND_INPUT PASS: exact burst, submit, one matching result, details and return preserve query")
+ }
+ @MainActor func rapidEditField(_ label:String,_ prefix:String="") async throws {
+  continueAfterFailure=false
+  let identity=label=="Location" ? "rapid_edit_location" : label=="Reference" ? "rapid_edit_reference" : "rapid_edit_fixture"
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa")
+  let route=URL(string:"casitadex-plusstoreqa://card?id="+identity)!
+  app.launch();app.open(route)
+  let edit=app.buttons["Edit memory"];XCTAssertTrue(edit.waitForExistence(timeout:15))
+  if label=="Location" {let inline=app.buttons["Edit Location"];scrollTo(inline,in:app);inline.tap()} else {edit.tap()}
+  let field=label=="Memory name (Required)" ? app.textFields[label] : app.textViews[label]
+  scrollTo(field,in:app);field.tap()
+  if !prefix.isEmpty {field.typeText(String(repeating:XCUIKeyboardKey.delete.rawValue,count:prefix.count))}
+  let text="Boundary rapid editing 20x25x1"
+  field.typeText(text);XCTAssertEqual(field.value as? String,text);field.typeText("\n")
+  app.buttons["Save & return to details"].tap();XCTAssertTrue(edit.waitForExistence(timeout:10))
+  app.terminate();app.launch();app.open(route);XCTAssertTrue(edit.waitForExistence(timeout:15));edit.tap()
+  scrollTo(field,in:app);XCTAssertEqual(field.value as? String,text)
+  field.tap();field.typeText(" UNSAVED");app.buttons["Cancel"].tap()
+  XCTAssertTrue(edit.waitForExistence(timeout:10));edit.tap();scrollTo(field,in:app);XCTAssertEqual(field.value as? String,text)
+  app.buttons["Cancel"].tap()
+  print("EDIT_INPUT PASS: "+label+" exact burst, save, cold restart and cancel rollback")
+ }
+ @MainActor func testRapidEditName() async throws {try await rapidEditField("Memory name (Required)","X")}
+ @MainActor func testRapidEditLocation() async throws {try await rapidEditField("Location")}
+ @MainActor func testRapidEditReference() async throws {try await rapidEditField("Reference")}
+ @MainActor func testRapidInlineReference() async throws {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa")
+  let route=URL(string:"casitadex-plusstoreqa://card?id=rapid_inline_reference")!
+  app.launch();app.open(route);XCTAssertTrue(app.buttons["Edit memory"].waitForExistence(timeout:15))
+  let edit=app.buttons.matching(identifier:"Edit ✎").element(boundBy:2)
+  scrollTo(edit,in:app);edit.tap()
+  let field=app.textViews["Reference"];scrollTo(field,in:app);field.tap()
+  let text="Boundary inline reference 20x25x1"
+  field.typeText(text);XCTAssertEqual(field.value as? String,text);field.typeText("\n")
+  let save=app.buttons["Save reference"];scrollTo(save,in:app);save.tap()
+  XCTAssertTrue(XCTWaiter.wait(for:[XCTNSPredicateExpectation(predicate:NSPredicate(format:"exists == false"),object:save)],timeout:10) == .completed)
+  app.terminate();app.launch();app.open(route);XCTAssertTrue(app.buttons["Edit memory"].waitForExistence(timeout:15));scrollTo(edit,in:app);edit.tap();scrollTo(field,in:app)
+  XCTAssertEqual(field.value as? String,text)
+  print("INLINE_REFERENCE PASS: exact burst, inline save and cold restart")
+ }
+}
+
+extension PlusRecoveryUITests {
+ @MainActor func rapidTaxonomy(_ kind:String) async throws {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa")
+  let route=URL(string:"casitadex-plusstoreqa://card?id=rapid_edit_fixture")!
+  app.launch();app.open(route)
+  XCTAssertTrue(app.buttons["Edit memory"].waitForExistence(timeout:15))
+  let edit=app.buttons.matching(identifier:"Edit ✎").element(boundBy:kind=="Space" ? 0 : 1)
+  scrollTo(edit,in:app);edit.tap()
+  let create=app.buttons["+ Create new "+kind+" ▾"];scrollTo(create,in:app);create.tap()
+  let field=app.textViews["New "+kind+" name"];scrollTo(field,in:app);field.tap()
+  let text="Boundary rapid "+kind+" 20x25x1"
+  field.typeText(text);XCTAssertEqual(field.value as? String,text)
+  field.typeText("\n")
+  let save=app.buttons["Create and assign"];scrollTo(save,in:app);save.tap()
+  XCTAssertTrue(app.staticTexts.containing(NSPredicate(format:"label CONTAINS %@",text)).firstMatch.waitForExistence(timeout:10))
+  app.terminate();app.launch();app.open(route)
+  XCTAssertTrue(app.staticTexts.containing(NSPredicate(format:"label CONTAINS %@",text)).firstMatch.waitForExistence(timeout:15))
+  print("TAXONOMY_INPUT PASS: "+kind+" exact burst, assignment and cold restart")
+ }
+ @MainActor func testRapidSpaceInput() async throws {try await rapidTaxonomy("Space")}
+ @MainActor func testRapidCategoryInput() async throws {try await rapidTaxonomy("Category")}
+ @MainActor func testRapidReminderInput() async throws {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa")
+  app.launch();app.open(URL(string:"casitadex-plusstoreqa://reminders-manage?mode=new")!)
+  let field=app.textViews["Reminder title (Required)"]
+  XCTAssertTrue(field.waitForExistence(timeout:15));field.tap()
+  let text="Boundary rapid reminder 20x25x1"
+  field.typeText(text);XCTAssertEqual(field.value as? String,text);field.typeText("\n")
+  app.buttons["More options ▾"].tap()
+  let notes=app.textViews["Notes"];scrollTo(notes,in:app);notes.tap()
+  let body="Garage filter replacement 20x25x1"
+  notes.typeText(body);XCTAssertEqual(notes.value as? String,body)
+  app.buttons["Save Reminder"].tap()
+  XCTAssertTrue(app.buttons["Edit "+text].waitForExistence(timeout:15))
+  app.terminate();app.launch();app.open(URL(string:"casitadex-plusstoreqa://reminders")!)
+  XCTAssertTrue(app.buttons["Edit "+text].waitForExistence(timeout:15))
+  app.buttons["Edit "+text].tap();XCTAssertTrue(field.waitForExistence(timeout:10),app.debugDescription);XCTAssertEqual(field.value as? String,text);scrollTo(notes,in:app);XCTAssertEqual(notes.value as? String,body)
+  field.tap();field.typeText(" UNSAVED");app.buttons["Cancel"].tap();app.alerts.buttons["Discard changes"].tap()
+  XCTAssertTrue(app.buttons["Edit "+text].waitForExistence(timeout:10))
+  print("REMINDER_INPUT PASS: rapid title and notes, save and cold restart")
+ }
+}
+
+extension PlusRecoveryUITests {
+ @MainActor func testTaxonomyReminderPersistenceAndCancel() async throws {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa")
+  app.launch();app.open(URL(string:"casitadex-plusstoreqa://card?id=rapid_edit_fixture")!)
+  for kind in ["Space","Category"] {XCTAssertTrue(app.staticTexts.containing(NSPredicate(format:"label CONTAINS %@","Boundary rapid "+kind+" 20x25x1")).firstMatch.waitForExistence(timeout:15))}
+  app.open(URL(string:"casitadex-plusstoreqa://reminders")!)
+  let text="Boundary rapid reminder 20x25x1"
+  let open=app.buttons["Edit "+text];XCTAssertTrue(open.waitForExistence(timeout:15));open.tap()
+  let field=app.textViews["Reminder title (Required)"],notes=app.textViews["Notes"]
+  XCTAssertTrue(field.waitForExistence(timeout:10),app.debugDescription);XCTAssertEqual(field.value as? String,text)
+  scrollTo(notes,in:app);XCTAssertEqual(notes.value as? String,"Garage filter replacement 20x25x1")
+  app.buttons["Save Reminder"].tap()
+  let spring=XCUIApplication(bundleIdentifier:"com.apple.springboard")
+  let allow=spring.buttons["Allow"]
+  if allow.waitForExistence(timeout:5) {allow.tap()}
+  if app.alerts.buttons["Allow"].exists {app.alerts.buttons["Allow"].tap()}
+  XCTAssertTrue(open.waitForExistence(timeout:20),app.debugDescription+spring.debugDescription)
+  open.tap();XCTAssertTrue(field.waitForExistence(timeout:10));field.tap();field.typeText(" UNSAVED")
+  // Cursor placement and insertion order in existing titles are a separately recorded open defect.
+  XCTAssertNotEqual(field.value as? String,text,"Cancel check must begin with an actual unsaved change")
+  app.buttons["Cancel"].tap();app.alerts.buttons["Discard changes"].tap()
+  XCTAssertTrue(open.waitForExistence(timeout:10));open.tap();XCTAssertTrue(field.waitForExistence(timeout:10),app.debugDescription);XCTAssertEqual(field.value as? String,text)
+  let shot=XCTAttachment(screenshot:app.screenshot());shot.name="Reminder title preserved after cancel";shot.lifetime = .keepAlways;add(shot)
+  print("TAXONOMY_REMINDER PASS: both assignments survive restart; reminder exact title/notes, Save return and Cancel rollback")
+ }
+}
+
+extension PlusRecoveryUITests {
+ @MainActor func testReminderExistingTitleInsertion() async throws {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa")
+  let original="Boundary rapid reminder 20x25x1"
+  func locate(_ title:String)->XCUIElement {
+   let row=app.buttons["Edit "+title]
+   if !row.waitForExistence(timeout:2) {let overdue=app.buttons.containing(NSPredicate(format:"label BEGINSWITH %@","Overdue (")).firstMatch;if overdue.exists {overdue.tap()}}
+   XCTAssertTrue(row.waitForExistence(timeout:10));return row
+  }
+  app.launch();app.open(URL(string:"casitadex-plusstoreqa://reminders")!)
+  let open=locate(original);open.tap()
+  let field=app.textViews["Reminder title (Required)"];XCTAssertTrue(field.waitForExistence(timeout:10),app.debugDescription);XCTAssertEqual(field.value as? String,original)
+  field.tap();field.typeText("INSERT ")
+  let actual=try XCTUnwrap(field.value as? String)
+  XCTAssertTrue(actual.contains("INSERT "),"Insertion order must remain intact: "+actual)
+  XCTAssertEqual(actual.replacingOccurrences(of:"INSERT ",with:""),original)
+  app.buttons["Save Reminder"].tap()
+  _ = locate(actual)
+  app.terminate();app.launch();app.open(URL(string:"casitadex-plusstoreqa://reminders")!)
+  let saved=locate(actual);saved.tap()
+  XCTAssertTrue(field.waitForExistence(timeout:10),app.debugDescription);XCTAssertEqual(field.value as? String,actual)
+  field.tap();field.typeText("CANCEL ")
+  let dirty=try XCTUnwrap(field.value as? String)
+  XCTAssertTrue(dirty.contains("CANCEL "));XCTAssertEqual(dirty.replacingOccurrences(of:"CANCEL ",with:""),actual)
+  app.buttons["Cancel"].tap();app.alerts.buttons["Discard changes"].tap()
+  _ = locate(actual);saved.tap();XCTAssertTrue(field.waitForExistence(timeout:10),app.debugDescription);XCTAssertEqual(field.value as? String,actual)
+  let shot=XCTAttachment(screenshot:app.screenshot());shot.name="Existing reminder insertion preserved";shot.lifetime = .keepAlways;add(shot)
+  print("EXISTING_REMINDER PASS exact contiguous insertion, save/restart, second insertion and Cancel rollback: "+actual)
+ }
+}
+
+extension PlusRecoveryUITests {
+ @MainActor func testLinkedReminderPrefillAndReturn() async throws {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa")
+  app.launch();app.open(URL(string:"casitadex-plusstoreqa://reminders-manage?mode=new&memoryId=rapid_edit_fixture")!)
+  let field=app.textViews["Reminder title (Required)"]
+  XCTAssertTrue(field.waitForExistence(timeout:15))
+  let expected="Review Boundary rapid editing 20x25x1"
+  XCTAssertTrue(XCTWaiter.wait(for:[XCTNSPredicateExpectation(predicate:NSPredicate(format:"value == %@",expected),object:field)],timeout:10) == .completed)
+  field.tap();field.typeText("LINKED ")
+  let actual=try XCTUnwrap(field.value as? String);XCTAssertTrue(actual.contains("LINKED "));XCTAssertEqual(actual.replacingOccurrences(of:"LINKED ",with:""),expected)
+  field.typeText("\n");XCTAssertEqual(field.value as? String,actual)
+  app.buttons["Save Reminder"].tap()
+  XCTAssertTrue(app.buttons["Edit memory"].waitForExistence(timeout:15))
+  XCTAssertTrue(app.staticTexts["Boundary rapid editing 20x25x1"].exists)
+  app.terminate();app.launch();app.open(URL(string:"casitadex-plusstoreqa://reminders")!)
+  let row=app.buttons["Edit "+actual];XCTAssertTrue(row.waitForExistence(timeout:15));row.tap()
+  XCTAssertTrue(field.waitForExistence(timeout:10),app.debugDescription);XCTAssertEqual(field.value as? String,actual)
+  print("LINKED_REMINDER PASS asynchronous prefill, exact insertion, submit, save return to originating details, restart")
+ }
+}
+
+extension PlusRecoveryUITests {
+ @MainActor func remainingTaxonomy(_ category:Bool,_ draft:Bool) async throws {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa")
+  let route=URL(string:draft ? "casitadex-plusstoreqa://add" : "casitadex-plusstoreqa://card?id=rapid_edit_fixture")!
+  app.launch();app.open(route)
+  if draft {XCTAssertTrue(app.buttons["Save"].waitForExistence(timeout:15))} else {XCTAssertTrue(app.buttons["Edit memory"].waitForExistence(timeout:15));app.buttons["Edit memory"].tap()}
+  let choose=app.buttons.matching(identifier:"Choose ▾").element(boundBy:category ? 1 : 0);scrollTo(choose,in:app);choose.tap()
+  let kind=category ? (draft ? "Category" : "Categories") : "Space"
+  let create=app.buttons["+ Create new "+kind+" ▾"];scrollTo(create,in:app);create.tap()
+  let label=draft ? (category ? "New Category name" : "New Space name") : (category ? "New category name" : "New space name")
+  let field=app.textViews[label];scrollTo(field,in:app);field.tap()
+  let text=(draft ? "Draft" : "Edit")+" rapid "+(category ? "Category" : "Space")+" 20x25x1"
+  field.typeText(text);XCTAssertEqual(field.value as? String,text);field.typeText("\n")
+  let assign=app.buttons[draft ? "Create and assign" : "Create and select"];scrollTo(assign,in:app);assign.tap()
+  app.buttons[draft ? "Cancel" : "Save & return to details"].tap()
+  if draft {XCTAssertTrue(app.buttons["Add Memory"].waitForExistence(timeout:10))} else {XCTAssertTrue(app.buttons["Edit memory"].waitForExistence(timeout:10))}
+  app.terminate();app.launch();app.open(route)
+  let value=app.staticTexts.containing(NSPredicate(format:"label CONTAINS %@",text)).firstMatch
+  XCTAssertTrue(value.waitForExistence(timeout:15))
+  if !draft {
+   app.buttons["Edit memory"].tap();scrollTo(choose,in:app);choose.tap()
+   let select=app.buttons["Select "+kind+" ▾"];scrollTo(select,in:app);select.tap()
+   let none=app.buttons["None"];scrollTo(none,in:app);none.tap()
+   app.buttons["Cancel"].tap();XCTAssertTrue(app.buttons["Edit memory"].waitForExistence(timeout:10));XCTAssertTrue(value.exists)
+  }
+  print("REMAINING_TAXONOMY PASS "+text+" create, assignment, persistence and "+(draft ? "draft retained on Cancel" : "Cancel rolls back selection"))
+ }
+ @MainActor func testAddSpaceInput() async throws {try await remainingTaxonomy(false,true)}
+ @MainActor func testAddCategoryInput() async throws {try await remainingTaxonomy(true,true)}
+ @MainActor func testFullEditSpaceInput() async throws {try await remainingTaxonomy(false,false)}
+ @MainActor func testFullEditCategoryInput() async throws {try await remainingTaxonomy(true,false)}
+}
+
+extension PlusRecoveryUITests {
+ @MainActor func testReminderRouteHeadings() async throws {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa")
+  app.launch();app.open(URL(string:"casitadex-plusstoreqa://reminders-manage?mode=new")!)
+  XCTAssertTrue(app.staticTexts["Adding a Reminder"].waitForExistence(timeout:15));XCTAssertFalse(app.staticTexts["Editing a Reminder"].exists)
+  app.open(URL(string:"casitadex-plusstoreqa://reminders-manage?id=r_mwgtiw73_fpe8npbq")!)
+  XCTAssertTrue(app.staticTexts["Editing a Reminder"].waitForExistence(timeout:15));XCTAssertFalse(app.staticTexts["Adding a Reminder"].exists)
+  let save=app.buttons["Save Reminder"],cancel=app.buttons["Cancel"]
+  XCTAssertTrue(save.waitForExistence(timeout:10));let y=save.frame.minY;app.swipeUp();XCTAssertEqual(save.frame.minY,y,accuracy:1);XCTAssertTrue(cancel.isHittable)
+  let shot=XCTAttachment(screenshot:app.screenshot());shot.name="Editing reminder heading and fixed actions";shot.lifetime = .keepAlways;add(shot)
+  app.open(URL(string:"casitadex-plusstoreqa://reminders-manage")!)
+  XCTAssertTrue(app.staticTexts["Your Reminders"].waitForExistence(timeout:15))
+  print("REMINDER_HEADINGS PASS create/edit/manage routes and fixed editor actions")
+ }
+}
+
+extension PlusRecoveryUITests {
+ @MainActor func duplicateTaxonomy(_ category:Bool) async throws {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa")
+  app.launch();app.open(URL(string:"casitadex-plusstoreqa://card?id=rapid_edit_fixture")!)
+  XCTAssertTrue(app.buttons["Edit memory"].waitForExistence(timeout:15));app.buttons["Edit memory"].tap()
+  let choose=app.buttons.matching(identifier:"Choose ▾").element(boundBy:category ? 1 : 0);scrollTo(choose,in:app);choose.tap()
+  let create=app.buttons[category ? "+ Create new Categories ▾" : "+ Create new Space ▾"];scrollTo(create,in:app);create.tap()
+  let field=app.textViews[category ? "New category name" : "New space name"];scrollTo(field,in:app);field.tap()
+  let text=category ? "  EDIT RAPID CATEGORY 20X25X1  " : "  EDIT RAPID SPACE 20X25X1  "
+  field.typeText(text);XCTAssertEqual(field.value as? String,text);field.typeText("\n")
+  let assign=app.buttons["Create and select"];scrollTo(assign,in:app);assign.tap()
+  let error=app.staticTexts.containing(NSPredicate(format:"label CONTAINS %@","That name already exists")).firstMatch
+  XCTAssertTrue(error.waitForExistence(timeout:10));XCTAssertEqual(field.value as? String,text)
+  app.buttons["Cancel"].tap();XCTAssertTrue(app.buttons["Edit memory"].waitForExistence(timeout:10))
+  print("DUPLICATE_NATIVE PASS "+(category ? "Category" : "Space")+" case/whitespace duplicate rejected; input retained; Cancel returns")
+ }
+ @MainActor func testDuplicateSpaceRefused() async throws {try await duplicateTaxonomy(false)}
+ @MainActor func testDuplicateCategoryRefused() async throws {try await duplicateTaxonomy(true)}
+ @MainActor func labelRemovalCancel(_ category:Bool) async throws {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa")
+  app.launch();app.open(URL(string:"casitadex-plusstoreqa://settings-manage?action=labels")!)
+  XCTAssertTrue(app.staticTexts["Manage Spaces and Categories"].waitForExistence(timeout:15))
+  if category {app.buttons["Categories"].tap()}
+  let name=category ? "Edit rapid Category 20x25x1" : "Edit rapid Space 20x25x1"
+  let label=app.buttons[name];scrollTo(label,in:app);label.tap()
+  let review=app.buttons["Review label removal"];scrollTo(review,in:app);review.tap()
+  let impact=app.staticTexts.containing(NSPredicate(format:"label CONTAINS %@","Remove “"+name+"” from 1 saved memories and no draft?")).firstMatch
+  XCTAssertTrue(impact.waitForExistence(timeout:10));scrollTo(impact,in:app)
+  let cancel=app.buttons["Cancel label removal"];scrollTo(cancel,in:app);cancel.tap()
+  XCTAssertFalse(app.buttons["Confirm remove label only"].exists)
+  app.terminate();app.launch();app.open(URL(string:"casitadex-plusstoreqa://card?id=rapid_edit_fixture")!)
+  XCTAssertTrue(app.staticTexts.containing(NSPredicate(format:"label CONTAINS %@",name)).firstMatch.waitForExistence(timeout:15))
+  print("REMOVAL_CANCEL PASS "+name+" accurate impact, explicit confirmation, Cancel preserves assignment after restart")
+ }
+ @MainActor func testSpaceRemovalCancel() async throws {try await labelRemovalCancel(false)}
+ @MainActor func testCategoryRemovalCancel() async throws {try await labelRemovalCancel(true)}
+}
+
+extension PlusRecoveryUITests {
+ @MainActor func renameLabel(_ category:Bool,_ draft:Bool) async throws {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa")
+  let route=URL(string:"casitadex-plusstoreqa://settings-manage?action=labels")!
+  let original=(draft ? "Draft" : "Edit")+" rapid "+(category ? "Category" : "Space")+" 20x25x1"
+  app.launch();app.open(route)
+  XCTAssertTrue(app.staticTexts["Manage Spaces and Categories"].waitForExistence(timeout:15))
+  if category {app.buttons["Categories"].tap()}
+  let label=app.buttons[original];scrollTo(label,in:app);label.tap()
+  let field=app.textViews["Label name"];scrollTo(field,in:app);XCTAssertEqual(field.value as? String,original);field.tap();field.typeText("RENAMED ")
+  let inserted=try XCTUnwrap(field.value as? String);XCTAssertTrue(inserted.contains("RENAMED "),inserted);XCTAssertEqual(inserted.replacingOccurrences(of:"RENAMED ",with:""),original)
+  let renamed=inserted.trimmingCharacters(in:.whitespacesAndNewlines)
+  field.typeText("\n")
+  let save=app.buttons["Rename selected label"];scrollTo(save,in:app);save.tap()
+  XCTAssertTrue(app.buttons[renamed].waitForExistence(timeout:10));XCTAssertFalse(app.buttons[original].exists)
+  app.terminate();app.launch();app.open(route)
+  XCTAssertTrue(app.staticTexts["Manage Spaces and Categories"].waitForExistence(timeout:15));if category {app.buttons["Categories"].tap()}
+  let updated=app.buttons[renamed];scrollTo(updated,in:app);updated.tap();scrollTo(field,in:app);XCTAssertEqual(field.value as? String,renamed)
+  app.open(URL(string:draft ? "casitadex-plusstoreqa://add" : "casitadex-plusstoreqa://card?id=rapid_edit_fixture")!)
+  XCTAssertTrue(app.staticTexts.containing(NSPredicate(format:"label CONTAINS %@",renamed)).firstMatch.waitForExistence(timeout:15))
+  print("LABEL_RENAME PASS exact insertion, rename/restart, retained "+(draft ? "draft" : "memory")+" assignment: "+renamed)
+  app.terminate()
+ }
+ @MainActor func testRenameSpaceLabels() async throws {try await renameLabel(false,false);try await renameLabel(false,true)}
+ @MainActor func testRenameCategoryLabels() async throws {try await renameLabel(true,false);try await renameLabel(true,true)}
+}
+
+extension PlusRecoveryUITests {
+ @MainActor func testManagerLabelCreateReplace() async throws {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa")
+  let route=URL(string:"casitadex-plusstoreqa://settings-manage?action=labels")!
+  for category in [false,true] {
+   app.launch();app.open(route);XCTAssertTrue(app.staticTexts["Manage Spaces and Categories"].waitForExistence(timeout:15))
+   if category {app.buttons["Categories"].tap()}
+   let field=app.textViews["Label name"];scrollTo(field,in:app);field.tap()
+   let text="Manager new "+(category ? "Category" : "Space")+" 20x25x1"
+   if !app.buttons[text].exists {field.typeText(text);XCTAssertEqual(field.value as? String,text);field.typeText("\n")
+   let create=app.buttons["Create new label"];scrollTo(create,in:app);create.tap()
+   XCTAssertTrue(app.buttons[text].waitForExistence(timeout:10))}
+   app.terminate();app.launch();app.open(route);XCTAssertTrue(app.staticTexts["Manage Spaces and Categories"].waitForExistence(timeout:15));if category {app.buttons["Categories"].tap()}
+   let created=app.buttons[text];scrollTo(created,in:app);created.tap();scrollTo(field,in:app);XCTAssertEqual(field.value as? String,text)
+   field.tap();field.press(forDuration:1.2)
+   let selectAll=app.descendants(matching:.any).matching(identifier:"Select All").firstMatch
+   XCTAssertTrue(selectAll.waitForExistence(timeout:5),app.debugDescription);selectAll.tap()
+   let replacement="Manager replaced "+(category ? "Category" : "Space")+" 20x25x1"
+   field.typeText(replacement);XCTAssertEqual(field.value as? String,replacement);field.typeText("\n")
+   let rename=app.buttons["Rename selected label"];scrollTo(rename,in:app);rename.tap();XCTAssertTrue(app.buttons[replacement].waitForExistence(timeout:10));XCTAssertFalse(app.buttons[text].exists)
+   app.terminate();app.launch();app.open(route);XCTAssertTrue(app.staticTexts["Manage Spaces and Categories"].waitForExistence(timeout:15));if category {app.buttons["Categories"].tap()}
+   XCTAssertTrue(app.buttons[replacement].waitForExistence(timeout:10));app.terminate()
+   print("MANAGER_INPUT PASS create, restart, Select All replacement, rename and restart: "+replacement)
+  }
+ }
+}
+
+import UIKit
+extension PlusRecoveryUITests {
+ @MainActor func testNativeThemeSwitching() async throws {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa")
+  let route=URL(string:"casitadex-plusstoreqa://settings-manage?action=appearance")!
+  let dir=FileManager.default.urls(for:.documentDirectory,in:.userDomainMask)[0]
+  let stage=dir.appendingPathComponent("theme-stage.json"), advance=dir.appendingPathComponent("theme-advance.txt")
+  try? FileManager.default.removeItem(at:advance)
+  func openPreferences() {
+   app.open(route)
+   XCTAssertTrue(app.buttons["System appearance"].waitForExistence(timeout:15),app.debugDescription)
+  }
+  func choose(_ name:String) {
+   let button=app.buttons[name+" appearance"]
+   scrollTo(button,in:app);button.tap()
+   XCTAssertTrue(XCTWaiter.wait(for:[XCTNSPredicateExpectation(predicate:NSPredicate(format:"selected == true"),object:button)],timeout:5) == .completed,"Selected "+name)
+  }
+  func device(_ mode:String,_ name:String) async throws {
+   try JSONSerialization.data(withJSONObject:["stage":name,"device":mode]).write(to:stage,options:.atomic)
+   for _ in 0..<120 {
+    if (try? String(contentsOf:advance,encoding:.utf8)) == name {return}
+    try await Task.sleep(nanoseconds:250_000_000)
+   }
+   throw NSError(domain:"ThemeSupervisor",code:1,userInfo:[NSLocalizedDescriptionKey:"Timed out at "+name])
+  }
+  func fractions(_ image:UIImage)->(Double,Double) {
+   guard let cg=image.cgImage else {return (0,0)}
+   let w=100,h=200
+   var pixels=[UInt8](repeating:0,count:w*h*4)
+   pixels.withUnsafeMutableBytes { raw in
+    let ctx=CGContext(data:raw.baseAddress,width:w,height:h,bitsPerComponent:8,bytesPerRow:w*4,space:CGColorSpaceCreateDeviceRGB(),bitmapInfo:CGImageAlphaInfo.premultipliedLast.rawValue)!
+    ctx.draw(cg,in:CGRect(x:0,y:0,width:w,height:h))
+   }
+   var light=0,dark=0
+   for p in stride(from:0,to:pixels.count,by:4) {
+    let r=Int(pixels[p]),g=Int(pixels[p+1]),b=Int(pixels[p+2])
+    if abs(r-247)<10 && abs(g-242)<10 && abs(b-232)<10 {light+=1}
+    if abs(r-16)<10 && abs(g-28)<10 && abs(b-23)<10 {dark+=1}
+   }
+   return (Double(light)/Double(w*h),Double(dark)/Double(w*h))
+  }
+  func verify(_ dark:Bool,_ name:String) async throws {
+   var last=(0.0,0.0)
+   for _ in 0..<30 {
+    last=fractions(app.screenshot().image)
+    if (dark ? last.1 : last.0)>0.10 && (dark ? last.0 : last.1)<0.03 {break}
+    try await Task.sleep(nanoseconds:200_000_000)
+   }
+   XCTAssertGreaterThan(dark ? last.1:last.0,0.10,name+" expected background")
+   XCTAssertLessThan(dark ? last.0:last.1,0.03,name+" opposite background")
+   let attachment=XCTAttachment(screenshot:app.screenshot());attachment.name=name;attachment.lifetime = .keepAlways;add(attachment)
+   print("THEME_PASS "+name+" light="+String(last.0)+" dark="+String(last.1))
+  }
+  app.launch();openPreferences()
+  let initial=["System","Light","Dark"].first {app.buttons[$0+" appearance"].isSelected}
+  XCTAssertNotNil(initial,"One appearance choice must be selected")
+  print("THEME_INITIAL "+(initial ?? "unknown"))
+  defer { if app.state != .notRunning, let original=initial { openPreferences(); let b=app.buttons[original+" appearance"]; if b.exists { scrollTo(b,in:app);b.tap() };app.terminate() } }
+  choose("System")
+  try await device("light","system_foreground_light");try await verify(false,"system_foreground_light")
+  try await device("dark","system_foreground_dark");try await verify(true,"system_foreground_dark")
+  XCUIDevice.shared.press(.home)
+  try await device("light","system_background_light");app.activate();try await verify(false,"system_background_light")
+  choose("Dark");try await verify(true,"explicit_dark_device_light")
+  try await device("dark","explicit_dark_device_dark");try await verify(true,"explicit_dark_device_dark")
+  app.terminate();app.launch();openPreferences()
+  XCTAssertTrue(app.buttons["Dark appearance"].isSelected);try await verify(true,"dark_restart")
+  choose("Light");try await verify(false,"explicit_light_device_dark")
+  try await device("light","explicit_light_device_light");try await verify(false,"explicit_light_device_light")
+  app.terminate();app.launch();openPreferences()
+  XCTAssertTrue(app.buttons["Light appearance"].isSelected);try await verify(false,"light_restart")
+  choose("System");try await device("dark","system_before_restart");try await verify(true,"system_before_restart")
+  app.terminate();app.launch();openPreferences()
+  XCTAssertTrue(app.buttons["System appearance"].isSelected);try await verify(true,"system_restart")
+  try await device("light","system_after_restart_light");try await verify(false,"system_after_restart_light")
+  choose(try XCTUnwrap(initial))
+  print("THEME_RESTORED "+(initial ?? "unknown"))
+  app.terminate()
+ }
+}
+
+extension PlusRecoveryUITests {
+ @MainActor func testApprovedRefreshScreens() async throws {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa")
+  let dir=FileManager.default.urls(for:.documentDirectory,in:.userDomainMask)[0]
+  app.launch()
+  func open(_ path:String) {app.open(URL(string:"casitadex-plusstoreqa://"+path)!)}
+  func capture(_ name:String) throws {
+   let image=app.screenshot()
+   try image.pngRepresentation.write(to:dir.appendingPathComponent("refresh-"+name+".png"))
+   let attachment=XCTAttachment(screenshot:image);attachment.name=name;attachment.lifetime = .keepAlways;add(attachment)
+   try app.debugDescription.write(to:dir.appendingPathComponent("refresh-"+name+".txt"),atomically:true,encoding:.utf8)
+  }
+  func appearance(_ name:String) {
+   open("settings-manage?action=appearance")
+   let button=app.buttons[name+" appearance"]
+   XCTAssertTrue(button.waitForExistence(timeout:15));scrollTo(button,in:app);button.tap()
+  }
+  for theme in ["Light","Dark"] {
+   appearance(theme)
+   open("")
+   XCTAssertTrue(app.buttons["Find a memory"].waitForExistence(timeout:15))
+   for label in ["Home","Photos","Reminders","Find"] {XCTAssertTrue(app.descendants(matching:.any).matching(identifier:label).firstMatch.exists,label)}
+   try capture(theme+"-home")
+   open("answers")
+   XCTAssertTrue(app.descendants(matching:.any).matching(identifier:"find-query").firstMatch.waitForExistence(timeout:15),app.debugDescription)
+   XCTAssertTrue(app.buttons["With photos only"].exists)
+   try capture(theme+"-find")
+   open("photos")
+   XCTAssertTrue(app.buttons["Add Photo Memory"].waitForExistence(timeout:10))
+   XCTAssertTrue(app.buttons["Sort photos"].exists)
+   try await Task.sleep(nanoseconds:1_000_000_000)
+   try capture(theme+"-photos")
+   open("more")
+   XCTAssertTrue(app.buttons["Appearance"].waitForExistence(timeout:10))
+   XCTAssertTrue(app.buttons["Reminders"].exists)
+   let header=app.staticTexts["Settings"].firstMatch.frame
+   app.swipeUp()
+   XCTAssertEqual(app.staticTexts["Settings"].firstMatch.frame.minY,header.minY,accuracy:2)
+   try capture(theme+"-settings")
+   open("settings-manage?action=storage")
+   let measure=app.buttons["Measure device storage"]
+   XCTAssertTrue(measure.waitForExistence(timeout:10));measure.tap()
+   XCTAssertTrue(measure.waitForExistence(timeout:15))
+   try await Task.sleep(nanoseconds:1_000_000_000)
+   try capture(theme+"-storage")
+  }
+  appearance("System")
+  open("")
+  print("APPROVED REFRESH: light/dark Home, Find, Photos, Settings, Storage; fixed Settings header; preferences restored; no memory writes or purchases")
+ }
+}
+
+extension PlusRecoveryUITests {
+ @MainActor func revealEditorControl(_ element:XCUIElement,in app:XCUIApplication) {
+  for _ in 0..<24 {
+   guard let scroll=app.scrollViews.allElementsBoundByIndex.max(by:{$0.frame.height<$1.frame.height}) else {XCTFail("Missing editor scroll");return}
+   let top=scroll.frame.minY+16
+   let bottom=min(scroll.frame.maxY-16,app.keyboards.firstMatch.exists ? app.keyboards.firstMatch.frame.minY-65 : scroll.frame.maxY-16)
+   if element.exists && element.isHittable && element.frame.minY>=top && element.frame.maxY<=bottom{return}
+   // Small, measured corrections avoid bouncing tall controls across both viewport edges.
+   let above=element.exists && element.frame.minY<top
+   let distance=element.exists ? (above ? top-element.frame.minY : element.frame.maxY-bottom) : 120
+   let step=min(max(distance+12,40),120)/scroll.frame.height
+   let start=CGVector(dx:0.5,dy:0.5)
+   let end=CGVector(dx:0.5,dy:0.5+(above ? step : -step))
+   scroll.coordinate(withNormalizedOffset:start).press(forDuration:0.05,thenDragTo:scroll.coordinate(withNormalizedOffset:end))
+  }
+  XCTFail("Cannot fully reveal editor control: \(element)\n\(app.debugDescription)")
+ }
+ @MainActor func testOptionalEditorRows() async throws {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa")
+  app.launch();app.open(URL(string:"casitadex-plusstoreqa://card?id=rapid_edit_fixture")!)
+  let edit=app.buttons["Edit memory"];XCTAssertTrue(edit.waitForExistence(timeout:15));edit.tap()
+  var originals:[String:String]=[:]
+  for label in ["Location","Notes","Reference"] {
+   let row=app.buttons["Edit "+label];revealEditorControl(row,in:app);row.tap()
+   let field=app.textViews[label];XCTAssertTrue(field.waitForExistence(timeout:10));revealEditorControl(field,in:app)
+   originals[label]=field.value as? String ?? ""
+   field.tap();field.typeText(" QA cancel")
+   let done=app.buttons["Done editing "+label];revealEditorControl(done,in:app);done.tap()
+   XCTAssertTrue(app.buttons["Edit "+label].waitForExistence(timeout:5),app.debugDescription)
+  }
+  let shot=XCTAttachment(screenshot:app.screenshot());shot.name="Optional editor rows";shot.lifetime = .keepAlways;add(shot)
+  let cancel=app.buttons["Cancel"];XCTAssertTrue(cancel.isHittable);cancel.tap()
+  XCTAssertTrue(edit.waitForExistence(timeout:10));edit.tap()
+  for label in ["Location","Notes","Reference"] {
+   let row=app.buttons["Edit "+label];revealEditorControl(row,in:app);row.tap()
+   let field=app.textViews[label];XCTAssertTrue(field.waitForExistence(timeout:10),app.debugDescription);XCTAssertEqual(field.value as? String,originals[label])
+   let done=app.buttons["Done editing "+label];revealEditorControl(done,in:app);done.tap()
+  }
+  cancel.tap();app.terminate();app.launch();app.open(URL(string:"casitadex-plusstoreqa://card?id=rapid_edit_fixture")!)
+  XCTAssertTrue(edit.waitForExistence(timeout:15));edit.tap()
+  let row=app.buttons["Edit Location"];revealEditorControl(row,in:app);row.tap();XCTAssertEqual(app.textViews["Location"].value as? String,originals["Location"])
+  cancel.tap()
+  print("OPTIONAL EDITOR ROWS PASS: all three expand, edit, close, Cancel rolls back, restart retains original")
+ }
+}
+
+extension PlusRecoveryUITests {
+ @MainActor func testEditorLayoutThemes() async throws {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa");app.launch()
+  let dir=FileManager.default.urls(for:.documentDirectory,in:.userDomainMask)[0]
+  for theme in ["Light","Dark"] {
+   app.open(URL(string:"casitadex-plusstoreqa://settings-manage?action=appearance")!)
+   let appearance=app.buttons[theme+" appearance"];XCTAssertTrue(appearance.waitForExistence(timeout:15));revealEditorControl(appearance,in:app);appearance.tap()
+   app.open(URL(string:"casitadex-plusstoreqa://card?id=rapid_edit_fixture")!)
+   let edit=app.buttons["Edit memory"];XCTAssertTrue(edit.waitForExistence(timeout:15));edit.tap()
+   XCTAssertTrue(app.staticTexts["Edit Memory"].waitForExistence(timeout:10))
+   let save=app.buttons["Save & return to details"],cancel=app.buttons["Cancel"]
+   XCTAssertTrue(save.isHittable);XCTAssertTrue(cancel.isHittable);XCTAssertGreaterThan(save.frame.minX,cancel.frame.maxX)
+   try await Task.sleep(nanoseconds:1_000_000_000)
+   try app.screenshot().pngRepresentation.write(to:dir.appendingPathComponent("editor-"+theme+"-top.png"))
+   let choices=app.buttons.matching(identifier:"Choose ▾")
+   XCTAssertEqual(choices.count,2);choices.element(boundBy:0).tap()
+   XCTAssertTrue(app.buttons["Select Space ▾"].waitForExistence(timeout:5));choices.element(boundBy:0).tap()
+   choices.element(boundBy:1).tap();XCTAssertTrue(app.buttons["Select Categories ▾"].waitForExistence(timeout:5));choices.element(boundBy:1).tap()
+   let y=save.frame.minY
+   let photo=app.buttons["+ Add Photo"];revealEditorControl(photo,in:app)
+   XCTAssertEqual(save.frame.minY,y,accuracy:1);XCTAssertTrue(cancel.isHittable)
+   try app.screenshot().pngRepresentation.write(to:dir.appendingPathComponent("editor-"+theme+"-lower.png"))
+   cancel.tap()
+  }
+  app.open(URL(string:"casitadex-plusstoreqa://settings-manage?action=appearance")!)
+  let system=app.buttons["System appearance"];XCTAssertTrue(system.waitForExistence(timeout:10));revealEditorControl(system,in:app);system.tap()
+  print("EDITOR LAYOUT PASS light/dark, taxonomy panels, fixed Save/Cancel; no memory writes")
+ }
+}
+
+extension PlusRecoveryUITests {
+ @MainActor func testAddLayoutThemes() async throws {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa");app.launch()
+  let dir=FileManager.default.urls(for:.documentDirectory,in:.userDomainMask)[0]
+  for theme in ["Light","Dark"] {
+   app.open(URL(string:"casitadex-plusstoreqa://settings-manage?action=appearance")!)
+   let appearance=app.buttons[theme+" appearance"];XCTAssertTrue(appearance.waitForExistence(timeout:15));revealEditorControl(appearance,in:app);appearance.tap()
+   app.open(URL(string:"casitadex-plusstoreqa://add")!)
+   XCTAssertTrue(app.staticTexts["Add Memory"].waitForExistence(timeout:10))
+   let save=app.buttons["Save"],cancel=app.buttons["Cancel"]
+   XCTAssertTrue(save.isHittable);XCTAssertTrue(cancel.isHittable);XCTAssertGreaterThan(save.frame.minX,cancel.frame.maxX)
+   try await Task.sleep(nanoseconds:1_000_000_000)
+   try app.screenshot().pngRepresentation.write(to:dir.appendingPathComponent("add-"+theme+"-top.png"))
+   let choices=app.buttons.matching(identifier:"Choose ▾")
+   XCTAssertEqual(choices.count,2);choices.element(boundBy:0).tap()
+   XCTAssertTrue(app.buttons["Select Space ▾"].waitForExistence(timeout:5));choices.element(boundBy:0).tap()
+   choices.element(boundBy:1).tap();XCTAssertTrue(app.buttons["Select Category ▾"].waitForExistence(timeout:5));choices.element(boundBy:1).tap()
+   for label in ["Location","Notes","Reference"] {
+    let row=app.buttons["Edit "+label];revealEditorControl(row,in:app);row.tap()
+    let done=app.buttons["Done editing "+label];revealEditorControl(done,in:app);done.tap()
+    XCTAssertTrue(row.exists)
+   }
+   let y=save.frame.minY
+   let photo=app.buttons["+ Add Photo"];revealEditorControl(photo,in:app)
+   XCTAssertEqual(save.frame.minY,y,accuracy:1);XCTAssertTrue(cancel.isHittable)
+   try app.screenshot().pngRepresentation.write(to:dir.appendingPathComponent("add-"+theme+"-lower.png"))
+   cancel.tap()
+  }
+  app.open(URL(string:"casitadex-plusstoreqa://settings-manage?action=appearance")!)
+  let system=app.buttons["System appearance"];XCTAssertTrue(system.waitForExistence(timeout:10));revealEditorControl(system,in:app);system.tap()
+  print("ADD LAYOUT PASS light/dark, taxonomy panels, fixed Save/Cancel; no memory writes")
+ }
+}
+
+extension PlusRecoveryUITests {
+ @MainActor func testAddDraftRecovery() async throws {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa")
+  app.launch();app.open(URL(string:"casitadex-plusstoreqa://add")!)
+  XCTAssertTrue(app.staticTexts["Add Memory"].waitForExistence(timeout:15))
+  let values=[("Memory name (Required)","QA iOS Add Draft 20261115"),("Description","Scoped draft recovery"),("Location","Garage shelf"),("Notes","Retain these notes"),("Reference","Manual reference")]
+  func field(_ label:String)->XCUIElement {
+   let view=app.textViews[label]
+   if view.exists{return view}
+   return app.textFields[label]
+  }
+  for (label,value) in values {
+   if ["Location","Notes","Reference"].contains(label){let row=app.buttons["Edit "+label];revealEditorControl(row,in:app);row.tap();if !app.buttons["Done editing "+label].waitForExistence(timeout:2){row.tap()}}
+   let input=field(label);revealEditorControl(input,in:app);if (input.value as? String ?? "") != value {input.tap();if !(input.value as? String ?? "").isEmpty {input.press(forDuration:1.2);let selectAll=app.descendants(matching:.any).matching(identifier:"Select All").firstMatch;XCTAssertTrue(selectAll.waitForExistence(timeout:5));selectAll.tap()};input.typeText(value)}
+   if ["Location","Notes","Reference"].contains(label){let done=app.buttons["Done editing "+label];revealEditorControl(done,in:app);done.tap()}
+  }
+  app.buttons["Cancel"].tap();app.terminate();app.launch();app.open(URL(string:"casitadex-plusstoreqa://add")!)
+  XCTAssertTrue(app.staticTexts["Add Memory"].waitForExistence(timeout:15))
+  for (label,value) in values {
+   if ["Location","Notes","Reference"].contains(label){let row=app.buttons["Edit "+label];revealEditorControl(row,in:app);row.tap();if !app.buttons["Done editing "+label].waitForExistence(timeout:2){row.tap()}}
+   let input=field(label);revealEditorControl(input,in:app);XCTAssertEqual(input.value as? String,value)
+   if ["Location","Notes","Reference"].contains(label){let done=app.buttons["Done editing "+label];revealEditorControl(done,in:app);done.tap()}
+  }
+  XCTAssertTrue(app.buttons["Save"].isEnabled);app.buttons["Save"].tap()
+  XCTAssertTrue(app.buttons["Add Memory"].firstMatch.waitForExistence(timeout:15))
+  print("ADD DRAFT RECOVERY PASS all five fields survive Cancel and cold restart; Save returns Home")
+ }
+}
+
+extension PlusRecoveryUITests {
+ @MainActor func testSavedAddDraftReadback() async throws {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa")
+  app.launch();app.open(URL(string:"casitadex-plusstoreqa://card?id=e_mwguiyu2_bofwxt8o23")!)
+  let edit=app.buttons["Edit memory"];XCTAssertTrue(edit.waitForExistence(timeout:15));edit.tap()
+  for (label,value) in [("Memory name (Required)","QA iOS Add Draft 20261115"),("Description","Scoped draft recovery"),("Location","Garage shelf"),("Notes","Retain these notes"),("Reference","Manual reference")] {
+   if ["Location","Notes","Reference"].contains(label){let row=app.buttons["Edit "+label];revealEditorControl(row,in:app);row.tap()}
+   let field=app.textViews[label].exists ? app.textViews[label] : app.textFields[label];revealEditorControl(field,in:app);XCTAssertEqual(field.value as? String,value)
+   if ["Location","Notes","Reference"].contains(label){let done=app.buttons["Done editing "+label];revealEditorControl(done,in:app);done.tap()}
+  }
+  let shot=XCTAttachment(screenshot:app.screenshot());shot.name="Saved Add Memory readback";shot.lifetime = .keepAlways;add(shot)
+  app.buttons["Cancel"].tap();app.open(URL(string:"casitadex-plusstoreqa://")!)
+  print("SAVED ADD READBACK PASS all five values after process restart")
+ }
+}
+
+extension PlusRecoveryUITests {
+ @MainActor func testReminderLayoutAndLinkedReturn() async throws {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa");app.launch()
+  let dir=FileManager.default.urls(for:.documentDirectory,in:.userDomainMask)[0]
+  for theme in ["Light","Dark"] {
+   app.open(URL(string:"casitadex-plusstoreqa://settings-manage?action=appearance")!)
+   let appearance=app.buttons[theme+" appearance"];XCTAssertTrue(appearance.waitForExistence(timeout:15));revealEditorControl(appearance,in:app);appearance.tap()
+   app.open(URL(string:"casitadex-plusstoreqa://reminders")!)
+   let add=app.buttons["Add Reminder ›"];XCTAssertTrue(add.waitForExistence(timeout:15))
+   let top=add.frame.minY
+   app.swipeUp();XCTAssertEqual(add.frame.minY,top,accuracy:1)
+   try app.screenshot().pngRepresentation.write(to:dir.appendingPathComponent("reminders-"+theme+".png"))
+   app.open(URL(string:"casitadex-plusstoreqa://card?id=rapid_edit_fixture")!)
+   let location=app.buttons["Edit Location"];revealEditorControl(location,in:app)
+   try app.screenshot().pngRepresentation.write(to:dir.appendingPathComponent("details-"+theme+".png"))
+   location.tap();let done=app.buttons["Done editing Location"];XCTAssertTrue(done.waitForExistence(timeout:5));app.buttons["Cancel"].tap()
+   app.open(URL(string:"casitadex-plusstoreqa://reminders-manage?mode=new&memoryId=rapid_edit_fixture")!)
+   let save=app.buttons["Save Reminder"];XCTAssertTrue(save.waitForExistence(timeout:15))
+   XCTAssertTrue(app.staticTexts["Add Reminder"].exists)
+   let y=save.frame.minY
+   try app.screenshot().pngRepresentation.write(to:dir.appendingPathComponent("reminder-form-"+theme+".png"))
+   app.buttons["More options ▾"].tap();app.swipeUp()
+   XCTAssertEqual(save.frame.minY,y,accuracy:1);XCTAssertTrue(app.buttons["Cancel"].isHittable)
+   app.buttons["‹ Return to Memory Details"].tap()
+   XCTAssertTrue(app.buttons["Edit memory"].waitForExistence(timeout:10))
+  }
+  app.open(URL(string:"casitadex-plusstoreqa://reminders-manage?mode=new&memoryId=rapid_edit_fixture")!)
+  let save=app.buttons["Save Reminder"];XCTAssertTrue(save.waitForExistence(timeout:15));save.tap()
+  if app.alerts["Similar reminder already scheduled"].waitForExistence(timeout:2){app.alerts.buttons["Keep both"].tap()}
+  XCTAssertTrue(app.buttons["Edit memory"].waitForExistence(timeout:15),app.debugDescription)
+  app.open(URL(string:"casitadex-plusstoreqa://settings-manage?action=appearance")!)
+  let system=app.buttons["System appearance"];XCTAssertTrue(system.waitForExistence(timeout:10));revealEditorControl(system,in:app);system.tap()
+  app.open(URL(string:"casitadex-plusstoreqa://")!)
+  print("REMINDER LAYOUT PASS both themes, sticky list/form actions, Details inline edit, linked save return")
+ }
+}
+
+extension PlusRecoveryUITests {
+ @MainActor func testReminderPickerStyling() async throws {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa");app.launch()
+  let dir=FileManager.default.urls(for:.documentDirectory,in:.userDomainMask)[0]
+  for theme in ["Light","Dark"] {
+   app.open(URL(string:"casitadex-plusstoreqa://settings-manage?action=appearance")!)
+   let appearance=app.buttons[theme+" appearance"];XCTAssertTrue(appearance.waitForExistence(timeout:15));revealEditorControl(appearance,in:app);appearance.tap()
+   app.open(URL(string:"casitadex-plusstoreqa://reminders-manage?mode=new")!)
+   XCTAssertTrue(app.staticTexts["Add Reminder"].waitForExistence(timeout:15))
+   let date=app.buttons.matching(NSPredicate(format:"label MATCHES %@", "[0-9]{4}-[0-9]{2}-[0-9]{2}")).firstMatch
+   XCTAssertTrue(date.exists);date.tap();XCTAssertTrue(app.staticTexts["Choose a date"].waitForExistence(timeout:5));app.buttons["Done"].tap()
+   let time=app.buttons.matching(NSPredicate(format:"label MATCHES %@", "[0-9]{1,2}:[0-9]{2} [AP]M")).firstMatch
+   XCTAssertTrue(time.exists);time.tap();XCTAssertTrue(app.staticTexts["Choose a time"].waitForExistence(timeout:5));app.buttons["Done"].tap()
+   try app.screenshot().pngRepresentation.write(to:dir.appendingPathComponent("picker-style-"+theme+".png"))
+   app.buttons["Cancel"].tap()
+   app.open(URL(string:"casitadex-plusstoreqa://card?id=sb26qa_007")!)
+   let edit=app.buttons["Edit memory"];XCTAssertTrue(edit.waitForExistence(timeout:15));let y=edit.frame.minY
+   XCTAssertTrue(app.buttons["Open cover photo of [SAMPLE] Extension cord"].exists);try app.screenshot().pngRepresentation.write(to:dir.appendingPathComponent("detail-cover-"+theme+".png"));let location=app.buttons["Edit Location"];revealEditorControl(location,in:app)
+   XCTAssertEqual(edit.frame.minY,y,accuracy:1)
+   try app.screenshot().pngRepresentation.write(to:dir.appendingPathComponent("detail-style-"+theme+".png"))
+   location.tap();XCTAssertTrue(app.buttons["Done editing Location"].waitForExistence(timeout:5));app.buttons["Cancel"].tap()
+  }
+  app.open(URL(string:"casitadex-plusstoreqa://settings-manage?action=appearance")!)
+  let system=app.buttons["System appearance"];XCTAssertTrue(system.waitForExistence(timeout:10));revealEditorControl(system,in:app);system.tap()
+  app.open(URL(string:"casitadex-plusstoreqa://")!)
+  print("PICKER STYLE PASS: both native pickers, two themes, fixed Details actions and inline editing")
+ }
+}
+
+extension PlusRecoveryUITests {
+ @MainActor func testLargeTextScreenReview() async throws {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa");app.launch()
+  let dir=FileManager.default.urls(for:.documentDirectory,in:.userDomainMask)[0]
+  for (name,path) in [("home",""),("find","answers"),("settings","more"),("add","add"),("details","card?id=sb26qa_007"),("reminder-form","reminders-manage?mode=new"),("reminders","reminders")] {
+   app.open(URL(string:"casitadex-plusstoreqa://"+path)!)
+   try await Task.sleep(nanoseconds:1_000_000_000)
+   try app.screenshot().pngRepresentation.write(to:dir.appendingPathComponent("large-"+name+".png"))
+   if name=="add" || name=="reminder-form" {XCTAssertTrue(app.buttons["Cancel"].isHittable)}
+   if name=="details" {XCTAssertTrue(app.buttons["Edit memory"].isHittable)}
+  }
+  let add=app.buttons["Add Reminder ›"];XCTAssertTrue(add.isHittable)
+  let row=app.scrollViews.allElementsBoundByIndex.filter{$0.frame.height<200 && $0.frame.width>250}.first
+  XCTAssertNotNil(row);row?.swipeLeft()
+  let dates=app.buttons.matching(NSPredicate(format:"label BEGINSWITH %@", "Memory dates")).firstMatch
+  XCTAssertTrue(dates.isHittable);dates.tap()
+  try app.screenshot().pngRepresentation.write(to:dir.appendingPathComponent("large-reminders-last-filter.png"))
+  print("LARGE TEXT scoped checks PASS: reachable fixed Add/Cancel/Edit, horizontally reachable final reminder filter; screenshots for broader review")
+ }
+}
+
+// Scoped speech-service probe: disposable simulator only; no collection writes.
+extension PlusRecoveryUITests {
+ @available(iOS 27.0, *)
+ @MainActor func testVoiceOverHomeProbe20261115() async throws {
+  continueAfterFailure = false
+  XCTAssertEqual(ProcessInfo.processInfo.environment["SIMULATOR_UDID"], "81FC3CCE-ACEB-4957-BE61-C9C653A4CE56", "Disposable simulator required")
+  let app = XCUIApplication(bundleIdentifier: "com.designsbyfa.casitadex.plusstoreqa")
+  app.launch(); app.open(URL(string: "casitadex-plusstoreqa://")!)
+  let vo = XCUIDevice.shared.voiceOverService
+  let wasEnabled = vo.isEnabled
+  defer { if !wasEnabled { try? vo.disable() } }
+  print("VOICEOVER_INITIAL: \(vo.debugDescription)")
+  try vo.enable()
+  XCTAssertTrue(vo.isEnabled)
+  for index in 0..<18 {
+   let output = try vo.moveForward()
+   print("VOICEOVER_SPEECH[\(index)]: \(output.utterance)")
+   XCTAssertFalse(output.utterance.isEmpty)
+  }
+  print("VOICEOVER_PROBE: speech captured; full acceptance requires review")
+ }
+}
+
+extension PlusRecoveryUITests {
+ @MainActor func testReferenceLargeTextCapture20261115() async throws {
+  continueAfterFailure=false
+  XCTAssertEqual(ProcessInfo.processInfo.environment["SIMULATOR_UDID"],"189233C4-A360-49D7-AB2A-C9A7F02B9060")
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa");app.launch()
+  app.open(URL(string:"casitadex-plusstoreqa://add")!)
+  let row=app.buttons["Edit Reference"];revealEditorControl(row,in:app)
+  let dir=FileManager.default.urls(for:.documentDirectory,in:.userDomainMask)[0]
+  try app.screenshot().pngRepresentation.write(to:dir.appendingPathComponent("reference-large-fixed.png"))
+  XCTAssertTrue(row.isHittable);app.buttons["Cancel"].tap()
+ }
+}
+
+// Read-only semantics and real speech traversal of the memory editor.
+extension PlusRecoveryUITests {
+ @available(iOS 27.0, *)
+ @MainActor func testEditorVoiceOverLabels20261115() async throws {
+  continueAfterFailure=false
+  XCTAssertEqual(ProcessInfo.processInfo.environment["SIMULATOR_UDID"],"189233C4-A360-49D7-AB2A-C9A7F02B9060")
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa");app.launch()
+  app.open(URL(string:"casitadex-plusstoreqa://card?id=sb26qa_007")!)
+  let edit=app.buttons["Edit memory"];XCTAssertTrue(edit.waitForExistence(timeout:10));edit.tap()
+  let space=app.buttons.matching(NSPredicate(format:"label == %@","Choose Space")).firstMatch
+  let categories=app.buttons.matching(NSPredicate(format:"label == %@","Choose Categories")).firstMatch
+  XCTAssertTrue(space.exists);XCTAssertTrue(categories.exists)
+  XCTAssertFalse((space.value as? String ?? "").isEmpty)
+  XCTAssertFalse((categories.value as? String ?? "").isEmpty)
+  let vo=XCUIDevice.shared.voiceOverService;let wasEnabled=vo.isEnabled
+  defer {if !wasEnabled {try? vo.disable()}}
+  try vo.enable()
+  var utterances:[String]=[]
+  for index in 0..<32 {
+   let speech=try vo.moveForward().utterance
+   utterances.append(speech);print("EDITOR_VOICEOVER[\(index)]: \(speech)")
+  }
+  XCTAssertTrue(utterances.contains{$0.contains("Choose Space")})
+  XCTAssertTrue(utterances.contains{$0.contains("Choose Categories")})
+  if !wasEnabled {try vo.disable()}
+  app.buttons["Cancel"].tap()
+  app.open(URL(string:"casitadex-plusstoreqa://")!)
+ }
+}
+
+extension PlusRecoveryUITests {
+ @available(iOS 27.0, *)
+ @MainActor func testInlineFocusProbe20261115() async throws {
+  continueAfterFailure=false
+  XCTAssertEqual(ProcessInfo.processInfo.environment["SIMULATOR_UDID"],"189233C4-A360-49D7-AB2A-C9A7F02B9060")
+  if XCUIDevice.shared.voiceOverService.isEnabled {try XCUIDevice.shared.voiceOverService.disable()}
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa");app.launch()
+  app.open(URL(string:"casitadex-plusstoreqa://card?id=sb26qa_007")!)
+  let edit=app.buttons["Edit memory"];XCTAssertTrue(edit.waitForExistence(timeout:10));edit.tap()
+  let vo=XCUIDevice.shared.voiceOverService;let wasEnabled=vo.isEnabled
+  defer {if !wasEnabled {try? vo.disable()}}
+  try vo.enable()
+  for field in ["Location","Notes","Reference"] {
+   for prefix in ["Edit ","Done editing "] {
+    let label=(prefix+field).addingPercentEncoding(withAllowedCharacters:.urlQueryAllowed)!
+    app.open(URL(string:"casitadex-plusstoreqa://qa-activate?label="+label)!)
+    try await Task.sleep(nanoseconds:2_000_000_000)
+    if prefix=="Edit " {XCTAssertTrue(app.textViews[field].exists)}
+    else {XCTAssertTrue(app.buttons["Edit \(field)"].exists);XCTAssertFalse(app.buttons["Done editing \(field)"].exists)}
+   }
+  }
+  if !wasEnabled {try vo.disable()}
+  app.buttons["Cancel"].tap();app.open(URL(string:"casitadex-plusstoreqa://")!)
+ }
+}
+
+extension PlusRecoveryUITests {
+ @available(iOS 27.0, *)
+ @MainActor func testAnnouncementCompletion20261115() async throws {
+  XCTAssertEqual(ProcessInfo.processInfo.environment["SIMULATOR_UDID"],"189233C4-A360-49D7-AB2A-C9A7F02B9060")
+  let vo=XCUIDevice.shared.voiceOverService
+  defer {try? vo.disable()}
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa");app.launch()
+  try vo.enable()
+  app.open(URL(string:"casitadex-plusstoreqa://qa-announcements")!)
+  try await Task.sleep(nanoseconds:20_000_000_000)
+  print("ANNOUNCEMENT_COMPLETIONS: \(app.staticTexts["announcement-results"].label)")
+  XCTAssertEqual(app.staticTexts["announcement-results"].label,"Saved on this device.:true|Saved on this device.:true|Could not save. Your saved memory is unchanged.:true")
+  try vo.disable();app.open(URL(string:"casitadex-plusstoreqa://")!)
+ }
+}
