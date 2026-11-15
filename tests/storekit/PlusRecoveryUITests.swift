@@ -736,3 +736,38 @@ extension PlusRecoveryUITests {
   print("EDITOR LAYOUT PASS light/dark, taxonomy panels, fixed Save/Cancel; no memory writes")
  }
 }
+
+extension PlusRecoveryUITests {
+ @MainActor func testAddLayoutThemes() async throws {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa");app.launch()
+  let dir=FileManager.default.urls(for:.documentDirectory,in:.userDomainMask)[0]
+  for theme in ["Light","Dark"] {
+   app.open(URL(string:"casitadex-plusstoreqa://settings-manage?action=appearance")!)
+   let appearance=app.buttons[theme+" appearance"];XCTAssertTrue(appearance.waitForExistence(timeout:15));revealEditorControl(appearance,in:app);appearance.tap()
+   app.open(URL(string:"casitadex-plusstoreqa://add")!)
+   XCTAssertTrue(app.staticTexts["Add Memory"].waitForExistence(timeout:10))
+   let save=app.buttons["Save"],cancel=app.buttons["Cancel"]
+   XCTAssertTrue(save.isHittable);XCTAssertTrue(cancel.isHittable);XCTAssertGreaterThan(save.frame.minX,cancel.frame.maxX)
+   try await Task.sleep(nanoseconds:1_000_000_000)
+   try app.screenshot().pngRepresentation.write(to:dir.appendingPathComponent("add-"+theme+"-top.png"))
+   let choices=app.buttons.matching(identifier:"Choose ▾")
+   XCTAssertEqual(choices.count,2);choices.element(boundBy:0).tap()
+   XCTAssertTrue(app.buttons["Select Space ▾"].waitForExistence(timeout:5));choices.element(boundBy:0).tap()
+   choices.element(boundBy:1).tap();XCTAssertTrue(app.buttons["Select Category ▾"].waitForExistence(timeout:5));choices.element(boundBy:1).tap()
+   for label in ["Location","Notes","Reference"] {
+    let row=app.buttons["Edit "+label];revealEditorControl(row,in:app);row.tap()
+    let done=app.buttons["Done editing "+label];revealEditorControl(done,in:app);done.tap()
+    XCTAssertTrue(row.exists)
+   }
+   let y=save.frame.minY
+   let photo=app.buttons["+ Add Photo"];revealEditorControl(photo,in:app)
+   XCTAssertEqual(save.frame.minY,y,accuracy:1);XCTAssertTrue(cancel.isHittable)
+   try app.screenshot().pngRepresentation.write(to:dir.appendingPathComponent("add-"+theme+"-lower.png"))
+   cancel.tap()
+  }
+  app.open(URL(string:"casitadex-plusstoreqa://settings-manage?action=appearance")!)
+  let system=app.buttons["System appearance"];XCTAssertTrue(system.waitForExistence(timeout:10));revealEditorControl(system,in:app);system.tap()
+  print("ADD LAYOUT PASS light/dark, taxonomy panels, fixed Save/Cancel; no memory writes")
+ }
+}

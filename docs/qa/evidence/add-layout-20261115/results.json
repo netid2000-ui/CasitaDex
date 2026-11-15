@@ -1,0 +1,15 @@
+{
+  "automated": {
+    "pass": 491,
+    "skip": 6,
+    "fail": 0
+  },
+  "typecheck": "PASS",
+  "lint": "PASS",
+  "ios_layout": "PASS",
+  "ios_job": "886917f70ad41346",
+  "android_build": "PASS",
+  "android_job": "0b083c851add41ce",
+  "android_native_visual": "PENDING",
+  "photo_acceptance": "Not repeated"
+}
