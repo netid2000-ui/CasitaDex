@@ -1,0 +1,2502 @@
+{
+  "kind": "CasitaDex text backup",
+  "textVersion": 1,
+  "omissions": {
+    "included": 92,
+    "omitted": [
+      {
+        "id": "e_mwib18uz_u38uv19e2i",
+        "title": "QA Samsung Photo Sweep",
+        "lifecycle": "active"
+      }
+    ],
+    "savedPhotos": 7,
+    "draftPhotos": 0
+  },
+  "snapshot": {
+    "version": 3,
+    "revision": 74,
+    "data": {
+      "version": 2,
+      "spaces": [
+        {
+          "id": "home",
+          "name": "My Home"
+        },
+        {
+          "id": "sb26space_0",
+          "name": "Sample Home"
+        },
+        {
+          "id": "sb26space_1",
+          "name": "Sample Garage"
+        },
+        {
+          "id": "sb26space_2",
+          "name": "Sample Office"
+        }
+      ],
+      "categories": [
+        {
+          "id": "sb26cat_0",
+          "name": "Kitchen"
+        },
+        {
+          "id": "sb26cat_1",
+          "name": "Garage"
+        },
+        {
+          "id": "sb26cat_2",
+          "name": "Documents"
+        },
+        {
+          "id": "sb26cat_3",
+          "name": "Maintenance"
+        },
+        {
+          "id": "sb26cat_4",
+          "name": "Garden"
+        },
+        {
+          "id": "sb26cat_5",
+          "name": "Travel"
+        },
+        {
+          "id": "sb26cat_6",
+          "name": "Pets"
+        },
+        {
+          "id": "sb26cat_7",
+          "name": "Electronics"
+        },
+        {
+          "id": "sb26cat_8",
+          "name": "Seasonal"
+        },
+        {
+          "id": "sb26cat_9",
+          "name": "Cleaning"
+        },
+        {
+          "id": "sb26cat_10",
+          "name": "Tools"
+        },
+        {
+          "id": "sb26cat_11",
+          "name": "Family Activities"
+        },
+        {
+          "id": "sb26cat_12",
+          "name": "Vehicles"
+        },
+        {
+          "id": "sb26cat_13",
+          "name": "Safety"
+        },
+        {
+          "id": "sb26cat_14",
+          "name": "Home Office"
+        }
+      ],
+      "memories": [
+        {
+          "id": "sb26qa_001",
+          "title": "[SAMPLE] Coffee filters",
+          "answer": "Upper pantry basket. This is a fictional example, not a verified household location.",
+          "location": "Upper pantry basket",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Needs checking",
+          "spaceId": "sb26space_0",
+          "categoryIds": [
+            "sb26cat_0"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-08-01T00:00:00.000Z",
+          "updatedAt": "2026-11-15T20:02:37.988Z",
+          "due": "2026-10-22",
+          "events": [
+            {
+              "id": "e_mwi9h9gk_0usmm6rxqd",
+              "type": "answer_edited",
+              "at": "2026-11-15T20:02:37.988Z",
+              "note": "Photo added"
+            }
+          ]
+        },
+        {
+          "id": "sb26qa_002",
+          "title": "[SAMPLE] Blender attachments",
+          "answer": "Island drawer, second from top. This is a fictional example, not a verified household location.",
+          "location": "Island drawer, second from top",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_0",
+          "categoryIds": [
+            "sb26cat_0"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-08-02T00:00:00.000Z",
+          "updatedAt": "2026-08-02T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_003",
+          "title": "[SAMPLE] Water filter replacements",
+          "answer": "Laundry utility cabinet. This is a fictional example, not a verified household location.",
+          "location": "Laundry utility cabinet",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_0",
+          "categoryIds": [
+            "sb26cat_0"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-08-03T00:00:00.000Z",
+          "updatedAt": "2026-08-03T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_004",
+          "title": "[SAMPLE] Holiday serving tray",
+          "answer": "Pantry top shelf, wrapped. This is a fictional example, not a verified household location.",
+          "location": "Pantry top shelf, wrapped",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_0",
+          "categoryIds": [
+            "sb26cat_0"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-08-04T00:00:00.000Z",
+          "updatedAt": "2026-08-04T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_005",
+          "title": "[SAMPLE] Spare dish towels",
+          "answer": "Lower kitchen linen drawer. This is a fictional example, not a verified household location.",
+          "location": "Lower kitchen linen drawer",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_0",
+          "categoryIds": [
+            "sb26cat_0"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-08-05T00:00:00.000Z",
+          "updatedAt": "2026-08-05T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_006",
+          "title": "[SAMPLE] Baking thermometer",
+          "answer": "Baking supplies bin. This is a fictional example, not a verified household location.",
+          "location": "Baking supplies bin",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_0",
+          "categoryIds": [
+            "sb26cat_0"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-08-06T00:00:00.000Z",
+          "updatedAt": "2026-08-06T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_007",
+          "title": "[SAMPLE] Extension cord",
+          "answer": "Left garage wall hook. This is a fictional example, not a verified household location.",
+          "location": "Left garage wall hook",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Needs checking",
+          "spaceId": "sb26space_1",
+          "categoryIds": [
+            "sb26cat_1"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-08-07T00:00:00.000Z",
+          "updatedAt": "2026-11-15T20:02:38.086Z",
+          "events": [
+            {
+              "id": "e_mwi9h9ja_n8qa0bw2sk",
+              "type": "answer_edited",
+              "at": "2026-11-15T20:02:38.086Z",
+              "note": "Photo added"
+            }
+          ]
+        },
+        {
+          "id": "sb26qa_008",
+          "title": "[SAMPLE] Tire pressure gauge",
+          "answer": "Small red toolbox. This is a fictional example, not a verified household location.",
+          "location": "Small red toolbox",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_1",
+          "categoryIds": [
+            "sb26cat_1"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-08-08T00:00:00.000Z",
+          "updatedAt": "2026-08-08T00:00:00.000Z",
+          "due": "2026-10-29"
+        },
+        {
+          "id": "sb26qa_009",
+          "title": "[SAMPLE] Paint touch-up kit",
+          "answer": "Paint crate on storage rack. This is a fictional example, not a verified household location.",
+          "location": "Paint crate on storage rack",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_1",
+          "categoryIds": [
+            "sb26cat_1"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-08-09T00:00:00.000Z",
+          "updatedAt": "2026-08-09T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_010",
+          "title": "[SAMPLE] Camping lantern",
+          "answer": "Emergency tote on rear shelf. This is a fictional example, not a verified household location.",
+          "location": "Emergency tote on rear shelf",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_1",
+          "categoryIds": [
+            "sb26cat_1"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-08-10T00:00:00.000Z",
+          "updatedAt": "2026-08-10T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_011",
+          "title": "[SAMPLE] Garden gloves",
+          "answer": "Garden rack hook. This is a fictional example, not a verified household location.",
+          "location": "Garden rack hook",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_1",
+          "categoryIds": [
+            "sb26cat_1"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-08-11T00:00:00.000Z",
+          "updatedAt": "2026-08-11T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_012",
+          "title": "[SAMPLE] Spare batteries",
+          "answer": "Sealed battery organizer. This is a fictional example, not a verified household location.",
+          "location": "Sealed battery organizer",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_1",
+          "categoryIds": [
+            "sb26cat_1"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-08-12T00:00:00.000Z",
+          "updatedAt": "2026-08-12T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_013",
+          "title": "[SAMPLE] Appliance manuals",
+          "answer": "Office cabinet, manuals binder. This is a fictional example, not a verified household location.",
+          "location": "Office cabinet, manuals binder",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Needs checking",
+          "spaceId": "sb26space_2",
+          "categoryIds": [
+            "sb26cat_2"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-08-13T00:00:00.000Z",
+          "updatedAt": "2026-11-15T20:02:38.190Z",
+          "events": [
+            {
+              "id": "e_mwi9h9m6_nvvvw3x5lj",
+              "type": "answer_edited",
+              "at": "2026-11-15T20:02:38.190Z",
+              "note": "Photo added"
+            }
+          ]
+        },
+        {
+          "id": "sb26qa_014",
+          "title": "[SAMPLE] Warranty folder",
+          "answer": "Warranty binder on office shelf. This is a fictional example, not a verified household location.",
+          "location": "Warranty binder on office shelf",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_2",
+          "categoryIds": [
+            "sb26cat_2"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-08-14T00:00:00.000Z",
+          "updatedAt": "2026-08-14T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_015",
+          "title": "[SAMPLE] Vehicle maintenance log",
+          "answer": "Vehicle file in office drawer. This is a fictional example, not a verified household location.",
+          "location": "Vehicle file in office drawer",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_2",
+          "categoryIds": [
+            "sb26cat_2"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-08-15T00:00:00.000Z",
+          "updatedAt": "2026-08-15T00:00:00.000Z",
+          "due": "2026-11-05"
+        },
+        {
+          "id": "sb26qa_016",
+          "title": "[SAMPLE] Home inventory checklist",
+          "answer": "Blue inventory binder. This is a fictional example, not a verified household location.",
+          "location": "Blue inventory binder",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_2",
+          "categoryIds": [
+            "sb26cat_2"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-08-16T00:00:00.000Z",
+          "updatedAt": "2026-08-16T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_017",
+          "title": "[SAMPLE] Insurance contact template",
+          "answer": "Emergency binder, blank template. This is a fictional example, not a verified household location.",
+          "location": "Emergency binder, blank template",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_2",
+          "categoryIds": [
+            "sb26cat_2"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-08-17T00:00:00.000Z",
+          "updatedAt": "2026-08-17T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_018",
+          "title": "[SAMPLE] Moving supplies list",
+          "answer": "Household notebook. This is a fictional example, not a verified household location.",
+          "location": "Household notebook",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_2",
+          "categoryIds": [
+            "sb26cat_2"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-08-18T00:00:00.000Z",
+          "updatedAt": "2026-08-18T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_019",
+          "title": "[SAMPLE] HVAC filter size note",
+          "answer": "Check installed filter label before purchase. This is a fictional example, not a verified household location.",
+          "location": "Check installed filter label before purchase",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_0",
+          "categoryIds": [
+            "sb26cat_3"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-08-19T00:00:00.000Z",
+          "updatedAt": "2026-08-19T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_020",
+          "title": "[SAMPLE] Smoke alarm testing checklist",
+          "answer": "Test button on each alarm, follow manual. This is a fictional example, not a verified household location.",
+          "location": "Test button on each alarm, follow manual",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_0",
+          "categoryIds": [
+            "sb26cat_3"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-08-20T00:00:00.000Z",
+          "updatedAt": "2026-08-20T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_021",
+          "title": "[SAMPLE] Dryer lint care",
+          "answer": "Clean lint screen after every load. This is a fictional example, not a verified household location.",
+          "location": "Clean lint screen after every load",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_0",
+          "categoryIds": [
+            "sb26cat_3"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-08-21T00:00:00.000Z",
+          "updatedAt": "2026-08-21T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_022",
+          "title": "[SAMPLE] Water shutoff map",
+          "answer": "See household map; verify valve onsite. This is a fictional example, not a verified household location.",
+          "location": "See household map; verify valve onsite",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_0",
+          "categoryIds": [
+            "sb26cat_3"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-08-22T00:00:00.000Z",
+          "updatedAt": "2026-08-22T00:00:00.000Z",
+          "due": "2026-11-12"
+        },
+        {
+          "id": "sb26qa_023",
+          "title": "[SAMPLE] Caulk inspection",
+          "answer": "Inspect sink and tub seals monthly. This is a fictional example, not a verified household location.",
+          "location": "Inspect sink and tub seals monthly",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_0",
+          "categoryIds": [
+            "sb26cat_3"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-08-23T00:00:00.000Z",
+          "updatedAt": "2026-08-23T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_024",
+          "title": "[SAMPLE] Outdoor faucet covers",
+          "answer": "Seasonal bin on garage rack. This is a fictional example, not a verified household location.",
+          "location": "Seasonal bin on garage rack",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_0",
+          "categoryIds": [
+            "sb26cat_3"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-08-24T00:00:00.000Z",
+          "updatedAt": "2026-08-24T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_025",
+          "title": "[SAMPLE] Pruning shears",
+          "answer": "Garden shed tool caddy. This is a fictional example, not a verified household location.",
+          "location": "Garden shed tool caddy",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_1",
+          "categoryIds": [
+            "sb26cat_4"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-08-25T00:00:00.000Z",
+          "updatedAt": "2026-08-25T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_026",
+          "title": "[SAMPLE] Seed packets",
+          "answer": "Dry seed storage box. This is a fictional example, not a verified household location.",
+          "location": "Dry seed storage box",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_1",
+          "categoryIds": [
+            "sb26cat_4"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-08-26T00:00:00.000Z",
+          "updatedAt": "2026-08-26T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_027",
+          "title": "[SAMPLE] Plant tags",
+          "answer": "Garden notebook pouch. This is a fictional example, not a verified household location.",
+          "location": "Garden notebook pouch",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_1",
+          "categoryIds": [
+            "sb26cat_4"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-08-27T00:00:00.000Z",
+          "updatedAt": "2026-08-27T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_028",
+          "title": "[SAMPLE] Hose nozzle",
+          "answer": "Patio storage box. This is a fictional example, not a verified household location.",
+          "location": "Patio storage box",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_1",
+          "categoryIds": [
+            "sb26cat_4"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-08-28T00:00:00.000Z",
+          "updatedAt": "2026-08-28T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_029",
+          "title": "[SAMPLE] Potting gloves",
+          "answer": "Green garden tote. This is a fictional example, not a verified household location.",
+          "location": "Green garden tote",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_1",
+          "categoryIds": [
+            "sb26cat_4"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-08-29T00:00:00.000Z",
+          "updatedAt": "2026-08-29T00:00:00.000Z",
+          "due": "2026-10-26"
+        },
+        {
+          "id": "sb26qa_030",
+          "title": "[SAMPLE] Watering schedule",
+          "answer": "Garden journal on patio shelf. This is a fictional example, not a verified household location.",
+          "location": "Garden journal on patio shelf",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_1",
+          "categoryIds": [
+            "sb26cat_4"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-08-30T00:00:00.000Z",
+          "updatedAt": "2026-08-30T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_031",
+          "title": "[SAMPLE] Packing cubes",
+          "answer": "Large suitcase interior pocket. This is a fictional example, not a verified household location.",
+          "location": "Large suitcase interior pocket",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_2",
+          "categoryIds": [
+            "sb26cat_5"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-08-31T00:00:00.000Z",
+          "updatedAt": "2026-08-31T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_032",
+          "title": "[SAMPLE] Travel adapters",
+          "answer": "Travel electronics pouch. This is a fictional example, not a verified household location.",
+          "location": "Travel electronics pouch",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_2",
+          "categoryIds": [
+            "sb26cat_5"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-09-01T00:00:00.000Z",
+          "updatedAt": "2026-09-01T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_033",
+          "title": "[SAMPLE] Luggage scale",
+          "answer": "Clipped inside suitcase. This is a fictional example, not a verified household location.",
+          "location": "Clipped inside suitcase",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_2",
+          "categoryIds": [
+            "sb26cat_5"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-09-02T00:00:00.000Z",
+          "updatedAt": "2026-09-02T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_034",
+          "title": "[SAMPLE] Toiletry bottles",
+          "answer": "Bathroom cabinet travel bag. This is a fictional example, not a verified household location.",
+          "location": "Bathroom cabinet travel bag",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_2",
+          "categoryIds": [
+            "sb26cat_5"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-09-03T00:00:00.000Z",
+          "updatedAt": "2026-09-03T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_035",
+          "title": "[SAMPLE] Trip checklist",
+          "answer": "Travel binder in office. This is a fictional example, not a verified household location.",
+          "location": "Travel binder in office",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_2",
+          "categoryIds": [
+            "sb26cat_5"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-09-04T00:00:00.000Z",
+          "updatedAt": "2026-09-04T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_036",
+          "title": "[SAMPLE] Travel first-aid pouch",
+          "answer": "Luggage accessory pouch. This is a fictional example, not a verified household location.",
+          "location": "Luggage accessory pouch",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_2",
+          "categoryIds": [
+            "sb26cat_5"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-09-05T00:00:00.000Z",
+          "updatedAt": "2026-09-05T00:00:00.000Z",
+          "due": "2026-11-02"
+        },
+        {
+          "id": "sb26qa_037",
+          "title": "[SAMPLE] Pet carrier",
+          "answer": "Folded in hall closet. This is a fictional example, not a verified household location.",
+          "location": "Folded in hall closet",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_0",
+          "categoryIds": [
+            "sb26cat_6"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-09-06T00:00:00.000Z",
+          "updatedAt": "2026-09-06T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_038",
+          "title": "[SAMPLE] Grooming brush",
+          "answer": "Laundry pet supply basket. This is a fictional example, not a verified household location.",
+          "location": "Laundry pet supply basket",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_0",
+          "categoryIds": [
+            "sb26cat_6"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-09-07T00:00:00.000Z",
+          "updatedAt": "2026-09-07T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_039",
+          "title": "[SAMPLE] Spare leash",
+          "answer": "Entryway pet drawer. This is a fictional example, not a verified household location.",
+          "location": "Entryway pet drawer",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_0",
+          "categoryIds": [
+            "sb26cat_6"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-09-08T00:00:00.000Z",
+          "updatedAt": "2026-09-08T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_040",
+          "title": "[SAMPLE] Travel bowl",
+          "answer": "Hall closet travel pet bag. This is a fictional example, not a verified household location.",
+          "location": "Hall closet travel pet bag",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_0",
+          "categoryIds": [
+            "sb26cat_6"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-09-09T00:00:00.000Z",
+          "updatedAt": "2026-09-09T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_041",
+          "title": "[SAMPLE] Pet blanket",
+          "answer": "Laundry utility shelf. This is a fictional example, not a verified household location.",
+          "location": "Laundry utility shelf",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_0",
+          "categoryIds": [
+            "sb26cat_6"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-09-10T00:00:00.000Z",
+          "updatedAt": "2026-09-10T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_042",
+          "title": "[SAMPLE] Pet supply checklist",
+          "answer": "Attached to pet supply bin. This is a fictional example, not a verified household location.",
+          "location": "Attached to pet supply bin",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_0",
+          "categoryIds": [
+            "sb26cat_6"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-09-11T00:00:00.000Z",
+          "updatedAt": "2026-09-11T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_043",
+          "title": "[SAMPLE] HDMI cable",
+          "answer": "Labeled office cable organizer. This is a fictional example, not a verified household location.",
+          "location": "Labeled office cable organizer",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_1",
+          "categoryIds": [
+            "sb26cat_7"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-09-12T00:00:00.000Z",
+          "updatedAt": "2026-09-12T00:00:00.000Z",
+          "due": "2026-11-09"
+        },
+        {
+          "id": "sb26qa_044",
+          "title": "[SAMPLE] USB-C charger",
+          "answer": "Office electronics drawer. This is a fictional example, not a verified household location.",
+          "location": "Office electronics drawer",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_1",
+          "categoryIds": [
+            "sb26cat_7"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-09-13T00:00:00.000Z",
+          "updatedAt": "2026-09-13T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_045",
+          "title": "[SAMPLE] Router documentation",
+          "answer": "Office binder, no passwords stored. This is a fictional example, not a verified household location.",
+          "location": "Office binder, no passwords stored",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_1",
+          "categoryIds": [
+            "sb26cat_7"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-09-14T00:00:00.000Z",
+          "updatedAt": "2026-09-14T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_046",
+          "title": "[SAMPLE] Wireless mouse",
+          "answer": "Desk accessory bin. This is a fictional example, not a verified household location.",
+          "location": "Desk accessory bin",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_1",
+          "categoryIds": [
+            "sb26cat_7"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-09-15T00:00:00.000Z",
+          "updatedAt": "2026-09-15T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_047",
+          "title": "[SAMPLE] Charging cable labels",
+          "answer": "Cable organizer kit. This is a fictional example, not a verified household location.",
+          "location": "Cable organizer kit",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_1",
+          "categoryIds": [
+            "sb26cat_7"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-09-16T00:00:00.000Z",
+          "updatedAt": "2026-09-16T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_048",
+          "title": "[SAMPLE] Remote batteries",
+          "answer": "Garage battery box. This is a fictional example, not a verified household location.",
+          "location": "Garage battery box",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_1",
+          "categoryIds": [
+            "sb26cat_7"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-09-17T00:00:00.000Z",
+          "updatedAt": "2026-09-17T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_049",
+          "title": "[SAMPLE] Gift wrap",
+          "answer": "Hall closet storage tube. This is a fictional example, not a verified household location.",
+          "location": "Hall closet storage tube",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_2",
+          "categoryIds": [
+            "sb26cat_8"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-09-18T00:00:00.000Z",
+          "updatedAt": "2026-09-18T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_050",
+          "title": "[SAMPLE] Holiday lights",
+          "answer": "Labeled garage holiday tote. This is a fictional example, not a verified household location.",
+          "location": "Labeled garage holiday tote",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_2",
+          "categoryIds": [
+            "sb26cat_8"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-09-19T00:00:00.000Z",
+          "updatedAt": "2026-09-19T00:00:00.000Z",
+          "due": "2026-10-23"
+        },
+        {
+          "id": "sb26qa_051",
+          "title": "[SAMPLE] Winter blankets",
+          "answer": "Bedroom linen bag. This is a fictional example, not a verified household location.",
+          "location": "Bedroom linen bag",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_2",
+          "categoryIds": [
+            "sb26cat_8"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-09-20T00:00:00.000Z",
+          "updatedAt": "2026-09-20T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_052",
+          "title": "[SAMPLE] Picnic blanket",
+          "answer": "Garage outdoor tote. This is a fictional example, not a verified household location.",
+          "location": "Garage outdoor tote",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_2",
+          "categoryIds": [
+            "sb26cat_8"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-09-21T00:00:00.000Z",
+          "updatedAt": "2026-09-21T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_053",
+          "title": "[SAMPLE] Rain ponchos",
+          "answer": "Entryway emergency bin. This is a fictional example, not a verified household location.",
+          "location": "Entryway emergency bin",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_2",
+          "categoryIds": [
+            "sb26cat_8"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-09-22T00:00:00.000Z",
+          "updatedAt": "2026-09-22T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_054",
+          "title": "[SAMPLE] Decoration hooks",
+          "answer": "Decoration accessories box. This is a fictional example, not a verified household location.",
+          "location": "Decoration accessories box",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_2",
+          "categoryIds": [
+            "sb26cat_8"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-09-23T00:00:00.000Z",
+          "updatedAt": "2026-09-23T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_055",
+          "title": "[SAMPLE] Microfiber cloths",
+          "answer": "Laundry utility basket. This is a fictional example, not a verified household location.",
+          "location": "Laundry utility basket",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_0",
+          "categoryIds": [
+            "sb26cat_9"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-09-24T00:00:00.000Z",
+          "updatedAt": "2026-09-24T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_056",
+          "title": "[SAMPLE] Vacuum attachments",
+          "answer": "Hall closet door rack. This is a fictional example, not a verified household location.",
+          "location": "Hall closet door rack",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_0",
+          "categoryIds": [
+            "sb26cat_9"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-09-25T00:00:00.000Z",
+          "updatedAt": "2026-09-25T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_057",
+          "title": "[SAMPLE] Mop pads",
+          "answer": "Laundry cabinet. This is a fictional example, not a verified household location.",
+          "location": "Laundry cabinet",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_0",
+          "categoryIds": [
+            "sb26cat_9"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-09-26T00:00:00.000Z",
+          "updatedAt": "2026-09-26T00:00:00.000Z",
+          "due": "2026-10-30"
+        },
+        {
+          "id": "sb26qa_058",
+          "title": "[SAMPLE] Window squeegee",
+          "answer": "Cleaning caddy. This is a fictional example, not a verified household location.",
+          "location": "Cleaning caddy",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_0",
+          "categoryIds": [
+            "sb26cat_9"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-09-27T00:00:00.000Z",
+          "updatedAt": "2026-09-27T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_059",
+          "title": "[SAMPLE] Spray bottles",
+          "answer": "Labeled cleaning bin. This is a fictional example, not a verified household location.",
+          "location": "Labeled cleaning bin",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_0",
+          "categoryIds": [
+            "sb26cat_9"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-09-28T00:00:00.000Z",
+          "updatedAt": "2026-09-28T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_060",
+          "title": "[SAMPLE] Dusting brush",
+          "answer": "Hall closet cleaning caddy. This is a fictional example, not a verified household location.",
+          "location": "Hall closet cleaning caddy",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_0",
+          "categoryIds": [
+            "sb26cat_9"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-09-29T00:00:00.000Z",
+          "updatedAt": "2026-09-29T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_061",
+          "title": "[SAMPLE] Tape measure",
+          "answer": "Top toolbox tray. This is a fictional example, not a verified household location.",
+          "location": "Top toolbox tray",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_1",
+          "categoryIds": [
+            "sb26cat_10"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-09-30T00:00:00.000Z",
+          "updatedAt": "2026-09-30T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_062",
+          "title": "[SAMPLE] Spirit level",
+          "answer": "Hand tools drawer. This is a fictional example, not a verified household location.",
+          "location": "Hand tools drawer",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_1",
+          "categoryIds": [
+            "sb26cat_10"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-10-01T00:00:00.000Z",
+          "updatedAt": "2026-10-01T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_063",
+          "title": "[SAMPLE] Stud finder",
+          "answer": "Tool case on garage shelf. This is a fictional example, not a verified household location.",
+          "location": "Tool case on garage shelf",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_1",
+          "categoryIds": [
+            "sb26cat_10"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-10-02T00:00:00.000Z",
+          "updatedAt": "2026-10-02T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_064",
+          "title": "[SAMPLE] Picture hanging kit",
+          "answer": "Hardware organizer. This is a fictional example, not a verified household location.",
+          "location": "Hardware organizer",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_1",
+          "categoryIds": [
+            "sb26cat_10"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-10-03T00:00:00.000Z",
+          "updatedAt": "2026-10-03T00:00:00.000Z",
+          "due": "2026-11-06"
+        },
+        {
+          "id": "sb26qa_065",
+          "title": "[SAMPLE] Allen keys",
+          "answer": "Separate metric and imperial sleeves. This is a fictional example, not a verified household location.",
+          "location": "Separate metric and imperial sleeves",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_1",
+          "categoryIds": [
+            "sb26cat_10"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-10-04T00:00:00.000Z",
+          "updatedAt": "2026-10-04T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_066",
+          "title": "[SAMPLE] Flashlight",
+          "answer": "Utility closet charging shelf. This is a fictional example, not a verified household location.",
+          "location": "Utility closet charging shelf",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_1",
+          "categoryIds": [
+            "sb26cat_10"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-10-05T00:00:00.000Z",
+          "updatedAt": "2026-10-05T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_067",
+          "title": "[SAMPLE] Board games",
+          "answer": "Living room game cabinet. This is a fictional example, not a verified household location.",
+          "location": "Living room game cabinet",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_2",
+          "categoryIds": [
+            "sb26cat_11"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-10-06T00:00:00.000Z",
+          "updatedAt": "2026-10-06T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_068",
+          "title": "[SAMPLE] Jigsaw puzzles",
+          "answer": "Lower living room shelf. This is a fictional example, not a verified household location.",
+          "location": "Lower living room shelf",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_2",
+          "categoryIds": [
+            "sb26cat_11"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-10-07T00:00:00.000Z",
+          "updatedAt": "2026-10-07T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_069",
+          "title": "[SAMPLE] Picnic utensils",
+          "answer": "Outdoor dining tote. This is a fictional example, not a verified household location.",
+          "location": "Outdoor dining tote",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_2",
+          "categoryIds": [
+            "sb26cat_11"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-10-08T00:00:00.000Z",
+          "updatedAt": "2026-10-08T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_070",
+          "title": "[SAMPLE] Craft scissors",
+          "answer": "Activity closet craft box. This is a fictional example, not a verified household location.",
+          "location": "Activity closet craft box",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_2",
+          "categoryIds": [
+            "sb26cat_11"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-10-09T00:00:00.000Z",
+          "updatedAt": "2026-10-09T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_071",
+          "title": "[SAMPLE] Coloring supplies",
+          "answer": "Art organizer. This is a fictional example, not a verified household location.",
+          "location": "Art organizer",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_2",
+          "categoryIds": [
+            "sb26cat_11"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-10-10T00:00:00.000Z",
+          "updatedAt": "2026-10-10T00:00:00.000Z",
+          "due": "2026-11-13"
+        },
+        {
+          "id": "sb26qa_072",
+          "title": "[SAMPLE] Photo album sleeves",
+          "answer": "Office keepsake drawer. This is a fictional example, not a verified household location.",
+          "location": "Office keepsake drawer",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_2",
+          "categoryIds": [
+            "sb26cat_11"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-10-11T00:00:00.000Z",
+          "updatedAt": "2026-10-11T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_073",
+          "title": "[SAMPLE] Windshield scraper",
+          "answer": "Vehicle emergency bag. This is a fictional example, not a verified household location.",
+          "location": "Vehicle emergency bag",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_0",
+          "categoryIds": [
+            "sb26cat_12"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-10-12T00:00:00.000Z",
+          "updatedAt": "2026-10-12T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_074",
+          "title": "[SAMPLE] Car wash towels",
+          "answer": "Garage auto-care bin. This is a fictional example, not a verified household location.",
+          "location": "Garage auto-care bin",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_0",
+          "categoryIds": [
+            "sb26cat_12"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-10-13T00:00:00.000Z",
+          "updatedAt": "2026-10-13T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_075",
+          "title": "[SAMPLE] Jumper cables",
+          "answer": "Garage labeled vehicle kit. This is a fictional example, not a verified household location.",
+          "location": "Garage labeled vehicle kit",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_0",
+          "categoryIds": [
+            "sb26cat_12"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-10-14T00:00:00.000Z",
+          "updatedAt": "2026-10-14T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_076",
+          "title": "[SAMPLE] Tire inflator",
+          "answer": "Auto equipment tote. This is a fictional example, not a verified household location.",
+          "location": "Auto equipment tote",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_0",
+          "categoryIds": [
+            "sb26cat_12"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-10-15T00:00:00.000Z",
+          "updatedAt": "2026-10-15T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_077",
+          "title": "[SAMPLE] Vehicle flashlight",
+          "answer": "Car safety kit. This is a fictional example, not a verified household location.",
+          "location": "Car safety kit",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_0",
+          "categoryIds": [
+            "sb26cat_12"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-10-16T00:00:00.000Z",
+          "updatedAt": "2026-10-16T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_078",
+          "title": "[SAMPLE] Registration checklist",
+          "answer": "Office vehicle binder, no IDs. This is a fictional example, not a verified household location.",
+          "location": "Office vehicle binder, no IDs",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_0",
+          "categoryIds": [
+            "sb26cat_12"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-10-17T00:00:00.000Z",
+          "updatedAt": "2026-10-17T00:00:00.000Z",
+          "due": "2026-10-27"
+        },
+        {
+          "id": "sb26qa_079",
+          "title": "[SAMPLE] Emergency flashlight",
+          "answer": "Hall closet emergency tote. This is a fictional example, not a verified household location.",
+          "location": "Hall closet emergency tote",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_1",
+          "categoryIds": [
+            "sb26cat_13"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-10-18T00:00:00.000Z",
+          "updatedAt": "2026-10-18T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_080",
+          "title": "[SAMPLE] First-aid supplies",
+          "answer": "Hall bathroom first-aid cabinet. This is a fictional example, not a verified household location.",
+          "location": "Hall bathroom first-aid cabinet",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_1",
+          "categoryIds": [
+            "sb26cat_13"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-10-19T00:00:00.000Z",
+          "updatedAt": "2026-10-19T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_081",
+          "title": "[SAMPLE] Water rotation checklist",
+          "answer": "Garage emergency bin. This is a fictional example, not a verified household location.",
+          "location": "Garage emergency bin",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_1",
+          "categoryIds": [
+            "sb26cat_13"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-10-20T00:00:00.000Z",
+          "updatedAt": "2026-10-20T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_082",
+          "title": "[SAMPLE] Fire extinguisher check",
+          "answer": "Kitchen safety station; check manual. This is a fictional example, not a verified household location.",
+          "location": "Kitchen safety station; check manual",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_1",
+          "categoryIds": [
+            "sb26cat_13"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-10-21T00:00:00.000Z",
+          "updatedAt": "2026-10-21T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_083",
+          "title": "[SAMPLE] Emergency contacts template",
+          "answer": "Preparedness binder blank sheet. This is a fictional example, not a verified household location.",
+          "location": "Preparedness binder blank sheet",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_1",
+          "categoryIds": [
+            "sb26cat_13"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-10-22T00:00:00.000Z",
+          "updatedAt": "2026-10-22T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_084",
+          "title": "[SAMPLE] Exit plan practice",
+          "answer": "Living room household checklist. This is a fictional example, not a verified household location.",
+          "location": "Living room household checklist",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_1",
+          "categoryIds": [
+            "sb26cat_13"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-10-23T00:00:00.000Z",
+          "updatedAt": "2026-10-23T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_085",
+          "title": "[SAMPLE] Printer paper",
+          "answer": "Bottom office file drawer. This is a fictional example, not a verified household location.",
+          "location": "Bottom office file drawer",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_2",
+          "categoryIds": [
+            "sb26cat_14"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-10-24T00:00:00.000Z",
+          "updatedAt": "2026-10-24T00:00:00.000Z",
+          "due": "2026-11-03"
+        },
+        {
+          "id": "sb26qa_086",
+          "title": "[SAMPLE] Label maker",
+          "answer": "Desk drawer. This is a fictional example, not a verified household location.",
+          "location": "Desk drawer",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_2",
+          "categoryIds": [
+            "sb26cat_14"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-10-25T00:00:00.000Z",
+          "updatedAt": "2026-10-25T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_087",
+          "title": "[SAMPLE] Sticky notes",
+          "answer": "Stationery organizer. This is a fictional example, not a verified household location.",
+          "location": "Stationery organizer",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_2",
+          "categoryIds": [
+            "sb26cat_14"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-10-26T00:00:00.000Z",
+          "updatedAt": "2026-10-26T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_088",
+          "title": "[SAMPLE] Stapler refills",
+          "answer": "Small stationery tin. This is a fictional example, not a verified household location.",
+          "location": "Small stationery tin",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_2",
+          "categoryIds": [
+            "sb26cat_14"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-10-27T00:00:00.000Z",
+          "updatedAt": "2026-10-27T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_089",
+          "title": "[SAMPLE] Document sleeves",
+          "answer": "Office binder shelf. This is a fictional example, not a verified household location.",
+          "location": "Office binder shelf",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_2",
+          "categoryIds": [
+            "sb26cat_14"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-10-28T00:00:00.000Z",
+          "updatedAt": "2026-10-28T00:00:00.000Z"
+        },
+        {
+          "id": "sb26qa_090",
+          "title": "[SAMPLE] Notebook archive",
+          "answer": "Office shelf sorted by year. This is a fictional example, not a verified household location.",
+          "location": "Office shelf sorted by year",
+          "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+          "source": "CasitaDex synthetic QA fixture",
+          "confidence": "Unknown",
+          "spaceId": "sb26space_2",
+          "categoryIds": [
+            "sb26cat_14"
+          ],
+          "legacyContext": null,
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "demo": true,
+          "createdAt": "2026-10-29T00:00:00.000Z",
+          "updatedAt": "2026-10-29T00:00:00.000Z"
+        },
+        {
+          "id": "e_mwi9okxl_6og7xejm0o",
+          "title": "QA Location Saved Memory",
+          "answer": "Location persistence verification",
+          "location": "QA Picker Final Shelf",
+          "notes": "",
+          "spaceId": null,
+          "categoryIds": [],
+          "legacyContext": null,
+          "confidence": "Unknown",
+          "source": "",
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "createdAt": "2026-11-15T20:11:22.113Z",
+          "updatedAt": "2026-11-15T20:11:22.113Z",
+          "events": [
+            {
+              "id": "e_mwi9shvl_q0hagl691h",
+              "type": "created",
+              "at": "2026-11-15T20:11:22.113Z"
+            }
+          ]
+        },
+        {
+          "id": "e_mwiaaulc_t3miyh7vt0",
+          "title": "QA Samsung Full Sweep 20261115",
+          "answer": "Samsung 20x25x1 saved offline",
+          "location": "",
+          "notes": "",
+          "spaceId": null,
+          "categoryIds": [],
+          "legacyContext": null,
+          "confidence": "Needs checking",
+          "source": "",
+          "history": [],
+          "lifecycle": "active",
+          "mediaIds": [],
+          "createdAt": "2026-11-15T20:25:58.505Z",
+          "updatedAt": "2026-11-15T20:30:44.544Z",
+          "events": [
+            {
+              "id": "e_mwiaba3t_shxz37dsm0",
+              "type": "created",
+              "at": "2026-11-15T20:25:58.505Z"
+            },
+            {
+              "id": "e_mwiacjor_f8b808fr4s",
+              "type": "answer_edited",
+              "at": "2026-11-15T20:26:57.579Z"
+            },
+            {
+              "id": "e_mwiadzfj_pg94mheu6l",
+              "type": "answer_edited",
+              "at": "2026-11-15T20:28:04.639Z"
+            },
+            {
+              "id": "e_mwiaeqxo_5z6taokibb",
+              "type": "archived",
+              "at": "2026-11-15T20:28:40.284Z"
+            },
+            {
+              "id": "e_mwiaexsl_d8j4vb57vr",
+              "type": "restored",
+              "at": "2026-11-15T20:28:49.173Z"
+            },
+            {
+              "id": "e_mwiah60q_426rzzpuiu",
+              "type": "deleted",
+              "at": "2026-11-15T20:30:33.146Z"
+            },
+            {
+              "id": "e_mwiahetc_1d5qjq5r1s",
+              "type": "restored",
+              "at": "2026-11-15T20:30:44.544Z"
+            }
+          ]
+        }
+      ],
+      "media": {
+        "version": 2,
+        "media": []
+      },
+      "draft": null,
+      "locations": [
+        {
+          "id": "loc_1",
+          "name": "Upper pantry basket",
+          "spaceId": "sb26space_0"
+        },
+        {
+          "id": "loc_2",
+          "name": "Island drawer, second from top",
+          "spaceId": "sb26space_0"
+        },
+        {
+          "id": "loc_3",
+          "name": "Laundry utility cabinet",
+          "spaceId": "sb26space_0"
+        },
+        {
+          "id": "loc_4",
+          "name": "Pantry top shelf, wrapped",
+          "spaceId": "sb26space_0"
+        },
+        {
+          "id": "loc_5",
+          "name": "Lower kitchen linen drawer",
+          "spaceId": "sb26space_0"
+        },
+        {
+          "id": "loc_6",
+          "name": "Baking supplies bin",
+          "spaceId": "sb26space_0"
+        },
+        {
+          "id": "loc_7",
+          "name": "Left garage wall hook",
+          "spaceId": "sb26space_1"
+        },
+        {
+          "id": "loc_8",
+          "name": "Small red toolbox",
+          "spaceId": "sb26space_1"
+        },
+        {
+          "id": "loc_9",
+          "name": "Paint crate on storage rack",
+          "spaceId": "sb26space_1"
+        },
+        {
+          "id": "loc_10",
+          "name": "Emergency tote on rear shelf",
+          "spaceId": "sb26space_1"
+        },
+        {
+          "id": "loc_11",
+          "name": "Garden rack hook",
+          "spaceId": "sb26space_1"
+        },
+        {
+          "id": "loc_12",
+          "name": "Sealed battery organizer",
+          "spaceId": "sb26space_1"
+        },
+        {
+          "id": "loc_13",
+          "name": "Office cabinet, manuals binder",
+          "spaceId": "sb26space_2"
+        },
+        {
+          "id": "loc_14",
+          "name": "Warranty binder on office shelf",
+          "spaceId": "sb26space_2"
+        },
+        {
+          "id": "loc_15",
+          "name": "Vehicle file in office drawer",
+          "spaceId": "sb26space_2"
+        },
+        {
+          "id": "loc_16",
+          "name": "Blue inventory binder",
+          "spaceId": "sb26space_2"
+        },
+        {
+          "id": "loc_17",
+          "name": "Emergency binder, blank template",
+          "spaceId": "sb26space_2"
+        },
+        {
+          "id": "loc_18",
+          "name": "Household notebook",
+          "spaceId": "sb26space_2"
+        },
+        {
+          "id": "loc_19",
+          "name": "Check installed filter label before purchase",
+          "spaceId": "sb26space_0"
+        },
+        {
+          "id": "loc_20",
+          "name": "Test button on each alarm, follow manual",
+          "spaceId": "sb26space_0"
+        },
+        {
+          "id": "loc_21",
+          "name": "Clean lint screen after every load",
+          "spaceId": "sb26space_0"
+        },
+        {
+          "id": "loc_22",
+          "name": "See household map; verify valve onsite",
+          "spaceId": "sb26space_0"
+        },
+        {
+          "id": "loc_23",
+          "name": "Inspect sink and tub seals monthly",
+          "spaceId": "sb26space_0"
+        },
+        {
+          "id": "loc_24",
+          "name": "Seasonal bin on garage rack",
+          "spaceId": "sb26space_0"
+        },
+        {
+          "id": "loc_25",
+          "name": "Garden shed tool caddy",
+          "spaceId": "sb26space_1"
+        },
+        {
+          "id": "loc_26",
+          "name": "Dry seed storage box",
+          "spaceId": "sb26space_1"
+        },
+        {
+          "id": "loc_27",
+          "name": "Garden notebook pouch",
+          "spaceId": "sb26space_1"
+        },
+        {
+          "id": "loc_28",
+          "name": "Patio storage box",
+          "spaceId": "sb26space_1"
+        },
+        {
+          "id": "loc_29",
+          "name": "Green garden tote",
+          "spaceId": "sb26space_1"
+        },
+        {
+          "id": "loc_30",
+          "name": "Garden journal on patio shelf",
+          "spaceId": "sb26space_1"
+        },
+        {
+          "id": "loc_31",
+          "name": "Large suitcase interior pocket",
+          "spaceId": "sb26space_2"
+        },
+        {
+          "id": "loc_32",
+          "name": "Travel electronics pouch",
+          "spaceId": "sb26space_2"
+        },
+        {
+          "id": "loc_33",
+          "name": "Clipped inside suitcase",
+          "spaceId": "sb26space_2"
+        },
+        {
+          "id": "loc_34",
+          "name": "Bathroom cabinet travel bag",
+          "spaceId": "sb26space_2"
+        },
+        {
+          "id": "loc_35",
+          "name": "Travel binder in office",
+          "spaceId": "sb26space_2"
+        },
+        {
+          "id": "loc_36",
+          "name": "Luggage accessory pouch",
+          "spaceId": "sb26space_2"
+        },
+        {
+          "id": "loc_37",
+          "name": "Folded in hall closet",
+          "spaceId": "sb26space_0"
+        },
+        {
+          "id": "loc_38",
+          "name": "Laundry pet supply basket",
+          "spaceId": "sb26space_0"
+        },
+        {
+          "id": "loc_39",
+          "name": "Entryway pet drawer",
+          "spaceId": "sb26space_0"
+        },
+        {
+          "id": "loc_40",
+          "name": "Hall closet travel pet bag",
+          "spaceId": "sb26space_0"
+        },
+        {
+          "id": "loc_41",
+          "name": "Laundry utility shelf",
+          "spaceId": "sb26space_0"
+        },
+        {
+          "id": "loc_42",
+          "name": "Attached to pet supply bin",
+          "spaceId": "sb26space_0"
+        },
+        {
+          "id": "loc_43",
+          "name": "Labeled office cable organizer",
+          "spaceId": "sb26space_1"
+        },
+        {
+          "id": "loc_44",
+          "name": "Office electronics drawer",
+          "spaceId": "sb26space_1"
+        },
+        {
+          "id": "loc_45",
+          "name": "Office binder, no passwords stored",
+          "spaceId": "sb26space_1"
+        },
+        {
+          "id": "loc_46",
+          "name": "Desk accessory bin",
+          "spaceId": "sb26space_1"
+        },
+        {
+          "id": "loc_47",
+          "name": "Cable organizer kit",
+          "spaceId": "sb26space_1"
+        },
+        {
+          "id": "loc_48",
+          "name": "Garage battery box",
+          "spaceId": "sb26space_1"
+        },
+        {
+          "id": "loc_49",
+          "name": "Hall closet storage tube",
+          "spaceId": "sb26space_2"
+        },
+        {
+          "id": "loc_50",
+          "name": "Labeled garage holiday tote",
+          "spaceId": "sb26space_2"
+        },
+        {
+          "id": "loc_51",
+          "name": "Bedroom linen bag",
+          "spaceId": "sb26space_2"
+        },
+        {
+          "id": "loc_52",
+          "name": "Garage outdoor tote",
+          "spaceId": "sb26space_2"
+        },
+        {
+          "id": "loc_53",
+          "name": "Entryway emergency bin",
+          "spaceId": "sb26space_2"
+        },
+        {
+          "id": "loc_54",
+          "name": "Decoration accessories box",
+          "spaceId": "sb26space_2"
+        },
+        {
+          "id": "loc_55",
+          "name": "Laundry utility basket",
+          "spaceId": "sb26space_0"
+        },
+        {
+          "id": "loc_56",
+          "name": "Hall closet door rack",
+          "spaceId": "sb26space_0"
+        },
+        {
+          "id": "loc_57",
+          "name": "Laundry cabinet",
+          "spaceId": "sb26space_0"
+        },
+        {
+          "id": "loc_58",
+          "name": "Cleaning caddy",
+          "spaceId": "sb26space_0"
+        },
+        {
+          "id": "loc_59",
+          "name": "Labeled cleaning bin",
+          "spaceId": "sb26space_0"
+        },
+        {
+          "id": "loc_60",
+          "name": "Hall closet cleaning caddy",
+          "spaceId": "sb26space_0"
+        },
+        {
+          "id": "loc_61",
+          "name": "Top toolbox tray",
+          "spaceId": "sb26space_1"
+        },
+        {
+          "id": "loc_62",
+          "name": "Hand tools drawer",
+          "spaceId": "sb26space_1"
+        },
+        {
+          "id": "loc_63",
+          "name": "Tool case on garage shelf",
+          "spaceId": "sb26space_1"
+        },
+        {
+          "id": "loc_64",
+          "name": "Hardware organizer",
+          "spaceId": "sb26space_1"
+        },
+        {
+          "id": "loc_65",
+          "name": "Separate metric and imperial sleeves",
+          "spaceId": "sb26space_1"
+        },
+        {
+          "id": "loc_66",
+          "name": "Utility closet charging shelf",
+          "spaceId": "sb26space_1"
+        },
+        {
+          "id": "loc_67",
+          "name": "Living room game cabinet",
+          "spaceId": "sb26space_2"
+        },
+        {
+          "id": "loc_68",
+          "name": "Lower living room shelf",
+          "spaceId": "sb26space_2"
+        },
+        {
+          "id": "loc_69",
+          "name": "Outdoor dining tote",
+          "spaceId": "sb26space_2"
+        },
+        {
+          "id": "loc_70",
+          "name": "Activity closet craft box",
+          "spaceId": "sb26space_2"
+        },
+        {
+          "id": "loc_71",
+          "name": "Art organizer",
+          "spaceId": "sb26space_2"
+        },
+        {
+          "id": "loc_72",
+          "name": "Office keepsake drawer",
+          "spaceId": "sb26space_2"
+        },
+        {
+          "id": "loc_73",
+          "name": "Vehicle emergency bag",
+          "spaceId": "sb26space_0"
+        },
+        {
+          "id": "loc_74",
+          "name": "Garage auto-care bin",
+          "spaceId": "sb26space_0"
+        },
+        {
+          "id": "loc_75",
+          "name": "Garage labeled vehicle kit",
+          "spaceId": "sb26space_0"
+        },
+        {
+          "id": "loc_76",
+          "name": "Auto equipment tote",
+          "spaceId": "sb26space_0"
+        },
+        {
+          "id": "loc_77",
+          "name": "Car safety kit",
+          "spaceId": "sb26space_0"
+        },
+        {
+          "id": "loc_78",
+          "name": "Office vehicle binder, no IDs",
+          "spaceId": "sb26space_0"
+        },
+        {
+          "id": "loc_79",
+          "name": "Hall closet emergency tote",
+          "spaceId": "sb26space_1"
+        },
+        {
+          "id": "loc_80",
+          "name": "Hall bathroom first-aid cabinet",
+          "spaceId": "sb26space_1"
+        },
+        {
+          "id": "loc_81",
+          "name": "Garage emergency bin",
+          "spaceId": "sb26space_1"
+        },
+        {
+          "id": "loc_82",
+          "name": "Kitchen safety station; check manual",
+          "spaceId": "sb26space_1"
+        },
+        {
+          "id": "loc_83",
+          "name": "Preparedness binder blank sheet",
+          "spaceId": "sb26space_1"
+        },
+        {
+          "id": "loc_84",
+          "name": "Living room household checklist",
+          "spaceId": "sb26space_1"
+        },
+        {
+          "id": "loc_85",
+          "name": "Bottom office file drawer",
+          "spaceId": "sb26space_2"
+        },
+        {
+          "id": "loc_86",
+          "name": "Desk drawer",
+          "spaceId": "sb26space_2"
+        },
+        {
+          "id": "loc_87",
+          "name": "Stationery organizer",
+          "spaceId": "sb26space_2"
+        },
+        {
+          "id": "loc_88",
+          "name": "Small stationery tin",
+          "spaceId": "sb26space_2"
+        },
+        {
+          "id": "loc_89",
+          "name": "Office binder shelf",
+          "spaceId": "sb26space_2"
+        },
+        {
+          "id": "loc_90",
+          "name": "Office shelf sorted by year",
+          "spaceId": "sb26space_2"
+        },
+        {
+          "id": "e_mwi9okw5_ur54iv6e5z",
+          "name": "QA Picker Final Shelf",
+          "spaceId": null
+        }
+      ]
+    },
+    "draft": {
+      "id": "e_mwibvqc4_9qsze6ssiv",
+      "attempt": "e_mwibvqc4_ov8w6bjkim",
+      "memoryId": "e_mwibvqc4_hfhmdsvq82",
+      "checkpoint": 1,
+      "title": "",
+      "answer": "",
+      "location": "",
+      "notes": "",
+      "source": "",
+      "spaceId": null,
+      "legacyContext": null,
+      "categoryIds": [],
+      "photos": []
+    },
+    "attempts": {
+      "e_mwi9okxl_ib1y6tyd8v": "e_mwi9okxl_6og7xejm0o",
+      "e_mwiaaulc_pfrpqn0eur": "e_mwiaaulc_t3miyh7vt0",
+      "e_mwib18uz_r9f89p9hs9": "e_mwib18uz_u38uv19e2i"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+Tapped Save as separate memory
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped View photo 1 of QA Samsung Photo Sweep full screen
+Tapped Next photo
+Tapped Next photo
+Tapped Next photo
+Tapped Next photo
+Tapped Previous photo
+Tapped Previous photo
+Tapped Previous photo
+Tapped Previous photo
+Five-photo saved sequence and bounds PASS

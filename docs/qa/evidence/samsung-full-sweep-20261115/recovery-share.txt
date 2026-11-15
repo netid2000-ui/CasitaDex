@@ -1,0 +1,26 @@
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Recover previous full save
+Tapped Cancel recovery
+Tapped Recover previous full save
+Tapped Confirm full recovery
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Search memories
+Verified input Search memories
+Tapped Open regular memory QA Samsung Full Sweep 20261115
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Recover previous full save
+Tapped Confirm full recovery
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Search memories
+Verified input Search memories
+Tapped Open regular memory QA Samsung Full Sweep 20261115
+Previous full save recovery and reverse recovery PASS
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Open memory QA Samsung Photo Sweep
+Tapped More ···
+Tapped Share memory
+Tapped Include photo 1
+Tapped Share selected details
+Share chooser packages ['com.android.intentresolver']
+Tapped Cancel sharing
+Photo share preview and native chooser cancel PASS; nothing sent

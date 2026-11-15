@@ -1,0 +1,17 @@
+from phone import *
+name='QA Samsung Full Sweep 20261115'
+route('settings-manage?action=backup');tap('Recover previous full save');tap('Cancel recovery');shot('recovery-cancel')
+tap('Recover previous full save');tap('Confirm full recovery');time.sleep(1)
+assert any('Previous full save recovered and verified.' in (a or '') for a,b in labels())
+route('answers');fill('Search memories',name);tap('Open regular memory '+name)
+assert any('QA changed AFTER full backup' in (a or '') for a,b in labels());shot('recovered-previous-edit')
+route('settings-manage?action=backup');tap('Recover previous full save');tap('Confirm full recovery')
+route('answers');fill('Search memories',name);tap('Open regular memory '+name)
+assert any('Samsung 20x25x1 saved offline' in (a or '') for a,b in labels());shot('recovery-round-trip')
+print('Previous full save recovery and reverse recovery PASS',flush=True)
+route('photos');tap('Open memory QA Samsung Photo Sweep');tap('More ···');tap('Share memory');shot('share-preview')
+tap('Include photo 1');tap('Share selected details');time.sleep(1)
+packages=sorted(set(n.get('package','') for n in tree().iter('node')));print('Share chooser packages',packages,flush=True)
+assert any('intentresolver' in p or p=='android' for p in packages)
+run('shell','input','keyevent','4');node('Share selected details');shot('share-canceled');tap('Cancel sharing');node('Edit memory')
+print('Photo share preview and native chooser cancel PASS; nothing sent',flush=True)

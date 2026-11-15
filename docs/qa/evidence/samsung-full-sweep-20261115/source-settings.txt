@@ -1,0 +1,23 @@
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Add Photo Memory
+Tapped + Add Photo
+Tapped Choose from library
+Library picker packages ['com.google.android.photopicker']
+Tapped + Add Photo
+Tapped Take Photo
+Tapped Only this time
+Camera packages ['com.sec.android.app.camera']
+Tapped Cancel
+Library and camera launch/cancel PASS; no photo captured
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Traceback (most recent call last):
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/scripts/samsung-sweep-20261115/source-settings.py", line 14, in <module>
+    route('settings-manage?action=preferences');tap('Large text');shot('in-app-large-text');route('');node('Add Memory');shot('in-app-large-home')
+                                                ~~~^^^^^^^^^^^^^^
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/scripts/samsung-sweep-20261115/phone.py", line 39, in tap
+    n=node(label);x,y,a,b=bounds(n);run('shell','input','tap',str((x+a)//2),str((y+b)//2));time.sleep(.4);print('Tapped '+label,flush=True)
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/scripts/samsung-sweep-20261115/phone.py", line 37, in node
+    raise AssertionError('Missing '+label+' '+str(labels())[:4000])
+AssertionError: Missing Large text [('Memories stay on this device. A local save is not a separate backup.', ''), ('Memory management', ''), ('', 'Storage & Cleanup'), ('Storage & Cleanup', ''), ('', 'Archived memories'), ('Archived memories', ''), ('', 'Recently Deleted memories'), ('Recently Deleted memories', ''), ('', 'Manage Spaces, Categories & Locations'), ('Manage Spaces, Categories & Locations', ''), ('Data protection', ''), ('', 'Backup & Restore'), ('Backup & Restore', ''), ('Preferences & help', ''), ('', 'Appearance & Accessibility'), ('Appearance & Accessibility', ''), ('', 'Help & About'), ('Help & About', ''), ('', 'Primary navigation'), ('', 'Home'), ('Home', ''), ('', 'Photos'), ('Photos', ''), ('', 'Reminders'), ('Reminders', ''), ('', 'Find'), ('Find', '')]

@@ -1,0 +1,9 @@
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Save text report (no photos; not a backup)
+Tapped Use this folder
+Tapped Allow
+Tapped Review limited text backup (photos excluded)
+Tapped Confirm save limited text backup
+Tapped Use this folder
+Tapped Allow
+Readable text report and limited text backup export/readback PASS

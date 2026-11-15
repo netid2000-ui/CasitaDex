@@ -1,0 +1,33 @@
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Spaces
+Tapped Create new label
+Tapped Space name
+Verified input Space name
+Tapped Save
+Tapped QA Samsung Space
+Tapped Rename ›
+Tapped Space name
+Verified input Space name
+Tapped Save
+Tapped Review removal ›
+Tapped Cancel label removal
+Tapped Spaces
+Tapped QA Samsung Space Renamed
+Tapped Review removal ›
+Tapped Confirm remove label only
+Space create/rename/restart/removal cancel/confirm PASS
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Categories
+Tapped Create new label
+Tapped Category name
+Verified input Category name
+Tapped Save
+Traceback (most recent call last):
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/scripts/samsung-sweep-20261115/labels-extra.py", line 6, in <module>
+    fill(noun+' name',name);tap('Save');tap(name)
+                                        ~~~^^^^^^
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/scripts/samsung-sweep-20261115/phone.py", line 27, in tap
+    n=node(label);x,y,a,b=bounds(n);run('shell','input','tap',str((x+a)//2),str((y+b)//2));time.sleep(.4);print('Tapped '+label,flush=True)
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/scripts/samsung-sweep-20261115/phone.py", line 25, in node
+    raise AssertionError('Missing '+label+' '+str(labels())[:4000])
+AssertionError: Missing QA Samsung Category [('', '‹ Settings'), ('‹ Settings', ''), ('Manage labels', ''), ('Organize memories with spaces, categories and locations.', ''), ('', 'Spaces'), ('Spaces', ''), ('›', ''), ('', 'Categories'), ('Categories', ''), ('✓', ''), ('', 'Locations'), ('Locations', ''), ('›', ''), ('', 'Create new label'), ('Create new label', ''), ('›', ''), ('Saved on this device.', ''), ('', 'Garage'), ('Garage', ''), ('›', ''), ('', 'Garden'), ('Garden', ''), ('›', ''), ('', 'Home Office'), ('Home Office', ''), ('›', ''), ('', 'Kitchen'), ('Kitchen', ''), ('›', ''), ('', 'Maintenance'), ('Maintenance', ''), ('›', ''), ('', 'Pets'), ('Pets', ''), ('›', ''), ('', 'QA Samsung Category'), ('QA Samsung Category', ''), ('›', ''), ('', 'Safety'), ('Safety', ''), ('›', ''), ('', 'Seasonal'), ('Seasonal', ''), ('›', ''), ('', 'Tools'), ('Tools', ''), ('›', ''), ('', 'Travel'), ('Travel', ''), ('›', ''), ('', 'Vehicles'), ('Vehicles', ''), ('›', ''), ('', 'Primary navigation'), ('', 'Home'), ('Home', ''), ('', 'Photos'), ('Photos', ''), ('', 'Reminders'), ('Reminders', ''), ('', 'Find'), ('Find', '')]

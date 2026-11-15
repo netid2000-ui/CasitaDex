@@ -1,0 +1,17 @@
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Choose backup to review
+Tapped CasitaDex-full-2026-11-15T20-57-37-417Z.cdxe
+Tapped Use backed-up draft (previous state recoverable)
+Tapped Confirm replace with reviewed backup
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Search memories
+Verified input Search memories
+Tapped Open regular memory QA Samsung Full Sweep 20261115
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped View photo 1 of QA Samsung Photo Sweep full screen
+Tapped Close photo
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Choose backup to review
+Tapped QA-corrupt.cdxe
+[('', '‹ Settings'), ('‹ Settings', ''), ('Unsupported full backup format', ''), ('Back up your memories', ''), ('Full v4 backups include standalone reminders. Before restoring, keep a second verified backup. Full v4 restore replaces current standalone reminders after explicit review and confirmation. Text backups still exclude standalone reminders. Full backups include active, archived and recently deleted memories, photos, categories, Spaces, locations, and your unfinished draft. Full backups include supported collection and draft photos. Available device space is checked before export and restore. Individual photo and collection limits still apply.', ''), ('', 'Save full backup (with draft and photos)'), ('Save full backup (with draft and photos)', ''), ('', 'Review limited text backup (photos excluded)'), ('Review limited text backup (photos excluded)', ''), ('Text export is a readable report of all states and draft text. It includes private written metadata and history, excludes photo bytes, and cannot restore a collection. Use a full backup for recovery.', ''), ('', 'Save text report (no photos; not a backup)'), ('Save text report (no photos; not a backup)', ''), ('', 'Choose backup to review'), ('Choose backup to review', ''), ('', 'Recover previous full save'), ('Recover previous full save', ''), ('', 'Primary navigation'), ('', 'Home'), ('Home', ''), ('', 'Photos'), ('Photos', ''), ('', 'Reminders'), ('Reminders', ''), ('', 'Find'), ('Find', '')]
+Full backup restore original text and four photos PASS; inspect invalid backup rejection

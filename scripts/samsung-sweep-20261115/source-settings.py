@@ -1,0 +1,18 @@
+from phone import *
+route('photos');tap('Add Photo Memory');tap('+ Add Photo');tap('Choose from library');time.sleep(1)
+packages=sorted(set(n.get('package','') for n in tree().iter('node')));print('Library picker packages',packages,flush=True)
+assert any('photopicker' in p or 'providers.media' in p or 'gallery' in p for p in packages)
+run('shell','input','keyevent','4');node('Memory name (Required)');shot('library-picker-canceled')
+tap('+ Add Photo');tap('Take Photo')
+if any(a=='Only this time' for a,b in labels()):tap('Only this time')
+time.sleep(1);packages=sorted(set(n.get('package','') for n in tree().iter('node')));print('Camera packages',packages,flush=True)
+assert any('camera' in p for p in packages)
+run('shell','input','keyevent','4');node('Memory name (Required)');shot('camera-canceled');tap('Cancel')
+print('Library and camera launch/cancel PASS; no photo captured',flush=True)
+for action,title in [('help','Help & About'),('privacy','Privacy & security')]:
+ route('settings-manage?action='+action);node(title);shot('settings-'+action)
+route('settings-manage');tap('Appearance & Accessibility');tap('Large text');shot('in-app-large-text');route('');node('Add Memory');shot('in-app-large-home')
+route('settings-manage');tap('Appearance & Accessibility');tap('Large text');tap('System appearance');shot('preferences-restored')
+route('settings-manage?action=backup');tap('Review limited text backup (photos excluded)');shot('limited-backup-review');print(labels(),flush=True)
+tap('Cancel text backup')
+print('Help, privacy, in-app Large text toggle and limited-backup review/cancel PASS',flush=True)

@@ -1,0 +1,32 @@
+{
+  "scheduled": "14:54 / 14:54 / 14:55 America/Chicago",
+  "delivered": "Observed all three posted by about 15:00; OS alarms had inexact 6-7 minute windows",
+  "foreground": {
+    "tapped": "QA Samsung Foreground Alert",
+    "expected": "[SAMPLE] Coffee filters",
+    "observed": "[SAMPLE] Coffee filters",
+    "status": "PASS - actual saved mapping verified",
+    "initialExpected": "[SAMPLE] Appliance manuals",
+    "linkedMemoryId": "sb26qa_001"
+  },
+  "background": {
+    "tapped": "QA Samsung Background Alert",
+    "expected": "[SAMPLE] Extension cord",
+    "observed": "[SAMPLE] Extension cord",
+    "status": "PASS - actual saved mapping verified",
+    "initialExpected": "[SAMPLE] Extension cord",
+    "linkedMemoryId": "sb26qa_007"
+  },
+  "terminated": {
+    "tapped": "QA Samsung Terminated Alert",
+    "expected": "[SAMPLE] Appliance manuals",
+    "observed": "[SAMPLE] Appliance manuals",
+    "pidBefore": "17445",
+    "pidAfterKill": "",
+    "pidAfterTap": "25704",
+    "status": "PASS - actual saved mapping verified",
+    "initialExpected": "[SAMPLE] Coffee filters",
+    "linkedMemoryId": "sb26qa_013"
+  },
+  "testExpectationCorrection": "Initial handwritten mapping reversed sb26qa_001 and sb26qa_013. Backup snapshot and reminder rows prove actual correct routing. See notification-memory-mappings.json and backup-reminder-mappings.json."
+}

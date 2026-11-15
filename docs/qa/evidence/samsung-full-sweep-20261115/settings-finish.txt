@@ -1,0 +1,10 @@
+Tapped Large text
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Appearance & Accessibility
+Tapped Large text
+Tapped System appearance
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Review limited text backup (photos excluded)
+Tapped Cancel text backup
+In-app Large text and limited text backup review/cancel PASS

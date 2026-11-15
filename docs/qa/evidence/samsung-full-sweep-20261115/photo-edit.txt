@@ -1,0 +1,17 @@
+Tapped Manage photos
+Tapped Use as cover photo
+Tapped Next photo
+Tapped Manage photos
+Tapped Move photo later
+Tapped Previous photo
+Tapped Manage photos
+Tapped Replace this photo
+Tapped Browse Files
+Tapped QA-photo-two.jpg
+Tapped Remove this photo
+Tapped Cancel
+Tapped Remove this photo
+Tapped Remove photo
+Tapped Close photo
+Tapped Open memory QA Samsung Photo Sweep
+Swipe, cover, immediate navigation, reorder, replace, removal cancel/confirm PASS

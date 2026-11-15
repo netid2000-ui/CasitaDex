@@ -1,0 +1,29 @@
+[
+  {
+    "mode": "Foreground",
+    "memoryId": "sb26qa_001",
+    "title": "QA Samsung Foreground Alert",
+    "displayedDue": [
+      "2026-11-15",
+      "2:54\u202fPM"
+    ]
+  },
+  {
+    "mode": "Background",
+    "memoryId": "sb26qa_007",
+    "title": "QA Samsung Background Alert",
+    "displayedDue": [
+      "2026-11-15",
+      "2:54\u202fPM"
+    ]
+  },
+  {
+    "mode": "Terminated",
+    "memoryId": "sb26qa_013",
+    "title": "QA Samsung Terminated Alert",
+    "displayedDue": [
+      "2026-11-15",
+      "2:55\u202fPM"
+    ]
+  }
+]

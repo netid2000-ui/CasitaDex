@@ -1,0 +1,20 @@
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Reminder title (Required)
+Verified input Reminder title (Required)
+Tapped More options ▾
+Tapped Weekly
+Tapped Save Reminder
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Edit
+Tapped Once
+Tapped Save Reminder
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Mark Complete
+Tapped Mark Incomplete
+Traceback (most recent call last):
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/scripts/samsung-sweep-20261115/reminder-lifecycle.py", line 13, in <module>
+    tap('Mark Incomplete');node('Mark Complete');shot('reminder-incomplete')
+                           ~~~~^^^^^^^^^^^^^^^^^
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/scripts/samsung-sweep-20261115/phone.py", line 37, in node
+    raise AssertionError('Missing '+label+' '+str(labels())[:4000])
+AssertionError: Missing Mark Complete [('', 'Manage reminder'), ('Manage reminder', ''), ('QA Samsung Background Alert', ''), ('2026-11-15 at 14:54 · once', ''), ('Left garage wall hook. This is a fictional example, not a verified household location.', ''), ('', 'Manage reminder'), ('Manage reminder', ''), ('QA Samsung Foreground Alert', ''), ('2026-11-15 at 14:54 · once', ''), ('Upper pantry basket. This is a fictional example, not a verified household location.', ''), ('', 'Manage reminder'), ('Manage reminder', ''), ('Review [SAMPLE] Extension cord', ''), ('2026-11-15 at 14:27 · once', ''), ('Left garage wall hook. This is a fictional example, not a verified household location.', ''), ('', 'Manage reminder'), ('Manage reminder', ''), ('Saved locally. Reminder alerts scheduled; device settings may affect timing.', ''), ('', 'Primary navigation'), ('', 'Home'), ('Home', ''), ('', 'Photos'), ('Photos', ''), ('', 'Reminders'), ('Reminders', ''), ('', 'Find'), ('Find', '')]

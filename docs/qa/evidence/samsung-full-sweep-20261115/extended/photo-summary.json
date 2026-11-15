@@ -1,0 +1,16 @@
+{
+  "themes": [
+    "Light",
+    "Dark"
+  ],
+  "gridCompactSortSticky": "PASS",
+  "zoomButtons": "PASS",
+  "doubleTap": "PASS",
+  "twoPointerPinch": "PASS",
+  "returnToTappedItem": "PASS",
+  "exactScrollOffset": "Light PASS; Dark 9px drift (3.2dp), follow-up",
+  "recordings": [
+    "pinch-Light.mp4",
+    "pinch-Dark.mp4"
+  ]
+}

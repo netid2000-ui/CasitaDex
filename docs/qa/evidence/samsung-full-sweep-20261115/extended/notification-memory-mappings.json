@@ -1,0 +1,93 @@
+[
+  {
+    "id": "sb26qa_001",
+    "title": "[SAMPLE] Coffee filters",
+    "answer": "Upper pantry basket. This is a fictional example, not a verified household location.",
+    "location": "Upper pantry basket",
+    "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+    "source": "CasitaDex synthetic QA fixture",
+    "confidence": "Needs checking",
+    "spaceId": "sb26space_0",
+    "categoryIds": [
+      "sb26cat_0"
+    ],
+    "legacyContext": null,
+    "history": [],
+    "lifecycle": "active",
+    "mediaIds": [
+      "e_mwi9h9ez_xp7qjujxel"
+    ],
+    "demo": true,
+    "createdAt": "2026-08-01T00:00:00.000Z",
+    "updatedAt": "2026-11-15T20:02:37.988Z",
+    "due": "2026-10-22",
+    "events": [
+      {
+        "id": "e_mwi9h9gk_0usmm6rxqd",
+        "type": "answer_edited",
+        "at": "2026-11-15T20:02:37.988Z",
+        "note": "Photo added"
+      }
+    ]
+  },
+  {
+    "id": "sb26qa_007",
+    "title": "[SAMPLE] Extension cord",
+    "answer": "Left garage wall hook. This is a fictional example, not a verified household location.",
+    "location": "Left garage wall hook",
+    "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+    "source": "CasitaDex synthetic QA fixture",
+    "confidence": "Needs checking",
+    "spaceId": "sb26space_1",
+    "categoryIds": [
+      "sb26cat_1"
+    ],
+    "legacyContext": null,
+    "history": [],
+    "lifecycle": "active",
+    "mediaIds": [
+      "e_mwi9h9ie_arn0gn931j"
+    ],
+    "demo": true,
+    "createdAt": "2026-08-07T00:00:00.000Z",
+    "updatedAt": "2026-11-15T20:02:38.086Z",
+    "events": [
+      {
+        "id": "e_mwi9h9ja_n8qa0bw2sk",
+        "type": "answer_edited",
+        "at": "2026-11-15T20:02:38.086Z",
+        "note": "Photo added"
+      }
+    ]
+  },
+  {
+    "id": "sb26qa_013",
+    "title": "[SAMPLE] Appliance manuals",
+    "answer": "Office cabinet, manuals binder. This is a fictional example, not a verified household location.",
+    "location": "Office cabinet, manuals binder",
+    "notes": "Synthetic QA data only. Replace with your own confirmed information before relying on it.",
+    "source": "CasitaDex synthetic QA fixture",
+    "confidence": "Needs checking",
+    "spaceId": "sb26space_2",
+    "categoryIds": [
+      "sb26cat_2"
+    ],
+    "legacyContext": null,
+    "history": [],
+    "lifecycle": "active",
+    "mediaIds": [
+      "e_mwi9h9l8_b0pkangsq0"
+    ],
+    "demo": true,
+    "createdAt": "2026-08-13T00:00:00.000Z",
+    "updatedAt": "2026-11-15T20:02:38.190Z",
+    "events": [
+      {
+        "id": "e_mwi9h9m6_nvvvw3x5lj",
+        "type": "answer_edited",
+        "at": "2026-11-15T20:02:38.190Z",
+        "note": "Photo added"
+      }
+    ]
+  }
+]

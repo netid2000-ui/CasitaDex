@@ -1,0 +1,20 @@
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Light appearance
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Compact photo view
+Tapped Sort photos
+Tapped Recently added
+Tapped Grid photo view
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped View photo 1 of [SAMPLE] Appliance manuals full screen
+Tapped Zoom photo in
+Tapped Reset photo zoom
+Tapped Reset photo zoom
+/sdcard/cd-pinch-Light.mp4: 1 file pulled, 0 skipped. 25.1 MB/s (585182 bytes in 0.022s)
+Tapped Reset photo zoom
+Tapped Close photo
+Traceback (most recent call last):
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/scripts/samsung-sweep-20261115/photos.py", line 29, in <module>
+    tap('Close photo');node('Add Photo Memory');assert bounds(node(label))==originalBounds;shot('photo-'+theme+'-return')
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

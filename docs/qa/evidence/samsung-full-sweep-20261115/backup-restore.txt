@@ -1,0 +1,22 @@
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Search memories
+Verified input Search memories
+Tapped Open regular memory QA Samsung Full Sweep 20261115
+Tapped Edit memory
+Tapped Description
+Verified input Description
+Tapped Save
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Choose backup to review
+Tapped CasitaDex-full-2026-11-15T20-57-37-417Z.cdxe
+Tapped Confirm replace with reviewed backup
+[('', '‹ Settings'), ('‹ Settings', ''), ('Backup checked. Review before replacing your collection.', ''), ('Text export is a readable report of all states and draft text. It includes private written metadata and history, excludes photo bytes, and cannot restore a collection. Use a full backup for recovery.', ''), ('', 'Save text report (no photos; not a backup)'), ('Save text report (no photos; not a backup)', ''), ('', 'Choose backup to review'), ('Choose backup to review', ''), ('Full v4', ''), ('Standalone reminders in backup: 4. Confirming replaces all current standalone reminders.', ''), ('93 memories, 7 saved photos, no unfinished draft, 0 draft photos.', ''), ('Active: 93; Archived: 0; Recently Deleted: 0.', ''), ('Replacing the collection keeps the current full state as a recoverable previous save.', ''), ('You already have an unfinished draft. Choose which one to use.', ''), ('', 'Keep current draft'), ('Keep current draft', ''), ('', 'Use backed-up draft (previous state recoverable)'), ('Use backed-up draft (previous state recoverable)', ''), ('', 'Confirm replace with reviewed backup'), ('Confirm replace with reviewed backup', ''), ('', 'Cancel restore'), ('Cancel restore', ''), ('', 'Recover previous full save'), ('Recover previous full save', ''), ('', 'Primary navigation'), ('', 'Home'), ('Home', ''), ('', 'Photos'), ('Photos', ''), ('', 'Reminders'), ('Reminders', ''), ('', 'Find'), ('Find', '')]
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Search memories
+Verified input Search memories
+Tapped Open regular memory QA Samsung Full Sweep 20261115
+Traceback (most recent call last):
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/scripts/samsung-sweep-20261115/backup-restore.py", line 9, in <module>
+    assert any('Samsung 20x25x1 saved offline' in (a or '') for a,b in labels())
+           ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

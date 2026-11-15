@@ -1,0 +1,12 @@
+Tapped QA Samsung Category
+Tapped Rename ›
+Tapped Category name
+Verified input Category name
+Tapped Save
+Tapped Review removal ›
+Tapped Cancel label removal
+Tapped Categories
+Tapped QA Samsung Category Renamed
+Tapped Review removal ›
+Tapped Confirm remove label only
+Category create/rename/restart/removal cancel/confirm PASS

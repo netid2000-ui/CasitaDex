@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "rows": [
+    {
+      "id": "r_mwi9ztt8_xcwpwuxw",
+      "title": "Review [SAMPLE] Extension cord",
+      "notes": "Left garage wall hook. This is a fictional example, not a verified household location.",
+      "memoryId": "sb26qa_007",
+      "dueDate": "2026-11-15",
+      "dueTime": "14:27",
+      "repeat": "once",
+      "anchorDay": 15,
+      "completed": false,
+      "createdAt": "2026-11-15T20:17:04.172Z",
+      "updatedAt": "2026-11-15T20:17:04.172Z"
+    },
+    {
+      "id": "r_mwiazkwz_zo8re50q",
+      "title": "QA Samsung Foreground Alert",
+      "notes": "Upper pantry basket. This is a fictional example, not a verified household location.",
+      "memoryId": "sb26qa_001",
+      "dueDate": "2026-11-15",
+      "dueTime": "14:54",
+      "repeat": "once",
+      "anchorDay": 15,
+      "completed": false,
+      "createdAt": "2026-11-15T20:44:52.259Z",
+      "updatedAt": "2026-11-15T20:44:52.259Z"
+    },
+    {
+      "id": "r_mwib04j7_0k8wrdmp",
+      "title": "QA Samsung Background Alert",
+      "notes": "Left garage wall hook. This is a fictional example, not a verified household location.",
+      "memoryId": "sb26qa_007",
+      "dueDate": "2026-11-15",
+      "dueTime": "14:54",
+      "repeat": "once",
+      "anchorDay": 15,
+      "completed": false,
+      "createdAt": "2026-11-15T20:45:17.683Z",
+      "updatedAt": "2026-11-15T20:45:17.683Z"
+    },
+    {
+      "id": "r_mwib0o16_5bj2oy3c",
+      "title": "QA Samsung Terminated Alert",
+      "notes": "Office cabinet, manuals binder. This is a fictional example, not a verified household location.",
+      "memoryId": "sb26qa_013",
+      "dueDate": "2026-11-15",
+      "dueTime": "14:55",
+      "repeat": "once",
+      "anchorDay": 15,
+      "completed": false,
+      "createdAt": "2026-11-15T20:45:42.954Z",
+      "updatedAt": "2026-11-15T20:45:42.954Z"
+    }
+  ]
+}
