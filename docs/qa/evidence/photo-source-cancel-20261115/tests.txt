@@ -1,0 +1,765 @@
+
+> casitadex@0.1.0 test
+> node --test tests/*.test.mjs
+
+✔ preflight runs before isolated checkout creation (0.615125ms)
+✔ build remains isolated and Staging-only (0.159292ms)
+✔ release dependency gate precedes compilation (0.091666ms)
+✔ APK package identity and bundled JavaScript are verified (0.047958ms)
+✔ APK signature is verified without installing on device (0.234833ms)
+✔ file export is written and read back before reporting success (43.552125ms)
+✔ cancelled directory selection creates no file (8.42775ms)
+✔ failed write triggers cleanup (18.162125ms)
+✔ verification mismatch triggers cleanup (92.323208ms)
+✔ cleanup failure explicitly warns of leftover file (3.199083ms)
+✔ canceled picker makes no file read (24.453875ms)
+✔ selected valid backup is canonicalized (4.030167ms)
+✔ oversized file rejected before read (4.038459ms)
+✔ invalid import rejected (9.864584ms)
+✔ other platforms reject file export (2.720834ms)
+✔ unknown document size still enforces UTF-8 byte limit after reading (6.710625ms)
+✔ underreported document size cannot bypass actual UTF-8 byte limit (9.462375ms)
+✔ environment allowlist and distinct native identities (0.484167ms)
+✔ no backend identity, dependencies or Production profiles (0.580125ms)
+(node:86728) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/model.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ versioned backup round trips and preserves confidence (5.548458ms)
+✔ reject malformed, future, duplicate and impossible-date backups (1.974292ms)
+✔ ignore unexpected imported fields (0.121542ms)
+✔ search and context projections share one source (0.065083ms)
+✔ share excludes unselected cards and optional private detail by default (0.1035ms)
+✔ Development and Staging never share storage (0.162917ms)
+✔ corrupt read leaves raw data untouched (0.080667ms)
+✔ previous save recovers after replacement (0.153666ms)
+✔ failed write rejects without losing current primary (0.443875ms)
+✔ invalid import is rejected before any storage write (0.088667ms)
+(node:86729) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/sqlite-repository.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ SQLite migration preserves legacy, source confidence, dates and ordered history; marker prevents reimport (19.409167ms)
+✔ SQLite reopens durable rows from disk (9.72875ms)
+✔ SQLite rolls back row deletion AND recovery changes when a later write fails (5.393833ms)
+✔ failed migration is retryable and does not remove legacy data (1.698042ms)
+✔ corrupt legacy primary blocks writes, explicit previous-save recovery is available (1.110458ms)
+✔ corrupt SQLite primary cannot overwrite good recovery; explicit recovery repairs it (0.822ms)
+✔ SQLite serializes saves and reads, rejects future schema and enforces foreign keys (0.617208ms)
+✔ independent native environment databases and legacy keys stay isolated (0.789666ms)
+✔ browser recovery copy survives corruption appearing between load and save (0.16225ms)
+✔ backup size uses UTF-8 bytes including multibyte characters (103.091458ms)
+✔ reading preferences persist per environment without carrying private cards (0.139584ms)
+✔ SQLite survives an OS-killed writer before commit (45.597958ms)
+✔ every permitted collection exports within the import byte limit (73.982666ms)
+✔ taxonomy choices have distinct spoken names, selected values and expansion state (52.158792ms)
+✔ collapsed optional fields expose their value or None without opening the editor (14.565625ms)
+✔ Add Memory uses approved editorial fields with photo-first variant (1.266708ms)
+✔ Edit Memory labels its content Description and exposes photo controls (0.47725ms)
+✔ optional field labels receive the full row at enlarged text sizes (0.041125ms)
+✔ Add opts into Android keyboard reveal without altering iOS keyboard handling (1.848167ms)
+(node:86732) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/eng-store.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ material answer edit invalidates confirmation and retains real history in the atomic snapshot (11.706625ms)
+✔ source edit requires reconfirmation; metadata edit preserves confidence; direct verification bypass refuses (3.173875ms)
+✔ restore rejects changed collection and changed draft since explicit preview, before cutover (2.288625ms)
+✔ share defaults exclude private fields and photos, opt-ins are exact and reject unrelated photos (0.358084ms)
+✔ local calendar remains correct near midnight and DST boundaries without UTC day substitution (268.711958ms)
+✔ explicit Review requires an identified source and records real confirmation; browsing adds no event (2.522ms)
+✔ draft notes/source/reminder survive backup restore and become a new Unknown memory with real timestamps (1.539375ms)
+✔ taxonomy rename/remove preserves all memories, photo references and drafts with review counts and stale protection (1.225458ms)
+✔ reminder completion/rescheduling is durable, preserves verification and suppresses archived obligations (0.621791ms)
+✔ a changed draft invalidates restore review before private staging or metadata replacement (8.200667ms)
+✔ draft photo replacement at five-photo cap is atomic and preserves original on failed staging (1.510042ms)
+✔ actual store fault at after-media-journal preserves confirmed draft and retained ownership (0.368958ms)
+✔ actual store fault at after-private-promotion preserves confirmed draft and retained ownership (0.269875ms)
+✔ actual store fault at after-media-verification preserves confirmed draft and retained ownership (0.264833ms)
+✔ actual store fault at before-state-commit preserves confirmed draft and retained ownership (0.287542ms)
+✔ lost acknowledgement after real state commit retries the same save exactly once (0.338333ms)
+✔ bulk lifecycle change is atomic, stale-protected, keeps photos and verification, and is recoverable (0.930709ms)
+✔ photo-answer changes invalidate current verification while preserving genuine earlier history (1.493167ms)
+✔ label creation during Edit cannot advance a stale edit over a changed collection (0.574292ms)
+✔ partial reminder input remains durable and portable but cannot become an invalid saved date (0.706125ms)
+✔ label removal review binds identity, name, kind and revision independently of later selection or changes (0.753416ms)
+✔ every share-field combination preserves independent Space and Category consent (0.4285ms)
+(node:86733) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/eng-store.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ actual consumer inventory protects all lifecycle, draft, recovery, legacy and journal owners and reports damaged bytes without removal (19.743333ms)
+✔ journal restart retains uncertain photo ownership and permits safe new attachment without replay duplication (0.979334ms)
+✔ actual native staging composition rolls back consumer metadata through write/readback/promotion failures and awaits native move (9.477209ms)
+✔ saved draft photo bytes match source after store reinitialization (1.045792ms)
+✔ photo attachment rejects one-byte-below required storage before journal or file mutation (0.788334ms)
+(node:86734) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/eng-store.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ extended ENG metadata, new events and optional draft fields survive independent filesystem/SQLite restore and reopen (94.886042ms)
+(node:86735) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/eng-find.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+ENG search 0 memories 0ms
+ENG search 1 memories 0ms
+ENG search 500 memories 3ms
+ENG search 5000 memories 19ms
+✔ multiword prefix search ANDs across fields and labels; identifiers remain exact and exact titles rank first (6.024541ms)
+✔ category ANY, uncategorized, confidence, reminder, attachment and lifecycle filters compose honestly (0.141875ms)
+✔ Home limits reminders to two oldest due active obligations and recents to two with stable legacy fallback (3.196375ms)
+✔ search index and bounded result production work at 0, 1, 500 and 5000 memories (22.858208ms)
+✔ duplicate advisory includes trash, exact normalized title/answer, matching photos, but does not flag title alone (66.225459ms)
+✔ dimension queries normalize x, multiplication signs and spacing in stored values and queries (2.047667ms)
+(node:86736) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/eng-share.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ photo share ZIP is independently readable with exact selected text and photo bytes and valid CRC (96.78725ms)
+✔ damaged selected photos prevent share preparation from reporting success (0.279583ms)
+(node:86737) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/eng-text-backup.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ limited text backup explicitly reports exclusions and restores all written metadata/lifecycle without inventing a photo answer (75.597792ms)
+✔ text backup reader refuses unknown versions, fields, invented photo references and dishonest inclusion count (0.463375ms)
+(node:86738) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/eng-store.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ v4 restore and previous-save recovery atomically swap reminders and ENG (13.011541ms)
+✔ v4 injected fault rolls back reminder and ENG writes (2.15725ms)
+✔ v4 stale preview refuses mutation (1.184667ms)
+✔ v4 failure after reminder write rolls back both tables (4.779958ms)
+✔ reminder-only changes invalidate reviewed Full v4 restore (0.41575ms)
+✔ legacy ENG-only restore invalidates stale Full v4 reminder recovery (0.610167ms)
+✔ Full v4 restore migrates older standalone reminder columns (1.302584ms)
+✔ Full v4 cancel preserves collection, reminders, recovery snapshots, schema and media (0.531625ms)
+✔ Full v4 insufficient storage preflight preserves ENG, reminders and recovery (0.592375ms)
+✔ Full v4 legacy reminder schema accepts unchanged preview token before migration (5.14175ms)
+✔ Full v4 pre-transaction interruption preserves all durable state (1.167833ms)
+✔ Full v4 restore refuses exactly one byte below calculated capacity before any mutation (0.539083ms)
+✔ clean Figma-first implementation remains isolated from legacy routes (0.908583ms)
+✔ Figma source authority and candidate state remain explicit (0.183375ms)
+✔ approved vector source retains all seven original house-and-card paths (1.7195ms)
+✔ native and web render only transferred brand artwork (0.543708ms)
+✔ required app and website icon assets exist with expected PNG dimensions (1.5765ms)
+✔ approved navigation assets are sourced exclusively from Figma SVG originals (1.241292ms)
+✔ reminders page exposes add, edit, complete through callbacks only (3.149625ms)
+✔ photo page accepts summaries, not unverified media file paths (0.196334ms)
+✔ new native foundation does not import legacy presentation (2.770667ms)
+✔ primary CTA encodes Figma platform, theme and state variations (0.107708ms)
+✔ new CTA has native and accessible press behavior (0.089333ms)
+✔ Figma Home cards preserve accessible primary/secondary actions in both themes (0.104709ms)
+✔ CTA pressed feedback uses semantic colors and text can grow (0.091375ms)
+✔ focused CTA renders inner stroke and independent outer halo (0.153666ms)
+✔ Home remains command-only without recent memory feed (1.264834ms)
+✔ Reminder preview uses typed read-only projection and max two due items (0.210125ms)
+✔ Home commands render approved navigation glyph assets instead of letter placeholders (13.205042ms)
+✔ Figma-first Home never exposes an unfinished draft card or delete control (0.449291ms)
+✔ Home keeps reminder creation but has no reminder feed (0.111625ms)
+✔ Figma authority manifest is explicitly fail-closed (0.272709ms)
+✔ both platform screen mappings and brand authority are explicit (0.121666ms)
+✔ all provisional components reject legacy presentation imports (1.459959ms)
+✔ Home omits the reminders list while preserving reminder navigation (0.85075ms)
+✔ Memories index is separate from Find and opens selected memory (0.224083ms)
+(node:86763) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/figma-first/photo-summaries.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ photo gallery projects active photo memories and counts only (0.706458ms)
+✔ photo gallery handles no photos without leaking paths (0.057583ms)
+✔ gallery labels singular photos and saved media truthfully (0.169708ms)
+✔ orphaned media and unfinished drafts never enter saved Photos gallery (0.254625ms)
+✔ gallery viewer provides direct navigation to owning saved memory (0.359125ms)
+✔ thumbnail images do not intercept the enclosing photo button touch (0.1215ms)
+✔ photo tile navigates to the same proven memory details route as its title (0.064417ms)
+✔ photo gallery opens a local modal rather than switching root navigation layouts (0.053959ms)
+✔ Home Settings action stays in the approved fixed header and opens Settings (0.916791ms)
+✔ development configuration does not authorize production (0.32025ms)
+✔ store evidence identifies iPad and Android SDK verification obligations (0.347ms)
+✔ release evidence matrix remains fail closed until every gate has evidence (0.789417ms)
+✔ store promotion is prohibited until all mandatory gates pass (0.63625ms)
+✔ publication standard defines store gates and evidence (1.211541ms)
+✔ store promotion remains blocked while design approval is pending (0.316667ms)
+✔ Find handles result presses with search keyboard active (0.308334ms)
+✔ Find retains a separate query for each lifecycle when returning to results (0.052958ms)
+(node:86769) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/eng-find.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ management route selects only its requested lifecycle; normal Find remains active (3.710583ms)
+✔ dimension normalization works inside Archived and Recently Deleted scopes (0.160833ms)
+✔ archiving, deletion and restoration move a memory between scoped searches without duplicating it (0.623625ms)
+✔ returning from details retains each lifecycle search and scroll without leaking between scopes (0.089167ms)
+(node:86770) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/find-context.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ fresh entry clears stale query, filters, page and scroll; result return keeps context (0.649125ms)
+✔ Location is scoped by Space and normalized with existing taxonomy semantics (0.1415ms)
+✔ Location choices are alphabetical, disambiguated, and restricted by selected Space (4.031791ms)
+✔ all text/Space/Category/photo/Location filter combinations intersect correctly (2.612959ms)
+✔ paging does not omit or duplicate results, and shrunk filter results clamp safely (0.110375ms)
+(node:86772) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/eng-store.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ native-equivalent private bytes and draft ownership survive closing every database handle (7.475958ms)
+✔ OS-killed writer cannot leave an acknowledged mixed draft/memory snapshot (49.650834ms)
+(node:86773) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/model.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ native streaming exports and preflights a valid >20 MB photo draft without full-buffer reads (130.333ms)
+✔ stream write interruption and corrupt/truncated readback never mutate source draft (2.168292ms)
+✔ valid near-limit legacy text metadata converts without losing supported authored fields (55.618791ms)
+(node:86774) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/model.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ v4 archive round trip and fail-closed damaged reminder frame (2.67575ms)
+✔ legacy full v3 is readable without inventing reminder rows (0.230292ms)
+✔ Full v4 fails closed for damaged header, frame, reminder JSON, unsupported reminder version, and truncated payload (0.612041ms)
+(node:86775) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/eng-store.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ legacy migration retains full authored metadata and does not mutate migration input (7.329334ms)
+✔ new draft uses Unassigned, no category, and resumes across a real database reopen (3.589458ms)
+✔ photo-only commit preserves truly empty answer, hash, ID, Unknown and duplicate-safe attempt (6.546083ms)
+✔ title alone fails; sixth photo fails without dropping five durable photos (11.706917ms)
+✔ low storage, invalid MIME, failed private copy preserve the last confirmed draft (2.206208ms)
+✔ injected SQLite commit failure rolls back memory, attempt, draft and recovery atomically (7.50575ms)
+✔ stale checkpoints and forged durable-photo metadata cannot replace draft (2.738333ms)
+✔ archive, recently deleted, restore and 30-day expiry retain private bytes and recovery owners (5.921417ms)
+✔ full backup restores saved and draft photos independently with IDs and bytes intact (8.360125ms)
+✔ draft conflict keep, incoming, cancel and previous full recovery preserve both choices (6.146625ms)
+✔ truncation, corrupt hash, future version and trailing bytes fail before target mutation (2.81475ms)
+✔ legacy text backup remains readable and disclosed; missing/corrupt live bytes block save and backup (2.939ms)
+✔ stale edited memory cannot overwrite a newer revision; source/date evidence is validated (3.091792ms)
+✔ legacy CDXM2 image container imports authored card and exact image hash, without draft fabrication (0.2005ms)
+✔ failed restore cutover retains old state and previous full recovery, then retry succeeds (4.375667ms)
+✔ saved photo additions are journaled; photo-only last image cannot be removed (3.689416ms)
+✔ all supported legacy record and Space identifiers survive migration without renaming (3.93525ms)
+✔ explicit full recovery repairs corrupt primary JSON without destroying damaged bytes or known-good recovery (2.768958ms)
+✔ known portable state can replace corrupt primary only through explicit incoming-draft choice (4.243333ms)
+✔ missing primary after restart cannot silently remigrate v1; explicit recovery restores known full state (2.5545ms)
+✔ declared future primary and future initialization markers cannot be downgraded by recovery (2.560667ms)
+✔ Home presents one prominent Find action without an orphaned duplicate (1.257208ms)
+✔ Home never classifies loading snapshot as a draft (0.654542ms)
+(node:86777) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/eng-store.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ realistic household: exact identifiers, multilingual answers, space/category AND and lifecycle isolation (64.030208ms)
+✔ realistic household: verification reset, reminder reschedule and private share choices (31.642584ms)
+✔ realistic household: portable full backup retains photo-only, lifecycle and partial-date draft; limited format discloses exclusions (16.563291ms)
+✔ realistic household: denied consumer capacity preserves durable draft and collection (5.191125ms)
+(node:86778) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/backup-capacity.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ verified iOS archive survives unavailable sharing (3.257667ms)
+✔ verified iOS archive survives share provider rejection (1.012375ms)
+✔ failed iOS archive verification removes incomplete file (1.778375ms)
+✔ resolved share sheet keeps archive without claiming external save (3.465667ms)
+✔ retained listing only exposes named archives, newest first (0.719708ms)
+✔ unknown or traversal names cannot be shared (0.336916ms)
+✔ corrupt retained archive is not handed to share provider (0.252667ms)
+✔ retained archive can be shared again without creating another archive (0.25475ms)
+✔ retry failure never deletes retained archive (0.281584ms)
+✔ create cancel does not persist; failed save keeps entered name and editor (66.4555ms)
+✔ rename uses captured revision and cancel returns to selected details (43.354667ms)
+✔ removal requires review and confirmation; cancellation is read-only (21.480083ms)
+✔ category create uses its own taxonomy and Save disables blank names (12.946209ms)
+✔ Android Back keeps unsaved label edits (14.051125ms)
+✔ location management scopes creation to the selected Space and retains invalid edits (26.120042ms)
+(node:86780) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/model.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ 170 MB archive streams to disk and verifies without a full archive buffer (1591.157959ms)
+✔ large-backup free-space and malformed-size checks fail closed (0.397333ms)
+(node:86781) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/media-attachment.native.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ legacy Development photo removal cannot mutate metadata or delete protected files (32.033292ms)
+(node:86782) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/eng-store.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ legacy locations index without changing text, photos, history or lifecycle; restart is stable (6.663167ms)
+✔ same names allowed in different Spaces; duplicates and stale rename cannot write (1.874917ms)
+✔ rename/removal update only scoped assignments including draft; review and stale removal are safe (1.938333ms)
+✔ backup and text restore preserve unused locations; old backup derives locations; space removal preserves location text (2.057791ms)
+✔ invalid registry rejected; failed storage commit preserves data and previous save (0.968792ms)
+✔ moving a memory preserves its location text and adds the new scoped choice (0.786209ms)
+✔ picker sorts and searches only within Space; cancel never changes assignment (62.466ms)
+✔ None clears assignment; failed creation retains name; Cancel discards unsaved new label (14.115667ms)
+✔ atomic commit survives close and reopen (3.494333ms)
+✔ failed media insert leaves promoted journal on disk (1.871208ms)
+✔ v2 manifest preview counts images without writing data (0.826291ms)
+✔ rejects media referencing absent cards (0.353459ms)
+✔ rejects unsafe archive entry names (0.105ms)
+✔ rejects invalid text before considering manifest (0.084041ms)
+✔ validates every media entry before the restore adapter may write (0.812292ms)
+✔ rejects corrupt media before any database mutation (0.293667ms)
+✔ native v2 binary export Base64 handles padding and 12K boundaries (6.783875ms)
+✔ promotes before committing metadata (0.643833ms)
+✔ uncertain DB failure retains file for reconciliation (0.244959ms)
+✔ staging failure prevents database calls (0.37075ms)
+✔ reconciliation only suggests non-protected paths (0.13775ms)
+✔ rejects unsafe reconciliation candidate (0.072458ms)
+✔ sniffs image signatures independently of claimed filename (0.41775ms)
+✔ accepts matching bytes signature length and real SHA256 (0.321875ms)
+✔ rejects inconsistent byte length before digest (0.22ms)
+✔ rejects disguised image before digest (0.078375ms)
+✔ rejects changed bytes with stale digest (4.384958ms)
+✔ rejects invalid calculated digest (0.128583ms)
+✔ file-backed journal preserves pending across SQLite close and reopen (51.809291ms)
+✔ file-backed journal preserves promoted across SQLite close and reopen (24.207459ms)
+✔ journaled flow preserves write ordering (0.718292ms)
+✔ failed stage does not commit metadata (0.159792ms)
+✔ failed DB attach never announces committed (0.077125ms)
+✔ interrupted operations only suggest inspection (0.113334ms)
+✔ journal tracks incomplete persisted operation (0.908166ms)
+✔ valid journal progression (0.346417ms)
+✔ phase mismatch rolls back (0.3505ms)
+✔ rejects skipping stages (0.093042ms)
+✔ fresh journal reader observes pending operation without marking it complete (13.698209ms)
+✔ fresh journal reader observes promoted operation without marking it complete (11.896916ms)
+✔ legacy card replacement probes existing media table before deletion (0.354042ms)
+(node:86794) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/media-manifest.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ valid manifest creates normalized, allowlisted metadata (0.770958ms)
+✔ reject unrecognized schema (0.318667ms)
+✔ reject traversal and absolute paths (0.258042ms)
+✔ reject missing parent card (0.114583ms)
+✔ reject duplicate media identifiers (0.1445ms)
+✔ reject unsupported type and mismatched filename extension (0.114333ms)
+✔ reject invalid SHA256 and byte count (0.287875ms)
+✔ reject excessive manifest entries (0.204084ms)
+✔ collection accepts 1200 linked photos beyond the former cap (2.531208ms)
+✔ media restore SQL failure rolls back cards and recovery, followed by successful recovery (80.398084ms)
+✔ v2 portable container roundtrip verifies all media before restore (1.181167ms)
+✔ rejects truncated container and unexpected trailing data (0.287791ms)
+✔ rejects modified image digest (0.200917ms)
+✔ pending without metadata is non-destructive inspection (0.359792ms)
+✔ promoted without metadata requires byte verification (0.05575ms)
+✔ mismatched metadata never authorizes deletion (0.058084ms)
+✔ finished matching journal reported complete (0.043792ms)
+✔ verified restore gate calls apply only after all images pass (0.623125ms)
+✔ corrupt hash blocks all mutations (0.23075ms)
+✔ media table created without modifying text cards (0.998209ms)
+✔ rejects orphan parent and rolls back (0.305542ms)
+✔ duplicate file path cannot replace existing attachment (0.198ms)
+✔ invalid manifest cannot write metadata (0.15025ms)
+✔ verified stage readback precedes promote (0.634625ms)
+✔ corrupt readback blocks promotion (0.137417ms)
+✔ failed promotion cleans temporary (0.081042ms)
+✔ invalid bytes never reach store (0.050209ms)
+✔ orphan cleanup preserves referenced (0.101125ms)
+✔ unsafe cleanup path rejected (0.047667ms)
+✔ ENOSPC during temporary media write does not promote or commit media (0.1305ms)
+✔ ENOSPC during media promotion requests temporary cleanup and prevents success (0.100875ms)
+✔ private staging writes and promotes without changing existing files (0.751042ms)
+✔ rejects path traversal before removal (0.228083ms)
+✔ refuses replacement of existing destination (0.103583ms)
+(node:86802) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/sqlite-repository.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ unfinished native draft survives reopening and stays outside saved/searchable cards (3.350875ms)
+✔ ENG save commits card, attempt and draft consumption together; replay cannot duplicate (4.254042ms)
+✔ card insert failure rolls back memory, recovery marker, attempt and draft consumption (3.369875ms)
+✔ failure consuming draft rolls back an already inserted card and attempt (1.772417ms)
+✔ stale, conflicting and different drafts cannot overwrite the durable unfinished draft (1.660542ms)
+✔ invalid content or missing Space fails without consuming the draft (1.750417ms)
+✔ saving a text draft preserves existing media parents and captures recovery manifest (1.942833ms)
+✔ discard affects only the confirmed draft; successful save rejects late checkpoint recreation (1.878625ms)
+✔ unknown or absent draft fields fail closed without overwriting prior bytes (1.521541ms)
+(node:86803) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/media-store.native.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ native media promotion waits for Expo asynchronous move before acknowledging private ownership (42.255917ms)
+✔ optional synthetic photo failures cannot mask saved-memory load (0.391708ms)
+(node:86805) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/figma-first/photo-render-window.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ render window handles overscan, large text, jumps, and invalid measurements (0.343458ms)
+✔ 1000-card component mounts only nearby images and preserves every photo action (83.777833ms)
+✔ thumbnail generation coalesces requests, bounds dimensions and retains the original (50.541291ms)
+✔ low space refuses disposable thumbnail work without touching originals (11.997375ms)
+✔ cache pruning removes only disposable derivatives and retains new preview (9.308166ms)
+(node:86807) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/figma-first/photo-summaries.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ indexed workspace preserves selected cover order, ownership, filtering and sort (12.991291ms)
+✔ 1000-photo gallery resolves each included photo once (3.454708ms)
+(node:86808) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/eng-store.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ cover and photo order persist across store reopening without altering immutable bytes or ownership (6.631ms)
+✔ stale or incomplete/cross-memory photo order is rejected atomically and deleted memories cannot be rearranged (2.817333ms)
+✔ move helpers reject impossible positions and leave their inputs unchanged (0.166833ms)
+✔ recent gallery order uses memory timestamps, is stable for legacy dates, and excludes archived/deleted/draft records (7.950458ms)
+✔ With photos composes with Find text and lifecycle without putting search in Photos (6.552625ms)
+✔ photo zoom clamps to 1–4 and pinch distance handles missing touches (0.081375ms)
+(node:86809) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/plus-access.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ free plan permits the twentieth save and protects existing data above the limit (0.460417ms)
+✔ backup, restore, OCR and photo PDF require Plus; restore purchases remains free (0.103ms)
+✔ missing native adapter cannot grant Plus (0.773375ms)
+✔ completed checkout still needs verification; restore works without purchasing (0.193542ms)
+✔ cancel and pending never verify or erase existing ownership (0.180083ms)
+✔ verification failure preserves last verified access and allows retry (0.786542ms)
+✔ overlapping purchase and restore calls cannot double-submit (0.168875ms)
+✔ invalid adapter values never unlock and snapshots cannot mutate state (0.11225ms)
+(node:86810) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/plus-delivery.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ never acknowledges free, checking, unavailable or stale error ownership (0.340917ms)
+✔ overlapping ownership notifications do not run duplicate delivery concurrently (0.06125ms)
+✔ failed acknowledgement can retry on a later verified refresh without losing ownership (0.301583ms)
+✔ stopped runtime will not start additional acknowledgement work (0.044834ms)
+(node:86811) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/plus-entitlement-store.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ unavailable native support never queries or grants (1.733375ms)
+✔ startup verifies ownership and delayed revocation updates shared state (5.14925ms)
+✔ event during verification discards stale ownership and requeries once (0.361292ms)
+✔ verification errors and invalid results preserve last verified ownership (0.343959ms)
+✔ late response after stop cannot overwrite a restarted session (0.748625ms)
+✔ start is idempotent and snapshots cannot be mutated (0.583625ms)
+(node:86812) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/plus-feature-gate.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ ordinary preview builds preserve current backup availability (0.5865ms)
+✔ free users cannot enter a backup or restore operation (0.495125ms)
+✔ verified Plus grants both operations (0.112666ms)
+✔ confirmation rechecks revocation after an earlier preview (0.126666ms)
+✔ unknown and still-checking access never authorizes a write (0.1955ms)
+✔ temporary verification failure preserves previously verified Plus access (0.102542ms)
+(node:86813) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/plus-memory-limit.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ free saves twentieth, refuses twenty-first without changing draft or collection; duplicate retry succeeds (27.816583ms)
+✔ Plus allows above limit; refund blocks only new saves and preserves oversized collection (23.4385ms)
+✔ unknown access cannot exceed limit; previously verified Plus survives transient error; preview unaffected (0.141459ms)
+(node:86814) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/plus-native-adapter.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ native connection requires an explicit local harness (0.355ms)
+✔ purchase is followed by a separate verified entitlement query (0.391875ms)
+✔ pending and cancellation do not query entitlement (0.079125ms)
+✔ restore rechecks ownership and never calls purchase (0.076375ms)
+✔ invalid native results and rejected promises preserve verified access (0.141333ms)
+(node:86815) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/plus-purchase-message.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ Plus preview exposes restore feedback, disables checkout, and returns to Settings (69.381708ms)
+✔ isolated StoreKit identity carries only a local test product (1.632834ms)
+✔ ordinary builds do not acquire StoreKit QA configuration (2.031333ms)
+✔ isolated identities cannot be mixed and production stays blocked (0.885417ms)
+(node:86817) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/reminder-alerts.native.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ denied permission keeps reminder record intention without scheduling (0.93575ms)
+✔ permission grant schedules one local alert, repeated sync is idempotent (0.239416ms)
+✔ editing replaces obsolete alert, completion cancels its scheduled occurrence (0.11575ms)
+✔ unrelated app notifications are never cancelled (0.047833ms)
+(node:86818) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/reminder-alert-plan.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ one-off alerts use native local wall clock and skip expired alerts (1.786208ms)
+✔ monthly recurrence clamps month ends to last available day (0.161541ms)
+✔ leap year recurrence clamps to February 28 in non-leap years (0.06825ms)
+✔ completed reminders do not schedule and the platform cap is respected (4.079459ms)
+✔ edit key changes when due time changes, permitting cancellation of old occurrence (0.097541ms)
+✔ linked reminders carry their memory ID into scheduled alert data (0.04775ms)
+(node:86819) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/reminder-backup-v4.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ valid standalone reminder backup section (0.381833ms)
+✔ reject malformed or duplicate reminder records (0.199625ms)
+✔ reminder section binary round trip and corruption rejection (0.335625ms)
+✔ restore preflight reports collisions and never mutates records (0.084084ms)
+✔ linked reminders retain their memory ID through backup encoding (0.085084ms)
+(node:86820) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/reminder-recurrence.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ valid Gregorian dates (0.336042ms)
+✔ repeat dates advance in local calendar units (0.112667ms)
+✔ calendar year boundaries and overflow (0.144166ms)
+(node:86821) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/reminder-restore-v4.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ replace validates entire section before issuing SQL (0.619709ms)
+✔ replacement is transaction-owned and retains full reminder fields (0.404125ms)
+✔ SQL failure propagates to owning transaction (0.087333ms)
+✔ restore writes linked memory identity into its own SQL column (0.073834ms)
+(node:86822) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/reminder-save-destination.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ linked reminder save returns to the exact originating memory, including Home origin (0.594084ms)
+✔ unlinked reminder saves retain Home or Reminders context (0.070458ms)
+✔ Find preserves scroll position and selected result context across detail navigation (0.475041ms)
+✔ Photos gallery restores original scroll offset after viewing memory details (0.285167ms)
+(node:86824) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/model.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ empty legacy import preserves default Space and creates no fabricated records (2.629083ms)
+✔ legacy records preserve exact metadata and Context as compatibility field (1.448875ms)
+✔ new photo-only memory needs independently verified media hash bytes (0.551416ms)
+✔ cannot save title alone, placeholder does not get inserted (0.101584ms)
+✔ custom labels, archived, deletion metadata, due and verification gates (0.295458ms)
+✔ unsupported version, unknown field, lost media parent and duplicates fail closed (0.264834ms)
+✔ v1 future versions and damaged inputs cannot be silently coerced (0.228625ms)
+✔ synthetic transformations never mutate input source (0.157583ms)
+✔ legacy demo marker is preserved rather than dropped (0.292167ms)
+(node:86825) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/sb20-draft-media.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ one private draft, checkpoint and interruption before acknowledgement (0.926375ms)
+✔ picker failures and invalid hash preserve durable draft (0.402625ms)
+✔ five staged photos, sixth blocked, bytes are copied (0.175583ms)
+✔ title or real content required, photo-only valid without false answer (0.205667ms)
+✔ failure before promotion leaves original draft/media unchanged (0.2135ms)
+✔ failure after promotion retains media and allows idempotent retry (0.143333ms)
+✔ failure before transaction preserves draft and promoted bytes (0.11625ms)
+✔ failure after commit returns existing memory without duplication (0.217417ms)
+✔ saved references cannot be cleaned, journal only settled postcommit (0.58225ms)
+✔ discard does not automatically purge staged bytes (0.405917ms)
+✔ real SQLite draft checkpoint survives close and reopen (3.691584ms)
+✔ verified staged byte file survives reopen (10.584833ms)
+✔ wrong hash and path rejected without attachment (1.723959ms)
+✔ mid-transaction failure rolls back metadata and retains draft (6.61075ms)
+✔ post-commit lost acknowledgement retries without duplicates (9.180334ms)
+✔ partial stage interruption leaves record uncommitted and inspectable (8.223875ms)
+✔ orphan inventory marks ambiguous files but never deletes bytes (11.043667ms)
+✔ corrupted staged file reported without modifying saved draft (9.847083ms)
+(node:86827) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/sb20-native-adapter.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ native port Save commits photo-only record and retries idempotently (13.785958ms)
+✔ corrupted media blocks save before metadata mutation (12.341917ms)
+✔ missing and unsafe media are read-only verdicts (2.600709ms)
+✔ uncertain commit acknowledgement preserves data for reconciliation (14.552667ms)
+(node:86828) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/sb20-expo-ports.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ isolation guards reject original and staging namespaces (0.775625ms)
+✔ persistent checkpoint permits exactly one draft and monotonic update (8.2905ms)
+✔ private-media copy and verified photo-only save are idempotent (9.593458ms)
+✔ corruption fails closed and preserves draft and media metadata (6.491875ms)
+✔ failed metadata transaction rolls back and preserves staged photo (9.39875ms)
+✔ unsafe ID, invalid type and path traversal rejected (1.825292ms)
+✔ actual SQL trigger failure rolls back attempted Save atomically (11.612625ms)
+✔ pending journal survives SQLite reopen and retains bytes (4.200125ms)
+✔ staged and promoted interruptions require reconciliation, never cleanup (6.513459ms)
+✔ only committed owned media is marked verified (2.676625ms)
+✔ corruption/missing file fails read-only without destructive action (4.311959ms)
+✔ illegal progression and duplicate IDs fail closed (1.645833ms)
+✔ transaction abort rolls back journal transition (7.509583ms)
+✔ successful synthetic commit and idempotent retry (8.517583ms)
+✔ interrupted staged operation retains bytes and journal (6.568708ms)
+✔ promotion interruption preserves media and prevents unsafe retry (15.512708ms)
+✔ failed SQL commit never inserts memory and protects promoted bytes (4.266125ms)
+✔ lost acknowledgement resolves previously committed attempt once (7.390292ms)
+✔ manifest mismatch and duplicate attempt identity fail closed (8.727292ms)
+(node:86831) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/sb20-eng-f-d-async.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ async operation commits once and is replayable after DB reopen (6.206833ms)
+✔ failure after staging durably marks recovery-needed and preserves photo bytes (6.783708ms)
+✔ failure after promotion retains bytes and marks uncertain (3.174542ms)
+✔ failed atomic metadata transaction leaves durable uncertain state (2.233708ms)
+✔ lost acknowledgement after commit retries once (1.625334ms)
+✔ invalid hash fails closed, persists recovery state, retains no false memory (1.346291ms)
+(node:86832) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/sb20-expo-ports.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ guard refuses live/legacy SQLite or media names (1.217291ms)
+✔ bridge commits and retries after database reopen without duplicate (4.5735ms)
+✔ promote interruption leaves recovery-needed and original staging bytes (4.571291ms)
+✔ SQL commit failure rolls back memory and persists recovery marker (4.102625ms)
+✔ failed recovery marker does not erase promoted synthetic file (9.53075ms)
+(node:86833) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/sb20-eng-f-f-ownership.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ all seven owner classes protect synthetic photos (3.453917ms)
+✔ incomplete owner inventory and short trash retention fail closed (0.307791ms)
+✔ orphan, missing, corruption and unknown attempt never authorize deletion (0.753625ms)
+✔ committed verified owner can be acknowledged after SQLite reopen (2.943875ms)
+✔ unconfirmed Save writes inspection verdict durably (5.545667ms)
+✔ failed recovery recording refuses acknowledgment (4.098334ms)
+✔ attempt bound to another memory fails closed and persists integrity decision (3.075875ms)
+✔ untrusted owner ID and invalid deleted timestamp reject inventory (0.192042ms)
+(node:86834) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/sb20-eng-f-g-enumerator.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ seven source tables independently enumerate protected photo references (6.053917ms)
+✔ incomplete required source scan stops enumeration (2.379875ms)
+✔ invalid parent and corrupt photo are retained for review (2.600209ms)
+✔ wrong parent identifier and unsupported deletion timestamp fail closed (5.053ms)
+✔ legacy record with more than five photos remains enumerated (3.729334ms)
+✔ unknown Save attempt from enumerated owner remains unacknowledged (2.338958ms)
+✔ duplicate media ownership across sources remains protected (2.154791ms)
+(node:86835) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/sb20-eng-f-h-verifier.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ valid physical synthetic bytes and parent rows pass (8.195875ms)
+✔ changed file contents fail checksum without deletion (4.7345ms)
+✔ missing photo file classified not deleted (3.438208ms)
+✔ wrong parent reference fails closed (3.613458ms)
+✔ incomplete parent table stops verification (3.801833ms)
+✔ invalid photo ID cannot traverse private root (4.89425ms)
+✔ owner category across all seven parent tables resolves (22.211417ms)
+✔ legacy parent keeps more than five preexisting media files (44.791375ms)
+(node:86836) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/sb20-eng-f-i-hardening.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ valid photo parent and file hashes pass (7.932458ms)
+✔ dangling reference and orphaned manifest are classified without deletion (5.747208ms)
+✔ conflicting duplicate owner associations fail closed (11.723875ms)
+✔ corrupted actual synthetic bytes are flagged (6.121125ms)
+✔ deleted lifecycle future timestamps fail closed (5.077416ms)
+✔ missing mandatory source aborts enumeration (2.379ms)
+✔ all lifecycle ownership categories stay protected (13.074708ms)
+✔ symlink escape is rejected where supported (4.636708ms)
+✔ manifest without any reference is classified orphan (4.854208ms)
+(node:86837) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/sb20-eng-f-i-hardening.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ file symlink pointing outside synthetic root is rejected, if permitted (8.209542ms)
+✔ junction portal cannot be addressed through guarded media ID (7.670208ms)
+(node:86838) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/eng-store.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ accepted native consumer picker returns only a validated Full v4 archive without opening its database (39.10825ms)
+(node:86839) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/eng-stream-v4.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+﹣ provided Full v4 acceptance archive verifies every embedded photo byte (0.37625ms) # Set CASITADEX_SB24_ARCHIVE to a local QA archive
+﹣ real Full v4 emulator archive rejects one-byte photo corruption without changing source (0.070708ms) # Set CASITADEX_SB24_ARCHIVE to a local QA archive
+﹣ real Full v4 archive restores and recovers both domains in disposable SQLite (0.083333ms) # Set CASITADEX_SB24_ARCHIVE to a local QA archive
+﹣ real Full v4 archive cancel is nonmutating in disposable SQLite (0.063792ms) # Set CASITADEX_SB24_ARCHIVE to a local QA archive
+﹣ real Full v4 archive refuses stale reminder review without mutations (0.079917ms) # Set CASITADEX_SB24_ARCHIVE to a local QA archive
+✔ SQLite WAL rolls back uncommitted ENG and reminder writes after process termination (56.021459ms)
+✔ SQLite WAL preserves both committed ENG and reminders after child termination (31.8745ms)
+✔ four distinct labeled accessible primary destinations with Memories integrated into Find (0.405542ms)
+✔ Home retains the three owner-approved create actions (0.07575ms)
+✔ photo viewer provides accessible close and native pinch zoom (0.67425ms)
+✔ photo picker flow has no explicit URL download/upload API (1.096958ms)
+✔ full backup flow has no explicit URL download/upload API (0.116333ms)
+✔ restore picker flow has no explicit URL download/upload API (0.817166ms)
+✔ photo sharing flow has no explicit URL download/upload API (0.064208ms)
+✔ text export flow has no explicit URL download/upload API (0.096667ms)
+﹣ isolated simulator release embeds the updated Photos and viewer code (0.289708ms) # Release artifact absent from this source-only worktree; native release build acceptance remains open
+✔ iOS photo gallery uses singular label and real saved-photo wording (0.392375ms)
+✔ iOS viewer retains zoom, navigation, safe removal and accessible close (2.331708ms)
+✔ iOS synthetic QA illustrations do not depend on Android resource URIs (0.143792ms)
+✔ shared photo removal requires an editable owner and a cancelable confirmation (1.111041ms)
+✔ store refuses removal of the only photo from an answerless memory (0.086834ms)
+✔ shared multi-photo navigation stays bounded and resets zoom (0.074042ms)
+✔ query-string v7 requires callable decoder, so unreviewed ESM-only decoder overrides are not accepted (6ms)
+✔ integration runtime never adopts unconditional QA enablement (0.482209ms)
+✔ integration configuration retains unique development and staging identities and production lock (0.103875ms)
+✔ existing unfinished draft remains recoverable and requires an explicit discard decision (0.934667ms)
+✔ SB39 iOS 27 runtime config opts into scene lifecycle through Expo official plugin (0.349542ms)
+✔ iOS scene lifecycle uses official SDK 57 expo-build-properties supported opt-in (0.579292ms)
+✔ SB39 QA native identities are isolated from all accepted QA/dev apps and seed disabled (0.715625ms)
+✔ shared screens resolve platform-specific reminder stores without importing native SQLite on web (1.153875ms)
+✔ SB39 release security triage names URI decoding and schema validation as open release gates (0.533833ms)
+✔ production deployment and environment remain unavailable during source integration (0.106209ms)
+✔ Expo Router dependency graph includes query-string decoder: unresolved release exposure (0.883333ms)
+✔ bounded, benign deep-link queries parse without unexpected modification (0.280792ms)
+✔ untrusted route names are not automatically promoted to production authorization (0.328583ms)
+✔ iOS full backup uses a native share sheet and never calls Android SAF (0.350375ms)
+✔ Android backup writer retains its verified export and cleanup paths (0.094084ms)
+✔ iOS exports remain private and never expose the app database through Files sharing (0.612459ms)
+(node:86857) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/photo-zoom.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ SB40 bounded pan clamps visible image at 1x, 2x and 4x (0.603125ms)
+✔ SB40 photo swipe chooses direction only at 1x with deliberate horizontal movement (0.066583ms)
+✔ SB40 approved gallery and management must survive swipe/zoom integration (0.328666ms)
+✔ Settings exposes all eight approved destination IDs and readable accessibility hints (0.832375ms)
+✔ Settings routes action to native management without dropping action ID (0.089541ms)
+✔ Appearance and Accessibility lead to implemented preferences controls (0.120834ms)
+✔ injected SQL insert failure rolls back both replacement and recovery marker (1.630042ms)
+✔ attached card can be edited in place but legacy replacement cannot discard its identity (1.096417ms)
+✔ iOS queues changed status while Android retains live-region ownership (18.644584ms)
+(node:86861) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/storage-safety.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ app-available blocks constrain free-block reports, including actual zero availability (0.558959ms)
+✔ write capacity checks accept exact requirement and reject one byte below or unknown estimates (0.134042ms)
+✔ restore capacity accounts for UTF-8 reminder and recovery payloads (0.067542ms)
+✔ all approved media owners remain protected with duplicate references counted once (0.284542ms)
+✔ missing media remains referenced and cannot be misreported as reclaimable (0.075666ms)
+✔ unknown or damaged ownership fails closed (0.135208ms)
+✔ SQLite helper commits success and rolls back a failed write without masking it (0.991291ms)
+✔ SQLite auto-rollback cleanup failure retains the original full-disk cause (0.256667ms)
+✔ SQLite commit failure rolls back both logical writes (0.179334ms)
+✔ large reminder section cannot bypass an ENG-only free-space budget (3.867375ms)
+✔ low-storage recovery preserves current data and both recovery snapshots (1.10925ms)
+(node:86862) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/eng-store.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ space: duplicate create/rename and invalid names preserve primary and recovery snapshots (5.775625ms)
+✔ space: removal review is read-only; rename preserves links; stale removal refused; confirmed removal keeps memory and draft (1.906ms)
+✔ category: duplicate create/rename and invalid names preserve primary and recovery snapshots (1.626042ms)
+✔ category: removal review is read-only; rename preserves links; stale removal refused; confirmed removal keeps memory and draft (1.129125ms)
+(node:86863) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/src/theme.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ both actual palettes meet text and control-boundary contrast targets (0.40625ms)
+ℹ tests 521
+ℹ suites 0
+ℹ pass 515
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 6
+ℹ todo 0
+ℹ duration_ms 2127.671917

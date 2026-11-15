@@ -1,0 +1,10 @@
+Tapped + Add Photo
+Tapped Cancel
+PASS cancel preserves draft fields
+Tapped + Add Photo
+PASS android-back preserves draft fields
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped + Add Photo
+Tapped Cancel
+PASS large-text-cancel preserves draft fields
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
