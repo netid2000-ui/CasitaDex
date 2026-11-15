@@ -1,3 +1,4 @@
+import {indexLocations,locationKey,sameLocation,unassignSpaceLocations} from "./locations.ts";
 import {photoPermutation} from './photo-order.ts';
 import {fullRestoreCapacity} from "./storage-safety.ts";
 import {qaGroups,qaAnswers,qaCount} from "./sb26-qa-seed.ts";
@@ -60,6 +61,7 @@ export function validateEngSnapshot(input:unknown):EngSnapshot {
   if(data.spaces.some(x=>x.name.length>200)||data.categories.some(x=>x.name.length>200)||
     data.categories.length>1000||data.spaces.length>1000)throw Error("Oversized taxonomy");
   const draft=s.draft===null?null:validateEngDraft(s.draft,data);
+  indexLocations(data,draft);
   const attempts=object(s.attempts);
   for(const [a,m] of Object.entries(attempts)){id(a);id(m);}
   if(Object.keys(attempts).length>10000)throw Error("Save history exceeds limit");
@@ -365,31 +367,44 @@ export function createEngStore(db:Database,files:EngFiles,migrate:()=>Promise<En
         event(m,state==="archived"?"archived":state==="recently_deleted"?"deleted":"restored");
       }
     })),
-    taxonomyImpact:(kind:"space"|"category",labelId:string)=>serial(async()=>{
-      const s=await loaded();const list=kind==="space"?s.data.spaces:s.data.categories;
+    taxonomyImpact:(kind:"space"|"category"|"location",labelId:string)=>serial(async()=>{
+      const s=await loaded();const list=kind==="space"?s.data.spaces:kind==="category"?s.data.categories:(s.data.locations??=[]);
       const label=list.find(x=>x.id===labelId);if(!label)throw Error("Label unavailable");
-      return {kind,id:labelId,name:label.name,revision:s.revision,memories:s.data.memories.filter(m=>kind==="space"?m.spaceId===labelId:m.categoryIds.includes(labelId)).length,draft:!!s.draft&&(kind==="space"?s.draft.spaceId===labelId:s.draft.categoryIds.includes(labelId))};
+      return {kind,id:labelId,name:label.name,revision:s.revision,memories:s.data.memories.filter(m=>kind==="space"?m.spaceId===labelId:kind==="category"?m.categoryIds.includes(labelId):sameLocation(m,label as import("./sb20-contract.ts").LocationLabel)).length,draft:!!s.draft&&(kind==="space"?s.draft.spaceId===labelId:kind==="category"?s.draft.categoryIds.includes(labelId):sameLocation(s.draft,label as import("./sb20-contract.ts").LocationLabel))};
     }),
-    renameTaxonomy:(kind:"space"|"category",labelId:string,name:string,revision:number)=>serial(()=>mutate(s=>{
+    renameTaxonomy:(kind:"space"|"category"|"location",labelId:string,name:string,revision:number)=>serial(()=>mutate(s=>{
       if(s.revision!==revision)throw Error("Organization changed; review again");
-      const list=kind==="space"?s.data.spaces:s.data.categories,label=list.find(x=>x.id===labelId);
+      const list=kind==="space"?s.data.spaces:kind==="category"?s.data.categories:(s.data.locations??=[]),label=list.find(x=>x.id===labelId);
       if(!label)throw Error("Label unavailable");if(!name.trim()||name.trim().length>200)throw Error("Use a name up to 200 characters");
-      if(list.some(x=>x.id!==labelId&&x.name.toLocaleLowerCase()===name.trim().toLocaleLowerCase()))throw Error("That name already exists");label.name=name.trim();
+      if(list.some(x=>x.id!==labelId&&(kind!=="location"||("spaceId" in x&&"spaceId" in label&&x.spaceId===label.spaceId))&&locationKey(x.name)===locationKey(name)))throw Error("That name already exists");
+      if(kind==="location"){
+        const location=label as import("./sb20-contract.ts").LocationLabel;
+        for(const m of s.data.memories)if(sameLocation(m,location)){m.location=name.trim();event(m,"labels_changed");}
+        if(s.draft&&sameLocation(s.draft,location)){s.draft.location=name.trim();s.draft.checkpoint++;}
+      }
+      label.name=name.trim();
     })),
-    removeTaxonomy:(kind:"space"|"category",labelId:string,revision:number)=>serial(()=>mutate(s=>{
+    removeTaxonomy:(kind:"space"|"category"|"location",labelId:string,revision:number)=>serial(()=>mutate(s=>{
       if(s.revision!==revision)throw Error("Organization changed; review affected memories again");
-      const list=kind==="space"?s.data.spaces:s.data.categories;if(!list.some(x=>x.id===labelId))throw Error("Label unavailable");
-      if(kind==="space")s.data.spaces=s.data.spaces.filter(x=>x.id!==labelId);else s.data.categories=s.data.categories.filter(x=>x.id!==labelId);
+      const list=kind==="space"?s.data.spaces:kind==="category"?s.data.categories:(s.data.locations??=[]);if(!list.some(x=>x.id===labelId))throw Error("Label unavailable");
+      if(kind==="location"){
+        const location=s.data.locations!.find(l=>l.id===labelId)!;
+        for(const m of s.data.memories)if(sameLocation(m,location)){m.location="";event(m,"labels_changed");}
+        if(s.draft&&sameLocation(s.draft,location)){s.draft.location="";s.draft.checkpoint++;}
+        s.data.locations=s.data.locations!.filter(l=>l.id!==labelId);return;
+      }
+      if(kind==="space"){s.data.spaces=s.data.spaces.filter(x=>x.id!==labelId);unassignSpaceLocations(s.data,labelId);}else s.data.categories=s.data.categories.filter(x=>x.id!==labelId);
       for(const m of s.data.memories){if(kind==="space"&&m.spaceId===labelId){m.spaceId=null;event(m,"labels_changed");}if(kind==="category"&&m.categoryIds.includes(labelId)){m.categoryIds=m.categoryIds.filter(x=>x!==labelId);event(m,"labels_changed");}}
       if(s.draft){if(kind==="space"&&s.draft.spaceId===labelId)s.draft.spaceId=null;if(kind==="category")s.draft.categoryIds=s.draft.categoryIds.filter(x=>x!==labelId);s.draft.checkpoint++;}
     })),
     restoreToken:()=>serial(async()=>{await init();return tokenFor(await rawPrimary());}),
-    taxonomy:(kind:"space"|"category",name:string,revision?:number)=>serial(()=>mutate(s=>{
+    taxonomy:(kind:"space"|"category"|"location",name:string,revision?:number,spaceId:string|null=null)=>serial(()=>mutate(s=>{
       if(revision!==undefined&&s.revision!==revision)throw Error("Collection changed; keep edits and review before adding a label");
       if(!name.trim()||name.trim().length>200)throw Error("Use a name up to 200 characters");
-      const list=kind==="space"?s.data.spaces:s.data.categories;
-      if(list.some(x=>x.name.toLocaleLowerCase()===name.trim().toLocaleLowerCase()))throw Error("That name already exists");
-      list.push({id:engId(),name:name.trim()});
+      const list=kind==="space"?s.data.spaces:kind==="category"?s.data.categories:(s.data.locations??=[]);
+      if(kind==="location"&&spaceId!==null&&!s.data.spaces.some(x=>x.id===spaceId))throw Error("Space unavailable; choose a Space again");
+      if(list.some(x=>(kind!=="location"||("spaceId" in x&&x.spaceId===spaceId))&&locationKey(x.name)===locationKey(name)))throw Error("That name already exists");
+      list.push({id:engId(),name:name.trim(),...(kind==="location"?{spaceId}:{})});
     })),
     backup:()=>serial(async()=>{const s=await loaded();await verifyEngSnapshot(s,files);return {snapshot:s,read:files.read,hash:files.hash};}),
     stageRestore:(incoming:EngSnapshot,readIncoming:(path:string)=>Promise<Uint8Array>,expectedToken?:string)=>serial(async()=>{
@@ -552,5 +567,6 @@ export function createEngStore(db:Database,files:EngFiles,migrate:()=>Promise<En
   };
 }
 export function legacyEngSnapshot(raw:string,manifest?:unknown):EngSnapshot {
-  return {version:3,revision:0,data:fromLegacyV1(raw,manifest),draft:null,attempts:{}};
+  const data=fromLegacyV1(raw,manifest);indexLocations(data,null);
+  return {version:3,revision:0,data,draft:null,attempts:{}};
 }

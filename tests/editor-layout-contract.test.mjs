@@ -4,7 +4,7 @@ import {readFileSync} from 'node:fs';
 const source=readFileSync(new URL('../src/eng-screens.tsx',import.meta.url),'utf8');
 test('Add Memory uses approved editorial fields with photo-first variant',()=>{
  const add=source.slice(source.indexOf('export function EngAdd()'),source.indexOf('export function EngDetail()'));
- for(const section of ['label="Memory name (Required)"','>Photos · {form?.photos.length','label="Space"','label="Categories"','label="Description"','(["location","notes","source"] as const)'])assert.ok(add.includes(section),section);
+ for(const section of ['label="Memory name (Required)"','>Photos · {form?.photos.length','label="Space"','label="Categories"','label="Description"','<LocationPicker','(["notes","source"] as const)'])assert.ok(add.includes(section),section);
  assert.ok(!add.includes('More options"'));
  assert.ok(!add.includes('>VERIFICATION STATUS</Copy>'), 'Simplicity A.3 keeps optional verification off the initial Add form');
  assert.ok(add.includes('"Browse Files"'));

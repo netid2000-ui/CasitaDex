@@ -12,9 +12,10 @@ export interface MemoryV2 {
   createdAt?:string; updatedAt?:string; archivedAt?:string; deletedInstant?:string;
   events?:MemoryEvent[];
 }
+export interface LocationLabel {id:string;name:string;spaceId:string|null;}
 export interface DataV2 {
   version:2; spaces:{id:string;name:string}[]; categories:{id:string;name:string}[];
-  memories:MemoryV2[]; media:MediaManifest; draft:null;
+  memories:MemoryV2[]; media:MediaManifest; draft:null; locations?:LocationLabel[];
 }
 const contexts = new Set(["Buy","Fix","Find","Maintain"]);
 const confidences = new Set(["Verified","Needs checking","Unknown"]);
@@ -49,7 +50,7 @@ export function fromLegacyV1(raw:string, manifest?:unknown):DataV2 {
 /** Validate synthetic target contracts; verifiedMediaIds must come from independent byte/hash checks. */
 export function validateV2(input:unknown, verifiedMediaIds:readonly string[]=[], allowLegacyIds=false):DataV2 {
   const d=record(input);
-  known(d,["version","spaces","categories","memories","media","draft"],"root");
+  known(d,["version","spaces","categories","memories","media","draft","locations"],"root");
   if(d.version!==2||!Array.isArray(d.spaces)||!Array.isArray(d.categories)||
     !Array.isArray(d.memories)||d.memories.length>5000||d.draft!==null)fail("unsupported version or shape");
   const spaces=d.spaces.map((item:unknown)=>{
@@ -65,6 +66,18 @@ export function validateV2(input:unknown, verifiedMediaIds:readonly string[]=[],
   });
   unique(categories.map((c:{id:string})=>c.id),"category ID");
   const spaceIds=new Set(spaces.map((s:{id:string})=>s.id));
+  let locations:LocationLabel[]|undefined;
+  if(d.locations!==undefined){
+    if(!Array.isArray(d.locations)||d.locations.length>10000)fail("invalid locations");
+    locations=d.locations.map((value:unknown)=>{
+      const l=record(value);known(l,["id","name","spaceId"],"location");
+      if(typeof l.id!=="string"||typeof l.name!=="string"||!l.name.trim()||l.name.length>4000||(l.spaceId!==null&&!spaceIds.has(l.spaceId)))fail("invalid location");
+      return {id:l.id,name:l.name,spaceId:l.spaceId};
+    });
+    unique(locations!.map(l=>l.id),"location ID");
+    const keys=locations!.map(l=>JSON.stringify([l.spaceId,l.name.trim().toLocaleLowerCase()]));
+    if(new Set(keys).size!==keys.length)fail("duplicate location in Space");
+  }
   const categoryIds=new Set(categories.map((c:{id:string})=>c.id));
   const memories=(d.memories as unknown[]).map(item=>{
     const m=record(item);
@@ -123,7 +136,7 @@ export function validateV2(input:unknown, verifiedMediaIds:readonly string[]=[],
     }
   }
   if(linked.size!==indexed.size)fail("unlinked media");
-  return {version:2,spaces,categories,memories:memories.map(m=>JSON.parse(JSON.stringify(m))),media,draft:null};
+  return {version:2,spaces,categories,memories:memories.map(m=>JSON.parse(JSON.stringify(m))),media,draft:null,...(locations?{locations}:{})};
 }
 export function previewLegacyV1(raw:string, manifest?:unknown) {
   const converted=fromLegacyV1(raw,manifest);

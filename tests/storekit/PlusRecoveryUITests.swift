@@ -1063,3 +1063,33 @@ extension PlusRecoveryUITests {
   app.open(URL(string:"casitadex-plusstoreqa://")!)
  }
 }
+
+extension PlusRecoveryUITests {
+ @MainActor func testScopedLocationFlow20261115() throws {
+  continueAfterFailure=false
+  XCTAssertEqual(ProcessInfo.processInfo.environment["SIMULATOR_UDID"],"189233C4-A360-49D7-AB2A-C9A7F02B9060")
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa");app.launch()
+  let name="QA Location R5 1115",renamed="QA Renamed Location R5 1115",original="Left garage wall hook"
+  func tap(_ label:String){let b=app.buttons[label];XCTAssertTrue(b.waitForExistence(timeout:10),app.debugDescription);if !b.isHittable {revealEditorControl(b,in:app)};b.tap()}
+  func input(_ value:String){let f=app.textViews["Location name"];XCTAssertTrue(f.waitForExistence(timeout:5));f.tap();f.typeText(value);f.typeText("\n")}
+  func shot(_ label:String){let a=XCTAttachment(screenshot:app.screenshot());a.name=label;a.lifetime = .keepAlways;add(a)}
+  app.open(URL(string:"casitadex-plusstoreqa://settings-manage?action=appearance")!);tap("Light appearance")
+  app.open(URL(string:"casitadex-plusstoreqa://card?id=sb26qa_007")!);tap("Edit Location")
+  XCTAssertTrue(app.staticTexts["Choose a Location"].waitForExistence(timeout:5));shot("Location picker light")
+  tap("Create new Location");input(name);shot("Create location light");tap("Save location");tap("Save & return to details")
+  app.terminate();app.launch();app.open(URL(string:"casitadex-plusstoreqa://card?id=sb26qa_007")!)
+  XCTAssertTrue(app.staticTexts[name].waitForExistence(timeout:10));tap("Edit Location");tap("None");tap("Cancel")
+  app.open(URL(string:"casitadex-plusstoreqa://card?id=sb26qa_007")!);XCTAssertTrue(app.staticTexts[name].waitForExistence(timeout:10))
+  app.open(URL(string:"casitadex-plusstoreqa://settings-manage?action=labels")!);tap("Locations");tap("Space: Unassigned");tap("Sample Garage");tap(name);tap("Rename ›")
+  let field=app.textViews["Location name"];field.tap();field.press(forDuration:1.2)
+  let selectAll=app.descendants(matching:.any).matching(identifier:"Select All").firstMatch;XCTAssertTrue(selectAll.waitForExistence(timeout:5));selectAll.tap();field.typeText(renamed);field.typeText("\n");tap("Save")
+  app.open(URL(string:"casitadex-plusstoreqa://card?id=sb26qa_007")!);XCTAssertTrue(app.staticTexts[renamed].waitForExistence(timeout:10))
+  app.open(URL(string:"casitadex-plusstoreqa://settings-manage?action=appearance")!);tap("Dark appearance")
+  app.open(URL(string:"casitadex-plusstoreqa://card?id=sb26qa_007")!);tap("Edit Location");shot("Location picker dark");tap("Cancel");tap("Cancel")
+  app.open(URL(string:"casitadex-plusstoreqa://settings-manage?action=labels")!);tap("Locations");tap("Space: Unassigned");tap("Sample Garage");shot("Location management dark");tap(renamed);tap("Review removal ›");shot("Remove location review dark");tap("Cancel label removal");tap("Review removal ›");tap("Confirm remove label only")
+  app.open(URL(string:"casitadex-plusstoreqa://card?id=sb26qa_007")!);tap("Edit Location");XCTAssertFalse(app.buttons[renamed].exists);tap(original);tap("Save & return to details")
+  app.terminate();app.launch();app.open(URL(string:"casitadex-plusstoreqa://card?id=sb26qa_007")!);XCTAssertTrue(app.staticTexts[original].waitForExistence(timeout:10))
+  app.open(URL(string:"casitadex-plusstoreqa://settings-manage?action=appearance")!);tap("System appearance");app.open(URL(string:"casitadex-plusstoreqa://")!)
+  print("SCOPED LOCATION PASS create, select, Save, restart, Cancel, rename, removal, light/dark; original QA memory location restored")
+ }
+}

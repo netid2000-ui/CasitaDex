@@ -1,0 +1,53 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "189233C4-A360-49D7-AB2A-C9A7F02B9060",
+        "deviceName" : "CasitaDex Fresh Add Accessibility 20261115",
+        "exportedFileName" : "CBB85536-E315-4119-AB77-2E06A5ECE24D.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Remove location review dark_0_23537FC4-DDED-4EF9-AE6A-F99792839414.png",
+        "timestamp" : 1794759253.285
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "189233C4-A360-49D7-AB2A-C9A7F02B9060",
+        "deviceName" : "CasitaDex Fresh Add Accessibility 20261115",
+        "exportedFileName" : "E1C2CFEA-9A70-4024-A5D2-F998A6A4D74C.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Location management dark_0_064A7EAA-94D3-48FB-9D89-323947AC387E.png",
+        "timestamp" : 1794759246.423
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "189233C4-A360-49D7-AB2A-C9A7F02B9060",
+        "deviceName" : "CasitaDex Fresh Add Accessibility 20261115",
+        "exportedFileName" : "118E0935-E3A9-49CA-BDBE-696AFF8842D6.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Location picker dark_0_8F29FF27-E638-4D66-A0BF-F1F3E47B345C.png",
+        "timestamp" : 1794759236.032
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "189233C4-A360-49D7-AB2A-C9A7F02B9060",
+        "deviceName" : "CasitaDex Fresh Add Accessibility 20261115",
+        "exportedFileName" : "0580275A-9F60-437A-85ED-B8A78A72E178.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Create location light_0_ED13AB13-C419-4411-A66E-44BAEC9383C0.png",
+        "timestamp" : 1794759173.676
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "189233C4-A360-49D7-AB2A-C9A7F02B9060",
+        "deviceName" : "CasitaDex Fresh Add Accessibility 20261115",
+        "exportedFileName" : "A147BC73-2A08-4EBC-A3F9-78B3EDA31128.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Location picker light_0_66A66F92-6329-4221-97E0-D8758199CD50.png",
+        "timestamp" : 1794759169.349
+      }
+    ],
+    "testIdentifier" : "PlusRecoveryUITests/testScopedLocationFlow20261115()",
+    "testIdentifierURL" : "test://com.apple.xcode/CasitaDexPlusStoreQA/PlusRecoveryUITests/PlusRecoveryUITests/testScopedLocationFlow20261115"
+  }
+]

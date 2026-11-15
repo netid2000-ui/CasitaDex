@@ -1,0 +1,15 @@
+{
+  "result": "PASS",
+  "checks": [
+    "create",
+    "rename",
+    "restart",
+    "removal cancel",
+    "confirm removal",
+    "scoped picker create and select",
+    "light and dark",
+    "saved memory location survives cold restart and is shown in details"
+  ],
+  "photos": "not exercised",
+  "package": "com.designsbyfa.casitadex.refreshqa"
+}

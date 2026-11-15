@@ -1,0 +1,756 @@
+
+> casitadex@0.1.0 test
+> node --test tests/*.test.mjs
+
+✔ preflight runs before isolated checkout creation (0.485958ms)
+✔ build remains isolated and Staging-only (0.108417ms)
+✔ release dependency gate precedes compilation (0.121292ms)
+✔ APK package identity and bundled JavaScript are verified (0.068416ms)
+✔ APK signature is verified without installing on device (0.095ms)
+✔ file export is written and read back before reporting success (32.631292ms)
+✔ cancelled directory selection creates no file (7.131042ms)
+✔ failed write triggers cleanup (4.241208ms)
+✔ verification mismatch triggers cleanup (7.900209ms)
+✔ cleanup failure explicitly warns of leftover file (5.234666ms)
+✔ canceled picker makes no file read (14.973958ms)
+✔ selected valid backup is canonicalized (4.2125ms)
+✔ oversized file rejected before read (3.072834ms)
+✔ invalid import rejected (2.935459ms)
+✔ other platforms reject file export (2.586833ms)
+✔ unknown document size still enforces UTF-8 byte limit after reading (3.081459ms)
+✔ underreported document size cannot bypass actual UTF-8 byte limit (2.935208ms)
+✔ environment allowlist and distinct native identities (0.79825ms)
+✔ no backend identity, dependencies or Production profiles (1.186375ms)
+(node:48514) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/model.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ versioned backup round trips and preserves confidence (16.898708ms)
+✔ reject malformed, future, duplicate and impossible-date backups (10.68875ms)
+✔ ignore unexpected imported fields (0.102084ms)
+✔ search and context projections share one source (0.059292ms)
+✔ share excludes unselected cards and optional private detail by default (0.28475ms)
+✔ Development and Staging never share storage (0.450166ms)
+✔ corrupt read leaves raw data untouched (0.08225ms)
+✔ previous save recovers after replacement (0.167125ms)
+✔ failed write rejects without losing current primary (0.188334ms)
+✔ invalid import is rejected before any storage write (0.091625ms)
+(node:48515) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/sqlite-repository.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ SQLite migration preserves legacy, source confidence, dates and ordered history; marker prevents reimport (29.228542ms)
+✔ SQLite reopens durable rows from disk (8.258791ms)
+✔ SQLite rolls back row deletion AND recovery changes when a later write fails (2.004542ms)
+✔ failed migration is retryable and does not remove legacy data (0.916292ms)
+✔ corrupt legacy primary blocks writes, explicit previous-save recovery is available (0.7265ms)
+✔ corrupt SQLite primary cannot overwrite good recovery; explicit recovery repairs it (1.11825ms)
+✔ SQLite serializes saves and reads, rejects future schema and enforces foreign keys (1.31875ms)
+✔ independent native environment databases and legacy keys stay isolated (2.34275ms)
+✔ browser recovery copy survives corruption appearing between load and save (0.326959ms)
+✔ backup size uses UTF-8 bytes including multibyte characters (19.647583ms)
+✔ reading preferences persist per environment without carrying private cards (0.124042ms)
+✔ SQLite survives an OS-killed writer before commit (35.224041ms)
+✔ every permitted collection exports within the import byte limit (53.270125ms)
+✔ taxonomy choices have distinct spoken names, selected values and expansion state (35.910333ms)
+✔ collapsed optional fields expose their value or None without opening the editor (10.273709ms)
+✔ Add Memory uses approved editorial fields with photo-first variant (0.712667ms)
+✔ Edit Memory labels its content Description and exposes photo controls (0.605333ms)
+✔ optional field labels receive the full row at enlarged text sizes (0.079958ms)
+✔ Add opts into Android keyboard reveal without altering iOS keyboard handling (0.094875ms)
+(node:48518) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/eng-store.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ material answer edit invalidates confirmation and retains real history in the atomic snapshot (15.716917ms)
+✔ source edit requires reconfirmation; metadata edit preserves confidence; direct verification bypass refuses (2.437333ms)
+✔ restore rejects changed collection and changed draft since explicit preview, before cutover (2.258458ms)
+✔ share defaults exclude private fields and photos, opt-ins are exact and reject unrelated photos (0.511334ms)
+✔ local calendar remains correct near midnight and DST boundaries without UTC day substitution (251.412917ms)
+✔ explicit Review requires an identified source and records real confirmation; browsing adds no event (2.14425ms)
+✔ draft notes/source/reminder survive backup restore and become a new Unknown memory with real timestamps (3.48425ms)
+✔ taxonomy rename/remove preserves all memories, photo references and drafts with review counts and stale protection (2.4835ms)
+✔ reminder completion/rescheduling is durable, preserves verification and suppresses archived obligations (0.855375ms)
+✔ a changed draft invalidates restore review before private staging or metadata replacement (0.840375ms)
+✔ draft photo replacement at five-photo cap is atomic and preserves original on failed staging (1.803291ms)
+✔ actual store fault at after-media-journal preserves confirmed draft and retained ownership (1.1615ms)
+✔ actual store fault at after-private-promotion preserves confirmed draft and retained ownership (0.644541ms)
+✔ actual store fault at after-media-verification preserves confirmed draft and retained ownership (0.529041ms)
+✔ actual store fault at before-state-commit preserves confirmed draft and retained ownership (0.478458ms)
+✔ lost acknowledgement after real state commit retries the same save exactly once (0.5855ms)
+✔ bulk lifecycle change is atomic, stale-protected, keeps photos and verification, and is recoverable (2.959541ms)
+✔ photo-answer changes invalidate current verification while preserving genuine earlier history (2.459459ms)
+✔ label creation during Edit cannot advance a stale edit over a changed collection (1.191083ms)
+✔ partial reminder input remains durable and portable but cannot become an invalid saved date (1.293125ms)
+✔ label removal review binds identity, name, kind and revision independently of later selection or changes (1.642792ms)
+✔ every share-field combination preserves independent Space and Category consent (1.118042ms)
+(node:48519) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/eng-store.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ actual consumer inventory protects all lifecycle, draft, recovery, legacy and journal owners and reports damaged bytes without removal (12.652375ms)
+✔ journal restart retains uncertain photo ownership and permits safe new attachment without replay duplication (0.799917ms)
+✔ actual native staging composition rolls back consumer metadata through write/readback/promotion failures and awaits native move (10.313792ms)
+✔ saved draft photo bytes match source after store reinitialization (1.244542ms)
+✔ photo attachment rejects one-byte-below required storage before journal or file mutation (0.75375ms)
+(node:48520) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/eng-store.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ extended ENG metadata, new events and optional draft fields survive independent filesystem/SQLite restore and reopen (24.776333ms)
+(node:48521) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/eng-find.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+ENG search 0 memories 0ms
+ENG search 1 memories 0ms
+ENG search 500 memories 3ms
+ENG search 5000 memories 37ms
+✔ multiword prefix search ANDs across fields and labels; identifiers remain exact and exact titles rank first (8.334125ms)
+✔ category ANY, uncategorized, confidence, reminder, attachment and lifecycle filters compose honestly (0.173375ms)
+✔ Home limits reminders to two oldest due active obligations and recents to two with stable legacy fallback (5.131792ms)
+✔ search index and bounded result production work at 0, 1, 500 and 5000 memories (41.060042ms)
+✔ duplicate advisory includes trash, exact normalized title/answer, matching photos, but does not flag title alone (0.543792ms)
+✔ dimension queries normalize x, multiplication signs and spacing in stored values and queries (8.433917ms)
+(node:48522) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/eng-share.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ photo share ZIP is independently readable with exact selected text and photo bytes and valid CRC (51.924375ms)
+✔ damaged selected photos prevent share preparation from reporting success (0.474375ms)
+(node:48523) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/eng-text-backup.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ limited text backup explicitly reports exclusions and restores all written metadata/lifecycle without inventing a photo answer (11.76125ms)
+✔ text backup reader refuses unknown versions, fields, invented photo references and dishonest inclusion count (0.86525ms)
+(node:48524) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/eng-store.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ v4 restore and previous-save recovery atomically swap reminders and ENG (5.656541ms)
+✔ v4 injected fault rolls back reminder and ENG writes (4.79825ms)
+✔ v4 stale preview refuses mutation (1.526167ms)
+✔ v4 failure after reminder write rolls back both tables (1.248083ms)
+✔ reminder-only changes invalidate reviewed Full v4 restore (0.836125ms)
+✔ legacy ENG-only restore invalidates stale Full v4 reminder recovery (1.651583ms)
+✔ Full v4 restore migrates older standalone reminder columns (1.38625ms)
+✔ Full v4 cancel preserves collection, reminders, recovery snapshots, schema and media (10.31325ms)
+✔ Full v4 insufficient storage preflight preserves ENG, reminders and recovery (0.743542ms)
+✔ Full v4 legacy reminder schema accepts unchanged preview token before migration (0.907291ms)
+✔ Full v4 pre-transaction interruption preserves all durable state (14.004875ms)
+✔ Full v4 restore refuses exactly one byte below calculated capacity before any mutation (1.120459ms)
+✔ clean Figma-first implementation remains isolated from legacy routes (1.124584ms)
+✔ Figma source authority and candidate state remain explicit (0.616833ms)
+✔ approved vector source retains all seven original house-and-card paths (2.759833ms)
+✔ native and web render only transferred brand artwork (0.551209ms)
+✔ required app and website icon assets exist with expected PNG dimensions (1.892459ms)
+✔ approved navigation assets are sourced exclusively from Figma SVG originals (1.303833ms)
+✔ reminders page exposes add, edit, complete through callbacks only (0.671458ms)
+✔ photo page accepts summaries, not unverified media file paths (0.294583ms)
+✔ new native foundation does not import legacy presentation (2.93975ms)
+✔ primary CTA encodes Figma platform, theme and state variations (0.083875ms)
+✔ new CTA has native and accessible press behavior (0.057709ms)
+✔ Figma Home cards preserve accessible primary/secondary actions in both themes (0.093625ms)
+✔ CTA pressed feedback uses semantic colors and text can grow (0.07175ms)
+✔ focused CTA renders inner stroke and independent outer halo (0.081667ms)
+✔ Home remains command-only without recent memory feed (0.834291ms)
+✔ Reminder preview uses typed read-only projection and max two due items (0.298375ms)
+✔ Home commands render approved navigation glyph assets instead of letter placeholders (0.913375ms)
+✔ Figma-first Home never exposes an unfinished draft card or delete control (0.414ms)
+✔ Home keeps reminder creation but has no reminder feed (0.113916ms)
+✔ Figma authority manifest is explicitly fail-closed (0.28275ms)
+✔ both platform screen mappings and brand authority are explicit (0.11975ms)
+✔ all provisional components reject legacy presentation imports (0.942875ms)
+✔ Home omits the reminders list while preserving reminder navigation (1.149792ms)
+✔ Memories index is separate from Find and opens selected memory (0.281459ms)
+(node:48546) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/figma-first/photo-summaries.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ photo gallery projects active photo memories and counts only (0.578167ms)
+✔ photo gallery handles no photos without leaking paths (0.053458ms)
+✔ gallery labels singular photos and saved media truthfully (0.165167ms)
+✔ orphaned media and unfinished drafts never enter saved Photos gallery (0.260916ms)
+✔ gallery viewer provides direct navigation to owning saved memory (0.386291ms)
+✔ thumbnail images do not intercept the enclosing photo button touch (0.104ms)
+✔ photo tile navigates to the same proven memory details route as its title (0.568125ms)
+✔ photo gallery opens a local modal rather than switching root navigation layouts (0.095584ms)
+✔ Home Settings action stays in the approved fixed header and opens Settings (0.647166ms)
+✔ development configuration does not authorize production (0.33125ms)
+✔ store evidence identifies iPad and Android SDK verification obligations (0.446208ms)
+✔ release evidence matrix remains fail closed until every gate has evidence (0.924625ms)
+✔ store promotion is prohibited until all mandatory gates pass (1.515334ms)
+✔ publication standard defines store gates and evidence (1.332291ms)
+✔ store promotion remains blocked while design approval is pending (0.164584ms)
+✔ Find handles result presses with search keyboard active (1.53525ms)
+✔ Find retains a separate query for each lifecycle when returning to results (0.129625ms)
+(node:48553) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/eng-find.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ management route selects only its requested lifecycle; normal Find remains active (3.673ms)
+✔ dimension normalization works inside Archived and Recently Deleted scopes (0.284541ms)
+✔ archiving, deletion and restoration move a memory between scoped searches without duplicating it (0.682291ms)
+✔ returning from details retains each lifecycle search and scroll without leaking between scopes (0.160791ms)
+(node:48554) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/eng-store.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ native-equivalent private bytes and draft ownership survive closing every database handle (19.492583ms)
+✔ OS-killed writer cannot leave an acknowledged mixed draft/memory snapshot (43.4035ms)
+(node:48555) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/model.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ native streaming exports and preflights a valid >20 MB photo draft without full-buffer reads (108.293792ms)
+✔ stream write interruption and corrupt/truncated readback never mutate source draft (0.682208ms)
+✔ valid near-limit legacy text metadata converts without losing supported authored fields (35.335583ms)
+(node:48556) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/model.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ v4 archive round trip and fail-closed damaged reminder frame (6.068625ms)
+✔ legacy full v3 is readable without inventing reminder rows (0.395292ms)
+✔ Full v4 fails closed for damaged header, frame, reminder JSON, unsupported reminder version, and truncated payload (0.431125ms)
+(node:48557) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/eng-store.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ legacy migration retains full authored metadata and does not mutate migration input (8.834ms)
+✔ new draft uses Unassigned, no category, and resumes across a real database reopen (2.849791ms)
+✔ photo-only commit preserves truly empty answer, hash, ID, Unknown and duplicate-safe attempt (7.567584ms)
+✔ title alone fails; sixth photo fails without dropping five durable photos (7.04475ms)
+✔ low storage, invalid MIME, failed private copy preserve the last confirmed draft (2.467375ms)
+✔ injected SQLite commit failure rolls back memory, attempt, draft and recovery atomically (3.831459ms)
+✔ stale checkpoints and forged durable-photo metadata cannot replace draft (3.463708ms)
+✔ archive, recently deleted, restore and 30-day expiry retain private bytes and recovery owners (5.747792ms)
+✔ full backup restores saved and draft photos independently with IDs and bytes intact (10.233ms)
+✔ draft conflict keep, incoming, cancel and previous full recovery preserve both choices (4.951083ms)
+✔ truncation, corrupt hash, future version and trailing bytes fail before target mutation (3.119791ms)
+✔ legacy text backup remains readable and disclosed; missing/corrupt live bytes block save and backup (2.747125ms)
+✔ stale edited memory cannot overwrite a newer revision; source/date evidence is validated (2.75225ms)
+✔ legacy CDXM2 image container imports authored card and exact image hash, without draft fabrication (0.21275ms)
+✔ failed restore cutover retains old state and previous full recovery, then retry succeeds (6.056167ms)
+✔ saved photo additions are journaled; photo-only last image cannot be removed (4.623709ms)
+✔ all supported legacy record and Space identifiers survive migration without renaming (1.547708ms)
+✔ explicit full recovery repairs corrupt primary JSON without destroying damaged bytes or known-good recovery (3.171833ms)
+✔ known portable state can replace corrupt primary only through explicit incoming-draft choice (3.934667ms)
+✔ missing primary after restart cannot silently remigrate v1; explicit recovery restores known full state (2.515792ms)
+✔ declared future primary and future initialization markers cannot be downgraded by recovery (3.0195ms)
+✔ Home presents one prominent Find action without an orphaned duplicate (0.609875ms)
+✔ Home never classifies loading snapshot as a draft (0.106917ms)
+(node:48559) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/eng-store.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ realistic household: exact identifiers, multilingual answers, space/category AND and lifecycle isolation (22.228666ms)
+✔ realistic household: verification reset, reminder reschedule and private share choices (13.390875ms)
+✔ realistic household: portable full backup retains photo-only, lifecycle and partial-date draft; limited format discloses exclusions (12.257875ms)
+✔ realistic household: denied consumer capacity preserves durable draft and collection (10.469084ms)
+(node:48560) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/backup-capacity.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ verified iOS archive survives unavailable sharing (3.393542ms)
+✔ verified iOS archive survives share provider rejection (0.529917ms)
+✔ failed iOS archive verification removes incomplete file (0.375375ms)
+✔ resolved share sheet keeps archive without claiming external save (0.389417ms)
+✔ retained listing only exposes named archives, newest first (0.606291ms)
+✔ unknown or traversal names cannot be shared (0.353ms)
+✔ corrupt retained archive is not handed to share provider (0.284709ms)
+✔ retained archive can be shared again without creating another archive (0.34075ms)
+✔ retry failure never deletes retained archive (0.334833ms)
+✔ create cancel does not persist; failed save keeps entered name and editor (51.258333ms)
+✔ rename uses captured revision and cancel returns to selected details (22.214958ms)
+✔ removal requires review and confirmation; cancellation is read-only (14.424ms)
+✔ category create uses its own taxonomy and Save disables blank names (17.576458ms)
+✔ Android Back keeps unsaved label edits (18.757458ms)
+✔ location management scopes creation to the selected Space and retains invalid edits (16.39975ms)
+(node:48563) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/model.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ 170 MB archive streams to disk and verifies without a full archive buffer (1598.693ms)
+✔ large-backup free-space and malformed-size checks fail closed (0.442458ms)
+(node:48564) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/media-attachment.native.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ legacy Development photo removal cannot mutate metadata or delete protected files (24.284042ms)
+(node:48566) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/eng-store.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ legacy locations index without changing text, photos, history or lifecycle; restart is stable (5.264333ms)
+✔ same names allowed in different Spaces; duplicates and stale rename cannot write (2.905958ms)
+✔ rename/removal update only scoped assignments including draft; review and stale removal are safe (1.9985ms)
+✔ backup and text restore preserve unused locations; old backup derives locations; space removal preserves location text (1.36525ms)
+✔ invalid registry rejected; failed storage commit preserves data and previous save (0.5805ms)
+✔ moving a memory preserves its location text and adds the new scoped choice (0.715083ms)
+✔ picker sorts and searches only within Space; cancel never changes assignment (67.635542ms)
+✔ None clears assignment; failed creation retains name; Cancel discards unsaved new label (21.086084ms)
+✔ atomic commit survives close and reopen (4.980542ms)
+✔ failed media insert leaves promoted journal on disk (1.716541ms)
+✔ v2 manifest preview counts images without writing data (0.965917ms)
+✔ rejects media referencing absent cards (0.245ms)
+✔ rejects unsafe archive entry names (0.070167ms)
+✔ rejects invalid text before considering manifest (0.059667ms)
+✔ validates every media entry before the restore adapter may write (0.480625ms)
+✔ rejects corrupt media before any database mutation (0.232791ms)
+✔ native v2 binary export Base64 handles padding and 12K boundaries (7.003166ms)
+✔ promotes before committing metadata (0.637666ms)
+✔ uncertain DB failure retains file for reconciliation (0.25375ms)
+✔ staging failure prevents database calls (0.3765ms)
+✔ reconciliation only suggests non-protected paths (0.130458ms)
+✔ rejects unsafe reconciliation candidate (0.070959ms)
+✔ sniffs image signatures independently of claimed filename (0.37875ms)
+✔ accepts matching bytes signature length and real SHA256 (0.307375ms)
+✔ rejects inconsistent byte length before digest (0.193917ms)
+✔ rejects disguised image before digest (1.105542ms)
+✔ rejects changed bytes with stale digest (0.176167ms)
+✔ rejects invalid calculated digest (0.15375ms)
+✔ file-backed journal preserves pending across SQLite close and reopen (43.12375ms)
+✔ file-backed journal preserves promoted across SQLite close and reopen (22.85ms)
+✔ journaled flow preserves write ordering (1.025209ms)
+✔ failed stage does not commit metadata (0.21625ms)
+✔ failed DB attach never announces committed (0.107584ms)
+✔ interrupted operations only suggest inspection (0.16925ms)
+✔ journal tracks incomplete persisted operation (0.846125ms)
+✔ valid journal progression (0.248625ms)
+✔ phase mismatch rolls back (0.263ms)
+✔ rejects skipping stages (0.070042ms)
+✔ fresh journal reader observes pending operation without marking it complete (18.391333ms)
+✔ fresh journal reader observes promoted operation without marking it complete (10.824792ms)
+✔ legacy card replacement probes existing media table before deletion (0.407792ms)
+(node:48577) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/media-manifest.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ valid manifest creates normalized, allowlisted metadata (0.449584ms)
+✔ reject unrecognized schema (0.164792ms)
+✔ reject traversal and absolute paths (0.12ms)
+✔ reject missing parent card (0.05675ms)
+✔ reject duplicate media identifiers (0.07925ms)
+✔ reject unsupported type and mismatched filename extension (0.06ms)
+✔ reject invalid SHA256 and byte count (0.074583ms)
+✔ reject excessive manifest entries (0.095875ms)
+✔ collection accepts 1200 linked photos beyond the former cap (3.633041ms)
+✔ media restore SQL failure rolls back cards and recovery, followed by successful recovery (64.40875ms)
+✔ v2 portable container roundtrip verifies all media before restore (1.071584ms)
+✔ rejects truncated container and unexpected trailing data (0.2625ms)
+✔ rejects modified image digest (0.192084ms)
+✔ pending without metadata is non-destructive inspection (0.350625ms)
+✔ promoted without metadata requires byte verification (0.053ms)
+✔ mismatched metadata never authorizes deletion (0.055375ms)
+✔ finished matching journal reported complete (0.04325ms)
+✔ verified restore gate calls apply only after all images pass (2.428708ms)
+✔ corrupt hash blocks all mutations (0.494583ms)
+✔ media table created without modifying text cards (0.996709ms)
+✔ rejects orphan parent and rolls back (0.308458ms)
+✔ duplicate file path cannot replace existing attachment (0.200667ms)
+✔ invalid manifest cannot write metadata (0.146083ms)
+✔ verified stage readback precedes promote (0.817041ms)
+✔ corrupt readback blocks promotion (0.177333ms)
+✔ failed promotion cleans temporary (0.111625ms)
+✔ invalid bytes never reach store (0.061292ms)
+✔ orphan cleanup preserves referenced (0.119167ms)
+✔ unsafe cleanup path rejected (0.056875ms)
+✔ ENOSPC during temporary media write does not promote or commit media (0.170625ms)
+✔ ENOSPC during media promotion requests temporary cleanup and prevents success (0.129709ms)
+✔ private staging writes and promotes without changing existing files (0.779125ms)
+✔ rejects path traversal before removal (0.223083ms)
+✔ refuses replacement of existing destination (0.101375ms)
+(node:48585) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/sqlite-repository.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ unfinished native draft survives reopening and stays outside saved/searchable cards (3.902583ms)
+✔ ENG save commits card, attempt and draft consumption together; replay cannot duplicate (2.110875ms)
+✔ card insert failure rolls back memory, recovery marker, attempt and draft consumption (2.208416ms)
+✔ failure consuming draft rolls back an already inserted card and attempt (1.606666ms)
+✔ stale, conflicting and different drafts cannot overwrite the durable unfinished draft (1.509042ms)
+✔ invalid content or missing Space fails without consuming the draft (1.654667ms)
+✔ saving a text draft preserves existing media parents and captures recovery manifest (1.789041ms)
+✔ discard affects only the confirmed draft; successful save rejects late checkpoint recreation (1.778833ms)
+✔ unknown or absent draft fields fail closed without overwriting prior bytes (1.349416ms)
+(node:48586) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/media-store.native.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ native media promotion waits for Expo asynchronous move before acknowledging private ownership (38.2285ms)
+✔ optional synthetic photo failures cannot mask saved-memory load (0.351ms)
+(node:48588) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/figma-first/photo-render-window.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ render window handles overscan, large text, jumps, and invalid measurements (0.271959ms)
+✔ 1000-card component mounts only nearby images and preserves every photo action (74.587583ms)
+✔ thumbnail generation coalesces requests, bounds dimensions and retains the original (35.44825ms)
+✔ low space refuses disposable thumbnail work without touching originals (11.297667ms)
+✔ cache pruning removes only disposable derivatives and retains new preview (11.659375ms)
+(node:48590) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/figma-first/photo-summaries.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ indexed workspace preserves selected cover order, ownership, filtering and sort (5.77075ms)
+✔ 1000-photo gallery resolves each included photo once (1.711834ms)
+(node:48591) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/eng-store.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ cover and photo order persist across store reopening without altering immutable bytes or ownership (14.611292ms)
+✔ stale or incomplete/cross-memory photo order is rejected atomically and deleted memories cannot be rearranged (1.258917ms)
+✔ move helpers reject impossible positions and leave their inputs unchanged (0.075ms)
+✔ recent gallery order uses memory timestamps, is stable for legacy dates, and excludes archived/deleted/draft records (4.080417ms)
+✔ With photos composes with Find text and lifecycle without putting search in Photos (1.059667ms)
+✔ photo zoom clamps to 1–4 and pinch distance handles missing touches (0.089417ms)
+(node:48592) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/plus-access.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ free plan permits the twentieth save and protects existing data above the limit (0.398708ms)
+✔ backup, restore, OCR and photo PDF require Plus; restore purchases remains free (0.067292ms)
+✔ missing native adapter cannot grant Plus (0.388667ms)
+✔ completed checkout still needs verification; restore works without purchasing (0.087542ms)
+✔ cancel and pending never verify or erase existing ownership (0.10425ms)
+✔ verification failure preserves last verified access and allows retry (0.093959ms)
+✔ overlapping purchase and restore calls cannot double-submit (0.565875ms)
+✔ invalid adapter values never unlock and snapshots cannot mutate state (0.070708ms)
+(node:48593) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/plus-delivery.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ never acknowledges free, checking, unavailable or stale error ownership (0.312667ms)
+✔ overlapping ownership notifications do not run duplicate delivery concurrently (0.063375ms)
+✔ failed acknowledgement can retry on a later verified refresh without losing ownership (0.301375ms)
+✔ stopped runtime will not start additional acknowledgement work (0.042542ms)
+(node:48594) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/plus-entitlement-store.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ unavailable native support never queries or grants (1.168625ms)
+✔ startup verifies ownership and delayed revocation updates shared state (2.912958ms)
+✔ event during verification discards stale ownership and requeries once (0.664541ms)
+✔ verification errors and invalid results preserve last verified ownership (0.6775ms)
+✔ late response after stop cannot overwrite a restarted session (1.20575ms)
+✔ start is idempotent and snapshots cannot be mutated (0.755083ms)
+(node:48595) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/plus-feature-gate.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ ordinary preview builds preserve current backup availability (0.3575ms)
+✔ free users cannot enter a backup or restore operation (0.24ms)
+✔ verified Plus grants both operations (0.0685ms)
+✔ confirmation rechecks revocation after an earlier preview (0.089917ms)
+✔ unknown and still-checking access never authorizes a write (0.124459ms)
+✔ temporary verification failure preserves previously verified Plus access (0.063375ms)
+(node:48596) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/plus-memory-limit.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ free saves twentieth, refuses twenty-first without changing draft or collection; duplicate retry succeeds (27.579375ms)
+✔ Plus allows above limit; refund blocks only new saves and preserves oversized collection (12.771791ms)
+✔ unknown access cannot exceed limit; previously verified Plus survives transient error; preview unaffected (0.112459ms)
+(node:48597) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/plus-native-adapter.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ native connection requires an explicit local harness (0.340875ms)
+✔ purchase is followed by a separate verified entitlement query (0.385375ms)
+✔ pending and cancellation do not query entitlement (0.080708ms)
+✔ restore rechecks ownership and never calls purchase (0.076334ms)
+✔ invalid native results and rejected promises preserve verified access (0.157709ms)
+(node:48598) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/plus-purchase-message.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ Plus preview exposes restore feedback, disables checkout, and returns to Settings (55.036167ms)
+✔ isolated StoreKit identity carries only a local test product (0.974208ms)
+✔ ordinary builds do not acquire StoreKit QA configuration (1.220875ms)
+✔ isolated identities cannot be mixed and production stays blocked (0.896834ms)
+(node:48600) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/reminder-alerts.native.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ denied permission keeps reminder record intention without scheduling (1.774375ms)
+✔ permission grant schedules one local alert, repeated sync is idempotent (0.723625ms)
+✔ editing replaces obsolete alert, completion cancels its scheduled occurrence (0.188541ms)
+✔ unrelated app notifications are never cancelled (0.069875ms)
+(node:48601) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/reminder-alert-plan.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ one-off alerts use native local wall clock and skip expired alerts (1.986208ms)
+✔ monthly recurrence clamps month ends to last available day (0.32ms)
+✔ leap year recurrence clamps to February 28 in non-leap years (0.126459ms)
+✔ completed reminders do not schedule and the platform cap is respected (7.704416ms)
+✔ edit key changes when due time changes, permitting cancellation of old occurrence (1.34ms)
+✔ linked reminders carry their memory ID into scheduled alert data (0.194333ms)
+(node:48602) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/reminder-backup-v4.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ valid standalone reminder backup section (0.475542ms)
+✔ reject malformed or duplicate reminder records (0.195458ms)
+✔ reminder section binary round trip and corruption rejection (0.413791ms)
+✔ restore preflight reports collisions and never mutates records (0.104791ms)
+✔ linked reminders retain their memory ID through backup encoding (0.112583ms)
+(node:48603) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/reminder-recurrence.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ valid Gregorian dates (0.391083ms)
+✔ repeat dates advance in local calendar units (0.142542ms)
+✔ calendar year boundaries and overflow (0.179292ms)
+(node:48604) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/reminder-restore-v4.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ replace validates entire section before issuing SQL (1.31675ms)
+✔ replacement is transaction-owned and retains full reminder fields (0.713416ms)
+✔ SQL failure propagates to owning transaction (0.150291ms)
+✔ restore writes linked memory identity into its own SQL column (0.11225ms)
+(node:48605) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/reminder-save-destination.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ linked reminder save returns to the exact originating memory, including Home origin (0.478708ms)
+✔ unlinked reminder saves retain Home or Reminders context (0.049875ms)
+✔ Find preserves scroll position and selected result context across detail navigation (0.517833ms)
+✔ Photos gallery restores original scroll offset after viewing memory details (0.104292ms)
+(node:48607) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/model.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ empty legacy import preserves default Space and creates no fabricated records (1.038417ms)
+✔ legacy records preserve exact metadata and Context as compatibility field (3.8405ms)
+✔ new photo-only memory needs independently verified media hash bytes (2.950584ms)
+✔ cannot save title alone, placeholder does not get inserted (0.108667ms)
+✔ custom labels, archived, deletion metadata, due and verification gates (0.321291ms)
+✔ unsupported version, unknown field, lost media parent and duplicates fail closed (0.71825ms)
+✔ v1 future versions and damaged inputs cannot be silently coerced (0.162625ms)
+✔ synthetic transformations never mutate input source (0.091375ms)
+✔ legacy demo marker is preserved rather than dropped (0.137333ms)
+(node:48608) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/sb20-draft-media.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ one private draft, checkpoint and interruption before acknowledgement (0.883709ms)
+✔ picker failures and invalid hash preserve durable draft (0.424667ms)
+✔ five staged photos, sixth blocked, bytes are copied (0.175791ms)
+✔ title or real content required, photo-only valid without false answer (0.203875ms)
+✔ failure before promotion leaves original draft/media unchanged (0.137208ms)
+✔ failure after promotion retains media and allows idempotent retry (0.120667ms)
+✔ failure before transaction preserves draft and promoted bytes (0.103ms)
+✔ failure after commit returns existing memory without duplication (0.07975ms)
+✔ saved references cannot be cleaned, journal only settled postcommit (0.131375ms)
+✔ discard does not automatically purge staged bytes (0.141208ms)
+✔ real SQLite draft checkpoint survives close and reopen (3.277917ms)
+✔ verified staged byte file survives reopen (8.645375ms)
+✔ wrong hash and path rejected without attachment (2.634333ms)
+✔ mid-transaction failure rolls back metadata and retains draft (4.953584ms)
+✔ post-commit lost acknowledgement retries without duplicates (10.605458ms)
+✔ partial stage interruption leaves record uncommitted and inspectable (8.089833ms)
+✔ orphan inventory marks ambiguous files but never deletes bytes (7.101417ms)
+✔ corrupted staged file reported without modifying saved draft (7.062458ms)
+(node:48610) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/sb20-native-adapter.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ native port Save commits photo-only record and retries idempotently (15.183875ms)
+✔ corrupted media blocks save before metadata mutation (10.512917ms)
+✔ missing and unsafe media are read-only verdicts (5.235291ms)
+✔ uncertain commit acknowledgement preserves data for reconciliation (16.016875ms)
+(node:48611) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/sb20-expo-ports.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ isolation guards reject original and staging namespaces (0.734291ms)
+✔ persistent checkpoint permits exactly one draft and monotonic update (8.042541ms)
+✔ private-media copy and verified photo-only save are idempotent (11.592875ms)
+✔ corruption fails closed and preserves draft and media metadata (4.370541ms)
+✔ failed metadata transaction rolls back and preserves staged photo (3.445833ms)
+✔ unsafe ID, invalid type and path traversal rejected (2.326291ms)
+✔ actual SQL trigger failure rolls back attempted Save atomically (13.951291ms)
+✔ pending journal survives SQLite reopen and retains bytes (9.025625ms)
+✔ staged and promoted interruptions require reconciliation, never cleanup (6.117875ms)
+✔ only committed owned media is marked verified (6.130208ms)
+✔ corruption/missing file fails read-only without destructive action (1.578292ms)
+✔ illegal progression and duplicate IDs fail closed (4.065ms)
+✔ transaction abort rolls back journal transition (4.61775ms)
+✔ successful synthetic commit and idempotent retry (13.709125ms)
+✔ interrupted staged operation retains bytes and journal (5.95ms)
+✔ promotion interruption preserves media and prevents unsafe retry (7.714583ms)
+✔ failed SQL commit never inserts memory and protects promoted bytes (7.238875ms)
+✔ lost acknowledgement resolves previously committed attempt once (25.746666ms)
+✔ manifest mismatch and duplicate attempt identity fail closed (4.12125ms)
+(node:48614) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/sb20-eng-f-d-async.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ async operation commits once and is replayable after DB reopen (11.396625ms)
+✔ failure after staging durably marks recovery-needed and preserves photo bytes (12.027875ms)
+✔ failure after promotion retains bytes and marks uncertain (3.972459ms)
+✔ failed atomic metadata transaction leaves durable uncertain state (4.468708ms)
+✔ lost acknowledgement after commit retries once (6.562792ms)
+✔ invalid hash fails closed, persists recovery state, retains no false memory (2.146291ms)
+(node:48615) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/sb20-expo-ports.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ guard refuses live/legacy SQLite or media names (3.133625ms)
+✔ bridge commits and retries after database reopen without duplicate (9.901709ms)
+✔ promote interruption leaves recovery-needed and original staging bytes (6.56125ms)
+✔ SQL commit failure rolls back memory and persists recovery marker (5.525958ms)
+✔ failed recovery marker does not erase promoted synthetic file (4.450041ms)
+(node:48617) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/sb20-eng-f-f-ownership.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ all seven owner classes protect synthetic photos (0.835667ms)
+✔ incomplete owner inventory and short trash retention fail closed (0.283583ms)
+✔ orphan, missing, corruption and unknown attempt never authorize deletion (0.553292ms)
+✔ committed verified owner can be acknowledged after SQLite reopen (3.089292ms)
+✔ unconfirmed Save writes inspection verdict durably (3.150458ms)
+✔ failed recovery recording refuses acknowledgment (1.747708ms)
+✔ attempt bound to another memory fails closed and persists integrity decision (3.270125ms)
+✔ untrusted owner ID and invalid deleted timestamp reject inventory (0.13975ms)
+(node:48619) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/sb20-eng-f-g-enumerator.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ seven source tables independently enumerate protected photo references (10.580416ms)
+✔ incomplete required source scan stops enumeration (2.489708ms)
+✔ invalid parent and corrupt photo are retained for review (2.128208ms)
+✔ wrong parent identifier and unsupported deletion timestamp fail closed (4.4445ms)
+✔ legacy record with more than five photos remains enumerated (4.342333ms)
+✔ unknown Save attempt from enumerated owner remains unacknowledged (3.063125ms)
+✔ duplicate media ownership across sources remains protected (3.176334ms)
+(node:48620) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/sb20-eng-f-h-verifier.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ valid physical synthetic bytes and parent rows pass (7.114709ms)
+✔ changed file contents fail checksum without deletion (4.958334ms)
+✔ missing photo file classified not deleted (4.136708ms)
+✔ wrong parent reference fails closed (4.846416ms)
+✔ incomplete parent table stops verification (4.377625ms)
+✔ invalid photo ID cannot traverse private root (6.499125ms)
+✔ owner category across all seven parent tables resolves (33.075833ms)
+✔ legacy parent keeps more than five preexisting media files (12.365958ms)
+(node:48621) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/sb20-eng-f-i-hardening.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ valid photo parent and file hashes pass (7.97975ms)
+✔ dangling reference and orphaned manifest are classified without deletion (5.316666ms)
+✔ conflicting duplicate owner associations fail closed (4.892042ms)
+✔ corrupted actual synthetic bytes are flagged (5.288042ms)
+✔ deleted lifecycle future timestamps fail closed (4.898834ms)
+✔ missing mandatory source aborts enumeration (4.451208ms)
+✔ all lifecycle ownership categories stay protected (30.408042ms)
+✔ symlink escape is rejected where supported (4.431417ms)
+✔ manifest without any reference is classified orphan (6.113417ms)
+(node:48622) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/sb20-eng-f-i-hardening.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ file symlink pointing outside synthetic root is rejected, if permitted (11.033583ms)
+✔ junction portal cannot be addressed through guarded media ID (3.924959ms)
+(node:48623) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/eng-store.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ accepted native consumer picker returns only a validated Full v4 archive without opening its database (21.996417ms)
+(node:48624) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/eng-stream-v4.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+﹣ provided Full v4 acceptance archive verifies every embedded photo byte (0.8185ms) # Set CASITADEX_SB24_ARCHIVE to a local QA archive
+﹣ real Full v4 emulator archive rejects one-byte photo corruption without changing source (0.109333ms) # Set CASITADEX_SB24_ARCHIVE to a local QA archive
+﹣ real Full v4 archive restores and recovers both domains in disposable SQLite (0.0935ms) # Set CASITADEX_SB24_ARCHIVE to a local QA archive
+﹣ real Full v4 archive cancel is nonmutating in disposable SQLite (0.069958ms) # Set CASITADEX_SB24_ARCHIVE to a local QA archive
+﹣ real Full v4 archive refuses stale reminder review without mutations (0.08625ms) # Set CASITADEX_SB24_ARCHIVE to a local QA archive
+✔ SQLite WAL rolls back uncommitted ENG and reminder writes after process termination (46.600542ms)
+✔ SQLite WAL preserves both committed ENG and reminders after child termination (30.2465ms)
+✔ four distinct labeled accessible primary destinations with Memories integrated into Find (0.387292ms)
+✔ Home retains the three owner-approved create actions (0.075ms)
+✔ photo viewer provides accessible close and native pinch zoom (0.928042ms)
+✔ photo picker flow has no explicit URL download/upload API (0.818792ms)
+✔ full backup flow has no explicit URL download/upload API (0.106042ms)
+✔ restore picker flow has no explicit URL download/upload API (0.594666ms)
+✔ photo sharing flow has no explicit URL download/upload API (0.124916ms)
+✔ text export flow has no explicit URL download/upload API (0.058041ms)
+﹣ isolated simulator release embeds the updated Photos and viewer code (0.478875ms) # Release artifact absent from this source-only worktree; native release build acceptance remains open
+✔ iOS photo gallery uses singular label and real saved-photo wording (0.461875ms)
+✔ iOS viewer retains zoom, navigation, safe removal and accessible close (0.448333ms)
+✔ iOS synthetic QA illustrations do not depend on Android resource URIs (0.094084ms)
+✔ shared photo removal requires an editable owner and a cancelable confirmation (0.77925ms)
+✔ store refuses removal of the only photo from an answerless memory (0.070167ms)
+✔ shared multi-photo navigation stays bounded and resets zoom (0.067792ms)
+✔ query-string v7 requires callable decoder, so unreviewed ESM-only decoder overrides are not accepted (2.149417ms)
+✔ integration runtime never adopts unconditional QA enablement (0.531125ms)
+✔ integration configuration retains unique development and staging identities and production lock (0.110958ms)
+✔ existing unfinished draft remains recoverable and requires an explicit discard decision (0.82825ms)
+✔ SB39 iOS 27 runtime config opts into scene lifecycle through Expo official plugin (0.312375ms)
+✔ iOS scene lifecycle uses official SDK 57 expo-build-properties supported opt-in (0.426125ms)
+✔ SB39 QA native identities are isolated from all accepted QA/dev apps and seed disabled (0.39675ms)
+✔ shared screens resolve platform-specific reminder stores without importing native SQLite on web (0.830791ms)
+✔ SB39 release security triage names URI decoding and schema validation as open release gates (0.585125ms)
+✔ production deployment and environment remain unavailable during source integration (0.130667ms)
+✔ Expo Router dependency graph includes query-string decoder: unresolved release exposure (1.120542ms)
+✔ bounded, benign deep-link queries parse without unexpected modification (0.339417ms)
+✔ untrusted route names are not automatically promoted to production authorization (0.448917ms)
+✔ iOS full backup uses a native share sheet and never calls Android SAF (0.395458ms)
+✔ Android backup writer retains its verified export and cleanup paths (0.10175ms)
+✔ iOS exports remain private and never expose the app database through Files sharing (0.651417ms)
+(node:48642) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/photo-zoom.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ SB40 bounded pan clamps visible image at 1x, 2x and 4x (0.65ms)
+✔ SB40 photo swipe chooses direction only at 1x with deliberate horizontal movement (0.074917ms)
+✔ SB40 approved gallery and management must survive swipe/zoom integration (0.381541ms)
+✔ Settings exposes all eight approved destination IDs and readable accessibility hints (0.640875ms)
+✔ Settings routes action to native management without dropping action ID (0.084625ms)
+✔ Appearance and Accessibility lead to implemented preferences controls (0.119458ms)
+✔ injected SQL insert failure rolls back both replacement and recovery marker (1.511959ms)
+✔ attached card can be edited in place but legacy replacement cannot discard its identity (1.015958ms)
+✔ iOS queues changed status while Android retains live-region ownership (17.429375ms)
+(node:48646) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/storage-safety.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ app-available blocks constrain free-block reports, including actual zero availability (0.58075ms)
+✔ write capacity checks accept exact requirement and reject one byte below or unknown estimates (0.138333ms)
+✔ restore capacity accounts for UTF-8 reminder and recovery payloads (0.070084ms)
+✔ all approved media owners remain protected with duplicate references counted once (0.281416ms)
+✔ missing media remains referenced and cannot be misreported as reclaimable (0.0785ms)
+✔ unknown or damaged ownership fails closed (0.145917ms)
+✔ SQLite helper commits success and rolls back a failed write without masking it (1.029833ms)
+✔ SQLite auto-rollback cleanup failure retains the original full-disk cause (0.262333ms)
+✔ SQLite commit failure rolls back both logical writes (0.179375ms)
+✔ large reminder section cannot bypass an ENG-only free-space budget (3.35825ms)
+✔ low-storage recovery preserves current data and both recovery snapshots (1.247542ms)
+(node:48647) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/eng-store.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ space: duplicate create/rename and invalid names preserve primary and recovery snapshots (5.351666ms)
+✔ space: removal review is read-only; rename preserves links; stale removal refused; confirmed removal keeps memory and draft (3.001667ms)
+✔ category: duplicate create/rename and invalid names preserve primary and recovery snapshots (2.230291ms)
+✔ category: removal review is read-only; rename preserves links; stale removal refused; confirmed removal keeps memory and draft (1.173041ms)
+(node:48648) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/theme.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ both actual palettes meet text and control-boundary contrast targets (0.64375ms)
+ℹ tests 516
+ℹ suites 0
+ℹ pass 510
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 6
+ℹ todo 0
+ℹ duration_ms 2069.957542

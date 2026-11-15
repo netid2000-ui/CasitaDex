@@ -8,7 +8,7 @@ export type SettingsAction="plus"|"storage"|"backup"|"recovery"|"archived"|"remi
 export type FigmaSettingsProps={onOpen:(action:SettingsAction)=>void};
 const groups:{title:string;items:{id:SettingsAction;title:string;description:string}[]}[]=[
  {title:"Preferences",items:[{id:"appearance",title:"Appearance",description:"Light, dark, or follow your device"},{id:"accessibility",title:"Accessibility",description:"Large text and display appearance"}]},
- {title:"Memory management",items:[{id:"labels",title:"Spaces & categories",description:"Organize saved information"},{id:"recovery",title:"Recently deleted",description:"Review recoverable memories"},{id:"archived",title:"Archived Memories",description:"Review archived memories"},{id:"reminders",title:"Reminders",description:"Review and manage your reminders"}]},
+ {title:"Memory management",items:[{id:"labels",title:"Spaces, categories & locations",description:"Organize saved information"},{id:"recovery",title:"Recently deleted",description:"Review recoverable memories"},{id:"archived",title:"Archived Memories",description:"Review archived memories"},{id:"reminders",title:"Reminders",description:"Review and manage your reminders"}]},
  {title:"Data protection",items:[{id:"backup",title:"Backup & restore",description:"Export or recover local data"},{id:"storage",title:"Privacy & storage",description:"Your memories stay on this device"},{id:"privacy",title:"Privacy & security",description:"Local data, sharing and backup protection"}]},
  {title:"About",items:[{id:"plus",title:"CasitaDex Plus",description:"Explore the one-time upgrade"},{id:"help",title:"About CasitaDex",description:"Version and guidance for your memories"}]},
 ];
