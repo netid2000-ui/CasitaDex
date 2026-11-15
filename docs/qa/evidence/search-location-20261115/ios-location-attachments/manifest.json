@@ -1,0 +1,17 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "81FC3CCE-ACEB-4957-BE61-C9C653A4CE56",
+        "deviceName" : "CasitaDex Memory Boundary Isolated QA",
+        "exportedFileName" : "71509D6B-C292-49AE-80DC-F4DC26A8965B.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "ios-location-restored_0_B5995CEB-F05D-4F17-9537-017144C4DE4A.png",
+        "timestamp" : 1794784776.835
+      }
+    ],
+    "testIdentifier" : "SearchLocationTests/testLocationSelectionReturnAndClear()",
+    "testIdentifierURL" : "test://com.apple.xcode/CasitaDexAudit/CasitaDexAuditTests/SearchLocationTests/testLocationSelectionReturnAndClear"
+  }
+]

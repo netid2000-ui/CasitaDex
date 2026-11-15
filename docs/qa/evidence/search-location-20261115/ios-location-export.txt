@@ -1,0 +1,4 @@
+Exported 1 attachment for: SearchLocationTests/testLocationSelectionReturnAndClear():
+File: 71509D6B-C292-49AE-80DC-F4DC26A8965B.png, suggested name: "ios-location-restored_0_B5995CEB-F05D-4F17-9537-017144C4DE4A.png"
+
+Generated manifest file with attachment details: /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/docs/qa/evidence/search-location-20261115/ios-location-attachments/manifest.json
