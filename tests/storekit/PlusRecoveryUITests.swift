@@ -977,3 +977,29 @@ extension PlusRecoveryUITests {
   app.open(URL(string:"casitadex-plusstoreqa://")!)
  }
 }
+
+extension PlusRecoveryUITests {
+ @available(iOS 27.0, *)
+ @MainActor func testInlineFocusProbe20261115() async throws {
+  continueAfterFailure=false
+  XCTAssertEqual(ProcessInfo.processInfo.environment["SIMULATOR_UDID"],"189233C4-A360-49D7-AB2A-C9A7F02B9060")
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa");app.launch()
+  app.open(URL(string:"casitadex-plusstoreqa://card?id=sb26qa_007")!)
+  let edit=app.buttons["Edit memory"];XCTAssertTrue(edit.waitForExistence(timeout:10));edit.tap()
+  let vo=XCUIDevice.shared.voiceOverService;let wasEnabled=vo.isEnabled
+  defer {if !wasEnabled {try? vo.disable()}}
+  try vo.enable()
+  for _ in 0..<20 {if try vo.currentSpeech().utterance.contains("Edit Location"){break};_ = try vo.moveForward()}
+  print("FOCUS_BEFORE: \(try vo.currentSpeech().utterance)")
+  app.buttons["Edit Location"].doubleTap()
+  try await Task.sleep(nanoseconds:500_000_000)
+  print("FOCUS_OPEN: \(try vo.currentSpeech().utterance)")
+  let done=app.buttons["Done editing Location"];XCTAssertTrue(done.exists);done.doubleTap()
+  try await Task.sleep(nanoseconds:500_000_000)
+  let closedSpeech=try vo.currentSpeech().utterance
+  print("FOCUS_CLOSED: \(closedSpeech)")
+  XCTAssertTrue(closedSpeech.contains("Edit Location"))
+  if !wasEnabled {try vo.disable()}
+  app.buttons["Cancel"].tap();app.open(URL(string:"casitadex-plusstoreqa://")!)
+ }
+}
