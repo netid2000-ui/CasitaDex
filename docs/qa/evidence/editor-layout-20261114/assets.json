@@ -1,0 +1,44 @@
+{
+  "edit-dark-save.svg": {
+    "bytes": 405,
+    "sha256": "fc4a15ee8cc52261d9407e9f585de43de21c95be0fd7cb95ff9445885c537101",
+    "width": "16",
+    "height": "16",
+    "viewBox": "0 0 16 16"
+  },
+  "edit-light-photo.svg": {
+    "bytes": 750,
+    "sha256": "3a06eaa3c552aa4f871089d60598211e4525d072c89c1c5f0852e0e539184990",
+    "width": "16",
+    "height": "16",
+    "viewBox": "0 0 16 16"
+  },
+  "edit-dark-cancel.svg": {
+    "bytes": 394,
+    "sha256": "0a27a2d01ecd387608b1051cb2396ee74f1851f20cd375f7b2ed2201bbced4fc",
+    "width": "16",
+    "height": "16",
+    "viewBox": "0 0 16 16"
+  },
+  "edit-light-save.svg": {
+    "bytes": 359,
+    "sha256": "073be0914566f86b5b2c342da414de818ca18c0a723f4025e3d87e6b51299191",
+    "width": "16",
+    "height": "16",
+    "viewBox": "0 0 16 16"
+  },
+  "edit-light-cancel.svg": {
+    "bytes": 348,
+    "sha256": "bf982fc2f6434ad3e9426363ca055ecdcd4739a7d8324a95893ef92af1444b4a",
+    "width": "16",
+    "height": "16",
+    "viewBox": "0 0 16 16"
+  },
+  "edit-dark-photo.svg": {
+    "bytes": 796,
+    "sha256": "8a8ac2b67296ddb1c557e8e4380c17db966654c456800a26c33440f9c9e85555",
+    "width": "16",
+    "height": "16",
+    "viewBox": "0 0 16 16"
+  }
+}

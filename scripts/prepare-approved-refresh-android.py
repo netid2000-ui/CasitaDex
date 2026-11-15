@@ -5,9 +5,9 @@ import shutil
 root=Path(__file__).resolve().parent.parent
 target=root.parent/"approved-refresh-android-qa-20261115"
 target.mkdir(exist_ok=True)
-for name in ["src","assets","public","plugins","modules"]:
+for name in ["src","assets","public","plugins","modules","scripts"]:
  shutil.copytree(root/name,target/name,dirs_exist_ok=True)
-for name in ["app.json","package.json","package-lock.json","tsconfig.json"]:
+for name in ["app.json","package.json","package-lock.json","tsconfig.json","metro.config.js"]:
  shutil.copy2(root/name,target/name)
 shutil.copy2(root/"app.config.js",target/"app.base.config.js")
 (target/"app.config.js").write_text('''const base=require("./app.base.config");

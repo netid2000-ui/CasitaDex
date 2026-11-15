@@ -42,7 +42,7 @@ export function Copy({
           flexShrink: 1,
         },
         kind === "title" || kind === "answer"
-          ? { fontWeight: "700", letterSpacing: -0.4 }
+          ? { letterSpacing: -0.4 }
           : null,
         props.style,
       ]}
@@ -60,8 +60,14 @@ export function Button({
   variant = "tonal",
   compact = false,
   icon,
+  editorial=false,
+  displayLabel,
+  trailing,
 }: {
   icon?:React.ReactNode;
+  trailing?:React.ReactNode;
+  editorial?:boolean;
+  displayLabel?:string;
   label: string;
   onPress: () => void;
   selected?: boolean;
@@ -90,14 +96,16 @@ export function Button({
         variant === "quiet" && s.quiet,
         selected && s.selected,
         primary && s.primary,
+        editorial && {minHeight:44,borderWidth:0,borderBottomWidth:0},
+        editorial && variant==="quiet" && {backgroundColor:"transparent"},
         focused && { borderColor: colors.focus, borderWidth: 2 },
         pressed && { opacity: 0.82, elevation: 0, shadowOpacity: 0, transform: [{ translateY: 1 }] },
         disabled && (primary ? { opacity: 0.62, borderStyle: "solid" as const, backgroundColor: colors.primary, borderColor: colors.primary } : { opacity: 1, borderStyle: "dashed" as const, backgroundColor: colors.accent, borderColor: colors.line }),
       ]}
     >
-      <View style={{flexDirection:"row",alignItems:"center",gap:8}}>{icon}{selected!==undefined?<Text accessible={false} style={{width:20,color:colors.ink,textAlign:"center"}}>{selected?"✓":""}</Text>:null}<Copy kind={compact ? "small" : "body"} style={primary ? { color: colors.onPrimary, fontWeight: "700", textAlign: "center" } : { color: colors.ink, fontWeight: "700", textAlign: "center" }}>
-        {label.replace(/^✓\s*/,"")}
-      </Copy></View>
+      <View style={{flexDirection:"row",alignItems:"center",gap:8,width:editorial&&trailing?"100%":undefined}}>{icon}{selected!==undefined?<Text accessible={false} style={{width:20,color:colors.ink,textAlign:"center"}}>{selected?"✓":""}</Text>:null}<Copy kind={editorial?"body":compact ? "small" : "body"} style={editorial?{color:primary?colors.onPrimary:colors.ink,fontWeight:"400",flex:trailing?1:undefined}:primary ? { color: colors.onPrimary, fontWeight: "700", textAlign: "center" } : { color: colors.ink, fontWeight: "700", textAlign: "center" }}>
+        {displayLabel??label.replace(/^✓\s*/,"")}
+      </Copy>{trailing}</View>
     </Pressable>
   );
 }
@@ -112,7 +120,9 @@ export function Field({
   maxLength,
   iosTextView=false,
   nativeEditing=false,
+  editorial=false,
 }: {
+  editorial?:boolean;
   label: string;
   value: string;
   onChangeText: (v: string) => void;
@@ -142,8 +152,8 @@ export function Field({
     }
   },[nativeOwned,value]);
   return (
-    <View style={s.gap}>
-      <Copy style={{ fontWeight: "600" }}>{label}</Copy>
+    <View style={[s.gap,editorial&&{gap:6}]}>
+      <Copy style={{ fontWeight: editorial?"400":"600" }}>{label}</Copy>
       <TextInput
         ref={inputRef}
         accessibilityLabel={label}
@@ -164,9 +174,10 @@ export function Field({
         maxLength={maxLength??(multiline ? 2000000 : 1000)}
         style={[
           s.input,
+          editorial && {borderColor:colors.line},
           focused && { borderColor: colors.focus, borderWidth: 2 },
           disabled && { opacity: 1, borderStyle: "dashed" as const },
-          { fontSize: large ? 22 : 14, minHeight: multiline ? (compactMultiline ? 76 : 120) : 52 },
+          { fontSize: large ? 22 : 14, minHeight: multiline ? (compactMultiline ? 76 : editorial?108:120) : editorial?48:52 },
         ]}
       />
     </View>

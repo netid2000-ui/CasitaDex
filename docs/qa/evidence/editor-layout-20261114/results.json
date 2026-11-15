@@ -1,0 +1,21 @@
+{
+  "unit": {
+    "pass": 491,
+    "skip": 6,
+    "fail": 0
+  },
+  "typecheck": "PASS",
+  "full_lint": "PASS",
+  "ios_layout": {
+    "result": "PASS",
+    "xcresult": "CasitaDex-Editor-Layout-r5-20261115.xcresult"
+  },
+  "ios_optional_rows": {
+    "result": "PASS",
+    "xcresult": "CasitaDex-Editor-Layout-r3-20261115.xcresult"
+  },
+  "android_native": "PASS",
+  "android_release_build": "PASS",
+  "original_ios_payloads": "unchanged",
+  "photo_acceptance_repeated": false
+}

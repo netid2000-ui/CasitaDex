@@ -207,7 +207,7 @@ extension PlusRecoveryUITests {
   let result=app.buttons.matching(NSPredicate(format:"label BEGINSWITH %@","Open regular memory ")).firstMatch
   scrollTo(result,in:app);result.tap()
   XCTAssertTrue(app.buttons["Edit memory"].waitForExistence(timeout:10));app.buttons["‹ Results"].tap()
-  XCTAssertTrue(field.waitForExistence(timeout:10));XCTAssertEqual(field.value as? String,text)
+  XCTAssertTrue(field.waitForExistence(timeout:10),app.debugDescription);XCTAssertEqual(field.value as? String,text)
   let shot=XCTAttachment(screenshot:app.screenshot());shot.name="Rapid Find query preserved";shot.lifetime = .keepAlways;add(shot)
   print("FIND_INPUT PASS: exact burst, submit, one matching result, details and return preserve query")
  }
@@ -291,7 +291,7 @@ extension PlusRecoveryUITests {
   XCTAssertTrue(app.buttons["Edit "+text].waitForExistence(timeout:15))
   app.terminate();app.launch();app.open(URL(string:"casitadex-plusstoreqa://reminders")!)
   XCTAssertTrue(app.buttons["Edit "+text].waitForExistence(timeout:15))
-  app.buttons["Edit "+text].tap();XCTAssertTrue(field.waitForExistence(timeout:10));XCTAssertEqual(field.value as? String,text);scrollTo(notes,in:app);XCTAssertEqual(notes.value as? String,body)
+  app.buttons["Edit "+text].tap();XCTAssertTrue(field.waitForExistence(timeout:10),app.debugDescription);XCTAssertEqual(field.value as? String,text);scrollTo(notes,in:app);XCTAssertEqual(notes.value as? String,body)
   field.tap();field.typeText(" UNSAVED");app.buttons["Cancel"].tap();app.alerts.buttons["Discard changes"].tap()
   XCTAssertTrue(app.buttons["Edit "+text].waitForExistence(timeout:10))
   print("REMINDER_INPUT PASS: rapid title and notes, save and cold restart")
@@ -308,7 +308,7 @@ extension PlusRecoveryUITests {
   let text="Boundary rapid reminder 20x25x1"
   let open=app.buttons["Edit "+text];XCTAssertTrue(open.waitForExistence(timeout:15));open.tap()
   let field=app.textViews["Reminder title *"],notes=app.textViews["Notes"]
-  XCTAssertTrue(field.waitForExistence(timeout:10));XCTAssertEqual(field.value as? String,text)
+  XCTAssertTrue(field.waitForExistence(timeout:10),app.debugDescription);XCTAssertEqual(field.value as? String,text)
   scrollTo(notes,in:app);XCTAssertEqual(notes.value as? String,"Garage filter replacement 20x25x1")
   app.buttons["Save Reminder"].tap()
   let spring=XCUIApplication(bundleIdentifier:"com.apple.springboard")
@@ -320,7 +320,7 @@ extension PlusRecoveryUITests {
   // Cursor placement and insertion order in existing titles are a separately recorded open defect.
   XCTAssertNotEqual(field.value as? String,text,"Cancel check must begin with an actual unsaved change")
   app.buttons["Cancel"].tap();app.alerts.buttons["Discard changes"].tap()
-  XCTAssertTrue(open.waitForExistence(timeout:10));open.tap();XCTAssertTrue(field.waitForExistence(timeout:10));XCTAssertEqual(field.value as? String,text)
+  XCTAssertTrue(open.waitForExistence(timeout:10));open.tap();XCTAssertTrue(field.waitForExistence(timeout:10),app.debugDescription);XCTAssertEqual(field.value as? String,text)
   let shot=XCTAttachment(screenshot:app.screenshot());shot.name="Reminder title preserved after cancel";shot.lifetime = .keepAlways;add(shot)
   print("TAXONOMY_REMINDER PASS: both assignments survive restart; reminder exact title/notes, Save return and Cancel rollback")
  }
@@ -338,7 +338,7 @@ extension PlusRecoveryUITests {
   }
   app.launch();app.open(URL(string:"casitadex-plusstoreqa://reminders")!)
   let open=locate(original);open.tap()
-  let field=app.textViews["Reminder title *"];XCTAssertTrue(field.waitForExistence(timeout:10));XCTAssertEqual(field.value as? String,original)
+  let field=app.textViews["Reminder title *"];XCTAssertTrue(field.waitForExistence(timeout:10),app.debugDescription);XCTAssertEqual(field.value as? String,original)
   field.tap();field.typeText("INSERT ")
   let actual=try XCTUnwrap(field.value as? String)
   XCTAssertTrue(actual.contains("INSERT "),"Insertion order must remain intact: "+actual)
@@ -347,12 +347,12 @@ extension PlusRecoveryUITests {
   _ = locate(actual)
   app.terminate();app.launch();app.open(URL(string:"casitadex-plusstoreqa://reminders")!)
   let saved=locate(actual);saved.tap()
-  XCTAssertTrue(field.waitForExistence(timeout:10));XCTAssertEqual(field.value as? String,actual)
+  XCTAssertTrue(field.waitForExistence(timeout:10),app.debugDescription);XCTAssertEqual(field.value as? String,actual)
   field.tap();field.typeText("CANCEL ")
   let dirty=try XCTUnwrap(field.value as? String)
   XCTAssertTrue(dirty.contains("CANCEL "));XCTAssertEqual(dirty.replacingOccurrences(of:"CANCEL ",with:""),actual)
   app.buttons["Cancel"].tap();app.alerts.buttons["Discard changes"].tap()
-  _ = locate(actual);saved.tap();XCTAssertTrue(field.waitForExistence(timeout:10));XCTAssertEqual(field.value as? String,actual)
+  _ = locate(actual);saved.tap();XCTAssertTrue(field.waitForExistence(timeout:10),app.debugDescription);XCTAssertEqual(field.value as? String,actual)
   let shot=XCTAttachment(screenshot:app.screenshot());shot.name="Existing reminder insertion preserved";shot.lifetime = .keepAlways;add(shot)
   print("EXISTING_REMINDER PASS exact contiguous insertion, save/restart, second insertion and Cancel rollback: "+actual)
  }
@@ -375,7 +375,7 @@ extension PlusRecoveryUITests {
   XCTAssertTrue(app.staticTexts["Boundary rapid editing 20x25x1"].exists)
   app.terminate();app.launch();app.open(URL(string:"casitadex-plusstoreqa://reminders")!)
   let row=app.buttons["Edit "+actual];XCTAssertTrue(row.waitForExistence(timeout:15));row.tap()
-  XCTAssertTrue(field.waitForExistence(timeout:10));XCTAssertEqual(field.value as? String,actual)
+  XCTAssertTrue(field.waitForExistence(timeout:10),app.debugDescription);XCTAssertEqual(field.value as? String,actual)
   print("LINKED_REMINDER PASS asynchronous prefill, exact insertion, submit, save return to originating details, restart")
  }
 }
@@ -663,6 +663,19 @@ extension PlusRecoveryUITests {
 }
 
 extension PlusRecoveryUITests {
+ @MainActor func revealEditorControl(_ element:XCUIElement,in app:XCUIApplication) {
+  for _ in 0..<24 {
+   guard let scroll=app.scrollViews.allElementsBoundByIndex.max(by:{$0.frame.height<$1.frame.height}) else {XCTFail("Missing editor scroll");return}
+   let top=scroll.frame.minY+16
+   let bottom=min(scroll.frame.maxY-16,app.keyboards.firstMatch.exists ? app.keyboards.firstMatch.frame.minY-65 : scroll.frame.maxY-16)
+   if element.exists && element.isHittable && element.frame.minY>=top && element.frame.maxY<=bottom{return}
+   let above=element.exists && element.frame.minY<top
+   let low=(bottom-20-scroll.frame.minY)/scroll.frame.height
+   let high=(top+35-scroll.frame.minY)/scroll.frame.height
+   scroll.coordinate(withNormalizedOffset:CGVector(dx:0.5,dy:above ? high : low)).press(forDuration:0.05,thenDragTo:scroll.coordinate(withNormalizedOffset:CGVector(dx:0.5,dy:above ? low : high)))
+  }
+  XCTFail("Cannot fully reveal editor control: \(element)\n\(app.debugDescription)")
+ }
  @MainActor func testOptionalEditorRows() async throws {
   continueAfterFailure=false
   let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa")
@@ -670,25 +683,56 @@ extension PlusRecoveryUITests {
   let edit=app.buttons["Edit memory"];XCTAssertTrue(edit.waitForExistence(timeout:15));edit.tap()
   var originals:[String:String]=[:]
   for label in ["Location","Notes","Reference"] {
-   let row=app.buttons["Edit "+label];scrollTo(row,in:app);row.tap()
-   let field=app.textViews[label];XCTAssertTrue(field.waitForExistence(timeout:10));scrollTo(field,in:app)
+   let row=app.buttons["Edit "+label];revealEditorControl(row,in:app);row.tap()
+   let field=app.textViews[label];XCTAssertTrue(field.waitForExistence(timeout:10));revealEditorControl(field,in:app)
    originals[label]=field.value as? String ?? ""
-   field.tap();field.typeText(" QA cancel");app.swipeUp()
-   let done=app.buttons["Done editing "+label];scrollTo(done,in:app);done.tap()
+   field.tap();field.typeText(" QA cancel")
+   let done=app.buttons["Done editing "+label];revealEditorControl(done,in:app);done.tap()
    XCTAssertTrue(app.buttons["Edit "+label].waitForExistence(timeout:5),app.debugDescription)
   }
   let shot=XCTAttachment(screenshot:app.screenshot());shot.name="Optional editor rows";shot.lifetime = .keepAlways;add(shot)
   let cancel=app.buttons["Cancel"];XCTAssertTrue(cancel.isHittable);cancel.tap()
   XCTAssertTrue(edit.waitForExistence(timeout:10));edit.tap()
   for label in ["Location","Notes","Reference"] {
-   let row=app.buttons["Edit "+label];scrollTo(row,in:app);row.tap()
-   let field=app.textViews[label];XCTAssertTrue(field.waitForExistence(timeout:10));XCTAssertEqual(field.value as? String,originals[label])
-   let done=app.buttons["Done editing "+label];scrollTo(done,in:app);done.tap()
+   let row=app.buttons["Edit "+label];revealEditorControl(row,in:app);row.tap()
+   let field=app.textViews[label];XCTAssertTrue(field.waitForExistence(timeout:10),app.debugDescription);XCTAssertEqual(field.value as? String,originals[label])
+   let done=app.buttons["Done editing "+label];revealEditorControl(done,in:app);done.tap()
   }
   cancel.tap();app.terminate();app.launch();app.open(URL(string:"casitadex-plusstoreqa://card?id=rapid_edit_fixture")!)
   XCTAssertTrue(edit.waitForExistence(timeout:15));edit.tap()
-  let row=app.buttons["Edit Location"];scrollTo(row,in:app);row.tap();XCTAssertEqual(app.textViews["Location"].value as? String,originals["Location"])
+  let row=app.buttons["Edit Location"];revealEditorControl(row,in:app);row.tap();XCTAssertEqual(app.textViews["Location"].value as? String,originals["Location"])
   cancel.tap()
   print("OPTIONAL EDITOR ROWS PASS: all three expand, edit, close, Cancel rolls back, restart retains original")
+ }
+}
+
+extension PlusRecoveryUITests {
+ @MainActor func testEditorLayoutThemes() async throws {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa");app.launch()
+  let dir=FileManager.default.urls(for:.documentDirectory,in:.userDomainMask)[0]
+  for theme in ["Light","Dark"] {
+   app.open(URL(string:"casitadex-plusstoreqa://settings-manage?action=appearance")!)
+   let appearance=app.buttons[theme+" appearance"];XCTAssertTrue(appearance.waitForExistence(timeout:15));revealEditorControl(appearance,in:app);appearance.tap()
+   app.open(URL(string:"casitadex-plusstoreqa://card?id=rapid_edit_fixture")!)
+   let edit=app.buttons["Edit memory"];XCTAssertTrue(edit.waitForExistence(timeout:15));edit.tap()
+   XCTAssertTrue(app.staticTexts["Edit Memory"].waitForExistence(timeout:10))
+   let save=app.buttons["Save & return to details"],cancel=app.buttons["Cancel"]
+   XCTAssertTrue(save.isHittable);XCTAssertTrue(cancel.isHittable);XCTAssertGreaterThan(save.frame.minX,cancel.frame.maxX)
+   try await Task.sleep(nanoseconds:1_000_000_000)
+   try app.screenshot().pngRepresentation.write(to:dir.appendingPathComponent("editor-"+theme+"-top.png"))
+   let choices=app.buttons.matching(identifier:"Choose ▾")
+   XCTAssertEqual(choices.count,2);choices.element(boundBy:0).tap()
+   XCTAssertTrue(app.buttons["Select Space ▾"].waitForExistence(timeout:5));choices.element(boundBy:0).tap()
+   choices.element(boundBy:1).tap();XCTAssertTrue(app.buttons["Select Categories ▾"].waitForExistence(timeout:5));choices.element(boundBy:1).tap()
+   let y=save.frame.minY
+   let photo=app.buttons["+ Add Photo"];revealEditorControl(photo,in:app)
+   XCTAssertEqual(save.frame.minY,y,accuracy:1);XCTAssertTrue(cancel.isHittable)
+   try app.screenshot().pngRepresentation.write(to:dir.appendingPathComponent("editor-"+theme+"-lower.png"))
+   cancel.tap()
+  }
+  app.open(URL(string:"casitadex-plusstoreqa://settings-manage?action=appearance")!)
+  let system=app.buttons["System appearance"];XCTAssertTrue(system.waitForExistence(timeout:10));revealEditorControl(system,in:app);system.tap()
+  print("EDITOR LAYOUT PASS light/dark, taxonomy panels, fixed Save/Cancel; no memory writes")
  }
 }

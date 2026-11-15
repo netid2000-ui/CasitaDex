@@ -15,6 +15,6 @@ test('Edit Memory labels its content Description and exposes photo controls',()=
  const edit=source.slice(source.indexOf('export function EngDetail()'));
  assert.ok(edit.includes('label="Description"'));
  assert.ok(edit.includes('<DetailField label="Description"'));
- assert.ok(edit.includes('>PHOTOS · {e.snapshot?.data.media.media.filter'));
+ assert.ok(edit.includes('>Photos · {e.snapshot?.data.media.media.filter'));
  assert.ok(edit.includes('dirty?<Copy kind="small">Save or cancel your text changes'));
 });

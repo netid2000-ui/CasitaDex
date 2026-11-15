@@ -1,0 +1,14 @@
+{
+  "result": "PASS",
+  "fields": [
+    "Location",
+    "Notes",
+    "Reference"
+  ],
+  "cancel_restart": "PASS",
+  "themes": [
+    "Light",
+    "Dark"
+  ],
+  "appearance_restored": "System"
+}
