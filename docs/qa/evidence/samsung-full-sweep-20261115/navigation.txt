@@ -1,0 +1,29 @@
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Light-home PASS
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Light-find PASS
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Light-photos PASS
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Light-settings PASS
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Light-storage PASS
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Dark-home PASS
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Dark-find PASS
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Dark-photos PASS
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Dark-settings PASS
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Traceback (most recent call last):
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/scripts/samsung-sweep-20261115/six-part-navigation.py", line 19, in <module>
+    capture(theme+'-'+name,labels)
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/scripts/samsung-sweep-20261115/six-part-navigation.py", line 12, in capture
+    t=tree();labels={n.get('content-desc') for n in t.iter('node')}|{n.get('text') for n in t.iter('node')};assert set(required)<=labels,(name,set(required)-labels)
+                                                                                                                   ^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('Dark-storage', {'Measure device storage'})

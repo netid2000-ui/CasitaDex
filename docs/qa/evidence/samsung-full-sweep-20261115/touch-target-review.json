@@ -1,0 +1,64 @@
+{
+  "status": "Accessibility follow-up",
+  "finding": "Photo workspace controls have approximately 44dp accessible height; no hitSlop found in component. Android recommends 48dp touch targets. Verify effective touch region and enlarge before release.",
+  "reference": "https://developer.android.com/guide/topics/ui/accessibility/apps",
+  "densityDpi": 450,
+  "measurements": [
+    {
+      "theme": "Light",
+      "label": "Grid photo view",
+      "bounds": "[51,484][254,607]",
+      "widthDp": 72.18,
+      "heightDp": 43.73
+    },
+    {
+      "theme": "Light",
+      "label": "Compact photo view",
+      "bounds": "[277,484][553,607]",
+      "widthDp": 98.13,
+      "heightDp": 43.73
+    },
+    {
+      "theme": "Light",
+      "label": "Sort photos, Recently updated",
+      "bounds": "[574,484][792,607]",
+      "widthDp": 77.51,
+      "heightDp": 43.73
+    },
+    {
+      "theme": "Light",
+      "label": "Add Photo Memory",
+      "bounds": "[51,630][523,754]",
+      "widthDp": 167.82,
+      "heightDp": 44.09
+    },
+    {
+      "theme": "Dark",
+      "label": "Grid photo view",
+      "bounds": "[51,484][254,607]",
+      "widthDp": 72.18,
+      "heightDp": 43.73
+    },
+    {
+      "theme": "Dark",
+      "label": "Compact photo view",
+      "bounds": "[277,484][553,607]",
+      "widthDp": 98.13,
+      "heightDp": 43.73
+    },
+    {
+      "theme": "Dark",
+      "label": "Sort photos, Recently updated",
+      "bounds": "[574,484][792,607]",
+      "widthDp": 77.51,
+      "heightDp": 43.73
+    },
+    {
+      "theme": "Dark",
+      "label": "Add Photo Memory",
+      "bounds": "[51,630][523,754]",
+      "widthDp": 167.82,
+      "heightDp": 44.09
+    }
+  ]
+}

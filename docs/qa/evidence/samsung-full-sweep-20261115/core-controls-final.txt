@@ -1,0 +1,2 @@
+{'suite': 'detail-controls', 'exitCode': 0, 'seconds': 188.6}
+{'suite': 'large-text', 'exitCode': 0, 'seconds': 111.5}

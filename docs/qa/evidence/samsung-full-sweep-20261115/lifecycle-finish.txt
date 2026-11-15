@@ -1,0 +1,6 @@
+Tapped Cancel
+Tapped More ···
+Tapped Move to Recently Deleted
+Tapped Move to Recently Deleted
+Tapped Restore memory
+Memory lifecycle PASS

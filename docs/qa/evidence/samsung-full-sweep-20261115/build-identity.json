@@ -1,0 +1,10 @@
+{
+  "device": "R5GL83X0K3N",
+  "model": "SM-S166V",
+  "android": "16",
+  "package": "com.designsbyfa.casitadex.refreshqa",
+  "apkSha256": "05f8c745963109c01177c73d9dd59a1e4f60b6b5cacf230ccfb9a9dcfa99e173",
+  "sourceHead": "8aa2bfadeb8e6370eb699ccfb8cfdfd3518ea17f",
+  "qaSrcDiff": [],
+  "ownerPackages": "untouched"
+}

@@ -1,0 +1,14 @@
+{
+  "package": [
+    "versionCode=1 minSdk=24 targetSdk=36",
+    "versionName=0.1.0",
+    "flags=[ HAS_CODE ALLOW_CLEAR_USER_DATA ]",
+    "lastUpdateTime=2026-11-15 14:03:38",
+    "android.permission.POST_NOTIFICATIONS",
+    "android.permission.POST_NOTIFICATIONS: granted=true, flags=[ USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]",
+    "android.permission.CAMERA: granted=false, flags=[ USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]"
+  ],
+  "font_scale": "1.0",
+  "airplane_mode_on": "0",
+  "enabled_accessibility_services": "com.teamviewer.quicksupport.addon.universal/com.teamviewer.quicksupport.addon.universal.TvAccessibilityService"
+}

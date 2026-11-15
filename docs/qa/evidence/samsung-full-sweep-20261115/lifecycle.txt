@@ -1,0 +1,15 @@
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+* daemon not running; starting now at tcp:5037
+* daemon started successfully
+Offline edit and restart PASS
+Traceback (most recent call last):
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/scripts/samsung-sweep-20261115/lifecycle.py", line 29, in <module>
+    tap('Cancel');node('Edit memory');shot('delete-cancel')
+    ~~~^^^^^^^^^^
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/scripts/samsung-sweep-20261115/phone.py", line 27, in tap
+    n=node(label);x,y,a,b=bounds(n);run('shell','input','tap',str((x+a)//2),str((y+b)//2));time.sleep(.4);print('Tapped '+label,flush=True)
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/scripts/samsung-sweep-20261115/phone.py", line 25, in node
+    raise AssertionError('Missing '+label+' '+str(labels())[:4000])
+AssertionError: Missing Cancel [('Move to Recently Deleted', ''), ('Your previous full save remains recoverable.', ''), ('CANCEL', ''), ('MOVE TO RECENTLY DELETED', '')]
