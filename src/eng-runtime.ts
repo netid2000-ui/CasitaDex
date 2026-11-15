@@ -9,7 +9,7 @@ export async function chooseEngPhoto(_camera:boolean|"files"):Promise<Uint8Array
 export async function writeEngBackup(_source:{snapshot:EngSnapshot;read:(path:string)=>Promise<Uint8Array>;hash:(bytes:Uint8Array)=>Promise<string>}):Promise<string>{throw Error("Full backup requires Android");}
 export async function pickEngBackup():Promise<EngBackup|null>{throw Error("Full restore requires Android");}
 
-export async function getEngStorage():Promise<{free:number;total:number;protectedBytes:number;referencedBytes:number;ownerCounts:Record<string,number>;cleanupAllowed:false;unreadable:number}>{throw Error("Native storage measurement required");}
+export async function getEngStorage():Promise<{free:number;total:number;thumbnailBytes:number;protectedBytes:number;referencedBytes:number;ownerCounts:Record<string,number>;cleanupAllowed:false;unreadable:number}>{throw Error("Native storage measurement required");}
 export async function shareEngPhotos(_preview:{text:string;photos:import('./media-manifest').MediaEntry[]}):Promise<string>{throw Error('Photo sharing requires Android');}
 export async function writeEngText(_text:string,_backup=false):Promise<string>{throw Error('Text export requires Android');}
 

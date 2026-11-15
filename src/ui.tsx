@@ -11,7 +11,7 @@ import {
   type TextProps,
 } from "react-native";
 import { useData } from "./state";
-import { lightColors, darkColors } from "./theme";
+import { lightColors, darkColors, editorialFonts } from "./theme";
 export function useTheme() {
   const { appearance } = useData();
   const system = useColorScheme();
@@ -29,13 +29,14 @@ export function Copy({
   const { large } = useData();
   const { colors } = useTheme();
   const size =
-    { body: 17, title: 31, answer: 29, small: 14, section: 20 }[kind] * (large ? 2 : 1);
+    { body: 14, title: 48, answer: 32, small: 13, section: 24 }[kind] * (large ? 1.6 : 1);
   return (
     <Text
       {...props}
       style={[
         {
           color: colors.ink,
+          fontFamily:kind === "title" || kind === "answer" || kind === "section" ? editorialFonts.heading : editorialFonts.body,
           fontSize: size,
           lineHeight: size * 1.3,
           flexShrink: 1,
@@ -58,7 +59,9 @@ export function Button({
   primary = false,
   variant = "tonal",
   compact = false,
+  icon,
 }: {
+  icon?:React.ReactNode;
   label: string;
   onPress: () => void;
   selected?: boolean;
@@ -71,6 +74,7 @@ export function Button({
   const [focused, setFocused] = useState(false);
   return (
     <Pressable
+      accessibilityLabel={label.replace(/^✓\s*/,"")}
       onFocus={() => setFocused(true)}
       onBlur={() => setFocused(false)}
       accessibilityRole="button"
@@ -91,9 +95,9 @@ export function Button({
         disabled && (primary ? { opacity: 0.62, borderStyle: "solid" as const, backgroundColor: colors.primary, borderColor: colors.primary } : { opacity: 1, borderStyle: "dashed" as const, backgroundColor: colors.accent, borderColor: colors.line }),
       ]}
     >
-      <Copy kind={compact ? "small" : "body"} style={primary ? { color: colors.onPrimary, fontWeight: "700", textAlign: "center" } : { color: colors.ink, fontWeight: "700", textAlign: "center" }}>
-        {label}
-      </Copy>
+      <View style={{flexDirection:"row",alignItems:"center",gap:8}}>{icon}{selected!==undefined?<Text accessible={false} style={{width:20,color:colors.ink,textAlign:"center"}}>{selected?"✓":""}</Text>:null}<Copy kind={compact ? "small" : "body"} style={primary ? { color: colors.onPrimary, fontWeight: "700", textAlign: "center" } : { color: colors.ink, fontWeight: "700", textAlign: "center" }}>
+        {label.replace(/^✓\s*/,"")}
+      </Copy></View>
     </Pressable>
   );
 }
@@ -162,7 +166,7 @@ export function Field({
           s.input,
           focused && { borderColor: colors.focus, borderWidth: 2 },
           disabled && { opacity: 1, borderStyle: "dashed" as const },
-          { fontSize: large ? 34 : 17, minHeight: multiline ? (compactMultiline ? 76 : 120) : 52 },
+          { fontSize: large ? 22 : 14, minHeight: multiline ? (compactMultiline ? 76 : 120) : 52 },
         ]}
       />
     </View>
@@ -242,8 +246,8 @@ export function Page({
 const makeStyles = (colors: typeof lightColors) =>
   StyleSheet.create({
     page: {
-      paddingHorizontal: 20,
-      paddingTop: 24,
+      paddingHorizontal: 18,
+      paddingTop: 16,
       paddingBottom: 40,
       backgroundColor: colors.paper,
       flexGrow: 1,
@@ -253,48 +257,49 @@ const makeStyles = (colors: typeof lightColors) =>
     row: { flexDirection: "row", flexWrap: "wrap", gap: 10 },
     panel: {
       backgroundColor: colors.white,
-      padding: 18,
-      borderRadius: 20,
+      padding: 12,
+      borderRadius: 8,
       borderWidth: 1,
       borderColor: colors.separator,
       gap: 11,
     },
     button: {
-      minHeight: 52,
+      minHeight: 44,
       minWidth: 48,
-      paddingVertical: 11,
-      paddingHorizontal: 17,
-      borderRadius: 16,
+      paddingVertical: 8,
+      paddingHorizontal: 12,
+      borderRadius: 8,
       borderWidth: 1,
       borderColor: colors.line,
       borderBottomWidth: 1,
       borderBottomColor: colors.line,
       backgroundColor: colors.white,
-      elevation: 1,
+      elevation: 0,
       shadowColor: "#000000",
       shadowOffset: { width: 0, height: 1 },
-      shadowOpacity: 0.06,
+      shadowOpacity: 0,
       shadowRadius: 3,
       justifyContent: "center",
       alignItems: "center",
       flexShrink: 1,
     },
-    compact: { minHeight: 48, paddingHorizontal: 12, paddingVertical: 8, borderRadius: 999, backgroundColor: colors.white, elevation: 0, shadowOpacity: 0 },
+    compact: { minHeight: 48, paddingHorizontal: 12, paddingVertical: 8, borderRadius: 8, backgroundColor: colors.white, elevation: 0, shadowOpacity: 0 },
     selected: { backgroundColor: colors.accent, borderColor: colors.focus, borderWidth: 2 },
-    primary: { backgroundColor: colors.primary, borderColor: colors.primary, borderBottomColor: colors.primary, elevation: 2, shadowOpacity: 0.10 },
+    primary: { backgroundColor: colors.primary, borderColor: colors.primary, borderBottomColor: colors.primary, elevation: 0, shadowOpacity: 0 },
     quiet: { backgroundColor: colors.accent, borderColor: colors.line, borderWidth: 1.5, elevation: 0, shadowOpacity: 0 },
     input: {
       backgroundColor: colors.white,
       borderColor: colors.muted,
       borderWidth: 1,
-      borderRadius: 15,
-      padding: 14,
+      borderRadius: 8,
+      padding: 12,
+      fontFamily: editorialFonts.body,
       color: colors.ink,
     },
     tag: { backgroundColor: colors.accent, padding: 10, borderRadius: 8 },
     nav: {
-      backgroundColor: colors.white,
-      paddingTop: 7,
+      backgroundColor: colors.paper,
+      paddingTop: 12,
       paddingBottom: 8,
       paddingHorizontal: 7,
       flexDirection: "row",
@@ -307,10 +312,10 @@ const makeStyles = (colors: typeof lightColors) =>
       minHeight: 55,
       alignItems: "center",
       justifyContent: "center",
-      borderRadius: 14,
+      borderRadius: 8,
       paddingVertical: 5,
     },
-    navTabActive: { backgroundColor: colors.accent, borderWidth: 1, borderColor: colors.focus },
+    navTabActive: { backgroundColor: colors.white },
     navIcon: { fontSize: 25, lineHeight: 28, fontWeight: "600" },
-    navLabel: { fontSize: 12, fontWeight: "700" },
+    navLabel: { fontSize: 12, fontFamily: editorialFonts.body },
   });

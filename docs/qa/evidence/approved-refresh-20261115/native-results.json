@@ -1,0 +1,22 @@
+{
+  "ios": {
+    "result": "PASS",
+    "tests": 2,
+    "failures": 0,
+    "xcresult": "CasitaDex-Approved-Refresh-r5-20261115.xcresult"
+  },
+  "android": {
+    "result": "PASS",
+    "screen_checks": 10,
+    "package": "com.designsbyfa.casitadex.refreshqa",
+    "build": "arm64 release",
+    "prior_locator_failure": "Sort photos accessibility description includes Recently updated"
+  },
+  "unit": {
+    "passed": 491,
+    "skipped": 6,
+    "failed": 0
+  },
+  "typecheck": "PASS",
+  "full_lint": "PASS"
+}

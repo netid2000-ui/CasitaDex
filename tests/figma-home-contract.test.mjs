@@ -4,7 +4,7 @@ import {readFileSync} from 'node:fs';
 const read=p=>readFileSync(new URL(p,import.meta.url),'utf8');
 test('Home remains command-only without recent memory feed',()=>{
  const home=read('../src/figma-first/FigmaHome.tsx');
- assert.match(home,/homeActions\(draftPending\)/);
+ for(const action of ["Add Memory","Add Photo Memory","Add Reminder"])assert.ok(home.includes(action));
  assert.doesNotMatch(home,/recentMemories|homeMemories|Recent memories/);
 });
 test('Reminder preview uses typed read-only projection and max two due items',()=>{
@@ -33,4 +33,4 @@ test('Figma-first Home never exposes an unfinished draft card or delete control'
  assert.match(entry,/Discard draft and start new/);
 });
 
-test('Home keeps reminder creation but has no reminder feed',()=>{const home=read('../src/figma-first/FigmaHome.tsx');assert.doesNotMatch(home,/ReminderPreview|dueReminders/);assert.match(home,/homeActions\(draftPending\)/);});
+test('Home keeps reminder creation but has no reminder feed',()=>{const home=read('../src/figma-first/FigmaHome.tsx');assert.doesNotMatch(home,/ReminderPreview|dueReminders/);for(const action of ["Add Memory","Add Photo Memory","Add Reminder"])assert.ok(home.includes(action));});

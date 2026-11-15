@@ -1,4 +1,5 @@
-export const mediaEntryLimit=1000;
+/** Structural guard: 5 photos for each of the existing 5,000 supported memories. */
+export const mediaEntryLimit=25_000;
 export const mediaFileLimit=10_000_000;
 /** Validation-only media manifest. No migration, file I/O, or restore is performed here. */
 export interface MediaEntry {

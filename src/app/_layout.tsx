@@ -1,26 +1,27 @@
 import React, {useEffect, useState} from "react";
 import { StatusBar } from "expo-status-bar";
-import { Pressable, Text, View, useWindowDimensions } from "react-native";
+import { Image, Pressable, Text, View, useWindowDimensions } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { Slot, router, useLocalSearchParams, useGlobalSearchParams, usePathname } from "expo-router";
 import { Provider, useData } from "../state";
 import { useTheme } from "../ui";
 import { BrandWebMeta } from "../brand-web-meta";
-import { BrandHeader } from "../brand";
+import {editorialFonts} from "../theme";
+import {useFonts} from "expo-font";
+import {CormorantGaramond_700Bold} from "@expo-google-fonts/cormorant-garamond";
+import {Inter_400Regular,Inter_600SemiBold} from "@expo-google-fonts/inter";
 import {startPlusEntitlements} from "../plus-entitlement-runtime";
 
-import { AcceptedNavigationIcon as NavigationIcon } from "../accepted-navigation-icon";
+import {ApprovedIcon as NavigationIcon} from "../approved-icon";
+import {AcceptedNavigationIcon} from "../accepted-navigation-icon";
 import { guardedNavigate } from "../eng-navigation";
 import {getEngStore} from "../eng-runtime";
 import {listStandaloneReminders} from "../standalone-reminders";
 import {addNotificationResponseReceivedListener,getLastNotificationResponseAsync} from "expo-notifications";
 
-type Route = "/" | "/memories" | "/photos" | "/reminders" | "/answers";
-const destinations: { label: "Home" | "Memories" | "Photos" | "Reminders" | "Find"; route: Route }[] = [
-  { label: "Home", route: "/" },
-  { label: "Photos", route: "/photos" },
-  { label: "Reminders", route: "/reminders" },
-  { label: "Find", route: "/answers" },
+type Route = "/" | "/photos" | "/answers" | "/reminders";
+const destinations: {label:"Home"|"Find"|"Photos"|"Reminders";route:Route}[]=[
+ {label:"Home",route:"/"},{label:"Photos",route:"/photos"},{label:"Reminders",route:"/reminders"},{label:"Find",route:"/answers"},
 ];
 function Shell() {
   const path = usePathname();
@@ -54,7 +55,9 @@ function Shell() {
   const { colors, s, dark } = useTheme();
   const { fontScale, width } = useWindowDimensions();
   const {large:inAppLarge}=useData();
-  const stackedHeader=inAppLarge||fontScale>=1.35||width<360;
+  const compactHeader=inAppLarge||fontScale>=1.35||width<360;
+ const primaryTitle=({"/answers":"Find","/photos":"Photos","/more":"Settings","/reminders":"Reminders","/reminders-manage":pageHeading?.[0]??"Reminders","/memories":"Your Memories"} as Record<string,string>)[path];
+ void pageHeading; void photoEntry;
   return (
     <SafeAreaView
       edges={["top"]}
@@ -62,22 +65,25 @@ function Shell() {
     >
       <BrandWebMeta />
       <StatusBar style={dark ? "light" : "dark"} />
-      <View style={{minHeight:64, flexDirection:stackedHeader?"column":"row",alignItems:"center",justifyContent:"space-between",paddingHorizontal:12,paddingVertical:6,backgroundColor:colors.white,borderBottomWidth:1,borderBottomColor:colors.separator}}>
-        <Pressable accessibilityRole="button" accessibilityLabel="CasitaDex logo, go to Home" accessibilityHint="Opens the Home screen" onPress={() => guardedNavigate(() => router.navigate("/"))} style={{width:stackedHeader?"100%":undefined,flex:stackedHeader?undefined:1,marginRight:stackedHeader?0:8,minWidth:0}}><BrandHeader /></Pressable>
-
-      </View>
-      {pageHeading?<View style={{paddingHorizontal:16,paddingVertical:9,backgroundColor:colors.white,borderBottomWidth:1,borderBottomColor:colors.separator,gap:3}}><Text key={`heading-${fontScale}`} accessibilityRole="header" style={{color:colors.ink,fontSize:20,fontWeight:"700"}}>{pageHeading[0]}</Text><Text key={`description-${fontScale}`} style={{color:colors.muted,fontSize:13}}>{pageHeading[1]}</Text></View>:null}
+      {path==="/"||primaryTitle?<View style={{paddingHorizontal:18,paddingTop:8,paddingBottom:16,backgroundColor:colors.paper,gap:4}}>
+        <View style={{minHeight:44,flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
+         <Pressable accessibilityRole="button" accessibilityLabel={path==="/more"?"Back to Home":"CasitaDex logo, go to Home"} onPress={()=>guardedNavigate(()=>router.navigate("/"))} style={{minHeight:44,justifyContent:"center"}}><Text style={{color:colors.ink,fontFamily:path==="/more"?editorialFonts.body:editorialFonts.heading,fontSize:path==="/more"?13:26}}>{path==="/more"?"‹  Home":"CasitaDex"}</Text></Pressable>
+         {path==="/"?<Pressable accessibilityRole="button" accessibilityLabel="Settings" onPress={()=>guardedNavigate(()=>router.navigate("/more"))} style={{minHeight:44,justifyContent:"center"}}><Text style={{fontFamily:editorialFonts.body,color:colors.ink,fontSize:13}}>⚙  Settings</Text></Pressable>:null}
+         {path==="/photos"&&!compactHeader?<View style={{position:"absolute",right:0,top:0,width:100,height:66,mixBlendMode:dark?"multiply":"normal"}}><Image accessible={false} source={require("../../assets/approved-refresh/homeDesign_imgWatercolorOliveBranch.jpg")} resizeMode="cover" style={{width:100,height:66}}/></View>:null}
+        </View>
+        {primaryTitle?<Text accessibilityRole="header" style={{color:colors.ink,fontFamily:editorialFonts.heading,fontSize:compactHeader?36:path==="/photos"?52:48}}>{primaryTitle}</Text>:null}
+      </View>:null}
       <View style={{ flex: 1 }}>
         <Slot />
       </View>
       <SafeAreaView
         edges={["bottom"]}
-        style={{ backgroundColor: colors.white }}
+        style={{ backgroundColor: colors.paper }}
       >
         <View style={s.nav} accessibilityLabel="Primary navigation">
           {destinations.map(({ label, route }) => {
             const active =
-              path === route || (route === "/answers" && (path === "/card" || path === "/memories"));
+              path === route || (route === "/answers" && (path === "/card" || path === "/memories")) || (route === "/reminders" && path === "/reminders-manage");
             return (
               <Pressable
                 key={route}
@@ -91,10 +97,11 @@ function Shell() {
                   (fontScale >= 1.35 || inAppLarge) && { minHeight: 70 },
 
                   active && s.navTabActive,
+                  active && {backgroundColor:dark?colors.white:colors.accent},
                   pressed && { opacity: 0.75 },
                 ]}
               >
-                <NavigationIcon name={label} color={active ? colors.ink : colors.muted} />
+                {label==="Reminders"?<AcceptedNavigationIcon name="Reminders" color={active?colors.ink:colors.muted}/>:<NavigationIcon name={label}/> }
                 <Text maxFontSizeMultiplier={1.2} numberOfLines={1} adjustsFontSizeToFit
                   style={[
                     s.navLabel,
@@ -113,8 +120,10 @@ function Shell() {
 }
 
 export default function Layout() {
+  const [fontsLoaded,fontError]=useFonts({CormorantGaramond_700Bold,Inter_400Regular,Inter_600SemiBold});
   useEffect(()=>startPlusEntitlements(),[]);
   const path = usePathname();
+  if(!fontsLoaded&&!fontError)return <View style={{flex:1}}/>;
   if (path === "/sb29-review") return <Slot />;
   if (path === "/photo-viewer") return <SafeAreaProvider><Provider><Slot /></Provider></SafeAreaProvider>;
   return (

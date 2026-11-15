@@ -19,4 +19,8 @@ test("reject unsupported type and mismatched filename extension", () => {
 test("reject invalid SHA256 and byte count", () => {
   for(const change of [{sha256:"bad"},{bytes:-1},{bytes:10_000_001},{bytes:1.5}]){const x=base();Object.assign(x.media[0],change);assert.throws(()=>validate(x,["c1"]));}
 });
-test("reject excessive manifest entries", () => assert.throws(()=>validate({version:2,media:Array(1001).fill(null)},["c1"]),/count/i));
+test("reject excessive manifest entries", () => assert.throws(()=>validate({version:2,media:Array(25001).fill(null)},["c1"]),/count/i));
+test("collection accepts 1200 linked photos beyond the former cap",()=>{
+ const media=Array.from({length:1200},(_,i)=>({...base().media[0],id:"p"+i,path:"media/p"+i+".jpg"}));
+ assert.equal(validate({version:2,media},["c1"]).media.length,1200);
+});

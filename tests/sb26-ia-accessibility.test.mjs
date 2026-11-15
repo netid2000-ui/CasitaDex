@@ -5,7 +5,7 @@ const shell=fs.readFileSync("src/app/_layout.tsx","utf8");
 const eng=fs.readFileSync("src/eng-screens.tsx","utf8");
 test("four distinct labeled accessible primary destinations with Memories integrated into Find",()=>{
  for(const [name,route] of [["Home","/"],["Photos","/photos"],["Reminders","/reminders"],["Find","/answers"]]){
-  assert.ok(shell.includes(`label: "${name}", route: "${route}"`),name);
+  assert.ok(shell.includes(`label:"${name}",route:"${route}"`),name);
  }
  assert.ok(!shell.includes('label: "Memories", route: "/memories"'));
  assert.match(shell,/accessibilityRole="tab"/);

@@ -7,9 +7,9 @@ const route=read('src/app/more.tsx');
 const manage=read('src/app/settings-manage.tsx');
 const legacy=read('src/eng-screens.tsx');
 test('Settings exposes all eight approved destination IDs and readable accessibility hints',()=>{
- for(const id of ['storage','backup','recovery','appearance','accessibility','privacy','help','labels'])assert.match(settings,new RegExp("id:'"+id+"'"));
+ for(const id of ['storage','backup','recovery','appearance','accessibility','privacy','help','labels'])assert.match(settings,new RegExp('id:"'+id+'"'));
  assert.match(settings,/accessibilityRole="button" accessibilityLabel=\{item\.title\} accessibilityHint=\{item\.description\}/);
- assert.match(settings,/const narrow=width<360\|\|fontScale>=1\.35\|\|large/);
+ assert.match(settings,/scale=large\?1.6:1/);
 });
 test('Settings routes action to native management without dropping action ID',()=>{
  assert.match(route,/pathname:'\/settings-manage',params:\{action\}/);

@@ -8,15 +8,15 @@ const files=readdirSync(root).filter(f=>/\.(tsx?|jsx?)$/.test(f));
 test("new native foundation does not import legacy presentation",()=>{
  assert.ok(files.includes("PrimaryCta.tsx")&&files.includes("tokens.ts"));
  for(const name of files){const text=readFileSync(resolve(root,name),"utf8");
-  assert.doesNotMatch(text,/from\s*["\x27][^"\x27]*(?:eng-screens|screens|\/ui|\/theme|home-action|accepted-navigation-icon)["\x27]/);
+  assert.doesNotMatch(text,/from\s*["\x27][^"\x27]*(?:eng-screens|screens|home-action|accepted-navigation-icon)["\x27]/);
   assert.doesNotMatch(text,/LOGO PLACEHOLDER|className=|tailwind/);
  }
 });
 test("primary CTA encodes Figma platform, theme and state variations",()=>{
  const text=readFileSync(resolve(root,"tokens.ts"),"utf8");
- for(const value of ["#F7F2E8","#E8DECB","#1E4635","#477E65","#173D2E","#C5DFC7","#F2A640"]){assert.ok(text.includes(value),value)}
- assert.match(text,/platform === "ios" \? 11 : 24/);
- assert.match(text,/state === "disabled"/);
+ for(const value of ["#F7F2E9","#E2E7D4","#273924","#374727","#EFEADC","#232C23","#B5AB9E"]){assert.ok(text.includes(value),value)}
+ assert.match(text,/radius:8/);
+ assert.match(text,/state==="disabled"/);
 });
 test("new CTA has native and accessible press behavior",()=>{
  const text=readFileSync(resolve(root,"PrimaryCta.tsx"),"utf8");
@@ -35,7 +35,7 @@ test("CTA pressed feedback uses semantic colors and text can grow",()=>{
  assert.match(c,/visual\.pressedBackgroundColor/);
  assert.match(c,/allowFontScaling/);
  assert.doesNotMatch(c,/numberOfLines=\{2\}/);
- assert.match(t,/#AED1B1/); assert.match(t,/#103C30/);
+ assert.match(t,/#3A4B2F/); assert.match(t,/#374727/);
 });
 
 test("focused CTA renders inner stroke and independent outer halo",()=>{

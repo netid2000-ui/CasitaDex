@@ -1,32 +1,7 @@
-import { useColorScheme } from "react-native";
-import { useData } from "../state";
-/** Figma A.2 observed component tokens. Node IDs: Android Home 28:265, Apple Home 28:38, CTA 109:111. */
-export type FAPlatform = "ios" | "android";
-export type FATheme = "light" | "dark";
-export type FAControlState = "enabled" | "disabled" | "focused";
-export const figmaHome = Object.freeze({
-  page: "#F7F2E8", brandSurface: "#E8DECB", actionSurface: "#1E4635",
-  actionIconSurface: "#477E65", actionInk: "#FFFFFF",
-  eyebrowInk: "#1E4635", headingInk: "#254736", secondaryInk: "#566357",
-  actionWidth: 370, actionHeight: 78, actionRadius: 17, iconSize: 42,
-});
-export function figmaPrimaryCta(platform:FAPlatform,theme:FATheme,state:FAControlState) {
-  const dark = theme === "dark";
-  return {
-    height: 49, minWidth: 0, radius: platform === "ios" ? 11 : 24,
-    backgroundColor: state === "disabled" ? "#87948C" : dark ? "#C5DFC7" : "#174C38",
-    color: dark ? "#173D2E" : "#FFFFFF",
-    pressedBackgroundColor: dark ? "#AED1B1" : "#103C30", focusColor: dark ? "#173D2E" : "#F2A640", focusWidth: state === "focused" ? 3 : 0, focusHaloColor: "#F2A640",
-  } as const;
-}
-
-export function useFigmaTheme(){
- const {appearance}=useData();
- const system=useColorScheme();
- const dark=appearance==="Dark"||(appearance==="System"&&system==="dark");
- return dark?{
- ...figmaHome,
- page:"#101C17",brandSurface:"#294334",actionSurface:"#244838",actionIconSurface:"#477E65",
- actionInk:"#FFFFFF",eyebrowInk:"#D5E7D7",headingInk:"#E7EFE9",secondaryInk:"#B5C6BA",
- }:figmaHome;
-}
+import {useTheme} from "../ui";
+export type FAPlatform="ios"|"android";
+export type FATheme="light"|"dark";
+export type FAControlState="enabled"|"disabled"|"focused";
+export const figmaHome=Object.freeze({page:"#F7F2E9",brandSurface:"#E2E7D4",actionSurface:"#273924",actionIconSurface:"#374727",actionInk:"#FFFBF2",eyebrowInk:"#273924",headingInk:"#273924",secondaryInk:"#675E53",actionWidth:370,actionHeight:48,actionRadius:8,iconSize:18});
+export function figmaPrimaryCta(platform:FAPlatform,theme:FATheme,state:FAControlState){const dark=theme==="dark";return {height:48,minWidth:0,radius:8,backgroundColor:state==="disabled"?"#87948C":dark?"#232C23":"#273924",color:dark?"#EFEADC":"#FFFBF2",pressedBackgroundColor:dark?"#3A4B2F":"#374727",focusColor:dark?"#B8C7A5":"#374727",focusWidth:state==="focused"?3:0,focusHaloColor:"#B5AB9E"};}
+export function useFigmaTheme(){const {colors}=useTheme();return {...figmaHome,page:colors.paper,brandSurface:colors.white,actionSurface:colors.primary,actionIconSurface:colors.accent,actionInk:colors.onPrimary,eyebrowInk:colors.ink,headingInk:colors.ink,secondaryInk:colors.muted};}

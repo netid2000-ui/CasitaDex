@@ -1,0 +1,53 @@
+{
+  "879C620A-5318-4BDF-98B9-904EE635B053": {
+    "sha256": "d6ba01f3dfa95a06097d58870a686f85bb2c3373ecc430e20602df3ac3bf93c0",
+    "keys": [
+      "version",
+      "revision",
+      "data",
+      "draft",
+      "attempts"
+    ],
+    "original_files": {
+      "casitadex-media-v2/media/e_mwg1wj64_y26872032f.jpg": "adb0af77832991800ff2162f4ca06b7096c2d09156d78aa1dc64f536b26aec0b",
+      "casitadex-media-v2/media/e_mwg1wj5p_i7jsogkja6.jpg": "9c2bcd79b380ee3ab9fad37e38a139a5e99ff598239b22d5bebcfc141844557e",
+      "casitadex-media-v2/media/e_mwg1wj57_nu5mj5hcn2.jpg": "832b177dc2998c19df870d4d17e5bb3acafbd89eb7175efd89c7ce2ec06d11be"
+    },
+    "payload_unchanged": true
+  },
+  "81FC3CCE-ACEB-4957-BE61-C9C653A4CE56": {
+    "sha256": "4ff5bd1002afdd5faa15737fc0fd61ef5351c7de031ca6c11f6f2d3d24d5d0e2",
+    "keys": [
+      "version",
+      "revision",
+      "data",
+      "draft",
+      "attempts"
+    ],
+    "original_files": {
+      "casitadex-media-v2/media/e_mwg1wj64_y26872032f.jpg": "adb0af77832991800ff2162f4ca06b7096c2d09156d78aa1dc64f536b26aec0b",
+      "casitadex-media-v2/media/e_mwgskyo5_7w3qz4qucr.jpg": "adb0af77832991800ff2162f4ca06b7096c2d09156d78aa1dc64f536b26aec0b",
+      "casitadex-media-v2/media/e_mwgskyn3_rlzqh91e4q.jpg": "832b177dc2998c19df870d4d17e5bb3acafbd89eb7175efd89c7ce2ec06d11be",
+      "casitadex-media-v2/media/e_mwgsspdk_pz1xjyjgdn.jpg": "adb0af77832991800ff2162f4ca06b7096c2d09156d78aa1dc64f536b26aec0b",
+      "casitadex-media-v2/media/e_mwgsj7vx_sr37rbm3xe.jpg": "adb0af77832991800ff2162f4ca06b7096c2d09156d78aa1dc64f536b26aec0b",
+      "casitadex-media-v2/media/e_mwgs09tb_ve2ftog4pm.jpg": "9c2bcd79b380ee3ab9fad37e38a139a5e99ff598239b22d5bebcfc141844557e",
+      "casitadex-media-v2/media/e_mwgrym6p_s3t490f4lx.jpg": "9c2bcd79b380ee3ab9fad37e38a139a5e99ff598239b22d5bebcfc141844557e",
+      "casitadex-media-v2/media/e_mwgrym68_hd3h1odw8k.jpg": "832b177dc2998c19df870d4d17e5bb3acafbd89eb7175efd89c7ce2ec06d11be",
+      "casitadex-media-v2/media/e_mwgskynu_g4k06j1c7t.jpg": "9c2bcd79b380ee3ab9fad37e38a139a5e99ff598239b22d5bebcfc141844557e",
+      "casitadex-media-v2/media/e_mwgsj7v5_aj4035xtt8.jpg": "832b177dc2998c19df870d4d17e5bb3acafbd89eb7175efd89c7ce2ec06d11be",
+      "casitadex-media-v2/media/e_mwg1wj5p_i7jsogkja6.jpg": "9c2bcd79b380ee3ab9fad37e38a139a5e99ff598239b22d5bebcfc141844557e",
+      "casitadex-media-v2/media/e_mwgs09ss_4x0ninxy65.jpg": "832b177dc2998c19df870d4d17e5bb3acafbd89eb7175efd89c7ce2ec06d11be",
+      "casitadex-media-v2/media/e_mwgss8qs_0iu0md70ow.jpg": "9c2bcd79b380ee3ab9fad37e38a139a5e99ff598239b22d5bebcfc141844557e",
+      "casitadex-media-v2/media/e_mwg1wj57_nu5mj5hcn2.jpg": "832b177dc2998c19df870d4d17e5bb3acafbd89eb7175efd89c7ce2ec06d11be",
+      "casitadex-media-v2/media/e_mwgsxlo7_klvama5o5v.jpg": "9c2bcd79b380ee3ab9fad37e38a139a5e99ff598239b22d5bebcfc141844557e",
+      "casitadex-media-v2/media/e_mwgsxlon_0ryvu0tdu3.jpg": "adb0af77832991800ff2162f4ca06b7096c2d09156d78aa1dc64f536b26aec0b",
+      "casitadex-media-v2/media/e_mwgs09tn_4ah2ccmav6.jpg": "adb0af77832991800ff2162f4ca06b7096c2d09156d78aa1dc64f536b26aec0b",
+      "casitadex-media-v2/media/e_mwgse9du_zo9kk78gfl.jpg": "9c2bcd79b380ee3ab9fad37e38a139a5e99ff598239b22d5bebcfc141844557e",
+      "casitadex-media-v2/media/e_mwgrym6z_lybd6jjl2j.jpg": "adb0af77832991800ff2162f4ca06b7096c2d09156d78aa1dc64f536b26aec0b",
+      "casitadex-media-v2/media/e_mwgse9db_2k08pnlwo0.jpg": "832b177dc2998c19df870d4d17e5bb3acafbd89eb7175efd89c7ce2ec06d11be",
+      "casitadex-media-v2/media/e_mwgse9e4_wj4zklw43j.jpg": "adb0af77832991800ff2162f4ca06b7096c2d09156d78aa1dc64f536b26aec0b",
+      "casitadex-media-v2/media/e_mwgsj7vn_ttqfkwez5b.jpg": "9c2bcd79b380ee3ab9fad37e38a139a5e99ff598239b22d5bebcfc141844557e"
+    },
+    "payload_unchanged": true
+  }
+}

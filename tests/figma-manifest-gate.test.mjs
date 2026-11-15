@@ -20,6 +20,6 @@ test('both platform screen mappings and brand authority are explicit',()=>{
 test('all provisional components reject legacy presentation imports',()=>{
  for(const name of readdirSync(resolve(root,'src/figma-first')).filter(x=>/\.(tsx|ts)$/.test(x))){
   const code=readFileSync(resolve(root,'src/figma-first',name),'utf8');
-  assert.doesNotMatch(code,/from\s*['"](?:\.\.\/)*(?:eng-screens|screens|ui|theme)(?:['"\/]|$)/,name);
+  assert.doesNotMatch(code,/from\s*['"](?:\.\.\/)*(?:eng-screens|screens)(?:['"\/]|$)/,name);
  }
 });

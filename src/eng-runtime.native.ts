@@ -156,7 +156,7 @@ export type EngBackup={snapshot:EngSnapshot;source:string;read:(path:string)=>Pr
 export async function getEngStorage(){
   const references=await(await getEngStore()).audit();
   const report=protectedStorageReport(references);
-  return {free:await usableNativeSpace(),total:Paths.totalDiskSpace,...report};
+  return {free:await usableNativeSpace(),total:Paths.totalDiskSpace,thumbnailBytes:await (await import("./photo-thumbnail.native")).thumbnailStorageBytes(),...report};
 }
 
 export async function shareEngPhotos(preview:{text:string;photos:import('./media-manifest').MediaEntry[]}){

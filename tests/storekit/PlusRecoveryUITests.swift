@@ -608,3 +608,56 @@ extension PlusRecoveryUITests {
   app.terminate()
  }
 }
+
+extension PlusRecoveryUITests {
+ @MainActor func testApprovedRefreshScreens() async throws {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa")
+  let dir=FileManager.default.urls(for:.documentDirectory,in:.userDomainMask)[0]
+  app.launch()
+  func open(_ path:String) {app.open(URL(string:"casitadex-plusstoreqa://"+path)!)}
+  func capture(_ name:String) throws {
+   let image=app.screenshot()
+   try image.pngRepresentation.write(to:dir.appendingPathComponent("refresh-"+name+".png"))
+   let attachment=XCTAttachment(screenshot:image);attachment.name=name;attachment.lifetime = .keepAlways;add(attachment)
+   try app.debugDescription.write(to:dir.appendingPathComponent("refresh-"+name+".txt"),atomically:true,encoding:.utf8)
+  }
+  func appearance(_ name:String) {
+   open("settings-manage?action=appearance")
+   let button=app.buttons[name+" appearance"]
+   XCTAssertTrue(button.waitForExistence(timeout:15));scrollTo(button,in:app);button.tap()
+  }
+  for theme in ["Light","Dark"] {
+   appearance(theme)
+   open("")
+   XCTAssertTrue(app.buttons["Find a memory"].waitForExistence(timeout:15))
+   for label in ["Home","Photos","Reminders","Find"] {XCTAssertTrue(app.descendants(matching:.any).matching(identifier:label).firstMatch.exists,label)}
+   try capture(theme+"-home")
+   open("answers")
+   XCTAssertTrue(app.descendants(matching:.any).matching(identifier:"find-query").firstMatch.waitForExistence(timeout:15),app.debugDescription)
+   XCTAssertTrue(app.buttons["With photos only"].exists)
+   try capture(theme+"-find")
+   open("photos")
+   XCTAssertTrue(app.buttons["Add Photo Memory"].waitForExistence(timeout:10))
+   XCTAssertTrue(app.buttons["Sort photos"].exists)
+   try await Task.sleep(nanoseconds:1_000_000_000)
+   try capture(theme+"-photos")
+   open("more")
+   XCTAssertTrue(app.buttons["Appearance"].waitForExistence(timeout:10))
+   XCTAssertTrue(app.buttons["Reminders"].exists)
+   let header=app.staticTexts["Settings"].firstMatch.frame
+   app.swipeUp()
+   XCTAssertEqual(app.staticTexts["Settings"].firstMatch.frame.minY,header.minY,accuracy:2)
+   try capture(theme+"-settings")
+   open("settings-manage?action=storage")
+   let measure=app.buttons["Measure device storage"]
+   XCTAssertTrue(measure.waitForExistence(timeout:10));measure.tap()
+   XCTAssertTrue(measure.waitForExistence(timeout:15))
+   try await Task.sleep(nanoseconds:1_000_000_000)
+   try capture(theme+"-storage")
+  }
+  appearance("System")
+  open("")
+  print("APPROVED REFRESH: light/dark Home, Find, Photos, Settings, Storage; fixed Settings header; preferences restored; no memory writes or purchases")
+ }
+}

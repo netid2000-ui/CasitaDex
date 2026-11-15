@@ -11,7 +11,8 @@ test('accepted native consumer picker returns only a validated Full v4 archive w
  let opens=0,canceled=false;
  globalThis.__nativePicker={bytes:raw,pick:async()=>canceled?{canceled:true}:{canceled:false,assets:[{uri:'qa://archive'}]},open:async()=>{opens++;throw Error('Picker must not open a database')}};
  const mocks={
- 'react-native':'export const Platform={OS:"android"};',
+ 'expo-modules-core':'export const requireOptionalNativeModule=()=>null;',
+ 'react-native':'export const Platform={OS:"android"};export const AppState={addEventListener:()=>({remove(){}})};',
  'expo-notifications':'export const setNotificationHandler=()=>{};',
  'expo-constants':'export default {expoConfig:{extra:{appEnvironment:"development"}}};',
  '@react-native-async-storage/async-storage':'export default {};',
