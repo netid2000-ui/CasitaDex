@@ -36,3 +36,6 @@ Theme review entry: https://www.figma.com/proto/39uzN0SZX8nlmcGDcHdQhr?node-id=1
 - After implementation: simulator/emulator checks, then Samsung acceptance, then owner iPhone final sign-off. No store release is authorized by this checkpoint.
 
 Source revision inspected: 41ade59092434d09e2cce102aca87b7bbb391deb
+
+## Follow-up
+Native iOS simulator theme acceptance completed later on November 14: see [NATIVE_THEME_ACCEPTANCE_20261114.md](NATIVE_THEME_ACCEPTANCE_20261114.md). The earlier unverified-native status above is superseded for the isolated iOS simulator only.

@@ -1,0 +1,37 @@
+[
+  {
+    "stage": "system_foreground_light",
+    "device": "light",
+    "verifiedDeviceAppearance": "light"
+  },
+  {
+    "device": "dark",
+    "stage": "system_foreground_dark",
+    "verifiedDeviceAppearance": "dark"
+  },
+  {
+    "stage": "system_background_light",
+    "device": "light",
+    "verifiedDeviceAppearance": "light"
+  },
+  {
+    "stage": "explicit_dark_device_dark",
+    "device": "dark",
+    "verifiedDeviceAppearance": "dark"
+  },
+  {
+    "stage": "explicit_light_device_light",
+    "device": "light",
+    "verifiedDeviceAppearance": "light"
+  },
+  {
+    "device": "dark",
+    "stage": "system_before_restart",
+    "verifiedDeviceAppearance": "dark"
+  },
+  {
+    "device": "light",
+    "stage": "system_after_restart_light",
+    "verifiedDeviceAppearance": "light"
+  }
+]

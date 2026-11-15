@@ -526,3 +526,85 @@ extension PlusRecoveryUITests {
   }
  }
 }
+
+import UIKit
+extension PlusRecoveryUITests {
+ @MainActor func testNativeThemeSwitching() async throws {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa")
+  let route=URL(string:"casitadex-plusstoreqa://settings-manage?action=appearance")!
+  let dir=FileManager.default.urls(for:.documentDirectory,in:.userDomainMask)[0]
+  let stage=dir.appendingPathComponent("theme-stage.json"), advance=dir.appendingPathComponent("theme-advance.txt")
+  try? FileManager.default.removeItem(at:advance)
+  func openPreferences() {
+   app.open(route)
+   XCTAssertTrue(app.buttons["System appearance"].waitForExistence(timeout:15),app.debugDescription)
+  }
+  func choose(_ name:String) {
+   let button=app.buttons[name+" appearance"]
+   scrollTo(button,in:app);button.tap()
+   XCTAssertTrue(XCTWaiter.wait(for:[XCTNSPredicateExpectation(predicate:NSPredicate(format:"selected == true"),object:button)],timeout:5) == .completed,"Selected "+name)
+  }
+  func device(_ mode:String,_ name:String) async throws {
+   try JSONSerialization.data(withJSONObject:["stage":name,"device":mode]).write(to:stage,options:.atomic)
+   for _ in 0..<120 {
+    if (try? String(contentsOf:advance,encoding:.utf8)) == name {return}
+    try await Task.sleep(nanoseconds:250_000_000)
+   }
+   throw NSError(domain:"ThemeSupervisor",code:1,userInfo:[NSLocalizedDescriptionKey:"Timed out at "+name])
+  }
+  func fractions(_ image:UIImage)->(Double,Double) {
+   guard let cg=image.cgImage else {return (0,0)}
+   let w=100,h=200
+   var pixels=[UInt8](repeating:0,count:w*h*4)
+   pixels.withUnsafeMutableBytes { raw in
+    let ctx=CGContext(data:raw.baseAddress,width:w,height:h,bitsPerComponent:8,bytesPerRow:w*4,space:CGColorSpaceCreateDeviceRGB(),bitmapInfo:CGImageAlphaInfo.premultipliedLast.rawValue)!
+    ctx.draw(cg,in:CGRect(x:0,y:0,width:w,height:h))
+   }
+   var light=0,dark=0
+   for p in stride(from:0,to:pixels.count,by:4) {
+    let r=Int(pixels[p]),g=Int(pixels[p+1]),b=Int(pixels[p+2])
+    if abs(r-247)<10 && abs(g-242)<10 && abs(b-232)<10 {light+=1}
+    if abs(r-16)<10 && abs(g-28)<10 && abs(b-23)<10 {dark+=1}
+   }
+   return (Double(light)/Double(w*h),Double(dark)/Double(w*h))
+  }
+  func verify(_ dark:Bool,_ name:String) async throws {
+   var last=(0.0,0.0)
+   for _ in 0..<30 {
+    last=fractions(app.screenshot().image)
+    if (dark ? last.1 : last.0)>0.10 && (dark ? last.0 : last.1)<0.03 {break}
+    try await Task.sleep(nanoseconds:200_000_000)
+   }
+   XCTAssertGreaterThan(dark ? last.1:last.0,0.10,name+" expected background")
+   XCTAssertLessThan(dark ? last.0:last.1,0.03,name+" opposite background")
+   let attachment=XCTAttachment(screenshot:app.screenshot());attachment.name=name;attachment.lifetime = .keepAlways;add(attachment)
+   print("THEME_PASS "+name+" light="+String(last.0)+" dark="+String(last.1))
+  }
+  app.launch();openPreferences()
+  let initial=["System","Light","Dark"].first {app.buttons[$0+" appearance"].isSelected}
+  XCTAssertNotNil(initial,"One appearance choice must be selected")
+  print("THEME_INITIAL "+(initial ?? "unknown"))
+  defer { if app.state != .notRunning, let original=initial { openPreferences(); let b=app.buttons[original+" appearance"]; if b.exists { scrollTo(b,in:app);b.tap() };app.terminate() } }
+  choose("System")
+  try await device("light","system_foreground_light");try await verify(false,"system_foreground_light")
+  try await device("dark","system_foreground_dark");try await verify(true,"system_foreground_dark")
+  XCUIDevice.shared.press(.home)
+  try await device("light","system_background_light");app.activate();try await verify(false,"system_background_light")
+  choose("Dark");try await verify(true,"explicit_dark_device_light")
+  try await device("dark","explicit_dark_device_dark");try await verify(true,"explicit_dark_device_dark")
+  app.terminate();app.launch();openPreferences()
+  XCTAssertTrue(app.buttons["Dark appearance"].isSelected);try await verify(true,"dark_restart")
+  choose("Light");try await verify(false,"explicit_light_device_dark")
+  try await device("light","explicit_light_device_light");try await verify(false,"explicit_light_device_light")
+  app.terminate();app.launch();openPreferences()
+  XCTAssertTrue(app.buttons["Light appearance"].isSelected);try await verify(false,"light_restart")
+  choose("System");try await device("dark","system_before_restart");try await verify(true,"system_before_restart")
+  app.terminate();app.launch();openPreferences()
+  XCTAssertTrue(app.buttons["System appearance"].isSelected);try await verify(true,"system_restart")
+  try await device("light","system_after_restart_light");try await verify(false,"system_after_restart_light")
+  choose(try XCTUnwrap(initial))
+  print("THEME_RESTORED "+(initial ?? "unknown"))
+  app.terminate()
+ }
+}

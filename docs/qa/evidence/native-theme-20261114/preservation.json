@@ -1,0 +1,24 @@
+{
+  "before": {
+    "879C620A-5318-4BDF-98B9-904EE635B053": {
+      "sha256": "d6ba01f3dfa95a06097d58870a686f85bb2c3373ecc430e20602df3ac3bf93c0",
+      "memories": 90
+    },
+    "81FC3CCE-ACEB-4957-BE61-C9C653A4CE56": {
+      "sha256": "4ff5bd1002afdd5faa15737fc0fd61ef5351c7de031ca6c11f6f2d3d24d5d0e2",
+      "memories": 19
+    }
+  },
+  "after": {
+    "879C620A-5318-4BDF-98B9-904EE635B053": {
+      "sha256": "d6ba01f3dfa95a06097d58870a686f85bb2c3373ecc430e20602df3ac3bf93c0",
+      "memories": 90
+    },
+    "81FC3CCE-ACEB-4957-BE61-C9C653A4CE56": {
+      "sha256": "4ff5bd1002afdd5faa15737fc0fd61ef5351c7de031ca6c11f6f2d3d24d5d0e2",
+      "memories": 19
+    }
+  },
+  "unchanged": true,
+  "note": "Resolved containers by bundle metadata after Xcode reinstall moved the QA data container."
+}

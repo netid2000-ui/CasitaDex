@@ -1,0 +1,14 @@
+THEME_INITIAL System
+THEME_PASS system_foreground_light light=0.36535 dark=0.0
+THEME_PASS system_foreground_dark light=0.0005 dark=0.3656
+THEME_PASS system_background_light light=0.35335 dark=0.00015
+THEME_PASS explicit_dark_device_light light=0.0005 dark=0.36555
+THEME_PASS explicit_dark_device_dark light=0.0005 dark=0.36555
+THEME_PASS dark_restart light=0.0005 dark=0.36555
+THEME_PASS explicit_light_device_dark light=0.3653 dark=0.0
+THEME_PASS explicit_light_device_light light=0.3653 dark=0.0
+THEME_PASS light_restart light=0.3653 dark=0.0
+THEME_PASS system_before_restart light=0.0005 dark=0.3656
+THEME_PASS system_restart light=0.0005 dark=0.3656
+THEME_PASS system_after_restart_light light=0.36535 dark=0.0
+THEME_RESTORED System
