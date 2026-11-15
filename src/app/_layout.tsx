@@ -66,12 +66,12 @@ function Shell() {
       <BrandWebMeta />
       <StatusBar style={dark ? "light" : "dark"} />
       {path==="/"||primaryTitle?<View style={{paddingHorizontal:18,paddingTop:8,paddingBottom:16,backgroundColor:colors.paper,gap:4}}>
-        <View style={{minHeight:44,flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
-         <Pressable accessibilityRole="button" accessibilityLabel={path==="/more"?"Back to Home":"CasitaDex logo, go to Home"} onPress={()=>guardedNavigate(()=>router.navigate("/"))} style={{minHeight:44,justifyContent:"center"}}><Text style={{color:colors.ink,fontFamily:path==="/more"?editorialFonts.body:editorialFonts.heading,fontSize:path==="/more"?13:26}}>{path==="/more"?"‹  Home":"CasitaDex"}</Text></Pressable>
+        {(!compactHeader||!primaryTitle||path==="/more")?<View style={{minHeight:44,flexDirection:compactHeader?"column":"row",alignItems:compactHeader?"flex-start":"center",justifyContent:"space-between"}}>
+         <Pressable accessibilityRole="button" accessibilityLabel={path==="/more"?"Back to Home":"CasitaDex logo, go to Home"} onPress={()=>guardedNavigate(()=>router.navigate("/"))} style={{minHeight:44,justifyContent:"center"}}><Text style={{color:colors.ink,fontFamily:path==="/more"?editorialFonts.body:editorialFonts.heading,fontSize:path==="/more"?13:compactHeader?18:26}}>{path==="/more"?"‹  Home":"CasitaDex"}</Text></Pressable>
          {path==="/"?<Pressable accessibilityRole="button" accessibilityLabel="Settings" onPress={()=>guardedNavigate(()=>router.navigate("/more"))} style={{minHeight:44,justifyContent:"center"}}><Text style={{fontFamily:editorialFonts.body,color:colors.ink,fontSize:13}}>⚙  Settings</Text></Pressable>:null}
          {path==="/photos"&&!compactHeader?<View style={{position:"absolute",right:0,top:0,width:100,height:66,mixBlendMode:dark?"multiply":"normal"}}><Image accessible={false} source={require("../../assets/approved-refresh/homeDesign_imgWatercolorOliveBranch.jpg")} resizeMode="cover" style={{width:100,height:66}}/></View>:null}
-        </View>
-        {primaryTitle?<Text accessibilityRole="header" style={{color:colors.ink,fontFamily:editorialFonts.heading,fontSize:compactHeader?36:path==="/photos"?52:48}}>{primaryTitle}</Text>:null}
+        </View>:null}
+        {primaryTitle?<Text accessibilityRole="header" style={{color:colors.ink,fontFamily:editorialFonts.heading,fontSize:compactHeader?20:path==="/photos"?52:48}}>{primaryTitle}</Text>:null}
       </View>:null}
       <View style={{ flex: 1 }}>
         <Slot />

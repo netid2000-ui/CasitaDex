@@ -886,3 +886,25 @@ extension PlusRecoveryUITests {
   print("PICKER STYLE PASS: both native pickers, two themes, fixed Details actions and inline editing")
  }
 }
+
+extension PlusRecoveryUITests {
+ @MainActor func testLargeTextScreenReview() async throws {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa");app.launch()
+  let dir=FileManager.default.urls(for:.documentDirectory,in:.userDomainMask)[0]
+  for (name,path) in [("home",""),("find","answers"),("settings","more"),("add","add"),("details","card?id=sb26qa_007"),("reminder-form","reminders-manage?mode=new"),("reminders","reminders")] {
+   app.open(URL(string:"casitadex-plusstoreqa://"+path)!)
+   try await Task.sleep(nanoseconds:1_000_000_000)
+   try app.screenshot().pngRepresentation.write(to:dir.appendingPathComponent("large-"+name+".png"))
+   if name=="add" || name=="reminder-form" {XCTAssertTrue(app.buttons["Cancel"].isHittable)}
+   if name=="details" {XCTAssertTrue(app.buttons["Edit memory"].isHittable)}
+  }
+  let add=app.buttons["Add Reminder ›"];XCTAssertTrue(add.isHittable)
+  let row=app.scrollViews.allElementsBoundByIndex.filter{$0.frame.height<200 && $0.frame.width>250}.first
+  XCTAssertNotNil(row);row?.swipeLeft()
+  let dates=app.buttons.matching(NSPredicate(format:"label BEGINSWITH %@", "Memory dates")).firstMatch
+  XCTAssertTrue(dates.isHittable);dates.tap()
+  try app.screenshot().pngRepresentation.write(to:dir.appendingPathComponent("large-reminders-last-filter.png"))
+  print("LARGE TEXT scoped checks PASS: reachable fixed Add/Cancel/Edit, horizontally reachable final reminder filter; screenshots for broader review")
+ }
+}

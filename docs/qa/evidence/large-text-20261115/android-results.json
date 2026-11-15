@@ -1,0 +1,10 @@
+{
+  "result": "PASS scoped controls",
+  "font_scale": 2.0,
+  "themes": [
+    "Light",
+    "Dark"
+  ],
+  "screenshots": "seven core screens per theme",
+  "screen_reader": "manual TalkBack not performed"
+}
