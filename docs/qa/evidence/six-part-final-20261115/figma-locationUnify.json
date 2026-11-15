@@ -1,0 +1,1817 @@
+{
+  "createdNodeIds": [
+    "VariableID:1523:10",
+    "VariableID:1523:20",
+    "1523:30",
+    "1523:31",
+    "1523:32",
+    "VariableID:1523:33",
+    "VariableID:1523:42",
+    "VariableID:1523:51",
+    "VariableID:1523:60",
+    "VariableID:1523:69",
+    "VariableID:1523:78",
+    "VariableID:1523:87",
+    "VariableID:1523:96",
+    "VariableID:1523:105",
+    "VariableID:1523:114",
+    "VariableID:1523:123",
+    "VariableID:1523:132",
+    "VariableID:1523:141",
+    "VariableID:1523:150",
+    "VariableID:1523:159",
+    "VariableID:1523:168"
+  ],
+  "mutatedNodeIds": [
+    "452:3",
+    "448:27",
+    "1501:15",
+    "1501:199",
+    "1501:204",
+    "1501:209",
+    "1501:57",
+    "1510:12",
+    "1510:29",
+    "1510:34",
+    "452:19",
+    "448:69",
+    "1523:32",
+    "448:6",
+    "448:4",
+    "438:8",
+    "1522:1463",
+    "1522:1468",
+    "1522:1467",
+    "1522:1473",
+    "1522:1472",
+    "1522:1478",
+    "1522:1477",
+    "1522:1483",
+    "1522:1482",
+    "1522:1488",
+    "1522:1487",
+    "1522:1494",
+    "1522:1499",
+    "1522:1504",
+    "1522:1509",
+    "1522:1514",
+    "1522:1519",
+    "1522:1524",
+    "706:175",
+    "706:186",
+    "1502:39",
+    "448:48",
+    "448:46",
+    "427:6",
+    "1522:1546",
+    "1522:1551",
+    "1522:1550",
+    "1522:1556",
+    "1522:1555",
+    "1522:1561",
+    "1522:1560",
+    "1522:1566",
+    "1522:1565",
+    "1522:1571",
+    "1522:1570",
+    "1522:1577",
+    "1522:1582",
+    "1522:1587",
+    "1522:1592",
+    "1522:1597",
+    "1522:1602",
+    "1522:1607",
+    "706:448",
+    "706:459",
+    "1502:95",
+    "706:6",
+    "706:4",
+    "709:8",
+    "1522:1629",
+    "1522:1634",
+    "1522:1633",
+    "1522:1639",
+    "1522:1638",
+    "1522:1644",
+    "1522:1643",
+    "1522:1649",
+    "1522:1648",
+    "1522:1654",
+    "1522:1653",
+    "1522:1660",
+    "1522:1665",
+    "1522:1670",
+    "1522:1675",
+    "1522:1680",
+    "1522:1685",
+    "1522:1690",
+    "706:202",
+    "706:213",
+    "1502:100",
+    "706:61",
+    "706:59",
+    "709:45",
+    "1522:1712",
+    "1522:1717",
+    "1522:1716",
+    "1522:1722",
+    "1522:1721",
+    "1522:1727",
+    "1522:1726",
+    "1522:1732",
+    "1522:1731",
+    "1522:1737",
+    "1522:1736",
+    "1522:1743",
+    "1522:1748",
+    "1522:1753",
+    "1522:1758",
+    "1522:1763",
+    "1522:1768",
+    "1522:1773",
+    "706:229",
+    "706:240",
+    "1502:105",
+    "706:116",
+    "706:114",
+    "709:82",
+    "1522:1795",
+    "1522:1800",
+    "1522:1799",
+    "1522:1805",
+    "1522:1804",
+    "1522:1810",
+    "1522:1809",
+    "1522:1815",
+    "1522:1814",
+    "1522:1820",
+    "1522:1819",
+    "1522:1826",
+    "1522:1831",
+    "1522:1836",
+    "1522:1841",
+    "1522:1846",
+    "1522:1851",
+    "1522:1856",
+    "706:256",
+    "706:267",
+    "1502:110",
+    "706:279",
+    "706:277",
+    "709:119",
+    "1522:1878",
+    "1522:1883",
+    "1522:1882",
+    "1522:1888",
+    "1522:1887",
+    "1522:1893",
+    "1522:1892",
+    "1522:1898",
+    "1522:1897",
+    "1522:1903",
+    "1522:1902",
+    "1522:1909",
+    "1522:1914",
+    "1522:1919",
+    "1522:1924",
+    "1522:1929",
+    "1522:1934",
+    "1522:1939",
+    "706:475",
+    "706:486",
+    "1502:115",
+    "706:334",
+    "706:332",
+    "709:156",
+    "1522:1961",
+    "1522:1966",
+    "1522:1965",
+    "1522:1971",
+    "1522:1970",
+    "1522:1976",
+    "1522:1975",
+    "1522:1981",
+    "1522:1980",
+    "1522:1986",
+    "1522:1985",
+    "1522:1992",
+    "1522:1997",
+    "1522:2002",
+    "1522:2007",
+    "1522:2012",
+    "1522:2017",
+    "1522:2022",
+    "706:502",
+    "706:513",
+    "1502:120",
+    "706:389",
+    "706:387",
+    "709:193",
+    "1522:2044",
+    "1522:2049",
+    "1522:2048",
+    "1522:2054",
+    "1522:2053",
+    "1522:2059",
+    "1522:2058",
+    "1522:2064",
+    "1522:2063",
+    "1522:2069",
+    "1522:2068",
+    "1522:2075",
+    "1522:2080",
+    "1522:2085",
+    "1522:2090",
+    "1522:2095",
+    "1522:2100",
+    "1522:2105",
+    "706:529",
+    "706:540",
+    "1502:134",
+    "1442:9",
+    "1442:5",
+    "1442:95",
+    "1522:2127",
+    "1522:2132",
+    "1522:2131",
+    "1522:2137",
+    "1522:2136",
+    "1522:2142",
+    "1522:2141",
+    "1522:2147",
+    "1522:2146",
+    "1522:2152",
+    "1522:2151",
+    "1522:2158",
+    "1522:2163",
+    "1522:2168",
+    "1522:2173",
+    "1522:2178",
+    "1522:2183",
+    "1522:2188",
+    "1442:85",
+    "1442:74",
+    "1502:139",
+    "1442:153",
+    "1442:149",
+    "1442:238",
+    "1522:2210",
+    "1522:2215",
+    "1522:2214",
+    "1522:2220",
+    "1522:2219",
+    "1522:2225",
+    "1522:2224",
+    "1522:2230",
+    "1522:2229",
+    "1522:2235",
+    "1522:2234",
+    "1522:2241",
+    "1522:2246",
+    "1522:2251",
+    "1522:2256",
+    "1522:2261",
+    "1522:2266",
+    "1522:2271",
+    "1442:229",
+    "1442:218",
+    "1502:144",
+    "1442:295",
+    "1442:291",
+    "1442:380",
+    "1522:2293",
+    "1522:2298",
+    "1522:2297",
+    "1522:2303",
+    "1522:2302",
+    "1522:2308",
+    "1522:2307",
+    "1522:2313",
+    "1522:2312",
+    "1522:2318",
+    "1522:2317",
+    "1522:2324",
+    "1522:2329",
+    "1522:2334",
+    "1522:2339",
+    "1522:2344",
+    "1522:2349",
+    "1522:2354",
+    "1442:371",
+    "1442:360",
+    "1502:149",
+    "1442:437",
+    "1442:433",
+    "1442:522",
+    "1522:2376",
+    "1522:2381",
+    "1522:2380",
+    "1522:2386",
+    "1522:2385",
+    "1522:2391",
+    "1522:2390",
+    "1522:2396",
+    "1522:2395",
+    "1522:2401",
+    "1522:2400",
+    "1522:2407",
+    "1522:2412",
+    "1522:2417",
+    "1522:2422",
+    "1522:2427",
+    "1522:2432",
+    "1522:2437",
+    "1442:513",
+    "1442:502",
+    "1502:154",
+    "1442:579",
+    "1442:575",
+    "1442:664",
+    "1522:2459",
+    "1522:2464",
+    "1522:2463",
+    "1522:2469",
+    "1522:2468",
+    "1522:2474",
+    "1522:2473",
+    "1522:2479",
+    "1522:2478",
+    "1522:2484",
+    "1522:2483",
+    "1522:2490",
+    "1522:2495",
+    "1522:2500",
+    "1522:2505",
+    "1522:2510",
+    "1522:2515",
+    "1522:2520",
+    "1442:655",
+    "1442:644",
+    "1502:159",
+    "1442:721",
+    "1442:717",
+    "1442:806",
+    "1522:2542",
+    "1522:2547",
+    "1522:2546",
+    "1522:2552",
+    "1522:2551",
+    "1522:2557",
+    "1522:2556",
+    "1522:2562",
+    "1522:2561",
+    "1522:2567",
+    "1522:2566",
+    "1522:2573",
+    "1522:2578",
+    "1522:2583",
+    "1522:2588",
+    "1522:2593",
+    "1522:2598",
+    "1522:2603",
+    "1442:797",
+    "1442:786",
+    "1502:164",
+    "1442:863",
+    "1442:859",
+    "1442:948",
+    "1522:2625",
+    "1522:2630",
+    "1522:2629",
+    "1522:2635",
+    "1522:2634",
+    "1522:2640",
+    "1522:2639",
+    "1522:2645",
+    "1522:2644",
+    "1522:2650",
+    "1522:2649",
+    "1522:2656",
+    "1522:2661",
+    "1522:2666",
+    "1522:2671",
+    "1522:2676",
+    "1522:2681",
+    "1522:2686",
+    "1442:939",
+    "1442:928",
+    "1502:169",
+    "1442:1005",
+    "1442:1001",
+    "1442:1090",
+    "1522:2708",
+    "1522:2713",
+    "1522:2712",
+    "1522:2718",
+    "1522:2717",
+    "1522:2723",
+    "1522:2722",
+    "1522:2728",
+    "1522:2727",
+    "1522:2733",
+    "1522:2732",
+    "1522:2739",
+    "1522:2744",
+    "1522:2749",
+    "1522:2754",
+    "1522:2759",
+    "1522:2764",
+    "1522:2769",
+    "1442:1081",
+    "1442:1070"
+  ],
+  "contexts": [
+    {
+      "editor": "448:2",
+      "save": "438:2",
+      "space": "VariableID:1522:1446",
+      "categories": "VariableID:1522:1447",
+      "savedSpace": "VariableID:1522:1449",
+      "savedCategories": "VariableID:1522:1450",
+      "before": "VariableID:1522:1448",
+      "labels": [
+        "VariableID:1522:1457",
+        "VariableID:1522:1458",
+        "VariableID:1522:1459",
+        "VariableID:1522:1460",
+        "VariableID:1522:1461"
+      ],
+      "office": "VariableID:1522:1451",
+      "warranty": "VariableID:1522:1452",
+      "rows": [
+        {
+          "id": "1522:1462",
+          "kind": "space",
+          "label": "\uff0b Create new \u203a"
+        },
+        {
+          "id": "1522:1467",
+          "kind": "space",
+          "label": "Unassigned"
+        },
+        {
+          "id": "1522:1472",
+          "kind": "space",
+          "label": "Garage"
+        },
+        {
+          "id": "1522:1477",
+          "kind": "space",
+          "label": "Hallway"
+        },
+        {
+          "id": "1522:1482",
+          "kind": "space",
+          "label": "Kitchen"
+        },
+        {
+          "id": "1522:1487",
+          "kind": "space",
+          "label": "Office"
+        },
+        {
+          "id": "1522:1493",
+          "kind": "category",
+          "label": "\uff0b Create new \u203a"
+        },
+        {
+          "id": "1522:1498",
+          "kind": "category",
+          "label": "None"
+        },
+        {
+          "id": "1522:1503",
+          "kind": "category",
+          "label": "Appliances"
+        },
+        {
+          "id": "1522:1508",
+          "kind": "category",
+          "label": "Maintenance"
+        },
+        {
+          "id": "1522:1513",
+          "kind": "category",
+          "label": "Manuals"
+        },
+        {
+          "id": "1522:1518",
+          "kind": "category",
+          "label": "Seasonal"
+        },
+        {
+          "id": "1522:1523",
+          "kind": "category",
+          "label": "Warranties"
+        }
+      ],
+      "location": "VariableID:1523:10",
+      "savedLocation": "VariableID:1523:33"
+    },
+    {
+      "editor": "448:44",
+      "save": "398:4",
+      "space": "VariableID:1522:1529",
+      "categories": "VariableID:1522:1530",
+      "savedSpace": "VariableID:1522:1532",
+      "savedCategories": "VariableID:1522:1533",
+      "before": "VariableID:1522:1531",
+      "labels": [
+        "VariableID:1522:1540",
+        "VariableID:1522:1541",
+        "VariableID:1522:1542",
+        "VariableID:1522:1543",
+        "VariableID:1522:1544"
+      ],
+      "office": "VariableID:1522:1534",
+      "warranty": "VariableID:1522:1535",
+      "rows": [
+        {
+          "id": "1522:1545",
+          "kind": "space",
+          "label": "\uff0b Create new \u203a"
+        },
+        {
+          "id": "1522:1550",
+          "kind": "space",
+          "label": "Unassigned"
+        },
+        {
+          "id": "1522:1555",
+          "kind": "space",
+          "label": "Garage"
+        },
+        {
+          "id": "1522:1560",
+          "kind": "space",
+          "label": "Hallway"
+        },
+        {
+          "id": "1522:1565",
+          "kind": "space",
+          "label": "Kitchen"
+        },
+        {
+          "id": "1522:1570",
+          "kind": "space",
+          "label": "Office"
+        },
+        {
+          "id": "1522:1576",
+          "kind": "category",
+          "label": "\uff0b Create new \u203a"
+        },
+        {
+          "id": "1522:1581",
+          "kind": "category",
+          "label": "None"
+        },
+        {
+          "id": "1522:1586",
+          "kind": "category",
+          "label": "Appliances"
+        },
+        {
+          "id": "1522:1591",
+          "kind": "category",
+          "label": "Maintenance"
+        },
+        {
+          "id": "1522:1596",
+          "kind": "category",
+          "label": "Manuals"
+        },
+        {
+          "id": "1522:1601",
+          "kind": "category",
+          "label": "Seasonal"
+        },
+        {
+          "id": "1522:1606",
+          "kind": "category",
+          "label": "Warranties"
+        }
+      ],
+      "location": "VariableID:1523:20",
+      "savedLocation": "VariableID:1523:42"
+    },
+    {
+      "editor": "706:2",
+      "save": "709:2",
+      "space": "VariableID:1522:1612",
+      "categories": "VariableID:1522:1613",
+      "savedSpace": "VariableID:1522:1615",
+      "savedCategories": "VariableID:1522:1616",
+      "before": "VariableID:1522:1614",
+      "labels": [
+        "VariableID:1522:1623",
+        "VariableID:1522:1624",
+        "VariableID:1522:1625",
+        "VariableID:1522:1626",
+        "VariableID:1522:1627"
+      ],
+      "office": "VariableID:1522:1617",
+      "warranty": "VariableID:1522:1618",
+      "location": "VariableID:1501:117",
+      "rows": [
+        {
+          "id": "1522:1628",
+          "kind": "space",
+          "label": "\uff0b Create new \u203a"
+        },
+        {
+          "id": "1522:1633",
+          "kind": "space",
+          "label": "Unassigned"
+        },
+        {
+          "id": "1522:1638",
+          "kind": "space",
+          "label": "Garage"
+        },
+        {
+          "id": "1522:1643",
+          "kind": "space",
+          "label": "Hallway"
+        },
+        {
+          "id": "1522:1648",
+          "kind": "space",
+          "label": "Kitchen"
+        },
+        {
+          "id": "1522:1653",
+          "kind": "space",
+          "label": "Office"
+        },
+        {
+          "id": "1522:1659",
+          "kind": "category",
+          "label": "\uff0b Create new \u203a"
+        },
+        {
+          "id": "1522:1664",
+          "kind": "category",
+          "label": "None"
+        },
+        {
+          "id": "1522:1669",
+          "kind": "category",
+          "label": "Appliances"
+        },
+        {
+          "id": "1522:1674",
+          "kind": "category",
+          "label": "Maintenance"
+        },
+        {
+          "id": "1522:1679",
+          "kind": "category",
+          "label": "Manuals"
+        },
+        {
+          "id": "1522:1684",
+          "kind": "category",
+          "label": "Seasonal"
+        },
+        {
+          "id": "1522:1689",
+          "kind": "category",
+          "label": "Warranties"
+        }
+      ],
+      "savedLocation": "VariableID:1523:51"
+    },
+    {
+      "editor": "706:57",
+      "save": "709:39",
+      "space": "VariableID:1522:1695",
+      "categories": "VariableID:1522:1696",
+      "savedSpace": "VariableID:1522:1698",
+      "savedCategories": "VariableID:1522:1699",
+      "before": "VariableID:1522:1697",
+      "labels": [
+        "VariableID:1522:1706",
+        "VariableID:1522:1707",
+        "VariableID:1522:1708",
+        "VariableID:1522:1709",
+        "VariableID:1522:1710"
+      ],
+      "office": "VariableID:1522:1700",
+      "warranty": "VariableID:1522:1701",
+      "location": "VariableID:1501:119",
+      "rows": [
+        {
+          "id": "1522:1711",
+          "kind": "space",
+          "label": "\uff0b Create new \u203a"
+        },
+        {
+          "id": "1522:1716",
+          "kind": "space",
+          "label": "Unassigned"
+        },
+        {
+          "id": "1522:1721",
+          "kind": "space",
+          "label": "Garage"
+        },
+        {
+          "id": "1522:1726",
+          "kind": "space",
+          "label": "Hallway"
+        },
+        {
+          "id": "1522:1731",
+          "kind": "space",
+          "label": "Kitchen"
+        },
+        {
+          "id": "1522:1736",
+          "kind": "space",
+          "label": "Office"
+        },
+        {
+          "id": "1522:1742",
+          "kind": "category",
+          "label": "\uff0b Create new \u203a"
+        },
+        {
+          "id": "1522:1747",
+          "kind": "category",
+          "label": "None"
+        },
+        {
+          "id": "1522:1752",
+          "kind": "category",
+          "label": "Appliances"
+        },
+        {
+          "id": "1522:1757",
+          "kind": "category",
+          "label": "Maintenance"
+        },
+        {
+          "id": "1522:1762",
+          "kind": "category",
+          "label": "Manuals"
+        },
+        {
+          "id": "1522:1767",
+          "kind": "category",
+          "label": "Seasonal"
+        },
+        {
+          "id": "1522:1772",
+          "kind": "category",
+          "label": "Warranties"
+        }
+      ],
+      "savedLocation": "VariableID:1523:60"
+    },
+    {
+      "editor": "706:112",
+      "save": "709:76",
+      "space": "VariableID:1522:1778",
+      "categories": "VariableID:1522:1779",
+      "savedSpace": "VariableID:1522:1781",
+      "savedCategories": "VariableID:1522:1782",
+      "before": "VariableID:1522:1780",
+      "labels": [
+        "VariableID:1522:1789",
+        "VariableID:1522:1790",
+        "VariableID:1522:1791",
+        "VariableID:1522:1792",
+        "VariableID:1522:1793"
+      ],
+      "office": "VariableID:1522:1783",
+      "warranty": "VariableID:1522:1784",
+      "location": "VariableID:1501:121",
+      "rows": [
+        {
+          "id": "1522:1794",
+          "kind": "space",
+          "label": "\uff0b Create new \u203a"
+        },
+        {
+          "id": "1522:1799",
+          "kind": "space",
+          "label": "Unassigned"
+        },
+        {
+          "id": "1522:1804",
+          "kind": "space",
+          "label": "Garage"
+        },
+        {
+          "id": "1522:1809",
+          "kind": "space",
+          "label": "Hallway"
+        },
+        {
+          "id": "1522:1814",
+          "kind": "space",
+          "label": "Kitchen"
+        },
+        {
+          "id": "1522:1819",
+          "kind": "space",
+          "label": "Office"
+        },
+        {
+          "id": "1522:1825",
+          "kind": "category",
+          "label": "\uff0b Create new \u203a"
+        },
+        {
+          "id": "1522:1830",
+          "kind": "category",
+          "label": "None"
+        },
+        {
+          "id": "1522:1835",
+          "kind": "category",
+          "label": "Appliances"
+        },
+        {
+          "id": "1522:1840",
+          "kind": "category",
+          "label": "Maintenance"
+        },
+        {
+          "id": "1522:1845",
+          "kind": "category",
+          "label": "Manuals"
+        },
+        {
+          "id": "1522:1850",
+          "kind": "category",
+          "label": "Seasonal"
+        },
+        {
+          "id": "1522:1855",
+          "kind": "category",
+          "label": "Warranties"
+        }
+      ],
+      "savedLocation": "VariableID:1523:69"
+    },
+    {
+      "editor": "706:275",
+      "save": "709:113",
+      "space": "VariableID:1522:1861",
+      "categories": "VariableID:1522:1862",
+      "savedSpace": "VariableID:1522:1864",
+      "savedCategories": "VariableID:1522:1865",
+      "before": "VariableID:1522:1863",
+      "labels": [
+        "VariableID:1522:1872",
+        "VariableID:1522:1873",
+        "VariableID:1522:1874",
+        "VariableID:1522:1875",
+        "VariableID:1522:1876"
+      ],
+      "office": "VariableID:1522:1866",
+      "warranty": "VariableID:1522:1867",
+      "location": "VariableID:1501:123",
+      "rows": [
+        {
+          "id": "1522:1877",
+          "kind": "space",
+          "label": "\uff0b Create new \u203a"
+        },
+        {
+          "id": "1522:1882",
+          "kind": "space",
+          "label": "Unassigned"
+        },
+        {
+          "id": "1522:1887",
+          "kind": "space",
+          "label": "Garage"
+        },
+        {
+          "id": "1522:1892",
+          "kind": "space",
+          "label": "Hallway"
+        },
+        {
+          "id": "1522:1897",
+          "kind": "space",
+          "label": "Kitchen"
+        },
+        {
+          "id": "1522:1902",
+          "kind": "space",
+          "label": "Office"
+        },
+        {
+          "id": "1522:1908",
+          "kind": "category",
+          "label": "\uff0b Create new \u203a"
+        },
+        {
+          "id": "1522:1913",
+          "kind": "category",
+          "label": "None"
+        },
+        {
+          "id": "1522:1918",
+          "kind": "category",
+          "label": "Appliances"
+        },
+        {
+          "id": "1522:1923",
+          "kind": "category",
+          "label": "Maintenance"
+        },
+        {
+          "id": "1522:1928",
+          "kind": "category",
+          "label": "Manuals"
+        },
+        {
+          "id": "1522:1933",
+          "kind": "category",
+          "label": "Seasonal"
+        },
+        {
+          "id": "1522:1938",
+          "kind": "category",
+          "label": "Warranties"
+        }
+      ],
+      "savedLocation": "VariableID:1523:78"
+    },
+    {
+      "editor": "706:330",
+      "save": "709:150",
+      "space": "VariableID:1522:1944",
+      "categories": "VariableID:1522:1945",
+      "savedSpace": "VariableID:1522:1947",
+      "savedCategories": "VariableID:1522:1948",
+      "before": "VariableID:1522:1946",
+      "labels": [
+        "VariableID:1522:1955",
+        "VariableID:1522:1956",
+        "VariableID:1522:1957",
+        "VariableID:1522:1958",
+        "VariableID:1522:1959"
+      ],
+      "office": "VariableID:1522:1949",
+      "warranty": "VariableID:1522:1950",
+      "location": "VariableID:1501:125",
+      "rows": [
+        {
+          "id": "1522:1960",
+          "kind": "space",
+          "label": "\uff0b Create new \u203a"
+        },
+        {
+          "id": "1522:1965",
+          "kind": "space",
+          "label": "Unassigned"
+        },
+        {
+          "id": "1522:1970",
+          "kind": "space",
+          "label": "Garage"
+        },
+        {
+          "id": "1522:1975",
+          "kind": "space",
+          "label": "Hallway"
+        },
+        {
+          "id": "1522:1980",
+          "kind": "space",
+          "label": "Kitchen"
+        },
+        {
+          "id": "1522:1985",
+          "kind": "space",
+          "label": "Office"
+        },
+        {
+          "id": "1522:1991",
+          "kind": "category",
+          "label": "\uff0b Create new \u203a"
+        },
+        {
+          "id": "1522:1996",
+          "kind": "category",
+          "label": "None"
+        },
+        {
+          "id": "1522:2001",
+          "kind": "category",
+          "label": "Appliances"
+        },
+        {
+          "id": "1522:2006",
+          "kind": "category",
+          "label": "Maintenance"
+        },
+        {
+          "id": "1522:2011",
+          "kind": "category",
+          "label": "Manuals"
+        },
+        {
+          "id": "1522:2016",
+          "kind": "category",
+          "label": "Seasonal"
+        },
+        {
+          "id": "1522:2021",
+          "kind": "category",
+          "label": "Warranties"
+        }
+      ],
+      "savedLocation": "VariableID:1523:87"
+    },
+    {
+      "editor": "706:385",
+      "save": "709:187",
+      "space": "VariableID:1522:2027",
+      "categories": "VariableID:1522:2028",
+      "savedSpace": "VariableID:1522:2030",
+      "savedCategories": "VariableID:1522:2031",
+      "before": "VariableID:1522:2029",
+      "labels": [
+        "VariableID:1522:2038",
+        "VariableID:1522:2039",
+        "VariableID:1522:2040",
+        "VariableID:1522:2041",
+        "VariableID:1522:2042"
+      ],
+      "office": "VariableID:1522:2032",
+      "warranty": "VariableID:1522:2033",
+      "location": "VariableID:1501:127",
+      "rows": [
+        {
+          "id": "1522:2043",
+          "kind": "space",
+          "label": "\uff0b Create new \u203a"
+        },
+        {
+          "id": "1522:2048",
+          "kind": "space",
+          "label": "Unassigned"
+        },
+        {
+          "id": "1522:2053",
+          "kind": "space",
+          "label": "Garage"
+        },
+        {
+          "id": "1522:2058",
+          "kind": "space",
+          "label": "Hallway"
+        },
+        {
+          "id": "1522:2063",
+          "kind": "space",
+          "label": "Kitchen"
+        },
+        {
+          "id": "1522:2068",
+          "kind": "space",
+          "label": "Office"
+        },
+        {
+          "id": "1522:2074",
+          "kind": "category",
+          "label": "\uff0b Create new \u203a"
+        },
+        {
+          "id": "1522:2079",
+          "kind": "category",
+          "label": "None"
+        },
+        {
+          "id": "1522:2084",
+          "kind": "category",
+          "label": "Appliances"
+        },
+        {
+          "id": "1522:2089",
+          "kind": "category",
+          "label": "Maintenance"
+        },
+        {
+          "id": "1522:2094",
+          "kind": "category",
+          "label": "Manuals"
+        },
+        {
+          "id": "1522:2099",
+          "kind": "category",
+          "label": "Seasonal"
+        },
+        {
+          "id": "1522:2104",
+          "kind": "category",
+          "label": "Warranties"
+        }
+      ],
+      "savedLocation": "VariableID:1523:96"
+    },
+    {
+      "editor": "1442:2",
+      "save": "1442:88",
+      "space": "VariableID:1522:2110",
+      "categories": "VariableID:1522:2111",
+      "savedSpace": "VariableID:1522:2113",
+      "savedCategories": "VariableID:1522:2114",
+      "before": "VariableID:1522:2112",
+      "labels": [
+        "VariableID:1522:2121",
+        "VariableID:1522:2122",
+        "VariableID:1522:2123",
+        "VariableID:1522:2124",
+        "VariableID:1522:2125"
+      ],
+      "office": "VariableID:1522:2115",
+      "warranty": "VariableID:1522:2116",
+      "location": "VariableID:1501:179",
+      "rows": [
+        {
+          "id": "1522:2126",
+          "kind": "space",
+          "label": "\uff0b Create new \u203a"
+        },
+        {
+          "id": "1522:2131",
+          "kind": "space",
+          "label": "Unassigned"
+        },
+        {
+          "id": "1522:2136",
+          "kind": "space",
+          "label": "Garage"
+        },
+        {
+          "id": "1522:2141",
+          "kind": "space",
+          "label": "Hallway"
+        },
+        {
+          "id": "1522:2146",
+          "kind": "space",
+          "label": "Kitchen"
+        },
+        {
+          "id": "1522:2151",
+          "kind": "space",
+          "label": "Office"
+        },
+        {
+          "id": "1522:2157",
+          "kind": "category",
+          "label": "\uff0b Create new \u203a"
+        },
+        {
+          "id": "1522:2162",
+          "kind": "category",
+          "label": "None"
+        },
+        {
+          "id": "1522:2167",
+          "kind": "category",
+          "label": "Appliances"
+        },
+        {
+          "id": "1522:2172",
+          "kind": "category",
+          "label": "Maintenance"
+        },
+        {
+          "id": "1522:2177",
+          "kind": "category",
+          "label": "Manuals"
+        },
+        {
+          "id": "1522:2182",
+          "kind": "category",
+          "label": "Seasonal"
+        },
+        {
+          "id": "1522:2187",
+          "kind": "category",
+          "label": "Warranties"
+        }
+      ],
+      "savedLocation": "VariableID:1523:105"
+    },
+    {
+      "editor": "1442:146",
+      "save": "1442:232",
+      "space": "VariableID:1522:2193",
+      "categories": "VariableID:1522:2194",
+      "savedSpace": "VariableID:1522:2196",
+      "savedCategories": "VariableID:1522:2197",
+      "before": "VariableID:1522:2195",
+      "labels": [
+        "VariableID:1522:2204",
+        "VariableID:1522:2205",
+        "VariableID:1522:2206",
+        "VariableID:1522:2207",
+        "VariableID:1522:2208"
+      ],
+      "office": "VariableID:1522:2198",
+      "warranty": "VariableID:1522:2199",
+      "location": "VariableID:1501:181",
+      "rows": [
+        {
+          "id": "1522:2209",
+          "kind": "space",
+          "label": "\uff0b Create new \u203a"
+        },
+        {
+          "id": "1522:2214",
+          "kind": "space",
+          "label": "Unassigned"
+        },
+        {
+          "id": "1522:2219",
+          "kind": "space",
+          "label": "Garage"
+        },
+        {
+          "id": "1522:2224",
+          "kind": "space",
+          "label": "Hallway"
+        },
+        {
+          "id": "1522:2229",
+          "kind": "space",
+          "label": "Kitchen"
+        },
+        {
+          "id": "1522:2234",
+          "kind": "space",
+          "label": "Office"
+        },
+        {
+          "id": "1522:2240",
+          "kind": "category",
+          "label": "\uff0b Create new \u203a"
+        },
+        {
+          "id": "1522:2245",
+          "kind": "category",
+          "label": "None"
+        },
+        {
+          "id": "1522:2250",
+          "kind": "category",
+          "label": "Appliances"
+        },
+        {
+          "id": "1522:2255",
+          "kind": "category",
+          "label": "Maintenance"
+        },
+        {
+          "id": "1522:2260",
+          "kind": "category",
+          "label": "Manuals"
+        },
+        {
+          "id": "1522:2265",
+          "kind": "category",
+          "label": "Seasonal"
+        },
+        {
+          "id": "1522:2270",
+          "kind": "category",
+          "label": "Warranties"
+        }
+      ],
+      "savedLocation": "VariableID:1523:114"
+    },
+    {
+      "editor": "1442:288",
+      "save": "1442:374",
+      "space": "VariableID:1522:2276",
+      "categories": "VariableID:1522:2277",
+      "savedSpace": "VariableID:1522:2279",
+      "savedCategories": "VariableID:1522:2280",
+      "before": "VariableID:1522:2278",
+      "labels": [
+        "VariableID:1522:2287",
+        "VariableID:1522:2288",
+        "VariableID:1522:2289",
+        "VariableID:1522:2290",
+        "VariableID:1522:2291"
+      ],
+      "office": "VariableID:1522:2281",
+      "warranty": "VariableID:1522:2282",
+      "location": "VariableID:1501:183",
+      "rows": [
+        {
+          "id": "1522:2292",
+          "kind": "space",
+          "label": "\uff0b Create new \u203a"
+        },
+        {
+          "id": "1522:2297",
+          "kind": "space",
+          "label": "Unassigned"
+        },
+        {
+          "id": "1522:2302",
+          "kind": "space",
+          "label": "Garage"
+        },
+        {
+          "id": "1522:2307",
+          "kind": "space",
+          "label": "Hallway"
+        },
+        {
+          "id": "1522:2312",
+          "kind": "space",
+          "label": "Kitchen"
+        },
+        {
+          "id": "1522:2317",
+          "kind": "space",
+          "label": "Office"
+        },
+        {
+          "id": "1522:2323",
+          "kind": "category",
+          "label": "\uff0b Create new \u203a"
+        },
+        {
+          "id": "1522:2328",
+          "kind": "category",
+          "label": "None"
+        },
+        {
+          "id": "1522:2333",
+          "kind": "category",
+          "label": "Appliances"
+        },
+        {
+          "id": "1522:2338",
+          "kind": "category",
+          "label": "Maintenance"
+        },
+        {
+          "id": "1522:2343",
+          "kind": "category",
+          "label": "Manuals"
+        },
+        {
+          "id": "1522:2348",
+          "kind": "category",
+          "label": "Seasonal"
+        },
+        {
+          "id": "1522:2353",
+          "kind": "category",
+          "label": "Warranties"
+        }
+      ],
+      "savedLocation": "VariableID:1523:123"
+    },
+    {
+      "editor": "1442:430",
+      "save": "1442:516",
+      "space": "VariableID:1522:2359",
+      "categories": "VariableID:1522:2360",
+      "savedSpace": "VariableID:1522:2362",
+      "savedCategories": "VariableID:1522:2363",
+      "before": "VariableID:1522:2361",
+      "labels": [
+        "VariableID:1522:2370",
+        "VariableID:1522:2371",
+        "VariableID:1522:2372",
+        "VariableID:1522:2373",
+        "VariableID:1522:2374"
+      ],
+      "office": "VariableID:1522:2364",
+      "warranty": "VariableID:1522:2365",
+      "location": "VariableID:1501:185",
+      "rows": [
+        {
+          "id": "1522:2375",
+          "kind": "space",
+          "label": "\uff0b Create new \u203a"
+        },
+        {
+          "id": "1522:2380",
+          "kind": "space",
+          "label": "Unassigned"
+        },
+        {
+          "id": "1522:2385",
+          "kind": "space",
+          "label": "Garage"
+        },
+        {
+          "id": "1522:2390",
+          "kind": "space",
+          "label": "Hallway"
+        },
+        {
+          "id": "1522:2395",
+          "kind": "space",
+          "label": "Kitchen"
+        },
+        {
+          "id": "1522:2400",
+          "kind": "space",
+          "label": "Office"
+        },
+        {
+          "id": "1522:2406",
+          "kind": "category",
+          "label": "\uff0b Create new \u203a"
+        },
+        {
+          "id": "1522:2411",
+          "kind": "category",
+          "label": "None"
+        },
+        {
+          "id": "1522:2416",
+          "kind": "category",
+          "label": "Appliances"
+        },
+        {
+          "id": "1522:2421",
+          "kind": "category",
+          "label": "Maintenance"
+        },
+        {
+          "id": "1522:2426",
+          "kind": "category",
+          "label": "Manuals"
+        },
+        {
+          "id": "1522:2431",
+          "kind": "category",
+          "label": "Seasonal"
+        },
+        {
+          "id": "1522:2436",
+          "kind": "category",
+          "label": "Warranties"
+        }
+      ],
+      "savedLocation": "VariableID:1523:132"
+    },
+    {
+      "editor": "1442:572",
+      "save": "1442:658",
+      "space": "VariableID:1522:2442",
+      "categories": "VariableID:1522:2443",
+      "savedSpace": "VariableID:1522:2445",
+      "savedCategories": "VariableID:1522:2446",
+      "before": "VariableID:1522:2444",
+      "labels": [
+        "VariableID:1522:2453",
+        "VariableID:1522:2454",
+        "VariableID:1522:2455",
+        "VariableID:1522:2456",
+        "VariableID:1522:2457"
+      ],
+      "office": "VariableID:1522:2447",
+      "warranty": "VariableID:1522:2448",
+      "location": "VariableID:1501:187",
+      "rows": [
+        {
+          "id": "1522:2458",
+          "kind": "space",
+          "label": "\uff0b Create new \u203a"
+        },
+        {
+          "id": "1522:2463",
+          "kind": "space",
+          "label": "Unassigned"
+        },
+        {
+          "id": "1522:2468",
+          "kind": "space",
+          "label": "Garage"
+        },
+        {
+          "id": "1522:2473",
+          "kind": "space",
+          "label": "Hallway"
+        },
+        {
+          "id": "1522:2478",
+          "kind": "space",
+          "label": "Kitchen"
+        },
+        {
+          "id": "1522:2483",
+          "kind": "space",
+          "label": "Office"
+        },
+        {
+          "id": "1522:2489",
+          "kind": "category",
+          "label": "\uff0b Create new \u203a"
+        },
+        {
+          "id": "1522:2494",
+          "kind": "category",
+          "label": "None"
+        },
+        {
+          "id": "1522:2499",
+          "kind": "category",
+          "label": "Appliances"
+        },
+        {
+          "id": "1522:2504",
+          "kind": "category",
+          "label": "Maintenance"
+        },
+        {
+          "id": "1522:2509",
+          "kind": "category",
+          "label": "Manuals"
+        },
+        {
+          "id": "1522:2514",
+          "kind": "category",
+          "label": "Seasonal"
+        },
+        {
+          "id": "1522:2519",
+          "kind": "category",
+          "label": "Warranties"
+        }
+      ],
+      "savedLocation": "VariableID:1523:141"
+    },
+    {
+      "editor": "1442:714",
+      "save": "1442:800",
+      "space": "VariableID:1522:2525",
+      "categories": "VariableID:1522:2526",
+      "savedSpace": "VariableID:1522:2528",
+      "savedCategories": "VariableID:1522:2529",
+      "before": "VariableID:1522:2527",
+      "labels": [
+        "VariableID:1522:2536",
+        "VariableID:1522:2537",
+        "VariableID:1522:2538",
+        "VariableID:1522:2539",
+        "VariableID:1522:2540"
+      ],
+      "office": "VariableID:1522:2530",
+      "warranty": "VariableID:1522:2531",
+      "location": "VariableID:1501:189",
+      "rows": [
+        {
+          "id": "1522:2541",
+          "kind": "space",
+          "label": "\uff0b Create new \u203a"
+        },
+        {
+          "id": "1522:2546",
+          "kind": "space",
+          "label": "Unassigned"
+        },
+        {
+          "id": "1522:2551",
+          "kind": "space",
+          "label": "Garage"
+        },
+        {
+          "id": "1522:2556",
+          "kind": "space",
+          "label": "Hallway"
+        },
+        {
+          "id": "1522:2561",
+          "kind": "space",
+          "label": "Kitchen"
+        },
+        {
+          "id": "1522:2566",
+          "kind": "space",
+          "label": "Office"
+        },
+        {
+          "id": "1522:2572",
+          "kind": "category",
+          "label": "\uff0b Create new \u203a"
+        },
+        {
+          "id": "1522:2577",
+          "kind": "category",
+          "label": "None"
+        },
+        {
+          "id": "1522:2582",
+          "kind": "category",
+          "label": "Appliances"
+        },
+        {
+          "id": "1522:2587",
+          "kind": "category",
+          "label": "Maintenance"
+        },
+        {
+          "id": "1522:2592",
+          "kind": "category",
+          "label": "Manuals"
+        },
+        {
+          "id": "1522:2597",
+          "kind": "category",
+          "label": "Seasonal"
+        },
+        {
+          "id": "1522:2602",
+          "kind": "category",
+          "label": "Warranties"
+        }
+      ],
+      "savedLocation": "VariableID:1523:150"
+    },
+    {
+      "editor": "1442:856",
+      "save": "1442:942",
+      "space": "VariableID:1522:2608",
+      "categories": "VariableID:1522:2609",
+      "savedSpace": "VariableID:1522:2611",
+      "savedCategories": "VariableID:1522:2612",
+      "before": "VariableID:1522:2610",
+      "labels": [
+        "VariableID:1522:2619",
+        "VariableID:1522:2620",
+        "VariableID:1522:2621",
+        "VariableID:1522:2622",
+        "VariableID:1522:2623"
+      ],
+      "office": "VariableID:1522:2613",
+      "warranty": "VariableID:1522:2614",
+      "location": "VariableID:1501:191",
+      "rows": [
+        {
+          "id": "1522:2624",
+          "kind": "space",
+          "label": "\uff0b Create new \u203a"
+        },
+        {
+          "id": "1522:2629",
+          "kind": "space",
+          "label": "Unassigned"
+        },
+        {
+          "id": "1522:2634",
+          "kind": "space",
+          "label": "Garage"
+        },
+        {
+          "id": "1522:2639",
+          "kind": "space",
+          "label": "Hallway"
+        },
+        {
+          "id": "1522:2644",
+          "kind": "space",
+          "label": "Kitchen"
+        },
+        {
+          "id": "1522:2649",
+          "kind": "space",
+          "label": "Office"
+        },
+        {
+          "id": "1522:2655",
+          "kind": "category",
+          "label": "\uff0b Create new \u203a"
+        },
+        {
+          "id": "1522:2660",
+          "kind": "category",
+          "label": "None"
+        },
+        {
+          "id": "1522:2665",
+          "kind": "category",
+          "label": "Appliances"
+        },
+        {
+          "id": "1522:2670",
+          "kind": "category",
+          "label": "Maintenance"
+        },
+        {
+          "id": "1522:2675",
+          "kind": "category",
+          "label": "Manuals"
+        },
+        {
+          "id": "1522:2680",
+          "kind": "category",
+          "label": "Seasonal"
+        },
+        {
+          "id": "1522:2685",
+          "kind": "category",
+          "label": "Warranties"
+        }
+      ],
+      "savedLocation": "VariableID:1523:159"
+    },
+    {
+      "editor": "1442:998",
+      "save": "1442:1084",
+      "space": "VariableID:1522:2691",
+      "categories": "VariableID:1522:2692",
+      "savedSpace": "VariableID:1522:2694",
+      "savedCategories": "VariableID:1522:2695",
+      "before": "VariableID:1522:2693",
+      "labels": [
+        "VariableID:1522:2702",
+        "VariableID:1522:2703",
+        "VariableID:1522:2704",
+        "VariableID:1522:2705",
+        "VariableID:1522:2706"
+      ],
+      "office": "VariableID:1522:2696",
+      "warranty": "VariableID:1522:2697",
+      "location": "VariableID:1501:193",
+      "rows": [
+        {
+          "id": "1522:2707",
+          "kind": "space",
+          "label": "\uff0b Create new \u203a"
+        },
+        {
+          "id": "1522:2712",
+          "kind": "space",
+          "label": "Unassigned"
+        },
+        {
+          "id": "1522:2717",
+          "kind": "space",
+          "label": "Garage"
+        },
+        {
+          "id": "1522:2722",
+          "kind": "space",
+          "label": "Hallway"
+        },
+        {
+          "id": "1522:2727",
+          "kind": "space",
+          "label": "Kitchen"
+        },
+        {
+          "id": "1522:2732",
+          "kind": "space",
+          "label": "Office"
+        },
+        {
+          "id": "1522:2738",
+          "kind": "category",
+          "label": "\uff0b Create new \u203a"
+        },
+        {
+          "id": "1522:2743",
+          "kind": "category",
+          "label": "None"
+        },
+        {
+          "id": "1522:2748",
+          "kind": "category",
+          "label": "Appliances"
+        },
+        {
+          "id": "1522:2753",
+          "kind": "category",
+          "label": "Maintenance"
+        },
+        {
+          "id": "1522:2758",
+          "kind": "category",
+          "label": "Manuals"
+        },
+        {
+          "id": "1522:2763",
+          "kind": "category",
+          "label": "Seasonal"
+        },
+        {
+          "id": "1522:2768",
+          "kind": "category",
+          "label": "Warranties"
+        }
+      ],
+      "savedLocation": "VariableID:1523:168"
+    }
+  ]
+}

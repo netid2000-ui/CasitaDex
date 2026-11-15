@@ -1,0 +1,25 @@
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Light-home PASS
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Light-find PASS
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Light-photos PASS
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Light-settings PASS
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Light-storage PASS
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Dark-home PASS
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Dark-find PASS
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Dark-photos PASS
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Dark-settings PASS
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Dark-storage PASS
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+10 Android screen checks PASS; System appearance restored; isolated synthetic QA only

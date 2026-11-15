@@ -1,0 +1,20 @@
+{
+  "temporarilyMutatedAndRestoredVariableIds": [
+    "VariableID:1522:1447",
+    "VariableID:1522:1450"
+  ],
+  "fieldBounds": [
+    {
+      "id": "448:21",
+      "width": 320,
+      "height": 17,
+      "textAutoResize": "HEIGHT"
+    },
+    {
+      "id": "438:25",
+      "width": 289,
+      "height": 23,
+      "textAutoResize": "HEIGHT"
+    }
+  ]
+}

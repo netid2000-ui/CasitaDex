@@ -1,0 +1,38 @@
+{
+  "checks": 18192,
+  "failures": [],
+  "editorCount": 16,
+  "frames": 1218,
+  "destinations": 12517,
+  "missing": [],
+  "visibleDirectDarkToLight": [
+    {
+      "id": "490:24",
+      "name": "Light",
+      "source": "490:16",
+      "dest": "490:2",
+      "destName": "Appearance \u00b7 Light selected"
+    },
+    {
+      "id": "806:563",
+      "name": "Light",
+      "source": "806:555",
+      "dest": "806:430",
+      "destName": "Appearance \u00b7 Light \u00b7 Large text"
+    },
+    {
+      "id": "1366:90",
+      "name": "Light",
+      "source": "1366:80",
+      "dest": "490:2",
+      "destName": "Appearance \u00b7 Light selected"
+    },
+    {
+      "id": "1366:106",
+      "name": "Light",
+      "source": "1366:96",
+      "dest": "806:430",
+      "destName": "Appearance \u00b7 Light \u00b7 Large text"
+    }
+  ]
+}
