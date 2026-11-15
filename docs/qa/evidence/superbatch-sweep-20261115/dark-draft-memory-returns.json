@@ -1,0 +1,472 @@
+{
+  "draft": {
+    "createdVariableIds": [
+      "VariableID:1514:10"
+    ],
+    "originVariable": "VariableID:1514:10",
+    "mutatedNodeIds": [
+      "901:84",
+      "901:129",
+      "901:181",
+      "1244:43",
+      "1251:101",
+      "1440:259",
+      "1440:323",
+      "1440:395",
+      "917:220",
+      "944:67",
+      "944:133",
+      "944:199",
+      "952:4",
+      "952:85"
+    ],
+    "entries": [
+      [
+        "901:84",
+        "901:43"
+      ],
+      [
+        "901:129",
+        "901:91"
+      ],
+      [
+        "901:181",
+        "901:136"
+      ],
+      [
+        "1244:43",
+        "1244:2"
+      ],
+      [
+        "1251:101",
+        "1251:56"
+      ],
+      [
+        "1440:259",
+        "1440:208"
+      ],
+      [
+        "1440:323",
+        "1440:276"
+      ],
+      [
+        "1440:395",
+        "1440:340"
+      ]
+    ],
+    "cancelNodes": [
+      "917:220",
+      "944:67",
+      "944:133",
+      "944:199",
+      "952:4",
+      "952:85"
+    ],
+    "preserved": "Save payload and destination, nested editor/picker returns, and light-theme flows unchanged. New origin variable is assigned only at storage entry."
+  },
+  "hallway": {
+    "mutatedNodeIds": [
+      "931:46",
+      "931:66",
+      "931:82",
+      "931:86",
+      "1513:93",
+      "1513:116",
+      "1513:132",
+      "1513:136",
+      "1513:288",
+      "1513:311",
+      "1513:327",
+      "1513:331",
+      "1513:483",
+      "1513:506",
+      "1513:522",
+      "1513:526",
+      "1513:678",
+      "1513:701",
+      "1513:717",
+      "1513:721",
+      "1001:56",
+      "1001:89",
+      "1001:122",
+      "1001:155",
+      "1001:188",
+      "1009:4",
+      "1009:37",
+      "1009:70",
+      "1009:125",
+      "1009:314",
+      "1009:375",
+      "1009:436",
+      "1009:469",
+      "1009:502",
+      "1009:535",
+      "1009:568",
+      "1009:601",
+      "1009:634",
+      "1079:4",
+      "1079:8",
+      "1079:66",
+      "1079:119",
+      "1079:213",
+      "1079:266",
+      "1079:272",
+      "1079:325",
+      "1079:331",
+      "1079:388",
+      "1079:436",
+      "1079:498",
+      "1079:560",
+      "1079:622",
+      "1079:684",
+      "1079:753",
+      "1079:806",
+      "1079:812",
+      "1079:869",
+      "1079:882",
+      "1079:939",
+      "1079:1311",
+      "1079:1368",
+      "1079:1480",
+      "1079:1542",
+      "1079:1792",
+      "1086:235",
+      "1086:246"
+    ],
+    "entryMappings": [
+      {
+        "origin": "931:40",
+        "node": "931:46",
+        "label": "Edit"
+      },
+      {
+        "origin": "931:40",
+        "node": "931:66",
+        "label": "View All Photos (3)"
+      },
+      {
+        "origin": "931:40",
+        "node": "931:82",
+        "label": "Share memory  \u203a"
+      },
+      {
+        "origin": "931:40",
+        "node": "931:86",
+        "label": "More memory actions \u203a"
+      },
+      {
+        "origin": "1513:87",
+        "node": "1513:93",
+        "label": "Edit"
+      },
+      {
+        "origin": "1513:87",
+        "node": "1513:116",
+        "label": "View All Photos (3)"
+      },
+      {
+        "origin": "1513:87",
+        "node": "1513:132",
+        "label": "Share memory  \u203a"
+      },
+      {
+        "origin": "1513:87",
+        "node": "1513:136",
+        "label": "More memory actions \u203a"
+      },
+      {
+        "origin": "1513:282",
+        "node": "1513:288",
+        "label": "Edit"
+      },
+      {
+        "origin": "1513:282",
+        "node": "1513:311",
+        "label": "View All Photos (3)"
+      },
+      {
+        "origin": "1513:282",
+        "node": "1513:327",
+        "label": "Share memory  \u203a"
+      },
+      {
+        "origin": "1513:282",
+        "node": "1513:331",
+        "label": "More memory actions \u203a"
+      },
+      {
+        "origin": "1513:477",
+        "node": "1513:483",
+        "label": "Edit"
+      },
+      {
+        "origin": "1513:477",
+        "node": "1513:506",
+        "label": "View All Photos (3)"
+      },
+      {
+        "origin": "1513:477",
+        "node": "1513:522",
+        "label": "Share memory  \u203a"
+      },
+      {
+        "origin": "1513:477",
+        "node": "1513:526",
+        "label": "More memory actions \u203a"
+      },
+      {
+        "origin": "1513:672",
+        "node": "1513:678",
+        "label": "Edit"
+      },
+      {
+        "origin": "1513:672",
+        "node": "1513:701",
+        "label": "View All Photos (3)"
+      },
+      {
+        "origin": "1513:672",
+        "node": "1513:717",
+        "label": "Share memory  \u203a"
+      },
+      {
+        "origin": "1513:672",
+        "node": "1513:721",
+        "label": "More memory actions \u203a"
+      }
+    ],
+    "addedConditionalBranches": 230,
+    "origins": [
+      "931:40",
+      "1513:87",
+      "1513:282",
+      "1513:477",
+      "1513:672"
+    ],
+    "scope": "Dark Hallway Edit, viewer, Share and More origins. Reminder flow remains separate."
+  },
+  "reminder": {
+    "createdVariableIds": [
+      "VariableID:1514:91"
+    ],
+    "originVariable": "VariableID:1514:91",
+    "entries": [
+      {
+        "node": "931:77",
+        "origin": "931:40"
+      },
+      {
+        "node": "1355:75",
+        "origin": "1355:38"
+      },
+      {
+        "node": "1355:163",
+        "origin": "1355:126"
+      },
+      {
+        "node": "1513:127",
+        "origin": "1513:87"
+      },
+      {
+        "node": "1513:322",
+        "origin": "1513:282"
+      },
+      {
+        "node": "1513:517",
+        "origin": "1513:477"
+      },
+      {
+        "node": "1513:712",
+        "origin": "1513:672"
+      }
+    ],
+    "mutatedNodeIds": [
+      "931:77",
+      "1355:75",
+      "1355:163",
+      "1513:127",
+      "1513:322",
+      "1513:517",
+      "1513:712",
+      "1355:235",
+      "1355:239",
+      "1358:106",
+      "1358:110"
+    ],
+    "returnNodes": [
+      "1355:235",
+      "1355:239",
+      "1358:106",
+      "1358:110"
+    ],
+    "scope": "Save and Cancel in regular/expanded linked reminder examples now preserve exact memory origin. Native reminder persistence not retested."
+  },
+  "conditionalCorrection": {
+    "mutatedNodeIds": [
+      "917:220",
+      "944:67",
+      "944:133",
+      "944:199",
+      "952:4",
+      "952:85",
+      "1001:56",
+      "1001:89",
+      "1001:122",
+      "1001:155",
+      "1001:188",
+      "1009:4",
+      "1009:37",
+      "1009:70",
+      "1009:125",
+      "1009:314",
+      "1009:375",
+      "1009:436",
+      "1009:469",
+      "1009:502",
+      "1009:535",
+      "1009:568",
+      "1009:601",
+      "1009:634",
+      "1079:4",
+      "1079:8",
+      "1079:66",
+      "1079:119",
+      "1079:213",
+      "1079:266",
+      "1079:272",
+      "1079:325",
+      "1079:331",
+      "1079:388",
+      "1079:436",
+      "1079:498",
+      "1079:560",
+      "1079:622",
+      "1079:684",
+      "1079:753",
+      "1079:806",
+      "1079:812",
+      "1079:869",
+      "1079:882",
+      "1079:939",
+      "1079:1311",
+      "1079:1368",
+      "1079:1480",
+      "1079:1542",
+      "1079:1792",
+      "1086:235",
+      "1086:246",
+      "1355:235",
+      "1355:239",
+      "1358:106",
+      "1358:110"
+    ],
+    "reason": "Figma serializes CONDITIONAL as IF/ELSE; multiple conditioned blocks were not retained. Each origin now has a separate conditional action with empty ELSE, matching the existing working pattern. Restored original 1355:38 case."
+  },
+  "validation": {
+    "assertions": 352,
+    "failures": [],
+    "summaries": [
+      {
+        "group": "draft",
+        "assertions": 48
+      },
+      {
+        "group": "Hallway",
+        "assertions": 276
+      },
+      {
+        "group": "reminder",
+        "assertions": 28
+      }
+    ],
+    "pass": true,
+    "remainingVisible": 14,
+    "hidden": 8,
+    "edges": [
+      {
+        "source": "931:2",
+        "node": "931:28",
+        "label": "View All Photos (3)",
+        "destination": "812:195"
+      },
+      {
+        "source": "931:94",
+        "node": "931:120",
+        "label": "View All Photos (3)",
+        "destination": "812:229"
+      },
+      {
+        "source": "975:264",
+        "node": "975:278",
+        "label": "Value",
+        "destination": "626:267"
+      },
+      {
+        "source": "986:85",
+        "node": "986:99",
+        "label": "Value",
+        "destination": "626:267"
+      },
+      {
+        "source": "1000:298",
+        "node": "1000:305",
+        "label": "Resume unfinished photo memory",
+        "destination": "719:144"
+      },
+      {
+        "source": "1000:298",
+        "node": "1000:329",
+        "label": "Hallway air filter",
+        "destination": "729:2"
+      },
+      {
+        "source": "1000:368",
+        "node": "1000:403",
+        "label": "Recently added",
+        "destination": "724:2"
+      },
+      {
+        "source": "1000:368",
+        "node": "1000:406",
+        "label": "Hallway air filter",
+        "destination": "729:116"
+      },
+      {
+        "source": "1244:2",
+        "node": "1244:27",
+        "label": "Open Water heater \u00b7 Photo 1 \u00b7 4.2 MB \u00b7 Active",
+        "destination": "812:75"
+      },
+      {
+        "source": "1244:2",
+        "node": "1244:32",
+        "label": "Open Hallway air filter \u00b7 Photo 1 \u00b7 3.8 MB \u00b7 Active",
+        "destination": "812:92"
+      },
+      {
+        "source": "1244:2",
+        "node": "1244:37",
+        "label": "Open Washer \u00b7 Photo 2 \u00b7 2.7 MB \u00b7 Archived",
+        "destination": "812:109"
+      },
+      {
+        "source": "1251:56",
+        "node": "1251:85",
+        "label": "Open Water heater \u00b7 Photo 1 \u00b7 4.2 MB \u00b7 Active",
+        "destination": "812:75"
+      },
+      {
+        "source": "1251:56",
+        "node": "1251:90",
+        "label": "Open Hallway air filter \u00b7 Photo 1 \u00b7 3.8 MB \u00b7 Active",
+        "destination": "812:92"
+      },
+      {
+        "source": "1251:56",
+        "node": "1251:95",
+        "label": "Open Washer \u00b7 Photo 2 \u00b7 2.7 MB \u00b7 Archived",
+        "destination": "812:109"
+      }
+    ]
+  }
+}
