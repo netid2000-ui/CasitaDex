@@ -10,7 +10,7 @@ test('iOS queues changed status while Android retains live-region ownership',()=
   const calls=[];let previous;
   const mocks={react:{useEffect:(effect,deps)=>{if(previous!==deps[0]){previous=deps[0];effect();}}},'react-native':{Platform:{OS:os},AccessibilityInfo:{announceForAccessibilityWithOptions:(text,options)=>calls.push([text,options.queue])}}};
   const module={exports:{}};vm.runInNewContext(code,{module,exports:module.exports,require:id=>mocks[id]});
-  for(const text of ['', 'Saved on this device.', 'Saved on this device.', ' ', 'Could not save.'])module.exports.useStatusAnnouncement(text);
-  assert.deepEqual(calls,os==='ios'?[['Saved on this device.',true],['Could not save.',true]]:[]);
+  for(const text of ['', 'Saved on this device.', 'Saved on this device.', ' ', 'Saved on this device.', 'Could not save.'])module.exports.useStatusAnnouncement(text);
+  assert.deepEqual(calls,os==='ios'?[['Saved on this device.',true],['Saved on this device.',true],['Could not save.',true]]:[]);
  }
 });

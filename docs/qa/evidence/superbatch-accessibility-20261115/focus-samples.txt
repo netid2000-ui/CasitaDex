@@ -1,0 +1,436 @@
+FOCUSED_NOW nil
+FOCUSED_NOW nil
+FOCUSED_NOW nil
+FOCUSED_NOW nil
+FOCUSED_NOW nil
+FOCUSED_NOW nil
+FOCUSED_NOW nil
+FOCUSED_NOW nil
+FOCUSED_NOW nil
+FOCUSED_NOW nil
+FOCUSED_NOW Cancel
+FOCUSED_NOW Save & return to details
+FOCUSED_NOW Edit Memory
+FOCUSED_NOW Memory name (Required)
+FOCUSED_NOW Memory name (Required)
+FOCUSED_NOW Space
+FOCUSED_NOW Choose Space
+FOCUSED_NOW Categories
+FOCUSED_NOW Choose Categories
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Edit Location
+FOCUSED_NOW Edit Location
+FOCUSED_NOW Done editing Location
+FOCUSED_NOW Done editing Location
+FOCUSED_NOW Edit Notes
+FOCUSED_NOW Edit Reference
+FOCUSED_NOW Photos · 1/5
+FOCUSED_NOW View photo 1 full screen
+FOCUSED_NOW + Add Photo
+FOCUSED_NOW Up to five photos per memory.
+FOCUSED_NOW Home
+FOCUSED_NOW Photos
+FOCUSED_NOW Reminders
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW Find
+FOCUSED_NOW nil
+FOCUSED_NOW nil
+FOCUSED_NOW nil
+FOCUSED_NOW nil
+FOCUSED_NOW nil
+FOCUSED_NOW nil
+FOCUSED_NOW nil
+FOCUSED_NOW nil
+FOCUSED_NOW nil
+FOCUSED_NOW nil
+FOCUSED_NOW Cancel
+FOCUSED_NOW Save & return to details
+FOCUSED_NOW Edit Memory
+FOCUSED_NOW Memory name (Required)
+FOCUSED_NOW Memory name (Required)
+FOCUSED_NOW Space
+FOCUSED_NOW Choose Space
+FOCUSED_NOW Categories
+FOCUSED_NOW Choose Categories
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Edit Location
+FOCUSED_NOW Edit Location
+FOCUSED_NOW Done editing Location
+FOCUSED_NOW Done editing Location
+FOCUSED_NOW Done editing Location
+FOCUSED_NOW Done editing Location
+FOCUSED_NOW Done editing Location
+FOCUSED_NOW Done editing Location
+FOCUSED_NOW Done editing Location
+FOCUSED_NOW Done editing Location
+FOCUSED_NOW Done editing Location
+FOCUSED_NOW Done editing Location
+FOCUSED_NOW Done editing Location
+FOCUSED_NOW Done editing Location
+FOCUSED_NOW Done editing Location
+FOCUSED_NOW Edit Location
+FOCUSED_NOW Edit Location
+FOCUSED_NOW Edit Location
+FOCUSED_NOW Edit Location
+FOCUSED_NOW Edit Location
+FOCUSED_NOW Edit Location
+FOCUSED_NOW Edit Location
+FOCUSED_NOW Edit Location
+FOCUSED_NOW Edit Location
+FOCUSED_NOW Edit Location
+FOCUSED_NOW Edit Location
+FOCUSED_NOW Edit Location
+FOCUSED_NOW Edit Location
+FOCUSED_NOW Edit Location
+FOCUSED_NOW Edit Location
+FOCUSED_NOW Edit Location
+FOCUSED_NOW nil
+FOCUSED_NOW nil
+FOCUSED_NOW nil
+FOCUSED_NOW nil
+FOCUSED_NOW nil
+FOCUSED_NOW nil
+FOCUSED_NOW nil
+FOCUSED_NOW nil
+FOCUSED_NOW nil
+FOCUSED_NOW nil
+FOCUSED_NOW nil
+FOCUSED_NOW nil
+FOCUSED_NOW nil
+FOCUSED_NOW nil
+FOCUSED_NOW nil
+FOCUSED_NOW nil
+FOCUSED_NOW nil
+FOCUSED_NOW nil
+FOCUSED_NOW nil
+FOCUSED_NOW nil
+FOCUSED_NOW nil
+FOCUSED_NOW nil
+FOCUSED_NOW nil
+FOCUSED_NOW Cancel
+FOCUSED_NOW Cancel
+FOCUSED_NOW Edit Location
+FOCUSED_NOW Edit Location
+FOCUSED_NOW Edit Location
+FOCUSED_NOW Edit Location
+FOCUSED_NOW Edit Location
+FOCUSED_NOW Edit Location
+FOCUSED_NOW Edit Location
+FOCUSED_NOW Edit Location
+FOCUSED_NOW Edit Location
+FOCUSED_NOW Edit Location
+FOCUSED_NOW Edit Location
+FOCUSED_NOW Done editing Location
+FOCUSED_NOW Location
+FOCUSED_NOW Location
+FOCUSED_NOW Location
+FOCUSED_NOW Location
+FOCUSED_NOW Location
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description
+FOCUSED_NOW Description

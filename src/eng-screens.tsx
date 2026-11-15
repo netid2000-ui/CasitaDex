@@ -39,7 +39,7 @@ function useEng(){
   },[]);
   useFocusEffect(useCallback(()=>{alive.current=true;void refresh();},[refresh]));
   async function run(task:(store:EngStore)=>Promise<unknown>,success="Saved on this device."){
-    if(lock.current)return false;lock.current=true;setBusy(true);
+    if(lock.current)return false;lock.current=true;setBusy(true);setStatus("");
     try{await task(await getEngStore());await refresh();if(alive.current&&success)setStatus(success);return true;}
     catch(e){if(alive.current)setStatus(message(e));return false;}
     finally{lock.current=false;if(alive.current)setBusy(false);}

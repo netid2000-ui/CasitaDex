@@ -1,0 +1,75 @@
+internal import Expo
+import React
+import ReactAppDependencyProvider
+
+@main
+class AppDelegate: ExpoAppDelegate, ExpoReactNativeFactoryProvider {
+  var window: UIWindow?
+
+  var reactNativeDelegate: ExpoReactNativeFactoryDelegate?
+  var reactNativeFactory: RCTReactNativeFactory?
+
+  public override func application(
+    _ application: UIApplication,
+    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
+  ) -> Bool {
+    NotificationCenter.default.addObserver(self, selector: #selector(recordAccessibility(_:)), name: UIAccessibility.elementFocusedNotification, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(recordAccessibility(_:)), name: UIAccessibility.announcementDidFinishNotification, object: nil)
+    Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(sampleFocus), userInfo: nil, repeats: true)
+    let delegate = ReactNativeDelegate()
+    let factory = ExpoReactNativeFactory(delegate: delegate)
+    delegate.dependencyProvider = RCTAppDependencyProvider()
+
+    reactNativeDelegate = delegate
+    reactNativeFactory = factory
+
+    return super.application(application, didFinishLaunchingWithOptions: launchOptions)
+  }
+
+  @objc func sampleFocus() {
+    let element = UIAccessibility.focusedElement(using: nil) as? NSObject
+    let row = "FOCUSED_NOW " + (element?.accessibilityLabel ?? "nil") + "\n"
+    let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("focus-samples.txt")
+    if let h = try? FileHandle(forWritingTo: url) { h.seekToEndOfFile(); h.write(Data(row.utf8)); try? h.close() }
+    else { try? row.write(to: url, atomically: true, encoding: .utf8) }
+  }
+  @objc func recordAccessibility(_ note: Notification) {
+    let element = note.userInfo?[UIAccessibility.focusedElementUserInfoKey] as? NSObject
+    let row = "AX_EVENT " + note.name.rawValue + " label=" + (element?.accessibilityLabel ?? "nil") + " info=" + String(describing: note.userInfo) + "\n"
+    let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("accessibility-events.txt")
+    if let h = try? FileHandle(forWritingTo: url) { h.seekToEndOfFile(); h.write(Data(row.utf8)); try? h.close() }
+    else { try? row.write(to: url, atomically: true, encoding: .utf8) }
+  }
+
+  // Linking API
+  public override func application(
+    _ app: UIApplication,
+    open url: URL,
+    options: [UIApplication.OpenURLOptionsKey: Any] = [:]
+  ) -> Bool {
+    return super.application(app, open: url, options: options) || RCTLinkingManager.application(app, open: url, options: options)
+  }
+
+  // Universal Links
+  public override func application(
+    _ application: UIApplication,
+    continue userActivity: NSUserActivity,
+    restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void
+  ) -> Bool {
+    let result = RCTLinkingManager.application(application, continue: userActivity, restorationHandler: restorationHandler)
+    return super.application(application, continue: userActivity, restorationHandler: restorationHandler) || result
+  }
+}
+
+class ReactNativeDelegate: ExpoReactNativeFactoryDelegate {
+  // Extension point for config-plugins
+
+  override func sourceURL(for bridge: RCTBridge) -> URL? {
+    // needed to return the correct URL for expo-dev-client.
+    bridge.bundleURL ?? bundleURL()
+  }
+
+  override func bundleURL() -> URL? {
+    return Bundle.main.url(forResource: "main", withExtension: "jsbundle")
+  }
+}

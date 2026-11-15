@@ -983,23 +983,44 @@ extension PlusRecoveryUITests {
  @MainActor func testInlineFocusProbe20261115() async throws {
   continueAfterFailure=false
   XCTAssertEqual(ProcessInfo.processInfo.environment["SIMULATOR_UDID"],"189233C4-A360-49D7-AB2A-C9A7F02B9060")
+  if XCUIDevice.shared.voiceOverService.isEnabled {try XCUIDevice.shared.voiceOverService.disable()}
   let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa");app.launch()
   app.open(URL(string:"casitadex-plusstoreqa://card?id=sb26qa_007")!)
   let edit=app.buttons["Edit memory"];XCTAssertTrue(edit.waitForExistence(timeout:10));edit.tap()
   let vo=XCUIDevice.shared.voiceOverService;let wasEnabled=vo.isEnabled
   defer {if !wasEnabled {try? vo.disable()}}
   try vo.enable()
-  for _ in 0..<20 {if try vo.currentSpeech().utterance.contains("Edit Location"){break};_ = try vo.moveForward()}
-  print("FOCUS_BEFORE: \(try vo.currentSpeech().utterance)")
-  app.buttons["Edit Location"].doubleTap()
-  try await Task.sleep(nanoseconds:500_000_000)
-  print("FOCUS_OPEN: \(try vo.currentSpeech().utterance)")
-  let done=app.buttons["Done editing Location"];XCTAssertTrue(done.exists);done.doubleTap()
-  try await Task.sleep(nanoseconds:500_000_000)
-  let closedSpeech=try vo.currentSpeech().utterance
-  print("FOCUS_CLOSED: \(closedSpeech)")
-  XCTAssertTrue(closedSpeech.contains("Edit Location"))
+  for field in ["Location","Notes","Reference"] {
+   let trigger=app.buttons["Edit \(field)"]
+   revealEditorControl(trigger,in:app)
+   trigger.tap();trigger.doubleTap()
+   let input=app.textViews[field];XCTAssertTrue(input.exists)
+   print("OPENED_FIELD: \(field)")
+   try await Task.sleep(nanoseconds:2_000_000_000)
+   let done=app.buttons["Done editing \(field)"]
+   revealEditorControl(done,in:app);done.tap();done.doubleTap()
+   XCTAssertTrue(app.buttons["Edit \(field)"].exists)
+   XCTAssertFalse(done.exists)
+   print("CLOSED_FIELD: \(field)")
+   try await Task.sleep(nanoseconds:2_000_000_000)
+  }
   if !wasEnabled {try vo.disable()}
   app.buttons["Cancel"].tap();app.open(URL(string:"casitadex-plusstoreqa://")!)
+ }
+}
+
+extension PlusRecoveryUITests {
+ @available(iOS 27.0, *)
+ @MainActor func testAnnouncementCompletion20261115() async throws {
+  XCTAssertEqual(ProcessInfo.processInfo.environment["SIMULATOR_UDID"],"189233C4-A360-49D7-AB2A-C9A7F02B9060")
+  let vo=XCUIDevice.shared.voiceOverService
+  defer {try? vo.disable()}
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa");app.launch()
+  try vo.enable()
+  app.open(URL(string:"casitadex-plusstoreqa://qa-announcements")!)
+  try await Task.sleep(nanoseconds:20_000_000_000)
+  print("ANNOUNCEMENT_COMPLETIONS: \(app.staticTexts["announcement-results"].label)")
+  XCTAssertEqual(app.staticTexts["announcement-results"].label,"Saved on this device.:true|Saved on this device.:true|Could not save. Your saved memory is unchanged.:true")
+  try vo.disable();app.open(URL(string:"casitadex-plusstoreqa://")!)
  }
 }
