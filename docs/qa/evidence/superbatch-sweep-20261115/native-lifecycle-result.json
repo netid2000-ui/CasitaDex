@@ -1,0 +1,18 @@
+{
+  "result": "PASS",
+  "package": "com.designsbyfa.casitadex.refreshqa",
+  "device": "emulator-5554",
+  "checks": [
+    "text memory saved",
+    "Find reopened saved memory",
+    "More opened",
+    "Archive direct action",
+    "Return to Active",
+    "delete confirmation cancelled",
+    "delete confirmed",
+    "Restore memory",
+    "restart retained active memory"
+  ],
+  "photos": "not exercised",
+  "limitation": "Android emulator; iOS and full app parity not claimed"
+}

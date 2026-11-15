@@ -1,0 +1,1014 @@
+{
+  "navigation": {
+    "frames": 1183,
+    "edges": 11332,
+    "missing": [],
+    "crossCount": 1699,
+    "cross": [
+      {
+        "source": "480:2",
+        "name": "Settings \u00b7 Warm Editorial",
+        "node": "480:9",
+        "label": "Appearance",
+        "destination": "1366:80"
+      },
+      {
+        "source": "482:2",
+        "name": "Settings \u00b7 Preferences collapsed",
+        "node": "482:9",
+        "label": "Appearance",
+        "destination": "1366:80"
+      },
+      {
+        "source": "482:82",
+        "name": "Settings \u00b7 Memory management collapsed",
+        "node": "482:89",
+        "label": "Appearance",
+        "destination": "1366:80"
+      },
+      {
+        "source": "482:162",
+        "name": "Settings \u00b7 Preferences + Memory management collapsed",
+        "node": "482:169",
+        "label": "Appearance",
+        "destination": "1366:80"
+      },
+      {
+        "source": "482:242",
+        "name": "Settings \u00b7 Data protection collapsed",
+        "node": "482:249",
+        "label": "Appearance",
+        "destination": "1366:80"
+      },
+      {
+        "source": "482:322",
+        "name": "Settings \u00b7 Preferences + Data protection collapsed",
+        "node": "482:329",
+        "label": "Appearance",
+        "destination": "1366:80"
+      },
+      {
+        "source": "482:402",
+        "name": "Settings \u00b7 Memory management + Data protection collapsed",
+        "node": "482:409",
+        "label": "Appearance",
+        "destination": "1366:80"
+      },
+      {
+        "source": "482:482",
+        "name": "Settings \u00b7 Preferences + Memory management + Data protection collapsed",
+        "node": "482:489",
+        "label": "Appearance",
+        "destination": "1366:80"
+      },
+      {
+        "source": "487:2",
+        "name": "Settings \u00b7 Appearance",
+        "node": "487:8",
+        "label": "System",
+        "destination": "1366:80"
+      },
+      {
+        "source": "487:2",
+        "name": "Settings \u00b7 Appearance",
+        "node": "487:14",
+        "label": "Dark",
+        "destination": "490:16"
+      },
+      {
+        "source": "487:25",
+        "name": "Settings \u00b7 Accessibility",
+        "node": "487:34",
+        "label": "Display appearance",
+        "destination": "1366:80"
+      },
+      {
+        "source": "487:45",
+        "name": "Settings \u00b7 Spaces & categories",
+        "node": "487:46",
+        "label": "\u2039  Settings",
+        "destination": "806:113"
+      },
+      {
+        "source": "487:45",
+        "name": "Settings \u00b7 Spaces & categories",
+        "node": "487:46",
+        "label": "\u2039  Settings",
+        "destination": "806:459"
+      },
+      {
+        "source": "487:45",
+        "name": "Settings \u00b7 Spaces & categories",
+        "node": "487:46",
+        "label": "\u2039  Settings",
+        "destination": "855:698"
+      },
+      {
+        "source": "487:45",
+        "name": "Settings \u00b7 Spaces & categories",
+        "node": "487:46",
+        "label": "\u2039  Settings",
+        "destination": "855:794"
+      },
+      {
+        "source": "487:45",
+        "name": "Settings \u00b7 Spaces & categories",
+        "node": "487:46",
+        "label": "\u2039  Settings",
+        "destination": "855:890"
+      },
+      {
+        "source": "487:45",
+        "name": "Settings \u00b7 Spaces & categories",
+        "node": "487:46",
+        "label": "\u2039  Settings",
+        "destination": "855:986"
+      },
+      {
+        "source": "487:45",
+        "name": "Settings \u00b7 Spaces & categories",
+        "node": "487:46",
+        "label": "\u2039  Settings",
+        "destination": "855:1082"
+      },
+      {
+        "source": "487:45",
+        "name": "Settings \u00b7 Spaces & categories",
+        "node": "487:46",
+        "label": "\u2039  Settings",
+        "destination": "855:1178"
+      },
+      {
+        "source": "487:45",
+        "name": "Settings \u00b7 Spaces & categories",
+        "node": "487:46",
+        "label": "\u2039  Settings",
+        "destination": "855:1274"
+      },
+      {
+        "source": "487:45",
+        "name": "Settings \u00b7 Spaces & categories",
+        "node": "487:46",
+        "label": "\u2039  Settings",
+        "destination": "855:2786"
+      },
+      {
+        "source": "487:45",
+        "name": "Settings \u00b7 Spaces & categories",
+        "node": "487:46",
+        "label": "\u2039  Settings",
+        "destination": "855:2882"
+      },
+      {
+        "source": "487:45",
+        "name": "Settings \u00b7 Spaces & categories",
+        "node": "487:46",
+        "label": "\u2039  Settings",
+        "destination": "855:2978"
+      },
+      {
+        "source": "487:45",
+        "name": "Settings \u00b7 Spaces & categories",
+        "node": "487:46",
+        "label": "\u2039  Settings",
+        "destination": "855:3074"
+      },
+      {
+        "source": "487:45",
+        "name": "Settings \u00b7 Spaces & categories",
+        "node": "487:46",
+        "label": "\u2039  Settings",
+        "destination": "855:3170"
+      },
+      {
+        "source": "487:45",
+        "name": "Settings \u00b7 Spaces & categories",
+        "node": "487:46",
+        "label": "\u2039  Settings",
+        "destination": "855:3266"
+      },
+      {
+        "source": "487:45",
+        "name": "Settings \u00b7 Spaces & categories",
+        "node": "487:46",
+        "label": "\u2039  Settings",
+        "destination": "855:3362"
+      },
+      {
+        "source": "487:97",
+        "name": "Settings \u00b7 Backup & restore",
+        "node": "487:98",
+        "label": "\u2039  Settings",
+        "destination": "806:113"
+      },
+      {
+        "source": "487:97",
+        "name": "Settings \u00b7 Backup & restore",
+        "node": "487:98",
+        "label": "\u2039  Settings",
+        "destination": "806:459"
+      },
+      {
+        "source": "487:97",
+        "name": "Settings \u00b7 Backup & restore",
+        "node": "487:98",
+        "label": "\u2039  Settings",
+        "destination": "855:698"
+      },
+      {
+        "source": "487:97",
+        "name": "Settings \u00b7 Backup & restore",
+        "node": "487:98",
+        "label": "\u2039  Settings",
+        "destination": "855:794"
+      },
+      {
+        "source": "487:97",
+        "name": "Settings \u00b7 Backup & restore",
+        "node": "487:98",
+        "label": "\u2039  Settings",
+        "destination": "855:890"
+      },
+      {
+        "source": "487:97",
+        "name": "Settings \u00b7 Backup & restore",
+        "node": "487:98",
+        "label": "\u2039  Settings",
+        "destination": "855:986"
+      },
+      {
+        "source": "487:97",
+        "name": "Settings \u00b7 Backup & restore",
+        "node": "487:98",
+        "label": "\u2039  Settings",
+        "destination": "855:1082"
+      },
+      {
+        "source": "487:97",
+        "name": "Settings \u00b7 Backup & restore",
+        "node": "487:98",
+        "label": "\u2039  Settings",
+        "destination": "855:1178"
+      },
+      {
+        "source": "487:97",
+        "name": "Settings \u00b7 Backup & restore",
+        "node": "487:98",
+        "label": "\u2039  Settings",
+        "destination": "855:1274"
+      },
+      {
+        "source": "487:97",
+        "name": "Settings \u00b7 Backup & restore",
+        "node": "487:98",
+        "label": "\u2039  Settings",
+        "destination": "855:2786"
+      },
+      {
+        "source": "487:97",
+        "name": "Settings \u00b7 Backup & restore",
+        "node": "487:98",
+        "label": "\u2039  Settings",
+        "destination": "855:2882"
+      },
+      {
+        "source": "487:97",
+        "name": "Settings \u00b7 Backup & restore",
+        "node": "487:98",
+        "label": "\u2039  Settings",
+        "destination": "855:2978"
+      },
+      {
+        "source": "487:97",
+        "name": "Settings \u00b7 Backup & restore",
+        "node": "487:98",
+        "label": "\u2039  Settings",
+        "destination": "855:3074"
+      },
+      {
+        "source": "487:97",
+        "name": "Settings \u00b7 Backup & restore",
+        "node": "487:98",
+        "label": "\u2039  Settings",
+        "destination": "855:3170"
+      },
+      {
+        "source": "487:97",
+        "name": "Settings \u00b7 Backup & restore",
+        "node": "487:98",
+        "label": "\u2039  Settings",
+        "destination": "855:3266"
+      },
+      {
+        "source": "487:97",
+        "name": "Settings \u00b7 Backup & restore",
+        "node": "487:98",
+        "label": "\u2039  Settings",
+        "destination": "855:3362"
+      },
+      {
+        "source": "487:126",
+        "name": "Settings \u00b7 Privacy & storage",
+        "node": "487:127",
+        "label": "\u2039  Settings",
+        "destination": "806:113"
+      },
+      {
+        "source": "487:126",
+        "name": "Settings \u00b7 Privacy & storage",
+        "node": "487:127",
+        "label": "\u2039  Settings",
+        "destination": "806:459"
+      },
+      {
+        "source": "487:126",
+        "name": "Settings \u00b7 Privacy & storage",
+        "node": "487:127",
+        "label": "\u2039  Settings",
+        "destination": "855:698"
+      },
+      {
+        "source": "487:126",
+        "name": "Settings \u00b7 Privacy & storage",
+        "node": "487:127",
+        "label": "\u2039  Settings",
+        "destination": "855:794"
+      },
+      {
+        "source": "487:126",
+        "name": "Settings \u00b7 Privacy & storage",
+        "node": "487:127",
+        "label": "\u2039  Settings",
+        "destination": "855:890"
+      },
+      {
+        "source": "487:126",
+        "name": "Settings \u00b7 Privacy & storage",
+        "node": "487:127",
+        "label": "\u2039  Settings",
+        "destination": "855:986"
+      },
+      {
+        "source": "487:126",
+        "name": "Settings \u00b7 Privacy & storage",
+        "node": "487:127",
+        "label": "\u2039  Settings",
+        "destination": "855:1082"
+      }
+    ],
+    "global": [
+      {
+        "id": "482:242",
+        "name": "Settings \u00b7 Data protection collapsed"
+      },
+      {
+        "id": "487:2",
+        "name": "Settings \u00b7 Appearance"
+      },
+      {
+        "id": "487:25",
+        "name": "Settings \u00b7 Accessibility"
+      },
+      {
+        "id": "487:45",
+        "name": "Settings \u00b7 Spaces & categories"
+      },
+      {
+        "id": "487:97",
+        "name": "Settings \u00b7 Backup & restore"
+      },
+      {
+        "id": "487:126",
+        "name": "Settings \u00b7 Privacy & storage"
+      },
+      {
+        "id": "487:149",
+        "name": "Settings \u00b7 Privacy & security"
+      },
+      {
+        "id": "487:166",
+        "name": "Settings \u00b7 About CasitaDex"
+      },
+      {
+        "id": "523:2",
+        "name": "Find \u00b7 Recently Deleted"
+      },
+      {
+        "id": "523:46",
+        "name": "Find \u00b7 Archived Memories"
+      },
+      {
+        "id": "636:17",
+        "name": "Find \u00b7 After archive"
+      },
+      {
+        "id": "636:115",
+        "name": "Find \u00b7 After delete"
+      },
+      {
+        "id": "646:52",
+        "name": "Find \u00b7 Verified \u00b7 History"
+      },
+      {
+        "id": "678:2",
+        "name": "Find \u00b7 Hallway"
+      },
+      {
+        "id": "678:45",
+        "name": "Find \u00b7 Garage"
+      },
+      {
+        "id": "678:88",
+        "name": "Find \u00b7 Maintenance"
+      },
+      {
+        "id": "678:131",
+        "name": "Find \u00b7 Manuals"
+      },
+      {
+        "id": "682:2",
+        "name": "Find \u00b7 Hallway and Maintenance"
+      },
+      {
+        "id": "682:44",
+        "name": "Find \u00b7 Hallway and Manuals"
+      },
+      {
+        "id": "806:2",
+        "name": "Settings \u00b7 Light \u00b7 System text"
+      },
+      {
+        "id": "806:113",
+        "name": "Settings \u00b7 Dark \u00b7 System text"
+      },
+      {
+        "id": "806:224",
+        "name": "Settings \u00b7 System \u00b7 Large"
+      },
+      {
+        "id": "806:334",
+        "name": "Settings \u00b7 Light \u00b7 Large"
+      },
+      {
+        "id": "806:459",
+        "name": "Settings \u00b7 Dark \u00b7 Large"
+      },
+      {
+        "id": "855:2",
+        "name": "Settings \u00b7 Light \u00b7 System text \u00b7 Collapsed 1"
+      },
+      {
+        "id": "855:98",
+        "name": "Settings \u00b7 Light \u00b7 System text \u00b7 Collapsed 2"
+      },
+      {
+        "id": "855:194",
+        "name": "Settings \u00b7 Light \u00b7 System text \u00b7 Collapsed 3"
+      },
+      {
+        "id": "855:290",
+        "name": "Settings \u00b7 Light \u00b7 System text \u00b7 Collapsed 4"
+      },
+      {
+        "id": "855:386",
+        "name": "Settings \u00b7 Light \u00b7 System text \u00b7 Collapsed 5"
+      },
+      {
+        "id": "855:482",
+        "name": "Settings \u00b7 Light \u00b7 System text \u00b7 Collapsed 6"
+      },
+      {
+        "id": "855:578",
+        "name": "Settings \u00b7 Light \u00b7 System text \u00b7 Collapsed 7"
+      },
+      {
+        "id": "855:698",
+        "name": "Settings \u00b7 Dark \u00b7 System text \u00b7 Collapsed 1"
+      },
+      {
+        "id": "855:794",
+        "name": "Settings \u00b7 Dark \u00b7 System text \u00b7 Collapsed 2"
+      },
+      {
+        "id": "855:890",
+        "name": "Settings \u00b7 Dark \u00b7 System text \u00b7 Collapsed 3"
+      },
+      {
+        "id": "855:986",
+        "name": "Settings \u00b7 Dark \u00b7 System text \u00b7 Collapsed 4"
+      },
+      {
+        "id": "855:1082",
+        "name": "Settings \u00b7 Dark \u00b7 System text \u00b7 Collapsed 5"
+      },
+      {
+        "id": "855:1178",
+        "name": "Settings \u00b7 Dark \u00b7 System text \u00b7 Collapsed 6"
+      },
+      {
+        "id": "855:1274",
+        "name": "Settings \u00b7 Dark \u00b7 System text \u00b7 Collapsed 7"
+      },
+      {
+        "id": "855:1394",
+        "name": "Settings \u00b7 System \u00b7 Large \u00b7 Collapsed 1"
+      },
+      {
+        "id": "855:1490",
+        "name": "Settings \u00b7 System \u00b7 Large \u00b7 Collapsed 2"
+      },
+      {
+        "id": "855:1586",
+        "name": "Settings \u00b7 System \u00b7 Large \u00b7 Collapsed 3"
+      },
+      {
+        "id": "855:1682",
+        "name": "Settings \u00b7 System \u00b7 Large \u00b7 Collapsed 4"
+      },
+      {
+        "id": "855:1778",
+        "name": "Settings \u00b7 System \u00b7 Large \u00b7 Collapsed 5"
+      },
+      {
+        "id": "855:1874",
+        "name": "Settings \u00b7 System \u00b7 Large \u00b7 Collapsed 6"
+      },
+      {
+        "id": "855:1970",
+        "name": "Settings \u00b7 System \u00b7 Large \u00b7 Collapsed 7"
+      },
+      {
+        "id": "855:2090",
+        "name": "Settings \u00b7 Light \u00b7 Large \u00b7 Collapsed 1"
+      },
+      {
+        "id": "855:2186",
+        "name": "Settings \u00b7 Light \u00b7 Large \u00b7 Collapsed 2"
+      },
+      {
+        "id": "855:2282",
+        "name": "Settings \u00b7 Light \u00b7 Large \u00b7 Collapsed 3"
+      },
+      {
+        "id": "855:2378",
+        "name": "Settings \u00b7 Light \u00b7 Large \u00b7 Collapsed 4"
+      },
+      {
+        "id": "855:2474",
+        "name": "Settings \u00b7 Light \u00b7 Large \u00b7 Collapsed 5"
+      },
+      {
+        "id": "855:2570",
+        "name": "Settings \u00b7 Light \u00b7 Large \u00b7 Collapsed 6"
+      },
+      {
+        "id": "855:2666",
+        "name": "Settings \u00b7 Light \u00b7 Large \u00b7 Collapsed 7"
+      },
+      {
+        "id": "855:2786",
+        "name": "Settings \u00b7 Dark \u00b7 Large \u00b7 Collapsed 1"
+      },
+      {
+        "id": "855:2882",
+        "name": "Settings \u00b7 Dark \u00b7 Large \u00b7 Collapsed 2"
+      },
+      {
+        "id": "855:2978",
+        "name": "Settings \u00b7 Dark \u00b7 Large \u00b7 Collapsed 3"
+      },
+      {
+        "id": "855:3074",
+        "name": "Settings \u00b7 Dark \u00b7 Large \u00b7 Collapsed 4"
+      },
+      {
+        "id": "855:3170",
+        "name": "Settings \u00b7 Dark \u00b7 Large \u00b7 Collapsed 5"
+      },
+      {
+        "id": "855:3266",
+        "name": "Settings \u00b7 Dark \u00b7 Large \u00b7 Collapsed 6"
+      },
+      {
+        "id": "855:3362",
+        "name": "Settings \u00b7 Dark \u00b7 Large \u00b7 Collapsed 7"
+      },
+      {
+        "id": "875:2",
+        "name": "Settings \u00b7 Backup & restore \u00b7 Dark flow"
+      }
+    ]
+  },
+  "fixes": {
+    "mutatedNodeIds": [
+      "1000:375",
+      "1244:7",
+      "1244:19",
+      "1251:65",
+      "1251:77"
+    ],
+    "checks": [
+      {
+        "id": "1000:375",
+        "oldId": "719:42",
+        "newId": "1351:223",
+        "changed": 1,
+        "verified": true
+      },
+      {
+        "id": "1244:7",
+        "oldId": "547:2",
+        "newId": "901:43",
+        "changed": 1,
+        "verified": true
+      },
+      {
+        "id": "1244:19",
+        "oldId": "547:30",
+        "newId": "901:136",
+        "changed": 1,
+        "verified": true
+      },
+      {
+        "id": "1251:65",
+        "oldId": "547:2",
+        "newId": "901:43",
+        "changed": 1,
+        "verified": true
+      },
+      {
+        "id": "1251:77",
+        "oldId": "547:30",
+        "newId": "901:136",
+        "changed": 1,
+        "verified": true
+      }
+    ]
+  },
+  "remaining": {
+    "scope": "Current Warm Editorial page; direct dark-fill to light-fill navigation, excluding explicit theme selections. Conditional routes require separate evaluation.",
+    "count": 45,
+    "edges": [
+      {
+        "source": "901:43",
+        "sourceName": "Privacy & storage \u00b7 Storage measured \u00b7 Dark flow",
+        "node": "901:68",
+        "label": "Open Water heater \u00b7 Photo 1 \u00b7 4.2 MB \u00b7 Active",
+        "destination": "812:75",
+        "destinationName": "Water heater \u00b7 Saved photo preview \u00b7 Storage 1"
+      },
+      {
+        "source": "901:43",
+        "sourceName": "Privacy & storage \u00b7 Storage measured \u00b7 Dark flow",
+        "node": "901:73",
+        "label": "Open Hallway air filter \u00b7 Photo 1 \u00b7 3.8 MB \u00b7 Active",
+        "destination": "812:92",
+        "destinationName": "Hallway air filter \u00b7 Saved photo preview \u00b7 Storage 1"
+      },
+      {
+        "source": "901:43",
+        "sourceName": "Privacy & storage \u00b7 Storage measured \u00b7 Dark flow",
+        "node": "901:78",
+        "label": "Open Washer \u00b7 Photo 2 \u00b7 2.7 MB \u00b7 Archived",
+        "destination": "812:109",
+        "destinationName": "Washer \u00b7 Saved photo preview \u00b7 Storage 1"
+      },
+      {
+        "source": "901:43",
+        "sourceName": "Privacy & storage \u00b7 Storage measured \u00b7 Dark flow",
+        "node": "901:84",
+        "label": "Review unfinished draft and its photos",
+        "destination": "809:3",
+        "destinationName": "Resume photo draft \u00b7 From Privacy & storage \u00b7 Storage measured"
+      },
+      {
+        "source": "901:91",
+        "sourceName": "Privacy & storage \u00b7 Photo integrity checked \u00b7 Dark flow",
+        "node": "901:113",
+        "label": "Open Water heater \u00b7 Photo 1 \u00b7 4.2 MB \u00b7 Active",
+        "destination": "812:135",
+        "destinationName": "Water heater \u00b7 Saved photo preview \u00b7 Storage 2"
+      },
+      {
+        "source": "901:91",
+        "sourceName": "Privacy & storage \u00b7 Photo integrity checked \u00b7 Dark flow",
+        "node": "901:118",
+        "label": "Open Hallway air filter \u00b7 Photo 1 \u00b7 3.8 MB \u00b7 Active",
+        "destination": "812:152",
+        "destinationName": "Hallway air filter \u00b7 Saved photo preview \u00b7 Storage 2"
+      },
+      {
+        "source": "901:91",
+        "sourceName": "Privacy & storage \u00b7 Photo integrity checked \u00b7 Dark flow",
+        "node": "901:123",
+        "label": "Open Washer \u00b7 Photo 2 \u00b7 2.7 MB \u00b7 Archived",
+        "destination": "812:169",
+        "destinationName": "Washer \u00b7 Saved photo preview \u00b7 Storage 2"
+      },
+      {
+        "source": "901:91",
+        "sourceName": "Privacy & storage \u00b7 Photo integrity checked \u00b7 Dark flow",
+        "node": "901:129",
+        "label": "Review unfinished draft and its photos",
+        "destination": "809:62",
+        "destinationName": "Resume photo draft \u00b7 From Privacy & storage \u00b7 Photo integrity checked"
+      },
+      {
+        "source": "931:2",
+        "sourceName": "Memory Details \u00b7 Water heater \u00b7 From storage 3 \u00b7 Dark flow",
+        "node": "931:8",
+        "label": "Edit",
+        "destination": "448:44",
+        "destinationName": "Edit Memory \u00b7 from Photos"
+      },
+      {
+        "source": "931:2",
+        "sourceName": "Memory Details \u00b7 Water heater \u00b7 From storage 3 \u00b7 Dark flow",
+        "node": "931:28",
+        "label": "View All Photos (3)",
+        "destination": "812:195",
+        "destinationName": "Water heater \u00b7 Saved photo preview \u00b7 Storage 3"
+      },
+      {
+        "source": "931:2",
+        "sourceName": "Memory Details \u00b7 Water heater \u00b7 From storage 3 \u00b7 Dark flow",
+        "node": "931:32",
+        "label": "Set Reminder  \u203a",
+        "destination": "461:36",
+        "destinationName": "Add Reminder \u00b7 Linked \u00b7 from Photos"
+      },
+      {
+        "source": "931:2",
+        "sourceName": "Memory Details \u00b7 Water heater \u00b7 From storage 3 \u00b7 Dark flow",
+        "node": "931:34",
+        "label": "Share memory  \u203a",
+        "destination": "657:187",
+        "destinationName": "Share Memory \u00b7 Photos"
+      },
+      {
+        "source": "931:2",
+        "sourceName": "Memory Details \u00b7 Water heater \u00b7 From storage 3 \u00b7 Dark flow",
+        "node": "931:36",
+        "label": "More memory actions \u203a",
+        "destination": "636:223",
+        "destinationName": "Memory actions \u00b7 Photos"
+      },
+      {
+        "source": "931:40",
+        "sourceName": "Memory Details \u00b7 Hallway air filter \u00b7 From storage 3 \u00b7 Dark flow",
+        "node": "931:46",
+        "label": "Edit",
+        "destination": "448:44",
+        "destinationName": "Edit Memory \u00b7 from Photos"
+      },
+      {
+        "source": "931:40",
+        "sourceName": "Memory Details \u00b7 Hallway air filter \u00b7 From storage 3 \u00b7 Dark flow",
+        "node": "931:66",
+        "label": "View All Photos (3)",
+        "destination": "818:920",
+        "destinationName": "Photo Viewer \u00b7 Hallway air filter \u00b7 From storage state 4"
+      },
+      {
+        "source": "931:40",
+        "sourceName": "Memory Details \u00b7 Hallway air filter \u00b7 From storage 3 \u00b7 Dark flow",
+        "node": "931:77",
+        "label": "Set Reminder  \u203a",
+        "destination": "461:36",
+        "destinationName": "Add Reminder \u00b7 Linked \u00b7 from Photos"
+      },
+      {
+        "source": "931:40",
+        "sourceName": "Memory Details \u00b7 Hallway air filter \u00b7 From storage 3 \u00b7 Dark flow",
+        "node": "931:82",
+        "label": "Share memory  \u203a",
+        "destination": "657:187",
+        "destinationName": "Share Memory \u00b7 Photos"
+      },
+      {
+        "source": "931:40",
+        "sourceName": "Memory Details \u00b7 Hallway air filter \u00b7 From storage 3 \u00b7 Dark flow",
+        "node": "931:86",
+        "label": "More memory actions \u203a",
+        "destination": "636:223",
+        "destinationName": "Memory actions \u00b7 Photos"
+      },
+      {
+        "source": "931:94",
+        "sourceName": "Memory Details \u00b7 Washer \u00b7 From storage 3 \u00b7 Dark flow",
+        "node": "931:100",
+        "label": "Edit",
+        "destination": "448:44",
+        "destinationName": "Edit Memory \u00b7 from Photos"
+      },
+      {
+        "source": "931:94",
+        "sourceName": "Memory Details \u00b7 Washer \u00b7 From storage 3 \u00b7 Dark flow",
+        "node": "931:120",
+        "label": "View All Photos (3)",
+        "destination": "812:229",
+        "destinationName": "Washer \u00b7 Saved photo preview \u00b7 Storage 3"
+      },
+      {
+        "source": "931:94",
+        "sourceName": "Memory Details \u00b7 Washer \u00b7 From storage 3 \u00b7 Dark flow",
+        "node": "931:124",
+        "label": "Set Reminder  \u203a",
+        "destination": "461:36",
+        "destinationName": "Add Reminder \u00b7 Linked \u00b7 from Photos"
+      },
+      {
+        "source": "931:94",
+        "sourceName": "Memory Details \u00b7 Washer \u00b7 From storage 3 \u00b7 Dark flow",
+        "node": "931:126",
+        "label": "Share memory  \u203a",
+        "destination": "657:187",
+        "destinationName": "Share Memory \u00b7 Photos"
+      },
+      {
+        "source": "931:94",
+        "sourceName": "Memory Details \u00b7 Washer \u00b7 From storage 3 \u00b7 Dark flow",
+        "node": "931:128",
+        "label": "More memory actions \u203a",
+        "destination": "636:223",
+        "destinationName": "Memory actions \u00b7 Photos"
+      },
+      {
+        "source": "975:264",
+        "sourceName": "Add Reminder \u00b7 Standalone \u00b7 from Home \u00b7 Dark \u00b7 Home navigation",
+        "node": "975:278",
+        "label": "Value",
+        "destination": "626:267",
+        "destinationName": "Add Reminder \u00b7 Filled \u00b7 from Home"
+      },
+      {
+        "source": "986:85",
+        "sourceName": "Add Reminder \u00b7 Standalone \u00b7 Dark \u00b7 More options \u00b7 Review",
+        "node": "986:99",
+        "label": "Value",
+        "destination": "626:267",
+        "destinationName": "Add Reminder \u00b7 Filled \u00b7 from Home"
+      },
+      {
+        "source": "1000:298",
+        "sourceName": "Photos \u00b7 Compact \u00b7 Dark \u00b7 Review",
+        "node": "1000:305",
+        "label": "Resume unfinished photo memory",
+        "destination": "719:144",
+        "destinationName": "Resume Photo Memory \u00b7 From Photos Compact"
+      },
+      {
+        "source": "1000:298",
+        "sourceName": "Photos \u00b7 Compact \u00b7 Dark \u00b7 Review",
+        "node": "1000:329",
+        "label": "Hallway air filter",
+        "destination": "729:2",
+        "destinationName": "Memory Details \u00b7 From Photos \u00b7 Compact"
+      },
+      {
+        "source": "1000:368",
+        "sourceName": "Photos \u00b7 Grid Sort options \u00b7 Dark \u00b7 Review",
+        "node": "1000:403",
+        "label": "Recently added",
+        "destination": "724:2",
+        "destinationName": "Photos \u00b7 Grid \u00b7 Recently added"
+      },
+      {
+        "source": "1000:368",
+        "sourceName": "Photos \u00b7 Grid Sort options \u00b7 Dark \u00b7 Review",
+        "node": "1000:406",
+        "label": "Hallway air filter",
+        "destination": "729:116",
+        "destinationName": "Memory Details \u00b7 From Photos \u00b7 Grid \u00b7 Sort options"
+      },
+      {
+        "source": "1244:2",
+        "sourceName": "Privacy & storage \u00b7 Scalable photos \u00b7 PROPOSED example",
+        "node": "1244:27",
+        "label": "Open Water heater \u00b7 Photo 1 \u00b7 4.2 MB \u00b7 Active",
+        "destination": "812:75",
+        "destinationName": "Water heater \u00b7 Saved photo preview \u00b7 Storage 1"
+      },
+      {
+        "source": "1244:2",
+        "sourceName": "Privacy & storage \u00b7 Scalable photos \u00b7 PROPOSED example",
+        "node": "1244:32",
+        "label": "Open Hallway air filter \u00b7 Photo 1 \u00b7 3.8 MB \u00b7 Active",
+        "destination": "812:92",
+        "destinationName": "Hallway air filter \u00b7 Saved photo preview \u00b7 Storage 1"
+      },
+      {
+        "source": "1244:2",
+        "sourceName": "Privacy & storage \u00b7 Scalable photos \u00b7 PROPOSED example",
+        "node": "1244:37",
+        "label": "Open Washer \u00b7 Photo 2 \u00b7 2.7 MB \u00b7 Archived",
+        "destination": "812:109",
+        "destinationName": "Washer \u00b7 Saved photo preview \u00b7 Storage 1"
+      },
+      {
+        "source": "1244:2",
+        "sourceName": "Privacy & storage \u00b7 Scalable photos \u00b7 PROPOSED example",
+        "node": "1244:43",
+        "label": "Review unfinished draft and its photos",
+        "destination": "809:3",
+        "destinationName": "Resume photo draft \u00b7 From Privacy & storage \u00b7 Storage measured"
+      },
+      {
+        "source": "1251:56",
+        "sourceName": "Photo storage \u00b7 Return to unfinished photo memory \u00b7 PROPOSED",
+        "node": "1251:85",
+        "label": "Open Water heater \u00b7 Photo 1 \u00b7 4.2 MB \u00b7 Active",
+        "destination": "812:75",
+        "destinationName": "Water heater \u00b7 Saved photo preview \u00b7 Storage 1"
+      },
+      {
+        "source": "1251:56",
+        "sourceName": "Photo storage \u00b7 Return to unfinished photo memory \u00b7 PROPOSED",
+        "node": "1251:90",
+        "label": "Open Hallway air filter \u00b7 Photo 1 \u00b7 3.8 MB \u00b7 Active",
+        "destination": "812:92",
+        "destinationName": "Hallway air filter \u00b7 Saved photo preview \u00b7 Storage 1"
+      },
+      {
+        "source": "1251:56",
+        "sourceName": "Photo storage \u00b7 Return to unfinished photo memory \u00b7 PROPOSED",
+        "node": "1251:95",
+        "label": "Open Washer \u00b7 Photo 2 \u00b7 2.7 MB \u00b7 Archived",
+        "destination": "812:109",
+        "destinationName": "Washer \u00b7 Saved photo preview \u00b7 Storage 1"
+      },
+      {
+        "source": "1251:56",
+        "sourceName": "Photo storage \u00b7 Return to unfinished photo memory \u00b7 PROPOSED",
+        "node": "1251:101",
+        "label": "Review unfinished draft and its photos",
+        "destination": "809:3",
+        "destinationName": "Resume photo draft \u00b7 From Privacy & storage \u00b7 Storage measured"
+      },
+      {
+        "source": "1440:208",
+        "sourceName": "Privacy & storage \u00b7 Storage measured \u00b7 Dark flow \u00b7 Inline repeat result",
+        "node": "1440:243",
+        "label": "Open Water heater \u00b7 Photo 1 \u00b7 4.2 MB \u00b7 Active",
+        "destination": "812:75",
+        "destinationName": "Water heater \u00b7 Saved photo preview \u00b7 Storage 1"
+      },
+      {
+        "source": "1440:208",
+        "sourceName": "Privacy & storage \u00b7 Storage measured \u00b7 Dark flow \u00b7 Inline repeat result",
+        "node": "1440:248",
+        "label": "Open Hallway air filter \u00b7 Photo 1 \u00b7 3.8 MB \u00b7 Active",
+        "destination": "812:92",
+        "destinationName": "Hallway air filter \u00b7 Saved photo preview \u00b7 Storage 1"
+      },
+      {
+        "source": "1440:208",
+        "sourceName": "Privacy & storage \u00b7 Storage measured \u00b7 Dark flow \u00b7 Inline repeat result",
+        "node": "1440:253",
+        "label": "Open Washer \u00b7 Photo 2 \u00b7 2.7 MB \u00b7 Archived",
+        "destination": "812:109",
+        "destinationName": "Washer \u00b7 Saved photo preview \u00b7 Storage 1"
+      },
+      {
+        "source": "1440:208",
+        "sourceName": "Privacy & storage \u00b7 Storage measured \u00b7 Dark flow \u00b7 Inline repeat result",
+        "node": "1440:259",
+        "label": "Review unfinished draft and its photos",
+        "destination": "809:3",
+        "destinationName": "Resume photo draft \u00b7 From Privacy & storage \u00b7 Storage measured"
+      },
+      {
+        "source": "1440:276",
+        "sourceName": "Privacy & storage \u00b7 Photo integrity checked \u00b7 Dark flow \u00b7 Inline repeat result",
+        "node": "1440:307",
+        "label": "Open Water heater \u00b7 Photo 1 \u00b7 4.2 MB \u00b7 Active",
+        "destination": "812:135",
+        "destinationName": "Water heater \u00b7 Saved photo preview \u00b7 Storage 2"
+      },
+      {
+        "source": "1440:276",
+        "sourceName": "Privacy & storage \u00b7 Photo integrity checked \u00b7 Dark flow \u00b7 Inline repeat result",
+        "node": "1440:312",
+        "label": "Open Hallway air filter \u00b7 Photo 1 \u00b7 3.8 MB \u00b7 Active",
+        "destination": "812:152",
+        "destinationName": "Hallway air filter \u00b7 Saved photo preview \u00b7 Storage 2"
+      },
+      {
+        "source": "1440:276",
+        "sourceName": "Privacy & storage \u00b7 Photo integrity checked \u00b7 Dark flow \u00b7 Inline repeat result",
+        "node": "1440:317",
+        "label": "Open Washer \u00b7 Photo 2 \u00b7 2.7 MB \u00b7 Archived",
+        "destination": "812:169",
+        "destinationName": "Washer \u00b7 Saved photo preview \u00b7 Storage 2"
+      },
+      {
+        "source": "1440:276",
+        "sourceName": "Privacy & storage \u00b7 Photo integrity checked \u00b7 Dark flow \u00b7 Inline repeat result",
+        "node": "1440:323",
+        "label": "Review unfinished draft and its photos",
+        "destination": "809:62",
+        "destinationName": "Resume photo draft \u00b7 From Privacy & storage \u00b7 Photo integrity checked"
+      }
+    ]
+  }
+}

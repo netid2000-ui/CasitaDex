@@ -1,0 +1,54 @@
+✔ taxonomy choices have distinct spoken names, selected values and expansion state (21.0435ms)
+✔ collapsed optional fields expose their value or None without opening the editor (5.484834ms)
+✔ Add Memory uses approved editorial fields with photo-first variant (0.409042ms)
+✔ Edit Memory labels its content Description and exposes photo controls (0.539125ms)
+✔ optional field labels receive the full row at enlarged text sizes (0.121792ms)
+✔ Add opts into Android keyboard reveal without altering iOS keyboard handling (0.093458ms)
+(node:52194) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/eng-find.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+ENG search 0 memories 0ms
+ENG search 1 memories 0ms
+ENG search 500 memories 2ms
+ENG search 5000 memories 7ms
+✔ multiword prefix search ANDs across fields and labels; identifiers remain exact and exact titles rank first (2.655667ms)
+✔ category ANY, uncategorized, confidence, reminder, attachment and lifecycle filters compose honestly (0.160291ms)
+✔ Home limits reminders to two oldest due active obligations and recents to two with stable legacy fallback (3.924042ms)
+✔ search index and bounded result production work at 0, 1, 500 and 5000 memories (10.36625ms)
+✔ duplicate advisory includes trash, exact normalized title/answer, matching photos, but does not flag title alone (0.40275ms)
+✔ dimension queries normalize x, multiplication signs and spacing in stored values and queries (0.702375ms)
+(node:52195) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/eng-find.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ management route selects only its requested lifecycle; normal Find remains active (1.754125ms)
+✔ dimension normalization works inside Archived and Recently Deleted scopes (0.135041ms)
+✔ archiving, deletion and restoration move a memory between scoped searches without duplicating it (0.9185ms)
+✔ returning from details retains each lifecycle search and scroll without leaking between scopes (0.200292ms)
+✔ create cancel does not persist; failed save keeps entered name and editor (33.813958ms)
+✔ rename uses captured revision and cancel returns to selected details (8.68525ms)
+✔ removal requires review and confirmation; cancellation is read-only (5.965583ms)
+✔ category create uses its own taxonomy and Save disables blank names (5.551666ms)
+✔ Android Back keeps unsaved label edits (4.906917ms)
+✔ location management scopes creation to the selected Space and retains invalid edits (4.475083ms)
+(node:52197) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/src/eng-store.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/sb40-photo-gesture-integration-20261111/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ legacy locations index without changing text, photos, history or lifecycle; restart is stable (5.970375ms)
+✔ same names allowed in different Spaces; duplicates and stale rename cannot write (1.418625ms)
+✔ rename/removal update only scoped assignments including draft; review and stale removal are safe (1.444541ms)
+✔ backup and text restore preserve unused locations; old backup derives locations; space removal preserves location text (1.044125ms)
+✔ invalid registry rejected; failed storage commit preserves data and previous save (0.795917ms)
+✔ moving a memory preserves its location text and adds the new scoped choice (0.851ms)
+✔ picker sorts and searches only within Space; cancel never changes assignment (30.274625ms)
+✔ None clears assignment; failed creation retains name; Cancel discards unsaved new label (6.571333ms)
+ℹ tests 30
+ℹ suites 0
+ℹ pass 30
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 199.195625
