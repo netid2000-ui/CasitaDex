@@ -947,3 +947,33 @@ extension PlusRecoveryUITests {
   XCTAssertTrue(row.isHittable);app.buttons["Cancel"].tap()
  }
 }
+
+// Read-only semantics and real speech traversal of the memory editor.
+extension PlusRecoveryUITests {
+ @available(iOS 27.0, *)
+ @MainActor func testEditorVoiceOverLabels20261115() async throws {
+  continueAfterFailure=false
+  XCTAssertEqual(ProcessInfo.processInfo.environment["SIMULATOR_UDID"],"189233C4-A360-49D7-AB2A-C9A7F02B9060")
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa");app.launch()
+  app.open(URL(string:"casitadex-plusstoreqa://card?id=sb26qa_007")!)
+  let edit=app.buttons["Edit memory"];XCTAssertTrue(edit.waitForExistence(timeout:10));edit.tap()
+  let space=app.buttons.matching(NSPredicate(format:"label == %@","Choose Space")).firstMatch
+  let categories=app.buttons.matching(NSPredicate(format:"label == %@","Choose Categories")).firstMatch
+  XCTAssertTrue(space.exists);XCTAssertTrue(categories.exists)
+  XCTAssertFalse((space.value as? String ?? "").isEmpty)
+  XCTAssertFalse((categories.value as? String ?? "").isEmpty)
+  let vo=XCUIDevice.shared.voiceOverService;let wasEnabled=vo.isEnabled
+  defer {if !wasEnabled {try? vo.disable()}}
+  try vo.enable()
+  var utterances:[String]=[]
+  for index in 0..<32 {
+   let speech=try vo.moveForward().utterance
+   utterances.append(speech);print("EDITOR_VOICEOVER[\(index)]: \(speech)")
+  }
+  XCTAssertTrue(utterances.contains{$0.contains("Choose Space")})
+  XCTAssertTrue(utterances.contains{$0.contains("Choose Categories")})
+  if !wasEnabled {try vo.disable()}
+  app.buttons["Cancel"].tap()
+  app.open(URL(string:"casitadex-plusstoreqa://")!)
+ }
+}
