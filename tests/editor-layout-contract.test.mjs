@@ -7,9 +7,9 @@ test('Add Memory uses approved editorial fields with photo-first variant',()=>{
  for(const section of ['label="Memory name (Required)"','>Photos · {form?.photos.length','label="Space"','label="Categories"','label="Description"','<LocationPicker','(["notes","source"] as const)'])assert.ok(add.includes(section),section);
  assert.ok(!add.includes('More options"'));
  assert.ok(!add.includes('>VERIFICATION STATUS</Copy>'), 'Simplicity A.3 keeps optional verification off the initial Add form');
- assert.ok(add.includes('"Browse Files"'));
- assert.ok(add.includes('"Choose from Library"'));
- assert.ok(add.includes('"Take Photo"'));
+ assert.ok(add.includes('<PhotoSourceButton'));
+ const chooser=readFileSync(new URL('../src/photo-source-button.tsx',import.meta.url),'utf8');
+ for(const label of ['Browse Files','Choose from Library','Take Photo','Cancel'])assert.ok(chooser.includes('label="'+label+'"'),label);
 });
 test('Edit Memory labels its content Description and exposes photo controls',()=>{
  const edit=source.slice(source.indexOf('export function EngDetail()'));
