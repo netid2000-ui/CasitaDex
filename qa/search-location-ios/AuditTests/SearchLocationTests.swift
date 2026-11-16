@@ -51,3 +51,36 @@ final class SearchLocationTests: XCTestCase {
  }
 
 }
+
+final class KeyboardFieldTests: XCTestCase {
+ @MainActor func testCoreEntryFieldsStayAboveKeyboard() throws {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa");app.launch()
+  func tap(_ label:String){
+   let e=app.buttons.matching(identifier:label).firstMatch
+   XCTAssertTrue(e.waitForExistence(timeout:12),label)
+   for _ in 0..<12 {if e.isHittable {break};app.swipeUp()}
+   e.tap()
+  }
+  func probe(_ label:String){
+   let e=app.descendants(matching:.any).matching(NSPredicate(format:"(elementType == %d OR elementType == %d) AND label == %@",XCUIElement.ElementType.textField.rawValue,XCUIElement.ElementType.textView.rawValue,label)).firstMatch
+   XCTAssertTrue(e.waitForExistence(timeout:10),label)
+   for _ in 0..<12 {if e.isHittable {break};app.swipeUp()}
+   let before=e.value as? String;e.tap()
+   XCTAssertTrue(app.keyboards.firstMatch.waitForExistence(timeout:8),"Keyboard: "+label)
+   let visible=NSPredicate{_,_ in e.frame.maxY <= app.keyboards.firstMatch.frame.minY && e.frame.minY>=0}
+   expectation(for:visible,evaluatedWith:nil);waitForExpectations(timeout:5)
+   XCTAssertEqual(e.value as? String,before)
+   let shot=XCTAttachment(screenshot:app.screenshot());shot.name="keyboard-"+label;shot.lifetime = .keepAlways;add(shot)
+   app.scrollViews.firstMatch.swipeDown()
+  }
+  tap("Home");tap("Add Memory")
+  probe("Memory name (Required)");probe("Description")
+  tap("Edit Notes");probe("Notes");tap("Done editing Notes")
+  tap("Edit Reference");probe("Reference");tap("Done editing Reference")
+  tap("Choose Location");probe("Search locations");tap("Create new Location");probe("Location name");tap("Cancel");tap("Cancel")
+  tap("Home");tap("Find");probe("Search memories")
+  tap("Reminders");tap("Add Reminder ›");probe("Reminder title (Required)");tap("More options ▾");probe("Notes");tap("Cancel")
+  tap("Home")
+ }
+}

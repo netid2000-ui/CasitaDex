@@ -203,7 +203,7 @@ export function Page({
   restoreReady = true,
   onScrollY,
   stickyActions,
-  androidKeyboardAware = false,
+  androidKeyboardAware = true,
   children,
 }: {
   title: string;
@@ -250,10 +250,10 @@ export function Page({
     <ScrollView
       ref={scroll}
       keyboardDismissMode="on-drag"
-      onLayout={event=>{viewport.current=event.nativeEvent.layout.height;restorePosition();}}
+      onLayout={event=>{viewport.current=event.nativeEvent.layout.height;restorePosition();if(keyboardTop.current!==null)revealFocusedInput();}}
       scrollEventThrottle={100}
       onScroll={event=>{scrollOffset.current=event.nativeEvent.contentOffset.y;if(restored.current)onScrollY?.(scrollOffset.current);}}
-      onContentSizeChange={(_width,height)=>{contentHeight.current=height;restorePosition();}}
+      onContentSizeChange={(_width,height)=>{contentHeight.current=height;restorePosition();if(keyboardTop.current!==null)revealFocusedInput();}}
       keyboardShouldPersistTaps="always"
       automaticallyAdjustKeyboardInsets
       onFocus={androidKeyboardAware&&Platform.OS==="android"?revealFocusedInput:undefined}

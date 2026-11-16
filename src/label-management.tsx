@@ -68,6 +68,8 @@ export function LabelManagement({e}:{e:LabelEngine}){
   <View style={{alignSelf:"flex-start"}}>{editing?<Button compact editorial variant="quiet" label="Cancel" disabled={e.busy} icon={<MemoryEditorIcon name="cancel"/>} onPress={back}/>:<Button compact editorial variant="quiet" label={mode==="list"?"‹ Settings":mode==="removal"?"‹ Label details":"‹ Manage labels"} disabled={e.busy} onPress={()=>{if(mode==="removal"){setMode("detail");setImpact(null);e.setStatus("");}else back();}}/>}</View>
   <Copy kind="title" accessibilityRole="header" style={{fontSize:large||fontScale>=1.35?24:44}}>{heading}</Copy>
   {editing?<View style={{alignSelf:"flex-start"}}><Button compact editorial primary label="Save" icon={<MemoryEditorIcon name="save"/>} disabled={e.busy||!name.trim()||name.trim().length>200||!e.snapshot} onPress={()=>void save()}/></View>:null}
+  {e.status?<Copy kind="small" accessibilityLiveRegion="polite">{e.status}</Copy>:null}
+ </View>}>
   {mode==="list"?<><Copy>Organize memories with spaces, categories and locations.</Copy>
    {row("Spaces",()=>{setKind("space");setQuery("");e.setStatus("");},0,kind==="space")}
    {row("Categories",()=>{setKind("category");setQuery("");e.setStatus("");},1,kind==="category")}
@@ -75,8 +77,6 @@ export function LabelManagement({e}:{e:LabelEngine}){
    {kind==="location"?row("Space: "+(e.snapshot?.data.spaces.find(x=>x.id===scope)?.name??"Unassigned"),()=>setMode("scope")):null}
    {row("Create new label",()=>edit("create"),2)}
   </>:null}
-  {e.status?<Copy kind="small" accessibilityLiveRegion="polite">{e.status}</Copy>:null}
- </View>}>
   {mode==="scope"?<View style={{gap:14}}>{row("Unassigned",()=>{setScope(null);setQuery("");setMode("list");})}{[...(e.snapshot?.data.spaces??[])].sort((a,b)=>a.name.localeCompare(b.name)).map(x=><React.Fragment key={x.id}>{row(x.name,()=>{setScope(x.id);setQuery("");setMode("list");})}</React.Fragment>)}</View>:null}
   {mode==="list"?<View style={{gap:14}}><Field label="Search labels" value={query} onChangeText={setQuery}/>{[...labels].filter(x=>x.name.toLocaleLowerCase().includes(query.trim().toLocaleLowerCase())).sort((a,b)=>a.name.localeCompare(b.name)).map(x=><React.Fragment key={x.id}>{row(x.name,()=>{setSelected(x.id);setMode("detail");e.setStatus("");})}</React.Fragment>)}{!labels.length?<Copy>No {kind==="space"?"spaces":kind==="category"?"categories":"locations in this Space"} yet. Create a label to get started.</Copy>:null}</View>:null}
   {mode==="detail"&&label?<><Copy>{noun}</Copy><Button label="Rename ›" disabled={e.busy} onPress={()=>edit("rename")}/><Button label="Review removal ›" disabled={e.busy} onPress={()=>void review()}/></>:null}
