@@ -1,0 +1,9 @@
+Tapped More options ▾
+Tapped Notes
+[('', 'Notes', '[47,1750][1033,2035]')]
+  Window #7 Window{b534b01 u0 InputMethod}:
+      mLeash=Surface(name=Surface(name=b534b01 InputMethod)/@0xcc673e7 - animation-leash of insets_animation)/@0xb39a075 mAnimationType=insets_animation
+        ControlAdapter mCapturedLeash=Surface(name=Surface(name=b534b01 InputMethod)/@0xcc673e7 - animation-leash of insets_animation)/@0xb39a075
+    WindowStateAnimator{d0f487b InputMethod}:
+      mSurface=Surface(name=InputMethod)/@0x1b98698
+  mInputMethodWindow=Window{b534b01 u0 InputMethod}
