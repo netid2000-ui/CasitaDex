@@ -1,0 +1,132 @@
+[
+  {
+    "case": "results-reference",
+    "label": "Reference",
+    "scale": "1.0",
+    "theme": "Light",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      81,
+      956,
+      999,
+      1094
+    ],
+    "fieldBounds": [
+      81,
+      956,
+      999,
+      1094
+    ],
+    "keyboardTop": 1517,
+    "focusedHeight": 138,
+    "status": "PASS"
+  },
+  {
+    "case": "results-header-keyboard-return",
+    "scale": "1.0",
+    "status": "PASS",
+    "headerBounds": [
+      [
+        53,
+        89,
+        367,
+        215
+      ],
+      [
+        383,
+        89,
+        697,
+        215
+      ],
+      [
+        714,
+        89,
+        1029,
+        215
+      ]
+    ]
+  },
+  {
+    "case": "results-page-two-return",
+    "scale": "1.0",
+    "status": "PASS"
+  },
+  {
+    "case": "results-reference",
+    "label": "Reference",
+    "scale": "2.0",
+    "theme": "Dark",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      81,
+      1775,
+      999,
+      1945
+    ],
+    "fieldBounds": [
+      81,
+      1279,
+      999,
+      1454
+    ],
+    "keyboardTop": 1517,
+    "focusedHeight": 175,
+    "status": "PASS"
+  },
+  {
+    "case": "results-header-keyboard-return",
+    "scale": "2.0",
+    "status": "PASS",
+    "headerBounds": [
+      [
+        53,
+        89,
+        1028,
+        215
+      ],
+      [
+        53,
+        231,
+        1028,
+        357
+      ],
+      [
+        53,
+        373,
+        1028,
+        499
+      ]
+    ]
+  },
+  {
+    "case": "results-page-two-return",
+    "scale": "2.0",
+    "status": "PASS"
+  }
+]

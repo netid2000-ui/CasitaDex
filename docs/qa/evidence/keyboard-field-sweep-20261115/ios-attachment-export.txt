@@ -1,0 +1,12 @@
+Exported 9 attachments for: KeyboardFieldTests/testCoreEntryFieldsStayAboveKeyboard():
+File: 25847591-0679-4832-91E7-736FA2BCEFD0.png, suggested name: "keyboard-Notes_0_D83C0751-1948-4586-8EBD-C64614D3D7F1.png"
+File: 3EAC4AA7-AE63-409D-A548-F03D3AA9AB70.png, suggested name: "keyboard-Reminder title (Required)_0_44A63A82-9076-4FFE-B484-A42F05A96F22.png"
+File: C728DE85-3280-4E58-817B-C7A738BE4E70.png, suggested name: "keyboard-Search memories_0_74CE3174-E2ED-4C3C-BB2C-5AADD26A95C7.png"
+File: B950B8AF-A8AF-4B34-B6BB-06E916AA76C6.png, suggested name: "keyboard-Location name_0_9CBC9569-78F4-47E9-8656-4E5256E12033.png"
+File: 69B07E33-8051-4DAA-9BCA-C7276C8D7AF6.png, suggested name: "keyboard-Search locations_0_CC0A3BB0-120A-498D-A061-B2FD76A1B54F.png"
+File: 4F81E2B8-7B00-43C4-830F-256E7E438ABB.png, suggested name: "keyboard-Reference_0_5BA311B7-D0A5-492A-B535-5462ABE7017A.png"
+File: 6F466212-E6A1-4A0A-B373-642639FA5E43.png, suggested name: "keyboard-Notes_0_59F2955F-6154-4A1E-B224-460939B49973.png"
+File: 4BFA5602-2AD4-481C-86D8-79C529209551.png, suggested name: "keyboard-Description_0_0F11445A-1DF7-4134-A737-2A4C92D1E825.png"
+File: 8CA38859-04D6-448D-99BC-A3C7AD32945A.png, suggested name: "keyboard-Memory name (Required)_0_82A75D99-3CFF-4C79-851C-7D6721E1ABC6.png"
+
+Generated manifest file with attachment details: /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/docs/qa/evidence/keyboard-field-sweep-20261115/ios-r5-attachments/manifest.json

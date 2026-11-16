@@ -1,0 +1,37 @@
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Light appearance
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Edit Space
+Tapped + Create new Space ▾
+{"case": "details-new-space", "label": "New Space name", "scale": "1.0", "theme": "Light", "keyboardFrames": [[0, 1332, 1080, 2340], [0, 1332, 1080, 2340]], "beforeBounds": [85, 1450, 997, 1597], "imeShownBeforeDump": true, "fieldBounds": [85, 1117, 997, 1264], "keyboardTop": 1332, "focusedHeight": 147, "status": "PASS"}
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Edit Categories
+Tapped + Create new Category ▾
+{"case": "details-new-category", "label": "New Category name", "scale": "1.0", "theme": "Light", "keyboardFrames": [[0, 1332, 1080, 2340], [0, 1332, 1080, 2340]], "beforeBounds": [85, 1849, 997, 1991], "imeShownBeforeDump": true, "fieldBounds": [85, 1117, 997, 1265], "keyboardTop": 1332, "focusedHeight": 148, "status": "PASS"}
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+{"case": "existing-memory-next-reminder", "label": "Next reminder (YYYY-MM-DD)", "scale": "1.0", "theme": "Light", "keyboardFrames": [[0, 1332, 1080, 2340], [0, 1332, 1080, 2340]], "beforeBounds": [51, 1038, 1031, 1186], "imeShownBeforeDump": true, "fieldBounds": [51, 1038, 1031, 1186], "keyboardTop": 1332, "focusedHeight": 148, "status": "PASS"}
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Choose verification status
+{"case": "history-note-retry", "label": "History note", "scale": "1.0", "theme": "Light", "keyboardFrames": [[0, 1332, 1080, 2340], [0, 1332, 1080, 2340]], "beforeBounds": [51, 1551, 1031, 1699], "imeShownBeforeDump": true, "fieldBounds": [51, 1116, 1031, 1264], "keyboardTop": 1332, "focusedHeight": 148, "status": "PASS"}
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Dark appearance
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Edit Space
+Tapped + Create new Space ▾
+{"case": "details-new-space", "label": "New Space name", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1332, 1080, 2340], [0, 1332, 1080, 2340]], "beforeBounds": [85, 1679, 997, 1827], "imeShownBeforeDump": true, "fieldBounds": [85, 1117, 997, 1265], "keyboardTop": 1332, "focusedHeight": 148, "status": "PASS"}
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Edit Categories
+Tapped + Create new Category ▾
+{"case": "details-new-category", "label": "New Category name", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1332, 1080, 2340], [0, 1332, 1080, 2340]], "beforeBounds": [85, 1108, 997, 1255], "imeShownBeforeDump": true, "fieldBounds": [85, 1108, 997, 1255], "keyboardTop": 1332, "focusedHeight": 147, "status": "PASS"}
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped System appearance
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Traceback (most recent call last):
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/scripts/keyboard-field-sweep-20261115/extra.py", line 12, in <module>
+    home();route('card?id=sb26qa_001');probe('Next reminder (YYYY-MM-DD)','existing-memory-next-reminder')
+                                       ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 39, in probe
+AssertionError: Input not fully visible before focus: Next reminder (YYYY-MM-DD)

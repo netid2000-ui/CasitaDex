@@ -1,0 +1,11 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test -project qa/search-location-ios/CasitaDexAudit.xcodeproj -scheme CasitaDexAudit -destination "platform=iOS Simulator,id=81FC3CCE-ACEB-4957-BE61-C9C653A4CE56" -derivedDataPath /Volumes/FA-Development/Designs-by-FA/Apple-Builds/CasitaDex-Search-Tests-20261115 -resultBundlePath /Volumes/FA-Development/Designs-by-FA/QA-Evidence/CasitaDex-Keyboard-20261115-r1.xcresult -parallel-testing-enabled NO "-only-testing:CasitaDexAudit/KeyboardFieldTests" CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO
+
+Build settings from command line:
+    CODE_SIGNING_ALLOWED = NO
+    CODE_SIGNING_REQUIRED = NO
+
+Writing result bundle at path:
+	/Volumes/FA-Development/Designs-by-FA/QA-Evidence/CasitaDex-Keyboard-20261115-r1.xcresult
+
+xcodebuild: error: Failed to build project CasitaDexAudit with scheme CasitaDexAudit.: Tests in the target “CasitaDexAudit” can’t be run because “CasitaDexAudit” isn’t a member of the specified test plan or scheme.

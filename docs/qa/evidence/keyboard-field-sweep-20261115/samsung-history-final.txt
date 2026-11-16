@@ -1,0 +1,12 @@
+Tapped Dark appearance
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Choose verification status
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped System appearance
+Traceback (most recent call last):
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/scripts/keyboard-field-sweep-20261115/history-final.py", line 6, in <module>
+    probe('History note','history-note-retry')
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 39, in probe
+  File "<string>", line 34, in node
+AssertionError: Target not found safely: History note

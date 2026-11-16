@@ -1,0 +1,12 @@
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Light appearance
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Choose Location
+{"case": "location-search", "label": "Search locations", "scale": "1.0", "theme": "Light", "keyboardFrames": [[0, 1332, 1080, 2340], [0, 1332, 1080, 2340]], "beforeBounds": [51, 789, 1030, 937], "fieldBounds": [51, 789, 1030, 937], "keyboardTop": 1332, "focusedHeight": 148, "status": "PASS"}
+Tapped Choose Location
+Tapped Create new Location
+{"case": "location-create", "label": "Location name", "scale": "1.0", "theme": "Light", "keyboardFrames": [[0, 1332, 1080, 2340], [0, 1332, 1080, 2340]], "beforeBounds": [51, 789, 1030, 937], "fieldBounds": [51, 789, 1030, 937], "keyboardTop": 1332, "focusedHeight": 148, "status": "PASS"}
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped System appearance
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+COMPLETE {"pass": 2, "other": 0}

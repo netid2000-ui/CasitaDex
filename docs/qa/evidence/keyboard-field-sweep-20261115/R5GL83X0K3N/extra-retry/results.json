@@ -1,0 +1,38 @@
+[
+  {
+    "case": "existing-memory-next-reminder",
+    "label": "Next reminder (YYYY-MM-DD)",
+    "scale": "2.0",
+    "theme": "Dark",
+    "keyboardFrames": [
+      [
+        0,
+        1332,
+        1080,
+        2340
+      ],
+      [
+        0,
+        1332,
+        1080,
+        2340
+      ]
+    ],
+    "beforeBounds": [
+      51,
+      840,
+      1031,
+      988
+    ],
+    "imeShownBeforeDump": true,
+    "fieldBounds": [
+      51,
+      840,
+      1031,
+      988
+    ],
+    "keyboardTop": 1332,
+    "focusedHeight": 148,
+    "status": "PASS"
+  }
+]

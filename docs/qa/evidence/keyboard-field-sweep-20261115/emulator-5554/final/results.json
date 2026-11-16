@@ -665,5 +665,1007 @@
     ],
     "keyboardTop": 1517,
     "status": "PASS"
+  },
+  {
+    "case": "labels-create-space",
+    "label": "Space name",
+    "scale": "1.0",
+    "theme": "Light",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      47,
+      719,
+      1033,
+      857
+    ],
+    "fieldBounds": [
+      47,
+      719,
+      1033,
+      857
+    ],
+    "keyboardTop": 1517,
+    "status": "PASS"
+  },
+  {
+    "case": "labels-rename-space",
+    "label": "Space name",
+    "scale": "1.0",
+    "theme": "Light",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      47,
+      719,
+      1033,
+      857
+    ],
+    "fieldBounds": [
+      47,
+      719,
+      1033,
+      857
+    ],
+    "keyboardTop": 1517,
+    "status": "PASS"
+  },
+  {
+    "case": "labels-search-category",
+    "label": "Search labels",
+    "scale": "1.0",
+    "theme": "Light",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      47,
+      1324,
+      1033,
+      1461
+    ],
+    "fieldBounds": [
+      47,
+      1316,
+      1033,
+      1454
+    ],
+    "keyboardTop": 1517,
+    "status": "PASS"
+  },
+  {
+    "case": "labels-create-category",
+    "label": "Category name",
+    "scale": "1.0",
+    "theme": "Light",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      47,
+      719,
+      1033,
+      857
+    ],
+    "fieldBounds": [
+      47,
+      719,
+      1033,
+      857
+    ],
+    "keyboardTop": 1517,
+    "status": "PASS"
+  },
+  {
+    "case": "labels-rename-category",
+    "label": "Category name",
+    "scale": "1.0",
+    "theme": "Light",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      47,
+      719,
+      1033,
+      857
+    ],
+    "fieldBounds": [
+      47,
+      719,
+      1033,
+      857
+    ],
+    "keyboardTop": 1517,
+    "status": "PASS"
+  },
+  {
+    "case": "labels-search-location",
+    "label": "Search labels",
+    "scale": "1.0",
+    "theme": "Light",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      47,
+      1482,
+      1033,
+      1619
+    ],
+    "fieldBounds": [
+      47,
+      1317,
+      1033,
+      1454
+    ],
+    "keyboardTop": 1517,
+    "status": "PASS"
+  },
+  {
+    "case": "labels-create-location",
+    "label": "Location name",
+    "scale": "1.0",
+    "theme": "Light",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      47,
+      809,
+      1033,
+      947
+    ],
+    "fieldBounds": [
+      47,
+      809,
+      1033,
+      947
+    ],
+    "keyboardTop": 1517,
+    "status": "PASS"
+  },
+  {
+    "case": "labels-rename-location",
+    "label": "Location name",
+    "scale": "1.0",
+    "theme": "Light",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      47,
+      809,
+      1033,
+      947
+    ],
+    "fieldBounds": [
+      47,
+      809,
+      1033,
+      947
+    ],
+    "keyboardTop": 1517,
+    "status": "PASS"
+  },
+  {
+    "case": "find-query",
+    "label": "Search memories",
+    "scale": "1.0",
+    "theme": "Light",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      47,
+      408,
+      1033,
+      534
+    ],
+    "fieldBounds": [
+      47,
+      408,
+      1033,
+      534
+    ],
+    "keyboardTop": 1517,
+    "status": "PASS"
+  },
+  {
+    "case": "reminder-title",
+    "label": "Reminder title (Required)",
+    "scale": "2.0",
+    "theme": "Dark",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      47,
+      589,
+      1033,
+      715
+    ],
+    "fieldBounds": [
+      47,
+      589,
+      1033,
+      716
+    ],
+    "keyboardTop": 1517,
+    "status": "PASS"
+  },
+  {
+    "case": "reminder-notes",
+    "label": "Notes",
+    "scale": "2.0",
+    "theme": "Dark",
+    "keyboardFrames": [],
+    "beforeBounds": [
+      47,
+      2063,
+      1033,
+      2098
+    ],
+    "status": "FAIL",
+    "error": "No measurable onscreen keyboard; not a pass"
+  },
+  {
+    "case": "add-name",
+    "label": "Memory name (Required)",
+    "scale": "2.0",
+    "theme": "Dark",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      47,
+      599,
+      1033,
+      725
+    ],
+    "fieldBounds": [
+      47,
+      599,
+      1033,
+      727
+    ],
+    "keyboardTop": 1517,
+    "status": "PASS"
+  },
+  {
+    "case": "add-description",
+    "label": "Description",
+    "scale": "2.0",
+    "theme": "Dark",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      47,
+      1435,
+      1033,
+      1636
+    ],
+    "fieldBounds": [
+      47,
+      1253,
+      1033,
+      1454
+    ],
+    "keyboardTop": 1517,
+    "status": "PASS"
+  },
+  {
+    "case": "add-notes",
+    "label": "Notes",
+    "scale": "2.0",
+    "theme": "Dark",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      81,
+      1947,
+      999,
+      2098
+    ],
+    "fieldBounds": [
+      81,
+      1170,
+      999,
+      1454
+    ],
+    "keyboardTop": 1517,
+    "status": "PASS"
+  },
+  {
+    "case": "add-reference",
+    "label": "Reference",
+    "scale": "2.0",
+    "theme": "Dark",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      81,
+      1544,
+      999,
+      1670
+    ],
+    "fieldBounds": [
+      81,
+      1326,
+      999,
+      1454
+    ],
+    "keyboardTop": 1517,
+    "status": "PASS"
+  },
+  {
+    "group": "add",
+    "scale": "2.0",
+    "status": "HARNESS_OR_NAVIGATION_ERROR",
+    "error": "Missing Choose Space [('', 'Cancel'), ('Cancel', ''), ('', 'Save'), ('Save', ''), ('Categories', ''), ('', 'Choose Categories, Choose categories'), ('Choose categories', ''), ('\u203a', ''), ('Description', ''), ('', 'Description'), ('Location', ''), ('', 'Choose Location, None'), ('None', ''), ('\u203a', ''), ('', 'Edit Notes, None'), ('Notes', ''), ('None', ''), ('Edit  \u203a', ''), ('', 'Edit Reference, None'), ('Reference', ''), ('None', ''), ('Edit  \u203a', ''), ('Photos \u00b7 0/5', ''), ('', '+ Add Photo'), ('Add Photo', ''), ('\u203a', ''), ('Add a description or a photo to save your memory.', ''), ('', 'Primary navigation'), ('', 'Home'), ('Home', ''), ('', 'Photos'), ('Photos', ''), ('', 'Reminders'), ('Reminders', ''), ('', 'Find'), ('Find', '')]"
+  },
+  {
+    "case": "location-search",
+    "label": "Search locations",
+    "scale": "2.0",
+    "theme": "Dark",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      47,
+      759,
+      1033,
+      928
+    ],
+    "fieldBounds": [
+      47,
+      791,
+      1033,
+      966
+    ],
+    "keyboardTop": 1517,
+    "status": "PASS"
+  },
+  {
+    "case": "location-create",
+    "label": "Location name",
+    "scale": "2.0",
+    "theme": "Dark",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      47,
+      791,
+      1033,
+      929
+    ],
+    "fieldBounds": [
+      47,
+      791,
+      1033,
+      966
+    ],
+    "keyboardTop": 1517,
+    "status": "PASS"
+  },
+  {
+    "group": "edit",
+    "scale": "2.0",
+    "status": "HARNESS_OR_NAVIGATION_ERROR",
+    "error": "Missing Memory name (Required) [('', '\u2039 Results'), ('\u2039 Results', ''), ('', 'Edit memory'), ('Edit \u203a', ''), ('', 'Close \u25b4'), ('Close \u25b4', ''), ('[SAMPLE] Extension cord', ''), ('', 'Remind me later'), ('Remind me later', ''), ('', 'Share memory'), ('Share memory', ''), ('', 'Archive memory'), ('Archive memory', ''), ('', 'Move to Recently Deleted'), ('Move to Recently Deleted', ''), ('Synthetic QA data only. Replace with your own confirmed information before relying on it.', ''), ('REFERENCE \u00b7 OPTIONAL', ''), ('CasitaDex synthetic QA fixture', ''), ('', 'Edit Reference'), ('Edit \u203a', ''), ('VERIFICATION STATUS', ''), ('Needs checking', ''), ('', 'Choose verification status'), ('Choose \u203a', ''), ('PHOTOS', ''), ('1 saved', ''), ('', 'Open photo 1 of [SAMPLE] Extension cord'), ('', '+ Add Photo'), ('Add Photo', ''), ('\u203a', ''), ('', 'Set Reminder \u203a'), ('Set Reminder \u203a', ''), ('', 'Share memory \u203a'), ('Share memory \u203a', ''), ('', 'Primary navigation'), ('', 'Home'), ('Home', ''), ('', 'Photos'), ('Photos', ''), ('', 'Reminders'), ('Reminders', ''), ('', 'Find'), ('Find', '')]"
+  },
+  {
+    "case": "details-reference",
+    "label": "Reference",
+    "scale": "2.0",
+    "theme": "Dark",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      81,
+      1571,
+      999,
+      1740
+    ],
+    "fieldBounds": [
+      81,
+      1280,
+      999,
+      1454
+    ],
+    "keyboardTop": 1517,
+    "status": "PASS"
+  },
+  {
+    "case": "verification-reference",
+    "label": "Reference checked",
+    "scale": "2.0",
+    "theme": "Dark",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      81,
+      1899,
+      999,
+      2068
+    ],
+    "fieldBounds": [
+      81,
+      1280,
+      999,
+      1454
+    ],
+    "keyboardTop": 1517,
+    "status": "PASS"
+  },
+  {
+    "case": "history-note",
+    "label": "History note",
+    "scale": "2.0",
+    "theme": "Dark",
+    "keyboardFrames": [],
+    "beforeBounds": [
+      47,
+      2078,
+      1033,
+      2098
+    ],
+    "status": "FAIL",
+    "error": "No measurable onscreen keyboard; not a pass"
+  },
+  {
+    "group": "details",
+    "scale": "2.0",
+    "status": "HARNESS_OR_NAVIGATION_ERROR",
+    "error": "Missing Close verification choices [('', '\u2039 Results'), ('\u2039 Results', ''), ('', 'Edit memory'), ('Edit \u203a', ''), ('', 'Close \u25b4'), ('Close \u25b4', ''), ('[SAMPLE] Extension cord', ''), ('', 'Remind me later'), ('Remind me later', ''), ('', 'Share memory'), ('Share memory', ''), ('', 'Archive memory'), ('Archive memory', ''), ('', 'Move to Recently Deleted'), ('Move to Recently Deleted', ''), ('', 'Close \u25b4'), ('Close \u25b4', ''), ('PHOTOS', ''), ('1 saved', ''), ('', 'Open photo 1 of [SAMPLE] Extension cord'), ('', '+ Add Photo'), ('Add Photo', ''), ('\u203a', ''), ('', 'Set Reminder \u203a'), ('Set Reminder \u203a', ''), ('', 'Share memory \u203a'), ('Share memory \u203a', ''), ('History', ''), ('11/15/2026, 10:18:44\\u202fAM: Answer edited \u2014 needs checking \u00b7 Photo added', ''), ('History note', ''), ('', 'History note'), ('', 'Record history'), ('Record history', ''), ('', 'Primary navigation'), ('', 'Home'), ('Home', ''), ('', 'Photos'), ('Photos', ''), ('', 'Reminders'), ('Reminders', ''), ('', 'Find'), ('Find', '')]"
+  },
+  {
+    "case": "labels-search-space",
+    "label": "Search labels",
+    "scale": "2.0",
+    "theme": "Dark",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      47,
+      1559,
+      1033,
+      1697
+    ],
+    "fieldBounds": [
+      47,
+      1316,
+      1033,
+      1454
+    ],
+    "keyboardTop": 1517,
+    "status": "PASS"
+  },
+  {
+    "case": "labels-create-space",
+    "label": "Space name",
+    "scale": "2.0",
+    "theme": "Dark",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      47,
+      763,
+      1033,
+      901
+    ],
+    "fieldBounds": [
+      47,
+      763,
+      1033,
+      938
+    ],
+    "keyboardTop": 1517,
+    "status": "PASS"
+  },
+  {
+    "case": "labels-rename-space",
+    "label": "Space name",
+    "scale": "2.0",
+    "theme": "Dark",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      47,
+      763,
+      1033,
+      932
+    ],
+    "fieldBounds": [
+      47,
+      763,
+      1033,
+      938
+    ],
+    "keyboardTop": 1517,
+    "status": "PASS"
+  },
+  {
+    "case": "labels-search-category",
+    "label": "Search labels",
+    "scale": "2.0",
+    "theme": "Dark",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      47,
+      1559,
+      1033,
+      1729
+    ],
+    "fieldBounds": [
+      47,
+      1316,
+      1033,
+      1454
+    ],
+    "keyboardTop": 1517,
+    "status": "FAIL",
+    "error": "('Input clipped by fixed content', [47, 1559, 1033, 1729], [47, 1316, 1033, 1454])"
+  },
+  {
+    "case": "labels-create-category",
+    "label": "Category name",
+    "scale": "2.0",
+    "theme": "Dark",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      47,
+      763,
+      1033,
+      901
+    ],
+    "fieldBounds": [
+      47,
+      763,
+      1033,
+      938
+    ],
+    "keyboardTop": 1517,
+    "status": "PASS"
+  },
+  {
+    "case": "labels-rename-category",
+    "label": "Category name",
+    "scale": "2.0",
+    "theme": "Dark",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      47,
+      763,
+      1033,
+      932
+    ],
+    "fieldBounds": [
+      47,
+      763,
+      1033,
+      938
+    ],
+    "keyboardTop": 1517,
+    "status": "PASS"
+  },
+  {
+    "case": "labels-search-location",
+    "label": "Search labels",
+    "scale": "2.0",
+    "theme": "Dark",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      47,
+      1728,
+      1033,
+      1897
+    ],
+    "fieldBounds": [
+      47,
+      1317,
+      1033,
+      1454
+    ],
+    "keyboardTop": 1517,
+    "status": "FAIL",
+    "error": "('Input clipped by fixed content', [47, 1728, 1033, 1897], [47, 1317, 1033, 1454])"
+  },
+  {
+    "case": "labels-create-location",
+    "label": "Location name",
+    "scale": "2.0",
+    "theme": "Dark",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      47,
+      885,
+      1033,
+      1023
+    ],
+    "fieldBounds": [
+      47,
+      885,
+      1033,
+      1023
+    ],
+    "keyboardTop": 1517,
+    "status": "PASS"
+  },
+  {
+    "case": "labels-rename-location",
+    "label": "Location name",
+    "scale": "2.0",
+    "theme": "Dark",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      47,
+      885,
+      1033,
+      1054
+    ],
+    "fieldBounds": [
+      47,
+      885,
+      1033,
+      1060
+    ],
+    "keyboardTop": 1517,
+    "status": "PASS"
+  },
+  {
+    "case": "find-query",
+    "label": "Search memories",
+    "scale": "2.0",
+    "theme": "Dark",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      47,
+      237,
+      1033,
+      402
+    ],
+    "fieldBounds": [
+      47,
+      237,
+      1033,
+      402
+    ],
+    "keyboardTop": 1517,
+    "status": "PASS"
   }
 ]

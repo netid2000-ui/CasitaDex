@@ -1,0 +1,125 @@
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Dark appearance
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+{"case": "reminder-title", "label": "Reminder title (Required)", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1332, 1080, 2340], [0, 1332, 1080, 2340]], "beforeBounds": [51, 663, 1031, 798], "fieldBounds": [51, 663, 1031, 801], "keyboardTop": 1332, "focusedHeight": 138, "status": "PASS"}
+Tapped More options ▾
+{"case": "reminder-notes", "label": "Notes", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1332, 1080, 2340], [0, 1332, 1080, 2340]], "beforeBounds": [51, 1532, 1031, 1837], "fieldBounds": [51, 960, 1031, 1264], "keyboardTop": 1332, "focusedHeight": 304, "status": "PASS"}
+Tapped Cancel
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+{"case": "add-name", "label": "Memory name (Required)", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1332, 1080, 2340], [0, 1332, 1080, 2340]], "beforeBounds": [51, 674, 1031, 809], "fieldBounds": [51, 674, 1031, 812], "keyboardTop": 1332, "focusedHeight": 138, "status": "PASS"}
+{"case": "add-description", "label": "Description", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1332, 1080, 2340], [0, 1332, 1080, 2340]], "beforeBounds": [51, 1573, 1031, 1788], "fieldBounds": [51, 1050, 1031, 1265], "keyboardTop": 1332, "focusedHeight": 215, "status": "PASS"}
+Tapped Edit Notes
+{"case": "add-notes", "label": "Notes", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1332, 1080, 2340], [0, 1332, 1080, 2340]], "beforeBounds": [88, 1794, 994, 1949], "fieldBounds": [88, 959, 994, 1264], "keyboardTop": 1332, "focusedHeight": 305, "status": "PASS"}
+Tapped Done editing Notes
+Tapped Edit Reference
+{"case": "add-reference", "label": "Reference", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1332, 1080, 2340], [0, 1332, 1080, 2340]], "beforeBounds": [88, 1440, 994, 1575], "fieldBounds": [88, 1123, 994, 1261], "keyboardTop": 1332, "focusedHeight": 138, "status": "PASS"}
+Tapped Done editing Reference
+Tapped Choose Space
+Tapped + Create new Space ▾
+{"case": "add-new-space", "label": "New Space name", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1332, 1080, 2340], [0, 1332, 1080, 2340]], "beforeBounds": [85, 1760, 997, 1907], "fieldBounds": [85, 820, 997, 967], "keyboardTop": 1332, "focusedHeight": 147, "status": "PASS"}
+Tapped Create new Space ▴
+Tapped Choose Space
+Tapped Choose Categories
+Tapped + Create new Category ▾
+{"case": "add-new-category", "label": "New Category name", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1332, 1080, 2340], [0, 1332, 1080, 2340]], "beforeBounds": [85, 558, 997, 705], "fieldBounds": [85, 558, 997, 705], "keyboardTop": 1332, "focusedHeight": 147, "status": "PASS"}
+Tapped Create new Category ▴
+Tapped Choose Categories
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Choose Location
+{"case": "location-search", "label": "Search locations", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1332, 1080, 2340], [0, 1332, 1080, 2340]], "beforeBounds": [51, 879, 1030, 1059], "fieldBounds": [51, 879, 1030, 1027], "keyboardTop": 1332, "focusedHeight": 148, "status": "PASS"}
+Tapped Choose Location
+Tapped Create new Location
+{"case": "location-create", "label": "Location name", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1332, 1080, 2340], [0, 1332, 1080, 2340]], "beforeBounds": [51, 879, 1030, 1027], "fieldBounds": [51, 879, 1030, 1065], "keyboardTop": 1332, "focusedHeight": 186, "status": "PASS"}
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Edit memory
+{"case": "edit-name", "label": "Memory name (Required)", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1332, 1080, 2340], [0, 1332, 1080, 2340]], "beforeBounds": [51, 663, 1031, 843], "fieldBounds": [51, 663, 1031, 849], "keyboardTop": 1332, "focusedHeight": 186, "status": "PASS"}
+{"case": "edit-description", "label": "Description", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1332, 1080, 2340], [0, 1332, 1080, 2340]], "beforeBounds": [51, 1593, 1031, 1949], "fieldBounds": [51, 808, 1031, 1264], "keyboardTop": 1332, "focusedHeight": 456, "status": "PASS"}
+Tapped Edit Notes
+{"case": "edit-notes", "label": "Notes", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1332, 1080, 2340], [0, 1332, 1080, 2340]], "beforeBounds": [88, 1749, 994, 1949], "fieldBounds": [88, 808, 994, 1264], "keyboardTop": 1332, "focusedHeight": 456, "status": "PASS"}
+Tapped Done editing Notes
+Tapped Edit Reference
+{"case": "edit-reference", "label": "Reference", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1332, 1080, 2340], [0, 1332, 1080, 2340]], "beforeBounds": [88, 1456, 994, 1636], "fieldBounds": [88, 1078, 994, 1264], "keyboardTop": 1332, "focusedHeight": 186, "status": "PASS"}
+Tapped Done editing Reference
+Tapped Choose Space
+Tapped + Create new Space ▾
+{"case": "edit-new-space", "label": "New space name", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1332, 1080, 2340], [0, 1332, 1080, 2340]], "beforeBounds": [85, 1630, 997, 1777], "fieldBounds": [85, 817, 997, 964], "keyboardTop": 1332, "focusedHeight": 147, "status": "PASS"}
+Tapped Create new Space ▴
+Tapped Choose Space
+Tapped Choose Categories
+Tapped + Create new Categories ▾
+{"case": "edit-new-category", "label": "New category name", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1332, 1080, 2340], [0, 1332, 1080, 2340]], "beforeBounds": [85, 455, 997, 602], "fieldBounds": [85, 455, 997, 602], "keyboardTop": 1332, "focusedHeight": 147, "status": "PASS"}
+Tapped Create new Categories ▴
+Traceback (most recent call last):
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/scripts/keyboard-field-sweep-20261115/sweep.py", line 104, in <module>
+    try:fn()
+        ~~^^
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/scripts/keyboard-field-sweep-20261115/sweep.py", line 78, in edit
+    tap(choice);tap('+ Create new '+noun+' ▾');probe('New '+key+' name','edit-new-'+key);tap('Create new '+noun+' ▴');tap(choice)
+                                                                                                                      ~~~^^^^^^^^
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/scripts/samsung-sweep-20261115/phone.py", line 39, in tap
+    n=node(label);x,y,a,b=bounds(n);run('shell','input','tap',str((x+a)//2),str((y+b)//2));time.sleep(.4);print('Tapped '+label,flush=True)
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/scripts/keyboard-field-sweep-20261115/sweep.py", line 29, in node
+    raise AssertionError('Target not found safely: '+label)
+AssertionError: Target not found safely: Choose Categories
+
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Edit Reference
+{"case": "details-reference", "label": "Reference", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1332, 1080, 2340], [0, 1332, 1080, 2340]], "beforeBounds": [88, 746, 994, 926], "fieldBounds": [88, 746, 994, 931], "keyboardTop": 1332, "focusedHeight": 185, "status": "PASS"}
+Tapped Cancel
+Tapped Choose verification status
+Traceback (most recent call last):
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/scripts/keyboard-field-sweep-20261115/sweep.py", line 104, in <module>
+    run('shell','settings','put','system','font_scale',scale);time.sleep(3);route('settings-manage?action=appearance');tap(theme+' appearance')
+         ^^^^
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/scripts/keyboard-field-sweep-20261115/sweep.py", line 81, in details
+    tap(choice);tap('+ Create new '+noun+' ▾');probe('New '+key+' name','edit-new-'+key);tap('Create new '+noun+' ▴');tap(choice)
+    
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/scripts/keyboard-field-sweep-20261115/sweep.py", line 39, in probe
+    assert matches,'Input not fully visible before focus: '+label
+           ^^^^^^^
+AssertionError: Input not fully visible before focus: Reference checked
+
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Spaces
+{"case": "labels-search-space", "label": "Search labels", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1332, 1080, 2340], [0, 1332, 1080, 2340]], "beforeBounds": [51, 1704, 1031, 1884], "fieldBounds": [51, 1117, 1031, 1264], "keyboardTop": 1332, "focusedHeight": 147, "status": "PASS"}
+Tapped Create new label
+{"case": "labels-create-space", "label": "Space name", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1332, 1080, 2340], [0, 1332, 1080, 2340]], "beforeBounds": [51, 849, 1031, 996], "fieldBounds": [51, 849, 1031, 996], "keyboardTop": 1332, "focusedHeight": 147, "status": "PASS"}
+Tapped Cancel
+Tapped My Home
+Tapped Rename ›
+{"case": "labels-rename-space", "label": "Space name", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1332, 1080, 2340], [0, 1332, 1080, 2340]], "beforeBounds": [51, 849, 1031, 1029], "fieldBounds": [51, 849, 1031, 1035], "keyboardTop": 1332, "focusedHeight": 186, "status": "PASS"}
+Tapped Cancel
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Categories
+{"case": "labels-search-category", "label": "Search labels", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1332, 1080, 2340], [0, 1332, 1080, 2340]], "beforeBounds": [51, 1704, 1031, 1851], "fieldBounds": [51, 1117, 1031, 1264], "keyboardTop": 1332, "focusedHeight": 147, "status": "PASS"}
+Tapped Create new label
+{"case": "labels-create-category", "label": "Category name", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1332, 1080, 2340], [0, 1332, 1080, 2340]], "beforeBounds": [51, 849, 1031, 996], "fieldBounds": [51, 849, 1031, 996], "keyboardTop": 1332, "focusedHeight": 147, "status": "PASS"}
+Tapped Cancel
+Tapped Cleaning
+Tapped Rename ›
+{"case": "labels-rename-category", "label": "Category name", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1332, 1080, 2340], [0, 1332, 1080, 2340]], "beforeBounds": [51, 849, 1031, 1029], "fieldBounds": [51, 849, 1031, 1035], "keyboardTop": 1332, "focusedHeight": 186, "status": "PASS"}
+Tapped Cancel
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Locations
+{"case": "labels-search-location", "label": "Search labels", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1332, 1080, 2340], [0, 1332, 1080, 2340]], "beforeBounds": [51, 1513, 1031, 1660], "fieldBounds": [51, 1117, 1031, 1264], "keyboardTop": 1332, "focusedHeight": 147, "status": "PASS"}
+Tapped Create new label
+{"case": "labels-create-location", "label": "Location name", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1332, 1080, 2340], [0, 1332, 1080, 2340]], "beforeBounds": [51, 980, 1031, 1127], "fieldBounds": [51, 980, 1031, 1127], "keyboardTop": 1332, "focusedHeight": 147, "status": "PASS"}
+Tapped Cancel
+Tapped QA Picker Final Shelf
+Tapped Rename ›
+{"case": "labels-rename-location", "label": "Location name", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1332, 1080, 2340], [0, 1332, 1080, 2340]], "beforeBounds": [51, 980, 1031, 1160], "fieldBounds": [51, 980, 1031, 1166], "keyboardTop": 1332, "focusedHeight": 186, "status": "PASS"}
+Tapped Cancel
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+{"case": "find-query", "label": "Search memories", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1332, 1080, 2340], [0, 1332, 1080, 2340]], "beforeBounds": [50, 287, 1030, 465], "fieldBounds": [50, 287, 1030, 465], "keyboardTop": 1332, "focusedHeight": 178, "status": "PASS"}
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped System appearance
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+COMPLETE {"pass": 27, "other": 2}
+Traceback (most recent call last):
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/scripts/keyboard-field-sweep-20261115/sweep.py", line 112, in <module>
+    (out/'settings.json').write_text(json.dumps({'fontScale':original,'appearance':'System'}))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Sweep has failed or incomplete checks; see results.json

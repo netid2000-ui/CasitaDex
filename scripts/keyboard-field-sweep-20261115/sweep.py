@@ -15,14 +15,19 @@ def node(label,scroll=True):
  for attempt in range(18 if scroll else 1):
   t=tree()
   candidates=[n for n in sorted(t.iter('node'),key=lambda n:n.get('clickable')!='true') if n.get('content-desc')==label or n.get('content-desc','').startswith(label+', ') or (not n.get('class','').endswith('EditText') and n.get('text','').casefold()==label.casefold())]
+  parents={c:p for p in t.iter() for c in p}
+  if any(n.get('clickable')=='true' for n in candidates):candidates=[n for n in candidates if n.get('clickable')=='true']
   for n in candidates:
-   x,y,a,b=bounds(n)
-   if 60<=y<b<2240:return n
+   x,y,a,b=bounds(n);parent=parents.get(n);in_scroll=False
+   while parent is not None:
+    if parent.get('scrollable')=='true':in_scroll=True;break
+    parent=parents.get(parent)
+   if 60<=y<b<(1300 if in_scroll and n.get('class','').endswith('EditText') else 2240) and (n.get('clickable')!='true' or b-y>=100):return n
   if not scroll:raise AssertionError('Missing visible target: '+label)
   hidekeyboard()
   containers=[n for n in t.iter('node') if n.get('scrollable')=='true' and n.get('package')==pkg and bounds(n)[3]>bounds(n)[1]]
   box=bounds(max(containers,key=lambda n:bounds(n)[3]-bounds(n)[1])) if containers else [0,500,1080,1900]
-  x,y,a,b=box;lo=int(y+(b-y)*.28);hi=int(y+(b-y)*.74)
+  x,y,a,b=box;b=min(b,1300);lo=int(y+(b-y)*.28);hi=int(y+(b-y)*.74)
   above=bool(candidates) and bounds(candidates[0])[3]<=y
   # Page gutter: never start a drag inside an editable field.
   run('shell','input','swipe',str(a-20),str(lo if above else hi),str(a-20),str(hi if above else lo),'350')
@@ -32,18 +37,21 @@ records=[]
 def save(): (out/'results.json').write_text(json.dumps(records,indent=2))
 def probe(label,key):
  hidekeyboard();time.sleep(.5);candidate=node(label)
- for attempt in range(8):
-  matches=[candidate] if attempt==0 and candidate.get('class','').endswith('EditText') and candidate.get('content-desc')==label and bounds(candidate)[3]-bounds(candidate)[1]>=100 else [n for n in tree().iter('node') if n.get('class','').endswith('EditText') and n.get('content-desc')==label and bounds(n)[3]-bounds(n)[1]>=100]
+ for attempt in range(18):
+  matches=[candidate] if attempt==0 and candidate.get('class','').endswith('EditText') and candidate.get('content-desc')==label and bounds(candidate)[3]-bounds(candidate)[1]>=100 and bounds(candidate)[3]<=1300 else [n for n in tree().iter('node') if n.get('class','').endswith('EditText') and n.get('content-desc')==label and bounds(n)[3]-bounds(n)[1]>=100 and bounds(n)[3]<=1300]
   if matches:break
-  run('shell','input','swipe','1055','1800','1055','1000','350');time.sleep(.3)
+  run('shell','input','swipe','1055','1150','1055','800','350');time.sleep(.3)
  assert matches,'Input not fully visible before focus: '+label
  n=matches[0];old=n.get('text');beforeBounds=bounds(n);x,y,a,b=beforeBounds
  run('shell','input','tap',str((x+a)//2),str((y+b)//2));time.sleep(1)
  w=run('shell','dumpsys','window').decode();frames=re.findall(r'type=ime frame=\[(-?\d+),(-?\d+)\]\[(-?\d+),(-?\d+)\]',w)
  frames=[tuple(map(int,x)) for x in frames if int(x[3])>int(x[1])]
+ imeShown='mInputShown=true' in run('shell','dumpsys','input_method').decode()
+ (out/(scale+'-'+key+'-live.png')).write_bytes(run('exec-out','screencap','-p'))
  t=tree();focused=[n for n in t.iter('node') if n.get('focused')=='true' and n.get('class','').endswith('EditText')]
- result={'case':key,'label':label,'scale':scale,'theme':theme,'keyboardFrames':frames,'beforeBounds':beforeBounds}
+ result={'case':key,'label':label,'scale':scale,'theme':theme,'keyboardFrames':frames,'beforeBounds':beforeBounds,'imeShownBeforeDump':imeShown}
  try:
+  assert imeShown,'IME was not shown before hierarchy capture'
   assert frames,'No measurable onscreen keyboard; not a pass'
   assert len(focused)==1 and focused[0].get('content-desc')==label,[(n.get('content-desc'),n.get('bounds')) for n in focused]
   x,y,a,b=bounds(focused[0]);top=min(f[1] for f in frames);result.update(fieldBounds=[x,y,a,b],keyboardTop=top)
@@ -77,6 +85,9 @@ def edit():
  for noun,key,choice in [('Space','space','Choose Space'),('Categories','category','Choose Categories')]:
   tap(choice);tap('+ Create new '+noun+' ▾');probe('New '+key+' name','edit-new-'+key);tap('Create new '+noun+' ▴');tap(choice)
  tap('Cancel')
+def home():
+ hidekeyboard()
+ n=next(n for n in tree().iter('node') if n.get('content-desc')=='Home' and n.get('clickable')=='true');x,y,a,b=bounds(n);run('shell','input','tap',str((x+a)//2),str((y+b)//2));time.sleep(.5)
 def details():
  route('card?id=sb26qa_007');tap('Edit Reference');probe('Reference','details-reference');tap('Cancel');tap('Choose verification status');probe('Reference checked','verification-reference');probe('History note','history-note');route('')
  try:node('Next reminder (YYYY-MM-DD)',False)
@@ -101,7 +112,7 @@ try:
   run('shell','settings','put','system','font_scale',scale);time.sleep(3);route('settings-manage?action=appearance');tap(theme+' appearance')
   for name,fn in groups.items():
    if os.environ.get('QA_GROUP') and name not in os.environ['QA_GROUP'].split(','):continue
-   try:fn()
+   try:home();fn()
    except Exception as e:
     records.append({'group':name,'scale':scale,'status':'HARNESS_OR_NAVIGATION_ERROR','error':str(e)});save();print(traceback.format_exc(),flush=True);hidekeyboard()
 finally:

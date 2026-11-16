@@ -1,0 +1,218 @@
+[
+  {
+    "case": "details-new-space",
+    "label": "New Space name",
+    "scale": "1.0",
+    "theme": "Light",
+    "keyboardFrames": [
+      [
+        0,
+        1332,
+        1080,
+        2340
+      ],
+      [
+        0,
+        1332,
+        1080,
+        2340
+      ]
+    ],
+    "beforeBounds": [
+      85,
+      1450,
+      997,
+      1597
+    ],
+    "imeShownBeforeDump": true,
+    "fieldBounds": [
+      85,
+      1117,
+      997,
+      1264
+    ],
+    "keyboardTop": 1332,
+    "focusedHeight": 147,
+    "status": "PASS"
+  },
+  {
+    "case": "details-new-category",
+    "label": "New Category name",
+    "scale": "1.0",
+    "theme": "Light",
+    "keyboardFrames": [
+      [
+        0,
+        1332,
+        1080,
+        2340
+      ],
+      [
+        0,
+        1332,
+        1080,
+        2340
+      ]
+    ],
+    "beforeBounds": [
+      85,
+      1849,
+      997,
+      1991
+    ],
+    "imeShownBeforeDump": true,
+    "fieldBounds": [
+      85,
+      1117,
+      997,
+      1265
+    ],
+    "keyboardTop": 1332,
+    "focusedHeight": 148,
+    "status": "PASS"
+  },
+  {
+    "case": "existing-memory-next-reminder",
+    "label": "Next reminder (YYYY-MM-DD)",
+    "scale": "1.0",
+    "theme": "Light",
+    "keyboardFrames": [
+      [
+        0,
+        1332,
+        1080,
+        2340
+      ],
+      [
+        0,
+        1332,
+        1080,
+        2340
+      ]
+    ],
+    "beforeBounds": [
+      51,
+      1038,
+      1031,
+      1186
+    ],
+    "imeShownBeforeDump": true,
+    "fieldBounds": [
+      51,
+      1038,
+      1031,
+      1186
+    ],
+    "keyboardTop": 1332,
+    "focusedHeight": 148,
+    "status": "PASS"
+  },
+  {
+    "case": "history-note-retry",
+    "label": "History note",
+    "scale": "1.0",
+    "theme": "Light",
+    "keyboardFrames": [
+      [
+        0,
+        1332,
+        1080,
+        2340
+      ],
+      [
+        0,
+        1332,
+        1080,
+        2340
+      ]
+    ],
+    "beforeBounds": [
+      51,
+      1551,
+      1031,
+      1699
+    ],
+    "imeShownBeforeDump": true,
+    "fieldBounds": [
+      51,
+      1116,
+      1031,
+      1264
+    ],
+    "keyboardTop": 1332,
+    "focusedHeight": 148,
+    "status": "PASS"
+  },
+  {
+    "case": "details-new-space",
+    "label": "New Space name",
+    "scale": "2.0",
+    "theme": "Dark",
+    "keyboardFrames": [
+      [
+        0,
+        1332,
+        1080,
+        2340
+      ],
+      [
+        0,
+        1332,
+        1080,
+        2340
+      ]
+    ],
+    "beforeBounds": [
+      85,
+      1679,
+      997,
+      1827
+    ],
+    "imeShownBeforeDump": true,
+    "fieldBounds": [
+      85,
+      1117,
+      997,
+      1265
+    ],
+    "keyboardTop": 1332,
+    "focusedHeight": 148,
+    "status": "PASS"
+  },
+  {
+    "case": "details-new-category",
+    "label": "New Category name",
+    "scale": "2.0",
+    "theme": "Dark",
+    "keyboardFrames": [
+      [
+        0,
+        1332,
+        1080,
+        2340
+      ],
+      [
+        0,
+        1332,
+        1080,
+        2340
+      ]
+    ],
+    "beforeBounds": [
+      85,
+      1108,
+      997,
+      1255
+    ],
+    "imeShownBeforeDump": true,
+    "fieldBounds": [
+      85,
+      1108,
+      997,
+      1255
+    ],
+    "keyboardTop": 1332,
+    "focusedHeight": 147,
+    "status": "PASS"
+  }
+]

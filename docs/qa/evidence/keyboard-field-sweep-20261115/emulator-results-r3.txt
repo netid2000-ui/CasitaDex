@@ -1,0 +1,31 @@
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Light appearance
+Tapped Search memories
+Verified input Search memories
+Tapped With photos only
+Tapped Open photo memory [SAMPLE] Coffee filters
+Tapped Edit Reference
+{"case": "results-reference", "label": "Reference", "scale": "1.0", "theme": "Light", "keyboardFrames": [[0, 1517, 1080, 2400], [0, 1517, 1080, 2400]], "beforeBounds": [81, 956, 999, 1094], "fieldBounds": [81, 956, 999, 1094], "keyboardTop": 1517, "focusedHeight": 138, "status": "PASS"}
+Tapped Reference
+Tapped ‹ Results
+Tapped Next
+Tapped Open regular memory [SAMPLE] Camping lantern
+Tapped ‹ Results
+/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/scripts/keyboard-field-sweep-20261115/results-navigation.py:21: DeprecationWarning: Testing an element's truth value will always return True in future versions.  Use specific 'len(elem)' or 'elem is not None' test instead.
+  assert any('Page 2 of' in (n.get('text') or '') for n in tree().iter('node'));assert node(before,False)
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Dark appearance
+Tapped Search memories
+Verified input Search memories
+Tapped With photos only
+Tapped Open photo memory [SAMPLE] Coffee filters
+Tapped Edit Reference
+{"case": "results-reference", "label": "Reference", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1517, 1080, 2400], [0, 1517, 1080, 2400]], "beforeBounds": [81, 1775, 999, 1945], "fieldBounds": [81, 1279, 999, 1454], "keyboardTop": 1517, "focusedHeight": 175, "status": "PASS"}
+Tapped Reference
+Tapped ‹ Results
+Tapped Next
+Tapped Open regular memory [SAMPLE] Camping lantern
+Tapped ‹ Results
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped System appearance
+COMPLETE results navigation

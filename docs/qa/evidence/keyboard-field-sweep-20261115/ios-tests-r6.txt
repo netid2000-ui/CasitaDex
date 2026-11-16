@@ -1,0 +1,877 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild test -project qa/search-location-ios/CasitaDexAudit.xcodeproj -scheme CasitaDexAudit -destination "platform=iOS Simulator,id=81FC3CCE-ACEB-4957-BE61-C9C653A4CE56" -derivedDataPath /Volumes/FA-Development/Designs-by-FA/Apple-Builds/CasitaDex-Search-Tests-20261115 -resultBundlePath /Volumes/FA-Development/Designs-by-FA/QA-Evidence/CasitaDex-Keyboard-20261115-r6.xcresult -parallel-testing-enabled NO "-only-testing:CasitaDexAuditTests/KeyboardFieldTests" "-only-testing:CasitaDexAuditTests/SearchLocationTests/testSearchContextAndLocation" "-only-testing:CasitaDexAuditTests/SearchLocationTests/testPagingReturn" CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO
+
+Build settings from command line:
+    CODE_SIGNING_ALLOWED = NO
+    CODE_SIGNING_REQUIRED = NO
+
+Writing result bundle at path:
+	/Volumes/FA-Development/Designs-by-FA/QA-Evidence/CasitaDex-Keyboard-20261115-r6.xcresult
+
+ComputePackagePrebuildTargetDependencyGraph
+
+Prepare packages
+
+CreateBuildRequest
+
+SendProjectDescription
+
+CreateBuildOperation
+
+ComputeTargetDependencyGraph
+note: Building targets in dependency order
+note: Target dependency graph (1 target)
+    Target 'CasitaDexAuditTests' in project 'CasitaDexAudit' (no dependencies)
+
+GatherProvisioningInputs
+
+CreateBuildDescription
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -v -E -dM -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.2.sdk -x c -c /dev/null
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc --version
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld -version_details
+
+Build description signature: c367068802c983e7e94a7fa9fad6cdfb
+Build description path: /Volumes/FA-Development/Designs-by-FA/Apple-Builds/CasitaDex-Search-Tests-20261115/Build/Intermediates.noindex/XCBuildData/c367068802c983e7e94a7fa9fad6cdfb.xcbuilddata
+ClangStatCache /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.2.sdk /Volumes/FA-Development/Designs-by-FA/Apple-Builds/CasitaDex-Search-Tests-20261115/SDKStatCaches.noindex/iphonesimulator27.2-24B8118-cc78df9d8a9de6526dea716b1c70fd8e.sdkstatcache
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/search-location-ios/CasitaDexAudit.xcodeproj
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.2.sdk -o /Volumes/FA-Development/Designs-by-FA/Apple-Builds/CasitaDex-Search-Tests-20261115/SDKStatCaches.noindex/iphonesimulator27.2-24B8118-cc78df9d8a9de6526dea716b1c70fd8e.sdkstatcache
+
+ProcessInfoPlistFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/CasitaDex-Search-Tests-20261115/Build/Products/Debug-iphonesimulator/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/Info.plist /Volumes/FA-Development/Designs-by-FA/Apple-Builds/CasitaDex-Search-Tests-20261115/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/empty-CasitaDexAuditTests.plist (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/search-location-ios
+    builtin-infoPlistUtility /Volumes/FA-Development/Designs-by-FA/Apple-Builds/CasitaDex-Search-Tests-20261115/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/empty-CasitaDexAuditTests.plist -producttype com.apple.product-type.bundle.ui-testing -expandbuildsettings -format binary -platform iphonesimulator -additionalcontentfile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/CasitaDex-Search-Tests-20261115/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/ProductTypeInfoPlistAdditions.plist -o /Volumes/FA-Development/Designs-by-FA/Apple-Builds/CasitaDex-Search-Tests-20261115/Build/Products/Debug-iphonesimulator/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/Info.plist
+
+CopySwiftLibs /Volumes/FA-Development/Designs-by-FA/Apple-Builds/CasitaDex-Search-Tests-20261115/Build/Products/Debug-iphonesimulator/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/search-location-ios
+    builtin-swiftStdLibTool --copy --verbose --scan-executable /Volumes/FA-Development/Designs-by-FA/Apple-Builds/CasitaDex-Search-Tests-20261115/Build/Products/Debug-iphonesimulator/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/CasitaDexAuditTests --scan-folder /Volumes/FA-Development/Designs-by-FA/Apple-Builds/CasitaDex-Search-Tests-20261115/Build/Products/Debug-iphonesimulator/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/Frameworks --scan-folder /Volumes/FA-Development/Designs-by-FA/Apple-Builds/CasitaDex-Search-Tests-20261115/Build/Products/Debug-iphonesimulator/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/PlugIns --scan-folder /Volumes/FA-Development/Designs-by-FA/Apple-Builds/CasitaDex-Search-Tests-20261115/Build/Products/Debug-iphonesimulator/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/SystemExtensions --scan-folder /Volumes/FA-Development/Designs-by-FA/Apple-Builds/CasitaDex-Search-Tests-20261115/Build/Products/Debug-iphonesimulator/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/Extensions --platform iphonesimulator --toolchain /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --destination /Volumes/FA-Development/Designs-by-FA/Apple-Builds/CasitaDex-Search-Tests-20261115/Build/Products/Debug-iphonesimulator/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/Frameworks --strip-bitcode --scan-executable /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib/libXCTestSwiftSupport.dylib --strip-bitcode-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip --emit-dependency-info /Volumes/FA-Development/Designs-by-FA/Apple-Builds/CasitaDex-Search-Tests-20261115/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/SwiftStdLibToolInputDependencies.dep --filter-for-swift-os
+Ignoring --strip-bitcode because --sign was not passed
+
+PruneExplicitPrecompiledModules /Volumes/FA-Development/Designs-by-FA/Apple-Builds/CasitaDex-Search-Tests-20261115/SDKExplicitPrecompiledModules
+
+PruneExplicitPrecompiledModules /Volumes/FA-Development/Designs-by-FA/Apple-Builds/CasitaDex-Search-Tests-20261115/Build/Intermediates.noindex/ExplicitPrecompiledModules
+
+PruneExplicitPrecompiledModules /Volumes/FA-Development/Designs-by-FA/Apple-Builds/CasitaDex-Search-Tests-20261115/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules
+
+2026-11-15 18:47:24.180983-0600 CasitaDexAuditTests-Runner[95414:6177391] [Default] Running tests...
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'Selected tests' started at 2026-11-15 18:47:26.271.
+Test Suite 'CasitaDexAuditTests.xctest' started at 2026-11-15 18:47:26.273.
+Test Suite 'KeyboardFieldTests' started at 2026-11-15 18:47:26.273.
+Test Case '-[CasitaDexAuditTests.KeyboardFieldTests testCoreEntryFieldsStayAboveKeyboard]' started.
+    t =     0.00s Start Test at 2026-11-15 18:47:26.274
+    t =     0.05s Set Up
+    t =     0.06s Open com.designsbyfa.casitadex.plusstoreqa
+    t =     0.06s     Launch com.designsbyfa.casitadex.plusstoreqa
+    t =     0.11s         Setting up automation session
+objc[95414]: Class UIAccessibilityLoaderWebShared is implemented in both /private/var/run/com.apple.security.cryptexd/mnt/com.apple.iPhoneOS.SimulatorRuntime-v24.1.434.0.9z8yji/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 27.0.simruntime/Contents/Resources/RuntimeRoot/System/Library/AccessibilityBundles/WebKit.axbundle/WebKit (0x107fe8398) and /private/var/run/com.apple.security.cryptexd/mnt/com.apple.iPhoneOS.SimulatorRuntime-v24.1.434.0.9z8yji/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 27.0.simruntime/Contents/Resources/RuntimeRoot/System/Library/AccessibilityBundles/WebCore.axbundle/WebCore (0x108950310). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+    t =     1.93s         Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     3.14s Waiting 12.0s for "Home" Any to exist
+    t =     4.21s     Checking `Expect predicate `existsNoRetry == 1` for object "Home" Any`
+    t =     4.21s         Checking existence of `"Home" Any`
+    t =     4.27s Find the "Home" Any
+    t =     4.34s Tap "Home" Other
+    t =     4.34s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     4.34s     Find the "Home" Other
+    t =     4.35s     Check for interrupting elements affecting "Home" Other
+    t =     4.39s     Synthesize event
+    t =     4.70s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     4.70s Waiting 12.0s for "Add Memory" Any to exist
+    t =     5.78s     Checking `Expect predicate `existsNoRetry == 1` for object "Add Memory" Any`
+    t =     5.78s         Checking existence of `"Add Memory" Any`
+    t =     5.82s Find the "Add Memory" Any
+    t =     5.84s Tap "Add Memory" Button
+    t =     5.84s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     5.84s     Find the "Add Memory" Button
+    t =     5.85s     Check for interrupting elements affecting "Add Memory" Button
+    t =     5.86s     Synthesize event
+    t =     6.15s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     6.16s Waiting 2.0s for "Resume draft" Button to exist
+    t =     7.23s     Checking `Expect predicate `existsNoRetry == 1` for object "Resume draft" Button`
+    t =     7.24s         Checking existence of `"Resume draft" Button`
+    t =     7.28s Tap "Resume draft" Button
+    t =     7.28s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     7.28s     Find the "Resume draft" Button
+    t =     7.29s     Check for interrupting elements affecting "Resume draft" Button
+    t =     7.31s     Synthesize event
+    t =     7.60s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     7.85s Waiting 10.0s for Any (First Match) to exist
+    t =     8.91s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =     8.91s         Checking existence of `Any (First Match)`
+    t =     8.98s Find the Any (First Match)
+    t =     9.00s Find the "Memory name (Required)" TextView
+    t =     9.01s Tap "Memory name (Required)" TextView
+    t =     9.01s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     9.01s     Find the "Memory name (Required)" TextView
+    t =     9.02s     Check for interrupting elements affecting "Memory name (Required)" TextView
+    t =     9.03s     Synthesize event
+    t =     9.32s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     9.61s Waiting 8.0s for Keyboard (First Match) to exist
+    t =    10.69s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =    10.69s         Checking existence of `Keyboard (First Match)`
+    t =    11.77s Find the "Memory name (Required)" TextView
+    t =    11.83s Find the Keyboard (First Match)
+    t =    11.84s Find the "Memory name (Required)" TextView
+    t =    11.86s Find the "Memory name (Required)" TextView
+    t =    11.88s Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    11.97s Added attachment named 'keyboard-Memory name (Required)'
+    t =    11.97s Swipe down ScrollView (First Match)
+    t =    11.97s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    11.97s     Find the ScrollView (First Match)
+    t =    11.97s     Check for interrupting elements affecting ScrollView
+    t =    11.99s     Synthesize event
+    t =    12.24s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    12.29s Waiting 10.0s for Any (First Match) to exist
+    t =    13.37s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    13.37s         Checking existence of `Any (First Match)`
+    t =    13.42s Find the Any (First Match)
+    t =    13.44s Swipe up Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    13.44s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    13.44s     Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    13.46s     Check for interrupting elements affecting "CasitaDex Plus Store QA" Application
+    t =    13.47s     Synthesize event
+    t =    13.89s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    14.59s Find the "Description" TextView
+    t =    14.62s Find the "Description" TextView
+    t =    14.64s Tap "Description" TextView
+    t =    14.64s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    14.64s     Find the "Description" TextView
+    t =    14.65s     Check for interrupting elements affecting "Description" TextView
+    t =    14.66s     Synthesize event
+    t =    14.94s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    15.25s Waiting 8.0s for Keyboard (First Match) to exist
+    t =    16.31s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =    16.31s         Checking existence of `Keyboard (First Match)`
+    t =    17.39s Find the "Description" TextView
+    t =    17.43s Find the Keyboard (First Match)
+    t =    17.44s Find the "Description" TextView
+    t =    17.46s Find the "Description" TextView
+    t =    17.48s Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    17.55s Added attachment named 'keyboard-Description'
+    t =    17.55s Swipe down ScrollView (First Match)
+    t =    17.55s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    17.55s     Find the ScrollView (First Match)
+    t =    17.56s     Check for interrupting elements affecting ScrollView
+    t =    17.58s     Synthesize event
+    t =    17.83s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    17.83s Waiting 12.0s for "Edit Notes" Any to exist
+    t =    18.89s     Checking `Expect predicate `existsNoRetry == 1` for object "Edit Notes" Any`
+    t =    18.89s         Checking existence of `"Edit Notes" Any`
+    t =    18.96s Find the "Edit Notes" Any
+    t =    19.00s Tap "Edit Notes" Button
+    t =    19.00s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    19.00s     Find the "Edit Notes" Button
+    t =    19.03s     Check for interrupting elements affecting "Edit Notes" Button
+    t =    19.05s     Synthesize event
+    t =    19.34s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    19.35s Waiting 10.0s for Any (First Match) to exist
+    t =    20.42s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    20.42s         Checking existence of `Any (First Match)`
+    t =    20.47s Find the Any (First Match)
+    t =    20.51s Find the "Notes" TextView
+    t =    20.53s Tap "Notes" TextView
+    t =    20.53s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    20.53s     Find the "Notes" TextView
+    t =    20.55s     Check for interrupting elements affecting "Notes" TextView
+    t =    20.56s     Synthesize event
+    t =    20.85s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    20.85s Waiting 8.0s for Keyboard (First Match) to exist
+    t =    21.92s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =    21.92s         Checking existence of `Keyboard (First Match)`
+    t =    23.01s Find the "Notes" TextView
+    t =    23.06s Find the Keyboard (First Match)
+    t =    23.07s Find the "Notes" TextView
+    t =    23.10s Find the "Notes" TextView
+    t =    23.11s Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    23.18s Added attachment named 'keyboard-Notes'
+    t =    23.18s Swipe down ScrollView (First Match)
+    t =    23.18s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    23.19s     Find the ScrollView (First Match)
+    t =    23.19s     Check for interrupting elements affecting ScrollView
+    t =    23.21s     Synthesize event
+    t =    23.47s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    23.47s Waiting 12.0s for "Done editing Notes" Any to exist
+    t =    24.54s     Checking `Expect predicate `existsNoRetry == 1` for object "Done editing Notes" Any`
+    t =    24.54s         Checking existence of `"Done editing Notes" Any`
+    t =    24.62s Find the "Done editing Notes" Any
+    t =    24.66s Tap "Done editing Notes" Button
+    t =    24.66s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    24.66s     Find the "Done editing Notes" Button
+    t =    24.69s     Check for interrupting elements affecting "Done editing Notes" Button
+    t =    24.71s     Synthesize event
+    t =    25.00s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    25.23s Waiting 12.0s for "Edit Reference" Any to exist
+    t =    26.30s     Checking `Expect predicate `existsNoRetry == 1` for object "Edit Reference" Any`
+    t =    26.30s         Checking existence of `"Edit Reference" Any`
+    t =    26.35s Find the "Edit Reference" Any
+    t =    26.37s Tap "Edit Reference" Button
+    t =    26.37s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    26.38s     Find the "Edit Reference" Button
+    t =    26.39s     Check for interrupting elements affecting "Edit Reference" Button
+    t =    26.41s     Synthesize event
+    t =    26.70s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    26.70s Waiting 10.0s for Any (First Match) to exist
+    t =    27.77s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    27.77s         Checking existence of `Any (First Match)`
+    t =    27.81s Find the Any (First Match)
+    t =    27.83s Find the "Reference" TextView
+    t =    27.85s Tap "Reference" TextView
+    t =    27.85s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    27.85s     Find the "Reference" TextView
+    t =    27.86s     Check for interrupting elements affecting "Reference" TextView
+    t =    27.88s     Synthesize event
+    t =    28.16s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    28.44s Waiting 8.0s for Keyboard (First Match) to exist
+    t =    29.51s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =    29.51s         Checking existence of `Keyboard (First Match)`
+    t =    30.57s Find the "Reference" TextView
+    t =    30.61s Find the Keyboard (First Match)
+    t =    30.62s Find the "Reference" TextView
+    t =    30.64s Find the "Reference" TextView
+    t =    30.66s Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    30.73s Added attachment named 'keyboard-Reference'
+    t =    30.74s Swipe down ScrollView (First Match)
+    t =    30.74s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    30.74s     Find the ScrollView (First Match)
+    t =    30.74s     Check for interrupting elements affecting ScrollView
+    t =    30.76s     Synthesize event
+    t =    31.02s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    31.02s Waiting 12.0s for "Done editing Reference" Any to exist
+    t =    32.09s     Checking `Expect predicate `existsNoRetry == 1` for object "Done editing Reference" Any`
+    t =    32.09s         Checking existence of `"Done editing Reference" Any`
+    t =    32.16s Find the "Done editing Reference" Any
+    t =    32.21s Swipe up Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    32.21s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    32.21s     Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    32.22s     Check for interrupting elements affecting "CasitaDex Plus Store QA" Application
+    t =    32.23s     Synthesize event
+    t =    32.66s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    33.12s Find the "Done editing Reference" Button
+    t =    33.17s Tap "Done editing Reference" Button
+    t =    33.17s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    33.17s     Find the "Done editing Reference" Button
+    t =    33.19s     Check for interrupting elements affecting "Done editing Reference" Button
+    t =    33.21s     Synthesize event
+    t =    33.51s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    33.51s Waiting 12.0s for "Choose Location" Any to exist
+    t =    34.57s     Checking `Expect predicate `existsNoRetry == 1` for object "Choose Location" Any`
+    t =    34.58s         Checking existence of `"Choose Location" Any`
+    t =    34.62s Find the "Choose Location" Any
+    t =    34.65s Tap "Choose ▾" Button
+    t =    34.65s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    34.65s     Find the "Choose ▾" Button
+    t =    34.67s     Check for interrupting elements affecting "Choose ▾" Button
+    t =    34.68s     Synthesize event
+    t =    34.97s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    35.31s Waiting 10.0s for Any (First Match) to exist
+    t =    36.35s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    36.35s         Checking existence of `Any (First Match)`
+    t =    36.38s Find the Any (First Match)
+    t =    36.40s Find the "Search locations" TextField
+    t =    36.41s Tap "Search locations" TextField
+    t =    36.41s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    36.41s     Find the "Search locations" TextField
+    t =    36.42s     Check for interrupting elements affecting "Search locations" TextField
+    t =    36.43s     Synthesize event
+    t =    36.71s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    37.01s Waiting 8.0s for Keyboard (First Match) to exist
+    t =    38.07s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =    38.07s         Checking existence of `Keyboard (First Match)`
+    t =    39.16s Find the "Search locations" TextField
+    t =    39.21s Find the Keyboard (First Match)
+    t =    39.22s Find the "Search locations" TextField
+    t =    39.24s Find the "Search locations" TextField
+    t =    39.26s Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    39.32s Added attachment named 'keyboard-Search locations'
+    t =    39.32s Swipe down ScrollView (First Match)
+    t =    39.32s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    39.32s     Find the ScrollView (First Match)
+    t =    39.32s     Check for interrupting elements affecting ScrollView
+    t =    39.34s     Synthesize event
+    t =    39.76s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    40.24s Waiting 12.0s for "Create new Location" Any to exist
+    t =    41.31s     Checking `Expect predicate `existsNoRetry == 1` for object "Create new Location" Any`
+    t =    41.31s         Checking existence of `"Create new Location" Any`
+    t =    41.33s Find the "Create new Location" Any
+    t =    41.35s Tap "Create new Location" Button
+    t =    41.35s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    41.35s     Find the "Create new Location" Button
+    t =    41.36s     Check for interrupting elements affecting "Create new Location" Button
+    t =    41.37s     Synthesize event
+    t =    41.66s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    41.66s Waiting 10.0s for Any (First Match) to exist
+    t =    42.71s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    42.71s         Checking existence of `Any (First Match)`
+    t =    42.73s Find the Any (First Match)
+    t =    42.76s Find the "Location name" TextView
+    t =    42.77s Tap "Location name" TextView
+    t =    42.77s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    42.77s     Find the "Location name" TextView
+    t =    42.78s     Check for interrupting elements affecting "Location name" TextView
+    t =    42.79s     Synthesize event
+    t =    43.07s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    43.33s Waiting 8.0s for Keyboard (First Match) to exist
+    t =    44.37s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =    44.37s         Checking existence of `Keyboard (First Match)`
+    t =    45.43s Find the "Location name" TextView
+    t =    45.47s Find the Keyboard (First Match)
+    t =    45.48s Find the "Location name" TextView
+    t =    45.49s Find the "Location name" TextView
+    t =    45.51s Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    45.57s Added attachment named 'keyboard-Location name'
+    t =    45.57s Swipe down ScrollView (First Match)
+    t =    45.57s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    45.58s     Find the ScrollView (First Match)
+    t =    45.58s     Check for interrupting elements affecting ScrollView
+    t =    45.60s     Synthesize event
+    t =    46.03s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    46.52s Waiting 12.0s for "Cancel" Any to exist
+    t =    47.58s     Checking `Expect predicate `existsNoRetry == 1` for object "Cancel" Any`
+    t =    47.58s         Checking existence of `"Cancel" Any`
+    t =    47.59s Find the "Cancel" Any
+    t =    47.59s Tap "Cancel" Button
+    t =    47.59s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    47.60s     Find the "Cancel" Button
+    t =    47.60s     Check for interrupting elements affecting "Cancel" Button
+    t =    47.61s     Synthesize event
+    t =    47.90s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    48.23s Waiting 12.0s for "Cancel" Any to exist
+    t =    49.29s     Checking `Expect predicate `existsNoRetry == 1` for object "Cancel" Any`
+    t =    49.30s         Checking existence of `"Cancel" Any`
+    t =    49.30s Find the "Cancel" Any
+    t =    49.31s Tap "Cancel" Button
+    t =    49.31s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    49.31s     Find the "Cancel" Button
+    t =    49.32s     Check for interrupting elements affecting "Cancel" Button
+    t =    49.34s     Synthesize event
+    t =    49.62s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    49.62s Waiting 12.0s for "Home" Any to exist
+    t =    50.68s     Checking `Expect predicate `existsNoRetry == 1` for object "Home" Any`
+    t =    50.68s         Checking existence of `"Home" Any`
+    t =    50.69s Find the "Home" Any
+    t =    50.71s Tap "Home" Other
+    t =    50.71s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    50.71s     Find the "Home" Other
+    t =    50.72s     Check for interrupting elements affecting "Home" Other
+    t =    50.73s     Synthesize event
+    t =    51.02s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    51.03s Waiting 12.0s for "Find" Any to exist
+    t =    52.07s     Checking `Expect predicate `existsNoRetry == 1` for object "Find" Any`
+    t =    52.07s         Checking existence of `"Find" Any`
+    t =    52.10s Find the "Find" Any
+    t =    52.12s Tap "Find" Other
+    t =    52.12s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    52.13s     Find the "Find" Other
+    t =    52.14s     Check for interrupting elements affecting "Find" Other
+    t =    52.15s     Synthesize event
+    t =    52.44s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    52.44s Waiting 10.0s for "find-query" Any to exist
+    t =    53.49s     Checking `Expect predicate `existsNoRetry == 1` for object "find-query" Any`
+    t =    53.49s         Checking existence of `"find-query" Any`
+    t =    53.55s Find the "find-query" Any
+    t =    53.57s Find the "find-query" TextView
+    t =    53.59s Tap "find-query" TextView
+    t =    53.59s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    53.59s     Find the "find-query" TextView
+    t =    53.61s     Check for interrupting elements affecting "find-query" TextView
+    t =    53.63s     Synthesize event
+    t =    53.91s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    54.19s Waiting 8.0s for Keyboard (First Match) to exist
+    t =    55.24s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =    55.24s         Checking existence of `Keyboard (First Match)`
+    t =    56.33s Find the "find-query" TextView
+    t =    56.41s Find the Keyboard (First Match)
+    t =    56.42s Find the "find-query" TextView
+    t =    56.46s Find the "find-query" TextView
+    t =    56.50s Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    56.57s Added attachment named 'keyboard-Search memories'
+    t =    56.57s Swipe down ScrollView (First Match)
+    t =    56.57s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    56.57s     Find the ScrollView (First Match)
+    t =    56.58s     Check for interrupting elements affecting ScrollView
+    t =    56.59s     Synthesize event
+    t =    56.86s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    56.86s Waiting 12.0s for "Reminders" Any to exist
+    t =    57.94s     Checking `Expect predicate `existsNoRetry == 1` for object "Reminders" Any`
+    t =    57.94s         Checking existence of `"Reminders" Any`
+    t =    58.00s Find the "Reminders" Any
+    t =    58.03s Swipe up Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    58.03s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    58.03s     Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    58.04s     Check for interrupting elements affecting "CasitaDex Plus Store QA" Application
+    t =    58.05s     Synthesize event
+    t =    58.47s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    58.96s Find the "Reminders" Other
+    t =    58.98s Tap "Reminders" Other
+    t =    58.98s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    58.98s     Find the "Reminders" Other
+    t =    58.99s     Check for interrupting elements affecting "Reminders" Other
+    t =    59.01s     Synthesize event
+    t =    59.31s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    59.31s Waiting 12.0s for "Add Reminder ›" Any to exist
+    t =    60.37s     Checking `Expect predicate `existsNoRetry == 1` for object "Add Reminder ›" Any`
+    t =    60.37s         Checking existence of `"Add Reminder ›" Any`
+    t =    60.39s Find the "Add Reminder ›" Any
+    t =    60.41s Tap "Add Reminder ›" Button
+    t =    60.41s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    60.41s     Find the "Add Reminder ›" Button
+    t =    60.43s     Check for interrupting elements affecting "Add Reminder ›" Button
+    t =    60.44s     Synthesize event
+    t =    60.73s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    60.73s Waiting 10.0s for Any (First Match) to exist
+    t =    61.77s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    61.77s         Checking existence of `Any (First Match)`
+    t =    61.80s Find the Any (First Match)
+    t =    61.83s Find the "Reminder title (Required)" TextView
+    t =    61.84s Tap "Reminder title (Required)" TextView
+    t =    61.84s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    61.84s     Find the "Reminder title (Required)" TextView
+    t =    61.85s     Check for interrupting elements affecting "Reminder title (Required)" TextView
+    t =    61.86s     Synthesize event
+    t =    62.14s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    62.41s Waiting 8.0s for Keyboard (First Match) to exist
+    t =    63.46s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =    63.46s         Checking existence of `Keyboard (First Match)`
+    t =    64.53s Find the "Reminder title (Required)" TextView
+    t =    64.55s Find the Keyboard (First Match)
+    t =    64.56s Find the "Reminder title (Required)" TextView
+    t =    64.58s Find the "Reminder title (Required)" TextView
+    t =    64.59s Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    64.66s Added attachment named 'keyboard-Reminder title (Required)'
+    t =    64.66s Swipe down ScrollView (First Match)
+    t =    64.66s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    64.66s     Find the ScrollView (First Match)
+    t =    64.67s     Check for interrupting elements affecting ScrollView
+    t =    64.68s     Synthesize event
+    t =    64.94s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    64.94s Waiting 12.0s for "More options ▾" Any to exist
+    t =    66.00s     Checking `Expect predicate `existsNoRetry == 1` for object "More options ▾" Any`
+    t =    66.00s         Checking existence of `"More options ▾" Any`
+    t =    66.04s Find the "More options ▾" Any
+    t =    66.07s Tap "More options ▾" Button
+    t =    66.07s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    66.07s     Find the "More options ▾" Button
+    t =    66.10s     Check for interrupting elements affecting "More options ▾" Button
+    t =    66.12s     Synthesize event
+    t =    66.40s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    66.41s Waiting 10.0s for Any (First Match) to exist
+    t =    67.44s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    67.45s         Checking existence of `Any (First Match)`
+    t =    67.50s Find the Any (First Match)
+    t =    67.53s Swipe up Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    67.53s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    67.53s     Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    67.54s     Check for interrupting elements affecting "CasitaDex Plus Store QA" Application
+    t =    67.55s     Synthesize event
+    t =    67.97s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    68.44s Find the "Notes" TextView
+    t =    68.45s Find the "Notes" TextView
+    t =    68.46s Tap "Notes" TextView
+    t =    68.46s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    68.47s     Find the "Notes" TextView
+    t =    68.48s     Check for interrupting elements affecting "Notes" TextView
+    t =    68.49s     Synthesize event
+    t =    68.77s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    69.02s Waiting 8.0s for Keyboard (First Match) to exist
+    t =    70.05s     Checking `Expect predicate `existsNoRetry == 1` for object Keyboard (First Match)`
+    t =    70.05s         Checking existence of `Keyboard (First Match)`
+    t =    71.11s Find the "Notes" TextView
+    t =    71.17s Find the Keyboard (First Match)
+    t =    71.18s Find the "Notes" TextView
+    t =    71.20s Find the "Notes" TextView
+    t =    71.22s Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    71.28s Added attachment named 'keyboard-Notes'
+    t =    71.28s Swipe down ScrollView (First Match)
+    t =    71.28s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    71.28s     Find the ScrollView (First Match)
+    t =    71.29s     Check for interrupting elements affecting ScrollView
+    t =    71.30s     Synthesize event
+    t =    71.56s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    71.56s Waiting 12.0s for "Cancel" Any to exist
+    t =    72.60s     Checking `Expect predicate `existsNoRetry == 1` for object "Cancel" Any`
+    t =    72.60s         Checking existence of `"Cancel" Any`
+    t =    72.66s Find the "Cancel" Any
+    t =    72.69s Tap "Cancel" Button
+    t =    72.69s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    72.69s     Find the "Cancel" Button
+    t =    72.71s     Check for interrupting elements affecting "Cancel" Button
+    t =    72.73s     Synthesize event
+    t =    73.02s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    73.38s Waiting 12.0s for "Home" Any to exist
+    t =    74.42s     Checking `Expect predicate `existsNoRetry == 1` for object "Home" Any`
+    t =    74.42s         Checking existence of `"Home" Any`
+    t =    74.47s Find the "Home" Any
+    t =    74.50s Swipe up Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    74.50s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    74.50s     Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    74.51s     Check for interrupting elements affecting "CasitaDex Plus Store QA" Application
+    t =    74.53s     Synthesize event
+    t =    74.95s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    75.55s Find the "Home" Other
+    t =    75.60s Swipe up Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    75.60s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    75.60s     Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    75.61s     Check for interrupting elements affecting "CasitaDex Plus Store QA" Application
+    t =    75.63s     Synthesize event
+    t =    76.06s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    76.65s Find the "Home" Other
+    t =    76.69s Swipe up Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    76.69s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    76.70s     Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    76.71s     Check for interrupting elements affecting "CasitaDex Plus Store QA" Application
+    t =    76.73s     Synthesize event
+    t =    77.15s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    77.74s Find the "Home" Other
+    t =    77.77s Swipe up Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    77.77s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    77.77s     Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    77.78s     Check for interrupting elements affecting "CasitaDex Plus Store QA" Application
+    t =    77.80s     Synthesize event
+    t =    78.21s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    78.79s Find the "Home" Other
+    t =    78.84s Swipe up Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    78.84s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    78.84s     Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    78.85s     Check for interrupting elements affecting "CasitaDex Plus Store QA" Application
+    t =    78.87s     Synthesize event
+    t =    79.29s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    79.88s Find the "Home" Other
+    t =    79.93s Swipe up Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    79.93s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    79.93s     Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    79.95s     Check for interrupting elements affecting "CasitaDex Plus Store QA" Application
+    t =    79.96s     Synthesize event
+    t =    80.38s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    80.98s Find the "Home" Other
+    t =    81.03s Swipe up Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    81.03s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    81.03s     Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    81.05s     Check for interrupting elements affecting "CasitaDex Plus Store QA" Application
+    t =    81.06s     Synthesize event
+    t =    81.49s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    82.08s Find the "Home" Other
+    t =    82.12s Swipe up Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    82.12s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    82.12s     Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    82.13s     Check for interrupting elements affecting "CasitaDex Plus Store QA" Application
+    t =    82.15s     Synthesize event
+    t =    82.57s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    83.16s Find the "Home" Other
+    t =    83.21s Swipe up Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    83.21s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    83.21s     Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    83.22s     Check for interrupting elements affecting "CasitaDex Plus Store QA" Application
+    t =    83.24s     Synthesize event
+    t =    83.66s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    84.25s Find the "Home" Other
+    t =    84.30s Swipe up Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    84.30s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    84.30s     Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    84.31s     Check for interrupting elements affecting "CasitaDex Plus Store QA" Application
+    t =    84.33s     Synthesize event
+    t =    84.75s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    85.35s Find the "Home" Other
+    t =    85.40s Swipe up Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    85.40s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    85.40s     Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    85.41s     Check for interrupting elements affecting "CasitaDex Plus Store QA" Application
+    t =    85.43s     Synthesize event
+    t =    85.85s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    86.44s Find the "Home" Other
+    t =    86.50s Swipe up Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    86.50s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    86.50s     Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    86.51s     Check for interrupting elements affecting "CasitaDex Plus Store QA" Application
+    t =    86.53s     Synthesize event
+    t =    86.95s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    87.55s Tap "Home" Other
+    t =    87.55s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    87.55s     Find the "Home" Other
+    t =    87.59s     Check for interrupting elements affecting "Home" Other
+    t =    87.62s     Found 1 interrupting element:
+    t =    87.62s         Find the "Discard reminder changes?" Alert
+    t =    87.63s "Discard reminder changes?" Alert from Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    87.63s     Invoking UI interruption monitors for "Discard reminder changes?" Alert from Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    87.63s         Find the "Discard reminder changes?" Alert
+    t =    87.64s         Checking existence of `Button (Elements matching predicate 'userTestingAttributes CONTAINS "cancel-button"')`
+    t =    87.66s         Checking existence of `Button (Elements matching predicate 'userTestingAttributes CONTAINS "cancel-button"')`
+    t =    87.67s Default interruption handler attempting to dismiss alert by tapping Button (Elements matching predicate 'userTestingAttributes CONTAINS "cancel-button"').
+    t =    87.67s         Tap Button (Elements matching predicate 'userTestingAttributes CONTAINS "cancel-button"')
+    t =    87.67s             Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    87.68s             Find the Button (Elements matching predicate 'userTestingAttributes CONTAINS "cancel-button"')
+    t =    87.69s             Check for interrupting elements affecting "Keep editing" Button
+    t =    87.71s             Synthesize event
+    t =    87.99s             Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    88.23s         Waiting 1.0s for Alert to not exist
+    t =    89.24s             Checking `Expect predicate `existsNoRetry == 0` for object Alert`
+    t =    89.24s                 Checking existence of `Alert`
+    t =    89.28s             Checking existence of `Alert`
+    t =    89.30s         Verifying handling...
+    t =    89.32s Confirmed successful handling of interrupting element
+    t =    89.32s     Synthesize event
+    t =    89.32s         Scroll element to visible
+    t =    89.33s         Find the "Home" Other
+    t =    89.36s         Computed hit point {-1, -1} after scrolling to visible
+    t =    89.66s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    89.67s Tear Down
+Test Case '-[CasitaDexAuditTests.KeyboardFieldTests testCoreEntryFieldsStayAboveKeyboard]' passed (89.922 seconds).
+Test Suite 'KeyboardFieldTests' passed at 2026-11-15 18:48:56.197.
+	 Executed 1 test, with 0 failures (0 unexpected) in 89.922 (89.924) seconds
+Test Suite 'SearchLocationTests' started at 2026-11-15 18:48:56.198.
+Test Case '-[CasitaDexAuditTests.SearchLocationTests testPagingReturn]' started.
+    t =     0.00s Start Test at 2026-11-15 18:48:56.198
+    t =     0.03s Set Up
+    t =     0.03s Open com.designsbyfa.casitadex.plusstoreqa
+    t =     0.03s     Launch com.designsbyfa.casitadex.plusstoreqa
+    t =     0.03s         Terminate com.designsbyfa.casitadex.plusstoreqa:95448
+    t =     1.16s         Setting up automation session
+    t =     2.49s         Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     3.57s Waiting 12.0s for "Home" Any to exist
+    t =     4.63s     Checking `Expect predicate `existsNoRetry == 1` for object "Home" Any`
+    t =     4.63s         Checking existence of `"Home" Any`
+    t =     4.68s Tap "Home" Any
+    t =     4.68s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     4.68s     Find the "Home" Any
+    t =     4.69s     Check for interrupting elements affecting "Home" Other
+    t =     4.71s     Synthesize event
+    t =     5.01s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     5.02s Waiting 12.0s for "Search Memories" Any to exist
+    t =     6.07s     Checking `Expect predicate `existsNoRetry == 1` for object "Search Memories" Any`
+    t =     6.07s         Checking existence of `"Search Memories" Any`
+    t =     6.10s Tap "Search Memories" Any
+    t =     6.10s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     6.11s     Find the "Search Memories" Any
+    t =     6.12s     Check for interrupting elements affecting "Search Memories" Button
+    t =     6.14s     Synthesize event
+    t =     6.42s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     6.42s Tap "Next" Button
+    t =     6.42s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     6.42s     Find the "Next" Button
+    t =     6.43s     Check for interrupting elements affecting "Next" Button
+    t =     6.45s     Synthesize event
+    t =     6.74s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     6.74s Waiting 10.0s for Button (First Match) to exist
+    t =     7.79s     Checking `Expect predicate `existsNoRetry == 1` for object Button (First Match)`
+    t =     7.79s         Checking existence of `Button (First Match)`
+    t =     7.81s Find the Button (First Match)
+    t =     7.84s Find the "Open regular memory [SAMPLE] Garden gloves" Button
+    t =     7.85s Find the "With photos only" Button
+    t =     7.86s Tap "Open regular memory [SAMPLE] Garden gloves" Button
+    t =     7.86s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     7.87s     Find the "Open regular memory [SAMPLE] Garden gloves" Button
+    t =     7.87s     Check for interrupting elements affecting "Open regular memory [SAMPLE] Garden gloves" Button
+    t =     7.88s     Synthesize event
+    t =     8.17s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     8.17s Waiting 12.0s for "‹ Results" Any to exist
+    t =     9.20s     Checking `Expect predicate `existsNoRetry == 1` for object "‹ Results" Any`
+    t =     9.20s         Checking existence of `"‹ Results" Any`
+    t =     9.22s Tap "‹ Results" Any
+    t =     9.22s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     9.22s     Find the "‹ Results" Any
+    t =     9.23s     Check for interrupting elements affecting "‹ Results" Button
+    t =     9.26s     Synthesize event
+    t =     9.54s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     9.54s Waiting 10.0s for StaticText (First Match) to exist
+    t =    10.59s     Checking `Expect predicate `existsNoRetry == 1` for object StaticText (First Match)`
+    t =    10.59s         Checking existence of `StaticText (First Match)`
+    t =    10.61s Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    10.70s Added attachment named 'ios-page-two-restored'
+    t =    10.70s Tap "Previous" Button
+    t =    10.70s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    10.70s     Find the "Previous" Button
+    t =    10.71s     Check for interrupting elements affecting "Previous" Button
+    t =    10.72s     Synthesize event
+    t =    11.01s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    11.01s Waiting 12.0s for "Home" Any to exist
+    t =    12.04s     Checking `Expect predicate `existsNoRetry == 1` for object "Home" Any`
+    t =    12.04s         Checking existence of `"Home" Any`
+    t =    12.06s Tap "Home" Any
+    t =    12.06s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    12.06s     Find the "Home" Any
+    t =    12.08s     Check for interrupting elements affecting "Home" Other
+    t =    12.10s     Synthesize event
+    t =    12.39s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    12.40s Tear Down
+Test Case '-[CasitaDexAuditTests.SearchLocationTests testPagingReturn]' passed (12.642 seconds).
+Test Case '-[CasitaDexAuditTests.SearchLocationTests testSearchContextAndLocation]' started.
+    t =     0.00s Start Test at 2026-11-15 18:49:08.841
+    t =     0.02s Set Up
+    t =     0.02s Open com.designsbyfa.casitadex.plusstoreqa
+    t =     0.03s     Launch com.designsbyfa.casitadex.plusstoreqa
+    t =     0.03s         Terminate com.designsbyfa.casitadex.plusstoreqa:95717
+    t =     1.22s         Setting up automation session
+    t =     2.48s         Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     3.56s Waiting 15.0s for "Home" Any to exist
+    t =     4.60s     Checking `Expect predicate `existsNoRetry == 1` for object "Home" Any`
+    t =     4.60s         Checking existence of `"Home" Any`
+    t =     4.62s Tap "Home" Any
+    t =     4.63s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     4.63s     Find the "Home" Any
+    t =     4.64s     Check for interrupting elements affecting "Home" Other
+    t =     4.65s     Synthesize event
+    t =     4.96s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     4.96s Waiting 15.0s for "Search Memories" Any to exist
+    t =     6.00s     Checking `Expect predicate `existsNoRetry == 1` for object "Search Memories" Any`
+    t =     6.00s         Checking existence of `"Search Memories" Any`
+    t =     6.02s Tap "Search Memories" Any
+    t =     6.02s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     6.02s     Find the "Search Memories" Any
+    t =     6.03s     Check for interrupting elements affecting "Search Memories" Button
+    t =     6.05s     Synthesize event
+    t =     6.33s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     6.33s Waiting 15.0s for "find-query" Any to exist
+    t =     7.37s     Checking `Expect predicate `existsNoRetry == 1` for object "find-query" Any`
+    t =     7.37s         Checking existence of `"find-query" Any`
+    t =     7.43s Find the "find-query" Any
+    t =     7.46s Tap "find-query" TextView
+    t =     7.46s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     7.46s     Find the "find-query" TextView
+    t =     7.48s     Check for interrupting elements affecting "find-query" TextView
+    t =     7.49s     Synthesize event
+    t =     7.78s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     7.81s Type 'filter' into "find-query" TextView
+    t =     7.81s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     8.20s     Find the "find-query" TextView
+    t =     8.27s     Check for interrupting elements affecting "find-query" TextView
+    t =     8.30s     Synthesize event
+    t =     8.61s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     8.78s Checking existence of `"search" Button`
+    t =     8.81s Tap "search" Button
+    t =     8.81s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     8.81s     Find the "search" Button
+    t =     8.83s     Check for interrupting elements affecting "Search" Button
+    t =     8.84s     Synthesize event
+    t =     8.85s         Scroll element to visible
+    t =     8.85s         Find the "Search" Button
+    t =     8.86s         Computed hit point {-1, -1} after scrolling to visible
+    t =     8.86s         Failed: Failed to scroll to visible (by AX action) Button, {{300.7, 1087.0}, {99.0, 54.0}}, identifier: 'Search', label: 'search', error: Error kAXErrorFailure performing AXAction kAXScrollToVisibleAction on element AX element pid: 95744, elementOrHash.elementID: 5014040768.130
+    t =     9.86s     Retrying `Tap "search" Button` (attempt #2)
+    t =     9.86s         Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    10.10s         Find the "Search" Button
+    t =    10.12s         Check for interrupting elements affecting "Search" Button
+    t =    10.14s         Synthesize event
+    t =    10.42s         Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    10.65s Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    10.73s Added attachment named 'ios-search-entered'
+    t =    10.73s Waiting 15.0s for Button (First Match) to exist
+    t =    11.77s     Checking `Expect predicate `existsNoRetry == 1` for object Button (First Match)`
+    t =    11.77s         Checking existence of `Button (First Match)`
+    t =    11.80s Tap Button (First Match)
+    t =    11.80s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    11.80s     Find the Button (First Match)
+    t =    11.81s     Check for interrupting elements affecting "Open regular memory [SAMPLE] HVAC filter size note" Button
+    t =    11.82s     Synthesize event
+    t =    12.11s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    12.11s Waiting 10.0s for Button (First Match) to exist
+    t =    13.18s     Checking `Expect predicate `existsNoRetry == 1` for object Button (First Match)`
+    t =    13.18s         Checking existence of `Button (First Match)`
+    t =    13.20s Tap Button (First Match)
+    t =    13.20s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    13.20s     Find the Button (First Match)
+    t =    13.22s     Check for interrupting elements affecting "‹ Results" Button
+    t =    13.24s     Synthesize event
+    t =    13.54s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    13.54s Find the "find-query" TextView
+    t =    13.58s Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    13.65s Added attachment named 'ios-return-query'
+    t =    13.65s Waiting 15.0s for "Home" Any to exist
+    t =    14.68s     Checking `Expect predicate `existsNoRetry == 1` for object "Home" Any`
+    t =    14.69s         Checking existence of `"Home" Any`
+    t =    14.71s Tap "Home" Any
+    t =    14.71s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    14.71s     Find the "Home" Any
+    t =    14.72s     Check for interrupting elements affecting "Home" Other
+    t =    14.74s     Synthesize event
+    t =    15.02s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    15.02s Waiting 15.0s for "Find" Any to exist
+    t =    16.07s     Checking `Expect predicate `existsNoRetry == 1` for object "Find" Any`
+    t =    16.07s         Checking existence of `"Find" Any`
+    t =    16.08s Tap "Find" Any
+    t =    16.08s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    16.08s     Find the "Find" Any
+    t =    16.08s     Check for interrupting elements affecting "Find" Other
+    t =    16.10s     Synthesize event
+    t =    16.38s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    16.38s Find the "find-query" TextView
+    t =    16.42s Waiting 15.0s for "Location  ▾" Any to exist
+    t =    17.44s     Checking `Expect predicate `existsNoRetry == 1` for object "Location  ▾" Any`
+    t =    17.45s         Checking existence of `"Location  ▾" Any`
+    t =    17.49s Tap "Location  ▾" Any
+    t =    17.49s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    17.50s     Find the "Location  ▾" Any
+    t =    17.52s     Check for interrupting elements affecting "Location  ▾" Button
+    t =    17.54s     Synthesize event
+    t =    17.82s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    18.15s Waiting 10.0s for "All" Button to exist
+    t =    19.20s     Checking `Expect predicate `existsNoRetry == 1` for object "All" Button`
+    t =    19.21s         Checking existence of `"All" Button`
+    t =    19.25s Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    19.32s Added attachment named 'ios-location-options'
+    t =    19.32s Waiting 15.0s for "All" Any to exist
+    t =    20.37s     Checking `Expect predicate `existsNoRetry == 1` for object "All" Any`
+    t =    20.37s         Checking existence of `"All" Any`
+    t =    20.40s Tap "All" Any
+    t =    20.40s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    20.41s     Find the "All" Any
+    t =    20.42s     Check for interrupting elements affecting "All" Button
+    t =    20.44s     Synthesize event
+    t =    20.73s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    21.06s Waiting 15.0s for "With photos only" Any to exist
+    t =    22.12s     Checking `Expect predicate `existsNoRetry == 1` for object "With photos only" Any`
+    t =    22.12s         Checking existence of `"With photos only" Any`
+    t =    22.17s Tap "With photos only" Any
+    t =    22.17s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    22.17s     Find the "With photos only" Any
+    t =    22.19s     Check for interrupting elements affecting "With photos only" Button
+    t =    22.21s     Synthesize event
+    t =    22.50s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    22.50s Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    22.58s Added attachment named 'ios-photo-filter'
+    t =    22.58s Waiting 15.0s for "Home" Any to exist
+    t =    23.63s     Checking `Expect predicate `existsNoRetry == 1` for object "Home" Any`
+    t =    23.63s         Checking existence of `"Home" Any`
+    t =    23.64s Tap "Home" Any
+    t =    23.64s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    23.64s     Find the "Home" Any
+    t =    23.66s     Check for interrupting elements affecting "Home" Other
+    t =    23.68s     Synthesize event
+    t =    23.97s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    23.97s Waiting 15.0s for "Find" Any to exist
+    t =    25.02s     Checking `Expect predicate `existsNoRetry == 1` for object "Find" Any`
+    t =    25.02s         Checking existence of `"Find" Any`
+    t =    25.04s Tap "Find" Any
+    t =    25.04s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    25.05s     Find the "Find" Any
+    t =    25.06s     Check for interrupting elements affecting "Find" Other
+    t =    25.07s     Synthesize event
+    t =    25.36s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    25.36s Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    25.46s Added attachment named 'ios-fresh-find'
+    t =    25.46s Waiting 15.0s for "Home" Any to exist
+    t =    26.49s     Checking `Expect predicate `existsNoRetry == 1` for object "Home" Any`
+    t =    26.50s         Checking existence of `"Home" Any`
+    t =    26.52s Tap "Home" Any
+    t =    26.52s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    26.53s     Find the "Home" Any
+    t =    26.54s     Check for interrupting elements affecting "Home" Other
+    t =    26.56s     Synthesize event
+    t =    26.85s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    26.86s Tear Down
+Test Case '-[CasitaDexAuditTests.SearchLocationTests testSearchContextAndLocation]' passed (27.102 seconds).
+Test Suite 'SearchLocationTests' passed at 2026-11-15 18:49:35.944.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 39.745 (39.746) seconds
+Test Suite 'CasitaDexAuditTests.xctest' passed at 2026-11-15 18:49:35.945.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 129.667 (129.672) seconds
+Test Suite 'Selected tests' passed at 2026-11-15 18:49:35.946.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 129.667 (129.675) seconds
+2026-11-15 18:49:36.252 xcodebuild[95400:6177058] [MT] IDETestOperationsObserverDebug: 133.514 elapsed -- Testing started completed.
+2026-11-15 18:49:36.252 xcodebuild[95400:6177058] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-11-15 18:49:36.252 xcodebuild[95400:6177058] [MT] IDETestOperationsObserverDebug: 133.514 sec, +133.514 sec -- end
+
+Test session results, code coverage, and logs:
+	/Volumes/FA-Development/Designs-by-FA/QA-Evidence/CasitaDex-Keyboard-20261115-r6.xcresult
+
+** TEST SUCCEEDED **
+
+Testing started

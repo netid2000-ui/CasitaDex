@@ -1,0 +1,3 @@
+../approved-refresh-android-qa-20261115/android/app/build/outputs/apk/release/app-release.apk: 1 file pushed, 0 skipped. 736.7 MB/s (51697068 bytes in 0.067s)
+Performing Push Install
+Success

@@ -1,0 +1,15 @@
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Dark appearance
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Edit Reference
+{"case": "details-reference", "label": "Reference", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1332, 1080, 2340], [0, 1332, 1080, 2340]], "beforeBounds": [88, 1167, 994, 1347], "imeShownBeforeDump": true, "fieldBounds": [88, 1079, 994, 1265], "keyboardTop": 1332, "focusedHeight": 186, "status": "PASS"}
+Tapped Cancel
+Tapped Choose verification status
+{"case": "verification-reference", "label": "Reference checked", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1332, 1080, 2340], [0, 1332, 1080, 2340]], "beforeBounds": [88, 1744, 994, 1924], "imeShownBeforeDump": true, "fieldBounds": [88, 1078, 994, 1264], "keyboardTop": 1332, "focusedHeight": 186, "status": "PASS"}
+{"case": "history-note", "label": "History note", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1332, 1080, 2340], [0, 1332, 1080, 2340]], "beforeBounds": [51, 1592, 1031, 1772], "imeShownBeforeDump": true, "fieldBounds": [51, 1118, 1031, 1265], "keyboardTop": 1332, "focusedHeight": 147, "status": "PASS"}
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+No due-date field in selected fixture
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped System appearance
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+COMPLETE {"pass": 3, "other": 0}

@@ -8,9 +8,9 @@ try:
   run('shell','settings','put','system','font_scale',scale);time.sleep(3);route('settings-manage?action=appearance');tap(theme+' appearance')
   route('card?id=sb26qa_007')
   for noun,display in [('Space','Space'),('Category','Categories')]:
-   tap('Edit '+display);tap('+ Create new '+noun+' ▾');probe('New '+noun+' name','details-new-'+noun.lower());route('');route('card?id=sb26qa_007')
-  route('');route('card?id=sb26qa_001');probe('Next reminder (YYYY-MM-DD)','existing-memory-next-reminder')
-  route('');route('card?id=sb26qa_007');tap('Choose verification status');probe('History note','history-note-retry')
+   tap('Edit '+display);tap('+ Create new '+noun+' ▾');probe('New '+noun+' name','details-new-'+noun.lower());home();route('card?id=sb26qa_007')
+  home();route('card?id=sb26qa_001');probe('Next reminder (YYYY-MM-DD)','existing-memory-next-reminder')
+  home();route('card?id=sb26qa_007');tap('Choose verification status');probe('History note','history-note-retry')
 finally:
  hidekeyboard();run('shell','settings','put','system','font_scale',original);time.sleep(3);route('settings-manage?action=appearance');tap('System appearance');route('add')
 print('COMPLETE extras',flush=True)

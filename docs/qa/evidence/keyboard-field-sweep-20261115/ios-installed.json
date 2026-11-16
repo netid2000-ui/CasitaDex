@@ -1,0 +1,10 @@
+{
+  "simulator": "81FC3CCE-ACEB-4957-BE61-C9C653A4CE56",
+  "package": "com.designsbyfa.casitadex.plusstoreqa",
+  "source": "ce0d09d",
+  "appPath": "/Volumes/FA-Development/Designs-by-FA/Apple-Builds/CoreSimulator/Devices/81FC3CCE-ACEB-4957-BE61-C9C653A4CE56/data/Containers/Bundle/Application/74967B16-6412-4DD9-9DE5-11DA549153DD/CasitaDexPlusStoreQA.app",
+  "bundles": {
+    "main.jsbundle": "5d6ffe443d64a33c72e885567cda815a9b8b9645b4af9810e170ea7e373fc667"
+  },
+  "restoredDynamicType": "large"
+}

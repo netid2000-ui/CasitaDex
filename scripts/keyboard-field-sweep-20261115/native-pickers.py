@@ -2,6 +2,7 @@ source=open('scripts/keyboard-field-sweep-20261115/sweep.py').read();exec(source
 original=run('shell','settings','get','system','font_scale').decode().strip()
 try:
  for scale,theme in [('1.0','Light'),('2.0','Dark')]:
+  if os.environ.get('QA_SCALE') and scale!=os.environ['QA_SCALE']:continue
   run('shell','settings','put','system','font_scale',scale);time.sleep(2);route('settings-manage?action=appearance');tap(theme+' appearance');route('reminders-manage?mode=new')
   t=tree();date=next(n.get('content-desc') for n in t.iter('node') if re.fullmatch(r'\d{4}-\d{2}-\d{2}',n.get('content-desc','')));tap(date);shot(scale+'-date-calendar');tap('CANCEL')
   label=next(n.get('content-desc') for n in tree().iter('node') if re.search(r'\d+:\d+',n.get('content-desc','')));tap(label);tap('Switch to text input mode for the time input.')

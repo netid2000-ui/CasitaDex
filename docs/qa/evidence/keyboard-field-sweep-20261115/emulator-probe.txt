@@ -1,0 +1,12 @@
+Tapped Light appearance
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Reminder title (Required)
+{"case": "reminder-title", "label": "Reminder title (Required)", "scale": "1.0", "theme": "Light", "keyboardFrames": [[0, 1517, 1080, 2400], [0, 1517, 1080, 2400]], "fieldBounds": [47, 545, 1033, 672], "keyboardTop": 1517, "status": "PASS"}
+Tapped More options ▾
+Tapped Notes
+{"case": "reminder-notes", "label": "Notes", "scale": "1.0", "theme": "Light", "keyboardFrames": [[0, 1517, 1080, 2400], [0, 1517, 1080, 2400]], "fieldBounds": [47, 1169, 1033, 1454], "keyboardTop": 1517, "status": "PASS"}
+Tapped Cancel
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped System appearance
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+COMPLETE {"pass": 2, "other": 0}

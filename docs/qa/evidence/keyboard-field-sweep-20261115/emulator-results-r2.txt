@@ -1,0 +1,4 @@
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/scripts/keyboard-field-sweep-20261115/results-navigation.py", line 2
+    source=open('scripts/keyboard-field-sweep-20261115/sweep.py').read();exec(source[:source.index("def nav(label):
+                                                                                                   ^
+SyntaxError: unterminated string literal (detected at line 2)

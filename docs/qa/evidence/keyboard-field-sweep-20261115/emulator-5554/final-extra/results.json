@@ -1,0 +1,282 @@
+[
+  {
+    "case": "details-new-space",
+    "label": "New Space name",
+    "scale": "1.0",
+    "theme": "Light",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      79,
+      1425,
+      1003,
+      1594
+    ],
+    "fieldBounds": [
+      79,
+      1279,
+      1003,
+      1454
+    ],
+    "keyboardTop": 1517,
+    "focusedHeight": 175,
+    "status": "PASS"
+  },
+  {
+    "case": "details-new-category",
+    "label": "New Category name",
+    "scale": "1.0",
+    "theme": "Light",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      79,
+      1833,
+      1003,
+      2002
+    ],
+    "fieldBounds": [
+      79,
+      1279,
+      1003,
+      1454
+    ],
+    "keyboardTop": 1517,
+    "focusedHeight": 175,
+    "status": "PASS"
+  },
+  {
+    "case": "existing-memory-next-reminder",
+    "label": "Next reminder (YYYY-MM-DD)",
+    "scale": "1.0",
+    "theme": "Light",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      47,
+      1052,
+      1033,
+      1222
+    ],
+    "fieldBounds": [
+      47,
+      1052,
+      1033,
+      1190
+    ],
+    "keyboardTop": 1517,
+    "focusedHeight": 138,
+    "status": "PASS"
+  },
+  {
+    "case": "history-note-retry",
+    "label": "History note",
+    "scale": "1.0",
+    "theme": "Light",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      47,
+      1696,
+      1033,
+      1865
+    ],
+    "fieldBounds": [
+      47,
+      1280,
+      1033,
+      1454
+    ],
+    "keyboardTop": 1517,
+    "focusedHeight": 174,
+    "status": "PASS"
+  },
+  {
+    "case": "details-new-space",
+    "label": "New Space name",
+    "scale": "2.0",
+    "theme": "Dark",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      79,
+      1484,
+      1003,
+      1653
+    ],
+    "fieldBounds": [
+      79,
+      1279,
+      1003,
+      1454
+    ],
+    "keyboardTop": 1517,
+    "focusedHeight": 175,
+    "status": "PASS"
+  },
+  {
+    "case": "details-new-category",
+    "label": "New Category name",
+    "scale": "2.0",
+    "theme": "Dark",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      79,
+      1898,
+      1003,
+      2067
+    ],
+    "fieldBounds": [
+      79,
+      1280,
+      1003,
+      1454
+    ],
+    "keyboardTop": 1517,
+    "focusedHeight": 174,
+    "status": "PASS"
+  },
+  {
+    "case": "existing-memory-next-reminder",
+    "label": "Next reminder (YYYY-MM-DD)",
+    "scale": "2.0",
+    "theme": "Dark",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      47,
+      1981,
+      1033,
+      2098
+    ],
+    "fieldBounds": [
+      47,
+      1279,
+      1033,
+      1454
+    ],
+    "keyboardTop": 1517,
+    "focusedHeight": 175,
+    "status": "PASS"
+  },
+  {
+    "case": "history-note-retry",
+    "label": "History note",
+    "scale": "2.0",
+    "theme": "Dark",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      47,
+      1956,
+      1033,
+      2098
+    ],
+    "fieldBounds": [
+      47,
+      1280,
+      1033,
+      1454
+    ],
+    "keyboardTop": 1517,
+    "focusedHeight": 174,
+    "status": "PASS"
+  }
+]

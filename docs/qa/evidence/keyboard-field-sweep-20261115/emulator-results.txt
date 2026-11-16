@@ -1,0 +1,26 @@
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Light appearance
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Search memories
+Verified input Search memories
+Tapped With photos only
+Tapped Open photo memory [SAMPLE] Coffee filters
+Tapped Edit Reference
+{"case": "results-reference", "label": "Reference", "scale": "1.0", "theme": "Light", "keyboardFrames": [[0, 1517, 1080, 2400], [0, 1517, 1080, 2400]], "beforeBounds": [81, 979, 999, 1117], "fieldBounds": [81, 979, 999, 1117], "keyboardTop": 1517, "focusedHeight": 138, "status": "PASS"}
+Tapped Reference
+Tapped ‹ Results
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped System appearance
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Traceback (most recent call last):
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/scripts/keyboard-field-sweep-20261115/results-navigation.py", line 18, in <module>
+    route('');route('answers');tap('Next');before=next(n.get('content-desc') for n in tree().iter('node') if n.get('content-desc','').startswith('Open '));tap(before);tap('‹ Results')
+                               ~~~^^^^^^^^
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/scripts/samsung-sweep-20261115/phone.py", line 39, in tap
+    n=node(label);x,y,a,b=bounds(n);run('shell','input','tap',str((x+a)//2),str((y+b)//2));time.sleep(.4);print('Tapped '+label,flush=True)
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/scripts/samsung-sweep-20261115/phone.py", line 37, in node
+    raise AssertionError('Missing '+label+' '+str(labels())[:4000])
+AssertionError: Missing Next [('', 'CasitaDex logo, go to Home'), ('CasitaDex', ''), ('Find', ''), ('filter', 'Search memories'), ('', 'Clear search'), ('Clear search', ''), ('', 'Space  ▾'), ('Space  ▾', ''), ('', 'Category  ▾'), ('Category  ▾', ''), ('', 'Location  ▾'), ('Location  ▾', ''), ('', 'With photos only'), ('✓', ''), ('With photos only', ''), ('1 result', ''), ('', 'Open photo memory [SAMPLE] Coffee filters'), ('', '[SAMPLE] Coffee filters'), ('[SAMPLE] Coffee filters', ''), ('Upper pantry basket. This is a fictional example, not a verified household location.', ''), ('›', ''), ('Sample Home · Kitchen', ''), ('', 'Primary navigation'), ('', 'Home'), ('Home', ''), ('', 'Photos'), ('Photos', ''), ('', 'Reminders'), ('Reminders', ''), ('', 'Find'), ('Find', '')]

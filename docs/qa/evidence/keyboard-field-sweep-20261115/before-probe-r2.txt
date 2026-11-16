@@ -1,0 +1,6 @@
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped More options ▾
+Tapped Notes
+[('', 'Notes', '[47,1750][1033,2035]')]
+        InsetsSource id=3 type=ime frame=[0,2400][1080,2400] visibleFrame=[0,2400][1080,2400] visible=true flags= sideHint=NONE boundingRects=null
+        mSource=InsetsSource id=3 type=ime frame=[0,2400][1080,2400] visibleFrame=[0,2400][1080,2400] visible=true flags= sideHint=NONE boundingRects=null

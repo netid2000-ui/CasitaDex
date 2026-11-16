@@ -1,0 +1,33 @@
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Dark appearance
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Spaces
+Tapped Search labels
+{"case": "labels-search-space", "label": "Search labels", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1517, 1080, 2400], [0, 1517, 1080, 2400]], "fieldBounds": [47, 1390, 1033, 1454], "keyboardTop": 1517, "status": "PASS"}
+Tapped Create new label
+Tapped Space name
+{"case": "labels-create-space", "label": "Space name", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1517, 1080, 2400], [0, 1517, 1080, 2400]], "fieldBounds": [47, 763, 1033, 938], "keyboardTop": 1517, "status": "PASS"}
+Tapped Cancel
+Tapped My Home
+Tapped Rename ›
+Tapped Space name
+{"case": "labels-rename-space", "label": "Space name", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1517, 1080, 2400], [0, 1517, 1080, 2400]], "fieldBounds": [47, 763, 1033, 938], "keyboardTop": 1517, "status": "PASS"}
+Tapped Cancel
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Traceback (most recent call last):
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/scripts/keyboard-field-sweep-20261115/sweep.py", line 61, in <module>
+    if os.environ.get('QA_GROUP') and name not in os.environ['QA_GROUP'].split(','):continue
+        ^^^^
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/scripts/keyboard-field-sweep-20261115/sweep.py", line 46, in labels
+    for noun,tab in [('Space','Spaces'),('Category','Categories'),('Location','Locations')]:
+                                            ^^^^^^^^
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/scripts/samsung-sweep-20261115/phone.py", line 39, in tap
+    n=node(label);x,y,a,b=bounds(n);run('shell','input','tap',str((x+a)//2),str((y+b)//2));time.sleep(.4);print('Tapped '+label,flush=True)
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/scripts/samsung-sweep-20261115/phone.py", line 37, in node
+    raise AssertionError('Missing '+label+' '+str(labels())[:4000])
+AssertionError: Missing Categories [('', '‹ Manage labels'), ('‹ Manage labels', ''), ('My Home', ''), ('Space', ''), ('', 'Rename ›'), ('Rename ›', ''), ('', 'Review removal ›'), ('Review removal ›', ''), ('', 'Primary navigation'), ('', 'Home'), ('Home', ''), ('', 'Photos'), ('Photos', ''), ('', 'Reminders'), ('Reminders', ''), ('', 'Find'), ('Find', '')]
+
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped System appearance
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+COMPLETE {"pass": 3, "other": 1}

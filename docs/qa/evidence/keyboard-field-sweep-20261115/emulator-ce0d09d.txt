@@ -1,0 +1,47 @@
+Tapped Dark appearance
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+{"case": "reminder-title", "label": "Reminder title (Required)", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1517, 1080, 2400], [0, 1517, 1080, 2400]], "beforeBounds": [47, 589, 1033, 758], "fieldBounds": [47, 589, 1033, 763], "keyboardTop": 1517, "focusedHeight": 174, "status": "PASS"}
+Tapped More options ▾
+{"case": "reminder-notes", "label": "Notes", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1517, 1080, 2400], [0, 1517, 1080, 2400]], "beforeBounds": [47, 1709, 1033, 1993], "fieldBounds": [47, 1358, 1033, 1643], "keyboardTop": 1517, "status": "FAIL", "error": "(1358, 1643, 1517)"}
+Tapped Cancel
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+{"case": "add-name", "label": "Memory name (Required)", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1517, 1080, 2400], [0, 1517, 1080, 2400]], "beforeBounds": [47, 599, 1033, 769], "fieldBounds": [47, 599, 1033, 774], "keyboardTop": 1517, "focusedHeight": 175, "status": "PASS"}
+{"case": "add-description", "label": "Description", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1517, 1080, 2400], [0, 1517, 1080, 2400]], "beforeBounds": [47, 1482, 1033, 1683], "fieldBounds": [47, 1253, 1033, 1454], "keyboardTop": 1517, "focusedHeight": 201, "status": "PASS"}
+Tapped Edit Notes
+{"case": "add-notes", "label": "Notes", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1517, 1080, 2400], [0, 1517, 1080, 2400]], "beforeBounds": [81, 1905, 999, 2098], "fieldBounds": [81, 1170, 999, 1454], "keyboardTop": 1517, "focusedHeight": 284, "status": "PASS"}
+Tapped Done editing Notes
+Tapped Edit Reference
+{"case": "add-reference", "label": "Reference", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1517, 1080, 2400], [0, 1517, 1080, 2400]], "beforeBounds": [81, 1544, 999, 1714], "fieldBounds": [81, 1502, 999, 1677], "keyboardTop": 1517, "status": "FAIL", "error": "(1502, 1677, 1517)"}
+Tapped Done editing Reference
+Tapped Choose Space
+Tapped + Create new Space ▾
+{"case": "add-new-space", "label": "New Space name", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1517, 1080, 2400], [0, 1517, 1080, 2400]], "beforeBounds": [79, 1613, 1003, 1782], "fieldBounds": [79, 1059, 1003, 1233], "keyboardTop": 1517, "focusedHeight": 174, "status": "PASS"}
+Tapped Create new Space ▴
+Tapped Choose Space
+Tapped Choose Categories
+Tapped + Create new Category ▾
+{"case": "add-new-category", "label": "New Category name", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1517, 1080, 2400], [0, 1517, 1080, 2400]], "beforeBounds": [79, 1345, 1003, 1514], "fieldBounds": [79, 1286, 1003, 1460], "keyboardTop": 1517, "focusedHeight": 174, "status": "PASS"}
+Tapped Create new Category ▴
+Tapped Choose Categories
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Choose Location
+{"case": "location-search", "label": "Search locations", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1517, 1080, 2400], [0, 1517, 1080, 2400]], "beforeBounds": [47, 791, 1033, 960], "fieldBounds": [47, 791, 1033, 966], "keyboardTop": 1517, "focusedHeight": 175, "status": "PASS"}
+Tapped Create new Location
+{"case": "location-create", "label": "Location name", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1517, 1080, 2400], [0, 1517, 1080, 2400]], "beforeBounds": [47, 791, 1033, 960], "fieldBounds": [47, 791, 1033, 966], "keyboardTop": 1517, "focusedHeight": 175, "status": "PASS"}
+Tapped Cancel
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Edit memory
+{"case": "edit-name", "label": "Memory name (Required)", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1517, 1080, 2400], [0, 1517, 1080, 2400]], "beforeBounds": [47, 589, 1033, 758], "fieldBounds": [47, 589, 1033, 763], "keyboardTop": 1517, "focusedHeight": 174, "status": "PASS"}
+{"case": "edit-description", "label": "Description", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1517, 1080, 2400], [0, 1517, 1080, 2400]], "beforeBounds": [47, 1456, 1033, 1793], "fieldBounds": [47, 1111, 1033, 1454], "keyboardTop": 1517, "focusedHeight": 343, "status": "PASS"}
+Tapped Edit Notes
+{"case": "edit-notes", "label": "Notes", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1517, 1080, 2400], [0, 1517, 1080, 2400]], "beforeBounds": [81, 1905, 999, 2098], "fieldBounds": [81, 1028, 999, 1454], "keyboardTop": 1517, "focusedHeight": 426, "status": "PASS"}
+Tapped Done editing Notes
+Tapped Edit Reference
+{"case": "edit-reference", "label": "Reference", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1517, 1080, 2400], [0, 1517, 1080, 2400]], "beforeBounds": [81, 1640, 999, 1809], "fieldBounds": [81, 1280, 999, 1454], "keyboardTop": 1517, "focusedHeight": 174, "status": "PASS"}
+Tapped Done editing Reference
+Tapped Choose Space
+Tapped + Create new Space ▾
+{"case": "edit-new-space", "label": "New space name", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1517, 1080, 2400], [0, 1517, 1080, 2400]], "beforeBounds": [79, 1492, 1003, 1661], "fieldBounds": [79, 1052, 1003, 1226], "keyboardTop": 1517, "focusedHeight": 174, "status": "PASS"}
+Tapped Create new Space ▴
+Tapped Choose Space
+Tapped Choose Categories

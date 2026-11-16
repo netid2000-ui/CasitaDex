@@ -1,0 +1,224 @@
+[
+  {
+    "file": "src/screens.tsx",
+    "line": 163,
+    "entry": "<Field label=\"Search your memories\" value={query} onChangeText={setQuery} /",
+    "scope": "legacy/dormant route"
+  },
+  {
+    "file": "src/screens.tsx",
+    "line": 311,
+    "entry": "<Field",
+    "scope": "legacy/dormant route"
+  },
+  {
+    "file": "src/screens.tsx",
+    "line": 316,
+    "entry": "<Field label=\"The answer\" value={answer} onChangeText={setAnswer} /",
+    "scope": "legacy/dormant route"
+  },
+  {
+    "file": "src/screens.tsx",
+    "line": 317,
+    "entry": "<Field",
+    "scope": "legacy/dormant route"
+  },
+  {
+    "file": "src/screens.tsx",
+    "line": 515,
+    "entry": "<Field",
+    "scope": "legacy/dormant route"
+  },
+  {
+    "file": "src/screens.tsx",
+    "line": 543,
+    "entry": "<Field",
+    "scope": "legacy/dormant route"
+  },
+  {
+    "file": "src/screens.tsx",
+    "line": 562,
+    "entry": "<Field",
+    "scope": "legacy/dormant route"
+  },
+  {
+    "file": "src/screens.tsx",
+    "line": 941,
+    "entry": "<Field",
+    "scope": "legacy/dormant route"
+  },
+  {
+    "file": "src/screens.tsx",
+    "line": 973,
+    "entry": "<Field",
+    "scope": "legacy/dormant route"
+  },
+  {
+    "file": "src/screens.tsx",
+    "line": 1084,
+    "entry": "<TextInput accessibilityLabel=\"Search your memories\" placeholder=\"Search your memories...\" placeholderTextColor={colors.muted} value={quick} onChangeText={setQuick} returnKeyType=\"search\" onSubmitEditing={() =",
+    "scope": "legacy/dormant route"
+  },
+  {
+    "file": "src/screens.tsx",
+    "line": 1157,
+    "entry": "<Field label=\"Search your memories\" value={query} onChangeText={setQuery} /",
+    "scope": "legacy/dormant route"
+  },
+  {
+    "file": "src/memory-edit-optional-field.tsx",
+    "line": 18,
+    "entry": "<Field {...field} accessibilityFocusOnMount/",
+    "scope": "shared or active"
+  },
+  {
+    "file": "src/draft-add.tsx",
+    "line": 153,
+    "entry": "<Field label=\"What do you want to remember?\" value={form?.title ?? \"\"} onChangeText={title =",
+    "scope": "legacy/dormant route"
+  },
+  {
+    "file": "src/draft-add.tsx",
+    "line": 154,
+    "entry": "<Field label=\"The answer\" value={form?.answer ?? \"\"} onChangeText={answer =",
+    "scope": "legacy/dormant route"
+  },
+  {
+    "file": "src/draft-add.tsx",
+    "line": 155,
+    "entry": "<Field label=\"Where it is (optional)\" value={form?.location ?? \"\"} onChangeText={location =",
+    "scope": "legacy/dormant route"
+  },
+  {
+    "file": "src/location-picker.tsx",
+    "line": 26,
+    "entry": "<Field iosTextView={plusFeatureEnforcementEnabled} nativeEditing={plusFeatureEnforcementEnabled} label=\"Location name\" value={name} onChangeText={setName} disabled={busy}/",
+    "scope": "shared or active"
+  },
+  {
+    "file": "src/location-picker.tsx",
+    "line": 26,
+    "entry": "<Field label=\"Search locations\" value={query} onChangeText={setQuery}/",
+    "scope": "shared or active"
+  },
+  {
+    "file": "src/label-management.tsx",
+    "line": 81,
+    "entry": "<Field label=\"Search labels\" value={query} onChangeText={setQuery}/",
+    "scope": "shared or active"
+  },
+  {
+    "file": "src/label-management.tsx",
+    "line": 83,
+    "entry": "<Field iosTextView={plusFeatureEnforcementEnabled} nativeEditing={plusFeatureEnforcementEnabled} label={noun+\" name\"} value={name} onChangeText={setName} disabled={e.busy}/",
+    "scope": "shared or active"
+  },
+  {
+    "file": "src/eng-screens.tsx",
+    "line": 164,
+    "entry": "<Field editorial iosTextView={plusFeatureEnforcementEnabled} nativeEditing={plusFeatureEnforcementEnabled} label=\"Reminder title (Required)\" value={title} onChangeText={setTitle} maxLength={200}/",
+    "scope": "shared or active"
+  },
+  {
+    "file": "src/eng-screens.tsx",
+    "line": 171,
+    "entry": "<Field editorial iosTextView={plusFeatureEnforcementEnabled} label=\"Notes\" value={notes} onChangeText={setNotes} multiline maxLength={4000}/",
+    "scope": "shared or active"
+  },
+  {
+    "file": "src/eng-screens.tsx",
+    "line": 231,
+    "entry": "<Field label=\"Search your memories\" value={query} onChangeText={q=",
+    "scope": "shared or active"
+  },
+  {
+    "file": "src/eng-screens.tsx",
+    "line": 329,
+    "entry": "<Field editorial iosTextView={plusFeatureEnforcementEnabled} maxLength={200} label=\"Memory name (Required)\" value={form?.title??\"\"} onChangeText={title=",
+    "scope": "shared or active"
+  },
+  {
+    "file": "src/eng-screens.tsx",
+    "line": 330,
+    "entry": "<Field iosTextView={plusFeatureEnforcementEnabled} label=\"New Space name\" value={newSpace} onChangeText={setNewSpace} /",
+    "scope": "shared or active"
+  },
+  {
+    "file": "src/eng-screens.tsx",
+    "line": 332,
+    "entry": "<Field iosTextView={plusFeatureEnforcementEnabled} label=\"New Category name\" value={newCategory} onChangeText={setNewCategory} /",
+    "scope": "shared or active"
+  },
+  {
+    "file": "src/eng-screens.tsx",
+    "line": 334,
+    "entry": "<Field editorial maxLength={1000} label=\"Description\" value={form?.answer??\"\"} onChangeText={answer=",
+    "scope": "shared or active"
+  },
+  {
+    "file": "src/eng-screens.tsx",
+    "line": 386,
+    "entry": "<Field iosTextView={plusFeatureEnforcementEnabled} label={kind===\"space\"?\"New Space name\":\"New Category name\"} value={inlineName} onChangeText={setInlineName}/",
+    "scope": "shared or active"
+  },
+  {
+    "file": "src/eng-screens.tsx",
+    "line": 399,
+    "entry": "<Field editorial disabled={e.busy} maxLength={200} label=\"Memory name (Required)\" value={edit.title} onChangeText={title=",
+    "scope": "shared or active"
+  },
+  {
+    "file": "src/eng-screens.tsx",
+    "line": 403,
+    "entry": "<Field iosTextView={plusFeatureEnforcementEnabled} label={`New ${key} name`} value={inlineName} onChangeText={setInlineName}/",
+    "scope": "shared or active"
+  },
+  {
+    "file": "src/eng-screens.tsx",
+    "line": 405,
+    "entry": "<Field editorial disabled={e.busy} maxLength={1000} label=\"Description\" value={edit.answer} onChangeText={answer=",
+    "scope": "shared or active"
+  },
+  {
+    "file": "src/eng-screens.tsx",
+    "line": 418,
+    "entry": "<Field iosTextView={plusFeatureEnforcementEnabled} disabled={e.busy} maxLength={200} label=\"Reference\" value={referenceDraft} onChangeText={setReferenceDraft} /",
+    "scope": "shared or active"
+  },
+  {
+    "file": "src/eng-screens.tsx",
+    "line": 421,
+    "entry": "<Field disabled={e.busy} maxLength={10} label=\"Next reminder (YYYY-MM-DD)\" value={nextDue} onChangeText={setNextDue} /",
+    "scope": "shared or active"
+  },
+  {
+    "file": "src/eng-screens.tsx",
+    "line": 423,
+    "entry": "<Field disabled={e.busy} maxLength={200} label=\"Reference checked\" value={source} onChangeText={setSource} /",
+    "scope": "shared or active"
+  },
+  {
+    "file": "src/eng-screens.tsx",
+    "line": 437,
+    "entry": "<Field disabled={e.busy} label=\"History note\" value={history} onChangeText={setHistory} /",
+    "scope": "shared or active"
+  },
+  {
+    "file": "src/ui.tsx",
+    "line": 151,
+    "entry": "<TextInput",
+    "scope": "shared or active"
+  },
+  {
+    "file": "src/ui.tsx",
+    "line": 168,
+    "entry": "<TextInput",
+    "scope": "shared or active"
+  },
+  {
+    "file": "src/figma-first/FigmaFind.tsx",
+    "line": 33,
+    "entry": "<TextInput testID=\"find-query\" multiline={iosTextView&&Platform.OS===\"ios\"} submitBehavior={iosTextView&&Platform.OS===\"ios\"?\"blurAndSubmit\":undefined} accessibilityLabel=\"Search memories\" accessibilityHint=\"Search titles, descriptions and details\" value={quer",
+    "scope": "shared or active"
+  }
+]
