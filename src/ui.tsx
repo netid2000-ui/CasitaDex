@@ -221,16 +221,24 @@ export function Page({
   function restorePosition(){if(!restoreReady||restored.current||viewport.current<=0||contentHeight.current<=0)return;const y=Math.min(restoreScrollY,Math.max(0,contentHeight.current-viewport.current));scroll.current?.scrollTo({y,animated:false});restored.current=true;}
   const [keyboardInset,setKeyboardInset]=useState(0);
   const keyboardTop=useRef<number|null>(null),scrollOffset=useRef(0);
+  const revealTimer=useRef<ReturnType<typeof setTimeout>|null>(null);
   const revealFocusedInput=React.useCallback(()=>{
     if(!androidKeyboardAware||Platform.OS!=="android")return;
-    requestAnimationFrame(()=>{
+    if(revealTimer.current!==null)clearTimeout(revealTimer.current);
+    // Coalesce focus, resize and content-inset changes before measuring.
+    revealTimer.current=setTimeout(()=>{
+      revealTimer.current=null;
       const input=TextInput.State.currentlyFocusedInput();
-      const top=Keyboard.metrics()?.screenY??keyboardTop.current;
+      const top=keyboardTop.current;
       if(input&&top!==null)input.measureInWindow((_x,y,_width,height)=>{
         const hidden=y+height-top+24;
-        if(hidden>0)scroll.current?.scrollTo({y:scrollOffset.current+hidden,animated:true});
+        if(hidden>0){
+          const nextY=scrollOffset.current+hidden;
+          scrollOffset.current=nextY;
+          scroll.current?.scrollTo({y:nextY,animated:false});
+        }
       });
-    });
+    },120);
   },[androidKeyboardAware]);
   useEffect(()=>{
     if(!androidKeyboardAware||Platform.OS!=="android")return;
@@ -240,7 +248,7 @@ export function Page({
       revealFocusedInput();
     });
     const hidden=Keyboard.addListener("keyboardDidHide",()=>{keyboardTop.current=null;setKeyboardInset(0);});
-    return ()=>{shown.remove();hidden.remove();};
+    return ()=>{shown.remove();hidden.remove();if(revealTimer.current!==null)clearTimeout(revealTimer.current);};
   },[androidKeyboardAware,revealFocusedInput]);
   const { ready, error, busy, reload, recover } = useData();
   const { s, colors } = useTheme();
