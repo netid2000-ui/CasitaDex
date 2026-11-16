@@ -1,0 +1,21 @@
+{
+  "previousAppsStillInstalled": [
+    "com.designsbyfa.casitadex.sb29appfirstqa",
+    "com.designsbyfa.casitadex.dev",
+    "com.designsbyfa.casitadex.sb39qa"
+  ],
+  "candidate": {
+    "appClip": false,
+    "builtByDeveloper": true,
+    "bundleIdentifier": "com.designsbyfa.casitadex.plusstoreqa",
+    "bundleVersion": "1",
+    "containerAccessible": true,
+    "defaultApp": false,
+    "hidden": false,
+    "internalApp": false,
+    "name": "CasitaDex Plus Store QA",
+    "removable": true,
+    "url": "file:///private/var/containers/Bundle/Application/8AF08B63-D7B9-4822-A515-FC362ECD500C/CasitaDexPlusStoreQA.app/",
+    "version": "0.1.0"
+  }
+}

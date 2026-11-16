@@ -1,0 +1,12 @@
+{
+  "bundleId": "com.designsbyfa.casitadex.plusstoreqa",
+  "name": "CasitaDex Plus Store QA",
+  "version": "0.1.0",
+  "build": "1",
+  "sourceCommit": "f761bad",
+  "jsSha256": "f9c71a0f3a8aa5adaf8845616f86f113d49412f163da5395f440106f07f36212",
+  "executableSha256": "27d158d86d064318d6aeeecd590c27ddf6713c079ba6413e19663ab3cb7adf61",
+  "profileName": "iOS Team Provisioning Profile: com.designsbyfa.casitadex.plusstoreqa",
+  "deviceIncluded": true,
+  "apsEnvironment": "development"
+}

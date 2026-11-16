@@ -19,3 +19,13 @@ No agreement was accepted, entitlement removed, alternate installed bundle repla
 
 Build log: `evidence/iphone-physical-candidate-20261116-build.txt`.
 Next: retry signed physical-device build after account agreement resolution, install the separate QA identity, verify launch/build identity, then execute IPHONE_OWNER_ACCEPTANCE_20261116.md with owner sign-off.
+
+## Successful retry — November 16, 2026, 8:12 AM America/Chicago
+
+The agreement/provisioning blocker cleared on retry. Signed Debug physical build succeeded using the verified f761bad source. Signature verification passed; the generated profile includes the connected iPhone and development aps-environment entitlement.
+
+Installed and launched **CasitaDex Plus Store QA**, bundle `com.designsbyfa.casitadex.plusstoreqa`, version 0.1.0/build 1, on the iPhone 17 Pro Max. Devicectl confirmed installation and process launch. All three prior CasitaDex package identities remain installed. No existing app was replaced or cleared. The new isolated app has its own data container.
+
+Physical UI, notification delivery/routing and owner acceptance remain pending. A successful process launch is not full UI acceptance. Use IPHONE_OWNER_ACCEPTANCE_20261116.md for the review.
+
+Evidence: `evidence/iphone-physical-candidate-20261116-{identity,install,launch,installed}.json` and build summary. Full build log remains on the Mac mini as `evidence/iphone-physical-candidate-20261116-retry2.txt`. No application source changes were required for this retry.

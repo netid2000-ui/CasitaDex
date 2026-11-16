@@ -1,6 +1,6 @@
 # CasitaDex — physical iPhone owner acceptance
 
-Prepared November 16, 2026. Status: **not executed; owner sign-off pending**.
+Prepared November 16, 2026. Status: **physical QA app installed and launched; checklist execution and owner sign-off pending**.
 Source candidate: `f761bad`, reminder corrections on top of accepted Samsung/search/keyboard/taxonomy work.
 
 ## Identity gate
@@ -52,3 +52,7 @@ Passing this checklist does not itself authorize a main merge, store submission 
 ## Physical-build preflight result
 
 The connected iPhone 17 Pro Max / iOS 27.3 beta was detected on November 16. The candidate's signed build is blocked by Apple's updated Program License Agreement and the unavailable Push Notifications provisioning profile. See [physical build checkpoint](IPHONE_PHYSICAL_BUILD_CHECKPOINT_20261116.md). No candidate installation or owner acceptance has occurred.
+
+## Provisioning resolved and candidate installed
+
+Successful retry installed CasitaDex Plus Store QA (`com.designsbyfa.casitadex.plusstoreqa`, 0.1.0/build 1) on the connected iPhone 17 Pro Max. The signed source candidate is f761bad. Process launch succeeded. Existing CasitaDex apps remain installed. All functional owner-result rows above remain Pending until actually executed.

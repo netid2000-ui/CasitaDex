@@ -1,0 +1,31 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -workspace ios/CasitaDexPlusStoreQA.xcworkspace -scheme CasitaDexPlusStoreQA -configuration Debug -destination generic/platform=iOS -derivedDataPath /Volumes/FA-Development/Designs-by-FA/Apple-Builds/CasitaDex-Physical-20261116 -allowProvisioningUpdates DEVELOPMENT_TEAM=VSP8XSM3BK CODE_SIGN_STYLE=Automatic "CODE_SIGN_IDENTITY=Apple Development" build
+
+Build settings from command line:
+    CODE_SIGN_IDENTITY = Apple Development
+    CODE_SIGN_STYLE = Automatic
+    DEVELOPMENT_TEAM = VSP8XSM3BK
+
+2026-11-16 08:09:31.972 xcodebuild[48764:6846533] [MT] IDESchemeActionsInvocationRecord: Device <DVTiPhonePlaceholder: 0x7acba2a440 (Any iOS Device | undefined_arch)> is missing operatingSystemVersion, operatingSystemVersionWithBuildNumber.
+note: Using codesigning identity override: Apple Development
+ComputePackagePrebuildTargetDependencyGraph
+
+Prepare packages
+
+CreateBuildRequest
+
+SendProjectDescription
+
+CreateBuildOperation
+
+ComputeTargetDependencyGraph
+note: Building targets in dependency order
+note: Target dependency graph (127 targets)
+    Target 'CasitaDexPlusStoreQA' in project 'CasitaDexPlusStoreQA'
+    Signing Identity:     "Apple Development: Francisco Franco (V4MV3CY63M)"
+    Provisioning Profile: "iOS Team Provisioning Profile: com.designsbyfa.casitadex.plusstoreqa"
+    Signing Identity:     "Apple Development: Francisco Franco (V4MV3CY63M)"
+    Provisioning Profile: "iOS Team Provisioning Profile: com.designsbyfa.casitadex.plusstoreqa"
+    Signing Identity:     "Apple Development: Francisco Franco (V4MV3CY63M)"
+    Provisioning Profile: "iOS Team Provisioning Profile: com.designsbyfa.casitadex.plusstoreqa"
+** BUILD SUCCEEDED **

@@ -1,0 +1,56 @@
+{
+  "info" : {
+    "arguments" : [
+      "devicectl",
+      "device",
+      "process",
+      "launch",
+      "--device",
+      "00008150-0014306C2644401C",
+      "com.designsbyfa.casitadex.plusstoreqa",
+      "--json-output",
+      "docs/qa/evidence/iphone-physical-candidate-20261116-launch.json"
+    ],
+    "commandType" : "devicectl.device.process.launch",
+    "environment" : {
+      "TERM" : "dumb"
+    },
+    "jsonVersion" : 5,
+    "outcome" : "success",
+    "version" : "651.32"
+  },
+  "result" : {
+    "deviceIdentifier" : "ACFC0924-3275-5038-BE02-FCA25D62496B",
+    "launchOptions" : {
+      "activatedWhenStarted" : true,
+      "arguments" : [
+
+      ],
+      "environmentVariables" : {
+        "TERM" : "dumb"
+      },
+      "platformSpecificOptions" : {
+
+      },
+      "startStopped" : false,
+      "terminateExistingInstances" : false,
+      "user" : {
+        "active" : true
+      }
+    },
+    "process" : {
+      "auditToken" : [
+        4294967295,
+        501,
+        501,
+        501,
+        501,
+        21506,
+        0,
+        55646
+      ],
+      "executable" : "file:///private/var/containers/Bundle/Application/8AF08B63-D7B9-4822-A515-FC362ECD500C/CasitaDexPlusStoreQA.app/CasitaDexPlusStoreQA",
+      "processIdentifier" : 21506
+    }
+  }
+}

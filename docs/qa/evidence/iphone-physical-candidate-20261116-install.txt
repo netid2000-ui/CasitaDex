@@ -1,0 +1,7 @@
+App installed:
+• bundleID: com.designsbyfa.casitadex.plusstoreqa
+• installationURL: file:///private/var/containers/Bundle/Application/8AF08B63-D7B9-4822-A515-FC362ECD500C/CasitaDexPlusStoreQA.app/
+• launchServicesIdentifier: unknown
+• databaseUUID: 6FB6BF5F-C7D4-4E70-9FAF-A5C1F16D0149
+• databaseSequenceNumber: 4164
+• options: 
