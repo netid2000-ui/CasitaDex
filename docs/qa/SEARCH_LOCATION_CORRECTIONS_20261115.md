@@ -77,3 +77,7 @@ This batch does not establish store readiness. Remaining gates include owner phy
 Next super-batch: finish the remaining scoped Figma variants and native accessibility/parity gates, prepare the current candidate for owner iPhone review, and reconcile the release checklist with existing evidence. Begin household sharing only after these corrections and native acceptance are complete. No release or main merge is authorized by this report.
 
 [Evidence directory](evidence/search-location-20261115/). [Acceptance scripts](../../scripts/search-location-20261115/README.md).
+
+## Subsequent Figma checkpoint — November 15
+
+The 26 older combined-filter variants missing Location were reconciled after this report. See [Find filter reconciliation](FIGMA_FILTER_RECONCILIATION_20261115.md) for exact nodes, selected-Location context links, validation and remaining prototype limits. Historical native artifact identities above are superseded by the installed keyboard candidate documented in [the keyboard report](KEYBOARD_FIELD_SWEEP_20261115.md).
