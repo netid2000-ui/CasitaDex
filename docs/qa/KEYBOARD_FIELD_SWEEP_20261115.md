@@ -27,7 +27,7 @@ Early invalid attempts are retained, not silently promoted to passes: emulator G
 - Android release build: PASS. APK SHA-256 `779f4feff00fd0ed2b4a7f8fedebcf3a03592e2f54f3b58047c8fc28c77c53a5`.
 - Package: `com.designsbyfa.casitadex.refreshqa`; replacement installs only, never uninstall/data-clear.
 - iOS core keyboard test r5: PASS (9 field checks). Header build r6: 3 tests PASS (keyboard, query/filter return, page-two return). r7 enlarged Dynamic Type (`accessibility-large`) core test: PASS, 9 field checks; restored original `large` setting. Installed iOS source includes ce0d09d; subsequent Android-only reveal changes do not alter the iOS path.
-- Android focused timing regression: 6/6 PASS on final build, including the first opening of Reminder Notes. Final broad emulator sweep: 29/29 PASS at Dark 200%; edge-case navigation checks and Samsung installation/verification remain pending.
+- Android focused timing regression: 6/6 PASS on final build, including the first opening of Reminder Notes. Final broad emulator sweep: 29/29 PASS at Dark 200%; edge entry fields 8/8 PASS across Light 100% and Dark 200%. Results navigation: 6/6 PASS across Light 100% and Dark 200%, including disjoint Results/Edit/More touch areas, keyboard-open return preserving query/photo filter, and page-two return. Samsung installation/verification is running.
 - Samsung pre-update checkpoint: original saved text, four-photo memory, saved Location and settings passed.
 
 ## Remaining acceptance boundaries

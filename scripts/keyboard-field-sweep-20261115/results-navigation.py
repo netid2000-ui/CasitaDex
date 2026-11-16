@@ -1,9 +1,11 @@
 import os
 source=open('scripts/keyboard-field-sweep-20261115/sweep.py').read();exec(source[:source.index("original=run('shell','settings'")])
+def nav(label):
+ n=next(n for n in tree().iter('node') if n.get('content-desc')==label and n.get('clickable')=='true');x,y,a,b=bounds(n);run('shell','input','tap',str((x+a)//2),str((y+b)//2));time.sleep(.5)
 original=run('shell','settings','get','system','font_scale').decode().strip()
 try:
  for scale,theme in [('1.0','Light'),('2.0','Dark')]:
-  run('shell','settings','put','system','font_scale',scale);time.sleep(2);route('settings-manage?action=appearance');tap(theme+' appearance');route('');route('answers')
+  run('shell','settings','put','system','font_scale',scale);time.sleep(2);route('settings-manage?action=appearance');tap(theme+' appearance');nav('Home');nav('Find')
   fill('Search memories','filter');tap('With photos only')
   result=next(n.get('content-desc') for n in tree().iter('node') if n.get('content-desc','').startswith('Open photo memory'));tap(result)
   headers=[bounds(node(label,False)) for label in ['‹ Results','Edit memory','More ···']]
@@ -15,9 +17,10 @@ try:
   shot(scale+'-results-with-keyboard');tap('‹ Results');hidekeyboard()
   assert node('Search memories').get('text')=='filter';assert node('With photos only').get('selected')=='true'
   shot(scale+'-results-return');records.append({'case':'results-header-keyboard-return','scale':scale,'status':'PASS','headerBounds':headers});save()
-  route('');route('answers');tap('Next');before=next(n.get('content-desc') for n in tree().iter('node') if n.get('content-desc','').startswith('Open '));tap(before);tap('‹ Results')
-  assert any('Page 2 of' in (n.get('text') or '') for n in tree().iter('node'));assert node(before,False)
+  nav('Home');nav('Find');tap('Next');before=next(n.get('content-desc') for n in tree().iter('node') if n.get('content-desc','').startswith('Open '));tap(before);tap('‹ Results')
+  assert any('Page 2 of' in (n.get('text') or '') for n in tree().iter('node'));assert node(before,False) is not None
   shot(scale+'-page-two-return');records.append({'case':'results-page-two-return','scale':scale,'status':'PASS'});save()
 finally:
- hidekeyboard();run('shell','settings','put','system','font_scale',original);route('settings-manage?action=appearance');tap('System appearance');route('')
+ hidekeyboard();run('shell','settings','put','system','font_scale',original);route('settings-manage?action=appearance');tap('System appearance');nav('Home')
+assert all(r['status']=='PASS' for r in records),records
 print('COMPLETE results navigation',flush=True)
