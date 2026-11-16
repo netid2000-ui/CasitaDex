@@ -1,0 +1,669 @@
+[
+  {
+    "case": "reminder-title",
+    "label": "Reminder title (Required)",
+    "scale": "1.0",
+    "theme": "Light",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      47,
+      545,
+      1033,
+      671
+    ],
+    "fieldBounds": [
+      47,
+      545,
+      1033,
+      672
+    ],
+    "keyboardTop": 1517,
+    "status": "PASS"
+  },
+  {
+    "case": "reminder-notes",
+    "label": "Notes",
+    "scale": "1.0",
+    "theme": "Light",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      47,
+      1750,
+      1033,
+      2034
+    ],
+    "fieldBounds": [
+      47,
+      1169,
+      1033,
+      1454
+    ],
+    "keyboardTop": 1517,
+    "status": "PASS"
+  },
+  {
+    "case": "add-name",
+    "label": "Memory name (Required)",
+    "scale": "1.0",
+    "theme": "Light",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      47,
+      555,
+      1033,
+      681
+    ],
+    "fieldBounds": [
+      47,
+      555,
+      1033,
+      683
+    ],
+    "keyboardTop": 1517,
+    "status": "PASS"
+  },
+  {
+    "case": "add-description",
+    "label": "Description",
+    "scale": "1.0",
+    "theme": "Light",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      47,
+      1251,
+      1033,
+      1451
+    ],
+    "fieldBounds": [
+      47,
+      1250,
+      1033,
+      1450
+    ],
+    "keyboardTop": 1517,
+    "status": "PASS"
+  },
+  {
+    "case": "add-notes",
+    "label": "Notes",
+    "scale": "1.0",
+    "theme": "Light",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      81,
+      1816,
+      999,
+      2100
+    ],
+    "fieldBounds": [
+      81,
+      1170,
+      999,
+      1454
+    ],
+    "keyboardTop": 1517,
+    "status": "PASS"
+  },
+  {
+    "case": "add-reference",
+    "label": "Reference",
+    "scale": "1.0",
+    "theme": "Light",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      81,
+      1597,
+      999,
+      1723
+    ],
+    "fieldBounds": [
+      81,
+      1327,
+      999,
+      1454
+    ],
+    "keyboardTop": 1517,
+    "status": "PASS"
+  },
+  {
+    "case": "add-new-space",
+    "label": "New Space name",
+    "scale": "1.0",
+    "theme": "Light",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      79,
+      974,
+      1003,
+      1112
+    ],
+    "fieldBounds": [
+      79,
+      974,
+      1003,
+      1112
+    ],
+    "keyboardTop": 1517,
+    "status": "PASS"
+  },
+  {
+    "case": "add-new-category",
+    "label": "New Category name",
+    "scale": "1.0",
+    "theme": "Light",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      79,
+      1206,
+      1003,
+      1343
+    ],
+    "fieldBounds": [
+      79,
+      1206,
+      1003,
+      1343
+    ],
+    "keyboardTop": 1517,
+    "status": "PASS"
+  },
+  {
+    "case": "location-search",
+    "label": "Search locations",
+    "scale": "1.0",
+    "theme": "Light",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      47,
+      706,
+      1033,
+      844
+    ],
+    "fieldBounds": [
+      47,
+      706,
+      1033,
+      844
+    ],
+    "keyboardTop": 1517,
+    "status": "PASS"
+  },
+  {
+    "case": "location-create",
+    "label": "Location name",
+    "scale": "1.0",
+    "theme": "Light",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      47,
+      706,
+      1033,
+      844
+    ],
+    "fieldBounds": [
+      47,
+      706,
+      1033,
+      844
+    ],
+    "keyboardTop": 1517,
+    "status": "PASS"
+  },
+  {
+    "case": "edit-name",
+    "label": "Memory name (Required)",
+    "scale": "1.0",
+    "theme": "Light",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      47,
+      545,
+      1033,
+      671
+    ],
+    "fieldBounds": [
+      47,
+      545,
+      1033,
+      672
+    ],
+    "keyboardTop": 1517,
+    "status": "PASS"
+  },
+  {
+    "case": "edit-description",
+    "label": "Description",
+    "scale": "1.0",
+    "theme": "Light",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      47,
+      1225,
+      1033,
+      1510
+    ],
+    "fieldBounds": [
+      47,
+      1169,
+      1033,
+      1454
+    ],
+    "keyboardTop": 1517,
+    "status": "PASS"
+  },
+  {
+    "case": "edit-notes",
+    "label": "Notes",
+    "scale": "1.0",
+    "theme": "Light",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      81,
+      1819,
+      999,
+      2104
+    ],
+    "fieldBounds": [
+      81,
+      1169,
+      999,
+      1454
+    ],
+    "keyboardTop": 1517,
+    "status": "PASS"
+  },
+  {
+    "case": "edit-reference",
+    "label": "Reference",
+    "scale": "1.0",
+    "theme": "Light",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      81,
+      1417,
+      999,
+      1543
+    ],
+    "fieldBounds": [
+      81,
+      1334,
+      999,
+      1462
+    ],
+    "keyboardTop": 1517,
+    "status": "PASS"
+  },
+  {
+    "case": "edit-new-space",
+    "label": "New space name",
+    "scale": "1.0",
+    "theme": "Light",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      79,
+      1319,
+      1003,
+      1457
+    ],
+    "fieldBounds": [
+      79,
+      1188,
+      1003,
+      1326
+    ],
+    "keyboardTop": 1517,
+    "status": "PASS"
+  },
+  {
+    "case": "edit-new-category",
+    "label": "New category name",
+    "scale": "1.0",
+    "theme": "Light",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      79,
+      1405,
+      1003,
+      1542
+    ],
+    "fieldBounds": [
+      79,
+      1322,
+      1003,
+      1460
+    ],
+    "keyboardTop": 1517,
+    "status": "PASS"
+  },
+  {
+    "case": "details-reference",
+    "label": "Reference",
+    "scale": "1.0",
+    "theme": "Light",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      81,
+      2030,
+      999,
+      2137
+    ],
+    "fieldBounds": [
+      81,
+      1316,
+      999,
+      1454
+    ],
+    "keyboardTop": 1517,
+    "status": "PASS"
+  },
+  {
+    "case": "verification-reference",
+    "label": "Reference checked",
+    "scale": "1.0",
+    "theme": "Light",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      81,
+      1674,
+      999,
+      1811
+    ],
+    "fieldBounds": [
+      81,
+      1325,
+      999,
+      1462
+    ],
+    "keyboardTop": 1517,
+    "status": "PASS"
+  },
+  {
+    "case": "history-note",
+    "label": "History note",
+    "scale": "1.0",
+    "theme": "Light",
+    "keyboardFrames": [],
+    "beforeBounds": [
+      47,
+      2097,
+      1033,
+      2137
+    ],
+    "status": "FAIL",
+    "error": "No measurable onscreen keyboard; not a pass"
+  },
+  {
+    "group": "details",
+    "scale": "1.0",
+    "status": "HARNESS_OR_NAVIGATION_ERROR",
+    "error": "Missing Close verification choices [('', '\u2039 Results'), ('\u2039 Results', ''), ('', 'Edit memory'), ('Edit \u203a', ''), ('', 'More \u00b7\u00b7\u00b7'), ('More \u00b7\u00b7\u00b7', ''), ('[SAMPLE] Extension cord', ''), ('', 'Set Needs checking'), ('\u2713', ''), ('Set Needs checking', ''), ('', 'Confirm Verified'), ('Confirm Verified', ''), ('', 'Close \u25b4'), ('Close \u25b4', ''), ('PHOTOS', ''), ('1 saved', ''), ('', 'Open photo 1 of [SAMPLE] Extension cord'), ('', '+ Add Photo'), ('Add Photo', ''), ('\u203a', ''), ('', 'Set Reminder \u203a'), ('Set Reminder \u203a', ''), ('', 'Share memory \u203a'), ('Share memory \u203a', ''), ('History', ''), ('11/15/2026, 10:18:44\\u202fAM: Answer edited \u2014 needs checking \u00b7 Photo added', ''), ('History note', ''), ('', 'History note'), ('', 'Record history'), ('Record history', ''), ('', 'Primary navigation'), ('', 'Home'), ('Home', ''), ('', 'Photos'), ('Photos', ''), ('', 'Reminders'), ('Reminders', ''), ('', 'Find'), ('Find', '')]"
+  },
+  {
+    "case": "labels-search-space",
+    "label": "Search labels",
+    "scale": "1.0",
+    "theme": "Light",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      47,
+      1324,
+      1033,
+      1461
+    ],
+    "fieldBounds": [
+      47,
+      1316,
+      1033,
+      1454
+    ],
+    "keyboardTop": 1517,
+    "status": "PASS"
+  }
+]

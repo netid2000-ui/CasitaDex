@@ -1,0 +1,92 @@
+[
+  {
+    "case": "labels-search-space",
+    "label": "Search labels",
+    "scale": "2.0",
+    "theme": "Dark",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "fieldBounds": [
+      47,
+      1390,
+      1033,
+      1454
+    ],
+    "keyboardTop": 1517,
+    "status": "PASS"
+  },
+  {
+    "case": "labels-create-space",
+    "label": "Space name",
+    "scale": "2.0",
+    "theme": "Dark",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "fieldBounds": [
+      47,
+      763,
+      1033,
+      938
+    ],
+    "keyboardTop": 1517,
+    "status": "PASS"
+  },
+  {
+    "case": "labels-rename-space",
+    "label": "Space name",
+    "scale": "2.0",
+    "theme": "Dark",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "fieldBounds": [
+      47,
+      763,
+      1033,
+      938
+    ],
+    "keyboardTop": 1517,
+    "status": "PASS"
+  },
+  {
+    "group": "labels",
+    "scale": "2.0",
+    "status": "HARNESS_OR_NAVIGATION_ERROR",
+    "error": "Missing Categories [('', '\u2039 Manage labels'), ('\u2039 Manage labels', ''), ('My Home', ''), ('Space', ''), ('', 'Rename \u203a'), ('Rename \u203a', ''), ('', 'Review removal \u203a'), ('Review removal \u203a', ''), ('', 'Primary navigation'), ('', 'Home'), ('Home', ''), ('', 'Photos'), ('Photos', ''), ('', 'Reminders'), ('Reminders', ''), ('', 'Find'), ('Find', '')]"
+  }
+]
