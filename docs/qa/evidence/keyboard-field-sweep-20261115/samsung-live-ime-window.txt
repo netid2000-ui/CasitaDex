@@ -1,0 +1,39 @@
+6 Window{15fbf3e u0 InputMethod}:
+    mDisplayId=0 mSession=Session{52d3842 9914:u0a10171} mClient=android.os.BinderProxy@39a03f9
+    mOwnerUid=10171 showForAllUsers=false package=com.samsung.android.honeyboard appop=NONE
+    mAttrs={(0,0)(fillxfill) gr=BOTTOM CENTER_VERTICAL sim={adjust=pan} ty=INPUT_METHOD fmt=TRANSPARENT wanim=0x7f140206 preferredMinDisplayRefreshRate=60.0 receive insets ignoring z-order
+      fl=81800108
+      pfl=10000800
+      bhv=1
+      fitTypes=3
+      fitSides=7
+      fitIgnoreVis
+      frameRateBoostOnTouch=true
+      dvrrWindowFrameRateHint=true
+ dimAmount=0.18 dimDuration=150 naviIconColor=0}
+    Requested w=1080 h=2240 mLayoutSeq=17653
+    mIsImWindow=true mIsWallpaper=false mIsFloatingLayer=true
+    mBaseLayer=131000 mSubLayer=0    mToken=WindowToken{c059b6d type=2011 android.os.Binder@8200784}
+    mViewVisibility=0x0 mHaveFrame=true mObscured=false
+    mGivenContentInsets=[0,1232][0,0] mGivenVisibleInsets=[0,1232][0,0]
+    mTouchableInsets=3 mGivenInsetsPending=false
+    touchable region=SkRegion((0,1332,1080,2340))
+    mFullConfiguration={2.0 311mcc480mnc [en_US] ldltr sw384dp w384dp h832dp 450dpi nrml long compactNeeded port night finger -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 1080, 2340) mAppBounds=Rect(0, 0 - 1080, 2340) mMaxBounds=Rect(0, 0 - 1080, 2340) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0 mStageConfig=undefined mPopOver=undefined mOverlappingWithCutout=false} s.2400 fontWeightAdjustment=0 ff=0 bf=-1 bts=0 cst=1.0 nightDim=0 themeSeq=0}
+    mLastReportedConfiguration={2.0 311mcc480mnc [en_US] ldltr sw384dp w384dp h832dp 450dpi nrml long compactNeeded port night finger -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 1080, 2340) mAppBounds=Rect(0, 0 - 1080, 2340) mMaxBounds=Rect(0, 0 - 1080, 2340) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0 mStageConfig=undefined mPopOver=undefined mOverlappingWithCutout=false} s.2400 fontWeightAdjustment=0 ff=0 bf=-1 bts=0 cst=1.0 nightDim=0 themeSeq=0}
+    mHasSurface=true isReadyForDisplay()=true mWindowRemovalAllowed=false
+    Frames: parent=[0,100][1080,2340] display=[0,100][1080,2340] frame=[0,100][1080,2340] last=[0,100][1080,2340] insetsChanged=false
+     surface=[0,0][0,0]
+    ContainerAnimator:
+      mLeash=Surface(name=Surface(name=15fbf3e InputMethod#135)/@0xe68d2ec - animation-leash of insets_animation#18645)/@0xa6e6813 mAnimationType=insets_animation
+      Animation: com.android.server.wm.InsetsSourceProvider$ControlAdapter@530216b
+        ControlAdapter mCapturedLeash=Surface(name=Surface(name=15fbf3e InputMethod#135)/@0xe68d2ec - animation-leash of insets_animation#18645)/@0xa6e6813
+    WindowStateAnimator{1993f85 InputMethod}:
+      mSurface=Surface(name=InputMethod$_9914#18662)/@0x36f04c8
+      Surface: shown=true      mDrawState=HAS_DRAWN       mLastHidden=false
+      mEnterAnimationPending=false
+    isOnScreen=true
+    isVisible=true
+    keepClearAreas: restricted=[], unrestricted=[]
+    mPrepareSyncSeqId=0
+    mBufferSeqId=0
+    mHiddenWhileProfileLockedState=false
