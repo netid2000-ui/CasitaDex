@@ -57,3 +57,7 @@ Remaining design documentation gap: Figma's existing date/time preview frames `9
 - Physical iPhone acceptance is still the owner's separate sign-off.
 - Complete owner review of this Samsung build, reconcile the schematic Figma picker previews, then continue the remaining release-readiness gates before household sharing.
 - No merge to main, store submission, production release, purchase, or household-sharing implementation occurred.
+
+## Subsequent design checkpoint — November 16
+
+The live Figma picker references have now been verified and the schematic documentation gap is superseded by [the picker reconciliation checkpoint](REMINDER_PICKER_RECONCILIATION_20261116.md). Physical iPhone owner acceptance remains pending; see [the prepared checklist](IPHONE_OWNER_ACCEPTANCE_20261116.md). No new native test or installation is claimed by this documentation update.

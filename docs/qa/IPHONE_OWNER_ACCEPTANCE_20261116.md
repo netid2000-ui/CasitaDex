@@ -1,0 +1,50 @@
+# CasitaDex — physical iPhone owner acceptance
+
+Prepared November 16, 2026. Status: **not executed; owner sign-off pending**.
+Source candidate: `f761bad`, reminder corrections on top of accepted Samsung/search/keyboard/taxonomy work.
+
+## Identity gate
+
+- [ ] Record iPhone model, iOS version, app bundle ID, displayed version/build, source commit and installation method.
+- [ ] Confirm this is a physical-device build of the intended candidate. The verified `plusstoreqa` simulator Debug app is not proof of a signed physical build.
+- [ ] Preserve the owner's accepted app and data. Any required candidate provisioning/install must use the approved Mac mini workflow; never replace a different package or erase data as a shortcut.
+
+## Focused acceptance
+
+Run normal text/light first, then enlarged text/dark. Restore the owner's original settings afterward. Use clearly marked disposable QA records for tests that save changes.
+
+| Check | Expected result | Owner result |
+|---|---|---|
+| Navigation | Home → Photos → Reminders → Find, in that order | Pending |
+| Home search | Search Memories matches shared button system | Pending |
+| Fresh Find | Empty query, Search memories… placeholder | Pending |
+| Active search return | Query, Space/Category/Location/photo filters and page survive Details → Back | Pending |
+| Results heading/paging | Heading and first result visible below sticky controls; Previous/Next work | Pending |
+| Taxonomy | Choose Space, Choose Categories and Choose Location follow the unified picker pattern; Location remains scoped correctly to Space | Pending |
+| Keyboard | Focused title, description, optional fields, picker search/create fields and reminder notes remain visible above keyboard | Pending |
+| Add Photo | Explicit Cancel closes source selection and retains draft; camera/library/file cancellation does not discard it | Pending |
+| Reminder controls | Add/Edit/More/Repeat/Save follow shared styling; no horizontal clipping | Pending |
+| Date and time | Normal calendar and enlarged date wheels fit; time wheels fit; Done is reachable | Pending |
+| Picker values | Change date/time in a disposable draft; Done returns with the chosen value. iOS applies changes to the unsaved editor as selection changes | Pending |
+| Reminder Cancel | Unchanged editor returns directly; changed editor offers the appropriate discard protection | Pending |
+| Linked reminder Save | Saves the QA reminder and returns to its originating Memory Details | Pending |
+| Notification routing | For a disposable future reminder, tapping its notification opens the intended memory/reminder in foreground, background and terminated-app states | Pending |
+| Photo viewer | Open thumbnail, pinch/double-tap zoom, close and return to originating item | Pending |
+| Offline/cold start | QA memory and settings survive offline use and app restart | Pending |
+| VoiceOver | Labels, focus order, picker controls and Save/Cancel understandable and operable | Pending |
+
+## Separate release gates
+
+- [ ] Complete remaining camera/library permission and import checks on physical devices.
+- [ ] Complete TalkBack/VoiceOver acceptance; automated layout checks do not replace it.
+- [ ] Verify backup/restore only with a protected backup and isolated QA data; do not overwrite owner data to test restoration.
+- [ ] Reconcile the six recorded automated skips with their required fixtures/artifacts; do not mark them passed without execution.
+- [ ] Review remaining store/billing/release requirements in the project release checklist. No live purchases or submissions are authorized by this checklist.
+
+## Sign-off record
+
+Owner: __________  Date/time: __________  Physical build identity: __________
+Accepted cases: __________  Failed cases/evidence: __________
+Release decision: __________
+
+Passing this checklist does not itself authorize a main merge, store submission or production release.
