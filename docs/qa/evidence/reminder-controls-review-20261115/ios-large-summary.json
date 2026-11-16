@@ -1,0 +1,52 @@
+{
+  "devicesAndConfigurations" : [
+    {
+      "device" : {
+        "architecture" : "arm64",
+        "deviceId" : "81FC3CCE-ACEB-4957-BE61-C9C653A4CE56",
+        "deviceName" : "CasitaDex Memory Boundary Isolated QA",
+        "modelName" : "iPhone 18 Pro",
+        "osBuildNumber" : "24A434",
+        "osVersion" : "27.0",
+        "platform" : "iOS Simulator"
+      },
+      "expectedFailures" : 0,
+      "failedTests" : 1,
+      "passedTests" : 0,
+      "skippedTests" : 0,
+      "testPlanConfiguration" : {
+        "configurationId" : "1",
+        "configurationName" : "Test Scheme Action"
+      }
+    }
+  ],
+  "environmentDescription" : "CasitaDexAudit · Built with macOS 27.0.1",
+  "expectedFailures" : 0,
+  "failedTests" : 1,
+  "finishTime" : 1794801653.883,
+  "passedTests" : 0,
+  "result" : "Failed",
+  "runtimeWarnings" : [
+
+  ],
+  "skippedTests" : 0,
+  "startTime" : 1794801612.694,
+  "statistics" : [
+
+  ],
+  "testFailures" : [
+    {
+      "failureText" : "XCTAssertLessThanOrEqual failed: (\"438.6666564941406\") is greater than (\"402.0\")",
+      "targetName" : "CasitaDexAuditTests",
+      "testIdentifier" : 1,
+      "testIdentifierString" : "ReminderControlReviewTests/testDateAndTimePresentation()",
+      "testIdentifierURL" : "test://com.apple.xcode/CasitaDexAudit/CasitaDexAuditTests/ReminderControlReviewTests/testDateAndTimePresentation",
+      "testName" : "testDateAndTimePresentation()"
+    }
+  ],
+  "title" : "Test - CasitaDexAudit",
+  "topInsights" : [
+
+  ],
+  "totalTestCount" : 1
+}

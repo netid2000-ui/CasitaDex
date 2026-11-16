@@ -1,0 +1,89 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "81FC3CCE-ACEB-4957-BE61-C9C653A4CE56",
+        "deviceName" : "CasitaDex Memory Boundary Isolated QA",
+        "exportedFileName" : "A31EE4AF-FB8B-4A52-8A4D-94D2FC45D138",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "UI Snapshot 2026-11-15 at 09.58.47 PM",
+        "timestamp" : 1794801527.932
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "81FC3CCE-ACEB-4957-BE61-C9C653A4CE56",
+        "deviceName" : "CasitaDex Memory Boundary Isolated QA",
+        "exportedFileName" : "3D068269-3425-461C-BB3F-5800807E6C79",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Synthesized Event 2026-11-15 at 09.58.48 PM",
+        "timestamp" : 1794801528.218
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "81FC3CCE-ACEB-4957-BE61-C9C653A4CE56",
+        "deviceName" : "CasitaDex Memory Boundary Isolated QA",
+        "exportedFileName" : "111626BF-F12E-48C9-BF6C-2EA809A6DE55.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Add Reminder_0_EFE1F8B1-E8E8-41C4-B4A8-C4C1D89443E5.png",
+        "timestamp" : 1794801526.776
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "81FC3CCE-ACEB-4957-BE61-C9C653A4CE56",
+        "deviceName" : "CasitaDex Memory Boundary Isolated QA",
+        "exportedFileName" : "8A71F34D-C51A-48F0-A091-7DFF5420C3B1",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "UI Snapshot 2026-11-15 at 09.58.46 PM",
+        "timestamp" : 1794801526.409
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "81FC3CCE-ACEB-4957-BE61-C9C653A4CE56",
+        "deviceName" : "CasitaDex Memory Boundary Isolated QA",
+        "exportedFileName" : "099832CB-DF57-4C2E-982A-819A7B58B3A7",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Synthesized Event 2026-11-15 at 09.58.46 PM",
+        "timestamp" : 1794801526.695
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "81FC3CCE-ACEB-4957-BE61-C9C653A4CE56",
+        "deviceName" : "CasitaDex Memory Boundary Isolated QA",
+        "exportedFileName" : "0EE3DD07-5057-446F-8CB3-CE5CCC77C1C8.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Reminders list_0_3083CBDA-FAB6-44ED-BDCF-FEA5A61B57C1.png",
+        "timestamp" : 1794801525.243
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "81FC3CCE-ACEB-4957-BE61-C9C653A4CE56",
+        "deviceName" : "CasitaDex Memory Boundary Isolated QA",
+        "exportedFileName" : "6EBEAC66-FEA8-4186-AE9A-B1FF8C6897D2",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Synthesized Event 2026-11-15 at 09.58.45 PM",
+        "timestamp" : 1794801525.143
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "81FC3CCE-ACEB-4957-BE61-C9C653A4CE56",
+        "deviceName" : "CasitaDex Memory Boundary Isolated QA",
+        "exportedFileName" : "5CC75CB9-6E44-453D-B265-74618433ED87",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Synthesized Event 2026-11-15 at 09.58.43 PM",
+        "timestamp" : 1794801523.7
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "81FC3CCE-ACEB-4957-BE61-C9C653A4CE56",
+        "deviceName" : "CasitaDex Memory Boundary Isolated QA",
+        "exportedFileName" : "DA79712B-1B13-40B2-8498-0F8C78392102.mp4",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Screen Recording 2026-11-15 at 09.58.38 PM.mp4",
+        "timestamp" : 1794801518.686
+      }
+    ],
+    "testIdentifier" : "ReminderControlReviewTests/testDateAndTimePresentation()",
+    "testIdentifierURL" : "test://com.apple.xcode/CasitaDexAudit/CasitaDexAuditTests/ReminderControlReviewTests/testDateAndTimePresentation"
+  }
+]

@@ -1,0 +1,3 @@
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+[('', 'Cancel'), ('Cancel', ''), ('', 'Save Reminder'), ('Save', ''), ('Add Reminder', ''), ('Reminder title (Required)', ''), ('', 'Reminder title (Required)'), ('Date', ''), ('', '2026-11-15'), ('November 15, 2026', ''), ('›', ''), ('Time', ''), ('', '10:05\u202fPM'), ('10:05\u202fPM', ''), ('›', ''), ('', 'More options ▾'), ('More options', ''), ('⌄', ''), ('', 'Primary navigation'), ('', 'Home'), ('Home', ''), ('', 'Photos'), ('Photos', ''), ('', 'Reminders'), ('Reminders', ''), ('', 'Find'), ('Find', '')]

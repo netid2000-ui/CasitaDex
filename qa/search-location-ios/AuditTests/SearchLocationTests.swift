@@ -132,3 +132,26 @@ final class UnifiedPickerKeyboardTests: XCTestCase {
  @MainActor func testLocationSearch(){runProbe("Location","Location","Search locations",false)}
  @MainActor func testLocationCreate(){runProbe("Location","Location","Location name",true)}
 }
+
+final class ReminderControlReviewTests: XCTestCase {
+ @MainActor func testDateAndTimePresentation() {
+  continueAfterFailure=true
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa");app.launch()
+  func tap(_ s:String){let e=app.descendants(matching:.any).matching(identifier:s).firstMatch;XCTAssertTrue(e.waitForExistence(timeout:12),s);for _ in 0..<8{if e.isHittable{break};app.swipeUp()};e.tap()}
+  func capture(_ s:String){let a=XCTAttachment(screenshot:app.screenshot());a.name=s;a.lifetime = .keepAlways;add(a)}
+  tap("Home");tap("Reminders");capture("Reminders list");tap("Add Reminder ›");capture("Add Reminder")
+  let date=app.buttons.matching(NSPredicate(format:"label MATCHES %@", "[0-9]{4}-[0-9]{2}-[0-9]{2}")).firstMatch
+  let time=app.buttons.matching(NSPredicate(format:"label MATCHES %@", "[0-9]{1,2}:[0-9]{2}.*[AP]M")).firstMatch
+  for (kind,control) in [("date",date),("time",time)]{
+   XCTAssertTrue(control.waitForExistence(timeout:10));let label=control.label
+   for _ in 0..<8{if control.isHittable{break};app.swipeUp()};control.tap()
+   XCTAssertTrue(app.staticTexts["Choose a "+kind].waitForExistence(timeout:10))
+   let picker=app.datePickers.firstMatch;XCTAssertTrue(picker.waitForExistence(timeout:5))
+   let done=app.buttons["Done"];XCTAssertTrue(done.exists);XCTAssertTrue(done.isHittable)
+   capture("Reminder "+kind+" picker")
+   XCTAssertGreaterThanOrEqual(picker.frame.minX,0);XCTAssertLessThanOrEqual(picker.frame.maxX,app.frame.maxX);XCTAssertLessThanOrEqual(done.frame.maxY,app.frame.maxY)
+   done.tap();XCTAssertEqual(control.label,label)
+  }
+  tap("Cancel");tap("Home")
+ }
+}

@@ -1,0 +1,44 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "81FC3CCE-ACEB-4957-BE61-C9C653A4CE56",
+        "deviceName" : "CasitaDex Memory Boundary Isolated QA",
+        "exportedFileName" : "C8ABD901-65B2-48E2-996D-C3710BDA9D68.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Reminder time picker_0_1306C25A-D05E-4440-93A5-9AEF97571012.png",
+        "timestamp" : 1794801466.221
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "81FC3CCE-ACEB-4957-BE61-C9C653A4CE56",
+        "deviceName" : "CasitaDex Memory Boundary Isolated QA",
+        "exportedFileName" : "5137F54D-99D8-4956-93B5-D4506D2574E2.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Reminder date picker_0_68A2EC76-5695-4EF1-AE7A-23156A0CBD3E.png",
+        "timestamp" : 1794801461.23
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "81FC3CCE-ACEB-4957-BE61-C9C653A4CE56",
+        "deviceName" : "CasitaDex Memory Boundary Isolated QA",
+        "exportedFileName" : "408E8766-D3FE-4521-9032-BC919BF2F1D9.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Add Reminder_0_F485F5B4-6764-4A90-8E62-DAE7FE6A38D6.png",
+        "timestamp" : 1794801456.878
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "81FC3CCE-ACEB-4957-BE61-C9C653A4CE56",
+        "deviceName" : "CasitaDex Memory Boundary Isolated QA",
+        "exportedFileName" : "1CA97409-FC7A-4D0F-9847-CA85D7DE01AE.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Reminders list_0_4831F05D-644C-478A-BBEF-468E6725F78C.png",
+        "timestamp" : 1794801455.348
+      }
+    ],
+    "testIdentifier" : "ReminderControlReviewTests/testDateAndTimePresentation()",
+    "testIdentifierURL" : "test://com.apple.xcode/CasitaDexAudit/CasitaDexAuditTests/ReminderControlReviewTests/testDateAndTimePresentation"
+  }
+]
