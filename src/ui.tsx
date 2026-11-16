@@ -260,7 +260,7 @@ export function Page({
       keyboardDismissMode="on-drag"
       onLayout={event=>{viewport.current=event.nativeEvent.layout.height;restorePosition();if(keyboardTop.current!==null)revealFocusedInput();}}
       scrollEventThrottle={100}
-      onScroll={event=>{scrollOffset.current=event.nativeEvent.contentOffset.y;if(restored.current)onScrollY?.(scrollOffset.current);}}
+      onScroll={event=>{scrollOffset.current=event.nativeEvent.contentOffset.y;if(restored.current)onScrollY?.(scrollOffset.current);if(keyboardTop.current!==null)revealFocusedInput();}}
       onContentSizeChange={(_width,height)=>{contentHeight.current=height;restorePosition();if(keyboardTop.current!==null)revealFocusedInput();}}
       keyboardShouldPersistTaps="always"
       automaticallyAdjustKeyboardInsets
