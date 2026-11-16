@@ -1,0 +1,44 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "00008150-0014306C2644401C",
+        "deviceName" : "iPhone",
+        "exportedFileName" : "DAF3D59D-D009-4212-A29D-0A44D09B5EEB.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Reminder time picker_0_C06E6F91-56AF-490F-9EBF-80C7B5FC629A.png",
+        "timestamp" : 1794842379.634
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "00008150-0014306C2644401C",
+        "deviceName" : "iPhone",
+        "exportedFileName" : "0667C9D6-A818-46D5-A7CE-0F1A354FE306.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Reminder date picker_0_9B4C3460-8347-42C8-B4AB-599F8BE6E253.png",
+        "timestamp" : 1794842374.171
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "00008150-0014306C2644401C",
+        "deviceName" : "iPhone",
+        "exportedFileName" : "EF479EBB-389F-4089-A754-5F3900D00DE0.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Add Reminder_0_63FD63C3-5008-4AA1-8F4A-978859E78DD0.png",
+        "timestamp" : 1794842369.533
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "00008150-0014306C2644401C",
+        "deviceName" : "iPhone",
+        "exportedFileName" : "AAF0598D-470D-4A8B-9E6A-B064C28BD0A3.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Reminders list_0_F72F3CC6-1DDC-476C-B41D-0E393781AE58.png",
+        "timestamp" : 1794842367.866
+      }
+    ],
+    "testIdentifier" : "ReminderControlReviewTests/testDateAndTimePresentation()",
+    "testIdentifierURL" : "test://com.apple.xcode/CasitaDexAudit/CasitaDexAuditTests/ReminderControlReviewTests/testDateAndTimePresentation"
+  }
+]

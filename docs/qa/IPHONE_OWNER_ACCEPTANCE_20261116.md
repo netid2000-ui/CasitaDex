@@ -56,3 +56,7 @@ The connected iPhone 17 Pro Max / iOS 27.3 beta was detected on November 16. The
 ## Provisioning resolved and candidate installed
 
 Successful retry installed CasitaDex Plus Store QA (`com.designsbyfa.casitadex.plusstoreqa`, 0.1.0/build 1) on the connected iPhone 17 Pro Max. The signed source candidate is f761bad. Process launch succeeded. Existing CasitaDex apps remain installed. All functional owner-result rows above remain Pending until actually executed.
+
+## Physical reminder automation checkpoint
+
+The physical iPhone passed the current-size dark-mode date/time presentation, unchanged-value Done, and editor Cancel/Home checks. See [physical reminder evidence](IPHONE_PHYSICAL_REMINDER_ACCEPTANCE_20261116.md). Owner-result rows remain pending; this limited automated check does not cover changed selections, enlarged physical text or notification routing.

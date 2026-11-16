@@ -1,0 +1,690 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project qa/physical-iphone-ios/CasitaDexAudit.xcodeproj -scheme CasitaDexAudit -destination platform=iOS,id=00008150-0014306C2644401C -allowProvisioningUpdates "-only-testing:CasitaDexAuditTests/ReminderControlReviewTests" -test-timeouts-enabled YES -maximum-test-execution-time-allowance 120 -resultBundlePath /Volumes/FA-Development/Designs-by-FA/Apple-Builds/CasitaDex-Physical-Reminder-r2-20261116.xcresult test
+
+Writing result bundle at path:
+	/Volumes/FA-Development/Designs-by-FA/Apple-Builds/CasitaDex-Physical-Reminder-r2-20261116.xcresult
+
+ComputePackagePrebuildTargetDependencyGraph
+
+Prepare packages
+
+CreateBuildRequest
+
+SendProjectDescription
+
+CreateBuildOperation
+
+ComputeTargetDependencyGraph
+note: Building targets in dependency order
+note: Target dependency graph (1 target)
+    Target 'CasitaDexAuditTests' in project 'CasitaDexAudit' (no dependencies)
+
+GatherProvisioningInputs
+
+CreateBuildDescription
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -v -E -dM -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.2.sdk -x c -c /dev/null
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc --version
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld -version_details
+
+Build description signature: bb1711584fa174360b200c2d99a51b54
+Build description path: /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/XCBuildData/bb1711584fa174360b200c2d99a51b54.xcbuilddata
+CreateBuildDirectory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios/CasitaDexAudit.xcodeproj
+    builtin-create-build-directory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules
+
+CreateBuildDirectory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CompilationCache.noindex
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios/CasitaDexAudit.xcodeproj
+    builtin-create-build-directory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CompilationCache.noindex
+
+ClangStatCache /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.2.sdk /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKStatCaches.noindex/iphoneos27.2-24B8118-6890c9e4970e00494a266ff652f095d9.sdkstatcache
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios/CasitaDexAudit.xcodeproj
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.2.sdk -o /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKStatCaches.noindex/iphoneos27.2-24B8118-6890c9e4970e00494a266ff652f095d9.sdkstatcache
+
+CreateBuildDirectory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/ModuleCache.noindex
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios/CasitaDexAudit.xcodeproj
+    builtin-create-build-directory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/ModuleCache.noindex
+
+CreateBuildDirectory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios/CasitaDexAudit.xcodeproj
+    builtin-create-build-directory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products
+
+CreateBuildDirectory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios/CasitaDexAudit.xcodeproj
+    builtin-create-build-directory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex
+
+CreateBuildDirectory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/ExplicitPrecompiledModules
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios/CasitaDexAudit.xcodeproj
+    builtin-create-build-directory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/ExplicitPrecompiledModules
+
+CreateBuildDirectory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/PrecompiledHeaders
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios/CasitaDexAudit.xcodeproj
+    builtin-create-build-directory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/PrecompiledHeaders
+
+CreateBuildDirectory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios/CasitaDexAudit.xcodeproj
+    builtin-create-build-directory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules
+
+CreateBuildDirectory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphoneos
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios/CasitaDexAudit.xcodeproj
+    builtin-create-build-directory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphoneos
+
+CreateBuildDirectory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios/CasitaDexAudit.xcodeproj
+    builtin-create-build-directory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos
+
+WriteAuxiliaryFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAudit-ef40d77ec0ada5dcdf02f5e6f28868ad-VFS-iphoneos/all-product-headers.yaml
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios/CasitaDexAudit.xcodeproj
+    write-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAudit-ef40d77ec0ada5dcdf02f5e6f28868ad-VFS-iphoneos/all-product-headers.yaml
+
+WriteAuxiliaryFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/empty-CasitaDexAuditTests.plist (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios
+    write-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/empty-CasitaDexAuditTests.plist
+
+WriteAuxiliaryFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/ProductTypeInfoPlistAdditions.plist (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios
+    write-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/ProductTypeInfoPlistAdditions.plist
+
+WriteAuxiliaryFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests.hmap (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios
+    write-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests.hmap
+
+WriteAuxiliaryFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests.DependencyStaticMetadataFileList (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios
+    write-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests.DependencyStaticMetadataFileList
+
+WriteAuxiliaryFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests.DependencyMetadataFileList (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios
+    write-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests.DependencyMetadataFileList
+
+WriteAuxiliaryFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/DerivedSources/Entitlements.plist (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios
+    write-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/DerivedSources/Entitlements.plist
+
+WriteAuxiliaryFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.SwiftConstValuesFileList (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios
+    write-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.SwiftConstValuesFileList
+
+WriteAuxiliaryFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests_const_extract_protocols.json (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios
+    write-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests_const_extract_protocols.json
+
+WriteAuxiliaryFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.LinkFileList (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios
+    write-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.LinkFileList
+
+WriteAuxiliaryFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests-OutputFileMap.json (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios
+    write-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests-OutputFileMap.json
+
+WriteAuxiliaryFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.SwiftFileList (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios
+    write-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.SwiftFileList
+
+WriteAuxiliaryFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-project-headers.hmap (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios
+    write-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-project-headers.hmap
+
+WriteAuxiliaryFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-own-target-headers.hmap (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios
+    write-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-own-target-headers.hmap
+
+WriteAuxiliaryFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-generated-files.hmap (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios
+    write-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-generated-files.hmap
+
+WriteAuxiliaryFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-all-target-headers.hmap (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios
+    write-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-all-target-headers.hmap
+
+WriteAuxiliaryFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-all-non-framework-target-headers.hmap (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios
+    write-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-all-non-framework-target-headers.hmap
+
+MkDir /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios
+    /bin/mkdir -p /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest
+
+ProcessProductPackaging "" /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests.xctest.xcent (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios
+    
+    Entitlements:
+    
+    {
+    "application-identifier" = "VSP8XSM3BK.com.designsbyfa.casitadex.audit-tests.xctrunner";
+    "com.apple.developer.team-identifier" = VSP8XSM3BK;
+    "get-task-allow" = 1;
+    "keychain-access-groups" =     (
+        "VSP8XSM3BK.com.designsbyfa.casitadex.audit-tests.xctrunner"
+    );
+}
+    
+    builtin-productPackagingUtility -entitlements -format xml -o /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests.xctest.xcent
+
+ProcessProductPackaging /Users/franciscofranco/Library/Developer/Xcode/UserData/Provisioning\ Profiles/813738c7-b9ad-4aba-a88f-80aac2e97e8c.mobileprovision /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/embedded.mobileprovision (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios
+    builtin-productPackagingUtility /Users/franciscofranco/Library/Developer/Xcode/UserData/Provisioning\ Profiles/813738c7-b9ad-4aba-a88f-80aac2e97e8c.mobileprovision -o /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/embedded.mobileprovision
+
+ProcessProductPackagingDER /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests.xctest.xcent /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests.xctest.xcent.der (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios
+    /usr/bin/derq query -f xml -i /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests.xctest.xcent -o /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests.xctest.xcent.der --raw
+
+ProcessInfoPlistFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/Info.plist /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/empty-CasitaDexAuditTests.plist (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios
+    builtin-infoPlistUtility /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/empty-CasitaDexAuditTests.plist -producttype com.apple.product-type.bundle.ui-testing -expandbuildsettings -format binary -platform iphoneos -additionalcontentfile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/ProductTypeInfoPlistAdditions.plist -requiredArchitecture arm64 -o /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/Info.plist
+
+SwiftDriver CasitaDexAuditTests normal arm64 com.apple.xcode.tools.swift.compiler (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios
+    builtin-SwiftDriver -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name CasitaDexAuditTests -Onone @/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.SwiftFileList -module-alias Testing\=_Testing_Unavailable -plugin-path /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.2.sdk -target arm64-apple-ios17.0 -g -module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Index.noindex/DataStore -swift-version 5 -I /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos -Isystem /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/lib -F /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Frameworks -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.2.sdk/Developer/Library/Frameworks -parse-as-library -c -j12 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKStatCaches.noindex/iphoneos27.2-24B8118-6890c9e4970e00494a266ff652f095d9.sdkstatcache -output-file-map /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests-OutputFileMap.json -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/ModuleCache.noindex -sdk-module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules -emit-dependencies -emit-module -emit-module-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.swiftmodule -serialize-diagnostics -dependency-scan-serialize-diagnostics-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests-dependency-scan.dia -validate-clang-modules-once -clang-build-session-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -emit-const-values -const-gather-protocols-list /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests_const_extract_protocols.json -Xcc -iquote -Xcc /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-generated-files.hmap -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-own-target-headers.hmap -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-all-target-headers.hmap -Xcc -iquote -Xcc /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-project-headers.hmap -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/include -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/DerivedSources-normal/arm64 -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/DerivedSources/arm64 -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/DerivedSources -emit-objc-header -emit-objc-header-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests-Swift.h -working-directory /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios -experimental-emit-module-separately -disable-cmo
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/_Builtin_stddef-7JNXEHI6V6H6GEBGYYXG090H4.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/_Builtin_stdbool-CAFVELTBLMI607566SCK70JMH.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/SwiftShims-5APEXN7PU7YOPA8DR8NGVOH2F.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/ptrcheck-7UN6WVX7DGORHFP4UOPCOXXL3.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/_AvailabilityInternal-4DYNBBTG08MW5MYF1GUWPW16A.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/_SwiftConcurrencyShims-2A46VD51FNP5428V07N2T4KFB.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/ptrauth-2ZAREP44OGU4MAA8FLG27HW1L.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/_Builtin_stdarg-2AWQIQY02D2B1PBPMOE21KL3S.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/DeveloperToolsSupport-4R1MTT989B4NHHE7JEDM1CBT8.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/_Builtin_float-1PF3P9L7VVNIKS7WE8G8V39OM.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/_DarwinFoundation1-3N0ZA9FJFQD76IDWUCQHYEE6S.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/_Builtin_limits-AG2IHBF7RA5XCWXSNHB0GCUUB.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/_DarwinFoundation2-1LJEHT75SIVE7SMT3MZOYQXEP.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/string_h-3NOGO8RIKLHS9NBG1TMCOZE0V.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/sys_types-7Z0OZFPPHP32MSCUA9SG3OASJ.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/_Builtin_stdint-C82NMQMIKL08JXZC2CTJ7YF9I.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/_Builtin_tgmath-4BYSFFB8JD6LO33OTOWI5TSUD.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/_DarwinFoundation3-82NLWDU1RQA716LUX39KH2251.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/_Builtin_stdatomic-DQSBALF5HJP2YKN8MIWBFIAQS.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/_Builtin_intrinsics-B2Y1ZKC91QLFUCX92L0A008Z7.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/_Builtin_inttypes-10DZR42FLV2I8YGF9VZSMUSC4.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/Darwin-7SPQD83LI32NW94IMJYQNNG4.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/simd-WA2R26S54O0S57SQZOXY4IEB.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/MachO-2SEH7UIZY5X57FH3KB6KK6ASQ.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/ObjectiveC-V57CN5ZO1EGCB8NPXNTGG6L4.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/os_object-BN4V1L6YULP5XLTSUO1FKFT93.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/Spatial-E0HS30QJHKWY5LS2O1ORZF73M.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/os_workgroup-20I0G9WW90HA6TKN2CX52VZF4.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/Dispatch-DF0I2K5EMJJWMXNPLXG5PRV6V.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/CoreFoundation-5ATPFG3PCLFJ30HG6U2RHON2P.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/XPC-QGRBTCTDNEZXG8QRLN2QXJO9.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/os-E4PWRA1E5Y5C145WP8H84N66N.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/CoreGraphics-15MHNK4QWLUQV96TBIGR17S1L.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/Security-EQ041T7TEV9I1U6G0KWRTIE8P.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/CFNetwork-PGNQ46U1ZRPJSYDE58QJCEB7.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/Foundation-DJQ3Q9HE1G9X4258MOWYCEWO3.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/CoreText-D2N331IBW4AO0AB6SSB21YSMY.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/ImageIO-9BRO70NPMW3DRMTMGHVN9IJ1E.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/UserNotifications-B4SH9N87JVXKBF1I6HG8RY95V.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/UIUtilities-8JN1YXGV6V73L30MRMABU3U5W.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/OSLog-4EYGYX54NRQ35LOLEZD9HSX2O.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/Accessibility-1I47N070CG2GG9DARSXG4VQ52.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/IOSurface-DONQ4U2O6R963B5CZ8JKH99VL.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/UniformTypeIdentifiers-1RY4LYJPTZ8PYAW0HBKC2YGAT.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/CoreTransferable-58TX20X50A382JPQCHNLPH9DO.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/_LocationEssentials-CAIQR9UBYF6ZVDMZH11Y4TI73.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/DataDetection-AR3VYJLH9C86F9TFONN2Z19NP.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/Symbols-AB1JWJCO0DPKR6JWN34GHJH0T.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/FileProvider-6RBTU3B4RH48I5A9EV6YK6YHB.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/CoreLocation-3XC6206X1RR9UCUTEM15SU87K.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/OpenGLES-B7CRBTYOPH2CWR2FK4EYDFICH.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/Metal-80PZWPKQLUYD284GBKYE16MZO.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/CoreMotion-5TZ9NDP03QI2SM9L4XBT5UH4I.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/CoreVideo-Q6QURGQ4U69WFOBTNZ82UINQ.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/CoreImage-15KRQ4I1HOGJTIZLW02YAMUGR.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/QuartzCore-EQO3Z2PE2MLL6JAP5LYZD31E8.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/SwiftUICore-2DYZUNLN2JTYB5VLEE5AW9RVI.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules/UIKit-C1J6S6RXFIUGQP5D5QPY47R8X.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules/XCUIAutomation-DR0V412XQW7EK27U8NGMGDSFG.pcm
+
+SwiftExplicitDependencyCompileModuleFromInterface arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules/XCUIAutomation-2WUXXAJS4AV8X.swiftmodule
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules/XCTest-6RY5QH0IUE9MUCT1XDEQBDLGD.pcm
+
+SwiftExplicitDependencyCompileModuleFromInterface arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules/XCTest-376UPYWZ0KVE7.swiftmodule
+
+SwiftEmitModule normal arm64 Emitting\ module\ for\ CasitaDexAuditTests (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+
+SwiftCompile normal arm64 (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios
+    
+
+SwiftCompile normal arm64 Compiling\ SearchLocationTests.swift /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios/AuditTests/SearchLocationTests.swift (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+
+SwiftCompile normal arm64 /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios/AuditTests/SearchLocationTests.swift (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios
+    builtin-SwiftPerFileCompile SearchLocationTests.swift
+
+SwiftDriverJobDiscovery normal arm64 Emitting module for CasitaDexAuditTests (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+
+SwiftDriver\ Compilation\ Requirements CasitaDexAuditTests normal arm64 com.apple.xcode.tools.swift.compiler (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios
+    builtin-Swift-Compilation-Requirements -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name CasitaDexAuditTests -Onone @/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.SwiftFileList -module-alias Testing\=_Testing_Unavailable -plugin-path /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.2.sdk -target arm64-apple-ios17.0 -g -module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Index.noindex/DataStore -swift-version 5 -I /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos -Isystem /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/lib -F /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Frameworks -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.2.sdk/Developer/Library/Frameworks -parse-as-library -c -j12 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKStatCaches.noindex/iphoneos27.2-24B8118-6890c9e4970e00494a266ff652f095d9.sdkstatcache -output-file-map /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests-OutputFileMap.json -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/ModuleCache.noindex -sdk-module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules -emit-dependencies -emit-module -emit-module-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.swiftmodule -serialize-diagnostics -dependency-scan-serialize-diagnostics-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests-dependency-scan.dia -validate-clang-modules-once -clang-build-session-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -emit-const-values -const-gather-protocols-list /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests_const_extract_protocols.json -Xcc -iquote -Xcc /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-generated-files.hmap -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-own-target-headers.hmap -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-all-target-headers.hmap -Xcc -iquote -Xcc /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-project-headers.hmap -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/include -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/DerivedSources-normal/arm64 -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/DerivedSources/arm64 -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/DerivedSources -emit-objc-header -emit-objc-header-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests-Swift.h -working-directory /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios -experimental-emit-module-separately -disable-cmo
+
+SwiftMergeGeneratedHeaders /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/DerivedSources/CasitaDexAuditTests-Swift.h /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests-Swift.h (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios
+    builtin-swiftHeaderTool -arch arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests-Swift.h -o /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/DerivedSources/CasitaDexAuditTests-Swift.h
+
+Copy /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests.swiftmodule/arm64-apple-ios.abi.json /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.abi.json (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -strip-unsigned-binaries -strip-deterministic -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip -resolve-src-symlinks -rename /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.abi.json /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests.swiftmodule/arm64-apple-ios.abi.json
+
+Copy /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests.swiftmodule/arm64-apple-ios.swiftmodule /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.swiftmodule (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -strip-unsigned-binaries -strip-deterministic -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip -resolve-src-symlinks -rename /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.swiftmodule /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests.swiftmodule/arm64-apple-ios.swiftmodule
+
+Copy /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests.swiftmodule/arm64-apple-ios.swiftdoc /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.swiftdoc (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -strip-unsigned-binaries -strip-deterministic -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip -resolve-src-symlinks -rename /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.swiftdoc /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests.swiftmodule/arm64-apple-ios.swiftdoc
+
+Copy /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.swiftsourceinfo (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -strip-unsigned-binaries -strip-deterministic -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip -resolve-src-symlinks -rename /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.swiftsourceinfo /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo
+
+SwiftDriverJobDiscovery normal arm64 Compiling SearchLocationTests.swift (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+
+SwiftDriver\ Compilation CasitaDexAuditTests normal arm64 com.apple.xcode.tools.swift.compiler (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios
+    builtin-Swift-Compilation -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name CasitaDexAuditTests -Onone @/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.SwiftFileList -module-alias Testing\=_Testing_Unavailable -plugin-path /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.2.sdk -target arm64-apple-ios17.0 -g -module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Index.noindex/DataStore -swift-version 5 -I /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos -Isystem /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/lib -F /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Frameworks -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.2.sdk/Developer/Library/Frameworks -parse-as-library -c -j12 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKStatCaches.noindex/iphoneos27.2-24B8118-6890c9e4970e00494a266ff652f095d9.sdkstatcache -output-file-map /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests-OutputFileMap.json -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/ModuleCache.noindex -sdk-module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules -emit-dependencies -emit-module -emit-module-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.swiftmodule -serialize-diagnostics -dependency-scan-serialize-diagnostics-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests-dependency-scan.dia -validate-clang-modules-once -clang-build-session-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -emit-const-values -const-gather-protocols-list /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests_const_extract_protocols.json -Xcc -iquote -Xcc /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-generated-files.hmap -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-own-target-headers.hmap -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-all-target-headers.hmap -Xcc -iquote -Xcc /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-project-headers.hmap -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/include -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/DerivedSources-normal/arm64 -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/DerivedSources/arm64 -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/DerivedSources -emit-objc-header -emit-objc-header-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests-Swift.h -working-directory /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios -experimental-emit-module-separately -disable-cmo
+
+Ld /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/CasitaDexAuditTests normal (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target arm64-apple-ios17.0 -bundle -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.2.sdk -Os -Xlinker -no_warn_duplicate_libraries -L/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphoneos -L/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos -L/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/lib -F/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphoneos -F/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos -iframework /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Frameworks -iframework /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.2.sdk/Developer/Library/Frameworks -filelist /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.LinkFileList -Xlinker -rpath -Xlinker /usr/lib/swift -Xlinker -rpath -Xlinker @loader_path/Frameworks -Xlinker -rpath -Xlinker @executable_path/Frameworks -Xlinker -dead_strip -Xlinker -object_path_lto -Xlinker /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests_lto.o -rdynamic -Xlinker -dependency_info -Xlinker /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests_dependency_info.dat -fobjc-link-runtime -L/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos -L/usr/lib/swift -Xlinker -add_ast_path -Xlinker /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.swiftmodule -Xlinker -needed_framework -Xlinker XCTest -framework XCTest -Xlinker -needed-lXCTestSwiftSupport -lXCTestSwiftSupport -Xlinker -no_adhoc_codesign -o /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/CasitaDexAuditTests
+
+CopySwiftLibs /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios
+    builtin-swiftStdLibTool --copy --verbose --sign 382E8042B67FA0785492B570BF93BA326E778042 --scan-executable /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/CasitaDexAuditTests --scan-folder /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/Frameworks --scan-folder /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/PlugIns --scan-folder /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/SystemExtensions --scan-folder /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/Extensions --platform iphoneos --toolchain /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --destination /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/Frameworks --strip-bitcode --scan-executable /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/lib/libXCTestSwiftSupport.dylib --strip-bitcode-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip --emit-dependency-info /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/SwiftStdLibToolInputDependencies.dep --filter-for-swift-os
+
+ExtractAppIntentsMetadata (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsmetadataprocessor --toolchain-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --module-name CasitaDexAuditTests --sdk-root /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.2.sdk --xcode-version 27B52 --platform-family iOS --deployment-target 17.0 --bundle-identifier com.designsbyfa.casitadex.audit-tests --output /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest --target-triple arm64-apple-ios17.0 --binary-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/CasitaDexAuditTests --dependency-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests_dependency_info.dat --stringsdata-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/ExtractedAppShortcutsMetadata.stringsdata --source-file-list /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.SwiftFileList --metadata-file-list /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests.DependencyMetadataFileList --static-metadata-file-list /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests.DependencyStaticMetadataFileList --swift-const-vals-list /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.SwiftConstValuesFileList --compile-time-extraction --deployment-aware-processing --no-app-shortcuts-localization
+2026-11-16 09:19:05.526 appintentsmetadataprocessor[60016:6933327] Starting App Intents metadata extraction
+2026-11-16 09:19:05.533 appintentsmetadataprocessor[60016:6933327] warning: Metadata extraction skipped, no AppIntents.framework dependency found
+
+GenerateDSYMFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest.dSYM /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/CasitaDexAuditTests (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios
+    export PATH\=/Applications/Xcode.app/Contents/SharedFrameworks/SwiftBuild.framework/Versions/A/PlugIns/SWBBuildService.bundle/Contents/PlugIns/SWBUniversalPlatformPlugin.bundle/Contents/Frameworks/SWBUniversalPlatform.framework/Resources:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/local/bin:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/libexec:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/usr/bin:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/usr/local/bin:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/local/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/local/bin:/Users/franciscofranco/.nvm/versions/node/v24.22.1/bin:/Users/franciscofranco/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin:/Library/Apple/usr/bin:/Volumes/FA-Development/Designs-by-FA/Tools/MaestroCLI/bin:/Users/franciscofranco/.maestro/bin
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/dsymutil /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/CasitaDexAuditTests -o /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest.dSYM
+
+AppIntentsSSUTraining (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsnltrainingprocessor --infoplist-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/Info.plist --temp-dir-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/ssu --bundle-id com.designsbyfa.casitadex.audit-tests --product-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest --extracted-metadata-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/Metadata.appintents --metadata-file-list /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests.DependencyMetadataFileList --source-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/Info.plist --archive-ssu-assets
+2026-11-16 09:19:05.553 appintentsnltrainingprocessor[60018:6933330] Parsing options for appintentsnltrainingprocessor
+2026-11-16 09:19:05.553 appintentsnltrainingprocessor[60018:6933330] Starting AppIntents SSU YAML Generation
+2026-11-16 09:19:05.555 appintentsnltrainingprocessor[60018:6933330] No AppShortcuts found - Skipping.
+
+MkDir /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios
+    /bin/mkdir -p /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app
+
+CopyPlistFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/Info.plist /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Agents/XCTRunner.app/Info.plist (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios
+    builtin-copyPlist --validate --convert xml1 --macro-expansion WRAPPEDPRODUCTNAME CasitaDexAuditTests-Runner --macro-expansion WRAPPEDPRODUCTBUNDLEIDENTIFIER com.designsbyfa.casitadex.audit-tests.xctrunner --macro-expansion TESTPRODUCTNAME CasitaDexAuditTests --macro-expansion TESTPRODUCTBUNDLEIDENTIFIER com.designsbyfa.casitadex.audit-tests --copy-value UIDeviceFamily /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/Info.plist --outdir /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app -- /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Agents/XCTRunner.app/Info.plist
+
+CopyAndPreserveArchs /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/CasitaDexAuditTests-Runner (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Agents/XCTRunner.app/XCTRunner -output /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/CasitaDexAuditTests-Runner -extract arm64
+
+Copy /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PkgInfo /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Agents/XCTRunner.app/PkgInfo (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -strip-unsigned-binaries -strip-deterministic -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip -resolve-src-symlinks /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Agents/XCTRunner.app/PkgInfo /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app
+
+CodeSign /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios
+    
+    Signing Identity:     "Apple Development: Francisco Franco (V4MV3CY63M)"
+    Provisioning Profile: "iOS Team Provisioning Profile: *"
+                          (813738c7-b9ad-4aba-a88f-80aac2e97e8c)
+    
+    /usr/bin/codesign --force --sign 382E8042B67FA0785492B570BF93BA326E778042 --entitlements /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests.xctest.xcent --timestamp\=none --generate-entitlement-der --strip-disallowed-xattrs /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest
+
+CodeSign /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios
+    
+    Signing Identity:     "Apple Development: Francisco Franco (V4MV3CY63M)"
+    Provisioning Profile: "iOS Team Provisioning Profile: *"
+                          (813738c7-b9ad-4aba-a88f-80aac2e97e8c)
+    
+    /usr/bin/codesign --force --sign 382E8042B67FA0785492B570BF93BA326E778042 --entitlements /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests.xctest.xcent --timestamp\=none --generate-entitlement-der --strip-disallowed-xattrs /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app
+/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app: replacing existing signature
+
+RegisterExecutionPolicyException /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios
+    builtin-RegisterExecutionPolicyException /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest
+
+Touch /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios
+    /usr/bin/touch -c /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest
+
+PruneExplicitPrecompiledModules /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules
+
+PruneExplicitPrecompiledModules /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/ExplicitPrecompiledModules
+
+PruneExplicitPrecompiledModules /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules
+
+2026-11-16 09:19:10.360951-0600 CasitaDexAuditTests-Runner[21832:6163519] [Default] Running tests...
+2026-11-16 09:19:21.799697-0600 CasitaDexAuditTests-Runner[21832:6163589] [AXLoading] No code items decoded from URL /System/Library/AccessibilityBundles/popbundles.axbundlemap
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'Selected tests' started at 2026-11-16 09:19:22.147.
+Test Suite 'CasitaDexAuditTests.xctest' started at 2026-11-16 09:19:22.148.
+Test Suite 'ReminderControlReviewTests' started at 2026-11-16 09:19:22.148.
+Test Case '-[CasitaDexAuditTests.ReminderControlReviewTests testDateAndTimePresentation]' started.
+    t =     0.00s Start Test at 2026-11-16 09:19:22.150
+    t =     0.03s Set Up
+    t =     0.04s Open com.designsbyfa.casitadex.plusstoreqa
+    t =     0.04s     Launch com.designsbyfa.casitadex.plusstoreqa
+    t =     0.04s         Terminate com.designsbyfa.casitadex.plusstoreqa:21506
+    t =     1.12s         Setting up automation session
+    t =     1.24s         Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     2.27s Waiting 12.0s for "Home" Any to exist
+    t =     3.30s     Checking `Expect predicate `existsNoRetry == 1` for object "Home" Any`
+    t =     3.30s         Checking existence of `"Home" Any`
+    t =     3.32s             Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =     3.39s Find the "Home" Any
+    t =     3.40s     Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =     3.46s Tap "Home" Other
+    t =     3.46s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     3.46s     Find the "Home" Other
+    t =     3.46s         Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =     3.49s     Check for interrupting elements affecting "Home" Other
+    t =     3.53s         Wait for com.apple.SleepLockScreen to idle
+    t =     3.55s         Requesting snapshot of accessibility hierarchy for app with pid 6798
+    t =     3.57s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =     3.58s         Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =     3.59s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =     3.62s     Synthesize event
+    t =     4.04s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     4.05s Waiting 12.0s for "Reminders" Any to exist
+    t =     5.08s     Checking `Expect predicate `existsNoRetry == 1` for object "Reminders" Any`
+    t =     5.09s         Checking existence of `"Reminders" Any`
+    t =     5.09s             Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =     5.13s Find the "Reminders" Any
+    t =     5.13s     Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =     5.17s Tap "Reminders" Other
+    t =     5.17s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     5.18s     Find the "Reminders" Other
+    t =     5.18s         Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =     5.21s     Check for interrupting elements affecting "Reminders" Other
+    t =     5.22s         Wait for com.apple.SleepLockScreen to idle
+    t =     5.22s         Requesting snapshot of accessibility hierarchy for app with pid 6798
+    t =     5.23s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =     5.23s         Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =     5.25s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =     5.27s     Synthesize event
+    t =     5.57s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     5.58s Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =     5.58s     Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =     5.72s Added attachment named 'Reminders list'
+    t =     5.72s Waiting 12.0s for "Add Reminder ›" Any to exist
+    t =     6.73s     Checking `Expect predicate `existsNoRetry == 1` for object "Add Reminder ›" Any`
+    t =     6.74s         Checking existence of `"Add Reminder ›" Any`
+    t =     6.74s             Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =     6.78s Find the "Add Reminder ›" Any
+    t =     6.79s     Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =     6.84s Tap "Add Reminder ›" Button
+    t =     6.84s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     6.84s     Find the "Add Reminder ›" Button
+    t =     6.85s         Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =     6.88s     Check for interrupting elements affecting "Add Reminder ›" Button
+    t =     6.89s         Wait for com.apple.SleepLockScreen to idle
+    t =     6.89s         Requesting snapshot of accessibility hierarchy for app with pid 6798
+    t =     6.90s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =     6.91s         Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =     6.92s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =     6.95s     Synthesize event
+    t =     7.24s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     7.25s Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =     7.25s     Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =     7.38s Added attachment named 'Add Reminder'
+    t =     7.39s Waiting 10.0s for Button (First Match) to exist
+    t =     8.40s     Checking `Expect predicate `existsNoRetry == 1` for object Button (First Match)`
+    t =     8.40s         Checking existence of `Button (First Match)`
+    t =     8.41s             Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =     8.46s Find the Button (First Match)
+    t =     8.46s     Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =     8.50s Find the "2026-11-16" Button
+    t =     8.50s     Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =     8.55s Tap "2026-11-16" Button
+    t =     8.55s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     8.56s     Find the "2026-11-16" Button
+    t =     8.56s         Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =     8.60s     Check for interrupting elements affecting "2026-11-16" Button
+    t =     8.61s         Wait for com.apple.SleepLockScreen to idle
+    t =     8.62s         Requesting snapshot of accessibility hierarchy for app with pid 6798
+    t =     8.63s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =     8.63s         Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =     8.65s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =     8.66s     Synthesize event
+    t =     8.96s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     9.38s Waiting 10.0s for "Choose a date" StaticText to exist
+    t =    10.40s     Checking `Expect predicate `existsNoRetry == 1` for object "Choose a date" StaticText`
+    t =    10.40s         Checking existence of `"Choose a date" StaticText`
+    t =    10.41s             Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =    10.53s             Find: Descendants matching type StaticText
+    t =    10.53s             Find: Elements matching predicate '"Choose a date" IN identifiers'
+    t =    10.53s Waiting 5.0s for DatePicker (First Match) to exist
+    t =    11.54s     Checking `Expect predicate `existsNoRetry == 1` for object DatePicker (First Match)`
+    t =    11.54s         Checking existence of `DatePicker (First Match)`
+    t =    11.54s             Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =    11.64s Checking existence of `"Done" Button`
+    t =    11.64s     Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =    11.74s     Find: Descendants matching type Button
+    t =    11.75s     Find: Elements matching predicate '"Done" IN identifiers'
+    t =    11.75s Find the "Done" Button
+    t =    11.75s     Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =    11.84s     Find: Descendants matching type Button
+    t =    11.84s     Find: Elements matching predicate '"Done" IN identifiers'
+    t =    11.86s Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    11.86s     Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =    12.02s Added attachment named 'Reminder date picker'
+    t =    12.02s Find the DatePicker (First Match)
+    t =    12.02s     Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =    12.10s Find the DatePicker at {{38.0, 306.0}, {330.0, 321.0}}
+    t =    12.10s     Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =    12.16s Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    12.16s     Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =    12.21s Find the "Done" Button
+    t =    12.21s     Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =    12.27s     Find: Descendants matching type Button
+    t =    12.27s     Find: Elements matching predicate '"Done" IN identifiers'
+    t =    12.27s Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    12.28s     Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =    12.32s Tap "Done" Button
+    t =    12.32s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    12.32s     Find the "Done" Button
+    t =    12.32s         Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =    12.38s         Find: Descendants matching type Button
+    t =    12.38s         Find: Elements matching predicate '"Done" IN identifiers'
+    t =    12.38s     Check for interrupting elements affecting "Done" Button
+    t =    12.39s         Wait for com.apple.SleepLockScreen to idle
+    t =    12.39s         Requesting snapshot of accessibility hierarchy for app with pid 6798
+    t =    12.40s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =    12.40s         Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =    12.45s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =    12.45s     Synthesize event
+    t =    12.74s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    13.10s Find the "2026-11-16" Button
+    t =    13.10s     Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =    13.13s Waiting 10.0s for Button (First Match) to exist
+    t =    14.14s     Checking `Expect predicate `existsNoRetry == 1` for object Button (First Match)`
+    t =    14.14s         Checking existence of `Button (First Match)`
+    t =    14.14s             Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =    14.19s Find the Button (First Match)
+    t =    14.19s     Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =    14.23s Find the "9:29 AM" Button
+    t =    14.23s     Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =    14.28s Tap "9:29 AM" Button
+    t =    14.28s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    14.29s     Find the "9:29 AM" Button
+    t =    14.29s         Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =    14.32s     Check for interrupting elements affecting "9:29 AM" Button
+    t =    14.33s         Wait for com.apple.SleepLockScreen to idle
+    t =    14.33s         Requesting snapshot of accessibility hierarchy for app with pid 6798
+    t =    14.34s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =    14.34s         Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =    14.37s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =    14.37s     Synthesize event
+    t =    14.68s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    15.10s Waiting 10.0s for "Choose a time" StaticText to exist
+    t =    16.10s     Checking `Expect predicate `existsNoRetry == 1` for object "Choose a time" StaticText`
+    t =    16.10s         Checking existence of `"Choose a time" StaticText`
+    t =    16.11s             Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =    16.16s             Find: Descendants matching type StaticText
+    t =    16.16s             Find: Elements matching predicate '"Choose a time" IN identifiers'
+    t =    16.16s Waiting 5.0s for DatePicker (First Match) to exist
+    t =    17.17s     Checking `Expect predicate `existsNoRetry == 1` for object DatePicker (First Match)`
+    t =    17.18s         Checking existence of `DatePicker (First Match)`
+    t =    17.18s             Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =    17.23s Checking existence of `"Done" Button`
+    t =    17.23s     Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =    17.27s     Find: Descendants matching type Button
+    t =    17.28s     Find: Elements matching predicate '"Done" IN identifiers'
+    t =    17.28s Find the "Done" Button
+    t =    17.28s     Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =    17.32s     Find: Descendants matching type Button
+    t =    17.32s     Find: Elements matching predicate '"Done" IN identifiers'
+    t =    17.35s Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    17.35s     Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =    17.49s Added attachment named 'Reminder time picker'
+    t =    17.49s Find the DatePicker (First Match)
+    t =    17.49s     Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =    17.52s Find the DatePicker at {{38.0, 358.3}, {330.0, 216.0}}
+    t =    17.52s     Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =    17.55s Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    17.55s     Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =    17.57s Find the "Done" Button
+    t =    17.57s     Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =    17.60s     Find: Descendants matching type Button
+    t =    17.60s     Find: Elements matching predicate '"Done" IN identifiers'
+    t =    17.60s Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    17.60s     Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =    17.62s Tap "Done" Button
+    t =    17.62s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    17.63s     Find the "Done" Button
+    t =    17.63s         Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =    17.66s         Find: Descendants matching type Button
+    t =    17.66s         Find: Elements matching predicate '"Done" IN identifiers'
+    t =    17.66s     Check for interrupting elements affecting "Done" Button
+    t =    17.67s         Wait for com.apple.SleepLockScreen to idle
+    t =    17.67s         Requesting snapshot of accessibility hierarchy for app with pid 6798
+    t =    17.68s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =    17.68s         Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =    17.71s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =    17.71s     Synthesize event
+    t =    18.01s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    18.36s Find the "9:29 AM" Button
+    t =    18.36s     Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =    18.40s Waiting 12.0s for "Cancel" Any to exist
+    t =    19.42s     Checking `Expect predicate `existsNoRetry == 1` for object "Cancel" Any`
+    t =    19.42s         Checking existence of `"Cancel" Any`
+    t =    19.42s             Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =    19.47s Find the "Cancel" Any
+    t =    19.47s     Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =    19.53s Tap "Cancel" Button
+    t =    19.53s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    19.53s     Find the "Cancel" Button
+    t =    19.53s         Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =    19.57s     Check for interrupting elements affecting "Cancel" Button
+    t =    19.58s         Wait for com.apple.SleepLockScreen to idle
+    t =    19.59s         Requesting snapshot of accessibility hierarchy for app with pid 6798
+    t =    19.60s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =    19.60s         Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =    19.63s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =    19.65s     Synthesize event
+    t =    19.94s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    19.95s Waiting 12.0s for "Home" Any to exist
+    t =    20.97s     Checking `Expect predicate `existsNoRetry == 1` for object "Home" Any`
+    t =    20.97s         Checking existence of `"Home" Any`
+    t =    20.98s             Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =    21.02s Find the "Home" Any
+    t =    21.02s     Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =    21.07s Tap "Home" Other
+    t =    21.07s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    21.07s     Find the "Home" Other
+    t =    21.07s         Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =    21.10s     Check for interrupting elements affecting "Home" Other
+    t =    21.11s         Wait for com.apple.SleepLockScreen to idle
+    t =    21.12s         Requesting snapshot of accessibility hierarchy for app with pid 6798
+    t =    21.13s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =    21.13s         Requesting snapshot of accessibility hierarchy for app with pid 21844
+    t =    21.15s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =    21.18s     Synthesize event
+    t =    21.47s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    21.48s Tear Down
+Test Case '-[CasitaDexAuditTests.ReminderControlReviewTests testDateAndTimePresentation]' passed (21.528 seconds).
+Test Suite 'ReminderControlReviewTests' passed at 2026-11-16 09:19:43.682.
+	 Executed 1 test, with 0 failures (0 unexpected) in 21.528 (21.534) seconds
+Test Suite 'CasitaDexAuditTests.xctest' passed at 2026-11-16 09:19:43.688.
+	 Executed 1 test, with 0 failures (0 unexpected) in 21.528 (21.540) seconds
+Test Suite 'Selected tests' passed at 2026-11-16 09:19:43.690.
+	 Executed 1 test, with 0 failures (0 unexpected) in 21.528 (21.543) seconds
+2026-11-16 09:19:44.006 xcodebuild[59918:6932803] [MT] IDETestOperationsObserverDebug: 38.328 elapsed -- Testing started completed.
+2026-11-16 09:19:44.006 xcodebuild[59918:6932803] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-11-16 09:19:44.006 xcodebuild[59918:6932803] [MT] IDETestOperationsObserverDebug: 38.328 sec, +38.328 sec -- end
+
+Test session results, code coverage, and logs:
+	/Volumes/FA-Development/Designs-by-FA/Apple-Builds/CasitaDex-Physical-Reminder-r2-20261116.xcresult
+
+** TEST SUCCEEDED **
+
+Testing started

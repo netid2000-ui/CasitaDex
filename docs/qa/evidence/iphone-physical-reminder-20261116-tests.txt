@@ -1,0 +1,64 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project qa/search-location-ios/CasitaDexAudit.xcodeproj -scheme CasitaDexAudit -destination platform=iOS,id=00008150-0014306C2644401C -sdk iphoneos SUPPORTED_PLATFORMS=iphoneos CODE_SIGNING_ALLOWED=YES CODE_SIGNING_REQUIRED=YES CODE_SIGN_STYLE=Automatic DEVELOPMENT_TEAM=VSP8XSM3BK "CODE_SIGN_IDENTITY=Apple Development" -allowProvisioningUpdates "-only-testing:CasitaDexAuditTests/ReminderControlReviewTests" -test-timeouts-enabled YES -maximum-test-execution-time-allowance 120 -resultBundlePath /Volumes/FA-Development/Designs-by-FA/Apple-Builds/CasitaDex-Physical-Reminder-20261116.xcresult test
+
+Build settings from command line:
+    CODE_SIGN_IDENTITY = Apple Development
+    CODE_SIGN_STYLE = Automatic
+    CODE_SIGNING_ALLOWED = YES
+    CODE_SIGNING_REQUIRED = YES
+    DEVELOPMENT_TEAM = VSP8XSM3BK
+    SDKROOT = iphoneos27.2
+    SUPPORTED_PLATFORMS = iphoneos
+
+Writing result bundle at path:
+	/Volumes/FA-Development/Designs-by-FA/Apple-Builds/CasitaDex-Physical-Reminder-20261116.xcresult
+
+xcodebuild: error: Unable to find a destination matching the provided destination specifier:
+		{ platform:iOS, id:00008150-0014306C2644401C }
+
+	Destinations compatible with the "CasitaDexAudit" scheme:
+		{ platform:iOS Simulator, id:dvtdevice-DVTiOSDeviceSimulatorPlaceholder-iphonesimulator:placeholder, name:Any iOS Simulator Device }
+		{ platform:iOS Simulator, arch:arm64, id:B8E56CB9-561B-49FE-8A68-32E0028E25AE, OS:27.0, name:CasitaDex Add Accessibility Disposable 20261115 }
+		{ platform:iOS Simulator, arch:arm64, id:AD06A0B7-D723-4EE9-829C-03508DD1107B, OS:27.0, name:CasitaDex Approved SB40 Reference }
+		{ platform:iOS Simulator, arch:arm64, id:C88DEF5E-63F3-426C-9B50-8CF131C3C58F, OS:27.0, name:CasitaDex Current 737eac1 Separate QA }
+		{ platform:iOS Simulator, arch:arm64, id:E4597BA9-04BD-41B2-AD2F-B4518E63C16A, OS:27.0, name:CasitaDex Current Four Tab QA 04f3202 }
+		{ platform:iOS Simulator, arch:arm64, id:879C620A-5318-4BDF-98B9-904EE635B053, OS:27.0, name:CasitaDex FigmaFirst Isolated QA }
+		{ platform:iOS Simulator, arch:arm64, id:189233C4-A360-49D7-AB2A-C9A7F02B9060, OS:27.0, name:CasitaDex Fresh Add Accessibility 20261115 }
+		{ platform:iOS Simulator, arch:arm64, id:08D89863-7EE4-438F-B3E8-3DBD02B462EB, OS:27.0, name:CasitaDex Labels Isolated 20261109 0640 }
+		{ platform:iOS Simulator, arch:arm64, id:81FC3CCE-ACEB-4957-BE61-C9C653A4CE56, OS:27.0, name:CasitaDex Memory Boundary Isolated QA }
+		{ platform:iOS Simulator, arch:arm64, id:A4ED0D8B-C90A-4940-9B71-4F570D7DC597, OS:27.0, name:CasitaDex SB40 Household75 QA }
+		{ platform:iOS Simulator, arch:arm64, id:09E9D77C-20AB-4E88-BFAC-F30EA5FB6219, OS:27.0, name:CasitaDex SB40 Native Candidate 20261108 }
+		{ platform:iOS Simulator, arch:arm64, id:63AFB557-4BFC-4F5B-B45B-F96927B40270, OS:27.0, name:CasitaDex SB40 Viewer Large Text Isolated 20261108 }
+		{ platform:iOS Simulator, arch:arm64, id:8FA03782-311F-4B4A-B529-1F63D7E9AEF3, OS:27.0, name:CasitaDex SB58 Fresh Disposable QA }
+		{ platform:iOS Simulator, arch:arm64, id:8F7929BB-D472-41C0-9CA0-9D2D3878610E, OS:27.1, name:CasitaDex SB65 iOS 27.1 Disposable Duo }
+		{ platform:iOS Simulator, arch:arm64, id:7DB01BF8-2C97-486A-A908-DA8F9E81FE8C, OS:27.0, name:CasitaDex SB69 iOS 27.0 Disposable }
+		{ platform:iOS Simulator, arch:arm64, id:E346A7C2-DFD7-4251-91AB-DE40AA74618F, OS:27.1, name:CasitaDex SB89 Fresh iOS 27.1 Duo }
+		{ platform:iOS Simulator, arch:arm64, id:0739E5EE-D46C-4D66-BBD2-77553845A7AD, OS:27.0, name:CasitaDex SB122 Offline QA }
+		{ platform:iOS Simulator, arch:arm64, id:ED9AD0E7-7673-4618-AD63-2CCCEA61BD7B, OS:27.0, name:CasitaDex SB150 CNG Native QA }
+		{ platform:iOS Simulator, arch:arm64, id:A992BD49-BE3B-451A-A1C3-B02B4B9DDCB2, OS:27.0, name:CasitaDex System Text Isolated 20261109 0810 }
+		{ platform:iOS Simulator, arch:arm64, id:A6A585A2-FF49-40EA-B32F-09E8D510C4A8, OS:27.0, name:CasitaDex c2cc335 Isolated Import QA 20261107 }
+		{ platform:iOS Simulator, arch:arm64, id:90F8D88C-BBF1-45FA-AF79-476A3134475B, OS:27.0, name:Event Command Collaboration Disposable QA }
+		{ platform:iOS Simulator, arch:arm64, id:100BBCE2-5DB6-4EAD-8C31-1ED478EB537C, OS:27.0, name:Event Command EXEC-SB51 Disposable Dev QA }
+		{ platform:iOS Simulator, arch:arm64, id:699C7B58-B905-4A61-8B5D-9C6F2896FB1D, OS:27.0, name:Event Command SB14 Isolated QA }
+		{ platform:iOS Simulator, arch:arm64, id:E5F46E04-5362-4D69-B947-34BBF4E45F81, OS:27.0, name:Event Command SB146 iOS Isolated QA }
+		{ platform:iOS Simulator, arch:arm64, id:EB00197C-AC89-4931-98B4-D6F670269464, OS:27.0, name:Event Command SB147 Isolated Firebase QA }
+		{ platform:iOS Simulator, arch:arm64, id:55C123D3-4965-4F77-82D2-72B1F43C568E, OS:27.0, name:Event Command SB147 Verified Invite QA }
+		{ platform:iOS Simulator, arch:arm64, id:58216E9F-F0C4-45AB-9F7D-2855242D1005, OS:27.0, name:Event Command SB148 iOS Native QA }
+		{ platform:iOS Simulator, arch:arm64, id:BB938DFD-EDC7-4CA1-9C76-690E5AA93A1E, OS:27.0, name:SB106 Xcode27.1 disposable iPhone17 }
+		{ platform:iOS Simulator, arch:arm64, id:A7D38BB8-B55E-4A62-9DAA-FA25304CD40C, OS:27.0, name:iPad (A16) }
+		{ platform:iOS Simulator, arch:arm64, id:38A3139F-9792-47A9-86F6-EF53D9315458, OS:27.0, name:iPad Air 11-inch (M4) }
+		{ platform:iOS Simulator, arch:arm64, id:B0EC9E93-27E2-45D6-A9A7-65094679B29D, OS:27.0, name:iPad Air 13-inch (M4) }
+		{ platform:iOS Simulator, arch:arm64, id:B1F54721-2BCE-4A3B-96A1-AFD7EB92C93A, OS:27.0, name:iPad Pro 11-inch (M5) }
+		{ platform:iOS Simulator, arch:arm64, id:B57F98D3-B994-4029-8E6A-A99D7E4D0821, OS:27.0, name:iPad Pro 13-inch (M5) }
+		{ platform:iOS Simulator, arch:arm64, id:5C2A0EE3-0D2D-475E-879F-CFC37D7DD1E6, OS:27.0, name:iPad mini (A17 Pro) }
+		{ platform:iOS Simulator, arch:arm64, id:86673F95-3F16-49F0-8D44-A150691CD9BA, OS:27.0, name:iPhone 17 }
+		{ platform:iOS Simulator, arch:arm64, id:0CF68821-4830-4F0A-9F11-6EC453916E5C, OS:27.0, name:iPhone 17e }
+		{ platform:iOS Simulator, arch:arm64, id:B7308CC8-3494-42A9-9099-FF82FC9DEAD6, OS:27.0, name:iPhone 18 Pro }
+		{ platform:iOS Simulator, arch:arm64, id:54096F41-2A54-429C-BAB7-6F1A1CEF43ED, OS:27.0, name:iPhone 18 Pro Max }
+		{ platform:iOS Simulator, arch:arm64, id:B08E88F7-9B3B-4C6B-BF75-9336AC758659, OS:27.0, name:iPhone Air }
+		{ platform:iOS Simulator, arch:arm64, id:04088279-5EC7-4A5B-9372-8D59815FAC3F, OS:27.1, name:iPhone Duo }
+
+	Destinations incompatible with the "CasitaDexAudit" scheme:
+		{ platform:macOS, arch:arm64e.x1, id:00008152-0006786A0A000036, name:My Mac, error:My Mac’s macOS platform doesn’t match CasitaDexAuditTests.xctest’s supported platforms. You can change CasitaDexAuditTests.xctest’s Base SDK or Supported Platforms to support My Mac. }
+		{ platform:iOS, arch:arm64e, id:00008150-0014306C2644401C, name:iPhone, error:iPhone’s iOS platform doesn’t match CasitaDexAuditTests.xctest’s supported platforms. You can change CasitaDexAuditTests.xctest’s Base SDK or Supported Platforms to support iPhone. }
+		{ platform:iOS, id:dvtdevice-DVTiPhonePlaceholder-iphoneos:placeholder, name:Any iOS Device, error:Any iOS Device’s iOS platform doesn’t match CasitaDexAuditTests.xctest’s supported platforms. You can change CasitaDexAuditTests.xctest’s Base SDK or Supported Platforms to support Any iOS Device. }
