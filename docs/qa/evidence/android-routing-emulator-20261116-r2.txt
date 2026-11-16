@@ -1,0 +1,12 @@
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Reminder title (Required)
+Traceback (most recent call last):
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/scripts/notification-routing-20261116/android.py", line 24, in <module>
+    phone.fill('Reminder title (Required)',name)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/scripts/samsung-sweep-20261115/phone.py", line 53, in fill
+    assert node(label).get('text')==value,('Input mismatch',label,node(label).get('text'))
+           ~~~~^^^^^^^
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/scripts/samsung-sweep-20261115/phone.py", line 37, in node
+    raise AssertionError('Missing '+label+' '+str(labels())[:4000])
+AssertionError: Missing Reminder title (Required) [('Discard reminder changes?', ''), ('Your unsaved reminder changes will be lost.', ''), ('KEEP EDITING', ''), ('DISCARD CHANGES', '')]

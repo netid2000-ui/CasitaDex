@@ -1,0 +1,3 @@
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Entered marked QA title
+{"apkSha256": "bcbfe8c27871d50782471914e4cc48ced2f0327e31168f7dd439d459335da561", "status": "PASS", "serial": "R5GL83X0K3N", "name": "QA route R5GL83X0K3N 1794865878", "scheduledTime": "2026-11-16T15:53:34-06:00", "backgroundNotificationObserved": true, "exactReminderOpened": true, "cancelHomePassed": true}

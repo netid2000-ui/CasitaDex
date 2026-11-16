@@ -1,0 +1,10 @@
+{
+  "apkSha256": "bcbfe8c27871d50782471914e4cc48ced2f0327e31168f7dd439d459335da561",
+  "status": "PASS",
+  "serial": "emulator-5554",
+  "name": "QA route emulator-5554 1794865635",
+  "scheduledTime": "2026-11-16T15:49:27-06:00",
+  "backgroundNotificationObserved": true,
+  "exactReminderOpened": true,
+  "cancelHomePassed": true
+}

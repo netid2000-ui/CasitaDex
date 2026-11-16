@@ -1,0 +1,25 @@
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Traceback (most recent call last):
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/scripts/notification-routing-20261116/android.py", line 23, in <module>
+    phone.fill('Reminder title (Required)',name)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/scripts/samsung-sweep-20261115/phone.py", line 45, in fill
+    hidekeyboard();n=node(label);old=n.get('text','');tap(label)
+                     ~~~~^^^^^^^
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/scripts/samsung-sweep-20261115/phone.py", line 20, in node
+    t=tree();parents={child:parent for parent in t.iter() for child in parent}
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/scripts/samsung-sweep-20261115/phone.py", line 12, in tree
+    run('shell','uiautomator','dump','/sdcard/cd-samsung.xml')
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/scripts/samsung-sweep-20261115/phone.py", line 7, in run
+    def run(*a):return subprocess.check_output([adb,'-s',serial,*a],timeout=30)
+                       ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.15/3.15.2/Frameworks/Python.framework/Versions/3.15/lib/python3.15/subprocess.py", line 587, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+           ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+               **kwargs).stdout
+               ^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.15/3.15.2/Frameworks/Python.framework/Versions/3.15/lib/python3.15/subprocess.py", line 692, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command ['/Volumes/FA-Development/Designs-by-FA/Android/QA-Tools/platform-tools-36.0.2/platform-tools/adb', '-s', 'emulator-5554', 'shell', 'uiautomator', 'dump', '/sdcard/cd-samsung.xml'] returned non-zero exit status 137.

@@ -1,0 +1,12 @@
+{
+  "applicationSourceCommit": "593de3d",
+  "evidenceBaselineCommit": "3843528",
+  "package": "com.designsbyfa.casitadex.refreshqa",
+  "version": "0.1.0",
+  "versionCode": 1,
+  "sourceFiles": {
+    "src/app/_layout.tsx": "9c5308d42cb67392cb32e824590cabe9d7b4decb316a8b54291c8f24b457b6bb",
+    "src/reminder-notification-destination.ts": "c7fead3be50f564663241ea5c56cf04a4ca9ab1594f0522342687ecae62aa8fb"
+  },
+  "apkSha256": "bcbfe8c27871d50782471914e4cc48ced2f0327e31168f7dd439d459335da561"
+}

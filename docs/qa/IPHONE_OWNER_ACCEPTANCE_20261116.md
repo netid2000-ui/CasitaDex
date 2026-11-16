@@ -68,3 +68,7 @@ The physical iPhone also passed changed-date retention, exact-minute retention a
 ## Corrected notification route installed and verified
 
 Source **593de3d** is now installed in the same isolated physical `.plusstoreqa` app. Actual foreground notification delivery and tap-to-exact-standalone-reminder passed; linked reminder Save return passed again (2/2 final physical tests). Full automated suite: 525 passed, 6 skipped, 0 failed; TypeScript and ESLint passed. Background/terminated and linked-memory notification taps, other remaining checklist rows, and owner sign-off remain Pending. See the workflow report above for failed diagnostic attempts, installation identity and evidence.
+
+## Notification lifecycle automation follow-up
+
+Background standalone, terminated standalone and linked-memory foreground notification taps now have passing physical-iPhone runs on source 593de3d, including their intended destinations. Original failed harness/interruption attempts remain recorded in [lifecycle and parity evidence](NOTIFICATION_LIFECYCLE_PARITY_20261116.md). This does not mark Owner result rows accepted or claim all linked-memory lifecycle combinations.

@@ -1,0 +1,742 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project qa/physical-iphone-ios/CasitaDexAudit.xcodeproj -scheme CasitaDexAudit -destination platform=iOS,id=00008150-0014306C2644401C -allowProvisioningUpdates "-only-testing:CasitaDexAuditTests/PhysicalNotificationLifecycleTests/testBackgroundStandalone" -test-timeouts-enabled YES -maximum-test-execution-time-allowance 240 -resultBundlePath /Volumes/FA-Development/Designs-by-FA/Apple-Builds/CasitaDex-Physical-Notification-Background-20261116-r3.xcresult test
+
+Writing result bundle at path:
+	/Volumes/FA-Development/Designs-by-FA/Apple-Builds/CasitaDex-Physical-Notification-Background-20261116-r3.xcresult
+
+ComputePackagePrebuildTargetDependencyGraph
+
+Prepare packages
+
+CreateBuildRequest
+
+SendProjectDescription
+
+CreateBuildOperation
+
+ComputeTargetDependencyGraph
+note: Building targets in dependency order
+note: Target dependency graph (1 target)
+    Target 'CasitaDexAuditTests' in project 'CasitaDexAudit' (no dependencies)
+
+GatherProvisioningInputs
+
+CreateBuildDescription
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc --version
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -v -E -dM -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.2.sdk -x c -c /dev/null
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld -version_details
+
+Build description signature: 79c03514fb0e11e69630dbe0d3f4fc83
+Build description path: /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/XCBuildData/79c03514fb0e11e69630dbe0d3f4fc83.xcbuilddata
+ClangStatCache /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.2.sdk /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKStatCaches.noindex/iphoneos27.2-24B8118-6890c9e4970e00494a266ff652f095d9.sdkstatcache
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios/CasitaDexAudit.xcodeproj
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.2.sdk -o /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKStatCaches.noindex/iphoneos27.2-24B8118-6890c9e4970e00494a266ff652f095d9.sdkstatcache
+
+ProcessInfoPlistFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/Info.plist /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/empty-CasitaDexAuditTests.plist (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios
+    builtin-infoPlistUtility /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/empty-CasitaDexAuditTests.plist -producttype com.apple.product-type.bundle.ui-testing -expandbuildsettings -format binary -platform iphoneos -additionalcontentfile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/ProductTypeInfoPlistAdditions.plist -requiredArchitecture arm64 -o /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/Info.plist
+
+CopySwiftLibs /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/qa/physical-iphone-ios
+    builtin-swiftStdLibTool --copy --verbose --sign 382E8042B67FA0785492B570BF93BA326E778042 --scan-executable /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/CasitaDexAuditTests --scan-folder /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/Frameworks --scan-folder /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/PlugIns --scan-folder /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/SystemExtensions --scan-folder /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/Extensions --platform iphoneos --toolchain /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --destination /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/Frameworks --strip-bitcode --scan-executable /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/lib/libXCTestSwiftSupport.dylib --strip-bitcode-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip --emit-dependency-info /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/SwiftStdLibToolInputDependencies.dep --filter-for-swift-os
+
+PruneExplicitPrecompiledModules /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/ExplicitPrecompiledModules
+
+PruneExplicitPrecompiledModules /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules
+
+PruneExplicitPrecompiledModules /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-dptauvkyvcvjmphfhsaghiatukey/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules
+
+2026-11-16 15:43:07.925151-0600 CasitaDexAuditTests-Runner[23151:6418138] [Default] Running tests...
+    t =      nans Interface orientation changed to Portrait
+2026-11-16 15:43:08.190822-0600 CasitaDexAuditTests-Runner[23151:6418175] [AXLoading] No code items decoded from URL /System/Library/AccessibilityBundles/popbundles.axbundlemap
+Test Suite 'Selected tests' started at 2026-11-16 15:43:08.205.
+Test Suite 'CasitaDexAuditTests.xctest' started at 2026-11-16 15:43:08.206.
+Test Suite 'PhysicalNotificationLifecycleTests' started at 2026-11-16 15:43:08.206.
+Test Case '-[CasitaDexAuditTests.PhysicalNotificationLifecycleTests testBackgroundStandalone]' started.
+    t =     0.00s Start Test at 2026-11-16 15:43:08.206
+    t =     0.01s Set Up
+    t =     0.01s Open com.designsbyfa.casitadex.plusstoreqa
+    t =     0.01s     Launch com.designsbyfa.casitadex.plusstoreqa
+    t =     0.01s         Terminate com.designsbyfa.casitadex.plusstoreqa:23141
+    t =     1.09s         Setting up automation session
+    t =     1.15s         Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     2.21s Waiting 12.0s for "Home" Any to exist
+    t =     3.22s     Checking `Expect predicate `existsNoRetry == 1` for object "Home" Any`
+    t =     3.22s         Checking existence of `"Home" Any`
+    t =     3.23s             Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =     3.28s Find the "Home" Any
+    t =     3.28s     Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =     3.32s Tap "Home" Other
+    t =     3.32s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     3.32s     Find the "Home" Other
+    t =     3.33s         Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =     3.35s     Check for interrupting elements affecting "Home" Other
+    t =     3.36s         Wait for com.apple.SleepLockScreen to idle
+    t =     3.37s         Requesting snapshot of accessibility hierarchy for app with pid 6798
+    t =     3.37s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =     3.38s         Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =     3.39s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =     3.41s     Synthesize event
+    t =     3.70s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     3.70s Waiting 12.0s for "Reminders" Any to exist
+    t =     4.72s     Checking `Expect predicate `existsNoRetry == 1` for object "Reminders" Any`
+    t =     4.72s         Checking existence of `"Reminders" Any`
+    t =     4.73s             Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =     4.75s Find the "Reminders" Any
+    t =     4.75s     Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =     4.79s Tap "Reminders" Other
+    t =     4.79s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     4.79s     Find the "Reminders" Other
+    t =     4.79s         Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =     4.82s     Check for interrupting elements affecting "Reminders" Other
+    t =     4.83s         Wait for com.apple.SleepLockScreen to idle
+    t =     4.83s         Requesting snapshot of accessibility hierarchy for app with pid 6798
+    t =     4.84s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =     4.84s         Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =     4.85s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =     4.88s     Synthesize event
+    t =     5.16s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     5.16s Waiting 12.0s for "Add Reminder ›" Any to exist
+    t =     6.19s     Checking `Expect predicate `existsNoRetry == 1` for object "Add Reminder ›" Any`
+    t =     6.19s         Checking existence of `"Add Reminder ›" Any`
+    t =     6.19s             Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =     6.22s Find the "Add Reminder ›" Any
+    t =     6.23s     Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =     6.26s Tap "Add Reminder ›" Button
+    t =     6.26s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     6.27s     Find the "Add Reminder ›" Button
+    t =     6.27s         Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =     6.31s     Check for interrupting elements affecting "Add Reminder ›" Button
+    t =     6.32s         Wait for com.apple.SleepLockScreen to idle
+    t =     6.32s         Requesting snapshot of accessibility hierarchy for app with pid 6798
+    t =     6.33s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =     6.33s         Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =     6.35s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =     6.37s     Synthesize event
+    t =     6.66s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     6.66s Waiting 10.0s for "Reminder title (Required)" TextView to exist
+    t =     7.67s     Checking `Expect predicate `existsNoRetry == 1` for object "Reminder title (Required)" TextView`
+    t =     7.67s         Checking existence of `"Reminder title (Required)" TextView`
+    t =     7.68s             Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =     7.71s Tap "Reminder title (Required)" TextView
+    t =     7.71s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     7.71s     Find the "Reminder title (Required)" TextView
+    t =     7.71s         Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =     7.74s     Check for interrupting elements affecting "Reminder title (Required)" TextView
+    t =     7.75s         Wait for com.apple.SleepLockScreen to idle
+    t =     7.75s         Requesting snapshot of accessibility hierarchy for app with pid 6798
+    t =     7.76s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =     7.76s         Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =     7.78s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =     7.78s     Synthesize event
+    t =     8.08s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     8.48s Type 'QA lifecycle backg...' into "Reminder title (Required)" TextView
+    t =     8.48s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     8.49s     Find the "Reminder title (Required)" TextView
+    t =     8.49s         Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =     8.56s     Check for interrupting elements affecting "Reminder title (Required)" TextView
+    t =     8.57s         Wait for com.apple.SleepLockScreen to idle
+    t =     8.58s         Requesting snapshot of accessibility hierarchy for app with pid 6798
+    t =     8.58s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =     8.59s         Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =     8.62s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =     8.62s     Synthesize event
+    t =     9.56s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     9.56s Swipe down Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =     9.56s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     9.57s     Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =     9.57s         Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =     9.62s     Check for interrupting elements affecting "CasitaDex Plus Store QA" Application
+    t =     9.63s         Wait for com.apple.SleepLockScreen to idle
+    t =     9.63s         Requesting snapshot of accessibility hierarchy for app with pid 6798
+    t =     9.64s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =     9.64s         Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =     9.68s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =     9.68s     Synthesize event
+    t =    10.13s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    10.60s Tap Button (First Match)
+    t =    10.61s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    10.61s     Find the Button (First Match)
+    t =    10.61s         Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =    10.67s     Check for interrupting elements affecting "3:53 PM" Button
+    t =    10.69s         Wait for com.apple.SleepLockScreen to idle
+    t =    10.69s         Requesting snapshot of accessibility hierarchy for app with pid 6798
+    t =    10.70s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =    10.70s         Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =    10.74s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =    10.74s     Synthesize event
+    t =    11.04s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    11.58s Get number of matches for: Descendants matching type PickerWheel
+    t =    11.58s     Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =    11.61s     Find: Descendants matching type PickerWheel
+    t =    11.61s Find the PickerWheel (Element at index 0)
+    t =    11.62s     Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =    11.64s     Find: Descendants matching type PickerWheel
+    t =    11.64s     Find: Element at index 0
+    t =    11.65s Find the "3 o’clock" PickerWheel
+    t =    11.66s     Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =    11.69s     Find: Descendants matching type PickerWheel
+    t =    11.69s     Find: Element at index 0
+    t =    11.70s Find the PickerWheel (Element at index 1)
+    t =    11.70s     Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =    11.74s     Find: Descendants matching type PickerWheel
+    t =    11.74s     Find: Element at index 1
+    t =    11.75s Set value of "53 minutes" PickerWheel to 45
+    t =    11.75s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    11.75s     Find the "53 minutes" PickerWheel
+    t =    11.75s         Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =    11.80s         Find: Descendants matching type PickerWheel
+    t =    11.80s         Find: Element at index 1
+    t =    11.81s     Check for interrupting elements affecting "53 minutes" PickerWheel
+    t =    11.82s         Wait for com.apple.SleepLockScreen to idle
+    t =    11.83s         Requesting snapshot of accessibility hierarchy for app with pid 6798
+    t =    11.84s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =    11.84s         Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =    11.88s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =    11.88s     Synthesize event
+    t =    11.92s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    12.96s Find the "53 minutes" PickerWheel
+    t =    12.97s     Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =    13.02s     Find: Descendants matching type PickerWheel
+    t =    13.02s     Find: Element at index 1
+    t =    13.03s Find the "45 minutes" PickerWheel
+    t =    13.03s     Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =    13.07s     Find: Descendants matching type PickerWheel
+    t =    13.07s     Find: Element at index 1
+    t =    13.07s Find the PickerWheel (Element at index 2)
+    t =    13.08s     Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =    13.11s     Find: Descendants matching type PickerWheel
+    t =    13.11s     Find: Element at index 2
+    t =    13.12s Find the "PM" PickerWheel
+    t =    13.12s     Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =    13.16s     Find: Descendants matching type PickerWheel
+    t =    13.16s     Find: Element at index 2
+    t =    13.16s Waiting 12.0s for "Done" Any to exist
+    t =    14.17s     Checking `Expect predicate `existsNoRetry == 1` for object "Done" Any`
+    t =    14.17s         Checking existence of `"Done" Any`
+    t =    14.18s             Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =    14.24s Find the "Done" Any
+    t =    14.24s     Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =    14.30s Tap "Done" Button
+    t =    14.30s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    14.31s     Find the "Done" Button
+    t =    14.31s         Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =    14.36s     Check for interrupting elements affecting "Done" Button
+    t =    14.37s         Wait for com.apple.SleepLockScreen to idle
+    t =    14.38s         Requesting snapshot of accessibility hierarchy for app with pid 6798
+    t =    14.39s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =    14.39s         Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =    14.43s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =    14.44s     Synthesize event
+    t =    14.74s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    15.20s Find the "3:53 PM" Button
+    t =    15.20s     Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =    15.28s Find the "3:45 PM" Button
+    t =    15.28s     Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =    15.35s Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    15.35s     Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =    15.52s Added attachment named 'Verified notification schedule before Save'
+    t =    15.52s Waiting 12.0s for "Save Reminder" Any to exist
+    t =    16.55s     Checking `Expect predicate `existsNoRetry == 1` for object "Save Reminder" Any`
+    t =    16.55s         Checking existence of `"Save Reminder" Any`
+    t =    16.55s             Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =    16.65s Find the "Save Reminder" Any
+    t =    16.65s     Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =    16.75s Tap "Save Reminder" Button
+    t =    16.75s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    16.75s     Find the "Save Reminder" Button
+    t =    16.76s         Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =    16.85s     Check for interrupting elements affecting "Save Reminder" Button
+    t =    16.86s         Wait for com.apple.SleepLockScreen to idle
+    t =    16.86s         Requesting snapshot of accessibility hierarchy for app with pid 6798
+    t =    16.87s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =    16.88s         Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =    16.93s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =    16.96s     Synthesize event
+    t =    17.24s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    17.58s Waiting 3.0s for Alert (First Match) to exist
+    t =    18.59s     Checking `Expect predicate `existsNoRetry == 1` for object Alert (First Match)`
+    t =    18.59s         Checking existence of `Alert (First Match)`
+    t =    18.60s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    18.67s         Capturing element debug description
+    t =    19.59s     Checking `Expect predicate `existsNoRetry == 1` for object Alert (First Match)`
+    t =    19.59s         Checking existence of `Alert (First Match)`
+    t =    19.60s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    19.67s         Capturing element debug description
+    t =    20.59s     Checking `Expect predicate `existsNoRetry == 1` for object Alert (First Match)`
+    t =    20.59s         Checking existence of `Alert (First Match)`
+    t =    20.59s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    20.67s         Capturing element debug description
+    t =    20.67s     Checking existence of `Alert (First Match)`
+    t =    20.67s         Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    20.74s Collecting debug information to assist test failure triage
+    t =    20.74s     Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    20.85s Waiting 12.0s for "Home" Any to exist
+    t =    21.86s     Checking `Expect predicate `existsNoRetry == 1` for object "Home" Any`
+    t =    21.86s         Checking existence of `"Home" Any`
+    t =    21.86s             Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =    21.90s Find the "Home" Any
+    t =    21.91s     Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =    21.95s Tap "Home" Other
+    t =    21.95s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    21.96s     Find the "Home" Other
+    t =    21.96s         Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =    21.99s     Check for interrupting elements affecting "Home" Other
+    t =    22.00s         Wait for com.apple.SleepLockScreen to idle
+    t =    22.01s         Requesting snapshot of accessibility hierarchy for app with pid 6798
+    t =    22.02s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =    22.02s         Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =    22.05s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =    22.07s     Synthesize event
+    t =    22.37s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    22.38s Pressing Home button
+    t =    23.93s Waiting 150.0s for Any (First Match) to exist
+    t =    24.96s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    24.96s         Checking existence of `Any (First Match)`
+    t =    24.97s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    25.17s         Capturing element debug description
+    t =    25.98s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    25.98s         Checking existence of `Any (First Match)`
+    t =    25.98s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    26.20s         Capturing element debug description
+    t =    27.01s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    27.01s         Checking existence of `Any (First Match)`
+    t =    27.02s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    27.23s         Capturing element debug description
+    t =    27.94s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    27.95s         Checking existence of `Any (First Match)`
+    t =    27.95s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    28.16s         Capturing element debug description
+    t =    28.98s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    28.98s         Checking existence of `Any (First Match)`
+    t =    28.98s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    29.20s         Capturing element debug description
+    t =    30.01s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    30.01s         Checking existence of `Any (First Match)`
+    t =    30.02s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    30.23s         Capturing element debug description
+    t =    30.94s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    30.95s         Checking existence of `Any (First Match)`
+    t =    30.95s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    31.17s         Capturing element debug description
+    t =    31.98s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    31.98s         Checking existence of `Any (First Match)`
+    t =    31.98s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    32.20s         Capturing element debug description
+    t =    33.03s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    33.03s         Checking existence of `Any (First Match)`
+    t =    33.03s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    33.24s         Capturing element debug description
+    t =    33.94s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    33.95s         Checking existence of `Any (First Match)`
+    t =    33.95s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    34.17s         Capturing element debug description
+    t =    34.98s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    34.98s         Checking existence of `Any (First Match)`
+    t =    34.98s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    35.20s         Capturing element debug description
+    t =    36.01s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    36.01s         Checking existence of `Any (First Match)`
+    t =    36.02s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    36.23s         Capturing element debug description
+    t =    36.93s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    36.93s         Checking existence of `Any (First Match)`
+    t =    36.94s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    37.15s         Capturing element debug description
+    t =    37.98s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    37.98s         Checking existence of `Any (First Match)`
+    t =    37.98s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    38.20s         Capturing element debug description
+    t =    39.01s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    39.01s         Checking existence of `Any (First Match)`
+    t =    39.02s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    39.23s         Capturing element debug description
+    t =    39.96s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    39.96s         Checking existence of `Any (First Match)`
+    t =    39.97s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    40.18s         Capturing element debug description
+    t =    40.99s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    40.99s         Checking existence of `Any (First Match)`
+    t =    41.00s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    41.21s         Capturing element debug description
+    t =    42.03s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    42.03s         Checking existence of `Any (First Match)`
+    t =    42.03s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    42.25s         Capturing element debug description
+    t =    42.96s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    42.96s         Checking existence of `Any (First Match)`
+    t =    42.97s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    43.18s         Capturing element debug description
+    t =    43.99s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    43.99s         Checking existence of `Any (First Match)`
+    t =    44.00s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    44.22s         Capturing element debug description
+    t =    44.93s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    44.93s         Checking existence of `Any (First Match)`
+    t =    44.94s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    45.15s         Capturing element debug description
+    t =    45.96s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    45.96s         Checking existence of `Any (First Match)`
+    t =    45.97s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    46.18s         Capturing element debug description
+    t =    46.99s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    47.00s         Checking existence of `Any (First Match)`
+    t =    47.00s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    47.22s         Capturing element debug description
+    t =    47.93s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    47.93s         Checking existence of `Any (First Match)`
+    t =    47.94s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    48.16s         Capturing element debug description
+    t =    48.98s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    48.98s         Checking existence of `Any (First Match)`
+    t =    48.98s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    49.20s         Capturing element debug description
+    t =    50.01s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    50.01s         Checking existence of `Any (First Match)`
+    t =    50.02s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    50.22s         Capturing element debug description
+    t =    51.00s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    51.02s         Checking existence of `Any (First Match)`
+    t =    51.04s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    51.11s         Capturing element debug description
+    t =    51.98s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    51.98s         Checking existence of `Any (First Match)`
+    t =    51.98s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    52.05s         Capturing element debug description
+    t =    52.95s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    52.95s         Checking existence of `Any (First Match)`
+    t =    52.96s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    53.04s         Capturing element debug description
+    t =    53.96s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    53.96s         Checking existence of `Any (First Match)`
+    t =    53.97s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    54.06s         Capturing element debug description
+    t =    54.96s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    54.96s         Checking existence of `Any (First Match)`
+    t =    54.96s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    55.06s         Capturing element debug description
+    t =    55.96s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    55.96s         Checking existence of `Any (First Match)`
+    t =    55.96s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    56.05s         Capturing element debug description
+    t =    56.95s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    56.95s         Checking existence of `Any (First Match)`
+    t =    56.96s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    57.05s         Capturing element debug description
+    t =    57.95s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    57.95s         Checking existence of `Any (First Match)`
+    t =    57.96s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    58.05s         Capturing element debug description
+    t =    58.96s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    58.96s         Checking existence of `Any (First Match)`
+    t =    58.97s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    59.06s         Capturing element debug description
+    t =    59.99s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    59.99s         Checking existence of `Any (First Match)`
+    t =    60.00s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    60.09s         Capturing element debug description
+    t =    60.98s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    60.99s         Checking existence of `Any (First Match)`
+    t =    60.99s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    61.08s         Capturing element debug description
+    t =    61.95s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    61.95s         Checking existence of `Any (First Match)`
+    t =    61.95s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    62.04s         Capturing element debug description
+    t =    62.95s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    62.95s         Checking existence of `Any (First Match)`
+    t =    62.95s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    63.04s         Capturing element debug description
+    t =    63.98s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    63.98s         Checking existence of `Any (First Match)`
+    t =    63.98s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    64.08s         Capturing element debug description
+    t =    65.01s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    65.01s         Checking existence of `Any (First Match)`
+    t =    65.02s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    65.11s         Capturing element debug description
+    t =    65.93s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    65.93s         Checking existence of `Any (First Match)`
+    t =    65.94s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    66.03s         Capturing element debug description
+    t =    66.95s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    66.95s         Checking existence of `Any (First Match)`
+    t =    66.95s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    67.05s         Capturing element debug description
+    t =    67.97s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    67.98s         Checking existence of `Any (First Match)`
+    t =    67.98s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    68.06s         Capturing element debug description
+    t =    68.96s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    68.96s         Checking existence of `Any (First Match)`
+    t =    68.97s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    69.06s         Capturing element debug description
+    t =    69.97s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    69.97s         Checking existence of `Any (First Match)`
+    t =    69.98s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    70.07s         Capturing element debug description
+    t =    70.95s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    70.95s         Checking existence of `Any (First Match)`
+    t =    70.96s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    71.05s         Capturing element debug description
+    t =    71.95s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    71.95s         Checking existence of `Any (First Match)`
+    t =    71.96s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    72.05s         Capturing element debug description
+    t =    72.95s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    72.96s         Checking existence of `Any (First Match)`
+    t =    72.96s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    73.05s         Capturing element debug description
+    t =    73.96s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    73.96s         Checking existence of `Any (First Match)`
+    t =    73.97s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    74.06s         Capturing element debug description
+    t =    74.97s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    74.97s         Checking existence of `Any (First Match)`
+    t =    74.97s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    75.05s         Capturing element debug description
+    t =    75.98s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    75.98s         Checking existence of `Any (First Match)`
+    t =    75.99s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    76.08s         Capturing element debug description
+    t =    76.98s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    76.98s         Checking existence of `Any (First Match)`
+    t =    76.98s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    77.07s         Capturing element debug description
+    t =    77.98s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    77.98s         Checking existence of `Any (First Match)`
+    t =    77.99s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    78.08s         Capturing element debug description
+    t =    79.00s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    79.00s         Checking existence of `Any (First Match)`
+    t =    79.01s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    79.09s         Capturing element debug description
+    t =    79.99s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    79.99s         Checking existence of `Any (First Match)`
+    t =    80.00s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    80.09s         Capturing element debug description
+    t =    81.00s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    81.00s         Checking existence of `Any (First Match)`
+    t =    81.00s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    81.09s         Capturing element debug description
+    t =    82.01s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    82.02s         Checking existence of `Any (First Match)`
+    t =    82.02s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    82.11s         Capturing element debug description
+    t =    82.93s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    82.93s         Checking existence of `Any (First Match)`
+    t =    82.94s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    83.03s         Capturing element debug description
+    t =    83.95s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    83.95s         Checking existence of `Any (First Match)`
+    t =    83.95s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    84.04s         Capturing element debug description
+    t =    84.96s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    84.97s         Checking existence of `Any (First Match)`
+    t =    84.97s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    85.06s         Capturing element debug description
+    t =    85.98s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    85.98s         Checking existence of `Any (First Match)`
+    t =    85.99s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    86.08s         Capturing element debug description
+    t =    87.00s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    87.00s         Checking existence of `Any (First Match)`
+    t =    87.00s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    87.10s         Capturing element debug description
+    t =    87.98s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    87.98s         Checking existence of `Any (First Match)`
+    t =    87.99s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    88.07s         Capturing element debug description
+    t =    88.98s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    88.98s         Checking existence of `Any (First Match)`
+    t =    88.99s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    89.08s         Capturing element debug description
+    t =    89.96s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    89.97s         Checking existence of `Any (First Match)`
+    t =    89.97s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    90.06s         Capturing element debug description
+    t =    90.98s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    90.98s         Checking existence of `Any (First Match)`
+    t =    90.99s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    91.07s         Capturing element debug description
+    t =    91.98s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    91.99s         Checking existence of `Any (First Match)`
+    t =    91.99s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    92.10s         Capturing element debug description
+    t =    92.95s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    92.95s         Checking existence of `Any (First Match)`
+    t =    92.96s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    93.11s         Capturing element debug description
+    t =    93.95s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    93.96s         Checking existence of `Any (First Match)`
+    t =    93.97s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    94.18s         Capturing element debug description
+    t =    94.99s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    95.00s         Checking existence of `Any (First Match)`
+    t =    95.01s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    95.13s         Capturing element debug description
+    t =    95.97s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    95.97s         Checking existence of `Any (First Match)`
+    t =    95.98s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    96.11s         Capturing element debug description
+    t =    96.94s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    96.94s         Checking existence of `Any (First Match)`
+    t =    96.95s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    97.08s         Capturing element debug description
+    t =    97.99s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    98.00s         Checking existence of `Any (First Match)`
+    t =    98.01s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    98.14s         Capturing element debug description
+    t =    98.95s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    98.96s         Checking existence of `Any (First Match)`
+    t =    98.98s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    99.13s         Capturing element debug description
+    t =    99.95s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    99.95s         Checking existence of `Any (First Match)`
+    t =    99.96s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =   100.09s         Capturing element debug description
+    t =   101.02s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =   101.03s         Checking existence of `Any (First Match)`
+    t =   101.04s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =   101.17s         Capturing element debug description
+    t =   101.17s     Device orientation changed to Landscape Left
+    t =   101.98s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =   101.98s         Checking existence of `Any (First Match)`
+    t =   101.98s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =   102.07s         Capturing element debug description
+    t =   102.99s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =   103.00s         Checking existence of `Any (First Match)`
+    t =   103.00s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =   103.10s         Capturing element debug description
+    t =   104.02s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =   104.02s         Checking existence of `Any (First Match)`
+    t =   104.03s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =   104.12s         Capturing element debug description
+    t =   104.93s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =   104.93s         Checking existence of `Any (First Match)`
+    t =   104.94s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =   105.03s         Capturing element debug description
+    t =   105.95s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =   105.95s         Checking existence of `Any (First Match)`
+    t =   105.96s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =   106.05s         Capturing element debug description
+    t =   106.98s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =   106.98s         Checking existence of `Any (First Match)`
+    t =   106.99s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =   107.08s         Capturing element debug description
+    t =   108.00s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =   108.00s         Checking existence of `Any (First Match)`
+    t =   108.01s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =   108.10s         Capturing element debug description
+    t =   109.03s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =   109.03s         Checking existence of `Any (First Match)`
+    t =   109.03s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =   109.13s         Capturing element debug description
+    t =   109.95s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =   109.95s         Checking existence of `Any (First Match)`
+    t =   109.95s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =   110.05s         Capturing element debug description
+    t =   110.98s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =   110.98s         Checking existence of `Any (First Match)`
+    t =   110.98s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =   111.08s         Capturing element debug description
+    t =   111.98s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =   111.98s         Checking existence of `Any (First Match)`
+    t =   111.98s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =   112.06s         Capturing element debug description
+    t =   112.98s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =   112.98s         Checking existence of `Any (First Match)`
+    t =   112.99s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =   113.05s         Capturing element debug description
+    t =   113.97s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =   113.97s         Checking existence of `Any (First Match)`
+    t =   113.97s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =   114.06s Find the Application 'com.apple.springboard'
+    t =   114.07s     Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =   114.29s Added attachment named 'Foreground notification before tap'
+    t =   114.29s Tap Any (First Match)
+    t =   114.29s     Wait for com.apple.springboard to idle
+    t =   115.36s     Find the Any (First Match)
+    t =   115.36s         Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =   115.47s     Check for interrupting elements affecting "NotificationShortLookView" BannerNotification
+    t =   115.48s         Wait for com.apple.SleepLockScreen to idle
+    t =   115.49s         Requesting snapshot of accessibility hierarchy for app with pid 6798
+    t =   115.49s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =   115.49s         Wait for com.apple.InCallService to idle
+    t =   115.53s         Requesting snapshot of accessibility hierarchy for app with pid 22917
+    t =   115.56s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =   115.57s         Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =   115.65s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =   115.67s Failed to construct element query matching interruption. Interrupting element BannerNotification, {{8.0, 58.7}, {424.0, 85.3}}, identifier: 'NotificationShortLookView', foreground application Application 'com.apple.springboard', element application: (null). If your test failed after this unhandled interruption, please file a bug and attach your .xcresult bundle.
+    t =   115.69s     Synthesize event
+    t =   115.90s         Interface orientation changed to Landscape Right
+    t =   116.05s     Wait for com.apple.springboard to idle
+    t =   117.44s Wait for com.designsbyfa.casitadex.plusstoreqa to become Running Foreground
+    t =   117.44s Waiting 15.0s for "Reminder title (Required)" TextView to exist
+    t =   118.47s     Checking `Expect predicate `existsNoRetry == 1` for object "Reminder title (Required)" TextView`
+    t =   118.47s         Checking existence of `"Reminder title (Required)" TextView`
+    t =   118.47s             Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =   118.53s Find the "Reminder title (Required)" TextView
+    t =   118.53s     Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =   118.57s Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =   118.58s     Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =   118.75s Added attachment named 'Notification destination background standalone'
+    t =   119.89s Device orientation changed to Portrait
+    t =   119.95s Interface orientation changed to Portrait
+    t =   124.80s Waiting 12.0s for "Cancel" Any to exist
+    t =   125.82s     Checking `Expect predicate `existsNoRetry == 1` for object "Cancel" Any`
+    t =   125.82s         Checking existence of `"Cancel" Any`
+    t =   125.83s             Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =   125.88s Find the "Cancel" Any
+    t =   125.88s     Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =   125.95s Tap "Cancel" Button
+    t =   125.95s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =   125.95s     Find the "Cancel" Button
+    t =   125.95s         Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =   126.00s     Check for interrupting elements affecting "Cancel" Button
+    t =   126.01s         Wait for com.apple.SleepLockScreen to idle
+    t =   126.02s         Requesting snapshot of accessibility hierarchy for app with pid 6798
+    t =   126.03s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =   126.03s         Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =   126.07s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =   126.10s     Synthesize event
+    t =   126.40s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =   126.40s Waiting 12.0s for "Home" Any to exist
+    t =   127.43s     Checking `Expect predicate `existsNoRetry == 1` for object "Home" Any`
+    t =   127.44s         Checking existence of `"Home" Any`
+    t =   127.44s             Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =   127.48s Find the "Home" Any
+    t =   127.49s     Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =   127.55s Tap "Home" Other
+    t =   127.55s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =   127.55s     Find the "Home" Other
+    t =   127.55s         Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =   127.59s     Check for interrupting elements affecting "Home" Other
+    t =   127.61s         Wait for com.apple.SleepLockScreen to idle
+    t =   127.61s         Requesting snapshot of accessibility hierarchy for app with pid 6798
+    t =   127.63s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =   127.63s         Requesting snapshot of accessibility hierarchy for app with pid 23152
+    t =   127.66s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =   127.68s     Synthesize event
+    t =   127.98s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =   127.99s Tear Down
+Test Case '-[CasitaDexAuditTests.PhysicalNotificationLifecycleTests testBackgroundStandalone]' passed (128.160 seconds).
+Test Suite 'PhysicalNotificationLifecycleTests' passed at 2026-11-16 15:45:16.367.
+	 Executed 1 test, with 0 failures (0 unexpected) in 128.160 (128.161) seconds
+Test Suite 'CasitaDexAuditTests.xctest' passed at 2026-11-16 15:45:16.368.
+	 Executed 1 test, with 0 failures (0 unexpected) in 128.160 (128.162) seconds
+Test Suite 'Selected tests' passed at 2026-11-16 15:45:16.368.
+	 Executed 1 test, with 0 failures (0 unexpected) in 128.160 (128.163) seconds
+2026-11-16 15:45:16.774 xcodebuild[87450:7284714] [MT] IDETestOperationsObserverDebug: 130.952 elapsed -- Testing started completed.
+2026-11-16 15:45:16.774 xcodebuild[87450:7284714] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-11-16 15:45:16.774 xcodebuild[87450:7284714] [MT] IDETestOperationsObserverDebug: 130.952 sec, +130.952 sec -- end
+
+Test session results, code coverage, and logs:
+	/Volumes/FA-Development/Designs-by-FA/Apple-Builds/CasitaDex-Physical-Notification-Background-20261116-r3.xcresult
+
+** TEST SUCCEEDED **
+
+Testing started

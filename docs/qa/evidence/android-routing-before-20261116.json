@@ -1,0 +1,31 @@
+{
+  "emulator-5554": {
+    "beforeInstalledApkSha256": "8a4961ab882dd841ab27f23f2a90745eab5f62b184654c65423f94f5b23c0545",
+    "concurrentInstalledApkSha256": "3377b02981d10e5636344172c73e6405d9d646fcf3ae7d633b86650970586abc",
+    "concurrentResult": "Notification test passed on separately integrated chooser build; not counted for routing-only APK acceptance."
+  },
+  "R5GL83X0K3N": {
+    "beforeInstalledApkSha256": "579bbc47c05127d66030a65aadc716a7e25fc9b1f5d2fbacad2c4745ca777beb",
+    "reminderCountsBefore": [
+      "Upcoming (0)",
+      "Overdue (4)",
+      "Completed (0)",
+      "Memory dates (13)"
+    ],
+    "reminderCountsAfterUpdate": [
+      "Upcoming (0)",
+      "Overdue (4)",
+      "Completed (0)",
+      "Memory dates (13)"
+    ],
+    "installedApkSha256": "bcbfe8c27871d50782471914e4cc48ced2f0327e31168f7dd439d459335da561",
+    "reminderCountsAfterOneQATest": [
+      "Upcoming (0)",
+      "Overdue (5)",
+      "Completed (0)",
+      "Memory dates (13)"
+    ]
+  },
+  "builtApkSha256": "bcbfe8c27871d50782471914e4cc48ced2f0327e31168f7dd439d459335da561",
+  "preservedTestedApk": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/CasitaDex/notification-routing-20261116/CasitaDex-refreshqa-593de3d.apk"
+}
