@@ -57,13 +57,13 @@ final class KeyboardFieldTests: XCTestCase {
   continueAfterFailure=false
   let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa");app.launch()
   func tap(_ label:String){
-   let e=app.buttons.matching(identifier:label).firstMatch
+   let e=app.descendants(matching:.any).matching(identifier:label).firstMatch
    XCTAssertTrue(e.waitForExistence(timeout:12),label)
    for _ in 0..<12 {if e.isHittable {break};app.swipeUp()}
    e.tap()
   }
   func probe(_ label:String){
-   let e=app.descendants(matching:.any).matching(NSPredicate(format:"(elementType == %d OR elementType == %d) AND label == %@",XCUIElement.ElementType.textField.rawValue,XCUIElement.ElementType.textView.rawValue,label)).firstMatch
+   let e=label=="Search memories" ? app.descendants(matching:.any).matching(identifier:"find-query").firstMatch : app.descendants(matching:.any).matching(NSPredicate(format:"(elementType == %d OR elementType == %d) AND label == %@",XCUIElement.ElementType.textField.rawValue,XCUIElement.ElementType.textView.rawValue,label)).firstMatch
    XCTAssertTrue(e.waitForExistence(timeout:10),label)
    for _ in 0..<12 {if e.isHittable {break};app.swipeUp()}
    let before=e.value as? String;e.tap()
@@ -75,6 +75,7 @@ final class KeyboardFieldTests: XCTestCase {
    app.scrollViews.firstMatch.swipeDown()
   }
   tap("Home");tap("Add Memory")
+  if app.buttons["Resume draft"].waitForExistence(timeout:2) {app.buttons["Resume draft"].tap()}
   probe("Memory name (Required)");probe("Description")
   tap("Edit Notes");probe("Notes");tap("Done editing Notes")
   tap("Edit Reference");probe("Reference");tap("Done editing Reference")

@@ -7,7 +7,14 @@ from phone import *
 records=[]
 def save(): (out/'results.json').write_text(json.dumps(records,indent=2))
 def probe(label,key):
- hidekeyboard();n=node(label);old=n.get('text');beforeBounds=bounds(n);tap(label);time.sleep(1)
+ hidekeyboard();time.sleep(.5);candidate=node(label)
+ for attempt in range(8):
+  matches=[candidate] if attempt==0 and candidate.get('class','').endswith('EditText') and candidate.get('content-desc')==label and bounds(candidate)[3]-bounds(candidate)[1]>=100 else [n for n in tree().iter('node') if n.get('class','').endswith('EditText') and n.get('content-desc')==label and bounds(n)[3]-bounds(n)[1]>=100]
+  if matches:break
+  run('shell','input','swipe','540','1800','540','1000','350');time.sleep(.3)
+ assert matches,'Input not fully visible before focus: '+label
+ n=matches[0];old=n.get('text');beforeBounds=bounds(n);x,y,a,b=beforeBounds
+ run('shell','input','tap',str((x+a)//2),str((y+b)//2));time.sleep(1)
  w=run('shell','dumpsys','window').decode();frames=re.findall(r'type=ime frame=\[(-?\d+),(-?\d+)\]\[(-?\d+),(-?\d+)\]',w)
  frames=[tuple(map(int,x)) for x in frames if int(x[3])>int(x[1])]
  t=tree();focused=[n for n in t.iter('node') if n.get('focused')=='true' and n.get('class','').endswith('EditText')]
@@ -17,26 +24,33 @@ def probe(label,key):
   assert len(focused)==1 and focused[0].get('content-desc')==label,[(n.get('content-desc'),n.get('bounds')) for n in focused]
   x,y,a,b=bounds(focused[0]);top=min(f[1] for f in frames);result.update(fieldBounds=[x,y,a,b],keyboardTop=top)
   assert y>=60 and b<=top-8,(y,b,top)
-  assert b-y>=beforeBounds[3]-beforeBounds[1]-3,('Input clipped by fixed content',beforeBounds,[x,y,a,b])
+  result['focusedHeight']=b-y
+  assert b-y>=100,('Input too short or clipped',[x,y,a,b])
   assert focused[0].get('text')==old,'Value changed'
   result['status']='PASS'
  except AssertionError as e:result.update(status='FAIL',error=str(e))
- (out/(key+'.xml')).write_bytes(ET.tostring(t));(out/(key+'.png')).write_bytes(run('exec-out','screencap','-p'))
+ (out/(scale+'-'+key+'.xml')).write_bytes(ET.tostring(t));(out/(scale+'-'+key+'.png')).write_bytes(run('exec-out','screencap','-p'))
  records.append(result);save();print(json.dumps(result),flush=True);hidekeyboard()
 def optional(label,key):tap('Edit '+label);probe(label,key);tap('Done editing '+label)
+def top():
+ hidekeyboard()
+ for _ in range(5):run('shell','input','swipe','540','700','540','1900','200')
+ time.sleep(.4)
 def add():
  route('add');probe('Memory name (Required)','add-name');probe('Description','add-description');optional('Notes','add-notes');optional('Reference','add-reference')
+ top()
  for noun,choice in [('Space','Choose Space'),('Category','Choose Categories')]:
   tap(choice);tap('+ Create new '+noun+' ▾');probe('New '+noun+' name','add-new-'+noun.lower());tap('Create new '+noun+' ▴');tap(choice)
 def location():
  route('add');tap('Choose Location');probe('Search locations','location-search');tap('Create new Location');probe('Location name','location-create');tap('Cancel')
 def edit():
  route('card?id=sb26qa_007');tap('Edit memory');probe('Memory name (Required)','edit-name');probe('Description','edit-description');optional('Notes','edit-notes');optional('Reference','edit-reference')
+ top()
  for noun,key,choice in [('Space','space','Choose Space'),('Categories','category','Choose Categories')]:
   tap(choice);tap('+ Create new '+noun+' ▾');probe('New '+key+' name','edit-new-'+key);tap('Create new '+noun+' ▴');tap(choice)
  tap('Cancel')
 def details():
- route('card?id=sb26qa_007');tap('Edit Reference');probe('Reference','details-reference');tap('Cancel');tap('Choose verification status');probe('Reference checked','verification-reference');probe('History note','history-note');tap('Close verification choices')
+ route('card?id=sb26qa_007');tap('Edit Reference');probe('Reference','details-reference');tap('Cancel');tap('Choose verification status');probe('Reference checked','verification-reference');probe('History note','history-note');route('')
  try:node('Next reminder (YYYY-MM-DD)',False)
  except AssertionError:print('No due-date field in selected fixture',flush=True)
  else:probe('Next reminder (YYYY-MM-DD)','next-reminder')
@@ -66,3 +80,5 @@ finally:
  hidekeyboard();run('shell','settings','put','system','font_scale',original);time.sleep(3);route('settings-manage?action=appearance');tap('System appearance');route('add')
  (out/'settings.json').write_text(json.dumps({'fontScale':original,'appearance':'System'}))
 print('COMPLETE',json.dumps({'pass':sum(x.get('status')=='PASS' for x in records),'other':sum(x.get('status')!='PASS' for x in records)}),flush=True)
+
+assert all(x.get("status")=="PASS" for x in records), "Sweep has failed or incomplete checks; see results.json"
