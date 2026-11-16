@@ -4,6 +4,30 @@ from pathlib import Path
 sys.path.insert(0,'scripts/samsung-sweep-20261115');import phone
 phone.serial=os.environ.get('QA_SERIAL','emulator-5554');phone.out=Path('docs/qa/evidence/keyboard-field-sweep-20261115')/phone.serial/os.environ.get('QA_RUN','initial');phone.out.mkdir(parents=True,exist_ok=True)
 from phone import *
+# Never send a scroll gesture across an onscreen keyboard.
+_original_node=phone.node
+def hidekeyboard():
+ for _ in range(3):
+  if 'mInputShown=true' not in run('shell','dumpsys','input_method').decode():return
+  run('shell','input','keyevent','4');time.sleep(.7)
+ assert 'mInputShown=true' not in run('shell','dumpsys','input_method').decode(),'Keyboard did not dismiss'
+def node(label,scroll=True):
+ for attempt in range(18 if scroll else 1):
+  t=tree()
+  candidates=[n for n in sorted(t.iter('node'),key=lambda n:n.get('clickable')!='true') if n.get('content-desc')==label or n.get('content-desc','').startswith(label+', ') or (not n.get('class','').endswith('EditText') and n.get('text','').casefold()==label.casefold())]
+  for n in candidates:
+   x,y,a,b=bounds(n)
+   if 60<=y<b<2240:return n
+  if not scroll:raise AssertionError('Missing visible target: '+label)
+  hidekeyboard()
+  containers=[n for n in t.iter('node') if n.get('scrollable')=='true' and n.get('package')==pkg and bounds(n)[3]>bounds(n)[1]]
+  box=bounds(max(containers,key=lambda n:bounds(n)[3]-bounds(n)[1])) if containers else [0,500,1080,1900]
+  x,y,a,b=box;lo=int(y+(b-y)*.28);hi=int(y+(b-y)*.74)
+  above=bool(candidates) and bounds(candidates[0])[3]<=y
+  # Page gutter: never start a drag inside an editable field.
+  run('shell','input','swipe',str(a-20),str(lo if above else hi),str(a-20),str(hi if above else lo),'350')
+ raise AssertionError('Target not found safely: '+label)
+phone.node=node;phone.hidekeyboard=hidekeyboard
 records=[]
 def save(): (out/'results.json').write_text(json.dumps(records,indent=2))
 def probe(label,key):
@@ -11,7 +35,7 @@ def probe(label,key):
  for attempt in range(8):
   matches=[candidate] if attempt==0 and candidate.get('class','').endswith('EditText') and candidate.get('content-desc')==label and bounds(candidate)[3]-bounds(candidate)[1]>=100 else [n for n in tree().iter('node') if n.get('class','').endswith('EditText') and n.get('content-desc')==label and bounds(n)[3]-bounds(n)[1]>=100]
   if matches:break
-  run('shell','input','swipe','540','1800','540','1000','350');time.sleep(.3)
+  run('shell','input','swipe','1055','1800','1055','1000','350');time.sleep(.3)
  assert matches,'Input not fully visible before focus: '+label
  n=matches[0];old=n.get('text');beforeBounds=bounds(n);x,y,a,b=beforeBounds
  run('shell','input','tap',str((x+a)//2),str((y+b)//2));time.sleep(1)
@@ -34,15 +58,19 @@ def probe(label,key):
 def optional(label,key):tap('Edit '+label);probe(label,key);tap('Done editing '+label)
 def top():
  hidekeyboard()
- for _ in range(5):run('shell','input','swipe','540','700','540','1900','200')
+ for _ in range(5):run('shell','input','swipe','1055','700','1055','1900','200')
  time.sleep(.4)
 def add():
  route('add');probe('Memory name (Required)','add-name');probe('Description','add-description');optional('Notes','add-notes');optional('Reference','add-reference')
  top()
  for noun,choice in [('Space','Choose Space'),('Category','Choose Categories')]:
   tap(choice);tap('+ Create new '+noun+' ▾');probe('New '+noun+' name','add-new-'+noun.lower());tap('Create new '+noun+' ▴');tap(choice)
+def reopen_location_if_closed():
+ try:node('Create new Location',False)
+ except AssertionError:tap('Choose Location')
 def location():
- route('add');tap('Choose Location');probe('Search locations','location-search');tap('Create new Location');probe('Location name','location-create');tap('Cancel')
+ route('add');tap('Choose Location');probe('Search locations','location-search');reopen_location_if_closed();tap('Create new Location');probe('Location name','location-create')
+ if any(n.get('class','').endswith('EditText') and n.get('content-desc')=='Location name' for n in tree().iter('node')):tap('Cancel')
 def edit():
  route('card?id=sb26qa_007');tap('Edit memory');probe('Memory name (Required)','edit-name');probe('Description','edit-description');optional('Notes','edit-notes');optional('Reference','edit-reference')
  top()
