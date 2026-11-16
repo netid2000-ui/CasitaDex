@@ -1,0 +1,12 @@
+{
+  "sourceCommit": "593de3d7b9ba997353216543544b55aa65ea71bb",
+  "bundleId": "com.designsbyfa.casitadex.plusstoreqa",
+  "version": "0.1.0",
+  "build": "1",
+  "machine": "FA-MAC-DEV-01",
+  "files": {
+    "src/app/_layout.tsx": "9c5308d42cb67392cb32e824590cabe9d7b4decb316a8b54291c8f24b457b6bb",
+    "src/reminder-notification-destination.ts": "c7fead3be50f564663241ea5c56cf04a4ca9ab1594f0522342687ecae62aa8fb"
+  },
+  "embeddedBundleSha256": "8b182d8d065c9b4456e0c69cedea37e17b0ebdc0d10f0541336e235d6819f6ac"
+}

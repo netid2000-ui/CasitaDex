@@ -1,0 +1,52 @@
+{
+  "devicesAndConfigurations" : [
+    {
+      "device" : {
+        "architecture" : "arm64",
+        "deviceId" : "00008150-0014306C2644401C",
+        "deviceName" : "iPhone",
+        "modelName" : "iPhone 17 Pro Max",
+        "osBuildNumber" : "24C5037i",
+        "osVersion" : "27.3",
+        "platform" : "iOS"
+      },
+      "expectedFailures" : 0,
+      "failedTests" : 1,
+      "passedTests" : 0,
+      "skippedTests" : 0,
+      "testPlanConfiguration" : {
+        "configurationId" : "1",
+        "configurationName" : "Test Scheme Action"
+      }
+    }
+  ],
+  "environmentDescription" : "CasitaDexAudit · Built with macOS 27.0.1",
+  "expectedFailures" : 0,
+  "failedTests" : 1,
+  "finishTime" : 1794863183.828,
+  "passedTests" : 0,
+  "result" : "Failed",
+  "runtimeWarnings" : [
+
+  ],
+  "skippedTests" : 0,
+  "startTime" : 1794863063.678,
+  "statistics" : [
+
+  ],
+  "testFailures" : [
+    {
+      "failureText" : "XCTAssertTrue failed",
+      "targetName" : "CasitaDexAuditTests",
+      "testIdentifier" : 1,
+      "testIdentifierString" : "PhysicalNotificationTests/testForegroundNotificationTap()",
+      "testIdentifierURL" : "test://com.apple.xcode/CasitaDexAudit/CasitaDexAuditTests/PhysicalNotificationTests/testForegroundNotificationTap",
+      "testName" : "testForegroundNotificationTap()"
+    }
+  ],
+  "title" : "Test - CasitaDexAudit",
+  "topInsights" : [
+
+  ],
+  "totalTestCount" : 1
+}

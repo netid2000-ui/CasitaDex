@@ -1,0 +1,50 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "00008150-0014306C2644401C",
+        "deviceName" : "iPhone",
+        "exportedFileName" : "2233608C-559E-4553-B57C-34D95CADB7CA.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Notification opened exact standalone reminder_0_7DD9E288-30F1-4EE5-954C-D990752B236F.png",
+        "timestamp" : 1794863525.874
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "00008150-0014306C2644401C",
+        "deviceName" : "iPhone",
+        "exportedFileName" : "A4D12CE9-637C-4A07-810E-1829EE0738C3.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Foreground notification before tap_0_7A4FB942-06E5-4991-8D79-498112114DD2.png",
+        "timestamp" : 1794863522.382
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "00008150-0014306C2644401C",
+        "deviceName" : "iPhone",
+        "exportedFileName" : "7CC9AF32-FD0F-41EC-9558-B413FADEF296.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Verified notification schedule before Save_0_478B931E-BCCA-4F49-B8D5-F2DF3CBB93AF.png",
+        "timestamp" : 1794863407.295
+      }
+    ],
+    "testIdentifier" : "PhysicalNotificationTests/testForegroundNotificationTap()",
+    "testIdentifierURL" : "test://com.apple.xcode/CasitaDexAudit/CasitaDexAuditTests/PhysicalNotificationTests/testForegroundNotificationTap"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "00008150-0014306C2644401C",
+        "deviceName" : "iPhone",
+        "exportedFileName" : "0DA90AE7-0F0F-4694-8ECF-79AA3AC8EA8F.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Linked reminder saved and returned to Memory Details Open photo memory [SAMPLE] Coffee filters_0_8D2B0D7E-EA97-440F-BD24-CB427368F6D9.png",
+        "timestamp" : 1794863550.949
+      }
+    ],
+    "testIdentifier" : "PhysicalReminderWorkflowTests/testLinkedReminderSaveReturnsToDetails()",
+    "testIdentifierURL" : "test://com.apple.xcode/CasitaDexAudit/CasitaDexAuditTests/PhysicalReminderWorkflowTests/testLinkedReminderSaveReturnsToDetails"
+  }
+]

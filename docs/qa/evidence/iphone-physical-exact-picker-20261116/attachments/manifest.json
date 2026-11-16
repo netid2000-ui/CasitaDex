@@ -1,0 +1,224 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "00008150-0014306C2644401C",
+        "deviceName" : "iPhone",
+        "exportedFileName" : "8221637F-F3CB-4942-83DD-5E01CB3DCDEE.txt",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Debug description for `\"33 minutes\" PickerWheel`_0_16F0752E-EEA4-44E2-83B4-391C378B8C6F.txt",
+        "timestamp" : 1794862867.407
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "00008150-0014306C2644401C",
+        "deviceName" : "iPhone",
+        "exportedFileName" : "6D6C38FB-0840-474F-87AF-C79D87A10E75",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "UI Snapshot 2026-11-16 at 03.01.07 PM",
+        "timestamp" : 1794862867.407
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "00008150-0014306C2644401C",
+        "deviceName" : "iPhone",
+        "exportedFileName" : "D1D02F2C-57D4-40B7-8522-38132B019254.txt",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Debug description for `\"33 minutes\" PickerWheel`_0_863E744F-14A0-47F2-AE11-A1BFD7ADFD74.txt",
+        "timestamp" : 1794862866.478
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "00008150-0014306C2644401C",
+        "deviceName" : "iPhone",
+        "exportedFileName" : "6E6DBD2F-1D94-4008-9464-8FE47504F4C6",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "UI Snapshot 2026-11-16 at 03.01.06 PM",
+        "timestamp" : 1794862866.478
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "00008150-0014306C2644401C",
+        "deviceName" : "iPhone",
+        "exportedFileName" : "077EBC92-1326-4460-90B8-A885BB117D79.txt",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Debug description for `\"33 minutes\" PickerWheel`_0_A6F0356E-4FA8-4EE5-A6E3-2F1747F0C7C2.txt",
+        "timestamp" : 1794862865.495
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "00008150-0014306C2644401C",
+        "deviceName" : "iPhone",
+        "exportedFileName" : "6FBD0135-53B0-401B-BEDB-E3698B7A235D",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "UI Snapshot 2026-11-16 at 03.01.05 PM",
+        "timestamp" : 1794862865.495
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "00008150-0014306C2644401C",
+        "deviceName" : "iPhone",
+        "exportedFileName" : "20970053-0792-416B-A315-17848051CAE3.txt",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Debug description for `\"33 minutes\" PickerWheel`_0_BD1AE078-3269-4D78-89BB-BE043D249F71.txt",
+        "timestamp" : 1794862864.413
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "00008150-0014306C2644401C",
+        "deviceName" : "iPhone",
+        "exportedFileName" : "B1C0A1F4-D4A3-4B87-9D66-180E39DCB69A",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "UI Snapshot 2026-11-16 at 03.01.04 PM",
+        "timestamp" : 1794862864.413
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "00008150-0014306C2644401C",
+        "deviceName" : "iPhone",
+        "exportedFileName" : "7A1797EB-0EE1-4306-99BC-07724F20C0C4.txt",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Debug description for `\"33 minutes\" PickerWheel`_0_E0BBEE2C-6FD1-4231-ACC9-1B4B9546470F.txt",
+        "timestamp" : 1794862863.419
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "00008150-0014306C2644401C",
+        "deviceName" : "iPhone",
+        "exportedFileName" : "F06CAD8F-594D-4FA0-8ED6-B433B7CC4981",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "UI Snapshot 2026-11-16 at 03.01.03 PM",
+        "timestamp" : 1794862863.419
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "00008150-0014306C2644401C",
+        "deviceName" : "iPhone",
+        "exportedFileName" : "3FA555C7-5FCD-47FF-8C50-CD2A3B0B6520.txt",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Debug description for `\"33 minutes\" PickerWheel`_0_25BC079E-81E1-4F0D-BBA3-532F72988693.txt",
+        "timestamp" : 1794862862.419
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "00008150-0014306C2644401C",
+        "deviceName" : "iPhone",
+        "exportedFileName" : "273A30F2-8D23-4F3C-A4F9-70D741439444",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "UI Snapshot 2026-11-16 at 03.01.02 PM",
+        "timestamp" : 1794862862.419
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "00008150-0014306C2644401C",
+        "deviceName" : "iPhone",
+        "exportedFileName" : "A871F13E-94DE-42B5-9F9C-069D3AB31168.txt",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Debug description for `\"33 minutes\" PickerWheel`_0_50D94953-682F-433A-A6F2-CE03BBD40012.txt",
+        "timestamp" : 1794862861.418
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "00008150-0014306C2644401C",
+        "deviceName" : "iPhone",
+        "exportedFileName" : "89DD4196-8919-4AB2-9CBF-14F60316C76E",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "UI Snapshot 2026-11-16 at 03.01.01 PM",
+        "timestamp" : 1794862861.419
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "00008150-0014306C2644401C",
+        "deviceName" : "iPhone",
+        "exportedFileName" : "E8FE15E0-90A2-4522-9BAF-58A2F9EA5BEC.txt",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Debug description for `\"33 minutes\" PickerWheel`_0_151E55B9-E136-45F1-8F13-EE5585483E9D.txt",
+        "timestamp" : 1794862860.42
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "00008150-0014306C2644401C",
+        "deviceName" : "iPhone",
+        "exportedFileName" : "F70CBBC6-30E3-438A-A745-8C0C2EFC5F60",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "UI Snapshot 2026-11-16 at 03.01.00 PM",
+        "timestamp" : 1794862860.42
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "00008150-0014306C2644401C",
+        "deviceName" : "iPhone",
+        "exportedFileName" : "DDFCA08B-018E-4481-B52B-EA7A94716A2D",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Synthesized Event 2026-11-16 at 03.00.57 PM",
+        "timestamp" : 1794862857.278
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "00008150-0014306C2644401C",
+        "deviceName" : "iPhone",
+        "exportedFileName" : "D30D71F2-92DB-422D-9B15-55D60FCF8390",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Synthesized Event 2026-11-16 at 03.00.56 PM",
+        "timestamp" : 1794862856.318
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "00008150-0014306C2644401C",
+        "deviceName" : "iPhone",
+        "exportedFileName" : "9D40D42C-81B9-4D7A-A95E-BB650CE01009",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Synthesized Event 2026-11-16 at 03.00.54 PM",
+        "timestamp" : 1794862854.545
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "00008150-0014306C2644401C",
+        "deviceName" : "iPhone",
+        "exportedFileName" : "0193B458-3F2D-4BCE-B34A-D59E176F9F36",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Synthesized Event 2026-11-16 at 03.00.51 PM",
+        "timestamp" : 1794862851.528
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "00008150-0014306C2644401C",
+        "deviceName" : "iPhone",
+        "exportedFileName" : "40395B61-4F1F-494E-BA45-5612BF79213C",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Synthesized Event 2026-11-16 at 03.00.51 PM",
+        "timestamp" : 1794862851.107
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "00008150-0014306C2644401C",
+        "deviceName" : "iPhone",
+        "exportedFileName" : "0261EC35-0860-49EA-8B40-28319961D9D8",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Synthesized Event 2026-11-16 at 03.00.49 PM",
+        "timestamp" : 1794862849.6
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "00008150-0014306C2644401C",
+        "deviceName" : "iPhone",
+        "exportedFileName" : "4CDABA59-7DC1-4590-8C22-39B258F76E7D",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Synthesized Event 2026-11-16 at 03.00.48 PM",
+        "timestamp" : 1794862848.135
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "00008150-0014306C2644401C",
+        "deviceName" : "iPhone",
+        "exportedFileName" : "5DB2CFC9-88CB-45A2-AF60-B357ADA9C95C.mp4",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Screen Recording 2026-11-16 at 03.00.44 PM.mp4",
+        "timestamp" : 1794862844.382
+      }
+    ],
+    "testIdentifier" : "PhysicalReminderWorkflowTests/testChangedPickerValuesAndDiscard()",
+    "testIdentifierURL" : "test://com.apple.xcode/CasitaDexAudit/CasitaDexAuditTests/PhysicalReminderWorkflowTests/testChangedPickerValuesAndDiscard"
+  }
+]

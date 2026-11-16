@@ -1,0 +1,26 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "00008150-0014306C2644401C",
+        "deviceName" : "iPhone",
+        "exportedFileName" : "1A85DC60-3BF1-4EE3-807D-08366DD50868.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Changed date and time retained in draft_0_CCA71CF0-28D8-4E71-854A-D0D1C5AD3095.png",
+        "timestamp" : 1794862977.942
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "00008150-0014306C2644401C",
+        "deviceName" : "iPhone",
+        "exportedFileName" : "F6FD278C-8D55-4746-A516-AEA916AB3C7D.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Exact minute selection before Done_0_F0E23712-A859-4E07-9FDE-1177EE0E63BE.png",
+        "timestamp" : 1794862975.812
+      }
+    ],
+    "testIdentifier" : "PhysicalReminderWorkflowTests/testChangedPickerValuesAndDiscard()",
+    "testIdentifierURL" : "test://com.apple.xcode/CasitaDexAudit/CasitaDexAuditTests/PhysicalReminderWorkflowTests/testChangedPickerValuesAndDiscard"
+  }
+]

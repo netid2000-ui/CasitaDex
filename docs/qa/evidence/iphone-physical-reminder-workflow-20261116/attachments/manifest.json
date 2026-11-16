@@ -1,0 +1,32 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "00008150-0014306C2644401C",
+        "deviceName" : "iPhone",
+        "exportedFileName" : "5BAD986E-1F23-41C9-82AE-445C700DC43F.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Changed date and time retained in draft_0_5D3016F8-393B-4E9C-BD28-E71E7A0523BB.png",
+        "timestamp" : 1794862451.581
+      }
+    ],
+    "testIdentifier" : "PhysicalReminderWorkflowTests/testChangedPickerValuesAndDiscard()",
+    "testIdentifierURL" : "test://com.apple.xcode/CasitaDexAudit/CasitaDexAuditTests/PhysicalReminderWorkflowTests/testChangedPickerValuesAndDiscard"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "00008150-0014306C2644401C",
+        "deviceName" : "iPhone",
+        "exportedFileName" : "9EB85D48-90F1-42C1-BF95-8F83BB7BD626.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Linked reminder saved and returned to Memory Details Open photo memory [SAMPLE] Coffee filters_0_CE036170-CD74-446F-8A93-D1DD2B6119ED.png",
+        "timestamp" : 1794862478.511
+      }
+    ],
+    "testIdentifier" : "PhysicalReminderWorkflowTests/testLinkedReminderSaveReturnsToDetails()",
+    "testIdentifierURL" : "test://com.apple.xcode/CasitaDexAudit/CasitaDexAuditTests/PhysicalReminderWorkflowTests/testLinkedReminderSaveReturnsToDetails"
+  }
+]

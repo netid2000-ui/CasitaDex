@@ -49,9 +49,9 @@ Release decision: __________
 
 Passing this checklist does not itself authorize a main merge, store submission or production release.
 
-## Physical-build preflight result
+## Historical physical-build preflight result (resolved below)
 
-The connected iPhone 17 Pro Max / iOS 27.3 beta was detected on November 16. The candidate's signed build is blocked by Apple's updated Program License Agreement and the unavailable Push Notifications provisioning profile. See [physical build checkpoint](IPHONE_PHYSICAL_BUILD_CHECKPOINT_20261116.md). No candidate installation or owner acceptance has occurred.
+The connected iPhone 17 Pro Max / iOS 27.3 beta was detected on November 16. At that preflight, the candidate's signed build was blocked by Apple's updated Program License Agreement and the unavailable Push Notifications provisioning profile. See [physical build checkpoint](IPHONE_PHYSICAL_BUILD_CHECKPOINT_20261116.md). At that preflight, no candidate installation or owner acceptance had occurred. The later successful installation below supersedes this build blocker.
 
 ## Provisioning resolved and candidate installed
 
@@ -60,3 +60,11 @@ Successful retry installed CasitaDex Plus Store QA (`com.designsbyfa.casitadex.p
 ## Physical reminder automation checkpoint
 
 The physical iPhone passed the current-size dark-mode date/time presentation, unchanged-value Done, and editor Cancel/Home checks. See [physical reminder evidence](IPHONE_PHYSICAL_REMINDER_ACCEPTANCE_20261116.md). Owner-result rows remain pending; this limited automated check does not cover changed selections, enlarged physical text or notification routing.
+
+## Physical reminder workflow follow-up
+
+The physical iPhone also passed changed-date retention, exact-minute retention after settled native wheel selection, changed-draft discard protection, and linked reminder Save returning to the original Coffee filters sample memory. See [workflow results and limitations](IPHONE_PHYSICAL_REMINDER_WORKFLOW_20261116.md). The initial time test was strengthened after screenshot review; failed diagnostic attempts are retained. Notification routing remains unaccepted until a successful actual delivery and tap is observed. All Owner result rows remain Pending.
+
+## Corrected notification route installed and verified
+
+Source **593de3d** is now installed in the same isolated physical `.plusstoreqa` app. Actual foreground notification delivery and tap-to-exact-standalone-reminder passed; linked reminder Save return passed again (2/2 final physical tests). Full automated suite: 525 passed, 6 skipped, 0 failed; TypeScript and ESLint passed. Background/terminated and linked-memory notification taps, other remaining checklist rows, and owner sign-off remain Pending. See the workflow report above for failed diagnostic attempts, installation identity and evidence.

@@ -1,0 +1,47 @@
+Source 593de3d. Signed device build on FA-MAC-DEV-01.
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -workspace ios/CasitaDexPlusStoreQA.xcworkspace -scheme CasitaDexPlusStoreQA -configuration Debug -destination generic/platform=iOS -derivedDataPath /Volumes/FA-Development/Designs-by-FA/Apple-Builds/CasitaDex-Physical-20261116 -allowProvisioningUpdates DEVELOPMENT_TEAM=VSP8XSM3BK CODE_SIGN_STYLE=Automatic "CODE_SIGN_IDENTITY=Apple Development" build
+
+Build settings from command line:
+    CODE_SIGN_IDENTITY = Apple Development
+    CODE_SIGN_STYLE = Automatic
+    DEVELOPMENT_TEAM = VSP8XSM3BK
+
+2026-11-16 15:08:25.910 xcodebuild[78083:7227379] [MT] IDESchemeActionsInvocationRecord: Device <DVTiPhonePlaceholder: 0x7979a62440 (Any iOS Device | undefined_arch)> is missing operatingSystemVersion, operatingSystemVersionWithBuildNumber.
+note: Using codesigning identity override: Apple Development
+ComputePackagePrebuildTargetDependencyGraph
+
+Prepare packages
+
+CreateBuildRequest
+
+SendProjectDescription
+
+CreateBuildOperation
+
+ComputeTargetDependencyGraph
+note: Building targets in dependency order
+note: Target dependency graph (127 targets)
+    Target 'CasitaDexPlusStoreQA' in project 'CasitaDexPlusStoreQA'
+        ➜ Implicit dependency on target 'Pods-CasitaDexPlusStoreQA' in project 'Pods' via file 'libPods-CasitaDexPlusStoreQA.a' in build phase 'Link Binary'
+        ➜ Implicit dependency on target
+20261115/ios
+    
+    Signing Identity:     "Apple Development: Francisco Franco (V4MV3CY63M)"
+    Provisioning Profile: "iOS Team Provisioning Profile: com.designsbyfa.casitadex.plusstoreqa"
+                          (a2de69cc-e09a-4158-9d53-c12d7ca20108)
+    
+    /usr/bin/codesign --force --sign 382E8042B67FA0785492B570BF93BA326E778042 --entitlements /Volumes/FA-Development/Designs-by-FA/Apple-Builds/CasitaDex-Physical-20261116/Build/Intermediates.noindex/CasitaDexPlusStoreQA.build/Debug-iphoneos/CasitaDexPlusStoreQA.build/CasitaDexPlusStoreQA.app.xcent --timestamp\=none --generate-entitlement-der --strip-disallowed-xattrs /Volumes/FA-Development/Designs-by-FA/Apple-Builds/CasitaDex-Physical-20261116/Build/Products/Debug-iphoneos/CasitaDexPlusStoreQA.app
+
+Validate /Volumes/FA-Development/Designs-by-FA/Apple-Builds/CasitaDex-Physical-20261116/Build/Products/Debug-iphoneos/CasitaDexPlusStoreQA.app (in target 'CasitaDexPlusStoreQA' from project 'CasitaDexPlusStoreQA')
+    cd /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-ios-qa-20261115/ios
+    builtin-validationUtility /Volumes/FA-Development/Designs-by-FA/Apple-Builds/CasitaDex-Physical-20261116/Build/Products/Debug-iphoneos/CasitaDexPlusStoreQA.app -shallow-bundle -infoplist-subpath Info.plist
+
+PruneExplicitPrecompiledModules /Volumes/FA-Development/Designs-by-FA/Apple-Builds/CasitaDex-Physical-20261116/Build/Intermediates.noindex/ExplicitPrecompiledModules
+
+PruneExplicitPrecompiledModules /Volumes/FA-Development/Designs-by-FA/Apple-Builds/CasitaDex-Physical-20261116/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules
+
+PruneExplicitPrecompiledModules /Volumes/FA-Development/Designs-by-FA/Apple-Builds/CasitaDex-Physical-20261116/SDKExplicitPrecompiledModules
+
+** BUILD SUCCEEDED **
+

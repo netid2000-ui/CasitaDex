@@ -155,3 +155,82 @@ final class ReminderControlReviewTests: XCTestCase {
   tap("Cancel");tap("Home")
  }
 }
+
+final class PhysicalReminderWorkflowTests: XCTestCase {
+ @MainActor func testChangedPickerValuesAndDiscard() {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa");app.launch()
+  func tap(_ s:String){let e=app.descendants(matching:.any).matching(identifier:s).firstMatch;XCTAssertTrue(e.waitForExistence(timeout:12),s);for _ in 0..<8{if e.isHittable{break};app.swipeUp()};e.tap()}
+  tap("Home");tap("Reminders");tap("Add Reminder ›")
+  let date=app.buttons.matching(NSPredicate(format:"label MATCHES %@","[0-9]{4}-[0-9]{2}-[0-9]{2}")).firstMatch
+  let oldDate=date.label;date.tap()
+  let day=app.datePickers.firstMatch.buttons.matching(NSPredicate(format:"label CONTAINS '28'")).firstMatch
+  XCTAssertTrue(day.waitForExistence(timeout:8));day.tap();tap("Done")
+  XCTAssertNotEqual(date.label,oldDate);XCTAssertTrue(date.label.hasSuffix("-28"))
+  let clock=app.buttons.matching(NSPredicate(format:"label MATCHES %@","[0-9]{1,2}:[0-9]{2}.*[AP]M")).firstMatch
+  let oldTime=clock.label;clock.tap();let wheel=app.pickerWheels.element(boundBy:1)
+  XCTAssertTrue(wheel.waitForExistence(timeout:8));let value=(wheel.value as? String ?? "").contains("49") ? "48" : "49";for _ in 0..<4 {
+   wheel.adjust(toPickerWheelValue:value)
+   let settling=expectation(description:"Wait for wheel animation");DispatchQueue.main.asyncAfter(deadline:.now()+1){settling.fulfill()};wait(for:[settling],timeout:3)
+   print("Minute wheel after adjustment: "+String(describing:wheel.value))
+   if (wheel.value as? String ?? "").hasPrefix(value){break}
+  }
+  let settled=expectation(for:NSPredicate(format:"value BEGINSWITH %@",value),evaluatedWith:wheel);wait(for:[settled],timeout:8)
+  let settling=expectation(description:"Native picker change reaches editor");DispatchQueue.main.asyncAfter(deadline:.now()+1){settling.fulfill()};wait(for:[settling],timeout:3)
+  let pick=XCTAttachment(screenshot:app.screenshot());pick.name="Exact minute selection before Done";pick.lifetime = .keepAlways;add(pick)
+  tap("Done");XCTAssertNotEqual(clock.label,oldTime);XCTAssertTrue(clock.label.contains(":"+value),"Editor must retain the exact chosen minute: "+clock.label)
+  let a=XCTAttachment(screenshot:app.screenshot());a.name="Changed date and time retained in draft";a.lifetime = .keepAlways;add(a)
+  tap("Cancel");XCTAssertTrue(app.alerts["Discard reminder changes?"].waitForExistence(timeout:5));tap("Discard changes");tap("Home")
+ }
+ @MainActor func testLinkedReminderSaveReturnsToDetails() {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa");app.launch()
+  func tap(_ s:String){let e=app.descendants(matching:.any).matching(identifier:s).firstMatch;XCTAssertTrue(e.waitForExistence(timeout:12),s);for _ in 0..<8{if e.isHittable{break};app.swipeUp()};e.tap()}
+  tap("Home");tap("Find")
+  let result=app.buttons.matching(NSPredicate(format:"label BEGINSWITH 'Open ' AND label CONTAINS '[SAMPLE]' AND label CONTAINS ' memory '")).firstMatch
+  XCTAssertTrue(result.waitForExistence(timeout:12));let originalLabel=result.label;result.tap()
+  XCTAssertTrue(app.buttons["Edit memory"].waitForExistence(timeout:10));tap("More ···");tap("Remind me later")
+  let title=app.textViews.matching(identifier:"Reminder title (Required)").firstMatch
+  XCTAssertTrue(title.waitForExistence(timeout:10));title.tap();title.typeText(" — QA iPhone save-return 20261116")
+  app.swipeDown();tap("Save Reminder")
+  let springboard=XCUIApplication(bundleIdentifier:"com.apple.springboard")
+  if springboard.alerts.firstMatch.waitForExistence(timeout:3),springboard.buttons["Allow"].exists{springboard.buttons["Allow"].tap()}
+  XCTAssertTrue(app.buttons["Edit memory"].waitForExistence(timeout:15));XCTAssertTrue(app.buttons["‹ Results"].exists)
+  let a=XCTAttachment(screenshot:app.screenshot());a.name="Linked reminder saved and returned to Memory Details: "+originalLabel;a.lifetime = .keepAlways;add(a)
+  tap("Home")
+ }
+}
+
+final class PhysicalNotificationTests: XCTestCase {
+ @MainActor func testForegroundNotificationTap() {
+  continueAfterFailure=false
+  let app=XCUIApplication(bundleIdentifier:"com.designsbyfa.casitadex.plusstoreqa");app.launch()
+  func tap(_ s:String){let e=app.descendants(matching:.any).matching(identifier:s).firstMatch;XCTAssertTrue(e.waitForExistence(timeout:12),s);for _ in 0..<8{if e.isHittable{break};app.swipeUp()};e.tap()}
+  let name="QA iPhone foreground notification 20261116"
+  tap("Home");tap("Reminders");tap("Add Reminder ›")
+  let title=app.textViews.matching(identifier:"Reminder title (Required)").firstMatch;XCTAssertTrue(title.waitForExistence(timeout:10));title.tap();title.typeText(name);app.swipeDown()
+  let clock=app.buttons.matching(NSPredicate(format:"label MATCHES %@","[0-9]{1,2}:[0-9]{2}.*[AP]M")).firstMatch;clock.tap()
+  let target=Date().addingTimeInterval(120);let f=DateFormatter();f.locale=Locale(identifier:"en_US_POSIX");f.dateFormat="h";let hour=f.string(from:target);f.dateFormat="mm";let minute=f.string(from:target);f.dateFormat="a";let period=f.string(from:target)
+  XCTAssertEqual(app.pickerWheels.count,3)
+  for (index,value) in [(0,hour),(1,minute),(2,period)] {
+   let wheel=app.pickerWheels.element(boundBy:index)
+   for _ in 0..<4 {
+    if (wheel.value as? String ?? "").hasPrefix(value){break}
+    wheel.adjust(toPickerWheelValue:value)
+    let e=expectation(description:"Settle notification time wheel");DispatchQueue.main.asyncAfter(deadline:.now()+1){e.fulfill()};wait(for:[e],timeout:3)
+   }
+   XCTAssertTrue((wheel.value as? String ?? "").hasPrefix(value),"Exact notification wheel value required")
+  }
+  tap("Done");XCTAssertTrue(clock.label.contains(hour+":"+minute));XCTAssertTrue(clock.label.contains(period))
+  let schedule=XCTAttachment(screenshot:app.screenshot());schedule.name="Verified notification schedule before Save";schedule.lifetime = .keepAlways;add(schedule)
+  tap("Save Reminder")
+  let sb=XCUIApplication(bundleIdentifier:"com.apple.springboard")
+  if sb.alerts.firstMatch.waitForExistence(timeout:3),sb.buttons["Allow"].exists{sb.buttons["Allow"].tap()}
+  tap("Home")
+  let banner=sb.descendants(matching:.any).matching(NSPredicate(format:"label CONTAINS %@",name)).firstMatch
+  XCTAssertTrue(banner.waitForExistence(timeout:150),"No observed foreground reminder banner; delivery/routing unverified")
+  let a=XCTAttachment(screenshot:sb.screenshot());a.name="Foreground notification before tap";a.lifetime = .keepAlways;add(a);banner.tap()
+  XCTAssertTrue(title.waitForExistence(timeout:15));XCTAssertEqual(title.value as? String,name)
+  let b=XCTAttachment(screenshot:app.screenshot());b.name="Notification opened exact standalone reminder";b.lifetime = .keepAlways;add(b);tap("Cancel");tap("Home")
+ }
+}
