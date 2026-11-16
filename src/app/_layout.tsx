@@ -1,3 +1,4 @@
+import {reminderNotificationDestination} from "../reminder-notification-destination";
 import {beginFreshFind} from "../find-context";
 import React, {useEffect, useState} from "react";
 import { StatusBar } from "expo-status-bar";
@@ -35,7 +36,7 @@ function Shell() {
     const openLinked=async(response:{notification:{request:{content:{data?:Record<string,unknown>}}}})=>{
       const data=response.notification.request.content.data;
       if(data?.casitaDexType!=="standalone-v1"||typeof data.casitaDexReminderId!=="string")return;
-      try{const reminder=(await listStandaloneReminders()).find(r=>r.id===data.casitaDexReminderId);const memoryId=reminder?.memoryId??(typeof data.casitaDexMemoryId==="string"?data.casitaDexMemoryId:null);if(active&&memoryId)router.push({pathname:"/card",params:{id:memoryId}});else if(active)router.push("/reminders");}catch{if(active)router.push("/reminders");}
+      try{const reminder=(await listStandaloneReminders()).find(r=>r.id===data.casitaDexReminderId);const destination=reminderNotificationDestination(reminder,typeof data.casitaDexMemoryId==="string"?data.casitaDexMemoryId:null);if(active)router.push(destination);}catch{if(active)router.push("/reminders");}
     };
     const subscription=addNotificationResponseReceivedListener(response=>{void openLinked(response);});
     void getLastNotificationResponseAsync().then(response=>{if(response&&active)void openLinked(response);}).catch(()=>{});
