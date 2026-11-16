@@ -48,3 +48,7 @@ Accepted cases: __________  Failed cases/evidence: __________
 Release decision: __________
 
 Passing this checklist does not itself authorize a main merge, store submission or production release.
+
+## Physical-build preflight result
+
+The connected iPhone 17 Pro Max / iOS 27.3 beta was detected on November 16. The candidate's signed build is blocked by Apple's updated Program License Agreement and the unavailable Push Notifications provisioning profile. See [physical build checkpoint](IPHONE_PHYSICAL_BUILD_CHECKPOINT_20261116.md). No candidate installation or owner acceptance has occurred.
