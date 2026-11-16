@@ -1,0 +1,15 @@
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Light appearance
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Choose Space
+{"case": "Space-search", "label": "Search spaces", "scale": "1.0", "theme": "Light", "keyboardFrames": [[0, 1517, 1080, 2400], [0, 1517, 1080, 2400]], "beforeBounds": [47, 626, 1033, 763], "imeShownBeforeDump": true, "fieldBounds": [47, 626, 1033, 763], "keyboardTop": 1517, "focusedHeight": 137, "status": "PASS"}
+Tapped Create new Space
+{"case": "Space-create", "label": "Space name", "scale": "1.0", "theme": "Light", "keyboardFrames": [[0, 1517, 1080, 2400], [0, 1517, 1080, 2400]], "beforeBounds": [47, 626, 1033, 763], "imeShownBeforeDump": true, "fieldBounds": [47, 626, 1033, 763], "keyboardTop": 1517, "focusedHeight": 137, "status": "PASS"}
+Tapped Cancel
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped System appearance
+Traceback (most recent call last):
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/scripts/unified-taxonomy-pickers-20261115/acceptance.py", line 15, in <module>
+    assert any(n.get('content-desc')=='Choose '+label for n in tree().iter('node'));passed(label+'-cancel-return')
+           ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

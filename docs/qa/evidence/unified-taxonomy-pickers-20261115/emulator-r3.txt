@@ -1,0 +1,99 @@
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Light appearance
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Choose Space
+{"case": "Space-search", "label": "Search spaces", "scale": "1.0", "theme": "Light", "keyboardFrames": [[0, 1517, 1080, 2400], [0, 1517, 1080, 2400]], "beforeBounds": [47, 626, 1033, 763], "imeShownBeforeDump": true, "fieldBounds": [47, 626, 1033, 763], "keyboardTop": 1517, "focusedHeight": 137, "status": "PASS"}
+Tapped Create new Space
+{"case": "Space-create", "label": "Space name", "scale": "1.0", "theme": "Light", "keyboardFrames": [[0, 1517, 1080, 2400], [0, 1517, 1080, 2400]], "beforeBounds": [47, 626, 1033, 763], "imeShownBeforeDump": true, "fieldBounds": [47, 626, 1033, 763], "keyboardTop": 1517, "focusedHeight": 137, "status": "PASS"}
+Tapped Cancel
+PASS Space-cancel-return
+Tapped Choose Categories
+{"case": "Categories-search", "label": "Search categories", "scale": "1.0", "theme": "Light", "keyboardFrames": [[0, 1517, 1080, 2400], [0, 1517, 1080, 2400]], "beforeBounds": [47, 626, 1033, 763], "imeShownBeforeDump": true, "fieldBounds": [47, 626, 1033, 763], "keyboardTop": 1517, "focusedHeight": 137, "status": "PASS"}
+Tapped Create new Category
+{"case": "Categories-create", "label": "Category name", "scale": "1.0", "theme": "Light", "keyboardFrames": [[0, 1517, 1080, 2400], [0, 1517, 1080, 2400]], "beforeBounds": [47, 626, 1033, 763], "imeShownBeforeDump": true, "fieldBounds": [47, 626, 1033, 763], "keyboardTop": 1517, "focusedHeight": 137, "status": "PASS"}
+Tapped Cancel
+PASS Categories-cancel-return
+Tapped Choose Location
+{"case": "Location-search", "label": "Search locations", "scale": "1.0", "theme": "Light", "keyboardFrames": [[0, 1517, 1080, 2400], [0, 1517, 1080, 2400]], "beforeBounds": [47, 706, 1033, 844], "imeShownBeforeDump": true, "fieldBounds": [47, 706, 1033, 844], "keyboardTop": 1517, "focusedHeight": 138, "status": "PASS"}
+Tapped Create new Location
+{"case": "Location-create", "label": "Location name", "scale": "1.0", "theme": "Light", "keyboardFrames": [[0, 1517, 1080, 2400], [0, 1517, 1080, 2400]], "beforeBounds": [47, 706, 1033, 844], "imeShownBeforeDump": true, "fieldBounds": [47, 706, 1033, 844], "keyboardTop": 1517, "focusedHeight": 138, "status": "PASS"}
+Tapped Cancel
+PASS Location-cancel-return
+PASS draft-text-preserved
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Edit memory
+Tapped Choose Categories
+Tapped None
+Tapped Cancel
+PASS category-cancel-preserves-edit
+Tapped Choose Categories
+Tapped None
+Tapped Cleaning
+Tapped Documents
+Tapped Done
+PASS categories-multiple-done
+Tapped Choose Categories
+Tapped None
+Tapped Cancel
+PASS category-cancel-retains-committed-edit
+Tapped Cancel
+Tapped Edit memory
+PASS memory-cancel-restores-saved-categories
+Tapped Choose Space
+Tapped My Home
+PASS space-single-select-return
+Tapped Choose Location
+Tapped None
+PASS location-none-return
+Tapped Cancel
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Dark appearance
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Choose Space
+{"case": "Space-search", "label": "Search spaces", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1517, 1080, 2400], [0, 1517, 1080, 2400]], "beforeBounds": [47, 679, 1033, 848], "imeShownBeforeDump": true, "fieldBounds": [47, 679, 1033, 853], "keyboardTop": 1517, "focusedHeight": 174, "status": "PASS"}
+Tapped Create new Space
+{"case": "Space-create", "label": "Space name", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1517, 1080, 2400], [0, 1517, 1080, 2400]], "beforeBounds": [47, 679, 1033, 848], "imeShownBeforeDump": true, "fieldBounds": [47, 679, 1033, 853], "keyboardTop": 1517, "focusedHeight": 174, "status": "PASS"}
+Tapped Cancel
+PASS Space-cancel-return
+Tapped Choose Categories
+{"case": "Categories-search", "label": "Search categories", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1517, 1080, 2400], [0, 1517, 1080, 2400]], "beforeBounds": [47, 679, 1033, 848], "imeShownBeforeDump": true, "fieldBounds": [47, 679, 1033, 853], "keyboardTop": 1517, "focusedHeight": 174, "status": "PASS"}
+Tapped Create new Category
+{"case": "Categories-create", "label": "Category name", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1517, 1080, 2400], [0, 1517, 1080, 2400]], "beforeBounds": [47, 679, 1033, 848], "imeShownBeforeDump": true, "fieldBounds": [47, 679, 1033, 853], "keyboardTop": 1517, "focusedHeight": 174, "status": "PASS"}
+Tapped Cancel
+PASS Categories-cancel-return
+Tapped Choose Location
+{"case": "Location-search", "label": "Search locations", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1517, 1080, 2400], [0, 1517, 1080, 2400]], "beforeBounds": [47, 791, 1033, 960], "imeShownBeforeDump": true, "fieldBounds": [47, 791, 1033, 966], "keyboardTop": 1517, "focusedHeight": 175, "status": "PASS"}
+Tapped Create new Location
+{"case": "Location-create", "label": "Location name", "scale": "2.0", "theme": "Dark", "keyboardFrames": [[0, 1517, 1080, 2400], [0, 1517, 1080, 2400]], "beforeBounds": [47, 791, 1033, 960], "imeShownBeforeDump": true, "fieldBounds": [47, 791, 1033, 966], "keyboardTop": 1517, "focusedHeight": 175, "status": "PASS"}
+Tapped Cancel
+PASS Location-cancel-return
+PASS draft-text-preserved
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Edit memory
+Tapped Choose Categories
+Tapped None
+Tapped Cancel
+PASS category-cancel-preserves-edit
+Tapped Choose Categories
+Tapped None
+Tapped Cleaning
+Tapped Documents
+Tapped Done
+PASS categories-multiple-done
+Tapped Choose Categories
+Tapped None
+Tapped Cancel
+PASS category-cancel-retains-committed-edit
+Tapped Cancel
+Tapped Edit memory
+PASS memory-cancel-restores-saved-categories
+Tapped Choose Space
+Tapped My Home
+PASS space-single-select-return
+Tapped Choose Location
+Tapped None
+PASS location-none-return
+Tapped Cancel
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped System appearance
+COMPLETE unified picker acceptance 32

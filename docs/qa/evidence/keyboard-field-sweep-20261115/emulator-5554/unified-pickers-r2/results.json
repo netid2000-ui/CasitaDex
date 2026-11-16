@@ -1,0 +1,74 @@
+[
+  {
+    "case": "Space-search",
+    "label": "Search spaces",
+    "scale": "1.0",
+    "theme": "Light",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      47,
+      626,
+      1033,
+      763
+    ],
+    "imeShownBeforeDump": true,
+    "fieldBounds": [
+      47,
+      626,
+      1033,
+      763
+    ],
+    "keyboardTop": 1517,
+    "focusedHeight": 137,
+    "status": "PASS"
+  },
+  {
+    "case": "Space-create",
+    "label": "Space name",
+    "scale": "1.0",
+    "theme": "Light",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      47,
+      626,
+      1033,
+      763
+    ],
+    "imeShownBeforeDump": true,
+    "fieldBounds": [
+      47,
+      626,
+      1033,
+      763
+    ],
+    "keyboardTop": 1517,
+    "focusedHeight": 137,
+    "status": "PASS"
+  }
+]

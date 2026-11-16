@@ -1,0 +1,8 @@
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Spaces
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<string>", line 100, in labels
+  File "<string>", line 50, in probe
+NameError: name 'scale' is not defined. Did you mean: 'save'?

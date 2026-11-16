@@ -1,0 +1,20 @@
+{
+  "emulator": {
+    "checks": 32,
+    "pass": 32,
+    "fail": 0,
+    "evidence": "emulator-5554/unified-pickers-r3"
+  },
+  "samsungNormal": {
+    "checks": 16,
+    "pass": 16,
+    "fail": 0,
+    "evidence": "R5GL83X0K3N/unified-pickers-r3"
+  },
+  "samsungLarge": {
+    "checks": 16,
+    "pass": 16,
+    "fail": 0,
+    "evidence": "R5GL83X0K3N/unified-pickers-large"
+  }
+}

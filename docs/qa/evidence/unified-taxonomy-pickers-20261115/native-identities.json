@@ -1,0 +1,32 @@
+{
+  "sourceCommit": "82cf922",
+  "androidPackage": "com.designsbyfa.casitadex.refreshqa",
+  "apkSha256": "c9cea12f3ed61de6e1856dcb486c4786308afbee3ac3ea3e46b83a391013d2b6",
+  "installed": {
+    "emulator-5554": {
+      "basePath": "/data/app/~~C6Z774RvbulddDVMulb6dw==/com.designsbyfa.casitadex.refreshqa-gOnCUwjLoyqLDMJggrVD9A==/base.apk",
+      "sha256": "c9cea12f3ed61de6e1856dcb486c4786308afbee3ac3ea3e46b83a391013d2b6",
+      "matchesBuiltApk": true,
+      "versionMetadata": [
+        "versionCode=1 minSdk=24 targetSdk=36",
+        "versionName=0.1.0"
+      ]
+    },
+    "R5GL83X0K3N": {
+      "basePath": "/data/app/~~D3pMgazvODqfm8ahG_-xMw==/com.designsbyfa.casitadex.refreshqa-J_rFclgBC4QIrRNWDrntRQ==/base.apk",
+      "sha256": "c9cea12f3ed61de6e1856dcb486c4786308afbee3ac3ea3e46b83a391013d2b6",
+      "matchesBuiltApk": true,
+      "versionMetadata": [
+        "versionCode=1 minSdk=24 targetSdk=36",
+        "versionName=0.1.0"
+      ]
+    }
+  },
+  "ios": {
+    "bundleId": "com.designsbyfa.casitadex.plusstoreqa",
+    "version": "0.1.0",
+    "build": "1",
+    "installedBundle": "/Volumes/FA-Development/Designs-by-FA/Apple-Builds/CoreSimulator/Devices/81FC3CCE-ACEB-4957-BE61-C9C653A4CE56/data/Containers/Bundle/Application/7DFB39AF-A991-40CC-88DC-63DF5F261875/CasitaDexPlusStoreQA.app",
+    "mainBundleSha256": "8b10b555f9c520c7796a769f64023b9a81493a7adecdacc89337907e0e0ac7ae"
+  }
+}

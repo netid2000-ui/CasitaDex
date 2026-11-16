@@ -1,0 +1,22 @@
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Edit memory
+Tapped Choose Space
+Tapped Create new Space
+Tapped Space name
+Tapped Save space
+PASS native create and select Space
+Tapped Choose Categories
+Tapped Create new Category
+Tapped Category name
+Tapped Save category
+Tapped Done
+PASS native create and select Category
+Tapped Choose Location
+Tapped Create new Location
+Tapped Location name
+Tapped Save location
+PASS native create and select Location
+Tapped Cancel
+Tapped Edit memory
+Tapped Cancel
+PASS saved memory unchanged; three new reusable QA labels retained on emulator only

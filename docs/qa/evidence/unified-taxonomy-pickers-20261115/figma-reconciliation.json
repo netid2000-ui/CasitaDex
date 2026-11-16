@@ -1,0 +1,290 @@
+{
+  "fileKey": "39uzN0SZX8nlmcGDcHdQhr",
+  "sessionId": "b230e1f7-3960-4aa1-b7d0-d7f86dda0148",
+  "sourceCommit": "82cf922",
+  "flows": [
+    {
+      "theme": "Light",
+      "origin": "442:2",
+      "space": "1577:106",
+      "categories": [
+        "1579:332",
+        "1579:354",
+        "1579:376",
+        "1577:143",
+        "1579:398",
+        "1579:420",
+        "1579:442",
+        "1579:464"
+      ],
+      "location": "1577:183",
+      "variables": [
+        "VariableID:1579:322",
+        "VariableID:1579:323",
+        "VariableID:1579:324",
+        "VariableID:1579:325",
+        "VariableID:1579:326",
+        "VariableID:1579:327",
+        "VariableID:1579:328"
+      ]
+    },
+    {
+      "theme": "Dark",
+      "origin": "975:171",
+      "space": "1577:220",
+      "categories": [
+        "1579:571",
+        "1579:593",
+        "1579:615",
+        "1577:257",
+        "1579:637",
+        "1579:659",
+        "1579:681",
+        "1579:703"
+      ],
+      "location": "1577:297",
+      "variables": [
+        "VariableID:1579:561",
+        "VariableID:1579:562",
+        "VariableID:1579:563",
+        "VariableID:1579:564",
+        "VariableID:1579:565",
+        "VariableID:1579:566",
+        "VariableID:1579:567"
+      ]
+    },
+    {
+      "theme": "Light/448:2",
+      "origin": "448:2",
+      "space": "1581:670",
+      "categories": [
+        "1581:1010",
+        "1581:1032",
+        "1581:1054",
+        "1581:689",
+        "1581:1076",
+        "1581:1098",
+        "1581:1120",
+        "1581:1142"
+      ],
+      "location": "1581:714",
+      "variables": [
+        "VariableID:1581:1000",
+        "VariableID:1581:1001",
+        "VariableID:1581:1002",
+        "VariableID:1581:1003",
+        "VariableID:1581:1004",
+        "VariableID:1581:1005",
+        "VariableID:1581:1006"
+      ]
+    },
+    {
+      "theme": "Light/448:44",
+      "origin": "448:44",
+      "space": "1581:781",
+      "categories": [
+        "1581:1249",
+        "1581:1271",
+        "1581:1293",
+        "1581:800",
+        "1581:1315",
+        "1581:1337",
+        "1581:1359",
+        "1581:1381"
+      ],
+      "location": "1581:822",
+      "variables": [
+        "VariableID:1581:1239",
+        "VariableID:1581:1240",
+        "VariableID:1581:1241",
+        "VariableID:1581:1242",
+        "VariableID:1581:1243",
+        "VariableID:1581:1244",
+        "VariableID:1581:1245"
+      ]
+    },
+    {
+      "theme": "Dark/1079:2",
+      "origin": "1079:2",
+      "space": "1581:889",
+      "categories": [
+        "1581:1488",
+        "1581:1510",
+        "1581:1532",
+        "1581:908",
+        "1581:1554",
+        "1581:1576",
+        "1581:1598",
+        "1581:1620"
+      ],
+      "location": "1581:933",
+      "variables": [
+        "VariableID:1581:1478",
+        "VariableID:1581:1479",
+        "VariableID:1581:1480",
+        "VariableID:1581:1481",
+        "VariableID:1581:1482",
+        "VariableID:1581:1483",
+        "VariableID:1581:1484"
+      ]
+    }
+  ],
+  "audit": {
+    "checks": 330,
+    "passed": 330,
+    "errors": [],
+    "flows": [
+      {
+        "theme": "Light",
+        "origin": "442:2",
+        "space": "1577:106",
+        "categories": [
+          "1579:332",
+          "1579:354",
+          "1579:376",
+          "1577:143",
+          "1579:398",
+          "1579:420",
+          "1579:442",
+          "1579:464"
+        ],
+        "location": "1577:183",
+        "variables": [
+          "VariableID:1579:322",
+          "VariableID:1579:323",
+          "VariableID:1579:324",
+          "VariableID:1579:325",
+          "VariableID:1579:326",
+          "VariableID:1579:327",
+          "VariableID:1579:328"
+        ]
+      },
+      {
+        "theme": "Dark",
+        "origin": "975:171",
+        "space": "1577:220",
+        "categories": [
+          "1579:571",
+          "1579:593",
+          "1579:615",
+          "1577:257",
+          "1579:637",
+          "1579:659",
+          "1579:681",
+          "1579:703"
+        ],
+        "location": "1577:297",
+        "variables": [
+          "VariableID:1579:561",
+          "VariableID:1579:562",
+          "VariableID:1579:563",
+          "VariableID:1579:564",
+          "VariableID:1579:565",
+          "VariableID:1579:566",
+          "VariableID:1579:567"
+        ]
+      },
+      {
+        "theme": "Light/448:2",
+        "origin": "448:2",
+        "space": "1581:670",
+        "categories": [
+          "1581:1010",
+          "1581:1032",
+          "1581:1054",
+          "1581:689",
+          "1581:1076",
+          "1581:1098",
+          "1581:1120",
+          "1581:1142"
+        ],
+        "location": "1581:714",
+        "variables": [
+          "VariableID:1581:1000",
+          "VariableID:1581:1001",
+          "VariableID:1581:1002",
+          "VariableID:1581:1003",
+          "VariableID:1581:1004",
+          "VariableID:1581:1005",
+          "VariableID:1581:1006"
+        ]
+      },
+      {
+        "theme": "Light/448:44",
+        "origin": "448:44",
+        "space": "1581:781",
+        "categories": [
+          "1581:1249",
+          "1581:1271",
+          "1581:1293",
+          "1581:800",
+          "1581:1315",
+          "1581:1337",
+          "1581:1359",
+          "1581:1381"
+        ],
+        "location": "1581:822",
+        "variables": [
+          "VariableID:1581:1239",
+          "VariableID:1581:1240",
+          "VariableID:1581:1241",
+          "VariableID:1581:1242",
+          "VariableID:1581:1243",
+          "VariableID:1581:1244",
+          "VariableID:1581:1245"
+        ]
+      },
+      {
+        "theme": "Dark/1079:2",
+        "origin": "1079:2",
+        "space": "1581:889",
+        "categories": [
+          "1581:1488",
+          "1581:1510",
+          "1581:1532",
+          "1581:908",
+          "1581:1554",
+          "1581:1576",
+          "1581:1598",
+          "1581:1620"
+        ],
+        "location": "1581:933",
+        "variables": [
+          "VariableID:1581:1478",
+          "VariableID:1581:1479",
+          "VariableID:1581:1480",
+          "VariableID:1581:1481",
+          "VariableID:1581:1482",
+          "VariableID:1581:1483",
+          "VariableID:1581:1484"
+        ]
+      }
+    ],
+    "validation": "Structural prototype action audit; not an interactive Figma playback test."
+  },
+  "scope": "Primary Add Memory light/dark and Edit Memory Find/Photos light, Photos dark. Shared picker/create views and staged category prototypes. Historical snapshots and arbitrary text search/create input simulation not fully migrated.",
+  "visualCheck": "Editable primary Add/Edit and picker screenshots inspected. Location width corrected, matching placeholders and Cormorant Garamond/Inter preserved. No flattened UI imagery. Final Done primary styling, centered labels and full-width Save controls aligned to native. Creation routes checked for each origin.",
+  "creationAudit": {
+    "checks": 45,
+    "passed": 45,
+    "errors": [],
+    "creationFrames": [
+      "1577:125",
+      "1577:165",
+      "1577:202",
+      "1577:239",
+      "1577:279",
+      "1577:316",
+      "1581:733",
+      "1581:749",
+      "1581:765",
+      "1581:841",
+      "1581:857",
+      "1581:873",
+      "1581:952",
+      "1581:968",
+      "1581:984"
+    ]
+  },
+  "totalStructuralChecks": 375
+}

@@ -1,0 +1,562 @@
+[
+  {
+    "case": "Space-search",
+    "label": "Search spaces",
+    "scale": "1.0",
+    "theme": "Light",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      47,
+      626,
+      1033,
+      763
+    ],
+    "imeShownBeforeDump": true,
+    "fieldBounds": [
+      47,
+      626,
+      1033,
+      763
+    ],
+    "keyboardTop": 1517,
+    "focusedHeight": 137,
+    "status": "PASS"
+  },
+  {
+    "case": "Space-create",
+    "label": "Space name",
+    "scale": "1.0",
+    "theme": "Light",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      47,
+      626,
+      1033,
+      763
+    ],
+    "imeShownBeforeDump": true,
+    "fieldBounds": [
+      47,
+      626,
+      1033,
+      763
+    ],
+    "keyboardTop": 1517,
+    "focusedHeight": 137,
+    "status": "PASS"
+  },
+  {
+    "case": "Space-cancel-return",
+    "scale": "1.0",
+    "theme": "Light",
+    "status": "PASS"
+  },
+  {
+    "case": "Categories-search",
+    "label": "Search categories",
+    "scale": "1.0",
+    "theme": "Light",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      47,
+      626,
+      1033,
+      763
+    ],
+    "imeShownBeforeDump": true,
+    "fieldBounds": [
+      47,
+      626,
+      1033,
+      763
+    ],
+    "keyboardTop": 1517,
+    "focusedHeight": 137,
+    "status": "PASS"
+  },
+  {
+    "case": "Categories-create",
+    "label": "Category name",
+    "scale": "1.0",
+    "theme": "Light",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      47,
+      626,
+      1033,
+      763
+    ],
+    "imeShownBeforeDump": true,
+    "fieldBounds": [
+      47,
+      626,
+      1033,
+      763
+    ],
+    "keyboardTop": 1517,
+    "focusedHeight": 137,
+    "status": "PASS"
+  },
+  {
+    "case": "Categories-cancel-return",
+    "scale": "1.0",
+    "theme": "Light",
+    "status": "PASS"
+  },
+  {
+    "case": "Location-search",
+    "label": "Search locations",
+    "scale": "1.0",
+    "theme": "Light",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      47,
+      706,
+      1033,
+      844
+    ],
+    "imeShownBeforeDump": true,
+    "fieldBounds": [
+      47,
+      706,
+      1033,
+      844
+    ],
+    "keyboardTop": 1517,
+    "focusedHeight": 138,
+    "status": "PASS"
+  },
+  {
+    "case": "Location-create",
+    "label": "Location name",
+    "scale": "1.0",
+    "theme": "Light",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      47,
+      706,
+      1033,
+      844
+    ],
+    "imeShownBeforeDump": true,
+    "fieldBounds": [
+      47,
+      706,
+      1033,
+      844
+    ],
+    "keyboardTop": 1517,
+    "focusedHeight": 138,
+    "status": "PASS"
+  },
+  {
+    "case": "Location-cancel-return",
+    "scale": "1.0",
+    "theme": "Light",
+    "status": "PASS"
+  },
+  {
+    "case": "draft-text-preserved",
+    "scale": "1.0",
+    "theme": "Light",
+    "status": "PASS"
+  },
+  {
+    "case": "category-cancel-preserves-edit",
+    "scale": "1.0",
+    "theme": "Light",
+    "status": "PASS"
+  },
+  {
+    "case": "categories-multiple-done",
+    "scale": "1.0",
+    "theme": "Light",
+    "status": "PASS",
+    "choices": [
+      "Cleaning",
+      "Documents"
+    ]
+  },
+  {
+    "case": "category-cancel-retains-committed-edit",
+    "scale": "1.0",
+    "theme": "Light",
+    "status": "PASS"
+  },
+  {
+    "case": "memory-cancel-restores-saved-categories",
+    "scale": "1.0",
+    "theme": "Light",
+    "status": "PASS"
+  },
+  {
+    "case": "space-single-select-return",
+    "scale": "1.0",
+    "theme": "Light",
+    "status": "PASS"
+  },
+  {
+    "case": "location-none-return",
+    "scale": "1.0",
+    "theme": "Light",
+    "status": "PASS"
+  },
+  {
+    "case": "Space-search",
+    "label": "Search spaces",
+    "scale": "2.0",
+    "theme": "Dark",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      47,
+      679,
+      1033,
+      848
+    ],
+    "imeShownBeforeDump": true,
+    "fieldBounds": [
+      47,
+      679,
+      1033,
+      853
+    ],
+    "keyboardTop": 1517,
+    "focusedHeight": 174,
+    "status": "PASS"
+  },
+  {
+    "case": "Space-create",
+    "label": "Space name",
+    "scale": "2.0",
+    "theme": "Dark",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      47,
+      679,
+      1033,
+      848
+    ],
+    "imeShownBeforeDump": true,
+    "fieldBounds": [
+      47,
+      679,
+      1033,
+      853
+    ],
+    "keyboardTop": 1517,
+    "focusedHeight": 174,
+    "status": "PASS"
+  },
+  {
+    "case": "Space-cancel-return",
+    "scale": "2.0",
+    "theme": "Dark",
+    "status": "PASS"
+  },
+  {
+    "case": "Categories-search",
+    "label": "Search categories",
+    "scale": "2.0",
+    "theme": "Dark",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      47,
+      679,
+      1033,
+      848
+    ],
+    "imeShownBeforeDump": true,
+    "fieldBounds": [
+      47,
+      679,
+      1033,
+      853
+    ],
+    "keyboardTop": 1517,
+    "focusedHeight": 174,
+    "status": "PASS"
+  },
+  {
+    "case": "Categories-create",
+    "label": "Category name",
+    "scale": "2.0",
+    "theme": "Dark",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      47,
+      679,
+      1033,
+      848
+    ],
+    "imeShownBeforeDump": true,
+    "fieldBounds": [
+      47,
+      679,
+      1033,
+      853
+    ],
+    "keyboardTop": 1517,
+    "focusedHeight": 174,
+    "status": "PASS"
+  },
+  {
+    "case": "Categories-cancel-return",
+    "scale": "2.0",
+    "theme": "Dark",
+    "status": "PASS"
+  },
+  {
+    "case": "Location-search",
+    "label": "Search locations",
+    "scale": "2.0",
+    "theme": "Dark",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      47,
+      791,
+      1033,
+      960
+    ],
+    "imeShownBeforeDump": true,
+    "fieldBounds": [
+      47,
+      791,
+      1033,
+      966
+    ],
+    "keyboardTop": 1517,
+    "focusedHeight": 175,
+    "status": "PASS"
+  },
+  {
+    "case": "Location-create",
+    "label": "Location name",
+    "scale": "2.0",
+    "theme": "Dark",
+    "keyboardFrames": [
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ],
+      [
+        0,
+        1517,
+        1080,
+        2400
+      ]
+    ],
+    "beforeBounds": [
+      47,
+      791,
+      1033,
+      960
+    ],
+    "imeShownBeforeDump": true,
+    "fieldBounds": [
+      47,
+      791,
+      1033,
+      966
+    ],
+    "keyboardTop": 1517,
+    "focusedHeight": 175,
+    "status": "PASS"
+  },
+  {
+    "case": "Location-cancel-return",
+    "scale": "2.0",
+    "theme": "Dark",
+    "status": "PASS"
+  },
+  {
+    "case": "draft-text-preserved",
+    "scale": "2.0",
+    "theme": "Dark",
+    "status": "PASS"
+  },
+  {
+    "case": "category-cancel-preserves-edit",
+    "scale": "2.0",
+    "theme": "Dark",
+    "status": "PASS"
+  },
+  {
+    "case": "categories-multiple-done",
+    "scale": "2.0",
+    "theme": "Dark",
+    "status": "PASS",
+    "choices": [
+      "Cleaning",
+      "Documents"
+    ]
+  },
+  {
+    "case": "category-cancel-retains-committed-edit",
+    "scale": "2.0",
+    "theme": "Dark",
+    "status": "PASS"
+  },
+  {
+    "case": "memory-cancel-restores-saved-categories",
+    "scale": "2.0",
+    "theme": "Dark",
+    "status": "PASS"
+  },
+  {
+    "case": "space-single-select-return",
+    "scale": "2.0",
+    "theme": "Dark",
+    "status": "PASS"
+  },
+  {
+    "case": "location-none-return",
+    "scale": "2.0",
+    "theme": "Dark",
+    "status": "PASS"
+  }
+]

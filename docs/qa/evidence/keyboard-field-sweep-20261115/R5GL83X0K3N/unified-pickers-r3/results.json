@@ -1,0 +1,282 @@
+[
+  {
+    "case": "Space-search",
+    "label": "Search spaces",
+    "scale": "1.0",
+    "theme": "Light",
+    "keyboardFrames": [
+      [
+        0,
+        1332,
+        1080,
+        2340
+      ],
+      [
+        0,
+        1332,
+        1080,
+        2340
+      ]
+    ],
+    "beforeBounds": [
+      51,
+      704,
+      1030,
+      851
+    ],
+    "imeShownBeforeDump": true,
+    "fieldBounds": [
+      51,
+      704,
+      1030,
+      851
+    ],
+    "keyboardTop": 1332,
+    "focusedHeight": 147,
+    "status": "PASS"
+  },
+  {
+    "case": "Space-create",
+    "label": "Space name",
+    "scale": "1.0",
+    "theme": "Light",
+    "keyboardFrames": [
+      [
+        0,
+        1332,
+        1080,
+        2340
+      ],
+      [
+        0,
+        1332,
+        1080,
+        2340
+      ]
+    ],
+    "beforeBounds": [
+      51,
+      704,
+      1030,
+      851
+    ],
+    "imeShownBeforeDump": true,
+    "fieldBounds": [
+      51,
+      704,
+      1030,
+      851
+    ],
+    "keyboardTop": 1332,
+    "focusedHeight": 147,
+    "status": "PASS"
+  },
+  {
+    "case": "Space-cancel-return",
+    "scale": "1.0",
+    "theme": "Light",
+    "status": "PASS"
+  },
+  {
+    "case": "Categories-search",
+    "label": "Search categories",
+    "scale": "1.0",
+    "theme": "Light",
+    "keyboardFrames": [
+      [
+        0,
+        1332,
+        1080,
+        2340
+      ],
+      [
+        0,
+        1332,
+        1080,
+        2340
+      ]
+    ],
+    "beforeBounds": [
+      51,
+      704,
+      1030,
+      851
+    ],
+    "imeShownBeforeDump": true,
+    "fieldBounds": [
+      51,
+      704,
+      1030,
+      851
+    ],
+    "keyboardTop": 1332,
+    "focusedHeight": 147,
+    "status": "PASS"
+  },
+  {
+    "case": "Categories-create",
+    "label": "Category name",
+    "scale": "1.0",
+    "theme": "Light",
+    "keyboardFrames": [
+      [
+        0,
+        1332,
+        1080,
+        2340
+      ],
+      [
+        0,
+        1332,
+        1080,
+        2340
+      ]
+    ],
+    "beforeBounds": [
+      51,
+      704,
+      1030,
+      851
+    ],
+    "imeShownBeforeDump": true,
+    "fieldBounds": [
+      51,
+      704,
+      1030,
+      851
+    ],
+    "keyboardTop": 1332,
+    "focusedHeight": 147,
+    "status": "PASS"
+  },
+  {
+    "case": "Categories-cancel-return",
+    "scale": "1.0",
+    "theme": "Light",
+    "status": "PASS"
+  },
+  {
+    "case": "Location-search",
+    "label": "Search locations",
+    "scale": "1.0",
+    "theme": "Light",
+    "keyboardFrames": [
+      [
+        0,
+        1332,
+        1080,
+        2340
+      ],
+      [
+        0,
+        1332,
+        1080,
+        2340
+      ]
+    ],
+    "beforeBounds": [
+      51,
+      789,
+      1030,
+      937
+    ],
+    "imeShownBeforeDump": true,
+    "fieldBounds": [
+      51,
+      789,
+      1030,
+      937
+    ],
+    "keyboardTop": 1332,
+    "focusedHeight": 148,
+    "status": "PASS"
+  },
+  {
+    "case": "Location-create",
+    "label": "Location name",
+    "scale": "1.0",
+    "theme": "Light",
+    "keyboardFrames": [
+      [
+        0,
+        1332,
+        1080,
+        2340
+      ],
+      [
+        0,
+        1332,
+        1080,
+        2340
+      ]
+    ],
+    "beforeBounds": [
+      51,
+      789,
+      1030,
+      937
+    ],
+    "imeShownBeforeDump": true,
+    "fieldBounds": [
+      51,
+      789,
+      1030,
+      937
+    ],
+    "keyboardTop": 1332,
+    "focusedHeight": 148,
+    "status": "PASS"
+  },
+  {
+    "case": "Location-cancel-return",
+    "scale": "1.0",
+    "theme": "Light",
+    "status": "PASS"
+  },
+  {
+    "case": "draft-text-preserved",
+    "scale": "1.0",
+    "theme": "Light",
+    "status": "PASS"
+  },
+  {
+    "case": "category-cancel-preserves-edit",
+    "scale": "1.0",
+    "theme": "Light",
+    "status": "PASS"
+  },
+  {
+    "case": "categories-multiple-done",
+    "scale": "1.0",
+    "theme": "Light",
+    "status": "PASS",
+    "choices": [
+      "Cleaning",
+      "Documents"
+    ]
+  },
+  {
+    "case": "category-cancel-retains-committed-edit",
+    "scale": "1.0",
+    "theme": "Light",
+    "status": "PASS"
+  },
+  {
+    "case": "memory-cancel-restores-saved-categories",
+    "scale": "1.0",
+    "theme": "Light",
+    "status": "PASS"
+  },
+  {
+    "case": "space-single-select-return",
+    "scale": "1.0",
+    "theme": "Light",
+    "status": "PASS"
+  },
+  {
+    "case": "location-none-return",
+    "scale": "1.0",
+    "theme": "Light",
+    "status": "PASS"
+  }
+]

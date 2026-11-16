@@ -1,0 +1,38 @@
+[
+  {
+    "case": "space",
+    "label": "Search spaces",
+    "scale": "1.0",
+    "theme": "System",
+    "keyboardFrames": [
+      [
+        0,
+        1332,
+        1080,
+        2340
+      ],
+      [
+        0,
+        1332,
+        1080,
+        2340
+      ]
+    ],
+    "beforeBounds": [
+      51,
+      704,
+      1030,
+      851
+    ],
+    "imeShownBeforeDump": true,
+    "fieldBounds": [
+      51,
+      704,
+      1030,
+      851
+    ],
+    "keyboardTop": 1332,
+    "focusedHeight": 147,
+    "status": "PASS"
+  }
+]

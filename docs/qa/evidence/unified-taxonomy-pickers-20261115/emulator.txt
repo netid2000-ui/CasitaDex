@@ -1,0 +1,5 @@
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Light appearance
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Choose Space
+{"case": "Space-search", "label": "Search spaces", "scale": "1.0", "theme": "Light", "keyboardFrames": [], "beforeBounds": [47, 626, 1033, 763], "imeShownBeforeDump": true, "status": "FAIL", "error": "No measurable onscreen keyboard; not a pass"}
