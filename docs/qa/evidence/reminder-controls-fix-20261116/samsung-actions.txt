@@ -1,0 +1,13 @@
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Light appearance
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+COUNTS ['Upcoming (0)', 'Overdue (4)', 'Completed (0)', 'Memory dates (13)']
+Tapped Overdue (4)
+Tapped More ···
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped System appearance
+Traceback (most recent call last):
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/scripts/reminder-controls-fix-20261116/actions.py", line 14, in <module>
+    n=node(label);x,y,a,b=bounds(n);assert x>=0 and a<=1080 and b>y,(label,[x,y,a,b])
+  File "<string>", line 34, in node
+AssertionError: Target not found safely: ✓ Complete

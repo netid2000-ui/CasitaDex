@@ -28,7 +28,7 @@ module.exports = ({ config }) => {
       allowBackup: false,
       adaptiveIcon: { foregroundImage: "./assets/brand/adaptive-color.png", monochromeImage: "./assets/brand/adaptive-outline.png", backgroundColor: "#FAF8F2" },
     },
-    plugins: [["expo-build-properties", { ios: { enableSceneSupport: true } }], "expo-router", "@react-native-community/datetimepicker", ["expo-notifications", {icon:"./assets/brand/adaptive-outline.png", color:"#003F30"}], ["expo-splash-screen", { image: "./assets/brand/splash-light.png", imageWidth: 160, resizeMode: "contain", backgroundColor: "#F6F7F4", dark: { image: "./assets/brand/splash-dark.png", backgroundColor: "#101C17" } }], ["expo-image-picker", {cameraPermission: "Allow CasitaDex to take a photo for your memory.", photosPermission: "Allow CasitaDex to choose a photo for your memory.", microphonePermission: false}]],
+    plugins: [["expo-build-properties", { ios: { enableSceneSupport: true } }], "expo-router", "@react-native-community/datetimepicker", "./plugins/with-reminder-picker-theme", ["expo-notifications", {icon:"./assets/brand/adaptive-outline.png", color:"#003F30"}], ["expo-splash-screen", { image: "./assets/brand/splash-light.png", imageWidth: 160, resizeMode: "contain", backgroundColor: "#F6F7F4", dark: { image: "./assets/brand/splash-dark.png", backgroundColor: "#101C17" } }], ["expo-image-picker", {cameraPermission: "Allow CasitaDex to take a photo for your memory.", photosPermission: "Allow CasitaDex to choose a photo for your memory.", microphonePermission: false}]],
     web: { ...config.web, bundler: "metro", output: "single", favicon: "./public/brand/favicon-light-32.png" },
     extra: {
       ...config.extra,

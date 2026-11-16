@@ -1,0 +1,34 @@
+[
+  {
+    "file": "app.config.js",
+    "sha256": "f090a39838ee6903b18a661a4e786efc49bee8cfd4ca7c4d5a43e920a3b969d3"
+  },
+  {
+    "file": "plugins/with-reminder-picker-theme.js",
+    "sha256": "703d336f8d8879f19f6a87e2acfeb89c28f0af2aa4a74186e3c79d93aeb0a895"
+  },
+  {
+    "file": "src/eng-screens.tsx",
+    "sha256": "5282b24afc239bba3f756acce495eed9e4ea10ba5ef0ee014646e2ce50d232da",
+    "androidStagingMatches": true,
+    "iosStagingMatches": true
+  },
+  {
+    "file": "src/figma-first/FigmaReminders.tsx",
+    "sha256": "0ac903aab05de1268f06ba3628dd97bd543dfc49b00826f206f3af9665b648d7",
+    "androidStagingMatches": true,
+    "iosStagingMatches": true
+  },
+  {
+    "file": "src/state.tsx",
+    "sha256": "57b54fcfbb941b70b49fd58687bceb6d095b8ec4fa0291c7593eb161a3d62f60",
+    "androidStagingMatches": true,
+    "iosStagingMatches": true
+  },
+  {
+    "file": "src/reminder-picker-layout.ts",
+    "sha256": "a368a406e7d120ec5b56e8a5a2b3aa6eb660232cfd5aa16820b894057fa3cee5",
+    "androidStagingMatches": true,
+    "iosStagingMatches": true
+  }
+]

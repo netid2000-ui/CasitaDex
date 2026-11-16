@@ -3,7 +3,7 @@ import React,{useState} from 'react';
 import {Pressable,ScrollView,Text,View,useWindowDimensions} from 'react-native';
 import type {StandaloneReminder} from '../standalone-reminders';
 import {useFigmaTheme} from './tokens';
-import {Copy} from '../ui';
+import {Button,Copy} from '../ui';
 import {router} from 'expo-router';
 import {useData} from '../state';
 const formatReminderDate=(date:string,time:string)=>{
@@ -25,7 +25,7 @@ export function FigmaReminders({reminders,onAdd,onEdit,onComplete,onOpenMemory,o
  const visible=reminders.filter(r=>tab==='completed'?r.completed:tab==='overdue'?!r.completed&&isOverdue(r):tab==='upcoming'?!r.completed&&!isOverdue(r):false).sort((a,b)=>(a.dueDate+'T'+a.dueTime).localeCompare(b.dueDate+'T'+b.dueTime));
  const counts={upcoming:reminders.filter(r=>!r.completed&&!isOverdue(r)).length,overdue:reminders.filter(r=>!r.completed&&isOverdue(r)).length,completed:reminders.filter(r=>r.completed).length,memoryDates:unlinkedMemoryDue.length};
  const labels={upcoming:'Upcoming',overdue:'Overdue',completed:'Completed',memoryDates:'Memory dates'};
- const action=(label:string,run:()=>void,filled=false,selected?:boolean)=> <Pressable accessibilityRole="button" accessibilityLabel={label} accessibilityState={selected===undefined?undefined:{selected}} onPress={run} style={({pressed})=>({maxWidth:"100%",minHeight:48,paddingHorizontal:14,paddingVertical:10,borderRadius:8,backgroundColor:filled?fg.actionSurface:fg.page,justifyContent:'center',opacity:pressed?0.75:1})}><Text style={{fontFamily:'Inter_400Regular',fontSize:14*textScale,color:filled?fg.actionInk:fg.headingInk}}>{label}</Text></Pressable>;
+ const action=(label:string,run:()=>void,filled=false,selected?:boolean)=> <View style={{maxWidth:"100%"}}><Button compact editorial primary={filled} variant={filled?"tonal":"quiet"} selected={selected} label={label} onPress={run}/></View>;
  return <ScrollView stickyHeaderIndices={[0]} contentContainerStyle={{backgroundColor:fg.page,paddingBottom:24}}><View style={{backgroundColor:fg.page,paddingHorizontal:18,paddingVertical:16,gap:14}}>{!compactHeader?<Pressable accessibilityRole="button" accessibilityLabel="CasitaDex logo, go to Home" onPress={()=>router.navigate("/")} style={{minHeight:48,justifyContent:"center"}}><Copy kind="section">CasitaDex</Copy></Pressable>:null}
   <View style={{flexDirection:'row',alignItems:'center',justifyContent:'space-between',flexWrap:'wrap',gap:8}}>{!compactHeader?<Copy kind="title">Reminders</Copy>:null}{action('Add Reminder ›',onAdd,true)}</View>
   <View style={{flexDirection:'row',flexWrap:'wrap',gap:6}}>{(['upcoming','overdue','completed','memoryDates'] as const).map(value=><View key={value} style={{flexGrow:1,flexBasis:compactHeader?"45%":"22%",minWidth:0}}><Pressable accessibilityRole='button' accessibilityLabel={labels[value]+' ('+counts[value]+')'} accessibilityState={{selected:tab===value}} onPress={()=>{setTab(value);setExpanded(null)}} style={({pressed})=>({flexGrow:1,minHeight:48,paddingHorizontal:7,paddingVertical:9,borderRadius:8,borderWidth:1,borderColor:fg.secondaryInk,backgroundColor:tab===value?fg.actionSurface:'transparent',justifyContent:'center',alignItems:'center',opacity:pressed?0.75:1})}><Text style={{fontFamily:'Inter_400Regular',fontSize:12*textScale,textAlign:'center',color:tab===value?fg.actionInk:fg.headingInk}}>{labels[value]}</Text></Pressable></View>)}</View>
@@ -39,7 +39,7 @@ export function FigmaReminders({reminders,onAdd,onEdit,onComplete,onOpenMemory,o
     {r.memoryId&&onOpenMemory?action('View Memory',()=>onOpenMemory(r.memoryId!)):null}
     {expanded!==r.id?action('More ···',()=>setExpanded(r.id)):null}
    </View>
-   {expanded===r.id?<View style={{flexDirection:'row',flexWrap:'wrap',gap:8}}>{action('Edit',()=>onEdit(r.id))}{onDelete?action('Delete',()=>onDelete(r.id)):null}{action('Less ↑',()=>setExpanded(null))}</View>:null}
+   {expanded===r.id?<View style={{flexDirection:'row',flexWrap:'wrap',gap:8}}>{action('Edit ›',()=>onEdit(r.id))}{onDelete?action('Delete',()=>onDelete(r.id)):null}{action('Less ↑',()=>setExpanded(null))}</View>:null}
   </View>)}
  </View></ScrollView>;
 }

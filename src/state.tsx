@@ -6,6 +6,7 @@ import React, {
   useRef,
   useState,
 } from "react";
+import { Appearance, Platform } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Constants from "expo-constants";
 import { createRepository } from "./persistence";
@@ -44,6 +45,11 @@ export function Provider({ children }: { children: React.ReactNode }) {
     [busy, setBusy] = useState(false),
     [preferences, setPreferences] = useState(defaultPreferences),
     [preferenceError, setPreferenceError] = useState("");
+  useEffect(() => {
+    if (Platform.OS === "android") {
+      Appearance.setColorScheme(preferences.appearance === "System" ? "unspecified" : preferences.appearance === "Dark" ? "dark" : "light");
+    }
+  }, [preferences.appearance]);
   const currentPreferences = useRef(defaultPreferences);
   const preferenceQueue = useRef(Promise.resolve());
   function updatePreferences(patch: Partial<Preferences>) {

@@ -1,0 +1,11 @@
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Light appearance
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+COUNTS ['Upcoming (0)', 'Overdue (0)', 'Completed (0)', 'Memory dates (13)']
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Dark appearance
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+COUNTS ['Upcoming (0)', 'Overdue (0)', 'Completed (0)', 'Memory dates (13)']
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped System appearance
+COMPLETE 2

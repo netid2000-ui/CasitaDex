@@ -1,0 +1,26 @@
+[
+  {
+    "scale": "1.0",
+    "theme": "Light",
+    "counts": [
+      "Upcoming (0)",
+      "Overdue (0)",
+      "Completed (0)",
+      "Memory dates (13)"
+    ],
+    "status": "SKIP",
+    "reason": "No overdue reminders; existing data preserved"
+  },
+  {
+    "scale": "2.0",
+    "theme": "Dark",
+    "counts": [
+      "Upcoming (0)",
+      "Overdue (0)",
+      "Completed (0)",
+      "Memory dates (13)"
+    ],
+    "status": "SKIP",
+    "reason": "No overdue reminders; existing data preserved"
+  }
+]

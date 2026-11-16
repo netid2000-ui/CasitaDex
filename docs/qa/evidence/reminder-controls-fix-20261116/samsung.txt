@@ -1,0 +1,21 @@
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Light appearance
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped 2026-11-15
+PASS {'scale': '1.0', 'theme': 'Light', 'picker': 'date', 'opens': True, 'actionsVisible': True, 'cancelPreservesValue': True}
+Tapped 10:25 PM
+PASS {'scale': '1.0', 'theme': 'Light', 'picker': 'time', 'opens': True, 'actionsVisible': True, 'cancelPreservesValue': True}
+Tapped Cancel
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Dark appearance
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped 2026-11-15
+PASS {'scale': '2.0', 'theme': 'Dark', 'picker': 'date', 'opens': True, 'actionsVisible': True, 'cancelPreservesValue': True}
+Tapped 10:26 PM
+PASS {'scale': '2.0', 'theme': 'Dark', 'picker': 'time', 'opens': True, 'actionsVisible': True, 'cancelPreservesValue': True}
+Tapped Cancel
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped System appearance
+COMPLETE 4

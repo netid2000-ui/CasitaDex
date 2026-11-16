@@ -1,0 +1,34 @@
+[
+  {
+    "scale": "1.0",
+    "theme": "Light",
+    "picker": "date",
+    "opens": true,
+    "actionsVisible": true,
+    "cancelPreservesValue": true
+  },
+  {
+    "scale": "1.0",
+    "theme": "Light",
+    "picker": "time",
+    "opens": true,
+    "actionsVisible": true,
+    "cancelPreservesValue": true
+  },
+  {
+    "scale": "2.0",
+    "theme": "Dark",
+    "picker": "date",
+    "opens": true,
+    "actionsVisible": true,
+    "cancelPreservesValue": true
+  },
+  {
+    "scale": "2.0",
+    "theme": "Dark",
+    "picker": "time",
+    "opens": true,
+    "actionsVisible": true,
+    "cancelPreservesValue": true
+  }
+]

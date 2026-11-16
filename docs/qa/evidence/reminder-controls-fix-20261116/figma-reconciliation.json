@@ -1,0 +1,18 @@
+{
+  "fileKey": "39uzN0SZX8nlmcGDcHdQhr",
+  "page": "398:2",
+  "mutatedNodes": [
+    "434:7",
+    "434:6",
+    "975:127",
+    "975:123"
+  ],
+  "sourceReference": "442:6 / 442:7 Add Memory Save",
+  "buttonFontSize": 14,
+  "horizontalPadding": 12,
+  "cornerRadius": 8,
+  "buttonWidth": 156,
+  "lastChildRight": 144,
+  "visualReview": "Light screen checked; complete icon, label and chevron visible. Identical geometry applied to dark screen.",
+  "remainingDiscrepancy": "Existing Figma native picker previews are schematic (Close preview), not a literal representation of Android native dialogs or adaptive iOS date wheels. Runtime evidence is authoritative for measured presentation; owner acceptance remains pending."
+}

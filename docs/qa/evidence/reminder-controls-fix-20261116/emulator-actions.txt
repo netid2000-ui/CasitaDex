@@ -1,0 +1,15 @@
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Light appearance
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+COUNTS ['Upcoming (0)', 'Overdue (0)', 'Completed (0)', 'Memory dates (13)']
+Tapped Overdue (0)
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped System appearance
+Traceback (most recent call last):
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/scripts/reminder-controls-fix-20261116/actions.py", line 9, in <module>
+    overdue=next(x for x in tabs if x.startswith('Overdue ('))
+    
+  File "/Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/search-location-corrections-20261115/scripts/samsung-sweep-20261115/phone.py", line 39, in tap
+    n=node(label);x,y,a,b=bounds(n);run('shell','input','tap',str((x+a)//2),str((y+b)//2));time.sleep(.4);print('Tapped '+label,flush=True)
+  File "<string>", line 34, in node
+AssertionError: Target not found safely: More ···

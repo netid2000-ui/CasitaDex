@@ -3,6 +3,7 @@ import {TaxonomyPicker} from "./taxonomy-picker";
 import {LocationPicker} from "./location-picker";
 import {LabelManagement} from "./label-management";
 import {useStatusAnnouncement} from "./use-status-announcement";
+import { reminderPickerDisplay } from "./reminder-picker-layout";
 import {ReminderValueControl} from "./reminder-value-control";
 import {MemoryEditorIcon} from "./memory-editor-controls";
 import {MemoryEditOptionalField} from "./memory-edit-optional-field";
@@ -121,6 +122,9 @@ export function EngPhotos(){
 }
  const defaultFutureTime=()=>{const at=new Date(Date.now()+10*60*1000);return `${String(at.getHours()).padStart(2,"0")}:${String(at.getMinutes()).padStart(2,"0")}`;};
 export function EngReminders(){
+ const {width,fontScale}=useWindowDimensions();
+ const {large}=useData();
+ const inlineDatePicker=reminderPickerDisplay("date",width,fontScale,large)==="inline";
  const {s,colors,dark}=useTheme(),params=useLocalSearchParams<{mode?:string;id?:string;memoryId?:string;origin?:string}>();
  const [items,setItems]=useState<StandaloneReminder[]>([]),[expandedReminder,setExpandedReminder]=useState<string|null>(null),[editing,setEditing]=useState<string|null>(params.mode==="new"?"new":null);
  const reminderBaseline=useRef<{title:string;notes:string;dueDate:string;dueTime:string;repeat:RepeatSchedule}|null>(null);
@@ -134,7 +138,7 @@ export function EngReminders(){
   const parts=dueDate.split("-").map(Number),clock=dueTime.split(":").map(Number);
   const current=new Date(parts[0],parts[1]-1,parts[2],clock[0],clock[1]);
   if(Platform.OS==="android"){
-   DateTimePickerAndroid.open({value:current,mode,is24Hour:false,onChange:(event,selected)=>{
+   DateTimePickerAndroid.open({value:current,mode,is24Hour:false,positiveButton:{textColor:colors.ink},negativeButton:{textColor:colors.ink},onChange:(event,selected)=>{
     if(event.type!=="set"||!selected)return;
     if(mode==="date")setDueDate([selected.getFullYear(),String(selected.getMonth()+1).padStart(2,"0"),String(selected.getDate()).padStart(2,"0")].join("-"));
     else setDueTime([String(selected.getHours()).padStart(2,"0"),String(selected.getMinutes()).padStart(2,"0")].join(":"));
@@ -169,13 +173,13 @@ export function EngReminders(){
   </View>
   {new Date(`${dueDate}T${dueTime}:00`).getTime()<=Date.now()?<Copy style={{color:colors.ink,fontWeight:"700"}}>This time has already passed. Choose a future date and time to receive an alert.</Copy>:null}
   <Button editorial variant="quiet" trailing={<Copy>{moreReminderOptions?"⌃":"⌄"}</Copy>} displayLabel="More options" label={moreReminderOptions?"Hide options ▴":"More options ▾"} onPress={()=>setMoreReminderOptions(!moreReminderOptions)}/>
-  {moreReminderOptions?<><View style={{gap:8}}><Copy style={{color:colors.ink,fontWeight:"700"}}>Repeat</Copy><View style={{flexDirection:"row",flexWrap:"wrap",gap:8}}>{(["once","daily","weekly","monthly","yearly"] as RepeatSchedule[]).map(option=><Button key={option} compact label={option==="once"?"Once":option[0].toUpperCase()+option.slice(1)} selected={repeat===option} onPress={()=>setRepeat(option)}/>)}</View></View><Field editorial iosTextView={plusFeatureEnforcementEnabled} label="Notes" value={notes} onChangeText={setNotes} multiline maxLength={4000}/></>:null}
+  {moreReminderOptions?<><View style={{gap:8}}><Copy style={{color:colors.ink,fontWeight:"700"}}>Repeat</Copy><View style={{flexDirection:"row",flexWrap:"wrap",gap:8}}>{(["once","daily","weekly","monthly","yearly"] as RepeatSchedule[]).map(option=><Button key={option} compact editorial label={option==="once"?"Once":option[0].toUpperCase()+option.slice(1)} selected={repeat===option} onPress={()=>setRepeat(option)}/>)}</View></View><Field editorial iosTextView={plusFeatureEnforcementEnabled} label="Notes" value={notes} onChangeText={setNotes} multiline maxLength={4000}/></>:null}
   <Modal visible={iosPicker!==null} transparent animationType="fade" onRequestClose={()=>setIosPicker(null)}>
    <View style={{flex:1,justifyContent:"center",padding:20,backgroundColor:"rgba(0,0,0,0.48)"}}>
     <View style={{backgroundColor:colors.white,borderRadius:20,padding:18,gap:12}}>
      <Copy style={{fontWeight:"700",fontSize:20,color:colors.ink}}>{iosPicker==="date"?"Choose a date":"Choose a time"}</Copy>
-     {iosPicker?<DateTimePicker themeVariant={dark?"dark":"light"} textColor={dark?"#FFFFFF":"#172F27"} value={new Date(dueDate+"T"+dueTime+":00")} mode={iosPicker} display={iosPicker==="date"?"inline":"spinner"} style={{alignSelf:"stretch",height:iosPicker==="date"?340:200}} onChange={(_,selected)=>{if(!selected)return;if(iosPicker==="date")setDueDate([selected.getFullYear(),String(selected.getMonth()+1).padStart(2,"0"),String(selected.getDate()).padStart(2,"0")].join("-"));else setDueTime([String(selected.getHours()).padStart(2,"0"),String(selected.getMinutes()).padStart(2,"0")].join(":"));}}/>:null}
-     <Button primary label="Done" onPress={()=>setIosPicker(null)}/>
+     {iosPicker?<DateTimePicker themeVariant={dark?"dark":"light"} textColor={dark?"#FFFFFF":"#172F27"} value={new Date(dueDate+"T"+dueTime+":00")} mode={iosPicker} display={iosPicker==="date"&&inlineDatePicker?"inline":"spinner"} style={{alignSelf:"stretch",height:iosPicker==="date"&&inlineDatePicker?340:216}} onChange={(_,selected)=>{if(!selected)return;if(iosPicker==="date")setDueDate([selected.getFullYear(),String(selected.getMonth()+1).padStart(2,"0"),String(selected.getDate()).padStart(2,"0")].join("-"));else setDueTime([String(selected.getHours()).padStart(2,"0"),String(selected.getMinutes()).padStart(2,"0")].join(":"));}}/>:null}
+     <Button editorial primary label="Done" onPress={()=>setIosPicker(null)}/>
     </View>
    </View>
   </Modal>
@@ -186,7 +190,7 @@ export function EngReminders(){
   {r.notes?<Copy kind="small">{r.notes}</Copy>:null}
   {r.memoryId?<Button compact label="View Linked Memory" onPress={()=>router.push({pathname:"/card",params:{id:r.memoryId!}})}/>:null}
   <Button variant="quiet" label={expandedReminder===r.id?"Close actions":"Manage reminder"} onPress={()=>setExpandedReminder(old=>old===r.id?null:r.id)}/>
-  {expandedReminder===r.id?<>  <Button label="Edit" disabled={busy} onPress={()=>edit(r)}/>
+  {expandedReminder===r.id?<>  <Button editorial variant="quiet" label="Edit ›" disabled={busy} onPress={()=>edit(r)}/>
   <Button label={r.completed?"Mark Incomplete":"Mark Complete"} disabled={busy} onPress={()=>void act(()=>completeStandaloneReminder(r.id,!r.completed),"Reminder updated.")}/>
   <Button label="Delete Reminder" disabled={busy} onPress={()=>Alert.alert("Delete reminder?","This standalone reminder will be permanently deleted. Saved memories are not affected.",[{text:"Cancel",style:"cancel"},{text:"Delete",style:"destructive",onPress:()=>void act(()=>deleteStandaloneReminder(r.id),"Reminder deleted.")}])}/> </>:null}
  </View>):null}
