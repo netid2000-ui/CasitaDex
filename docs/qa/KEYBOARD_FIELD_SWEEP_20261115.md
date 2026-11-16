@@ -1,6 +1,6 @@
 # Keyboard entry-field sweep — November 15, 2026
 
-Status: Final native checks in progress. App-field coverage is complete for the tested Samsung portrait configuration; Results, native time entry and post-update preservation are being finalized.
+Status: COMPLETE for the scoped portrait onscreen-keyboard sweep. Implemented, built, installed and tested; owner acceptance remains pending.
 
 ## Scope and source
 
@@ -42,7 +42,7 @@ The keyboard runner now confirms dismissal before each search/scroll gesture and
 
 ## Evidence interpretation
 
-Some Samsung screenshots captured after UI hierarchy dumping show an unrendered keyboard surface. These alone are not visual keyboard proof. `samsung-live-ime.png` was captured while the IME reported shown and the window surface reported visible; it displays the actual Samsung keyboard with the focused field above it. Later probes record `imeShownBeforeDump` and take a live capture before hierarchy dumping. Automated geometry uses the nonzero native IME frame and focused input bounds.
+Some Samsung screenshots captured after UI hierarchy dumping show an unrendered keyboard surface. These alone are not visual keyboard proof. `samsung-live-ime.png` was captured while the IME reported shown and the window surface reported visible; it displays the actual Samsung keyboard with the focused field above it. Later probes record `imeShownBeforeDump` and take a live capture before hierarchy dumping; some enlarged captures still have a black IME surface. The normal Results live capture visibly renders the Samsung keyboard. This capture limitation is not presented as a visual pass for every screenshot. Automated geometry uses the nonzero native IME frame and focused input bounds.
 
 ## Release boundary and next batch
 
@@ -50,4 +50,19 @@ Implemented and installed are distinct from owner accepted. App source is `94cdd
 
 ## Samsung Results acceptance
 
-`R5GL83X0K3N/final-results-r2/results.json`: 6/6 PASS across Light 100% and Dark 200%. Results/Edit/More touch rectangles are disjoint; Reference remains above the actual keyboard; tapping Results with keyboard open preserves query and With photos only; page-two navigation returns to page two and the originating result. The normal-size live screenshot was visually reviewed and shows the focused field, keyboard and separate header controls. The first final-results attempt failed because the runner incorrectly restricted non-input targets to the input-safe region; no app change was needed for the corrected retry.
+`R5GL83X0K3N/final-results-r2/results.json`: 6/6 PASS across Light 100% and Dark 200%. Results/Edit/More touch rectangles are disjoint; Reference remains above the actual keyboard; tapping Results with keyboard open preserves query and With photos only; page-two navigation returns to page two and the originating result. The normal and enlarged Results live screenshots were visually reviewed; the enlarged one retains the documented black IME capture limitation. The normal-size live screenshot was visually reviewed and shows the focused field, keyboard and separate header controls. The first final-results attempt failed because the runner incorrectly restricted non-input targets to the input-safe region; no app change was needed for the corrected retry.
+
+## Native picker acceptance and runner cleanup
+
+Samsung native time entry: 4/4 individual hour/minute checks PASS at 100% and 200%, with unchanged values and field bounds above the IME. Calendar and time dialogs were cancelled, not saved. Sources: `R5GL83X0K3N/final-native-pickers/results.json` (normal) and `final-native-pickers-r2/results.json` (enlarged). The Results r2 test recorded six passing observations but failed its subsequent appearance-reset navigation; this is not a successful whole-script exit. Final restoration is checked separately. Earlier native-picker attempts and duplicate History navigation errors remain in the logs.
+
+## Final checkpoint
+
+- Samsung: 74 accepted observations: 64 app-field checks, 6 Results checks and 4 native time-field checks. See `samsung-final-acceptance.json` for exact source evidence. No new source defect remains open in this scoped sweep.
+- Both Results r2 and native-picker r2 recorded passing test observations but their appearance-reset navigation failed. The separate final-preservation run successfully selected System appearance, verified the original empty draft name/Description and returned Home. These cleanup failures are not concealed as passing whole-script exits.
+- Final saved-data preservation: original saved text, four-photo memory and Location passed after replacement installation and cold start. Final draft recovery is verified in `R5GL83X0K3N/final-preservation/draft.json`. No saved-memory Save action was used by this keyboard sweep.
+- Font scale and connectivity settings match the pre-test values. Emulator keyboard settings and iOS Dynamic Type were restored to their original values.
+- Evidence and harness are committed on `work/cd-keyboard-field-sweep-20261115`; app source commit remains `94cdd0c`. Subsequent commits contain testing/report evidence rather than a new native binary.
+- Figma: approved four-tab order and visual language preserved. No design-file mutation in this keyboard batch; no claim of a fresh exhaustive Figma audit. Physical iPhone owner acceptance and broader release readiness remain open.
+
+Raw build/test logs preserve original whitespace and failed attempts. Code/report whitespace checks passed; raw log whitespace is not modified merely to satisfy diff formatting.
