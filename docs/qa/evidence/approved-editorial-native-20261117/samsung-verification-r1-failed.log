@@ -1,0 +1,11 @@
+Warning: Activity not started, its current task has been brought to the front
+Tapped Home
+Traceback (most recent call last):
+  File "/Volumes/FA-Development/Designs-by-FA/Apple-Builds/Approved-Editorial-20261117/verify_android.py", line 15, in <module>
+    route('answers');tap('Home');bounded('Search Memories');bounded('Add Memory');node('A place for everything you want to remember.');shot(name+'-home')
+                                 ~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/Volumes/FA-Development/Designs-by-FA/Apple-Builds/Approved-Editorial-20261117/verify_android.py", line 10, in bounded
+    n=node(label);x,y,a,b=bounds(n);width=int(run('shell','wm','size').decode().strip().split(': ')[-1].split('x')[0]);assert 0<=x<a<=width,(label,(x,y,a,b));return n
+  File "/Volumes/FA-Development/Designs-by-FA/Apple-Builds/Approved-Editorial-20261117/phone.py", line 37, in node
+    raise AssertionError('Missing '+label+' '+str(labels())[:4000])
+AssertionError: Missing Search Memories [('', 'Home screen Page 1 of 2., Default page'), ('', 'ChatGPT, 6 notifications'), ('ChatGPT', ''), ('', 'My Account Tracfone'), ('My Account Tracfone', ''), ('', 'Spotify'), ('Spotify', ''), ('', 'Remote Desktop'), ('Remote Desktop', ''), ('', 'Remote Desktop'), ('Remote Desktop', ''), ('', 'AirMirror'), ('AirMirror', ''), ('', 'QuickSupport'), ('QuickSupport', ''), ('', 'Voice'), ('Voice', ''), ('', 'Jump Desktop'), ('Jump Desktop', ''), ('', 'MyHub'), ('MyHub', ''), ('', 'Facebook'), ('Facebook', ''), ('', '1Weather'), ('1Weather', ''), ('', 'Microsoft, Folder'), ('Microsoft', ''), ('', 'Google Discover'), ('', 'Page 1 of 2. '), ('', 'Page 2 of 2. '), ('', 'Phone'), ('Phone', ''), ('', 'Messages'), ('Messages', ''), ('', 'Chrome'), ('Chrome', ''), ('', 'Camera'), ('Camera', '')]

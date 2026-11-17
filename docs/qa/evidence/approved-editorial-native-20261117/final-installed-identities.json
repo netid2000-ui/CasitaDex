@@ -1,0 +1,23 @@
+{
+  "sourceCommit": "a39c37f",
+  "package": "com.designsbyfa.casitadex.refreshqa",
+  "apkSha256": "38e97070a57eae4995dc8897128298dd52c1e91d9bd1839449b937d92c3b0591",
+  "devices": {
+    "emulator-5554": {
+      "installedSha256": "38e97070a57eae4995dc8897128298dd52c1e91d9bd1839449b937d92c3b0591",
+      "fontScale": "1.0",
+      "nightMode": "Night mode: no"
+    },
+    "R5GL83X0K3N": {
+      "installedSha256": "38e97070a57eae4995dc8897128298dd52c1e91d9bd1839449b937d92c3b0591",
+      "fontScale": "1.0",
+      "nightMode": "Night mode: yes"
+    }
+  },
+  "ios": {
+    "bundle": "com.designsbyfa.casitadex.plusstoreqa",
+    "installedJsSha256": "648839befccb0ab8eae6dd0493cb45384062e89bc5802e77771e554af372f2c2",
+    "appearance": "light",
+    "contentSize": "large"
+  }
+}

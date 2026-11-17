@@ -1,0 +1,34 @@
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Home
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Choose Space
+Tapped Cancel
+Tapped Choose Categories
+Tapped Cancel
+Tapped Choose Location
+Tapped Cancel
+Tapped + Add Photo
+Tapped Cancel
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped 2026-11-17
+Tapped 9:41 AM
+Tapped Cancel
+PASS light-1.0 Home/nav/Find/selectors/photo Cancel/reminder date/time
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Home
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Choose Space
+Tapped Cancel
+Tapped Choose Categories
+Tapped Cancel
+Tapped Choose Location
+Tapped Cancel
+Tapped + Add Photo
+Tapped Cancel
+Traceback (most recent call last):
+  File "/Volumes/FA-Development/Designs-by-FA/Apple-Builds/Approved-Editorial-20261117/verify_android.py", line 23, in <module>
+    shot(name+'-photo-chooser');tap('Cancel');assert 'Choose from Library' not in content()
+                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

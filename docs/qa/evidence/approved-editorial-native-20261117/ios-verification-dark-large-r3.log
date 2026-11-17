@@ -1,0 +1,603 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project qa/CasitaDexAudit.xcodeproj -scheme CasitaDexAudit -destination "platform=iOS Simulator,id=81FC3CCE-ACEB-4957-BE61-C9C653A4CE56" -test-timeouts-enabled YES -maximum-test-execution-time-allowance 240 -resultBundlePath editorial-dark-large-r3.xcresult test
+
+Writing result bundle at path:
+	/Volumes/FA-Development/Designs-by-FA/Apple-Builds/Approved-Editorial-20261117/editorial-dark-large-r3.xcresult
+
+ComputePackagePrebuildTargetDependencyGraph
+
+Prepare packages
+
+CreateBuildRequest
+
+SendProjectDescription
+
+CreateBuildOperation
+
+ComputeTargetDependencyGraph
+note: Building targets in dependency order
+note: Target dependency graph (1 target)
+    Target 'CasitaDexAuditTests' in project 'CasitaDexAudit' (no dependencies)
+
+GatherProvisioningInputs
+
+CreateBuildDescription
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -v -E -dM -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.2.sdk -x c -c /dev/null
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc --version
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld -version_details
+
+Build description signature: f20dfa0ddb3e5cd84546f22898574f84
+Build description path: /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/XCBuildData/f20dfa0ddb3e5cd84546f22898574f84.xcbuilddata
+ClangStatCache /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.2.sdk /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKStatCaches.noindex/iphonesimulator27.2-24B8118-cc78df9d8a9de6526dea716b1c70fd8e.sdkstatcache
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Approved-Editorial-20261117/qa/CasitaDexAudit.xcodeproj
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.2.sdk -o /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKStatCaches.noindex/iphonesimulator27.2-24B8118-cc78df9d8a9de6526dea716b1c70fd8e.sdkstatcache
+
+SwiftDriver CasitaDexAuditTests normal x86_64 com.apple.xcode.tools.swift.compiler (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Approved-Editorial-20261117/qa
+    builtin-SwiftDriver -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name CasitaDexAuditTests -Onone @/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/x86_64/CasitaDexAuditTests.SwiftFileList -module-alias Testing\=_Testing_Unavailable -plugin-path /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.2.sdk -target x86_64-apple-ios17.0-simulator -g -module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Index.noindex/DataStore -swift-version 5 -I /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Products/Debug-iphonesimulator -Isystem /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib -F /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Products/Debug-iphonesimulator -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.2.sdk/Developer/Library/Frameworks -parse-as-library -c -j12 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKStatCaches.noindex/iphonesimulator27.2-24B8118-cc78df9d8a9de6526dea716b1c70fd8e.sdkstatcache -output-file-map /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/x86_64/CasitaDexAuditTests-OutputFileMap.json -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/ModuleCache.noindex -sdk-module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules -emit-dependencies -emit-module -emit-module-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/x86_64/CasitaDexAuditTests.swiftmodule -serialize-diagnostics -dependency-scan-serialize-diagnostics-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/x86_64/CasitaDexAuditTests-dependency-scan.dia -validate-clang-modules-once -clang-build-session-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -emit-const-values -const-gather-protocols-list /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/x86_64/CasitaDexAuditTests_const_extract_protocols.json -Xcc -iquote -Xcc /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/CasitaDexAuditTests-generated-files.hmap -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/CasitaDexAuditTests-own-target-headers.hmap -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/CasitaDexAuditTests-all-target-headers.hmap -Xcc -iquote -Xcc /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/CasitaDexAuditTests-project-headers.hmap -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Products/Debug-iphonesimulator/include -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/DerivedSources-normal/x86_64 -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/DerivedSources/x86_64 -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/DerivedSources -emit-objc-header -emit-objc-header-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/x86_64/CasitaDexAuditTests-Swift.h -working-directory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Approved-Editorial-20261117/qa -experimental-emit-module-separately -disable-cmo
+
+SwiftDriver CasitaDexAuditTests normal arm64 com.apple.xcode.tools.swift.compiler (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Approved-Editorial-20261117/qa
+    builtin-SwiftDriver -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name CasitaDexAuditTests -Onone @/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.SwiftFileList -module-alias Testing\=_Testing_Unavailable -plugin-path /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.2.sdk -target arm64-apple-ios17.0-simulator -g -module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Index.noindex/DataStore -swift-version 5 -I /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Products/Debug-iphonesimulator -Isystem /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib -F /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Products/Debug-iphonesimulator -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.2.sdk/Developer/Library/Frameworks -parse-as-library -c -j12 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKStatCaches.noindex/iphonesimulator27.2-24B8118-cc78df9d8a9de6526dea716b1c70fd8e.sdkstatcache -output-file-map /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests-OutputFileMap.json -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/ModuleCache.noindex -sdk-module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules -emit-dependencies -emit-module -emit-module-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.swiftmodule -serialize-diagnostics -dependency-scan-serialize-diagnostics-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests-dependency-scan.dia -validate-clang-modules-once -clang-build-session-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -emit-const-values -const-gather-protocols-list /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests_const_extract_protocols.json -Xcc -iquote -Xcc /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/CasitaDexAuditTests-generated-files.hmap -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/CasitaDexAuditTests-own-target-headers.hmap -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/CasitaDexAuditTests-all-target-headers.hmap -Xcc -iquote -Xcc /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/CasitaDexAuditTests-project-headers.hmap -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Products/Debug-iphonesimulator/include -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/DerivedSources-normal/arm64 -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/DerivedSources/arm64 -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/DerivedSources -emit-objc-header -emit-objc-header-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests-Swift.h -working-directory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Approved-Editorial-20261117/qa -experimental-emit-module-separately -disable-cmo
+
+SwiftEmitModule normal x86_64 Emitting\ module\ for\ CasitaDexAuditTests (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+
+SwiftCompile normal x86_64 (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Approved-Editorial-20261117/qa
+    
+
+SwiftCompile normal x86_64 Compiling\ SearchLocationTests.swift /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Approved-Editorial-20261117/qa/AuditTests/SearchLocationTests.swift (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+
+SwiftCompile normal x86_64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Approved-Editorial-20261117/qa/AuditTests/SearchLocationTests.swift (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Approved-Editorial-20261117/qa
+    builtin-SwiftPerFileCompile SearchLocationTests.swift
+
+SwiftCompile normal arm64 Compiling\ SearchLocationTests.swift /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Approved-Editorial-20261117/qa/AuditTests/SearchLocationTests.swift (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+
+SwiftCompile normal arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Approved-Editorial-20261117/qa/AuditTests/SearchLocationTests.swift (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Approved-Editorial-20261117/qa
+    builtin-SwiftPerFileCompile SearchLocationTests.swift
+
+SwiftEmitModule normal arm64 Emitting\ module\ for\ CasitaDexAuditTests (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+
+SwiftCompile normal arm64 (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Approved-Editorial-20261117/qa
+    
+
+SwiftDriverJobDiscovery normal x86_64 Compiling SearchLocationTests.swift (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+
+SwiftDriverJobDiscovery normal arm64 Compiling SearchLocationTests.swift (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+
+SwiftDriver\ Compilation CasitaDexAuditTests normal x86_64 com.apple.xcode.tools.swift.compiler (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Approved-Editorial-20261117/qa
+    builtin-Swift-Compilation -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name CasitaDexAuditTests -Onone @/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/x86_64/CasitaDexAuditTests.SwiftFileList -module-alias Testing\=_Testing_Unavailable -plugin-path /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.2.sdk -target x86_64-apple-ios17.0-simulator -g -module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Index.noindex/DataStore -swift-version 5 -I /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Products/Debug-iphonesimulator -Isystem /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib -F /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Products/Debug-iphonesimulator -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.2.sdk/Developer/Library/Frameworks -parse-as-library -c -j12 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKStatCaches.noindex/iphonesimulator27.2-24B8118-cc78df9d8a9de6526dea716b1c70fd8e.sdkstatcache -output-file-map /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/x86_64/CasitaDexAuditTests-OutputFileMap.json -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/ModuleCache.noindex -sdk-module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules -emit-dependencies -emit-module -emit-module-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/x86_64/CasitaDexAuditTests.swiftmodule -serialize-diagnostics -dependency-scan-serialize-diagnostics-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/x86_64/CasitaDexAuditTests-dependency-scan.dia -validate-clang-modules-once -clang-build-session-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -emit-const-values -const-gather-protocols-list /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/x86_64/CasitaDexAuditTests_const_extract_protocols.json -Xcc -iquote -Xcc /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/CasitaDexAuditTests-generated-files.hmap -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/CasitaDexAuditTests-own-target-headers.hmap -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/CasitaDexAuditTests-all-target-headers.hmap -Xcc -iquote -Xcc /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/CasitaDexAuditTests-project-headers.hmap -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Products/Debug-iphonesimulator/include -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/DerivedSources-normal/x86_64 -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/DerivedSources/x86_64 -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/DerivedSources -emit-objc-header -emit-objc-header-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/x86_64/CasitaDexAuditTests-Swift.h -working-directory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Approved-Editorial-20261117/qa -experimental-emit-module-separately -disable-cmo
+
+SwiftDriver\ Compilation CasitaDexAuditTests normal arm64 com.apple.xcode.tools.swift.compiler (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Approved-Editorial-20261117/qa
+    builtin-Swift-Compilation -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name CasitaDexAuditTests -Onone @/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.SwiftFileList -module-alias Testing\=_Testing_Unavailable -plugin-path /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.2.sdk -target arm64-apple-ios17.0-simulator -g -module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Index.noindex/DataStore -swift-version 5 -I /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Products/Debug-iphonesimulator -Isystem /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib -F /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Products/Debug-iphonesimulator -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.2.sdk/Developer/Library/Frameworks -parse-as-library -c -j12 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKStatCaches.noindex/iphonesimulator27.2-24B8118-cc78df9d8a9de6526dea716b1c70fd8e.sdkstatcache -output-file-map /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests-OutputFileMap.json -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/ModuleCache.noindex -sdk-module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules -emit-dependencies -emit-module -emit-module-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.swiftmodule -serialize-diagnostics -dependency-scan-serialize-diagnostics-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests-dependency-scan.dia -validate-clang-modules-once -clang-build-session-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -emit-const-values -const-gather-protocols-list /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests_const_extract_protocols.json -Xcc -iquote -Xcc /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/CasitaDexAuditTests-generated-files.hmap -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/CasitaDexAuditTests-own-target-headers.hmap -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/CasitaDexAuditTests-all-target-headers.hmap -Xcc -iquote -Xcc /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/CasitaDexAuditTests-project-headers.hmap -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Products/Debug-iphonesimulator/include -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/DerivedSources-normal/arm64 -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/DerivedSources/arm64 -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/DerivedSources -emit-objc-header -emit-objc-header-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests-Swift.h -working-directory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Approved-Editorial-20261117/qa -experimental-emit-module-separately -disable-cmo
+
+SwiftDriverJobDiscovery normal arm64 Emitting module for CasitaDexAuditTests (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+
+SwiftDriverJobDiscovery normal x86_64 Emitting module for CasitaDexAuditTests (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+
+SwiftDriver\ Compilation\ Requirements CasitaDexAuditTests normal arm64 com.apple.xcode.tools.swift.compiler (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Approved-Editorial-20261117/qa
+    builtin-Swift-Compilation-Requirements -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name CasitaDexAuditTests -Onone @/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.SwiftFileList -module-alias Testing\=_Testing_Unavailable -plugin-path /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.2.sdk -target arm64-apple-ios17.0-simulator -g -module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Index.noindex/DataStore -swift-version 5 -I /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Products/Debug-iphonesimulator -Isystem /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib -F /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Products/Debug-iphonesimulator -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.2.sdk/Developer/Library/Frameworks -parse-as-library -c -j12 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKStatCaches.noindex/iphonesimulator27.2-24B8118-cc78df9d8a9de6526dea716b1c70fd8e.sdkstatcache -output-file-map /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests-OutputFileMap.json -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/ModuleCache.noindex -sdk-module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules -emit-dependencies -emit-module -emit-module-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.swiftmodule -serialize-diagnostics -dependency-scan-serialize-diagnostics-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests-dependency-scan.dia -validate-clang-modules-once -clang-build-session-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -emit-const-values -const-gather-protocols-list /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests_const_extract_protocols.json -Xcc -iquote -Xcc /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/CasitaDexAuditTests-generated-files.hmap -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/CasitaDexAuditTests-own-target-headers.hmap -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/CasitaDexAuditTests-all-target-headers.hmap -Xcc -iquote -Xcc /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/CasitaDexAuditTests-project-headers.hmap -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Products/Debug-iphonesimulator/include -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/DerivedSources-normal/arm64 -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/DerivedSources/arm64 -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/DerivedSources -emit-objc-header -emit-objc-header-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests-Swift.h -working-directory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Approved-Editorial-20261117/qa -experimental-emit-module-separately -disable-cmo
+
+SwiftDriver\ Compilation\ Requirements CasitaDexAuditTests normal x86_64 com.apple.xcode.tools.swift.compiler (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Approved-Editorial-20261117/qa
+    builtin-Swift-Compilation-Requirements -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name CasitaDexAuditTests -Onone @/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/x86_64/CasitaDexAuditTests.SwiftFileList -module-alias Testing\=_Testing_Unavailable -plugin-path /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.2.sdk -target x86_64-apple-ios17.0-simulator -g -module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Index.noindex/DataStore -swift-version 5 -I /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Products/Debug-iphonesimulator -Isystem /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib -F /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Products/Debug-iphonesimulator -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.2.sdk/Developer/Library/Frameworks -parse-as-library -c -j12 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKStatCaches.noindex/iphonesimulator27.2-24B8118-cc78df9d8a9de6526dea716b1c70fd8e.sdkstatcache -output-file-map /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/x86_64/CasitaDexAuditTests-OutputFileMap.json -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/ModuleCache.noindex -sdk-module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules -emit-dependencies -emit-module -emit-module-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/x86_64/CasitaDexAuditTests.swiftmodule -serialize-diagnostics -dependency-scan-serialize-diagnostics-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/x86_64/CasitaDexAuditTests-dependency-scan.dia -validate-clang-modules-once -clang-build-session-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -emit-const-values -const-gather-protocols-list /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/x86_64/CasitaDexAuditTests_const_extract_protocols.json -Xcc -iquote -Xcc /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/CasitaDexAuditTests-generated-files.hmap -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/CasitaDexAuditTests-own-target-headers.hmap -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/CasitaDexAuditTests-all-target-headers.hmap -Xcc -iquote -Xcc /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/CasitaDexAuditTests-project-headers.hmap -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Products/Debug-iphonesimulator/include -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/DerivedSources-normal/x86_64 -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/DerivedSources/x86_64 -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/DerivedSources -emit-objc-header -emit-objc-header-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/x86_64/CasitaDexAuditTests-Swift.h -working-directory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Approved-Editorial-20261117/qa -experimental-emit-module-separately -disable-cmo
+
+Copy /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Products/Debug-iphonesimulator/CasitaDexAuditTests.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.swiftsourceinfo (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Approved-Editorial-20261117/qa
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -strip-unsigned-binaries -strip-deterministic -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip -resolve-src-symlinks -rename /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.swiftsourceinfo /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Products/Debug-iphonesimulator/CasitaDexAuditTests.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo
+
+Copy /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Products/Debug-iphonesimulator/CasitaDexAuditTests.swiftmodule/arm64-apple-ios-simulator.abi.json /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.abi.json (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Approved-Editorial-20261117/qa
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -strip-unsigned-binaries -strip-deterministic -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip -resolve-src-symlinks -rename /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.abi.json /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Products/Debug-iphonesimulator/CasitaDexAuditTests.swiftmodule/arm64-apple-ios-simulator.abi.json
+
+Copy /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Products/Debug-iphonesimulator/CasitaDexAuditTests.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/x86_64/CasitaDexAuditTests.swiftsourceinfo (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Approved-Editorial-20261117/qa
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -strip-unsigned-binaries -strip-deterministic -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip -resolve-src-symlinks -rename /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/x86_64/CasitaDexAuditTests.swiftsourceinfo /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Products/Debug-iphonesimulator/CasitaDexAuditTests.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo
+
+Copy /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Products/Debug-iphonesimulator/CasitaDexAuditTests.swiftmodule/x86_64-apple-ios-simulator.abi.json /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/x86_64/CasitaDexAuditTests.abi.json (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Approved-Editorial-20261117/qa
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -strip-unsigned-binaries -strip-deterministic -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip -resolve-src-symlinks -rename /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/x86_64/CasitaDexAuditTests.abi.json /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Products/Debug-iphonesimulator/CasitaDexAuditTests.swiftmodule/x86_64-apple-ios-simulator.abi.json
+
+Ld /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/x86_64/Binary/CasitaDexAuditTests normal x86_64 (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Approved-Editorial-20261117/qa
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target x86_64-apple-ios17.0-simulator -bundle -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.2.sdk -Os -Xlinker -no_warn_duplicate_libraries -L/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator -L/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Products/Debug-iphonesimulator -L/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib -F/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator -F/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Products/Debug-iphonesimulator -iframework /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks -iframework /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.2.sdk/Developer/Library/Frameworks -filelist /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/x86_64/CasitaDexAuditTests.LinkFileList -Xlinker -rpath -Xlinker /usr/lib/swift -Xlinker -rpath -Xlinker @loader_path/Frameworks -Xlinker -rpath -Xlinker @executable_path/Frameworks -Xlinker -dead_strip -Xlinker -object_path_lto -Xlinker /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/x86_64/CasitaDexAuditTests_lto.o -rdynamic -Xlinker -objc_abi_version -Xlinker 2 -Xlinker -dependency_info -Xlinker /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/x86_64/CasitaDexAuditTests_dependency_info.dat -fobjc-link-runtime -L/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator -L/usr/lib/swift -Xlinker -add_ast_path -Xlinker /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/x86_64/CasitaDexAuditTests.swiftmodule -Xlinker -needed_framework -Xlinker XCTest -framework XCTest -Xlinker -needed-lXCTestSwiftSupport -lXCTestSwiftSupport -o /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/x86_64/Binary/CasitaDexAuditTests
+
+Ld /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/arm64/Binary/CasitaDexAuditTests normal arm64 (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Approved-Editorial-20261117/qa
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target arm64-apple-ios17.0-simulator -bundle -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.2.sdk -Os -Xlinker -no_warn_duplicate_libraries -L/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator -L/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Products/Debug-iphonesimulator -L/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib -F/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator -F/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Products/Debug-iphonesimulator -iframework /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks -iframework /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.2.sdk/Developer/Library/Frameworks -filelist /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.LinkFileList -Xlinker -rpath -Xlinker /usr/lib/swift -Xlinker -rpath -Xlinker @loader_path/Frameworks -Xlinker -rpath -Xlinker @executable_path/Frameworks -Xlinker -dead_strip -Xlinker -object_path_lto -Xlinker /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests_lto.o -rdynamic -Xlinker -objc_abi_version -Xlinker 2 -Xlinker -dependency_info -Xlinker /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests_dependency_info.dat -fobjc-link-runtime -L/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator -L/usr/lib/swift -Xlinker -add_ast_path -Xlinker /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.swiftmodule -Xlinker -needed_framework -Xlinker XCTest -framework XCTest -Xlinker -needed-lXCTestSwiftSupport -lXCTestSwiftSupport -o /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/arm64/Binary/CasitaDexAuditTests
+
+CreateUniversalBinary /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Products/Debug-iphonesimulator/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/CasitaDexAuditTests normal arm64\ x86_64 (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Approved-Editorial-20261117/qa
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo -create /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/arm64/Binary/CasitaDexAuditTests /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/x86_64/Binary/CasitaDexAuditTests -output /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Products/Debug-iphonesimulator/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/CasitaDexAuditTests
+
+ExtractAppIntentsMetadata (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Approved-Editorial-20261117/qa
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsmetadataprocessor --toolchain-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --module-name CasitaDexAuditTests --sdk-root /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator27.2.sdk --xcode-version 27B52 --platform-family iOS --deployment-target 17.0 --bundle-identifier com.designsbyfa.casitadex.audit-tests --output /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Products/Debug-iphonesimulator/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest --target-triple arm64-apple-ios17.0-simulator --target-triple x86_64-apple-ios17.0-simulator --binary-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Products/Debug-iphonesimulator/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/CasitaDexAuditTests --dependency-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests_dependency_info.dat --dependency-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/x86_64/CasitaDexAuditTests_dependency_info.dat --stringsdata-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/arm64/ExtractedAppShortcutsMetadata.stringsdata --stringsdata-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/x86_64/ExtractedAppShortcutsMetadata.stringsdata --source-file-list /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.SwiftFileList --source-file-list /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/x86_64/CasitaDexAuditTests.SwiftFileList --metadata-file-list /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/CasitaDexAuditTests.DependencyMetadataFileList --static-metadata-file-list /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/CasitaDexAuditTests.DependencyStaticMetadataFileList --swift-const-vals-list /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.SwiftConstValuesFileList --swift-const-vals-list /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/Objects-normal/x86_64/CasitaDexAuditTests.SwiftConstValuesFileList --compile-time-extraction --deployment-aware-processing --no-app-shortcuts-localization
+2026-11-17 09:27:38.135 appintentsmetadataprocessor[50272:8154742] Starting App Intents metadata extraction
+2026-11-17 09:27:38.137 appintentsmetadataprocessor[50272:8154742] warning: Metadata extraction skipped, no AppIntents.framework dependency found
+
+ProcessInfoPlistFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Products/Debug-iphonesimulator/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/Info.plist /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/empty-CasitaDexAuditTests.plist (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Approved-Editorial-20261117/qa
+    builtin-infoPlistUtility /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/empty-CasitaDexAuditTests.plist -producttype com.apple.product-type.bundle.ui-testing -expandbuildsettings -format binary -platform iphonesimulator -additionalcontentfile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/ProductTypeInfoPlistAdditions.plist -o /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Products/Debug-iphonesimulator/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/Info.plist
+
+CopySwiftLibs /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Products/Debug-iphonesimulator/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Approved-Editorial-20261117/qa
+    builtin-swiftStdLibTool --copy --verbose --scan-executable /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Products/Debug-iphonesimulator/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/CasitaDexAuditTests --scan-folder /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Products/Debug-iphonesimulator/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/Frameworks --scan-folder /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Products/Debug-iphonesimulator/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/PlugIns --scan-folder /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Products/Debug-iphonesimulator/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/SystemExtensions --scan-folder /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Products/Debug-iphonesimulator/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/Extensions --platform iphonesimulator --toolchain /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --destination /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Products/Debug-iphonesimulator/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/Frameworks --strip-bitcode --scan-executable /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib/libXCTestSwiftSupport.dylib --strip-bitcode-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip --emit-dependency-info /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphonesimulator/CasitaDexAuditTests.build/SwiftStdLibToolInputDependencies.dep --filter-for-swift-os
+Ignoring --strip-bitcode because --sign was not passed
+
+GenerateDSYMFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Products/Debug-iphonesimulator/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest.dSYM /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Products/Debug-iphonesimulator/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/CasitaDexAuditTests (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Approved-Editorial-20261117/qa
+    export PATH\=/Applications/Xcode.app/Contents/SharedFrameworks/SwiftBuild.framework/Versions/A/PlugIns/SWBBuildService.bundle/Contents/PlugIns/SWBUniversalPlatformPlugin.bundle/Contents/Frameworks/SWBUniversalPlatform.framework/Resources:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/local/bin:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/libexec:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/usr/bin:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/usr/local/bin:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/local/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/local/bin:/Users/franciscofranco/.nvm/versions/node/v24.22.1/bin:/Users/franciscofranco/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin:/Library/Apple/usr/bin:/Volumes/FA-Development/Designs-by-FA/Tools/MaestroCLI/bin:/Users/franciscofranco/.maestro/bin
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/dsymutil /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Products/Debug-iphonesimulator/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/CasitaDexAuditTests -o /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Products/Debug-iphonesimulator/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest.dSYM
+
+PruneExplicitPrecompiledModules /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/ExplicitPrecompiledModules
+
+PruneExplicitPrecompiledModules /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules
+
+PruneExplicitPrecompiledModules /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-cdeitjscpzghkpgwlrksbylrqeiu/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules
+
+2026-11-17 09:27:39.700735-0600 CasitaDexAuditTests-Runner[50279:8154930] [Default] Running tests...
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'All tests' started at 2026-11-17 09:27:41.937.
+Test Suite 'CasitaDexAuditTests.xctest' started at 2026-11-17 09:27:41.938.
+Test Suite 'EditorialAcceptanceTests' started at 2026-11-17 09:27:41.938.
+Test Case '-[CasitaDexAuditTests.EditorialAcceptanceTests testApprovedHomeAndControls]' started.
+    t =     0.01s Start Test at 2026-11-17 09:27:41.943
+    t =     0.06s Set Up
+    t =     0.07s Open com.designsbyfa.casitadex.plusstoreqa
+    t =     0.07s     Launch com.designsbyfa.casitadex.plusstoreqa
+    t =     0.07s         Terminate com.designsbyfa.casitadex.plusstoreqa:49861
+objc[50279]: Class UIAccessibilityLoaderWebShared is implemented in both /private/var/run/com.apple.security.cryptexd/mnt/com.apple.iPhoneOS.SimulatorRuntime-v24.1.434.0.9z8yji/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 27.0.simruntime/Contents/Resources/RuntimeRoot/System/Library/AccessibilityBundles/WebKit.axbundle/WebKit (0x10b164398) and /private/var/run/com.apple.security.cryptexd/mnt/com.apple.iPhoneOS.SimulatorRuntime-v24.1.434.0.9z8yji/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 27.0.simruntime/Contents/Resources/RuntimeRoot/System/Library/AccessibilityBundles/WebCore.axbundle/WebCore (0x10b29c310). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+    t =     1.11s         Setting up automation session
+    t =     2.96s         Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     4.10s Waiting 10.0s for "Home" Any to exist
+    t =     5.16s     Checking `Expect predicate `existsNoRetry == 1` for object "Home" Any`
+    t =     5.16s         Checking existence of `"Home" Any`
+    t =     5.23s Find the "Home" Any
+    t =     5.30s Find the "Home" Other
+    t =     5.31s Find the "Home" Other
+    t =     5.32s Tap "Home" Other
+    t =     5.32s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     5.32s     Find the "Home" Other
+    t =     5.33s     Check for interrupting elements affecting "Home" Other
+    t =     5.38s     Synthesize event
+    t =     5.68s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     5.68s Waiting 10.0s for "Search Memories" Any to exist
+    t =     6.72s     Checking `Expect predicate `existsNoRetry == 1` for object "Search Memories" Any`
+    t =     6.72s         Checking existence of `"Search Memories" Any`
+    t =     6.76s Find the "A place for everything you want to remember." Any
+    t =     6.79s Press ScrollView (First Match)[0.01, 0.80] for 0.1 seconds, then drag to ScrollView (First Match)[0.01, 0.20] with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =     6.79s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     6.79s     Find the ScrollView (First Match)
+    t =     6.79s     Check for interrupting elements affecting ScrollView
+    t =     6.80s     Synthesize event
+    t =     6.80s         Find the ScrollView at {{0.0, 177.0}, {402.0, 572.0}}
+    t =     6.81s         Find the ScrollView at {{0.0, 177.0}, {402.0, 572.0}}
+    t =     6.81s         Find the ScrollView (First Match)
+    t =     6.82s         Find the ScrollView at {{0.0, 177.0}, {402.0, 572.0}}
+    t =     6.82s         Find the ScrollView at {{0.0, 177.0}, {402.0, 572.0}}
+    t =     7.81s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     7.81s Find the "A place for everything you want to remember." StaticText
+    t =     7.85s Find the "A place for everything you want to remember." StaticText
+    t =     7.87s Find the "A place for everything you want to remember." StaticText
+    t =     7.89s Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =     7.95s Added attachment named 'home-hero'
+    t =     7.95s Checking existence of `"Home" Any`
+    t =     7.96s Checking existence of `"Photos" Any`
+    t =     7.97s Checking existence of `"Reminders" Any`
+    t =     7.97s Checking existence of `"Find" Any`
+    t =     7.98s Waiting 10.0s for "Find" Any to exist
+    t =     9.02s     Checking `Expect predicate `existsNoRetry == 1` for object "Find" Any`
+    t =     9.02s         Checking existence of `"Find" Any`
+    t =     9.04s Find the "Find" Any
+    t =     9.06s Find the "Find" Other
+    t =     9.08s Find the "Find" Other
+    t =     9.09s Tap "Find" Other
+    t =     9.09s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     9.09s     Find the "Find" Other
+    t =     9.10s     Check for interrupting elements affecting "Find" Other
+    t =     9.11s     Synthesize event
+    t =     9.39s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     9.40s Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =     9.46s Added attachment named 'find-action-lines'
+    t =     9.46s Waiting 10.0s for "Home" Any to exist
+    t =    10.47s     Checking `Expect predicate `existsNoRetry == 1` for object "Home" Any`
+    t =    10.47s         Checking existence of `"Home" Any`
+    t =    10.48s Find the "Home" Any
+    t =    10.50s Find the "Home" Other
+    t =    10.51s Find the "Home" Other
+    t =    10.52s Tap "Home" Other
+    t =    10.52s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    10.52s     Find the "Home" Other
+    t =    10.53s     Check for interrupting elements affecting "Home" Other
+    t =    10.54s     Synthesize event
+    t =    10.83s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    10.83s Waiting 10.0s for "Add Memory" Any to exist
+    t =    11.88s     Checking `Expect predicate `existsNoRetry == 1` for object "Add Memory" Any`
+    t =    11.88s         Checking existence of `"Add Memory" Any`
+    t =    11.91s Find the "Add Memory" Any
+    t =    11.94s Find the "Add Memory" Button
+    t =    11.95s Find the "Add Memory" Button
+    t =    11.97s Tap "Add Memory" Button
+    t =    11.97s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    11.97s     Find the "Add Memory" Button
+    t =    11.98s     Check for interrupting elements affecting "Add Memory" Button
+    t =    11.99s     Synthesize event
+    t =    12.28s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    12.59s Waiting 2.0s for "Resume draft" Any to exist
+    t =    13.61s     Checking `Expect predicate `existsNoRetry == 1` for object "Resume draft" Any`
+    t =    13.61s         Checking existence of `"Resume draft" Any`
+    t =    13.66s Waiting 10.0s for "Resume draft" Any to exist
+    t =    14.73s     Checking `Expect predicate `existsNoRetry == 1` for object "Resume draft" Any`
+    t =    14.73s         Checking existence of `"Resume draft" Any`
+    t =    14.77s Find the "Resume draft" Any
+    t =    14.80s Find the "Resume draft" Button
+    t =    14.82s Find the "Resume draft" Button
+    t =    14.84s Tap "Resume draft" Button
+    t =    14.84s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    14.84s     Find the "Resume draft" Button
+    t =    14.85s     Check for interrupting elements affecting "Resume draft" Button
+    t =    14.87s     Synthesize event
+    t =    15.16s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    15.41s Waiting 10.0s for "Choose Space" Any to exist
+    t =    16.45s     Checking `Expect predicate `existsNoRetry == 1` for object "Choose Space" Any`
+    t =    16.45s         Checking existence of `"Choose Space" Any`
+    t =    16.47s Find the "Choose Space" Any
+    t =    16.49s Find the "Choose ▾" Button
+    t =    16.50s Find the ScrollView (First Match)
+    t =    16.51s Press ScrollView (First Match)[0.01, 0.80] for 0.1 seconds, then drag to ScrollView (First Match)[0.01, 0.20] with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =    16.51s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    16.51s     Find the ScrollView (First Match)
+    t =    16.51s     Check for interrupting elements affecting ScrollView
+    t =    16.52s     Synthesize event
+    t =    16.52s         Find the ScrollView at {{0.0, 346.7}, {402.0, 402.3}}
+    t =    16.53s         Find the ScrollView at {{0.0, 346.7}, {402.0, 402.3}}
+    t =    16.53s         Find the ScrollView (First Match)
+    t =    16.54s         Find the ScrollView at {{0.0, 346.7}, {402.0, 402.3}}
+    t =    16.55s         Find the ScrollView at {{0.0, 346.7}, {402.0, 402.3}}
+    t =    17.32s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    18.94s Find the "Choose ▾" Button
+    t =    18.99s Find the "Choose ▾" Button
+    t =    19.01s Find the "Choose ▾" Button
+    t =    19.03s Tap "Choose ▾" Button
+    t =    19.03s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    19.03s     Find the "Choose ▾" Button
+    t =    19.04s     Check for interrupting elements affecting "Choose ▾" Button
+    t =    19.06s     Synthesize event
+    t =    19.34s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    19.69s Waiting 5.0s for "Cancel" Any to exist
+    t =    20.72s     Checking `Expect predicate `existsNoRetry == 1` for object "Cancel" Any`
+    t =    20.72s         Checking existence of `"Cancel" Any`
+    t =    20.74s Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    20.82s Added attachment named 'Choose Space'
+    t =    20.82s Waiting 10.0s for "Cancel" Any to exist
+    t =    21.85s     Checking `Expect predicate `existsNoRetry == 1` for object "Cancel" Any`
+    t =    21.86s         Checking existence of `"Cancel" Any`
+    t =    21.88s Find the "Cancel" Any
+    t =    21.89s Find the "Cancel" Button
+    t =    21.91s Find the "Cancel" Button
+    t =    21.92s Tap "Cancel" Button
+    t =    21.92s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    21.92s     Find the "Cancel" Button
+    t =    21.93s     Check for interrupting elements affecting "Cancel" Button
+    t =    21.94s     Synthesize event
+    t =    22.23s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    22.55s Waiting 10.0s for "Choose Categories" Any to exist
+    t =    23.60s     Checking `Expect predicate `existsNoRetry == 1` for object "Choose Categories" Any`
+    t =    23.61s         Checking existence of `"Choose Categories" Any`
+    t =    23.65s Find the "Choose Categories" Any
+    t =    23.67s Find the "Choose ▾" Button
+    t =    23.69s Find the "Choose ▾" Button
+    t =    23.71s Tap "Choose ▾" Button
+    t =    23.71s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    23.71s     Find the "Choose ▾" Button
+    t =    23.72s     Check for interrupting elements affecting "Choose ▾" Button
+    t =    23.74s     Synthesize event
+    t =    24.03s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    24.39s Waiting 5.0s for "Cancel" Any to exist
+    t =    25.44s     Checking `Expect predicate `existsNoRetry == 1` for object "Cancel" Any`
+    t =    25.44s         Checking existence of `"Cancel" Any`
+    t =    25.46s Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    25.54s Added attachment named 'Choose Categories'
+    t =    25.55s Waiting 10.0s for "Cancel" Any to exist
+    t =    26.57s     Checking `Expect predicate `existsNoRetry == 1` for object "Cancel" Any`
+    t =    26.57s         Checking existence of `"Cancel" Any`
+    t =    26.59s Find the "Cancel" Any
+    t =    26.60s Find the "Cancel" Button
+    t =    26.62s Find the "Cancel" Button
+    t =    26.63s Tap "Cancel" Button
+    t =    26.63s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    26.63s     Find the "Cancel" Button
+    t =    26.63s     Check for interrupting elements affecting "Cancel" Button
+    t =    26.65s     Synthesize event
+    t =    26.93s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    27.27s Waiting 10.0s for "Choose Location" Any to exist
+    t =    28.27s     Checking `Expect predicate `existsNoRetry == 1` for object "Choose Location" Any`
+    t =    28.27s         Checking existence of `"Choose Location" Any`
+    t =    28.31s Find the "Choose Location" Any
+    t =    28.34s Find the "Choose ▾" Button
+    t =    28.36s Find the ScrollView (First Match)
+    t =    28.36s Press ScrollView (First Match)[0.01, 0.80] for 0.1 seconds, then drag to ScrollView (First Match)[0.01, 0.20] with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =    28.36s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    28.36s     Find the ScrollView (First Match)
+    t =    28.37s     Check for interrupting elements affecting ScrollView
+    t =    28.38s     Synthesize event
+    t =    28.38s         Find the ScrollView at {{0.0, 346.7}, {402.0, 402.3}}
+    t =    28.39s         Find the ScrollView at {{0.0, 346.7}, {402.0, 402.3}}
+    t =    28.39s         Find the ScrollView (First Match)
+    t =    28.40s         Find the ScrollView at {{0.0, 346.7}, {402.0, 402.3}}
+    t =    28.40s         Find the ScrollView at {{0.0, 346.7}, {402.0, 402.3}}
+    t =    29.18s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    30.79s Find the "Choose ▾" Button
+    t =    30.81s Find the "Choose ▾" Button
+    t =    30.82s Find the "Choose ▾" Button
+    t =    30.84s Tap "Choose ▾" Button
+    t =    30.84s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    30.84s     Find the "Choose ▾" Button
+    t =    30.86s     Check for interrupting elements affecting "Choose ▾" Button
+    t =    30.87s     Synthesize event
+    t =    31.16s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    31.48s Waiting 5.0s for "Cancel" Any to exist
+    t =    32.52s     Checking `Expect predicate `existsNoRetry == 1` for object "Cancel" Any`
+    t =    32.52s         Checking existence of `"Cancel" Any`
+    t =    32.54s Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    32.63s Added attachment named 'Choose Location'
+    t =    32.63s Waiting 10.0s for "Cancel" Any to exist
+    t =    33.67s     Checking `Expect predicate `existsNoRetry == 1` for object "Cancel" Any`
+    t =    33.67s         Checking existence of `"Cancel" Any`
+    t =    33.70s Find the "Cancel" Any
+    t =    33.71s Find the "Cancel" Button
+    t =    33.73s Find the "Cancel" Button
+    t =    33.74s Tap "Cancel" Button
+    t =    33.74s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    33.74s     Find the "Cancel" Button
+    t =    33.75s     Check for interrupting elements affecting "Cancel" Button
+    t =    33.76s     Synthesize event
+    t =    34.04s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    34.37s Waiting 10.0s for "+ Add Photo" Any to exist
+    t =    35.40s     Checking `Expect predicate `existsNoRetry == 1` for object "+ Add Photo" Any`
+    t =    35.41s         Checking existence of `"+ Add Photo" Any`
+    t =    35.45s Find the "+ Add Photo" Any
+    t =    35.48s Find the "+ Add Photo" Button
+    t =    35.50s Find the ScrollView (First Match)
+    t =    35.50s Press ScrollView (First Match)[0.01, 0.80] for 0.1 seconds, then drag to ScrollView (First Match)[0.01, 0.20] with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =    35.50s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    35.50s     Find the ScrollView (First Match)
+    t =    35.51s     Check for interrupting elements affecting ScrollView
+    t =    35.52s     Synthesize event
+    t =    35.52s         Find the ScrollView at {{0.0, 346.7}, {402.0, 402.3}}
+    t =    35.52s         Find the ScrollView at {{0.0, 346.7}, {402.0, 402.3}}
+    t =    35.53s         Find the ScrollView (First Match)
+    t =    35.54s         Find the ScrollView at {{0.0, 346.7}, {402.0, 402.3}}
+    t =    35.54s         Find the ScrollView at {{0.0, 346.7}, {402.0, 402.3}}
+    t =    36.31s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    37.39s Find the "+ Add Photo" Button
+    t =    37.44s Find the "+ Add Photo" Button
+    t =    37.46s Find the "+ Add Photo" Button
+    t =    37.48s Tap "+ Add Photo" Button
+    t =    37.48s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    37.48s     Find the "+ Add Photo" Button
+    t =    37.50s     Check for interrupting elements affecting "+ Add Photo" Button
+    t =    37.51s     Synthesize event
+    t =    37.80s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    37.81s Waiting 5.0s for "Take Photo" Any to exist
+    t =    38.85s     Checking `Expect predicate `existsNoRetry == 1` for object "Take Photo" Any`
+    t =    38.86s         Checking existence of `"Take Photo" Any`
+    t =    38.89s Find the "Take Photo" Any
+    t =    38.91s Find the "Take Photo" Button
+    t =    38.92s Find the "Take Photo" Button
+    t =    38.94s Find the "Take Photo" Button
+    t =    38.95s Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    38.96s Waiting 5.0s for "Choose from Library" Any to exist
+    t =    39.99s     Checking `Expect predicate `existsNoRetry == 1` for object "Choose from Library" Any`
+    t =    39.99s         Checking existence of `"Choose from Library" Any`
+    t =    40.02s Find the "Choose from Library" Any
+    t =    40.04s Find the "Choose from Library" Button
+    t =    40.06s Find the "Choose from Library" Button
+    t =    40.07s Find the "Choose from Library" Button
+    t =    40.08s Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    40.09s Waiting 5.0s for "Browse Files" Any to exist
+    t =    41.14s     Checking `Expect predicate `existsNoRetry == 1` for object "Browse Files" Any`
+    t =    41.15s         Checking existence of `"Browse Files" Any`
+    t =    41.17s Find the "Browse Files" Any
+    t =    41.20s Find the "Browse Files" Button
+    t =    41.21s Find the "Browse Files" Button
+    t =    41.22s Find the "Browse Files" Button
+    t =    41.23s Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    41.24s Waiting 5.0s for "Cancel" Any to exist
+    t =    42.28s     Checking `Expect predicate `existsNoRetry == 1` for object "Cancel" Any`
+    t =    42.28s         Checking existence of `"Cancel" Any`
+    t =    42.30s Find the "Cancel" Any
+    t =    42.32s Find the "Cancel" Button
+    t =    42.33s Find the "Cancel" Button
+    t =    42.33s Find the "Cancel" Button
+    t =    42.34s Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    42.35s Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    42.41s Added attachment named 'photo-source-lines'
+    t =    42.41s Waiting 10.0s for "Cancel" Any to exist
+    t =    43.45s     Checking `Expect predicate `existsNoRetry == 1` for object "Cancel" Any`
+    t =    43.46s         Checking existence of `"Cancel" Any`
+    t =    43.48s Find the "Cancel" Any
+    t =    43.49s Find the "Cancel" Button
+    t =    43.51s Find the "Cancel" Button
+    t =    43.52s Tap "Cancel" Button
+    t =    43.52s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    43.52s     Find the "Cancel" Button
+    t =    43.53s     Check for interrupting elements affecting "Cancel" Button
+    t =    43.54s     Synthesize event
+    t =    43.83s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    43.83s Checking existence of `"Choose from Library" Any`
+    t =    43.88s Waiting 10.0s for "Home" Any to exist
+    t =    44.92s     Checking `Expect predicate `existsNoRetry == 1` for object "Home" Any`
+    t =    44.92s         Checking existence of `"Home" Any`
+    t =    44.95s Find the "Home" Any
+    t =    44.97s Find the "Home" Other
+    t =    44.98s Find the "Home" Other
+    t =    45.00s Tap "Home" Other
+    t =    45.00s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    45.00s     Find the "Home" Other
+    t =    45.01s     Check for interrupting elements affecting "Home" Other
+    t =    45.02s     Synthesize event
+    t =    45.30s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    45.32s Tear Down
+Test Case '-[CasitaDexAuditTests.EditorialAcceptanceTests testApprovedHomeAndControls]' passed (45.563 seconds).
+Test Suite 'EditorialAcceptanceTests' passed at 2026-11-17 09:28:27.508.
+	 Executed 1 test, with 0 failures (0 unexpected) in 45.563 (45.570) seconds
+Test Suite 'EditorialReminderPickerTests' started at 2026-11-17 09:28:27.509.
+Test Case '-[CasitaDexAuditTests.EditorialReminderPickerTests testDateAndTimePresentation]' started.
+    t =     0.00s Start Test at 2026-11-17 09:28:27.511
+    t =     0.03s Set Up
+    t =     0.03s Open com.designsbyfa.casitadex.plusstoreqa
+    t =     0.03s     Launch com.designsbyfa.casitadex.plusstoreqa
+    t =     0.03s         Terminate com.designsbyfa.casitadex.plusstoreqa:50289
+    t =     1.12s         Setting up automation session
+    t =     2.81s         Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     3.90s Waiting 10.0s for "Home" Any to exist
+    t =     4.95s     Checking `Expect predicate `existsNoRetry == 1` for object "Home" Any`
+    t =     4.95s         Checking existence of `"Home" Any`
+    t =     4.99s Find the "Home" Any
+    t =     5.02s Find the "Home" Other
+    t =     5.03s Find the "Home" Other
+    t =     5.04s Tap "Home" Other
+    t =     5.04s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     5.04s     Find the "Home" Other
+    t =     5.04s     Check for interrupting elements affecting "Home" Other
+    t =     5.06s     Synthesize event
+    t =     5.34s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     5.35s Waiting 10.0s for "Add Reminder" Button to exist
+    t =     6.40s     Checking `Expect predicate `existsNoRetry == 1` for object "Add Reminder" Button`
+    t =     6.40s         Checking existence of `"Add Reminder" Button`
+    t =     6.42s Find the "Add Reminder" Button
+    t =     6.45s Find the "Add Reminder" Button
+    t =     6.46s Find the ScrollView (First Match)
+    t =     6.46s Press ScrollView (First Match)[0.01, 0.80] for 0.1 seconds, then drag to ScrollView (First Match)[0.01, 0.20] with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =     6.46s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     6.46s     Find the ScrollView (First Match)
+    t =     6.47s     Check for interrupting elements affecting ScrollView
+    t =     6.48s     Synthesize event
+    t =     6.48s         Find the ScrollView at {{0.0, 177.0}, {402.0, 572.0}}
+    t =     6.48s         Find the ScrollView at {{0.0, 177.0}, {402.0, 572.0}}
+    t =     6.49s         Find the ScrollView (First Match)
+    t =     6.49s         Find the ScrollView at {{0.0, 177.0}, {402.0, 572.0}}
+    t =     6.50s         Find the ScrollView at {{0.0, 177.0}, {402.0, 572.0}}
+    t =     7.49s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     7.50s Find the "Add Reminder" Button
+    t =     7.52s Find the "Add Reminder" Button
+    t =     7.53s Find the "Add Reminder" Button
+    t =     7.55s Tap "Add Reminder" Button
+    t =     7.55s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     7.55s     Find the "Add Reminder" Button
+    t =     7.56s     Check for interrupting elements affecting "Add Reminder" Button
+    t =     7.56s     Synthesize event
+    t =     7.85s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     7.86s Waiting 10.0s for Button (First Match) to exist
+    t =     8.89s     Checking `Expect predicate `existsNoRetry == 1` for object Button (First Match)`
+    t =     8.89s         Checking existence of `Button (First Match)`
+    t =     8.90s Find the Button (First Match)
+    t =     8.92s Find the "2026-11-17" Button
+    t =     8.93s Find the "2026-11-17" Button
+    t =     8.94s Tap "2026-11-17" Button
+    t =     8.94s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     8.95s     Find the "2026-11-17" Button
+    t =     8.96s     Check for interrupting elements affecting "2026-11-17" Button
+    t =     8.97s     Synthesize event
+    t =     9.25s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     9.68s Waiting 5.0s for DatePicker (First Match) to exist
+    t =    10.70s     Checking `Expect predicate `existsNoRetry == 1` for object DatePicker (First Match)`
+    t =    10.71s         Checking existence of `DatePicker (First Match)`
+    t =    10.72s Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    10.82s Added attachment named 'native-date-picker'
+    t =    10.82s Waiting 10.0s for "Done" Button to exist
+    t =    11.83s     Checking `Expect predicate `existsNoRetry == 1` for object "Done" Button`
+    t =    11.83s         Checking existence of `"Done" Button`
+    t =    11.85s Find the "Done" Button
+    t =    11.87s Find the "Done" Button
+    t =    11.88s Find the "Done" Button
+    t =    11.89s Tap "Done" Button
+    t =    11.89s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    11.89s     Find the "Done" Button
+    t =    11.90s     Check for interrupting elements affecting "Done" Button
+    t =    11.91s     Synthesize event
+    t =    12.20s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    12.53s Waiting 10.0s for Button (First Match) to exist
+    t =    13.55s     Checking `Expect predicate `existsNoRetry == 1` for object Button (First Match)`
+    t =    13.55s         Checking existence of `Button (First Match)`
+    t =    13.58s Find the Button (First Match)
+    t =    13.60s Find the "9:38 AM" Button
+    t =    13.61s Find the ScrollView (First Match)
+    t =    13.62s Press ScrollView (First Match)[0.01, 0.80] for 0.1 seconds, then drag to ScrollView (First Match)[0.01, 0.20] with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =    13.62s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    13.62s     Find the ScrollView (First Match)
+    t =    13.63s     Check for interrupting elements affecting ScrollView
+    t =    13.63s     Synthesize event
+    t =    13.64s         Find the ScrollView at {{0.0, 139.3}, {402.0, 609.7}}
+    t =    13.64s         Find the ScrollView at {{0.0, 139.3}, {402.0, 609.7}}
+    t =    13.65s         Find the ScrollView (First Match)
+    t =    13.65s         Find the ScrollView at {{0.0, 139.3}, {402.0, 609.7}}
+    t =    13.66s         Find the ScrollView at {{0.0, 139.3}, {402.0, 609.7}}
+    t =    14.69s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    15.08s Find the "9:38 AM" Button
+    t =    15.11s Find the "9:38 AM" Button
+    t =    15.12s Find the "9:38 AM" Button
+    t =    15.24s Tap "9:38 AM" Button
+    t =    15.24s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    15.25s     Find the "9:38 AM" Button
+    t =    15.26s     Check for interrupting elements affecting "9:38 AM" Button
+    t =    15.27s     Synthesize event
+    t =    15.56s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    15.96s Waiting 5.0s for DatePicker (First Match) to exist
+    t =    16.97s     Checking `Expect predicate `existsNoRetry == 1` for object DatePicker (First Match)`
+    t =    16.97s         Checking existence of `DatePicker (First Match)`
+    t =    16.98s Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    17.08s Added attachment named 'native-time-picker'
+    t =    17.08s Waiting 10.0s for "Done" Button to exist
+    t =    18.08s     Checking `Expect predicate `existsNoRetry == 1` for object "Done" Button`
+    t =    18.08s         Checking existence of `"Done" Button`
+    t =    18.11s Find the "Done" Button
+    t =    18.14s Find the "Done" Button
+    t =    18.15s Find the "Done" Button
+    t =    18.16s Tap "Done" Button
+    t =    18.16s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    18.17s     Find the "Done" Button
+    t =    18.17s     Check for interrupting elements affecting "Done" Button
+    t =    18.18s     Synthesize event
+    t =    18.47s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    18.79s Waiting 10.0s for "Cancel" Button to exist
+    t =    19.82s     Checking `Expect predicate `existsNoRetry == 1` for object "Cancel" Button`
+    t =    19.82s         Checking existence of `"Cancel" Button`
+    t =    19.85s Find the "Cancel" Button
+    t =    19.87s Find the "Cancel" Button
+    t =    19.88s Find the "Cancel" Button
+    t =    19.90s Tap "Cancel" Button
+    t =    19.90s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    19.90s     Find the "Cancel" Button
+    t =    19.91s     Check for interrupting elements affecting "Cancel" Button
+    t =    19.91s     Synthesize event
+    t =    20.20s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    20.21s Tear Down
+Test Case '-[CasitaDexAuditTests.EditorialReminderPickerTests testDateAndTimePresentation]' passed (20.455 seconds).
+Test Suite 'EditorialReminderPickerTests' passed at 2026-11-17 09:28:47.965.
+	 Executed 1 test, with 0 failures (0 unexpected) in 20.455 (20.457) seconds
+Test Suite 'CasitaDexAuditTests.xctest' passed at 2026-11-17 09:28:47.966.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 66.018 (66.029) seconds
+Test Suite 'All tests' passed at 2026-11-17 09:28:47.967.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 66.018 (66.030) seconds
+2026-11-17 09:28:48.291 xcodebuild[50252:8154473] [MT] IDETestOperationsObserverDebug: 70.072 elapsed -- Testing started completed.
+2026-11-17 09:28:48.291 xcodebuild[50252:8154473] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-11-17 09:28:48.291 xcodebuild[50252:8154473] [MT] IDETestOperationsObserverDebug: 70.072 sec, +70.072 sec -- end
+
+Test session results, code coverage, and logs:
+	/Volumes/FA-Development/Designs-by-FA/Apple-Builds/Approved-Editorial-20261117/editorial-dark-large-r3.xcresult
+
+** TEST SUCCEEDED **
+
+Testing started

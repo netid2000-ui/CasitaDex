@@ -1,0 +1,8 @@
+{
+  "package": "com.designsbyfa.casitadex.refreshqa",
+  "sha256": "8c6f5b87df63ec377b05d74e3091caa44de760db7daee080bf6644670282f4ad",
+  "replace": true,
+  "uninstall": false,
+  "dataClear": false,
+  "verification": "Independent installed APK SHA256 check after install command timeout confirmed exact candidate"
+}

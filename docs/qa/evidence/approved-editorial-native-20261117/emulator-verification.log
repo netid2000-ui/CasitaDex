@@ -1,0 +1,78 @@
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Home
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Choose Space
+Tapped Cancel
+Tapped Choose Categories
+Tapped Cancel
+Tapped Choose Location
+Tapped Cancel
+Tapped + Add Photo
+Tapped Cancel
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped 2026-11-17
+Tapped 9:29 AM
+Tapped Cancel
+PASS light-1.0 Home/nav/Find/selectors/photo Cancel/reminder date/time
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Home
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Choose Space
+Tapped Cancel
+Tapped Choose Categories
+Tapped Cancel
+Tapped Choose Location
+Tapped Cancel
+Tapped + Add Photo
+Tapped Cancel
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped 2026-11-17
+Tapped 9:30 AM
+Tapped Cancel
+PASS dark-1.0 Home/nav/Find/selectors/photo Cancel/reminder date/time
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Home
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Choose Space
+Tapped Cancel
+Tapped Choose Categories
+Tapped Cancel
+Tapped Choose Location
+Tapped Cancel
+Tapped + Add Photo
+Tapped Cancel
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped 2026-11-17
+Tapped 9:32 AM
+Tapped Cancel
+PASS light-2.0 Home/nav/Find/selectors/photo Cancel/reminder date/time
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Home
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Choose Space
+Tapped Cancel
+Tapped Choose Categories
+Tapped Cancel
+Tapped Choose Location
+Tapped Cancel
+Tapped + Add Photo
+Tapped Cancel
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped 2026-11-17
+Tapped 9:33 AM
+Tapped Cancel
+PASS dark-2.0 Home/nav/Find/selectors/photo Cancel/reminder date/time
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Traceback (most recent call last):
+  File "/Volumes/FA-Development/Designs-by-FA/Apple-Builds/Approved-Editorial-20261117/verify_android.py", line 30, in <module>
+    run('shell','cmd','uimode','night',originalNight);run('shell','settings','put','system','font_scale',original);route('answers');tap('Home')
+                                                                                                                                    ~~~^^^^^^^^
+  File "/Volumes/FA-Development/Designs-by-FA/Apple-Builds/Approved-Editorial-20261117/phone.py", line 39, in tap
+    n=node(label);x,y,a,b=bounds(n);run('shell','input','tap',str((x+a)//2),str((y+b)//2));time.sleep(.4);print('Tapped '+label,flush=True)
+  File "/Volumes/FA-Development/Designs-by-FA/Apple-Builds/Approved-Editorial-20261117/phone.py", line 37, in node
+    raise AssertionError('Missing '+label+' '+str(labels())[:4000])
+AssertionError: Missing Home [('Unmatched Route', ''), ('Page could not be found.', ''), ('', 'casitadex-refreshqa://home'), ('casitadex-refreshqa://home', ''), ('Go back', ''), ('•', ''), ('', 'Sitemap'), ('Sitemap', '')]
