@@ -58,7 +58,7 @@ export function LabelManagement({e}:{e:LabelEngine}){
   if(ok){setImpact(null);setSelected("");setMode("list");}
  }
  function row(title:string,onPress:()=>void,icon?:number,checked?:boolean){
-  return <Pressable accessibilityRole="button" accessibilityLabel={title} accessibilityState={{disabled:e.busy,selected:checked}} disabled={e.busy} onPress={onPress} onAccessibilityTap={e.busy?undefined:onPress} style={{minHeight:44,paddingHorizontal:12,paddingVertical:8,borderRadius:8,borderWidth:1,borderColor:colors.line,backgroundColor:checked?colors.accent:colors.white,flexDirection:"row",alignItems:"center",gap:12}}>
+  return <Pressable accessibilityRole="button" accessibilityLabel={title} accessibilityState={{disabled:e.busy,selected:checked}} disabled={e.busy} onPress={onPress} onAccessibilityTap={e.busy?undefined:onPress} style={{minHeight:44,paddingHorizontal:12,paddingVertical:8,borderRadius:0,borderWidth:0,borderBottomWidth:1,borderColor:colors.separator,backgroundColor:checked?colors.accent:"transparent",flexDirection:"row",alignItems:"center",gap:12}}>
    {icon!==undefined?<View accessible={false} accessibilityElementsHidden style={{width:16,height:16}}><SvgXml xml={icons[dark?"dark":"light"][icon]}/></View>:null}
    <Copy style={{flex:1}}>{title}</Copy><Copy>{checked?"✓":"›"}</Copy>
   </Pressable>;

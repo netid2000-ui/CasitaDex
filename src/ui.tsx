@@ -102,12 +102,14 @@ export function Button({
         primary && s.primary,
         editorial && {minHeight:Platform.OS === "android" ? 48 : 44,borderWidth:0,borderBottomWidth:0},
         editorial && variant==="quiet" && {backgroundColor:"transparent"},
+        !primary && s.actionLine,
+        !primary && selected && { backgroundColor: colors.accent, borderBottomWidth: 2, borderBottomColor: colors.focus },
         focused && { borderColor: colors.focus, borderWidth: 2 },
         pressed && { opacity: 0.82, elevation: 0, shadowOpacity: 0, transform: [{ translateY: 1 }] },
         disabled && (primary ? { opacity: 0.62, borderStyle: "solid" as const, backgroundColor: colors.primary, borderColor: colors.primary } : { opacity: 1, borderStyle: "dashed" as const, backgroundColor: colors.accent, borderColor: colors.line }),
       ]}
     >
-      <View style={{flexDirection:"row",alignItems:"center",gap:8,minWidth:0,maxWidth:"100%",flexShrink:1,width:editorial&&trailing?"100%":undefined}}>{icon}{selected!==undefined?<Text accessible={false} style={{width:20,color:colors.ink,textAlign:"center"}}>{selected?"✓":""}</Text>:null}<Copy kind={editorial?"body":compact ? "small" : "body"} style={editorial?{color:primary?colors.onPrimary:colors.ink,fontWeight:"400",flex:trailing?1:undefined}:primary ? { color: colors.onPrimary, fontWeight: "700", textAlign: "center" } : { color: colors.ink, fontWeight: "700", textAlign: "center" }}>
+      <View style={{flexDirection:"row",alignItems:"center",gap:8,minWidth:0,maxWidth:"100%",flexShrink:1,width:editorial&&trailing?"100%":undefined}}>{icon}{selected!==undefined?<Text accessible={false} style={{width:20,color:colors.ink,textAlign:"center"}}>{selected?"✓":""}</Text>:null}<Copy kind={editorial?"body":compact ? "small" : "body"} style={editorial?{color:primary?colors.onPrimary:colors.ink,fontWeight:"400",flex:trailing?1:undefined}:primary ? { color: colors.onPrimary, fontWeight: "700", textAlign: "center" } : { color: colors.ink, fontWeight: "400", textAlign: "left" }}>
         {displayLabel??label.replace(/^✓\s*/,"")}
       </Copy>{trailing}</View>
     </Pressable>
@@ -340,6 +342,8 @@ const makeStyles = (colors: typeof lightColors) =>
       alignItems: "center",
       flexShrink: 1,
     },
+    // Home's understated action rows: preserve hit area and focus/selection cues.
+    actionLine: { backgroundColor: "transparent", borderRadius: 0, borderWidth: 0, borderBottomWidth: 1, borderBottomColor: colors.separator, alignItems: "flex-start" },
     compact: { minHeight: 48, paddingHorizontal: 12, paddingVertical: 8, borderRadius: 8, backgroundColor: colors.white, elevation: 0, shadowOpacity: 0 },
     selected: { backgroundColor: colors.accent, borderColor: colors.focus, borderWidth: 2 },
     primary: { backgroundColor: colors.primary, borderColor: colors.primary, borderBottomColor: colors.primary, elevation: 0, shadowOpacity: 0 },
