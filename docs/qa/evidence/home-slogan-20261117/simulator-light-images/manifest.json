@@ -1,0 +1,17 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "81FC3CCE-ACEB-4957-BE61-C9C653A4CE56",
+        "deviceName" : "CasitaDex Memory Boundary Isolated QA",
+        "exportedFileName" : "D216E82E-65F9-41BA-BDC1-2CBDC0C25E6A.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "home-slogan_0_C288D5D7-8FAD-472E-B9DD-9427C59A8E90.png",
+        "timestamp" : 1794937716.919
+      }
+    ],
+    "testIdentifier" : "HomeSloganTests/testHomeSlogan()",
+    "testIdentifierURL" : "test://com.apple.xcode/CasitaDexAudit/CasitaDexAuditTests/HomeSloganTests/testHomeSlogan"
+  }
+]

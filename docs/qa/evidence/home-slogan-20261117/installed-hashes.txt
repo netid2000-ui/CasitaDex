@@ -1,0 +1,2 @@
+emulator-5554 29dcb82c3bf44fd511d8c9b480776c5d0808c38cc515ee9ce96b1e319a291b82  /data/app/~~JliVwOnUNZJAM36CaTydnA==/com.designsbyfa.casitadex.refreshqa-iG0LIVN7VVY9KOOQAkCz5w==/base.apk
+R5GL83X0K3N 29dcb82c3bf44fd511d8c9b480776c5d0808c38cc515ee9ce96b1e319a291b82  /data/app/~~Z2l9RQdQxKRJ_hBi4VZAWw==/com.designsbyfa.casitadex.refreshqa-_1LcRU5W49CRxJd9CpW8fQ==/base.apk

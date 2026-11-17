@@ -1,0 +1,17 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "00008150-0014306C2644401C",
+        "deviceName" : "iPhone",
+        "exportedFileName" : "74BDFC48-9A4B-42A8-8093-94789142BA78.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "home-slogan_0_4F85B74D-4322-48E7-8CED-FE789B05D6BB.png",
+        "timestamp" : 1794937780.984
+      }
+    ],
+    "testIdentifier" : "HomeSloganTests/testHomeSlogan()",
+    "testIdentifierURL" : "test://com.apple.xcode/CasitaDexAudit/CasitaDexAuditTests/HomeSloganTests/testHomeSlogan"
+  }
+]
