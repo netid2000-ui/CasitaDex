@@ -6,3 +6,7 @@ test('linked reminder save returns to the exact originating memory, including Ho
 test('unlinked reminder saves retain Home or Reminders context',()=>{
  assert.equal(savedReminderDestination(undefined,'home'),'/');assert.equal(savedReminderDestination(),'/reminders');
 });
+test('Settings reminder save or cancel retains Settings entry context',()=>{
+ assert.equal(savedReminderDestination(undefined,'settings'),'/reminders?origin=settings');
+ assert.deepEqual(savedReminderDestination('memory-123','settings'),{pathname:'/card',params:{id:'memory-123'}});
+});
