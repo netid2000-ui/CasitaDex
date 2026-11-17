@@ -1,0 +1,35 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "00008150-0014306C2644401C",
+        "deviceName" : "iPhone",
+        "exportedFileName" : "4C09A317-93B1-4415-8EEA-A973331EA933.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "direct-reminders-tab_0_1372D7B6-9497-483E-8111-67F770E0CEB6.png",
+        "timestamp" : 1794936539.607
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "00008150-0014306C2644401C",
+        "deviceName" : "iPhone",
+        "exportedFileName" : "5F149FC8-E16C-4D81-9EDA-909F4144D241.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "reminders-return_0_000EB54A-3DAF-449C-81FE-E9A27E96A66D.png",
+        "timestamp" : 1794936531.082
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "00008150-0014306C2644401C",
+        "deviceName" : "iPhone",
+        "exportedFileName" : "58ABC04F-F22E-4D36-98A5-9A02B6EAAA02.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "archived-return_0_F120C0F4-498F-4766-86F7-711451EBC49B.png",
+        "timestamp" : 1794936526.794
+      }
+    ],
+    "testIdentifier" : "SettingsReturnTests/testSettingsReturnAndDirectTabs()",
+    "testIdentifierURL" : "test://com.apple.xcode/CasitaDexAudit/CasitaDexAuditTests/SettingsReturnTests/testSettingsReturnAndDirectTabs"
+  }
+]

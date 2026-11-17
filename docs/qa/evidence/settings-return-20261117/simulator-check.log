@@ -1,0 +1,514 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project qa/CasitaDexAudit.xcodeproj -scheme CasitaDexAudit -destination id=81FC3CCE-ACEB-4957-BE61-C9C653A4CE56 -resultBundlePath simulator.xcresult "-only-testing:CasitaDexAuditTests/SettingsReturnTests" test
+
+Writing result bundle at path:
+	/Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/simulator.xcresult
+
+ComputePackagePrebuildTargetDependencyGraph
+
+Prepare packages
+
+CreateBuildRequest
+
+SendProjectDescription
+
+CreateBuildOperation
+
+ComputeTargetDependencyGraph
+note: Building targets in dependency order
+note: Target dependency graph (1 target)
+    Target 'CasitaDexAuditTests' in project 'CasitaDexAudit' (no dependencies)
+
+GatherProvisioningInputs
+
+CreateBuildDescription
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc --version
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -v -E -dM -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.2.sdk -x c -c /dev/null
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld -version_details
+
+Build description signature: ac2ebde07c26e6ef24088e6c73ddd1a2
+Build description path: /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/XCBuildData/ac2ebde07c26e6ef24088e6c73ddd1a2.xcbuilddata
+CreateBuildDirectory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/ModuleCache.noindex
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa/CasitaDexAudit.xcodeproj
+    builtin-create-build-directory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/ModuleCache.noindex
+
+CreateBuildDirectory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa/CasitaDexAudit.xcodeproj
+    builtin-create-build-directory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules
+
+CreateBuildDirectory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CompilationCache.noindex
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa/CasitaDexAudit.xcodeproj
+    builtin-create-build-directory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CompilationCache.noindex
+
+ClangStatCache /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.2.sdk /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKStatCaches.noindex/iphoneos27.2-24B8118-6890c9e4970e00494a266ff652f095d9.sdkstatcache
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa/CasitaDexAudit.xcodeproj
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.2.sdk -o /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKStatCaches.noindex/iphoneos27.2-24B8118-6890c9e4970e00494a266ff652f095d9.sdkstatcache
+
+CreateBuildDirectory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa/CasitaDexAudit.xcodeproj
+    builtin-create-build-directory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex
+
+CreateBuildDirectory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa/CasitaDexAudit.xcodeproj
+    builtin-create-build-directory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products
+
+CreateBuildDirectory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa/CasitaDexAudit.xcodeproj
+    builtin-create-build-directory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules
+
+CreateBuildDirectory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/PrecompiledHeaders
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa/CasitaDexAudit.xcodeproj
+    builtin-create-build-directory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/PrecompiledHeaders
+
+CreateBuildDirectory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/ExplicitPrecompiledModules
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa/CasitaDexAudit.xcodeproj
+    builtin-create-build-directory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/ExplicitPrecompiledModules
+
+CreateBuildDirectory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa/CasitaDexAudit.xcodeproj
+    builtin-create-build-directory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos
+
+CreateBuildDirectory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphoneos
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa/CasitaDexAudit.xcodeproj
+    builtin-create-build-directory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphoneos
+
+WriteAuxiliaryFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAudit-ef40d77ec0ada5dcdf02f5e6f28868ad-VFS-iphoneos/all-product-headers.yaml
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa/CasitaDexAudit.xcodeproj
+    write-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAudit-ef40d77ec0ada5dcdf02f5e6f28868ad-VFS-iphoneos/all-product-headers.yaml
+
+WriteAuxiliaryFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/empty-CasitaDexAuditTests.plist (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa
+    write-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/empty-CasitaDexAuditTests.plist
+
+WriteAuxiliaryFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/ProductTypeInfoPlistAdditions.plist (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa
+    write-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/ProductTypeInfoPlistAdditions.plist
+
+WriteAuxiliaryFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests.hmap (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa
+    write-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests.hmap
+
+WriteAuxiliaryFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-project-headers.hmap (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa
+    write-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-project-headers.hmap
+
+WriteAuxiliaryFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-own-target-headers.hmap (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa
+    write-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-own-target-headers.hmap
+
+WriteAuxiliaryFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-all-target-headers.hmap (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa
+    write-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-all-target-headers.hmap
+
+WriteAuxiliaryFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-generated-files.hmap (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa
+    write-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-generated-files.hmap
+
+WriteAuxiliaryFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.LinkFileList (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa
+    write-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.LinkFileList
+
+WriteAuxiliaryFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests-OutputFileMap.json (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa
+    write-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests-OutputFileMap.json
+
+WriteAuxiliaryFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests_const_extract_protocols.json (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa
+    write-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests_const_extract_protocols.json
+
+WriteAuxiliaryFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/DerivedSources/Entitlements.plist (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa
+    write-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/DerivedSources/Entitlements.plist
+
+WriteAuxiliaryFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.SwiftFileList (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa
+    write-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.SwiftFileList
+
+WriteAuxiliaryFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.SwiftConstValuesFileList (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa
+    write-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.SwiftConstValuesFileList
+
+WriteAuxiliaryFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests.DependencyStaticMetadataFileList (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa
+    write-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests.DependencyStaticMetadataFileList
+
+WriteAuxiliaryFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests.DependencyMetadataFileList (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa
+    write-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests.DependencyMetadataFileList
+
+WriteAuxiliaryFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-all-non-framework-target-headers.hmap (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa
+    write-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-all-non-framework-target-headers.hmap
+
+MkDir /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa
+    /bin/mkdir -p /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest
+
+ProcessProductPackaging /Users/franciscofranco/Library/Developer/Xcode/UserData/Provisioning\ Profiles/813738c7-b9ad-4aba-a88f-80aac2e97e8c.mobileprovision /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/embedded.mobileprovision (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa
+    builtin-productPackagingUtility /Users/franciscofranco/Library/Developer/Xcode/UserData/Provisioning\ Profiles/813738c7-b9ad-4aba-a88f-80aac2e97e8c.mobileprovision -o /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/embedded.mobileprovision
+
+ProcessProductPackaging "" /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests.xctest.xcent (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa
+    
+    Entitlements:
+    
+    {
+    "application-identifier" = "VSP8XSM3BK.com.designsbyfa.casitadex.audit-tests.xctrunner";
+    "com.apple.developer.team-identifier" = VSP8XSM3BK;
+    "get-task-allow" = 1;
+    "keychain-access-groups" =     (
+        "VSP8XSM3BK.com.designsbyfa.casitadex.audit-tests.xctrunner"
+    );
+}
+    
+    builtin-productPackagingUtility -entitlements -format xml -o /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests.xctest.xcent
+
+ProcessProductPackagingDER /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests.xctest.xcent /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests.xctest.xcent.der (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa
+    /usr/bin/derq query -f xml -i /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests.xctest.xcent -o /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests.xctest.xcent.der --raw
+
+ProcessInfoPlistFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/Info.plist /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/empty-CasitaDexAuditTests.plist (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa
+    builtin-infoPlistUtility /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/empty-CasitaDexAuditTests.plist -producttype com.apple.product-type.bundle.ui-testing -expandbuildsettings -format binary -platform iphoneos -additionalcontentfile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/ProductTypeInfoPlistAdditions.plist -requiredArchitecture arm64 -o /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/Info.plist
+
+SwiftDriver CasitaDexAuditTests normal arm64 com.apple.xcode.tools.swift.compiler (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa
+    builtin-SwiftDriver -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name CasitaDexAuditTests -Onone @/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.SwiftFileList -module-alias Testing\=_Testing_Unavailable -plugin-path /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.2.sdk -target arm64-apple-ios17.0 -g -module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Index.noindex/DataStore -swift-version 5 -I /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos -Isystem /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/lib -F /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Frameworks -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.2.sdk/Developer/Library/Frameworks -parse-as-library -c -j12 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKStatCaches.noindex/iphoneos27.2-24B8118-6890c9e4970e00494a266ff652f095d9.sdkstatcache -output-file-map /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests-OutputFileMap.json -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/ModuleCache.noindex -sdk-module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules -emit-dependencies -emit-module -emit-module-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.swiftmodule -serialize-diagnostics -dependency-scan-serialize-diagnostics-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests-dependency-scan.dia -validate-clang-modules-once -clang-build-session-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -emit-const-values -const-gather-protocols-list /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests_const_extract_protocols.json -Xcc -iquote -Xcc /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-generated-files.hmap -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-own-target-headers.hmap -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-all-target-headers.hmap -Xcc -iquote -Xcc /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-project-headers.hmap -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos/include -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/DerivedSources-normal/arm64 -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/DerivedSources/arm64 -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/DerivedSources -emit-objc-header -emit-objc-header-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests-Swift.h -working-directory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa -experimental-emit-module-separately -disable-cmo
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules/XCUIAutomation-DR0V412XQW7EK27U8NGMGDSFG.pcm
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules/XCTest-D3VIIQFWDM1RCEMJHMZ9ZBA6.pcm
+
+SwiftExplicitDependencyCompileModuleFromInterface arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules/XCUIAutomation-2WUXXAJS4AV8X.swiftmodule
+
+SwiftExplicitDependencyCompileModuleFromInterface arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules/XCTest-376UPYWZ0KVE7.swiftmodule
+
+SwiftEmitModule normal arm64 Emitting\ module\ for\ CasitaDexAuditTests (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+
+SwiftCompile normal arm64 (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa
+    
+
+SwiftCompile normal arm64 Compiling\ SearchLocationTests.swift /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa/AuditTests/SearchLocationTests.swift (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+
+SwiftCompile normal arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa/AuditTests/SearchLocationTests.swift (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa
+    builtin-SwiftPerFileCompile SearchLocationTests.swift
+
+SwiftDriverJobDiscovery normal arm64 Emitting module for CasitaDexAuditTests (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+
+SwiftDriver\ Compilation\ Requirements CasitaDexAuditTests normal arm64 com.apple.xcode.tools.swift.compiler (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa
+    builtin-Swift-Compilation-Requirements -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name CasitaDexAuditTests -Onone @/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.SwiftFileList -module-alias Testing\=_Testing_Unavailable -plugin-path /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.2.sdk -target arm64-apple-ios17.0 -g -module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Index.noindex/DataStore -swift-version 5 -I /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos -Isystem /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/lib -F /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Frameworks -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.2.sdk/Developer/Library/Frameworks -parse-as-library -c -j12 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKStatCaches.noindex/iphoneos27.2-24B8118-6890c9e4970e00494a266ff652f095d9.sdkstatcache -output-file-map /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests-OutputFileMap.json -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/ModuleCache.noindex -sdk-module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules -emit-dependencies -emit-module -emit-module-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.swiftmodule -serialize-diagnostics -dependency-scan-serialize-diagnostics-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests-dependency-scan.dia -validate-clang-modules-once -clang-build-session-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -emit-const-values -const-gather-protocols-list /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests_const_extract_protocols.json -Xcc -iquote -Xcc /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-generated-files.hmap -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-own-target-headers.hmap -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-all-target-headers.hmap -Xcc -iquote -Xcc /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-project-headers.hmap -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos/include -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/DerivedSources-normal/arm64 -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/DerivedSources/arm64 -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/DerivedSources -emit-objc-header -emit-objc-header-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests-Swift.h -working-directory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa -experimental-emit-module-separately -disable-cmo
+
+SwiftMergeGeneratedHeaders /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/DerivedSources/CasitaDexAuditTests-Swift.h /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests-Swift.h (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa
+    builtin-swiftHeaderTool -arch arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests-Swift.h -o /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/DerivedSources/CasitaDexAuditTests-Swift.h
+
+Copy /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos/CasitaDexAuditTests.swiftmodule/arm64-apple-ios.abi.json /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.abi.json (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -strip-unsigned-binaries -strip-deterministic -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip -resolve-src-symlinks -rename /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.abi.json /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos/CasitaDexAuditTests.swiftmodule/arm64-apple-ios.abi.json
+
+Copy /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos/CasitaDexAuditTests.swiftmodule/arm64-apple-ios.swiftdoc /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.swiftdoc (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -strip-unsigned-binaries -strip-deterministic -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip -resolve-src-symlinks -rename /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.swiftdoc /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos/CasitaDexAuditTests.swiftmodule/arm64-apple-ios.swiftdoc
+
+Copy /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos/CasitaDexAuditTests.swiftmodule/arm64-apple-ios.swiftmodule /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.swiftmodule (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -strip-unsigned-binaries -strip-deterministic -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip -resolve-src-symlinks -rename /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.swiftmodule /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos/CasitaDexAuditTests.swiftmodule/arm64-apple-ios.swiftmodule
+
+Copy /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos/CasitaDexAuditTests.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.swiftsourceinfo (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -strip-unsigned-binaries -strip-deterministic -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip -resolve-src-symlinks -rename /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.swiftsourceinfo /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos/CasitaDexAuditTests.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo
+
+SwiftDriverJobDiscovery normal arm64 Compiling SearchLocationTests.swift (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+
+SwiftDriver\ Compilation CasitaDexAuditTests normal arm64 com.apple.xcode.tools.swift.compiler (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa
+    builtin-Swift-Compilation -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name CasitaDexAuditTests -Onone @/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.SwiftFileList -module-alias Testing\=_Testing_Unavailable -plugin-path /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.2.sdk -target arm64-apple-ios17.0 -g -module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Index.noindex/DataStore -swift-version 5 -I /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos -Isystem /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/lib -F /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Frameworks -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.2.sdk/Developer/Library/Frameworks -parse-as-library -c -j12 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKStatCaches.noindex/iphoneos27.2-24B8118-6890c9e4970e00494a266ff652f095d9.sdkstatcache -output-file-map /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests-OutputFileMap.json -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/ModuleCache.noindex -sdk-module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules -emit-dependencies -emit-module -emit-module-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.swiftmodule -serialize-diagnostics -dependency-scan-serialize-diagnostics-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests-dependency-scan.dia -validate-clang-modules-once -clang-build-session-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -emit-const-values -const-gather-protocols-list /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests_const_extract_protocols.json -Xcc -iquote -Xcc /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-generated-files.hmap -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-own-target-headers.hmap -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-all-target-headers.hmap -Xcc -iquote -Xcc /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-project-headers.hmap -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos/include -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/DerivedSources-normal/arm64 -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/DerivedSources/arm64 -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/DerivedSources -emit-objc-header -emit-objc-header-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests-Swift.h -working-directory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa -experimental-emit-module-separately -disable-cmo
+
+Ld /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/CasitaDexAuditTests normal (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target arm64-apple-ios17.0 -bundle -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.2.sdk -Os -Xlinker -no_warn_duplicate_libraries -L/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphoneos -L/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos -L/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/lib -F/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphoneos -F/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos -iframework /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Frameworks -iframework /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.2.sdk/Developer/Library/Frameworks -filelist /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.LinkFileList -Xlinker -rpath -Xlinker /usr/lib/swift -Xlinker -rpath -Xlinker @loader_path/Frameworks -Xlinker -rpath -Xlinker @executable_path/Frameworks -Xlinker -dead_strip -Xlinker -object_path_lto -Xlinker /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests_lto.o -rdynamic -Xlinker -dependency_info -Xlinker /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests_dependency_info.dat -fobjc-link-runtime -L/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos -L/usr/lib/swift -Xlinker -add_ast_path -Xlinker /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.swiftmodule -Xlinker -needed_framework -Xlinker XCTest -framework XCTest -Xlinker -needed-lXCTestSwiftSupport -lXCTestSwiftSupport -Xlinker -no_adhoc_codesign -o /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/CasitaDexAuditTests
+
+CopySwiftLibs /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa
+    builtin-swiftStdLibTool --copy --verbose --sign 382E8042B67FA0785492B570BF93BA326E778042 --scan-executable /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/CasitaDexAuditTests --scan-folder /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/Frameworks --scan-folder /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/PlugIns --scan-folder /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/SystemExtensions --scan-folder /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/Extensions --platform iphoneos --toolchain /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --destination /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/Frameworks --strip-bitcode --scan-executable /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/lib/libXCTestSwiftSupport.dylib --strip-bitcode-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip --emit-dependency-info /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/SwiftStdLibToolInputDependencies.dep --filter-for-swift-os --back-deploy-swift-span
+
+ExtractAppIntentsMetadata (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsmetadataprocessor --toolchain-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --module-name CasitaDexAuditTests --sdk-root /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.2.sdk --xcode-version 27B52 --platform-family iOS --deployment-target 17.0 --bundle-identifier com.designsbyfa.casitadex.audit-tests --output /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest --target-triple arm64-apple-ios17.0 --binary-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/CasitaDexAuditTests --dependency-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests_dependency_info.dat --stringsdata-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/ExtractedAppShortcutsMetadata.stringsdata --source-file-list /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.SwiftFileList --metadata-file-list /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests.DependencyMetadataFileList --static-metadata-file-list /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests.DependencyStaticMetadataFileList --swift-const-vals-list /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.SwiftConstValuesFileList --compile-time-extraction --deployment-aware-processing --no-app-shortcuts-localization
+2026-11-17 11:21:40.868 appintentsmetadataprocessor[65532:8297525] Starting App Intents metadata extraction
+2026-11-17 11:21:40.869 appintentsmetadataprocessor[65532:8297525] warning: Metadata extraction skipped, no AppIntents.framework dependency found
+
+GenerateDSYMFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest.dSYM /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/CasitaDexAuditTests (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa
+    export PATH\=/Applications/Xcode.app/Contents/SharedFrameworks/SwiftBuild.framework/Versions/A/PlugIns/SWBBuildService.bundle/Contents/PlugIns/SWBUniversalPlatformPlugin.bundle/Contents/Frameworks/SWBUniversalPlatform.framework/Resources:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/local/bin:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/libexec:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/usr/bin:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/usr/local/bin:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/local/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/local/bin:/Users/franciscofranco/.nvm/versions/node/v24.22.1/bin:/Users/franciscofranco/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin:/Library/Apple/usr/bin:/Volumes/FA-Development/Designs-by-FA/Tools/MaestroCLI/bin:/Users/franciscofranco/.maestro/bin
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/dsymutil /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/CasitaDexAuditTests -o /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest.dSYM
+
+AppIntentsSSUTraining (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsnltrainingprocessor --infoplist-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/Info.plist --temp-dir-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/ssu --bundle-id com.designsbyfa.casitadex.audit-tests --product-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest --extracted-metadata-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/Metadata.appintents --metadata-file-list /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests.DependencyMetadataFileList --source-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/Info.plist --archive-ssu-assets
+2026-11-17 11:21:40.890 appintentsnltrainingprocessor[65534:8297529] Parsing options for appintentsnltrainingprocessor
+2026-11-17 11:21:40.891 appintentsnltrainingprocessor[65534:8297529] Starting AppIntents SSU YAML Generation
+2026-11-17 11:21:40.892 appintentsnltrainingprocessor[65534:8297529] No AppShortcuts found - Skipping.
+
+Copy /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PkgInfo /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Agents/XCTRunner.app/PkgInfo (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -strip-unsigned-binaries -strip-deterministic -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip -resolve-src-symlinks /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Agents/XCTRunner.app/PkgInfo /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app
+
+CopyPlistFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/Info.plist /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Agents/XCTRunner.app/Info.plist (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa
+    builtin-copyPlist --validate --convert xml1 --macro-expansion WRAPPEDPRODUCTNAME CasitaDexAuditTests-Runner --macro-expansion WRAPPEDPRODUCTBUNDLEIDENTIFIER com.designsbyfa.casitadex.audit-tests.xctrunner --macro-expansion TESTPRODUCTNAME CasitaDexAuditTests --macro-expansion TESTPRODUCTBUNDLEIDENTIFIER com.designsbyfa.casitadex.audit-tests --copy-value UIDeviceFamily /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/Info.plist --outdir /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app -- /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Agents/XCTRunner.app/Info.plist
+
+CopyAndPreserveArchs /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/CasitaDexAuditTests-Runner (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Agents/XCTRunner.app/XCTRunner -output /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/CasitaDexAuditTests-Runner -extract arm64
+
+MkDir /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa
+    /bin/mkdir -p /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app
+
+CodeSign /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa
+    
+    Signing Identity:     "Apple Development: Francisco Franco (V4MV3CY63M)"
+    Provisioning Profile: "iOS Team Provisioning Profile: *"
+                          (813738c7-b9ad-4aba-a88f-80aac2e97e8c)
+    
+    /usr/bin/codesign --force --sign 382E8042B67FA0785492B570BF93BA326E778042 --entitlements /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests.xctest.xcent --timestamp\=none --generate-entitlement-der --strip-disallowed-xattrs /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest
+
+CodeSign /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa
+    
+    Signing Identity:     "Apple Development: Francisco Franco (V4MV3CY63M)"
+    Provisioning Profile: "iOS Team Provisioning Profile: *"
+                          (813738c7-b9ad-4aba-a88f-80aac2e97e8c)
+    
+    /usr/bin/codesign --force --sign 382E8042B67FA0785492B570BF93BA326E778042 --entitlements /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests.xctest.xcent --timestamp\=none --generate-entitlement-der --strip-disallowed-xattrs /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app
+/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app: replacing existing signature
+
+RegisterExecutionPolicyException /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa
+    builtin-RegisterExecutionPolicyException /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest
+
+Touch /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/qa
+    /usr/bin/touch -c /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest
+
+PruneExplicitPrecompiledModules /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules
+
+PruneExplicitPrecompiledModules /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules
+
+PruneExplicitPrecompiledModules /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-fjqlklxkfhwmboduiuhvolthohbr/Build/Intermediates.noindex/ExplicitPrecompiledModules
+
+2026-11-17 11:21:41.270 xcodebuild[65504:8297136] [MT] IDELaunchReport: 6e29efa049d5a1c0:6e29efa049d5ad00:Launching CasitaDexAuditTests Finished with error: App installation failed: “CasitaDexAuditTests-Runner” Needs to Be Updated
+Domain: IXUserPresentableErrorDomain
+Code: 4
+Failure Reason: This app needs to be updated by the developer to work on this version of iOS.
+Recovery Suggestion: The executable at "/Volumes/FA-Development/Designs-by-FA/Apple-Builds/CoreSimulator/Devices/81FC3CCE-ACEB-4957-BE61-C9C653A4CE56/data/Library/Caches/com.apple.mobile.installd.staging/temp.n7zTgI/extracted/Payload/CasitaDexAuditTests-Runner.app/CasitaDexAuditTests-Runner" does not contain code for any platform and CPU architecture combination that is runnable on this device. The executable has code for these platforms and architectures: [iOS, arm64]. This device can run code for these platforms: iOS-simulator
+User Info: {
+    DVTErrorCreationDateKey = "2026-11-17 17:21:41 +0000";
+    IDERunOperationFailingWorker = IDELaunchiPhoneSimulatorLauncher;
+    SimCallingSelector = "installApplication:withOptions:installationInfo:error:";
+}
+--
+“CasitaDexAuditTests-Runner” Needs to Be Updated
+Domain: IXUserPresentableErrorDomain
+Code: 4
+Failure Reason: This app needs to be updated by the developer to work on this version of iOS.
+Recovery Suggestion: The executable at "/Volumes/FA-Development/Designs-by-FA/Apple-Builds/CoreSimulator/Devices/81FC3CCE-ACEB-4957-BE61-C9C653A4CE56/data/Library/Caches/com.apple.mobile.installd.staging/temp.n7zTgI/extracted/Payload/CasitaDexAuditTests-Runner.app/CasitaDexAuditTests-Runner" does not contain code for any platform and CPU architecture combination that is runnable on this device. The executable has code for these platforms and architectures: [iOS, arm64]. This device can run code for these platforms: iOS-simulator
+--
+The executable at "/Volumes/FA-Development/Designs-by-FA/Apple-Builds/CoreSimulator/Devices/81FC3CCE-ACEB-4957-BE61-C9C653A4CE56/data/Library/Caches/com.apple.mobile.installd.staging/temp.n7zTgI/extracted/Payload/CasitaDexAuditTests-Runner.app/CasitaDexAuditTests-Runner" does not contain code for any platform and CPU architecture combination that is runnable on this device. The executable has code for these platforms and architectures: [iOS, arm64]. This device can run code for these platforms: iOS-simulator
+Domain: MIInstallerErrorDomain
+Code: 15
+User Info: {
+    FunctionName = "_CreateErrorForMachOBestSliceEBADARCH";
+    SourceFileLine = 136;
+}
+--
+
+2026-11-17 11:21:41.270 xcodebuild[65504:8297136] [MT] IDELaunchReport: 6e29efa049d5a1c0:6e29efa049d5ad00:Launching CasitaDexAuditTests com.apple.dt.IDERunOperationWorkerFinished {
+    "device_identifier" = "81FC3CCE-ACEB-4957-BE61-C9C653A4CE56";
+    "device_model" = "iPhone19,2";
+    "device_osBuild" = "27.0 (24A434)";
+    "device_osBuild_monotonic" = 24000434000000000;
+    "device_os_variant" = 1;
+    "device_platform" = "com.apple.platform.iphonesimulator";
+    "device_platform_family" = 2;
+    "device_reality" = 2;
+    "device_thinningType" = "iPhone19,2";
+    "device_transport" = 4;
+    "launchSession_initiator" = 1;
+    "launchSession_schemeCommand" = Test;
+    "launchSession_schemeCommand_enum" = 2;
+    "launchSession_targetArch" = arm64;
+    "launchSession_targetArch_enum" = 6;
+    "operation_duration_ms" = 244;
+    "operation_errorCode" = 4;
+    "operation_errorDomain" = IXUserPresentableErrorDomain;
+    "operation_errorWorker" = IDELaunchiPhoneSimulatorLauncher;
+    "operation_error_reportable" = 1;
+    "operation_name" = IDELaunchiPhoneSimulatorLauncher;
+    "param_consoleMode" = 0;
+    "param_debugger_attachToExtensions" = 0;
+    "param_debugger_attachToXPC" = 0;
+    "param_debugger_type" = 1;
+    "param_destination_isProxy" = 0;
+    "param_destination_platform" = "com.apple.platform.iphonesimulator";
+    "param_diag_MTE_enable" = 0;
+    "param_diag_MainThreadChecker_stopOnIssue" = 0;
+    "param_diag_MallocStackLogging_enableDuringAttach" = 0;
+    "param_diag_MallocStackLogging_enableForXPC" = 0;
+    "param_diag_allowLocationSimulation" = 1;
+    "param_diag_checker_mtc_enable" = 0;
+    "param_diag_checker_tpc_enable" = 1;
+    "param_diag_gpu_frameCapture_enable" = 3;
+    "param_diag_gpu_shaderValidation_enable" = 0;
+    "param_diag_gpu_validation_enable" = 1;
+    "param_diag_guardMalloc_enable" = 0;
+    "param_diag_memoryGraphOnResourceException" = 0;
+    "param_diag_queueDebugging_enable" = 0;
+    "param_diag_runtimeProfile_generate" = 0;
+    "param_diag_sanitizer_asan_enable" = 0;
+    "param_diag_sanitizer_mtasan_enable" = 0;
+    "param_diag_sanitizer_tsan_enable" = 0;
+    "param_diag_sanitizer_tsan_stopOnIssue" = 0;
+    "param_diag_sanitizer_ubsan_enable" = 0;
+    "param_diag_sanitizer_ubsan_stopOnIssue" = 0;
+    "param_diag_showNonLocalizedStrings" = 0;
+    "param_diag_viewDebugging_enabled" = 0;
+    "param_diag_viewDebugging_insertDylibOnLaunch" = 0;
+    "param_install_style" = 2;
+    "param_launcher_UID" = 2;
+    "param_launcher_allowDeviceSensorReplayData" = 0;
+    "param_launcher_kind" = 0;
+    "param_launcher_style" = 0;
+    "param_launcher_substyle" = 64;
+    "param_runnable_appExtensionHostRunMode" = 0;
+    "param_runnable_productType" = "com.apple.product-type.application";
+    "param_testing_launchedForTesting" = 1;
+    "param_testing_suppressSimulatorApp" = 1;
+    "param_testing_usingCLI" = 0;
+    "sdk_canonicalName" = "iphonesimulator27.2";
+    "sdk_osVersion" = "27.2";
+    "sdk_platformID" = 7;
+    "sdk_variant" = iphonesimulator;
+    "sdk_version_monotonic" = 24001118008000000;
+}
+2026-11-17 11:21:41.270 xcodebuild[65504:8297136] [MT] IDELaunchReport: 6e29efa049d5a1c0:6e29efa049d5a1c0: Finished with error: App installation failed: “CasitaDexAuditTests-Runner” Needs to Be Updated
+Domain: IXUserPresentableErrorDomain
+Code: 4
+Failure Reason: This app needs to be updated by the developer to work on this version of iOS.
+Recovery Suggestion: The executable at "/Volumes/FA-Development/Designs-by-FA/Apple-Builds/CoreSimulator/Devices/81FC3CCE-ACEB-4957-BE61-C9C653A4CE56/data/Library/Caches/com.apple.mobile.installd.staging/temp.n7zTgI/extracted/Payload/CasitaDexAuditTests-Runner.app/CasitaDexAuditTests-Runner" does not contain code for any platform and CPU architecture combination that is runnable on this device. The executable has code for these platforms and architectures: [iOS, arm64]. This device can run code for these platforms: iOS-simulator
+User Info: {
+    DVTErrorCreationDateKey = "2026-11-17 17:21:41 +0000";
+    IDERunOperationFailingWorker = IDELaunchiPhoneSimulatorLauncher;
+    SimCallingSelector = "installApplication:withOptions:installationInfo:error:";
+}
+--
+“CasitaDexAuditTests-Runner” Needs to Be Updated
+Domain: IXUserPresentableErrorDomain
+Code: 4
+Failure Reason: This app needs to be updated by the developer to work on this version of iOS.
+Recovery Suggestion: The executable at "/Volumes/FA-Development/Designs-by-FA/Apple-Builds/CoreSimulator/Devices/81FC3CCE-ACEB-4957-BE61-C9C653A4CE56/data/Library/Caches/com.apple.mobile.installd.staging/temp.n7zTgI/extracted/Payload/CasitaDexAuditTests-Runner.app/CasitaDexAuditTests-Runner" does not contain code for any platform and CPU architecture combination that is runnable on this device. The executable has code for these platforms and architectures: [iOS, arm64]. This device can run code for these platforms: iOS-simulator
+--
+The executable at "/Volumes/FA-Development/Designs-by-FA/Apple-Builds/CoreSimulator/Devices/81FC3CCE-ACEB-4957-BE61-C9C653A4CE56/data/Library/Caches/com.apple.mobile.installd.staging/temp.n7zTgI/extracted/Payload/CasitaDexAuditTests-Runner.app/CasitaDexAuditTests-Runner" does not contain code for any platform and CPU architecture combination that is runnable on this device. The executable has code for these platforms and architectures: [iOS, arm64]. This device can run code for these platforms: iOS-simulator
+Domain: MIInstallerErrorDomain
+Code: 15
+User Info: {
+    FunctionName = "_CreateErrorForMachOBestSliceEBADARCH";
+    SourceFileLine = 136;
+}
+--
+
+2026-11-17 11:21:41.271 xcodebuild[65504:8297136] [MT] IDELaunchReport: 6e29efa049d5a1c0:6e29efa049d5a1c0: com.apple.dt.IDERunOperationWorkerFinished {
+    "device_identifier" = "81FC3CCE-ACEB-4957-BE61-C9C653A4CE56";
+    "device_model" = "iPhone19,2";
+    "device_osBuild" = "27.0 (24A434)";
+    "device_osBuild_monotonic" = 24000434000000000;
+    "device_os_variant" = 1;
+    "device_platform" = "com.apple.platform.iphonesimulator";
+    "device_platform_family" = 2;
+    "device_reality" = 2;
+    "device_thinningType" = "iPhone19,2";
+    "device_transport" = 4;
+    "launchSession_initiator" = 1;
+    "launchSession_schemeCommand" = Test;
+    "launchSession_schemeCommand_enum" = 2;
+    "launchSession_targetArch" = arm64;
+    "launchSession_targetArch_enum" = 6;
+    "operation_duration_ms" = 246;
+    "operation_errorCode" = 4;
+    "operation_errorDomain" = IXUserPresentableErrorDomain;
+    "operation_errorWorker" = IDELaunchiPhoneSimulatorLauncher;
+    "operation_error_reportable" = 1;
+    "operation_name" = IDERunOperationWorkerGroup;
+    "param_consoleMode" = 0;
+    "param_debugger_attachToExtensions" = 0;
+    "param_debugger_attachToXPC" = 0;
+    "param_debugger_type" = 1;
+    "param_destination_isProxy" = 0;
+    "param_destination_platform" = "com.apple.platform.iphonesimulator";
+    "param_diag_MTE_enable" = 0;
+    "param_diag_MainThreadChecker_stopOnIssue" = 0;
+    "param_diag_MallocStackLogging_enableDuringAttach" = 0;
+    "param_diag_MallocStackLogging_enableForXPC" = 0;
+    "param_diag_allowLocationSimulation" = 1;
+    "param_diag_checker_mtc_enable" = 0;
+    "param_diag_checker_tpc_enable" = 1;
+    "param_diag_gpu_frameCapture_enable" = 3;
+    "param_diag_gpu_shaderValidation_enable" = 0;
+    "param_diag_gpu_validation_enable" = 1;
+    "param_diag_guardMalloc_enable" = 0;
+    "param_diag_memoryGraphOnResourceException" = 0;
+    "param_diag_queueDebugging_enable" = 0;
+    "param_diag_runtimeProfile_generate" = 0;
+    "param_diag_sanitizer_asan_enable" = 0;
+    "param_diag_sanitizer_mtasan_enable" = 0;
+    "param_diag_sanitizer_tsan_enable" = 0;
+    "param_diag_sanitizer_tsan_stopOnIssue" = 0;
+    "param_diag_sanitizer_ubsan_enable" = 0;
+    "param_diag_sanitizer_ubsan_stopOnIssue" = 0;
+    "param_diag_showNonLocalizedStrings" = 0;
+    "param_diag_viewDebugging_enabled" = 0;
+    "param_diag_viewDebugging_insertDylibOnLaunch" = 0;
+    "param_install_style" = 2;
+    "param_launcher_UID" = 2;
+    "param_launcher_allowDeviceSensorReplayData" = 0;
+    "param_launcher_kind" = 0;
+    "param_launcher_style" = 0;
+    "param_launcher_substyle" = 64;
+    "param_runnable_appExtensionHostRunMode" = 0;
+    "param_runnable_productType" = "com.apple.product-type.application";
+    "param_testing_launchedForTesting" = 1;
+    "param_testing_suppressSimulatorApp" = 1;
+    "param_testing_usingCLI" = 0;
+    "sdk_canonicalName" = "iphonesimulator27.2";
+    "sdk_osVersion" = "27.2";
+    "sdk_platformID" = 7;
+    "sdk_variant" = iphonesimulator;
+    "sdk_version_monotonic" = 24001118008000000;
+}
+
+
+*** If you believe this error represents a bug, please attach the result bundle at /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/simulator.xcresult
+
+2026-11-17 11:21:54.901 xcodebuild[65504:8297136] [MT] IDETestOperationsObserverDebug: 13.928 elapsed -- Testing started completed.
+2026-11-17 11:21:54.901 xcodebuild[65504:8297136] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-11-17 11:21:54.901 xcodebuild[65504:8297136] [MT] IDETestOperationsObserverDebug: 13.928 sec, +13.928 sec -- end
+
+Test session results, code coverage, and logs:
+	/Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/simulator.xcresult
+
+Testing failed:
+	App installation failed: “CasitaDexAuditTests-Runner” Needs to Be Updated
+	CasitaDexAuditTests-Runner encountered an error (Failed to install or launch the test runner. (Underlying Error: App installation failed: “CasitaDexAuditTests-Runner” Needs to Be Updated. This app needs to be updated by the developer to work on this version of iOS. The executable at "/Volumes/FA-Development/Designs-by-FA/Apple-Builds/CoreSimulator/Devices/81FC3CCE-ACEB-4957-BE61-C9C653A4CE56/data/Library/Caches/com.apple.mobile.installd.staging/temp.n7zTgI/extracted/Payload/CasitaDexAuditTests-Runner.app/CasitaDexAuditTests-Runner" does not contain code for any platform and CPU architecture combination that is runnable on this device. The executable has code for these platforms and architectures: [iOS, arm64]. This device can run code for these platforms: iOS-simulator. (Underlying Error: “CasitaDexAuditTests-Runner” Needs to Be Updated. This app needs to be updated by the developer to work on this version of iOS. The executable at "/Volumes/FA-Development/Designs-by-FA/Apple-Builds/CoreSimulator/Devices/81FC3CCE-ACEB-4957-BE61-C9C653A4CE56/data/Library/Caches/com.apple.mobile.installd.staging/temp.n7zTgI/extracted/Payload/CasitaDexAuditTests-Runner.app/CasitaDexAuditTests-Runner" does not contain code for any platform and CPU architecture combination that is runnable on this device. The executable has code for these platforms and architectures: [iOS, arm64]. This device can run code for these platforms: iOS-simulator. (Underlying Error: The executable at "/Volumes/FA-Development/Designs-by-FA/Apple-Builds/CoreSimulator/Devices/81FC3CCE-ACEB-4957-BE61-C9C653A4CE56/data/Library/Caches/com.apple.mobile.installd.staging/temp.n7zTgI/extracted/Payload/CasitaDexAuditTests-Runner.app/CasitaDexAuditTests-Runner" does not contain code for any platform and CPU architecture combination that is runnable on this device. The executable has code for these platforms and architectures: [iOS, arm64]. This device can run code for these platforms: iOS-simulator))))
+
+** TEST FAILED **
+
+Testing started

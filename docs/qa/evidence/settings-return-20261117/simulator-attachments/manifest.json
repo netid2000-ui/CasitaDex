@@ -1,0 +1,35 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "81FC3CCE-ACEB-4957-BE61-C9C653A4CE56",
+        "deviceName" : "CasitaDex Memory Boundary Isolated QA",
+        "exportedFileName" : "C3B17420-66B0-4521-92DF-A728A00A64C0.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "direct-reminders-tab_0_F8195B29-7D0D-48DF-AE35-37F53FEA458C.png",
+        "timestamp" : 1794936478.521
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "81FC3CCE-ACEB-4957-BE61-C9C653A4CE56",
+        "deviceName" : "CasitaDex Memory Boundary Isolated QA",
+        "exportedFileName" : "B8B45BD1-D182-419C-84AA-250D1D30C9E4.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "reminders-return_0_E29FADB9-05EE-4B15-869F-1AF9CE370D46.png",
+        "timestamp" : 1794936471.033
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "81FC3CCE-ACEB-4957-BE61-C9C653A4CE56",
+        "deviceName" : "CasitaDex Memory Boundary Isolated QA",
+        "exportedFileName" : "3C79F89E-5F88-4BEC-8110-1B0B7D4AF47F.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "archived-return_0_68351533-5A25-474B-B09A-35E136C5302C.png",
+        "timestamp" : 1794936467.1
+      }
+    ],
+    "testIdentifier" : "SettingsReturnTests/testSettingsReturnAndDirectTabs()",
+    "testIdentifierURL" : "test://com.apple.xcode/CasitaDexAudit/CasitaDexAuditTests/SettingsReturnTests/testSettingsReturnAndDirectTabs"
+  }
+]

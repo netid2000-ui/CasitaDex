@@ -1,0 +1,21 @@
+Tapped Archived Memories
+Tapped ‹ Settings
+Tapped Reminders
+Tapped Add Reminder ›
+Tapped Cancel
+Tapped ‹ Settings
+Tapped Archived Memories
+Tapped Find
+Tapped Reminders
+PASS no-1.0 archive/reminders return, editor Cancel, direct tabs
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Archived Memories
+Tapped ‹ Settings
+Tapped Reminders
+Traceback (most recent call last):
+  File "/Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/verify_settings.py", line 7, in <module>
+    p.route('more');p.tap('Archived Memories');p.node('‹ Settings');p.shot(name+'-archived');p.tap('‹ Settings');p.node('Archived Memories');p.tap('Reminders');p.node('‹ Settings');p.shot(name+'-reminders');p.tap('Add Reminder ›');p.tap('Cancel');p.node('‹ Settings');p.tap('‹ Settings');p.node('Archived Memories')
+                                                                                                                                                                ~~~~~~^^^^^^^^^^^^^^
+  File "/Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117/phone.py", line 37, in node
+    raise AssertionError('Missing '+label+' '+str(labels())[:4000])
+AssertionError: Missing ‹ Settings [('', 'Add Reminder ›'), ('Add Reminder ›', ''), ('', 'Upcoming (0)'), ('Upcoming', ''), ('', 'Overdue (2)'), ('Overdue', ''), ('', 'Completed (0)'), ('Completed', ''), ('', 'Memory dates (13)'), ('Memory dates', ''), ('Reminders', ''), ('Upcoming', ''), ('No upcoming reminders.', ''), ('', 'Primary navigation'), ('', 'Home'), ('Home', ''), ('', 'Photos'), ('Photos', ''), ('', 'Reminders'), ('Reminders', ''), ('', 'Find'), ('Find', '')]

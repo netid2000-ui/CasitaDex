@@ -1,0 +1,22 @@
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Archived Memories
+Tapped ‹ Settings
+Tapped Reminders
+Tapped Add Reminder ›
+Tapped Cancel
+Tapped ‹ Settings
+Tapped Archived Memories
+Tapped Find
+Tapped Reminders
+PASS no-1.0 archive/reminders return, editor Cancel, direct tabs
+Warning: Activity not started, intent has been delivered to currently running top-most instance.
+Tapped Archived Memories
+Tapped ‹ Settings
+Tapped Reminders
+Tapped Add Reminder ›
+Tapped Cancel
+Tapped ‹ Settings
+Tapped Archived Memories
+Tapped Find
+Tapped Reminders
+PASS yes-2.0 archive/reminders return, editor Cancel, direct tabs

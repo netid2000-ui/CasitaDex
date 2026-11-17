@@ -1,0 +1,7 @@
+Source b6b2f7b
+Android release: BUILD SUCCESSFUL
+iOS simulator: BUILD SUCCEEDED
+Physical iPhone: BUILD SUCCEEDED; strict codesign verified
+Android installed APK SHA-256 (emulator and Samsung): ceac56911b8d550f1b4c0b4c584dbf3e2569f03d8bb160f379893b3312a90ca2
+iPhone main.jsbundle SHA-256: 67e370d93659d36deb02c6b44229e9b40bddf767d8c925544916cf86bed4ea49
+Full build logs retained on FA-MAC-DEV-01 at /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Settings-Return-20261117
