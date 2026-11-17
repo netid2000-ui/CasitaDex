@@ -2,5 +2,5 @@ import React from 'react';
 import {ScrollView} from 'react-native';
 import {router} from 'expo-router';
 import {FigmaSettings} from '../figma-first/FigmaSettings';
-function NativeSettings(){return <ScrollView contentContainerStyle={{flexGrow:1,backgroundColor:'transparent'}}><FigmaSettings onOpen={action=>action==='plus'?router.push('/plus'):action==='reminders'?router.push('/reminders'):action==='archived'?router.push('/answers?lifecycle=archived'):router.push({pathname:'/settings-manage',params:{action}})}/></ScrollView>}
+function NativeSettings(){return <ScrollView contentContainerStyle={{flexGrow:1,backgroundColor:'transparent'}}><FigmaSettings onOpen={action=>action==='plus'?router.push('/plus'):action==='reminders'?router.push('/reminders?origin=settings'):action==='archived'?router.push('/answers?lifecycle=archived&origin=settings'):router.push({pathname:'/settings-manage',params:{action}})}/></ScrollView>}
 export default function Settings(){return <NativeSettings/>;}

@@ -93,7 +93,7 @@ function Shell() {
                 accessibilityLabel={label}
                 accessibilityState={{ selected: active }}
                 aria-selected={active}
-                onPress={() => guardedNavigate(() => route === "/answers" ? router.navigate({pathname:"/answers",params:{lifecycle:"active",fresh:beginFreshFind()}}) : router.navigate(route))}
+                onPress={() => guardedNavigate(() => route === "/answers" ? router.navigate({pathname:"/answers",params:{lifecycle:"active",fresh:beginFreshFind(),origin:"tab"}}) : route === "/reminders" ? router.navigate({pathname:"/reminders",params:{origin:"tab"}}) : router.navigate(route))}
                 style={({ pressed }) => [
                   s.navTab,
                   (fontScale >= 1.35 || inAppLarge) && { minHeight: 70 },
