@@ -40,7 +40,7 @@ Original master screens preserved. REVIEW frames do not constitute a complete re
 
 ## Not yet verified or installed
 - Native emulator/simulator and physical Samsung/iPhone acceptance of these styling changes remain pending, including 200% text and keyboard traversal.
-- A supplemental browser runtime probe was requested but has not returned a result; do not count it as passed. Web export is compilation evidence only.
+- The supplemental browser runtime probe ended with an MCP request timeout and no runtime evidence; do not count it as passed. A subsequent process check showed no matching preview/Playwright process. Web export is compilation evidence only.
 - No APK/IPA built or installed in this change. Existing devices and data untouched.
 - No owner acceptance of the new cross-app review screens yet; approval of Home artwork is recorded separately.
 
