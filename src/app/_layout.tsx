@@ -2,7 +2,7 @@ import {reminderNotificationDestination} from "../reminder-notification-destinat
 import {beginFreshFind} from "../find-context";
 import React, {useEffect, useState} from "react";
 import { StatusBar } from "expo-status-bar";
-import { Image, Pressable, Text, View, useWindowDimensions } from "react-native";
+import { AppState, Image, Pressable, Text, View, useWindowDimensions } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { Slot, router, useLocalSearchParams, useGlobalSearchParams, usePathname } from "expo-router";
 import { Provider, useData } from "../state";
@@ -25,6 +25,25 @@ type Route = "/" | "/photos" | "/answers" | "/reminders";
 const destinations: {label:"Home"|"Find"|"Photos"|"Reminders";route:Route}[]=[
  {label:"Home",route:"/"},{label:"Photos",route:"/photos"},{label:"Reminders",route:"/reminders"},{label:"Find",route:"/answers"},
 ];
+function HomeClock(){
+  const {colors}=useTheme();
+  const [now,setNow]=useState(()=>new Date());
+  useEffect(()=>{
+    let timer:ReturnType<typeof setTimeout>;
+    function refresh(){
+      clearTimeout(timer);
+      const date=new Date();
+      setNow(date);
+      timer=setTimeout(refresh,60000-date.getTime()%60000);
+    }
+    refresh();
+    const subscription=AppState.addEventListener("change",state=>{if(state==="active")refresh();else clearTimeout(timer);});
+    return ()=>{clearTimeout(timer);subscription.remove();};
+  },[]);
+  return <Text style={{fontFamily:editorialFonts.body,color:colors.ink,fontSize:14}}>
+    {now.toLocaleDateString(undefined,{month:"short",day:"numeric",year:"numeric"})} · {now.toLocaleTimeString(undefined,{hour:"numeric",minute:"2-digit"})}
+  </Text>;
+}
 function Shell() {
   const path = usePathname();
   const {mode:entryMode}=useLocalSearchParams<{mode?:string}>();
@@ -69,8 +88,10 @@ function Shell() {
       <StatusBar style={dark ? "light" : "dark"} />
       {path==="/"||primaryTitle?<View style={{paddingHorizontal:18,paddingTop:8,paddingBottom:16,backgroundColor:colors.paper,gap:4}}>
         {(!compactHeader||!primaryTitle||path==="/more")?<View style={{minHeight:44,flexDirection:compactHeader?"column":"row",alignItems:compactHeader?"flex-start":"center",justifyContent:"space-between"}}>
-         <Pressable accessibilityRole="button" accessibilityLabel={path==="/more"?"Back to Home":"CasitaDex logo, go to Home"} onPress={()=>guardedNavigate(()=>router.navigate("/"))} style={{minHeight:44,justifyContent:"center"}}><Text style={{color:colors.ink,fontFamily:path==="/more"?editorialFonts.body:editorialFonts.heading,fontSize:path==="/more"?13:compactHeader?18:26}}>{path==="/more"?"‹  Home":"CasitaDex"}</Text></Pressable>
-         {path==="/"?<Pressable accessibilityRole="button" accessibilityLabel="Settings" onPress={()=>guardedNavigate(()=>router.navigate("/more"))} style={{minHeight:44,justifyContent:"center"}}><Text style={{fontFamily:editorialFonts.body,color:colors.ink,fontSize:13}}>⚙  Settings</Text></Pressable>:null}
+         <Pressable accessibilityRole="button" accessibilityLabel={path==="/more"?"Back to Home":"CasitaDex logo, go to Home"} onPress={()=>guardedNavigate(()=>router.navigate("/"))} style={{minHeight:44,justifyContent:"center"}}>{path==="/more"
+           ? <Text style={{color:colors.ink,fontFamily:editorialFonts.body,fontSize:13}}>‹  Home</Text>
+           : <Image accessible={false} source={dark?require("../../assets/home-brand/logo-right-dark.png"):require("../../assets/home-brand/logo-right-light.png")} resizeMode="contain" style={{width:148,aspectRatio:1576/379}}/>}</Pressable>
+         {path==="/"?<View style={{alignItems:compactHeader?"flex-start":"flex-end",flexShrink:1}}><HomeClock/><Pressable accessibilityRole="button" accessibilityLabel="Settings" onPress={()=>guardedNavigate(()=>router.navigate("/more"))} style={{minHeight:44,justifyContent:"center"}}><Text style={{fontFamily:editorialFonts.body,color:colors.ink,fontSize:13}}>⚙  Settings</Text></Pressable></View>:null}
          {path==="/photos"&&!compactHeader?<View style={{position:"absolute",right:0,top:0,width:100,height:66,mixBlendMode:dark?"multiply":"normal"}}><Image accessible={false} source={require("../../assets/approved-refresh/homeDesign_imgWatercolorOliveBranch.jpg")} resizeMode="cover" style={{width:100,height:66}}/></View>:null}
         </View>:null}
         {primaryTitle?<Text accessibilityRole="header" style={{color:colors.ink,fontFamily:editorialFonts.heading,fontSize:compactHeader?20:path==="/photos"?52:48}}>{primaryTitle}</Text>:null}
