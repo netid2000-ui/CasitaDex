@@ -20,7 +20,7 @@ export function FigmaPhotos({items,onAdd,onOpen,onViewPhoto,view='grid',sort='up
  useEffect(()=>()=>{if(layoutFrame.current!==null)cancelAnimationFrame(layoutFrame.current);},[]);
  const columns=view==='grid'&&width>=360&&fontScale<1.35&&!large?2:1;
  const textScale=large?1.6:1;
- const control={minHeight:48,padding:8,borderWidth:1,borderColor:fg.secondaryInk,borderRadius:12,justifyContent:'center' as const};
+ const control={minHeight:48,padding:8,borderWidth:0,borderBottomWidth:1,borderColor:fg.secondaryInk,borderRadius:0,justifyContent:'center' as const};
  return <View style={{backgroundColor:fg.page,padding:18,gap:16}}>
   {!hideControls?<PhotoWorkspaceControls onAdd={onAdd} view={view} sort={sort} onViewChange={onViewChange} onSortChange={onSortChange}/>:null}
   {draft?<View style={{backgroundColor:fg.brandSurface,borderRadius:12,padding:14,gap:8}}><Text accessibilityRole="header" style={{color:fg.headingInk,fontFamily:editorialFonts.heading,fontSize:21*textScale}}>Unfinished photo memory</Text><Text style={{color:fg.secondaryInk,fontSize:15*textScale}}>{draft.title||'Untitled draft'} · {photoCountLabel(draft.photoCount)} · Not saved yet</Text><Pressable accessibilityRole="button" accessibilityLabel="Resume unfinished photo memory" onPress={onResumeDraft} style={control}><Text style={{color:fg.headingInk,fontSize:16*textScale}}>Resume draft</Text></Pressable></View>:null}
@@ -41,11 +41,11 @@ export function FigmaPhotos({items,onAdd,onOpen,onViewPhoto,view='grid',sort='up
 
 export function PhotoWorkspaceControls({onAdd,view='grid',sort='updated',onViewChange,onSortChange}:Pick<FigmaPhotosProps,'onAdd'|'view'|'sort'|'onViewChange'|'onSortChange'>){
  const fg=useFigmaTheme(),{large}=useData();const scale=large?1.6:1;
- const control={minHeight:48,maxWidth:"100%" as const,paddingVertical:8,paddingHorizontal:10,borderWidth:1,borderColor:fg.secondaryInk,borderRadius:8,justifyContent:'center' as const,flexDirection:'row' as const,alignItems:'center' as const,gap:8,backgroundColor:fg.brandSurface};
+ const control={minHeight:48,maxWidth:"100%" as const,paddingVertical:8,paddingHorizontal:10,borderWidth:0,borderBottomWidth:1,borderColor:fg.secondaryInk,borderRadius:0,justifyContent:'center' as const,flexDirection:'row' as const,alignItems:'center' as const,gap:8,backgroundColor:"transparent"};
  const text={fontFamily:editorialFonts.body,color:fg.headingInk,fontSize:12*scale,flexShrink:1,minWidth:0};
  return <View style={{backgroundColor:fg.page,paddingHorizontal:18,paddingBottom:16,gap:8}}>
- <View style={{flexDirection:'row',flexWrap:'wrap',gap:8}}>{(['grid','compact'] as const).map(value=><Pressable key={value} accessibilityRole="button" accessibilityLabel={value==='grid'?'Grid photo view':'Compact photo view'} accessibilityState={{selected:view===value}} onPress={()=>onViewChange?.(value)} style={[control,view===value?{borderWidth:2}:null]}><PhotoActionIcon name={value}/><Text style={text}>{value==='grid'?'Grid':'Compact'}</Text></Pressable>)}
+ <View style={{flexDirection:'row',flexWrap:'wrap',gap:8}}>{(['grid','compact'] as const).map(value=><Pressable key={value} accessibilityRole="button" accessibilityLabel={value==='grid'?'Grid photo view':'Compact photo view'} accessibilityState={{selected:view===value}} onPress={()=>onViewChange?.(value)} style={[control,view===value?{borderBottomWidth:3,borderBottomColor:fg.headingInk}:null]}><PhotoActionIcon name={value}/><Text style={text}>{value==='grid'?'Grid':'Compact'}</Text></Pressable>)}
  <Pressable accessibilityRole="button" accessibilityLabel="Sort photos" accessibilityValue={{text:sort==='updated'?'Recently updated':'Recently added'}} onPress={()=>Alert.alert('Sort photos','',[{text:'Recently updated',onPress:()=>onSortChange?.('updated')},{text:'Recently added',onPress:()=>onSortChange?.('added')},{text:'Cancel',style:'cancel'}])} style={control}><PhotoActionIcon name="sort"/><Text style={text}>Sort ▾</Text></Pressable></View>
- <Pressable accessibilityRole="button" accessibilityLabel="Add Photo Memory" onPress={onAdd} style={[control,{alignSelf:'flex-start',backgroundColor:fg.actionSurface}]}><PhotoActionIcon name="plus"/><Text style={[text,{color:fg.actionInk}]}>Add Photo Memory  ›</Text></Pressable>
+ <Pressable accessibilityRole="button" accessibilityLabel="Add Photo Memory" onPress={onAdd} style={[control,{alignSelf:'stretch'}]}><PhotoActionIcon name="plus"/><Text style={text}>Add Photo Memory  ›</Text></Pressable>
  </View>;
 }
