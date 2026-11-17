@@ -25,7 +25,7 @@ type Route = "/" | "/photos" | "/answers" | "/reminders";
 const destinations: {label:"Home"|"Find"|"Photos"|"Reminders";route:Route}[]=[
  {label:"Home",route:"/"},{label:"Photos",route:"/photos"},{label:"Reminders",route:"/reminders"},{label:"Find",route:"/answers"},
 ];
-function HomeClock(){
+function HomeDate(){
   const {colors}=useTheme();
   const [now,setNow]=useState(()=>new Date());
   useEffect(()=>{
@@ -41,7 +41,7 @@ function HomeClock(){
     return ()=>{clearTimeout(timer);subscription.remove();};
   },[]);
   return <Text style={{fontFamily:editorialFonts.body,color:colors.ink,fontSize:14}}>
-    {now.toLocaleDateString(undefined,{month:"short",day:"numeric",year:"numeric"})} · {now.toLocaleTimeString(undefined,{hour:"numeric",minute:"2-digit"})}
+    {now.toLocaleDateString(undefined,{month:"short",day:"numeric",year:"numeric"})}
   </Text>;
 }
 function Shell() {
@@ -91,7 +91,7 @@ function Shell() {
          <Pressable accessibilityRole="button" accessibilityLabel={path==="/more"?"Back to Home":"CasitaDex logo, go to Home"} onPress={()=>guardedNavigate(()=>router.navigate("/"))} style={{minHeight:44,justifyContent:"center"}}>{path==="/more"
            ? <Text style={{color:colors.ink,fontFamily:editorialFonts.body,fontSize:13}}>‹  Home</Text>
            : <Image accessible={false} source={dark?require("../../assets/home-brand/logo-right-dark.png"):require("../../assets/home-brand/logo-right-light.png")} resizeMode="contain" style={{width:148,height:36}}/>}</Pressable>
-         {path==="/"?<View style={{alignItems:compactHeader?"flex-start":"flex-end",flexShrink:1}}><HomeClock/><Pressable accessibilityRole="button" accessibilityLabel="Settings" onPress={()=>guardedNavigate(()=>router.navigate("/more"))} style={{minHeight:44,justifyContent:"center"}}><Text style={{fontFamily:editorialFonts.body,color:colors.ink,fontSize:13}}>⚙  Settings</Text></Pressable></View>:null}
+         {path==="/"?<View style={{alignItems:compactHeader?"flex-start":"flex-end",flexShrink:1}}><HomeDate/><Pressable accessibilityRole="button" accessibilityLabel="Settings" onPress={()=>guardedNavigate(()=>router.navigate("/more"))} style={{minHeight:44,justifyContent:"center"}}><Text style={{fontFamily:editorialFonts.body,color:colors.ink,fontSize:13}}>⚙  Settings</Text></Pressable></View>:null}
          {path==="/photos"&&!compactHeader?<View style={{position:"absolute",right:0,top:0,width:100,height:66,mixBlendMode:dark?"multiply":"normal"}}><Image accessible={false} source={require("../../assets/approved-refresh/homeDesign_imgWatercolorOliveBranch.jpg")} resizeMode="cover" style={{width:100,height:66}}/></View>:null}
         </View>:null}
         {primaryTitle?<Text accessibilityRole="header" style={{color:colors.ink,fontFamily:editorialFonts.heading,fontSize:compactHeader?20:path==="/photos"?52:48}}>{primaryTitle}</Text>:null}
