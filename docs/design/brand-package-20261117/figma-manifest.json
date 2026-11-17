@@ -1,0 +1,62 @@
+[
+  {
+    "name": "logo-right-light",
+    "nodeId": "68:26"
+  },
+  {
+    "name": "logo-left-light",
+    "nodeId": "68:36"
+  },
+  {
+    "name": "logo-stacked-light",
+    "nodeId": "68:46"
+  },
+  {
+    "name": "logo-right-dark",
+    "nodeId": "68:56"
+  },
+  {
+    "name": "logo-left-dark",
+    "nodeId": "68:66"
+  },
+  {
+    "name": "logo-stacked-dark",
+    "nodeId": "68:76"
+  },
+  {
+    "name": "symbol-light",
+    "nodeId": "68:16"
+  },
+  {
+    "name": "symbol-dark",
+    "nodeId": "68:25"
+  },
+  {
+    "name": "symbol-mono-forest",
+    "nodeId": "69:148"
+  },
+  {
+    "name": "symbol-mono-reverse",
+    "nodeId": "69:157"
+  },
+  {
+    "name": "wordmark-light",
+    "nodeId": "69:158"
+  },
+  {
+    "name": "wordmark-dark",
+    "nodeId": "69:160"
+  },
+  {
+    "name": "app-icon-light",
+    "nodeId": "69:162"
+  },
+  {
+    "name": "app-icon-dark",
+    "nodeId": "69:171"
+  },
+  {
+    "name": "app-icon-mono",
+    "nodeId": "69:180"
+  }
+]
