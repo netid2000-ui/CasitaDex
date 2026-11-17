@@ -4,10 +4,14 @@ import fs from "node:fs";
 import {createHash} from "node:crypto";
 import {openEngStreamCompatible} from "../src/eng-stream-v4.ts";
 import {allEngMedia} from "../src/eng-store.ts";
+// Use the checked-in disposable native QA archive by default so safety coverage
+// cannot silently disappear when a developer omits an environment variable.
+// An explicit override still supports additional local archives; a missing or
+// invalid fixture fails rather than reporting a misleading skipped gate.
+const archiveFile=process.env.CASITADEX_SB24_ARCHIVE ?? new URL('../docs/qa/sb24-production-native-20261020/native-qa.cdxe',import.meta.url);
 const hash=async bytes=>createHash("sha256").update(bytes).digest("hex");
-test("provided Full v4 acceptance archive verifies every embedded photo byte",async t=>{
- const file=process.env.CASITADEX_SB24_ARCHIVE;
- if(!file){t.skip("Set CASITADEX_SB24_ARCHIVE to a local QA archive");return;}
+test("provided Full v4 acceptance archive verifies every embedded photo byte",async()=>{
+ const file=archiveFile;
  const bytes=fs.readFileSync(file);
  const opened=await openEngStreamCompatible({size:bytes.length,read:async(at,n)=>bytes.subarray(at,at+n)},hash);
  assert.equal(opened.source,"Full v4");
@@ -22,9 +26,8 @@ test("provided Full v4 acceptance archive verifies every embedded photo byte",as
  assert.ok(opened.snapshot.draft,"Expected preserved unfinished draft");
 });
 
-test("real Full v4 emulator archive rejects one-byte photo corruption without changing source",async t=>{
- const file=process.env.CASITADEX_SB24_ARCHIVE;
- if(!file){t.skip("Set CASITADEX_SB24_ARCHIVE to a local QA archive");return;}
+test("real Full v4 emulator archive rejects one-byte photo corruption without changing source",async()=>{
+ const file=archiveFile;
  const original=fs.readFileSync(file);
  const originalHash=await hash(original);
  const corrupted=Buffer.from(original);
@@ -34,9 +37,8 @@ test("real Full v4 emulator archive rejects one-byte photo corruption without ch
  assert.equal(await hash(fs.readFileSync(file)),originalHash);
 });
 
-test("real Full v4 archive restores and recovers both domains in disposable SQLite",async t=>{
- const file=process.env.CASITADEX_SB24_ARCHIVE;
- if(!file){t.skip("Set CASITADEX_SB24_ARCHIVE to a local QA archive");return;}
+test("real Full v4 archive restores and recovers both domains in disposable SQLite",async()=>{
+ const file=archiveFile;
  const {setup}=await import("./eng-fixture.mjs");
  const bytes=fs.readFileSync(file);
  const opened=await openEngStreamCompatible({size:bytes.length,read:async(at,n)=>bytes.subarray(at,at+n)},hash);
@@ -59,9 +61,8 @@ test("real Full v4 archive restores and recovers both domains in disposable SQLi
  }finally{x.close()}
 });
 
-test("real Full v4 archive cancel is nonmutating in disposable SQLite",async t=>{
- const file=process.env.CASITADEX_SB24_ARCHIVE;
- if(!file){t.skip("Set CASITADEX_SB24_ARCHIVE to a local QA archive");return;}
+test("real Full v4 archive cancel is nonmutating in disposable SQLite",async()=>{
+ const file=archiveFile;
  const {setup}=await import("./eng-fixture.mjs");
  const bytes=fs.readFileSync(file);
  const opened=await openEngStreamCompatible({size:bytes.length,read:async(at,n)=>bytes.subarray(at,at+n)},hash);
@@ -79,9 +80,8 @@ test("real Full v4 archive cancel is nonmutating in disposable SQLite",async t=>
  }finally{x.close()}
 });
 
-test("real Full v4 archive refuses stale reminder review without mutations",async t=>{
- const file=process.env.CASITADEX_SB24_ARCHIVE;
- if(!file){t.skip("Set CASITADEX_SB24_ARCHIVE to a local QA archive");return;}
+test("real Full v4 archive refuses stale reminder review without mutations",async()=>{
+ const file=archiveFile;
  const {setup}=await import("./eng-fixture.mjs");
  const bytes=fs.readFileSync(file);
  const opened=await openEngStreamCompatible({size:bytes.length,read:async(at,n)=>bytes.subarray(at,at+n)},hash);
