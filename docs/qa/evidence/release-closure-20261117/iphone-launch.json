@@ -1,0 +1,56 @@
+{
+  "info" : {
+    "arguments" : [
+      "devicectl",
+      "device",
+      "process",
+      "launch",
+      "--device",
+      "00008150-0014306C2644401C",
+      "com.designsbyfa.casitadex.plusstoreqa",
+      "--json-output",
+      "iphone-launch.json"
+    ],
+    "commandType" : "devicectl.device.process.launch",
+    "environment" : {
+      "TERM" : "dumb"
+    },
+    "jsonVersion" : 5,
+    "outcome" : "success",
+    "version" : "651.32"
+  },
+  "result" : {
+    "deviceIdentifier" : "ACFC0924-3275-5038-BE02-FCA25D62496B",
+    "launchOptions" : {
+      "activatedWhenStarted" : true,
+      "arguments" : [
+
+      ],
+      "environmentVariables" : {
+        "TERM" : "dumb"
+      },
+      "platformSpecificOptions" : {
+
+      },
+      "startStopped" : false,
+      "terminateExistingInstances" : false,
+      "user" : {
+        "active" : true
+      }
+    },
+    "process" : {
+      "auditToken" : [
+        4294967295,
+        501,
+        501,
+        501,
+        501,
+        25351,
+        0,
+        65502
+      ],
+      "executable" : "file:///private/var/containers/Bundle/Application/7326FD49-A621-41DE-977A-7A6C4C291E98/CasitaDexPlusStoreQA.app/CasitaDexPlusStoreQA",
+      "processIdentifier" : 25351
+    }
+  }
+}

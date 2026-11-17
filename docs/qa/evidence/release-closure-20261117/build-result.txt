@@ -1,0 +1,3 @@
+Physical Debug device build: BUILD SUCCEEDED
+Signature verified with codesign --verify --deep --strict
+Full build log retained privately in Apple-Builds/Release-Closure-20261117/physical-build.log

@@ -1,0 +1,37 @@
+{
+  "info" : {
+    "arguments" : [
+      "devicectl",
+      "device",
+      "install",
+      "app",
+      "--device",
+      "00008150-0014306C2644401C",
+      "/Volumes/FA-Development/Designs-by-FA/Apple-Builds/CasitaDex-Approved-Physical-20261117/Build/Products/Debug-iphoneos/CasitaDexPlusStoreQA.app",
+      "--json-output",
+      "iphone-install.json"
+    ],
+    "commandType" : "devicectl.device.install.app",
+    "environment" : {
+      "TERM" : "dumb"
+    },
+    "jsonVersion" : 5,
+    "outcome" : "success",
+    "version" : "651.32"
+  },
+  "result" : {
+    "deviceIdentifier" : "ACFC0924-3275-5038-BE02-FCA25D62496B",
+    "installedApplications" : [
+      {
+        "bundleID" : "com.designsbyfa.casitadex.plusstoreqa",
+        "databaseSequenceNumber" : 4412,
+        "databaseUUID" : "6FB6BF5F-C7D4-4E70-9FAF-A5C1F16D0149",
+        "installationURL" : "file:///private/var/containers/Bundle/Application/7326FD49-A621-41DE-977A-7A6C4C291E98/CasitaDexPlusStoreQA.app/",
+        "launchServicesIdentifier" : "unknown",
+        "options" : {
+
+        }
+      }
+    ]
+  }
+}

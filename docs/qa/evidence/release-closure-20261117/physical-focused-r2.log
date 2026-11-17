@@ -1,0 +1,1298 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project qa-smoke/CasitaDexAudit.xcodeproj -scheme CasitaDexAudit -destination id=00008150-0014306C2644401C -allowProvisioningUpdates DEVELOPMENT_TEAM=VSP8XSM3BK -resultBundlePath physical-focused-r2.xcresult "-only-testing:CasitaDexAuditTests/PhysicalNotificationTests/testBackgroundNotificationTap" "-only-testing:CasitaDexAuditTests/EditorialAcceptanceTests" test
+
+Build settings from command line:
+    DEVELOPMENT_TEAM = VSP8XSM3BK
+
+Writing result bundle at path:
+	/Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/physical-focused-r2.xcresult
+
+ComputePackagePrebuildTargetDependencyGraph
+
+Prepare packages
+
+CreateBuildRequest
+
+SendProjectDescription
+
+CreateBuildOperation
+
+ComputeTargetDependencyGraph
+note: Building targets in dependency order
+note: Target dependency graph (1 target)
+    Target 'CasitaDexAuditTests' in project 'CasitaDexAudit' (no dependencies)
+
+GatherProvisioningInputs
+
+CreateBuildDescription
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -v -E -dM -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.2.sdk -x c -c /dev/null
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc --version
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld -version_details
+
+Build description signature: d023bd1d9e1fb831b9848b87a1d838b7
+Build description path: /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/XCBuildData/d023bd1d9e1fb831b9848b87a1d838b7.xcbuilddata
+CreateBuildDirectory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke/CasitaDexAudit.xcodeproj
+    builtin-create-build-directory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules
+
+CreateBuildDirectory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/ModuleCache.noindex
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke/CasitaDexAudit.xcodeproj
+    builtin-create-build-directory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/ModuleCache.noindex
+
+CreateBuildDirectory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CompilationCache.noindex
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke/CasitaDexAudit.xcodeproj
+    builtin-create-build-directory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CompilationCache.noindex
+
+ClangStatCache /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.2.sdk /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKStatCaches.noindex/iphoneos27.2-24B8118-6890c9e4970e00494a266ff652f095d9.sdkstatcache
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke/CasitaDexAudit.xcodeproj
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.2.sdk -o /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKStatCaches.noindex/iphoneos27.2-24B8118-6890c9e4970e00494a266ff652f095d9.sdkstatcache
+
+CreateBuildDirectory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke/CasitaDexAudit.xcodeproj
+    builtin-create-build-directory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products
+
+CreateBuildDirectory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke/CasitaDexAudit.xcodeproj
+    builtin-create-build-directory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex
+
+CreateBuildDirectory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke/CasitaDexAudit.xcodeproj
+    builtin-create-build-directory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules
+
+CreateBuildDirectory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/PrecompiledHeaders
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke/CasitaDexAudit.xcodeproj
+    builtin-create-build-directory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/PrecompiledHeaders
+
+CreateBuildDirectory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/ExplicitPrecompiledModules
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke/CasitaDexAudit.xcodeproj
+    builtin-create-build-directory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/ExplicitPrecompiledModules
+
+CreateBuildDirectory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphoneos
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke/CasitaDexAudit.xcodeproj
+    builtin-create-build-directory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphoneos
+
+WriteAuxiliaryFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAudit-ef40d77ec0ada5dcdf02f5e6f28868ad-VFS-iphoneos/all-product-headers.yaml
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke/CasitaDexAudit.xcodeproj
+    write-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAudit-ef40d77ec0ada5dcdf02f5e6f28868ad-VFS-iphoneos/all-product-headers.yaml
+
+CreateBuildDirectory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke/CasitaDexAudit.xcodeproj
+    builtin-create-build-directory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos
+
+WriteAuxiliaryFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-project-headers.hmap (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke
+    write-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-project-headers.hmap
+
+WriteAuxiliaryFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/ProductTypeInfoPlistAdditions.plist (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke
+    write-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/ProductTypeInfoPlistAdditions.plist
+
+WriteAuxiliaryFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests.hmap (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke
+    write-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests.hmap
+
+WriteAuxiliaryFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-own-target-headers.hmap (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke
+    write-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-own-target-headers.hmap
+
+WriteAuxiliaryFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-generated-files.hmap (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke
+    write-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-generated-files.hmap
+
+WriteAuxiliaryFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/empty-CasitaDexAuditTests.plist (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke
+    write-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/empty-CasitaDexAuditTests.plist
+
+WriteAuxiliaryFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/DerivedSources/Entitlements.plist (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke
+    write-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/DerivedSources/Entitlements.plist
+
+WriteAuxiliaryFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.LinkFileList (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke
+    write-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.LinkFileList
+
+WriteAuxiliaryFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests_const_extract_protocols.json (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke
+    write-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests_const_extract_protocols.json
+
+WriteAuxiliaryFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.SwiftFileList (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke
+    write-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.SwiftFileList
+
+WriteAuxiliaryFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests-OutputFileMap.json (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke
+    write-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests-OutputFileMap.json
+
+WriteAuxiliaryFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests.DependencyStaticMetadataFileList (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke
+    write-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests.DependencyStaticMetadataFileList
+
+WriteAuxiliaryFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.SwiftConstValuesFileList (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke
+    write-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.SwiftConstValuesFileList
+
+WriteAuxiliaryFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests.DependencyMetadataFileList (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke
+    write-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests.DependencyMetadataFileList
+
+WriteAuxiliaryFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-all-target-headers.hmap (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke
+    write-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-all-target-headers.hmap
+
+WriteAuxiliaryFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-all-non-framework-target-headers.hmap (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke
+    write-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-all-non-framework-target-headers.hmap
+
+MkDir /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke
+    /bin/mkdir -p /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest
+
+ProcessProductPackaging "" /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests.xctest.xcent (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke
+    
+    Entitlements:
+    
+    {
+    "application-identifier" = "VSP8XSM3BK.com.designsbyfa.casitadex.audit-tests.xctrunner";
+    "com.apple.developer.team-identifier" = VSP8XSM3BK;
+    "get-task-allow" = 1;
+    "keychain-access-groups" =     (
+        "VSP8XSM3BK.com.designsbyfa.casitadex.audit-tests.xctrunner"
+    );
+}
+    
+    builtin-productPackagingUtility -entitlements -format xml -o /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests.xctest.xcent
+
+ProcessProductPackaging /Users/franciscofranco/Library/Developer/Xcode/UserData/Provisioning\ Profiles/813738c7-b9ad-4aba-a88f-80aac2e97e8c.mobileprovision /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/embedded.mobileprovision (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke
+    builtin-productPackagingUtility /Users/franciscofranco/Library/Developer/Xcode/UserData/Provisioning\ Profiles/813738c7-b9ad-4aba-a88f-80aac2e97e8c.mobileprovision -o /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/embedded.mobileprovision
+
+ProcessProductPackagingDER /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests.xctest.xcent /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests.xctest.xcent.der (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke
+    /usr/bin/derq query -f xml -i /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests.xctest.xcent -o /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests.xctest.xcent.der --raw
+
+ProcessInfoPlistFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/Info.plist /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/empty-CasitaDexAuditTests.plist (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke
+    builtin-infoPlistUtility /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/empty-CasitaDexAuditTests.plist -producttype com.apple.product-type.bundle.ui-testing -expandbuildsettings -format binary -platform iphoneos -additionalcontentfile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/ProductTypeInfoPlistAdditions.plist -requiredArchitecture arm64 -o /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/Info.plist
+
+SwiftDriver CasitaDexAuditTests normal arm64 com.apple.xcode.tools.swift.compiler (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke
+    builtin-SwiftDriver -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name CasitaDexAuditTests -Onone @/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.SwiftFileList -module-alias Testing\=_Testing_Unavailable -plugin-path /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.2.sdk -target arm64-apple-ios17.0 -g -module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Index.noindex/DataStore -swift-version 5 -I /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos -Isystem /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/lib -F /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Frameworks -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.2.sdk/Developer/Library/Frameworks -parse-as-library -c -j12 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKStatCaches.noindex/iphoneos27.2-24B8118-6890c9e4970e00494a266ff652f095d9.sdkstatcache -output-file-map /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests-OutputFileMap.json -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/ModuleCache.noindex -sdk-module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules -emit-dependencies -emit-module -emit-module-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.swiftmodule -serialize-diagnostics -dependency-scan-serialize-diagnostics-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests-dependency-scan.dia -validate-clang-modules-once -clang-build-session-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -emit-const-values -const-gather-protocols-list /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests_const_extract_protocols.json -Xcc -iquote -Xcc /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-generated-files.hmap -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-own-target-headers.hmap -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-all-target-headers.hmap -Xcc -iquote -Xcc /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-project-headers.hmap -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos/include -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/DerivedSources-normal/arm64 -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/DerivedSources/arm64 -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/DerivedSources -emit-objc-header -emit-objc-header-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests-Swift.h -working-directory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke -experimental-emit-module-separately -disable-cmo
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules/XCUIAutomation-DR0V412XQW7EK27U8NGMGDSFG.pcm
+
+SwiftExplicitDependencyCompileModuleFromInterface arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules/XCUIAutomation-2WUXXAJS4AV8X.swiftmodule
+
+SwiftExplicitDependencyGeneratePcm arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules/XCTest-ECB3T1K03OC4U8IYXCON458HF.pcm
+
+SwiftExplicitDependencyCompileModuleFromInterface arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules/XCTest-376UPYWZ0KVE7.swiftmodule
+
+SwiftEmitModule normal arm64 Emitting\ module\ for\ CasitaDexAuditTests (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+
+SwiftCompile normal arm64 (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke
+    
+
+SwiftCompile normal arm64 Compiling\ SearchLocationTests.swift /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke/AuditTests/SearchLocationTests.swift (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+
+SwiftCompile normal arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke/AuditTests/SearchLocationTests.swift (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke
+    builtin-SwiftPerFileCompile SearchLocationTests.swift
+
+SwiftDriverJobDiscovery normal arm64 Emitting module for CasitaDexAuditTests (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+
+SwiftDriver\ Compilation\ Requirements CasitaDexAuditTests normal arm64 com.apple.xcode.tools.swift.compiler (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke
+    builtin-Swift-Compilation-Requirements -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name CasitaDexAuditTests -Onone @/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.SwiftFileList -module-alias Testing\=_Testing_Unavailable -plugin-path /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.2.sdk -target arm64-apple-ios17.0 -g -module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Index.noindex/DataStore -swift-version 5 -I /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos -Isystem /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/lib -F /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Frameworks -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.2.sdk/Developer/Library/Frameworks -parse-as-library -c -j12 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKStatCaches.noindex/iphoneos27.2-24B8118-6890c9e4970e00494a266ff652f095d9.sdkstatcache -output-file-map /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests-OutputFileMap.json -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/ModuleCache.noindex -sdk-module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules -emit-dependencies -emit-module -emit-module-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.swiftmodule -serialize-diagnostics -dependency-scan-serialize-diagnostics-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests-dependency-scan.dia -validate-clang-modules-once -clang-build-session-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -emit-const-values -const-gather-protocols-list /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests_const_extract_protocols.json -Xcc -iquote -Xcc /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-generated-files.hmap -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-own-target-headers.hmap -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-all-target-headers.hmap -Xcc -iquote -Xcc /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-project-headers.hmap -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos/include -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/DerivedSources-normal/arm64 -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/DerivedSources/arm64 -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/DerivedSources -emit-objc-header -emit-objc-header-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests-Swift.h -working-directory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke -experimental-emit-module-separately -disable-cmo
+
+SwiftMergeGeneratedHeaders /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/DerivedSources/CasitaDexAuditTests-Swift.h /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests-Swift.h (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke
+    builtin-swiftHeaderTool -arch arm64 /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests-Swift.h -o /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/DerivedSources/CasitaDexAuditTests-Swift.h
+
+Copy /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos/CasitaDexAuditTests.swiftmodule/arm64-apple-ios.swiftmodule /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.swiftmodule (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -strip-unsigned-binaries -strip-deterministic -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip -resolve-src-symlinks -rename /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.swiftmodule /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos/CasitaDexAuditTests.swiftmodule/arm64-apple-ios.swiftmodule
+
+Copy /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos/CasitaDexAuditTests.swiftmodule/arm64-apple-ios.abi.json /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.abi.json (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -strip-unsigned-binaries -strip-deterministic -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip -resolve-src-symlinks -rename /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.abi.json /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos/CasitaDexAuditTests.swiftmodule/arm64-apple-ios.abi.json
+
+Copy /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos/CasitaDexAuditTests.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.swiftsourceinfo (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -strip-unsigned-binaries -strip-deterministic -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip -resolve-src-symlinks -rename /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.swiftsourceinfo /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos/CasitaDexAuditTests.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo
+
+Copy /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos/CasitaDexAuditTests.swiftmodule/arm64-apple-ios.swiftdoc /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.swiftdoc (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -strip-unsigned-binaries -strip-deterministic -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip -resolve-src-symlinks -rename /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.swiftdoc /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos/CasitaDexAuditTests.swiftmodule/arm64-apple-ios.swiftdoc
+
+SwiftDriverJobDiscovery normal arm64 Compiling SearchLocationTests.swift (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+
+SwiftDriver\ Compilation CasitaDexAuditTests normal arm64 com.apple.xcode.tools.swift.compiler (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke
+    builtin-Swift-Compilation -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name CasitaDexAuditTests -Onone @/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.SwiftFileList -module-alias Testing\=_Testing_Unavailable -plugin-path /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing -enable-bare-slash-regex -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.2.sdk -target arm64-apple-ios17.0 -g -module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Index.noindex/DataStore -swift-version 5 -I /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos -Isystem /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/lib -F /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Frameworks -F /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.2.sdk/Developer/Library/Frameworks -parse-as-library -c -j12 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKStatCaches.noindex/iphoneos27.2-24B8118-6890c9e4970e00494a266ff652f095d9.sdkstatcache -output-file-map /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests-OutputFileMap.json -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/ModuleCache.noindex -sdk-module-cache-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules -emit-dependencies -emit-module -emit-module-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.swiftmodule -serialize-diagnostics -dependency-scan-serialize-diagnostics-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests-dependency-scan.dia -validate-clang-modules-once -clang-build-session-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -emit-const-values -const-gather-protocols-list /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests_const_extract_protocols.json -Xcc -iquote -Xcc /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-generated-files.hmap -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-own-target-headers.hmap -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-all-target-headers.hmap -Xcc -iquote -Xcc /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests-project-headers.hmap -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos/include -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/DerivedSources-normal/arm64 -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/DerivedSources/arm64 -Xcc -I/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/DerivedSources -emit-objc-header -emit-objc-header-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests-Swift.h -working-directory /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke -experimental-emit-module-separately -disable-cmo
+
+Ld /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/CasitaDexAuditTests normal (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target arm64-apple-ios17.0 -bundle -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.2.sdk -Os -Xlinker -no_warn_duplicate_libraries -L/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphoneos -L/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos -L/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/lib -F/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphoneos -F/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos -iframework /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Frameworks -iframework /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.2.sdk/Developer/Library/Frameworks -filelist /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.LinkFileList -Xlinker -rpath -Xlinker /usr/lib/swift -Xlinker -rpath -Xlinker @loader_path/Frameworks -Xlinker -rpath -Xlinker @executable_path/Frameworks -Xlinker -dead_strip -Xlinker -object_path_lto -Xlinker /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests_lto.o -rdynamic -Xlinker -dependency_info -Xlinker /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests_dependency_info.dat -fobjc-link-runtime -L/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos -L/usr/lib/swift -Xlinker -add_ast_path -Xlinker /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.swiftmodule -Xlinker -needed_framework -Xlinker XCTest -framework XCTest -Xlinker -needed-lXCTestSwiftSupport -lXCTestSwiftSupport -Xlinker -no_adhoc_codesign -o /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/CasitaDexAuditTests
+
+CopySwiftLibs /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke
+    builtin-swiftStdLibTool --copy --verbose --sign 382E8042B67FA0785492B570BF93BA326E778042 --scan-executable /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/CasitaDexAuditTests --scan-folder /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/Frameworks --scan-folder /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/PlugIns --scan-folder /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/SystemExtensions --scan-folder /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/Extensions --platform iphoneos --toolchain /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --destination /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/Frameworks --strip-bitcode --scan-executable /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/lib/libXCTestSwiftSupport.dylib --strip-bitcode-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip --emit-dependency-info /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/SwiftStdLibToolInputDependencies.dep --filter-for-swift-os
+
+ExtractAppIntentsMetadata (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsmetadataprocessor --toolchain-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --module-name CasitaDexAuditTests --sdk-root /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS27.2.sdk --xcode-version 27B52 --platform-family iOS --deployment-target 17.0 --bundle-identifier com.designsbyfa.casitadex.audit-tests --output /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest --target-triple arm64-apple-ios17.0 --binary-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/CasitaDexAuditTests --dependency-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests_dependency_info.dat --stringsdata-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/ExtractedAppShortcutsMetadata.stringsdata --source-file-list /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.SwiftFileList --metadata-file-list /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests.DependencyMetadataFileList --static-metadata-file-list /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests.DependencyStaticMetadataFileList --swift-const-vals-list /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/Objects-normal/arm64/CasitaDexAuditTests.SwiftConstValuesFileList --compile-time-extraction --deployment-aware-processing --no-app-shortcuts-localization
+2026-11-17 10:31:54.252 appintentsmetadataprocessor[60379:8241726] Starting App Intents metadata extraction
+2026-11-17 10:31:54.253 appintentsmetadataprocessor[60379:8241726] warning: Metadata extraction skipped, no AppIntents.framework dependency found
+
+GenerateDSYMFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest.dSYM /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/CasitaDexAuditTests (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke
+    export PATH\=/Applications/Xcode.app/Contents/SharedFrameworks/SwiftBuild.framework/Versions/A/PlugIns/SWBBuildService.bundle/Contents/PlugIns/SWBUniversalPlatformPlugin.bundle/Contents/Frameworks/SWBUniversalPlatform.framework/Resources:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/local/bin:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/libexec:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/usr/bin:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/usr/local/bin:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/usr/local/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/local/bin:/Users/franciscofranco/.nvm/versions/node/v24.22.1/bin:/Users/franciscofranco/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin:/Library/Apple/usr/bin:/Volumes/FA-Development/Designs-by-FA/Tools/MaestroCLI/bin:/Users/franciscofranco/.maestro/bin
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/dsymutil /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/CasitaDexAuditTests -o /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest.dSYM
+
+AppIntentsSSUTraining (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsnltrainingprocessor --infoplist-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/Info.plist --temp-dir-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/ssu --bundle-id com.designsbyfa.casitadex.audit-tests --product-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest --extracted-metadata-path /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/Metadata.appintents --metadata-file-list /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests.DependencyMetadataFileList --source-file /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/Info.plist --archive-ssu-assets
+2026-11-17 10:31:54.268 appintentsnltrainingprocessor[60381:8241730] Parsing options for appintentsnltrainingprocessor
+2026-11-17 10:31:54.268 appintentsnltrainingprocessor[60381:8241730] Starting AppIntents SSU YAML Generation
+2026-11-17 10:31:54.268 appintentsnltrainingprocessor[60381:8241730] No AppShortcuts found - Skipping.
+
+CopyPlistFile /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/Info.plist /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Agents/XCTRunner.app/Info.plist (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke
+    builtin-copyPlist --validate --convert xml1 --macro-expansion WRAPPEDPRODUCTNAME CasitaDexAuditTests-Runner --macro-expansion WRAPPEDPRODUCTBUNDLEIDENTIFIER com.designsbyfa.casitadex.audit-tests.xctrunner --macro-expansion TESTPRODUCTNAME CasitaDexAuditTests --macro-expansion TESTPRODUCTBUNDLEIDENTIFIER com.designsbyfa.casitadex.audit-tests --copy-value UIDeviceFamily /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest/Info.plist --outdir /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app -- /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Agents/XCTRunner.app/Info.plist
+
+MkDir /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke
+    /bin/mkdir -p /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app
+
+CopyAndPreserveArchs /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/CasitaDexAuditTests-Runner (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Agents/XCTRunner.app/XCTRunner -output /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/CasitaDexAuditTests-Runner -extract arm64
+
+Copy /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PkgInfo /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Agents/XCTRunner.app/PkgInfo (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -strip-unsigned-binaries -strip-deterministic -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip -resolve-src-symlinks /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Agents/XCTRunner.app/PkgInfo /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app
+
+CodeSign /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke
+    
+    Signing Identity:     "Apple Development: Francisco Franco (V4MV3CY63M)"
+    Provisioning Profile: "iOS Team Provisioning Profile: *"
+                          (813738c7-b9ad-4aba-a88f-80aac2e97e8c)
+    
+    /usr/bin/codesign --force --sign 382E8042B67FA0785492B570BF93BA326E778042 --entitlements /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests.xctest.xcent --timestamp\=none --generate-entitlement-der --strip-disallowed-xattrs /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest
+
+CodeSign /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke
+    
+    Signing Identity:     "Apple Development: Francisco Franco (V4MV3CY63M)"
+    Provisioning Profile: "iOS Team Provisioning Profile: *"
+                          (813738c7-b9ad-4aba-a88f-80aac2e97e8c)
+    
+    /usr/bin/codesign --force --sign 382E8042B67FA0785492B570BF93BA326E778042 --entitlements /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/CasitaDexAudit.build/Debug-iphoneos/CasitaDexAuditTests.build/CasitaDexAuditTests.xctest.xcent --timestamp\=none --generate-entitlement-der --strip-disallowed-xattrs /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app
+/Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app: replacing existing signature
+
+RegisterExecutionPolicyException /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke
+    builtin-RegisterExecutionPolicyException /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest
+
+Touch /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest (in target 'CasitaDexAuditTests' from project 'CasitaDexAudit')
+    cd /Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/qa-smoke
+    /usr/bin/touch -c /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Products/Debug-iphoneos/CasitaDexAuditTests-Runner.app/PlugIns/CasitaDexAuditTests.xctest
+
+PruneExplicitPrecompiledModules /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules
+
+PruneExplicitPrecompiledModules /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/SDKExplicitPrecompiledModules
+
+PruneExplicitPrecompiledModules /Volumes/FA-Development/Designs-by-FA/Apple-Builds/DerivedData/CasitaDexAudit-hjyibuucizlpmgdyhjhuqrrnfjao/Build/Intermediates.noindex/ExplicitPrecompiledModules
+
+2026-11-17 10:31:56.267345-0600 CasitaDexAuditTests-Runner[25384:7047444] [Default] Running tests...
+    t =      nans Interface orientation changed to Portrait
+2026-11-17 10:31:56.530054-0600 CasitaDexAuditTests-Runner[25384:7047478] [AXLoading] No code items decoded from URL /System/Library/AccessibilityBundles/popbundles.axbundlemap
+Test Suite 'Selected tests' started at 2026-11-17 10:31:56.543.
+Test Suite 'CasitaDexAuditTests.xctest' started at 2026-11-17 10:31:56.544.
+Test Suite 'EditorialAcceptanceTests' started at 2026-11-17 10:31:56.544.
+Test Case '-[CasitaDexAuditTests.EditorialAcceptanceTests testApprovedHomeAndControls]' started.
+    t =     0.00s Start Test at 2026-11-17 10:31:56.544
+    t =     0.01s Set Up
+    t =     0.01s Open com.designsbyfa.casitadex.plusstoreqa
+    t =     0.01s     Launch com.designsbyfa.casitadex.plusstoreqa
+    t =     0.01s         Terminate com.designsbyfa.casitadex.plusstoreqa:25382
+    t =     1.16s         Setting up automation session
+    t =     1.23s         Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     2.29s Waiting 10.0s for "Home" Any to exist
+    t =     3.31s     Checking `Expect predicate `existsNoRetry == 1` for object "Home" Any`
+    t =     3.31s         Checking existence of `"Home" Any`
+    t =     3.32s             Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =     3.36s Find the "Home" Any
+    t =     3.36s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =     3.40s Find the "Home" Other
+    t =     3.40s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =     3.44s Find the "Home" Other
+    t =     3.44s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =     3.47s Tap "Home" Other
+    t =     3.47s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     3.48s     Find the "Home" Other
+    t =     3.48s         Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =     3.50s     Check for interrupting elements affecting "Home" Other
+    t =     3.53s         Wait for com.apple.SleepLockScreen to idle
+    t =     3.53s         Requesting snapshot of accessibility hierarchy for app with pid 6798
+    t =     3.54s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =     3.54s         Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =     3.56s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =     3.58s     Synthesize event
+    t =     3.87s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     3.88s Waiting 10.0s for "Search Memories" Any to exist
+    t =     4.89s     Checking `Expect predicate `existsNoRetry == 1` for object "Search Memories" Any`
+    t =     4.89s         Checking existence of `"Search Memories" Any`
+    t =     4.90s             Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =     4.92s Find the "A place for everything you want to remember." Any
+    t =     4.93s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =     4.96s Find the "A place for everything you want to remember." StaticText
+    t =     4.97s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =     5.00s Find the "A place for everything you want to remember." StaticText
+    t =     5.01s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =     5.04s Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =     5.04s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =     5.16s Added attachment named 'home-hero'
+    t =     5.16s Checking existence of `"Home" Any`
+    t =     5.17s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =     5.18s Checking existence of `"Photos" Any`
+    t =     5.18s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =     5.20s Checking existence of `"Reminders" Any`
+    t =     5.20s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =     5.21s Checking existence of `"Find" Any`
+    t =     5.21s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =     5.22s Waiting 10.0s for "Find" Any to exist
+    t =     6.24s     Checking `Expect predicate `existsNoRetry == 1` for object "Find" Any`
+    t =     6.24s         Checking existence of `"Find" Any`
+    t =     6.25s             Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =     6.27s Find the "Find" Any
+    t =     6.27s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =     6.31s Find the "Find" Other
+    t =     6.31s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =     6.35s Find the "Find" Other
+    t =     6.35s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =     6.40s Tap "Find" Other
+    t =     6.40s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     6.40s     Find the "Find" Other
+    t =     6.41s         Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =     6.43s     Check for interrupting elements affecting "Find" Other
+    t =     6.44s         Wait for com.apple.SleepLockScreen to idle
+    t =     6.45s         Requesting snapshot of accessibility hierarchy for app with pid 6798
+    t =     6.46s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =     6.46s         Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =     6.47s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =     6.49s     Synthesize event
+    t =     6.79s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     6.79s Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =     6.79s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =     6.90s Added attachment named 'find-action-lines'
+    t =     6.90s Waiting 10.0s for "Home" Any to exist
+    t =     7.93s     Checking `Expect predicate `existsNoRetry == 1` for object "Home" Any`
+    t =     7.93s         Checking existence of `"Home" Any`
+    t =     7.93s             Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =     7.95s Find the "Home" Any
+    t =     7.96s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =     7.99s Find the "Home" Other
+    t =     7.99s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =     8.03s Find the "Home" Other
+    t =     8.03s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =     8.06s Tap "Home" Other
+    t =     8.06s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     8.06s     Find the "Home" Other
+    t =     8.06s         Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =     8.09s     Check for interrupting elements affecting "Home" Other
+    t =     8.09s         Wait for com.apple.SleepLockScreen to idle
+    t =     8.10s         Requesting snapshot of accessibility hierarchy for app with pid 6798
+    t =     8.10s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =     8.10s         Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =     8.12s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =     8.13s     Synthesize event
+    t =     8.41s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     8.42s Waiting 10.0s for "Add Memory" Any to exist
+    t =     9.43s     Checking `Expect predicate `existsNoRetry == 1` for object "Add Memory" Any`
+    t =     9.43s         Checking existence of `"Add Memory" Any`
+    t =     9.43s             Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =     9.46s Find the "Add Memory" Any
+    t =     9.46s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =     9.50s Find the "Add Memory" Button
+    t =     9.50s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =     9.53s Find the "Add Memory" Button
+    t =     9.54s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =     9.58s Tap "Add Memory" Button
+    t =     9.58s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     9.58s     Find the "Add Memory" Button
+    t =     9.58s         Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =     9.61s     Check for interrupting elements affecting "Add Memory" Button
+    t =     9.62s         Wait for com.apple.SleepLockScreen to idle
+    t =     9.62s         Requesting snapshot of accessibility hierarchy for app with pid 6798
+    t =     9.63s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =     9.63s         Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =     9.65s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =     9.68s     Synthesize event
+    t =     9.96s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    10.25s Waiting 2.0s for "Resume draft" Any to exist
+    t =    11.26s     Checking `Expect predicate `existsNoRetry == 1` for object "Resume draft" Any`
+    t =    11.26s         Checking existence of `"Resume draft" Any`
+    t =    11.27s             Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    11.32s Waiting 10.0s for "Resume draft" Any to exist
+    t =    12.33s     Checking `Expect predicate `existsNoRetry == 1` for object "Resume draft" Any`
+    t =    12.33s         Checking existence of `"Resume draft" Any`
+    t =    12.34s             Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    12.41s Find the "Resume draft" Any
+    t =    12.41s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    12.49s Find the "Resume draft" Button
+    t =    12.49s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    12.57s Find the "Resume draft" Button
+    t =    12.57s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    12.64s Tap "Resume draft" Button
+    t =    12.64s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    12.65s     Find the "Resume draft" Button
+    t =    12.65s         Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    12.71s     Check for interrupting elements affecting "Resume draft" Button
+    t =    12.72s         Wait for com.apple.SleepLockScreen to idle
+    t =    12.73s         Requesting snapshot of accessibility hierarchy for app with pid 6798
+    t =    12.74s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =    12.74s         Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    12.78s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =    12.79s Failed to construct element query matching interruption. Interrupting element Alert, foreground application Application 'com.designsbyfa.casitadex.plusstoreqa', element application: (null). If your test failed after this unhandled interruption, please file a bug and attach your .xcresult bundle.
+    t =    12.81s     Synthesize event
+    t =    13.11s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    13.36s Waiting 10.0s for "Choose Space" Any to exist
+    t =    14.38s     Checking `Expect predicate `existsNoRetry == 1` for object "Choose Space" Any`
+    t =    14.38s         Checking existence of `"Choose Space" Any`
+    t =    14.38s             Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    14.45s Find the "Choose Space" Any
+    t =    14.45s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    14.53s Find the "Choose ▾" Button
+    t =    14.53s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    14.60s Find the "Choose ▾" Button
+    t =    14.60s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    14.67s Tap "Choose ▾" Button
+    t =    14.67s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    14.67s     Find the "Choose ▾" Button
+    t =    14.67s         Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    14.73s     Check for interrupting elements affecting "Choose ▾" Button
+    t =    14.75s         Wait for com.apple.SleepLockScreen to idle
+    t =    14.75s         Requesting snapshot of accessibility hierarchy for app with pid 6798
+    t =    14.76s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =    14.77s         Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    14.81s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =    14.83s     Synthesize event
+    t =    15.13s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    15.50s Waiting 5.0s for "Cancel" Any to exist
+    t =    16.53s     Checking `Expect predicate `existsNoRetry == 1` for object "Cancel" Any`
+    t =    16.53s         Checking existence of `"Cancel" Any`
+    t =    16.53s             Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    16.57s Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    16.57s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    16.70s Added attachment named 'Choose Space'
+    t =    16.70s Waiting 10.0s for "Cancel" Any to exist
+    t =    17.71s     Checking `Expect predicate `existsNoRetry == 1` for object "Cancel" Any`
+    t =    17.71s         Checking existence of `"Cancel" Any`
+    t =    17.72s             Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    17.75s Find the "Cancel" Any
+    t =    17.76s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    17.80s Find the "Cancel" Button
+    t =    17.80s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    17.85s Find the "Cancel" Button
+    t =    17.85s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    17.89s Tap "Cancel" Button
+    t =    17.89s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    17.90s     Find the "Cancel" Button
+    t =    17.90s         Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    17.93s     Check for interrupting elements affecting "Cancel" Button
+    t =    17.94s         Wait for com.apple.SleepLockScreen to idle
+    t =    17.95s         Requesting snapshot of accessibility hierarchy for app with pid 6798
+    t =    17.96s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =    17.97s         Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    17.99s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =    18.01s     Synthesize event
+    t =    18.31s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    18.65s Waiting 10.0s for "Choose Categories" Any to exist
+    t =    19.66s     Checking `Expect predicate `existsNoRetry == 1` for object "Choose Categories" Any`
+    t =    19.66s         Checking existence of `"Choose Categories" Any`
+    t =    19.67s             Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    19.73s Find the "Choose Categories" Any
+    t =    19.74s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    19.81s Find the "Choose ▾" Button
+    t =    19.81s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    19.88s Find the "Choose ▾" Button
+    t =    19.89s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    19.96s Tap "Choose ▾" Button
+    t =    19.96s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    19.96s     Find the "Choose ▾" Button
+    t =    19.96s         Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    20.02s     Check for interrupting elements affecting "Choose ▾" Button
+    t =    20.03s         Wait for com.apple.SleepLockScreen to idle
+    t =    20.04s         Requesting snapshot of accessibility hierarchy for app with pid 6798
+    t =    20.05s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =    20.05s         Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    20.09s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =    20.12s     Synthesize event
+    t =    20.41s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    20.80s Waiting 5.0s for "Cancel" Any to exist
+    t =    21.82s     Checking `Expect predicate `existsNoRetry == 1` for object "Cancel" Any`
+    t =    21.82s         Checking existence of `"Cancel" Any`
+    t =    21.83s             Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    21.88s Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    21.88s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    22.01s Added attachment named 'Choose Categories'
+    t =    22.01s Waiting 10.0s for "Cancel" Any to exist
+    t =    23.01s     Checking `Expect predicate `existsNoRetry == 1` for object "Cancel" Any`
+    t =    23.01s         Checking existence of `"Cancel" Any`
+    t =    23.02s             Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    23.06s Find the "Cancel" Any
+    t =    23.07s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    23.12s Find the "Cancel" Button
+    t =    23.12s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    23.18s Find the "Cancel" Button
+    t =    23.18s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    23.23s Tap "Cancel" Button
+    t =    23.23s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    23.23s     Find the "Cancel" Button
+    t =    23.24s         Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    23.28s     Check for interrupting elements affecting "Cancel" Button
+    t =    23.29s         Wait for com.apple.SleepLockScreen to idle
+    t =    23.30s         Requesting snapshot of accessibility hierarchy for app with pid 6798
+    t =    23.31s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =    23.32s         Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    23.34s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =    23.36s     Synthesize event
+    t =    23.66s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    24.03s Waiting 10.0s for "Choose Location" Any to exist
+    t =    25.05s     Checking `Expect predicate `existsNoRetry == 1` for object "Choose Location" Any`
+    t =    25.05s         Checking existence of `"Choose Location" Any`
+    t =    25.05s             Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    25.12s Find the "Choose Location" Any
+    t =    25.12s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    25.19s Find the "Choose ▾" Button
+    t =    25.19s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    25.26s Find the "Choose ▾" Button
+    t =    25.26s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    25.32s Tap "Choose ▾" Button
+    t =    25.32s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    25.33s     Find the "Choose ▾" Button
+    t =    25.33s         Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    25.38s     Check for interrupting elements affecting "Choose ▾" Button
+    t =    25.40s         Wait for com.apple.SleepLockScreen to idle
+    t =    25.40s         Requesting snapshot of accessibility hierarchy for app with pid 6798
+    t =    25.41s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =    25.42s         Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    25.45s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =    25.48s     Synthesize event
+    t =    25.77s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    26.13s Waiting 5.0s for "Cancel" Any to exist
+    t =    27.15s     Checking `Expect predicate `existsNoRetry == 1` for object "Cancel" Any`
+    t =    27.15s         Checking existence of `"Cancel" Any`
+    t =    27.15s             Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    27.19s Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    27.19s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    27.32s Added attachment named 'Choose Location'
+    t =    27.32s Waiting 10.0s for "Cancel" Any to exist
+    t =    28.33s     Checking `Expect predicate `existsNoRetry == 1` for object "Cancel" Any`
+    t =    28.33s         Checking existence of `"Cancel" Any`
+    t =    28.34s             Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    28.37s Find the "Cancel" Any
+    t =    28.38s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    28.42s Find the "Cancel" Button
+    t =    28.43s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    28.47s Find the "Cancel" Button
+    t =    28.47s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    28.52s Tap "Cancel" Button
+    t =    28.52s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    28.52s     Find the "Cancel" Button
+    t =    28.53s         Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    28.56s     Check for interrupting elements affecting "Cancel" Button
+    t =    28.57s         Wait for com.apple.SleepLockScreen to idle
+    t =    28.58s         Requesting snapshot of accessibility hierarchy for app with pid 6798
+    t =    28.58s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =    28.59s         Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    28.61s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =    28.63s     Synthesize event
+    t =    28.93s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    29.29s Waiting 10.0s for "+ Add Photo" Any to exist
+    t =    30.30s     Checking `Expect predicate `existsNoRetry == 1` for object "+ Add Photo" Any`
+    t =    30.30s         Checking existence of `"+ Add Photo" Any`
+    t =    30.30s             Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    30.37s Find the "+ Add Photo" Any
+    t =    30.37s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    30.45s Find the "+ Add Photo" Button
+    t =    30.45s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    30.51s Find the ScrollView (First Match)
+    t =    30.52s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    30.56s Press ScrollView (First Match)[0.01, 0.80] for 0.1 seconds, then drag to ScrollView (First Match)[0.01, 0.20] with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+    t =    30.56s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    30.56s     Find the ScrollView (First Match)
+    t =    30.56s         Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    30.61s     Check for interrupting elements affecting ScrollView
+    t =    30.62s         Wait for com.apple.SleepLockScreen to idle
+    t =    30.63s         Requesting snapshot of accessibility hierarchy for app with pid 6798
+    t =    30.64s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =    30.64s         Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    30.68s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =    30.69s     Synthesize event
+    t =    30.69s         Find the ScrollView at {{0.0, 215.0}, {440.0, 631.0}}
+    t =    30.70s             Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    30.74s         Find the ScrollView at {{0.0, 215.0}, {440.0, 631.0}}
+    t =    30.75s             Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    30.79s         Find the ScrollView (First Match)
+    t =    30.79s             Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    30.84s         Find the ScrollView at {{0.0, 215.0}, {440.0, 631.0}}
+    t =    30.84s             Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    30.89s         Find the ScrollView at {{0.0, 215.0}, {440.0, 631.0}}
+    t =    30.90s             Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    31.99s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    32.36s Find the "+ Add Photo" Button
+    t =    32.37s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    32.45s Find the "+ Add Photo" Button
+    t =    32.45s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    32.52s Find the "+ Add Photo" Button
+    t =    32.53s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    32.60s Tap "+ Add Photo" Button
+    t =    32.60s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    32.60s     Find the "+ Add Photo" Button
+    t =    32.60s         Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    32.66s     Check for interrupting elements affecting "+ Add Photo" Button
+    t =    32.67s         Wait for com.apple.SleepLockScreen to idle
+    t =    32.68s         Requesting snapshot of accessibility hierarchy for app with pid 6798
+    t =    32.69s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =    32.69s         Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    32.73s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =    32.76s     Synthesize event
+    t =    33.05s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    33.06s Waiting 5.0s for "Take Photo" Any to exist
+    t =    34.06s     Checking `Expect predicate `existsNoRetry == 1` for object "Take Photo" Any`
+    t =    34.06s         Checking existence of `"Take Photo" Any`
+    t =    34.07s             Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    34.14s Find the "Take Photo" Any
+    t =    34.15s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    34.23s Find the "Take Photo" Button
+    t =    34.23s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    34.30s Find the "Take Photo" Button
+    t =    34.31s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    34.38s Find the "Take Photo" Button
+    t =    34.38s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    34.45s Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    34.45s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    34.50s Waiting 5.0s for "Choose from Library" Any to exist
+    t =    35.51s     Checking `Expect predicate `existsNoRetry == 1` for object "Choose from Library" Any`
+    t =    35.51s         Checking existence of `"Choose from Library" Any`
+    t =    35.51s             Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    35.58s Find the "Choose from Library" Any
+    t =    35.58s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    35.67s Find the "Choose from Library" Button
+    t =    35.67s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    35.73s Find the "Choose from Library" Button
+    t =    35.74s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    35.81s Find the "Choose from Library" Button
+    t =    35.81s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    35.87s Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    35.88s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    35.93s Waiting 5.0s for "Browse Files" Any to exist
+    t =    36.95s     Checking `Expect predicate `existsNoRetry == 1` for object "Browse Files" Any`
+    t =    36.95s         Checking existence of `"Browse Files" Any`
+    t =    36.95s             Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    37.03s Find the "Browse Files" Any
+    t =    37.03s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    37.11s Find the "Browse Files" Button
+    t =    37.11s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    37.18s Find the "Browse Files" Button
+    t =    37.18s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    37.25s Find the "Browse Files" Button
+    t =    37.25s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    37.32s Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    37.32s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    37.37s Waiting 5.0s for "Cancel" Any to exist
+    t =    38.39s     Checking `Expect predicate `existsNoRetry == 1` for object "Cancel" Any`
+    t =    38.39s         Checking existence of `"Cancel" Any`
+    t =    38.40s             Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    38.47s Find the "Cancel" Any
+    t =    38.47s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    38.55s Find the "Cancel" Button
+    t =    38.55s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    38.62s Find the "Cancel" Button
+    t =    38.62s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    38.69s Find the "Cancel" Button
+    t =    38.69s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    38.75s Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    38.75s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    38.80s Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    38.80s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    38.95s Added attachment named 'photo-source-lines'
+    t =    38.95s Waiting 10.0s for "Cancel" Any to exist
+    t =    39.95s     Checking `Expect predicate `existsNoRetry == 1` for object "Cancel" Any`
+    t =    39.95s         Checking existence of `"Cancel" Any`
+    t =    39.96s             Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    40.03s Find the "Cancel" Any
+    t =    40.03s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    40.11s Find the "Cancel" Button
+    t =    40.11s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    40.19s Find the "Cancel" Button
+    t =    40.19s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    40.26s Tap "Cancel" Button
+    t =    40.26s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    40.27s     Find the "Cancel" Button
+    t =    40.27s         Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    40.33s     Check for interrupting elements affecting "Cancel" Button
+    t =    40.35s         Wait for com.apple.SleepLockScreen to idle
+    t =    40.35s         Requesting snapshot of accessibility hierarchy for app with pid 6798
+    t =    40.36s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =    40.37s         Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    40.41s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =    40.43s     Synthesize event
+    t =    40.72s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    40.73s Checking existence of `"Choose from Library" Any`
+    t =    40.73s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    40.79s Waiting 10.0s for "Home" Any to exist
+    t =    41.81s     Checking `Expect predicate `existsNoRetry == 1` for object "Home" Any`
+    t =    41.81s         Checking existence of `"Home" Any`
+    t =    41.82s             Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    41.87s Find the "Home" Any
+    t =    41.87s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    41.94s Find the "Home" Other
+    t =    41.94s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    42.01s Find the "Home" Other
+    t =    42.01s     Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    42.07s Tap "Home" Other
+    t =    42.07s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    42.07s     Find the "Home" Other
+    t =    42.08s         Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    42.13s     Check for interrupting elements affecting "Home" Other
+    t =    42.14s         Wait for com.apple.SleepLockScreen to idle
+    t =    42.15s         Requesting snapshot of accessibility hierarchy for app with pid 6798
+    t =    42.16s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =    42.16s         Requesting snapshot of accessibility hierarchy for app with pid 25385
+    t =    42.20s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =    42.22s     Synthesize event
+    t =    42.52s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    42.53s Tear Down
+Test Case '-[CasitaDexAuditTests.EditorialAcceptanceTests testApprovedHomeAndControls]' passed (42.624 seconds).
+Test Suite 'EditorialAcceptanceTests' passed at 2026-11-17 10:32:39.169.
+	 Executed 1 test, with 0 failures (0 unexpected) in 42.624 (42.625) seconds
+Test Suite 'PhysicalNotificationTests' started at 2026-11-17 10:32:39.171.
+Test Case '-[CasitaDexAuditTests.PhysicalNotificationTests testBackgroundNotificationTap]' started.
+    t =     0.00s Start Test at 2026-11-17 10:32:39.174
+    t =     0.02s Set Up
+    t =     0.03s Open com.designsbyfa.casitadex.plusstoreqa
+    t =     0.03s     Launch com.designsbyfa.casitadex.plusstoreqa
+    t =     0.03s         Terminate com.designsbyfa.casitadex.plusstoreqa:25385
+    t =     1.17s         Setting up automation session
+    t =     1.26s         Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     2.31s Waiting 12.0s for "Home" Any to exist
+    t =     3.33s     Checking `Expect predicate `existsNoRetry == 1` for object "Home" Any`
+    t =     3.34s         Checking existence of `"Home" Any`
+    t =     3.34s             Requesting snapshot of accessibility hierarchy for app with pid 25398
+    t =     3.41s Find the "Home" Any
+    t =     3.41s     Requesting snapshot of accessibility hierarchy for app with pid 25398
+    t =     3.45s Tap "Home" Other
+    t =     3.45s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     3.45s     Find the "Home" Other
+    t =     3.46s         Requesting snapshot of accessibility hierarchy for app with pid 25398
+    t =     3.48s     Check for interrupting elements affecting "Home" Other
+    t =     3.49s         Wait for com.apple.SleepLockScreen to idle
+    t =     3.50s         Requesting snapshot of accessibility hierarchy for app with pid 6798
+    t =     3.51s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =     3.51s         Requesting snapshot of accessibility hierarchy for app with pid 25398
+    t =     3.54s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =     3.56s     Synthesize event
+    t =     3.85s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     3.85s Waiting 12.0s for "Reminders" Any to exist
+    t =     4.87s     Checking `Expect predicate `existsNoRetry == 1` for object "Reminders" Any`
+    t =     4.87s         Checking existence of `"Reminders" Any`
+    t =     4.87s             Requesting snapshot of accessibility hierarchy for app with pid 25398
+    t =     4.91s Find the "Reminders" Any
+    t =     4.92s     Requesting snapshot of accessibility hierarchy for app with pid 25398
+    t =     4.96s Tap "Reminders" Other
+    t =     4.96s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     4.97s     Find the "Reminders" Other
+    t =     4.97s         Requesting snapshot of accessibility hierarchy for app with pid 25398
+    t =     5.00s     Check for interrupting elements affecting "Reminders" Other
+    t =     5.01s         Wait for com.apple.SleepLockScreen to idle
+    t =     5.01s         Requesting snapshot of accessibility hierarchy for app with pid 6798
+    t =     5.02s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =     5.03s         Requesting snapshot of accessibility hierarchy for app with pid 25398
+    t =     5.05s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =     5.07s     Synthesize event
+    t =     5.36s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     5.37s Waiting 12.0s for "Add Reminder ›" Any to exist
+    t =     6.37s     Checking `Expect predicate `existsNoRetry == 1` for object "Add Reminder ›" Any`
+    t =     6.37s         Checking existence of `"Add Reminder ›" Any`
+    t =     6.37s             Requesting snapshot of accessibility hierarchy for app with pid 25398
+    t =     6.42s Find the "Add Reminder ›" Any
+    t =     6.42s     Requesting snapshot of accessibility hierarchy for app with pid 25398
+    t =     6.47s Tap "Add Reminder ›" Button
+    t =     6.47s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     6.47s     Find the "Add Reminder ›" Button
+    t =     6.47s         Requesting snapshot of accessibility hierarchy for app with pid 25398
+    t =     6.51s     Check for interrupting elements affecting "Add Reminder ›" Button
+    t =     6.52s         Wait for com.apple.SleepLockScreen to idle
+    t =     6.52s         Requesting snapshot of accessibility hierarchy for app with pid 6798
+    t =     6.54s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =     6.54s         Requesting snapshot of accessibility hierarchy for app with pid 25398
+    t =     6.56s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =     6.59s     Synthesize event
+    t =     6.88s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     6.88s Waiting 10.0s for "Reminder title (Required)" TextView to exist
+    t =     7.88s     Checking `Expect predicate `existsNoRetry == 1` for object "Reminder title (Required)" TextView`
+    t =     7.89s         Checking existence of `"Reminder title (Required)" TextView`
+    t =     7.89s             Requesting snapshot of accessibility hierarchy for app with pid 25398
+    t =     7.94s Tap "Reminder title (Required)" TextView
+    t =     7.94s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     7.95s     Find the "Reminder title (Required)" TextView
+    t =     7.95s         Requesting snapshot of accessibility hierarchy for app with pid 25398
+    t =     7.98s     Check for interrupting elements affecting "Reminder title (Required)" TextView
+    t =     8.00s         Wait for com.apple.SleepLockScreen to idle
+    t =     8.00s         Requesting snapshot of accessibility hierarchy for app with pid 6798
+    t =     8.01s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =     8.02s         Requesting snapshot of accessibility hierarchy for app with pid 25398
+    t =     8.04s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =     8.05s     Synthesize event
+    t =     8.34s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     8.36s Type 'QA iPhone backgrou...' into "Reminder title (Required)" TextView
+    t =     8.36s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     8.74s     Find the "Reminder title (Required)" TextView
+    t =     8.75s         Requesting snapshot of accessibility hierarchy for app with pid 25398
+    t =     8.82s     Check for interrupting elements affecting "Reminder title (Required)" TextView
+    t =     8.84s         Wait for com.apple.SleepLockScreen to idle
+    t =     8.84s         Requesting snapshot of accessibility hierarchy for app with pid 6798
+    t =     8.85s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =     8.85s         Requesting snapshot of accessibility hierarchy for app with pid 25398
+    t =     8.89s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =     8.89s     Synthesize event
+    t =     9.77s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     9.78s Swipe down Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =     9.78s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =     9.78s     Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =     9.79s         Requesting snapshot of accessibility hierarchy for app with pid 25398
+    t =     9.86s     Check for interrupting elements affecting "CasitaDex Plus Store QA" Application
+    t =     9.87s         Wait for com.apple.SleepLockScreen to idle
+    t =     9.87s         Requesting snapshot of accessibility hierarchy for app with pid 6798
+    t =     9.88s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =     9.89s         Requesting snapshot of accessibility hierarchy for app with pid 25398
+    t =     9.94s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =     9.94s     Synthesize event
+    t =    10.38s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    10.87s Tap Button (First Match)
+    t =    10.87s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    10.87s     Find the Button (First Match)
+    t =    10.88s         Requesting snapshot of accessibility hierarchy for app with pid 25398
+    t =    10.96s     Check for interrupting elements affecting "10:42 AM" Button
+    t =    10.97s         Wait for com.apple.SleepLockScreen to idle
+    t =    10.98s         Requesting snapshot of accessibility hierarchy for app with pid 6798
+    t =    10.99s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =    10.99s         Requesting snapshot of accessibility hierarchy for app with pid 25398
+    t =    11.05s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =    11.05s     Synthesize event
+    t =    11.36s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    11.81s Get number of matches for: Descendants matching type PickerWheel
+    t =    11.81s     Requesting snapshot of accessibility hierarchy for app with pid 25398
+    t =    11.86s     Find: Descendants matching type PickerWheel
+    t =    11.86s Find the PickerWheel (Element at index 0)
+    t =    11.86s     Requesting snapshot of accessibility hierarchy for app with pid 25398
+    t =    11.89s     Find: Descendants matching type PickerWheel
+    t =    11.90s     Find: Element at index 0
+    t =    11.91s Find the "10 o’clock" PickerWheel
+    t =    11.91s     Requesting snapshot of accessibility hierarchy for app with pid 25398
+    t =    11.94s     Find: Descendants matching type PickerWheel
+    t =    11.94s     Find: Element at index 0
+    t =    11.95s Find the PickerWheel (Element at index 1)
+    t =    11.95s     Requesting snapshot of accessibility hierarchy for app with pid 25398
+    t =    11.98s     Find: Descendants matching type PickerWheel
+    t =    11.99s     Find: Element at index 1
+    t =    12.00s Set value of "42 minutes" PickerWheel to 34
+    t =    12.00s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    12.00s     Find the "42 minutes" PickerWheel
+    t =    12.00s         Requesting snapshot of accessibility hierarchy for app with pid 25398
+    t =    12.04s         Find: Descendants matching type PickerWheel
+    t =    12.04s         Find: Element at index 1
+    t =    12.05s     Check for interrupting elements affecting "42 minutes" PickerWheel
+    t =    12.06s         Wait for com.apple.SleepLockScreen to idle
+    t =    12.07s         Requesting snapshot of accessibility hierarchy for app with pid 6798
+    t =    12.08s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =    12.08s         Requesting snapshot of accessibility hierarchy for app with pid 25398
+    t =    12.12s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =    12.12s     Synthesize event
+    t =    12.16s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    13.20s Find the "42 minutes" PickerWheel
+    t =    13.20s     Requesting snapshot of accessibility hierarchy for app with pid 25398
+    t =    13.25s     Find: Descendants matching type PickerWheel
+    t =    13.25s     Find: Element at index 1
+    t =    13.26s Find the "34 minutes" PickerWheel
+    t =    13.26s     Requesting snapshot of accessibility hierarchy for app with pid 25398
+    t =    13.30s     Find: Descendants matching type PickerWheel
+    t =    13.30s     Find: Element at index 1
+    t =    13.30s Find the PickerWheel (Element at index 2)
+    t =    13.30s     Requesting snapshot of accessibility hierarchy for app with pid 25398
+    t =    13.34s     Find: Descendants matching type PickerWheel
+    t =    13.34s     Find: Element at index 2
+    t =    13.35s Find the "AM" PickerWheel
+    t =    13.35s     Requesting snapshot of accessibility hierarchy for app with pid 25398
+    t =    13.39s     Find: Descendants matching type PickerWheel
+    t =    13.39s     Find: Element at index 2
+    t =    13.39s Waiting 12.0s for "Done" Any to exist
+    t =    14.40s     Checking `Expect predicate `existsNoRetry == 1` for object "Done" Any`
+    t =    14.40s         Checking existence of `"Done" Any`
+    t =    14.40s             Requesting snapshot of accessibility hierarchy for app with pid 25398
+    t =    14.46s Find the "Done" Any
+    t =    14.46s     Requesting snapshot of accessibility hierarchy for app with pid 25398
+    t =    14.53s Tap "Done" Button
+    t =    14.53s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    14.53s     Find the "Done" Button
+    t =    14.53s         Requesting snapshot of accessibility hierarchy for app with pid 25398
+    t =    14.58s     Check for interrupting elements affecting "Done" Button
+    t =    14.59s         Wait for com.apple.SleepLockScreen to idle
+    t =    14.60s         Requesting snapshot of accessibility hierarchy for app with pid 6798
+    t =    14.61s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =    14.61s         Requesting snapshot of accessibility hierarchy for app with pid 25398
+    t =    14.65s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =    14.66s     Synthesize event
+    t =    14.97s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    15.41s Find the "10:42 AM" Button
+    t =    15.41s     Requesting snapshot of accessibility hierarchy for app with pid 25398
+    t =    15.49s Find the "10:34 AM" Button
+    t =    15.49s     Requesting snapshot of accessibility hierarchy for app with pid 25398
+    t =    15.56s Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    15.56s     Requesting snapshot of accessibility hierarchy for app with pid 25398
+    t =    15.73s Added attachment named 'Verified notification schedule before Save'
+    t =    15.73s Waiting 12.0s for "Save Reminder" Any to exist
+    t =    16.74s     Checking `Expect predicate `existsNoRetry == 1` for object "Save Reminder" Any`
+    t =    16.74s         Checking existence of `"Save Reminder" Any`
+    t =    16.74s             Requesting snapshot of accessibility hierarchy for app with pid 25398
+    t =    16.83s Find the "Save Reminder" Any
+    t =    16.83s     Requesting snapshot of accessibility hierarchy for app with pid 25398
+    t =    16.93s Tap "Save Reminder" Button
+    t =    16.93s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    16.93s     Find the "Save Reminder" Button
+    t =    16.93s         Requesting snapshot of accessibility hierarchy for app with pid 25398
+    t =    17.02s     Check for interrupting elements affecting "Save Reminder" Button
+    t =    17.03s         Wait for com.apple.SleepLockScreen to idle
+    t =    17.03s         Requesting snapshot of accessibility hierarchy for app with pid 6798
+    t =    17.04s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =    17.05s         Requesting snapshot of accessibility hierarchy for app with pid 25398
+    t =    17.10s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =    17.12s     Synthesize event
+    t =    17.42s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    17.76s Waiting 3.0s for Alert (First Match) to exist
+    t =    18.77s     Checking `Expect predicate `existsNoRetry == 1` for object Alert (First Match)`
+    t =    18.77s         Checking existence of `Alert (First Match)`
+    t =    18.78s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    18.85s         Capturing element debug description
+    t =    19.77s     Checking `Expect predicate `existsNoRetry == 1` for object Alert (First Match)`
+    t =    19.77s         Checking existence of `Alert (First Match)`
+    t =    19.78s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    19.85s         Capturing element debug description
+    t =    20.76s     Checking `Expect predicate `existsNoRetry == 1` for object Alert (First Match)`
+    t =    20.76s         Checking existence of `Alert (First Match)`
+    t =    20.77s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    20.84s         Capturing element debug description
+    t =    20.84s     Checking existence of `Alert (First Match)`
+    t =    20.84s         Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    20.91s Collecting debug information to assist test failure triage
+    t =    20.91s     Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    21.01s Waiting 12.0s for "Home" Any to exist
+    t =    22.02s     Checking `Expect predicate `existsNoRetry == 1` for object "Home" Any`
+    t =    22.02s         Checking existence of `"Home" Any`
+    t =    22.02s             Requesting snapshot of accessibility hierarchy for app with pid 25398
+    t =    22.07s Find the "Home" Any
+    t =    22.07s     Requesting snapshot of accessibility hierarchy for app with pid 25398
+    t =    22.12s Tap "Home" Other
+    t =    22.12s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    22.12s     Find the "Home" Other
+    t =    22.13s         Requesting snapshot of accessibility hierarchy for app with pid 25398
+    t =    22.16s     Check for interrupting elements affecting "Home" Other
+    t =    22.17s         Wait for com.apple.SleepLockScreen to idle
+    t =    22.18s         Requesting snapshot of accessibility hierarchy for app with pid 6798
+    t =    22.19s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =    22.19s         Requesting snapshot of accessibility hierarchy for app with pid 25398
+    t =    22.22s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =    22.24s     Synthesize event
+    t =    22.53s     Wait for com.designsbyfa.casitadex.plusstoreqa to idle
+    t =    22.54s Pressing Home button
+    t =    23.02s Waiting 150.0s for Any (First Match) to exist
+    t =    24.09s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    24.09s         Checking existence of `Any (First Match)`
+    t =    24.09s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    24.31s         Capturing element debug description
+    t =    25.11s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    25.11s         Checking existence of `Any (First Match)`
+    t =    25.12s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    25.34s         Capturing element debug description
+    t =    26.05s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    26.06s         Checking existence of `Any (First Match)`
+    t =    26.06s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    26.28s         Capturing element debug description
+    t =    27.09s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    27.09s         Checking existence of `Any (First Match)`
+    t =    27.09s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    27.31s         Capturing element debug description
+    t =    28.11s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    28.11s         Checking existence of `Any (First Match)`
+    t =    28.12s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    28.33s         Capturing element debug description
+    t =    29.04s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    29.04s         Checking existence of `Any (First Match)`
+    t =    29.04s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    29.25s         Capturing element debug description
+    t =    30.06s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    30.06s         Checking existence of `Any (First Match)`
+    t =    30.06s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    30.27s         Capturing element debug description
+    t =    31.08s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    31.08s         Checking existence of `Any (First Match)`
+    t =    31.08s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    31.30s         Capturing element debug description
+    t =    32.12s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    32.12s         Checking existence of `Any (First Match)`
+    t =    32.13s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    32.35s         Capturing element debug description
+    t =    33.06s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    33.06s         Checking existence of `Any (First Match)`
+    t =    33.06s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    33.28s         Capturing element debug description
+    t =    34.08s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    34.08s         Checking existence of `Any (First Match)`
+    t =    34.09s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    34.30s         Capturing element debug description
+    t =    35.12s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    35.12s         Checking existence of `Any (First Match)`
+    t =    35.13s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    35.34s         Capturing element debug description
+    t =    36.06s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    36.06s         Checking existence of `Any (First Match)`
+    t =    36.06s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    36.28s         Capturing element debug description
+    t =    37.09s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    37.09s         Checking existence of `Any (First Match)`
+    t =    37.09s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    37.31s         Capturing element debug description
+    t =    38.02s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    38.02s         Checking existence of `Any (First Match)`
+    t =    38.03s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    38.25s         Capturing element debug description
+    t =    39.06s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    39.06s         Checking existence of `Any (First Match)`
+    t =    39.06s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    39.27s         Capturing element debug description
+    t =    40.09s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    40.09s         Checking existence of `Any (First Match)`
+    t =    40.10s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    40.31s         Capturing element debug description
+    t =    41.02s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    41.02s         Checking existence of `Any (First Match)`
+    t =    41.03s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    41.25s         Capturing element debug description
+    t =    42.06s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    42.06s         Checking existence of `Any (First Match)`
+    t =    42.06s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    42.27s         Capturing element debug description
+    t =    43.08s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    43.08s         Checking existence of `Any (First Match)`
+    t =    43.08s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    43.29s         Capturing element debug description
+    t =    44.10s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    44.11s         Checking existence of `Any (First Match)`
+    t =    44.11s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    44.32s         Capturing element debug description
+    t =    45.02s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    45.02s         Checking existence of `Any (First Match)`
+    t =    45.03s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    45.25s         Capturing element debug description
+    t =    46.06s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    46.06s         Checking existence of `Any (First Match)`
+    t =    46.06s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    46.29s         Capturing element debug description
+    t =    47.09s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    47.09s         Checking existence of `Any (First Match)`
+    t =    47.10s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    47.31s         Capturing element debug description
+    t =    48.12s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    48.12s         Checking existence of `Any (First Match)`
+    t =    48.12s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    48.34s         Capturing element debug description
+    t =    49.04s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    49.04s         Checking existence of `Any (First Match)`
+    t =    49.05s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    49.26s         Capturing element debug description
+    t =    50.07s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    50.07s         Checking existence of `Any (First Match)`
+    t =    50.08s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    50.28s         Capturing element debug description
+    t =    51.09s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    51.09s         Checking existence of `Any (First Match)`
+    t =    51.10s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    51.31s         Capturing element debug description
+    t =    52.02s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    52.02s         Checking existence of `Any (First Match)`
+    t =    52.03s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    52.23s         Capturing element debug description
+    t =    53.04s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    53.04s         Checking existence of `Any (First Match)`
+    t =    53.05s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    53.26s         Capturing element debug description
+    t =    54.06s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    54.06s         Checking existence of `Any (First Match)`
+    t =    54.07s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    54.29s         Capturing element debug description
+    t =    55.09s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    55.09s         Checking existence of `Any (First Match)`
+    t =    55.10s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    55.31s         Capturing element debug description
+    t =    56.02s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    56.03s         Checking existence of `Any (First Match)`
+    t =    56.03s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    56.25s         Capturing element debug description
+    t =    57.06s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    57.06s         Checking existence of `Any (First Match)`
+    t =    57.07s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    57.29s         Capturing element debug description
+    t =    58.11s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    58.11s         Checking existence of `Any (First Match)`
+    t =    58.11s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    58.32s         Capturing element debug description
+    t =    59.02s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    59.03s         Checking existence of `Any (First Match)`
+    t =    59.03s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    59.25s         Capturing element debug description
+    t =    60.06s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    60.06s         Checking existence of `Any (First Match)`
+    t =    60.06s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    60.28s         Capturing element debug description
+    t =    61.09s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    61.09s         Checking existence of `Any (First Match)`
+    t =    61.10s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    61.30s         Capturing element debug description
+    t =    62.02s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    62.02s         Checking existence of `Any (First Match)`
+    t =    62.03s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    62.24s         Capturing element debug description
+    t =    63.06s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    63.06s         Checking existence of `Any (First Match)`
+    t =    63.06s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    63.27s         Capturing element debug description
+    t =    64.07s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    64.07s         Checking existence of `Any (First Match)`
+    t =    64.08s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    64.29s         Capturing element debug description
+    t =    65.10s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    65.10s         Checking existence of `Any (First Match)`
+    t =    65.10s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    65.31s         Capturing element debug description
+    t =    66.03s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    66.03s         Checking existence of `Any (First Match)`
+    t =    66.03s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    66.24s         Capturing element debug description
+    t =    67.06s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    67.06s         Checking existence of `Any (First Match)`
+    t =    67.06s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    67.27s         Capturing element debug description
+    t =    68.07s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    68.07s         Checking existence of `Any (First Match)`
+    t =    68.08s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    68.29s         Capturing element debug description
+    t =    69.11s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    69.11s         Checking existence of `Any (First Match)`
+    t =    69.11s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    69.33s         Capturing element debug description
+    t =    70.04s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    70.04s         Checking existence of `Any (First Match)`
+    t =    70.05s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    70.25s         Capturing element debug description
+    t =    71.07s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    71.07s         Checking existence of `Any (First Match)`
+    t =    71.08s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    71.29s         Capturing element debug description
+    t =    72.11s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    72.11s         Checking existence of `Any (First Match)`
+    t =    72.11s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    72.32s         Capturing element debug description
+    t =    73.03s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    73.03s         Checking existence of `Any (First Match)`
+    t =    73.03s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    73.25s         Capturing element debug description
+    t =    74.06s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    74.06s         Checking existence of `Any (First Match)`
+    t =    74.07s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    74.28s         Capturing element debug description
+    t =    75.07s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    75.08s         Checking existence of `Any (First Match)`
+    t =    75.08s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    75.29s         Capturing element debug description
+    t =    76.11s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    76.11s         Checking existence of `Any (First Match)`
+    t =    76.11s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    76.32s         Capturing element debug description
+    t =    77.03s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    77.03s         Checking existence of `Any (First Match)`
+    t =    77.03s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    77.24s         Capturing element debug description
+    t =    78.06s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    78.06s         Checking existence of `Any (First Match)`
+    t =    78.07s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    78.28s         Capturing element debug description
+    t =    79.09s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    79.09s         Checking existence of `Any (First Match)`
+    t =    79.10s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    79.31s         Capturing element debug description
+    t =    80.12s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    80.12s         Checking existence of `Any (First Match)`
+    t =    80.13s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    80.34s         Capturing element debug description
+    t =    81.04s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    81.04s         Checking existence of `Any (First Match)`
+    t =    81.05s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    81.24s         Capturing element debug description
+    t =    82.06s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    82.06s         Checking existence of `Any (First Match)`
+    t =    82.07s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    82.26s         Capturing element debug description
+    t =    83.08s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    83.08s         Checking existence of `Any (First Match)`
+    t =    83.08s             Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    83.26s Find the Application 'com.apple.springboard'
+    t =    83.27s     Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    83.52s Added attachment named 'Lifecycle notification before tap'
+    t =    83.52s Tap Any (First Match)
+    t =    83.52s     Wait for com.apple.springboard to idle
+    t =    84.33s     Find the Any (First Match)
+    t =    84.34s         Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    84.53s     Check for interrupting elements affecting "NotificationShortLookView" BannerNotification
+    t =    84.54s         Wait for com.apple.SleepLockScreen to idle
+    t =    84.54s         Requesting snapshot of accessibility hierarchy for app with pid 6798
+    t =    84.55s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =    84.55s         Requesting snapshot of accessibility hierarchy for app with pid 267
+    t =    84.70s         Find: Descendants matching predicate identifier == "NotificationShortLookView" OR elementType == 7
+    t =    84.72s Failed to construct element query matching interruption. Interrupting element BannerNotification, {{8.0, 58.7}, {424.0, 85.3}}, identifier: 'NotificationShortLookView', foreground application Application 'com.apple.springboard', element application: (null). If your test failed after this unhandled interruption, please file a bug and attach your .xcresult bundle.
+    t =    84.72s     Synthesize event
+    t =    85.04s     Wait for com.apple.springboard to idle
+    t =    85.93s Waiting 15.0s for "Reminder title (Required)" TextView to exist
+    t =    86.94s     Checking `Expect predicate `existsNoRetry == 1` for object "Reminder title (Required)" TextView`
+    t =    86.94s         Checking existence of `"Reminder title (Required)" TextView`
+    t =    86.95s             Requesting snapshot of accessibility hierarchy for app with pid 25398
+    t =    87.00s Find the "Reminder title (Required)" TextView
+    t =    87.00s     Requesting snapshot of accessibility hierarchy for app with pid 25398
+    t =    87.04s Find the Application 'com.designsbyfa.casitadex.plusstoreqa'
+    t =    87.04s     Requesting snapshot of accessibility hierarchy for app with pid 25398
+    t =    87.17s Added attachment named 'Notification opened exact standalone reminder'
+    t =    87.17s Tear Down
+Test Case '-[CasitaDexAuditTests.PhysicalNotificationTests testBackgroundNotificationTap]' passed (87.315 seconds).
+Test Suite 'PhysicalNotificationTests' passed at 2026-11-17 10:34:06.489.
+	 Executed 1 test, with 0 failures (0 unexpected) in 87.315 (87.318) seconds
+Test Suite 'CasitaDexAuditTests.xctest' passed at 2026-11-17 10:34:06.489.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 129.939 (129.946) seconds
+Test Suite 'Selected tests' passed at 2026-11-17 10:34:06.490.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 129.939 (129.946) seconds
+2026-11-17 10:34:06.877 xcodebuild[60350:8241386] [MT] IDETestOperationsObserverDebug: 132.535 elapsed -- Testing started completed.
+2026-11-17 10:34:06.877 xcodebuild[60350:8241386] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-11-17 10:34:06.877 xcodebuild[60350:8241386] [MT] IDETestOperationsObserverDebug: 132.535 sec, +132.535 sec -- end
+
+Test session results, code coverage, and logs:
+	/Volumes/FA-Development/Designs-by-FA/Apple-Builds/Release-Closure-20261117/physical-focused-r2.xcresult
+
+** TEST SUCCEEDED **
+
+Testing started

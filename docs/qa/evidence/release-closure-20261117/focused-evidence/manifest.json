@@ -1,0 +1,95 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "00008150-0014306C2644401C",
+        "deviceName" : "iPhone",
+        "exportedFileName" : "9A1C255B-35BB-4BC7-804E-859BEB21D382.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "photo-source-lines_0_6F218788-5D83-4698-848B-43CA469CE95E.png",
+        "timestamp" : 1794933155.49
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "00008150-0014306C2644401C",
+        "deviceName" : "iPhone",
+        "exportedFileName" : "E0FCEBD3-7E4F-4DEE-8E67-91566124E885.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Choose Location_0_6B8289FC-F34C-415A-AC16-7E78747FAD8B.png",
+        "timestamp" : 1794933143.864
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "00008150-0014306C2644401C",
+        "deviceName" : "iPhone",
+        "exportedFileName" : "DF43DEC9-6F00-4425-9A0D-57A677B21616.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Choose Categories_0_F7591FA4-C682-41A7-AB58-33CC63D5FE32.png",
+        "timestamp" : 1794933138.55
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "00008150-0014306C2644401C",
+        "deviceName" : "iPhone",
+        "exportedFileName" : "8A170BC0-A8AD-478E-84BB-27E85BB54248.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Choose Space_0_00CF02D2-907F-498F-BE8E-A33124FD1935.png",
+        "timestamp" : 1794933133.239
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "00008150-0014306C2644401C",
+        "deviceName" : "iPhone",
+        "exportedFileName" : "3D04DC62-0643-40BE-80E8-61B099DA2F64.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "find-action-lines_0_8EFB9B9A-0748-420C-B854-D25D570C900D.png",
+        "timestamp" : 1794933123.443
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "00008150-0014306C2644401C",
+        "deviceName" : "iPhone",
+        "exportedFileName" : "5DFD2A8E-7933-4F3B-BEC4-1AA74CC2218E.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "home-hero_0_024C9B5D-0746-49D5-8FAE-BAD8E8A2C42D.png",
+        "timestamp" : 1794933121.708
+      }
+    ],
+    "testIdentifier" : "EditorialAcceptanceTests/testApprovedHomeAndControls()",
+    "testIdentifierURL" : "test://com.apple.xcode/CasitaDexAudit/CasitaDexAuditTests/EditorialAcceptanceTests/testApprovedHomeAndControls"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "00008150-0014306C2644401C",
+        "deviceName" : "iPhone",
+        "exportedFileName" : "5CDAEA07-85A3-4329-9A48-8B2E386BEC22.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Notification opened exact standalone reminder_0_55F598A5-F8C3-44AA-9B5A-8DE8FF99F583.png",
+        "timestamp" : 1794933246.347
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "00008150-0014306C2644401C",
+        "deviceName" : "iPhone",
+        "exportedFileName" : "4A847913-CF16-442A-B597-2F9BDD64D476.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Lifecycle notification before tap_0_2DD4A40C-2B1D-46A0-B994-C150B21A2AF3.png",
+        "timestamp" : 1794933242.692
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "00008150-0014306C2644401C",
+        "deviceName" : "iPhone",
+        "exportedFileName" : "C4259AF5-BB70-4EBA-9044-AE9C0CAE7057.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Verified notification schedule before Save_0_3031FF9C-8B40-4B1C-9AF4-6C9DE9C969FC.png",
+        "timestamp" : 1794933174.905
+      }
+    ],
+    "testIdentifier" : "PhysicalNotificationTests/testBackgroundNotificationTap()",
+    "testIdentifierURL" : "test://com.apple.xcode/CasitaDexAudit/CasitaDexAuditTests/PhysicalNotificationTests/testBackgroundNotificationTap"
+  }
+]

@@ -68,3 +68,7 @@ The physical iPhone also passed changed-date retention, exact-minute retention a
 ## Corrected notification route installed and verified
 
 Source **593de3d** is now installed in the same isolated physical `.plusstoreqa` app. Actual foreground notification delivery and tap-to-exact-standalone-reminder passed; linked reminder Save return passed again (2/2 final physical tests). Full automated suite: 525 passed, 6 skipped, 0 failed; TypeScript and ESLint passed. Background/terminated and linked-memory notification taps, other remaining checklist rows, and owner sign-off remain Pending. See the workflow report above for failed diagnostic attempts, installation identity and evidence.
+
+## November 17 approved visual update and lifecycle acceptance
+
+The same isolated physical QA app now contains application source a39c37f. Current-size dark Home/selectors/photo Cancel, background and terminated standalone notification taps, and terminated linked-memory tap have passed. Existing data was compared before/after. See [release closure](RELEASE_CLOSURE_20261117.md) for exact identity, attempts, evidence and remaining gates. Owner checklist rows remain pending until the owner actually signs off.

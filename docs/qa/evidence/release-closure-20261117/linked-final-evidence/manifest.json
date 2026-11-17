@@ -1,0 +1,35 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "00008150-0014306C2644401C",
+        "deviceName" : "iPhone",
+        "exportedFileName" : "13501477-9592-45FB-AAFE-D44888847A2C.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Notification opened originating memory_0_6A6A7BB8-1C35-42AF-A0C3-2BAF53DF9D30.png",
+        "timestamp" : 1794933546.435
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "00008150-0014306C2644401C",
+        "deviceName" : "iPhone",
+        "exportedFileName" : "6FE37EAF-C78D-4A1D-8B82-704FE339C339.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Lifecycle notification before tap_0_8530F61D-B8B9-4BAC-8E33-F14E494A024E.png",
+        "timestamp" : 1794933542.475
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "00008150-0014306C2644401C",
+        "deviceName" : "iPhone",
+        "exportedFileName" : "08424C9C-6124-4BDE-AE8B-A557921B4EC2.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Verified notification schedule before Save_0_69061A72-7448-407B-8D4F-0B7A2A009263.png",
+        "timestamp" : 1794933446.949
+      }
+    ],
+    "testIdentifier" : "PhysicalLinkedNotificationTests/testLinkedTerminatedNotificationTap()",
+    "testIdentifierURL" : "test://com.apple.xcode/CasitaDexAudit/CasitaDexAuditTests/PhysicalLinkedNotificationTests/testLinkedTerminatedNotificationTap"
+  }
+]

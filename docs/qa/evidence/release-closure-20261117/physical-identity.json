@@ -1,0 +1,11 @@
+{
+  "source": "a39c37f",
+  "evidenceBaseline": "bcd32bf",
+  "bundle": "com.designsbyfa.casitadex.plusstoreqa",
+  "device": "00008150-0014306C2644401C",
+  "jsSha256": "0aafd62494fe071f4d4561e1b2786cc0a27a5b93635225832c1d9790fc867e35",
+  "sourceStagingMatches": true,
+  "signatureVerified": true,
+  "installResult": "Success",
+  "priorQADataBackup": "private iphone-documents-before"
+}
