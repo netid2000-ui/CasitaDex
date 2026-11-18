@@ -19,7 +19,16 @@ test('date remains above borderless Settings, preserving right-hand wordmark and
  assert.match(source,/<HomeDate\/><Pressable[^>]+accessibilityLabel="Settings"/);
  assert.match(source,/logo-right-dark\.png/);assert.match(source,/logo-right-light\.png/);
  assert.match(source,/label:"Home",route:"\/".*label:"Photos".*label:"Reminders".*label:"Find"/);
- const header=source.slice(source.indexOf('{path==="/"||primaryTitle?'),source.indexOf('<View style={{ flex: 1 }}>'));
+ const header=source.slice(source.indexOf('{isPrimaryTab||primaryTitle?'),source.indexOf('<View style={{ flex: 1 }}>'));
  assert.doesNotMatch(header,/borderWidth|borderBottomWidth/);
  assert.match(component,/AppState\.addEventListener/);
+});
+
+test('all primary tabs share Home header and Photos has no opaque ornament',()=>{
+ assert.match(source,/isPrimaryTab=destinations.some/);
+ assert.match(source,/isPrimaryTab\?<View style=\{\{alignItems:/);
+ assert.match(source,/"\/reminders":"Reminders"/);
+ assert.doesNotMatch(source,/homeDesign_imgWatercolorOliveBranch|mixBlendMode/);
+ const reminders=fs.readFileSync(new URL('../src/figma-first/FigmaReminders.tsx',import.meta.url),'utf8');
+ assert.doesNotMatch(reminders,/CasitaDex logo|kind="title">Reminders/);
 });

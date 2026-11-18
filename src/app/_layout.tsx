@@ -77,7 +77,8 @@ function Shell() {
   const { fontScale, width } = useWindowDimensions();
   const {large:inAppLarge}=useData();
   const compactHeader=inAppLarge||fontScale>=1.35||width<360;
- const primaryTitle=({"/answers":"Find","/photos":"Photos","/more":"Settings","/memories":"Your Memories"} as Record<string,string>)[path];
+ const isPrimaryTab=destinations.some(destination=>destination.route===path);
+ const primaryTitle=({"/answers":"Find","/photos":"Photos","/reminders":"Reminders","/more":"Settings","/memories":"Your Memories"} as Record<string,string>)[path];
  void pageHeading; void photoEntry;
   return (
     <SafeAreaView
@@ -86,13 +87,12 @@ function Shell() {
     >
       <BrandWebMeta />
       <StatusBar style={dark ? "light" : "dark"} />
-      {path==="/"||primaryTitle?<View style={{paddingHorizontal:18,paddingTop:8,paddingBottom:16,backgroundColor:colors.paper,gap:4}}>
-        {(!compactHeader||!primaryTitle||path==="/more")?<View style={{minHeight:44,flexDirection:compactHeader?"column":"row",alignItems:compactHeader?"flex-start":"center",justifyContent:"space-between"}}>
+      {isPrimaryTab||primaryTitle?<View style={{paddingHorizontal:18,paddingTop:8,paddingBottom:16,backgroundColor:colors.paper,gap:4}}>
+        {(isPrimaryTab||!compactHeader||!primaryTitle||path==="/more")?<View style={{minHeight:44,flexDirection:compactHeader?"column":"row",alignItems:compactHeader?"flex-start":"center",justifyContent:"space-between"}}>
          <Pressable accessibilityRole="button" accessibilityLabel={path==="/more"?"Back to Home":"CasitaDex logo, go to Home"} onPress={()=>guardedNavigate(()=>router.navigate("/"))} style={{minHeight:44,justifyContent:"center"}}>{path==="/more"
            ? <Text style={{color:colors.ink,fontFamily:editorialFonts.body,fontSize:13}}>‹  Home</Text>
            : <Image accessible={false} source={dark?require("../../assets/home-brand/logo-right-dark.png"):require("../../assets/home-brand/logo-right-light.png")} resizeMode="contain" style={{width:148,height:36}}/>}</Pressable>
-         {path==="/"?<View style={{alignItems:compactHeader?"flex-start":"flex-end",flexShrink:1}}><HomeDate/><Pressable accessibilityRole="button" accessibilityLabel="Settings" onPress={()=>guardedNavigate(()=>router.navigate("/more"))} style={{minHeight:44,justifyContent:"center"}}><Text style={{fontFamily:editorialFonts.body,color:colors.ink,fontSize:13}}>⚙  Settings</Text></Pressable></View>:null}
-         {path==="/photos"&&!compactHeader?<View style={{position:"absolute",right:0,top:0,width:100,height:66,mixBlendMode:dark?"multiply":"normal"}}><Image accessible={false} source={require("../../assets/approved-refresh/homeDesign_imgWatercolorOliveBranch.jpg")} resizeMode="cover" style={{width:100,height:66}}/></View>:null}
+         {isPrimaryTab?<View style={{alignItems:compactHeader?"flex-start":"flex-end",flexShrink:1}}><HomeDate/><Pressable accessibilityRole="button" accessibilityLabel="Settings" onPress={()=>guardedNavigate(()=>router.navigate("/more"))} style={{minHeight:44,justifyContent:"center"}}><Text style={{fontFamily:editorialFonts.body,color:colors.ink,fontSize:13}}>⚙  Settings</Text></Pressable></View>:null}
         </View>:null}
         {primaryTitle?<Text accessibilityRole="header" style={{color:colors.ink,fontFamily:editorialFonts.heading,fontSize:compactHeader?20:path==="/photos"?52:48}}>{primaryTitle}</Text>:null}
       </View>:null}
