@@ -2,11 +2,12 @@ import {reminderNotificationDestination} from "../reminder-notification-destinat
 import {beginFreshFind} from "../find-context";
 import React, {useEffect, useState} from "react";
 import { StatusBar } from "expo-status-bar";
-import { AppState, Image, Pressable, Text, View, useWindowDimensions } from "react-native";
+import { AppState, Pressable, Text, View, useWindowDimensions } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { Slot, router, useLocalSearchParams, useGlobalSearchParams, usePathname } from "expo-router";
 import { Provider, useData } from "../state";
 import { useTheme } from "../ui";
+import {HeaderLogo} from "../header-logo";
 import { BrandWebMeta } from "../brand-web-meta";
 import {editorialFonts} from "../theme";
 import {useFonts} from "expo-font";
@@ -91,7 +92,7 @@ function Shell() {
         {(isPrimaryTab||!compactHeader||!primaryTitle||path==="/more")?<View style={{minHeight:44,flexDirection:compactHeader?"column":"row",alignItems:compactHeader?"flex-start":"center",justifyContent:"space-between"}}>
          <Pressable accessibilityRole="button" accessibilityLabel={path==="/more"?"Back to Home":"CasitaDex logo, go to Home"} onPress={()=>guardedNavigate(()=>router.navigate("/"))} style={{minHeight:44,justifyContent:"center"}}>{path==="/more"
            ? <Text style={{color:colors.ink,fontFamily:editorialFonts.body,fontSize:13}}>‹  Home</Text>
-           : <Image accessible={false} source={dark?require("../../assets/home-brand/logo-right-dark.png"):require("../../assets/home-brand/logo-right-light.png")} resizeMode="contain" style={{width:148,height:36}}/>}</Pressable>
+           : <HeaderLogo dark={dark}/>}</Pressable>
          {isPrimaryTab?<View style={{alignItems:compactHeader?"flex-start":"flex-end",flexShrink:1}}><HomeDate/><Pressable accessibilityRole="button" accessibilityLabel="Settings" onPress={()=>guardedNavigate(()=>router.navigate("/more"))} style={{minHeight:44,justifyContent:"center"}}><Text style={{fontFamily:editorialFonts.body,color:colors.ink,fontSize:13}}>⚙  Settings</Text></Pressable></View>:null}
         </View>:null}
         {primaryTitle?<Text accessibilityRole="header" style={{color:colors.ink,fontFamily:editorialFonts.heading,fontSize:compactHeader?20:path==="/photos"?52:48}}>{primaryTitle}</Text>:null}

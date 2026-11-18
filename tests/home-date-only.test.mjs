@@ -17,7 +17,7 @@ test('Home renders local date only, with no clock separator or time',()=>{
 });
 test('date remains above borderless Settings, preserving right-hand wordmark and four tabs',()=>{
  assert.match(source,/<HomeDate\/><Pressable[^>]+accessibilityLabel="Settings"/);
- assert.match(source,/logo-right-dark\.png/);assert.match(source,/logo-right-light\.png/);
+ assert.match(source,/<HeaderLogo dark=\{dark\}\/>/);
  assert.match(source,/label:"Home",route:"\/".*label:"Photos".*label:"Reminders".*label:"Find"/);
  const header=source.slice(source.indexOf('{isPrimaryTab||primaryTitle?'),source.indexOf('<View style={{ flex: 1 }}>'));
  assert.doesNotMatch(header,/borderWidth|borderBottomWidth/);
