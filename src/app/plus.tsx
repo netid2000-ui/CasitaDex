@@ -11,7 +11,22 @@ export default function Plus(){
  const fg=useFigmaTheme(),{large}=useData();
  const ownership=useSyncExternalStore(plusEntitlements.subscribe,plusEntitlements.getSnapshot,plusEntitlements.getSnapshot);
  const [message,setMessage]=useState(''),[busy,setBusy]=useState(false),[price,setPrice]=useState<string|null>(null);
- useEffect(()=>{let active=true;void localPlusPrice().then(value=>{if(active)setPrice(value);}).catch(()=>{if(active)setMessage('Store price is unavailable. Reopen Plus to try again.');});return()=>{active=false;};},[]);
+ const [priceFailed,setPriceFailed]=useState(false);
+ const [priceAttempt,setPriceAttempt]=useState(0);
+ useEffect(()=>{
+  if(!localPlusCheckout)return;
+  let active=true;
+  async function loadPrice(){
+   try {
+    const value=await localPlusPrice();
+    if(active){setPrice(value);setPriceFailed(!value);}
+   } catch {
+    if(active)setPriceFailed(true);
+   }
+  }
+  void loadPrice();
+  return ()=>{active=false;};
+ },[priceAttempt]);
  const scale=large?1.6:1;
  const text={color:fg.headingInk,fontSize:16*scale};
  const button={minHeight:48,padding:12,borderRadius:12,borderWidth:1,borderColor:fg.secondaryInk,justifyContent:'center' as const};
@@ -36,7 +51,12 @@ export default function Plus(){
  return <View style={{flex:1,backgroundColor:fg.page}}>
   <View style={{padding:12,gap:8,borderBottomWidth:1,borderBottomColor:fg.secondaryInk}}>
    <Pressable accessibilityRole="button" accessibilityLabel="Back to Settings" onPress={()=>router.replace('/more')} style={button}><Text style={text}>‹ Settings</Text></Pressable>
-   <Pressable testID="plus-purchase" accessibilityRole="button" accessibilityState={{disabled:purchaseDisabled,busy}} disabled={purchaseDisabled} onPress={()=>{void run('purchase');}} style={{...button,backgroundColor:fg.brandSurface,opacity:purchaseDisabled?0.65:1}}><Text style={text}>{owned?'Plus active':localPlusCheckout?price?`Test Unlock Plus · ${price}`:'Loading test price…':'Plus purchases unavailable'}</Text></Pressable>
+   <Pressable testID="plus-purchase" accessibilityRole="button" accessibilityState={{disabled:purchaseDisabled,busy}} disabled={purchaseDisabled} onPress={()=>{void run('purchase');}} style={{...button,backgroundColor:fg.brandSurface,opacity:purchaseDisabled?0.65:1}}><Text style={text}>{owned?'Plus active':localPlusCheckout?price?`Test Unlock Plus · ${price}`:priceFailed?'Plus purchase unavailable':'Loading test price…':'Plus purchases unavailable'}</Text></Pressable>
+   {priceFailed&&!owned&&<Pressable testID="plus-retry-price" accessibilityRole="button" style={button} onPress={()=>{
+    setPriceFailed(false);
+    setMessage('');
+    setPriceAttempt(attempt=>attempt+1);
+   }}><Text style={text}>Retry store price</Text></Pressable>}
    <Pressable testID="plus-restore" accessibilityRole="button" accessibilityState={{disabled:busy,busy}} disabled={busy} onPress={()=>{void run('restore');}} style={button}><Text style={text}>Restore purchases</Text></Pressable>
    <Text testID="plus-ownership" accessibilityLiveRegion="polite" style={text}>{owned?'Verified Plus access':ownership.status==='ready'?'Free plan':ownership.status==='checking'?'Checking store ownership…':'Store ownership unavailable'}</Text>
    {message?<Text testID="plus-status" accessibilityLiveRegion="polite" style={text}>{message}</Text>:null}
