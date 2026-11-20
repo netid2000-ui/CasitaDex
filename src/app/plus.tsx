@@ -36,18 +36,19 @@ export default function Plus(){
  return <View style={{flex:1,backgroundColor:fg.page}}>
   <View style={{padding:12,gap:8,borderBottomWidth:1,borderBottomColor:fg.secondaryInk}}>
    <Pressable accessibilityRole="button" accessibilityLabel="Back to Settings" onPress={()=>router.replace('/more')} style={button}><Text style={text}>‹ Settings</Text></Pressable>
-   <Pressable testID="plus-purchase" accessibilityRole="button" accessibilityState={{disabled:purchaseDisabled,busy}} disabled={purchaseDisabled} onPress={()=>{void run('purchase');}} style={{...button,backgroundColor:fg.brandSurface,opacity:purchaseDisabled?0.65:1}}><Text style={text}>{owned?'Plus active':localPlusCheckout?price?`Test Unlock Plus · ${price}`:'Loading test price…':'Unlock Plus · $19.99 once'}</Text></Pressable>
+   <Pressable testID="plus-purchase" accessibilityRole="button" accessibilityState={{disabled:purchaseDisabled,busy}} disabled={purchaseDisabled} onPress={()=>{void run('purchase');}} style={{...button,backgroundColor:fg.brandSurface,opacity:purchaseDisabled?0.65:1}}><Text style={text}>{owned?'Plus active':localPlusCheckout?price?`Test Unlock Plus · ${price}`:'Loading test price…':'Plus purchases unavailable'}</Text></Pressable>
    <Pressable testID="plus-restore" accessibilityRole="button" accessibilityState={{disabled:busy,busy}} disabled={busy} onPress={()=>{void run('restore');}} style={button}><Text style={text}>Restore purchases</Text></Pressable>
    <Text testID="plus-ownership" accessibilityLiveRegion="polite" style={text}>{owned?'Verified Plus access':ownership.status==='ready'?'Free plan':ownership.status==='checking'?'Checking store ownership…':'Store ownership unavailable'}</Text>
    {message?<Text testID="plus-status" accessibilityLiveRegion="polite" style={text}>{message}</Text>:null}
   </View>
   <ScrollView contentContainerStyle={{padding:16,gap:16}}>
-   <Text accessibilityRole="header" style={{...text,fontSize:28*scale,fontWeight:'700'}}>CasitaDex Plus</Text>
-   <Text style={text}>Remember more. Find it faster. Keep it safe.</Text>
-   <Text style={text}>Free · 20 memories with photos, search, editing, and basic text export.</Text>
-   <Text accessibilityRole="header" style={{...text,fontWeight:'700'}}>Plus · $19.99 once</Text>
-   <Text style={text}>{'• Remove the plan’s memory-count limit\n• Full backup and restore, including photos\n• Move your memories to a new phone\n• Search text inside your photos\n• Create photo-rich PDF reports'}</Text>
-   <Text style={text}>Your working data stays on your phone. No subscription or photo-storage fees. Device space and technical limits apply.</Text>
+   <Text accessibilityRole="header" style={{...text,fontSize:28*scale,fontWeight:'700'}}>CasitaDex plans</Text>
+   <Text accessibilityRole="header" style={{...text,fontWeight:'700'}}>Free</Text>
+   <Text style={text}>Save up to 20 memories with photos. Search, edit, and export them as basic text.</Text>
+   <Text accessibilityRole="header" style={{...text,fontWeight:'700'}}>Plus · One-time purchase</Text>
+   <Text style={text}>Remove the memory-count limit. Get full backup and recovery, including photos, and move your memories to a new device.</Text>
+   <Text accessibilityRole="header" style={{...text,fontWeight:'700'}}>Pro / Household · Planned subscription</Text>
+   <Text style={text}>Share selected memories with up to five people total, including the household owner. Personal memories stay private until you choose to share them.</Text>
    <Text style={{...text,color:fg.secondaryInk}}>{localPlusCheckout?'Local StoreKit testing only · No real charge. Backup and restore access are connected. Other Plus features and the free-plan limit are still being implemented.':'Preview · Plus features are being implemented. Purchases and the free-plan limit are not enabled in this build.'}</Text>
    <Pressable accessibilityRole="button" onPress={()=>router.replace('/more')} style={button}><Text style={text}>Not now</Text></Pressable>
   </ScrollView>
