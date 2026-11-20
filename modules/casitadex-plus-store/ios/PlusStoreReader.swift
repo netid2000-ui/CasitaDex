@@ -85,10 +85,30 @@ struct PlusStoreReader {
   }
 
   func catalog() async throws -> [String: String] {
-    guard let product = try await Product.products(for: [policy.productID]).first,
-          product.id == policy.productID, product.type == .nonConsumable
-    else { throw Failure.missingProduct }
+    let products: [Product]
+    do {
+      products = try await Product.products(for: [policy.productID])
+    } catch {
+      let failure = error as NSError
+      await recordCatalogResult("error " + failure.domain + " " + String(failure.code))
+      throw error
+    }
+    guard let product = products.first, product.id == policy.productID, product.type == .nonConsumable else {
+      await recordCatalogResult(products.isEmpty ? "empty" : "unexpected product")
+      throw Failure.missingProduct
+    }
+    await recordCatalogResult("found " + product.displayPrice)
     return ["productID": product.id, "displayName": product.displayName, "displayPrice": product.displayPrice]
+  }
+
+  private func recordCatalogResult(_ result: String) async {
+    #if DEBUG
+    guard isAppleSandbox else { return }
+    let region = await Storefront.current?.countryCode ?? "unknown"
+    let report = result + " | storefront " + region + " | " + policy.productID
+    let path = FileManager.default.temporaryDirectory.appendingPathComponent("plus-catalog-result.txt")
+    try? report.write(to: path, atomically: true, encoding: .utf8)
+    #endif
   }
 
   func verifiedEntitlement() async throws -> String {
