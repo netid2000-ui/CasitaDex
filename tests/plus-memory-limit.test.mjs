@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createMemoryLimitGate} from '../src/plus-memory-limit.ts';
 import {newEngDraft} from '../src/eng-store.ts';
-import {setup,add} from './eng-fixture.mjs';
+import {setup,add,png} from './eng-fixture.mjs';
 function policy(state={entitlement:'free',status:'ready'},enabled=true){return createMemoryLimitGate({enabled,refresh:async()=>{},getSnapshot:()=>state});}
 test('free saves twentieth, refuses twenty-first without changing draft or collection; duplicate retry succeeds',async()=>{
  const x=setup(undefined,{requireMemoryCapacity:policy()});try{
@@ -27,4 +27,24 @@ test('unknown access cannot exceed limit; previously verified Plus survives tran
  await policy({entitlement:'plus',status:'error'})(25);
  await policy({entitlement:'free',status:'unavailable'})(19);
  await policy(undefined,false)(90);
+});
+
+test('upgrading at twenty saves the same photo-backed draft exactly once',async()=>{
+ const state={entitlement:'free',status:'ready'};
+ const fixture=setup(undefined,{requireMemoryCapacity:policy(state)});
+ try{
+  for(let i=0;i<20;i++)await add(fixture.store);
+  const draft={...newEngDraft(),checkpoint:1,title:'Memory 21',answer:'Photo on file'};
+  await fixture.store.checkpoint(draft);
+  await fixture.store.addPhoto(draft.id,png);
+  const before=await fixture.store.load();
+  await assert.rejects(fixture.store.saveDraft(draft.attempt,draft.memoryId),/20 saved memories/);
+  assert.deepEqual(await fixture.store.load(),before);
+  state.entitlement='plus';
+  const saved=await fixture.store.saveDraft(draft.attempt,draft.memoryId);
+  assert.equal(saved.data.memories.length,21);
+  assert.equal(saved.data.media.media[0].cardId,draft.memoryId);
+  assert.equal(saved.data.media.media[0].sha256,before.draft.photos[0].sha256);
+  assert.deepEqual(await fixture.store.saveDraft(draft.attempt,draft.memoryId),saved);
+ }finally{fixture.close();}
 });

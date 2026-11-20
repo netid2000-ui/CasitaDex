@@ -65,7 +65,7 @@ extension PlusRecoveryUITests {
   XCTAssertTrue(purchase.waitForExistence(timeout: 15))
   expectLabel("plus-ownership", "Free plan")
   XCTAssertTrue(XCTWaiter.wait(for: [XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: purchase)], timeout: 15) == .completed)
-  XCTAssertTrue(purchase.label.contains("$19.99"))
+  XCTAssertTrue(purchase.label.contains("$25.99"))
   restore.tap()
   expectLabel("plus-status", "No Plus purchase")
   purchase.tap()
