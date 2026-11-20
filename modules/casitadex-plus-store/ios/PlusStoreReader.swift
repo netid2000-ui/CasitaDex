@@ -23,9 +23,13 @@ struct PlusStoreReader {
     return PlusStoreReader(policy: PlusTransactionPolicy(productID: product, bundleID: bundleID, environment: environment))
   }
 
-  // Until delivery and finishing are qualified, checkout is Xcode-local QA only.
+  var isAppleSandbox: Bool {
+    policy.environment == AppStore.Environment.sandbox.rawValue &&
+      policy.bundleID == "com.designsbyfa.casitadex" && policy.productID == "com.designsbyfa.casitadex.plus"
+  }
   func requireLocalCheckout() throws {
     #if DEBUG
+    if isAppleSandbox { return }
     guard policy.environment == AppStore.Environment.xcode.rawValue,
           policy.bundleID.hasSuffix(".plusstoreqa"),
           policy.productID == "local.casitadex.plus.qa" else { throw Failure.checkoutDisabled }
@@ -39,6 +43,10 @@ struct PlusStoreReader {
     guard let product = try await Product.products(for: [policy.productID]).first,
           product.id == policy.productID, product.type == .nonConsumable
     else { throw Failure.missingProduct }
+    if isAppleSandbox {
+      guard case .verified(let app) = try await AppTransaction.shared,
+            app.environment == .sandbox, app.bundleID == policy.bundleID else { throw Failure.wrongIdentity }
+    }
     switch try await product.purchase() {
     case .userCancelled: return "cancelled"
     case .pending: return "pending"

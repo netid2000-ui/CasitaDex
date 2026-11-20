@@ -2,11 +2,19 @@
 """Embed and load this isolated QA build's own JS, never a neighboring Metro server.
 Run after CASITADEX_PLUS_STORE_QA=1 expo prebuild and pod install.
 """
+import plistlib
 from pathlib import Path
 root = Path.cwd()
-project = root / "ios/CasitaDexPlusStoreQA.xcodeproj"
-assert project.is_dir(), "Run only inside the generated Plus Store QA project"
-p = root / "ios/CasitaDexPlusStoreQA/AppDelegate.swift"
+projects = list((root / "ios").glob("*/Info.plist"))
+matches = []
+for plist in projects:
+    info = plistlib.loads(plist.read_bytes())
+    if (info.get("CasitaDexPlusStoreEnvironment"), info.get("CasitaDexPlusProductID")) in {
+        ("Sandbox", "com.designsbyfa.casitadex.plus"), ("Xcode", "local.casitadex.plus.qa")
+    }:
+        matches.append(plist.parent / "AppDelegate.swift")
+assert len(matches) == 1, "Expected exactly one generated Plus test app"
+p = matches[0]
 old = '''#if DEBUG
     return RCTBundleURLProvider.sharedSettings().jsBundleURL(forBundleRoot: ".expo/.virtual-metro-entry")
 #else

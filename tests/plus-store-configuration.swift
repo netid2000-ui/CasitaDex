@@ -41,6 +41,13 @@ import StoreKit
   #else
   checkout("local.casitadex.plus.qa","local.test.plusstoreqa",AppStore.Environment.xcode.rawValue,false)
   #endif
-  print("12 StoreKit configuration/checkout assertions passed")
+  #if DEBUG
+  checkout("com.designsbyfa.casitadex.plus","com.designsbyfa.casitadex",AppStore.Environment.sandbox.rawValue,true)
+  #else
+  checkout("com.designsbyfa.casitadex.plus","com.designsbyfa.casitadex",AppStore.Environment.sandbox.rawValue,false)
+  #endif
+  checkout("com.designsbyfa.casitadex.plus","com.designsbyfa.casitadex",AppStore.Environment.production.rawValue,false)
+  checkout("com.designsbyfa.casitadex.plus","com.designsbyfa.casitadex.dev",AppStore.Environment.sandbox.rawValue,false)
+  print("StoreKit configuration and checkout assertions passed")
  }
 }

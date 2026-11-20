@@ -9,6 +9,7 @@ public final class CasitaDexPlusStoreModule: Module {
     Name("CasitaDexPlusStore")
     Events("entitlementsChanged")
     Function("isConfigured") { (try? PlusStoreReader.configured()) != nil }
+    Function("isAppleSandbox") { (try? PlusStoreReader.configured().isAppleSandbox) == true }
     Function("isLocalTesting") { () -> Bool in
       guard let reader = try? PlusStoreReader.configured() else { return false }
       do { try reader.requireLocalCheckout(); return true } catch { return false }
