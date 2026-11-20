@@ -4,12 +4,14 @@ module.exports = ({ config }) => {
     throw new Error(
       "Production configuration is intentionally unavailable; only development and staging runtime environments are permitted.",
     );
+  const playProduct = process.env.CASITADEX_PLAY_TEST_PRODUCT_ID;
+  if (playProduct && !/^[a-z0-9][a-z0-9._]*$/.test(playProduct)) throw new Error("Invalid Play product ID");
   const appleSandbox = process.env.CASITADEX_APPLE_SANDBOX === "1";
   const plusStore = process.env.CASITADEX_PLUS_STORE_QA === "1";
   const qa = process.env.CASITADEX_SB29_QA === "1";
   const sb39 = process.env.CASITADEX_SB39_QA === "1";
   const sb40 = process.env.CASITADEX_SB40_QA === "1";
-  if ([qa, sb39, sb40, plusStore, appleSandbox].filter(Boolean).length > 1) throw new Error("Only one isolated QA identity can be selected.");
+  if ([qa, sb39, sb40, plusStore, appleSandbox, Boolean(playProduct)].filter(Boolean).length > 1) throw new Error("Only one isolated QA identity can be selected.");
   const suffix = plusStore ? "plusstoreqa" : sb40 ? "sb40qa" : sb39 ? "sb39qa" : qa ? "sb29qa" : env === "development" ? "dev" : "staging";
   return {
     ...config,
@@ -25,7 +27,7 @@ module.exports = ({ config }) => {
     },
     android: {
       ...config.android,
-      package: "com.designsbyfa.casitadex." + suffix,
+      package: playProduct ? "com.designsbyfa.casitadex" : "com.designsbyfa.casitadex." + suffix,
       allowBackup: false,
       adaptiveIcon: { foregroundImage: "./assets/brand/adaptive-color.png", monochromeImage: "./assets/brand/adaptive-outline.png", backgroundColor: "#FAF8F2" },
     },
@@ -34,6 +36,7 @@ module.exports = ({ config }) => {
     extra: {
       ...config.extra,
       appEnvironment: env,
+      playCatalogProduct: playProduct,
       backendMode: "none",
       productionAuthorized: false,
       parityQaSeed: !sb39 && true,

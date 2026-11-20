@@ -3,7 +3,7 @@ import {Pressable,ScrollView,Text,View} from 'react-native';
 import {router} from 'expo-router';
 import {useData} from '../state';
 import {useFigmaTheme} from '../figma-first/tokens';
-import {appleSandbox,localPlusCheckout,localPlusPrice,plusPurchases} from '../plus-purchase-runtime';
+import {appleSandbox,playCatalogEnabled,localPlusCheckout,localPlusPrice,plusPurchases} from '../plus-purchase-runtime';
 import {plusEntitlements} from '../plus-entitlement-runtime';
 import {plusPurchaseMessage} from '../plus-purchase-message';
 
@@ -14,7 +14,7 @@ export default function Plus(){
  const [priceFailed,setPriceFailed]=useState(false);
  const [priceAttempt,setPriceAttempt]=useState(0);
  useEffect(()=>{
-  if(!localPlusCheckout)return;
+  if(!localPlusCheckout&&!playCatalogEnabled)return;
   let active=true;
   async function loadPrice(){
    try {
@@ -51,7 +51,7 @@ export default function Plus(){
  return <View style={{flex:1,backgroundColor:fg.page}}>
   <View style={{padding:12,gap:8,borderBottomWidth:1,borderBottomColor:fg.secondaryInk}}>
    <Pressable accessibilityRole="button" accessibilityLabel="Back to Settings" onPress={()=>router.replace('/more')} style={button}><Text style={text}>‹ Settings</Text></Pressable>
-   <Pressable testID="plus-purchase" accessibilityRole="button" accessibilityState={{disabled:purchaseDisabled,busy}} disabled={purchaseDisabled} onPress={()=>{void run('purchase');}} style={{...button,backgroundColor:fg.brandSurface,opacity:purchaseDisabled?0.65:1}}><Text style={text}>{owned?'Plus active':localPlusCheckout?price?`Test Unlock Plus · ${price}`:priceFailed?'Plus purchase unavailable':'Loading test price…':'Plus purchases unavailable'}</Text></Pressable>
+   <Pressable testID="plus-purchase" accessibilityRole="button" accessibilityState={{disabled:purchaseDisabled,busy}} disabled={purchaseDisabled} onPress={()=>{void run('purchase');}} style={{...button,backgroundColor:fg.brandSurface,opacity:purchaseDisabled?0.65:1}}><Text style={text}>{owned?'Plus active':localPlusCheckout?price?`Test Unlock Plus · ${price}`:priceFailed?'Plus purchase unavailable':'Loading test price…' :playCatalogEnabled?(price?'Play Store price · '+price:priceFailed?'Play Store price unavailable':'Checking Play Store price…'):'Plus purchases unavailable'}</Text></Pressable>
    {priceFailed&&!owned&&<Pressable testID="plus-retry-price" accessibilityRole="button" style={button} onPress={()=>{
     setPriceFailed(false);
     setMessage('');

@@ -1,10 +1,16 @@
 {
   "platforms": [
-    "apple"
+    "apple",
+    "android"
   ],
   "apple": {
     "modules": [
       "CasitaDexPlusStoreModule"
+    ]
+  },
+  "android": {
+    "modules": [
+      "expo.modules.casitadexplus.PlayCatalogModule"
     ]
   }
 }
