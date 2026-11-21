@@ -39,7 +39,7 @@ module.exports = ({ config }) => {
       playCatalogProduct: playProduct,
       backendMode: "none",
       productionAuthorized: false,
-      parityQaSeed: !sb39 && true,
+      parityQaSeed: !sb39 && (qa || sb40 || plusStore || process.env.CASITADEX_PARITY_QA_SEED === "1"),
     },
   };
 };

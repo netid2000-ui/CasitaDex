@@ -35,7 +35,7 @@ function FigmaNativeHome(){
  return <ScrollView contentContainerStyle={{flexGrow:1,backgroundColor:'transparent'}}>
   {error?<Text accessibilityLiveRegion='polite' style={{padding:16,color:'#7C2929'}}>{error}</Text>:null}
 
-  <FigmaHome draftPending={!!snapshot?.draft} onAction={action} onSettings={()=>router.push("/more")} onFind={()=>router.push({pathname:"/answers",params:{lifecycle:"active",fresh:beginFreshFind()}})}/>
+  <FigmaHome showFirstMemoryPrompt={!!snapshot && !error && !snapshot.draft && snapshot.data.memories.length===0 && Object.keys(snapshot.attempts).length===0} draftPending={!!snapshot?.draft} onAction={action} onSettings={()=>router.push("/more")} onFind={()=>router.push({pathname:"/answers",params:{lifecycle:"active",fresh:beginFreshFind()}})}/>
 
  </ScrollView>;
 }

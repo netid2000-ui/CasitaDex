@@ -11,7 +11,7 @@ const tokens=(s:string)=>s.toLocaleLowerCase()
 export function searchIndex(data:DataV2){
  const spaces=new Map(data.spaces.map(x=>[x.id,x.name])),categories=new Map(data.categories.map(x=>[x.id,x.name]));
  const photos=new Set(data.media.media.map(x=>x.cardId));
- return data.memories.map((memory,index)=>({memory,index,photo:photos.has(memory.id),fields:[memory.title,memory.answer,[memory.location,memory.notes,memory.legacyContext,spaces.get(memory.spaceId??''),...memory.categoryIds.map(id=>categories.get(id))].join(' ')].map(tokens)}));
+ return data.memories.map((memory,index)=>({memory,index,photo:photos.has(memory.id),fields:[memory.title,memory.answer,[memory.location,memory.notes,memory.source,memory.legacyContext,spaces.get(memory.spaceId??''),...memory.categoryIds.map(id=>categories.get(id))].join(' ')].map(tokens)}));
 }
 export function findMemories(index:ReturnType<typeof searchIndex>,query:string,f:FindFilter,today:string){
  const terms=tokens(query);const matches=(a:string,b:string)=>/\d/.test(b)?a===b:a.startsWith(b);

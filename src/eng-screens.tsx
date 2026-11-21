@@ -330,12 +330,7 @@ export function EngAdd(){
         {(form?.photos.length??0)>0?<Copy kind="small">Tap a photo to view or remove it. Maximum five.</Copy>:null}
       </View>:null}
       <View style={addCardStyle}><Field editorial iosTextView={plusFeatureEnforcementEnabled} maxLength={200} label="Memory name (Required)" value={form?.title??""} onChangeText={title=>change({title})} /></View>
-      <TaxonomyPicker label="Space" noun="Space" choices={e.snapshot?.data.spaces??[]} selected={form?.spaceId?[form.spaceId]:[]} disabled={disabled} onSelect={ids=>change({spaceId:ids[0]??null})} onCreate={async name=>{let id:string|null=null;await action(async store=>{const next=await store.taxonomy("space",name);id=next.data.spaces.at(-1)!.id;});return id;}}/>
-      <TaxonomyPicker label="Categories" noun="Category" choices={e.snapshot?.data.categories??[]} selected={form?.categoryIds??[]} multiple disabled={disabled} onSelect={ids=>change({categoryIds:ids})} onCreate={async name=>{let id:string|null=null;await action(async store=>{const next=await store.taxonomy("category",name);id=next.data.categories.at(-1)!.id;});return id;}}/>
-
       <View style={addCardStyle}><Field editorial maxLength={1000} label="Description" value={form?.answer??""} onChangeText={answer=>change({answer})} multiline compactMultiline /></View>
-      <LocationPicker data={e.snapshot?.data} spaceId={form?.spaceId??null} value={form?.location??""} disabled={disabled} onSelect={location=>change({location})} onCreate={async name=>{let ok=false;await action(async store=>{await store.taxonomy("location",name,undefined,current.current?.spaceId??null);ok=true;});return ok;}}/>
-      {(["notes","source"] as const).map(key=><MemoryEditOptionalField key={key} editorial iosTextView={plusFeatureEnforcementEnabled} disabled={disabled} maxLength={key==="source"?200:4000} label={key==="source"?"Reference":"Notes"} multiline={key==="notes"} value={form?.[key]??""} onChangeText={value=>change({[key]:value})} />)}
       {!editingPhotoDraft?<View style={{gap:10}}>
         <Copy accessibilityRole="header">Photos · {form?.photos.length??0}/5</Copy>
         <View style={{flexDirection:"row",flexWrap:"wrap",gap:10}}>{form?.photos.map((item,index)=><Pressable key={item.id} accessibilityRole="button" accessibilityLabel={`View photo ${index+1} full screen`} onPress={()=>router.push({pathname:"/photo-viewer",params:{draftId:form.id,photoId:item.id,label:`Draft photo ${index+1}`}})} style={{width:96,height:96,borderRadius:8,overflow:"hidden",borderWidth:1,borderColor:colors.line}}><Image source={{uri:engPhotoUri(item.path)}} resizeMode="cover" style={{width:"100%",height:"100%"}} /></Pressable>)}</View>
@@ -343,6 +338,12 @@ export function EngAdd(){
         {(form?.photos.length??0)>0?<Copy kind="small">Tap a photo to view or remove it. Maximum five.</Copy>:null}
       </View>:null}
       <Copy kind="small" style={{color:colors.muted}}>{editingPhotoDraft?"Attach at least one photo; up to five photos per memory.":"Add a description or a photo to save your memory."}</Copy>
+      <TaxonomyPicker label="Space" noun="Space" choices={e.snapshot?.data.spaces??[]} selected={form?.spaceId?[form.spaceId]:[]} disabled={disabled} onSelect={ids=>change({spaceId:ids[0]??null})} onCreate={async name=>{let id:string|null=null;await action(async store=>{const next=await store.taxonomy("space",name);id=next.data.spaces.at(-1)!.id;});return id;}}/>
+      <TaxonomyPicker label="Categories" noun="Category" choices={e.snapshot?.data.categories??[]} selected={form?.categoryIds??[]} multiple disabled={disabled} onSelect={ids=>change({categoryIds:ids})} onCreate={async name=>{let id:string|null=null;await action(async store=>{const next=await store.taxonomy("category",name);id=next.data.categories.at(-1)!.id;});return id;}}/>
+
+      <LocationPicker data={e.snapshot?.data} spaceId={form?.spaceId??null} value={form?.location??""} disabled={disabled} onSelect={location=>change({location})} onCreate={async name=>{let ok=false;await action(async store=>{await store.taxonomy("location",name,undefined,current.current?.spaceId??null);ok=true;});return ok;}}/>
+      {(["notes","source"] as const).map(key=><MemoryEditOptionalField key={key} editorial iosTextView={plusFeatureEnforcementEnabled} disabled={disabled} maxLength={key==="source"?200:4000} label={key==="source"?"Reference":"Notes"} multiline={key==="notes"} value={form?.[key]??""} onChangeText={value=>change({[key]:value})} />)}
+
 
     </>:null}
     {duplicate?<View style={s.panel}><Copy>Possible duplicate. Your draft is safe. Review the existing memory or save anyway.</Copy>{(form&&e.snapshot?duplicateCandidates(form,e.snapshot):[]).map(m=><View key={m.id}><Copy>Existing {m.lifecycle==="recently_deleted"?"Recently Deleted":m.lifecycle} memory</Copy><MemoryLink memory={m} /></View>)}

@@ -22,3 +22,11 @@ test('dimension queries normalize x, multiplication signs and spacing in stored 
  data.memories[0].answer='1.5x20x25';
  assert.equal(findMemories(searchIndex(data),'1.5 × 20 × 25',defaultFilter(),'2026-11-08')[0].id,'a');
 });
+
+test('Find matches exact part numbers in Reference alongside words from other fields',()=>{
+ const data=fixture();
+ data.memories[0].source='Carton FK-240';
+ data.memories[1].source='Carton FK-2400';
+ const results=findMemories(searchIndex(data),'kitchen FK-240',defaultFilter(),'2026-11-21');
+ assert.deepEqual(results.map(memory=>memory.id),['a']);
+});

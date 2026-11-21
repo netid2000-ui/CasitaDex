@@ -43,6 +43,10 @@ function NativeFind(){
  const changeLocation=(id:string)=>{setLocationId(id);setPage(0);saveFindContext(lifecycle,{locationId:id,y:0,page:0});};
  const changeSpace=(id:string)=>{const nextLocation=locationAfterSpaceChange(snapshot?.data,locationId,id);setSpaceId(id);setLocationId(nextLocation);setPage(0);saveFindContext(lifecycle,{spaceId:id,locationId:nextLocation,y:0,page:0});};
  const changeCategory=(id:string)=>{setCategoryId(id);setPage(0);saveFindContext(lifecycle,{categoryId:id,y:0,page:0});};
+ const hasCriteria=Boolean(query.trim() || photosOnly || spaceId || categoryId || locationId);
+ const clearCriteria=()=>{
+  updateQuery("");togglePhotos(false);changeSpace("");changeCategory("");changeLocation("");
+ };
  const results=snapshot?filterFindResults(findResults(snapshot.data,query,localDay(),lifecycle,photosOnly),snapshot.data,{spaceId,categoryId,locationId}):[];
  const [error,setError]=useState('');
  const restorePosition=useCallback(()=>{const preservedFindScrollY=readFindContext(lifecycle).y;scrollRef.current?.scrollTo({y:preservedFindScrollY,animated:false});},[lifecycle]);
@@ -51,7 +55,7 @@ function NativeFind(){
  <View style={{backgroundColor:fg.page}}>{params.origin==="settings"?<View style={{paddingHorizontal:18,paddingVertical:8}}><Button label="‹ Settings" onPress={()=>router.replace("/more")}/></View>:null}{lifecycle!=="active"?<View style={{padding:12,gap:8}}><Text accessibilityRole="header" style={{color:fg.headingInk,fontSize:19,fontWeight:"700"}}>{lifecycle==="archived"?"Archived memories":"Recently Deleted memories"}</Text><Pressable accessibilityRole="button" accessibilityLabel="Return to active memories" onPress={()=>router.replace({pathname:"/answers",params:{lifecycle:"active"}})} style={{padding:12,minHeight:48}}><Text style={{color:fg.headingInk}}>Return to active memories</Text></Pressable></View>:null}
  <FindSearchControls locationId={locationId} onLocationChange={changeLocation} spaceId={spaceId} categoryId={categoryId} onSpaceChange={changeSpace} onCategoryChange={changeCategory} iosTextView={plusFeatureEnforcementEnabled} photosOnly={photosOnly} onPhotosOnlyChange={togglePhotos} query={query} onQueryChange={updateQuery} results={results} data={snapshot?.data}/></View>
  {error?<Text accessibilityLiveRegion='polite'>{error}</Text>:null}
- <View onLayout={event=>{listTop.current=event.nativeEvent.layout.y;}}><FigmaFind hideSearchControls onResultsLayout={y=>{resultsTop.current=y;}} query={query} onQueryChange={updateQuery} results={results} data={snapshot?.data} onOpen={id=>router.push({pathname:'/card',params:{id}})} page={page} pageSize={pageSize} onPageChange={changePage} onPageSizeChange={changePageSize}/></View>
+ <View onLayout={event=>{listTop.current=event.nativeEvent.layout.y;}}>{snapshot && !error?<FigmaFind lifecycle={lifecycle} onClearCriteria={hasCriteria?clearCriteria:undefined} hideSearchControls onResultsLayout={y=>{resultsTop.current=y;}} query={query} onQueryChange={updateQuery} results={results} data={snapshot?.data} onOpen={id=>router.push({pathname:'/card',params:{id}})} page={page} pageSize={pageSize} onPageChange={changePage} onPageSizeChange={changePageSize}/>:null}</View>
  </ScrollView>;
 }
 export default function Answers(){return <NativeFind/>;}
