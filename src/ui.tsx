@@ -66,9 +66,11 @@ export function Button({
   editorial=false,
   displayLabel,
   trailing,
+  disclosure = false,
 }: {
   icon?:React.ReactNode;
   trailing?:React.ReactNode;
+  disclosure?:boolean;
   editorial?:boolean;
   displayLabel?:string;
   label: string;
@@ -109,9 +111,9 @@ export function Button({
         disabled && (primary ? { opacity: 0.62, borderStyle: "solid" as const, backgroundColor: colors.primary, borderColor: colors.primary } : { opacity: 1, borderStyle: "dashed" as const, backgroundColor: colors.accent, borderColor: colors.line }),
       ]}
     >
-      <View style={{flexDirection:"row",alignItems:"center",gap:8,minWidth:0,maxWidth:"100%",flexShrink:1,width:editorial&&trailing?"100%":undefined}}>{icon}{selected!==undefined?<Text accessible={false} style={{width:20,color:colors.ink,textAlign:"center"}}>{selected?"✓":""}</Text>:null}<Copy kind={editorial?"body":compact ? "small" : "body"} style={editorial?{color:primary?colors.onPrimary:colors.ink,fontWeight:"400",flex:trailing?1:undefined}:primary ? { color: colors.onPrimary, fontWeight: "700", textAlign: "center" } : { color: colors.ink, fontWeight: "400", textAlign: "left" }}>
+      <View style={{flexDirection:"row",alignItems:"center",gap:8,minWidth:0,maxWidth:"100%",flexShrink:1,width:disclosure||(editorial&&trailing)?"100%":undefined}}>{icon}{selected!==undefined?<Text accessible={false} style={{width:20,color:colors.ink,textAlign:"center"}}>{selected?"✓":""}</Text>:null}<Copy kind={editorial?"body":compact ? "small" : "body"} style={disclosure?{color:primary?colors.onPrimary:colors.ink,flex:1,fontWeight:primary?"700":"400"}:editorial?{color:primary?colors.onPrimary:colors.ink,fontWeight:"400",flex:trailing?1:undefined}:primary ? { color: colors.onPrimary, fontWeight: "700", textAlign: "center" } : { color: colors.ink, fontWeight: "400", textAlign: "left" }}>
         {displayLabel??label.replace(/^✓\s*/,"")}
-      </Copy>{trailing}</View>
+      </Copy>{disclosure?<Text accessible={false} style={{fontSize:20,color:primary?colors.onPrimary:colors.ink}}>›</Text>:trailing}</View>
     </Pressable>
   );
 }
