@@ -6,9 +6,16 @@ plugins {
 group = 'expo.modules.casitadexplus'
 version = '1.0.0'
 
+def playKey = System.getenv('CASITADEX_PLAY_TEST_PUBLIC_KEY') ?: ''
+if (!(playKey ==~ /[A-Za-z0-9+\/=]*/)) throw new GradleException('Invalid Play licensing public key')
+def playCheckout = System.getenv('CASITADEX_PLAY_TEST_PRODUCT_ID') == 'com.designsbyfa.casitadex.plus' && !playKey.isEmpty()
+
 android {
+  buildFeatures { buildConfig true }
   namespace 'expo.modules.casitadexplus'
   defaultConfig {
+    buildConfigField 'boolean', 'PLAY_TEST_CHECKOUT', playCheckout.toString()
+    buildConfigField 'String', 'PLAY_PUBLIC_KEY', '"' + playKey + '"'
     versionCode 1
     versionName '1.0.0'
   }

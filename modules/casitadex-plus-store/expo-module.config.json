@@ -10,7 +10,8 @@
   },
   "android": {
     "modules": [
-      "expo.modules.casitadexplus.PlayCatalogModule"
+      "expo.modules.casitadexplus.PlayCatalogModule",
+      "expo.modules.casitadexplus.PlayOwnershipModule"
     ]
   }
 }

@@ -67,7 +67,7 @@ export default function Plus(){
    <Text style={text}>Save up to 20 memories with photos. Search, edit, and export them as basic text.</Text>
    <Text accessibilityRole="header" style={{...text,fontWeight:'700'}}>Plus · US$25.99 once</Text>
    <Text style={text}>Remove the memory-count limit. Get full backup and recovery, including photos, and move your memories to a new device.</Text>
-   <Text style={{...text,color:fg.secondaryInk}}>{appleSandbox?'Apple sandbox test purchase.':localPlusCheckout?'Local StoreKit testing only · No real charge. Backup and restore access are connected. Other Plus features and the free-plan limit are still being implemented.':'Preview · Plus features are being implemented. Purchases and the free-plan limit are not enabled in this build.'}</Text>
+   <Text style={{...text,color:fg.secondaryInk}}>{playCatalogEnabled?(localPlusCheckout?'Google Play test checkout. Select a test payment method.':'Google Play price preview. Checkout is unavailable in this build.'):appleSandbox?'Apple sandbox test purchase.':localPlusCheckout?'Local StoreKit testing only · No real charge. Backup and restore access are connected. Other Plus features and the free-plan limit are still being implemented.':'Preview · Plus features are being implemented. Purchases and the free-plan limit are not enabled in this build.'}</Text>
    <Pressable accessibilityRole="button" onPress={()=>router.replace('/more')} style={button}><Text style={text}>Not now</Text></Pressable>
   </ScrollView>
  </View>;
