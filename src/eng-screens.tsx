@@ -6,7 +6,7 @@ import {useStatusAnnouncement} from "./use-status-announcement";
 import { reminderPickerDisplay } from "./reminder-picker-layout";
 import {ReminderValueControl} from "./reminder-value-control";
 import {MemoryEditorIcon} from "./memory-editor-controls";
-import {MemoryEditOptionalField} from "./memory-edit-optional-field";
+import {MemoryEditOptionalField,referenceHint} from "./memory-edit-optional-field";
 import {PhotoStoragePanel} from "./photo-storage-panel";
 import {plusEntitlements,plusFeatureEnforcementEnabled,requirePlusBackup} from './plus-entitlement-runtime';
 import {orderedMemoryPhotos} from './photo-order';
@@ -412,7 +412,7 @@ export function EngDetail(){
 
         <DetailField label="Location" value={m.location||"None"} onEdit={()=>beginFieldEdit("Location")} />
         <DetailField label="Notes" value={m.notes||"None"} onEdit={()=>beginFieldEdit("Notes")} />
-        <View style={{borderColor:colors.line,borderBottomWidth:1,paddingVertical:12,flexDirection:"row",alignItems:"center",gap:10}}><View style={{flex:1,gap:4}}><Copy kind="small" style={{fontWeight:"700",color:colors.ink}}>REFERENCE · OPTIONAL</Copy><Copy style={{color:colors.ink}}>{m.source||"None"}</Copy></View>{m.lifecycle!=="recently_deleted"?<Button compact editorial variant="quiet" label={editingReference?"Close Reference editor":"Edit Reference"} displayLabel={editingReference?"Close ▴":"Edit ›"} onPress={()=>{setReferenceDraft(m.source);setEditingReference(!editingReference);}} />:null}</View>
+        <View style={{borderColor:colors.line,borderBottomWidth:1,paddingVertical:12,flexDirection:"row",alignItems:"center",gap:10}}><View style={{flex:1,gap:4}}><Copy kind="small" style={{fontWeight:"700",color:colors.ink}}>REFERENCE · OPTIONAL</Copy><Copy style={{color:colors.ink}}>{m.source||"None"}</Copy><Copy kind="small">{referenceHint}</Copy></View>{m.lifecycle!=="recently_deleted"?<Button compact editorial variant="quiet" label={editingReference?"Close Reference editor":"Edit Reference"} displayLabel={editingReference?"Close ▴":"Edit ›"} onPress={()=>{setReferenceDraft(m.source);setEditingReference(!editingReference);}} />:null}</View>
         {editingReference&&!edit?<View style={s.panel}><Field iosTextView={plusFeatureEnforcementEnabled} disabled={e.busy} maxLength={200} label="Reference" value={referenceDraft} onChangeText={setReferenceDraft} /><Button primary compact label="Save reference" disabled={e.busy} onPress={()=>void e.run(async store=>{await store.updateMemory({...m,source:referenceDraft.trim()},e.snapshot!.revision);setEditingReference(false);})} /><Button compact label="Cancel" onPress={()=>setEditingReference(false)} /></View>:null}
         {m.verifiedAt?<DetailField label="Last verified" value={m.verifiedAt} />:null}
         {m.legacyContext?<DetailField label="Original category" value={m.legacyContext} />:null}
