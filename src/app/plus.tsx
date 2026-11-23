@@ -1,6 +1,6 @@
 import React,{useEffect,useState,useSyncExternalStore} from 'react';
 import {Pressable,ScrollView,Text,View} from 'react-native';
-import {router} from 'expo-router';
+import {router,useLocalSearchParams} from 'expo-router';
 import {useData} from '../state';
 import {useFigmaTheme} from '../figma-first/tokens';
 import {appleSandbox,playCatalogEnabled,localPlusCheckout,localPlusPrice,plusPurchases} from '../plus-purchase-runtime';
@@ -9,6 +9,9 @@ import {plusPurchaseMessage} from '../plus-purchase-message';
 
 export default function Plus(){
  const fg=useFigmaTheme(),{large}=useData();
+ const {origin}=useLocalSearchParams<{origin?:string}>();
+ const destination=origin==='draft'?'Add Memory':origin==='backup'?'Backup & restore':'Settings';
+ const leave=()=>{if(router.canGoBack())router.back();else router.replace(origin==='draft'?'/add':origin==='backup'?'/settings-manage?action=backup':'/more');};
  const ownership=useSyncExternalStore(plusEntitlements.subscribe,plusEntitlements.getSnapshot,plusEntitlements.getSnapshot);
  const [message,setMessage]=useState(''),[busy,setBusy]=useState(false),[price,setPrice]=useState<string|null>(null);
  const [priceFailed,setPriceFailed]=useState(false);
@@ -50,7 +53,7 @@ export default function Plus(){
  }
  return <View style={{flex:1,backgroundColor:fg.page}}>
   <View style={{padding:12,gap:8,borderBottomWidth:1,borderBottomColor:fg.secondaryInk}}>
-   <Pressable accessibilityRole="button" accessibilityLabel="Back to Settings" onPress={()=>router.replace('/more')} style={button}><Text style={text}>‹ Settings</Text></Pressable>
+   <Pressable accessibilityRole="button" accessibilityLabel={`Back to ${destination}`} onPress={leave} style={button}><Text style={text}>{`‹ ${destination}`}</Text></Pressable>
    <Pressable testID="plus-purchase" accessibilityRole="button" accessibilityState={{disabled:purchaseDisabled,busy}} disabled={purchaseDisabled} onPress={()=>{void run('purchase');}} style={{...button,backgroundColor:fg.brandSurface,opacity:purchaseDisabled?0.65:1}}><Text style={text}>{owned?'Plus active':localPlusCheckout?price?`Test Unlock Plus · ${price}`:priceFailed?'Plus purchase unavailable':'Loading test price…' :playCatalogEnabled?(price?'Play Store price · '+price:priceFailed?'Play Store price unavailable':'Checking Play Store price…'):'Plus purchases unavailable'}</Text></Pressable>
    {priceFailed&&!owned&&<Pressable testID="plus-retry-price" accessibilityRole="button" style={button} onPress={()=>{
     setPriceFailed(false);
@@ -68,7 +71,7 @@ export default function Plus(){
    <Text accessibilityRole="header" style={{...text,fontWeight:'700'}}>Plus · US$25.99 once</Text>
    <Text style={text}>Remove the memory-count limit. Get full backup and recovery, including photos, and move your memories to a new device.</Text>
    <Text style={{...text,color:fg.secondaryInk}}>{playCatalogEnabled?(localPlusCheckout?'Google Play test checkout. Select a test payment method.':'Google Play price preview. Checkout is unavailable in this build.'):appleSandbox?'Apple sandbox test purchase.':localPlusCheckout?'Local StoreKit testing only · No real charge. Backup and restore access are connected. Other Plus features and the free-plan limit are still being implemented.':'Preview · Plus features are being implemented. Purchases and the free-plan limit are not enabled in this build.'}</Text>
-   <Pressable accessibilityRole="button" onPress={()=>router.replace('/more')} style={button}><Text style={text}>Not now</Text></Pressable>
+   <Pressable accessibilityRole="button" onPress={leave} style={button}><Text style={text}>Not now</Text></Pressable>
   </ScrollView>
  </View>;
 }

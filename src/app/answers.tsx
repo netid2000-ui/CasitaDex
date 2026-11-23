@@ -61,7 +61,7 @@ function NativeFind(){
   })}
  </View>
  {error?<Text accessibilityLiveRegion='polite'>{error}</Text>:null}
- <View onLayout={event=>{listTop.current=event.nativeEvent.layout.y;}}>{snapshot && !error?<FigmaFind lifecycle={lifecycle} onClearCriteria={hasCriteria?clearCriteria:undefined} hideSearchControls onResultsLayout={y=>{resultsTop.current=y;}} query={query} onQueryChange={updateQuery} results={results} data={snapshot?.data} onOpen={id=>router.push({pathname:'/card',params:{id}})} page={page} pageSize={pageSize} onPageChange={changePage} onPageSizeChange={changePageSize}/>:null}</View>
+ <View onLayout={event=>{listTop.current=event.nativeEvent.layout.y;}}>{snapshot && !error?<FigmaFind lifecycle={lifecycle} onClearCriteria={hasCriteria?clearCriteria:undefined} hideSearchControls onResultsLayout={y=>{resultsTop.current=y;}} query={query} onQueryChange={updateQuery} results={results} data={snapshot?.data} onOpen={id=>router.push({pathname:'/card',params:{id,origin:'find'}})} page={page} pageSize={pageSize} onPageChange={changePage} onPageSizeChange={changePageSize}/>:null}</View>
  </ScrollView>;
 }
 export default function Answers(){return <NativeFind/>;}
