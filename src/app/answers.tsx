@@ -3,7 +3,7 @@ import {filterFindResults,locationAfterSpaceChange} from '../find-filters';
 import {plusFeatureEnforcementEnabled} from '../plus-entitlement-runtime';
 import {getEngStore} from '../eng-runtime';
 import React,{useCallback,useRef,useState} from 'react';
-import {Pressable,ScrollView,Text,View} from 'react-native';
+import {ScrollView,Text,View} from 'react-native';
 import {router,useFocusEffect,useLocalSearchParams} from 'expo-router';
 import {FigmaFind,FindSearchControls} from '../figma-first/FigmaFind';
 import {findResults} from '../figma-first/view-models';
@@ -52,8 +52,14 @@ function NativeFind(){
  const restorePosition=useCallback(()=>{const preservedFindScrollY=readFindContext(lifecycle).y;scrollRef.current?.scrollTo({y:preservedFindScrollY,animated:false});},[lifecycle]);
  useFocusEffect(useCallback(()=>{void params.fresh;let active=true;restoreFindScroll.current=true;const context=readFindContext(lifecycle);setError('');setQuery(context.query);setPage(context.page);setPageSize(context.pageSize);setPhotosOnly(context.photosOnly);setSpaceId(context.spaceId??"");setCategoryId(context.categoryId??"");setLocationId(context.locationId??"");getEngStore().then(s=>s.load()).then(s=>{if(active){setSnapshot(s);restoreFindScroll.current=true;requestAnimationFrame(()=>requestAnimationFrame(()=>{restorePosition();restoreFindScroll.current=false;}));}}).catch(()=>{if(active)setError('Unable to load saved memories. Your data was not changed.')});return()=>{active=false}},[lifecycle,params.fresh,restorePosition,setError,setQuery,setPage,setPageSize,setPhotosOnly,setSpaceId,setCategoryId,setSnapshot]));
  return <ScrollView stickyHeaderIndices={[0]} keyboardDismissMode="on-drag" ref={scrollRef} onContentSizeChange={()=>{if(restoreFindScroll.current){restorePosition();restoreFindScroll.current=false;}}} onScroll={event=>{if(!restoreFindScroll.current)saveFindContext(lifecycle,{y:event.nativeEvent.contentOffset.y});}} scrollEventThrottle={100} keyboardShouldPersistTaps="handled" contentContainerStyle={{flexGrow:1,backgroundColor:'transparent'}}>
- <View style={{backgroundColor:fg.page}}>{params.origin==="settings"?<View style={{paddingHorizontal:18,paddingVertical:8}}><Button label="‹ Settings" onPress={()=>router.replace("/more")}/></View>:null}{lifecycle!=="active"?<View style={{padding:12,gap:8}}><Text accessibilityRole="header" style={{color:fg.headingInk,fontSize:19,fontWeight:"700"}}>{lifecycle==="archived"?"Archived memories":"Recently Deleted memories"}</Text><Pressable accessibilityRole="button" accessibilityLabel="Return to active memories" onPress={()=>router.replace({pathname:"/answers",params:{lifecycle:"active"}})} style={{padding:12,minHeight:48}}><Text style={{color:fg.headingInk}}>Return to active memories</Text></Pressable></View>:null}
+ <View style={{backgroundColor:fg.page}}>{params.origin==="settings"?<View style={{paddingHorizontal:18,paddingVertical:8}}><Button label="‹ Settings" onPress={()=>router.replace("/more")}/></View>:null}
  <FindSearchControls locationId={locationId} onLocationChange={changeLocation} spaceId={spaceId} categoryId={categoryId} onSpaceChange={changeSpace} onCategoryChange={changeCategory} iosTextView={plusFeatureEnforcementEnabled} photosOnly={photosOnly} onPhotosOnlyChange={togglePhotos} query={query} onQueryChange={updateQuery} results={results} data={snapshot?.data}/></View>
+ <View style={{paddingHorizontal:18,paddingVertical:8,flexDirection:"row",flexWrap:"wrap",gap:8}}>
+  {(["active","archived","recently_deleted"] as const).map(scope=>{
+   const label={active:"Active",archived:"Archived",recently_deleted:"Recently deleted"}[scope];
+   return <Button key={scope} compact label={label} selected={scope===lifecycle} onPress={()=>{if(scope!==lifecycle)router.setParams({lifecycle:scope});}}/>;
+  })}
+ </View>
  {error?<Text accessibilityLiveRegion='polite'>{error}</Text>:null}
  <View onLayout={event=>{listTop.current=event.nativeEvent.layout.y;}}>{snapshot && !error?<FigmaFind lifecycle={lifecycle} onClearCriteria={hasCriteria?clearCriteria:undefined} hideSearchControls onResultsLayout={y=>{resultsTop.current=y;}} query={query} onQueryChange={updateQuery} results={results} data={snapshot?.data} onOpen={id=>router.push({pathname:'/card',params:{id}})} page={page} pageSize={pageSize} onPageChange={changePage} onPageSizeChange={changePageSize}/>:null}</View>
  </ScrollView>;
