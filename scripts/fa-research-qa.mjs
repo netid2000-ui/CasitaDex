@@ -116,7 +116,7 @@ for (const script of matrix.sourceCommands) {
   writeFileSync(join(runDir, logName), output);
   const counts = {};
   for (const key of ['tests', 'pass', 'fail', 'skipped', 'cancelled', 'todo']) {
-    const matches = [...output.matchAll(new RegExp('^#\\s+' + key + '\\s+(\\d+)\\s*$', 'gm'))];
+    const matches = [...output.matchAll(new RegExp('^(?:#|ℹ)\\s+' + key + '\\s+(\\d+)\\s*$', 'gm'))];
     if (matches.length) counts[key] = Number(matches[matches.length - 1][1]);
   }
   const status = result.error || result.status === null ? 'BLOCKED'
