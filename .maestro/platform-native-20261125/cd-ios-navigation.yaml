@@ -1,0 +1,28 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: CasitaDex actual native Liquid Glass navigation
+---
+- launchApp:
+    clearState: false
+- assertVisible:
+    id: native-liquid-glass-navigation
+- assertVisible: "Add Memory"
+- tapOn: "Photos"
+- assertVisible: "Grid photo view"
+- tapOn: "Reminders"
+- assertVisible: "Add Reminder.*"
+- tapOn: "Find"
+- assertVisible: "Search memories.*"
+- tapOn: "Home"
+- tapOn: "Settings"
+- scrollUntilVisible:
+    element: "Backup & restore"
+    direction: DOWN
+    timeout: 15000
+- tapOn: "Backup & restore"
+- scrollUntilVisible:
+    element: "Save full backup.*"
+    direction: DOWN
+    timeout: 15000
+- tapOn: ".*Settings"
+- tapOn: "Home"
+- assertVisible: "Add Memory"

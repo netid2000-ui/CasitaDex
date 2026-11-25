@@ -1,0 +1,16 @@
+# CasitaDex — platform-native superbatch, November 25, 2026
+
+## Actual implementation and verification
+Source commit 55ea30b635be6fffb03b3cb8786bcc04dcd8a7c9. New SDK-matched expo-glass-effect 57.0.5 and @expo/ui 57.0.26. Native iOS GlassView (regular, theme-aware and accessibility-gated) and native Android Compose Material 3 NavigationBar with controlled selected state, capsule indicator and native ripple. Existing Home / Photos / Reminders / Find and guarded navigation unchanged, including fresh Find search. Large text retains accessible existing alternative; unsupported OS and Reduce Transparency have opaque fallback. Typecheck and zero-warning lint passed; 548/549 tests passed with one historical isolated simulator artifact skip, no failures. All 12 mapped source groups reran and passed.
+
+Fresh isolated platformqa iOS and Android builds from exact source resolve the previous source-to-installed-artifact uncertainty. Installed emulator and Samsung APK hashes match the source build, installed iOS bundle hash matches. Actual native iOS GlassView testID asserted in both light and dark flows; large-text fallback and backup return tested. Android emulator and physical Samsung native Material navigation, create and retrieve synthetic memory passed; dark/light at normal and 150% text checks passed. Android current build selected synthetic photo from library; cold reopen, photo viewer, zoom, reset and close passed.
+
+Native actual current-build full v4 backup with one synthetic memory and one photo exported to isolated emulator folder; backup verified and retained on external Mac SSD. Reviewed exact preview (one memory, one photo, no drafts, zero standalone reminders), restored that same synthetic snapshot and retrieved the cover photo/viewer. No owner collection touched.
+
+Figma: [iOS light](https://www.figma.com/design/39uzN0SZX8nlmcGDcHdQhr?node-id=1673-725), [iOS dark](https://www.figma.com/design/39uzN0SZX8nlmcGDcHdQhr?node-id=1673-788), [Android light](https://www.figma.com/design/39uzN0SZX8nlmcGDcHdQhr?node-id=1673-851), [Android dark](https://www.figma.com/design/39uzN0SZX8nlmcGDcHdQhr?node-id=1673-914). Readback verifies exact label order, selected state and insets of four editable review frames. Source masters preserved; applied native navigation and inspected representative native captures. Full pixel/control parity is not claimed.
+
+Accessibility: iOS real Reduce Transparency fallback proven in Event Command's identical shared navigation implementation; CasitaDex retains same fallback source contract. Real VoiceOver requires physical iPhone (currently offline); full audible TalkBack/VoiceOver, older OS acceptance, predictive back migration, remaining comprehensive native workflows, store sandbox and final owner acceptance remain open. No production merge/deployment, store submission, live purchase or paid dependencies. **Release NO-GO.**
+
+Raw Mac evidence: QA-Evidence/fa-platform-native-20261125. Machine-readable receipts, JUnit, representative captures and replayable fixture segments committed here.
+
+Fresh offline recovery: both exact platformqa binaries reopened their synthetic restored records while Android had no default network; previous connectivity restored. TalkBack was actually bound on emulator with visible focus on both apps, but full spoken accessibility acceptance remains unverified.

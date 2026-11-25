@@ -1,0 +1,20 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: CD exact-source one-record v4 restore and photo retrieval
+---
+- assertVisible: "1 memories, 1 saved photos, no unfinished draft, 0 draft photos."
+- scrollUntilVisible:
+    element: "Confirm replace with reviewed backup"
+    direction: DOWN
+    timeout: 15000
+- tapOn: "Confirm replace with reviewed backup"
+- extendedWaitUntil:
+    visible: "Full collection restored and verified."
+    timeout: 20000
+- tapOn: "Find"
+- tapOn: "Search memories.*"
+- inputText: "FA Platform Filter 20x25x1"
+- hideKeyboard
+- tapOn: "Open photo memory FA Platform Filter 20x25x1"
+- assertVisible: "Open cover photo of FA Platform Filter 20x25x1"
+- tapOn: "Open cover photo of FA Platform Filter 20x25x1"
+- assertVisible: "Photo 1 of 1.*"

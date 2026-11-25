@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="EventCommandGuestQA" tests="1" failures="0" time="51.496" timestamp="2026-11-25T15:33:57">
+    <testcase id="CasitaDex native Material navigation and synthetic memory" name="CasitaDex native Material navigation and synthetic memory" classname="CasitaDex native Material navigation and synthetic memory" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/fa-platform-native-20261125/cd-android-navigation.yaml" time="51.487" timestamp="2026-11-25T15:33:57" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

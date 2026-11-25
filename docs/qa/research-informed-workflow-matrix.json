@@ -67,6 +67,22 @@
           "skipped": 0
         },
         "exit": 0
+      },
+      "platformNativeMappedSource": {
+        "id": "CD-01",
+        "workflow": "Home and navigation",
+        "files": [
+          "tests/home-date-only.test.mjs",
+          "tests/home-function-first.test.mjs"
+        ],
+        "status": "PASS",
+        "counts": {
+          "tests": 5,
+          "pass": 5,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        }
       }
     },
     {
@@ -119,6 +135,22 @@
           "skipped": 0
         },
         "exit": 0
+      },
+      "platformNativeMappedSource": {
+        "id": "CD-02",
+        "workflow": "Capture and save",
+        "files": [
+          "tests/native-draft.test.mjs",
+          "tests/return-position-contract.test.mjs"
+        ],
+        "status": "PASS",
+        "counts": {
+          "tests": 11,
+          "pass": 11,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        }
       }
     },
     {
@@ -175,6 +207,23 @@
           "skipped": 0
         },
         "exit": 0
+      },
+      "platformNativeMappedSource": {
+        "id": "CD-03",
+        "workflow": "Find and retrieval",
+        "files": [
+          "tests/find-search-location.test.mjs",
+          "tests/find-keyboard-navigation.test.mjs",
+          "tests/find-lifecycle-routing.test.mjs"
+        ],
+        "status": "PASS",
+        "counts": {
+          "tests": 11,
+          "pass": 11,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        }
       }
     },
     {
@@ -227,6 +276,22 @@
           "skipped": 0
         },
         "exit": 0
+      },
+      "platformNativeMappedSource": {
+        "id": "CD-04",
+        "workflow": "Taxonomy and management",
+        "files": [
+          "tests/taxonomy-safeguards.test.mjs",
+          "tests/figma-manifest-gate.test.mjs"
+        ],
+        "status": "PASS",
+        "counts": {
+          "tests": 7,
+          "pass": 7,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        }
       }
     },
     {
@@ -279,6 +344,22 @@
           "skipped": 0
         },
         "exit": 0
+      },
+      "platformNativeMappedSource": {
+        "id": "CD-05",
+        "workflow": "Memory details and edits",
+        "files": [
+          "tests/return-position-contract.test.mjs",
+          "tests/domain.test.mjs"
+        ],
+        "status": "PASS",
+        "counts": {
+          "tests": 12,
+          "pass": 12,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        }
       }
     },
     {
@@ -333,6 +414,23 @@
           "skipped": 0
         },
         "exit": 0
+      },
+      "platformNativeMappedSource": {
+        "id": "CD-06",
+        "workflow": "Photos",
+        "files": [
+          "tests/figma-photo-behavior.test.mjs",
+          "tests/photo-workspace-index.test.mjs",
+          "tests/media-store-native.test.mjs"
+        ],
+        "status": "PASS",
+        "counts": {
+          "tests": 13,
+          "pass": 13,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        }
       }
     },
     {
@@ -386,6 +484,23 @@
           "skipped": 0
         },
         "exit": 0
+      },
+      "platformNativeMappedSource": {
+        "id": "CD-07",
+        "workflow": "Reminders",
+        "files": [
+          "tests/reminder-recurrence.test.mjs",
+          "tests/reminder-picker-layout.test.mjs",
+          "tests/reminder-alert-native.test.mjs"
+        ],
+        "status": "PASS",
+        "counts": {
+          "tests": 9,
+          "pass": 9,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        }
       }
     },
     {
@@ -440,6 +555,22 @@
           "skipped": 0
         },
         "exit": 0
+      },
+      "platformNativeMappedSource": {
+        "id": "CD-08",
+        "workflow": "Archive/delete/recover",
+        "files": [
+          "tests/domain.test.mjs",
+          "tests/durability.test.mjs"
+        ],
+        "status": "PASS",
+        "counts": {
+          "tests": 23,
+          "pass": 23,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        }
       }
     },
     {
@@ -493,6 +624,23 @@
           "skipped": 0
         },
         "exit": 0
+      },
+      "platformNativeMappedSource": {
+        "id": "CD-09",
+        "workflow": "Backup and restore",
+        "files": [
+          "tests/media-backup-v2.test.mjs",
+          "tests/media-native-restore-transaction.test.mjs",
+          "tests/media-restore-gate.test.mjs"
+        ],
+        "status": "PASS",
+        "counts": {
+          "tests": 9,
+          "pass": 9,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        }
       }
     },
     {
@@ -546,6 +694,23 @@
           "skipped": 0
         },
         "exit": 0
+      },
+      "platformNativeMappedSource": {
+        "id": "CD-10",
+        "workflow": "Offline and durability",
+        "files": [
+          "tests/durability.test.mjs",
+          "tests/sb24-sqlite-crash.test.mjs",
+          "tests/media-integrity.test.mjs"
+        ],
+        "status": "PASS",
+        "counts": {
+          "tests": 21,
+          "pass": 21,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        }
       }
     },
     {
@@ -599,6 +764,23 @@
           "skipped": 0
         },
         "exit": 0
+      },
+      "platformNativeMappedSource": {
+        "id": "CD-11",
+        "workflow": "Free and Plus",
+        "files": [
+          "tests/plus-feature-gate.test.mjs",
+          "tests/plus-delivery.test.mjs",
+          "tests/plus-store-build-config.test.mjs"
+        ],
+        "status": "PASS",
+        "counts": {
+          "tests": 13,
+          "pass": 13,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        }
       }
     },
     {
@@ -652,6 +834,22 @@
           "skipped": 0
         },
         "exit": 0
+      },
+      "platformNativeMappedSource": {
+        "id": "CD-12",
+        "workflow": "Accessibility and appearance",
+        "files": [
+          "tests/sb26-ia-accessibility.test.mjs",
+          "tests/status-announcement.test.mjs"
+        ],
+        "status": "PASS",
+        "counts": {
+          "tests": 4,
+          "pass": 4,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        }
       }
     }
   ],
@@ -750,6 +948,14 @@
     "sourceStatus": "ALL_MAPPED_GROUPS_PASS",
     "nativeAcceptance": "SUBSET_ONLY",
     "receipt": "docs/qa/release-quality-20261125/receipt.json",
+    "release": "NO_GO"
+  },
+  "platformNativeCheckpoint": {
+    "date": "2026-11-25",
+    "sourceCommit": "55ea30b635be6fffb03b3cb8786bcc04dcd8a7c9",
+    "mappedSource": "PASS",
+    "nativeAcceptance": "SUBSET_VERIFIED",
+    "receipt": "docs/qa/platform-native-20261125/receipt.json",
     "release": "NO_GO"
   }
 }

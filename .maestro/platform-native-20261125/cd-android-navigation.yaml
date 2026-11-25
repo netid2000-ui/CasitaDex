@@ -1,0 +1,34 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: CasitaDex native Material navigation and synthetic memory
+---
+- launchApp:
+    clearState: false
+- assertVisible: "Add Memory"
+- assertVisible: "Home"
+- assertVisible: "Photos"
+- assertVisible: "Reminders"
+- assertVisible: "Find"
+- tapOn: "Photos"
+- assertVisible: "Grid photo view"
+- tapOn: "Reminders"
+- assertVisible: "Add Reminder.*"
+- tapOn: "Find"
+- assertVisible: "Search memories.*"
+- tapOn: "CasitaDex logo, go to Home"
+- tapOn: "Add Memory"
+- tapOn:
+    text: "Memory name.*Required.*"
+    index: 1
+- inputText: "FA Platform Filter 20x25x1"
+- tapOn:
+    text: "Description"
+    index: 1
+- inputText: "Synthetic platform QA filter."
+- hideKeyboard
+- tapOn: "Save"
+- tapOn: "Find"
+- tapOn: "Search memories.*"
+- inputText: "FA Platform Filter 20x25x1"
+- hideKeyboard
+- tapOn: "Open regular memory FA Platform Filter.*"
+- assertVisible: "Synthetic platform QA filter."

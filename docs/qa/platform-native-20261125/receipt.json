@@ -1,0 +1,545 @@
+{
+  "date": "2026-11-25",
+  "hostname": "FA-MAC-DEV-01.local",
+  "project": "casitadex",
+  "sourceCommit": "55ea30b635be6fffb03b3cb8786bcc04dcd8a7c9",
+  "suite": {
+    "tests": 549,
+    "pass": 548,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 1
+  },
+  "typecheck": "PASS",
+  "lint": {
+    "status": "PASS",
+    "warnings": 0
+  },
+  "mappedSource": [
+    {
+      "id": "CD-01",
+      "workflow": "Home and navigation",
+      "files": [
+        "tests/home-date-only.test.mjs",
+        "tests/home-function-first.test.mjs"
+      ],
+      "status": "PASS",
+      "counts": {
+        "tests": 5,
+        "pass": 5,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "CD-02",
+      "workflow": "Capture and save",
+      "files": [
+        "tests/native-draft.test.mjs",
+        "tests/return-position-contract.test.mjs"
+      ],
+      "status": "PASS",
+      "counts": {
+        "tests": 11,
+        "pass": 11,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "CD-03",
+      "workflow": "Find and retrieval",
+      "files": [
+        "tests/find-search-location.test.mjs",
+        "tests/find-keyboard-navigation.test.mjs",
+        "tests/find-lifecycle-routing.test.mjs"
+      ],
+      "status": "PASS",
+      "counts": {
+        "tests": 11,
+        "pass": 11,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "CD-04",
+      "workflow": "Taxonomy and management",
+      "files": [
+        "tests/taxonomy-safeguards.test.mjs",
+        "tests/figma-manifest-gate.test.mjs"
+      ],
+      "status": "PASS",
+      "counts": {
+        "tests": 7,
+        "pass": 7,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "CD-05",
+      "workflow": "Memory details and edits",
+      "files": [
+        "tests/return-position-contract.test.mjs",
+        "tests/domain.test.mjs"
+      ],
+      "status": "PASS",
+      "counts": {
+        "tests": 12,
+        "pass": 12,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "CD-06",
+      "workflow": "Photos",
+      "files": [
+        "tests/figma-photo-behavior.test.mjs",
+        "tests/photo-workspace-index.test.mjs",
+        "tests/media-store-native.test.mjs"
+      ],
+      "status": "PASS",
+      "counts": {
+        "tests": 13,
+        "pass": 13,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "CD-07",
+      "workflow": "Reminders",
+      "files": [
+        "tests/reminder-recurrence.test.mjs",
+        "tests/reminder-picker-layout.test.mjs",
+        "tests/reminder-alert-native.test.mjs"
+      ],
+      "status": "PASS",
+      "counts": {
+        "tests": 9,
+        "pass": 9,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "CD-08",
+      "workflow": "Archive/delete/recover",
+      "files": [
+        "tests/domain.test.mjs",
+        "tests/durability.test.mjs"
+      ],
+      "status": "PASS",
+      "counts": {
+        "tests": 23,
+        "pass": 23,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "CD-09",
+      "workflow": "Backup and restore",
+      "files": [
+        "tests/media-backup-v2.test.mjs",
+        "tests/media-native-restore-transaction.test.mjs",
+        "tests/media-restore-gate.test.mjs"
+      ],
+      "status": "PASS",
+      "counts": {
+        "tests": 9,
+        "pass": 9,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "CD-10",
+      "workflow": "Offline and durability",
+      "files": [
+        "tests/durability.test.mjs",
+        "tests/sb24-sqlite-crash.test.mjs",
+        "tests/media-integrity.test.mjs"
+      ],
+      "status": "PASS",
+      "counts": {
+        "tests": 21,
+        "pass": 21,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "CD-11",
+      "workflow": "Free and Plus",
+      "files": [
+        "tests/plus-feature-gate.test.mjs",
+        "tests/plus-delivery.test.mjs",
+        "tests/plus-store-build-config.test.mjs"
+      ],
+      "status": "PASS",
+      "counts": {
+        "tests": 13,
+        "pass": 13,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": "CD-12",
+      "workflow": "Accessibility and appearance",
+      "files": [
+        "tests/sb26-ia-accessibility.test.mjs",
+        "tests/status-announcement.test.mjs"
+      ],
+      "status": "PASS",
+      "counts": {
+        "tests": 4,
+        "pass": 4,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    }
+  ],
+  "deps": {
+    "expo-glass-effect": "57.0.5",
+    "@expo/ui": "57.0.26"
+  },
+  "installedArtifacts": [
+    {
+      "project": "cd",
+      "source": "55ea30b635be6fffb03b3cb8786bcc04dcd8a7c9",
+      "device": "iOS simulator 27.0",
+      "package": "com.designsbyfa.casitadex.platformqa",
+      "artifact": "jsbundle",
+      "expectedSha256": "3687b2cba6df83afa9b358a98d0e9e1bbc41ddd2ea4321d000b53dcce6b3a48f",
+      "observedSha256": "3687b2cba6df83afa9b358a98d0e9e1bbc41ddd2ea4321d000b53dcce6b3a48f",
+      "status": "PASS"
+    },
+    {
+      "project": "cd",
+      "source": "55ea30b635be6fffb03b3cb8786bcc04dcd8a7c9",
+      "device": "Android emulator API 36",
+      "package": "com.designsbyfa.casitadex.platformqa",
+      "artifact": "APK",
+      "expectedSha256": "9ba50397aa7614654dcf268eb54b0177e78e8c35da9881b1ddcfb8e92cca4b27",
+      "observedSha256": "9ba50397aa7614654dcf268eb54b0177e78e8c35da9881b1ddcfb8e92cca4b27",
+      "status": "PASS"
+    },
+    {
+      "project": "cd",
+      "source": "55ea30b635be6fffb03b3cb8786bcc04dcd8a7c9",
+      "device": "Samsung SM_S166V API 36",
+      "package": "com.designsbyfa.casitadex.platformqa",
+      "artifact": "APK",
+      "expectedSha256": "9ba50397aa7614654dcf268eb54b0177e78e8c35da9881b1ddcfb8e92cca4b27",
+      "observedSha256": "9ba50397aa7614654dcf268eb54b0177e78e8c35da9881b1ddcfb8e92cca4b27",
+      "status": "PASS"
+    }
+  ],
+  "figmaFrames": [
+    {
+      "id": "1673:725",
+      "name": "CasitaDex \u00b7 Find \u00b7 iOS Liquid Glass \u00b7 Light \u00b7 PLATFORM REVIEW \u00b7 2026-11-25",
+      "w": 390,
+      "h": 844,
+      "bar": {
+        "id": "1674:793",
+        "x": 12,
+        "y": 756,
+        "w": 366,
+        "h": 64,
+        "inside": true
+      },
+      "labels": [
+        {
+          "name": "Home \u00b7 Unselected",
+          "text": "Home"
+        },
+        {
+          "name": "Photos \u00b7 Unselected",
+          "text": "Photos"
+        },
+        {
+          "name": "Reminders \u00b7 Unselected",
+          "text": "Reminders"
+        },
+        {
+          "name": "Find \u00b7 Selected",
+          "text": "Find"
+        }
+      ],
+      "oldNavHidden": true
+    },
+    {
+      "id": "1673:788",
+      "name": "CasitaDex \u00b7 Find \u00b7 iOS Liquid Glass \u00b7 Dark \u00b7 PLATFORM REVIEW \u00b7 2026-11-25",
+      "w": 390,
+      "h": 844,
+      "bar": {
+        "id": "1674:810",
+        "x": 12,
+        "y": 756,
+        "w": 366,
+        "h": 64,
+        "inside": true
+      },
+      "labels": [
+        {
+          "name": "Home \u00b7 Unselected",
+          "text": "Home"
+        },
+        {
+          "name": "Photos \u00b7 Unselected",
+          "text": "Photos"
+        },
+        {
+          "name": "Reminders \u00b7 Unselected",
+          "text": "Reminders"
+        },
+        {
+          "name": "Find \u00b7 Selected",
+          "text": "Find"
+        }
+      ],
+      "oldNavHidden": true
+    },
+    {
+      "id": "1673:851",
+      "name": "CasitaDex \u00b7 Find \u00b7 Android Material 3 Expressive \u00b7 Light \u00b7 PLATFORM REVIEW \u00b7 2026-11-25",
+      "w": 390,
+      "h": 844,
+      "bar": {
+        "id": "1674:827",
+        "x": 0,
+        "y": 740,
+        "w": 390,
+        "h": 80,
+        "inside": true
+      },
+      "labels": [
+        {
+          "name": "Home \u00b7 Unselected",
+          "text": "Home"
+        },
+        {
+          "name": "Photos \u00b7 Unselected",
+          "text": "Photos"
+        },
+        {
+          "name": "Reminders \u00b7 Unselected",
+          "text": "Reminders"
+        },
+        {
+          "name": "Find \u00b7 Selected",
+          "text": "Find"
+        }
+      ],
+      "oldNavHidden": true
+    },
+    {
+      "id": "1673:914",
+      "name": "CasitaDex \u00b7 Find \u00b7 Android Material 3 Expressive \u00b7 Dark \u00b7 PLATFORM REVIEW \u00b7 2026-11-25",
+      "w": 390,
+      "h": 844,
+      "bar": {
+        "id": "1674:845",
+        "x": 0,
+        "y": 740,
+        "w": 390,
+        "h": 80,
+        "inside": true
+      },
+      "labels": [
+        {
+          "name": "Home \u00b7 Unselected",
+          "text": "Home"
+        },
+        {
+          "name": "Photos \u00b7 Unselected",
+          "text": "Photos"
+        },
+        {
+          "name": "Reminders \u00b7 Unselected",
+          "text": "Reminders"
+        },
+        {
+          "name": "Find \u00b7 Selected",
+          "text": "Find"
+        }
+      ],
+      "oldNavHidden": true
+    }
+  ],
+  "nativeFlows": {
+    "cd-android-backup-open": {
+      "status": "PASS",
+      "seconds": 10.513,
+      "sha256": "50173222c01f6ae4b5f5d15030dcad7e498b5a5a90ff952f491a3fba9ca79a2c",
+      "failure": []
+    },
+    "cd-android-navigation": {
+      "status": "PASS",
+      "seconds": 51.487,
+      "sha256": "bf0a29807601653193c18ed11c9f2b42506fc148351e46b2ac194c2687bb5ed7",
+      "failure": []
+    },
+    "cd-android-offline": {
+      "status": "PASS",
+      "seconds": 16.667,
+      "sha256": "978b7c45d211f6b5f798a6ca473b14c1903140d400b11b3bdaa78dee64ee2fe9",
+      "failure": []
+    },
+    "cd-android-photo-open": {
+      "status": "PASS",
+      "seconds": 25.844,
+      "sha256": "a98cb1c47fc64ab68ad5247019a95b2a2185b3cc1bf68df5496cc661cfd32728",
+      "failure": []
+    },
+    "cd-android-photo-reopen": {
+      "status": "PASS",
+      "seconds": 26.1,
+      "sha256": "f757f7c10a41129c7a083e4075bc89806dd66272c496daebc919f9503d302017",
+      "failure": []
+    },
+    "cd-android-restore": {
+      "status": "PASS",
+      "seconds": 21.099,
+      "sha256": "68293eb718e2e83fba8f5ff88cbc07d7b4c219d700e43dc384096c9a0e876ebc",
+      "failure": []
+    },
+    "cd-ios-dark": {
+      "status": "PASS",
+      "seconds": 12.025,
+      "sha256": "5581ecb87908a42a3ab5710608756db0f3dc1defa86f242433ff0cf514f1b32e",
+      "failure": []
+    },
+    "cd-ios-large": {
+      "status": "PASS",
+      "seconds": 15.852,
+      "sha256": "baa9fed33068665fd3ae2edca3a459502660030b27f4b635dbace274db8260bf",
+      "failure": []
+    },
+    "cd-ios-light": {
+      "status": "PASS",
+      "seconds": 11.09,
+      "sha256": "e79ed48458d4be2ab4eff340bc1409d671ab105ff09c0dd35aef369297594171",
+      "failure": []
+    },
+    "cd-samsung-nav": {
+      "status": "PASS",
+      "seconds": 77.217,
+      "sha256": "b8c6a212d1bacb6baa9a1dbf06c32db72f67f537bd8c5f85211fee4d8b604299",
+      "failure": []
+    }
+  },
+  "androidThemes": [
+    {
+      "project": "cd",
+      "night": "no",
+      "fontScale": "1.0",
+      "status": "PASS",
+      "nativeMaterial3": true,
+      "requiredLabels": [
+        "Home",
+        "Photos",
+        "Reminders",
+        "Find"
+      ],
+      "missing": []
+    },
+    {
+      "project": "cd",
+      "night": "yes",
+      "fontScale": "1.0",
+      "status": "PASS",
+      "nativeMaterial3": true,
+      "requiredLabels": [
+        "Home",
+        "Photos",
+        "Reminders",
+        "Find"
+      ],
+      "missing": []
+    },
+    {
+      "project": "cd",
+      "night": "no",
+      "fontScale": "1.5",
+      "status": "PASS",
+      "nativeMaterial3": false,
+      "requiredLabels": [
+        "Home",
+        "Photos",
+        "Reminders",
+        "Find"
+      ],
+      "missing": []
+    },
+    {
+      "project": "cd",
+      "night": "yes",
+      "fontScale": "1.5",
+      "status": "PASS",
+      "nativeMaterial3": false,
+      "requiredLabels": [
+        "Home",
+        "Photos",
+        "Reminders",
+        "Find"
+      ],
+      "missing": []
+    }
+  ],
+  "platform": {
+    "iosSdk": "27.2",
+    "iosRuntime": "27.0",
+    "android": "16 API 36",
+    "nativeLiquidGlass": "PASS",
+    "nativeComposeMaterial3": "PASS",
+    "expressiveScope": "Primary navigation; not whole-app certification",
+    "predictiveBack": "OPT_OUT_NOT_MIGRATED"
+  },
+  "offline": {
+    "status": "PASS",
+    "network": "Active default network: none",
+    "restored": "airplane 0, wifi 1, mobile data 1"
+  },
+  "talkBack": {
+    "status": "PARTIAL_REAL_SERVICE_AND_FOCUS_SMOKE",
+    "observed": "bound TalkBack, touch exploration enabled, focused app header/photo title observed; full audible gesture traversal not verified",
+    "restoration": "original settings restored"
+  },
+  "voiceOver": "BLOCKED_PHYSICAL_IPHONE_OFFLINE",
+  "olderOs": "NOT_RUN_NO_INSTALLED_OLDER_RUNTIME",
+  "ownerAcceptance": "NOT_RUN",
+  "storeSandbox": "NOT_RUN",
+  "fullNativeCoverage": "SUBSET_NOT_FULL_ACCEPTANCE",
+  "release": "NO_GO",
+  "rawMacEvidence": "/Volumes/FA-Development/Designs-by-FA/QA-Evidence/fa-platform-native-20261125",
+  "backup": {
+    "sha256": "e932c54a95d97a9e6f37b6cba7df8f9a3c51ebeefa9569636e8584ff84abd5c9",
+    "file": "CasitaDex-full-2026-11-25T21-45-05-894Z.cdxe",
+    "bytes": 2754,
+    "restore": "PASS",
+    "preview": "1 memory, 1 saved photo, 0 drafts and standalone reminders"
+  },
+  "nativeFlowSummary": {
+    "PASS": 10,
+    "FAIL": 0
+  }
+}

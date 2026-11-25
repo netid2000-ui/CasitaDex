@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="CasitaDex Plus 25.99 Recovery QA - iOS 27.0 - 36C7AE6D-1615-4A23-B313-46EBD092DA6C" tests="1" failures="0" time="15.859" timestamp="2026-11-25T15:45:13">
+    <testcase id="CasitaDex actual native Liquid Glass navigation" name="CasitaDex actual native Liquid Glass navigation" classname="CasitaDex actual native Liquid Glass navigation" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/fa-platform-native-20261125/cd-ios-large.yaml" time="15.852" timestamp="2026-11-25T15:45:13" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

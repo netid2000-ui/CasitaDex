@@ -1,0 +1,11 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: CD actual full v4 backup entry after photo
+---
+- tapOn: "Home"
+- tapOn: "Settings"
+- scrollUntilVisible:
+    element: "Backup & restore"
+    direction: DOWN
+    timeout: 15000
+- tapOn: "Backup & restore"
+- tapOn: "Save full backup.*"

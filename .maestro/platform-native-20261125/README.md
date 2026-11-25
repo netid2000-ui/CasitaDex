@@ -1,0 +1,3 @@
+# Platform-native QA fixture flows
+
+All tests run on the designated Mac and explicit platformqa identity only. Synthetic create fixtures are for an initially empty isolated collection. Some flows are continuation segments; use their matching receipt and raw evidence from the Mac. Backup replacement is restricted to the exact reviewed one-record synthetic CasitaDex collection; Event Command restores a separate synthetic event. Native pickers require the exact injected synthetic image/file. Never select owner media, live store products or production data. System setting flows on the isolated emulator/simulator must restore original accessibility, theme and network settings.

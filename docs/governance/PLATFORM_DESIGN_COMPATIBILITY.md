@@ -2,7 +2,13 @@
 
 Scope: FA-02, FA-04, FA-08, FA-13, FA-14. The existing approved product identity, navigation order, and guarded Save/Cancel/Back/return semantics remain authoritative. Platform visual changes belong in separate Figma review variants until approved; this checkpoint does not replace the accepted master.
 
-## Observed installed QA platform profiles
+## Implementation checkpoint — 2026-11-25, platform-native batch
+
+The navigation control layer now actually uses SDK-matched native modules: Expo GlassView with runtime/API and Reduce Transparency gating on iOS, and Expo UI's Jetpack Compose Material 3 NavigationBar on compact portrait Android. The approved four destinations and guarded navigation callbacks are unchanged. Large-type and landscape layouts retain accessible fallback navigation; older iOS uses an opaque fallback. Product colors and content styling remain branded. The Material 3 navigation bar uses an active capsule indicator and native selection/ripple semantics; this is not a claim that every screen is Material 3 Expressive certified. Figma contains eight editable light/dark mobile review frames (four per app); these represent the implemented navigation layer while preserving source masters. See [current platform evidence](../qa/platform-native-20261125/README.md).
+
+Predictive back remains opt-out because the existing dirty-edit BackHandler contract has not been migrated and independently accepted. VoiceOver requires a connected physical iPhone, and installed simulator runtimes only include iOS 27.0/27.1. No store or production action was taken. The historical pre-adoption observations below are retained for traceability.
+
+## Historical pre-adoption QA platform profiles
 
 | Platform | Actual observation on FA-MAC-DEV-01 |
 |---|---|
