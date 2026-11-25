@@ -1,3 +1,4 @@
+import { ThemeMaterial } from "./platform/theme-material";
 import React, { useState, useMemo, useRef, useEffect } from "react";
 import {
   AccessibilityInfo,
@@ -255,10 +256,10 @@ export function Page({
     return ()=>{shown.remove();hidden.remove();if(revealTimer.current!==null)clearTimeout(revealTimer.current);};
   },[androidKeyboardAware,revealFocusedInput]);
   const { ready, error, busy, reload, recover } = useData();
-  const { s, colors } = useTheme();
+  const { s, colors, dark } = useTheme();
   return (
     <View style={{flex:1,backgroundColor:colors.paper}}>
-    {stickyActions?<View style={{paddingHorizontal:20,paddingVertical:10,borderBottomWidth:1,borderBottomColor:colors.line,backgroundColor:colors.paper,zIndex:2}}>{stickyActions}</View>:null}
+    {stickyActions?<View style={{paddingHorizontal:20,paddingVertical:10,borderBottomWidth:1,borderBottomColor:colors.line,backgroundColor:colors.paper,zIndex:2}}><ThemeMaterial testID="contextual-toolbar" dark={dark} surface={colors.paper} accent={colors.focus} ink={colors.ink} style={{borderRadius:20,paddingHorizontal:6,paddingVertical:4}}>{stickyActions}</ThemeMaterial></View>:null}
     <ScrollView
       ref={scroll}
       keyboardDismissMode="on-drag"

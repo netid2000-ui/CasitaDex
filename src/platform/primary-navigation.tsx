@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { AccessibilityInfo, Platform, Pressable, Text, View, StyleSheet } from 'react-native';
 import { GlassView, isGlassEffectAPIAvailable, isLiquidGlassAvailable } from 'expo-glass-effect';
+import { materialTokens } from './material-tokens';
 import type { PlatformNavigationProps } from './primary-navigation.types';
 
 // The content remains in normal layout; the native material only affects the navigation surface.
-export function PlatformPrimaryNavigation({items, dark, surface, selected, ink, muted}: PlatformNavigationProps) {
+export function PlatformPrimaryNavigation({items, dark, surface, selected, ink, muted, accent}: PlatformNavigationProps) {
   // An opaque surface is the safe default until the accessibility preference is known.
   const [reduceTransparency, setReduceTransparency] = useState(true);
   useEffect(() => {
@@ -30,7 +31,7 @@ export function PlatformPrimaryNavigation({items, dark, surface, selected, ink, 
     </Pressable>
   ));
   return <View style={styles.outer} testID="platform-primary-navigation">
-    {glass ? <GlassView testID="native-liquid-glass-navigation" glassEffectStyle="regular" colorScheme={dark?'dark':'light'}
+    {glass ? <GlassView testID="native-liquid-glass-navigation" glassEffectStyle="regular" colorScheme={dark?'dark':'light'} tintColor={accent?materialTokens(surface,accent,ink).glassTint:undefined}
       style={styles.bar}>{content}</GlassView> :
       <View testID="opaque-navigation-fallback" style={[styles.bar,{backgroundColor:surface}]}>{content}</View>}
   </View>;

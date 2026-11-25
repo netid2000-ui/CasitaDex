@@ -1,3 +1,4 @@
+import {materialTokens} from "../platform/material-tokens";
 import {PlatformPrimaryNavigation} from "../platform/primary-navigation";
 import {reminderNotificationDestination} from "../reminder-notification-destination";
 import {beginFreshFind} from "../find-context";
@@ -106,7 +107,7 @@ function Shell() {
         style={{ backgroundColor: colors.paper }}
       >
         {!compactHeader && (Platform.OS==="ios"||Platform.OS==="android") ? <PlatformPrimaryNavigation
-          dark={dark} surface={colors.paper} selected={dark?colors.white:colors.accent} ink={colors.ink} muted={colors.muted}
+          dark={dark} surface={colors.paper} selected={materialTokens(dark?colors.white:colors.accent,colors.focus,colors.ink).tone} ink={colors.ink} muted={colors.muted} accent={colors.focus}
           items={destinations.map(({label,route})=>{
             const active=path===route||(route==="/answers"&&(path==="/card"||path==="/memories"))||(route==="/reminders"&&path==="/reminders-manage");
             return {label,selected:active,

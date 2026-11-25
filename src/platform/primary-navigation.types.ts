@@ -7,4 +7,5 @@ export type PlatformNavigationProps = {
   selected: string;
   ink: string;
   muted: string;
+  accent?: string;
 };
