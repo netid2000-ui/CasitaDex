@@ -17,6 +17,8 @@ Select the relevant disciplines for the request, consult their synthesis and dir
 
 ## Automated QA
 
+On the designated Mac, source `scripts/fa-mac-env.sh` to resolve the existing Java, Android SDK/ADB and Maestro installations. Read back their versions and device identities before native work. No global profile or new package is required.
+
 Use `node scripts/fa-research-qa.mjs --plan` to validate the mapped test-file references and see available existing commands. On the designated Mac mini, `--run --expected-host <observed-hostname> --evidence-root <approved-external-evidence-folder>` records a local source-only typecheck, existing test suite, and lint, with explicit pass/fail/blocked status. It does not install, build, deploy, purchase, touch a physical device, or run native flows. Native cases are a separate stage requiring the recorded current build and synthetic fixture. Use project-specific native procedures; run nothing against live endpoints.
 
 ## CasitaDex project specifics
