@@ -19,5 +19,13 @@
   "delivery": "Temporary secret-path HTTPS install page; active for up to 24h while tunnel runs; URL intentionally omitted from repository",
   "physicalInstall": "NOT_VERIFIED_OWNER_INSTALL_REQUIRED",
   "acceptedAppPreserved": true,
-  "storeSubmission": "NOT_PERFORMED"
+  "storeSubmission": "NOT_PERFORMED",
+  "routingCorrection": {
+    "reported": "HTTP 404",
+    "identified": "Original router matched exact path including trailing slash and rejected query parameters",
+    "corrected": "New isolated HTTPS private installer accepts slash/no-slash and browser query parameters; root provides private code entry without exposing packages",
+    "verified": "Both manifests and full remote IPA SHA-256 downloads PASS; access code redirect PASS",
+    "physicalInstall": "Not yet verified; owner to install",
+    "privateUrl": "Omitted"
+  }
 }
