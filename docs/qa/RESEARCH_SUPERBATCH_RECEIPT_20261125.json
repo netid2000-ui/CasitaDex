@@ -84,5 +84,11 @@
     "1669:976"
   ],
   "ownerIphone": "NOT_RUN",
-  "release": "NO_GO"
+  "release": "NO_GO",
+  "offlineEmulatorReopen": {
+    "status": "PASS",
+    "assertion": "Saved synthetic memory retrieved after offline process relaunch",
+    "network": "Airplane mode on; Wi-Fi and mobile data off; no default network",
+    "restored": "Airplane mode off; Wi-Fi and mobile data on"
+  }
 }

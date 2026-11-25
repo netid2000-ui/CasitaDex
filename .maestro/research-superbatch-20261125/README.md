@@ -1,0 +1,3 @@
+# Research-informed native QA flows
+
+Recorded November 25, 2026, Mac mini only. Use the exact QA package IDs, never production app IDs. Navigation flows preserve existing data and validate navigation only. The household fixture creates a synthetic record; execute only in a fresh isolated emulator collection, never in owner data. Avoid duplicate fixture titles on subsequent runs. The Android navigation flow uses the explicit in-app Home logo and Settings Back to Home rather than an ambiguous system Home selector. Capture JUnit and local evidence; do not infer native acceptance from source results.

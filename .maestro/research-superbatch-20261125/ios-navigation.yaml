@@ -1,0 +1,22 @@
+appId: com.designsbyfa.casitadex.plusstoreqa
+name: CD installed iOS QA navigation smoke
+---
+- launchApp:
+    clearState: false
+- tapOn: "Home"
+- assertVisible: "Add Memory"
+- tapOn: "Photos"
+- assertVisible: "Grid photo view"
+- tapOn: "Reminders"
+- assertVisible: "Add Reminder.*"
+- tapOn: "Find"
+- assertVisible: "Search memories.*"
+- tapOn: "Home"
+- tapOn: "Settings"
+- assertVisible: "Backup & restore"
+- tapOn: "Backup & restore"
+- assertVisible: "Save full backup.*"
+- tapOn: ".*Settings"
+- assertVisible: "Backup & restore"
+- tapOn: "Home"
+- assertVisible: "Add Memory"

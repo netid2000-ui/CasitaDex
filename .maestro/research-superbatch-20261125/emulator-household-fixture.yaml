@@ -1,0 +1,25 @@
+appId: com.designsbyfa.casitadex.recallqa
+name: CD synthetic household create retrieve and return
+---
+- launchApp:
+    clearState: false
+- tapOn: "CasitaDex logo, go to Home"
+- tapOn: "Add Memory"
+- tapOn:
+    text: "Memory name.*Required.*"
+    index: 1
+- inputText: "FA QA Filter 20x25x1 20261125"
+- tapOn:
+    text: "Description"
+    index: 1
+- inputText: "Synthetic QA spare filter on utility shelf."
+- hideKeyboard
+- tapOn: "Save"
+- tapOn: "Find"
+- tapOn: "Search memories.*"
+- inputText: "FA QA Filter 20x25x1 20261125"
+- hideKeyboard
+- tapOn: "Open regular memory FA QA Filter.*"
+- assertVisible: "Synthetic QA spare filter on utility shelf."
+- tapOn: ".*Results"
+- assertVisible: "FA QA Filter 20x25x1 20261125"

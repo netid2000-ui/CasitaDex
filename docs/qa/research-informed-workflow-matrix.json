@@ -527,5 +527,11 @@
       "test": "CD synthetic household create retrieve and return",
       "receipt": "cd-emulator-household-v1/report.xml"
     }
+  },
+  "offlineEmulatorReopen": {
+    "status": "PASS",
+    "assertion": "Saved synthetic memory retrieved after offline process relaunch",
+    "network": "Airplane mode on; Wi-Fi and mobile data off; no default network",
+    "restored": "Airplane mode off; Wi-Fi and mobile data on"
   }
 }

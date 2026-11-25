@@ -21,3 +21,7 @@ Visual readback verified representative light/dark frames and selected/empty sta
 [Machine-readable receipt](RESEARCH_SUPERBATCH_RECEIPT_20261125.json) · [Updated workflow matrix](research-informed-workflow-matrix.json).
 
 Release NO-GO: owner physical iPhone, fresh full backup round trip, store sandbox and full current-native workflow acceptance remain open. No live purchase or store submission.
+
+## Additional offline verification
+
+The Android emulator had airplane mode enabled, Wi-Fi and mobile data disabled and no active default network. After terminating and reopening only the isolated QA app, the saved synthetic filter memory was retrieved: PASS. Original network settings restored. The replayable navigation and household fixture flows are recorded in .maestro/research-superbatch-20261125. This is offline relaunch retrieval, not a new full native backup/restore acceptance.

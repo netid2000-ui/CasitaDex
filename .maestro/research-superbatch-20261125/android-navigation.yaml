@@ -1,0 +1,26 @@
+appId: com.designsbyfa.casitadex.recallqa
+name: CD installed Android QA navigation smoke
+---
+- launchApp:
+    clearState: false
+- runFlow:
+    when:
+      visible: "Back to Home"
+    commands:
+      - tapOn: "Back to Home"
+- assertVisible: "Add Memory"
+- tapOn: "Photos"
+- assertVisible: "Grid photo view"
+- tapOn: "Reminders"
+- assertVisible: "Add Reminder.*"
+- tapOn: "Find"
+- assertVisible: "Search memories.*"
+- tapOn: "CasitaDex logo, go to Home"
+- tapOn: "Settings"
+- assertVisible: "Backup & restore"
+- tapOn: "Backup & restore"
+- assertVisible: "Save full backup.*"
+- tapOn: ".*Settings"
+- assertVisible: "Backup & restore"
+- tapOn: "Back to Home"
+- assertVisible: "Add Memory"
