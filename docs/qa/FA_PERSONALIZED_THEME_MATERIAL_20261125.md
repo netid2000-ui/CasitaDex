@@ -28,3 +28,6 @@ QA-only, not App Store/Play production approval. Owner's physical iPhone final a
 - Both code signature verification, owner-device ad hoc provisioning, version 2 manifests and full internet download hashes PASS. Verified landing page with and without trailing slash.
 - Cold Android launch single sample (ms, not a benchmark): Event Command emulator 462, Samsung 372; CasitaDex emulator 1065, Samsung 913. No crash during the tested navigation loops. Full performance profiling is not claimed.
 
+## Final iOS photo confirmation
+CasitaDex build 2: synthetic photo selected in iOS Photos picker, draft resumed, required title entered, saved memory found in Find, cover photo opened, photo count 1 of 1 verified, reset zoom and Close returned to originating memory. PASS. Corrected test selectors and retained failed-attempt logs; no source change after signed builds.
+
