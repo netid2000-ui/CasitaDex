@@ -1,0 +1,23 @@
+{
+  "app": "CasitaDex Platform QA",
+  "bundle": "com.designsbyfa.casitadex.platformqa",
+  "version": "0.1.0",
+  "build": "1",
+  "profileName": "iOS Team Ad Hoc Provisioning Profile: com.designsbyfa.casitadex.platformqa",
+  "profileExpiration": "2027-11-24 15:10:27",
+  "ownerRegistered": true,
+  "ipaSha256": "fa135a7e28cff41f666f26bdfd7a3b43723d1e21ae02e43a7585a1bf53db79fc",
+  "sourceCommit": "55ea30b635be6fffb03b3cb8786bcc04dcd8a7c9",
+  "ipa": "CasitaDexPlatformQA.ipa",
+  "date": "2026-11-25",
+  "buildHost": "FA-MAC-DEV-01",
+  "archive": "PASS",
+  "adHocExport": "PASS",
+  "codesignDeepStrict": "PASS",
+  "httpsManifest": "PASS",
+  "httpsFullDownloadSha256": "PASS",
+  "delivery": "Temporary secret-path HTTPS install page; active for up to 24h while tunnel runs; URL intentionally omitted from repository",
+  "physicalInstall": "NOT_VERIFIED_OWNER_INSTALL_REQUIRED",
+  "acceptedAppPreserved": true,
+  "storeSubmission": "NOT_PERFORMED"
+}
