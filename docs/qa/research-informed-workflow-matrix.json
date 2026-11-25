@@ -1,0 +1,364 @@
+{
+  "schemaVersion": 1,
+  "project": "casitadex",
+  "sourceCandidate": "5468f9aa5479874c1c80aab7251ea9a0daeab328",
+  "reviewDate": "2026-11-25",
+  "figmaFile": "39uzN0SZX8nlmcGDcHdQhr",
+  "sourceCommands": [
+    "typecheck",
+    "test",
+    "lint"
+  ],
+  "nativeOrder": [
+    "ios-simulator",
+    "android-emulator",
+    "samsung-physical",
+    "owner-iphone"
+  ],
+  "status": "NOT_RUN_CURRENT_BUILD",
+  "historicalEvidence": "docs/qa/professional-sweep-20261124/README.md",
+  "cases": [
+    {
+      "id": "CD-01",
+      "workflow": "Home and navigation",
+      "acceptance": "Home date/weekday, Settings beneath date, Home/Photos/Reminders/Find; return to origin",
+      "figma": {
+        "iosOrFamilyNode": "69:109",
+        "androidNode": "69:464",
+        "mapping": "HISTORICAL_REFERENCE_RECHECK"
+      },
+      "sourceTests": [
+        "tests/home-date-only.test.mjs",
+        "tests/home-function-first.test.mjs"
+      ],
+      "historical": "Four-tab traversal observed Nov 24; iOS teardown did not issue final suite verdict.",
+      "current": {
+        "source": "NOT_RUN",
+        "iosSimulator": "NOT_RUN",
+        "androidEmulator": "NOT_RUN",
+        "samsung": "NOT_RUN",
+        "ownerIphone": "NOT_RUN"
+      },
+      "expectedEvidence": {
+        "buildSha": null,
+        "figmaRevision": null,
+        "nativeCapture": null,
+        "observed": null
+      }
+    },
+    {
+      "id": "CD-02",
+      "workflow": "Capture and save",
+      "acceptance": "Required title, Description, valid/invalid input, inline metadata, Save/Cancel and draft recovery",
+      "figma": {
+        "iosOrFamilyNode": null,
+        "androidNode": null,
+        "mapping": "UNMAPPED"
+      },
+      "sourceTests": [
+        "tests/native-draft.test.mjs",
+        "tests/return-position-contract.test.mjs"
+      ],
+      "historical": "Nov 24 Samsung exact household memory saved; exhaustive paths open.",
+      "current": {
+        "source": "NOT_RUN",
+        "iosSimulator": "NOT_RUN",
+        "androidEmulator": "NOT_RUN",
+        "samsung": "NOT_RUN",
+        "ownerIphone": "NOT_RUN"
+      },
+      "expectedEvidence": {
+        "buildSha": null,
+        "figmaRevision": null,
+        "nativeCapture": null,
+        "observed": null
+      }
+    },
+    {
+      "id": "CD-03",
+      "workflow": "Find and retrieval",
+      "acceptance": "Fresh blank query; exact/partial/dimension search, filters, pagination/scroll, detail and back",
+      "figma": {
+        "iosOrFamilyNode": "69:355",
+        "androidNode": "69:710",
+        "mapping": "HISTORICAL_REFERENCE_RECHECK"
+      },
+      "sourceTests": [
+        "tests/find-search-location.test.mjs",
+        "tests/find-keyboard-navigation.test.mjs",
+        "tests/find-lifecycle-routing.test.mjs"
+      ],
+      "historical": "Nov 24 Samsung one exact result; full 75-item evidence historical.",
+      "current": {
+        "source": "NOT_RUN",
+        "iosSimulator": "NOT_RUN",
+        "androidEmulator": "NOT_RUN",
+        "samsung": "NOT_RUN",
+        "ownerIphone": "NOT_RUN"
+      },
+      "expectedEvidence": {
+        "buildSha": null,
+        "figmaRevision": null,
+        "nativeCapture": null,
+        "observed": null
+      }
+    },
+    {
+      "id": "CD-04",
+      "workflow": "Taxonomy and management",
+      "acceptance": "Alphabetic Space/Category/Location/Reference; create new; duplicate handling; selection and return",
+      "figma": {
+        "iosOrFamilyNode": null,
+        "androidNode": null,
+        "mapping": "UNMAPPED"
+      },
+      "sourceTests": [
+        "tests/taxonomy-safeguards.test.mjs",
+        "tests/figma-manifest-gate.test.mjs"
+      ],
+      "historical": "Duplicate chooser accessibility labels observed Nov 24; spoken check open.",
+      "current": {
+        "source": "NOT_RUN",
+        "iosSimulator": "NOT_RUN",
+        "androidEmulator": "NOT_RUN",
+        "samsung": "NOT_RUN",
+        "ownerIphone": "NOT_RUN"
+      },
+      "expectedEvidence": {
+        "buildSha": null,
+        "figmaRevision": null,
+        "nativeCapture": null,
+        "observed": null
+      }
+    },
+    {
+      "id": "CD-05",
+      "workflow": "Memory details and edits",
+      "acceptance": "Inline edits/Save/Cancel, optional fields, exact record identity and return position",
+      "figma": {
+        "iosOrFamilyNode": null,
+        "androidNode": null,
+        "mapping": "UNMAPPED"
+      },
+      "sourceTests": [
+        "tests/return-position-contract.test.mjs",
+        "tests/domain.test.mjs"
+      ],
+      "historical": "Empty optional fields occupy space; proposed compact view needs owner review.",
+      "current": {
+        "source": "NOT_RUN",
+        "iosSimulator": "NOT_RUN",
+        "androidEmulator": "NOT_RUN",
+        "samsung": "NOT_RUN",
+        "ownerIphone": "NOT_RUN"
+      },
+      "expectedEvidence": {
+        "buildSha": null,
+        "figmaRevision": null,
+        "nativeCapture": null,
+        "observed": null
+      }
+    },
+    {
+      "id": "CD-06",
+      "workflow": "Photos",
+      "acceptance": "Attached/unattached, Add/Save/Cancel, order/cover, pinch/double tap, next/previous and selected origin",
+      "figma": {
+        "iosOrFamilyNode": "69:230",
+        "androidNode": "69:585",
+        "mapping": "HISTORICAL_REFERENCE_RECHECK"
+      },
+      "sourceTests": [
+        "tests/figma-photo-behavior.test.mjs",
+        "tests/photo-workspace-index.test.mjs",
+        "tests/media-store-native.test.mjs"
+      ],
+      "historical": "Nov 24 viewer entry/close observed; every gesture not freshly tested.",
+      "current": {
+        "source": "NOT_RUN",
+        "iosSimulator": "NOT_RUN",
+        "androidEmulator": "NOT_RUN",
+        "samsung": "NOT_RUN",
+        "ownerIphone": "NOT_RUN"
+      },
+      "expectedEvidence": {
+        "buildSha": null,
+        "figmaRevision": null,
+        "nativeCapture": null,
+        "observed": null
+      }
+    },
+    {
+      "id": "CD-07",
+      "workflow": "Reminders",
+      "acceptance": "Date/time, linked/standalone, scheduled/overdue/completed, repeat, notification deep link, Save return",
+      "figma": {
+        "iosOrFamilyNode": "1632:431",
+        "androidNode": null,
+        "mapping": "HISTORICAL_REFERENCE_RECHECK"
+      },
+      "sourceTests": [
+        "tests/reminder-recurrence.test.mjs",
+        "tests/reminder-picker-layout.test.mjs",
+        "tests/reminder-alert-native.test.mjs"
+      ],
+      "historical": "Overdue count and linked reminder observed Nov 24; notification lifecycle needs current rerun.",
+      "current": {
+        "source": "NOT_RUN",
+        "iosSimulator": "NOT_RUN",
+        "androidEmulator": "NOT_RUN",
+        "samsung": "NOT_RUN",
+        "ownerIphone": "NOT_RUN"
+      },
+      "expectedEvidence": {
+        "buildSha": null,
+        "figmaRevision": null,
+        "nativeCapture": null,
+        "observed": null
+      }
+    },
+    {
+      "id": "CD-08",
+      "workflow": "Archive/delete/recover",
+      "acceptance": "Active/Archived/Recently deleted, archive exact synthetic item, restore and confirm permanent removal only on synthetic record",
+      "figma": {
+        "iosOrFamilyNode": null,
+        "androidNode": null,
+        "mapping": "UNMAPPED"
+      },
+      "sourceTests": [
+        "tests/domain.test.mjs",
+        "tests/durability.test.mjs"
+      ],
+      "historical": "Archiving and recovery access observed Nov 24; restore/permanent deletion not fresh.",
+      "current": {
+        "source": "NOT_RUN",
+        "iosSimulator": "NOT_RUN",
+        "androidEmulator": "NOT_RUN",
+        "samsung": "NOT_RUN",
+        "ownerIphone": "NOT_RUN"
+      },
+      "expectedEvidence": {
+        "buildSha": null,
+        "figmaRevision": null,
+        "nativeCapture": null,
+        "observed": null
+      }
+    },
+    {
+      "id": "CD-09",
+      "workflow": "Backup and restore",
+      "acceptance": "Export full and text report separately; photos, metadata, reminders, draft; corrupt/low-space rejection; explicit review and return",
+      "figma": {
+        "iosOrFamilyNode": "487:97",
+        "androidNode": null,
+        "mapping": "HISTORICAL_REFERENCE_RECHECK"
+      },
+      "sourceTests": [
+        "tests/media-backup-v2.test.mjs",
+        "tests/media-native-restore-transaction.test.mjs",
+        "tests/media-restore-gate.test.mjs"
+      ],
+      "historical": "Guidance and navigation reviewed Nov 24; no destructive restore on Samsung; owner iPhone round trip open.",
+      "current": {
+        "source": "NOT_RUN",
+        "iosSimulator": "NOT_RUN",
+        "androidEmulator": "NOT_RUN",
+        "samsung": "NOT_RUN",
+        "ownerIphone": "NOT_RUN"
+      },
+      "expectedEvidence": {
+        "buildSha": null,
+        "figmaRevision": null,
+        "nativeCapture": null,
+        "observed": null
+      }
+    },
+    {
+      "id": "CD-10",
+      "workflow": "Offline and durability",
+      "acceptance": "Airplane mode create/edit/search, relaunch/reboot, verified data and media integrity, no cloud dependence",
+      "figma": {
+        "iosOrFamilyNode": null,
+        "androidNode": null,
+        "mapping": "UNMAPPED"
+      },
+      "sourceTests": [
+        "tests/durability.test.mjs",
+        "tests/sb24-sqlite-crash.test.mjs",
+        "tests/media-integrity.test.mjs"
+      ],
+      "historical": "Historical prior acceptance, new candidate verification open.",
+      "current": {
+        "source": "NOT_RUN",
+        "iosSimulator": "NOT_RUN",
+        "androidEmulator": "NOT_RUN",
+        "samsung": "NOT_RUN",
+        "ownerIphone": "NOT_RUN"
+      },
+      "expectedEvidence": {
+        "buildSha": null,
+        "figmaRevision": null,
+        "nativeCapture": null,
+        "observed": null
+      }
+    },
+    {
+      "id": "CD-11",
+      "workflow": "Free and Plus",
+      "acceptance": "20-memory cap; sandbox entitlement unlock, restore, failure/cancel; no live purchase",
+      "figma": {
+        "iosOrFamilyNode": null,
+        "androidNode": null,
+        "mapping": "UNMAPPED"
+      },
+      "sourceTests": [
+        "tests/plus-feature-gate.test.mjs",
+        "tests/plus-delivery.test.mjs",
+        "tests/plus-store-build-config.test.mjs"
+      ],
+      "historical": "QA bundle detected; actual store checkout and owner iPhone open.",
+      "current": {
+        "source": "NOT_RUN",
+        "iosSimulator": "NOT_RUN",
+        "androidEmulator": "NOT_RUN",
+        "samsung": "NOT_RUN",
+        "ownerIphone": "NOT_RUN"
+      },
+      "expectedEvidence": {
+        "buildSha": null,
+        "figmaRevision": null,
+        "nativeCapture": null,
+        "observed": null
+      }
+    },
+    {
+      "id": "CD-12",
+      "workflow": "Accessibility and appearance",
+      "acceptance": "Both themes, large text, screen reader names/roles/states/focus, keyboard and clipped action checks",
+      "figma": {
+        "iosOrFamilyNode": "71:3",
+        "androidNode": "71:358",
+        "mapping": "HISTORICAL_REFERENCE_RECHECK"
+      },
+      "sourceTests": [
+        "tests/sb26-ia-accessibility.test.mjs",
+        "tests/status-announcement.test.mjs"
+      ],
+      "historical": "Duplicate chooser prompts observed Nov 24; actual spoken assistive technology open.",
+      "current": {
+        "source": "NOT_RUN",
+        "iosSimulator": "NOT_RUN",
+        "androidEmulator": "NOT_RUN",
+        "samsung": "NOT_RUN",
+        "ownerIphone": "NOT_RUN"
+      },
+      "expectedEvidence": {
+        "buildSha": null,
+        "figmaRevision": null,
+        "nativeCapture": null,
+        "observed": null
+      }
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+# Tool and cost stewardship — November 25, 2026
+
+The designated Mac inventory verified macOS 27.0.1 arm64, Xcode 27.2, Git 2.54.0, Node 24.22.1, npm 11.19.1, Gitleaks 8.30.1 and OSV-Scanner 2.7.0. A CasitaDex-specific iOS QA simulator and the Event Command simulator were booted. Existing Maestro and Java installations were located; the default shell did not resolve Java or ADB. Android connectivity and the exact Maestro version are not verified. Existing tool paths must be configured and checked before fresh native tests. No installation, build, test execution, cleanup or subscription was performed.
+
+Available disk capacity: internal 40 GiB; external development SSD 921 GiB. Capacity is not backup verification, and actual recurring bills were not read. Use existing tools before evaluating paid alternatives. No new paid dependencies, cloud services or tools were purchased. Preserve accepted builds and evidence; do not infer that old artifacts are disposable. Existing source checks, private test fixtures and native acceptance procedures remain authoritative. Detailed internal inventory is maintained with the shared governance record, not in the public repository.
+
+Exact source-to-installed-build correspondence remains open. Compare the actual installed bundle identity with its source provenance before native acceptance, and keep current observed outcomes separate from prior reviews.
