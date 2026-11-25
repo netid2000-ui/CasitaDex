@@ -15,7 +15,7 @@
     "samsung-physical",
     "owner-iphone"
   ],
-  "status": "NOT_RUN_CURRENT_BUILD",
+  "status": "SOURCE_PASS_WITH_ONE_SKIP_NATIVE_SMOKE_PARTIAL",
   "historicalEvidence": "docs/qa/professional-sweep-20261124/README.md",
   "cases": [
     {
@@ -25,7 +25,12 @@
       "figma": {
         "iosOrFamilyNode": "69:109",
         "androidNode": "69:464",
-        "mapping": "HISTORICAL_REFERENCE_RECHECK"
+        "mapping": "LIVE_REFERENCE_REVIEW_NOT_EXACT_CONTROL_PARITY",
+        "liveReferenceNodes": [
+          "373:4612",
+          "429:2",
+          "1653:339"
+        ]
       },
       "sourceTests": [
         "tests/home-date-only.test.mjs",
@@ -33,7 +38,7 @@
       ],
       "historical": "Four-tab traversal observed Nov 24; iOS teardown did not issue final suite verdict.",
       "current": {
-        "source": "NOT_RUN",
+        "source": "PASS",
         "iosSimulator": "NOT_RUN",
         "androidEmulator": "NOT_RUN",
         "samsung": "NOT_RUN",
@@ -44,7 +49,8 @@
         "figmaRevision": null,
         "nativeCapture": null,
         "observed": null
-      }
+      },
+      "sourceScope": "Mapped source suite status only; not complete native journey."
     },
     {
       "id": "CD-02",
@@ -53,7 +59,13 @@
       "figma": {
         "iosOrFamilyNode": null,
         "androidNode": null,
-        "mapping": "UNMAPPED"
+        "mapping": "LIVE_REFERENCE_REVIEW_NOT_EXACT_CONTROL_PARITY",
+        "liveReferenceNodes": [
+          "360:8",
+          "360:672",
+          "1632:651",
+          "1632:701"
+        ]
       },
       "sourceTests": [
         "tests/native-draft.test.mjs",
@@ -61,7 +73,7 @@
       ],
       "historical": "Nov 24 Samsung exact household memory saved; exhaustive paths open.",
       "current": {
-        "source": "NOT_RUN",
+        "source": "PASS",
         "iosSimulator": "NOT_RUN",
         "androidEmulator": "NOT_RUN",
         "samsung": "NOT_RUN",
@@ -72,7 +84,8 @@
         "figmaRevision": null,
         "nativeCapture": null,
         "observed": null
-      }
+      },
+      "sourceScope": "Mapped source suite status only; not complete native journey."
     },
     {
       "id": "CD-03",
@@ -81,7 +94,15 @@
       "figma": {
         "iosOrFamilyNode": "69:355",
         "androidNode": "69:710",
-        "mapping": "HISTORICAL_REFERENCE_RECHECK"
+        "mapping": "LIVE_REFERENCE_REVIEW_NOT_EXACT_CONTROL_PARITY",
+        "liveReferenceNodes": [
+          "1669:623",
+          "1669:688",
+          "1669:787",
+          "1669:850",
+          "1669:913",
+          "1669:976"
+        ]
       },
       "sourceTests": [
         "tests/find-search-location.test.mjs",
@@ -90,7 +111,7 @@
       ],
       "historical": "Nov 24 Samsung one exact result; full 75-item evidence historical.",
       "current": {
-        "source": "NOT_RUN",
+        "source": "PASS",
         "iosSimulator": "NOT_RUN",
         "androidEmulator": "NOT_RUN",
         "samsung": "NOT_RUN",
@@ -101,7 +122,8 @@
         "figmaRevision": null,
         "nativeCapture": null,
         "observed": null
-      }
+      },
+      "sourceScope": "Mapped source suite status only; not complete native journey."
     },
     {
       "id": "CD-04",
@@ -110,7 +132,13 @@
       "figma": {
         "iosOrFamilyNode": null,
         "androidNode": null,
-        "mapping": "UNMAPPED"
+        "mapping": "LIVE_REFERENCE_REVIEW_NOT_EXACT_CONTROL_PARITY",
+        "liveReferenceNodes": [
+          "1577:143",
+          "1577:220",
+          "1577:297",
+          "1581:714"
+        ]
       },
       "sourceTests": [
         "tests/taxonomy-safeguards.test.mjs",
@@ -118,7 +146,7 @@
       ],
       "historical": "Duplicate chooser accessibility labels observed Nov 24; spoken check open.",
       "current": {
-        "source": "NOT_RUN",
+        "source": "PASS",
         "iosSimulator": "NOT_RUN",
         "androidEmulator": "NOT_RUN",
         "samsung": "NOT_RUN",
@@ -129,7 +157,8 @@
         "figmaRevision": null,
         "nativeCapture": null,
         "observed": null
-      }
+      },
+      "sourceScope": "Mapped source suite status only; not complete native journey."
     },
     {
       "id": "CD-05",
@@ -138,7 +167,13 @@
       "figma": {
         "iosOrFamilyNode": null,
         "androidNode": null,
-        "mapping": "UNMAPPED"
+        "mapping": "LIVE_REFERENCE_REVIEW_NOT_EXACT_CONTROL_PARITY",
+        "liveReferenceNodes": [
+          "1632:751",
+          "1632:808",
+          "1632:865",
+          "1632:929"
+        ]
       },
       "sourceTests": [
         "tests/return-position-contract.test.mjs",
@@ -146,7 +181,7 @@
       ],
       "historical": "Empty optional fields occupy space; proposed compact view needs owner review.",
       "current": {
-        "source": "NOT_RUN",
+        "source": "PASS",
         "iosSimulator": "NOT_RUN",
         "androidEmulator": "NOT_RUN",
         "samsung": "NOT_RUN",
@@ -157,7 +192,8 @@
         "figmaRevision": null,
         "nativeCapture": null,
         "observed": null
-      }
+      },
+      "sourceScope": "Mapped source suite status only; not complete native journey."
     },
     {
       "id": "CD-06",
@@ -166,7 +202,13 @@
       "figma": {
         "iosOrFamilyNode": "69:230",
         "androidNode": "69:585",
-        "mapping": "HISTORICAL_REFERENCE_RECHECK"
+        "mapping": "LIVE_REFERENCE_REVIEW_NOT_EXACT_CONTROL_PARITY",
+        "liveReferenceNodes": [
+          "1632:291",
+          "1632:361",
+          "400:82",
+          "418:44"
+        ]
       },
       "sourceTests": [
         "tests/figma-photo-behavior.test.mjs",
@@ -175,7 +217,7 @@
       ],
       "historical": "Nov 24 viewer entry/close observed; every gesture not freshly tested.",
       "current": {
-        "source": "NOT_RUN",
+        "source": "SKIPPED",
         "iosSimulator": "NOT_RUN",
         "androidEmulator": "NOT_RUN",
         "samsung": "NOT_RUN",
@@ -186,7 +228,8 @@
         "figmaRevision": null,
         "nativeCapture": null,
         "observed": null
-      }
+      },
+      "sourceScope": "Mapped source suite status only; not complete native journey."
     },
     {
       "id": "CD-07",
@@ -195,7 +238,12 @@
       "figma": {
         "iosOrFamilyNode": "1632:431",
         "androidNode": null,
-        "mapping": "HISTORICAL_REFERENCE_RECHECK"
+        "mapping": "LIVE_REFERENCE_REVIEW_NOT_EXACT_CONTROL_PARITY",
+        "liveReferenceNodes": [
+          "1632:431",
+          "1632:486",
+          "1595:291"
+        ]
       },
       "sourceTests": [
         "tests/reminder-recurrence.test.mjs",
@@ -204,7 +252,7 @@
       ],
       "historical": "Overdue count and linked reminder observed Nov 24; notification lifecycle needs current rerun.",
       "current": {
-        "source": "NOT_RUN",
+        "source": "PASS",
         "iosSimulator": "NOT_RUN",
         "androidEmulator": "NOT_RUN",
         "samsung": "NOT_RUN",
@@ -215,7 +263,8 @@
         "figmaRevision": null,
         "nativeCapture": null,
         "observed": null
-      }
+      },
+      "sourceScope": "Mapped source suite status only; not complete native journey."
     },
     {
       "id": "CD-08",
@@ -224,7 +273,15 @@
       "figma": {
         "iosOrFamilyNode": null,
         "androidNode": null,
-        "mapping": "UNMAPPED"
+        "mapping": "LIVE_REFERENCE_REVIEW_NOT_EXACT_CONTROL_PARITY",
+        "liveReferenceNodes": [
+          "1669:787",
+          "1669:850",
+          "1669:913",
+          "1669:976",
+          "1497:62",
+          "1497:129"
+        ]
       },
       "sourceTests": [
         "tests/domain.test.mjs",
@@ -232,7 +289,7 @@
       ],
       "historical": "Archiving and recovery access observed Nov 24; restore/permanent deletion not fresh.",
       "current": {
-        "source": "NOT_RUN",
+        "source": "PASS",
         "iosSimulator": "NOT_RUN",
         "androidEmulator": "NOT_RUN",
         "samsung": "NOT_RUN",
@@ -243,7 +300,8 @@
         "figmaRevision": null,
         "nativeCapture": null,
         "observed": null
-      }
+      },
+      "sourceScope": "Mapped source suite status only; not complete native journey."
     },
     {
       "id": "CD-09",
@@ -252,7 +310,12 @@
       "figma": {
         "iosOrFamilyNode": "487:97",
         "androidNode": null,
-        "mapping": "HISTORICAL_REFERENCE_RECHECK"
+        "mapping": "LIVE_REFERENCE_REVIEW_NOT_EXACT_CONTROL_PARITY",
+        "liveReferenceNodes": [
+          "1632:1485",
+          "1632:1515",
+          "487:97"
+        ]
       },
       "sourceTests": [
         "tests/media-backup-v2.test.mjs",
@@ -261,7 +324,7 @@
       ],
       "historical": "Guidance and navigation reviewed Nov 24; no destructive restore on Samsung; owner iPhone round trip open.",
       "current": {
-        "source": "NOT_RUN",
+        "source": "PASS",
         "iosSimulator": "NOT_RUN",
         "androidEmulator": "NOT_RUN",
         "samsung": "NOT_RUN",
@@ -272,7 +335,8 @@
         "figmaRevision": null,
         "nativeCapture": null,
         "observed": null
-      }
+      },
+      "sourceScope": "Mapped source suite status only; not complete native journey."
     },
     {
       "id": "CD-10",
@@ -281,7 +345,12 @@
       "figma": {
         "iosOrFamilyNode": null,
         "androidNode": null,
-        "mapping": "UNMAPPED"
+        "mapping": "LIVE_REFERENCE_REVIEW_NOT_EXACT_CONTROL_PARITY",
+        "liveReferenceNodes": [
+          "1217:2",
+          "1217:39",
+          "1247:2"
+        ]
       },
       "sourceTests": [
         "tests/durability.test.mjs",
@@ -290,7 +359,7 @@
       ],
       "historical": "Historical prior acceptance, new candidate verification open.",
       "current": {
-        "source": "NOT_RUN",
+        "source": "PASS",
         "iosSimulator": "NOT_RUN",
         "androidEmulator": "NOT_RUN",
         "samsung": "NOT_RUN",
@@ -301,7 +370,8 @@
         "figmaRevision": null,
         "nativeCapture": null,
         "observed": null
-      }
+      },
+      "sourceScope": "Mapped source suite status only; not complete native journey."
     },
     {
       "id": "CD-11",
@@ -310,7 +380,12 @@
       "figma": {
         "iosOrFamilyNode": null,
         "androidNode": null,
-        "mapping": "UNMAPPED"
+        "mapping": "LIVE_REFERENCE_REVIEW_NOT_EXACT_CONTROL_PARITY",
+        "liveReferenceNodes": [
+          "1266:2",
+          "1332:2",
+          "1332:40"
+        ]
       },
       "sourceTests": [
         "tests/plus-feature-gate.test.mjs",
@@ -319,7 +394,7 @@
       ],
       "historical": "QA bundle detected; actual store checkout and owner iPhone open.",
       "current": {
-        "source": "NOT_RUN",
+        "source": "PASS",
         "iosSimulator": "NOT_RUN",
         "androidEmulator": "NOT_RUN",
         "samsung": "NOT_RUN",
@@ -330,7 +405,8 @@
         "figmaRevision": null,
         "nativeCapture": null,
         "observed": null
-      }
+      },
+      "sourceScope": "Mapped source suite status only; not complete native journey."
     },
     {
       "id": "CD-12",
@@ -339,7 +415,14 @@
       "figma": {
         "iosOrFamilyNode": "71:3",
         "androidNode": "71:358",
-        "mapping": "HISTORICAL_REFERENCE_RECHECK"
+        "mapping": "LIVE_REFERENCE_REVIEW_NOT_EXACT_CONTROL_PARITY",
+        "liveReferenceNodes": [
+          "1632:291",
+          "1632:361",
+          "1632:541",
+          "1632:596",
+          "1669:688"
+        ]
       },
       "sourceTests": [
         "tests/sb26-ia-accessibility.test.mjs",
@@ -347,7 +430,7 @@
       ],
       "historical": "Duplicate chooser prompts observed Nov 24; actual spoken assistive technology open.",
       "current": {
-        "source": "NOT_RUN",
+        "source": "PASS",
         "iosSimulator": "NOT_RUN",
         "androidEmulator": "NOT_RUN",
         "samsung": "NOT_RUN",
@@ -358,7 +441,91 @@
         "figmaRevision": null,
         "nativeCapture": null,
         "observed": null
-      }
+      },
+      "sourceScope": "Mapped source suite status only; not complete native journey."
     }
-  ]
+  ],
+  "verifiedSourceCommit": "7fd2e142a4d372bb311f92b370f43b237e774130",
+  "sourceEvidence": {
+    "status": "PASS",
+    "runs": [
+      {
+        "script": "typecheck",
+        "status": "PASS",
+        "exitCode": 0,
+        "signal": null,
+        "error": null,
+        "durationMs": 1285,
+        "counts": {},
+        "log": "typecheck.log"
+      },
+      {
+        "script": "test",
+        "status": "PASS",
+        "exitCode": 0,
+        "signal": null,
+        "error": null,
+        "durationMs": 2025,
+        "counts": {
+          "tests": 547,
+          "pass": 546,
+          "fail": 0,
+          "skipped": 1,
+          "cancelled": 0,
+          "todo": 0
+        },
+        "log": "test.log"
+      },
+      {
+        "script": "lint",
+        "status": "PASS",
+        "exitCode": 0,
+        "signal": null,
+        "error": null,
+        "durationMs": 2670,
+        "counts": {},
+        "log": "lint.log"
+      }
+    ],
+    "scope": "Mapped source files ran; one Photos release artifact assertion skipped."
+  },
+  "figmaReadback": {
+    "date": "2026-11-25",
+    "status": "LIVE_REFERENCE_STRUCTURE_REVIEWED_NOT_FULL_PIXEL_PARITY",
+    "newReviewFrames": [
+      "1669:623",
+      "1669:688",
+      "1669:787",
+      "1669:850",
+      "1669:913",
+      "1669:976"
+    ],
+    "note": "Original approval frames preserved."
+  },
+  "nativeSmoke": {
+    "cd_ios_v2": {
+      "status": "PASS",
+      "durationSeconds": 12.829,
+      "test": "CD installed iOS QA navigation smoke",
+      "receipt": "cd_ios_v2/report.xml"
+    },
+    "cd_android_emulator_v3": {
+      "status": "PASS",
+      "durationSeconds": 20.973,
+      "test": "CD installed Android QA navigation smoke",
+      "receipt": "cd_android_emulator_v3/report.xml"
+    },
+    "cd-samsung-v5": {
+      "status": "PASS",
+      "durationSeconds": 41.104,
+      "test": "CD installed Android QA navigation smoke",
+      "receipt": "cd-samsung-v5/report.xml"
+    },
+    "cd-emulator-household-v1": {
+      "status": "PASS",
+      "durationSeconds": 44.797,
+      "test": "CD synthetic household create retrieve and return",
+      "receipt": "cd-emulator-household-v1/report.xml"
+    }
+  }
 }

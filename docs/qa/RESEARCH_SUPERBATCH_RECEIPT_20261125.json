@@ -1,0 +1,88 @@
+{
+  "date": "2026-11-25",
+  "sourceCommit": "7fd2e142a4d372bb311f92b370f43b237e774130",
+  "trackedDirty": false,
+  "status": "PASS",
+  "runs": [
+    {
+      "script": "typecheck",
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "durationMs": 1285,
+      "counts": {},
+      "log": "typecheck.log"
+    },
+    {
+      "script": "test",
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "durationMs": 2025,
+      "counts": {
+        "tests": 547,
+        "pass": 546,
+        "fail": 0,
+        "skipped": 1,
+        "cancelled": 0,
+        "todo": 0
+      },
+      "log": "test.log"
+    },
+    {
+      "script": "lint",
+      "status": "PASS",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "durationMs": 2670,
+      "counts": {},
+      "log": "lint.log"
+    }
+  ],
+  "nativeSmoke": {
+    "cd_ios_v2": {
+      "status": "PASS",
+      "durationSeconds": 12.829,
+      "test": "CD installed iOS QA navigation smoke",
+      "receipt": "cd_ios_v2/report.xml"
+    },
+    "cd_android_emulator_v3": {
+      "status": "PASS",
+      "durationSeconds": 20.973,
+      "test": "CD installed Android QA navigation smoke",
+      "receipt": "cd_android_emulator_v3/report.xml"
+    },
+    "cd-samsung-v5": {
+      "status": "PASS",
+      "durationSeconds": 41.104,
+      "test": "CD installed Android QA navigation smoke",
+      "receipt": "cd-samsung-v5/report.xml"
+    },
+    "cd-emulator-household-v1": {
+      "status": "PASS",
+      "durationSeconds": 44.797,
+      "test": "CD synthetic household create retrieve and return",
+      "receipt": "cd-emulator-household-v1/report.xml"
+    }
+  },
+  "installedQaIdentity": {
+    "iosBundleId": "com.designsbyfa.casitadex.plusstoreqa",
+    "iosJsSHA256": "c3e9172b0aa8027f620d583263923497631cbdf567360be773cafeb2e9e67907",
+    "androidPackage": "com.designsbyfa.casitadex.recallqa",
+    "androidApkSHA256": "5fcb0568735c35036ab0be900d66337049018cd3c0e0c3f154b3384765c457f4",
+    "note": "Same QA APK copied to empty emulator slot, not app data; exact original source-to-binary mapping not independently re-established."
+  },
+  "figmaNodes": [
+    "1669:623",
+    "1669:688",
+    "1669:787",
+    "1669:850",
+    "1669:913",
+    "1669:976"
+  ],
+  "ownerIphone": "NOT_RUN",
+  "release": "NO_GO"
+}
