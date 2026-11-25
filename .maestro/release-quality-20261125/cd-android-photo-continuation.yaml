@@ -1,0 +1,7 @@
+appId: com.designsbyfa.casitadex.recallqa
+name: CD cold photo classification and view
+---
+- assertVisible: "Open photo memory FA QA Filter 20x25x1 20261125"
+- tapOn: "Open photo memory FA QA Filter 20x25x1 20261125"
+- assertVisible: "Open cover photo of FA QA Filter 20x25x1 20261125"
+- tapOn: "Open cover photo of FA QA Filter 20x25x1 20261125"

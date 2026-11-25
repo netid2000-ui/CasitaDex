@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="EventCommandGuestQA" tests="1" failures="0" time="21.756" timestamp="2026-11-25T15:01:54">
+    <testcase id="CD one-record synthetic v4 restore and photo readback" name="CD one-record synthetic v4 restore and photo readback" classname="CD one-record synthetic v4 restore and photo readback" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/fa-release-quality-20261125/cd-android-restore-readback.yaml" time="21.751" timestamp="2026-11-25T15:01:54" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

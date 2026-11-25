@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="EventCommandGuestQA" tests="1" failures="0" time="17.401" timestamp="2026-11-25T14:59:54">
+    <testcase id="CD photo viewer alternate zoom then full backup entry" name="CD photo viewer alternate zoom then full backup entry" classname="CD photo viewer alternate zoom then full backup entry" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/fa-release-quality-20261125/cd-android-backup-open.yaml" time="17.396" timestamp="2026-11-25T14:59:54" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

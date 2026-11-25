@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="EventCommandGuestQA" tests="1" failures="0" time="23.147" timestamp="2026-11-25T15:06:04">
+    <testcase id="CD reversible recently deleted and restore synthetic photo memory" name="CD reversible recently deleted and restore synthetic photo memory" classname="CD reversible recently deleted and restore synthetic photo memory" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/fa-release-quality-20261125/cd-android-recover.yaml" time="23.142" timestamp="2026-11-25T15:06:04" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

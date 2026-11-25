@@ -1,0 +1,19 @@
+appId: com.designsbyfa.casitadex.recallqa
+name: CD reversible recently deleted and restore synthetic photo memory
+---
+- assertVisible: "Open photo memory FA QA Filter 20x25x1 20261125"
+- tapOn: "Open photo memory FA QA Filter 20x25x1 20261125"
+- tapOn: "More ···"
+- tapOn: "Move to Recently Deleted"
+- assertVisible: "Your previous full save remains recoverable."
+- tapOn:
+    text: "Move to Recently Deleted"
+    index: 1
+- tapOn: ".*Results"
+- tapOn: "Recently deleted"
+- assertVisible: "Open photo memory FA QA Filter 20x25x1 20261125"
+- tapOn: "Open photo memory FA QA Filter 20x25x1 20261125"
+- tapOn: "Restore memory"
+- tapOn: ".*Results"
+- tapOn: "Active"
+- assertVisible: "Open photo memory FA QA Filter 20x25x1 20261125"

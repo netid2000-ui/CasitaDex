@@ -1,0 +1,14 @@
+appId: com.designsbyfa.casitadex.recallqa
+name: CD saved synthetic cover photo persists after reopen
+---
+- assertVisible: "Open cover photo of FA QA Filter 20x25x1 20261125"
+- stopApp
+- launchApp:
+    clearState: false
+- tapOn: "Find"
+- tapOn: "Search memories.*"
+- inputText: "FA QA Filter 20x25x1 20261125"
+- hideKeyboard
+- tapOn: "Open regular memory FA QA Filter.*"
+- assertVisible: "Open cover photo of FA QA Filter 20x25x1 20261125"
+- tapOn: "Open cover photo of FA QA Filter 20x25x1 20261125"

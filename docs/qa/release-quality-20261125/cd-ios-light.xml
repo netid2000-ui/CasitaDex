@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="CasitaDex Plus 25.99 Recovery QA - iOS 27.0 - 36C7AE6D-1615-4A23-B313-46EBD092DA6C" tests="1" failures="0" time="13.383" timestamp="2026-11-25T14:48:25">
+    <testcase id="CD installed iOS QA navigation smoke" name="CD installed iOS QA navigation smoke" classname="CD installed iOS QA navigation smoke" file=".maestro/research-superbatch-20261125/ios-navigation.yaml" time="13.377" timestamp="2026-11-25T14:48:25" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="CasitaDex Plus 25.99 Recovery QA - iOS 27.0 - 36C7AE6D-1615-4A23-B313-46EBD092DA6C" tests="1" failures="0" time="20.508" timestamp="2026-11-25T14:53:51">
+    <testcase id="CD installed iOS QA navigation smoke" name="CD installed iOS QA navigation smoke" classname="CD installed iOS QA navigation smoke" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/fa-release-quality-20261125/cd-ios-large-scrolled.yaml" time="20.503" timestamp="2026-11-25T14:53:51" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

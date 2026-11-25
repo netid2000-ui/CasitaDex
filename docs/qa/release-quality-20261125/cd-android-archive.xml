@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="EventCommandGuestQA" tests="1" failures="0" time="37.081" timestamp="2026-11-25T15:04:51">
+    <testcase id="CD archive and reactivate synthetic photo memory" name="CD archive and reactivate synthetic photo memory" classname="CD archive and reactivate synthetic photo memory" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/fa-release-quality-20261125/cd-android-archive.yaml" time="37.077" timestamp="2026-11-25T15:04:51" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

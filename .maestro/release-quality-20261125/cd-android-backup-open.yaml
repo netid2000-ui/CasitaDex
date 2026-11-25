@@ -1,0 +1,16 @@
+appId: com.designsbyfa.casitadex.recallqa
+name: CD photo viewer alternate zoom then full backup entry
+---
+- assertVisible: "Photo 1 of 1.*"
+- tapOn: "Zoom photo in"
+- tapOn: "Reset photo zoom"
+- tapOn: "Close photo"
+- assertVisible: "Open cover photo of FA QA Filter 20x25x1 20261125"
+- tapOn: "Home"
+- tapOn: "Settings"
+- scrollUntilVisible:
+    element: "Backup & restore"
+    direction: DOWN
+    timeout: 15000
+- tapOn: "Backup & restore"
+- tapOn: "Save full backup.*"

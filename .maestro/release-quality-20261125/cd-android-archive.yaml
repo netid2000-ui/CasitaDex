@@ -1,0 +1,21 @@
+appId: com.designsbyfa.casitadex.recallqa
+name: CD archive and reactivate synthetic photo memory
+---
+- launchApp:
+    clearState: false
+- tapOn: "Find"
+- tapOn: "Search memories.*"
+- inputText: "FA QA Filter 20x25x1 20261125"
+- hideKeyboard
+- tapOn: "Open photo memory FA QA Filter 20x25x1 20261125"
+- tapOn: "More ···"
+- tapOn: "Archive memory"
+- tapOn: ".*Results"
+- tapOn: "Archived"
+- assertVisible: "Open photo memory FA QA Filter 20x25x1 20261125"
+- tapOn: "Open photo memory FA QA Filter 20x25x1 20261125"
+- tapOn: "More ···"
+- tapOn: "Return to Active"
+- tapOn: ".*Results"
+- tapOn: "Active"
+- assertVisible: "Open photo memory FA QA Filter 20x25x1 20261125"

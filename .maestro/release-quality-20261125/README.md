@@ -1,0 +1,3 @@
+# Native QA fixture segments
+
+Run only against the explicit QA package on the designated Mac. The Android collection is an isolated one-record synthetic fixture; native backup replacement is restricted to that exact reviewed synthetic snapshot (one memory, one photo, no drafts or reminders) and may never be replayed on owner data. Some flows assume current picker, restore preview, viewer or filter state. Corrected continuations retain first failed assertions in the receipt; selectors need to match actual state. iOS prior plusstoreqa uses navigation only. Read receipt and README in docs/qa/release-quality-20261125 before replay.

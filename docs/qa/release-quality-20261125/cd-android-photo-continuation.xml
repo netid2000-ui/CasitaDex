@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="EventCommandGuestQA" tests="1" failures="0" time="4.642" timestamp="2026-11-25T14:59:24">
+    <testcase id="CD cold photo classification and view" name="CD cold photo classification and view" classname="CD cold photo classification and view" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/fa-release-quality-20261125/cd-android-photo-continuation.yaml" time="4.638" timestamp="2026-11-25T14:59:24" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

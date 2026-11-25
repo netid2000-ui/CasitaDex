@@ -1,0 +1,16 @@
+appId: com.designsbyfa.casitadex.recallqa
+name: CD synthetic memory photo source
+---
+- launchApp:
+    clearState: false
+- tapOn: "Find"
+- tapOn: "Search memories.*"
+- inputText: "FA QA Filter 20x25x1 20261125"
+- hideKeyboard
+- tapOn: "Open regular memory FA QA Filter.*"
+- assertVisible: "Synthetic QA spare filter on utility shelf."
+- scrollUntilVisible:
+    element: "Add Photo"
+    direction: DOWN
+    timeout: 15000
+- tapOn: "Add Photo"
