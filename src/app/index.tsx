@@ -13,7 +13,7 @@ function FigmaNativeHome(){
  const [error,setError]=useState('');
  useFocusEffect(useCallback(()=>{
   let active=true;
-  getEngStore().then(async store=>{let s=await store.load();if(Constants.expoConfig?.extra?.parityQaSeed===true){if(!s.data.memories.some(m=>m.id.startsWith("sb26qa_"))){await store.seedSyntheticQa();s=await store.load();}const fixtures=[{id:"sb26qa_001",image:"home"},{id:"sb26qa_007",image:"find"},{id:"sb26qa_013",image:"backup"}];for(const item of fixtures){const m=s.data.memories.find(m=>m.id===item.id);if(m&&m.mediaIds.length===0){await store.addMemoryPhoto(item.id,qaIllustrationBytes(item.image));s=await store.load();}}}return s;}).then(s=>{if(active)setSnapshot(s)}).catch((error)=>{console.warn('SB40 Home startup/load failed',error);if(active)setError('Your saved memories could not be loaded. No data was changed.')});
+  getEngStore().then(async store=>{let s=await store.load();if(Constants.expoConfig?.extra?.parityQaSeed===true){if(!s.data.memories.some(m=>m.id.startsWith("sb26qa_"))){await store.seedSyntheticQa();s=await store.load();}const fixtures=[{id:"sb26qa_001",image:"home"},{id:"sb26qa_007",image:"find"},{id:"sb26qa_013",image:"backup"}];for(const item of fixtures){const m=s.data.memories.find(m=>m.id===item.id);if(m&&m.mediaIds.length===0){await store.addMemoryPhoto(item.id,qaIllustrationBytes(item.image));s=await store.load();}}}return s;}).then(s=>{if(active){setSnapshot(s);setError('');}}).catch((error)=>{console.warn('SB40 Home startup/load failed',error);if(active)setError('Your saved memories could not be loaded. No data was changed.')});
   return ()=>{active=false};
  },[]));
  const action=(kind:HomeActionKind)=>{
