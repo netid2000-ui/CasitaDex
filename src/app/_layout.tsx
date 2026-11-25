@@ -43,7 +43,7 @@ function HomeDate(){
     const subscription=AppState.addEventListener("change",state=>{if(state==="active")refresh();else clearTimeout(timer);});
     return ()=>{clearTimeout(timer);subscription.remove();};
   },[]);
-  return <Text style={{fontFamily:editorialFonts.body,color:colors.ink,fontSize:14}}>
+  return <Text maxFontSizeMultiplier={1.6} style={{fontFamily:editorialFonts.body,color:colors.ink,fontSize:14}}>
     {now.toLocaleDateString(undefined,{weekday:"long",month:"short",day:"numeric",year:"numeric"})}
   </Text>;
 }
@@ -95,9 +95,9 @@ function Shell() {
          <Pressable accessibilityRole="button" accessibilityLabel={path==="/more"?"Back to Home":"CasitaDex logo, go to Home"} onPress={()=>guardedNavigate(()=>router.navigate("/"))} style={{minHeight:44,justifyContent:"center"}}>{path==="/more"
            ? <Text style={{color:colors.ink,fontFamily:editorialFonts.body,fontSize:13}}>‹  Home</Text>
            : <HeaderLogo dark={dark}/>}</Pressable>
-         {isPrimaryTab?<View style={{alignItems:compactHeader?"flex-start":"flex-end",flexShrink:1}}><HomeDate/><Pressable accessibilityRole="button" accessibilityLabel="Settings" onPress={()=>guardedNavigate(()=>router.navigate("/more"))} style={{minHeight:44,justifyContent:"center"}}><Text style={{fontFamily:editorialFonts.body,color:colors.ink,fontSize:13}}>Settings ›</Text></Pressable></View>:null}
+         {isPrimaryTab?<View style={{alignItems:compactHeader?"flex-start":"flex-end",flexShrink:1}}><HomeDate/><Pressable accessibilityRole="button" accessibilityLabel="Settings" onPress={()=>guardedNavigate(()=>router.navigate("/more"))} style={{minHeight:44,justifyContent:"center"}}><Text maxFontSizeMultiplier={1.6} style={{fontFamily:editorialFonts.body,color:colors.ink,fontSize:13}}>Settings ›</Text></Pressable></View>:null}
         </View>:null}
-        {primaryTitle?<Text accessibilityRole="header" style={{color:colors.ink,fontFamily:editorialFonts.heading,fontSize:compactHeader?20:path==="/photos"?52:48}}>{primaryTitle}</Text>:null}
+        {primaryTitle?<Text accessibilityRole="header" style={{color:colors.ink,fontFamily:editorialFonts.heading,fontSize:fontScale>=2.3?16:compactHeader?20:path==="/photos"?52:48}}>{primaryTitle}</Text>:null}
       </View>:null}
       <View style={{ flex: 1 }}>
         <Slot />

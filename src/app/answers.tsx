@@ -4,7 +4,7 @@ import {filterFindResults,locationAfterSpaceChange} from '../find-filters';
 import {plusFeatureEnforcementEnabled} from '../plus-entitlement-runtime';
 import {getEngStore} from '../eng-runtime';
 import React,{useCallback,useRef,useState} from 'react';
-import {ScrollView,Text,View} from 'react-native';
+import {ScrollView,Text,View,useWindowDimensions} from 'react-native';
 import {router,useFocusEffect,useLocalSearchParams} from 'expo-router';
 import {FigmaFind,FindSearchControls} from '../figma-first/FigmaFind';
 import {findResults} from '../figma-first/view-models';
@@ -14,7 +14,7 @@ import {localDay} from '../eng-domain';
 import type {EngSnapshot} from '../eng-types';
 import {readFindContext,saveFindContext} from '../find-context';
 function NativeFind(){
- const fg=useFigmaTheme();const {colors,dark}=useTheme();
+ const fg=useFigmaTheme();const {colors,dark}=useTheme();const {fontScale}=useWindowDimensions();
  const params=useLocalSearchParams<{lifecycle?:string;fresh?:string;origin?:string}>();
  const lifecycle=findLifecycle(params.lifecycle),context=readFindContext(lifecycle);
  const preservedFindQuery=context.query,preservedFindPage=context.page,preservedFindPageSize=context.pageSize;
@@ -52,7 +52,7 @@ function NativeFind(){
  const [error,setError]=useState('');
  const restorePosition=useCallback(()=>{const preservedFindScrollY=readFindContext(lifecycle).y;scrollRef.current?.scrollTo({y:preservedFindScrollY,animated:false});},[lifecycle]);
  useFocusEffect(useCallback(()=>{void params.fresh;let active=true;restoreFindScroll.current=true;const context=readFindContext(lifecycle);setError('');setQuery(context.query);setPage(context.page);setPageSize(context.pageSize);setPhotosOnly(context.photosOnly);setSpaceId(context.spaceId??"");setCategoryId(context.categoryId??"");setLocationId(context.locationId??"");getEngStore().then(s=>s.load()).then(s=>{if(active){setSnapshot(s);restoreFindScroll.current=true;requestAnimationFrame(()=>requestAnimationFrame(()=>{restorePosition();restoreFindScroll.current=false;}));}}).catch(()=>{if(active)setError('Unable to load saved memories. Your data was not changed.')});return()=>{active=false}},[lifecycle,params.fresh,restorePosition,setError,setQuery,setPage,setPageSize,setPhotosOnly,setSpaceId,setCategoryId,setSnapshot]));
- return <ScrollView stickyHeaderIndices={[0]} keyboardDismissMode="on-drag" ref={scrollRef} onContentSizeChange={()=>{if(restoreFindScroll.current){restorePosition();restoreFindScroll.current=false;}}} onScroll={event=>{if(!restoreFindScroll.current)saveFindContext(lifecycle,{y:event.nativeEvent.contentOffset.y});}} scrollEventThrottle={100} keyboardShouldPersistTaps="handled" contentContainerStyle={{flexGrow:1,backgroundColor:'transparent'}}>
+ return <ScrollView stickyHeaderIndices={fontScale>=1.35?[]:[0]} keyboardDismissMode="on-drag" ref={scrollRef} onContentSizeChange={()=>{if(restoreFindScroll.current){restorePosition();restoreFindScroll.current=false;}}} onScroll={event=>{if(!restoreFindScroll.current)saveFindContext(lifecycle,{y:event.nativeEvent.contentOffset.y});}} scrollEventThrottle={100} keyboardShouldPersistTaps="handled" contentContainerStyle={{flexGrow:1,backgroundColor:'transparent'}}>
  <View style={{backgroundColor:fg.page}}>{params.origin==="settings"?<View style={{paddingHorizontal:18,paddingVertical:8}}><Button label="‹ Settings" onPress={()=>router.replace("/more")}/></View>:null}
  <ThemeMaterial testID="find-search-material" dark={dark} surface={colors.paper} accent={colors.focus} ink={colors.ink} style={{borderRadius:20,marginHorizontal:6,paddingVertical:2}}><FindSearchControls locationId={locationId} onLocationChange={changeLocation} spaceId={spaceId} categoryId={categoryId} onSpaceChange={changeSpace} onCategoryChange={changeCategory} iosTextView={plusFeatureEnforcementEnabled} photosOnly={photosOnly} onPhotosOnlyChange={togglePhotos} query={query} onQueryChange={updateQuery} results={results} data={snapshot?.data}/></ThemeMaterial></View>
  <View style={{paddingHorizontal:18,paddingVertical:8,flexDirection:"row",flexWrap:"wrap",gap:8}}>
