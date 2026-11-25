@@ -1,8 +1,9 @@
+import {PlatformPrimaryNavigation} from "../platform/primary-navigation";
 import {reminderNotificationDestination} from "../reminder-notification-destination";
 import {beginFreshFind} from "../find-context";
 import React, {useEffect, useState} from "react";
 import { StatusBar } from "expo-status-bar";
-import { AppState, Pressable, Text, View, useWindowDimensions } from "react-native";
+import { AppState, Platform, Pressable, Text, View, useWindowDimensions } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { Slot, router, useLocalSearchParams, useGlobalSearchParams, usePathname } from "expo-router";
 import { Provider, useData } from "../state";
@@ -104,7 +105,14 @@ function Shell() {
         edges={["bottom"]}
         style={{ backgroundColor: colors.paper }}
       >
-        <View style={s.nav} accessibilityLabel="Primary navigation">
+        {!compactHeader && (Platform.OS==="ios"||Platform.OS==="android") ? <PlatformPrimaryNavigation
+          dark={dark} surface={colors.paper} selected={dark?colors.white:colors.accent} ink={colors.ink} muted={colors.muted}
+          items={destinations.map(({label,route})=>{
+            const active=path===route||(route==="/answers"&&(path==="/card"||path==="/memories"))||(route==="/reminders"&&path==="/reminders-manage");
+            return {label,selected:active,
+              onPress:()=>guardedNavigate(()=>route==="/answers"?router.navigate({pathname:"/answers",params:{lifecycle:"active",fresh:beginFreshFind(),origin:"tab"}}):route==="/reminders"?router.navigate({pathname:"/reminders",params:{origin:"tab"}}):router.navigate(route)),
+              icon:label==="Reminders"?<AcceptedNavigationIcon name="Reminders" color={active?colors.ink:colors.muted}/>:<NavigationIcon name={label}/>};
+          })}/> : <View style={s.nav} accessibilityLabel="Primary navigation">
           {destinations.map(({ label, route }) => {
             const active =
               path === route || (route === "/answers" && (path === "/card" || path === "/memories")) || (route === "/reminders" && path === "/reminders-manage");
@@ -137,7 +145,7 @@ function Shell() {
               </Pressable>
             );
           })}
-        </View>
+        </View>}
       </SafeAreaView>
     </SafeAreaView>
   );
