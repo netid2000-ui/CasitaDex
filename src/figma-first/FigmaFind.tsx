@@ -1,3 +1,4 @@
+import {ThemeMaterial} from '../platform/theme-material';
 import {findLocationChoices,findPage} from "../find-filters";
 import React,{useState} from "react";
 import {Keyboard,Modal,Platform,Pressable,ScrollView,Text,TextInput,View} from "react-native";
@@ -23,14 +24,14 @@ export function FigmaFind({lifecycle="active",onClearCriteria,query,onQueryChang
  </View>;
 }
 type Filters={spaceId?:string;categoryId?:string;locationId?:string;onLocationChange?:(id:string)=>void;onSpaceChange?:(id:string)=>void;onCategoryChange?:(id:string)=>void;data?:DataV2};
-export function FindSearchControls({query,onQueryChange,photosOnly=false,onPhotosOnlyChange,iosTextView=false,data,spaceId="",categoryId="",locationId="",onLocationChange,onSpaceChange,onCategoryChange}:Pick<FigmaFindProps,"query"|"onQueryChange"|"results">&Filters&{iosTextView?:boolean;photosOnly?:boolean;onPhotosOnlyChange?:(value:boolean)=>void}){
- const {colors}=useTheme(),{large}=useData();const scale=large?1.6:1;
+export function FindSearchControls({query,onQueryChange,photosOnly=false,onPhotosOnlyChange,iosTextView=false,insideMaterial=false,data,spaceId="",categoryId="",locationId="",onLocationChange,onSpaceChange,onCategoryChange}:Pick<FigmaFindProps,"query"|"onQueryChange"|"results">&Filters&{iosTextView?:boolean;insideMaterial?:boolean;photosOnly?:boolean;onPhotosOnlyChange?:(value:boolean)=>void}){
+ const {colors,dark}=useTheme(),{large}=useData();const scale=large?1.6:1;
  const [picker,setPicker]=useState<"space"|"category"|"location"|null>(null);
  const choices=picker==="location"?(data?findLocationChoices(data,spaceId):[]):((picker==="space"?data?.spaces:data?.categories)?.slice().sort((a,b)=>a.name.localeCompare(b.name))??[]).map(c=>({...c,label:c.name}));
  const selectedId=picker==="space"?spaceId:picker==="location"?locationId:categoryId;
  const choose=picker==="space"?onSpaceChange:picker==="location"?onLocationChange:onCategoryChange;
  const locationLabel=data?findLocationChoices(data,spaceId).find(l=>l.id===locationId)?.label:undefined;
- return <View style={{backgroundColor:colors.paper,paddingHorizontal:18,paddingBottom:16,gap:14,borderBottomWidth:1,borderBottomColor:colors.separator}}>
+ return <View style={{backgroundColor:insideMaterial?"transparent":colors.paper,paddingHorizontal:18,paddingBottom:16,gap:14,borderBottomWidth:1,borderBottomColor:colors.separator}}>
  <TextInput testID="find-query" multiline={iosTextView&&Platform.OS==="ios"} submitBehavior={iosTextView&&Platform.OS==="ios"?"blurAndSubmit":undefined} accessibilityLabel="Search memories" accessibilityHint="Search titles, descriptions and details" value={query} onChangeText={onQueryChange} placeholder="Search memories…" placeholderTextColor={colors.onPrimary} returnKeyType="search" onSubmitEditing={()=>Keyboard.dismiss()} style={{fontFamily:editorialFonts.body,fontSize:15*scale,borderRadius:8,padding:12,minHeight:48,backgroundColor:colors.primary,color:colors.onPrimary}}/>
  {query.length>0?<View style={{alignSelf:"flex-start"}}><Button compact variant="quiet" label="Clear search" onPress={()=>onQueryChange("")}/></View>:null}
  <View style={{flexDirection:"row",flexWrap:"wrap",gap:8}}>
@@ -39,6 +40,6 @@ export function FindSearchControls({query,onQueryChange,photosOnly=false,onPhoto
  {onLocationChange?<Button compact label={(locationLabel??"Location")+"  ▾"} selected={!!locationId} onPress={()=>setPicker("location")}/>:null}
  {onPhotosOnlyChange?<Button compact label="With photos only" selected={photosOnly} onPress={()=>onPhotosOnlyChange(!photosOnly)}/>:null}
  </View>
- <Modal visible={picker!==null} transparent animationType="fade" onRequestClose={()=>setPicker(null)}><View style={{flex:1,backgroundColor:"#0008",justifyContent:"center",padding:24}}><View accessibilityViewIsModal style={{backgroundColor:colors.paper,padding:18,borderRadius:8,gap:12}}><Text accessibilityRole="header" style={{fontFamily:editorialFonts.heading,fontSize:28,color:colors.ink}}>{picker==="space"?"Space":picker==="location"?"Location":"Category"}</Text><ScrollView style={{maxHeight:240}} keyboardShouldPersistTaps="handled"><Button label="All" selected={!selectedId} onPress={()=>{choose?.("");setPicker(null);}}/>{choices.map(c=><Button key={c.id} label={c.label} selected={c.id===selectedId} onPress={()=>{choose?.(c.id);setPicker(null);}}/>)}</ScrollView><Button label="Done" onPress={()=>setPicker(null)}/></View></View></Modal>
+ <Modal visible={picker!==null} transparent animationType="fade" onRequestClose={()=>setPicker(null)}><View style={{flex:1,backgroundColor:"#0008",justifyContent:"center",padding:24}}><View accessibilityViewIsModal><ThemeMaterial dark={dark} surface={colors.paper} accent={colors.focus} ink={colors.ink} testID="find-filter-picker-material" style={{padding:18,borderRadius:24,gap:12}}><Text accessibilityRole="header" style={{fontFamily:editorialFonts.heading,fontSize:28,color:colors.ink}}>{picker==="space"?"Space":picker==="location"?"Location":"Category"}</Text><ScrollView style={{maxHeight:240}} keyboardShouldPersistTaps="handled"><Button label="All" selected={!selectedId} onPress={()=>{choose?.("");setPicker(null);}}/>{choices.map(c=><Button key={c.id} label={c.label} selected={c.id===selectedId} onPress={()=>{choose?.(c.id);setPicker(null);}}/>)}</ScrollView><Button label="Done" onPress={()=>setPicker(null)}/></ThemeMaterial></View></View></Modal>
  </View>;
 }

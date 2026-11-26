@@ -1,3 +1,4 @@
+import {useMaterialAppearance} from './platform/material-appearance';
 import {ThemeMaterial} from "./platform/theme-material";
 import React,{useCallback,useEffect,useMemo,useRef,useState} from 'react';
 import {Alert,Image,PanResponder,Pressable,ScrollView,Text,View,useWindowDimensions} from 'react-native';
@@ -13,6 +14,7 @@ export function PhotoMemoryViewer({memoryId,draftId,initialPhotoId,path,label,on
  const [sourceMode,setSourceMode]=useState<{replace:boolean;photoId?:string}|null>(null);
  const lock=useRef(false),alive=useRef(true);const actionsScrollRef=useRef<ScrollView|null>(null);const {large}=useData();const textScale=large?1.6:1;
  const {fontScale,height}=useWindowDimensions();
+ const {appearance}=useMaterialAppearance();
  const stackedControls=large||fontScale>=1.35;
  const [zoom,setZoom]=useState({scale:1,x:0,y:0});
  const [viewport,setViewport]=useState({width:0,height:0});
@@ -53,7 +55,7 @@ export function PhotoMemoryViewer({memoryId,draftId,initialPhotoId,path,label,on
  const fallbackPath=!memoryId&&!draftId?path:undefined;
  const title=memory?.title??draft?.title??label??'Photo';
  const editable=!!(draft||memory&&memory.lifecycle!=='recently_deleted');
- const control={minHeight:48,paddingHorizontal:14,paddingVertical:10,borderRadius:12,backgroundColor:'#263C32',borderColor:'#B3CBB7',borderWidth:1,justifyContent:'center' as const,alignItems:'center' as const};
+ const control={minHeight:48,paddingHorizontal:14,paddingVertical:10,borderRadius:12,backgroundColor:appearance==='subtle'||stackedControls?'#263C32':'rgba(38,60,50,0.28)',borderColor:'#B3CBB7',borderWidth:1,justifyContent:'center' as const,alignItems:'center' as const};
  const controlText={color:'#FFFFFF',fontSize:15*textScale};
  function choose(id:string){resetZoom();setImageError(false);setSelectedId(id);setStatus('');}
  async function act(task:()=>Promise<unknown>,success:string){if(lock.current)return;lock.current=true;setBusy(true);try{await task();const next=await refresh();const updated=draftId?(next.draft?.id===draftId?next.draft.photos:[]):orderedMemoryPhotos(next.data,memoryId??'');if(alive.current){if(!updated.some(p=>p.id===selectedId))setSelectedId(updated[Math.min(index,Math.max(0,updated.length-1))]?.id??'');resetZoom();setImageError(false);setStatus(success);if(success==='Cover photo saved.'||success==='Photo order saved.'){setActions(false);actionsScrollRef.current?.scrollTo({y:0,animated:false});}}await onChanged?.();}catch(error){if(alive.current)setStatus(error instanceof Error?error.message:'Unable to save the photo change. Please try again.');}finally{lock.current=false;if(alive.current)setBusy(false);}}
@@ -63,6 +65,7 @@ export function PhotoMemoryViewer({memoryId,draftId,initialPhotoId,path,label,on
  function remove(){if(!current||!editable||busy)return;const id=current.id;Alert.alert('Remove photo?',draftId?'Remove this photo from the unfinished memory? Other draft photos are kept.':'Remove this photo from this memory? Your previous full save remains recoverable.',[{text:'Cancel',style:'cancel'},{text:'Remove photo',style:'destructive',onPress:()=>void act(async()=>{const store=await getEngStore();if(draftId)await store.removePhoto(draftId,id);else if(memoryId)await store.removeMemoryPhoto(memoryId,id);},'Photo removed from this memory.')}]);}
  function arrange(destination:number){if(!memoryId||!current||!snapshot||busy)return;const ids=movedPhoto(photos.map(p=>p.id),current.id,destination);void act(async()=>{await(await getEngStore()).reorderMemoryPhotos(memoryId,ids,snapshot.revision);},destination===0?'Cover photo saved.':'Photo order saved.');}
  return <SafeAreaProvider initialMetrics={initialWindowMetrics}><SafeAreaView edges={['top','bottom']} style={{flex:1,backgroundColor:'#081611'}}>
+  {appearance!=='subtle'&&!stackedControls&&(current?.path||fallbackPath)&&!imageError?<View pointerEvents="none" accessibilityElementsHidden importantForAccessibility="no-hide-descendants" style={{position:"absolute",top:0,bottom:0,left:0,right:0}}><Image accessible={false} source={{uri:engPhotoUri(current?.path??fallbackPath!)}} resizeMode="cover" blurRadius={20} style={{width:"100%",height:"100%",opacity:appearance==='expressive'?.30:.18}}/></View>:null}
   <ThemeMaterial testID="photo-viewer-header-material" dark surface="#081611" accent="#B3CBB7" ink="#FFFFFF" enabled={!stackedControls} style={{padding:12,flexDirection:'row',alignItems:'center',gap:10,borderRadius:22,marginHorizontal:5}}><View style={{flex:1,gap:4}}><Text style={{color:'#FFFFFF',fontSize:16*textScale,fontWeight:'700'}}>{title}</Text><Text style={{color:'#FFFFFF',fontSize:14*textScale}}>{photos.length?`Photo ${index+1} of ${photos.length}${!draftId&&index===0?' · Cover':''}`:draftId?'Unfinished photo memory':'Photo'}</Text></View><Pressable accessibilityRole="button" accessibilityLabel="Close photo" disabled={busy} onPress={onClose} style={control}><Text style={controlText}>Close ×</Text></Pressable></ThemeMaterial>
   <View {...responder.panHandlers} onTouchEnd={swipeAtTouchEnd}
    onLayout={event=>{const {width,height}=event.nativeEvent.layout;

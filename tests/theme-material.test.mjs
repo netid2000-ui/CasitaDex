@@ -13,3 +13,12 @@ test('both approved editorial palettes and photo viewer remain legible',()=>{
  for(const p of [lightColors,darkColors]) assert.ok(materialContrast(materialTokens(p.paper,p.focus,p.ink).tone,p.ink)>=4.5);
  assert.ok(materialContrast(materialTokens('#081611','#B3CBB7','#FFFFFF').tone,'#FFFFFF')>=4.5);
 });
+
+import {parseMaterialAppearance,DEFAULT_MATERIAL_APPEARANCE} from '../src/platform/material-tokens.ts';
+test('enhanced is default; appearance modes have distinct tint strength and legible fallback',()=>{
+ assert.equal(DEFAULT_MATERIAL_APPEARANCE,'enhanced'); assert.equal(parseMaterialAppearance(null),'enhanced'); assert.equal(parseMaterialAppearance('unknown'),'enhanced');
+ for(const mode of ['subtle','enhanced','expressive']) assert.equal(parseMaterialAppearance(mode),mode);
+ const modes=['subtle','enhanced','expressive'].map(m=>materialTokens('#FFFDF8','#E99C27','#273924',m));
+ assert.equal(new Set(modes.map(m=>m.glassTint)).size,3);assert.equal(new Set(modes.map(m=>m.tone)).size,3);
+ for(const m of modes)assert.ok(materialContrast(m.tone,'#273924')>=4.5);
+});

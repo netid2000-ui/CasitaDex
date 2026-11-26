@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { AccessibilityInfo, Platform, Pressable, Text, View, StyleSheet } from 'react-native';
 import { GlassView, isGlassEffectAPIAvailable, isLiquidGlassAvailable } from 'expo-glass-effect';
+import { useMaterialAppearance } from './material-appearance';
 import { materialTokens } from './material-tokens';
 import type { PlatformNavigationProps } from './primary-navigation.types';
 
 // The content remains in normal layout; the native material only affects the navigation surface.
 export function PlatformPrimaryNavigation({items, dark, surface, selected, ink, muted, accent}: PlatformNavigationProps) {
   // An opaque surface is the safe default until the accessibility preference is known.
+  const {appearance}=useMaterialAppearance();
   const [reduceTransparency, setReduceTransparency] = useState(true);
   useEffect(() => {
     if (Platform.OS !== 'ios') return;
@@ -25,14 +27,14 @@ export function PlatformPrimaryNavigation({items, dark, surface, selected, ink, 
   const content = items.map(item => (
     <Pressable key={item.label} accessibilityRole="tab" accessibilityLabel={item.label}
       accessibilityState={{selected:item.selected}} onPress={item.onPress}
-      style={({pressed}) => [styles.tab,item.selected && {backgroundColor:selected},pressed && {opacity:0.75}]}>
+      style={({pressed}) => [styles.tab,item.selected && {backgroundColor:glass&&appearance!=='subtle'?selected+'B8':selected},pressed && {opacity:0.75}]}>
       <View accessible={false} style={styles.icon}>{item.icon}</View>
       <Text style={[styles.label,{color:item.selected?ink:muted,fontWeight:item.selected?'600':'400'}]}>{item.label}</Text>
     </Pressable>
   ));
   return <View style={styles.outer} testID="platform-primary-navigation">
-    {glass ? <GlassView testID="native-liquid-glass-navigation" glassEffectStyle="regular" colorScheme={dark?'dark':'light'} tintColor={accent?materialTokens(surface,accent,ink).glassTint:undefined}
-      style={styles.bar}>{content}</GlassView> :
+    {glass ? <GlassView testID="native-liquid-glass-navigation" glassEffectStyle="regular" colorScheme={dark?'dark':'light'} tintColor={accent?materialTokens(surface,accent,ink,appearance).glassTint:undefined}
+      style={[styles.bar,appearance!=='subtle'&&accent?{borderWidth:1,borderColor:materialTokens(surface,accent,ink,appearance).edge}:undefined]}>{content}</GlassView> :
       <View testID="opaque-navigation-fallback" style={[styles.bar,{backgroundColor:surface}]}>{content}</View>}
   </View>;
 }

@@ -8,5 +8,5 @@ test('iOS native material respects accessibility and unsupported OS fallback',()
 });
 test('Android native Material navigation uses controlled state and guarded callbacks',()=>{
  const s=read('src/platform/primary-navigation.android.tsx');
- for(const contract of ['@expo/ui/jetpack-compose','<NavigationBar ','<NavigationBarItem ','selected={item.selected}','onClick={item.onPress}','selectedIndicatorColor:selected','alwaysShowLabel'])assert.ok(s.includes(contract),contract);
+ for(const contract of ['@expo/ui/jetpack-compose','<NavigationBar ','<NavigationBarItem ','selected={item.selected}','onClick={item.onPress}','selectedIndicatorColor:tone','alwaysShowLabel'])assert.ok(s.includes(contract),contract);
 });

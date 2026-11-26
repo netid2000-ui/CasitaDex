@@ -1,3 +1,4 @@
+import {MaterialPreferencePanel} from './platform/material-preference-panel';
 import {PhotoSourceButton} from "./photo-source-button";
 import {TaxonomyPicker} from "./taxonomy-picker";
 import {LocationPicker} from "./location-picker";
@@ -498,6 +499,7 @@ export function EngMore({initialAction}:{initialAction?:string}={}){
     {section==="help"?<><BrandLogo width={180} /><Copy accessibilityRole="header">Help & About</Copy><Copy>CasitaDex Development 0.1.0. Memories and photos stay on this device unless you export or share them. Keep a verified full backup in a second location. Text backups from earlier versions can be reviewed with Choose backup. They cannot contain photos or an unfinished draft.</Copy><Copy>Verification records what you checked against a source. It is not a guarantee of correctness. Editing a description or its source requires checking again. Archive pauses reminders; Recently Deleted keeps recovery available. Cleanup does not run automatically in this build.</Copy>
     </>:null}{section==="preferences"?<><Copy accessibilityRole="header">Appearance & Accessibility</Copy><Button label="Large text" selected={preferences.large} onPress={()=>preferences.setLarge(!preferences.large)} />
     {(["System","Light","Dark"] as const).map(value=><Button key={value} label={value+" appearance"} selected={preferences.appearance===value} onPress={()=>preferences.setAppearance(value)} />)}
+    <CasitaMaterialPreferences/>
     <Copy kind="small">Readable text: CasitaDex supports its Large text option and your device text-size setting. Content reflows and remains scrollable at larger sizes.</Copy>
     <Copy kind="small">Screen reader: use iPhone VoiceOver or Android TalkBack in your device Accessibility settings. Buttons and form controls must remain labeled and operable.</Copy>
     <Copy kind="small">Contrast and motion: CasitaDex follows your device accessibility preferences where supported. Separate contrast and reduced-motion switches are not available in this build.</Copy>
@@ -522,3 +524,5 @@ export function EngShareMemory(){
   <Button label="Cancel sharing" onPress={()=>router.back()} /><Status text={e.status}/></>:<Copy>{e.snapshot?"Memory unavailable.":"Loading memory…"}</Copy>}
  </Page>;
 }
+
+function CasitaMaterialPreferences(){const {colors,dark}=useTheme();return <MaterialPreferencePanel dark={dark} surface={colors.paper} accent={colors.focus} ink={colors.ink} muted={colors.muted}/>;}

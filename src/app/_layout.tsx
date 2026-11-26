@@ -1,3 +1,4 @@
+import {MaterialAppearanceProvider} from '../platform/material-appearance';
 import {materialTokens} from "../platform/material-tokens";
 import {PlatformPrimaryNavigation} from "../platform/primary-navigation";
 import {reminderNotificationDestination} from "../reminder-notification-destination";
@@ -152,7 +153,8 @@ function Shell() {
   );
 }
 
-export default function Layout() {
+export default function Layout(){return <MaterialAppearanceProvider><AppLayout/></MaterialAppearanceProvider>;}
+function AppLayout() {
   const [fontsLoaded,fontError]=useFonts({CormorantGaramond_700Bold,Inter_400Regular,Inter_600SemiBold});
   useEffect(()=>startPlusEntitlements(),[]);
   const path = usePathname();
