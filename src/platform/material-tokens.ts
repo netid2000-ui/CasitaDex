@@ -21,5 +21,7 @@ export function materialTokens(surface:string,accent:string,ink:string,appearanc
  const safeBase=materialContrast('#FFFFFF',ink)>=materialContrast('#000000',ink)?'#FFFFFF':'#000000';
  const amount={subtle:.18,enhanced:.30,expressive:.44}[appearance];
  const tone=[...([amount,amount*.66,amount*.33,0].map(a=>mixMaterial(surface,hue,a))),...([.25,.5,.75,1].map(a=>mixMaterial(surface,safeBase,a)))].find(c=>materialContrast(c,ink)>=4.5)??surface;
- return {tone,glassTint:valid(hue)?hue+({subtle:'24',enhanced:'59',expressive:'8C'}[appearance]):undefined,edge:valid(hue)?hue+({subtle:'36',enhanced:'80',expressive:'C0'}[appearance]):undefined};
+ // Native tint over a photograph can be considerably brighter than the opaque tone.
+ const glassHue=appearance==='subtle'?hue:[0,.12,.24,.36,.48,.60,.72,.84,1].map(a=>mixMaterial(hue,safeBase,a)).find(c=>materialContrast(c,ink)>=5.5)??safeBase;
+ return {tone,glassTint:valid(glassHue)?glassHue+({subtle:'24',enhanced:'59',expressive:'8C'}[appearance]):undefined,edge:valid(hue)?hue+({subtle:'36',enhanced:'80',expressive:'C0'}[appearance]):undefined};
 }

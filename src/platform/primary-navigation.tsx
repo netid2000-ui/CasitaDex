@@ -29,7 +29,7 @@ export function PlatformPrimaryNavigation({items, dark, surface, selected, ink, 
       accessibilityState={{selected:item.selected}} onPress={item.onPress}
       style={({pressed}) => [styles.tab,item.selected && {backgroundColor:glass&&appearance!=='subtle'?selected+'B8':selected},pressed && {opacity:0.75}]}>
       <View accessible={false} style={styles.icon}>{item.icon}</View>
-      <Text style={[styles.label,{color:item.selected?ink:muted,fontWeight:item.selected?'600':'400'}]}>{item.label}</Text>
+      <Text style={[styles.label,{color:item.selected||appearance!=='subtle'?ink:muted,fontWeight:item.selected?'600':'400'}]}>{item.label}</Text>
     </Pressable>
   ));
   return <View style={styles.outer} testID="platform-primary-navigation">

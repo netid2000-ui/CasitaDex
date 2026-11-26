@@ -22,3 +22,9 @@ test('enhanced is default; appearance modes have distinct tint strength and legi
  assert.equal(new Set(modes.map(m=>m.glassTint)).size,3);assert.equal(new Set(modes.map(m=>m.tone)).size,3);
  for(const m of modes)assert.ok(materialContrast(m.tone,'#273924')>=4.5);
 });
+
+test('strong glass tint keeps the full-strength tint legible against photo and editorial foregrounds',()=>{
+ for(const mode of ['enhanced','expressive'])for(const [surface,accent,ink] of [['#1C211D','#E99C27','#FFFFFF'],['#081611','#B3CBB7','#FFFFFF'],['#F7F2E9','#374727','#273924'],['#181F19','#B8C7A5','#EFEADC']]){
+  const t=materialTokens(surface,accent,ink,mode);assert.ok(materialContrast(t.glassTint.slice(0,7),ink)>=4.5);assert.ok(materialContrast(t.tone,ink)>=4.5);
+ }
+});
