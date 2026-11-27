@@ -1,0 +1,9 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: iOS cap guard status and read-only sharing
+---
+- assertVisible: "Free plan: restore requires an available slot.*"
+- takeScreenshot: ios-cap-restore-blocked
+- tapOn: "Share memory.*"
+- assertVisible: "Share memory"
+- assertVisible: "Name and description are included by default.*"
+- takeScreenshot: ios-trash-share

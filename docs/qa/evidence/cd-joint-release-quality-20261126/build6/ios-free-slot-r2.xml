@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="CasitaDex Plus 25.99 Recovery QA - iOS 27.0 - 36C7AE6D-1615-4A23-B313-46EBD092DA6C" tests="1" failures="0" time="20.275" timestamp="2026-11-26T22:23:50">
+    <testcase id="iOS delete one and restore at 19" name="iOS delete one and restore at 19" classname="iOS delete one and restore at 19" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/cd-joint-release-quality-20261126/ios-free-slot-r2.yaml" time="20.27" timestamp="2026-11-26T22:23:50" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

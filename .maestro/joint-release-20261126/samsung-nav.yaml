@@ -1,0 +1,22 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Samsung Build 6 QA navigation and free count
+---
+- assertVisible: "Open regular memory FA Platform Filter 20x25x1"
+- tapOn: "Home"
+- assertVisible: "Add Memory"
+- tapOn: "Photos"
+- assertVisible: "Grid photo view"
+- tapOn: "Reminders"
+- assertVisible: "Add Reminder.*"
+- tapOn: "Find"
+- assertVisible: "Search memories.*"
+- tapOn: "Home"
+- tapOn: "Add Memory"
+- assertVisible: "Free plan:.*active and archived memories.*"
+- takeScreenshot: samsung-free-counter
+- tapOn: "Cancel"
+- tapOn:
+    text: "Discard draft"
+    optional: true
+- tapOn: "Home"
+- assertVisible: "Add Memory"

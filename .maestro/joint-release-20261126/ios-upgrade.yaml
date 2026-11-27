@@ -1,0 +1,13 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Build 6 preserves Build 5 installed collection and photo
+---
+- launchApp:
+    clearState: false
+- tapOn: "Find"
+- tapOn: "Search memories.*"
+- inputText: "FA Platform Filter 20x25x1"
+- hideKeyboard
+- tapOn: "Open photo memory FA Platform Filter 20x25x1"
+- tapOn: "Open cover photo of FA Platform Filter 20x25x1"
+- assertVisible: "Photo 1 of 1.*"
+- takeScreenshot: ios-upgrade-photo

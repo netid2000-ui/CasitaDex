@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="emulator-5582" tests="1" failures="1" time="22.55" timestamp="2026-11-26T22:14:26">
+    <testcase id="Build 6 Android at-cap trash restore blocked and sharing available" name="Build 6 Android at-cap trash restore blocked and sharing available" classname="Build 6 Android at-cap trash restore blocked and sharing available" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/cd-joint-release-quality-20261126/android-cap-block.yaml" time="22.543" timestamp="2026-11-26T22:14:26" status="ERROR">
+      <failure>No visible element found: "Recently Deleted memories"</failure>
+    </testcase>
+  </testsuite>
+</testsuites>

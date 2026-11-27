@@ -1,0 +1,13 @@
+{
+  "fileKey": "39uzN0SZX8nlmcGDcHdQhr",
+  "page": "398:2",
+  "verifiedAddFrames": [
+    {"frame":"1688:861","toolbar":"1688:862","scrollContent":"1688:872","notice":"1688:1079","count":19,"theme":"light"},
+    {"frame":"1688:911","toolbar":"1688:912","scrollContent":"1688:922","notice":"1688:1080","count":19,"theme":"dark"},
+    {"frame":"1688:961","toolbar":"1688:962","scrollContent":"1688:972","notice":"1688:1081","count":20,"theme":"light"},
+    {"frame":"1688:1011","toolbar":"1688:1012","scrollContent":"1688:1022","notice":"1688:1082","count":20,"theme":"dark"}
+  ],
+  "toolbarName": "Persistent Cancel / Save only · stack at largest text size",
+  "scrollContentName": "Scrollable content · Free plan notices and form fields",
+  "verify": "Figma readback confirmed each Free plan notice is a descendant of the scrollable content, not the toolbar."
+}

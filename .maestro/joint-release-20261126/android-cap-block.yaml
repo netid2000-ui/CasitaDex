@@ -1,0 +1,24 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Build 6 Android at-cap trash restore blocked and sharing available
+---
+- tapOn: "View recently deleted memories"
+- tapOn: "Open photo memory QA Deleted Photo"
+- tapOn: "Restore memory"
+- scrollUntilVisible:
+    element: "Free plan: restore requires an available slot.*"
+    direction: DOWN
+    timeout: 15000
+    centerElement: true
+- takeScreenshot: android-cap-restore-blocked
+- scrollUntilVisible:
+    element: "Share memory.*"
+    direction: UP
+    timeout: 15000
+    centerElement: true
+- tapOn: "Share memory.*"
+- assertVisible: "Share memory"
+- scrollUntilVisible:
+    element: "Name and description are included by default.*"
+    direction: DOWN
+    timeout: 15000
+- takeScreenshot: android-trash-share

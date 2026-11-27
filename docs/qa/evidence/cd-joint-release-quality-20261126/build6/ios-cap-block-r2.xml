@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="CasitaDex Plus 25.99 Recovery QA - iOS 27.0 - 36C7AE6D-1615-4A23-B313-46EBD092DA6C" tests="1" failures="0" time="2.577" timestamp="2026-11-26T22:19:45">
+    <testcase id="iOS cap guard status and read-only sharing" name="iOS cap guard status and read-only sharing" classname="iOS cap guard status and read-only sharing" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/cd-joint-release-quality-20261126/ios-cap-block-r2.yaml" time="2.572" timestamp="2026-11-26T22:19:45" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="emulator-5582" tests="1" failures="0" time="23.981" timestamp="2026-11-26T22:27:46">
+    <testcase id="Android maximum font navigation and Add form" name="Android maximum font navigation and Add form" classname="Android maximum font navigation and Add form" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/cd-joint-release-quality-20261126/android-max-text.yaml" time="23.976" timestamp="2026-11-26T22:27:46" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

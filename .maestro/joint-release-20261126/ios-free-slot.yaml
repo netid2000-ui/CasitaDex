@@ -1,0 +1,45 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: iOS exact at-cap Free counter
+---
+- tapOn: "Home"
+- tapOn: "Add Memory"
+- scrollUntilVisible:
+    element: "Free plan: 20 of 20 active and archived memories.*"
+    direction: DOWN
+    timeout: 15000
+    centerElement: true
+- takeScreenshot: ios-counter-20
+- tapOn: "Cancel"
+- tapOn:
+    text: "Discard draft"
+    optional: true
+- tapOn: "Find"
+- tapOn: "Open regular memory QA Slot 01"
+- tapOn: "More.*"
+- tapOn: "Move to Recently Deleted"
+- tapOn: "Move to Recently Deleted"
+- extendedWaitUntil:
+    visible: "Restore memory"
+    timeout: 15000
+- tapOn: "Home"
+- tapOn: "Add Memory"
+- scrollUntilVisible:
+    element: "Free plan: 19 of 20 active and archived memories.*"
+    direction: DOWN
+    timeout: 15000
+    centerElement: true
+- takeScreenshot: ios-counter-19
+- tapOn: "Cancel"
+- tapOn:
+    text: "Discard draft"
+    optional: true
+- tapOn: "Home"
+- tapOn: "Settings"
+- tapOn: "Recently deleted"
+- tapOn: "View recently deleted memories"
+- tapOn: "Open photo memory QA Deleted Photo"
+- tapOn: "Restore memory"
+- extendedWaitUntil:
+    visible: "Edit memory"
+    timeout: 15000
+- takeScreenshot: ios-restored-at-19

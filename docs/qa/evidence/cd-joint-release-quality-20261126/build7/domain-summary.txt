@@ -1,0 +1,10 @@
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ both actual palettes meet text and control-boundary contrast targets (0.407625ms)
+ℹ tests 569
+ℹ suites 0
+ℹ pass 568
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 1
+ℹ todo 0
+ℹ duration_ms 2258.859041

@@ -1,0 +1,9 @@
+✔ both actual palettes meet text and control-boundary contrast targets (1.337792ms)
+ℹ tests 568
+ℹ suites 0
+ℹ pass 567
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 1
+ℹ todo 0
+ℹ duration_ms 2219.461708

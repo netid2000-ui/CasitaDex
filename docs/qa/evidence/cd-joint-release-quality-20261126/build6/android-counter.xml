@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="emulator-5582" tests="1" failures="0" time="17.073" timestamp="2026-11-26T22:17:31">
+    <testcase id="Android exact at-cap Free counter" name="Android exact at-cap Free counter" classname="Android exact at-cap Free counter" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/cd-joint-release-quality-20261126/android-counter.yaml" time="17.07" timestamp="2026-11-26T22:17:31" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

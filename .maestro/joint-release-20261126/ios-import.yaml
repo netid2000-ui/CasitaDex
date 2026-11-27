@@ -1,0 +1,26 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Build 6 iOS verified cap fixture restore
+---
+- tapOn:
+    point: "201,240"
+- extendedWaitUntil:
+    visible: "Backup checked. Review before replacing your collection."
+    timeout: 20000
+- scrollUntilVisible:
+    element: "21 memories, 1 saved photos.*"
+    direction: DOWN
+    timeout: 15000
+- takeScreenshot: ios-cap-fixture-review
+- scrollUntilVisible:
+    element: "Cancel restore"
+    direction: DOWN
+    timeout: 15000
+    centerElement: true
+- tapOn:
+    text: "Use backed-up draft.*"
+    optional: true
+- tapOn: "Confirm replace with reviewed backup"
+- extendedWaitUntil:
+    visible: "Full collection restored and verified."
+    timeout: 20000
+- takeScreenshot: ios-cap-fixture-restored

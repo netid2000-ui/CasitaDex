@@ -1,0 +1,5 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Prepare Home for TalkBack
+---
+- tapOn: "Home"
+- assertVisible: "Add Memory"

@@ -1,0 +1,8 @@
+Thu Nov 26 22:38:00 CST 2026
+    NotificationRecord(0x03070f5c: pkg=com.designsbyfa.casitadex.platformqa user=UserHandle{0} id=0 tag=ef3c7d6a-0ba8-4cda-8165-bceb19f3bb78 importance=3 key=0|com.designsbyfa.casitadex.platformqa|0|ef3c7d6a-0ba8-4cda-8165-bceb19f3bb78|10379: Notification(channel=casitadex-reminders-v1 shortcut=null contentView=null vibrate=null sound=null defaults=0 flags=AUTO_CANCEL color=0xff003f30 vis=PRIVATE semFlags=0x0 semPriority=0 semMissedCount=0 semScenarioType=0))
+Notification visible: CD6%20Synthetic%20Reminder [233,431][926,481]
+Edit Reminder  [51,367][1031,543]
+CD6%20Synthetic%20Reminder Reminder title (Required) [51,645][1031,780]
+November 26, 2026  [155,923][951,975]
+ 10:35 PM [51,1132][1029,1267]
+10:35 PM  [155,1172][951,1224]

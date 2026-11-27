@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="CasitaDex Plus 25.99 Recovery QA - iOS 27.0 - 36C7AE6D-1615-4A23-B313-46EBD092DA6C" tests="1" failures="0" time="22.353" timestamp="2026-11-26T22:17:01">
+    <testcase id="Build 6 iOS verified cap fixture restore" name="Build 6 iOS verified cap fixture restore" classname="Build 6 iOS verified cap fixture restore" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/cd-joint-release-quality-20261126/ios-import.yaml" time="22.348" timestamp="2026-11-26T22:17:01" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

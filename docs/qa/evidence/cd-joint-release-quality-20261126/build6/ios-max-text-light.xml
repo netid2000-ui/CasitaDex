@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="CasitaDex Plus 25.99 Recovery QA - iOS 27.0 - 36C7AE6D-1615-4A23-B313-46EBD092DA6C" tests="1" failures="1" time="19.42" timestamp="2026-11-26T22:31:59">
+    <testcase id="iOS maximum font navigation and Add form" name="iOS maximum font navigation and Add form" classname="iOS maximum font navigation and Add form" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/cd-joint-release-quality-20261126/ios-max-text.yaml" time="19.414" timestamp="2026-11-26T22:31:59" status="ERROR">
+      <failure>Element not found: Text matching regex: Add Memory</failure>
+    </testcase>
+  </testsuite>
+</testsuites>

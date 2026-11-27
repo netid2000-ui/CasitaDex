@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="emulator-5582" tests="1" failures="0" time="2.912" timestamp="2026-11-26T22:32:42">
+    <testcase id="Prepare Home for TalkBack" name="Prepare Home for TalkBack" classname="Prepare Home for TalkBack" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/cd-joint-release-quality-20261126/android-talkback-prep.yaml" time="2.908" timestamp="2026-11-26T22:32:42" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

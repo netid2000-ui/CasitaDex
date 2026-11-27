@@ -1,0 +1,165 @@
+Source and QA privacy inventory; no claim of zero transmission.
+8013c33c7fe8c65833721a0afceb85dac7b5b7bc
+{
+  "@expo-google-fonts/cormorant-garamond": "^0.4.1",
+  "@expo-google-fonts/inter": "^0.4.2",
+  "@expo/ui": "~57.0.26",
+  "@react-native-async-storage/async-storage": "2.2.0",
+  "@react-native-community/datetimepicker": "9.1.0",
+  "expo": "57.0.31",
+  "expo-build-properties": "~57.0.22",
+  "expo-constants": "~57.0.21",
+  "expo-crypto": "~57.0.4",
+  "expo-document-picker": "~57.0.3",
+  "expo-file-system": "~57.0.7",
+  "expo-font": "~57.0.4",
+  "expo-glass-effect": "~57.0.5",
+  "expo-haptics": "~57.0.3",
+  "expo-image-manipulator": "~57.0.22",
+  "expo-image-picker": "~57.0.20",
+  "expo-linking": "~57.0.13",
+  "expo-notifications": "~57.0.18",
+  "expo-router": "57.0.29",
+  "expo-sharing": "57.0.24",
+  "expo-splash-screen": "~57.0.10",
+  "expo-sqlite": "~57.0.4",
+  "expo-status-bar": "~57.0.1",
+  "expo-system-ui": "~57.0.4",
+  "react": "19.2.3",
+  "react-dom": "19.2.3",
+  "react-native": "0.86.3",
+  "react-native-reanimated": "4.5.1",
+  "react-native-safe-area-context": "~5.7.0",
+  "react-native-screens": "~4.26.0",
+  "react-native-svg": "15.15.4",
+  "react-native-web": "^0.21.2",
+  "react-native-worklets": "0.10.1"
+}
+
+App config and permission fields
+{
+  "name": "CasitaDex Platform QA",
+  "extra": {
+    "appEnvironment": "development",
+    "backendMode": "none",
+    "productionAuthorized": false,
+    "router": {},
+    "eas": {
+      "projectId": "79b93f15-c8ba-40b6-b7f4-30662c225bd8"
+    },
+    "qaFreeMemoryLimit": true,
+    "parityQaSeed": false
+  },
+  "ios": {
+    "supportsTablet": true,
+    "bundleIdentifier": "com.designsbyfa.casitadex.platformqa",
+    "buildNumber": "6",
+    "icon": {
+      "light": "./assets/brand/icon-light.png",
+      "dark": "./assets/brand/icon-dark.png",
+      "tinted": "./assets/brand/icon-tinted.png"
+    }
+  },
+  "android": {
+    "package": "com.designsbyfa.casitadex.platformqa",
+    "versionCode": 6,
+    "allowBackup": false,
+    "adaptiveIcon": {
+      "foregroundImage": "./assets/brand/adaptive-color.png",
+      "monochromeImage": "./assets/brand/adaptive-outline.png",
+      "backgroundColor": "#FAF8F2"
+    }
+  },
+  "pluginNames": [
+    "expo-build-properties",
+    "expo-router",
+    "@react-native-community/datetimepicker",
+    "./plugins/with-reminder-picker-theme",
+    "expo-notifications",
+    "expo-splash-screen",
+    "expo-image-picker"
+  ]
+}
+
+App source HTTP/client indicators (path/line only)
+modules/casitadex-plus-store/android/src/main/AndroidManifest.xml:1
+modules/casitadex-plus-store/ios/CasitaDexPlusStore.podspec:8
+modules/casitadex-reminder-alerts/android/src/main/AndroidManifest.xml:1
+modules/casitadex-reminder-alerts/ios/CasitaDexReminderAlerts.podspec:8
+src/approved-svg.ts:10
+src/approved-svg.ts:11
+src/approved-svg.ts:12
+src/approved-svg.ts:13
+src/approved-svg.ts:14
+src/approved-svg.ts:15
+src/approved-svg.ts:16
+src/approved-svg.ts:17
+src/approved-svg.ts:18
+src/approved-svg.ts:19
+src/approved-svg.ts:20
+src/approved-svg.ts:21
+src/approved-svg.ts:22
+src/approved-svg.ts:23
+src/approved-svg.ts:24
+src/approved-svg.ts:25
+src/approved-svg.ts:26
+src/approved-svg.ts:27
+src/approved-svg.ts:28
+src/approved-svg.ts:29
+src/approved-svg.ts:3
+src/approved-svg.ts:30
+src/approved-svg.ts:31
+src/approved-svg.ts:32
+src/approved-svg.ts:33
+src/approved-svg.ts:34
+src/approved-svg.ts:35
+src/approved-svg.ts:36
+src/approved-svg.ts:37
+src/approved-svg.ts:38
+src/approved-svg.ts:4
+src/approved-svg.ts:5
+src/approved-svg.ts:6
+src/approved-svg.ts:7
+src/approved-svg.ts:8
+src/approved-svg.ts:9
+src/header-logo.tsx:4
+src/header-logo.tsx:5
+src/screens.tsx:1046
+
+Android merged release permissions
+android/app/build/intermediates/merged_manifest/release/processReleaseMainManifest/AndroidManifest.xml
+android/app/build/intermediates/merged_manifest/release/expoReleaseOverrideMaxSdkConflicts/AndroidManifest.xml
+android/app/build/intermediates/merged_manifests/release/processReleaseManifest/AndroidManifest.xml
+android/app/build/intermediates/packaged_manifests/release/processReleaseManifestForPackage/AndroidManifest.xml
+android.permission.INTERNET
+android.permission.READ_EXTERNAL_STORAGE
+android.permission.SYSTEM_ALERT_WINDOW
+android.permission.VIBRATE
+android.permission.WRITE_EXTERNAL_STORAGE
+android.permission.POST_NOTIFICATIONS
+android.permission.RECEIVE_BOOT_COMPLETED
+android.permission.CAMERA
+com.android.vending.BILLING
+android.permission.ACCESS_NETWORK_STATE
+android.permission.WAKE_LOCK
+com.google.android.c2dm.permission.RECEIVE
+com.designsbyfa.casitadex.platformqa.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE
+com.sec.android.provider.badge.permission.READ
+com.sec.android.provider.badge.permission.WRITE
+com.htc.launcher.permission.READ_SETTINGS
+com.htc.launcher.permission.UPDATE_SHORTCUT
+com.sonyericsson.home.permission.BROADCAST_BADGE
+com.sonymobile.home.permission.PROVIDER_INSERT_BADGE
+com.anddoes.launcher.permission.UPDATE_COUNT
+com.majeur.launcher.permission.UPDATE_BADGE
+com.huawei.android.launcher.permission.CHANGE_BADGE
+com.huawei.android.launcher.permission.READ_SETTINGS
+com.huawei.android.launcher.permission.WRITE_SETTINGS
+android.permission.READ_APP_BADGE
+com.oppo.launcher.permission.READ_SETTINGS
+com.oppo.launcher.permission.WRITE_SETTINGS
+me.everything.badger.permission.BADGE_COUNT_READ
+me.everything.badger.permission.BADGE_COUNT_WRITE
+allowBackup: false
+usesCleartextTraffic: None

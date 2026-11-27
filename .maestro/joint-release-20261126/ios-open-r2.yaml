@@ -1,0 +1,12 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Build 6 iOS fully visible file chooser
+---
+- scrollUntilVisible:
+    element: "Recover previous full save"
+    direction: DOWN
+    timeout: 15000
+    centerElement: true
+- tapOn: "Choose backup to review"
+- extendedWaitUntil:
+    visible: "Browse"
+    timeout: 15000

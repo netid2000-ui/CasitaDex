@@ -1,0 +1,23 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: iOS verified local archive and honest status
+---
+- tapOn: "Home"
+- tapOn: "Settings"
+- scrollUntilVisible:
+    element: "Backup & restore"
+    direction: DOWN
+    timeout: 15000
+    centerElement: true
+- tapOn: "Backup & restore"
+- assertVisible: "Last verified local backup: No recorded verification.*"
+- tapOn: "Save full backup.*"
+- extendedWaitUntil:
+    visible: "Save to Files"
+    timeout: 25000
+- takeScreenshot: ios-backup-sheet
+- tapOn: "Save to Files"
+- extendedWaitUntil:
+    visible: "Verified Full v4 backup retained privately.*"
+    timeout: 20000
+- assertVisible: "Last verified local backup:.*This does not confirm a separate copy.*"
+- takeScreenshot: ios-verified-backup-status

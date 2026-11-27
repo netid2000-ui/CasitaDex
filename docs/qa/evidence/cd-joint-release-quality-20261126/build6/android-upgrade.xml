@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="emulator-5582" tests="1" failures="0" time="18.82" timestamp="2026-11-26T22:10:22">
+    <testcase id="Build 6 preserves Build 5 installed collection and photo" name="Build 6 preserves Build 5 installed collection and photo" classname="Build 6 preserves Build 5 installed collection and photo" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/cd-joint-release-quality-20261126/android-upgrade.yaml" time="18.814" timestamp="2026-11-26T22:10:22" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

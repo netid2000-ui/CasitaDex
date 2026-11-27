@@ -1,0 +1,16 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Android exact at-cap Free counter
+---
+- tapOn: "Home"
+- tapOn: "Add Memory"
+- scrollUntilVisible:
+    element: "Free plan: 20 of 20 active and archived memories.*"
+    direction: DOWN
+    timeout: 15000
+    centerElement: true
+- takeScreenshot: android-counter-20
+- tapOn: "Cancel"
+- tapOn:
+    text: "Discard draft"
+    optional: true
+- tapOn: "Find"

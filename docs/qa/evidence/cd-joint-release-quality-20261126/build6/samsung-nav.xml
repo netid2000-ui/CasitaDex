@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="R5GL83X0K3N" tests="1" failures="1" time="45.476" timestamp="2026-11-26T22:18:31">
+    <testcase id="Samsung Build 6 QA navigation and free count" name="Samsung Build 6 QA navigation and free count" classname="Samsung Build 6 QA navigation and free count" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/cd-joint-release-quality-20261126/samsung-nav.yaml" time="45.471" timestamp="2026-11-26T22:18:31" status="ERROR">
+      <failure>Element not found: Text matching regex: Add Memory</failure>
+    </testcase>
+  </testsuite>
+</testsuites>
