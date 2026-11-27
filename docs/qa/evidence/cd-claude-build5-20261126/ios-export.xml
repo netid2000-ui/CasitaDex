@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="CasitaDex Plus 25.99 Recovery QA - iOS 27.0 - 36C7AE6D-1615-4A23-B313-46EBD092DA6C" tests="1" failures="0" time="10.986" timestamp="2026-11-26T18:51:55">
+    <testcase id="Build 5 iOS coherent full backup native share sheet" name="Build 5 iOS coherent full backup native share sheet" classname="Build 5 iOS coherent full backup native share sheet" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/cd-claude-corrections-20261126/ios-export.yaml" time="10.981" timestamp="2026-11-26T18:51:55" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

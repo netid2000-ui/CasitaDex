@@ -1,0 +1,37 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Build 5 iOS fully scrolled confirm and repeat recovery
+---
+- scrollUntilVisible:
+    element: "Cancel recovery"
+    direction: DOWN
+    timeout: 15000
+    centerElement: true
+- tapOn: "Confirm full recovery"
+- extendedWaitUntil:
+    visible: "Previous full save recovered and verified."
+    timeout: 20000
+- takeScreenshot: ios-recovered
+- scrollUntilVisible:
+    element: "Recover previous full save"
+    direction: DOWN
+    timeout: 15000
+    centerElement: true
+- tapOn: "Recover previous full save"
+- scrollUntilVisible:
+    element: "Cancel recovery"
+    direction: DOWN
+    timeout: 15000
+    centerElement: true
+- tapOn: "Confirm full recovery"
+- extendedWaitUntil:
+    visible: "Previous full save recovered and verified."
+    timeout: 20000
+- tapOn: "Find"
+- tapOn: "Search memories.*"
+- inputText: "FA Platform Filter 20x25x1"
+- hideKeyboard
+- tapOn: "Open photo memory FA Platform Filter 20x25x1"
+- assertVisible: "Open cover photo of FA Platform Filter 20x25x1"
+- tapOn: "Open cover photo of FA Platform Filter 20x25x1"
+- assertVisible: "Photo 1 of 1.*"
+- takeScreenshot: ios-readback

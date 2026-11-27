@@ -1,0 +1,26 @@
+Commit aa5304d300515cbeef9249a9f0ab919ee8553ed2
+Tree 6dda67abad6677897a98d500e8c82e3f8c0961c7
+ℹ tests 561
+ℹ suites 0
+ℹ pass 560
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 1
+ℹ todo 0
+ℹ duration_ms 2065.593
+
+> casitadex@0.1.0 typecheck
+> tsc --noEmit
+
+
+> casitadex@0.1.0 lint
+> eslint src --max-warnings=0
+
+BUILD SUCCESSFUL in 3m 23s
+** BUILD SUCCEEDED **
+Android APK SHA-256: 8e7741200dd3debaa15518b3ed64b28d89387e3bbae37240731ceb423ecd6653
+iOS installed executable and JS bundle SHA-256:
+2f835373a24722233db55b9508a4110ef50da7d029ec4beed3b7fbb229804e62
+1555baa16239f548bebc55ef83710d237d760a21a16b216c9b2156f78127d4d3
+Android installed versionCode=5; iOS installed CFBundleVersion=5; QA package com.designsbyfa.casitadex.platformqa
+iOS cache .cdxe candidates after recovery: 0

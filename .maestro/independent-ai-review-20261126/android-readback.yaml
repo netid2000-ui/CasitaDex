@@ -1,0 +1,24 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Build 5 Android repeat recovery and read restored photo
+---
+- scrollUntilVisible:
+    element: "Recover previous full save"
+    direction: DOWN
+    timeout: 15000
+- tapOn: "Recover previous full save"
+- scrollUntilVisible:
+    element: "Confirm full recovery"
+    direction: DOWN
+    timeout: 15000
+- tapOn: "Confirm full recovery"
+- extendedWaitUntil:
+    visible: "Previous full save recovered and verified."
+    timeout: 20000
+- tapOn: "Find"
+- tapOn: "Search memories.*"
+- inputText: "FA Platform Filter 20x25x1"
+- hideKeyboard
+- tapOn: "Open photo memory FA Platform Filter 20x25x1"
+- assertVisible: "Open cover photo of FA Platform Filter 20x25x1"
+- tapOn: "Open cover photo of FA Platform Filter 20x25x1"
+- assertVisible: "Photo 1 of 1.*"

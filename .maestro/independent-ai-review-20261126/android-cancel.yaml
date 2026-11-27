@@ -1,0 +1,24 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Build 5 review a synthetic v4 backup and cancel
+---
+- tapOn: "CasitaDex-full-2026-11-25T21-45-05-894Z.cdxe"
+- extendedWaitUntil:
+    visible: "Backup checked. Review before replacing your collection."
+    timeout: 20000
+- scrollUntilVisible:
+    element: "Standalone reminders in backup:.*"
+    direction: DOWN
+    timeout: 15000
+- takeScreenshot: android-v4-review
+- scrollUntilVisible:
+    element: "Cancel restore"
+    direction: DOWN
+    timeout: 15000
+- tapOn: "Cancel restore"
+- assertVisible: "Restore canceled. Your collection and draft are kept."
+- takeScreenshot: android-v4-cancel
+- scrollUntilVisible:
+    element: "Choose backup to review"
+    direction: UP
+    timeout: 15000
+- tapOn: "Choose backup to review"

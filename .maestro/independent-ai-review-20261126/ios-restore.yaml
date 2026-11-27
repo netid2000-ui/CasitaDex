@@ -1,0 +1,41 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Build 5 iOS reviewed restore and full recovery
+---
+- tapOn:
+    point: "71,240"
+- extendedWaitUntil:
+    visible: "Backup checked. Review before replacing your collection."
+    timeout: 20000
+- scrollUntilVisible:
+    element: "Standalone reminders in backup:.*"
+    direction: DOWN
+    timeout: 15000
+- takeScreenshot: ios-v4-review
+- scrollUntilVisible:
+    element: "Confirm replace with reviewed backup"
+    direction: DOWN
+    timeout: 15000
+- tapOn:
+    text: "Use backed-up draft.*"
+    optional: true
+- tapOn: "Confirm replace with reviewed backup"
+- extendedWaitUntil:
+    visible: "Full collection restored and verified."
+    timeout: 20000
+- takeScreenshot: ios-restored
+- scrollUntilVisible:
+    element: "Recover previous full save"
+    direction: DOWN
+    timeout: 15000
+- tapOn: "Recover previous full save"
+- scrollUntilVisible:
+    element: "Confirm full recovery"
+    direction: DOWN
+    timeout: 15000
+- assertVisible: "Recover the previous collection, draft, photos and standalone reminders.*"
+- takeScreenshot: ios-recovery-review
+- tapOn: "Confirm full recovery"
+- extendedWaitUntil:
+    visible: "Previous full save recovered and verified."
+    timeout: 20000
+- takeScreenshot: ios-recovered

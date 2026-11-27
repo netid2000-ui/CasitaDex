@@ -1,0 +1,21 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Build 5 iOS coherent full backup native share sheet
+---
+- launchApp:
+    clearState: false
+- tapOn: "Home"
+- tapOn: "Settings"
+- scrollUntilVisible:
+    element: "Backup & restore"
+    direction: DOWN
+    timeout: 15000
+- tapOn: "Backup & restore"
+- scrollUntilVisible:
+    element: "Save full backup.*"
+    direction: DOWN
+    timeout: 15000
+- tapOn: "Save full backup.*"
+- extendedWaitUntil:
+    visible: "Save to Files"
+    timeout: 25000
+- takeScreenshot: ios-export-sheet

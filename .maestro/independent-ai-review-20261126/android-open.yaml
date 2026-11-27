@@ -1,0 +1,17 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Build 5 Android open backup review
+---
+- launchApp:
+    clearState: false
+- tapOn: "Home"
+- tapOn: "Settings"
+- scrollUntilVisible:
+    element: "Backup & restore"
+    direction: DOWN
+    timeout: 15000
+- tapOn: "Backup & restore"
+- scrollUntilVisible:
+    element: "Choose backup to review"
+    direction: DOWN
+    timeout: 15000
+- tapOn: "Choose backup to review"

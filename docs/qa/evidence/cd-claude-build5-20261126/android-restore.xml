@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="emulator-5582" tests="1" failures="0" time="22.263" timestamp="2026-11-26T18:50:23">
+    <testcase id="Build 5 Android reviewed restore and recovery" name="Build 5 Android reviewed restore and recovery" classname="Build 5 Android reviewed restore and recovery" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/cd-claude-corrections-20261126/android-restore.yaml" time="22.257" timestamp="2026-11-26T18:50:23" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

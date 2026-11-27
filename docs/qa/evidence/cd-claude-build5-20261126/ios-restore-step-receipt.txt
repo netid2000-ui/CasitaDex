@@ -1,0 +1,18 @@
+Define variables COMPLETED
+Apply configuration COMPLETED
+Tap on point (71,240) COMPLETED
+Assert that "Backup checked. Review before replacing your collection." is visible COMPLETED
+Scrolling DOWN until "Standalone reminders in backup:.*" is visible with speed 40, visibility percentage 100%, timeout 15000 ms, with centering disabled COMPLETED
+Take screenshot ios-v4-review COMPLETED
+Scrolling DOWN until "Confirm replace with reviewed backup" is visible with speed 40, visibility percentage 100%, timeout 15000 ms, with centering disabled COMPLETED
+Tap on (Optional) "Use backed-up draft.*" WARNED
+Tap on "Confirm replace with reviewed backup" COMPLETED
+Assert that "Full collection restored and verified." is visible COMPLETED
+Take screenshot ios-restored COMPLETED
+Scrolling DOWN until "Recover previous full save" is visible with speed 40, visibility percentage 100%, timeout 15000 ms, with centering disabled COMPLETED
+Tap on "Recover previous full save" COMPLETED
+Scrolling DOWN until "Confirm full recovery" is visible with speed 40, visibility percentage 100%, timeout 15000 ms, with centering disabled COMPLETED
+Assert that "Recover the previous collection, draft, photos and standalone reminders.*" is visible COMPLETED
+Take screenshot ios-recovery-review COMPLETED
+Tap on "Confirm full recovery" COMPLETED
+Assert that "Previous full save recovered and verified." is visible FAILED

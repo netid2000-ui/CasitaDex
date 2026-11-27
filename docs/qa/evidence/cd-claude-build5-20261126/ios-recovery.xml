@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="CasitaDex Plus 25.99 Recovery QA - iOS 27.0 - 36C7AE6D-1615-4A23-B313-46EBD092DA6C" tests="1" failures="0" time="49.008" timestamp="2026-11-26T18:57:27">
+    <testcase id="Build 5 iOS fully scrolled confirm and repeat recovery" name="Build 5 iOS fully scrolled confirm and repeat recovery" classname="Build 5 iOS fully scrolled confirm and repeat recovery" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/cd-claude-corrections-20261126/ios-recovery.yaml" time="49.003" timestamp="2026-11-26T18:57:27" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

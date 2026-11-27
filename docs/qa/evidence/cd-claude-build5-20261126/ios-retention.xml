@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="CasitaDex Plus 25.99 Recovery QA - iOS 27.0 - 36C7AE6D-1615-4A23-B313-46EBD092DA6C" tests="1" failures="0" time="6.451" timestamp="2026-11-26T18:54:00">
+    <testcase id="Build 5 iOS retained archive list and cancel removal" name="Build 5 iOS retained archive list and cancel removal" classname="Build 5 iOS retained archive list and cancel removal" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/cd-claude-corrections-20261126/ios-retention.yaml" time="6.443" timestamp="2026-11-26T18:54:00" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

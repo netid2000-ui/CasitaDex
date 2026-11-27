@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="emulator-5582" tests="1" failures="0" time="11.205" timestamp="2026-11-26T18:48:23">
+    <testcase id="Build 5 review a synthetic v4 backup and cancel" name="Build 5 review a synthetic v4 backup and cancel" classname="Build 5 review a synthetic v4 backup and cancel" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/cd-claude-corrections-20261126/android-cancel.yaml" time="11.199" timestamp="2026-11-26T18:48:23" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

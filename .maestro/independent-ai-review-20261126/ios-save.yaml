@@ -1,0 +1,8 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Build 5 iOS save backup to Files
+---
+- tapOn: "Save to Files"
+- extendedWaitUntil:
+    visible: "Save"
+    timeout: 20000
+- takeScreenshot: ios-files-destination

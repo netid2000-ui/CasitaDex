@@ -1,0 +1,4 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Build 5 iOS browse device-local picker
+---
+- tapOn: "Browse"
