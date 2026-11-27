@@ -1,0 +1,51 @@
+✔ file export is written and read back before reporting success (20.5225ms)
+✔ cancelled directory selection creates no file (3.162708ms)
+✔ failed write triggers cleanup (2.42825ms)
+✔ verification mismatch triggers cleanup (2.370958ms)
+✔ cleanup failure explicitly warns of leftover file (1.855917ms)
+✔ canceled picker makes no file read (2.476125ms)
+✔ selected valid backup is canonicalized (1.612541ms)
+✔ oversized file rejected before read (1.494125ms)
+✔ invalid import rejected (1.504333ms)
+✔ other platforms reject file export (1.540125ms)
+✔ unknown document size still enforces UTF-8 byte limit after reading (2.029375ms)
+✔ underreported document size cannot bypass actual UTF-8 byte limit (1.931ms)
+(node:71541) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/joint-release-quality-20261126/src/plus-entitlement-store.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/joint-release-quality-20261126/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ unavailable native support never queries or grants (1.005917ms)
+✔ startup verifies ownership and delayed revocation updates shared state (2.161875ms)
+✔ event during verification discards stale ownership and requeries once (0.4235ms)
+✔ verification errors and invalid results preserve last verified ownership (0.379542ms)
+✔ late response after stop cannot overwrite a restarted session (0.342542ms)
+✔ start is idempotent and snapshots cannot be mutated (0.446292ms)
+(node:71542) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/joint-release-quality-20261126/src/plus-memory-limit.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/joint-release-quality-20261126/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ free saves twentieth, refuses twenty-first without changing draft or collection; duplicate retry succeeds (17.481083ms)
+✔ Plus allows above limit; refund blocks only new saves and preserves oversized collection (9.219917ms)
+✔ unknown access cannot exceed limit; previously verified Plus survives transient error; preview unaffected (0.070667ms)
+✔ upgrading at twenty saves the same photo-backed draft exactly once (10.595792ms)
+✔ Recently Deleted frees a slot; archive and unarchive preserve count; at-cap restores are atomic (11.429167ms)
+✔ bulk restore reserves all slots at once and retains data when blocked (11.585292ms)
+✔ over-cap legitimate data remains editable and shareable; deletion to 19 lets restore once (11.149667ms)
+(node:71543) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/joint-release-quality-20261126/src/reminder-alert-plan.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Volumes/FA-Development/Designs-by-FA/Development/CasitaDex/joint-release-quality-20261126/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ one-off alerts use native local wall clock and skip expired alerts (2.716334ms)
+✔ monthly recurrence clamps month ends to last available day (0.265542ms)
+✔ leap year recurrence clamps to February 28 in non-leap years (0.129792ms)
+✔ completed reminders do not schedule and the platform cap is respected (10.587ms)
+✔ edit key changes when due time changes, permitting cancellation of old occurrence (0.097583ms)
+✔ linked reminders carry their memory ID into scheduled alert data (0.047292ms)
+ℹ tests 31
+ℹ suites 0
+ℹ pass 31
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 194.931709

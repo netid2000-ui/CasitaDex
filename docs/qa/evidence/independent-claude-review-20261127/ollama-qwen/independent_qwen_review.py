@@ -22,19 +22,23 @@ RULES={
  'CasitaDex':'Owner-approved Free limit 20 active+archived, trash frees slot, existing over-cap data remains readable/editable/exportable; Plus verified unlock only, one-time US$25.99; local first, no auto purge, correct reminders, safe backup. No need to accept ChatGPT claims.',
  'Event-Command':'Local-first, preserve existing events, explicit lifecycle and no inferred completion, accurate household counts, host-only notes, no false guest delivery claims, no paid/cloud dependency, verified backup and separate restores. No need to accept ChatGPT claims.'
 }
-def request(prompt):
- body={'model':MODEL,'prompt':prompt,'stream':False,'keep_alive':0,'options':{'num_ctx':8192,'num_predict':650,'temperature':0.15,'seed':27}}
+def request(prompt,num_predict):
+ body={'model':MODEL,'prompt':prompt,'stream':False,'keep_alive':0,'options':{'num_ctx':8192,'num_predict':num_predict,'temperature':0.15,'seed':27}}
  req=urllib.request.Request(URL,data=json.dumps(body).encode(),headers={'Content-Type':'application/json'})
  with urllib.request.urlopen(req,timeout=240) as r:return json.load(r)
 def main():
- p=argparse.ArgumentParser();p.add_argument('project',choices=CASES);p.add_argument('--case',choices=sorted(set(k for v in CASES.values() for k in v)));a=p.parse_args()
+ p=argparse.ArgumentParser();p.add_argument('project',choices=CASES);p.add_argument('--case',choices=sorted(set(k for v in CASES.values() for k in v)));p.add_argument('--retry-incomplete',action='store_true');a=p.parse_args()
  root=BASE/(a.project+'-source')
  manifest=json.loads((root/'REVIEW-MANIFEST.json').read_text());files={x['path']:x for x in manifest['included']}
  out=BASE/'ollama-qwen'/a.project;out.mkdir(exist_ok=True)
  for label,paths in CASES[a.project].items():
   if a.case and a.case!=label:continue
   target=out/(label+'.json')
-  if target.exists(): print('SKIP existing',target.name,flush=True);continue
+  if target.exists():
+   if a.retry_incomplete and json.loads(target.read_text())['response'].get('done_reason')=='length':
+    target=out/(label+'-retry.json')
+    if target.exists(): print('SKIP existing',target.name,flush=True);continue
+   else: print('SKIP existing',target.name,flush=True);continue
   code=[];receipt=[]
   for path in paths:
    raw=(root/path).read_bytes();digest=hashlib.sha256(raw).hexdigest()
@@ -47,7 +51,7 @@ Read actual source below. Challenge even previously marked PASS gates; do not ac
 Project: '''+a.project+'\nApproved policy: '+RULES[a.project]+'\nPinned Git commit: '+manifest['commit']+'\n\n'+'\n\n'.join(code)
   start=time.time()
   print('REVIEW',a.project,label,flush=True)
-  answer=request(prompt)
+  answer=request(prompt,1300 if a.retry_incomplete else 650)
   if not answer.get('done') or not answer.get('response','').strip():raise RuntimeError('missing complete response')
   record={'provenance':{'project':a.project,'commit':manifest['commit'],'case':label,'model':MODEL,'context_tokens':8192,'input_sha256':hashlib.sha256(prompt.encode()).hexdigest(),'input_files':receipt,'elapsed_seconds':round(time.time()-start,2),'advisory_only':True,'native_executed':False},'request':prompt,'response':answer}
   with target.open('x') as f:json.dump(record,f,ensure_ascii=False,indent=2);f.write('\n')

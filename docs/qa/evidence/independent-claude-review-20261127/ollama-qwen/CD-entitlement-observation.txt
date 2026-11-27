@@ -1,0 +1,2 @@
+{"scope":"synthetic source-level entitlement observation; no real store calls","blockedWhenChecking":true,"verifiedAfterQuery":{"entitlement":"free","status":"checking"}}
+{"scope":"second synthetic source-level observation, no store calls","blockedWhenChecking":true,"afterCoalescedQueries":{"entitlement":"plus","status":"ready"},"retryAccepted":true}
