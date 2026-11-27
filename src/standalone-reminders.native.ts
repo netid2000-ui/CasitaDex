@@ -4,8 +4,9 @@ import { reconcileReminderNotifications } from "./reminder-alerts.native";
 export type StandaloneReminder={id:string;title:string;notes:string;memoryId?:string|null;dueDate:string;dueTime:string;repeat:RepeatSchedule;completed:boolean;createdAt:string;updatedAt:string};
 let database:ReturnType<typeof openDatabaseAsync>|undefined;
 async function db(){
- database??=openDatabaseAsync("casitadex-development-v1.db");
+ database??=openDatabaseAsync("casitadex-development-v1.db",{useNewConnection:true});
  const d=await database;
+ await d.execAsync("PRAGMA busy_timeout=3000;");
  await d.execAsync("CREATE TABLE IF NOT EXISTS standalone_reminders_v1 (id TEXT PRIMARY KEY,title TEXT NOT NULL,notes TEXT NOT NULL,due_date TEXT NOT NULL,completed INTEGER NOT NULL DEFAULT 0,created_at TEXT NOT NULL,updated_at TEXT NOT NULL)");
  const columns=await d.getAllAsync<{name:string}>("PRAGMA table_info(standalone_reminders_v1)");
  if(!columns.some(c=>c.name==="due_time"))await d.execAsync("ALTER TABLE standalone_reminders_v1 ADD COLUMN due_time TEXT NOT NULL DEFAULT '09:00'");
@@ -58,7 +59,7 @@ export async function requestStandaloneReminderAlerts(){return reconcileReminder
 /** Read-only consistent reminder export; does not modify existing reminders. */
 export async function snapshotStandaloneRemindersForBackup(){
  const d=await db();
- const {validateReminderBackupSection}=await import("./reminder-backup-v4.ts");
+ const {reminderSectionFromRows}=await import("./reminder-backup-v4.ts");
  const rows=await d.getAllAsync<{id:string;title:string;notes:string;memory_id:string|null;due_date:string;due_time:string;repeat:string;anchor_day:number;completed:number;created_at:string;updated_at:string}>("SELECT id,title,notes,memory_id,due_date,due_time,repeat,anchor_day,completed,created_at,updated_at FROM standalone_reminders_v1 ORDER BY id");
- return validateReminderBackupSection({version:1,rows:rows.map(r=>({id:r.id,title:r.title,notes:r.notes,memoryId:r.memory_id,dueDate:r.due_date,dueTime:r.due_time,repeat:r.repeat,anchorDay:r.anchor_day||Number(r.due_date.slice(-2)),completed:r.completed===1,createdAt:r.created_at,updatedAt:r.updated_at}))});
+ return reminderSectionFromRows(rows);
 }

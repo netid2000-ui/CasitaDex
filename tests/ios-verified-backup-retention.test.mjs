@@ -12,7 +12,7 @@ function setup({sharingAvailable=true,shareFails=false,verifyFails=false,names=[
  const files=[],snapshot={data:{media:{media:[]}}},reminders={items:[]};
  class File {
   exists=false;
-  constructor(...parts){this.uri=parts.join('/');files.push(this);}
+  constructor(...parts){this.uri=parts.join('/');this.exists=names.includes(parts.at(-1));files.push(this);}
   create(){this.exists=true;}
   write(){}
   delete(){deletes++;this.exists=false;}
@@ -33,7 +33,7 @@ function setup({sharingAvailable=true,shareFails=false,verifyFails=false,names=[
  };
  const module={exports:{}};
  vm.runInNewContext(compiled,{exports:module.exports,module,require:id=>mocks[id]??{},TextEncoder,Date,Error,Promise});
- return {files,api:module.exports,shares:()=>shares,deletes:()=>deletes,run:()=>module.exports.writeEngBackup({snapshot,read:async()=>new Uint8Array(),hash:async()=>'digest'})};
+ return {files,api:module.exports,shares:()=>shares,deletes:()=>deletes,run:()=>module.exports.writeEngBackup({snapshot,reminders,read:async()=>new Uint8Array(),hash:async()=>'digest'})};
 }
 test('verified iOS archive survives unavailable sharing',async()=>{
  const x=setup({sharingAvailable:false});
@@ -82,4 +82,12 @@ test('retry failure never deletes retained archive',async()=>{
  const x=setup({names:[newer],shareFails:true});
  await assert.rejects(x.api.shareRetainedEngBackup(newer),/saved backup is kept/);
  assert.equal(x.shares(),1);assert.equal(x.deletes(),0);
+});
+
+test('retained archive removal requires an exact listed name and removes only that archive',async()=>{
+ const x=setup({names:[newer,older]});
+ await assert.rejects(x.api.deleteRetainedEngBackup('../'+newer),/unavailable/);
+ assert.equal(x.deletes(),0);
+ assert.match(await x.api.deleteRetainedEngBackup(newer),/other backups are unchanged/);
+ assert.equal(x.deletes(),1);assert.equal(x.files.length,1);assert.match(x.files[0].uri,new RegExp(newer+'$'));
 });

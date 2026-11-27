@@ -19,7 +19,8 @@ import { stageMedia } from "./media-staging";
 import { validateAddDraft } from "./draft-sqlite";
 import {assertStreamedBackupSize,backupWorkingSpace} from "./backup-capacity";
 import { writeEngStreamV4, openEngStreamCompatible } from "./eng-stream-v4";
-import { snapshotStandaloneRemindersForBackup } from "./standalone-reminders.native";
+import { backupTempName,isPickerCacheCopy,isStaleBackupTemp } from "./backup-temp";
+import type { ReminderBackupSection } from "./reminder-backup-v4";
 import type { EngSnapshot } from "./eng-types";
 const environment=Constants.expoConfig?.extra?.appEnvironment||"development";
 export const engEnabled=environment==="development";
@@ -27,11 +28,11 @@ let pending:Promise<ReturnType<typeof createEngStore>>|undefined;
 export function getEngStore(){
   if(!engEnabled)return Promise.reject(Error("Full ENG is enabled only in Development"));
   pending??=(async()=>{
-    const raw=await openDatabaseAsync("casitadex-development-v1.db");
+    const raw=await openDatabaseAsync("casitadex-development-v1.db",{useNewConnection:true});
     const db:Database={execAsync:raw.execAsync.bind(raw),runAsync:raw.runAsync.bind(raw),getFirstAsync:raw.getFirstAsync.bind(raw),getAllAsync:raw.getAllAsync.bind(raw),
       async withExclusiveTransactionAsync(fn){await sqliteWriteTransaction(raw,fn);}};
     const legacy=sqliteRepository(db,AsyncStorage,"development");
-    await db.execAsync("PRAGMA foreign_keys=ON; PRAGMA journal_mode=WAL; PRAGMA synchronous=FULL;");
+    await db.execAsync("PRAGMA foreign_keys=ON; PRAGMA journal_mode=WAL; PRAGMA synchronous=FULL; PRAGMA busy_timeout=3000;");
     const files={read:async(path:string)=>mediaFileByPath(path).bytes(),hash:sha256Media,
       put:async(entry:import("./media-manifest").MediaEntry,bytes:Uint8Array)=>{
         await requireNativeCapacity(entry.bytes+4_000_000);
@@ -74,13 +75,25 @@ export async function chooseEngPhoto(camera:boolean|"files"){
   if(file.size>10_000_000)throw Error("Choose a photo up to 10 MB");
   return file.bytes();
 }
-export type EngBackupSource={snapshot:EngSnapshot;read:(path:string)=>Promise<Uint8Array>;hash:(bytes:Uint8Array)=>Promise<string>};
+export type EngBackupSource={snapshot:EngSnapshot;reminders:ReminderBackupSection;read:(path:string)=>Promise<Uint8Array>;hash:(bytes:Uint8Array)=>Promise<string>};
 function reader(file:File){return {size:file.size,read:async(offset:number,length:number)=>{
   const handle=file.open(FileMode.ReadOnly);
   try{handle.offset=offset;return handle.readBytes(length);}finally{handle.close();}
 }};}
+const activeBackupTemps=new Set<string>();
+function cacheUri(){return typeof Paths.cache==="string"?Paths.cache:Paths.cache?.uri??"";}
+function disposeCacheFile(file:File){try{if(file.exists)file.delete();}catch{/* A failed temporary cleanup must not alter the restore result. */}}
+async function cleanupStaleBackupTemps(){
+  const cache=cacheUri();if(!cache)return;
+  try{for(const name of await FileSystem.readDirectoryAsync(cache)){
+    if(!isStaleBackupTemp(name))continue;
+    const file=new File(Paths.cache,name);
+    if(!activeBackupTemps.has(file.uri))disposeCacheFile(file);
+  }}catch{/* The operating system can reclaim private cache later. */}
+}
 export async function writeEngBackup(source:EngBackupSource){
-  const reminders=await snapshotStandaloneRemindersForBackup();
+  await cleanupStaleBackupTemps();
+  const reminders=source.reminders;
   const reminderBytes=new TextEncoder().encode(JSON.stringify(reminders)).length;
   const size=10+reminderBytes+10+new TextEncoder().encode(JSON.stringify(source.snapshot)).length+
     [...source.snapshot.data.media.media,...(source.snapshot.draft?.photos??[])].reduce((n,e)=>n+4+e.bytes,0);
@@ -122,7 +135,8 @@ export async function writeEngBackup(source:EngBackupSource){
   if(!permission.granted)return "Backup canceled. Your memories and draft are kept.";
   const name="CasitaDex-full-"+new Date().toISOString().replace(/[:.]/g,"-")+".cdxe";
   let uri:string|undefined;
-  const readback=new File(Paths.cache,"eng-backup-check-"+Date.now()+"-"+Math.random().toString(36).slice(2)+".cdxe");
+  const readback=new File(Paths.cache,backupTempName("check"));
+  activeBackupTemps.add(readback.uri);
   try{
     uri=await FileSystem.StorageAccessFramework.createFileAsync(permission.directoryUri,name,"application/octet-stream");
     const file=new File(uri);
@@ -138,20 +152,29 @@ export async function writeEngBackup(source:EngBackupSource){
   }catch(e){
     if(uri){try{await FileSystem.deleteAsync(uri,{idempotent:true});}catch{throw Error("Backup failed. An incomplete file may remain in the selected folder.");}}
     throw e;
-  }finally{if(readback.exists)readback.delete();}
+  }finally{activeBackupTemps.delete(readback.uri);disposeCacheFile(readback);}
 }
 export async function pickEngBackup(){
+  await cleanupStaleBackupTemps();
   const result=await DocumentPicker.getDocumentAsync({type:"*/*",copyToCacheDirectory:true,multiple:false});
   if(result.canceled)return null;
   const asset=result.assets[0];if(!asset)throw Error("No backup selected");
-  const file=new File(asset.uri);assertStreamedBackupSize(file.size);
-  const opened=await openEngStreamCompatible(reader(file),sha256Media);
-  // Archive validation always completes before any consumer restore preview.
-  // SB24 production-path interruption and genuine Android ENOSPC acceptance passed.
-  return opened;
+  let file=new File(asset.uri);
+  let owned=isPickerCacheCopy(asset.uri,cacheUri());
+  try{
+    if(owned){
+      const temporary=new File(Paths.cache,backupTempName("review"));
+      await file.move(temporary);file=temporary;
+      activeBackupTemps.add(file.uri);
+    }
+    assertStreamedBackupSize(file.size);
+    const opened=await openEngStreamCompatible(reader(file),sha256Media);
+    let disposed=false;
+    return {...opened,dispose:()=>{if(disposed)return;disposed=true;if(owned){activeBackupTemps.delete(file.uri);disposeCacheFile(file);}}};
+  }catch(error){if(owned){activeBackupTemps.delete(file.uri);disposeCacheFile(file);}throw error;}
 }
 export type EngStore=Awaited<ReturnType<typeof getEngStore>>;
-export type EngBackup={snapshot:EngSnapshot;source:string;read:(path:string)=>Promise<Uint8Array>;reminders:import("./reminder-backup-v4").ReminderBackupSection|null};
+export type EngBackup={snapshot:EngSnapshot;source:string;read:(path:string)=>Promise<Uint8Array>;reminders:import("./reminder-backup-v4").ReminderBackupSection|null;dispose:()=>void};
 
 export async function getEngStorage(){
   const references=await(await getEngStore()).audit();
@@ -212,4 +235,13 @@ export async function shareRetainedEngBackup(name:string):Promise<string>{
   try{await Sharing.shareAsync(file.uri,{mimeType:"application/octet-stream",UTI:"public.data",dialogTitle:"Save retained CasitaDex backup"});}
   catch(error){throw new Error("Sharing did not complete. Your saved backup is kept. Try again.",{cause:error});}
   return "Share sheet opened for the selected backup. Your saved copy is kept; confirm a separate copy exists at your chosen destination.";
+}
+
+/** Only a named, explicitly confirmed private iOS archive may be removed. */
+export async function deleteRetainedEngBackup(name:string):Promise<string>{
+  if(Platform.OS!=="ios"||!(await listRetainedEngBackups()).includes(name))throw Error("Saved backup is unavailable. Refresh the list.");
+  const file=new File(Paths.document,name);
+  if(!file.exists)throw Error("Saved backup is unavailable. Refresh the list.");
+  file.delete();
+  return "Selected saved backup removed. Your current memories, photos and other backups are unchanged.";
 }

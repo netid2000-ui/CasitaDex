@@ -8,8 +8,8 @@ test('accepted native consumer picker returns only a validated Full v4 archive w
  await writeEngStreamV4(verified(),reminders,async()=>{throw Error('No image expected')},hash,{write:async b=>chunks.push(b.slice())});
  let raw=new Uint8Array(chunks.reduce((n,b)=>n+b.length,0)),at=0;
  for(const b of chunks){raw.set(b,at);at+=b.length}
- let opens=0,canceled=false;
- globalThis.__nativePicker={bytes:raw,pick:async()=>canceled?{canceled:true}:{canceled:false,assets:[{uri:'qa://archive'}]},open:async()=>{opens++;throw Error('Picker must not open a database')}};
+ let opens=0,canceled=false,deletes=0,moves=0;
+ globalThis.__nativePicker={bytes:raw,pick:async()=>canceled?{canceled:true}:{canceled:false,assets:[{uri:'file:///qa/cache/DocumentPicker/fixture.cdxe'}]},open:async()=>{opens++;throw Error('Picker must not open a database')},erase:()=>deletes++,move:()=>moves++};
  const mocks={
  'expo-modules-core':'export const requireOptionalNativeModule=()=>null;',
  'react-native':'export const Platform={OS:"android"};export const AppState={addEventListener:()=>({remove(){}})};',
@@ -21,7 +21,7 @@ test('accepted native consumer picker returns only a validated Full v4 archive w
  'expo-document-picker':'export const getDocumentAsync=globalThis.__nativePicker.pick;',
  'expo-file-system/legacy':'export const StorageAccessFramework={};export const getFreeDiskStorageAsync=async()=>1000000000;',
  'expo-crypto':'import {createHash} from "node:crypto";export const CryptoDigestAlgorithm={SHA256:"sha256"};export const digest=async(_,b)=>Uint8Array.from(createHash("sha256").update(b).digest()).buffer;',
- 'expo-file-system': 'export const Paths={document:"private:",cache:"cache:",availableDiskSpace:1000000000,totalDiskSpace:2000000000};export const FileMode={ReadOnly:0};export class Directory{constructor(...p){this.uri=p.join("/")}};export class File{constructor(uri){this.uri=uri}get size(){return globalThis.__nativePicker.bytes.length}open(){return {offset:0,readBytes(n){return globalThis.__nativePicker.bytes.slice(this.offset,this.offset+n)},close(){}}}};'
+ 'expo-file-system': 'export const Paths={document:"private:",cache:{uri:"file:///qa/cache/"},availableDiskSpace:1000000000,totalDiskSpace:2000000000};export const FileMode={ReadOnly:0};export class Directory{constructor(...p){this.uri=p.join("/")}};export class File{constructor(...parts){this.uri=parts.map(p=>typeof p==="string"?p:p.uri).map((p,i)=>i===0&&p.endsWith("/")?p.slice(0,-1):p).join("/");this.exists=true}async move(){globalThis.__nativePicker.move()}delete(){this.exists=false;globalThis.__nativePicker.erase()}get size(){return globalThis.__nativePicker.bytes.length}open(){return {offset:0,readBytes(n){return globalThis.__nativePicker.bytes.slice(this.offset,this.offset+n)},close(){}}}};'
  };
  for(const [moduleName,functions] of Object.entries({NotificationsHandler:['setNotificationHandler'],setNotificationChannelAsync:['setNotificationChannelAsync'],NotificationPermissions:['getPermissionsAsync','requestPermissionsAsync'],getAllScheduledNotificationsAsync:['getAllScheduledNotificationsAsync'],scheduleNotificationAsync:['scheduleNotificationAsync'],cancelScheduledNotificationAsync:['cancelScheduledNotificationAsync'], 'Notifications.types':['SchedulableTriggerInputTypes'], 'NotificationChannelManager.types':['AndroidImportance']})){
   mocks[`expo-notifications/build/${moduleName}`]=functions.map(fn=>`export const ${fn}=${fn==='SchedulableTriggerInputTypes'?'{DATE:"date"}':fn==='AndroidImportance'?'{DEFAULT:3}':'()=>{}'};`).join('\n');
@@ -33,8 +33,8 @@ test('accepted native consumer picker returns only a validated Full v4 archive w
  try{
   const {pickEngBackup}=await import('../src/eng-runtime.native.ts');
   const opened=await pickEngBackup();
-  assert.equal(opened.source,'Full v4');assert.deepEqual(opened.reminders,reminders);assert.deepEqual(opened.snapshot.data,verified().data);assert.equal(opens,0);
-  globalThis.__nativePicker.bytes=raw.slice(0,raw.length-1);await assert.rejects(pickEngBackup());assert.equal(opens,0);
+  assert.equal(opened.source,'Full v4');assert.deepEqual(opened.reminders,reminders);assert.deepEqual(opened.snapshot.data,verified().data);assert.equal(opens,0);assert.equal(moves,1);opened.dispose();opened.dispose();assert.equal(deletes,1);
+  globalThis.__nativePicker.bytes=raw.slice(0,raw.length-1);await assert.rejects(pickEngBackup());assert.equal(opens,0);assert.equal(deletes,2);
   canceled=true;assert.equal(await pickEngBackup(),null);assert.equal(opens,0);
  }finally{hook.deregister();delete globalThis.__nativePicker}
 });

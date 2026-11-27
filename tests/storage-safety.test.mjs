@@ -71,14 +71,14 @@ test('large reminder section cannot bypass an ENG-only free-space budget',async(
   const engOnly=(new TextEncoder().encode(JSON.stringify(before)+JSON.stringify({...target,revision:before.revision+1}))).length*3+65536;
   let requested=0;f.port.capacity=async n=>{requested=n;if(n>engOnly)throw Error('Insufficient reminder capacity')};
   const section={version:1,rows:Array.from({length:100},(_,i)=>({...reminder,id:'r_capacity_'+i,notes:'x'.repeat(4000)}))};
-  await assert.rejects(f.store.restoreV4(target,section,'incoming',await f.store.restoreToken()),/Insufficient reminder/);
+  await assert.rejects(f.store.restoreV4(target,section,'incoming',await f.store.restoreToken(),await f.store.reminderRestoreToken()),/Insufficient reminder/);
   assert.ok(requested>engOnly+1000000);assert.deepEqual(await f.store.load(),before);
   assert.equal(f.raw.prepare("SELECT name FROM sqlite_master WHERE name='standalone_reminders_v1'").get(),undefined);
  }finally{f.close()}
 });
 test('low-storage recovery preserves current data and both recovery snapshots',async()=>{
  const f=setup();try{
-  await f.store.restoreV4(verified(),{version:1,rows:[reminder]},'incoming',await f.store.restoreToken());
+  await f.store.restoreV4(verified(),{version:1,rows:[reminder]},'incoming',await f.store.restoreToken(),await f.store.reminderRestoreToken());
   const before=await f.store.load();
   const tables=['standalone_reminders_v1','eng_recovery_v2','eng_reminder_recovery_v4'];
   const rows=tables.map(t=>f.raw.prepare('SELECT * FROM '+t).all());

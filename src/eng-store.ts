@@ -3,8 +3,7 @@ import {photoPermutation} from './photo-order.ts';
 import {fullRestoreCapacity} from "./storage-safety.ts";
 import {qaGroups,qaAnswers,qaCount} from "./sb26-qa-seed.ts";
 import {replaceReminderRowsInTransaction} from "./reminder-restore-v4.ts";
-import {validateReminderBackupSection} from "./reminder-backup-v4.ts";
-import type {ReminderBackupSection} from "./reminder-backup-v4.ts";
+import {validateReminderBackupSection,reminderSectionFromRows,type ReminderSqlRow,type ReminderBackupSection} from "./reminder-backup-v4.ts";
 import { fromLegacyV1, validateV2, type DataV2, type MemoryV2 } from "./sb20-contract.ts";
 import { validateMediaManifest, type MediaEntry } from "./media-manifest.ts";
 import { sniffImageMime, verifyMediaBytes } from "./media-integrity.ts";
@@ -81,6 +80,14 @@ export async function verifyEngSnapshot(s:EngSnapshot,files:EngFiles){
 export function newEngDraft():EngDraft {
   return {id:engId(),attempt:engId(),memoryId:engId(),checkpoint:0,title:"",answer:"",location:"",notes:"",source:"",spaceId:null,legacyContext:null,categoryIds:[],photos:[]};
 }
+export function draftRestoreImpact(current:EngSnapshot|null,incoming:EngSnapshot){
+  const draft=current?.draft;
+  if(!current||!draft)return {hasDraft:false,space:null as string|null,categories:[] as string[],attemptConflict:false,memoryConflict:false};
+  return {hasDraft:true,space:draft.spaceId&&!incoming.data.spaces.some(s=>s.id===draft.spaceId)?current.data.spaces.find(s=>s.id===draft.spaceId)?.name??null:null,
+    categories:draft.categoryIds.filter(id=>!incoming.data.categories.some(c=>c.id===id)).map(id=>current.data.categories.find(c=>c.id===id)?.name??"Missing category"),
+    attemptConflict:Object.hasOwn(incoming.attempts,draft.attempt),memoryConflict:incoming.data.memories.some(m=>m.id===draft.memoryId)};
+}
+export type RecoveryReview={kind:"none"|"collection"|"full";token:string};
 const schema=`CREATE TABLE IF NOT EXISTS eng_state_v2(slot INTEGER PRIMARY KEY CHECK(slot=1),payload TEXT NOT NULL);
 CREATE TABLE IF NOT EXISTS eng_recovery_v2(slot INTEGER PRIMARY KEY CHECK(slot=1),payload TEXT NOT NULL);
 CREATE TABLE IF NOT EXISTS eng_media_ops_v2(id TEXT PRIMARY KEY,payload TEXT NOT NULL,phase TEXT NOT NULL);
@@ -125,6 +132,36 @@ export function createEngStore(db:Database,files:EngFiles,migrate:()=>Promise<En
     }else if(!marker)await db.runAsync("INSERT OR IGNORE INTO eng_control_v2(key,value) VALUES('initialized','3')");
     initialized=true;
   }
+  async function readReminderRows(sql:SQL):Promise<ReminderSqlRow[]> {
+    const table=await sql.getFirstAsync("SELECT name FROM sqlite_master WHERE type='table' AND name='standalone_reminders_v1'");
+    return table?sql.getAllAsync<ReminderSqlRow>("SELECT * FROM standalone_reminders_v1 ORDER BY id"):[];
+  }
+  async function reviewTokens(sql:SQL){
+    const row=await sql.getFirstAsync<{payload:string}>("SELECT payload FROM eng_state_v2 WHERE slot=1");
+    const raw=row?.payload??null;if(raw!==null)refuseFuture(raw);
+    const reminders=await readReminderRows(sql);
+    return {raw,collectionToken:await tokenFor(raw),reminderToken:await tokenFor(JSON.stringify(reminders)),reminders};
+  }
+  async function recoveryReview(sql:SQL):Promise<RecoveryReview>{
+    const prior=await sql.getFirstAsync<{payload:string}>("SELECT payload FROM eng_recovery_v2 WHERE slot=1");
+    const table=await sql.getFirstAsync("SELECT name FROM sqlite_master WHERE type='table' AND name='eng_reminder_recovery_v4'");
+    const reminder=table?await sql.getFirstAsync<{payload:string}>("SELECT payload FROM eng_reminder_recovery_v4 WHERE slot=1"):null;
+    const kind=prior?(reminder?"full":"collection"):"none";
+    const current=await reviewTokens(sql);
+    return {kind,token:await tokenFor(JSON.stringify({kind,prior:prior?.payload??null,reminder:reminder?.payload??null,collection:current.collectionToken,reminders:kind==="full"?current.reminderToken:null}))};
+  }
+  async function checkRecoveryReview(sql:SQL,kind:RecoveryReview["kind"],expected?:string){
+    if(expected===undefined)return;
+    const reviewed=await recoveryReview(sql);
+    if(reviewed.kind!==kind||reviewed.token!==expected)throw Error("Your saved recovery or current data changed. Review recovery again; no data changed.");
+  }
+  async function markRestoreCommitted(tx:SQL,next:EngSnapshot){
+    const staged=await tx.getAllAsync<{id:string;payload:string}>("SELECT id,payload FROM eng_media_ops_v2 WHERE phase IN ('restore-pending','restore-staged')");
+    if(!staged.length)return;
+    const owned=new Map(allEngMedia(next).map(entry=>[entry.id,JSON.stringify(entry)]));
+    for(const row of staged)if(owned.get(row.id)===row.payload)
+      await tx.runAsync("UPDATE eng_media_ops_v2 SET phase='committed' WHERE id=? AND payload=? AND phase IN ('restore-pending','restore-staged')",row.id,row.payload);
+  }
   async function commit(before:EngSnapshot,next:EngSnapshot,recovery=true,mediaIds:string[]=[],checkFiles=true){
     next.revision=before.revision+1;
     const valid=validateEngSnapshot(next);
@@ -142,6 +179,7 @@ export function createEngStore(db:Database,files:EngFiles,migrate:()=>Promise<En
       if(recovery){const marker=await tx.getFirstAsync<{name:string}>("SELECT name FROM sqlite_master WHERE type='table' AND name='eng_reminder_recovery_v4'");if(marker)await tx.runAsync("DELETE FROM eng_reminder_recovery_v4 WHERE slot=1");}
       await tx.runAsync("UPDATE eng_state_v2 SET payload=? WHERE slot=1",JSON.stringify(valid));
       for(const mediaId of mediaIds)await tx.runAsync("UPDATE eng_media_ops_v2 SET phase='committed' WHERE id=?",mediaId);
+      await markRestoreCommitted(tx,valid);
     });
     if(checkFiles||verifiedRevision===before.revision)verifiedRevision=valid.revision;
     await options.fault?.("after-state-commit");
@@ -164,6 +202,7 @@ export function createEngStore(db:Database,files:EngFiles,migrate:()=>Promise<En
       const marker=await tx.getFirstAsync<{name:string}>("SELECT name FROM sqlite_master WHERE type='table' AND name='eng_reminder_recovery_v4'");if(marker)await tx.runAsync("DELETE FROM eng_reminder_recovery_v4 WHERE slot=1");
       // The previous known-good full recovery is deliberately not replaced with damaged bytes.
       await tx.runAsync("INSERT OR REPLACE INTO eng_state_v2(slot,payload) VALUES(1,?)",text);
+      await markRestoreCommitted(tx,valid);
     });
     verifiedRevision=valid.revision;return valid;
   }
@@ -407,9 +446,34 @@ export function createEngStore(db:Database,files:EngFiles,migrate:()=>Promise<En
       list.push({id:engId(),name:name.trim(),...(kind==="location"?{spaceId}:{})});
     })),
     backup:()=>serial(async()=>{const s=await loaded();await verifyEngSnapshot(s,files);return {snapshot:s,read:files.read,hash:files.hash};}),
-    stageRestore:(incoming:EngSnapshot,readIncoming:(path:string)=>Promise<Uint8Array>,expectedToken?:string)=>serial(async()=>{
+    backupWithReminders:()=>serial(async()=>{
+      await init();let captured:{snapshot:EngSnapshot;reminders:ReminderBackupSection}|undefined;
+      await db.withExclusiveTransactionAsync(async tx=>{captured={snapshot:await read(tx),reminders:reminderSectionFromRows(await readReminderRows(tx))};});
+      if(!captured)throw Error("Backup snapshot unavailable; current data kept.");
+      await verifyEngSnapshot(captured.snapshot,files);
+      return {...captured,read:files.read,hash:files.hash};
+    }),
+    reviewRestore:(incoming:EngSnapshot)=>serial(async()=>{
+      await init();const valid=validateEngSnapshot(incoming);
+      let review:{collectionToken:string;reminderToken:string;draft:ReturnType<typeof draftRestoreImpact>}|undefined;
+      await db.withExclusiveTransactionAsync(async tx=>{
+        const tokens=await reviewTokens(tx);let current:EngSnapshot|null=null;
+        try{current=validateEngSnapshot(JSON.parse(tokens.raw??""));}catch{/* Legacy repair can review unreadable current collection. */}
+        review={collectionToken:tokens.collectionToken,reminderToken:tokens.reminderToken,draft:draftRestoreImpact(current,valid)};
+      });
+      if(!review)throw Error("Backup review unavailable. Review again; no data changed.");
+      return review;
+    }),
+    reviewRecovery:()=>serial(async()=>{
+      await init();let result:RecoveryReview|undefined;
+      await db.withExclusiveTransactionAsync(async tx=>{result=await recoveryReview(tx);});
+      if(!result)throw Error("Recovery review unavailable");
+      return result;
+    }),
+    stageRestore:(incoming:EngSnapshot,readIncoming:(path:string)=>Promise<Uint8Array>,expectedToken?:string,expectedReminderToken?:string)=>serial(async()=>{
       await init();const valid=validateEngSnapshot(incoming);
       if(expectedToken!==undefined&&expectedToken!==await tokenFor(await rawPrimary()))throw restoreChanged();
+      if(expectedReminderToken!==undefined&&(!expectedReminderToken||expectedReminderToken!==await tokenFor(JSON.stringify(await readReminderRows(db)))))throw Error("Standalone reminders changed since backup review. Review again; no data changed.");
       const entries=allEngMedia(valid);
       await files.capacity(entries.reduce((n,e)=>n+e.bytes*2,0)+4_000_000);
       // Preflight every incoming byte before staging any file.
@@ -447,11 +511,12 @@ export function createEngStore(db:Database,files:EngFiles,migrate:()=>Promise<En
       return commit(before,next);
     }),
     reminderRestoreToken:()=>serial(async()=>{await init();const table=await db.getFirstAsync<{name:string}>("SELECT name FROM sqlite_master WHERE type='table' AND name='standalone_reminders_v1'");if(!table)return tokenFor("[]");const rows=await db.getAllAsync("SELECT * FROM standalone_reminders_v1 ORDER BY id");return tokenFor(JSON.stringify(rows));}),
-    restoreV4:(incoming:EngSnapshot,reminders:ReminderBackupSection,conflict:DraftConflict,expectedToken:string,expectedReminderToken?:string)=>serial(async()=>{
+    restoreV4:(incoming:EngSnapshot,reminders:ReminderBackupSection,conflict:DraftConflict,expectedToken:string,expectedReminderToken:string)=>serial(async()=>{
       if(conflict==="cancel")return loaded();
       await init();
       const raw=await rawPrimary();
       if(expectedToken!==await tokenFor(raw))throw restoreChanged();
+      if(typeof expectedReminderToken!=="string"||!expectedReminderToken||expectedReminderToken!==await tokenFor(JSON.stringify(await readReminderRows(db))))throw Error("Standalone reminders changed since backup review or review is incomplete. Review again; no data changed.");
       const next=validateEngSnapshot(incoming);
       await verifyEngSnapshot(next,files);
       const current=await read(db);
@@ -480,28 +545,28 @@ export function createEngStore(db:Database,files:EngFiles,migrate:()=>Promise<En
       await db.withExclusiveTransactionAsync(async tx=>{
         await tx.runAsync("CREATE TABLE IF NOT EXISTS standalone_reminders_v1 (id TEXT PRIMARY KEY,title TEXT NOT NULL,notes TEXT NOT NULL,due_date TEXT NOT NULL,completed INTEGER NOT NULL DEFAULT 0,created_at TEXT NOT NULL,updated_at TEXT NOT NULL,due_time TEXT NOT NULL DEFAULT '09:00',anchor_day INTEGER NOT NULL DEFAULT 0,repeat TEXT NOT NULL DEFAULT 'once')");
         const reviewedReminderRows=await tx.getAllAsync("SELECT * FROM standalone_reminders_v1 ORDER BY id");
-        if(expectedReminderToken&&expectedReminderToken!==await tokenFor(JSON.stringify(reviewedReminderRows)))throw Error("Standalone reminders changed since backup review. Review again; no data changed.");
+        if(expectedReminderToken!==await tokenFor(JSON.stringify(reviewedReminderRows)))throw Error("Standalone reminders changed since backup review. Review again; no data changed.");
         const columns=await tx.getAllAsync<{name:string}>("PRAGMA table_info(standalone_reminders_v1)");
         for(const [column,definition] of [["due_time","TEXT NOT NULL DEFAULT '09:00'"],["anchor_day","INTEGER NOT NULL DEFAULT 0"],["repeat","TEXT NOT NULL DEFAULT 'once'"],["memory_id","TEXT"]] as const){if(!columns.some(c=>c.name===column))await tx.runAsync(`ALTER TABLE standalone_reminders_v1 ADD COLUMN ${column} ${definition}`);}
         const row=await tx.getFirstAsync<{payload:string}>("SELECT payload FROM eng_state_v2 WHERE slot=1");
         if((row?.payload??null)!==raw)throw restoreChanged();
         await tx.runAsync("INSERT OR REPLACE INTO eng_recovery_v2(slot,payload) VALUES(1,?)",oldBytes);
         await tx.runAsync("CREATE TABLE IF NOT EXISTS eng_reminder_recovery_v4 (slot INTEGER PRIMARY KEY CHECK(slot=1),payload TEXT NOT NULL)");
-        const prior=await tx.getAllAsync<{id:string;title:string;notes:string;due_date:string;due_time:string;repeat:string;anchor_day:number;completed:number;created_at:string;updated_at:string}>("SELECT * FROM standalone_reminders_v1 ORDER BY id");
-
-        const saved={version:1 as const,rows:prior.map(r=>({id:r.id,title:r.title,notes:r.notes,dueDate:r.due_date,dueTime:r.due_time,repeat:r.repeat as ReminderBackupSection['rows'][number]['repeat'],anchorDay:r.anchor_day||Number(r.due_date.slice(-2)),completed:r.completed===1,createdAt:r.created_at,updatedAt:r.updated_at}))};
+        const prior=await readReminderRows(tx);
+        const saved=reminderSectionFromRows(prior);
         await tx.runAsync("INSERT OR REPLACE INTO eng_reminder_recovery_v4(slot,payload) VALUES(1,?)",JSON.stringify(saved));
         await files.capacity(fullRestoreCapacity(oldBytes,newBytes,JSON.stringify(prior),JSON.stringify(checkedReminders)));
         await replaceReminderRowsInTransaction(tx,checkedReminders);
         await options.fault?.("after-v4-reminder-write");
         await tx.runAsync("UPDATE eng_state_v2 SET payload=? WHERE slot=1",newBytes);
+        await markRestoreCommitted(tx,valid);
         await options.fault?.("after-v4-eng-write");
       });
       verifiedRevision=valid.revision;
       return valid;
     }),    hasV4Recovery:()=>serial(async()=>{await init();const table=await db.getFirstAsync<{name:string}>("SELECT name FROM sqlite_master WHERE type='table' AND name='eng_reminder_recovery_v4'");if(!table)return false;return !!await db.getFirstAsync("SELECT payload FROM eng_reminder_recovery_v4 WHERE slot=1");}),
-    recoverV4:()=>serial(async()=>{
-      await init();
+    recoverV4:(expectedReviewToken?:string)=>serial(async()=>{
+      await init();await checkRecoveryReview(db,"full",expectedReviewToken);
       const current=await loaded();
       const table=await db.getFirstAsync<{name:string}>("SELECT name FROM sqlite_master WHERE type='table' AND name='eng_reminder_recovery_v4'");
       if(!table)throw Error("No previous Full v4 state available; current data kept");
@@ -514,11 +579,11 @@ export function createEngStore(db:Database,files:EngFiles,migrate:()=>Promise<En
       const reminderRows=await db.getAllAsync("SELECT * FROM standalone_reminders_v1 ORDER BY id");
       await files.capacity(fullRestoreCapacity(JSON.stringify(current),JSON.stringify(target),JSON.stringify(reminderRows),JSON.stringify(checked)));
       await db.withExclusiveTransactionAsync(async tx=>{
+        await checkRecoveryReview(tx,"full",expectedReviewToken);
         const row=await tx.getFirstAsync<{payload:string}>("SELECT payload FROM eng_state_v2 WHERE slot=1");
         if(row?.payload!==JSON.stringify(current))throw restoreChanged();
-        const prior=await tx.getAllAsync<{id:string;title:string;notes:string;due_date:string;due_time:string;repeat:string;anchor_day:number;completed:number;created_at:string;updated_at:string}>("SELECT * FROM standalone_reminders_v1 ORDER BY id");
-
-        const saved={version:1 as const,rows:prior.map(r=>({id:r.id,title:r.title,notes:r.notes,dueDate:r.due_date,dueTime:r.due_time,repeat:r.repeat as ReminderBackupSection['rows'][number]['repeat'],anchorDay:r.anchor_day||Number(r.due_date.slice(-2)),completed:r.completed===1,createdAt:r.created_at,updatedAt:r.updated_at}))};
+        const prior=await readReminderRows(tx);
+        const saved=reminderSectionFromRows(prior);
         await files.capacity(fullRestoreCapacity(JSON.stringify(current),JSON.stringify(target),JSON.stringify(prior),JSON.stringify(checked)));
         await tx.runAsync("UPDATE eng_reminder_recovery_v4 SET payload=? WHERE slot=1",JSON.stringify(saved));
         await replaceReminderRowsInTransaction(tx,checked);
@@ -527,8 +592,8 @@ export function createEngStore(db:Database,files:EngFiles,migrate:()=>Promise<En
       });
       verifiedRevision=target.revision;return target;
     }),
-    recover:()=>serial(async()=>{
-      await init();const raw=await rawPrimary(),row=await db.getFirstAsync<{payload:string}>("SELECT payload FROM eng_recovery_v2 WHERE slot=1");
+    recover:(expectedReviewToken?:string)=>serial(async()=>{
+      await init();await checkRecoveryReview(db,"collection",expectedReviewToken);const raw=await rawPrimary(),row=await db.getFirstAsync<{payload:string}>("SELECT payload FROM eng_recovery_v2 WHERE slot=1");
       if(!row)throw Error("No previous full save available");
       const target=validateEngSnapshot(JSON.parse(row.payload));let before:EngSnapshot;
       try{before=validateEngSnapshot(JSON.parse(raw??""));}catch{return repair(raw,target);}

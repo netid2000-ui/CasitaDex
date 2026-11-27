@@ -47,7 +47,7 @@ test("real Full v4 archive restores and recovers both domains in disposable SQLi
   const initial=await x.store.backup();
   for(const entry of allEngMedia(opened.snapshot))x.files.set(entry.path,(await opened.read(entry.path)).slice());
   const token=await x.store.restoreToken();
-  await x.store.restoreV4(opened.snapshot,opened.reminders,"incoming",token);
+  await x.store.restoreV4(opened.snapshot,opened.reminders,"incoming",token,await x.store.reminderRestoreToken());
   const restored=await x.store.backup();
   assert.deepEqual(restored.snapshot.data,opened.snapshot.data);
   assert.equal(restored.snapshot.draft?.title,opened.snapshot.draft?.title);
@@ -71,7 +71,7 @@ test("real Full v4 archive cancel is nonmutating in disposable SQLite",async()=>
   const before=(await x.store.backup()).snapshot;
   const schemaBefore=x.raw.prepare("SELECT name,sql FROM sqlite_master WHERE type IN ('table','index') ORDER BY name").all();
   const token=await x.store.restoreToken();
-  await x.store.restoreV4(opened.snapshot,opened.reminders,"cancel",token);
+  await x.store.restoreV4(opened.snapshot,opened.reminders,"cancel",token,await x.store.reminderRestoreToken());
   assert.deepEqual((await x.store.backup()).snapshot,before);
   assert.deepEqual(x.raw.prepare("SELECT name,sql FROM sqlite_master WHERE type IN ('table','index') ORDER BY name").all(),schemaBefore);
   assert.equal(await x.store.hasV4Recovery(),false);

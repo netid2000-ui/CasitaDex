@@ -44,3 +44,9 @@ export function preflightReminderRestore(incoming:unknown,current:unknown){
  const collisions=next.rows.filter(r=>oldIds.has(r.id)).map(r=>r.id);
  return {incoming:next.rows.length,existing:existing.rows.length,collisions,requiresExplicitReplacement:existing.rows.length>0};
 }
+
+/** One mapping shared by exports and recovery, including migrated and linked reminders. */
+export type ReminderSqlRow={id:string;title:string;notes:string;memory_id?:string|null;due_date:string;due_time?:string;repeat?:string;anchor_day?:number;completed:number;created_at:string;updated_at:string};
+export function reminderSectionFromRows(rows:readonly ReminderSqlRow[]):ReminderBackupSection {
+ return validateReminderBackupSection({version:1,rows:rows.map(r=>({id:r.id,title:r.title,notes:r.notes,memoryId:r.memory_id??null,dueDate:r.due_date,dueTime:r.due_time??"09:00",repeat:r.repeat??"once",anchorDay:r.anchor_day||Number(r.due_date.slice(-2)),completed:r.completed===1,createdAt:r.created_at,updatedAt:r.updated_at}))});
+}

@@ -16,6 +16,7 @@ type Reference={owner:string;entry:{path:string;bytes:number;sha256:string};verd
 const categories=["active","archived","recently_deleted","draft","recovery","legacy-v1","legacy-recovery","journal"] as const;
 export function protectedStorageReport(references:readonly Reference[]){
  const paths=new Map<string,{bytes:number;sha256:string;verified:boolean}>();
+ const stagedRestorePaths=new Set<string>();
  const owners=Object.fromEntries(categories.map(c=>[c,new Set<string>()])) as Record<typeof categories[number],Set<string>>;
  for(const r of references){
   const journal=/^journal:(pending|promoted|committed|restore-pending|restore-staged)$/.test(r.owner);
@@ -27,9 +28,10 @@ export function protectedStorageReport(references:readonly Reference[]){
   if(existing&&(existing.bytes!==e.bytes||existing.sha256!==e.sha256))throw Error("Conflicting media ownership. No cleanup is permitted.");
   paths.set(e.path,{bytes:e.bytes,sha256:e.sha256,verified:(existing?.verified??true)&&r.verdict==="verified"});
   owners[owner as typeof categories[number]].add(e.path);
+  if(/^journal:restore-(pending|staged)$/.test(r.owner))stagedRestorePaths.add(e.path);
  }
  const entries=[...paths.values()];
  return {protectedBytes:entries.filter(e=>e.verified).reduce((n,e)=>n+e.bytes,0),
  referencedBytes:entries.reduce((n,e)=>n+e.bytes,0),unreadable:entries.filter(e=>!e.verified).length,
- ownerCounts:Object.fromEntries(categories.map(c=>[c,owners[c].size])),cleanupAllowed:false as const};
+ stagedRestoreCount:stagedRestorePaths.size,ownerCounts:Object.fromEntries(categories.map(c=>[c,owners[c].size])),cleanupAllowed:false as const};
 }
