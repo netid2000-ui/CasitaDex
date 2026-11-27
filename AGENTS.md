@@ -15,6 +15,10 @@ Select the relevant disciplines for the request, consult their synthesis and dir
 - Consult existing package scripts and tool inventory before adding dependencies. Prefer already-owned/free tools; benchmark additions against real coverage or cost gaps.
 - For changing UI, map complete entry, actions, alternative/disabled/error states, keyboard, Back/Cancel/Save/return, both themes, text scaling and screen reader behavior to approved Figma. Distinguish approximate family mapping from exact control mapping and native evidence.
 
+## Independent AI peer review
+
+Follow the owner-approved [three-reviewer decision process](docs/governance/INDEPENDENT_AI_REVIEW_PROCESS.md) for independent Claude, Qwen Coder and ChatGPT reviews. Each reviewer has meaningful standing to dissent, including against a previously passed gate; evidence, not authorship or model majority, governs technical findings. Preserve independent originals, research and disagreements in GitHub. Consult Francisco when material differences remain after evidence-based review. No review alone constitutes native or release acceptance.
+
 ## Automated QA
 
 On the designated Mac, source `scripts/fa-mac-env.sh` to resolve the existing Java, Android SDK/ADB and Maestro installations. Read back their versions and device identities before native work. No global profile or new package is required.

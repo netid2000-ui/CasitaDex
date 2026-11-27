@@ -57,3 +57,7 @@ Claude remains a distinct independent reviewer. Free allowance until 6 PM CST; o
 ### Qwen first-pass actual results
 
 Three independent source packets completed. [Unfiltered responses and separate disagreements](evidence/independent-claude-review-20261127/ollama-qwen/CD-QWEN-DISAGREEMENTS.md) include nine Qwen findings, their source/evidence assessment and remaining follow-ups. Thirty-one targeted tests passed. Not a comprehensive review or release clearance; no changes applied from unverified recommendations.
+
+## Owner-approved peer decision process
+
+Francisco explicitly approved meaningful peer weight, independent assessments, evidence-based debate/research and owner consultation when material disagreements persist. The [three-reviewer decision process](../governance/INDEPENDENT_AI_REVIEW_PROCESS.md) is now versioned and linked from AGENTS.md. This is governance only; no app source changes or release authorization. Claude continuation retains its independent initial review before receiving ChatGPT/Qwen conclusions.
