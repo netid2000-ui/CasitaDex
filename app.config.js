@@ -22,14 +22,14 @@ module.exports = ({ config }) => {
     scheme: "casitadex-" + suffix,
     ios: {
       ...config.ios,
-      ...(platformQa ? {buildNumber:"6"} : {}),
+      ...(platformQa ? {buildNumber:"7"} : {}),
       icon: { light: "./assets/brand/icon-light.png", dark: "./assets/brand/icon-dark.png", tinted: "./assets/brand/icon-tinted.png" },
       ...(appleSandbox ? { infoPlist: { ...config.ios?.infoPlist, CasitaDexPlusProductID: "com.designsbyfa.casitadex.plus", CasitaDexPlusStoreEnvironment: "Sandbox" } } : plusStore ? { infoPlist: { ...config.ios?.infoPlist, CasitaDexPlusProductID: "local.casitadex.plus.qa", CasitaDexPlusStoreEnvironment: "Xcode" } } : {}),
       bundleIdentifier: appleSandbox ? "com.designsbyfa.casitadex" : "com.designsbyfa.casitadex." + suffix,
     },
     android: {
       ...config.android,
-      ...(platformQa ? {versionCode:6} : {}),
+      ...(platformQa ? {versionCode:7} : {}),
       package: playProduct ? "com.designsbyfa.casitadex" : "com.designsbyfa.casitadex." + suffix,
       allowBackup: false,
       adaptiveIcon: { foregroundImage: "./assets/brand/adaptive-color.png", monochromeImage: "./assets/brand/adaptive-outline.png", backgroundColor: "#FAF8F2" },

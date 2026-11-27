@@ -255,6 +255,8 @@ export function EngMemories(){
 }
 
 export function EngAdd(){
+  const {width:editorWidth,fontScale:editorFontScale}=useWindowDimensions();
+  const stackEditorActions=editorFontScale>=1.7||editorWidth<320;
   const ownership=useSyncExternalStore(plusEntitlements.subscribe,plusEntitlements.getSnapshot,plusEntitlements.getSnapshot);
   const params=useLocalSearchParams<{mode?:string;origin?:string}>();const addReturn=params.origin==="photos"?"/photos":"/";const photoFirst=params.mode==="photo";
   const e=useEng(),{s,colors}=useTheme();const {setStatus}=e;const [form,setForm]=useState<EngDraft|null>(null),[mode,setMode]=useState<"loading"|"edit">("loading");
@@ -314,13 +316,13 @@ export function EngAdd(){
   const addCardStyle={gap:6} as const;
   const resumedDraft=!!form&&!!e.snapshot?.draft&&form.id===e.snapshot.draft.id;
   const editingPhotoDraft=photoFirst||(resumedDraft&&(form?.photos.length??0)>0);
-  return <Page independent hideHeading androidKeyboardAware title={editingPhotoDraft?"Add a Photo Memory":"Add a Memory"} stickyActions={mode==="edit"?<View style={{maxWidth:720,width:"100%",alignSelf:"center"}}>      <View style={{flexDirection:"row",gap:10,alignItems:"center",justifyContent:"space-between"}}>
+  return <Page independent hideHeading androidKeyboardAware title={editingPhotoDraft?"Add a Photo Memory":"Add a Memory"} stickyActions={mode==="edit"?<View style={{maxWidth:720,width:"100%",alignSelf:"center"}}>      <View style={{flexDirection:stackEditorActions?"column":"row",gap:6,alignItems:stackEditorActions?"stretch":"center",justifyContent:"space-between"}}>
        <View><Button compact editorial icon={<MemoryEditorIcon name="cancel"/>} variant="quiet" label="Cancel" disabled={disabled} onPress={()=>void flush().then(()=>router.replace(addReturn)).catch(error=>setStatus(message(error)))}/></View>
        <View><Button compact editorial icon={<MemoryEditorIcon name="save"/>} primary label={working?"Saving…":"Save"} disabled={disabled||!form?.title.trim()||(!form.answer.trim()&&!form.photos.length)||(editingPhotoDraft&&!form.photos.length)} onPress={()=>void save()} /></View>
       </View>
-      {memoryLimitEnforcementEnabled&&ownership.entitlement!=='plus'&&e.snapshot?<View style={{gap:6}}><Copy testID="memory-limit-notice" kind="small">Free plan: {countedMemories(e.snapshot.data.memories)} of {FREE_MEMORY_LIMIT} active and archived memories. Recently Deleted does not count.</Copy>{countedMemories(e.snapshot.data.memories)>=FREE_MEMORY_LIMIT?<><Copy kind="small">Existing memories remain available. Your draft is kept. Move a memory to Recently Deleted to free a slot.</Copy><Button label="View CasitaDex Plus" disabled={disabled} onPress={()=>void flush().then(()=>router.push('/plus?origin=draft')).catch(error=>setStatus(message(error)))} /></>:null}</View>:null}
-      <Status text={e.status} />
       </View>:undefined}>
+     {memoryLimitEnforcementEnabled&&ownership.entitlement!=='plus'&&e.snapshot?<View style={{gap:6}}><Copy testID="memory-limit-notice" kind="small">Free plan: {countedMemories(e.snapshot.data.memories)} of {FREE_MEMORY_LIMIT} active and archived memories. Recently Deleted does not count.</Copy>{countedMemories(e.snapshot.data.memories)>=FREE_MEMORY_LIMIT?<><Copy kind="small">Existing memories remain available. Your draft is kept. Move a memory to Recently Deleted to free a slot.</Copy><Button label="View CasitaDex Plus" disabled={disabled} onPress={()=>void flush().then(()=>router.push('/plus?origin=draft')).catch(error=>setStatus(message(error)))} /></>:null}</View>:null}
+     <Status text={e.status} />
      {mode==="loading"?<Copy>Reading your draft…</Copy>:null}
     {mode==="edit"?<><Copy kind="title" accessibilityRole="header">{editingPhotoDraft?"Add Photo Memory":"Add Memory"}</Copy>
 
