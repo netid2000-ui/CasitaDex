@@ -22,14 +22,14 @@ module.exports = ({ config }) => {
     scheme: "casitadex-" + suffix,
     ios: {
       ...config.ios,
-      ...(platformQa ? {buildNumber:"5"} : {}),
+      ...(platformQa ? {buildNumber:"6"} : {}),
       icon: { light: "./assets/brand/icon-light.png", dark: "./assets/brand/icon-dark.png", tinted: "./assets/brand/icon-tinted.png" },
       ...(appleSandbox ? { infoPlist: { ...config.ios?.infoPlist, CasitaDexPlusProductID: "com.designsbyfa.casitadex.plus", CasitaDexPlusStoreEnvironment: "Sandbox" } } : plusStore ? { infoPlist: { ...config.ios?.infoPlist, CasitaDexPlusProductID: "local.casitadex.plus.qa", CasitaDexPlusStoreEnvironment: "Xcode" } } : {}),
       bundleIdentifier: appleSandbox ? "com.designsbyfa.casitadex" : "com.designsbyfa.casitadex." + suffix,
     },
     android: {
       ...config.android,
-      ...(platformQa ? {versionCode:5} : {}),
+      ...(platformQa ? {versionCode:6} : {}),
       package: playProduct ? "com.designsbyfa.casitadex" : "com.designsbyfa.casitadex." + suffix,
       allowBackup: false,
       adaptiveIcon: { foregroundImage: "./assets/brand/adaptive-color.png", monochromeImage: "./assets/brand/adaptive-outline.png", backgroundColor: "#FAF8F2" },
@@ -41,6 +41,8 @@ module.exports = ({ config }) => {
       appEnvironment: env,
       playCatalogProduct: playProduct,
       backendMode: "none",
+      // Isolated platform QA can exercise Free count without a live store purchase. No Plus grant.
+      qaFreeMemoryLimit: platformQa,
       productionAuthorized: false,
       parityQaSeed: !sb39 && (qa || sb40 || plusStore || process.env.CASITADEX_PARITY_QA_SEED === "1"),
     },

@@ -67,7 +67,7 @@ export default function Plus(){
   <ScrollView contentContainerStyle={{padding:16,gap:16}}>
    <Text accessibilityRole="header" style={{...text,fontSize:28*scale,fontWeight:'700'}}>CasitaDex plans</Text>
    <Text accessibilityRole="header" style={{...text,fontWeight:'700'}}>Free</Text>
-   <Text style={text}>Save up to 20 memories with photos. Search, edit, and export them as basic text.</Text>
+   <Text style={text}>Save up to 20 active and archived memories with photos. Recently Deleted does not count. Search, edit, share individual memories and selected photos, or export a readable text report (not a backup).</Text>
    <Text accessibilityRole="header" style={{...text,fontWeight:'700'}}>Plus · US$25.99 once</Text>
    <Text style={text}>Remove the memory-count limit. Get full backup and recovery, including photos, and move your memories to a new device.</Text>
    <Text style={{...text,color:fg.secondaryInk}}>{playCatalogEnabled?(localPlusCheckout?'Google Play test checkout. Select a test payment method.':'Google Play price preview. Checkout is unavailable in this build.'):appleSandbox?'Apple sandbox test purchase.':localPlusCheckout?'Local StoreKit testing only · No real charge. Backup and restore access are connected. Other Plus features and the free-plan limit are still being implemented.':'Preview · Plus features are being implemented. Purchases and the free-plan limit are not enabled in this build.'}</Text>

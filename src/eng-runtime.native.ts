@@ -91,6 +91,13 @@ async function cleanupStaleBackupTemps(){
     if(!activeBackupTemps.has(file.uri))disposeCacheFile(file);
   }}catch{/* The operating system can reclaim private cache later. */}
 }
+const LAST_VERIFIED_BACKUP="casitadex:last-verified-local-backup:v1";
+export async function lastVerifiedEngBackup():Promise<string|null>{
+ try{const value=await AsyncStorage.getItem(LAST_VERIFIED_BACKUP);return value&&Number.isFinite(Date.parse(value))?value:null;}catch{return null;}
+}
+async function recordVerifiedBackup(){
+ try{await AsyncStorage.setItem(LAST_VERIFIED_BACKUP,new Date().toISOString());}catch{/* The verified archive remains valid even if optional status metadata cannot be stored. */}
+}
 export async function writeEngBackup(source:EngBackupSource){
   await cleanupStaleBackupTemps();
   const reminders=source.reminders;
@@ -117,6 +124,7 @@ export async function writeEngBackup(source:EngBackupSource){
         ||JSON.stringify(checked.reminders)!==JSON.stringify(reminders))
         throw Error("Full backup read-back verification failed.");
       verified=true;
+      await recordVerifiedBackup();
       const Sharing=await import("expo-sharing");
       if(!await Sharing.isAvailableAsync())throw Error("iOS file sharing is unavailable. Your memories are unchanged.");
       await Sharing.shareAsync(localFile.uri,{mimeType:"application/octet-stream",UTI:"public.data",dialogTitle:"Save verified CasitaDex full backup"});
@@ -148,6 +156,7 @@ export async function writeEngBackup(source:EngBackupSource){
     await file.copy(readback);
     const checked=await openEngStreamCompatible(reader(readback),source.hash);
     if(checked.size!==expected.size||checked.headerHash!==await source.hash(new TextEncoder().encode(JSON.stringify(expected.snapshot)))||checked.source!=="Full v4"||JSON.stringify(checked.reminders)!==JSON.stringify(reminders))throw Error("Backup read-back verification failed");
+    await recordVerifiedBackup();
     return "Full v4 backup saved and verified, including standalone reminders, unfinished draft and photos. Keep a second copy.";
   }catch(e){
     if(uri){try{await FileSystem.deleteAsync(uri,{idempotent:true});}catch{throw Error("Backup failed. An incomplete file may remain in the selected folder.");}}

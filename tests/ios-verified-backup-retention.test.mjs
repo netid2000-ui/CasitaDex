@@ -8,7 +8,7 @@ import * as capacity from '../src/backup-capacity.ts';
 const source=readFileSync(new URL('../src/eng-runtime.native.ts',import.meta.url),'utf8');
 const compiled=ts.transpileModule(source,{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;
 function setup({sharingAvailable=true,shareFails=false,verifyFails=false,names=[]}={}){
- let shares=0,deletes=0;
+ let shares=0,deletes=0;const metadata=new Map();
  const files=[],snapshot={data:{media:{media:[]}}},reminders={items:[]};
  class File {
   exists=false;
@@ -18,6 +18,7 @@ function setup({sharingAvailable=true,shareFails=false,verifyFails=false,names=[
   delete(){deletes++;this.exists=false;}
  }
  const mocks={
+  '@react-native-async-storage/async-storage':{__esModule:true,default:{getItem:async key=>metadata.get(key)??null,setItem:async(key,value)=>{metadata.set(key,value);}}},
   './storage-space.native':{requireNativeCapacity:async()=>{}},
   'expo-constants':{default:{expoConfig:{extra:{appEnvironment:'development'}}}},
   'expo-file-system':{File,Paths:{document:'private-documents'}},
@@ -90,4 +91,11 @@ test('retained archive removal requires an exact listed name and removes only th
  assert.equal(x.deletes(),0);
  assert.match(await x.api.deleteRetainedEngBackup(newer),/other backups are unchanged/);
  assert.equal(x.deletes(),1);assert.equal(x.files.length,1);assert.match(x.files[0].uri,new RegExp(newer+'$'));
+});
+
+test('last verified backup timestamp changes only on successful archive readback, even if sharing fails',async()=>{
+ const rejected=setup({verifyFails:true});assert.equal(await rejected.api.lastVerifiedEngBackup(),null);
+ await assert.rejects(rejected.run(),/checksum failed/);assert.equal(await rejected.api.lastVerifiedEngBackup(),null);
+ const verified=setup({shareFails:true});await assert.rejects(verified.run(),/verified backup is kept/);
+ assert.ok(Number.isFinite(Date.parse(await verified.api.lastVerifiedEngBackup())));
 });

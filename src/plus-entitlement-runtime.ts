@@ -1,4 +1,5 @@
 import {createMemoryLimitGate} from './plus-memory-limit';
+import Constants from 'expo-constants';
 import {requireOptionalNativeModule} from 'expo-modules-core';
 import {AppState} from 'react-native';
 import {createPlusEntitlementStore} from './plus-entitlement-store';
@@ -43,4 +44,9 @@ export function startPlusEntitlements(){
 export const plusFeatureEnforcementEnabled=configured&&native?.isLocalTesting?.()===true;
 export const requirePlusBackup=createPlusBackupGate({enabled:plusFeatureEnforcementEnabled,refresh:plusEntitlements.refresh,getSnapshot:plusEntitlements.getSnapshot});
 
-export const requireMemoryCapacity=createMemoryLimitGate({enabled:plusFeatureEnforcementEnabled,refresh:plusEntitlements.refresh,getSnapshot:plusEntitlements.getSnapshot});
+// This explicit QA-only flag tests the Free cap on both platform QA binaries.
+const qaFreeLimit=Constants.expoConfig?.extra?.qaFreeMemoryLimit===true;
+export const memoryLimitEnforcementEnabled=plusFeatureEnforcementEnabled||qaFreeLimit;
+export const requireMemoryCapacity=createMemoryLimitGate({enabled:memoryLimitEnforcementEnabled,
+ refresh:qaFreeLimit?async()=>{}:plusEntitlements.refresh,
+ getSnapshot:qaFreeLimit?()=>({entitlement:"free",status:"ready"}):plusEntitlements.getSnapshot});

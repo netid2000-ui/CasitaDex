@@ -1,3 +1,4 @@
+import {countedMemories} from "./plus-memory-limit.ts";
 import {indexLocations,locationKey,sameLocation,unassignSpaceLocations} from "./locations.ts";
 import {photoPermutation} from './photo-order.ts';
 import {fullRestoreCapacity} from "./storage-safety.ts";
@@ -95,7 +96,7 @@ CREATE TABLE IF NOT EXISTS eng_control_v2(key TEXT PRIMARY KEY,value TEXT NOT NU
 CREATE TABLE IF NOT EXISTS eng_damaged_v2(id INTEGER PRIMARY KEY AUTOINCREMENT,payload TEXT NOT NULL,reason TEXT NOT NULL);`;
 /** One serial queue for collection, draft, media, export, restore and recovery.
  * Files are immutable and retained on uncertain outcomes; snapshot/recovery/journal owners are never swept. */
-export function createEngStore(db:Database,files:EngFiles,migrate:()=>Promise<EngSnapshot>,options:{requireMemoryCapacity?:(savedCount:number)=>Promise<void>;now?:()=>Date;fault?:(phase:string)=>void|Promise<void>}={}) {
+export function createEngStore(db:Database,files:EngFiles,migrate:()=>Promise<EngSnapshot>,options:{requireMemoryCapacity?:(savedCount:number,additional?:number,action?:"save"|"restore")=>Promise<void>;now?:()=>Date;fault?:(phase:string)=>void|Promise<void>}={}) {
   const now=()=>options.now?.()??new Date();
   function event(m:MemoryV2,type:MemoryEventKind,details:Partial<Omit<MemoryEvent,"id"|"type"|"at">>={}){
     const at=now().toISOString();m.updatedAt=at;
@@ -211,8 +212,8 @@ export function createEngStore(db:Database,files:EngFiles,migrate:()=>Promise<En
     if(verifiedRevision!==s.revision){await verifyEngSnapshot(s,files);verifiedRevision=s.revision;}
     return s;
   }
-  async function mutate(fn:(s:EngSnapshot)=>void,recovery=true){
-    const before=await loaded(),next=clone(before);fn(next);return commit(before,next,recovery);
+  async function mutate(fn:(s:EngSnapshot)=>void|Promise<void>,recovery=true){
+    const before=await loaded(),next=clone(before);await fn(next);return commit(before,next,recovery);
   }
   async function stagePhoto(parentId:string,bytes:Uint8Array){
       const mime=sniffImageMime(bytes);
@@ -296,7 +297,7 @@ export function createEngStore(db:Database,files:EngFiles,migrate:()=>Promise<En
       if(!d||d.attempt!==attempt||d.memoryId!==memoryId)throw Error("Draft changed; reload before saving");
       if(!d.title.trim()||(!d.answer.trim()&&!d.photos.length))throw Error("Add a name and either an answer or a photo");
       if(d.due&&!validDay(d.due))throw Error("Use a complete reminder date (YYYY-MM-DD), or clear it. Your draft is kept.");
-      await options.requireMemoryCapacity?.(before.data.memories.length);
+      await options.requireMemoryCapacity?.(countedMemories(before.data.memories));
       const next=clone(before);
       const memory:MemoryV2={id:d.memoryId,title:d.title.trim(),answer:d.answer.trim(),location:d.location.trim(),
         notes:d.notes?.trim()??"",spaceId:d.spaceId,categoryIds:d.categoryIds,legacyContext:d.legacyContext,confidence:"Unknown",source:d.source?.trim()??"",history:[],lifecycle:"active",mediaIds:d.photos.map(p=>p.id),createdAt:now().toISOString(),...(d.due?{due:d.due}:{})};
@@ -388,18 +389,23 @@ export function createEngStore(db:Database,files:EngFiles,migrate:()=>Promise<En
       s.data.memories=s.data.memories.filter(x=>x.id!==memoryId);s.data.media.media=s.data.media.media.filter(e=>e.cardId!==memoryId);
       // Immutable bytes and previous full snapshot remain protected; no filesystem deletion here.
     })),
-    lifecycle:(memoryId:string,state:MemoryV2["lifecycle"],day:string)=>serial(()=>mutate(s=>{
+    lifecycle:(memoryId:string,state:MemoryV2["lifecycle"],day:string)=>serial(()=>mutate(async s=>{
       const m=s.data.memories.find(m=>m.id===memoryId);if(!m)throw Error("Memory unavailable");
       if(!validDay(day))throw Error("Use a valid local deletion date");
-      const previous=m.lifecycle;m.lifecycle=state;
+      const previous=m.lifecycle;
+      if(previous==="recently_deleted"&&state!=="recently_deleted")await options.requireMemoryCapacity?.(countedMemories(s.data.memories),1,"restore");
+      m.lifecycle=state;
       if(state==="recently_deleted"){m.deletedAt=day;m.deletedInstant=now().toISOString();}else{delete m.deletedAt;delete m.deletedInstant;}
       if(state==="archived")m.archivedAt=now().toISOString();else delete m.archivedAt;
       if(previous!==state)event(m,state==="archived"?"archived":state==="recently_deleted"?"deleted":"restored");
     })),
-    bulkLifecycle:(ids:string[],state:MemoryV2["lifecycle"],revision:number)=>serial(()=>mutate(s=>{
+    bulkLifecycle:(ids:string[],state:MemoryV2["lifecycle"],revision:number)=>serial(()=>mutate(async s=>{
       if(s.revision!==revision)throw Error("Collection changed; review selected memories again");
       if(!ids.length||new Set(ids).size!==ids.length||ids.some(id=>!s.data.memories.some(m=>m.id===id)))throw Error("Review selected memories again");
-      for(const m of s.data.memories.filter(m=>ids.includes(m.id))){
+      const selected=s.data.memories.filter(m=>ids.includes(m.id));
+      const additions=state==="recently_deleted"?0:selected.filter(m=>m.lifecycle==="recently_deleted").length;
+      if(additions)await options.requireMemoryCapacity?.(countedMemories(s.data.memories),additions,"restore");
+      for(const m of selected){
         if(m.lifecycle===state)continue;m.lifecycle=state;
         if(state==="recently_deleted"){m.deletedAt=localDay(now());m.deletedInstant=now().toISOString();}else{delete m.deletedAt;delete m.deletedInstant;}
         if(state==="archived")m.archivedAt=now().toISOString();else delete m.archivedAt;

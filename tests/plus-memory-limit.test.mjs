@@ -48,3 +48,52 @@ test('upgrading at twenty saves the same photo-backed draft exactly once',async(
   assert.deepEqual(await fixture.store.saveDraft(draft.attempt,draft.memoryId),saved);
  }finally{fixture.close();}
 });
+
+test('Recently Deleted frees a slot; archive and unarchive preserve count; at-cap restores are atomic',async()=>{
+ const x=setup(undefined,{requireMemoryCapacity:policy()});try{
+  for(let i=0;i<20;i++)await add(x.store,{title:'Synthetic '+i});
+  const [first,second]=(await x.store.load()).data.memories;
+  await x.store.lifecycle(first.id,'archived','2026-11-26');
+  await assert.rejects(add(x.store),/20 saved memories/);
+  await x.store.lifecycle(first.id,'active','2026-11-26');
+  await x.store.lifecycle(first.id,'recently_deleted','2026-11-26');
+  const preserved=(await x.store.load()).draft;assert.ok(preserved);await x.store.saveDraft(preserved.attempt,preserved.memoryId);
+  const before=await x.store.load();
+  assert.equal(before.data.memories.length,21);
+  await assert.rejects(x.store.lifecycle(first.id,'active','2026-11-26'),/restore requires an available slot/);
+  assert.deepEqual(await x.store.load(),before);
+  await x.store.lifecycle(second.id,'recently_deleted','2026-11-26');
+  await x.store.lifecycle(first.id,'active','2026-11-26');
+  assert.equal((await x.store.load()).data.memories.find(m=>m.id===second.id).lifecycle,'recently_deleted');
+ }finally{x.close();}
+});
+test('bulk restore reserves all slots at once and retains data when blocked',async()=>{
+ const state={entitlement:'plus',status:'ready'};const x=setup(undefined,{requireMemoryCapacity:policy(state)});try{
+  for(let i=0;i<21;i++)await add(x.store,{title:'Synthetic '+i});
+  const ids=(await x.store.load()).data.memories.slice(0,2).map(m=>m.id);
+  await x.store.bulkLifecycle(ids,'recently_deleted',(await x.store.load()).revision);
+  state.entitlement='free';const before=await x.store.load();
+  await assert.rejects(x.store.bulkLifecycle(ids,'archived',before.revision),/restore requires an available slot/);
+  assert.deepEqual(await x.store.load(),before);
+  await x.store.bulkLifecycle([ids[0]],'archived',before.revision);
+  await assert.rejects(x.store.lifecycle(ids[1],'active','2026-11-26'),/restore requires an available slot/);
+  state.entitlement='plus';await x.store.lifecycle(ids[1],'active','2026-11-26');
+  assert.equal((await x.store.load()).data.memories.length,21);
+ }finally{x.close();}
+});
+test('over-cap legitimate data remains editable and shareable; deletion to 19 lets restore once',async()=>{
+ const state={entitlement:'plus',status:'ready'};const x=setup(undefined,{requireMemoryCapacity:policy(state)});try{
+  for(let i=0;i<21;i++)await add(x.store,{title:'Synthetic '+i});
+  state.entitlement='free';
+  const [a,b]=(await x.store.load()).data.memories;
+  await x.store.lifecycle(a.id,'recently_deleted','2026-11-26');
+  await assert.rejects(x.store.lifecycle(a.id,'active','2026-11-26'),/restore requires an available slot/);
+  await x.store.lifecycle(b.id,'recently_deleted','2026-11-26');
+  await x.store.lifecycle(a.id,'active','2026-11-26');
+  const before=await x.store.load();
+  assert.equal(before.data.memories.filter(m=>m.lifecycle!=='recently_deleted').length,20);
+  await assert.rejects(add(x.store),/20 saved memories/);
+  const share=(await import('../src/eng-domain.ts')).sharePreview(before.data.memories.find(m=>m.id===b.id),before.data);
+  assert.match(share.text,/Synthetic/);
+ }finally{x.close();}
+});

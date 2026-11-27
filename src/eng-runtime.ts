@@ -7,6 +7,7 @@ export async function getEngStore():Promise<EngStore>{throw Error("Full ENG requ
 export function engPhotoUri(_path:string):string{throw Error("Native photo required");}
 export async function chooseEngPhoto(_camera:boolean|"files"):Promise<Uint8Array|null>{throw Error("Native photo required");}
 export async function writeEngBackup(_source:{snapshot:EngSnapshot;reminders:import("./reminder-backup-v4").ReminderBackupSection;read:(path:string)=>Promise<Uint8Array>;hash:(bytes:Uint8Array)=>Promise<string>}):Promise<string>{throw Error("Full backup requires Android");}
+export async function lastVerifiedEngBackup():Promise<string|null>{return null;}
 export async function pickEngBackup():Promise<EngBackup|null>{throw Error("Full restore requires Android");}
 
 export async function getEngStorage():Promise<{free:number;total:number;thumbnailBytes:number;protectedBytes:number;referencedBytes:number;ownerCounts:Record<string,number>;stagedRestoreCount:number;cleanupAllowed:false;unreadable:number}>{throw Error("Native storage measurement required");}
