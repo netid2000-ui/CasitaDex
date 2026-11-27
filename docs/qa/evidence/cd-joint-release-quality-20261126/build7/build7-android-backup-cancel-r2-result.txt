@@ -1,0 +1,5 @@
+
+Waiting for flows to complete...
+[Passed] Native folder cancellation status and retained collection (10s)
+
+1/1 Flow Passed in 10s

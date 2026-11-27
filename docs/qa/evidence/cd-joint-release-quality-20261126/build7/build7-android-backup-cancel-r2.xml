@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="emulator-5582" tests="1" failures="0" time="10.0" timestamp="2026-11-26T22:57:26">
+    <testcase id="Native folder cancellation status and retained collection" name="Native folder cancellation status and retained collection" classname="Native folder cancellation status and retained collection" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/cd-joint-release-quality-20261126/build7-android-backup-cancel-r2.yaml" time="9.996" timestamp="2026-11-26T22:57:26" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

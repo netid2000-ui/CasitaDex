@@ -1,0 +1,14 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Build 7 retrieve synthetic photo offline after in-place upgrade
+---
+- launchApp:
+    clearState: false
+- tapOn: "Find"
+- tapOn: "Search memories.*"
+- eraseText
+- inputText: "QA Deleted Photo"
+- hideKeyboard
+- tapOn: "Open photo memory QA Deleted Photo"
+- tapOn: "Open cover photo of QA Deleted Photo"
+- assertVisible: "Photo 1 of 1.*"
+- takeScreenshot: build7-android-offline-photo

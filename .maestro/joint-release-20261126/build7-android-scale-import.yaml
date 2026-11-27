@@ -1,0 +1,25 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Build 7 Android native restore 100 records and 160MB real PNGs
+---
+- tapOn: "CD7-QA-scale-100.cdxe"
+- extendedWaitUntil:
+    visible: "Backup checked. Review before replacing your collection."
+    timeout: 120000
+- scrollUntilVisible:
+    element: "100 memories, 17 saved photos.*"
+    direction: DOWN
+    timeout: 20000
+- takeScreenshot: build7-android-scale-review
+- scrollUntilVisible:
+    element: "Confirm replace with reviewed backup"
+    direction: DOWN
+    timeout: 20000
+    centerElement: true
+- tapOn:
+    text: "Use backed-up draft.*"
+    optional: true
+- tapOn: "Confirm replace with reviewed backup"
+- extendedWaitUntil:
+    visible: "Full collection restored and verified."
+    timeout: 120000
+- takeScreenshot: build7-android-scale-restored

@@ -1,0 +1,12 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Native folder cancellation status and retained collection
+---
+- assertVisible: "Backup canceled. Your memories and draft are kept."
+- assertVisible: "Last verified local backup:.*This does not confirm a separate copy.*"
+- takeScreenshot: build7-android-backup-canceled
+- tapOn: "Find"
+- tapOn: "Search memories.*"
+- eraseText
+- hideKeyboard
+- assertVisible: "100 results"
+- takeScreenshot: build7-android-100-after-cancel

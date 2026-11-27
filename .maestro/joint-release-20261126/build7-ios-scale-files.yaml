@@ -1,0 +1,4 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Build 7 iOS Save to Files destination action
+---
+- tapOn: "Save to Files"

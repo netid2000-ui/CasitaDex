@@ -1,0 +1,16 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Build 7 iOS native search and real PNG decode after large restore
+---
+- tapOn: "Find"
+- tapOn: "Search memories.*"
+- eraseText
+- hideKeyboard
+- assertVisible: "100 results"
+- takeScreenshot: build7-ios-100-results
+- tapOn: "Search memories.*"
+- inputText: "QA Scale Item 017"
+- hideKeyboard
+- tapOn: "Open photo memory QA Scale Item 017"
+- tapOn: "Open cover photo of QA Scale Item 017"
+- assertVisible: "Photo 1 of 1.*"
+- takeScreenshot: build7-ios-large-photo

@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="emulator-5582" tests="1" failures="1" time="26.79" timestamp="2026-11-26T22:55:59">
+    <testcase id="Build 7 native backup cancellation preserves collection" name="Build 7 native backup cancellation preserves collection" classname="Build 7 native backup cancellation preserves collection" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/cd-joint-release-quality-20261126/build7-android-backup-cancel.yaml" time="26.784" timestamp="2026-11-26T22:55:59" status="ERROR">
+      <failure>Assertion is false: "Backup canceled. Your memories and draft are kept." is visible</failure>
+    </testcase>
+  </testsuite>
+</testsuites>

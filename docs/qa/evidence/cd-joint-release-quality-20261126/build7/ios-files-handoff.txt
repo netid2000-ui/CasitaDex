@@ -1,0 +1,1 @@
+Native Save to Files action returned to app with verified private archive and last verified local timestamp. No file matching CasitaDex-full-2026-11-27T05-00-46-626Z.cdxe found in simulator File Provider storage afterward; external destination NOT confirmed. Private local archive read back independently and all 17 photo hashes verified.

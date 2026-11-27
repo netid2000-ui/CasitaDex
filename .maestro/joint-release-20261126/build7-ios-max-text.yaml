@@ -1,0 +1,46 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: iOS maximum font navigation and Add form
+---
+- launchApp
+- tapOn: "Home"
+- scrollUntilVisible:
+    element: "Add Memory.*"
+    direction: DOWN
+    timeout: 30000
+    centerElement: true
+- tapOn: "Add Memory.*"
+- scrollUntilVisible:
+    element: "Free plan: 20 of 20 active and archived memories.*"
+    direction: DOWN
+    timeout: 30000
+    centerElement: true
+- takeScreenshot: ios-large-count
+- scrollUntilVisible:
+    element: "Memory name.*Required.*"
+    direction: DOWN
+    timeout: 30000
+    centerElement: true
+- scrollUntilVisible:
+    element: "Description.*"
+    direction: DOWN
+    timeout: 30000
+    centerElement: true
+- takeScreenshot: ios-large-form
+- tapOn: "Cancel"
+- tapOn:
+    text: "Discard draft"
+    optional: true
+- tapOn: "Home"
+- tapOn: "Settings"
+- scrollUntilVisible:
+    element: "Backup & restore"
+    direction: DOWN
+    timeout: 30000
+    centerElement: true
+- tapOn: "Backup & restore"
+- scrollUntilVisible:
+    element: "Last verified local backup:.*"
+    direction: DOWN
+    timeout: 30000
+    centerElement: true
+- takeScreenshot: ios-large-backup

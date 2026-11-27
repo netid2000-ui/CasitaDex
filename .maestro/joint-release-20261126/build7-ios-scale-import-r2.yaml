@@ -1,0 +1,26 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Build 7 iOS native restore 100 memories and 160MB real PNGs
+---
+- tapOn:
+    point: "322,240"
+- extendedWaitUntil:
+    visible: "Backup checked. Review before replacing your collection."
+    timeout: 120000
+- scrollUntilVisible:
+    element: "100 memories, 17 saved photos.*"
+    direction: DOWN
+    timeout: 30000
+- takeScreenshot: build7-ios-scale-review
+- scrollUntilVisible:
+    element: "Cancel restore"
+    direction: DOWN
+    timeout: 30000
+    centerElement: true
+- tapOn:
+    text: "Use backed-up draft.*"
+    optional: true
+- tapOn: "Confirm replace with reviewed backup"
+- extendedWaitUntil:
+    visible: "Full collection restored and verified."
+    timeout: 120000
+- takeScreenshot: build7-ios-scale-restored

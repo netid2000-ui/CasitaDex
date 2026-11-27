@@ -1,0 +1,17 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Build 7 Android open large backup destination
+---
+- launchApp:
+    clearState: false
+- tapOn: "Home"
+- tapOn: "Settings"
+- scrollUntilVisible:
+    element: "Backup & restore"
+    direction: DOWN
+    timeout: 15000
+- tapOn: "Backup & restore"
+- scrollUntilVisible:
+    element: "Save full backup (with draft and photos)"
+    direction: DOWN
+    timeout: 15000
+- tapOn: "Save full backup (with draft and photos)"

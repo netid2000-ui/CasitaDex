@@ -1,0 +1,23 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Build 7 iOS large verified local archive and sharing
+---
+- launchApp:
+    clearState: false
+- tapOn: "Home"
+- tapOn: "Settings"
+- scrollUntilVisible:
+    element: "Backup & restore"
+    direction: DOWN
+    timeout: 30000
+    centerElement: true
+- tapOn: "Backup & restore"
+- scrollUntilVisible:
+    element: "Save full backup.*"
+    direction: DOWN
+    timeout: 30000
+    centerElement: true
+- tapOn: "Save full backup.*"
+- extendedWaitUntil:
+    visible: "Save to Files"
+    timeout: 120000
+- takeScreenshot: build7-ios-large-share

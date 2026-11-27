@@ -1,0 +1,6 @@
+Build 7 exact source: 4c6df816f237b63740229983b0c94c4870dc9861
+Android initial prebuild cleared local.properties; restored exact SDK path and retried.
+BUILD SUCCESSFUL in 2m 25s
+718 actionable tasks: 690 executed, 28 up-to-date
+** BUILD SUCCEEDED **
+Both installs versionCode/CFBundleVersion 7, no clearState. Samsung and emulator installed -r, iOS simctl install. Owner physical iPhone unavailable.

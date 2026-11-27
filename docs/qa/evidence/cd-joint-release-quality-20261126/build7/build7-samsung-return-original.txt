@@ -1,0 +1,6 @@
+PASS: 1 memories, 0 saved photos
+PASS: Standalone reminders in backup: 1
+PASS: Full collection restored and verified.
+PASS: FA Platform Filter 20x25x1
+PASS: 1 result
+PASS: CD6%20Synthetic%20Reminder

@@ -1,0 +1,18 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Build 7 native backup cancellation preserves collection
+---
+- tapOn: "Save full backup.*"
+- extendedWaitUntil:
+    visible: "USE THIS FOLDER"
+    timeout: 20000
+- pressKey: BACK
+- extendedWaitUntil:
+    visible: "Backup canceled. Your memories and draft are kept."
+    timeout: 20000
+- assertVisible: "Last verified local backup:.*This does not confirm a separate copy.*"
+- takeScreenshot: build7-android-backup-canceled
+- tapOn: "Find"
+- tapOn: "Search memories.*"
+- eraseText
+- hideKeyboard
+- assertVisible: "100 results"

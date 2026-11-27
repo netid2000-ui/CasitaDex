@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="emulator-5582" tests="1" failures="0" time="23.608" timestamp="2026-11-26T22:52:13">
+    <testcase id="Build 7 native search and real PNG decode after large restore" name="Build 7 native search and real PNG decode after large restore" classname="Build 7 native search and real PNG decode after large restore" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/cd-joint-release-quality-20261126/build7-android-scale-retrieval.yaml" time="23.603" timestamp="2026-11-26T22:52:13" status="SUCCESS"/>
+  </testsuite>
+</testsuites>
