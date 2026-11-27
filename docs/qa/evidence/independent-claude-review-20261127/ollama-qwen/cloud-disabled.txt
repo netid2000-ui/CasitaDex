@@ -1,0 +1,2 @@
+time=2026-11-27T16:04:37.924-06:00 level=INFO source=routes.go:2486 msg="Ollama cloud disabled: true"
+time=2026-11-27T16:04:37.924-06:00 level=INFO source=routes.go:2546 msg="Listening on 127.0.0.1:11434 (version 0.40.18)"
