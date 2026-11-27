@@ -1,0 +1,73 @@
+You said: Francisco, the owner of Designs by F&A, directs you to independently review CasitaDex and challenge ChatGPT's work, recommendations and QA claims.
+CasitaDex-independent-source-review.zip
+CasitaDex-independent-source-review.zip
+ZIP
+
+Francisco, the owner of Designs by F&A, directs you to independently review CasitaDex and challenge ChatGPT's work, recommendations and QA claims. You have actual tracked source in CasitaDex-independent-source-review.zip, not excerpts or ChatGPT-selected conclusions. Open/unpack it with your available file tools, inspect REVIEW-MANIFEST.json, verify pinned Git commit 9b5752aab18bd71a1d79506843d06b3f944033eb and independently select/read actual files across src, tests, native modules, configuration and QA docs. If you cannot directly open or inspect the ZIP, explicitly say so; never infer you accessed its contents. First research current authoritative guidance relevant to local-first backup/recovery, usability/accessibility, reminders and purchase entitlement handling; list credible source URLs. Then assess owner's approved Free (20 active+archived), Plus one-time $25.99, no subscriptions/cloud, user data preservation, native parity, evidence quality, UI flow and cost. Challenge source and evidence; do not agree for convenience. Return original findings with IDs, severity, exact actual path/line or symbol, observation, rationale, recommended fix, verification required; separate confirmed static findings vs hypotheses, prior test reports vs independently executed checks. No live data, production changes, exploit reproduction, offensive tests or paid usage. Report direct access proof by listing 3 actual independently chosen file paths, symbols, and exact short distinctive source excerpts. No source modifications. Record disagreements explicitly. Never represent review as comprehensive if not possible; state what remains. Start now.
+
+Message collapsed
+Show more
+10 minutes ago
+
+
+
+Claude responded: I'll start by checking that the ZIP actually opens, then read the manifest and verify the pinned commit.
+Checking memory notes alongside the archive
+
+Checking memory notes alongside the archive
+
+I’ll start by checking that the ZIP actually opens, then read the manifest and verify the pinned commit.
+
+Ran 10 commands, searched the web, read memory
+
+Ran 10 commands, searched the web, read memory
+
+Paused: Your free usage returns at 6:00 PM. Continue then.
+
+Continue
+
+
+
+
+9 minutes ago
+You are out of free messages until 6:00 PM
+Upgrade
+Write a message…
+
+
+
+
+
+
+Claude is AI and can make mistakes. Please double-check cited sources.
+
+Sonnet 5.5
+ Medium
+Claude finished the response
+
+
+Keep chatting with Claude Pro
+
+Your free messages return at 6:00 PM, or keep going now with Pro.
+
+
+Higher usage limits
+
+Access to more Claude models
+
+Claude can search your past chats and memories
+
+Power through tasks with Claude
+Monthly
+$20/month
+Billed monthly
+Yearly
+Save 17%
+$17/month
+$200 billed annually
+Upgrade to Pro for $20/month
+See all plans
+·
+Not now
+
+Prices and plans are subject to change at Anthropic’s discretion.

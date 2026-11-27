@@ -34,3 +34,16 @@ Claude is not subordinate to ChatGPT. Review actual files at the pinned commit a
 | COST-01 | Review cost | Pending | Existing Free account; no new paid usage authorized | Existing account state | No purchase |
 
 This initial ledger documents setup, **not** a completed independent review. Any later Claude findings must be appended without silently removing disagreements. Production stays NO-GO until the existing release criteria are met.
+
+## Access update — direct repository connection verified
+
+- GitHub sign-in succeeded. Claude's official integration retrieved the exact pinned commit, displayed the repository and tree, and saved all 330 files in the `src`, `modules`, and `tests` folders to the dedicated [Claude project](https://claude.ai/project/01a21ef2-dd64-75c1-9a53-b273b6f85e0c). Selection screen showed 99% of that selection's capacity; after reload, the project context displayed the exact commit and GitHub source. No production write-capable app installed.
+- Persistent independent reviewer instructions saved. [Project receipt](evidence/independent-claude-review-20261127/cd-project-status.txt).
+- Separately, actual 573-file source ZIP accepted by Claude, and [review request submitted](https://claude.ai/chat/9d9b7876-9a33-4695-a120-661b74070a44). Claude UI reported ten commands, web search and memory read before pausing. [Raw progress and quota receipt](evidence/independent-claude-review-20261127/cd-claude-review-status.txt). This is proof of source delivery and actual review activity, not a completed review or validated finding.
+- Free allowance pauses review until 6:00 PM local November 27. No plan upgrade, cost or artificial bypass. Resume at the free allowance; preserve actual independent output. No new findings were available to record when this checkpoint was saved.
+
+| ID | Update | Status |
+|---|---|---|
+| ACCESS-01 | Direct pinned GitHub context and complete scoped source archive attached | PASS — repository context access; reviewer direct file proof still pending |
+| REVIEW-01 | Claude actual review running, then quota pause | Incomplete — no findings yet |
+| COST-01 | Free plan, no billing changes | PASS — $0 new charges |

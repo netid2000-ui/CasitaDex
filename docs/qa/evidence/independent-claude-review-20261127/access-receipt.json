@@ -10,6 +10,11 @@
   "claudeCodeInstalled": "2.1.309",
   "claudeCodeLoggedIn": false,
   "claudeWebsitePlan": "Free",
-  "officialGitHubIntegration": "Opened; GitHub sign-in required; no access verified yet",
-  "reviewStatus": "Not started; no direct findings yet"
+  "officialGitHubIntegration": "GitHub account connected, Free plan, no cloud app installed at time of check",
+  "reviewStatus": "Paused by Claude Free usage limit until 6:00 PM local November 27; no completed findings yet",
+  "claudeProject": "https://claude.ai/project/01a21ef2-dd64-75c1-9a53-b273b6f85e0c",
+  "newCost": "USD 0",
+  "directGitHubContext": "Verified saved pinned commit in Claude Project Context after reload: 330 selected files in src, modules, tests",
+  "reviewChat": "https://claude.ai/chat/9d9b7876-9a33-4695-a120-661b74070a44",
+  "snapshotDelivery": "Uploaded and submitted actual archive; Claude UI reported 10 commands, web search and memory read; output paused before findings"
 }
