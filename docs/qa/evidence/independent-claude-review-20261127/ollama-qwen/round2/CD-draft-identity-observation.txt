@@ -1,0 +1,1 @@
+{"scope":"source-only synthetic fixture","missingDraftPhotoRejected":true,"mismatchedDraftPhotoRejected":true,"mismatchedSaveRejected":true,"unchangedDraftAndCollection":true}

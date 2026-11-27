@@ -1,0 +1,29 @@
+# CasitaDex — peer review round 2 and unresolved choices
+
+November 27, 2026, Mac mini exclusively; pinned 9b5752aab18bd71a1d79506843d06b3f944033eb. Owner approved [peer standing and owner escalation](../../../../../governance/INDEPENDENT_AI_REVIEW_PROCESS.md). Qwen Coder provided three complete responses: [entitlement reconsideration](raw/entitlement-reconsideration.json), [reminder reconsideration](raw/reminder-reconsideration.json), [fresh capture/save review](raw/capture-save-new-review.json). Reconsideration prompts included original disagreement and actual code, so these are not blind first passes. Fresh capture/save scope did not include prior verdicts. Model did not browse or execute native operations. Raw prompts, direction and outputs are retained.
+
+## Primary-source research by ChatGPT, supplied to Qwen where indicated
+
+- [Apple StoreKit current entitlements](https://developer.apple.com/documentation/storekit/transaction/currententitlements): nonconsumable current entitlement determines access; revoked/refunded transactions are not current. [Google Play Billing integration](https://developer.android.com/google/play/billing/integrate.html): reconcile purchases on connection/resume and grant only PURCHASED status. Implication: preserve verification policy and data; don't bypass a checking/unknown state solely to avoid a retry.
+- [Apple HIG progress indicators](https://developer.apple.com/design/human-interface-guidelines/progress-indicators) and [loading](https://developer.apple.com/design/human-interface-guidelines/loading): show honest ongoing feedback and help with stalled operation. Implication: evaluate bounded wait/coalesced verification UX rather than simply adding a lock or weakening entitlement verification.
+- [MDN Date local time and offset transitions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date): nonexistent local times move forward by the gap; ambiguous times choose earlier instant. Implication: Qwen's UTC suggestion conflicts with source's explicit local-clock semantics; choose honest disclosure or prompt instead. [New synthetic observation](CD-dst-fall-spring-observation.txt) reproduces Chicago spring 02:30 -> 03:30, fall 01:30 -> first occurrence. Native delivery remains NOT_RUN.
+
+## All Qwen observations and separate evidence assessment
+
+| Stable ID | Qwen round-2 position | ChatGPT position / actual evidence | Status |
+|---|---|---|---|
+| CD-Q-01/02 | Concurrency concern remains; add mutex. | Real source already serializes capacity + mutation. Existing coalesced entitlement refresh can return while checking; earlier fixture confirms fail-closed retry. Investigate bounded wait / visual feedback, no proof of data corruption. | NEEDS_EVIDENCE (UX); not proven race crossing cap. |
+| CD-Q2-01 | Free-limit feedback unclear; add Recently Deleted/Plus actions. | eng-screens.tsx:324 already shows count, Recently Deleted, draft kept and Plus link, while action catch at 294 shows errors. Native max-text toolbar correction previously passed. Verify real in-flight feedback, not missing entire notice. | REFUTED_WITH_EVIDENCE for absent notice; UX remains open. |
+| CD-Q2-02 | Save capacity verification may be unnecessary retry. | eng-store.ts:288–308 checks capacity at transaction boundary; this is needed, not redundant pre-check. Same attempt is idempotent. No verified performance issue. | REFUTED_WITH_EVIDENCE. |
+| CD-Q-07 | Qwen maintains DST defect based on presumed intended UTC/fixed time zone; suggests disclosure or prompt. | Local clock is deliberate in reminder-alert-plan.ts:3,9–15; MDN corroborates actual temporal behavior. Owner needs policy choice for nonexistent times and disclosure. Do not silently substitute UTC. | OWNER_DECISION_REQUIRED; asked Francisco. |
+| CD-Q2-03 | Leap-day recurrence test incomplete. | reminder-alert-plan.test.mjs:17–20 checks start Feb 29 in leap year and clamp Feb 28 after one year. Broader leap-cycle/native behavior unverified; not claim test absent. | NEEDS_EVIDENCE for broader cycle/native behavior. |
+| CD-Q-08 | Completed reminders skip scheduling and cap correct. | Qwen now agrees, original dissent preserved. UI display untouched. | AGREED_RECOMMENDATION (retain). |
+| CD-Q2-04 | addPhoto misses missing/mismatched draft check. | eng-store.ts:269–272 already throws. New synthetic fixture tested missing + mismatched draft ID; both reject and preserve previous collection. | REFUTED_WITH_EVIDENCE. |
+| CD-Q2-05 | Screen photo path misses draft validation. | eng-screens.tsx:297–302 creates/checkpoints fresh draft; action flush rejects failed checkpoint; store validates exact ID. Native asynchronous navigation still not comprehensively checked. | REFUTED_WITH_EVIDENCE for missing store guard; NEEDS_EVIDENCE for native race. |
+| CD-Q2-06 | Save lacks missing/mismatched draft check. | eng-screens.tsx:309–312 rejects absent; eng-store.ts:296–300 rejects mismatched attempt/memory ID. [New synthetic observation](CD-draft-identity-observation.txt) proves guards and unchanged collection/draft. | REFUTED_WITH_EVIDENCE. |
+
+## Owner decision requested
+
+CD-OWNER-01 (DST behavior): owner was asked whether to **A** retain local roll-forward with clear explanation for nonexistent time (recommended), or **B** ask the user to choose a valid time instead. Either must retain intended local wall-clock scheduling and disclose repeated-time choice. Source behavior verified; selection is product policy. Claude's new independent review is quota-paused, and its opinion on this exact choice is NOT YET RECEIVED. No product change or inferred owner assent. Native DST and reminder delivery still open whichever choice.
+
+No other independent output received from Claude in this checkpoint. No code edits, production changes, releases, or purchases; no native checks executed in this round. Prior Qwen disagreement records and 31 targeted regression receipts remain intact.

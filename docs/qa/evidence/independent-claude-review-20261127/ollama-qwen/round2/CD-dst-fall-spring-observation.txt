@@ -1,0 +1,2 @@
+{"scope":"source-only local calendar behavior","requested":"2026-03-08 02:30","scheduled":"Sun Mar 08 2026 03:30:00 GMT-0500 (Central Daylight Time)","utc":"2026-03-08T08:30:00.000Z"}
+{"scope":"source-only local calendar behavior","requested":"2026-11-01 01:30","scheduled":"Sun Nov 01 2026 01:30:00 GMT-0500 (Central Daylight Time)","utc":"2026-11-01T06:30:00.000Z"}

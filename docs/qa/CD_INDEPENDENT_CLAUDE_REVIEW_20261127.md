@@ -61,3 +61,7 @@ Three independent source packets completed. [Unfiltered responses and separate d
 ## Owner-approved peer decision process
 
 Francisco explicitly approved meaningful peer weight, independent assessments, evidence-based debate/research and owner consultation when material disagreements persist. The [three-reviewer decision process](../governance/INDEPENDENT_AI_REVIEW_PROCESS.md) is now versioned and linked from AGENTS.md. This is governance only; no app source changes or release authorization. Claude continuation retains its independent initial review before receiving ChatGPT/Qwen conclusions.
+
+## Peer review round 2
+
+[Qwen's three complete raw responses, fresh research, evidence checks, separate dispositions and owner question](evidence/independent-claude-review-20261127/ollama-qwen/round2/CD-PEER-REVIEW-ROUND2.md). No broad claims of consensus. Owner asked about DST policy; pending response and Claude's fresh opinion. Claude continuation updated to preserve independent conclusions then challenge both other reviewers.
