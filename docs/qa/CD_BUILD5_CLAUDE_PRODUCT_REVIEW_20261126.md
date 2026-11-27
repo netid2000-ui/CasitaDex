@@ -35,3 +35,7 @@ Post-release / optional: usability-test the existing first-memory prompt and ret
 ## Gate and audit status
 
 Review and reconciliation complete; this is a recommendations and evidence-gap report, not new defect reproduction or acceptance. Physical-device and release acceptance remain NO-GO. All build/test work is to remain exclusively on FA-MAC-DEV-01, validate simulator/emulator first, preserve current QA and owner accepted datasets, and require owner final physical iPhone acceptance. No store submission, live purchase, production merge, destructive data action or new recurring cost authorized by this advisory review.
+
+## Follow-up collaboration
+
+Subsequently the paid-plan prompt was dismissed and Claude continued on the free plan. The independently reconciled review was discussed with Claude, the remaining cap disagreement was resolved, and explicit agreement was received. See [joint recommendation and acceptance criteria](CD_BUILD5_CLAUDE_JOINT_RECOMMENDATION_20261126.md). This supersedes the initial statement that no second response was obtained, as of the later collaboration.
