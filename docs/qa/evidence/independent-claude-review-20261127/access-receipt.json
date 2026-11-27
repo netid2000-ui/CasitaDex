@@ -1,0 +1,15 @@
+{
+  "checked": "2026-11-27 America/Chicago",
+  "repository": "https://github.com/netid2000-ui/CasitaDex",
+  "baselineCommit": "9b5752aab18bd71a1d79506843d06b3f944033eb",
+  "sourceFiles": 573,
+  "excludedPaths": 3856,
+  "snapshotBytes": 961870,
+  "snapshotSHA256": "6c5fbf103c4d799c14655090cd4d3e32c22975b751a30caf8034ea2148a3e7b2",
+  "gitleaksDetected": 0,
+  "claudeCodeInstalled": "2.1.309",
+  "claudeCodeLoggedIn": false,
+  "claudeWebsitePlan": "Free",
+  "officialGitHubIntegration": "Opened; GitHub sign-in required; no access verified yet",
+  "reviewStatus": "Not started; no direct findings yet"
+}
