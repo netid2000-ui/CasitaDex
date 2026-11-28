@@ -56,6 +56,9 @@ function Shell() {
   useEffect(()=>{if(path!=="/add")return;let active=true;void getEngStore().then(store=>store.load()).then(snapshot=>{if(active)setDraftHasPhotos((snapshot.draft?.photos.length??0)>0);}).catch(()=>{});return()=>{active=false;};},[path,entryMode]);
   useEffect(()=>{
     let active=true;
+    const refreshAlerts=()=>{void listStandaloneReminders().catch(()=>{});};
+    refreshAlerts();
+    const foreground=AppState.addEventListener("change",state=>{if(state==="active")refreshAlerts();});
     const openLinked=async(response:{notification:{request:{content:{data?:Record<string,unknown>}}}})=>{
       const data=response.notification.request.content.data;
       if(data?.casitaDexType!=="standalone-v1"||typeof data.casitaDexReminderId!=="string")return;
@@ -63,7 +66,7 @@ function Shell() {
     };
     const subscription=addNotificationResponseReceivedListener(response=>{void openLinked(response);});
     void getLastNotificationResponseAsync().then(response=>{if(response&&active)void openLinked(response);}).catch(()=>{});
-    return()=>{active=false;subscription.remove();};
+    return()=>{active=false;subscription.remove();foreground.remove();};
   },[]);
   const photoEntry=path==="/add"&&(entryMode==="photo"||draftHasPhotos);
   const headings:Record<string,[string,string]>={

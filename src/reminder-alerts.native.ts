@@ -17,7 +17,24 @@ setNotificationHandler({
  handleNotification:async()=>({shouldShowBanner:true,shouldShowList:true,shouldPlaySound:true,shouldSetBadge:false}),
 });
 
-async function run(rows:readonly ReminderForAlert[],askPermission:boolean):Promise<string>{
+const privateBody="Open CasitaDex to view your reminder.";
+function bodyFor(alert:{title:string},showTitles:boolean){return showTitles?alert.title:privateBody;}
+export type ReminderAlertCoverage={eligible:number;armed:number;through:Record<string,number>;available:boolean};
+function matches(r:Awaited<ReturnType<typeof getAllScheduledNotificationsAsync>>[number],alert:ReturnType<typeof planReminderAlerts>[number],showTitles:boolean){
+ return r.content.data?.casitaDexKey===alert.key&&r.content.data?.casitaDexReminderId===alert.id&&
+ (r.content.data?.casitaDexMemoryId??null)===(alert.memoryId??null)&&r.content.body===bodyFor(alert,showTitles);
+}
+export async function readReminderAlertCoverage(rows:readonly ReminderForAlert[],showTitles=false):Promise<ReminderAlertCoverage>{
+ const eligible=rows.filter(r=>planReminderAlerts([r],Date.now(),1,1).length>0).length;
+ try{
+  if(!(await getPermissionsAsync()).granted)return {eligible,armed:0,through:{},available:true};
+  const owned=(await getAllScheduledNotificationsAsync()).filter(r=>r.content.data?.casitaDexType===OWNER);
+  const through:Record<string,number>={};
+  for(const alert of planReminderAlerts(rows))if(owned.some(r=>matches(r,alert,showTitles)))through[alert.id]=Math.max(through[alert.id]??0,alert.timestamp);
+  return {eligible,armed:Object.keys(through).length,through,available:true};
+ }catch{return {eligible,armed:0,through:{},available:false};}
+}
+async function run(rows:readonly ReminderForAlert[],askPermission:boolean,showTitles:boolean):Promise<string>{
  try {
   if(Platform.OS==="android"){
    await setNotificationChannelAsync(CHANNEL,{
@@ -29,39 +46,38 @@ async function run(rows:readonly ReminderForAlert[],askPermission:boolean):Promi
   if(!permission.granted&&askPermission&&permission.canAskAgain){
    permission=await requestPermissionsAsync();
   }
-  if(!permission.granted)return "Saved locally. Notifications are off; enable alerts in device settings.";
   const desired=planReminderAlerts(rows);
-  const next=new Map(desired.map(r=>[r.key,r]));
   const all=await getAllScheduledNotificationsAsync();
   const owned=all.filter(r=>r.content.data?.casitaDexType===OWNER);
-  const valid=new Set<string>();
-  // Schedule replacements before removing stale alerts to avoid a lost-alert window.
+  const retained=new Set<string>();
+  // Cancel stale title-bearing alerts, obsolete occurrences and duplicates first.
+  // This also avoids exceeding the pending cap while replacing existing requests.
   for(const alert of desired){
-   const found=owned.find(r=>r.content.data?.casitaDexKey===alert.key&&r.content.body===alert.title&&!valid.has(r.identifier));
-   if(found){valid.add(found.identifier);continue;}
-   const id=await scheduleNotificationAsync({
-    content:{title:"CasitaDex reminder",body:alert.title,sound:"default",
+   const found=owned.find(r=>matches(r,alert,showTitles)&&!retained.has(r.identifier));
+   if(found)retained.add(found.identifier);
+  }
+  for(const old of owned)if(!retained.has(old.identifier))await cancelScheduledNotificationAsync(old.identifier);
+  if(!permission.granted)return "Saved locally. Notifications are off; enable alerts in device settings.";
+  for(const alert of desired){
+   if(owned.some(r=>retained.has(r.identifier)&&matches(r,alert,showTitles)))continue;
+   await scheduleNotificationAsync({
+    content:{title:"CasitaDex reminder",body:bodyFor(alert,showTitles),sound:"default",
      data:{casitaDexType:OWNER,casitaDexReminderId:alert.id,casitaDexMemoryId:alert.memoryId??null,casitaDexKey:alert.key}},
-    trigger:{type:SchedulableTriggerInputTypes.DATE,
-     date:new Date(alert.timestamp),...(Platform.OS==="android"?{channelId:CHANNEL}:{})},
+    trigger:{type:SchedulableTriggerInputTypes.DATE,date:new Date(alert.timestamp),...(Platform.OS==="android"?{channelId:CHANNEL}:{})},
    });
-   valid.add(id);
   }
-  for(const old of owned){
-   if(!valid.has(old.identifier)||!next.has(String(old.content.data?.casitaDexKey??""))){
-    await cancelScheduledNotificationAsync(old.identifier);
-   }
-  }
-  return desired.length
-   ? "Saved locally. Reminder alerts scheduled; device settings may affect timing."
+  const coverage=await readReminderAlertCoverage(rows,showTitles);
+  if(!coverage.available)return "Saved locally. Alert coverage could not be checked; reopen Reminders to retry.";
+  return coverage.eligible
+   ? `Saved locally. Alerts queued for ${coverage.armed} of ${coverage.eligible} reminders. Coverage is finite; reopen Reminders to renew it. Device settings may affect delivery.`
    : "Saved locally. No upcoming reminder alert is due.";
  }catch{
   // Storage mutations are already committed; native alert errors never erase saved records.
   return "Saved locally. Alert scheduling needs attention; reopen Reminders to retry.";
  }
 }
-export function reconcileReminderNotifications(rows:readonly ReminderForAlert[],askPermission=false):Promise<string>{
- const next=pending.then(()=>run(rows,askPermission),()=>run(rows,askPermission));
+export function reconcileReminderNotifications(rows:readonly ReminderForAlert[],askPermission=false,showTitles=false):Promise<string>{
+ const next=pending.then(()=>run(rows,askPermission,showTitles),()=>run(rows,askPermission,showTitles));
  pending=next;
  return next;
 }

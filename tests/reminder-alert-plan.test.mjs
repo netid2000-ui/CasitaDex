@@ -39,3 +39,15 @@ test("DST gap disclosure matches native planner; repeated hour policy uses earli
   assert.equal(planReminderAlerts([make({dueDate:'2027-11-07',dueTime:'01:30'})],Date.parse('2027-11-06T00:00:00Z'))[0].timestamp,Date.parse('2027-11-07T06:30:00Z'));
  }finally{if(previous===undefined)delete process.env.TZ;else process.env.TZ=previous;}
 });
+
+test("each eligible reminder receives its next occurrence before extra occurrences",()=>{
+ const rows=Array.from({length:9},(_,i)=>make({id:"fair"+i,repeat:"daily",dueDate:i===8?"2027-02-15":"2027-01-31"}));
+ const alerts=planReminderAlerts(rows,at("2027-01-30"));
+ assert.equal(alerts.length,48);assert.equal(new Set(alerts.map(a=>a.id)).size,9);
+ assert.ok(alerts.some(a=>a.id==="fair8"));
+});
+test("capacity exhaustion chooses earliest first occurrences deterministically",()=>{
+ const rows=Array.from({length:50},(_,i)=>make({id:"fair"+String(i).padStart(2,"0"),repeat:"daily"}));
+ const alerts=planReminderAlerts(rows,at("2027-01-30"));assert.equal(alerts.length,48);
+ assert.equal(new Set(alerts.map(a=>a.id)).size,48);
+});

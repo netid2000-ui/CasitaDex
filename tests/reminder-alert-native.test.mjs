@@ -43,13 +43,23 @@ test("permission grant schedules one local alert, repeated sync is idempotent",a
  assert.equal(state.scheduled.length,1);assert.equal(state.created,1);
 });
 test("editing replaces obsolete alert, completion cancels its scheduled occurrence",async()=>{
- await reconcileReminderNotifications([reminder("Edited QA Alert")],false);
+ await reconcileReminderNotifications([reminder("Edited QA Alert")],false,true);
  assert.equal(state.scheduled.length,1);assert.equal(state.created,2);assert.ok(state.canceled>=1);
  assert.equal(state.scheduled[0].content.body,"Edited QA Alert");
- await reconcileReminderNotifications([reminder("Edited QA Alert"),{...reminder(),completed:true}],false);
+ await reconcileReminderNotifications([reminder("Edited QA Alert"),{...reminder(),completed:true}],false,true);
  assert.equal(state.scheduled.length,1);
  await reconcileReminderNotifications([{...reminder(),completed:true}],false);
  assert.equal(state.scheduled.length,0);
+});
+test("default hides titles, opt-in and privacy migration replace old notifications without duplicates",async()=>{
+ state.scheduled=[];state.granted=true;
+ await reconcileReminderNotifications([reminder("Private synthetic title")],false,true);
+ assert.equal(state.scheduled[0].content.body,"Private synthetic title");
+ await reconcileReminderNotifications([reminder("Private synthetic title")],false);
+ assert.equal(state.scheduled.length,1);assert.equal(state.scheduled[0].content.body,"Open CasitaDex to view your reminder.");
+ const made=state.created;await reconcileReminderNotifications([reminder("Renamed title")],false);
+ assert.equal(state.created,made);assert.equal(state.scheduled.length,1);
+ assert.equal(state.scheduled[0].content.data.casitaDexReminderId,"qa-alert");
 });
 test("unrelated app notifications are never cancelled",async()=>{
  const other={identifier:"other",content:{title:"External",data:{owner:"different"}}};

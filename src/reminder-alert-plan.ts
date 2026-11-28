@@ -21,9 +21,10 @@ export function reminderWallClockAdjustment(day:string,time:string):string|null 
  return actual!==time?`This local time is skipped by a clock change. The alert is scheduled for ${actual} instead.`:null;
 }
 export function planReminderAlerts(rows:readonly ReminderForAlert[],now=Date.now(),cap=48,perReminder=6):PlannedReminderAlert[]{
- const out:PlannedReminderAlert[]=[];
+ const groups:PlannedReminderAlert[][]=[];
  for(const r of rows){
   if(r.completed||!r.title.trim()||!validReminderDay(r.dueDate))continue;
+  const out:PlannedReminderAlert[]=[];
   let day=r.dueDate;
   const anchor=Number(day.slice(-2));
   for(let i=0,created=0;i<30000&&created<perReminder;i++){
@@ -39,6 +40,14 @@ export function planReminderAlerts(rows:readonly ReminderForAlert[],now=Date.now
    if(!next||next===day)break;
    day=next;
   }
+  if(out.length)groups.push(out);
  }
- return out.sort((a,b)=>a.timestamp-b.timestamp||a.key.localeCompare(b.key)).slice(0,Math.max(0,Math.min(48,cap)));
+ const compare=(a:PlannedReminderAlert,b:PlannedReminderAlert)=>a.timestamp-b.timestamp||a.key.localeCompare(b.key);
+ // Allocate one next occurrence per eligible reminder before allocating extra occurrences.
+ const result:PlannedReminderAlert[]=[];const limit=Math.max(0,Math.min(48,cap));
+ for(let round=0;round<perReminder&&result.length<limit;round++){
+  const candidates=groups.flatMap(group=>group[round]?[group[round]]:[]).sort(compare);
+  result.push(...candidates.slice(0,limit-result.length));
+ }
+ return result.sort(compare);
 }
