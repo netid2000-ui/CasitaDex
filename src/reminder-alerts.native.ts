@@ -19,6 +19,10 @@ setNotificationHandler({
 
 const privateBody="Open CasitaDex to view your reminder.";
 function bodyFor(alert:{title:string},showTitles:boolean){return showTitles?alert.title:privateBody;}
+export async function readTitleBearingReminderCount():Promise<number|null>{
+ try{return (await getAllScheduledNotificationsAsync()).filter(r=>r.content.data?.casitaDexType===OWNER&&r.content.body!==privateBody).length;}
+ catch{return null;}
+}
 export type ReminderAlertCoverage={eligible:number;armed:number;through:Record<string,number>;available:boolean};
 function matches(r:Awaited<ReturnType<typeof getAllScheduledNotificationsAsync>>[number],alert:ReturnType<typeof planReminderAlerts>[number],showTitles:boolean){
  return r.content.data?.casitaDexKey===alert.key&&r.content.data?.casitaDexReminderId===alert.id&&

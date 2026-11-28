@@ -1,11 +1,13 @@
 import { nextReminderDay, validReminderDay, type RepeatSchedule } from "./reminder-recurrence";
 import { openDatabaseAsync } from "expo-sqlite";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { reconcileReminderNotifications,readReminderAlertCoverage } from "./reminder-alerts.native";
+import { reconcileReminderNotifications,readReminderAlertCoverage,readTitleBearingReminderCount } from "./reminder-alerts.native";
+import { createLatestReminderRefresh } from "./reminder-refresh-queue";
 export type StandaloneReminder={id:string;title:string;notes:string;memoryId?:string|null;dueDate:string;dueTime:string;repeat:RepeatSchedule;completed:boolean;createdAt:string;updatedAt:string};
 let database:ReturnType<typeof openDatabaseAsync>|undefined;
 async function initializeReminderDatabase(){
  const d=await openDatabaseAsync("casitadex-development-v1.db",{useNewConnection:true});
+ try {
  await d.execAsync("PRAGMA busy_timeout=3000;");
  await d.execAsync("CREATE TABLE IF NOT EXISTS standalone_reminders_v1 (id TEXT PRIMARY KEY,title TEXT NOT NULL,notes TEXT NOT NULL,due_date TEXT NOT NULL,completed INTEGER NOT NULL DEFAULT 0,created_at TEXT NOT NULL,updated_at TEXT NOT NULL)");
  const columns=await d.getAllAsync<{name:string}>("PRAGMA table_info(standalone_reminders_v1)");
@@ -14,6 +16,7 @@ async function initializeReminderDatabase(){
  if(!columns.some(c=>c.name==="memory_id"))await d.execAsync("ALTER TABLE standalone_reminders_v1 ADD COLUMN memory_id TEXT");
  if(!columns.some(c=>c.name==="repeat"))await d.execAsync("ALTER TABLE standalone_reminders_v1 ADD COLUMN repeat TEXT NOT NULL DEFAULT 'once'");
  return d;
+ }catch(error){await d.closeAsync().catch(()=>{});throw error;}
 }
 function db(){
  database??=initializeReminderDatabase().catch(error=>{database=undefined;throw error;});
@@ -25,14 +28,22 @@ function valid(title:string,notes:string,date:string,time:string){
 }
 const privacyKey="casitadex:reminder-title-preference:v1";
 export async function getReminderTitlePreference(){try{return await AsyncStorage.getItem(privacyKey)==="true";}catch{return false;}}
-async function syncAlerts(rows:readonly StandaloneReminder[],ask=false){return reconcileReminderNotifications(rows,ask,await getReminderTitlePreference());}
-export async function setReminderTitlePreference(show:boolean){await AsyncStorage.setItem(privacyKey,String(show));return syncAlerts(await listStandaloneReminders(false));}
+const syncAlerts=createLatestReminderRefresh(async()=>({rows:await listStandaloneReminders(false),showTitles:await getReminderTitlePreference()}),async(state,ask)=>reconcileReminderNotifications(state.rows,ask,state.showTitles));
+export async function setReminderTitlePreference(show:boolean){
+ await AsyncStorage.setItem(privacyKey,String(show));
+ const status=await syncAlerts();
+ if(show)return status;
+ const stale=await readTitleBearingReminderCount();
+ if(stale===null)return "Titles are off for new alerts. Existing notification text could not be verified; check device alerts.";
+ if(stale>0)return `Titles are off for new alerts. ${stale} existing alert(s) may still show titles; check device alerts.`;
+ return status;
+}
 export async function reminderAlertCoverage(rows:readonly StandaloneReminder[]){return readReminderAlertCoverage(rows,await getReminderTitlePreference());}
 export async function listStandaloneReminders(sync=true):Promise<StandaloneReminder[]>{
  const d=await db();
  const rows=await d.getAllAsync<{id:string;title:string;notes:string;memory_id:string|null;due_date:string;due_time:string;repeat:string;anchor_day:number;completed:number;created_at:string;updated_at:string}>("SELECT * FROM standalone_reminders_v1 ORDER BY completed ASC,due_date ASC,created_at DESC");
  const reminders=rows.map(r=>({id:r.id,title:r.title,notes:r.notes,memoryId:r.memory_id,dueDate:r.due_date,dueTime:r.due_time,repeat:r.repeat as RepeatSchedule,completed:r.completed===1,createdAt:r.created_at,updatedAt:r.updated_at}));
- if(sync)void syncAlerts(reminders).catch(()=>{});
+ if(sync)void syncAlerts().catch(()=>{});
  return reminders;
 }
 export async function saveStandaloneReminder(input:{id?:string;title:string;notes:string;memoryId?:string|null;dueDate:string;dueTime:string;repeat:RepeatSchedule}){
@@ -46,7 +57,7 @@ export async function saveStandaloneReminder(input:{id?:string;title:string;note
  }else{
   await d.runAsync("INSERT INTO standalone_reminders_v1 (id,title,notes,memory_id,due_date,due_time,repeat,anchor_day,completed,created_at,updated_at) VALUES (?,?,?,?,?,?,?,?,0,?,?)","r_"+Date.now().toString(36)+"_"+Math.random().toString(36).slice(2,10),input.title.trim(),input.notes,input.memoryId??null,input.dueDate,input.dueTime,input.repeat,Number(input.dueDate.slice(-2)),now,now);
  }
- return syncAlerts(await listStandaloneReminders(false),true);
+ return syncAlerts(true);
 }
 export async function completeStandaloneReminder(id:string,completed:boolean){
  const d=await db(),now=new Date().toISOString();
@@ -57,15 +68,15 @@ export async function completeStandaloneReminder(id:string,completed:boolean){
   ?await d.runAsync("UPDATE standalone_reminders_v1 SET due_date=?,completed=0,updated_at=? WHERE id=?",next,now,id)
   :await d.runAsync("UPDATE standalone_reminders_v1 SET completed=?,updated_at=? WHERE id=?",completed?1:0,now,id);
  if(result.changes!==1)throw Error("Reminder no longer exists.");
- return syncAlerts(await listStandaloneReminders(false),false);
+ return syncAlerts(false);
 }
 export async function deleteStandaloneReminder(id:string){
  const result=await (await db()).runAsync("DELETE FROM standalone_reminders_v1 WHERE id=?",id);
  if(result.changes!==1)throw Error("Reminder no longer exists.");
- return syncAlerts(await listStandaloneReminders(false),false);
+ return syncAlerts(false);
 }
-export async function refreshStandaloneReminderAlerts(rows:readonly StandaloneReminder[]){return syncAlerts(rows);}
-export async function requestStandaloneReminderAlerts(){return syncAlerts(await listStandaloneReminders(false),true);}
+export async function refreshStandaloneReminderAlerts(){return syncAlerts();}
+export async function requestStandaloneReminderAlerts(){return syncAlerts(true);}
 /** Read-only consistent reminder export; does not modify existing reminders. */
 export async function snapshotStandaloneRemindersForBackup(){
  const d=await db();

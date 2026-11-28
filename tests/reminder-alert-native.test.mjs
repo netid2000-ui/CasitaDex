@@ -27,7 +27,7 @@ const hooks=registerHooks({resolve(s,ctx,next){
 }});
 const state={granted:false,prompts:0,created:0,canceled:0,channel:0,next:0,scheduled:[]};
 globalThis.__casitaAlertQA=state;
-const {reconcileReminderNotifications,readReminderAlertCoverage}=await import("../src/reminder-alerts.native.ts");
+const {reconcileReminderNotifications,readReminderAlertCoverage,readTitleBearingReminderCount}=await import("../src/reminder-alerts.native.ts");
 const date=new Date(Date.now()+3600e3);
 const dueDate=[date.getFullYear(),String(date.getMonth()+1).padStart(2,"0"),String(date.getDate()).padStart(2,"0")].join("-");
 const dueTime=[String(date.getHours()).padStart(2,"0"),String(date.getMinutes()).padStart(2,"0")].join(":");
@@ -65,12 +65,12 @@ test("coverage reflects only matching queued alerts and permission denial remove
  state.granted=true;state.scheduled=[];
  await reconcileReminderNotifications([reminder("Synthetic title")],false,true);
  const coverage=await readReminderAlertCoverage([reminder("Synthetic title")],true);
- assert.equal(coverage.eligible,1);assert.equal(coverage.armed,1);
+ assert.equal(coverage.eligible,1);assert.equal(coverage.armed,1);assert.equal(await readTitleBearingReminderCount(),1);
  assert.ok(coverage.through["qa-alert"]>Date.now());
  assert.equal((await readReminderAlertCoverage([reminder()],false)).armed,0);
  state.granted=false;
  await reconcileReminderNotifications([reminder()],false);
- assert.equal(state.scheduled.length,0);
+ assert.equal(state.scheduled.length,0);assert.equal(await readTitleBearingReminderCount(),0);
  assert.equal((await readReminderAlertCoverage([reminder()],false)).armed,0);
  state.granted=true;
 });

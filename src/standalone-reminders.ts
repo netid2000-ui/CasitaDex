@@ -9,4 +9,4 @@ export async function getReminderTitlePreference(){return false;}
 export async function setReminderTitlePreference(_show:boolean):Promise<string>{throw Error("Device alerts require the native app.");}
 export async function reminderAlertCoverage(_rows:readonly StandaloneReminder[]){return {eligible:0,armed:0,through:{} as Record<string,number>,available:false};}
 
-export async function refreshStandaloneReminderAlerts(_rows:readonly StandaloneReminder[]){return "Device alerts require the native app."; }
+export async function refreshStandaloneReminderAlerts(){return "Device alerts require the native app."; }
