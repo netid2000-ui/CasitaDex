@@ -1,0 +1,289 @@
+You said: Francisco asks for your independent final policy decision recommendations.
+
+Francisco asks for your independent final policy decision recommendations. Free allowance only; no tool work needed. Review actual source below and Qwen raw response. Challenge both. For CD weigh generic lock-screen body by default with optional detail vs per-reminder settings, and a sustainable recurrence solution without claiming six alerts are indefinite. For EC weigh end-not-set vs default end vs required end (no false completion). State concise options, recommendation, risks and native acceptance gates.
+
+Independent Qwen code review, pinned 5daeda0b25258158a7729107828678918f42a89c. Propose practical owner choices for lock-screen reminder privacy and six-occurrence scheduling horizon; preserve local wall-clock recurrence and DST handling. Distinguish product decision and native test gate. Give concise evidence-based options with product recommendation, drawbacks, and benign acceptance checks. No code edits, exploitation, or claims of native tests.
+
+src/reminder-alert-plan.ts
+import { nextReminderDay, validReminderDay, type RepeatSchedule } from "./reminder-recurrence.ts";
+
+/** Local wall-clock schedules, with the same month-end clamp as saved reminders. */
+export type ReminderForAlert = {
+ id:string; title:string; memoryId?:string|null; dueDate:string; dueTime:string;
+ repeat:RepeatSchedule; completed:boolean;
+};
+export type PlannedReminderAlert={id:string;key:string;timestamp:number;title:string;memoryId?:string|null};
+function localDate(day:string,time:string):Date|null {
+ if(!validReminderDay(day)||!/^([01]\d|2[0-3]):[0-5]\d$/.test(time))return null;
+ const [y,m,d]=day.split("-").map(Number);
+ const [hour,minute]=time.split(":").map(Number);
+ const at=new Date(y,m-1,d,hour,minute,0,0);
+ // DST gaps roll forward using native local-calendar interpretation.
+ return Number.isFinite(at.getTime())?at:null;
+}
+/** Show the effective local time when the native calendar skips a wall-clock time. */
+export function reminderWallClockAdjustment(day:string,time:string):string|null {
+ const at=localDate(day,time);if(!at)return null;
+ const actual=[String(at.getHours()).padStart(2,"0"),String(at.getMinutes()).padStart(2,"0")].join(":");
+ return actual!==time?This local time is skipped by a clock change. The alert is scheduled for ${actual} instead.:null;
+}
+export function planReminderAlerts(rows:readonly ReminderForAlert[],now=Date.now(),cap=48,perReminder=6):PlannedReminderAlert[]{
+ const out:PlannedReminderAlert[]=[];
+ for(const r of rows){
+  if(r.completed||!r.title.trim()||!validReminderDay(r.dueDate))continue;
+  let day=r.dueDate;
+  const anchor=Number(day.slice(-2));
+  for(let i=0,created=0;i<30000&&created<perReminder;i++){
+   const at=localDate(day,r.dueTime);
+   if(!at)break;
+   const timestamp=at.getTime();
+   if(timestamp>now+5000){
+    out.push({id:r.id,key:r.id+"@"+timestamp,timestamp,title:r.title.trim(),memoryId:r.memoryId});
+    created++;
+   }
+   if(r.repeat==="once")break;
+   const next=nextReminderDay(day,r.repeat,anchor);
+   if(!next||next===day)break;
+   day=next;
+  }
+ }
+ return out.sort((a,b)=>a.timestamp-b.timestamp||a.key.localeCompare(b.key)).slice(0,Math.max(0,Math.min(48,cap)));
+}
+
+src/reminder-alerts.native.ts
+import { Platform } from "react-native";
+import { setNotificationHandler } from "expo-notifications/build/NotificationsHandler";
+import { setNotificationChannelAsync } from "expo-notifications/build/setNotificationChannelAsync";
+import { getPermissionsAsync, requestPermissionsAsync } from "expo-notifications/build/NotificationPermissions";
+import { getAllScheduledNotificationsAsync } from "expo-notifications/build/getAllScheduledNotificationsAsync";
+import { scheduleNotificationAsync } from "expo-notifications/build/scheduleNotificationAsync";
+import { cancelScheduledNotificationAsync } from "expo-notifications/build/cancelScheduledNotificationAsync";
+import { SchedulableTriggerInputTypes } from "expo-notifications/build/Notifications.types";
+import { AndroidImportance } from "expo-notifications/build/NotificationChannelManager.types";
+import { planReminderAlerts, type ReminderForAlert } from "./reminder-alert-plan";
+
+const CHANNEL="casitadex-reminders-v1";
+const OWNER="standalone-v1";
+let pending:Promise<string>=Promise.resolve("Ready");
+
+setNotificationHandler({
+ handleNotification:async()=>({shouldShowBanner:true,shouldShowList:true,shouldPlaySound:true,shouldSetBadge:false}),
+});
+
+async function run(rows:readonly ReminderForAlert[],askPermission:boolean):Promise<string>{
+ try {
+  if(Platform.OS==="android"){
+   await setNotificationChannelAsync(CHANNEL,{
+    name:"CasitaDex reminders",importance:AndroidImportance.DEFAULT,
+    sound:"default",showBadge:false,
+   });
+  }
+  let permission=await getPermissionsAsync();
+  if(!permission.granted&&askPermission&&permission.canAskAgain){
+   permission=await requestPermissionsAsync();
+  }
+  if(!permission.granted)return "Saved locally. Notifications are off; enable alerts in device settings.";
+  const desired=planReminderAlerts(rows);
+  const next=new Map(desired.map(r=>[r.key,r]));
+  const all=await getAllScheduledNotificationsAsync();
+  const owned=all.filter(r=>r.content.data?.casitaDexType===OWNER);
+  const valid=new Set<string>();
+  // Schedule replacements before removing stale alerts to avoid a lost-alert window.
+  for(const alert of desired){
+   const found=owned.find(r=>r.content.data?.casitaDexKey===alert.key&&r.content.body===alert.title&&!valid.has(r.identifier));
+   if(found){valid.add(found.identifier);continue;}
+   const id=await scheduleNotificationAsync({
+    content:{title:"CasitaDex reminder",body:alert.title,sound:"default",
+     data:{casitaDexType:OWNER,casitaDexReminderId:alert.id,casitaDexMemoryId:alert.memoryId??null,casitaDexKey:alert.key}},
+    trigger:{type:SchedulableTriggerInputTypes.DATE,
+     date:new Date(alert.timestamp),...(Platform.OS==="android"?{channelId:CHANNEL}:{})},
+   });
+   valid.add(id);
+  }
+  for(const old of owned){
+   if(!valid.has(old.identifier)||!next.has(String(old.content.data?.casitaDexKey??""))){
+    await cancelScheduledNotificationAsync(old.identifier);
+   }
+  }
+  return desired.length
+   ? "Saved locally. Reminder alerts scheduled; device settings may affect timing."
+   : "Saved locally. No upcoming reminder alert is due.";
+ }catch{
+  // Storage mutations are already committed; native alert errors never erase saved records.
+  return "Saved locally. Alert scheduling needs attention; reopen Reminders to retry.";
+ }
+}
+export function reconcileReminderNotifications(rows:readonly ReminderForAlert[],askPermission=false):Promise<string>{
+ const next=pending.then(()=>run(rows,askPermission),()=>run(rows,askPermission));
+ pending=next;
+ return next;
+}
+
+Qwen raw:
+### Product Decision and Native Test Gate
+
+**Product Decision:**
+- **Lock-Screen Reminder Privacy:** Implement a feature that allows users to opt-in or opt-out of lock-screen reminders. This should be configurable per reminder.
+- **Six-Occurrence Scheduling Horizon:** Allow reminders to be scheduled up to six occurrences in the future. This should be configurable per reminder.
+- **Local Wall-Clock Recurrence and DST Handling:** Ensure that reminders are scheduled correctly even when the device's wall-clock time is adjusted due to Daylight Saving Time (DST).
+
+**Native Test Gate:**
+- **Unit Tests:** Ensure that all functions in reminder-alert-plan.ts and reminder-alerts.native.ts are covered by unit tests.
+- **Integration Tests:** Test the interaction between the front-end and back-end to ensure that reminders are scheduled and canceled correctly.
+- **End-to-End (E2E) Tests:** Simulate user interactions to ensure that the lock-screen reminder privacy and six-occurrence scheduling horizon work as expected.
+
+### Evidence-Based Options with Product Recommendation, Drawbacks, and Benign Acceptance Checks
+
+#### Lock-Screen Reminder Privacy
+
+**Product Recommendation:**
+- **Feature:** Allow users to opt-in or opt-out of lock-screen reminders per reminder.
+- **Implementation:** Add a boolean field showOnLockScreen to the ReminderForAlert type and modify the notification scheduling logic to respect this field.
+
+**Drawbacks:**
+- **Complexity:** Adding per-reminder settings increases complexity.
+- **User Experience:** Users may find it confusing to manage settings for each reminder.
+
+**Benign Acceptance Checks:**
+- **Unit Tests:** Ensure that the notification scheduling logic correctly respects the showOnLockScreen field.
+- **Integration Tests:** Test that reminders are scheduled and canceled correctly when the showOnLockScreen field is toggled.
+
+#### Six-Occurrence Scheduling Horizon
+
+**Product Recommendation:**
+- **Feature:** Allow reminders to be scheduled up to six occurrences in the future.
+- **Implementation:** Modify the planReminderAlerts function to allow up to six occurrences.
+
+**Drawbacks:**
+- **Complexity:** Adding a configurable scheduling horizon increases complexity.
+- **User Experience:** Users may find it confusing to manage reminders for multiple occurrences.
+
+**Benign Acceptance Checks:**
+- **Unit Tests:** Ensure that the planReminderAlerts function correctly schedules up to six occurrences.
+- **Integration Tests:** Test that reminders are scheduled and canceled correctly when the scheduling horizon is set to six occurrences.
+
+#### Local Wall-Clock Recurrence and DST Handling
+
+**Product Recommendation:**
+- **Feature:** Ensure that reminders are scheduled correctly even when the device's wall-clock time is adjusted due to DST.
+- **Implementation:** Modify the localDate function to handle DST correctly.
+
+**Drawbacks:**
+- **Complexity:** Handling DST correctly increases complexity.
+- **User Experience:** Users may not notice the difference, but it is important for accurate scheduling.
+
+**Benign Acceptance Checks:**
+- **Unit Tests:** Ensure that the localDate function correctly handles DST.
+- **Integration Tests:** Test that reminders are scheduled and canceled correctly when the device's wall-clock time is adjusted due to DST.
+
+### Conclusion
+
+The proposed changes are necessary to improve the user experience and ensure accurate scheduling of reminders. The product decision and native test gate are well-defined, and the evidence-based options with product recommendation, drawbacks, and benign acceptance checks provide a clear path forward.
+
+Message collapsed
+Show more
+2 minutes ago
+
+
+
+Claude responded: Qwen first, since it adds little
+Weighing native repeating triggers against finite alert windows
+
+Weighing native repeating triggers against finite alert windows
+Qwen first, since it adds little
+Six occurrences. “Allow up to six” is already the current behavior (perReminder=6). Qwen doesn’t address the actual problem, which is what happens after six.
+DST. “Modify localDate to handle DST” contradicts the owner-approved roll-forward policy. The disclosure code already matches it, so there is nothing to change.
+Per-reminder privacy. The per-reminder showOnLockScreen flag is unevaluated against the cheaper global option, and its gates (“unit, integration and E2E tests”) are generic, not native.
+Source mismatch. The raw response never mentions that generic body text will interact with the dedupe logic in the code you pasted.
+CasitaDex: lock-screen privacy
+
+Options: titles always (current), a generic body by default with one global opt-in for titles, or a per-reminder setting.
+
+Recommendation: generic body by default with one global “show reminder titles on lock screen” setting. Offer a per-reminder override later only if users ask for it.
+
+Why generic body. On iOS the user’s Show Previews setting decides what shows, and the app cannot force hiding. Android lock-screen visibility needs reliable platform support too. A generic body is the one control that works on both.
+Risks. A generic body is less useful. Per-reminder control is more precise but needs more UI and more rescheduling states.
+Source-backed implementation hazards.
+reminder-alerts.native.ts dedupes with r.content.body===alert.title. With a generic body, every reconcile would see no match, reschedule everything and cancel the old alerts. Match on a data field instead.
+Android channel settings stick once a channel exists. Changing visibility on casitadex-reminders-v1 won’t take effect for installed users, so a new channel id is needed.
+Existing scheduled alerts that carry titles need migration so they don’t linger.
+CasitaDex: horizon
+
+Options:
+
+Disclose only. This is cheap and honest, but a daily reminder lapses after about 6 days.
+Fairness fix plus a visible “armed through <date>“ per reminder.
+Hybrid: use platform repeating triggers where they match your semantics (once, daily, weekly, yearly), and keep the finite window for monthly because of the clamp.
+
+Recommendation: do option 2 now, and pursue option 3 behind a native gate. Do not claim indefinite coverage for anything finite.
+
+New source-backed finding. The plan collects up to 6 alerts per reminder, then sorts globally by time and slices to 48. With about 9 or more reminders, a later-due reminder can end up with zero alerts armed. The success message at reminder-alerts.native.ts still says “Reminder alerts scheduled”. The cap should be allocated per reminder, with a message that reflects what actually got armed.
+
+Drawbacks of option 3. It is more native surface and more cancel and edit mapping. Do not rely on background refresh.
+
+Event Command: end time
+
+I have no Event Command source in this conversation, so the following assumes your described goal (no false completion) and is not a code review.
+
+End not set. Honest and low friction, but events never finish on their own.
+Default end (for example start + 3 hours). This risks false completion, such as a wedding running past midnight. It is worst if cleanup or deletion depends on it.
+Required end. Accurate, but it adds friction, and existing events would need a prompt rather than a backfill.
+
+Recommendation: end not set, shown as an explicit “End not set” state. Label elapsed events “Past”, never “Completed”. “Completed” should come only from the user, and no cleanup or delete action should key off an inferred end. Keep the verified-backup acknowledgment before deletion.
+
+Native acceptance gates (none run by me)
+Lock screen: iOS with previews set to Always and to When Unlocked, and Android with a secure lock screen. Check the generic default and the title opt-in. Confirm that tapping an alert still routes correctly.
+Upgrade from the old version: no duplicate or orphaned alerts, and the old channel’s behavior is understood.
+Horizon: a daily reminder untouched for 7 or more days, 9 or more reminders for the fairness check, and a pending count under the iOS limit of 64.
+DST and recurrence: America/Chicago around the March and November transitions, a reboot, and the monthly day-31 clamp.
+Event Command: overnight, all-day and timezone-spanning events, editing an end later, and the deletion preview before any cleanup.
+
+Create a doc
+
+
+
+
+
+just now
+
+You are out of free messages until 11:00 PM
+Upgrade
+Write a message…
+
+
+
+
+
+
+Claude is AI and can make mistakes. Please double-check responses.
+
+Sonnet 5.5
+ Medium
+Claude finished the response
+
+
+Keep chatting with Claude Pro
+
+Your free messages return at 11:00 PM, or keep going now with Pro.
+
+
+Higher usage limits
+
+Access to more Claude models
+
+Memory that carries across conversations
+
+Power through tasks with Claude
+Monthly
+$20/month
+Billed monthly
+Yearly
+Save 17%
+$17/month
+$200 billed annually
+Upgrade to Pro for $20/month
+See all plans
+·
+Not now
+
+Prices and plans are subject to change at Anthropic’s discretion.

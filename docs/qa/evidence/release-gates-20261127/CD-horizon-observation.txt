@@ -1,0 +1,17 @@
+{
+  "planned": 48,
+  "counts": {
+    "daily-0": 6,
+    "daily-1": 6,
+    "daily-2": 6,
+    "daily-3": 6,
+    "daily-4": 6,
+    "daily-5": 6,
+    "daily-6": 6,
+    "daily-7": 6,
+    "daily-8": 0
+  },
+  "unarmed": [
+    "daily-8"
+  ]
+}

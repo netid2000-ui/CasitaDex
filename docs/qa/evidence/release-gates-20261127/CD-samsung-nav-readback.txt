@@ -1,0 +1,4 @@
+Find: PASS — expected content marker 'search memories', observed count 1
+Photos: PASS — expected content marker 'photos', observed count 2
+Reminders: PASS — expected content marker 'add reminder', observed count 2
+Home: PASS — expected content marker 'add memory', observed count 2

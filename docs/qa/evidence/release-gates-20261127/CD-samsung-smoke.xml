@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="R5GL83X0K3N" tests="1" failures="1" time="48.305" timestamp="2026-11-27T20:50:46">
+    <testcase id="Physical Samsung Build 9 no-data-change smoke" name="Physical Samsung Build 9 no-data-change smoke" classname="Physical Samsung Build 9 no-data-change smoke" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/release-gates-20261127/CD-samsung-smoke.yaml" time="48.299" timestamp="2026-11-27T20:50:46" status="ERROR">
+      <failure>Assertion is false: "Add Memory" is visible</failure>
+    </testcase>
+  </testsuite>
+</testsuites>

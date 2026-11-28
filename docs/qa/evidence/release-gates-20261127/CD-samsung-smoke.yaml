@@ -1,0 +1,17 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Physical Samsung Build 9 no-data-change smoke
+---
+- launchApp:
+    clearState: false
+- assertVisible: "Home"
+- assertVisible: "Photos"
+- assertVisible: "Reminders"
+- assertVisible: "Find"
+- tapOn: "Find"
+- assertVisible: "Search memories.*"
+- tapOn: "Photos"
+- assertVisible: "Photos"
+- tapOn: "Reminders"
+- assertVisible: "Reminders"
+- tapOn: "Home"
+- assertVisible: "Add Memory"

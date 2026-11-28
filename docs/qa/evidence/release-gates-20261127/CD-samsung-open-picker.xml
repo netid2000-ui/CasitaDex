@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="R5GL83X0K3N" tests="1" failures="0" time="16.93" timestamp="2026-11-27T20:55:51">
+    <testcase id="Samsung non-destructive over-limit backup review" name="Samsung non-destructive over-limit backup review" classname="Samsung non-destructive over-limit backup review" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/release-gates-20261127/CD-samsung-open-picker.yaml" time="16.925" timestamp="2026-11-27T20:55:51" status="SUCCESS"/>
+  </testsuite>
+</testsuites>
