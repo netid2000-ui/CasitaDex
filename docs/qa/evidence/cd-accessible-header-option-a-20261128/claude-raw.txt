@@ -1,0 +1,98 @@
+Francisco explicitly approved Option A for CasitaDex: at enlarged text only, the Add Reminder and filter header scrolls; keep normal sticky and fixed app title/bottom navigation. Prior native iOS enlarged header occluded the toggle [18,346][384,441] within filter band [18,329][384,469]; at unobstructed y507 it worked. Independently research React Native ScrollView stickyHeaderIndices and Apple accessibility typography guidance, critique actual change and test; classify remaining ordinary usability/native gaps. No source edit, paid usage, or offensive testing. Actual diff:
+diff --git a/src/figma-first/FigmaReminders.tsx b/src/figma-first/FigmaReminders.tsx
+index 3164d1a..1543a56 100644
+--- a/src/figma-first/FigmaReminders.tsx
++++ b/src/figma-first/FigmaReminders.tsx
+@@ -26,7 +26,7 @@ export function FigmaReminders({coverage,showTitles=false,privacyBusy=false,onTo
+  const counts={upcoming:reminders.filter(r=>!r.completed&&!isOverdue(r)).length,overdue:reminders.filter(r=>!r.completed&&isOverdue(r)).length,completed:reminders.filter(r=>r.completed).length,memoryDates:unlinkedMemoryDue.length};
+  const labels={upcoming:'Upcoming',overdue:'Overdue',completed:'Completed',memoryDates:'Memory dates'};
+  const action=(label:string,run:()=>void,filled=false,selected?:boolean)=> <View style={{maxWidth:"100%"}}><Button compact editorial primary={filled} variant={filled?"tonal":"quiet"} selected={selected} label={label} onPress={run}/></View>;
+- return <ScrollView stickyHeaderIndices={[0]} contentContainerStyle={{backgroundColor:fg.page,paddingBottom:24}}><View style={{backgroundColor:fg.page,paddingHorizontal:18,paddingVertical:16,gap:14}}>
++ return <ScrollView stickyHeaderIndices={compactHeader?[]:[0]} contentContainerStyle={{backgroundColor:fg.page,paddingBottom:24}}><View style={{backgroundColor:fg.page,paddingHorizontal:18,paddingVertical:16,gap:14}}>
+   <View style={{flexDirection:'row',alignItems:'center',justifyContent:'space-between',flexWrap:'wrap',gap:8}}>{action('Add Reminder ›',onAdd)}</View>
+   <View style={{flexDirection:'row',flexWrap:'wrap',gap:6}}>{(['upcoming','overdue','completed','memoryDates'] as const).map(value=><View key={value} style={{flexGrow:1,flexBasis:compactHeader?"45%":"22%",minWidth:0}}><Pressable accessibilityRole='button' accessibilityLabel={labels[value]+' ('+counts[value]+')'} accessibilityState={{selected:tab===value}} onPress={()=>{setTab(value);setExpanded(null)}} style={({pressed})=>({flexGrow:1,minHeight:48,paddingHorizontal:7,paddingVertical:9,borderRadius:0,borderWidth:0,borderBottomWidth:tab===value?3:1,borderColor:tab===value?fg.headingInk:fg.secondaryInk,backgroundColor:'transparent',justifyContent:'center',alignItems:'center',opacity:pressed?0.75:1})}><Text style={{fontFamily:'Inter_400Regular',fontSize:12*textScale,textAlign:'center',color:fg.headingInk}}>{labels[value]}{counts[value] > 0 ? ' (' + counts[value] + ')' : ''}</Text></Pressable></View>)}</View>
+   </View><View style={{paddingHorizontal:18,gap:10}}>{onToggleTitles?<View style={{gap:8}}><Button compact editorial variant="quiet" label={alertSettings?"Hide alert settings":"Alert settings ›"} onPress={()=>setAlertSettings(v=>!v)}/>{alertSettings?<><Copy>Reminder titles are hidden in notification text by default. Showing titles may expose them on your lock screen.</Copy><Button label={showTitles?"Show notification titles: On":"Show notification titles: Off"} selected={showTitles} disabled={privacyBusy} onPress={onToggleTitles}/><Copy>Alerts are queued for a limited period. Reopen Reminders to renew them; device settings may affect delivery.</Copy>{onRenewAlerts?<Button label="Check device alerts" disabled={privacyBusy} onPress={onRenewAlerts}/>:null}</>:null}{coverage?.available?<Copy kind="small">Alerts queued for {coverage.armed} of {coverage.eligible} eligible reminders.{coverage.armed<coverage.eligible?" Some reminders have no queued alert.":""}</Copy>:<Copy kind="small">Alert coverage not checked.</Copy>}</View>:null}<Copy kind="section">{labels[tab]}</Copy>
+diff --git a/tests/reminder-header-accessibility.test.mjs b/tests/reminder-header-accessibility.test.mjs
+new file mode 100644
+index 0000000..45b9849
+--- /dev/null
++++ b/tests/reminder-header-accessibility.test.mjs
+@@ -0,0 +1,9 @@
++import test from "node:test";
++import assert from "node:assert/strict";
++import { readFileSync } from "node:fs";
++const source=readFileSync(new URL("../src/figma-first/FigmaReminders.tsx",import.meta.url),"utf8");
++test("enlarged reminder filters scroll with content while the standard header remains sticky",()=>{
++ assert.match(source,/const compactHeader=large\|\|fontScale>=1\.35/);
++ assert.match(source,/stickyHeaderIndices=\{compactHeader\?\[\]:\[0\]\}/);
++ assert.match(source,/flexBasis:compactHeader\?"45%":"22%"/);
++});
+
+Message collapsed
+Show more
+11 minutes ago
+
+
+
+Claude responded: Review of the enlarged-text header change (Option A)
+Searched the web
+
+Searched the web
+Review of the enlarged-text header change (Option A)
+
+This is a static review only. I ran nothing, and the native observation of the iOS occlusion is yours, not mine.
+
+Research
+React Native stickyHeaderIndices.
+The prop takes child indices that dock to the top while scrolling, and [0] pins the first child. It does not work with horizontal. I could read this text only on the Amazon Vega fork of the RN docs (https://developer.amazon.com/docs/react-native-vega/0.72/scrollview). The reactnative.dev page (https://reactnative.dev/docs/ScrollView) came back truncated for this prop.
+Passing [] therefore means “no sticky child”, so the change is a correct use of the API.
+I found nothing documenting how an iOS sticky header measures its own height or whether it is unreliable under font scaling. Treat the cause of the overlap as unknown.
+Apple guidance. The HIG typography page and the WWDC Dynamic Type session (https://developer.apple.com/videos/play/wwdc2024/10074) say to adapt layout at larger accessibility sizes while keeping the default layout at smaller sizes, and to test at the largest sizes. App Store Connect’s Larger Text criteria say the same (https://www.developer.apple.com/help/app-store-connect/manage-app-accessibility/larger-text-evaluation-criteria). None of it addresses sticky headers specifically, so it supports the direction but not this exact fix.
+Source observations
+What the diff does. In src/figma-first/FigmaReminders.tsx, stickyHeaderIndices={compactHeader?[]:[0]} makes the first child scroll at enlarged text. That matches Option A. The app title and bottom navigation are not inside this ScrollView, so the diff leaves them alone, but I can’t see their code.
+The 2×2 tab layout (flexBasis:"45%" when compact) is sensible. Tabs keep minHeight:48.
+Challenges
+The test is a string match, not behavior (source-backed).
+tests/reminder-header-accessibility.test.mjs only checks the source text for three patterns. It passes even if compactHeader is never true at runtime.
+It also asserts const compactHeader=large||fontScale>=1.35, so changing the threshold would fail it for the wrong reason.
+Fix: extract a pure usesCompactHeader(large,fontScale) and test the boundaries 1.34 and 1.35 and the large flag.
+The trigger is scale-only (hypothesis).
+The failing case was measured by position (toggle [18,346][384,441] inside the filter band [18,329][384,469]), which suggests the header band overlapped content below it, not just that text was big.
+A threshold of 1.35 may not cover a small phone at 1.3, landscape, split-screen or Android display-size changes, where the header is tall relative to the viewport.
+Alternative: switch off sticky when the measured header height exceeds a fraction of the viewport (for example 35%), in addition to the scale check.
+Root cause not shown (hypothesis). If the overlap came from sticky-header measurement and not from header height, removing stickiness may fix the symptom only at the sizes tested. Native re-run needed.
+Usability tradeoff (owner-accepted, noted). At enlarged sizes, “Add Reminder” and the filter tabs scroll away. Someone deep in a list must scroll back up. Option A accepts this. If it hurts, a back-to-top control or a fixed bottom action would help, but I’m not recommending a change.
+Classification
+Item	Class
+stickyHeaderIndices use is correct per RN docs	Source-backed, no gap
+Test checks strings only	Source gap, fix recommended
+Threshold sufficiency, header-height alternative	Hypothesis
+Overlap root cause	Unknown until native re-run
+Add and filter access at enlarged text	Owner-accepted tradeoff
+Native gates (none run by me)
+Re-run the same iOS enlarged-text path and confirm the toggle is no longer covered and is tappable at the previous y-coordinates.
+Test across several accessibility sizes, plus the boundary near 1.35.
+Test landscape, a small iPhone and Android’s largest font and display sizes.
+Change the text size while the screen is open and confirm the header switches without a remount glitch.
+Check with VoiceOver and TalkBack that the filter order and focus are unchanged.
+
+Create a spreadsheet
+
+
+
+
+
+10 minutes ago
+
+Write a message…
+
+
+
+
+
+
+Claude is AI and can make mistakes. Please double-check cited sources.
+
+Sonnet 5.5
+ Medium
+Claude finished the response

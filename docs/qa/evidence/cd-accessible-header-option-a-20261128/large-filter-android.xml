@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="EventCommandGuestQA" tests="1" failures="0" time="19.386" timestamp="2026-11-28T11:19:56">
+    <testcase id="Enlarged filter controls remain functional and Add Reminder remains reachable" name="Enlarged filter controls remain functional and Add Reminder remains reachable" classname="Enlarged filter controls remain functional and Add Reminder remains reachable" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/cd-accessible-header-option-a-20261128/large-filter-android.yaml" time="19.381" timestamp="2026-11-28T11:19:56" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

@@ -1,0 +1,20 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Scroll after status message changes viewport and turn title privacy back off
+---
+- swipe:
+    start: 50%,80%
+    end: 50%,58%
+    duration: 650
+- tapOn: "Show notification titles: On"
+- extendedWaitUntil:
+    visible: "Show notification titles: Off"
+    timeout: 30000
+- scrollUntilVisible:
+    element: "Check device alerts"
+    direction: DOWN
+    timeout: 20000
+- assertVisible: "Home"
+- assertVisible: "Photos"
+- assertVisible: "Reminders"
+- assertVisible: "Find"
+- takeScreenshot: CD-enlarged-scroll-verified

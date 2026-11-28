@@ -1,0 +1,10 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Verify actual standard sticky header and four fixed tab labels after scroll
+---
+- assertVisible: "Add Reminder.*"
+- assertVisible: "Upcoming.*"
+- assertVisible: "Home"
+- assertVisible: "Photos"
+- assertVisible: "Reminders"
+- assertVisible: "Find"
+- takeScreenshot: CD-standard-verified

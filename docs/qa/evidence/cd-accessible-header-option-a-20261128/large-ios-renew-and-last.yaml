@@ -1,0 +1,21 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Actual enlarged alert check and last reminder are reachable
+---
+- tapOn:
+    point: "50%,61%"
+- extendedWaitUntil:
+    visible: "Saved locally. Alerts queued.*"
+    timeout: 20000
+- swipe:
+    start: 50%,79%
+    end: 50%,58%
+    duration: 700
+- scrollUntilVisible:
+    element: "Edit QA Scale Linked Reminder"
+    direction: DOWN
+    timeout: 20000
+- assertVisible: "Edit QA Scale Linked Reminder"
+- assertVisible: "Home"
+- assertVisible: "Photos"
+- assertVisible: "Reminders"
+- assertVisible: "Find"

@@ -1,0 +1,50 @@
+Final closure, exact runtime 8126019: typecheck/lint/580 pass (1 existing skip); both builds succeeded; installed iOS JS bundle and Android emulator/Samsung APK hashes match exact built artifacts. Native final candidate standard Add/filter sticky and four tabs PASS on all three; OS enlarged iOS accessibility-large and Android 1.6 PASS privacy toggle Off->On->Off and navigation; all four filter controls and Add/Cancel PASS on both virtual devices; Samsung app-only Large text PASS (global font unchanged). Initial candidate showed fixed status text consumes 179pt after toggle, extra scroll required; separate gap, not an unapproved correction. Figma editable normal unchanged, enlarged scroll variants and scrolled viewport light/dark. Please close or retain prior objections at narrow scope. Native checks were executed by ChatGPT; no claim you ran them. No release or full accessibility certification.
+
+just now
+
+
+
+Claude responded: Closure for 8126019
+Closure for 8126019
+
+I ran nothing here. The typecheck, lint, 580-pass count, hash matches and all native results below are ChatGPT’s reports, which I accept as reported.
+
+Closed
+Option A change and test. usesCompactReminderHeader with boundary tests, plus the refactor, are sound in source. The earlier native results on e5add4a carried over to 8126019 as I expected, and the exact-runtime rerun confirms the result: standard sticky header and four tabs, enlarged iOS and Android 1.6 privacy toggle and navigation, all filter controls and Add/Cancel, and Samsung Large text.
+Weak string-only test. Resolved by the pure helper and boundary test.
+Stale snapshot, in-queue title count, committed-save false failure, queue recovery, connection leak. Closed by the earlier diffs, as I said then.
+Retained, at narrow scope
+Fixed status text consumes about 179 pt after the privacy toggle (open product gap).
+Outside Option A, as you say, and I agree it was not an unapproved correction.
+Not closed. At enlarged sizes it still shrinks the scroll viewport and forced an extra scroll before the next toggle.
+Narrow ask: put the status text inside the scroll content, or cap its height and make it dismissible, and give it its own state instead of error. This needs your decision.
+Scale-only compact trigger (low, hypothesis). Not exercised beyond the tested sizes: a small iPhone near scale 1.3, landscape, split-screen, Android display-size changes. Nothing in these results contradicts it, but nothing covers it either.
+Reminder-specific items unrelated to the header, still not resolved by anything shown to me:
+Generic fallback copy after a failed alert check shows the privacy warning on non-privacy actions (my minor points 1 and 2 last round).
+Alert delivery, lock-screen text, 7-day untouched daily reminder, upgrade from a title-bearing build and DST delivery have no native evidence.
+Not covered, as you state: VoiceOver and TalkBack, the largest accessibility sizes, live text-size change while the screen is open.
+Statement of scope
+
+Passing on three devices at standard and one enlarged size supports “the Reminders header and toggle work at the tested sizes”. It does not certify accessibility, delivery or release readiness, and I make no such claim. For this header change, I have no further objection. Item 1 is the one open usability decision.
+
+
+Create a doc
+
+
+
+
+
+just now
+
+Write a message…
+
+
+
+
+
+
+Claude is AI and can make mistakes. Please double-check responses.
+
+Sonnet 5.5
+ Medium
+Claude finished the response

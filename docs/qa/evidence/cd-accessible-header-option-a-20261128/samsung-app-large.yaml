@@ -1,0 +1,35 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Samsung in-app Large text enables scrollable filters and intact privacy controls
+---
+- tapOn: "Large text"
+- tapOn: "Reminders"
+- scrollUntilVisible:
+    element: "Alert settings.*"
+    direction: DOWN
+    timeout: 20000
+- tapOn: "Alert settings.*"
+- swipe:
+    start: 50%,70%
+    end: 50%,40%
+    duration: 650
+- scrollUntilVisible:
+    element: "Show notification titles: Off"
+    direction: DOWN
+    timeout: 20000
+- tapOn: "Show notification titles: Off"
+- extendedWaitUntil:
+    visible: "Show notification titles: On"
+    timeout: 30000
+- scrollUntilVisible:
+    element: "Show notification titles: On"
+    direction: DOWN
+    timeout: 20000
+- tapOn: "Show notification titles: On"
+- extendedWaitUntil:
+    visible: "Show notification titles: Off"
+    timeout: 30000
+- assertVisible: "Home"
+- assertVisible: "Photos"
+- assertVisible: "Reminders"
+- assertVisible: "Find"
+- takeScreenshot: CD-samsung-app-large

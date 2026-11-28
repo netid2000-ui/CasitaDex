@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="EventCommandGuestQA" tests="1" failures="0" time="9.905" timestamp="2026-11-28T11:26:17">
+    <testcase id="Standard text retains sticky Add/filter row and fixed bottom navigation" name="Standard text retains sticky Add/filter row and fixed bottom navigation" classname="Standard text retains sticky Add/filter row and fixed bottom navigation" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/cd-accessible-header-option-a-20261128/standard-samsung.yaml" time="9.9" timestamp="2026-11-28T11:26:17" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

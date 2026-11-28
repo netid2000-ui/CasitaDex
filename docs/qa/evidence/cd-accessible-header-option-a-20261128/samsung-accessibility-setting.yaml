@@ -1,0 +1,10 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Open app-only accessibility setting without changing Samsung device settings
+---
+- tapOn: "Settings"
+- scrollUntilVisible:
+    element: "Accessibility.*"
+    direction: DOWN
+    timeout: 20000
+- tapOn: "Accessibility.*"
+- assertVisible: "Large text"

@@ -1,0 +1,18 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Standard text retains sticky Add/filter row and fixed bottom navigation
+---
+- launchApp:
+    clearState: false
+- extendedWaitUntil:
+    visible: "Find a memory"
+    timeout: 20000
+- tapOn: "Reminders"
+- tapOn: "Alert settings.*"
+- swipe:
+    start: 50%,72%
+    end: 50%,42%
+    duration: 650
+- assertVisible: "Add Reminder.*"
+- assertVisible: "Upcoming.*"
+- assertVisible: "Primary navigation"
+- takeScreenshot: CD-standard-sticky-header

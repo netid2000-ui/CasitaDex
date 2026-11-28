@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="CasitaDex Plus 25.99 Recovery QA - iOS 27.0 - 36C7AE6D-1615-4A23-B313-46EBD092DA6C" tests="1" failures="0" time="8.307" timestamp="2026-11-28T11:26:37">
+    <testcase id="Standard text retains sticky Add/filter row and fixed bottom navigation" name="Standard text retains sticky Add/filter row and fixed bottom navigation" classname="Standard text retains sticky Add/filter row and fixed bottom navigation" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/cd-accessible-header-option-a-20261128/r2-standard-ios.yaml" time="8.299" timestamp="2026-11-28T11:26:37" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

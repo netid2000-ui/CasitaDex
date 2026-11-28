@@ -1,0 +1,7 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Place Check device alerts inside actual visible scroll viewport
+---
+- swipe:
+    start: 50%,57%
+    end: 50%,79%
+    duration: 1000

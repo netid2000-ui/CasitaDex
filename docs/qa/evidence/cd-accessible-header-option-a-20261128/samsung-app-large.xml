@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="R5GL83X0K3N" tests="1" failures="0" time="21.569" timestamp="2026-11-28T11:22:49">
+    <testcase id="Samsung in-app Large text enables scrollable filters and intact privacy controls" name="Samsung in-app Large text enables scrollable filters and intact privacy controls" classname="Samsung in-app Large text enables scrollable filters and intact privacy controls" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/cd-accessible-header-option-a-20261128/samsung-app-large.yaml" time="21.563" timestamp="2026-11-28T11:22:49" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

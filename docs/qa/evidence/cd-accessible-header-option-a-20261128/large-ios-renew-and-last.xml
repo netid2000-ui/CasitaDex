@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="CasitaDex Plus 25.99 Recovery QA - iOS 27.0 - 36C7AE6D-1615-4A23-B313-46EBD092DA6C" tests="1" failures="0" time="4.16" timestamp="2026-11-28T11:19:13">
+    <testcase id="Actual enlarged alert check and last reminder are reachable" name="Actual enlarged alert check and last reminder are reachable" classname="Actual enlarged alert check and last reminder are reachable" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/cd-accessible-header-option-a-20261128/large-ios-renew-and-last.yaml" time="4.153" timestamp="2026-11-28T11:19:13" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

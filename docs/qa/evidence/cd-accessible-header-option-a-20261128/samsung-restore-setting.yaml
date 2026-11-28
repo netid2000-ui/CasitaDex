@@ -1,0 +1,11 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Restore original app-only Large text preference
+---
+- tapOn: "Settings"
+- scrollUntilVisible:
+    element: "Accessibility.*"
+    direction: DOWN
+    timeout: 20000
+- tapOn: "Accessibility.*"
+- tapOn: "Large text"
+- assertVisible: "Large text"

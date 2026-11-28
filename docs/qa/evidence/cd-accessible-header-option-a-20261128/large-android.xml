@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="EventCommandGuestQA" tests="1" failures="0" time="14.018" timestamp="2026-11-28T11:15:58">
+    <testcase id="Enlarged text scrolls Add and filters above alert controls; toggle works" name="Enlarged text scrolls Add and filters above alert controls; toggle works" classname="Enlarged text scrolls Add and filters above alert controls; toggle works" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/cd-accessible-header-option-a-20261128/large-android.yaml" time="14.013" timestamp="2026-11-28T11:15:58" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

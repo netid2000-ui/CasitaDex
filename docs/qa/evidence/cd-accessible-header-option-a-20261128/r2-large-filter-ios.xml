@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="CasitaDex Plus 25.99 Recovery QA - iOS 27.0 - 36C7AE6D-1615-4A23-B313-46EBD092DA6C" tests="1" failures="0" time="20.45" timestamp="2026-11-28T11:28:28">
+    <testcase id="Enlarged filter controls remain functional and Add Reminder remains reachable" name="Enlarged filter controls remain functional and Add Reminder remains reachable" classname="Enlarged filter controls remain functional and Add Reminder remains reachable" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/cd-accessible-header-option-a-20261128/large-filter-ios.yaml" time="20.445" timestamp="2026-11-28T11:28:28" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

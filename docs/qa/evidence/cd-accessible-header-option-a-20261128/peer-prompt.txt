@@ -1,0 +1,89 @@
+Peer challenge after preserving your independent response. Qwen's raw assessment follows, then ChatGPT's disposition. Challenge actual evidence, not agreement count. QWEN:
+The provided code snippet and test file are designed to address the usability issue where the filter header in the CasitaDex app was being occluded by the enlarged header on iOS devices. The change involves modifying the `stickyHeaderIndices` prop of the `ScrollView` component based on the `compactHeader` state, which is determined by the `large` or `fontScale` conditions.
+
+### Critique of the Actual Change
+
+1. **Sticky Header Indices Adjustment**:
+   - The change correctly adjusts the `stickyHeaderIndices` prop based on the `compactHeader` state. When `compactHeader` is `true`, the filter header is not sticky, and when it is `false`, the first child (which is assumed to be the filter header) is sticky.
+   - This ensures that the filter header does not overlap with the enlarged header on iOS devices.
+
+2. **Flex Basis Adjustment**:
+   - The `flexBasis` property is adjusted based on the `compactHeader` state. When `compactHeader` is `true`, the flex basis is set to "45%", and when it is `false`, it is set to "22%". This ensures that the filter header takes up the appropriate space based on the screen size.
+
+3. **Accessibility Test**:
+   - A new test file `reminder-header-accessibility.test.mjs` is added to verify that the filter header behaves as expected when the enlarged header is present.
+   - The test checks if the `compactHeader` state is correctly determined and if the `stickyHeaderIndices` prop is set accordingly.
+   - The test also checks if the `flexBasis` property is correctly set based on the `compactHeader` state.
+
+### Usability/Native Gaps
+
+1. **Performance**:
+   - The change may introduce a slight performance overhead due to the conditional rendering of the `stickyHeaderIndices` prop. However, this is unlikely to be a significant issue unless the app is already performance-constrained.
+
+2. **Testing**:
+   - The test file is a good start, but it may be beneficial to add more tests to cover different scenarios, such as different screen sizes, different font scales, and different device orientations.
+
+3. **Accessibility**:
+   - The test ensures that the filter header behaves as expected when the enlarged header is present. However, it may be beneficial to add more accessibility tests to ensure that the app is accessible to all users, including those with disabilities.
+
+4. **User Feedback**:
+   - It may be beneficial to gather user feedback to ensure that the change meets the user's expectations and does not introduce any new issues.
+
+### Conclusion
+
+The change is well-implemented and addresses the usability issue effectively. The test file is a good start, but it may be beneficial to add more tests to cover different scenarios. The change does not introduce any significant performance overhead and is likely to meet the user's expectations.
+CHATGPT: React Native official ScrollView docs explicitly support [0] docking first child; [] removes all sticky children. Apple HIG supports adaptive layout. Your source test concern accepted: actual pure helper and boundary test added, 580 passing, 1 existing skip, typecheck/lint pass. Initial runtime e5add4a native standard iOS/Android/Samsung sticky header and four fixed tabs passed; enlarged OS iOS and Android filter controls, Add/Cancel, title toggle default Off->On->Off, check device alerts, last linked reminder reachable. Samsung app-only Large text confirmed scrollable header, title toggle and nav, then preference restored. Native iOS had separate status message outside scroll consuming y257-436 after On, required extra scroll before turning Off; no sticky header overlap from Add/filter anymore; this is separate preexisting status-message issue and should not be conflated with Option A. Final candidate 8126019 same rule refactored, rebuilding/retesting. No claims VoiceOver/TalkBack or max sizes. Please assess correction and remaining risks.
+Actual diff:
+diff --git a/src/figma-first/FigmaReminders.tsx b/src/figma-first/FigmaReminders.tsx
+index 1543a56..280256b 100644
+--- a/src/figma-first/FigmaReminders.tsx
++++ b/src/figma-first/FigmaReminders.tsx
+@@ -5,6 +5,7 @@ import type {StandaloneReminder} from '../standalone-reminders';
+ import {useFigmaTheme} from './tokens';
+ import {Button,Copy} from '../ui';
+ import {useData} from '../state';
++import {usesCompactReminderHeader} from '../reminder-list-layout';
+ const formatReminderDate=(date:string,time:string)=>{
+  const parsed=new Date(`${date}T${time}:00`);
+  if(Number.isNaN(parsed.getTime()))return `${date} · ${time}`;
+@@ -15,7 +16,7 @@ export type FigmaRemindersProps={coverage?:{eligible:number;armed:number;through
+ export function FigmaReminders({coverage,showTitles=false,privacyBusy=false,onToggleTitles,onRenewAlerts,reminders,onAdd,onEdit,onComplete,onOpenMemory,onDelete,memoryDue=[],onSetMemoryReminder}:FigmaRemindersProps){
+  const fg=useFigmaTheme();
+  const {large}=useData(),{fontScale}=useWindowDimensions();
+- const compactHeader=large||fontScale>=1.35;const textScale=large?1.6:1;
++ const compactHeader=usesCompactReminderHeader(large,fontScale);const textScale=large?1.6:1;
+  const [tab,setTab]=useState<'upcoming'|'overdue'|'completed'|'memoryDates'>('upcoming');
+  const now=new Date();
+  const isOverdue=(r:StandaloneReminder)=>new Date(r.dueDate+'T'+r.dueTime+':00').getTime()<now.getTime();
+diff --git a/src/reminder-list-layout.ts b/src/reminder-list-layout.ts
+new file mode 100644
+index 0000000..023812d
+--- /dev/null
++++ b/src/reminder-list-layout.ts
+@@ -0,0 +1,4 @@
++/** Existing compact filter layout also controls whether its header can dock. */
++export function usesCompactReminderHeader(large:boolean,fontScale:number):boolean {
++ return large || fontScale >= 1.35;
++}
+diff --git a/tests/reminder-header-accessibility.test.mjs b/tests/reminder-header-accessibility.test.mjs
+index 45b9849..c893498 100644
+--- a/tests/reminder-header-accessibility.test.mjs
++++ b/tests/reminder-header-accessibility.test.mjs
+@@ -1,9 +1,16 @@
+ import test from "node:test";
+ import assert from "node:assert/strict";
+ import { readFileSync } from "node:fs";
++import {usesCompactReminderHeader} from "../src/reminder-list-layout.ts";
+ const source=readFileSync(new URL("../src/figma-first/FigmaReminders.tsx",import.meta.url),"utf8");
+ test("enlarged reminder filters scroll with content while the standard header remains sticky",()=>{
+- assert.match(source,/const compactHeader=large\|\|fontScale>=1\.35/);
++ assert.match(source,/const compactHeader=usesCompactReminderHeader\(large,fontScale\)/);
+  assert.match(source,/stickyHeaderIndices=\{compactHeader\?\[\]:\[0\]\}/);
+  assert.match(source,/flexBasis:compactHeader\?"45%":"22%"/);
+ });
++
++test("standard scale keeps sticky header, both enlarged-text choices disable it at the boundary",()=>{
++ for(const scale of [0.85,1,1.34])assert.equal(usesCompactReminderHeader(false,scale),false);
++ for(const scale of [1.35,1.6,2,3])assert.equal(usesCompactReminderHeader(false,scale),true);
++ for(const scale of [0.85,1,1.34,2])assert.equal(usesCompactReminderHeader(true,scale),true);
++});

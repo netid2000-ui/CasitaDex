@@ -1,0 +1,29 @@
+Francisco explicitly approved Option A for CasitaDex: at enlarged text only, the Add Reminder and filter header scrolls; keep normal sticky and fixed app title/bottom navigation. Prior native iOS enlarged header occluded the toggle [18,346][384,441] within filter band [18,329][384,469]; at unobstructed y507 it worked. Local source review. Primary-source excerpts: RN ScrollView stickyHeaderIndices defines which children dock; index 0 fixes first child. Apple HIG encourages adjusting layout at larger text sizes to minimize crowding/overlap. Critique actual change and test; classify remaining ordinary usability/native gaps. No source edit, paid usage, or offensive testing. Actual diff:
+diff --git a/src/figma-first/FigmaReminders.tsx b/src/figma-first/FigmaReminders.tsx
+index 3164d1a..1543a56 100644
+--- a/src/figma-first/FigmaReminders.tsx
++++ b/src/figma-first/FigmaReminders.tsx
+@@ -26,7 +26,7 @@ export function FigmaReminders({coverage,showTitles=false,privacyBusy=false,onTo
+  const counts={upcoming:reminders.filter(r=>!r.completed&&!isOverdue(r)).length,overdue:reminders.filter(r=>!r.completed&&isOverdue(r)).length,completed:reminders.filter(r=>r.completed).length,memoryDates:unlinkedMemoryDue.length};
+  const labels={upcoming:'Upcoming',overdue:'Overdue',completed:'Completed',memoryDates:'Memory dates'};
+  const action=(label:string,run:()=>void,filled=false,selected?:boolean)=> <View style={{maxWidth:"100%"}}><Button compact editorial primary={filled} variant={filled?"tonal":"quiet"} selected={selected} label={label} onPress={run}/></View>;
+- return <ScrollView stickyHeaderIndices={[0]} contentContainerStyle={{backgroundColor:fg.page,paddingBottom:24}}><View style={{backgroundColor:fg.page,paddingHorizontal:18,paddingVertical:16,gap:14}}>
++ return <ScrollView stickyHeaderIndices={compactHeader?[]:[0]} contentContainerStyle={{backgroundColor:fg.page,paddingBottom:24}}><View style={{backgroundColor:fg.page,paddingHorizontal:18,paddingVertical:16,gap:14}}>
+   <View style={{flexDirection:'row',alignItems:'center',justifyContent:'space-between',flexWrap:'wrap',gap:8}}>{action('Add Reminder ›',onAdd)}</View>
+   <View style={{flexDirection:'row',flexWrap:'wrap',gap:6}}>{(['upcoming','overdue','completed','memoryDates'] as const).map(value=><View key={value} style={{flexGrow:1,flexBasis:compactHeader?"45%":"22%",minWidth:0}}><Pressable accessibilityRole='button' accessibilityLabel={labels[value]+' ('+counts[value]+')'} accessibilityState={{selected:tab===value}} onPress={()=>{setTab(value);setExpanded(null)}} style={({pressed})=>({flexGrow:1,minHeight:48,paddingHorizontal:7,paddingVertical:9,borderRadius:0,borderWidth:0,borderBottomWidth:tab===value?3:1,borderColor:tab===value?fg.headingInk:fg.secondaryInk,backgroundColor:'transparent',justifyContent:'center',alignItems:'center',opacity:pressed?0.75:1})}><Text style={{fontFamily:'Inter_400Regular',fontSize:12*textScale,textAlign:'center',color:fg.headingInk}}>{labels[value]}{counts[value] > 0 ? ' (' + counts[value] + ')' : ''}</Text></Pressable></View>)}</View>
+   </View><View style={{paddingHorizontal:18,gap:10}}>{onToggleTitles?<View style={{gap:8}}><Button compact editorial variant="quiet" label={alertSettings?"Hide alert settings":"Alert settings ›"} onPress={()=>setAlertSettings(v=>!v)}/>{alertSettings?<><Copy>Reminder titles are hidden in notification text by default. Showing titles may expose them on your lock screen.</Copy><Button label={showTitles?"Show notification titles: On":"Show notification titles: Off"} selected={showTitles} disabled={privacyBusy} onPress={onToggleTitles}/><Copy>Alerts are queued for a limited period. Reopen Reminders to renew them; device settings may affect delivery.</Copy>{onRenewAlerts?<Button label="Check device alerts" disabled={privacyBusy} onPress={onRenewAlerts}/>:null}</>:null}{coverage?.available?<Copy kind="small">Alerts queued for {coverage.armed} of {coverage.eligible} eligible reminders.{coverage.armed<coverage.eligible?" Some reminders have no queued alert.":""}</Copy>:<Copy kind="small">Alert coverage not checked.</Copy>}</View>:null}<Copy kind="section">{labels[tab]}</Copy>
+diff --git a/tests/reminder-header-accessibility.test.mjs b/tests/reminder-header-accessibility.test.mjs
+new file mode 100644
+index 0000000..45b9849
+--- /dev/null
++++ b/tests/reminder-header-accessibility.test.mjs
+@@ -0,0 +1,9 @@
++import test from "node:test";
++import assert from "node:assert/strict";
++import { readFileSync } from "node:fs";
++const source=readFileSync(new URL("../src/figma-first/FigmaReminders.tsx",import.meta.url),"utf8");
++test("enlarged reminder filters scroll with content while the standard header remains sticky",()=>{
++ assert.match(source,/const compactHeader=large\|\|fontScale>=1\.35/);
++ assert.match(source,/stickyHeaderIndices=\{compactHeader\?\[\]:\[0\]\}/);
++ assert.match(source,/flexBasis:compactHeader\?"45%":"22%"/);
++});

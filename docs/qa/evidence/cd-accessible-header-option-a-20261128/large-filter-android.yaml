@@ -1,0 +1,49 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Enlarged filter controls remain functional and Add Reminder remains reachable
+---
+- launchApp:
+    clearState: false
+- extendedWaitUntil:
+    visible: "Find a memory"
+    timeout: 20000
+- tapOn: "Reminders"
+- tapOn: "Overdue.*"
+- scrollUntilVisible:
+    element: "Edit QA Policy Daily Queue Android"
+    direction: DOWN
+    timeout: 20000
+- assertVisible: "Edit QA Policy Daily Queue Android"
+- scrollUntilVisible:
+    element: "Completed.*"
+    direction: UP
+    timeout: 20000
+- tapOn: "Completed.*"
+- scrollUntilVisible:
+    element: "No completed reminders."
+    direction: DOWN
+    timeout: 20000
+- scrollUntilVisible:
+    element: "Memory dates.*"
+    direction: UP
+    timeout: 20000
+- tapOn: "Memory dates.*"
+- scrollUntilVisible:
+    element: "No unlinked memory dates."
+    direction: DOWN
+    timeout: 20000
+- scrollUntilVisible:
+    element: "Upcoming.*"
+    direction: UP
+    timeout: 20000
+- tapOn: "Upcoming.*"
+- scrollUntilVisible:
+    element: "Edit QA Scale Linked Reminder"
+    direction: DOWN
+    timeout: 20000
+- scrollUntilVisible:
+    element: "Add Reminder.*"
+    direction: UP
+    timeout: 20000
+- tapOn: "Add Reminder.*"
+- assertVisible: "Reminder title.*"
+- tapOn: "Cancel"

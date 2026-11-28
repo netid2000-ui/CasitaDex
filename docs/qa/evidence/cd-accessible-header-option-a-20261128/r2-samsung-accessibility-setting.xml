@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="R5GL83X0K3N" tests="1" failures="0" time="7.581" timestamp="2026-11-28T11:28:57">
+    <testcase id="Open app-only accessibility setting without changing Samsung device settings" name="Open app-only accessibility setting without changing Samsung device settings" classname="Open app-only accessibility setting without changing Samsung device settings" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/cd-accessible-header-option-a-20261128/samsung-accessibility-setting.yaml" time="7.575" timestamp="2026-11-28T11:28:57" status="SUCCESS"/>
+  </testsuite>
+</testsuites>
