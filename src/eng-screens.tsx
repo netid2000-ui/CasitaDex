@@ -491,6 +491,7 @@ export function EngMore({initialAction}:{initialAction?:string}={}){
     {incoming?<>
       <Copy>{incoming.source}</Copy>{incoming.reminders?<Copy>Standalone reminders in backup: {incoming.reminders.rows.length}. Confirming replaces all current standalone reminders.</Copy>:<Copy>Legacy archive: current standalone reminders will be kept.</Copy>}<Copy>{incoming.snapshot.data.memories.length} memories, {incoming.snapshot.data.media.media.length} saved photos, {incoming.snapshot.draft?"1 unfinished draft":"no unfinished draft"}, {incoming.snapshot.draft?.photos.length??0} draft photos.</Copy>
       <Copy>Active: {incoming.snapshot.data.memories.filter(m=>m.lifecycle==="active").length}; Archived: {incoming.snapshot.data.memories.filter(m=>m.lifecycle==="archived").length}; Recently Deleted: {incoming.snapshot.data.memories.filter(m=>m.lifecycle==="recently_deleted").length}.</Copy>
+      {memoryLimitEnforcementEnabled&&countedMemories(incoming.snapshot.data.memories)>FREE_MEMORY_LIMIT&&plusState.entitlement!=="plus"?<Copy style={{fontWeight:"700"}}>This backup contains more than 20 active and archived memories. Free restoration needs a backup within that limit, or verified Plus. Your current collection is kept if restoration is blocked.</Copy>:null}
       <Copy>Replacing the collection keeps the current full state as a recoverable previous save.</Copy>
       {incoming.review.draft.hasDraft?<>
         <Copy>You already have an unfinished draft. Choose which one to use.</Copy>

@@ -62,6 +62,7 @@ export default function Plus(){
    }}><Text style={text}>Retry store price</Text></Pressable>}
    <Pressable testID="plus-restore" accessibilityRole="button" accessibilityState={{disabled:busy,busy}} disabled={busy} onPress={()=>{void run('restore');}} style={button}><Text style={text}>Restore purchases</Text></Pressable>
    <Text testID="plus-ownership" accessibilityLiveRegion="polite" style={text}>{owned?(ownership.status==='cached'||ownership.status==='error'?'Previously verified Plus access · store check pending':'Verified Plus access'):ownership.status==='ready'?'Free plan':ownership.status==='checking'?'Checking store ownership…':'Store ownership unavailable'}</Text>
+   {(ownership.status==='cached'||ownership.status==='error')?<Text style={{...text,color:fg.secondaryInk}}>Store verification is temporarily unavailable. Previously verified Android access may continue for up to seven days after the last successful store check. Reconnect to refresh automatically, or use Restore purchases. Existing memories remain accessible.</Text>:null}
    {message?<Text testID="plus-status" accessibilityLiveRegion="polite" style={text}>{message}</Text>:null}
   </View>
   <ScrollView contentContainerStyle={{padding:16,gap:16}}>

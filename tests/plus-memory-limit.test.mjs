@@ -115,3 +115,17 @@ test('Free external restore counts incoming active and archived, not the replace
   assert.equal(restored.data.memories.filter(m=>m.lifecycle!=='recently_deleted').length,20);
  }finally{x.close();source.close();}
 });
+
+test('v4 replacement rechecks Free cap at commit and keeps previous reminders and collection',async()=>{
+ const state={entitlement:'plus',status:'ready'},x=setup(undefined,{requireMemoryCapacity:policy(state)}),source=setup();
+ try{
+  await add(x.store,{title:'Keep current'});
+  for(let i=0;i<21;i++)await add(source.store,{title:'Incoming '+i});
+  const incoming=await source.store.backupWithReminders();
+  const {collectionToken,reminderToken}=await x.store.reviewRestore(incoming.snapshot);
+  await x.store.stageRestore(incoming.snapshot,incoming.read,collectionToken,reminderToken);
+  const before=await x.store.backupWithReminders();state.entitlement='free';
+  await assert.rejects(x.store.restoreV4(incoming.snapshot,incoming.reminders,'incoming',collectionToken,reminderToken),/more than 20/);
+  const after=await x.store.backupWithReminders();assert.deepEqual(after.snapshot,before.snapshot);assert.deepEqual(after.reminders,before.reminders);
+ }finally{x.close();source.close();}
+});
