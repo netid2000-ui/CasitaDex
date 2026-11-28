@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="EventCommandGuestQA" tests="1" failures="0" time="9.871" timestamp="2026-11-27T19:12:57">
+    <testcase id="Existing synthetic collection remains after 21-memory restore rejection" name="Existing synthetic collection remains after 21-memory restore rejection" classname="Existing synthetic collection remains after 21-memory restore rejection" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/owner-review-corrections-20261127/CD9-android-preservation.yaml" time="9.867" timestamp="2026-11-27T19:12:57" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

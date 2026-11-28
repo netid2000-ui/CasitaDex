@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="EventCommandGuestQA" tests="1" failures="0" time="10.007" timestamp="2026-11-27T19:24:34">
+    <testcase id="Verify original synthetic 100-memory collection after boundary restores" name="Verify original synthetic 100-memory collection after boundary restores" classname="Verify original synthetic 100-memory collection after boundary restores" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/owner-review-corrections-20261127/CD9-final-preservation.yaml" time="10.002" timestamp="2026-11-27T19:24:34" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="EventCommandGuestQA" tests="1" failures="0" time="17.427" timestamp="2026-11-27T19:09:37">
+    <testcase id="Android Build 9 Free 21-memory restore warning and non-destructive rejection" name="Android Build 9 Free 21-memory restore warning and non-destructive rejection" classname="Android Build 9 Free 21-memory restore warning and non-destructive rejection" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/owner-review-corrections-20261127/CD9-android-21.yaml" time="17.423" timestamp="2026-11-27T19:09:37" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

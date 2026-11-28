@@ -1,0 +1,8 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Verify original synthetic 100-memory collection after boundary restores
+---
+- tapOn: "Find"
+- tapOn: "Search memories.*"
+- eraseText
+- tapOn: "Find"
+- assertVisible: "100 results"

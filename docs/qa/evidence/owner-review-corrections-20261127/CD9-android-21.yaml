@@ -1,0 +1,25 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Android Build 9 Free 21-memory restore warning and non-destructive rejection
+---
+- tapOn: "CD9-QA-21.cdxe"
+- extendedWaitUntil:
+    visible: "Backup checked. Review before replacing your collection."
+    timeout: 20000
+- scrollUntilVisible:
+    element: "This backup contains more than 20 active and archived memories. Free restoration needs a backup within that limit, or verified Plus.*"
+    direction: DOWN
+    timeout: 20000
+- takeScreenshot: CD9-android-21-warning
+- scrollUntilVisible:
+    element: "Confirm replace with reviewed backup"
+    direction: DOWN
+    timeout: 20000
+    centerElement: true
+- tapOn:
+    text: "Use backed-up draft.*"
+    optional: true
+- tapOn: "Confirm replace with reviewed backup"
+- extendedWaitUntil:
+    visible: "This backup contains more than 20 active and archived memories. Use a smaller backup or verified Plus.*"
+    timeout: 20000
+- takeScreenshot: CD9-android-21-blocked

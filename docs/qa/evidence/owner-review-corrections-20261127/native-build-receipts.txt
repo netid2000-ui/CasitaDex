@@ -1,0 +1,6 @@
+CD-android-build-r2.txt: BUILD SUCCESSFUL in 2m 47s
+CD-android-build.txt: BUILD SUCCESSFUL in 2m 32s
+CD-ios-build-r2.txt: ** BUILD SUCCEEDED **
+CD-ios-build.txt: ** BUILD SUCCEEDED **
+CD-prebuild-r2.txt: no final verdict captured yet
+CD-prebuild.txt: no final verdict captured yet

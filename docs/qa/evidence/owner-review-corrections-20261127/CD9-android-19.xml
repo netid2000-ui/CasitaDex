@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="EventCommandGuestQA" tests="1" failures="0" time="16.229" timestamp="2026-11-27T19:16:37">
+    <testcase id="Android Build 9 Free restore 19 counted memories and photo" name="Android Build 9 Free restore 19 counted memories and photo" classname="Android Build 9 Free restore 19 counted memories and photo" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/owner-review-corrections-20261127/CD9-android-19.yaml" time="16.223" timestamp="2026-11-27T19:16:37" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

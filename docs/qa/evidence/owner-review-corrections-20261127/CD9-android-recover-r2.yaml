@@ -1,0 +1,12 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Confirm reviewed recovery of prior synthetic collection
+---
+- scrollUntilVisible:
+    element: "Confirm full recovery"
+    direction: DOWN
+    timeout: 20000
+- tapOn: "Confirm full recovery"
+- extendedWaitUntil:
+    visible: "Previous full save recovered and verified."
+    timeout: 30000
+- takeScreenshot: CD9-android-original-recovered

@@ -1,0 +1,126 @@
+You are Qwen Coder performing an independent peer review of the actual pinned correction 3c81c29. Francisco approved Free restoration within 20 active+archived memories, verified offline Plus continuity, disclosed local DST roll-forward, read-only invalid timezone recovery, and optional backup before permanent archived-event deletion with explicit risk acknowledgment. Review only this supplied diff; no hidden ChatGPT/Claude positions. Identify at most 3 evidence-based defects or dissenting recommendations and missing benign tests. Cite exact changed path/symbol; distinguish facts vs hypotheses. Do not claim you executed tests or propose exploitation, bypassing verification, production actions, or new paid tools. If insufficient context, say so.
+
+diff --git a/src/eng-store.ts b/src/eng-store.ts
+index d26c690..ba58f4e 100644
+--- a/src/eng-store.ts
++++ b/src/eng-store.ts
+@@ -480,6 +480,8 @@ export function createEngStore(db:Database,files:EngFiles,migrate:()=>Promise<En
+       await init();const valid=validateEngSnapshot(incoming);
+       if(expectedToken!==undefined&&expectedToken!==await tokenFor(await rawPrimary()))throw restoreChanged();
+       if(expectedReminderToken!==undefined&&(!expectedReminderToken||expectedReminderToken!==await tokenFor(JSON.stringify(await readReminderRows(db)))))throw Error("Standalone reminders changed since backup review. Review again; no data changed.");
++      const incomingCount=countedMemories(valid.data.memories);
++      if(incomingCount)await options.requireMemoryCapacity?.(0,incomingCount,"restore");
+       const entries=allEngMedia(valid);
+       await files.capacity(entries.reduce((n,e)=>n+e.bytes*2,0)+4_000_000);
+       // Preflight every incoming byte before staging any file.
+@@ -499,7 +501,10 @@ export function createEngStore(db:Database,files:EngFiles,migrate:()=>Promise<En
+       if(conflict==="cancel")return loaded();
+       await init();const raw=await rawPrimary();
+       if(typeof expectedToken!=="string"||expectedToken!==await tokenFor(raw))throw restoreChanged();
+-      const next=validateEngSnapshot(incoming);await verifyEngSnapshot(next,files);
++      const next=validateEngSnapshot(incoming);
++      const incomingCount=countedMemories(next.data.memories);
++      if(incomingCount)await options.requireMemoryCapacity?.(0,incomingCount,"restore");
++      await verifyEngSnapshot(next,files);
+       let before:EngSnapshot;
+       try{before=validateEngSnapshot(JSON.parse(raw??""));}catch{
+         if(conflict==="keep")throw Error("The current draft cannot be read. Use the backed-up draft or cancel; damaged bytes will be retained.");
+@@ -524,6 +529,8 @@ export function createEngStore(db:Database,files:EngFiles,migrate:()=>Promise<En
+       if(expectedToken!==await tokenFor(raw))throw restoreChanged();
+       if(typeof expectedReminderToken!=="string"||!expectedReminderToken||expectedReminderToken!==await tokenFor(JSON.stringify(await readReminderRows(db))))throw Error("Standalone reminders changed since backup review or review is incomplete. Review again; no data changed.");
+       const next=validateEngSnapshot(incoming);
++      const incomingCount=countedMemories(next.data.memories);
++      if(incomingCount)await options.requireMemoryCapacity?.(0,incomingCount,"restore");
+       await verifyEngSnapshot(next,files);
+       const current=await read(db);
+       if(current.draft&&conflict==="keep"){
+diff --git a/src/plus-access.ts b/src/plus-access.ts
+index 6b72d64..ae25951 100644
+--- a/src/plus-access.ts
++++ b/src/plus-access.ts
+@@ -10,7 +10,10 @@ export function plusAccess(action: PlusAction, entitlement: PlusEntitlement, sav
+   case 'create-memory':
+    if (!Number.isSafeInteger(savedMemoryCount) || savedMemoryCount < 0) return 'invalid-count';
+    return entitlement === 'plus' || savedMemoryCount < freeMemoryLimit ? 'allowed' : 'upgrade-required';
+-  case 'full-backup': case 'restore-backup': case 'photo-text-search': case 'photo-pdf':
++  case 'restore-backup':
++   if (!Number.isSafeInteger(savedMemoryCount) || savedMemoryCount < 0) return 'invalid-count';
++   return entitlement === 'plus' || savedMemoryCount <= freeMemoryLimit ? 'allowed' : 'upgrade-required';
++  case 'full-backup': case 'photo-text-search': case 'photo-pdf':
+    return entitlement === 'plus' ? 'allowed' : 'upgrade-required';
+  }
+ }
+diff --git a/src/plus-feature-gate.ts b/src/plus-feature-gate.ts
+index bdbdd30..8793d0f 100644
+--- a/src/plus-feature-gate.ts
++++ b/src/plus-feature-gate.ts
+@@ -2,11 +2,11 @@ import type {EntitlementSnapshot} from './plus-entitlement-store';
+ export type BackupPlusAction='full-backup'|'restore-backup';
+ export function createPlusBackupGate(dependencies:{enabled:boolean;refresh():Promise<void>;getSnapshot():EntitlementSnapshot}) {
+  return async function requirePlus(action:BackupPlusAction):Promise<void>{
+-  if(!dependencies.enabled)return;
++  if(!dependencies.enabled||action==='restore-backup')return; // Collection-size validation is enforced in the serialized restore store.
+   await dependencies.refresh();
+   const state=dependencies.getSnapshot();
+-  if(state.entitlement==='plus'&&(state.status==='ready'||state.status==='error'))return;
++  if(state.entitlement==='plus'&&(state.status==='ready'||state.status==='error'||state.status==='cached'))return;
+   if(state.status!=='ready')throw new Error('Unable to verify Plus right now. Try again. Your memories and photos are unchanged.');
+-  throw new Error(action==='restore-backup'?'Restoring a backup requires CasitaDex Plus. Your current collection is unchanged.':'Creating or sharing a backup requires CasitaDex Plus. You can still save a readable text report.');
++  throw new Error('Creating or sharing a backup requires CasitaDex Plus. You can still save a readable text report.');
+  };
+ }
+diff --git a/src/plus-memory-limit.ts b/src/plus-memory-limit.ts
+index 4ff669d..55d9836 100644
+--- a/src/plus-memory-limit.ts
++++ b/src/plus-memory-limit.ts
+@@ -10,8 +10,9 @@ export function createMemoryLimitGate(dependencies:{enabled:boolean;refresh():Pr
+   if(!dependencies.enabled||savedCount+additional<=FREE_MEMORY_LIMIT)return;
+   await dependencies.refresh();
+   const state=dependencies.getSnapshot();
+-  if(state.entitlement==='plus'&&(state.status==='ready'||state.status==='error'))return;
++  if(state.entitlement==='plus'&&(state.status==='ready'||state.status==='error'||state.status==='cached'))return;
+   if(state.status!=='ready')throw new Error('Unable to verify Plus right now. Try again. Your draft and existing memories are kept.');
++  if(action==='restore'&&savedCount===0&&additional>FREE_MEMORY_LIMIT)throw new Error("This backup contains more than 20 active and archived memories. Use a smaller backup or verified Plus. Your current collection is unchanged.");
+   if(action==='restore')throw new Error('Free plan: restore requires an available slot (20 active and archived memories). Move another memory to Recently Deleted or choose CasitaDex Plus. Your deleted memories remain safe and shareable.');
+   throw new Error('Your free plan includes 20 saved memories (active and archived). Recently Deleted does not count. Move a memory to Recently Deleted or choose CasitaDex Plus. Your draft and existing memories are kept.');
+  };
+diff --git a/tests/plus-memory-limit.test.mjs b/tests/plus-memory-limit.test.mjs
+index d08de8b..353d066 100644
+--- a/tests/plus-memory-limit.test.mjs
++++ b/tests/plus-memory-limit.test.mjs
+@@ -97,3 +97,35 @@ test('over-cap legitimate data remains editable and shareable; deletion to 19 le
+   assert.match(share.text,/Synthetic/);
+  }finally{x.close();}
+ });
++
++test('Free external restore counts incoming active and archived, not the replaced collection; over-cap staging and commit preserve data',async()=>{
++ const state={entitlement:'free',status:'ready'};const x=setup(undefined,{requireMemoryCapacity:policy(state)}),source=setup();
++ try{
++  for(let i=0;i<21;i++)await add(source.store,{title:'Incoming '+i});
++  const all=await source.store.load();
++  await add(x.store,{title:'Existing'});
++  const before=await x.store.load();const token=await x.store.restoreToken();
++  await assert.rejects(x.store.stageRestore(all,async()=>assert.fail('read before capacity gate'),token),/more than 20/);
++  await assert.rejects(x.store.restore(all,'incoming',token),/more than 20/);
++  assert.deepEqual(await x.store.load(),before);
++  await source.store.lifecycle(all.data.memories[0].id,'recently_deleted','2026-11-27');
++  await source.store.lifecycle(all.data.memories[1].id,'archived','2026-11-27');
++  const twenty=await source.store.load();await x.store.stageRestore(twenty,async()=>assert.fail('no photos in fixture'),token);
++  const restored=await x.store.restore(twenty,'incoming',token);
++  assert.equal(restored.data.memories.filter(m=>m.lifecycle!=='recently_deleted').length,20);
++ }finally{x.close();source.close();}
++});
++
++test('v4 replacement rechecks Free cap at commit and keeps previous reminders and collection',async()=>{
++ const state={entitlement:'plus',status:'ready'},x=setup(undefined,{requireMemoryCapacity:policy(state)}),source=setup();
++ try{
++  await add(x.store,{title:'Keep current'});
++  for(let i=0;i<21;i++)await add(source.store,{title:'Incoming '+i});
++  const incoming=await source.store.backupWithReminders();
++  const {collectionToken,reminderToken}=await x.store.reviewRestore(incoming.snapshot);
++  await x.store.stageRestore(incoming.snapshot,incoming.read,collectionToken,reminderToken);
++  const before=await x.store.backupWithReminders();state.entitlement='free';
++  await assert.rejects(x.store.restoreV4(incoming.snapshot,incoming.reminders,'incoming',collectionToken,reminderToken),/more than 20/);
++  const after=await x.store.backupWithReminders();assert.deepEqual(after.snapshot,before.snapshot);assert.deepEqual(after.reminders,before.reminders);
++ }finally{x.close();source.close();}
++});

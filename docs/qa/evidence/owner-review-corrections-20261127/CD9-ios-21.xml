@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="CasitaDex Plus 25.99 Recovery QA - iOS 27.0 - 36C7AE6D-1615-4A23-B313-46EBD092DA6C" tests="1" failures="0" time="14.397" timestamp="2026-11-27T19:18:24">
+    <testcase id="iOS Build 9 Free 21-memory restore warning and non-destructive rejection" name="iOS Build 9 Free 21-memory restore warning and non-destructive rejection" classname="iOS Build 9 Free 21-memory restore warning and non-destructive rejection" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/owner-review-corrections-20261127/CD9-ios-21.yaml" time="14.391" timestamp="2026-11-27T19:18:24" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

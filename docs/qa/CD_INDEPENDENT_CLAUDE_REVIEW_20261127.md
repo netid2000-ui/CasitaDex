@@ -73,3 +73,7 @@ Actual initial conclusions, peer challenge, follow-up revisions, pinned source m
 ### Owner decisions resolved
 
 [Owner approval and acceptance criteria](evidence/independent-claude-review-20261127/claude-resume-20261127/CD-owner-decisions.md): Free recovery within the cap, verified offline Plus continuity, and disclosed daylight-saving adjustment. Implementation and native validation are not yet complete.
+
+## Owner-approved correction superbatch — implementation and native verification
+
+[Final disposition, source and native evidence](evidence/owner-review-corrections-20261127/CD-final-disposition.md). Source Build 9 3c81c29: 572 passing source tests, one historical skip, typecheck/lint passed. Both native QA platforms passed 19/20 restore, 21 rejection and original 100-memory collection recovery. Claude/Qwen original correction responses and final peer reconciliation retained; store-specific offline/DST delivery and release gates remain open. No release action.

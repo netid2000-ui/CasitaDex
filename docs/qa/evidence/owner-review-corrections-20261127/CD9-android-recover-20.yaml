@@ -1,0 +1,13 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Recover prior synthetic collection after 20 boundary fixture
+---
+- scrollUntilVisible:
+    element: "Recover previous full save"
+    direction: DOWN
+    timeout: 20000
+- tapOn: "Recover previous full save"
+- tapOn: "Confirm full recovery"
+- extendedWaitUntil:
+    visible: "Previous full save recovered and verified."
+    timeout: 30000
+- takeScreenshot: CD9-android-recovered-20

@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="EventCommandGuestQA" tests="1" failures="0" time="5.894" timestamp="2026-11-27T19:17:05">
+    <testcase id="Confirm reviewed recovery of prior synthetic collection" name="Confirm reviewed recovery of prior synthetic collection" classname="Confirm reviewed recovery of prior synthetic collection" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/owner-review-corrections-20261127/CD9-android-recover-r2.yaml" time="5.891" timestamp="2026-11-27T19:17:05" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

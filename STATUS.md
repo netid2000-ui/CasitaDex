@@ -177,3 +177,7 @@ No production deployment, release merge, store submission, live purchase, produc
 - Combined source: 463 tests, 458 passed, five existing skipped, zero failed; TypeScript, ESLint, eight geometry proxies and iOS reminder-integration guards pass. Expo Doctor is 20/21 in the authoritative Swift-only environment: CocoaPods version check fails. No Ruby/Pod installation or native regeneration was attempted.
 - At that earlier checkpoint the installed runtime was 9e53d5b; the current a812 acceptance above supersedes this pending-build status. Its actual normal-clock foreground/background/terminated notification taps and maximum-text portrait Home audit passed. The landscape defect was then awaiting native verification; the current checkpoint above records its native closure. See docs/qa/SB121_CORRECTED_IOS_ACCEPTANCE_20261106.md.
 - Release remains NO-GO: current iOS/Android native regression, landscape, offline, remaining accessibility/security, protected09:00 delivery, signing and owner physical acceptance gates remain open. No production or physical-phone action authorized by this checkpoint.
+
+## Nov 27 current owner-review checkpoint (supersedes older candidate status for this branch)
+
+Build 9 native QA source 3c81c29cce149acaa49721cc0e1dea76059c2623: 572 source passes, 1 preexisting skip; both virtual native platforms passed 19/20/21 restore boundary and original collection recovery. [Current evidence and open gates](docs/qa/evidence/owner-review-corrections-20261127/CD-final-disposition.md). RELEASE NO-GO; no store configuration changed.

@@ -1,0 +1,106 @@
+You are Qwen Coder performing an independent peer review of the actual pinned correction 3c81c29. Francisco approved Free restoration within 20 active+archived memories, verified offline Plus continuity, disclosed local DST roll-forward, read-only invalid timezone recovery, and optional backup before permanent archived-event deletion with explicit risk acknowledgment. Review only this supplied diff; no hidden ChatGPT/Claude positions. Identify at most 3 evidence-based defects or dissenting recommendations and missing benign tests. Cite exact changed path/symbol; distinguish facts vs hypotheses. Do not claim you executed tests or propose exploitation, bypassing verification, production actions, or new paid tools. If insufficient context, say so.
+
+diff --git a/src/plus-entitlement-store.ts b/src/plus-entitlement-store.ts
+index 2b3d1ef..af3a449 100644
+--- a/src/plus-entitlement-store.ts
++++ b/src/plus-entitlement-store.ts
+@@ -1,5 +1,5 @@
+ import type {PlusEntitlement} from './plus-access';
+-export type EntitlementSnapshot = Readonly<{entitlement: PlusEntitlement; status: 'unavailable'|'checking'|'ready'|'error'}>;
++export type EntitlementSnapshot = Readonly<{entitlement: PlusEntitlement; status: 'unavailable'|'checking'|'ready'|'error'|'cached'}>;
+ export interface EntitlementSource {
+  verifiedEntitlement(): Promise<unknown>;
+  subscribe(listener:()=>void): ()=>void;
+@@ -23,6 +23,8 @@ export function createPlusEntitlementStore(source: EntitlementSource|null) {
+     try {
+      const value=await source.verifiedEntitlement();
+      if(!active||token!==epoch)return;
++     if(value==='cached-plus'){if(!dirty)publish({entitlement:'plus',status:'cached'});continue;}
++     if(value==='verification-unavailable'){if(!dirty)publish({entitlement:'free',status:'error'});continue;}
+      if(value!=='free'&&value!=='plus')throw new Error('Invalid verified entitlement');
+      // If an event arrived during the query, discard the potentially stale result.
+      if(!dirty)publish({entitlement:value,status:'ready'});
+diff --git a/src/plus-feature-gate.ts b/src/plus-feature-gate.ts
+index bdbdd30..8793d0f 100644
+--- a/src/plus-feature-gate.ts
++++ b/src/plus-feature-gate.ts
+@@ -2,11 +2,11 @@ import type {EntitlementSnapshot} from './plus-entitlement-store';
+ export type BackupPlusAction='full-backup'|'restore-backup';
+ export function createPlusBackupGate(dependencies:{enabled:boolean;refresh():Promise<void>;getSnapshot():EntitlementSnapshot}) {
+  return async function requirePlus(action:BackupPlusAction):Promise<void>{
+-  if(!dependencies.enabled)return;
++  if(!dependencies.enabled||action==='restore-backup')return; // Collection-size validation is enforced in the serialized restore store.
+   await dependencies.refresh();
+   const state=dependencies.getSnapshot();
+-  if(state.entitlement==='plus'&&(state.status==='ready'||state.status==='error'))return;
++  if(state.entitlement==='plus'&&(state.status==='ready'||state.status==='error'||state.status==='cached'))return;
+   if(state.status!=='ready')throw new Error('Unable to verify Plus right now. Try again. Your memories and photos are unchanged.');
+-  throw new Error(action==='restore-backup'?'Restoring a backup requires CasitaDex Plus. Your current collection is unchanged.':'Creating or sharing a backup requires CasitaDex Plus. You can still save a readable text report.');
++  throw new Error('Creating or sharing a backup requires CasitaDex Plus. You can still save a readable text report.');
+  };
+ }
+diff --git a/src/plus-memory-limit.ts b/src/plus-memory-limit.ts
+index 4ff669d..55d9836 100644
+--- a/src/plus-memory-limit.ts
++++ b/src/plus-memory-limit.ts
+@@ -10,8 +10,9 @@ export function createMemoryLimitGate(dependencies:{enabled:boolean;refresh():Pr
+   if(!dependencies.enabled||savedCount+additional<=FREE_MEMORY_LIMIT)return;
+   await dependencies.refresh();
+   const state=dependencies.getSnapshot();
+-  if(state.entitlement==='plus'&&(state.status==='ready'||state.status==='error'))return;
++  if(state.entitlement==='plus'&&(state.status==='ready'||state.status==='error'||state.status==='cached'))return;
+   if(state.status!=='ready')throw new Error('Unable to verify Plus right now. Try again. Your draft and existing memories are kept.');
++  if(action==='restore'&&savedCount===0&&additional>FREE_MEMORY_LIMIT)throw new Error("This backup contains more than 20 active and archived memories. Use a smaller backup or verified Plus. Your current collection is unchanged.");
+   if(action==='restore')throw new Error('Free plan: restore requires an available slot (20 active and archived memories). Move another memory to Recently Deleted or choose CasitaDex Plus. Your deleted memories remain safe and shareable.');
+   throw new Error('Your free plan includes 20 saved memories (active and archived). Recently Deleted does not count. Move a memory to Recently Deleted or choose CasitaDex Plus. Your draft and existing memories are kept.');
+  };
+diff --git a/src/reminder-alert-plan.ts b/src/reminder-alert-plan.ts
+index 4e2fc91..6765d95 100644
+--- a/src/reminder-alert-plan.ts
++++ b/src/reminder-alert-plan.ts
+@@ -14,6 +14,12 @@ function localDate(day:string,time:string):Date|null {
+  // DST gaps roll forward using native local-calendar interpretation.
+  return Number.isFinite(at.getTime())?at:null;
+ }
++/** Show the effective local time when the native calendar skips a wall-clock time. */
++export function reminderWallClockAdjustment(day:string,time:string):string|null {
++ const at=localDate(day,time);if(!at)return null;
++ const actual=[String(at.getHours()).padStart(2,"0"),String(at.getMinutes()).padStart(2,"0")].join(":");
++ return actual!==time?`This local time is skipped by a clock change. The alert is scheduled for ${actual} instead.`:null;
++}
+ export function planReminderAlerts(rows:readonly ReminderForAlert[],now=Date.now(),cap=48,perReminder=6):PlannedReminderAlert[]{
+  const out:PlannedReminderAlert[]=[];
+  for(const r of rows){
+diff --git a/tests/plus-entitlement-store.test.mjs b/tests/plus-entitlement-store.test.mjs
+index bae3da1..efce662 100644
+--- a/tests/plus-entitlement-store.test.mjs
++++ b/tests/plus-entitlement-store.test.mjs
+@@ -21,3 +21,10 @@ test('late response after stop cannot overwrite a restarted session',async()=>{
+ test('start is idempotent and snapshots cannot be mutated',async()=>{
+  let calls=0;const f=fixture(async()=>{calls++;return 'free';});f.store.start();f.store.start();await tick();assert.equal(calls,1);assert.throws(()=>{f.store.getSnapshot().entitlement='plus';},TypeError);f.store.stop();
+ });
++test('native verified cache survives fresh store and is labeled cached; successful revocation clears it',async()=>{
++ let mode='cached-plus';const f=fixture(async()=>mode);f.store.start();await tick();
++ assert.deepEqual(f.store.getSnapshot(),{entitlement:'plus',status:'cached'});
++ mode='verification-unavailable';await f.store.refresh();assert.deepEqual(f.store.getSnapshot(),{entitlement:'free',status:'error'});
++ mode='plus';await f.store.refresh();assert.deepEqual(f.store.getSnapshot(),{entitlement:'plus',status:'ready'});
++ mode='free';await f.store.refresh();assert.deepEqual(f.store.getSnapshot(),{entitlement:'free',status:'ready'});f.store.stop();
++});
+diff --git a/tests/reminder-alert-plan.test.mjs b/tests/reminder-alert-plan.test.mjs
+index e8c5427..efb68b0 100644
+--- a/tests/reminder-alert-plan.test.mjs
++++ b/tests/reminder-alert-plan.test.mjs
+@@ -29,3 +29,13 @@ test("edit key changes when due time changes, permitting cancellation of old occ
+  assert.notEqual(original.key,edited.key);
+ });
+ test("linked reminders carry their memory ID into scheduled alert data",()=>{const planned=planReminderAlerts([make({memoryId:"sb26qa_001"})],at("2027-01-30"));assert.equal(planned[0].memoryId,"sb26qa_001");});
++
++test("DST gap disclosure matches native planner; repeated hour policy uses earlier occurrence",async()=>{
++ const previous=process.env.TZ;process.env.TZ='America/Chicago';
++ try{
++  const {reminderWallClockAdjustment}=await import('../src/reminder-alert-plan.ts');
++  assert.match(reminderWallClockAdjustment('2027-03-14','02:30'),/03:30/);
++  assert.equal(reminderWallClockAdjustment('2027-11-07','01:30'),null);
++  assert.equal(planReminderAlerts([make({dueDate:'2027-11-07',dueTime:'01:30'})],Date.parse('2027-11-06T00:00:00Z'))[0].timestamp,Date.parse('2027-11-07T06:30:00Z'));
++ }finally{if(previous===undefined)delete process.env.TZ;else process.env.TZ=previous;}
++});

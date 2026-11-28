@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="CasitaDex Plus 25.99 Recovery QA - iOS 27.0 - 36C7AE6D-1615-4A23-B313-46EBD092DA6C" tests="1" failures="0" time="12.954" timestamp="2026-11-27T19:22:32">
+    <testcase id="iOS Build 9 Free restore 19 counted memories and photo" name="iOS Build 9 Free restore 19 counted memories and photo" classname="iOS Build 9 Free restore 19 counted memories and photo" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/owner-review-corrections-20261127/CD9-ios-19.yaml" time="12.948" timestamp="2026-11-27T19:22:32" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

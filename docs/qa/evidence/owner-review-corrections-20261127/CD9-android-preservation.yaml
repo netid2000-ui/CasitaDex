@@ -1,0 +1,9 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Existing synthetic collection remains after 21-memory restore rejection
+---
+- tapOn: "Find"
+- tapOn: "Search memories.*"
+- eraseText
+- hideKeyboard
+- assertVisible: "100 results"
+- takeScreenshot: CD9-android-existing-preserved

@@ -1,0 +1,8 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Open previous full save review
+---
+- scrollUntilVisible:
+    element: "Recover previous full save"
+    direction: DOWN
+    timeout: 20000
+- tapOn: "Recover previous full save"

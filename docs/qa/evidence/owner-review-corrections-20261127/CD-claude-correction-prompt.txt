@@ -1,0 +1,470 @@
+Francisco approved the five product directions (including optional verified backup before event deletion with explicit acknowledgment). Please independently challenge the actual correction diff below, pinned at 7abaf68. Review correctness, data preservation, truthful UI, portability, and regression tests. Distinguish source-backed observations from hypotheses; identify any material remaining issues or disagreements, and do not claim native tests you did not execute. No source changes, offensive testing, new paid usage or live purchases. Keep concise. ChatGPT source suite: CD 571 pass, one prior skip; EC 1310 pass; typechecks pass. Native builds still running, no native acceptance claimed.
+
+diff --git a/app.config.js b/app.config.js
+index 6b7db63..dafd138 100644
+--- a/app.config.js
++++ b/app.config.js
+@@ -22,14 +22,14 @@ module.exports = ({ config }) => {
+     scheme: "casitadex-" + suffix,
+     ios: {
+       ...config.ios,
+-      ...(platformQa ? {buildNumber:"7"} : {}),
++      ...(platformQa ? {buildNumber:"8"} : {}),
+       icon: { light: "./assets/brand/icon-light.png", dark: "./assets/brand/icon-dark.png", tinted: "./assets/brand/icon-tinted.png" },
+       ...(appleSandbox ? { infoPlist: { ...config.ios?.infoPlist, CasitaDexPlusProductID: "com.designsbyfa.casitadex.plus", CasitaDexPlusStoreEnvironment: "Sandbox" } } : plusStore ? { infoPlist: { ...config.ios?.infoPlist, CasitaDexPlusProductID: "local.casitadex.plus.qa", CasitaDexPlusStoreEnvironment: "Xcode" } } : {}),
+       bundleIdentifier: appleSandbox ? "com.designsbyfa.casitadex" : "com.designsbyfa.casitadex." + suffix,
+     },
+     android: {
+       ...config.android,
+-      ...(platformQa ? {versionCode:7} : {}),
++      ...(platformQa ? {versionCode:8} : {}),
+       package: playProduct ? "com.designsbyfa.casitadex" : "com.designsbyfa.casitadex." + suffix,
+       allowBackup: false,
+       adaptiveIcon: { foregroundImage: "./assets/brand/adaptive-color.png", monochromeImage: "./assets/brand/adaptive-outline.png", backgroundColor: "#FAF8F2" },
+diff --git a/modules/casitadex-plus-store/android/src/main/java/expo/modules/casitadexplus/PlayOwnershipModule.kt b/modules/casitadex-plus-store/android/src/main/java/expo/modules/casitadexplus/PlayOwnershipModule.kt
+index 531ecd5..912b520 100644
+--- a/modules/casitadex-plus-store/android/src/main/java/expo/modules/casitadexplus/PlayOwnershipModule.kt
++++ b/modules/casitadex-plus-store/android/src/main/java/expo/modules/casitadexplus/PlayOwnershipModule.kt
+@@ -1,5 +1,6 @@
+ package expo.modules.casitadexplus
+
++import android.content.Context
+ import android.os.Handler
+ import android.os.Looper
+ import android.util.Base64
+@@ -31,7 +32,7 @@ class PlayOwnershipModule : Module() {
+     Events("entitlementsChanged")
+     Function("isConfigured") { configured() }
+     Function("isLocalTesting") { configured() }
+-    AsyncFunction("verifiedEntitlement") { promise: Promise -> owned(promise, false) }
++    AsyncFunction("verifiedEntitlement") { promise: Promise -> owned(promise, false, allowOffline = true) }
+     AsyncFunction("restore") { promise: Promise -> owned(promise, false) }
+     AsyncFunction("finishDeliveredLocalTransactions") { promise: Promise -> owned(promise, true) }
+     AsyncFunction("purchaseForLocalTesting") { promise: Promise ->
+@@ -59,19 +60,49 @@ class PlayOwnershipModule : Module() {
+     }
+   }
+
+-  private fun owned(promise: Promise, acknowledge: Boolean) = request(promise) { session ->
++  // Persist only previously verified store evidence, scoped to this app installation.
++  // Require signature/identity validation on every offline read; never acknowledge from cache.
++  private fun ownershipCache() = appContext.reactContext?.getSharedPreferences("cd_verified_store_v1", Context.MODE_PRIVATE)
++  private fun remember(purchase: Purchase?) {
++    val edit = ownershipCache()?.edit() ?: return
++    if (purchase == null) edit.clear().apply()
++    else edit.putString("purchase", purchase.originalJson).putString("signature", purchase.signature)
++      .putLong("verifiedAt", System.currentTimeMillis()).apply()
++  }
++  private fun cachedOwnership(): String {
++    val cache = ownershipCache() ?: return "verification-unavailable"
++    val age = System.currentTimeMillis() - cache.getLong("verifiedAt", 0)
++    if (age !in 0L..(7L * 24 * 60 * 60 * 1000)) return "verification-unavailable"
++    return runCatching {
++      val purchase = Purchase(cache.getString("purchase", null) ?: error("no record"),
++        cache.getString("signature", null) ?: error("no signature"))
++      if (purchase.purchaseState == Purchase.PurchaseState.PURCHASED && valid(purchase)) "cached-plus"
++      else "verification-unavailable"
++    }.getOrDefault("verification-unavailable")
++  }
++  private fun transient(code: Int) = code == BillingClient.BillingResponseCode.SERVICE_DISCONNECTED ||
++    code == BillingClient.BillingResponseCode.SERVICE_UNAVAILABLE ||
++    code == BillingClient.BillingResponseCode.NETWORK_ERROR
++  private fun owned(promise: Promise, acknowledge: Boolean, allowOffline: Boolean = false) =
++    request(promise, offlineFallback = allowOffline) { session ->
+     val params = QueryPurchasesParams.newBuilder().setProductType(BillingClient.ProductType.INAPP).build()
+     session.client.queryPurchasesAsync(params) { result, purchases ->
++      if (session.finished.get()) return@queryPurchasesAsync
+       if (result.responseCode != OK) {
+-        session.fail("Ownership query failed (code ${result.responseCode})")
++        if (allowOffline && transient(result.responseCode)) session.resolve(cachedOwnership())
++        else if (allowOffline) session.resolve("verification-unavailable")
++        else session.fail("Ownership query failed (code ${result.responseCode})")
+         return@queryPurchasesAsync
+       }
+       val purchase = purchases.firstOrNull { PLUS in it.products && it.purchaseState == Purchase.PurchaseState.PURCHASED }
+       if (purchase == null) {
++        remember(null)
+         session.resolve(if (acknowledge) 0 else "free")
+       } else if (!valid(purchase)) {
+-        session.fail("Unable to verify Plus ownership")
++        remember(null)
++        if (allowOffline) session.resolve("verification-unavailable") else session.fail("Unable to verify Plus ownership")
+       } else if (!acknowledge || purchase.isAcknowledged) {
++        remember(purchase)
+         session.resolve(if (acknowledge) 0 else "plus")
+       } else {
+         val ack = AcknowledgePurchaseParams.newBuilder().setPurchaseToken(purchase.purchaseToken).build()
+@@ -87,31 +118,34 @@ class PlayOwnershipModule : Module() {
+       PlaySignature.matches(key, purchase.originalJson, Base64.decode(purchase.signature, Base64.DEFAULT))
+     }.getOrDefault(false)
+
+-  private fun request(promise: Promise, checkout: Boolean = false, ready: (Session) -> Unit) {
++  private fun request(promise: Promise, checkout: Boolean = false, offlineFallback: Boolean = false, ready: (Session) -> Unit) {
+     val context = appContext.reactContext
+     if (!configured() || context == null) {
+       promise.reject("PLAY_DISABLED", "Play test checkout is unavailable", null)
+       return
+     }
+-    val session = Session(promise)
++    val session = Session(promise, offlineFallback)
+     session.client = BillingClient.newBuilder(context)
+       .setListener { result, purchases -> if (checkout) session.purchaseResult(result, purchases) }
+       .enablePendingPurchases(PendingPurchasesParams.newBuilder().enableOneTimeProducts().build())
+       .build()
+     main.postDelayed(session.timeout, 180000L)
+     session.client.startConnection(object : BillingClientStateListener {
+-      override fun onBillingServiceDisconnected() = session.fail("Google Play disconnected")
++      override fun onBillingServiceDisconnected() { if (offlineFallback) session.resolve(cachedOwnership()) else session.fail("Google Play disconnected") }
+       override fun onBillingSetupFinished(result: BillingResult) {
+         if (session.finished.get()) return
+-        if (result.responseCode == OK) ready(session) else session.fail("Play setup failed (code ${result.responseCode})")
++        if (result.responseCode == OK) ready(session)
++        else if (offlineFallback && transient(result.responseCode)) session.resolve(cachedOwnership())
++        else if (offlineFallback) session.resolve("verification-unavailable")
++        else session.fail("Play setup failed (code ${result.responseCode})")
+       }
+     })
+   }
+
+-  private inner class Session(val promise: Promise) {
++  private inner class Session(val promise: Promise, val offlineFallback: Boolean) {
+     lateinit var client: BillingClient
+     val finished = AtomicBoolean()
+-    val timeout = Runnable { fail("Google Play timed out") }
++    val timeout = Runnable { if (offlineFallback) resolve(cachedOwnership()) else fail("Google Play timed out") }
+     fun resolve(value: Any) = finish { promise.resolve(value) }
+     fun fail(reason: String) = finish { promise.reject("PLAY_BILLING", reason, null) }
+     private fun finish(action: () -> Unit) {
+diff --git a/modules/casitadex-plus-store/ios/CasitaDexPlusStoreModule.swift b/modules/casitadex-plus-store/ios/CasitaDexPlusStoreModule.swift
+index 07d1e48..0733ad7 100644
+--- a/modules/casitadex-plus-store/ios/CasitaDexPlusStoreModule.swift
++++ b/modules/casitadex-plus-store/ios/CasitaDexPlusStoreModule.swift
+@@ -46,7 +46,10 @@ public final class CasitaDexPlusStoreModule: Module {
+       try await PlusStoreReader.configured().catalog()
+     }
+     AsyncFunction("verifiedEntitlement") { () async throws -> String in
+-      try await PlusStoreReader.configured().verifiedEntitlement()
++      // StoreKit supplies verified current transactions, including its local state.
++      // An unverified or mismatched transaction is not a connectivity fallback.
++      do { return try await PlusStoreReader.configured().verifiedEntitlement() }
++      catch { return "verification-unavailable" }
+     }
+     AsyncFunction("restore") { () async throws -> String in
+       try await PlusStoreReader.configured().restore()
+diff --git a/src/app/plus.tsx b/src/app/plus.tsx
+index fcc7604..923a16d 100644
+--- a/src/app/plus.tsx
++++ b/src/app/plus.tsx
+@@ -61,16 +61,16 @@ export default function Plus(){
+     setPriceAttempt(attempt=>attempt+1);
+    }}><Text style={text}>Retry store price</Text></Pressable>}
+    <Pressable testID="plus-restore" accessibilityRole="button" accessibilityState={{disabled:busy,busy}} disabled={busy} onPress={()=>{void run('restore');}} style={button}><Text style={text}>Restore purchases</Text></Pressable>
+-   <Text testID="plus-ownership" accessibilityLiveRegion="polite" style={text}>{owned?'Verified Plus access':ownership.status==='ready'?'Free plan':ownership.status==='checking'?'Checking store ownership…':'Store ownership unavailable'}</Text>
++   <Text testID="plus-ownership" accessibilityLiveRegion="polite" style={text}>{owned?(ownership.status==='cached'||ownership.status==='error'?'Previously verified Plus access · store check pending':'Verified Plus access'):ownership.status==='ready'?'Free plan':ownership.status==='checking'?'Checking store ownership…':'Store ownership unavailable'}</Text>
+    {message?<Text testID="plus-status" accessibilityLiveRegion="polite" style={text}>{message}</Text>:null}
+   </View>
+   <ScrollView contentContainerStyle={{padding:16,gap:16}}>
+    <Text accessibilityRole="header" style={{...text,fontSize:28*scale,fontWeight:'700'}}>CasitaDex plans</Text>
+    <Text accessibilityRole="header" style={{...text,fontWeight:'700'}}>Free</Text>
+-   <Text style={text}>Save up to 20 active and archived memories with photos. Recently Deleted does not count. Search, edit, share individual memories and selected photos, or export a readable text report (not a backup).</Text>
++   <Text style={text}>Save up to 20 active and archived memories with photos. Recently Deleted does not count. Restore a backup within the limit, including photos. Search, edit, share individual memories and selected photos, or export a readable text report (not a backup).</Text>
+    <Text accessibilityRole="header" style={{...text,fontWeight:'700'}}>Plus · US$25.99 once</Text>
+-   <Text style={text}>Remove the memory-count limit. Get full backup and recovery, including photos, and move your memories to a new device.</Text>
+-   <Text style={{...text,color:fg.secondaryInk}}>{playCatalogEnabled?(localPlusCheckout?'Google Play test checkout. Select a test payment method.':'Google Play price preview. Checkout is unavailable in this build.'):appleSandbox?'Apple sandbox test purchase.':localPlusCheckout?'Local StoreKit testing only · No real charge. Backup and restore access are connected. Other Plus features and the free-plan limit are still being implemented.':'Preview · Plus features are being implemented. Purchases and the free-plan limit are not enabled in this build.'}</Text>
++   <Text style={text}>Remove the memory-count limit. Create and share full backups, including photos, and restore without the memory-count limit.</Text>
++   <Text style={{...text,color:fg.secondaryInk}}>{playCatalogEnabled?(localPlusCheckout?'Google Play test checkout. Select a test payment method.':'Google Play price preview. Checkout is unavailable in this build.'):appleSandbox?'Apple sandbox test purchase.':localPlusCheckout?'Local StoreKit testing only · No real charge. Full backup creation and capacity-limited Free restoration are connected. Other Plus features and the free-plan limit are still being implemented.':'Preview · Plus features are being implemented. Purchases and the free-plan limit are not enabled in this build.'}</Text>
+    <Pressable accessibilityRole="button" onPress={leave} style={button}><Text style={text}>Not now</Text></Pressable>
+   </ScrollView>
+  </View>;
+diff --git a/src/eng-screens.tsx b/src/eng-screens.tsx
+index 7d1fa27..09d2c4b 100644
+--- a/src/eng-screens.tsx
++++ b/src/eng-screens.tsx
+@@ -13,6 +13,7 @@ import {plusEntitlements,plusFeatureEnforcementEnabled,memoryLimitEnforcementEna
+ import {countedMemories,FREE_MEMORY_LIMIT} from './plus-memory-limit';
+ import {orderedMemoryPhotos} from './photo-order';
+ import {savedReminderDestination} from "./reminder-save-destination";
++import {reminderWallClockAdjustment} from "./reminder-alert-plan";
+ import type { RepeatSchedule } from "./reminder-recurrence";
+ import DateTimePicker, { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
+ import React, { useCallback, useEffect, useRef, useState, useMemo, useSyncExternalStore } from "react";
+@@ -165,7 +166,7 @@ export function EngReminders(){
+    <View><Button compact editorial primary icon={<MemoryEditorIcon name="save"/>} label="Save Reminder" displayLabel="Save" disabled={busy||!title.trim()} onPress={saveReminderWithDuplicateCheck}/></View>
+   </View></View>:undefined}>
+  {params.memoryId?<Button compact label="‹ Return to Memory Details" onPress={returnToLinkedMemory}/>:null}
+- {editing===null?<><Copy>Reminders are saved locally. Device alerts need permission and a future due time; delivery can vary with device settings.</Copy><Button label="Enable device reminder alerts" onPress={()=>void act(()=>requestStandaloneReminderAlerts(),"Device alerts checked.")}/></>:null}
++ {editing===null?<><Copy>Reminders are saved locally. Device alerts need permission and a future due time; delivery can vary with device settings. If daylight saving skips a scheduled local time, the alert moves forward by the gap. A repeated time uses the earlier occurrence.</Copy><Button label="Enable device reminder alerts" onPress={()=>void act(()=>requestStandaloneReminderAlerts(),"Device alerts checked.")}/></>:null}
+  {editing!==null?<View style={{gap:12}}>
+   <Copy kind="title">{editing==="new"?"Add Reminder":"Edit Reminder"}</Copy>
+   <View><Field editorial iosTextView={plusFeatureEnforcementEnabled} nativeEditing={plusFeatureEnforcementEnabled} label="Reminder title (Required)" value={title} onChangeText={setTitle} maxLength={200}/></View>
+@@ -173,6 +174,8 @@ export function EngReminders(){
+
+    <View style={{gap:16}}><ReminderValueControl kind="date" label={dueDate} value={new Date(dueDate+"T12:00:00").toLocaleDateString(undefined,{month:"long",day:"numeric",year:"numeric"})} onPress={()=>choosePicker("date")}/><ReminderValueControl kind="time" label={new Date(`2000-01-01T${dueTime}:00`).toLocaleTimeString("en-US",{hour:"numeric",minute:"2-digit",hour12:true})} value={new Date(`2000-01-01T${dueTime}:00`).toLocaleTimeString("en-US",{hour:"numeric",minute:"2-digit",hour12:true})} onPress={()=>choosePicker("time")}/></View>
+   </View>
++  <Copy kind="small">Daylight saving: skipped times move forward by the clock change; repeated times use the earlier occurrence.</Copy>
++  {reminderWallClockAdjustment(dueDate,dueTime)?<Copy style={{color:colors.ink,fontWeight:"700"}}>{reminderWallClockAdjustment(dueDate,dueTime)}</Copy>:null}
+   {new Date(`${dueDate}T${dueTime}:00`).getTime()<=Date.now()?<Copy style={{color:colors.ink,fontWeight:"700"}}>This time has already passed. Choose a future date and time to receive an alert.</Copy>:null}
+   <Button editorial variant="quiet" trailing={<Copy>{moreReminderOptions?"⌃":"⌄"}</Copy>} displayLabel="More options" label={moreReminderOptions?"Hide options ▴":"More options ▾"} onPress={()=>setMoreReminderOptions(!moreReminderOptions)}/>
+   {moreReminderOptions?<><View style={{gap:8}}><Copy style={{color:colors.ink,fontWeight:"700"}}>Repeat</Copy><View style={{flexDirection:"row",flexWrap:"wrap",gap:8}}>{(["once","daily","weekly","monthly","yearly"] as RepeatSchedule[]).map(option=><Button key={option} compact editorial label={option==="once"?"Once":option[0].toUpperCase()+option.slice(1)} selected={repeat===option} onPress={()=>setRepeat(option)}/>)}</View></View><Field editorial iosTextView={plusFeatureEnforcementEnabled} label="Notes" value={notes} onChangeText={setNotes} multiline maxLength={4000}/></>:null}
+@@ -471,7 +474,7 @@ export function EngMore({initialAction}:{initialAction?:string}={}){
+     {section==="privacy"?<><Copy accessibilityRole="header">Privacy & security</Copy><Copy>Memories are stored on this device. Backups and sharing are user-initiated. A local save is not a second backup. Review Data protection before exporting private information.</Copy><Button disclosure label="Open backup protection" onPress={()=>setSection("backup")} /></>:null}
+
+     {section==="backup"?<>
+-    {plusFeatureEnforcementEnabled?<View><Copy accessibilityRole="header">{plusState.entitlement==="plus"?"CasitaDex Plus":"Backup with CasitaDex Plus"}</Copy><Copy>Plus includes backup and restore. Readable text reports and recovery of the previous local save remain available.</Copy>{plusState.entitlement!=="plus"?<Button disclosure label="View CasitaDex Plus" onPress={()=>router.push("/plus?origin=backup")} />:null}</View>:null}
++    {plusFeatureEnforcementEnabled?<View><Copy accessibilityRole="header">{plusState.entitlement==="plus"?"CasitaDex Plus":"Backup with CasitaDex Plus"}</Copy><Copy>Plus includes full backup creation and unlimited memories. Free users can restore backups containing up to 20 active and archived memories, including photos. Readable text reports and recovery of the previous local save remain available.</Copy>{plusState.entitlement!=="plus"?<Button disclosure label="View CasitaDex Plus" onPress={()=>router.push("/plus?origin=backup")} />:null}</View>:null}
+     <View style={{flexDirection:"row",alignItems:"center",gap:16}}><BrandArt name="backup" size={80} /><Copy accessibilityRole="header" kind="section" style={{flex:1}}>Back up your memories</Copy></View><Copy>A full backup includes your memories, photos, reminders, labels and unfinished draft. Keep a copy on another device.</Copy>
+     <Copy kind="small" testID="last-verified-local-backup">Last verified local backup: {lastBackup?new Date(lastBackup).toLocaleString():"No recorded verification"}. This does not confirm a separate copy. Backups are manual; keep a verified copy on another device.</Copy>
+     <Button primary disclosure label="Save full backup (with draft and photos)" disabled={e.busy} onPress={()=>void e.run(async store=>{await requirePlusBackup("full-backup");const b=await store.backupWithReminders();try{e.setStatus(await writeEngBackup(b));}finally{setLastBackup(await lastVerifiedEngBackup());}},"")} />
+@@ -484,7 +487,7 @@ export function EngMore({initialAction}:{initialAction?:string}={}){
+     <Copy>A text report includes private notes, history and draft text. Use a full backup to restore memories and photos.</Copy>
+     <Button disclosure label="Save text report (no photos; not a backup)" disabled={e.busy} onPress={()=>void e.run(async store=>{const b=await store.backup();const text=JSON.stringify({format:"CasitaDex readable text report — not restorable",exportedAt:new Date().toISOString(),memories:b.snapshot.data.memories,spaces:b.snapshot.data.spaces,categories:b.snapshot.data.categories,draft:b.snapshot.draft?{...b.snapshot.draft,photos:b.snapshot.draft.photos.map(p=>({id:p.id,note:"Photo bytes excluded"}))}:null},null,2);e.setStatus(await writeEngText(text));},"")} />
+     <Copy>Before restoring, keep a second verified backup. You’ll review the file before replacing your collection. A full v4 restore also replaces standalone reminders.</Copy>
+-    <Button disclosure label="Choose backup to review" disabled={e.busy} onPress={()=>void e.run(async store=>{await requirePlusBackup("restore-backup");setIncoming(null);setConflict(null);const backup=await pickEngBackup();if(!backup){e.setStatus("Backup selection canceled. Current data kept.");return;}try{const review=await store.reviewRestore(backup.snapshot);setIncoming({...backup,review});e.setStatus("Backup checked. Review before replacing your collection.");}catch(error){backup.dispose();throw error;}},"")} />
++    <Button disclosure label="Choose backup to review" disabled={e.busy} onPress={()=>void e.run(async store=>{setIncoming(null);setConflict(null);const backup=await pickEngBackup();if(!backup){e.setStatus("Backup selection canceled. Current data kept.");return;}try{const review=await store.reviewRestore(backup.snapshot);setIncoming({...backup,review});e.setStatus("Backup checked. Review before replacing your collection.");}catch(error){backup.dispose();throw error;}},"")} />
+     {incoming?<>
+       <Copy>{incoming.source}</Copy>{incoming.reminders?<Copy>Standalone reminders in backup: {incoming.reminders.rows.length}. Confirming replaces all current standalone reminders.</Copy>:<Copy>Legacy archive: current standalone reminders will be kept.</Copy>}<Copy>{incoming.snapshot.data.memories.length} memories, {incoming.snapshot.data.media.media.length} saved photos, {incoming.snapshot.draft?"1 unfinished draft":"no unfinished draft"}, {incoming.snapshot.draft?.photos.length??0} draft photos.</Copy>
+       <Copy>Active: {incoming.snapshot.data.memories.filter(m=>m.lifecycle==="active").length}; Archived: {incoming.snapshot.data.memories.filter(m=>m.lifecycle==="archived").length}; Recently Deleted: {incoming.snapshot.data.memories.filter(m=>m.lifecycle==="recently_deleted").length}.</Copy>
+@@ -500,7 +503,7 @@ export function EngMore({initialAction}:{initialAction?:string}={}){
+       </>:null}
+       <Button primary label="Confirm replace with reviewed backup" disabled={e.busy||!!(incoming.review.draft.hasDraft&&!conflict)} onPress={()=>void e.run(async store=>{
+         activeRestore.current=true;
+-        try{await requirePlusBackup("restore-backup");
++        try{
+           const {collectionToken,reminderToken}=incoming.review;
+           if(!collectionToken||(incoming.reminders&&!reminderToken))throw Error("Review this backup again; no data changed.");
+           await store.stageRestore(incoming.snapshot,incoming.read,collectionToken,incoming.reminders?reminderToken:undefined);
+diff --git a/src/eng-store.ts b/src/eng-store.ts
+index d26c690..ba58f4e 100644
+--- a/src/eng-store.ts
++++ b/src/eng-store.ts
+@@ -480,6 +480,8 @@ export function createEngStore(db:Database,files:EngFiles,migrate:()=>Promise<En
+       await init();const valid=validateEngSnapshot(incoming);
+       if(expectedToken!==undefined&&expectedToken!==await tokenFor(await rawPrimary()))throw restoreChanged();
+       if(expectedReminderToken!==undefined&&(!expectedReminderToken||expectedReminderToken!==await tokenFor(JSON.stringify(await readReminderRows(db)))))throw Error("Standalone reminders changed since backup review. Review again; no data changed.");
++      const incomingCount=countedMemories(valid.data.memories);
++      if(incomingCount)await options.requireMemoryCapacity?.(0,incomingCount,"restore");
+       const entries=allEngMedia(valid);
+       await files.capacity(entries.reduce((n,e)=>n+e.bytes*2,0)+4_000_000);
+       // Preflight every incoming byte before staging any file.
+@@ -499,7 +501,10 @@ export function createEngStore(db:Database,files:EngFiles,migrate:()=>Promise<En
+       if(conflict==="cancel")return loaded();
+       await init();const raw=await rawPrimary();
+       if(typeof expectedToken!=="string"||expectedToken!==await tokenFor(raw))throw restoreChanged();
+-      const next=validateEngSnapshot(incoming);await verifyEngSnapshot(next,files);
++      const next=validateEngSnapshot(incoming);
++      const incomingCount=countedMemories(next.data.memories);
++      if(incomingCount)await options.requireMemoryCapacity?.(0,incomingCount,"restore");
++      await verifyEngSnapshot(next,files);
+       let before:EngSnapshot;
+       try{before=validateEngSnapshot(JSON.parse(raw??""));}catch{
+         if(conflict==="keep")throw Error("The current draft cannot be read. Use the backed-up draft or cancel; damaged bytes will be retained.");
+@@ -524,6 +529,8 @@ export function createEngStore(db:Database,files:EngFiles,migrate:()=>Promise<En
+       if(expectedToken!==await tokenFor(raw))throw restoreChanged();
+       if(typeof expectedReminderToken!=="string"||!expectedReminderToken||expectedReminderToken!==await tokenFor(JSON.stringify(await readReminderRows(db))))throw Error("Standalone reminders changed since backup review or review is incomplete. Review again; no data changed.");
+       const next=validateEngSnapshot(incoming);
++      const incomingCount=countedMemories(next.data.memories);
++      if(incomingCount)await options.requireMemoryCapacity?.(0,incomingCount,"restore");
+       await verifyEngSnapshot(next,files);
+       const current=await read(db);
+       if(current.draft&&conflict==="keep"){
+diff --git a/src/plus-access.ts b/src/plus-access.ts
+index 6b72d64..ae25951 100644
+--- a/src/plus-access.ts
++++ b/src/plus-access.ts
+@@ -10,7 +10,10 @@ export function plusAccess(action: PlusAction, entitlement: PlusEntitlement, sav
+   case 'create-memory':
+    if (!Number.isSafeInteger(savedMemoryCount) || savedMemoryCount < 0) return 'invalid-count';
+    return entitlement === 'plus' || savedMemoryCount < freeMemoryLimit ? 'allowed' : 'upgrade-required';
+-  case 'full-backup': case 'restore-backup': case 'photo-text-search': case 'photo-pdf':
++  case 'restore-backup':
++   if (!Number.isSafeInteger(savedMemoryCount) || savedMemoryCount < 0) return 'invalid-count';
++   return entitlement === 'plus' || savedMemoryCount <= freeMemoryLimit ? 'allowed' : 'upgrade-required';
++  case 'full-backup': case 'photo-text-search': case 'photo-pdf':
+    return entitlement === 'plus' ? 'allowed' : 'upgrade-required';
+  }
+ }
+diff --git a/src/plus-entitlement-store.ts b/src/plus-entitlement-store.ts
+index 2b3d1ef..af3a449 100644
+--- a/src/plus-entitlement-store.ts
++++ b/src/plus-entitlement-store.ts
+@@ -1,5 +1,5 @@
+ import type {PlusEntitlement} from './plus-access';
+-export type EntitlementSnapshot = Readonly<{entitlement: PlusEntitlement; status: 'unavailable'|'checking'|'ready'|'error'}>;
++export type EntitlementSnapshot = Readonly<{entitlement: PlusEntitlement; status: 'unavailable'|'checking'|'ready'|'error'|'cached'}>;
+ export interface EntitlementSource {
+  verifiedEntitlement(): Promise<unknown>;
+  subscribe(listener:()=>void): ()=>void;
+@@ -23,6 +23,8 @@ export function createPlusEntitlementStore(source: EntitlementSource|null) {
+     try {
+      const value=await source.verifiedEntitlement();
+      if(!active||token!==epoch)return;
++     if(value==='cached-plus'){if(!dirty)publish({entitlement:'plus',status:'cached'});continue;}
++     if(value==='verification-unavailable'){if(!dirty)publish({entitlement:'free',status:'error'});continue;}
+      if(value!=='free'&&value!=='plus')throw new Error('Invalid verified entitlement');
+      // If an event arrived during the query, discard the potentially stale result.
+      if(!dirty)publish({entitlement:value,status:'ready'});
+diff --git a/src/plus-feature-gate.ts b/src/plus-feature-gate.ts
+index bdbdd30..8793d0f 100644
+--- a/src/plus-feature-gate.ts
++++ b/src/plus-feature-gate.ts
+@@ -2,11 +2,11 @@ import type {EntitlementSnapshot} from './plus-entitlement-store';
+ export type BackupPlusAction='full-backup'|'restore-backup';
+ export function createPlusBackupGate(dependencies:{enabled:boolean;refresh():Promise<void>;getSnapshot():EntitlementSnapshot}) {
+  return async function requirePlus(action:BackupPlusAction):Promise<void>{
+-  if(!dependencies.enabled)return;
++  if(!dependencies.enabled||action==='restore-backup')return; // Collection-size validation is enforced in the serialized restore store.
+   await dependencies.refresh();
+   const state=dependencies.getSnapshot();
+-  if(state.entitlement==='plus'&&(state.status==='ready'||state.status==='error'))return;
++  if(state.entitlement==='plus'&&(state.status==='ready'||state.status==='error'||state.status==='cached'))return;
+   if(state.status!=='ready')throw new Error('Unable to verify Plus right now. Try again. Your memories and photos are unchanged.');
+-  throw new Error(action==='restore-backup'?'Restoring a backup requires CasitaDex Plus. Your current collection is unchanged.':'Creating or sharing a backup requires CasitaDex Plus. You can still save a readable text report.');
++  throw new Error('Creating or sharing a backup requires CasitaDex Plus. You can still save a readable text report.');
+  };
+ }
+diff --git a/src/plus-memory-limit.ts b/src/plus-memory-limit.ts
+index 4ff669d..55d9836 100644
+--- a/src/plus-memory-limit.ts
++++ b/src/plus-memory-limit.ts
+@@ -10,8 +10,9 @@ export function createMemoryLimitGate(dependencies:{enabled:boolean;refresh():Pr
+   if(!dependencies.enabled||savedCount+additional<=FREE_MEMORY_LIMIT)return;
+   await dependencies.refresh();
+   const state=dependencies.getSnapshot();
+-  if(state.entitlement==='plus'&&(state.status==='ready'||state.status==='error'))return;
++  if(state.entitlement==='plus'&&(state.status==='ready'||state.status==='error'||state.status==='cached'))return;
+   if(state.status!=='ready')throw new Error('Unable to verify Plus right now. Try again. Your draft and existing memories are kept.');
++  if(action==='restore'&&savedCount===0&&additional>FREE_MEMORY_LIMIT)throw new Error("This backup contains more than 20 active and archived memories. Use a smaller backup or verified Plus. Your current collection is unchanged.");
+   if(action==='restore')throw new Error('Free plan: restore requires an available slot (20 active and archived memories). Move another memory to Recently Deleted or choose CasitaDex Plus. Your deleted memories remain safe and shareable.');
+   throw new Error('Your free plan includes 20 saved memories (active and archived). Recently Deleted does not count. Move a memory to Recently Deleted or choose CasitaDex Plus. Your draft and existing memories are kept.');
+  };
+diff --git a/src/reminder-alert-plan.ts b/src/reminder-alert-plan.ts
+index 4e2fc91..6765d95 100644
+--- a/src/reminder-alert-plan.ts
++++ b/src/reminder-alert-plan.ts
+@@ -14,6 +14,12 @@ function localDate(day:string,time:string):Date|null {
+  // DST gaps roll forward using native local-calendar interpretation.
+  return Number.isFinite(at.getTime())?at:null;
+ }
++/** Show the effective local time when the native calendar skips a wall-clock time. */
++export function reminderWallClockAdjustment(day:string,time:string):string|null {
++ const at=localDate(day,time);if(!at)return null;
++ const actual=[String(at.getHours()).padStart(2,"0"),String(at.getMinutes()).padStart(2,"0")].join(":");
++ return actual!==time?`This local time is skipped by a clock change. The alert is scheduled for ${actual} instead.`:null;
++}
+ export function planReminderAlerts(rows:readonly ReminderForAlert[],now=Date.now(),cap=48,perReminder=6):PlannedReminderAlert[]{
+  const out:PlannedReminderAlert[]=[];
+  for(const r of rows){
+diff --git a/tests/plus-access.test.mjs b/tests/plus-access.test.mjs
+index 929d131..2b064ee 100644
+--- a/tests/plus-access.test.mjs
++++ b/tests/plus-access.test.mjs
+@@ -12,11 +12,14 @@ test('free plan permits the twentieth save and protects existing data above the
+  }
+  for (const count of [NaN,Infinity,-1,1.5]) assert.equal(plusAccess('create-memory','free',count),'invalid-count');
+ });
+-test('backup, restore, OCR and photo PDF require Plus; restore purchases remains free', () => {
+- for (const action of ['full-backup','restore-backup','photo-text-search','photo-pdf']) {
++test('full backup, OCR and photo PDF require Plus; Free restore is capacity limited', () => {
++ for (const action of ['full-backup','photo-text-search','photo-pdf']) {
+   assert.equal(plusAccess(action,'free',0),'upgrade-required');
+   assert.equal(plusAccess(action,'plus',0),'allowed');
+  }
++ for(const n of [0,19,20])assert.equal(plusAccess('restore-backup','free',n),'allowed');
++ assert.equal(plusAccess('restore-backup','free',21),'upgrade-required');
++ assert.equal(plusAccess('restore-backup','plus',21),'allowed');
+ });
+ test('missing native adapter cannot grant Plus', async () => {
+  const c=createPlusPurchaseController(null);
+diff --git a/tests/plus-entitlement-store.test.mjs b/tests/plus-entitlement-store.test.mjs
+index bae3da1..efce662 100644
+--- a/tests/plus-entitlement-store.test.mjs
++++ b/tests/plus-entitlement-store.test.mjs
+@@ -21,3 +21,10 @@ test('late response after stop cannot overwrite a restarted session',async()=>{
+ test('start is idempotent and snapshots cannot be mutated',async()=>{
+  let calls=0;const f=fixture(async()=>{calls++;return 'free';});f.store.start();f.store.start();await tick();assert.equal(calls,1);assert.throws(()=>{f.store.getSnapshot().entitlement='plus';},TypeError);f.store.stop();
+ });
++test('native verified cache survives fresh store and is labeled cached; successful revocation clears it',async()=>{
++ let mode='cached-plus';const f=fixture(async()=>mode);f.store.start();await tick();
++ assert.deepEqual(f.store.getSnapshot(),{entitlement:'plus',status:'cached'});
++ mode='verification-unavailable';await f.store.refresh();assert.deepEqual(f.store.getSnapshot(),{entitlement:'free',status:'error'});
++ mode='plus';await f.store.refresh();assert.deepEqual(f.store.getSnapshot(),{entitlement:'plus',status:'ready'});
++ mode='free';await f.store.refresh();assert.deepEqual(f.store.getSnapshot(),{entitlement:'free',status:'ready'});f.store.stop();
++});
+diff --git a/tests/plus-feature-gate.test.mjs b/tests/plus-feature-gate.test.mjs
+index 72ee7d3..6014c82 100644
+--- a/tests/plus-feature-gate.test.mjs
++++ b/tests/plus-feature-gate.test.mjs
+@@ -4,10 +4,10 @@ import {createPlusBackupGate} from '../src/plus-feature-gate.ts';
+ test('ordinary preview builds preserve current backup availability',async()=>{
+  const gate=createPlusBackupGate({enabled:false,refresh:async()=>assert.fail('query'),getSnapshot:()=>assert.fail('read')});await gate('full-backup');await gate('restore-backup');
+ });
+-test('free users cannot enter a backup or restore operation',async()=>{
++test('free users can review a restore, but cannot create a full backup',async()=>{
+  let called=false;const gate=createPlusBackupGate({enabled:true,refresh:async()=>{},getSnapshot:()=>({entitlement:'free',status:'ready'})});
+- for(const action of ['full-backup','restore-backup'])await assert.rejects(async()=>{await gate(action);called=true;},/requires CasitaDex Plus/);
+- assert.equal(called,false);
++ for(const action of ['full-backup'])await assert.rejects(async()=>{await gate(action);called=true;},/requires CasitaDex Plus/);
++ assert.equal(called,false);await gate("restore-backup");
+ });
+ test('verified Plus grants both operations',async()=>{
+  const gate=createPlusBackupGate({enabled:true,refresh:async()=>{},getSnapshot:()=>({entitlement:'plus',status:'ready'})});await gate('full-backup');await gate('restore-backup');
+@@ -15,13 +15,13 @@ test('verified Plus grants both operations',async()=>{
+ test('confirmation rechecks revocation after an earlier preview',async()=>{
+  let state={entitlement:'plus',status:'ready'};let revoked=false;
+  const gate=createPlusBackupGate({enabled:true,refresh:async()=>{if(revoked)state={entitlement:'free',status:'ready'};},getSnapshot:()=>state});
+- await gate('restore-backup');revoked=true;await assert.rejects(gate('restore-backup'),/current collection is unchanged/);
++ await gate('full-backup');revoked=true;await assert.rejects(gate('full-backup'),/requires CasitaDex Plus/);
+ });
+ test('unknown and still-checking access never authorizes a write',async()=>{
+  for(const status of ['unavailable','checking','error']){
+   const gate=createPlusBackupGate({enabled:true,refresh:async()=>{},getSnapshot:()=>({entitlement:'free',status})});await assert.rejects(gate('full-backup'),/Unable to verify/);
+  }
+- const gate=createPlusBackupGate({enabled:true,refresh:async()=>{},getSnapshot:()=>({entitlement:'plus',status:'checking'})});await assert.rejects(gate('restore-backup'),/Unable to verify/);
++ const gate=createPlusBackupGate({enabled:true,refresh:async()=>{},getSnapshot:()=>({entitlement:'plus',status:'checking'})});await assert.rejects(gate('full-backup'),/Unable to verify/);
+ });
+ test('temporary verification failure preserves previously verified Plus access',async()=>{
+  const gate=createPlusBackupGate({enabled:true,refresh:async()=>{},getSnapshot:()=>({entitlement:'plus',status:'error'})});await gate('full-backup');
+diff --git a/tests/plus-memory-limit.test.mjs b/tests/plus-memory-limit.test.mjs
+index d08de8b..d6df86e 100644
+--- a/tests/plus-memory-limit.test.mjs
++++ b/tests/plus-memory-limit.test.mjs
+@@ -97,3 +97,21 @@ test('over-cap legitimate data remains editable and shareable; deletion to 19 le
+   assert.match(share.text,/Synthetic/);
+  }finally{x.close();}
+ });
++
++test('Free external restore counts incoming active and archived, not the replaced collection; over-cap staging and commit preserve data',async()=>{
++ const state={entitlement:'free',status:'ready'};const x=setup(undefined,{requireMemoryCapacity:policy(state)}),source=setup();
++ try{
++  for(let i=0;i<21;i++)await add(source.store,{title:'Incoming '+i});
++  const all=await source.store.load();
++  await add(x.store,{title:'Existing'});
++  const before=await x.store.load();const token=await x.store.restoreToken();
++  await assert.rejects(x.store.stageRestore(all,async()=>assert.fail('read before capacity gate'),token),/more than 20/);
++  await assert.rejects(x.store.restore(all,'incoming',token),/more than 20/);
++  assert.deepEqual(await x.store.load(),before);
++  await source.store.lifecycle(all.data.memories[0].id,'recently_deleted','2026-11-27');
++  await source.store.lifecycle(all.data.memories[1].id,'archived','2026-11-27');
++  const twenty=await source.store.load();await x.store.stageRestore(twenty,async()=>assert.fail('no photos in fixture'),token);
++  const restored=await x.store.restore(twenty,'incoming',token);
++  assert.equal(restored.data.memories.filter(m=>m.lifecycle!=='recently_deleted').length,20);
++ }finally{x.close();source.close();}
++});
+diff --git a/tests/reminder-alert-plan.test.mjs b/tests/reminder-alert-plan.test.mjs
+index e8c5427..efb68b0 100644
+--- a/tests/reminder-alert-plan.test.mjs
++++ b/tests/reminder-alert-plan.test.mjs
+@@ -29,3 +29,13 @@ test("edit key changes when due time changes, permitting cancellation of old occ
+  assert.notEqual(original.key,edited.key);
+ });
+ test("linked reminders carry their memory ID into scheduled alert data",()=>{const planned=planReminderAlerts([make({memoryId:"sb26qa_001"})],at("2027-01-30"));assert.equal(planned[0].memoryId,"sb26qa_001");});
++
++test("DST gap disclosure matches native planner; repeated hour policy uses earlier occurrence",async()=>{
++ const previous=process.env.TZ;process.env.TZ='America/Chicago';
++ try{
++  const {reminderWallClockAdjustment}=await import('../src/reminder-alert-plan.ts');
++  assert.match(reminderWallClockAdjustment('2027-03-14','02:30'),/03:30/);
++  assert.equal(reminderWallClockAdjustment('2027-11-07','01:30'),null);
++  assert.equal(planReminderAlerts([make({dueDate:'2027-11-07',dueTime:'01:30'})],Date.parse('2027-11-06T00:00:00Z'))[0].timestamp,Date.parse('2027-11-07T06:30:00Z'));
++ }finally{if(previous===undefined)delete process.env.TZ;else process.env.TZ=previous;}
++});

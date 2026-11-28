@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="EventCommandGuestQA" tests="1" failures="0" time="13.084" timestamp="2026-11-27T19:13:10">
+    <testcase id="Build 5 Android open backup review" name="Build 5 Android open backup review" classname="Build 5 Android open backup review" file=".maestro/joint-release-20261126/android-open.yaml" time="13.08" timestamp="2026-11-27T19:13:11" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

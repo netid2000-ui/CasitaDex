@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="CasitaDex Plus 25.99 Recovery QA - iOS 27.0 - 36C7AE6D-1615-4A23-B313-46EBD092DA6C" tests="1" failures="0" time="13.625" timestamp="2026-11-27T19:22:11">
+    <testcase id="Build 6 iOS fully visible file chooser" name="Build 6 iOS fully visible file chooser" classname="Build 6 iOS fully visible file chooser" file=".maestro/joint-release-20261126/ios-open-r2.yaml" time="13.62" timestamp="2026-11-27T19:22:11" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

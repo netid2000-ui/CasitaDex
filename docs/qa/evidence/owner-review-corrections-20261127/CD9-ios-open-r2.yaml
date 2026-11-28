@@ -1,0 +1,14 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: iOS Build 9 open backup picker from actual Home
+---
+- tapOn: "Settings"
+- scrollUntilVisible:
+    element: "Backup & restore"
+    direction: DOWN
+    timeout: 20000
+- tapOn: "Backup & restore"
+- scrollUntilVisible:
+    element: "Choose backup to review"
+    direction: DOWN
+    timeout: 20000
+- tapOn: "Choose backup to review"

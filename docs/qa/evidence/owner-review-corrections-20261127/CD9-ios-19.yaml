@@ -1,0 +1,26 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: iOS Build 9 Free restore 19 counted memories and photo
+---
+- tapOn:
+    point: "18%,50%"
+- extendedWaitUntil:
+    visible: "Backup checked. Review before replacing your collection."
+    timeout: 19000
+- scrollUntilVisible:
+    element: "Active: 19; Archived: 0; Recently Deleted: .*"
+    direction: DOWN
+    timeout: 19000
+- takeScreenshot: CD9-android-19-preview
+- scrollUntilVisible:
+    element: "Confirm replace with reviewed backup"
+    direction: DOWN
+    timeout: 19000
+    centerElement: true
+- tapOn:
+    text: "Use backed-up draft.*"
+    optional: true
+- tapOn: "Confirm replace with reviewed backup"
+- extendedWaitUntil:
+    visible: "Full collection restored and verified."
+    timeout: 19000
+- takeScreenshot: CD9-android-19-restored

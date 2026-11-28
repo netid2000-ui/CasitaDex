@@ -1,0 +1,17 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: iOS recover prior synthetic collection with confirm above tab bar
+---
+- swipe:
+    start: "50%,75%"
+    end: "50%,35%"
+    duration: 600
+- scrollUntilVisible:
+    element: "Confirm full recovery"
+    direction: DOWN
+    timeout: 20000
+    centerElement: true
+- tapOn: "Confirm full recovery"
+- extendedWaitUntil:
+    visible: "Previous full save recovered and verified."
+    timeout: 45000
+- takeScreenshot: CD9-ios-original-recovered

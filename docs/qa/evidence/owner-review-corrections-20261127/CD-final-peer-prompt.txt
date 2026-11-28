@@ -1,0 +1,73 @@
+Francisco requests final peer reconciliation, free allowance only. Here are the actual Qwen correction-review responses followed by ChatGPT's evidence-based disposition. Give meaningful weight; reply briefly with remaining material objections or corrections, no tool work or claims of native testing yourself.
+
+CD-restore:
+### Evidence-Based Defects and Dissenting Recommendations
+
+1. **Potential Race Condition in `createEngStore`**:
+   - **Path/Symbol**: `createEngStore` function
+   - **Issue**: The function calls `init()` twice, which could lead to a race condition if `init()` has side effects or if it's not thread-safe. This could result in inconsistent states or unexpected behavior.
+   - **Recommendation**: Refactor the function to ensure `init()` is called only once and any necessary initialization is done before the function proceeds.
+
+2. **Redundant Memory Counting in `createEngStore`**:
+   - **Path/Symbol**: `createEngStore` function
+   - **Issue**: The function counts the incoming memories twice: once when validating the snapshot and once when checking memory capacity. This redundancy can be removed to simplify the code and reduce potential errors.
+   - **Recommendation**: Remove the redundant memory counting and ensure that the memory count is calculated only once.
+
+3. **Potential Overlooked Error Handling in `plusMemoryLimit`**:
+   - **Path/Symbol**: `createMemoryLimitGate` function
+   - **Issue**: The function checks the status of the entitlement snapshot but does not handle the case where the status is `'cached'`. This could lead to unexpected behavior or errors if the status is not one of the expected values.
+   - **Recommendation**: Add a check for the `'cached'` status and handle it appropriately, either by throwing an error or by allowing the operation to proceed.
+
+### Missing Benign Tests
+
+1. **Test for `plusAccess` with `free` entitlement and `restore-backup` action**:
+   - **Path/Symbol**: `plusAccess` function
+   - **Issue**: There is no test for the scenario where the entitlement is `'free'` and the action is `'restore-backup'`. This could lead to unexpected behavior if the function does not handle this case correctly.
+   - **Recommendation**: Add a test to ensure that the function behaves as expected when the entitlement is `'free'` and the action is `'restore-backup'`.
+
+2. **Test for `plusMemoryLimit` with `free` entitlement and `restore` action**:
+   - **Path/Symbol**: `createMemoryLimitGate` function
+   - **Issue**: There is no test for the scenario where the entitlement is `'free'` and the action is `'restore'`. This could lead to unexpected behavior if the function does not handle this case correctly.
+   - **Recommendation**: Add a test to ensure that the function behaves as expected when the entitlement is `'free'` and the action is `'restore'`.
+
+3. **Test for `plusMemoryLimit` with `plus` entitlement and `restore` action**:
+   - **Path/Symbol**: `createMemoryLimitGate` function
+   - **Issue**: There is no test for the scenario where the entitlement is `'plus'` and the action is `'restore'`. This could lead to unexpected behavior if the function does not handle this case correctly.
+   - **Recommendation**: Add a test to ensure that the
+
+CD-offline-dst:
+### Evidence-Based Defects or Dissenting Recommendations
+
+1. **Potential Issue in `plus-entitlement-store.ts`**:
+   - **Symbol**: `value==='cached-plus'` and `value==='verification-unavailable'`
+   - **Issue**: The code checks for specific string values (`'cached-plus'` and `'verification-unavailable'`) that are not defined in the `status` type. This could lead to runtime errors if these values are not correctly handled elsewhere in the codebase.
+   - **Recommendation**: Ensure that these string values are properly defined and handled in the codebase. Consider using an enum or a set of constants to avoid string literal errors.
+
+2. **Potential Issue in `plus-feature-gate.ts`**:
+   - **Symbol**: `action==='restore-backup'`
+   - **Issue**: The code checks for `action==='restore-backup'` in the `createPlusBackupGate` function. However, this check is redundant because the function already handles `action==='restore-backup'` in the `if` statement. This could be simplified to avoid unnecessary checks.
+   - **Recommendation**: Simplify the `if` statement by removing the redundant check for `action==='restore-backup'`.
+
+3. **Potential Issue in `plus-memory-limit.ts`**:
+   - **Symbol**: `action==='restore'`
+   - **Issue**: The code checks for `action==='restore'` in the `createMemoryLimitGate` function. However, this check is redundant because the function already handles `action==='restore'` in the `if` statement. This could be simplified to avoid unnecessary checks.
+   - **Recommendation**: Simplify the `if` statement by removing the redundant check for `action==='restore'`.
+
+### Missing Benign Tests
+
+1. **Test for `reminderWallClockAdjustment` Function**:
+   - **Symbol**: `reminderWallClockAdjustment`
+   - **Issue**: The test for `reminderWallClockAdjustment` function is missing. This function is crucial for handling DST roll-forward, and it's important to ensure that it works correctly under various conditions.
+   - **Recommendation**: Add a test that covers different scenarios, including cases where the local time is skipped by a clock change and cases where it is not.
+
+2. **Test for `createPlusBackupGate` Function**:
+   - **Symbol**: `createPlusBackupGate`
+   - **Issue**: The test for `createPlusBackupGate` function is missing. This function is crucial for handling backup actions, and it's important to ensure that it works correctly under various conditions.
+   - **Recommendation**: Add a test that covers different scenarios, including cases where the backup action is `restore-backup` and cases where it is not.
+
+3. **Test for `createMemoryLimitGate` Function**:
+   - **Symbol**: `createMemoryLimitGate`
+   - **Issue**: The test for `createMemoryLimitGate` function is missing. This function is crucial for handling memory limit checks, and it's important to ensure that it works correctly under various conditions.
+   - **Recommendation**: Add a test that covers
+
+ChatGPT: verified ios directory and lowercase test variable; added truthful temporary-ownership explanation and over-cap preview, v4 recheck regression. Qwen's cached status and test omission claims contradict actual gate code and tests; no change made just to agree. Final source 3c81c29, 572 tests pass, one prior skip. Native Build 9 compile both platforms; Free 20 and 21 boundary tested both; Android 19 passed, iOS 19 passed. Native store-specific offline and DST delivery remain open.
