@@ -14,6 +14,12 @@ function localDate(day:string,time:string):Date|null {
  // DST gaps roll forward using native local-calendar interpretation.
  return Number.isFinite(at.getTime())?at:null;
 }
+/** Show the effective local time when the native calendar skips a wall-clock time. */
+export function reminderWallClockAdjustment(day:string,time:string):string|null {
+ const at=localDate(day,time);if(!at)return null;
+ const actual=[String(at.getHours()).padStart(2,"0"),String(at.getMinutes()).padStart(2,"0")].join(":");
+ return actual!==time?`This local time is skipped by a clock change. The alert is scheduled for ${actual} instead.`:null;
+}
 export function planReminderAlerts(rows:readonly ReminderForAlert[],now=Date.now(),cap=48,perReminder=6):PlannedReminderAlert[]{
  const out:PlannedReminderAlert[]=[];
  for(const r of rows){

@@ -46,7 +46,10 @@ public final class CasitaDexPlusStoreModule: Module {
       try await PlusStoreReader.configured().catalog()
     }
     AsyncFunction("verifiedEntitlement") { () async throws -> String in
-      try await PlusStoreReader.configured().verifiedEntitlement()
+      // StoreKit supplies verified current transactions, including its local state.
+      // An unverified or mismatched transaction is not a connectivity fallback.
+      do { return try await PlusStoreReader.configured().verifiedEntitlement() }
+      catch { return "verification-unavailable" }
     }
     AsyncFunction("restore") { () async throws -> String in
       try await PlusStoreReader.configured().restore()

@@ -13,6 +13,7 @@ import {plusEntitlements,plusFeatureEnforcementEnabled,memoryLimitEnforcementEna
 import {countedMemories,FREE_MEMORY_LIMIT} from './plus-memory-limit';
 import {orderedMemoryPhotos} from './photo-order';
 import {savedReminderDestination} from "./reminder-save-destination";
+import {reminderWallClockAdjustment} from "./reminder-alert-plan";
 import type { RepeatSchedule } from "./reminder-recurrence";
 import DateTimePicker, { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
 import React, { useCallback, useEffect, useRef, useState, useMemo, useSyncExternalStore } from "react";
@@ -165,7 +166,7 @@ export function EngReminders(){
    <View><Button compact editorial primary icon={<MemoryEditorIcon name="save"/>} label="Save Reminder" displayLabel="Save" disabled={busy||!title.trim()} onPress={saveReminderWithDuplicateCheck}/></View>
   </View></View>:undefined}>
  {params.memoryId?<Button compact label="‹ Return to Memory Details" onPress={returnToLinkedMemory}/>:null}
- {editing===null?<><Copy>Reminders are saved locally. Device alerts need permission and a future due time; delivery can vary with device settings.</Copy><Button label="Enable device reminder alerts" onPress={()=>void act(()=>requestStandaloneReminderAlerts(),"Device alerts checked.")}/></>:null}
+ {editing===null?<><Copy>Reminders are saved locally. Device alerts need permission and a future due time; delivery can vary with device settings. If daylight saving skips a scheduled local time, the alert moves forward by the gap. A repeated time uses the earlier occurrence.</Copy><Button label="Enable device reminder alerts" onPress={()=>void act(()=>requestStandaloneReminderAlerts(),"Device alerts checked.")}/></>:null}
  {editing!==null?<View style={{gap:12}}>
   <Copy kind="title">{editing==="new"?"Add Reminder":"Edit Reminder"}</Copy>
   <View><Field editorial iosTextView={plusFeatureEnforcementEnabled} nativeEditing={plusFeatureEnforcementEnabled} label="Reminder title (Required)" value={title} onChangeText={setTitle} maxLength={200}/></View>
@@ -173,6 +174,8 @@ export function EngReminders(){
 
    <View style={{gap:16}}><ReminderValueControl kind="date" label={dueDate} value={new Date(dueDate+"T12:00:00").toLocaleDateString(undefined,{month:"long",day:"numeric",year:"numeric"})} onPress={()=>choosePicker("date")}/><ReminderValueControl kind="time" label={new Date(`2000-01-01T${dueTime}:00`).toLocaleTimeString("en-US",{hour:"numeric",minute:"2-digit",hour12:true})} value={new Date(`2000-01-01T${dueTime}:00`).toLocaleTimeString("en-US",{hour:"numeric",minute:"2-digit",hour12:true})} onPress={()=>choosePicker("time")}/></View>
   </View>
+  <Copy kind="small">Daylight saving: skipped times move forward by the clock change; repeated times use the earlier occurrence.</Copy>
+  {reminderWallClockAdjustment(dueDate,dueTime)?<Copy style={{color:colors.ink,fontWeight:"700"}}>{reminderWallClockAdjustment(dueDate,dueTime)}</Copy>:null}
   {new Date(`${dueDate}T${dueTime}:00`).getTime()<=Date.now()?<Copy style={{color:colors.ink,fontWeight:"700"}}>This time has already passed. Choose a future date and time to receive an alert.</Copy>:null}
   <Button editorial variant="quiet" trailing={<Copy>{moreReminderOptions?"⌃":"⌄"}</Copy>} displayLabel="More options" label={moreReminderOptions?"Hide options ▴":"More options ▾"} onPress={()=>setMoreReminderOptions(!moreReminderOptions)}/>
   {moreReminderOptions?<><View style={{gap:8}}><Copy style={{color:colors.ink,fontWeight:"700"}}>Repeat</Copy><View style={{flexDirection:"row",flexWrap:"wrap",gap:8}}>{(["once","daily","weekly","monthly","yearly"] as RepeatSchedule[]).map(option=><Button key={option} compact editorial label={option==="once"?"Once":option[0].toUpperCase()+option.slice(1)} selected={repeat===option} onPress={()=>setRepeat(option)}/>)}</View></View><Field editorial iosTextView={plusFeatureEnforcementEnabled} label="Notes" value={notes} onChangeText={setNotes} multiline maxLength={4000}/></>:null}
@@ -471,7 +474,7 @@ export function EngMore({initialAction}:{initialAction?:string}={}){
     {section==="privacy"?<><Copy accessibilityRole="header">Privacy & security</Copy><Copy>Memories are stored on this device. Backups and sharing are user-initiated. A local save is not a second backup. Review Data protection before exporting private information.</Copy><Button disclosure label="Open backup protection" onPress={()=>setSection("backup")} /></>:null}
 
     {section==="backup"?<>
-    {plusFeatureEnforcementEnabled?<View><Copy accessibilityRole="header">{plusState.entitlement==="plus"?"CasitaDex Plus":"Backup with CasitaDex Plus"}</Copy><Copy>Plus includes backup and restore. Readable text reports and recovery of the previous local save remain available.</Copy>{plusState.entitlement!=="plus"?<Button disclosure label="View CasitaDex Plus" onPress={()=>router.push("/plus?origin=backup")} />:null}</View>:null}
+    {plusFeatureEnforcementEnabled?<View><Copy accessibilityRole="header">{plusState.entitlement==="plus"?"CasitaDex Plus":"Backup with CasitaDex Plus"}</Copy><Copy>Plus includes full backup creation and unlimited memories. Free users can restore backups containing up to 20 active and archived memories, including photos. Readable text reports and recovery of the previous local save remain available.</Copy>{plusState.entitlement!=="plus"?<Button disclosure label="View CasitaDex Plus" onPress={()=>router.push("/plus?origin=backup")} />:null}</View>:null}
     <View style={{flexDirection:"row",alignItems:"center",gap:16}}><BrandArt name="backup" size={80} /><Copy accessibilityRole="header" kind="section" style={{flex:1}}>Back up your memories</Copy></View><Copy>A full backup includes your memories, photos, reminders, labels and unfinished draft. Keep a copy on another device.</Copy>
     <Copy kind="small" testID="last-verified-local-backup">Last verified local backup: {lastBackup?new Date(lastBackup).toLocaleString():"No recorded verification"}. This does not confirm a separate copy. Backups are manual; keep a verified copy on another device.</Copy>
     <Button primary disclosure label="Save full backup (with draft and photos)" disabled={e.busy} onPress={()=>void e.run(async store=>{await requirePlusBackup("full-backup");const b=await store.backupWithReminders();try{e.setStatus(await writeEngBackup(b));}finally{setLastBackup(await lastVerifiedEngBackup());}},"")} />
@@ -484,7 +487,7 @@ export function EngMore({initialAction}:{initialAction?:string}={}){
     <Copy>A text report includes private notes, history and draft text. Use a full backup to restore memories and photos.</Copy>
     <Button disclosure label="Save text report (no photos; not a backup)" disabled={e.busy} onPress={()=>void e.run(async store=>{const b=await store.backup();const text=JSON.stringify({format:"CasitaDex readable text report — not restorable",exportedAt:new Date().toISOString(),memories:b.snapshot.data.memories,spaces:b.snapshot.data.spaces,categories:b.snapshot.data.categories,draft:b.snapshot.draft?{...b.snapshot.draft,photos:b.snapshot.draft.photos.map(p=>({id:p.id,note:"Photo bytes excluded"}))}:null},null,2);e.setStatus(await writeEngText(text));},"")} />
     <Copy>Before restoring, keep a second verified backup. You’ll review the file before replacing your collection. A full v4 restore also replaces standalone reminders.</Copy>
-    <Button disclosure label="Choose backup to review" disabled={e.busy} onPress={()=>void e.run(async store=>{await requirePlusBackup("restore-backup");setIncoming(null);setConflict(null);const backup=await pickEngBackup();if(!backup){e.setStatus("Backup selection canceled. Current data kept.");return;}try{const review=await store.reviewRestore(backup.snapshot);setIncoming({...backup,review});e.setStatus("Backup checked. Review before replacing your collection.");}catch(error){backup.dispose();throw error;}},"")} />
+    <Button disclosure label="Choose backup to review" disabled={e.busy} onPress={()=>void e.run(async store=>{setIncoming(null);setConflict(null);const backup=await pickEngBackup();if(!backup){e.setStatus("Backup selection canceled. Current data kept.");return;}try{const review=await store.reviewRestore(backup.snapshot);setIncoming({...backup,review});e.setStatus("Backup checked. Review before replacing your collection.");}catch(error){backup.dispose();throw error;}},"")} />
     {incoming?<>
       <Copy>{incoming.source}</Copy>{incoming.reminders?<Copy>Standalone reminders in backup: {incoming.reminders.rows.length}. Confirming replaces all current standalone reminders.</Copy>:<Copy>Legacy archive: current standalone reminders will be kept.</Copy>}<Copy>{incoming.snapshot.data.memories.length} memories, {incoming.snapshot.data.media.media.length} saved photos, {incoming.snapshot.draft?"1 unfinished draft":"no unfinished draft"}, {incoming.snapshot.draft?.photos.length??0} draft photos.</Copy>
       <Copy>Active: {incoming.snapshot.data.memories.filter(m=>m.lifecycle==="active").length}; Archived: {incoming.snapshot.data.memories.filter(m=>m.lifecycle==="archived").length}; Recently Deleted: {incoming.snapshot.data.memories.filter(m=>m.lifecycle==="recently_deleted").length}.</Copy>
@@ -500,7 +503,7 @@ export function EngMore({initialAction}:{initialAction?:string}={}){
       </>:null}
       <Button primary label="Confirm replace with reviewed backup" disabled={e.busy||!!(incoming.review.draft.hasDraft&&!conflict)} onPress={()=>void e.run(async store=>{
         activeRestore.current=true;
-        try{await requirePlusBackup("restore-backup");
+        try{
           const {collectionToken,reminderToken}=incoming.review;
           if(!collectionToken||(incoming.reminders&&!reminderToken))throw Error("Review this backup again; no data changed.");
           await store.stageRestore(incoming.snapshot,incoming.read,collectionToken,incoming.reminders?reminderToken:undefined);

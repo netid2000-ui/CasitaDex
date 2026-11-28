@@ -480,6 +480,8 @@ export function createEngStore(db:Database,files:EngFiles,migrate:()=>Promise<En
       await init();const valid=validateEngSnapshot(incoming);
       if(expectedToken!==undefined&&expectedToken!==await tokenFor(await rawPrimary()))throw restoreChanged();
       if(expectedReminderToken!==undefined&&(!expectedReminderToken||expectedReminderToken!==await tokenFor(JSON.stringify(await readReminderRows(db)))))throw Error("Standalone reminders changed since backup review. Review again; no data changed.");
+      const incomingCount=countedMemories(valid.data.memories);
+      if(incomingCount)await options.requireMemoryCapacity?.(0,incomingCount,"restore");
       const entries=allEngMedia(valid);
       await files.capacity(entries.reduce((n,e)=>n+e.bytes*2,0)+4_000_000);
       // Preflight every incoming byte before staging any file.
@@ -499,7 +501,10 @@ export function createEngStore(db:Database,files:EngFiles,migrate:()=>Promise<En
       if(conflict==="cancel")return loaded();
       await init();const raw=await rawPrimary();
       if(typeof expectedToken!=="string"||expectedToken!==await tokenFor(raw))throw restoreChanged();
-      const next=validateEngSnapshot(incoming);await verifyEngSnapshot(next,files);
+      const next=validateEngSnapshot(incoming);
+      const incomingCount=countedMemories(next.data.memories);
+      if(incomingCount)await options.requireMemoryCapacity?.(0,incomingCount,"restore");
+      await verifyEngSnapshot(next,files);
       let before:EngSnapshot;
       try{before=validateEngSnapshot(JSON.parse(raw??""));}catch{
         if(conflict==="keep")throw Error("The current draft cannot be read. Use the backed-up draft or cancel; damaged bytes will be retained.");
@@ -524,6 +529,8 @@ export function createEngStore(db:Database,files:EngFiles,migrate:()=>Promise<En
       if(expectedToken!==await tokenFor(raw))throw restoreChanged();
       if(typeof expectedReminderToken!=="string"||!expectedReminderToken||expectedReminderToken!==await tokenFor(JSON.stringify(await readReminderRows(db))))throw Error("Standalone reminders changed since backup review or review is incomplete. Review again; no data changed.");
       const next=validateEngSnapshot(incoming);
+      const incomingCount=countedMemories(next.data.memories);
+      if(incomingCount)await options.requireMemoryCapacity?.(0,incomingCount,"restore");
       await verifyEngSnapshot(next,files);
       const current=await read(db);
       if(current.draft&&conflict==="keep"){

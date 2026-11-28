@@ -10,8 +10,9 @@ export function createMemoryLimitGate(dependencies:{enabled:boolean;refresh():Pr
   if(!dependencies.enabled||savedCount+additional<=FREE_MEMORY_LIMIT)return;
   await dependencies.refresh();
   const state=dependencies.getSnapshot();
-  if(state.entitlement==='plus'&&(state.status==='ready'||state.status==='error'))return;
+  if(state.entitlement==='plus'&&(state.status==='ready'||state.status==='error'||state.status==='cached'))return;
   if(state.status!=='ready')throw new Error('Unable to verify Plus right now. Try again. Your draft and existing memories are kept.');
+  if(action==='restore'&&savedCount===0&&additional>FREE_MEMORY_LIMIT)throw new Error("This backup contains more than 20 active and archived memories. Use a smaller backup or verified Plus. Your current collection is unchanged.");
   if(action==='restore')throw new Error('Free plan: restore requires an available slot (20 active and archived memories). Move another memory to Recently Deleted or choose CasitaDex Plus. Your deleted memories remain safe and shareable.');
   throw new Error('Your free plan includes 20 saved memories (active and archived). Recently Deleted does not count. Move a memory to Recently Deleted or choose CasitaDex Plus. Your draft and existing memories are kept.');
  };

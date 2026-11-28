@@ -29,3 +29,13 @@ test("edit key changes when due time changes, permitting cancellation of old occ
  assert.notEqual(original.key,edited.key);
 });
 test("linked reminders carry their memory ID into scheduled alert data",()=>{const planned=planReminderAlerts([make({memoryId:"sb26qa_001"})],at("2027-01-30"));assert.equal(planned[0].memoryId,"sb26qa_001");});
+
+test("DST gap disclosure matches native planner; repeated hour policy uses earlier occurrence",async()=>{
+ const previous=process.env.TZ;process.env.TZ='America/Chicago';
+ try{
+  const {reminderWallClockAdjustment}=await import('../src/reminder-alert-plan.ts');
+  assert.match(reminderWallClockAdjustment('2027-03-14','02:30'),/03:30/);
+  assert.equal(reminderWallClockAdjustment('2027-11-07','01:30'),null);
+  assert.equal(planReminderAlerts([make({dueDate:'2027-11-07',dueTime:'01:30'})],Date.parse('2027-11-06T00:00:00Z'))[0].timestamp,Date.parse('2027-11-07T06:30:00Z'));
+ }finally{if(previous===undefined)delete process.env.TZ;else process.env.TZ=previous;}
+});

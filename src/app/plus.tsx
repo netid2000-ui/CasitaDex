@@ -61,16 +61,16 @@ export default function Plus(){
     setPriceAttempt(attempt=>attempt+1);
    }}><Text style={text}>Retry store price</Text></Pressable>}
    <Pressable testID="plus-restore" accessibilityRole="button" accessibilityState={{disabled:busy,busy}} disabled={busy} onPress={()=>{void run('restore');}} style={button}><Text style={text}>Restore purchases</Text></Pressable>
-   <Text testID="plus-ownership" accessibilityLiveRegion="polite" style={text}>{owned?'Verified Plus access':ownership.status==='ready'?'Free plan':ownership.status==='checking'?'Checking store ownership…':'Store ownership unavailable'}</Text>
+   <Text testID="plus-ownership" accessibilityLiveRegion="polite" style={text}>{owned?(ownership.status==='cached'||ownership.status==='error'?'Previously verified Plus access · store check pending':'Verified Plus access'):ownership.status==='ready'?'Free plan':ownership.status==='checking'?'Checking store ownership…':'Store ownership unavailable'}</Text>
    {message?<Text testID="plus-status" accessibilityLiveRegion="polite" style={text}>{message}</Text>:null}
   </View>
   <ScrollView contentContainerStyle={{padding:16,gap:16}}>
    <Text accessibilityRole="header" style={{...text,fontSize:28*scale,fontWeight:'700'}}>CasitaDex plans</Text>
    <Text accessibilityRole="header" style={{...text,fontWeight:'700'}}>Free</Text>
-   <Text style={text}>Save up to 20 active and archived memories with photos. Recently Deleted does not count. Search, edit, share individual memories and selected photos, or export a readable text report (not a backup).</Text>
+   <Text style={text}>Save up to 20 active and archived memories with photos. Recently Deleted does not count. Restore a backup within the limit, including photos. Search, edit, share individual memories and selected photos, or export a readable text report (not a backup).</Text>
    <Text accessibilityRole="header" style={{...text,fontWeight:'700'}}>Plus · US$25.99 once</Text>
-   <Text style={text}>Remove the memory-count limit. Get full backup and recovery, including photos, and move your memories to a new device.</Text>
-   <Text style={{...text,color:fg.secondaryInk}}>{playCatalogEnabled?(localPlusCheckout?'Google Play test checkout. Select a test payment method.':'Google Play price preview. Checkout is unavailable in this build.'):appleSandbox?'Apple sandbox test purchase.':localPlusCheckout?'Local StoreKit testing only · No real charge. Backup and restore access are connected. Other Plus features and the free-plan limit are still being implemented.':'Preview · Plus features are being implemented. Purchases and the free-plan limit are not enabled in this build.'}</Text>
+   <Text style={text}>Remove the memory-count limit. Create and share full backups, including photos, and restore without the memory-count limit.</Text>
+   <Text style={{...text,color:fg.secondaryInk}}>{playCatalogEnabled?(localPlusCheckout?'Google Play test checkout. Select a test payment method.':'Google Play price preview. Checkout is unavailable in this build.'):appleSandbox?'Apple sandbox test purchase.':localPlusCheckout?'Local StoreKit testing only · No real charge. Full backup creation and capacity-limited Free restoration are connected. Other Plus features and the free-plan limit are still being implemented.':'Preview · Plus features are being implemented. Purchases and the free-plan limit are not enabled in this build.'}</Text>
    <Pressable accessibilityRole="button" onPress={leave} style={button}><Text style={text}>Not now</Text></Pressable>
   </ScrollView>
  </View>;

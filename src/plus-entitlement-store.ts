@@ -1,5 +1,5 @@
 import type {PlusEntitlement} from './plus-access';
-export type EntitlementSnapshot = Readonly<{entitlement: PlusEntitlement; status: 'unavailable'|'checking'|'ready'|'error'}>;
+export type EntitlementSnapshot = Readonly<{entitlement: PlusEntitlement; status: 'unavailable'|'checking'|'ready'|'error'|'cached'}>;
 export interface EntitlementSource {
  verifiedEntitlement(): Promise<unknown>;
  subscribe(listener:()=>void): ()=>void;
@@ -23,6 +23,8 @@ export function createPlusEntitlementStore(source: EntitlementSource|null) {
     try {
      const value=await source.verifiedEntitlement();
      if(!active||token!==epoch)return;
+     if(value==='cached-plus'){if(!dirty)publish({entitlement:'plus',status:'cached'});continue;}
+     if(value==='verification-unavailable'){if(!dirty)publish({entitlement:'free',status:'error'});continue;}
      if(value!=='free'&&value!=='plus')throw new Error('Invalid verified entitlement');
      // If an event arrived during the query, discard the potentially stale result.
      if(!dirty)publish({entitlement:value,status:'ready'});

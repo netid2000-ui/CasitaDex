@@ -10,7 +10,10 @@ export function plusAccess(action: PlusAction, entitlement: PlusEntitlement, sav
   case 'create-memory':
    if (!Number.isSafeInteger(savedMemoryCount) || savedMemoryCount < 0) return 'invalid-count';
    return entitlement === 'plus' || savedMemoryCount < freeMemoryLimit ? 'allowed' : 'upgrade-required';
-  case 'full-backup': case 'restore-backup': case 'photo-text-search': case 'photo-pdf':
+  case 'restore-backup':
+   if (!Number.isSafeInteger(savedMemoryCount) || savedMemoryCount < 0) return 'invalid-count';
+   return entitlement === 'plus' || savedMemoryCount <= freeMemoryLimit ? 'allowed' : 'upgrade-required';
+  case 'full-backup': case 'photo-text-search': case 'photo-pdf':
    return entitlement === 'plus' ? 'allowed' : 'upgrade-required';
  }
 }

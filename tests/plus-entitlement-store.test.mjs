@@ -21,3 +21,10 @@ test('late response after stop cannot overwrite a restarted session',async()=>{
 test('start is idempotent and snapshots cannot be mutated',async()=>{
  let calls=0;const f=fixture(async()=>{calls++;return 'free';});f.store.start();f.store.start();await tick();assert.equal(calls,1);assert.throws(()=>{f.store.getSnapshot().entitlement='plus';},TypeError);f.store.stop();
 });
+test('native verified cache survives fresh store and is labeled cached; successful revocation clears it',async()=>{
+ let mode='cached-plus';const f=fixture(async()=>mode);f.store.start();await tick();
+ assert.deepEqual(f.store.getSnapshot(),{entitlement:'plus',status:'cached'});
+ mode='verification-unavailable';await f.store.refresh();assert.deepEqual(f.store.getSnapshot(),{entitlement:'free',status:'error'});
+ mode='plus';await f.store.refresh();assert.deepEqual(f.store.getSnapshot(),{entitlement:'plus',status:'ready'});
+ mode='free';await f.store.refresh();assert.deepEqual(f.store.getSnapshot(),{entitlement:'free',status:'ready'});f.store.stop();
+});

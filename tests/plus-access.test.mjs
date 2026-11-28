@@ -12,11 +12,14 @@ test('free plan permits the twentieth save and protects existing data above the 
  }
  for (const count of [NaN,Infinity,-1,1.5]) assert.equal(plusAccess('create-memory','free',count),'invalid-count');
 });
-test('backup, restore, OCR and photo PDF require Plus; restore purchases remains free', () => {
- for (const action of ['full-backup','restore-backup','photo-text-search','photo-pdf']) {
+test('full backup, OCR and photo PDF require Plus; Free restore is capacity limited', () => {
+ for (const action of ['full-backup','photo-text-search','photo-pdf']) {
   assert.equal(plusAccess(action,'free',0),'upgrade-required');
   assert.equal(plusAccess(action,'plus',0),'allowed');
  }
+ for(const n of [0,19,20])assert.equal(plusAccess('restore-backup','free',n),'allowed');
+ assert.equal(plusAccess('restore-backup','free',21),'upgrade-required');
+ assert.equal(plusAccess('restore-backup','plus',21),'allowed');
 });
 test('missing native adapter cannot grant Plus', async () => {
  const c=createPlusPurchaseController(null);

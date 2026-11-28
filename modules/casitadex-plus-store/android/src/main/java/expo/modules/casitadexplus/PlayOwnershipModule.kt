@@ -1,5 +1,6 @@
 package expo.modules.casitadexplus
 
+import android.content.Context
 import android.os.Handler
 import android.os.Looper
 import android.util.Base64
@@ -31,7 +32,7 @@ class PlayOwnershipModule : Module() {
     Events("entitlementsChanged")
     Function("isConfigured") { configured() }
     Function("isLocalTesting") { configured() }
-    AsyncFunction("verifiedEntitlement") { promise: Promise -> owned(promise, false) }
+    AsyncFunction("verifiedEntitlement") { promise: Promise -> owned(promise, false, allowOffline = true) }
     AsyncFunction("restore") { promise: Promise -> owned(promise, false) }
     AsyncFunction("finishDeliveredLocalTransactions") { promise: Promise -> owned(promise, true) }
     AsyncFunction("purchaseForLocalTesting") { promise: Promise ->
@@ -59,19 +60,49 @@ class PlayOwnershipModule : Module() {
     }
   }
 
-  private fun owned(promise: Promise, acknowledge: Boolean) = request(promise) { session ->
+  // Persist only previously verified store evidence, scoped to this app installation.
+  // Require signature/identity validation on every offline read; never acknowledge from cache.
+  private fun ownershipCache() = appContext.reactContext?.getSharedPreferences("cd_verified_store_v1", Context.MODE_PRIVATE)
+  private fun remember(purchase: Purchase?) {
+    val edit = ownershipCache()?.edit() ?: return
+    if (purchase == null) edit.clear().apply()
+    else edit.putString("purchase", purchase.originalJson).putString("signature", purchase.signature)
+      .putLong("verifiedAt", System.currentTimeMillis()).apply()
+  }
+  private fun cachedOwnership(): String {
+    val cache = ownershipCache() ?: return "verification-unavailable"
+    val age = System.currentTimeMillis() - cache.getLong("verifiedAt", 0)
+    if (age !in 0L..(7L * 24 * 60 * 60 * 1000)) return "verification-unavailable"
+    return runCatching {
+      val purchase = Purchase(cache.getString("purchase", null) ?: error("no record"),
+        cache.getString("signature", null) ?: error("no signature"))
+      if (purchase.purchaseState == Purchase.PurchaseState.PURCHASED && valid(purchase)) "cached-plus"
+      else "verification-unavailable"
+    }.getOrDefault("verification-unavailable")
+  }
+  private fun transient(code: Int) = code == BillingClient.BillingResponseCode.SERVICE_DISCONNECTED ||
+    code == BillingClient.BillingResponseCode.SERVICE_UNAVAILABLE ||
+    code == BillingClient.BillingResponseCode.NETWORK_ERROR
+  private fun owned(promise: Promise, acknowledge: Boolean, allowOffline: Boolean = false) =
+    request(promise, offlineFallback = allowOffline) { session ->
     val params = QueryPurchasesParams.newBuilder().setProductType(BillingClient.ProductType.INAPP).build()
     session.client.queryPurchasesAsync(params) { result, purchases ->
+      if (session.finished.get()) return@queryPurchasesAsync
       if (result.responseCode != OK) {
-        session.fail("Ownership query failed (code ${result.responseCode})")
+        if (allowOffline && transient(result.responseCode)) session.resolve(cachedOwnership())
+        else if (allowOffline) session.resolve("verification-unavailable")
+        else session.fail("Ownership query failed (code ${result.responseCode})")
         return@queryPurchasesAsync
       }
       val purchase = purchases.firstOrNull { PLUS in it.products && it.purchaseState == Purchase.PurchaseState.PURCHASED }
       if (purchase == null) {
+        remember(null)
         session.resolve(if (acknowledge) 0 else "free")
       } else if (!valid(purchase)) {
-        session.fail("Unable to verify Plus ownership")
+        remember(null)
+        if (allowOffline) session.resolve("verification-unavailable") else session.fail("Unable to verify Plus ownership")
       } else if (!acknowledge || purchase.isAcknowledged) {
+        remember(purchase)
         session.resolve(if (acknowledge) 0 else "plus")
       } else {
         val ack = AcknowledgePurchaseParams.newBuilder().setPurchaseToken(purchase.purchaseToken).build()
@@ -87,31 +118,34 @@ class PlayOwnershipModule : Module() {
       PlaySignature.matches(key, purchase.originalJson, Base64.decode(purchase.signature, Base64.DEFAULT))
     }.getOrDefault(false)
 
-  private fun request(promise: Promise, checkout: Boolean = false, ready: (Session) -> Unit) {
+  private fun request(promise: Promise, checkout: Boolean = false, offlineFallback: Boolean = false, ready: (Session) -> Unit) {
     val context = appContext.reactContext
     if (!configured() || context == null) {
       promise.reject("PLAY_DISABLED", "Play test checkout is unavailable", null)
       return
     }
-    val session = Session(promise)
+    val session = Session(promise, offlineFallback)
     session.client = BillingClient.newBuilder(context)
       .setListener { result, purchases -> if (checkout) session.purchaseResult(result, purchases) }
       .enablePendingPurchases(PendingPurchasesParams.newBuilder().enableOneTimeProducts().build())
       .build()
     main.postDelayed(session.timeout, 180000L)
     session.client.startConnection(object : BillingClientStateListener {
-      override fun onBillingServiceDisconnected() = session.fail("Google Play disconnected")
+      override fun onBillingServiceDisconnected() { if (offlineFallback) session.resolve(cachedOwnership()) else session.fail("Google Play disconnected") }
       override fun onBillingSetupFinished(result: BillingResult) {
         if (session.finished.get()) return
-        if (result.responseCode == OK) ready(session) else session.fail("Play setup failed (code ${result.responseCode})")
+        if (result.responseCode == OK) ready(session)
+        else if (offlineFallback && transient(result.responseCode)) session.resolve(cachedOwnership())
+        else if (offlineFallback) session.resolve("verification-unavailable")
+        else session.fail("Play setup failed (code ${result.responseCode})")
       }
     })
   }
 
-  private inner class Session(val promise: Promise) {
+  private inner class Session(val promise: Promise, val offlineFallback: Boolean) {
     lateinit var client: BillingClient
     val finished = AtomicBoolean()
-    val timeout = Runnable { fail("Google Play timed out") }
+    val timeout = Runnable { if (offlineFallback) resolve(cachedOwnership()) else fail("Google Play timed out") }
     fun resolve(value: Any) = finish { promise.resolve(value) }
     fun fail(reason: String) = finish { promise.reject("PLAY_BILLING", reason, null) }
     private fun finish(action: () -> Unit) {

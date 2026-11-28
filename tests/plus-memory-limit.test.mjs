@@ -97,3 +97,21 @@ test('over-cap legitimate data remains editable and shareable; deletion to 19 le
   assert.match(share.text,/Synthetic/);
  }finally{x.close();}
 });
+
+test('Free external restore counts incoming active and archived, not the replaced collection; over-cap staging and commit preserve data',async()=>{
+ const state={entitlement:'free',status:'ready'};const x=setup(undefined,{requireMemoryCapacity:policy(state)}),source=setup();
+ try{
+  for(let i=0;i<21;i++)await add(source.store,{title:'Incoming '+i});
+  const all=await source.store.load();
+  await add(x.store,{title:'Existing'});
+  const before=await x.store.load();const token=await x.store.restoreToken();
+  await assert.rejects(x.store.stageRestore(all,async()=>assert.fail('read before capacity gate'),token),/more than 20/);
+  await assert.rejects(x.store.restore(all,'incoming',token),/more than 20/);
+  assert.deepEqual(await x.store.load(),before);
+  await source.store.lifecycle(all.data.memories[0].id,'recently_deleted','2026-11-27');
+  await source.store.lifecycle(all.data.memories[1].id,'archived','2026-11-27');
+  const twenty=await source.store.load();await x.store.stageRestore(twenty,async()=>assert.fail('no photos in fixture'),token);
+  const restored=await x.store.restore(twenty,'incoming',token);
+  assert.equal(restored.data.memories.filter(m=>m.lifecycle!=='recently_deleted').length,20);
+ }finally{x.close();source.close();}
+});
