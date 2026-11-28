@@ -1,0 +1,167 @@
+Final evidence closure: Event Command real Bangkok event-zone midnight (host 10:58:03 CST = 23:58:03 Bangkok before; 11:01:06 CST = 00:01:06 next day) Android same topResumedActivity foreground; iOS launched Files before midnight and resumed Event Command after; both native flows passed, Event-day plan gone, review card shown, Started · End not set, no completion. Clocks unchanged. CasitaDex renewal source path below directly proves schedule operation, not just coverage reads. Pending: actual iPhone share destination, larger iOS restore with attachments, overdue live tick native and sticky behavior preference. Confirm closure of narrow gates, no release claim.
+export async function getReminderTitlePreference(){try{return await AsyncStorage.getItem(privacyKey)==="true";}catch{return false;}}
+const queuedSync=createLatestReminderRefresh(async()=>({rows:await listStandaloneReminders(false),showTitles:await getReminderTitlePreference()}),async(state,ask)=>{
+ const status=await reconcileReminderNotifications(state.rows,ask,state.showTitles);
+ if(state.showTitles)return status;
+ const stale=await readTitleBearingReminderCount();
+ if(stale===null)return "Titles are off for new alerts. Existing notification text could not be verified; check device alerts.";
+ if(stale>0)return Titles are off for new alerts. ${stale} existing alert(s) may still show titles; check device alerts.;
+ return status;
+});
+async function syncAlerts(ask=false){
+ try{return await queuedSync(ask);}
+ catch{return "Saved locally. Alert scheduling could not be checked; existing notification text may still reflect earlier settings. Check device alerts.";}
+}
+export async function setReminderTitlePreference(show:boolean){
+ await AsyncStorage.setItem(privacyKey,String(show));
+ return syncAlerts();
+}
+export async function reminderAlertCoverage(rows:readonly StandaloneReminder[]){return readReminderAlertCoverage(rows,await getReminderTitlePreference());}
+export async function listStandaloneReminders(sync=true):Promise<StandaloneReminder[]>{
+ const d=await db();
+ const rows=await d.getAllAsync<{id:string;title:string;notes:string;memory_id:string|null;due_date:string;due_time:string;repeat:string;anchor_day:number;completed:number;created_at:string;updated_at:string}>("SELECT * FROM standalone_reminders_v1 ORDER BY completed ASC,due_date ASC,created_at DESC");
+ const reminders=rows.map(r=>({id:r.id,title:r.title,notes:r.notes,memoryId:r.memory_id,dueDate:r.due_date,dueTime:r.due_time,repeat:r.repeat as RepeatSchedule,completed:r.completed===1,createdAt:r.created_at,updatedAt:r.updated_at}));
+ if(sync)void syncAlerts().catch(()=>{});
+ return reminders;
+}
+export async function saveStandaloneReminder(input:{id?:string;title:string;notes:string;memoryId?:string|null;dueDate:string;dueTime:string;repeat:RepeatSchedule}){
+ valid(input.title,input.notes,input.dueDate,input.dueTime);
+ if(!/^([01]\d|2[0-3]):[0-5]\d$/.test(input.dueTime))throw Error("Select a valid time.");
+ if(!["once","daily","weekly","monthly","yearly"].includes(input.repeat))throw Error("Invalid repeat schedule.");
+ const d=await db(),now=new Date().toISOString();
+ if(input.id){
+  const result=await d.runAsync("UPDATE standalone_reminders_v1 SET title=?,notes=?,memory_id=?,due_date=?,due_time=?,repeat=?,anchor_day=?,updated_at=? WHERE id=?",input.title.trim(),input.notes,input.memoryId??null,input.dueDate,input.dueTime,input.repeat,Number(input.dueDate.slice(-2)),now,input.id);
+  if(result.changes!==1)throw Error("Reminder no longer exists.");
+ }else{
+  await d.runAsync("INSERT INTO standalone_reminders_v1 (id,title,notes,memory_id,due_date,due_time,repeat,anchor_day,completed,created_at,updated_at) VALUES (?,?,?,?,?,?,?,?,0,?,?)","r_"+Date.now().toString(36)+"_"+Math.random().toString(36).slice(2,10),input.title.trim(),input.notes,input.memoryId??null,input.dueDate,input.dueTime,input.repeat,Number(input.dueDate.slice(-2)),now,now);
+ }
+ return syncAlerts(true);
+}
+export async function completeStandaloneReminder(id:string,completed:boolean){
+ const d=await db(),now=new Date().toISOString();
+ const row=await d.getFirstAsync<{due_date:string;repeat:string;anchor_day:number}>("SELECT due_date,repeat,anchor_day FROM standalone_reminders_v1 WHERE id=?",id);
+ if(!row)throw Error("Reminder no longer exists.");
+ const next=completed?nextReminderDay(row.due_date,row.repeat as RepeatSchedule,row.anchor_day||undefined):null;
+ const result=next
+  ?await d.runAsync("UPDATE standalone_reminders_v1 SET due_date=?,completed=0,updated_at=? WHERE id=?",next,now,id)
+  :await d.runAsync("UPDATE standalone_reminders_v1 SET completed=?,updated_at=? WHERE id=?",completed?1:0,now,id);
+ if(result.changes!==1)throw Error("Reminder no longer exists.");
+ return syncAlerts(false);
+}
+export async function deleteStandaloneReminder(id:string){
+ const result=await (await db()).runAsync("DELETE FROM standalone_reminders_v1 WHERE id=?",id);
+ if(result.changes!==1)throw Error("Reminder no longer exists.");
+ return syncAlerts(false);
+}
+export async function refreshStandaloneReminderAlerts(){return syncAlerts();}
+export async function requestStandaloneReminderAlerts(){return syncAlerts(true);}
+async function run(rows:readonly ReminderForAlert[],askPermission:boolean,showTitles:boolean):Promise<string>{
+ try {
+  if(Platform.OS==="android"){
+   await setNotificationChannelAsync(CHANNEL,{
+    name:"CasitaDex reminders",importance:AndroidImportance.DEFAULT,
+    sound:"default",showBadge:false,
+   });
+  }
+  let permission=await getPermissionsAsync();
+  if(!permission.granted&&askPermission&&permission.canAskAgain){
+   permission=await requestPermissionsAsync();
+  }
+  const desired=planReminderAlerts(rows);
+  const all=await getAllScheduledNotificationsAsync();
+  const owned=all.filter(r=>r.content.data?.casitaDexType===OWNER);
+  const retained=new Set<string>();
+  // Cancel stale title-bearing alerts, obsolete occurrences and duplicates first.
+  // This also avoids exceeding the pending cap while replacing existing requests.
+  for(const alert of desired){
+   const found=owned.find(r=>matches(r,alert,showTitles)&&!retained.has(r.identifier));
+   if(found)retained.add(found.identifier);
+  }
+  for(const old of owned)if(!retained.has(old.identifier))await cancelScheduledNotificationAsync(old.identifier);
+  if(!permission.granted)return "Saved locally. Notifications are off; enable alerts in device settings.";
+  for(const alert of desired){
+   if(owned.some(r=>retained.has(r.identifier)&&matches(r,alert,showTitles)))continue;
+   await scheduleNotificationAsync({
+    content:{title:"CasitaDex reminder",body:bodyFor(alert,showTitles),sound:"default",
+     data:{casitaDexType:OWNER,casitaDexReminderId:alert.id,casitaDexMemoryId:alert.memoryId??null,casitaDexKey:alert.key}},
+    trigger:{type:SchedulableTriggerInputTypes.DATE,date:new Date(alert.timestamp),...(Platform.OS==="android"?{channelId:CHANNEL}:{})},
+   });
+  }
+  const coverage=await readReminderAlertCoverage(rows,showTitles);
+  if(!coverage.available)return "Saved locally. Alert coverage could not be checked; reopen Reminders to retry.";
+  return coverage.eligible
+   ? Saved locally. Alerts queued for ${coverage.armed} of ${coverage.eligible} reminders. Coverage is finite; reopen Reminders to renew it. Device settings may affect delivery.
+   : "Saved locally. No upcoming reminder alert is due.";
+ }catch{
+  // Storage mutations are already committed; native alert errors never erase saved records.
+  return "Saved locally. Alert scheduling needs attention; reopen Reminders to retry.";
+ }
+}
+export function reconcileReminderNotifications(rows:readonly ReminderForAlert[],askPermission=false,showTitles=false):Promise<string>{
+ const next=pending.then(()=>run(rows,askPermission,showTitles),()=>run(rows,askPermission,showTitles));
+ pending=next;
+ return next;
+}
+
+Message collapsed
+Show more
+just now
+
+
+
+Claude responded: Closure, from the reported native evidence and the pasted source.
+Checking the iOS reminder cap and alert-matching logic
+
+Checking the iOS reminder cap and alert-matching logic
+
+Closure, from the reported native evidence and the pasted source. I did not run any native check. The native observations are ChatGPT’s, and the CasitaDex source reading is mine.
+
+Closed (narrow gates)
+
+Event Command midnight crossing in the event zone.
+The Bangkok run used a host in CST, so a distant device zone is covered for this crossing.
+Android stayed in the foreground across 00:00, which exercises the interval path. iOS was backgrounded in Files and resumed after midnight, which exercises the AppState refresh path.
+Both showed the review card, “Started · End not set”, the Event-day plan gone, and no completion. That is the behavior Option A specified.
+Scope limits I would record: the clocks were never changed, so a manual clock change is untested. iOS was not tested staying in the foreground across midnight, and Android was not tested backgrounded across it. DST remains covered only by fixtures.
+CasitaDex renewal truthfulness.
+Source path: listStandaloneReminders(sync=true) calls syncAlerts(), which reaches reconcileReminderNotifications and then run. run calls scheduleNotificationAsync for desired alerts not already queued. So a screen refresh and a startup or foreground list do schedule alerts, not just read coverage.
+Copy: “Coverage is finite; reopen Reminders to renew it” is accurate. Renewal also happens at startup or foreground per the root call you described, which I did not see.
+Permission: if notifications are off, run cancels stale owned alerts and returns the “Notifications are off” message, so the copy never claims queued coverage then.
+Titles: reuse requires a matching title setting, and the read-error default is “titles off”. That is the safe default.
+
+Observations that do not reopen anything
+
+The renew button is labeled “Check device alerts” but calls requestStandaloneReminderAlerts, which schedules and can prompt for permission. A label like “Check and renew alerts” would be clearer. This is a naming nit, not a defect.
+run cancels stale alerts before scheduling. If scheduling throws partway, some reminders can lose alerts until the next sync. The catch returns “Alert scheduling needs attention”, and the coverage line reads actual state, so the UI stays truthful. It is a deliberate trade for staying under the iOS pending cap.
+I did not see planReminderAlerts, so I cannot confirm how the cap or horizon is chosen.
+
+Still open
+
+iOS share destination on a physical iPhone, with a human-completed Save to Files. The temp-file deletion race on async extensions (hypothesis) belongs in the same check.
+A larger iOS restore with attachments, and a truncated copy of your own file for the rejection text.
+Overdue live tick on native for CasitaDex. I saw no timer in the pasted component, and renewal does not address it.
+Sticky-header preference (owner decision), and VoiceOver reachability at the largest text.
+Samsung back gesture through “Set an end”, which no report has covered.
+Disclosed owner choice: Keep open is permanent, and I still have not seen the attention-engine consumers, so a kept-open event from long ago may surface urgent actions.
+
+Net: the midnight and renewal gates are closed at the scope above. Everything else stays open or a disclosure. I make no release, notification-delivery or iOS-destination claim.
+
+
+
+
+
+
+just now
+
+Write a message…
+
+
+
+
+
+
+Claude is AI and can make mistakes. Please double-check responses.
+
+Sonnet 5.5
+ Medium
+Claude finished the response

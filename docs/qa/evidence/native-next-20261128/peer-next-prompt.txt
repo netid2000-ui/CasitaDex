@@ -1,0 +1,68 @@
+Peer challenge after preserving your independent response. Qwen raw follows. ChatGPT's disposition: Apple primary completion docs explicitly provide completed Bool and error, contrary to Qwen's statement that UIActivityViewController has no completion flag; installed Expo intentionally discards it, and even flag does not prove destination hash. No dependency patch, no unsupported success claim. Local verified backup + native restore proven, share target unverified. CD actual iOS hierarchy failed tap toggle bounds [18,346][384,441] overlap sticky tab band [18,329][384,469]; after short downward scroll toggle [18,440][384,535], tapping unobstructed point at y507 succeeded On then Off. This is reachable but usability friction; recommendation at enlarged text only, let Add/filter header scroll rather than occupy viewport, preserving standard-size sticky behavior and bottom tabs. Need owner preference before changing approved sticky behavior; no source edits currently. CD src/app/reminders.tsx refresh invokes refreshStandaloneReminderAlerts, renew calls requestStandaloneReminderAlerts then refresh, root _layout startup/foreground calls listStandaloneReminders. Thus renewal copy is accurate. Review disagreements and next gate priorities; do not claim you ran native checks.
+QWEN RAW:
+### Evidence Classification and Recommendations
+
+#### Evidence Classification:
+1. **iOS Native App Behavior**:
+   - The iOS app uses `UIActivityViewController` for sharing, which does not return a completion flag indicating success or cancellation.
+   - The app handles the dismissal of the share sheet without verifying the destination, which could lead to incomplete backups.
+
+2. **Expo Swift Module**:
+   - The Expo module resolves the promise unconditionally, regardless of the user's action in the share sheet.
+   - This behavior is consistent with the iOS native app, which does not return a completion flag.
+
+3. **React Native Component**:
+   - The React Native component for reminders (`FigmaReminders`) uses a sticky header and bottom navigation, which can be improved for better usability.
+   - The component handles the display of reminders based on their status (upcoming, overdue, completed, memory dates), which is functional but could be improved for better accessibility.
+
+#### Recommendations:
+1. **iOS Native App**:
+   - **Verify Share Sheet Destination**: Ensure that the app verifies the destination before marking the backup as successful. This can be done by checking if the file exists at the destination after the share sheet is dismissed.
+   - **Return Completion Flag**: Modify the `UIActivityViewController` completion handler to return a completion flag indicating success or cancellation.
+
+2. **Expo Swift Module**:
+   - **Conditional Promise Resolution**: Modify the Expo module to resolve the promise only if the user completes the share action, not just dismisses the share sheet.
+
+3. **React Native Component**:
+   - **Improve Accessibility**: Ensure that the sticky header and bottom navigation are accessible and do not interfere with the user's ability to interact with the component.
+   - **Consistent UI**: Ensure that the UI elements are consistent and do not leave the viewport, which can be improved by adjusting the layout and positioning.
+
+### Code Snippets for Recommendations
+
+#### iOS Native App:
+```swift
+activityController.completionWithItemsHandler = { (activityType, completed, returnedItems, error) in
+    if completed {
+        promise.resolve(nil)
+    } else {
+        promise.reject("User cancelled the share action", "User cancelled the share action", nil)
+    }
+}
+```
+
+#### Expo Swift Module:
+```swift
+activityController.completionWithItemsHandler = { (activityType, completed, returnedItems, error) in
+    if completed {
+        promise.resolve(nil)
+    } else {
+        promise.reject("User cancelled the share action", "User cancelled the share action", nil)
+    }
+}
+```
+
+#### React Native Component:
+```jsx
+const formatReminderDate = (date, time) => {
+    const parsed = new Date(`${date}T${time}:00`);
+    if (Number.isNaN(parsed.getTime())) return `${date} · ${time}`;
+    return parsed.toLocaleString(undefined, { month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit' });
+};
+
+export type MemoryDueItem = { id: string; title: string; due: string };
+export type FigmaRemindersProps = {
+    coverage?: { eligible: number; armed: number; through: Record<string, number>; available: boolean } | null;
+    showTitles?: boolean;
+    privacyBusy?: boolean;
+    onToggleTitles?: () => void;
+    onRenewAlerts?: () => void;

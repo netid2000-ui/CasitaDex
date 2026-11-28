@@ -1,0 +1,20 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Enlarged privacy controls scroll above persistent navigation and operate
+---
+- swipe:
+    start: 50%,70%
+    end: 50%,40%
+    duration: 500
+- tapOn: "Show notification titles: Off"
+- extendedWaitUntil:
+    visible: "Show notification titles: On"
+    timeout: 30000
+- tapOn: "Show notification titles: On"
+- extendedWaitUntil:
+    visible: "Show notification titles: Off"
+    timeout: 30000
+- scrollUntilVisible:
+    element: "Check device alerts"
+    direction: DOWN
+    timeout: 20000
+- takeScreenshot: CD-large-text-iOS-verified

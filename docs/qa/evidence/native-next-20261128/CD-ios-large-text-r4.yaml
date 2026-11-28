@@ -1,0 +1,12 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Verify visible part of privacy toggle operates
+---
+- tapOn:
+    point: "50%,58%"
+- extendedWaitUntil:
+    visible: "Show notification titles: On"
+    timeout: 30000
+- tapOn: "Show notification titles: On"
+- extendedWaitUntil:
+    visible: "Show notification titles: Off"
+    timeout: 30000

@@ -1,0 +1,169 @@
+Francisco requests independent source/evidence review of next native QA checkpoint. Research official Expo SDK sharing/file-picker and Apple activity completion documentation before assessment. Event Command pinned runtime 699b451. iOS native app generated verified retained backup 891 bytes; share-sheet Save to Files action dismissed without verifiable destination on simulator, twice; same retained bytes staged into simulator local Files by host for QA and actual native picker/preview/restore succeeded, Keep open preserved. Do not call share-sheet destination successful or assume defect from simulator. User wants $0 extra. Both apps large text tests on native virtual devices: Event Command review choices accessible by scroll, CasitaDex iOS sticky header and bottom navigation leave less viewport; title toggle eventually worked with control positioned visible between header/footer; Android passed. Distinguish accessibility usability from proven defect. Give independently reasoned evidence classification and recommend next benign checks, no edits or offensive testing. Actual source excerpts below:
+EC export:
+  }
+  const manifest: EventBackup = {
+    format: 'event-command-1',
+    record,
+    attachments,
+    hideDishes: (await AsyncStorage.getItem(dishKey(id))) === 'hidden',
+  };
+  validateBackup(
+    manifest,
+    files.reduce((n, f) => n + f.size, 0),
+  );
+  const header = new TextEncoder().encode(JSON.stringify(manifest));
+  if (header.length > maxHeader) throw new Error('Event records exceed the backup size limit.');
+  const temp = new File(
+    Paths.cache,
+    'Event-' + record.event.title.replace(/[^\w-]+/g, '-').slice(0, 45) + '-' + privateId() + '.ecbackup',
+  );
+  requireCapacity((header.length+4+files.reduce((n,f)=>n+f.size,0))*(retain?3:2)+4000000);
+  temp.create();
+  try {
+    const out = temp.open(FileMode.WriteOnly);
+    try {
+      out.writeBytes(headerSize(header.length));
+      out.writeBytes(header);
+      for (const file of files) {
+        const input = file.open(FileMode.ReadOnly);
+        try {
+          transfer(input, out, file.size);
+        } finally {
+          input.close();
+        }
+      }
+    } finally {
+      out.close();
+    }
+    const checked=inspectBackupFile(temp);
+    verifyBackupPayload(temp,checked);
+    if(checked.attachments.length!==attachments.length||files.some((f,i)=>f.md5!==attachments[i].md5)||!temp.md5)throw Error('Backup readback could not be verified.');
+    if(retain){const dir=retainedDir();dir.create({intermediates:true,idempotent:true});const local=new File(dir,temp.name);try{await temp.copy(local);if(local.size!==temp.size||local.md5!==temp.md5)throw Error('Private backup verification failed.');}catch(e){if(local.exists)local.delete();throw e;}}
+    const verifiedAt=new Date().toISOString();
+    // Local readback is not a verified separate copy.
+    const previous=await eventBackupVerification(id);
+    await AsyncStorage.setItem(verificationKey(id),JSON.stringify({...previous,local:verifiedAt}));
+    if (Platform.OS === 'android') {
+      const folder = await Directory.pickDirectoryAsync();
+      // Android SAF file handles may lose their descriptor during long JS writes.
+      // Native copy to the selected directory owns both streams for the entire copy.
+      const findDestination=()=>folder.list().find((entry):entry is File=>entry instanceof File&&entry.name===temp.name);
+      if(findDestination())throw Error('A backup with this name already exists. Try again.');
+      try {
+        await temp.copy(folder);
+        const destination=findDestination();
+        if(!destination)throw Error('Destination file could not be located for verification.');
+        if(destination.size!==temp.size||destination.md5!==temp.md5){const readback=new File(Paths.cache,'EC-check-'+privateId());try{await destination.copy(readback);if(readback.size!==temp.size||readback.md5!==temp.md5)throw Error('Destination verification failed.');}finally{if(readback.exists)readback.delete();}}
+      } catch (e) {
+        const partial=findDestination();
+        if(partial?.exists)partial.delete();
+        throw e;
+      }
+      await AsyncStorage.setItem(verificationKey(id),JSON.stringify({local:verifiedAt,destination:new Date().toISOString()}));
+      return 'Backup saved and verified in the selected folder. Keep a separate copy.';
+    } else {
+      await Sharing.shareAsync(temp.uri, { UTI:'public.data',dialogTitle:'Save event backup' });
+      return 'Local export verified. The share sheet does not confirm a separate copy.';
+    }
+  } finally {
+    if (temp.exists) temp.delete();
+  }
+}
+export function inspectBackupFile(file:File){
+  const input=file.open(FileMode.ReadOnly);
+Installed Expo Swift completion:
+import ExpoModulesCore
+
+public final class SharingModule: Module {
+  private var appGroupId: String {
+    get throws {
+      guard let groupId = Bundle.main.object(forInfoDictionaryKey: "ExpoShareIntoAppGroupId") as? String else {
+        throw FailedToResolveAppGroupIdException()
+      }
+      return groupId
+    }
+  }
+
+  public func definition() -> ModuleDefinition {
+    Name("ExpoSharing")
+
+    AsyncFunction("shareAsync") { (url: URL, options: SharingOptions, promise: Promise) in
+      guard FileSystemUtilities.isReadableFile(appContext, url) else {
+        throw FilePermissionException()
+      }
+
+      let activityController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+      activityController.title = options.dialogTitle
+
+      activityController.completionWithItemsHandler = { _, _, _, _ in
+        // Resolve unconditionally. UIActivityViewController invokes this once
+        // on dismissal for every (activityType, completed) permutation. The
+        // previous implementation only resolved two of four cases, leaking
+        // the promise when the user picked an activity and then cancelled
+        // its follow-up dialog (e.g. tapped Print, then cancelled the print
+        // dialog: activityType != nil, completed == false).
+        promise.resolve(nil)
+      }
+
+      guard let currentViewcontroller = appContext?.utilities?.currentViewController() else {
+        throw MissingCurrentViewControllerException()
+      }
+
+      // Apple docs state that `UIActivityViewController` must be presented in a
+      // popover on iPad https://developer.apple.com/documentation/uikit/uiactivityviewcontroller
+      if UIDevice.current.userInterfaceIdiom == .pad {
+        let rect = options.anchor
+        let viewFrame = currentViewcontroller.view.frame
+
+        activityController.popoverPresentationController?.sourceRect = CGRect(
+          x: rect?.x ?? viewFrame.midX,
+          y: rect?.y ?? viewFrame.maxY,
+          width: rect?.width ?? 0,
+          height: rect?.height ?? 0
+        )
+CD Reminders UI:
+/** Simplicity A.3: one reminder list, progressive actions; storage stays in the domain adapter. */
+import React,{useState} from 'react';
+import {Pressable,ScrollView,Text,View,useWindowDimensions} from 'react-native';
+import type {StandaloneReminder} from '../standalone-reminders';
+import {useFigmaTheme} from './tokens';
+import {Button,Copy} from '../ui';
+import {useData} from '../state';
+const formatReminderDate=(date:string,time:string)=>{
+ const parsed=new Date(`${date}T${time}:00`);
+ if(Number.isNaN(parsed.getTime()))return `${date} · ${time}`;
+ return parsed.toLocaleString(undefined,{month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit'});
+};
+export type MemoryDueItem={id:string;title:string;due:string};
+export type FigmaRemindersProps={coverage?:{eligible:number;armed:number;through:Record<string,number>;available:boolean}|null;showTitles?:boolean;privacyBusy?:boolean;onToggleTitles?:()=>void;onRenewAlerts?:()=>void;reminders:readonly StandaloneReminder[];onAdd:()=>void;onEdit:(id:string)=>void;onComplete:(id:string,completed?:boolean)=>void;onOpenMemory?:(id:string)=>void;onDelete?:(id:string)=>void;memoryDue?:readonly MemoryDueItem[];onSetMemoryReminder?:(id:string)=>void};
+export function FigmaReminders({coverage,showTitles=false,privacyBusy=false,onToggleTitles,onRenewAlerts,reminders,onAdd,onEdit,onComplete,onOpenMemory,onDelete,memoryDue=[],onSetMemoryReminder}:FigmaRemindersProps){
+ const fg=useFigmaTheme();
+ const {large}=useData(),{fontScale}=useWindowDimensions();
+ const compactHeader=large||fontScale>=1.35;const textScale=large?1.6:1;
+ const [tab,setTab]=useState<'upcoming'|'overdue'|'completed'|'memoryDates'>('upcoming');
+ const now=new Date();
+ const isOverdue=(r:StandaloneReminder)=>new Date(r.dueDate+'T'+r.dueTime+':00').getTime()<now.getTime();
+ const [alertSettings,setAlertSettings]=useState(false);
+ const [expanded,setExpanded]=useState<string|null>(null);
+ const unlinkedMemoryDue=memoryDue.filter(m=>!reminders.some(r=>r.memoryId===m.id));
+ const visible=reminders.filter(r=>tab==='completed'?r.completed:tab==='overdue'?!r.completed&&isOverdue(r):tab==='upcoming'?!r.completed&&!isOverdue(r):false).sort((a,b)=>(a.dueDate+'T'+a.dueTime).localeCompare(b.dueDate+'T'+b.dueTime));
+ const counts={upcoming:reminders.filter(r=>!r.completed&&!isOverdue(r)).length,overdue:reminders.filter(r=>!r.completed&&isOverdue(r)).length,completed:reminders.filter(r=>r.completed).length,memoryDates:unlinkedMemoryDue.length};
+ const labels={upcoming:'Upcoming',overdue:'Overdue',completed:'Completed',memoryDates:'Memory dates'};
+ const action=(label:string,run:()=>void,filled=false,selected?:boolean)=> <View style={{maxWidth:"100%"}}><Button compact editorial primary={filled} variant={filled?"tonal":"quiet"} selected={selected} label={label} onPress={run}/></View>;
+ return <ScrollView stickyHeaderIndices={[0]} contentContainerStyle={{backgroundColor:fg.page,paddingBottom:24}}><View style={{backgroundColor:fg.page,paddingHorizontal:18,paddingVertical:16,gap:14}}>
+  <View style={{flexDirection:'row',alignItems:'center',justifyContent:'space-between',flexWrap:'wrap',gap:8}}>{action('Add Reminder ›',onAdd)}</View>
+  <View style={{flexDirection:'row',flexWrap:'wrap',gap:6}}>{(['upcoming','overdue','completed','memoryDates'] as const).map(value=><View key={value} style={{flexGrow:1,flexBasis:compactHeader?"45%":"22%",minWidth:0}}><Pressable accessibilityRole='button' accessibilityLabel={labels[value]+' ('+counts[value]+')'} accessibilityState={{selected:tab===value}} onPress={()=>{setTab(value);setExpanded(null)}} style={({pressed})=>({flexGrow:1,minHeight:48,paddingHorizontal:7,paddingVertical:9,borderRadius:0,borderWidth:0,borderBottomWidth:tab===value?3:1,borderColor:tab===value?fg.headingInk:fg.secondaryInk,backgroundColor:'transparent',justifyContent:'center',alignItems:'center',opacity:pressed?0.75:1})}><Text style={{fontFamily:'Inter_400Regular',fontSize:12*textScale,textAlign:'center',color:fg.headingInk}}>{labels[value]}{counts[value] > 0 ? ' (' + counts[value] + ')' : ''}</Text></Pressable></View>)}</View>
+  </View><View style={{paddingHorizontal:18,gap:10}}>{onToggleTitles?<View style={{gap:8}}><Button compact editorial variant="quiet" label={alertSettings?"Hide alert settings":"Alert settings ›"} onPress={()=>setAlertSettings(v=>!v)}/>{alertSettings?<><Copy>Reminder titles are hidden in notification text by default. Showing titles may expose them on your lock screen.</Copy><Button label={showTitles?"Show notification titles: On":"Show notification titles: Off"} selected={showTitles} disabled={privacyBusy} onPress={onToggleTitles}/><Copy>Alerts are queued for a limited period. Reopen Reminders to renew them; device settings may affect delivery.</Copy>{onRenewAlerts?<Button label="Check device alerts" disabled={privacyBusy} onPress={onRenewAlerts}/>:null}</>:null}{coverage?.available?<Copy kind="small">Alerts queued for {coverage.armed} of {coverage.eligible} eligible reminders.{coverage.armed<coverage.eligible?" Some reminders have no queued alert.":""}</Copy>:<Copy kind="small">Alert coverage not checked.</Copy>}</View>:null}<Copy kind="section">{labels[tab]}</Copy>
+  {tab==='memoryDates'&&unlinkedMemoryDue.length>0?<View style={{gap:10}}><Text style={{fontSize:15*textScale,color:fg.secondaryInk}}>These dates belong to saved memories. They are not scheduled notifications or completed reminders.</Text>{unlinkedMemoryDue.map(m=><View key={m.id} style={{padding:16,borderRadius:16,backgroundColor:fg.brandSurface,gap:8}}><Text style={{fontSize:18,fontWeight:'700',color:fg.headingInk}}>{m.title}</Text><Text style={{color:fg.secondaryInk}}>{m.due} · {new Date(m.due+'T23:59:59').getTime()<now.getTime()?'Past date · ':''}Notification not yet set</Text><View style={{flexDirection:'row',flexWrap:'wrap',gap:8}}>{onSetMemoryReminder?action('Set Alert',()=>onSetMemoryReminder(m.id),true):null}{onOpenMemory?action('View Memory',()=>onOpenMemory(m.id)):null}</View></View>)}</View>:null}
+  {visible.length===0&&!(tab==='memoryDates'&&unlinkedMemoryDue.length)?<Text style={{color:fg.secondaryInk,paddingVertical:18}}>{tab==='completed'?'No completed reminders.':tab==='overdue'?'No overdue reminders.':tab==='memoryDates'?'No unlinked memory dates.':'No upcoming reminders.'}</Text>:visible.map(r=><View key={r.id} style={{paddingVertical:14,borderBottomWidth:1,borderColor:fg.secondaryInk,gap:10}}>
+   <Pressable accessibilityRole="button" accessibilityLabel={'Edit '+r.title} onPress={()=>onEdit(r.id)}><Text style={{fontFamily:'CormorantGaramond_700Bold',fontSize:24*textScale,color:fg.headingInk}}>{r.title}</Text><Text style={{fontSize:15*textScale,color:fg.secondaryInk,marginTop:5}}>{formatReminderDate(r.dueDate,r.dueTime)}{r.repeat==='once'?'':' · '+r.repeat}</Text></Pressable>
+   <View style={{flexDirection:"row",flexWrap:"wrap",alignItems:"center",gap:8}}>{tab==="overdue"?<Text accessibilityLabel="Overdue reminder" style={{fontSize:14,fontWeight:"700",color:fg.headingInk}}>● Overdue</Text>:null}{r.memoryId?<Text style={{fontSize:13,color:fg.secondaryInk}}>Linked memory</Text>:null}</View>{!r.completed&&coverage?.available?<Copy kind="small">{coverage.through[r.id]?"Alert queued through "+new Date(coverage.through[r.id]).toLocaleString():"No upcoming alert queued."}</Copy>:null}
+   <View style={{flexDirection:'row',flexWrap:'wrap',alignItems:'center',gap:8}}>
+    {action(r.completed?'↶ Restore':'✓ Complete',()=>onComplete(r.id,!r.completed))}
+    {r.memoryId&&onOpenMemory?action('View Memory',()=>onOpenMemory(r.memoryId!)):null}
+    {expanded!==r.id?action('More ···',()=>setExpanded(r.id)):null}
+   </View>
+   {expanded===r.id?<View style={{flexDirection:'row',flexWrap:'wrap',gap:8}}>{action('Edit ›',()=>onEdit(r.id))}{onDelete?action('Delete',()=>onDelete(r.id)):null}{action('Less ↑',()=>setExpanded(null))}</View>:null}
+  </View>)}
+ </View></ScrollView>;
+}

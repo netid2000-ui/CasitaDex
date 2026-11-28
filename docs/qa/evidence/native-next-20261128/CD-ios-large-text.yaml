@@ -1,0 +1,30 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Enlarged reminder privacy settings remain reachable and operable
+---
+- tapOn:
+    text: "Cancel"
+    optional: true
+- tapOn:
+    point: "62%,91%"
+- scrollUntilVisible:
+    element: "Alert settings.*"
+    direction: DOWN
+    timeout: 20000
+- tapOn: "Alert settings.*"
+- scrollUntilVisible:
+    element: "Show notification titles: Off"
+    direction: DOWN
+    timeout: 20000
+- tapOn: "Show notification titles: Off"
+- extendedWaitUntil:
+    visible: "Show notification titles: On"
+    timeout: 30000
+- tapOn: "Show notification titles: On"
+- extendedWaitUntil:
+    visible: "Show notification titles: Off"
+    timeout: 30000
+- scrollUntilVisible:
+    element: "Check device alerts"
+    direction: DOWN
+    timeout: 20000
+- takeScreenshot: CD-large-text-alert-settings

@@ -1,0 +1,136 @@
+Peer challenge after preserving your independent response. Qwen raw follows. ChatGPT's disposition: Apple primary completion docs explicitly provide completed Bool and error, contrary to Qwen's statement that UIActivityViewController has no completion flag; installed Expo intentionally discards it, and even flag does not prove destination hash. No dependency patch, no unsupported success claim. Local verified backup + native restore proven, share target unverified. CD actual iOS hierarchy failed tap toggle bounds [18,346][384,441] overlap sticky tab band [18,329][384,469]; after short downward scroll toggle [18,440][384,535], tapping unobstructed point at y507 succeeded On then Off. This is reachable but usability friction; recommendation at enlarged text only, let Add/filter header scroll rather than occupy viewport, preserving standard-size sticky behavior and bottom tabs. Need owner preference before changing approved sticky behavior; no source edits currently. CD src/app/reminders.tsx refresh invokes refreshStandaloneReminderAlerts, renew calls requestStandaloneReminderAlerts then refresh, root _layout startup/foreground calls listStandaloneReminders. Thus renewal copy is accurate. Review disagreements and next gate priorities; do not claim you ran native checks.
+QWEN RAW:
+### Evidence Classification and Recommendations
+
+#### Evidence Classification:
+1. **iOS Native App Behavior**:
+   - The iOS app uses UIActivityViewController for sharing, which does not return a completion flag indicating success or cancellation.
+   - The app handles the dismissal of the share sheet without verifying the destination, which could lead to incomplete backups.
+
+**Expo Swift Module**:
+The Expo module resolves the promise unconditionally, regardless of the user's action in the share sheet.
+This behavior is consistent with the iOS native app, which does not return a completion flag.
+
+**React Native Component**:
+The React Native component for reminders (FigmaReminders) uses a sticky header and bottom navigation, which can be improved for better usability.
+The component handles the display of reminders based on their status (upcoming, overdue, completed, memory dates), which is functional but could be improved for better accessibility.
+
+#### Recommendations:
+1. **iOS Native App**:
+   - **Verify Share Sheet Destination**: Ensure that the app verifies the destination before marking the backup as successful. This can be done by checking if the file exists at the destination after the share sheet is dismissed.
+   - **Return Completion Flag**: Modify the UIActivityViewController completion handler to return a completion flag indicating success or cancellation.
+
+**Expo Swift Module**:
+**Conditional Promise Resolution**: Modify the Expo module to resolve the promise only if the user completes the share action, not just dismisses the share sheet.
+
+**React Native Component**:
+**Improve Accessibility**: Ensure that the sticky header and bottom navigation are accessible and do not interfere with the user's ability to interact with the component.
+**Consistent UI**: Ensure that the UI elements are consistent and do not leave the viewport, which can be improved by adjusting the layout and positioning.
+
+### Code Snippets for Recommendations
+
+#### iOS Native App:
+
+activityController.completionWithItemsHandler = { (activityType, completed, returnedItems, error) in
+    if completed {
+        promise.resolve(nil)
+    } else {
+        promise.reject("User cancelled the share action", "User cancelled the share action", nil)
+    }
+}
+
+#### Expo Swift Module:
+
+activityController.completionWithItemsHandler = { (activityType, completed, returnedItems, error) in
+    if completed {
+        promise.resolve(nil)
+    } else {
+        promise.reject("User cancelled the share action", "User cancelled the share action", nil)
+    }
+}
+
+#### React Native Component:
+``jsx
+const formatReminderDate = (date, time) => {
+    const parsed = new Date(${date}T${time}:00);
+    if (Number.isNaN(parsed.getTime())) return ${date} · ${time}`;
+    return parsed.toLocaleString(undefined, { month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit' });
+};
+
+export type MemoryDueItem = { id: string; title: string; due: string };
+export type FigmaRemindersProps = {
+    coverage?: { eligible: number; armed: number; through: Record<string, number>; available: boolean } | null;
+    showTitles?: boolean;
+    privacyBusy?: boolean;
+    onToggleTitles?: () => void;
+    onRenewAlerts?: () => void;
+
+Message collapsed
+Show more
+just now
+
+
+
+Claude responded: I reviewed only the pasted text and the quoted source.
+Checking whether the overlap was occlusion or a harness miss
+Checking whether the overlap was occlusion or a harness miss
+
+Checking whether the overlap was occlusion or a harness miss
+
+I reviewed only the pasted text and the quoted source. I did not run native checks.
+
+Qwen
+
+Factually wrong. Its premise that UIActivityViewController has no completion flag is false. The handler provides completed and error, as the Swift you pasted shows by receiving and discarding them. I now accept ChatGPT’s point that Apple’s primary docs document those parameters. I saw only a secondhand quote of them, because the primary page did not load for me.
+Its fixes don’t work.
+“Check that the file exists at the destination” is not possible through a share sheet, since the app cannot see where Files saved it.
+Rejecting the promise on cancel turns a user dismissal into an error, and completed still proves no destination.
+The suggested edit would also patch a dependency, which is out of scope.
+The React snippet is a copy of the existing source, not a recommendation. I give it no weight beyond the point everyone shares, that the destination is unverified.
+
+ChatGPT
+
+Accepted: no dependency patch, and no success claim from the share sheet. One nuance: the forum reports I found say completed can be true for some cancelled third-party activities, so even a future UX tweak should not gate a claim on it. That is no reason to change anything now.
+CasitaDex toggle: resolved toward occlusion.
+The reported frames put the toggle at [18,346]–[384,441], entirely inside the sticky band [18,329]–[384,469]. That answers my earlier question: the first failed tap was real occlusion, not a harness miss.
+Still reachable after a short scroll, with y507 unobstructed, so it is friction and not a defect. I agree.
+Open: whether VoiceOver auto-scrolls an obscured focused element. The tap evidence does not cover that.
+Sticky-header preference.
+Options: (a) keep as is; (b) at enlarged text only, let the whole header scroll; (c) keep only the tab row sticky; (d) cap the sticky height.
+I lean (b), because compactHeader (large or fontScale>=1.35) already exists as a switch. The cost is losing the tab row after scrolling deep, at large text only.
+This overrides approved behavior, so it needs your decision. If chosen, test standard size separately for regression.
+Renewal copy: I do not yet accept “thus accurate”.
+The chain you quoted shows refreshStandaloneReminderAlerts on screen refresh, requestStandaloneReminderAlerts then refresh on the button, and listStandaloneReminders at startup and foreground.
+It does not show which of these schedules new notifications and which only read coverage. If refresh only reads, “Reopen Reminders to renew them” overstates, and only the button renews.
+A small source read or one benign native check settles it.
+
+Gate priorities
+
+Renewal truthfulness (source read, then one native check). It is a claim about coverage, which your mandates treat as non-negotiable.
+iOS destination. A human-completed Save to Files on a physical iPhone, if you have one. Otherwise the gate stays open, and the simulator does not substitute.
+iOS restore with an attachment-bearing backup, plus a truncated copy of your own file to check rejection.
+CasitaDex overdue tick. Leave Reminders open past a due time and see whether it moves under “Overdue”. This was not addressed in the dispositions.
+Sticky-header decision and VoiceOver reachability at the largest size.
+Lower priority: the temp-file deletion race on async extensions (a hypothesis), and the nonexistent-local-time (DST gap) fixture.
+
+Net: I accept the honest iOS wording and the occlusion finding. The renewal copy, overdue tick and iOS destination remain open, and I claim no release or delivery.
+
+
+
+
+
+
+just now
+
+Write a message…
+
+
+
+
+
+
+Claude is AI and can make mistakes. Please double-check responses.
+
+Sonnet 5.5
+ Medium
+Claude finished the response

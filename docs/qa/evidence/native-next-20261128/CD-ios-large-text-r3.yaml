@@ -1,0 +1,7 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Position privacy control in unobstructed large-text scroll area
+---
+- swipe:
+    start: 50%,58%
+    end: 50%,70%
+    duration: 1000

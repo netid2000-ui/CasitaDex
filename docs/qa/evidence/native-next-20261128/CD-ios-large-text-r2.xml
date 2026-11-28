@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="CasitaDex Plus 25.99 Recovery QA - iOS 27.0 - 36C7AE6D-1615-4A23-B313-46EBD092DA6C" tests="1" failures="1" time="35.884" timestamp="2026-11-28T10:53:10">
+    <testcase id="Enlarged privacy controls scroll above persistent navigation and operate" name="Enlarged privacy controls scroll above persistent navigation and operate" classname="Enlarged privacy controls scroll above persistent navigation and operate" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/native-next-20261128/CD-ios-large-text-r2.yaml" time="35.88" timestamp="2026-11-28T10:53:10" status="ERROR">
+      <failure>Assertion is false: "Show notification titles: On" is visible</failure>
+    </testcase>
+  </testsuite>
+</testsuites>

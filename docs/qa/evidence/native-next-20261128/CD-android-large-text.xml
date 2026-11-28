@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="EventCommandGuestQA" tests="1" failures="0" time="13.912" timestamp="2026-11-28T10:52:15">
+    <testcase id="Enlarged reminder privacy settings remain reachable and operable" name="Enlarged reminder privacy settings remain reachable and operable" classname="Enlarged reminder privacy settings remain reachable and operable" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/native-next-20261128/CD-large-text.yaml" time="13.907" timestamp="2026-11-28T10:52:15" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

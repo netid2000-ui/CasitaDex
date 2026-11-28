@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="CasitaDex Plus 25.99 Recovery QA - iOS 27.0 - 36C7AE6D-1615-4A23-B313-46EBD092DA6C" tests="1" failures="0" time="3.168" timestamp="2026-11-28T10:54:30">
+    <testcase id="Position privacy control in unobstructed large-text scroll area" name="Position privacy control in unobstructed large-text scroll area" classname="Position privacy control in unobstructed large-text scroll area" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/native-next-20261128/CD-ios-large-text-r3.yaml" time="3.164" timestamp="2026-11-28T10:54:30" status="SUCCESS"/>
+  </testsuite>
+</testsuites>
