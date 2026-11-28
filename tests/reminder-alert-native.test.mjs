@@ -27,7 +27,7 @@ const hooks=registerHooks({resolve(s,ctx,next){
 }});
 const state={granted:false,prompts:0,created:0,canceled:0,channel:0,next:0,scheduled:[]};
 globalThis.__casitaAlertQA=state;
-const {reconcileReminderNotifications}=await import("../src/reminder-alerts.native.ts");
+const {reconcileReminderNotifications,readReminderAlertCoverage}=await import("../src/reminder-alerts.native.ts");
 const date=new Date(Date.now()+3600e3);
 const dueDate=[date.getFullYear(),String(date.getMonth()+1).padStart(2,"0"),String(date.getDate()).padStart(2,"0")].join("-");
 const dueTime=[String(date.getHours()).padStart(2,"0"),String(date.getMinutes()).padStart(2,"0")].join(":");
@@ -60,6 +60,19 @@ test("default hides titles, opt-in and privacy migration replace old notificatio
  const made=state.created;await reconcileReminderNotifications([reminder("Renamed title")],false);
  assert.equal(state.created,made);assert.equal(state.scheduled.length,1);
  assert.equal(state.scheduled[0].content.data.casitaDexReminderId,"qa-alert");
+});
+test("coverage reflects only matching queued alerts and permission denial removes stale titles",async()=>{
+ state.granted=true;state.scheduled=[];
+ await reconcileReminderNotifications([reminder("Synthetic title")],false,true);
+ const coverage=await readReminderAlertCoverage([reminder("Synthetic title")],true);
+ assert.equal(coverage.eligible,1);assert.equal(coverage.armed,1);
+ assert.ok(coverage.through["qa-alert"]>Date.now());
+ assert.equal((await readReminderAlertCoverage([reminder()],false)).armed,0);
+ state.granted=false;
+ await reconcileReminderNotifications([reminder()],false);
+ assert.equal(state.scheduled.length,0);
+ assert.equal((await readReminderAlertCoverage([reminder()],false)).armed,0);
+ state.granted=true;
 });
 test("unrelated app notifications are never cancelled",async()=>{
  const other={identifier:"other",content:{title:"External",data:{owner:"different"}}};
