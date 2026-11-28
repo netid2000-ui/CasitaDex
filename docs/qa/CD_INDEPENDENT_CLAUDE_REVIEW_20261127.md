@@ -69,3 +69,7 @@ Francisco explicitly approved meaningful peer weight, independent assessments, e
 ## Claude independent review completed and reconciled — November 27 (CST)
 
 Actual initial conclusions, peer challenge, follow-up revisions, pinned source match and benign synthetic evidence are preserved in the [new disposition and owner decisions](evidence/independent-claude-review-20261127/claude-resume-20261127/CD-disposition.md). Original Qwen rounds remain separate. No source changes, native acceptance or release authorization.
+
+### Owner decisions resolved
+
+[Owner approval and acceptance criteria](evidence/independent-claude-review-20261127/claude-resume-20261127/CD-owner-decisions.md): Free recovery within the cap, verified offline Plus continuity, and disclosed daylight-saving adjustment. Implementation and native validation are not yet complete.
