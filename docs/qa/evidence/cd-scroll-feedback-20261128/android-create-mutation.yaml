@@ -1,0 +1,19 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Create isolated synthetic reminder to verify row mutation feedback
+---
+- launchApp:
+    clearState: false
+- extendedWaitUntil:
+    visible: "Find a memory"
+    timeout: 20000
+- tapOn: "Reminders"
+- tapOn: "Add Reminder.*"
+- tapOn: "Reminder title.*"
+- inputText: "QA Feedback Mutation 20261128"
+- hideKeyboard
+- tapOn: "Save Reminder"
+- scrollUntilVisible:
+    element: "Edit QA Feedback Mutation 20261128"
+    direction: DOWN
+    timeout: 20000
+- assertVisible: "Edit QA Feedback Mutation 20261128"

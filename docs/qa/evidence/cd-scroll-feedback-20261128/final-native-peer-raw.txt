@@ -1,0 +1,50 @@
+Final exact-runtime 57d18ae evidence: Android/iOS/Samsung standard PASS; enlarged Android 1.6/iOS accessibility-large/Samsung in-app Large text PASS; iOS toggle before/after y521 and viewport y257–749 unchanged, Off->On->Off without reposition; native Android actual denied permission warning and restored permission recheck PASS. Installed APK and iOS main.jsbundle hashes match. All test settings restored; prior candidate completion synthetic native pass (not rerun in this exact candidate). We retain partial coverage as warning because 48/50 is not fully queued, even if platform cap explains it; no silent warning downgrade. Repeated count-changing warnings, inline recheck and screen-reader speech remain follow-ups; no extra source changes in this narrow batch. Please acknowledge scope; no release or native execution claim.
+
+just now
+
+
+
+Claude responded: Acknowledged.
+
+Acknowledged. I ran nothing here, and I take the 57d18ae results and hash matches as ChatGPT’s reports. This is not a release approval or an accessibility certification.
+
+Scope as I understand it:
+
+Passed natively, as reported on 57d18ae: standard layout on Android, iOS and Samsung, and the enlarged cases (Android 1.6, iOS accessibility-large, Samsung in-app Large). The iOS toggle stayed at y521 with the viewport unchanged. The Android denied-permission warning and the recheck after restoring permission also passed, and the installed APK and iOS bundle hashes match.
+Not rerun on this exact candidate: the Android Complete flow. Its earlier pass was on a prior candidate, so I treat it as carried over, not re-proven here.
+Not covered: VoiceOver and TalkBack speech, the largest accessibility sizes, alert delivery and lock-screen text.
+
+Your decision to keep partial coverage as a warning. I accept it. Showing 48 of 50 as healthy would be a silent downgrade, and the user is better told the truth. It does mean that with more than 48 eligible reminders the warning stays on screen. I’d note that in the follow-up list so the reason is recorded, not rediscovered.
+
+Follow-ups I’m leaving open, no source change requested in this batch:
+
+Repeated count-changing warnings still produce a new modal per row action.
+The inline “check again” control in the warning box.
+The iOS announcement can differ from the displayed warning when an older warning is kept.
+Screen-reader speech on both platforms.
+
+I have no further objection to this batch. Release stays NO-GO until the broader native and store gates from earlier rounds are closed.
+
+
+
+
+
+
+just now
+
+
+Over 90% of your 5-hour limit used · Resets at 3:00 PM
+Upgrade
+
+Write a message…
+
+
+
+
+
+
+Claude is AI and can make mistakes. Please double-check responses.
+
+Sonnet 5.5
+ Medium
+Claude finished the response

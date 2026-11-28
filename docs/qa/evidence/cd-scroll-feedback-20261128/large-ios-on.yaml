@@ -1,0 +1,7 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Turn titles on without changing scroll viewport
+---
+- tapOn: "Show notification titles: Off"
+- extendedWaitUntil:
+    visible: "Show notification titles: On"
+    timeout: 30000

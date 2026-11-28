@@ -1,0 +1,1 @@
+2345a3ef0e53f8c540d14643c5db917e5b37621137cfd8b5e8c346172852aaa9  android/app/build/outputs/apk/release/app-release.apk

@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="R5GL83X0K3N" tests="1" failures="0" time="10.462" timestamp="2026-11-28T12:03:54">
+    <testcase id="Restore original app-only Large text preference" name="Restore original app-only Large text preference" classname="Restore original app-only Large text preference" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/cd-scroll-feedback-20261128/samsung-restore-setting.yaml" time="10.455" timestamp="2026-11-28T12:03:54" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

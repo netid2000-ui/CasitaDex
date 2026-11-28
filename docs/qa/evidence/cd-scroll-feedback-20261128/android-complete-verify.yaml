@@ -1,0 +1,8 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Verify completed synthetic row and scrollable confirmation
+---
+- assertVisible: "Completed (1)"
+- assertVisible: "Edit QA Feedback Mutation 20261128"
+- assertVisible: ".*Restore"
+- assertVisible: "Reminder update"
+- assertVisible: "Saved locally. Alerts queued for 2 of 2 reminders.*"

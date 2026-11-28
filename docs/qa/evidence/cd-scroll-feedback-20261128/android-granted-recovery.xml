@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="EventCommandGuestQA" tests="1" failures="0" time="3.911" timestamp="2026-11-28T11:52:51">
+    <testcase id="Restored permission and explicit check replace warning with actual queue coverage" name="Restored permission and explicit check replace warning with actual queue coverage" classname="Restored permission and explicit check replace warning with actual queue coverage" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/cd-scroll-feedback-20261128/android-granted-recovery.yaml" time="3.908" timestamp="2026-11-28T11:52:51" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

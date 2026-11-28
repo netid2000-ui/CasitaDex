@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="R5GL83X0K3N" tests="1" failures="0" time="29.911" timestamp="2026-11-28T11:53:30">
+    <testcase id="Standard reminder feedback scrolls and privacy toggle remains operable" name="Standard reminder feedback scrolls and privacy toggle remains operable" classname="Standard reminder feedback scrolls and privacy toggle remains operable" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/cd-scroll-feedback-20261128/standard-android.yaml" time="29.901" timestamp="2026-11-28T11:53:30" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

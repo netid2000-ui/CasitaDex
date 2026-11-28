@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="EventCommandGuestQA" tests="1" failures="0" time="14.551" timestamp="2026-11-28T12:01:30">
+    <testcase id="Enlarged reminder feedback scrolls and privacy toggle remains operable" name="Enlarged reminder feedback scrolls and privacy toggle remains operable" classname="Enlarged reminder feedback scrolls and privacy toggle remains operable" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/cd-scroll-feedback-20261128/large-android.yaml" time="14.545" timestamp="2026-11-28T12:01:30" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

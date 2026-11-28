@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="CasitaDex Plus 25.99 Recovery QA - iOS 27.0 - 36C7AE6D-1615-4A23-B313-46EBD092DA6C" tests="1" failures="0" time="4.238" timestamp="2026-11-28T12:02:30">
+    <testcase id="Turn titles back off without repositioning and see scrollable feedback" name="Turn titles back off without repositioning and see scrollable feedback" classname="Turn titles back off without repositioning and see scrollable feedback" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/cd-scroll-feedback-20261128/large-ios-off.yaml" time="4.231" timestamp="2026-11-28T12:02:30" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

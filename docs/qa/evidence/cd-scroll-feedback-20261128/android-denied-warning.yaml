@@ -1,0 +1,25 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Denied notifications remain a visible warning, not a success
+---
+- launchApp:
+    clearState: false
+- extendedWaitUntil:
+    visible: "Find a memory"
+    timeout: 20000
+- tapOn: "Reminders"
+- tapOn: "Alert settings.*"
+- scrollUntilVisible:
+    element: "Check device alerts"
+    direction: DOWN
+    timeout: 20000
+- tapOn: "Check device alerts"
+- tapOn:
+    text: "Don.t allow"
+    optional: true
+- scrollUntilVisible:
+    element: "Alert warning"
+    direction: DOWN
+    timeout: 20000
+- assertVisible: "Saved locally. Notifications are off.*"
+- assertNotVisible: "Reminder update"
+- takeScreenshot: CD-alert-warning-denied

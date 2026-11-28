@@ -1,0 +1,6 @@
+
+Waiting for flows to complete...
+[Passed] Verify completed synthetic row and scrollable confirmation (723ms)
+
+1/1 Flow Passed in 726ms
+

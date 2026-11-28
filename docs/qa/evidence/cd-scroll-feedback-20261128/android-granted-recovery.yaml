@@ -1,0 +1,11 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Restored permission and explicit check replace warning with actual queue coverage
+---
+- tapOn: "Check device alerts"
+- scrollUntilVisible:
+    element: "Reminder update"
+    direction: DOWN
+    timeout: 20000
+- assertVisible: "Saved locally. Alerts queued for 2 of 2 reminders.*"
+- assertNotVisible: "Alert warning"
+- takeScreenshot: CD-alert-warning-recovered

@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="EventCommandGuestQA" tests="1" failures="0" time="19.287" timestamp="2026-11-28T11:55:30">
+    <testcase id="Create isolated synthetic reminder to verify row mutation feedback" name="Create isolated synthetic reminder to verify row mutation feedback" classname="Create isolated synthetic reminder to verify row mutation feedback" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/cd-scroll-feedback-20261128/android-create-mutation.yaml" time="19.283" timestamp="2026-11-28T11:55:30" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

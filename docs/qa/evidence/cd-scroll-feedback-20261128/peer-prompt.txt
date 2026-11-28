@@ -1,0 +1,201 @@
+Peer challenge after preserving independent output. Qwen raw follows. ChatGPT agrees with source findings on stale informational feedback, typed warning presentation, offscreen mutation failures, silent lock and conditional rendering. Implementation final b4858ad: classify only exact known healthy queue outcomes as info, unknown/partial/permission/privacy as warning verbatim; retain warnings on focus/new action and clear ordinary past info, verified refresh clears specific load/coverage errors, successful action clears prior error. Row-action warning/error also surfaced natively via Alert when focused, dropped concurrent action explains please wait; feedback outside onToggleTitles conditional. Do not auto-dismiss unresolved warnings on focus; not all stale errors can safely clear. Android repeated identical live message and true VoiceOver/TalkBack remain native gates, no claim. RN primary docs confirm Android live region and iOS queued announcement; Qwen wrongly attributes announcement to both. 585 source pass + existing skip, building final native. Challenge actual correction and any credible remaining ordinary product behavior. QWEN:
+The provided code changes and tests for the `reminders.tsx` and `reminder-feedback.ts` files aim to enhance the accessibility and user experience of a reminder application. Here's a detailed review:
+
+### Key Changes and Improvements:
+
+1. **Accessibility Enhancements**:
+   - The code now uses `AccessibilityInfo.announceForAccessibilityWithOptions` to announce changes on both Android and iOS. This ensures that users with disabilities are informed about changes in a non-intrusive manner.
+   - The `queue: true` option is used on iOS to queue announcements rather than interrupting ongoing speech, which improves the user experience for those who rely on screen readers.
+
+2. **State Management**:
+   - The introduction of a `status` state to manage feedback messages that are more positive or neutral compared to error messages. This helps in providing a better user experience by distinguishing between successful actions and ongoing processes.
+
+3. **Action Handling**:
+   - The `act` function is introduced to handle actions that may fail and need to be reported back to the user. This function ensures that:
+     - Actions are not executed concurrently.
+     - Errors are reported immediately, and success messages are reported after the action completes.
+     - Refresh errors are handled gracefully, ensuring that the user is informed about both the action's outcome and the inability to refresh the list.
+
+4. **Error Handling**:
+   - The `reportError` and `reportStatus` functions are used to update the UI with error and status messages, respectively. These messages are announced to users with accessibility features enabled.
+
+5. **Testing**:
+   - New tests have been added to ensure that the `runReminderFeedbackAction` function works correctly under various scenarios, including:
+     - Action warnings remaining verbatim even when subsequent refresh fails.
+     - Action failures not reporting a successful save or refresh.
+     - Successful feedback clearing old errors and using explicit results or fallback messages.
+     - Feedback being displayed in the reminder scroll content, not fixed above it.
+
+### Potential Issues and Considerations:
+
+1. **Performance**:
+   - The use of `useCallback` and `useRef` to memoize functions and track state can improve performance by avoiding unnecessary re-renders and function creations.
+
+2. **Error Handling**:
+   - The current error handling assumes that all errors are critical and should be reported immediately. This might not be the case for all actions, especially those that can be retried or are not essential for the user experience.
+
+3. **Accessibility**:
+   - While the use of `accessibilityLiveRegion` and `announceForAccessibilityWithOptions` is good, it's important to ensure that these features are used consistently and that the announcements are clear and concise.
+
+4. **Code Duplication**:
+   - The `reportError` and `reportStatus` functions are similar, and there might be an opportunity to refactor them into a single function with a parameter to indicate whether the message is an error or a status.
+
+### Conclusion:
+
+The changes and tests provided enhance the accessibility and user experience of the reminder application. They ensure that users with disabilities are informed about changes in a non-intrusive manner and that feedback is provided in a clear and consistent manner. The introduction of the `act` function and the new tests provide a robust framework for handling actions and their outcomes, ensuring that the user is informed about both the action's outcome and the inability to refresh the list.
+DIFF:
+diff --git a/src/app/reminders.tsx b/src/app/reminders.tsx
+index 006517c..4f82f7e 100644
+--- a/src/app/reminders.tsx
++++ b/src/app/reminders.tsx
+@@ -4,33 +4,33 @@ import {AccessibilityInfo,Alert,Platform,View} from 'react-native';
+ import {router,useFocusEffect,useLocalSearchParams} from 'expo-router';
+ import {FigmaReminders,type MemoryDueItem} from '../figma-first/FigmaReminders';
+ import {getEngStore} from '../eng-runtime';
+-import {runReminderFeedbackAction} from '../reminder-feedback';
++import {retainReminderWarning,runReminderFeedbackAction,type ReminderStatusFeedback} from '../reminder-feedback';
+ import {listStandaloneReminders,completeStandaloneReminder,deleteStandaloneReminder,getReminderTitlePreference,setReminderTitlePreference,reminderAlertCoverage,refreshStandaloneReminderAlerts,requestStandaloneReminderAlerts,type StandaloneReminder} from '../standalone-reminders';
+ function NativeReminders(){
+  const {origin}=useLocalSearchParams<{origin?:string}>();
+  const [rows,setRows]=useState<StandaloneReminder[]>([]);
+  const [memoryDue,setMemoryDue]=useState<MemoryDueItem[]>([]);
+- const [error,setError]=useState(''),[status,setStatus]=useState('');
++ const [error,setError]=useState(''),[status,setStatus]=useState<ReminderStatusFeedback|null>(null);
+  const focused=useRef(false),actionLock=useRef(false);
+  const reportError=useCallback((message:string)=>{setError(message);if(message&&focused.current&&Platform.OS==='ios'){try{AccessibilityInfo.announceForAccessibilityWithOptions(message,{queue:true});}catch{/* Feedback remains visible if announcement is unavailable. */}}},[]);
+- const reportStatus=useCallback((message:string)=>{setStatus(message);if(message&&focused.current&&Platform.OS==='ios'){try{AccessibilityInfo.announceForAccessibilityWithOptions(message,{queue:true});}catch{/* Feedback remains visible if announcement is unavailable. */}}},[]);
++ const reportStatus=useCallback((feedback:ReminderStatusFeedback)=>{setStatus(feedback);if(focused.current&&Platform.OS==='ios'){try{AccessibilityInfo.announceForAccessibilityWithOptions(feedback.message,{queue:true});}catch{/* Feedback remains visible if announcement is unavailable. */}}},[]);
+  const [showTitles,setShowTitles]=useState(false),[busy,setBusy]=useState(false);
+  const [coverage,setCoverage]=useState<Awaited<ReturnType<typeof reminderAlertCoverage>>|null>(null);
+  const refreshGeneration=useRef(0);
+- const refresh=useCallback(async()=>{const generation=++refreshGeneration.current;const [reminders,snapshot]=await Promise.all([listStandaloneReminders(false),getEngStore().then(store=>store.load())]);if(generation!==refreshGeneration.current)return;setRows(reminders);setMemoryDue(snapshot.data.memories.filter(m=>m.lifecycle==='active'&&!!m.due).map(m=>({id:m.id,title:m.title,due:m.due!})).sort((a,b)=>a.due.localeCompare(b.due)));setCoverage(null);const preference=await getReminderTitlePreference();if(generation!==refreshGeneration.current)return;setShowTitles(preference);void refreshStandaloneReminderAlerts().then(()=>reminderAlertCoverage(reminders)).then(result=>{if(generation===refreshGeneration.current)setCoverage(result);}).catch(()=>{if(generation===refreshGeneration.current)reportError('Alert coverage could not be checked.');});},[reportError]);
+- useFocusEffect(useCallback(()=>{let active=true;focused.current=true;refresh().catch(()=>{if(active)reportError('Unable to load reminders. Nothing was changed.')});return()=>{active=false;focused.current=false;refreshGeneration.current++}},[refresh,reportError]));
+- async function act(action:()=>Promise<string|void>,success:string,actionError:string){
+-  if(actionLock.current)return;
+-  actionLock.current=true;setBusy(true);
+-  try{await runReminderFeedbackAction(action,refresh,reportStatus,reportError,{success,actionError,refreshError:'The action finished, but the reminder list could not be refreshed. Reopen Reminders to check.'});}
++ const refresh=useCallback(async()=>{const generation=++refreshGeneration.current;const [reminders,snapshot]=await Promise.all([listStandaloneReminders(false),getEngStore().then(store=>store.load())]);if(generation!==refreshGeneration.current)return;setRows(reminders);setMemoryDue(snapshot.data.memories.filter(m=>m.lifecycle==='active'&&!!m.due).map(m=>({id:m.id,title:m.title,due:m.due!})).sort((a,b)=>a.due.localeCompare(b.due)));setCoverage(null);const preference=await getReminderTitlePreference();if(generation!==refreshGeneration.current)return;setShowTitles(preference);void refreshStandaloneReminderAlerts().then(()=>reminderAlertCoverage(reminders)).then(result=>{if(generation===refreshGeneration.current){setCoverage(result);if(result.available)setError(current=>current==='Alert coverage could not be checked.'?'':current);}}).catch(()=>{if(generation===refreshGeneration.current)reportError('Alert coverage could not be checked.');});},[reportError]);
++ useFocusEffect(useCallback(()=>{let active=true;focused.current=true;setStatus(retainReminderWarning);refresh().then(()=>{if(active)setError(current=>current==='Unable to load reminders. Nothing was changed.'?'':current);}).catch(()=>{if(active)reportError('Unable to load reminders. Nothing was changed.')});return()=>{active=false;focused.current=false;refreshGeneration.current++}},[refresh,reportError]));
++ async function act(action:()=>Promise<string|void>,success:string,actionError:string,rowAction=false){
++  if(actionLock.current){Alert.alert('Please wait','Another reminder update is in progress. Try again after it finishes.');return;}
++  actionLock.current=true;setBusy(true);setStatus(retainReminderWarning);
++  try{await runReminderFeedbackAction(action,refresh,feedback=>{reportStatus(feedback);if(rowAction&&feedback.level==='warning'&&focused.current)Alert.alert('Alert warning',feedback.message);},message=>{reportError(message);if(rowAction&&message&&focused.current)Alert.alert('Needs attention',message);},{success,actionError,refreshError:'The action finished, but the reminder list could not be refreshed. Reopen Reminders to check.'});}
+   finally{actionLock.current=false;setBusy(false);}
+  }
+- const changePrivacy=()=>act(()=>setReminderTitlePreference(!showTitles),'Reminder privacy updated.','Could not update reminder privacy. Review device notification settings.');
++ const changePrivacy=()=>act(()=>setReminderTitlePreference(!showTitles),'Reminder privacy updated.','Could not update reminder privacy. Check the saved preference before retrying.');
+  const renew=()=>act(requestStandaloneReminderAlerts,'Device alerts checked.','Could not check device alerts.');
+- const complete=(id:string,completed=true)=>{void act(()=>completeStandaloneReminder(id,completed),'Reminder saved locally.','Reminder could not be changed. Review the saved reminder before retrying.');};
++ const complete=(id:string,completed=true)=>{void act(()=>completeStandaloneReminder(id,completed),'Reminder saved locally.','Reminder could not be changed. Review the saved reminder before retrying.',true);};
+  return <View style={{flex:1,backgroundColor:'transparent'}}>
+  {origin==="settings"?<View style={{paddingHorizontal:18,paddingVertical:8}}><Button label="‹ Settings" onPress={()=>router.replace("/more")}/></View>:null}
+- <FigmaReminders status={status} error={error} reminders={rows} coverage={coverage} showTitles={showTitles} privacyBusy={busy} onToggleTitles={()=>void changePrivacy()} onRenewAlerts={()=>void renew()} memoryDue={memoryDue} onSetMemoryReminder={id=>router.push({pathname:'/reminders-manage',params:{mode:'new',memoryId:id,origin}})} onAdd={()=>router.push({pathname:'/reminders-manage',params:{mode:'new',origin}})} onEdit={id=>router.push({pathname:'/reminders-manage',params:{id,origin}})} onComplete={complete} onOpenMemory={id=>router.push({pathname:'/card',params:{id,origin:'reminders'}})} onDelete={id=>Alert.alert('Delete reminder?','The reminder will be deleted. Its linked memory will not be changed.',[{text:'Cancel',style:'cancel'},{text:'Delete',style:'destructive',onPress:()=>{void act(()=>deleteStandaloneReminder(id),'Reminder deleted locally.','Could not delete reminder. Review the saved reminder before retrying.')}}])}/>
++ <FigmaReminders status={status} error={error} reminders={rows} coverage={coverage} showTitles={showTitles} privacyBusy={busy} onToggleTitles={()=>void changePrivacy()} onRenewAlerts={()=>void renew()} memoryDue={memoryDue} onSetMemoryReminder={id=>router.push({pathname:'/reminders-manage',params:{mode:'new',memoryId:id,origin}})} onAdd={()=>router.push({pathname:'/reminders-manage',params:{mode:'new',origin}})} onEdit={id=>router.push({pathname:'/reminders-manage',params:{id,origin}})} onComplete={complete} onOpenMemory={id=>router.push({pathname:'/card',params:{id,origin:'reminders'}})} onDelete={id=>Alert.alert('Delete reminder?','The reminder will be deleted. Its linked memory will not be changed.',[{text:'Cancel',style:'cancel'},{text:'Delete',style:'destructive',onPress:()=>{void act(()=>deleteStandaloneReminder(id),'Reminder deleted locally.','Could not delete reminder. Review the saved reminder before retrying.',true)}}])}/>
+  </View>;
+ }
+ export default function Reminders(){return <NativeReminders/>;}
+\ No newline at end of file
+diff --git a/src/figma-first/FigmaReminders.tsx b/src/figma-first/FigmaReminders.tsx
+index 8f42714..f8bbde7 100644
+--- a/src/figma-first/FigmaReminders.tsx
++++ b/src/figma-first/FigmaReminders.tsx
+@@ -6,13 +6,14 @@ import {useFigmaTheme} from './tokens';
+ import {Button,Copy} from '../ui';
+ import {useData} from '../state';
+ import {usesCompactReminderHeader} from '../reminder-list-layout';
++import type {ReminderStatusFeedback} from '../reminder-feedback';
+ const formatReminderDate=(date:string,time:string)=>{
+  const parsed=new Date(`${date}T${time}:00`);
+  if(Number.isNaN(parsed.getTime()))return `${date} · ${time}`;
+  return parsed.toLocaleString(undefined,{month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit'});
+ };
+ export type MemoryDueItem={id:string;title:string;due:string};
+-export type FigmaRemindersProps={status?:string;error?:string;coverage?:{eligible:number;armed:number;through:Record<string,number>;available:boolean}|null;showTitles?:boolean;privacyBusy?:boolean;onToggleTitles?:()=>void;onRenewAlerts?:()=>void;reminders:readonly StandaloneReminder[];onAdd:()=>void;onEdit:(id:string)=>void;onComplete:(id:string,completed?:boolean)=>void;onOpenMemory?:(id:string)=>void;onDelete?:(id:string)=>void;memoryDue?:readonly MemoryDueItem[];onSetMemoryReminder?:(id:string)=>void};
++export type FigmaRemindersProps={status?:ReminderStatusFeedback|null;error?:string;coverage?:{eligible:number;armed:number;through:Record<string,number>;available:boolean}|null;showTitles?:boolean;privacyBusy?:boolean;onToggleTitles?:()=>void;onRenewAlerts?:()=>void;reminders:readonly StandaloneReminder[];onAdd:()=>void;onEdit:(id:string)=>void;onComplete:(id:string,completed?:boolean)=>void;onOpenMemory?:(id:string)=>void;onDelete?:(id:string)=>void;memoryDue?:readonly MemoryDueItem[];onSetMemoryReminder?:(id:string)=>void};
+ export function FigmaReminders({status,error,coverage,showTitles=false,privacyBusy=false,onToggleTitles,onRenewAlerts,reminders,onAdd,onEdit,onComplete,onOpenMemory,onDelete,memoryDue=[],onSetMemoryReminder}:FigmaRemindersProps){
+  const fg=useFigmaTheme();
+  const {large}=useData(),{fontScale}=useWindowDimensions();
+@@ -30,7 +31,7 @@ export function FigmaReminders({status,error,coverage,showTitles=false,privacyBu
+  return <ScrollView stickyHeaderIndices={compactHeader?[]:[0]} contentContainerStyle={{backgroundColor:fg.page,paddingBottom:24}}><View style={{backgroundColor:fg.page,paddingHorizontal:18,paddingVertical:16,gap:14}}>
+   <View style={{flexDirection:'row',alignItems:'center',justifyContent:'space-between',flexWrap:'wrap',gap:8}}>{action('Add Reminder ›',onAdd)}</View>
+   <View style={{flexDirection:'row',flexWrap:'wrap',gap:6}}>{(['upcoming','overdue','completed','memoryDates'] as const).map(value=><View key={value} style={{flexGrow:1,flexBasis:compactHeader?"45%":"22%",minWidth:0}}><Pressable accessibilityRole='button' accessibilityLabel={labels[value]+' ('+counts[value]+')'} accessibilityState={{selected:tab===value}} onPress={()=>{setTab(value);setExpanded(null)}} style={({pressed})=>({flexGrow:1,minHeight:48,paddingHorizontal:7,paddingVertical:9,borderRadius:0,borderWidth:0,borderBottomWidth:tab===value?3:1,borderColor:tab===value?fg.headingInk:fg.secondaryInk,backgroundColor:'transparent',justifyContent:'center',alignItems:'center',opacity:pressed?0.75:1})}><Text style={{fontFamily:'Inter_400Regular',fontSize:12*textScale,textAlign:'center',color:fg.headingInk}}>{labels[value]}{counts[value] > 0 ? ' (' + counts[value] + ')' : ''}</Text></Pressable></View>)}</View>
+-  </View><View style={{paddingHorizontal:18,gap:10}}>{onToggleTitles?<View style={{gap:8}}><Button compact editorial variant="quiet" label={alertSettings?"Hide alert settings":"Alert settings ›"} onPress={()=>setAlertSettings(v=>!v)}/>{alertSettings?<><Copy>Reminder titles are hidden in notification text by default. Showing titles may expose them on your lock screen.</Copy><Button label={showTitles?"Show notification titles: On":"Show notification titles: Off"} selected={showTitles} disabled={privacyBusy} onPress={onToggleTitles}/><Copy>Alerts are queued for a limited period. Reopen Reminders to renew them; device settings may affect delivery.</Copy>{onRenewAlerts?<Button label="Check device alerts" disabled={privacyBusy} onPress={onRenewAlerts}/>:null}</>:null}{error?<View testID="reminder-error-feedback" style={{borderColor:fg.secondaryInk,borderWidth:1,borderRadius:8,padding:12,gap:4}}><Copy style={{fontWeight:'700'}}>Needs attention</Copy><Copy accessibilityLiveRegion="polite">{error}</Copy></View>:null}{status?<View testID="reminder-status-feedback" style={{backgroundColor:fg.brandSurface,borderRadius:8,padding:12,gap:4}}><Copy style={{fontWeight:'700'}}>Reminder update</Copy><Copy accessibilityLiveRegion="polite">{status}</Copy></View>:null}{coverage?.available?<Copy kind="small">Alerts queued for {coverage.armed} of {coverage.eligible} eligible reminders.{coverage.armed<coverage.eligible?" Some reminders have no queued alert.":""}</Copy>:<Copy kind="small">Alert coverage not checked.</Copy>}</View>:null}<Copy kind="section">{labels[tab]}</Copy>
++  </View><View style={{paddingHorizontal:18,gap:10}}>{onToggleTitles?<View style={{gap:8}}><Button compact editorial variant="quiet" label={alertSettings?"Hide alert settings":"Alert settings ›"} onPress={()=>setAlertSettings(v=>!v)}/>{alertSettings?<><Copy>Reminder titles are hidden in notification text by default. Showing titles may expose them on your lock screen.</Copy><Button label={showTitles?"Show notification titles: On":"Show notification titles: Off"} selected={showTitles} disabled={privacyBusy} onPress={onToggleTitles}/><Copy>Alerts are queued for a limited period. Reopen Reminders to renew them; device settings may affect delivery.</Copy>{onRenewAlerts?<Button label="Check device alerts" disabled={privacyBusy} onPress={onRenewAlerts}/>:null}</>:null}</View>:null}{error?<View testID="reminder-error-feedback" style={{borderColor:fg.secondaryInk,borderWidth:1,borderRadius:8,padding:12,gap:4}}><Copy style={{fontWeight:'700'}}>Needs attention</Copy><Copy accessibilityLiveRegion="polite">{error}</Copy></View>:null}{status?<View testID="reminder-status-feedback" style={{backgroundColor:status.level==='warning'?'transparent':fg.brandSurface,borderColor:fg.secondaryInk,borderWidth:status.level==='warning'?1:0,borderRadius:8,padding:12,gap:4}}><Copy style={{fontWeight:'700'}}>{status.level==='warning'?'Alert warning':'Reminder update'}</Copy><Copy accessibilityLiveRegion="polite">{status.message}</Copy></View>:null}{onToggleTitles?(coverage?.available?<Copy kind="small">Alerts queued for {coverage.armed} of {coverage.eligible} eligible reminders.{coverage.armed<coverage.eligible?" Some reminders have no queued alert.":""}</Copy>:<Copy kind="small">Alert coverage not checked.</Copy>):null}<Copy kind="section">{labels[tab]}</Copy>
+   {tab==='memoryDates'&&unlinkedMemoryDue.length>0?<View style={{gap:10}}><Text style={{fontSize:15*textScale,color:fg.secondaryInk}}>These dates belong to saved memories. They are not scheduled notifications or completed reminders.</Text>{unlinkedMemoryDue.map(m=><View key={m.id} style={{padding:16,borderRadius:16,backgroundColor:fg.brandSurface,gap:8}}><Text style={{fontSize:18,fontWeight:'700',color:fg.headingInk}}>{m.title}</Text><Text style={{color:fg.secondaryInk}}>{m.due} · {new Date(m.due+'T23:59:59').getTime()<now.getTime()?'Past date · ':''}Notification not yet set</Text><View style={{flexDirection:'row',flexWrap:'wrap',gap:8}}>{onSetMemoryReminder?action('Set Alert',()=>onSetMemoryReminder(m.id),true):null}{onOpenMemory?action('View Memory',()=>onOpenMemory(m.id)):null}</View></View>)}</View>:null}
+   {visible.length===0&&!(tab==='memoryDates'&&unlinkedMemoryDue.length)?<Text style={{color:fg.secondaryInk,paddingVertical:18}}>{tab==='completed'?'No completed reminders.':tab==='overdue'?'No overdue reminders.':tab==='memoryDates'?'No unlinked memory dates.':'No upcoming reminders.'}</Text>:visible.map(r=><View key={r.id} style={{paddingVertical:14,borderBottomWidth:1,borderColor:fg.secondaryInk,gap:10}}>
+    <Pressable accessibilityRole="button" accessibilityLabel={'Edit '+r.title} onPress={()=>onEdit(r.id)}><Text style={{fontFamily:'CormorantGaramond_700Bold',fontSize:24*textScale,color:fg.headingInk}}>{r.title}</Text><Text style={{fontSize:15*textScale,color:fg.secondaryInk,marginTop:5}}>{formatReminderDate(r.dueDate,r.dueTime)}{r.repeat==='once'?'':' · '+r.repeat}</Text></Pressable>
+diff --git a/src/reminder-feedback.ts b/src/reminder-feedback.ts
+index 3467800..a953852 100644
+--- a/src/reminder-feedback.ts
++++ b/src/reminder-feedback.ts
+@@ -1,12 +1,22 @@
++export type ReminderStatusFeedback={message:string;level:'info'|'warning'};
++/** Only known healthy scheduler outcomes are informational; preserve unknown and partial results as warnings. */
++export function reminderResultFeedback(message:string):ReminderStatusFeedback{
++ const queued=/^Saved locally\. Alerts queued for (\d+) of (\d+) reminders\. Coverage is finite; reopen Reminders to renew it\. Device settings may affect delivery\.$/.exec(message);
++ const healthy=message==='Saved locally. No upcoming reminder alert is due.'||(queued!==null&&queued[1]===queued[2]);
++ return {message,level:healthy?'info':'warning'};
++}
++export function retainReminderWarning(status:ReminderStatusFeedback|null):ReminderStatusFeedback|null{
++ return status?.level==='warning'?status:null;
++}
+ /** Action and refresh are different phases: a refresh error cannot undo a committed action. */
+ export async function runReminderFeedbackAction(
+  action:()=>Promise<string|void>,refresh:()=>Promise<void>,
+- reportStatus:(message:string)=>void,reportError:(message:string)=>void,
++ reportStatus:(status:ReminderStatusFeedback)=>void,reportError:(message:string)=>void,
+  messages:{success:string;actionError:string;refreshError:string}
+ ):Promise<void>{
+  let result:string|void;
+  try{result=await action();}catch{reportError(messages.actionError);return;}
+  reportError('');
+- reportStatus(typeof result==='string'?result:messages.success);
++ reportStatus(typeof result==='string'?reminderResultFeedback(result):{message:messages.success,level:'info'});
+  try{await refresh();}catch{reportError(messages.refreshError);}
+ }
+diff --git a/tests/reminder-feedback.test.mjs b/tests/reminder-feedback.test.mjs
+index 3354a56..f165e72 100644
+--- a/tests/reminder-feedback.test.mjs
++++ b/tests/reminder-feedback.test.mjs
+@@ -1,13 +1,13 @@
+ import test from "node:test";
+ import assert from "node:assert/strict";
+ import {readFileSync} from "node:fs";
+-import {runReminderFeedbackAction} from "../src/reminder-feedback.ts";
++import {runReminderFeedbackAction,reminderResultFeedback,retainReminderWarning} from "../src/reminder-feedback.ts";
+ const messages={success:"Saved locally.",actionError:"Action failed.",refreshError:"Action finished; list could not refresh."};
+ test("action warnings remain verbatim even when subsequent refresh fails",async()=>{
+  const feedback=[];
+  const warning="Titles are off for new alerts. 1 existing alert(s) may still show titles; check device alerts.";
+  await runReminderFeedbackAction(async()=>warning,async()=>{throw Error("refresh");},s=>feedback.push(["status",s]),e=>feedback.push(["error",e]),messages);
+- assert.deepEqual(feedback,[["error",""],["status",warning],["error",messages.refreshError]]);
++ assert.deepEqual(feedback,[["error",""],["status",{message:warning,level:"warning"}],["error",messages.refreshError]]);
+ });
+ test("action failure does not report a successful save or refresh",async()=>{
+  const feedback=[];let refreshed=false;
+@@ -19,7 +19,7 @@ test("successful feedback clears old error and uses explicit result or fallback"
+  for(const result of [undefined,"Saved locally. Notifications are off; enable alerts in device settings."]){
+   const feedback=[];let refreshed=false;
+   await runReminderFeedbackAction(async()=>result,async()=>{refreshed=true;},s=>feedback.push(["status",s]),e=>feedback.push(["error",e]),messages);
+-  assert.deepEqual(feedback,[["error",""],["status",result??messages.success]]);
++  assert.deepEqual(feedback,[["error",""],["status",result?{message:result,level:"warning"}:{message:messages.success,level:"info"}]]);
+   assert.equal(refreshed,true);
+  }
+ });
+@@ -33,3 +33,16 @@ test("feedback is in the reminder scroll content, not fixed above it",()=>{
+  assert.match(list,/accessibilityLiveRegion="polite"/);
+  assert.match(route,/announceForAccessibilityWithOptions/);
+ });
++
++test("device warnings stay distinct from healthy informational outcomes and survive new actions",()=>{
++ const full="Saved locally. Alerts queued for 2 of 2 reminders. Coverage is finite; reopen Reminders to renew it. Device settings may affect delivery.";
++ const partial="Saved locally. Alerts queued for 1 of 2 reminders. Coverage is finite; reopen Reminders to renew it. Device settings may affect delivery.";
++ assert.equal(reminderResultFeedback(full).level,"info");
++ assert.equal(reminderResultFeedback("Saved locally. No upcoming reminder alert is due.").level,"info");
++ for(const message of [partial,full+" Additional warning.","Saved locally. Notifications are off; enable alerts in device settings.","Titles are off for new alerts. Existing notification text could not be verified; check device alerts.","Future unrecognized result"]){
++  const warning=reminderResultFeedback(message);
++  assert.equal(warning.level,"warning");assert.equal(retainReminderWarning(warning),warning);
++ }
++ assert.equal(retainReminderWarning(reminderResultFeedback(full)),null);
++ assert.equal(retainReminderWarning(null),null);
++});

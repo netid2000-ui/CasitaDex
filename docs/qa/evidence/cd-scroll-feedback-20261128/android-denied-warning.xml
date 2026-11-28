@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="EventCommandGuestQA" tests="1" failures="1" time="37.211" timestamp="2026-11-28T11:50:39">
+    <testcase id="Denied notifications remain a visible warning, not a success" name="Denied notifications remain a visible warning, not a success" classname="Denied notifications remain a visible warning, not a success" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/cd-scroll-feedback-20261128/android-denied-warning.yaml" time="37.207" timestamp="2026-11-28T11:50:39" status="ERROR">
+      <failure>No visible element found: "Alert warning"</failure>
+    </testcase>
+  </testsuite>
+</testsuites>

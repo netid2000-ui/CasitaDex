@@ -1,0 +1,208 @@
+Final narrow source challenge. Actual b4858ad native tests both standard/large iOS and Android, Samsung standard and app Large passed. iOS before toggle viewport [369,257][399,749], after same; toggle stayed y527, Off next tap without scroll. Android actual denied OS permission produced outlined Alert warning, 0/2 queued; restored permission and Check device alerts showed 2/2 healthy, warning cleared. Android synthetic Complete produced actual queue confirmation and completed row. Your concern about warning erasure: every actual native action (privacy/renew/complete/delete) reaches serialized sync, and when preference false, readTitleBearingReminderCount overrides healthy status for stale/unknown text; when true, it is explicit opt-in. Web void-stub throws, not a healthy result. Still added verified vs generic fallback merge test: unverified generic result cannot overwrite existing warning; only exact healthy scheduler result can. Centralized native message formatting, added contract and direct tests, modal only new/changed row warning, no explicit iOS announcement if native modal used. 586 source tests pass. Final runtime 57d18ae building for retest. Please inspect actual correction and confirm narrow remaining objections, no new unrelated work, no native claims.
+diff --git a/src/app/reminders.tsx b/src/app/reminders.tsx
+index 4f82f7e..fe85412 100644
+--- a/src/app/reminders.tsx
++++ b/src/app/reminders.tsx
+@@ -4,7 +4,7 @@ import {AccessibilityInfo,Alert,Platform,View} from 'react-native';
+ import {router,useFocusEffect,useLocalSearchParams} from 'expo-router';
+ import {FigmaReminders,type MemoryDueItem} from '../figma-first/FigmaReminders';
+ import {getEngStore} from '../eng-runtime';
+-import {retainReminderWarning,runReminderFeedbackAction,type ReminderStatusFeedback} from '../reminder-feedback';
++import {mergeReminderFeedback,retainReminderWarning,runReminderFeedbackAction,type ReminderStatusFeedback} from '../reminder-feedback';
+ import {listStandaloneReminders,completeStandaloneReminder,deleteStandaloneReminder,getReminderTitlePreference,setReminderTitlePreference,reminderAlertCoverage,refreshStandaloneReminderAlerts,requestStandaloneReminderAlerts,type StandaloneReminder} from '../standalone-reminders';
+ function NativeReminders(){
+  const {origin}=useLocalSearchParams<{origin?:string}>();
+@@ -12,8 +12,8 @@ function NativeReminders(){
+  const [memoryDue,setMemoryDue]=useState<MemoryDueItem[]>([]);
+  const [error,setError]=useState(''),[status,setStatus]=useState<ReminderStatusFeedback|null>(null);
+  const focused=useRef(false),actionLock=useRef(false);
+- const reportError=useCallback((message:string)=>{setError(message);if(message&&focused.current&&Platform.OS==='ios'){try{AccessibilityInfo.announceForAccessibilityWithOptions(message,{queue:true});}catch{/* Feedback remains visible if announcement is unavailable. */}}},[]);
+- const reportStatus=useCallback((feedback:ReminderStatusFeedback)=>{setStatus(feedback);if(focused.current&&Platform.OS==='ios'){try{AccessibilityInfo.announceForAccessibilityWithOptions(feedback.message,{queue:true});}catch{/* Feedback remains visible if announcement is unavailable. */}}},[]);
++ const reportError=useCallback((message:string,announce=true)=>{setError(message);if(announce&&message&&focused.current&&Platform.OS==='ios'){try{AccessibilityInfo.announceForAccessibilityWithOptions(message,{queue:true});}catch{/* Feedback remains visible if announcement is unavailable. */}}},[]);
++ const reportStatus=useCallback((feedback:ReminderStatusFeedback,announce=true)=>{setStatus(previous=>mergeReminderFeedback(previous,feedback));if(announce&&focused.current&&Platform.OS==='ios'){try{AccessibilityInfo.announceForAccessibilityWithOptions(feedback.message,{queue:true});}catch{/* Feedback remains visible if announcement is unavailable. */}}},[]);
+  const [showTitles,setShowTitles]=useState(false),[busy,setBusy]=useState(false);
+  const [coverage,setCoverage]=useState<Awaited<ReturnType<typeof reminderAlertCoverage>>|null>(null);
+  const refreshGeneration=useRef(0);
+@@ -22,7 +22,7 @@ function NativeReminders(){
+  async function act(action:()=>Promise<string|void>,success:string,actionError:string,rowAction=false){
+   if(actionLock.current){Alert.alert('Please wait','Another reminder update is in progress. Try again after it finishes.');return;}
+   actionLock.current=true;setBusy(true);setStatus(retainReminderWarning);
+-  try{await runReminderFeedbackAction(action,refresh,feedback=>{reportStatus(feedback);if(rowAction&&feedback.level==='warning'&&focused.current)Alert.alert('Alert warning',feedback.message);},message=>{reportError(message);if(rowAction&&message&&focused.current)Alert.alert('Needs attention',message);},{success,actionError,refreshError:'The action finished, but the reminder list could not be refreshed. Reopen Reminders to check.'});}
++  try{await runReminderFeedbackAction(action,refresh,feedback=>{const modal=rowAction&&feedback.level==='warning'&&focused.current&&!(status?.level==='warning'&&status.message===feedback.message);reportStatus(feedback,!modal);if(modal)Alert.alert('Alert warning',feedback.message);},message=>{const modal=rowAction&&!!message&&focused.current;reportError(message,!modal);if(modal)Alert.alert('Needs attention',message);},{success,actionError,refreshError:'The action finished, but the reminder list could not be refreshed. Reopen Reminders to check.'});}
+   finally{actionLock.current=false;setBusy(false);}
+  }
+  const changePrivacy=()=>act(()=>setReminderTitlePreference(!showTitles),'Reminder privacy updated.','Could not update reminder privacy. Check the saved preference before retrying.');
+diff --git a/src/reminder-alerts.native.ts b/src/reminder-alerts.native.ts
+index fa2c30c..35988b0 100644
+--- a/src/reminder-alerts.native.ts
++++ b/src/reminder-alerts.native.ts
+@@ -8,6 +8,7 @@ import { cancelScheduledNotificationAsync } from "expo-notifications/build/cance
+ import { SchedulableTriggerInputTypes } from "expo-notifications/build/Notifications.types";
+ import { AndroidImportance } from "expo-notifications/build/NotificationChannelManager.types";
+ import { planReminderAlerts, type ReminderForAlert } from "./reminder-alert-plan";
++import {noUpcomingReminderFeedback,queuedReminderFeedback} from "./reminder-feedback";
+
+ const CHANNEL="casitadex-reminders-v1";
+ const OWNER="standalone-v1";
+@@ -73,8 +74,8 @@ async function run(rows:readonly ReminderForAlert[],askPermission:boolean,showTi
+   const coverage=await readReminderAlertCoverage(rows,showTitles);
+   if(!coverage.available)return "Saved locally. Alert coverage could not be checked; reopen Reminders to retry.";
+   return coverage.eligible
+-   ? Saved locally. Alerts queued for ${coverage.armed} of ${coverage.eligible} reminders. Coverage is finite; reopen Reminders to renew it. Device settings may affect delivery.
+-   : "Saved locally. No upcoming reminder alert is due.";
++   ? queuedReminderFeedback(coverage.armed,coverage.eligible)
++   : noUpcomingReminderFeedback;
+  }catch{
+   // Storage mutations are already committed; native alert errors never erase saved records.
+   return "Saved locally. Alert scheduling needs attention; reopen Reminders to retry.";
+diff --git a/src/reminder-feedback.ts b/src/reminder-feedback.ts
+index a953852..45204fa 100644
+--- a/src/reminder-feedback.ts
++++ b/src/reminder-feedback.ts
+@@ -1,9 +1,15 @@
+-export type ReminderStatusFeedback={message:string;level:'info'|'warning'};
++export type ReminderStatusFeedback={message:string;level:'info'|'warning';verified:boolean};
++export const noUpcomingReminderFeedback='Saved locally. No upcoming reminder alert is due.';
++export function queuedReminderFeedback(armed:number,eligible:number){return Saved locally. Alerts queued for ${armed} of ${eligible} reminders. Coverage is finite; reopen Reminders to renew it. Device settings may affect delivery.;}
+ /** Only known healthy scheduler outcomes are informational; preserve unknown and partial results as warnings. */
+ export function reminderResultFeedback(message:string):ReminderStatusFeedback{
+- const queued=/^Saved locally\. Alerts queued for (\d+) of (\d+) reminders\. Coverage is finite; reopen Reminders to renew it\. Device settings may affect delivery\.$/.exec(message);
+- const healthy=message==='Saved locally. No upcoming reminder alert is due.'||(queued!==null&&queued[1]===queued[2]);
+- return {message,level:healthy?'info':'warning'};
++ const queued=/^Saved locally\. Alerts queued for (\d+) of (\d+) reminders\./.exec(message);
++ const healthy=message===noUpcomingReminderFeedback||(queued!==null&&queued[1]===queued[2]&&message===queuedReminderFeedback(Number(queued[1]),Number(queued[2])));
++ return {message,level:healthy?'info':'warning',verified:healthy};
++}
++/** Only an explicit healthy reconciliation can supersede an unresolved warning. */
++export function mergeReminderFeedback(previous:ReminderStatusFeedback|null,next:ReminderStatusFeedback):ReminderStatusFeedback{
++ return previous?.level==='warning'&&next.level==='info'&&!next.verified?previous:next;
+ }
+ export function retainReminderWarning(status:ReminderStatusFeedback|null):ReminderStatusFeedback|null{
+  return status?.level==='warning'?status:null;
+@@ -17,6 +23,6 @@ export async function runReminderFeedbackAction(
+  let result:string|void;
+  try{result=await action();}catch{reportError(messages.actionError);return;}
+  reportError('');
+- reportStatus(typeof result==='string'?reminderResultFeedback(result):{message:messages.success,level:'info'});
++ reportStatus(typeof result==='string'?reminderResultFeedback(result):{message:messages.success,level:'info',verified:false});
+  try{await refresh();}catch{reportError(messages.refreshError);}
+ }
+diff --git a/tests/reminder-feedback.test.mjs b/tests/reminder-feedback.test.mjs
+index f165e72..2768c03 100644
+--- a/tests/reminder-feedback.test.mjs
++++ b/tests/reminder-feedback.test.mjs
+@@ -1,13 +1,13 @@
+ import test from "node:test";
+ import assert from "node:assert/strict";
+ import {readFileSync} from "node:fs";
+-import {runReminderFeedbackAction,reminderResultFeedback,retainReminderWarning} from "../src/reminder-feedback.ts";
++import {runReminderFeedbackAction,reminderResultFeedback,retainReminderWarning,mergeReminderFeedback,queuedReminderFeedback,noUpcomingReminderFeedback} from "../src/reminder-feedback.ts";
+ const messages={success:"Saved locally.",actionError:"Action failed.",refreshError:"Action finished; list could not refresh."};
+ test("action warnings remain verbatim even when subsequent refresh fails",async()=>{
+  const feedback=[];
+  const warning="Titles are off for new alerts. 1 existing alert(s) may still show titles; check device alerts.";
+  await runReminderFeedbackAction(async()=>warning,async()=>{throw Error("refresh");},s=>feedback.push(["status",s]),e=>feedback.push(["error",e]),messages);
+- assert.deepEqual(feedback,[["error",""],["status",{message:warning,level:"warning"}],["error",messages.refreshError]]);
++ assert.deepEqual(feedback,[["error",""],["status",{message:warning,level:"warning",verified:false}],["error",messages.refreshError]]);
+ });
+ test("action failure does not report a successful save or refresh",async()=>{
+  const feedback=[];let refreshed=false;
+@@ -19,7 +19,7 @@ test("successful feedback clears old error and uses explicit result or fallback"
+  for(const result of [undefined,"Saved locally. Notifications are off; enable alerts in device settings."]){
+   const feedback=[];let refreshed=false;
+   await runReminderFeedbackAction(async()=>result,async()=>{refreshed=true;},s=>feedback.push(["status",s]),e=>feedback.push(["error",e]),messages);
+-  assert.deepEqual(feedback,[["error",""],["status",result?{message:result,level:"warning"}:{message:messages.success,level:"info"}]]);
++  assert.deepEqual(feedback,[["error",""],["status",result?{message:result,level:"warning",verified:false}:{message:messages.success,level:"info",verified:false}]]);
+   assert.equal(refreshed,true);
+  }
+ });
+@@ -35,8 +35,8 @@ test("feedback is in the reminder scroll content, not fixed above it",()=>{
+ });
+
+ test("device warnings stay distinct from healthy informational outcomes and survive new actions",()=>{
+- const full="Saved locally. Alerts queued for 2 of 2 reminders. Coverage is finite; reopen Reminders to renew it. Device settings may affect delivery.";
+- const partial="Saved locally. Alerts queued for 1 of 2 reminders. Coverage is finite; reopen Reminders to renew it. Device settings may affect delivery.";
++ const full=queuedReminderFeedback(2,2);
++ const partial=queuedReminderFeedback(1,2);
+  assert.equal(reminderResultFeedback(full).level,"info");
+  assert.equal(reminderResultFeedback("Saved locally. No upcoming reminder alert is due.").level,"info");
+  for(const message of [partial,full+" Additional warning.","Saved locally. Notifications are off; enable alerts in device settings.","Titles are off for new alerts. Existing notification text could not be verified; check device alerts.","Future unrecognized result"]){
+@@ -46,3 +46,15 @@ test("device warnings stay distinct from healthy informational outcomes and surv
+  assert.equal(retainReminderWarning(reminderResultFeedback(full)),null);
+  assert.equal(retainReminderWarning(null),null);
+ });
++
++test("generic fallback cannot erase unresolved warning; explicitly verified scheduler result can",()=>{
++ const warning=reminderResultFeedback("Titles are off for new alerts. Existing notification text could not be verified; check device alerts.");
++ assert.equal(mergeReminderFeedback(warning,{message:"Reminder saved locally.",level:"info",verified:false}),warning);
++ const verified=reminderResultFeedback(queuedReminderFeedback(2,2));
++ assert.equal(verified.verified,true);
++ assert.equal(mergeReminderFeedback(warning,verified),verified);
++ assert.equal(reminderResultFeedback(noUpcomingReminderFeedback).verified,true);
++ const scheduler=readFileSync(new URL("../src/reminder-alerts.native.ts",import.meta.url),"utf8");
++ assert.match(scheduler,/queuedReminderFeedback\(coverage.armed,coverage.eligible\)/);
++ assert.match(scheduler,/: noUpcomingReminderFeedback;/);
++});
+
+Message collapsed
+Show more
+1 minute ago
+
+
+
+Claude responded: Review of the b4858ad → 57d18ae correction (static only)
+Checking the warning's reappearance on partial coverage
+
+Checking the warning's reappearance on partial coverage
+Review of the b4858ad → 57d18ae correction (static only)
+
+I ran nothing and make no native claims. The native results on b4858ad and the 586-pass count are ChatGPT’s, which I take as reported. 57d18ae is still building, so it has no result of its own yet.
+
+Objections I now close
+Warning erased by a later healthy action. Closed, with ChatGPT’s reasoning accepted.
+Every real action runs the serialized sync, and readTitleBearingReminderCount checks stale text when titles are off. So a later healthy scheduler result already implies the condition was re-verified.
+The one hole was the unverified fallback (“Reminder saved locally.”). mergeReminderFeedback plus verified now blocks it, and the test covers both directions.
+Classifier coupled to hand-typed copy. Closed. queuedReminderFeedback and noUpcomingReminderFeedback are the single source for both the scheduler and the classifier, and healthy requires exact string equality. Any other native copy falls to warning, so a wording change cannot create a false “healthy”.
+Warnings that can’t be re-checked by the user. Withdrawn. The “Check device alerts” button already provides re-verification. My remaining note on it is below.
+Narrow remaining objections
+A permanently partial result becomes a permanent warning (source-backed).
+A result is healthy only when armed===eligible. With more than 48 eligible reminders, armed is capped at 48, so the result can never be healthy.
+retainReminderWarning keeps warnings across every new action and focus, and an unverified info cannot replace one. So that warning stays on screen forever, and the coverage line already says the same thing.
+Only reminders with at least one future occurrence count as eligible, so this needs many active reminders, but it is possible.
+Fix: treat “armed equals the platform cap” as informational with an explanation, or let a repeated identical partial result clear with its own coverage line.
+Modal fatigue is only partly fixed (source-backed).
+The “new or changed” test compares exact message text, and partial-coverage messages contain counts (“45 of 50”, then “44 of 50”). Each Complete changes the count, so each one pops another modal.
+Fix: compare by warning kind, or show a modal only when coverage got worse.
+Announcement can differ from what’s displayed (source-backed, low). When the merge keeps the old warning, reportStatus still announces the new text (“Reminder saved locally.”) on iOS while the screen shows the old warning.
+Stale closure in the modal test (low).
+act compares against status captured when it was created. For a delete confirmed from the Alert dialog, that value may be older than the current state.
+Cosmetic in effect: a repeated warning may or may not re-modal.
+Warning box has no inline recovery. The re-check lives inside the collapsed “Alert settings” section. Adding a “Check again” button in the warning box would save two taps, which matters at large text sizes.
+Test gaps (benign)
+No test of the modal decision, the announce flag, or the stale-closure case, since those live in reminders.tsx.
+No test for a partial result that is permanently partial (objection 1).
+No test for repeated identical partial warnings.
+
+Native gates stay as you stated: VoiceOver reading the alert exactly once, TalkBack with both the live region and the dialog, and large-text rendering of the warning box. I have no other open objections.
+
+
+Create a doc
+
+
+
+
+
+just now
+
+Write a message…
+
+
+
+
+
+
+Claude is AI and can make mistakes. Please double-check responses.
+
+Sonnet 5.5
+ Medium
+Claude finished the response

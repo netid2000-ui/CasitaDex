@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="EventCommandGuestQA" tests="1" failures="0" time="0.726" timestamp="2026-11-28T11:57:08">
+    <testcase id="Verify completed synthetic row and scrollable confirmation" name="Verify completed synthetic row and scrollable confirmation" classname="Verify completed synthetic row and scrollable confirmation" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/cd-scroll-feedback-20261128/android-complete-verify.yaml" time="0.723" timestamp="2026-11-28T11:57:08" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

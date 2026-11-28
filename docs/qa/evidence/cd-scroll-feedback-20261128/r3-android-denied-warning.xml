@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="EventCommandGuestQA" tests="1" failures="0" time="12.797" timestamp="2026-11-28T12:02:40">
+    <testcase id="Denied notifications remain a visible warning, not a success" name="Denied notifications remain a visible warning, not a success" classname="Denied notifications remain a visible warning, not a success" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/cd-scroll-feedback-20261128/android-denied-warning-r2.yaml" time="12.792" timestamp="2026-11-28T12:02:40" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

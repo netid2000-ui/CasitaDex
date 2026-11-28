@@ -1,0 +1,6 @@
+
+Waiting for flows to complete...
+[Passed] Open app-only accessibility setting without changing Samsung device settings (8s)
+
+1/1 Flow Passed in 8s
+

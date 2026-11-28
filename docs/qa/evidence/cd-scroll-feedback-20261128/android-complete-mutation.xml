@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="EventCommandGuestQA" tests="1" failures="1" time="21.477" timestamp="2026-11-28T11:56:16">
+    <testcase id="Complete only the synthetic reminder; actual scheduler result remains visible" name="Complete only the synthetic reminder; actual scheduler result remains visible" classname="Complete only the synthetic reminder; actual scheduler result remains visible" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/cd-scroll-feedback-20261128/android-complete-mutation.yaml" time="21.472" timestamp="2026-11-28T11:56:16" status="ERROR">
+      <failure>Assertion is false: "Restore" is visible</failure>
+    </testcase>
+  </testsuite>
+</testsuites>

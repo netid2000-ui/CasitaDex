@@ -1,0 +1,21 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Turn titles back off without repositioning and see scrollable feedback
+---
+- tapOn: "Show notification titles: On"
+- extendedWaitUntil:
+    visible: "Show notification titles: Off"
+    timeout: 30000
+- swipe:
+    start: 50%,70%
+    end: 50%,40%
+    duration: 650
+- scrollUntilVisible:
+    element: "Reminder update"
+    direction: DOWN
+    timeout: 20000
+- assertVisible: "Saved locally.*"
+- assertVisible: "Home"
+- assertVisible: "Photos"
+- assertVisible: "Reminders"
+- assertVisible: "Find"
+- takeScreenshot: CD-scroll-feedback-enlarged
