@@ -1,0 +1,71 @@
+You said: Francisco requests a final evidence reconciliation.
+
+Francisco requests a final evidence reconciliation. ChatGPT ran benign synthetic source checks on the pinned commit: a previously verified Plus store retains Plus when offline, but a freshly created store starts free/error and capacity at 20 and restore refuse; a daily reminder planner at a fixed date returns six future alerts, not a seventh. No OS delivery or native purchase test. Build 7 source 4c6df81 to pinned 9b5752a differs only in QA/evidence/scripts, no src/app config/modules/Android/iOS paths. Your concern regarding privacy title is supported by src/reminder-alerts.native.ts:43. Confirm or revise remaining objections; propose concise owner tradeoffs and correction acceptance gates; no additional paid work or source changes.
+
+just now
+
+
+
+Claude responded: Final reconciliation: which objections stand
+Weighing objections and owner tradeoffs for the release gates
+
+Weighing objections and owner tradeoffs for the release gates
+Final reconciliation: which objections stand
+
+I ran no new tool work this turn. ChatGPT’s synthetic results and the “only QA/evidence/scripts differ” claim are taken as reported. I cannot check the diff myself, because the ZIP has no Git metadata.
+
+Objections, confirmed or revised
+ID	Status	Revision
+CD-IR-01 (enforcement fails open outside QA)	Reframed	I accept it is intentional. It is not a defect but a release gate. My remaining point is the default: an unconfigured build is fully free, so release needs a hard assertion rather than convention. The prior report wording overstated production restriction; that is agreed.
+CD-IR-02 (no production checkout or acknowledgement)	Confirmed as gate	Intentional, and still a blocker. Google refunds a purchase left unacknowledged for 3 days, so this must be proven in sandbox.
+CD-IR-03 (cold-start entitlement)	Confirmed, severity now conditional	ChatGPT’s synthetic check matches my reading exactly. A fresh store starts free/error, and capacity and restore refuse. Practical severity depends on whether Play and StoreKit return a cached entitlement offline on a cold start. That is untested natively, so Medium until proven.
+CD-IR-04 (Free restore is Plus-only)	Open, owner choice	Not a code dispute.
+CD-IR-05 (title in notification body; hardened module unused)	Confirmed	reminder-alerts.native.ts:43 is supported, and my grep found no consumer of the native module.
+CD-IR-06 (six-alert horizon)	Confirmed	The synthetic daily-reminder check returns six alerts and not a seventh. It only bites when the app isn’t opened. I did not verify when reconcile fires on foreground.
+CD-IR-07 (evidence quality)	Partly withdrawn	If the no-src-diff claim holds, Build 7 native results apply to this source, with a limit: they ran only under QA identities. The stale STATUS.md and the absent evidence folder remain.
+H-1 to H-4	Still unverified	iOS environment mismatch, touch targets and labels, legacy backup reach, timezone resync. None is promoted to a finding.
+Owner tradeoffs
+Offline entitlement.
+A: persist a last-verified-Plus cache and re-verify on resume. This avoids locking out paying users. The cost is that a modified device could fake the cache, which is low-impact for a $25.99, local-only app. Never grant Plus on first run from the cache.
+B: stay strict, with honest “checking” feedback and a retry. This is simpler, but a paying user can be blocked offline.
+I recommend A, but B is acceptable if the native offline gate below passes.
+Restore policy.
+Plus-only keeps the strongest paywall but strands refunded or lapsed users.
+Free restore into available slots keeps the cap and the user’s access to their own data.
+I recommend the second.
+Reminders.
+For the horizon: disclose it only (cheapest), use repeating triggers where the platform allows (month-end clamping is the catch), or both.
+For lock-screen content: default to a generic body with an opt-in to show titles, or keep titles on by default.
+I recommend a generic default.
+DST (CD-OWNER-01). I choose A: roll forward with disclosure, including the repeated fall hour.
+Acceptance gates (no paid work needed to define them)
+Release configuration: a test that fails if enforcement is off in a release build. Evidence: a sandbox 21st save and backup on both platforms.
+Purchase: sandbox purchase, kill mid-flow, relaunch, confirm acknowledgement; Restore Purchases visible and working on iOS.
+Offline: verified Plus, airplane mode, cold start, 21st save and restore on both platforms. Pass means either no lockout, or the owner has accepted B with clear feedback.
+Restore: boundary tests at 19, 20 and 21, matching whichever policy you choose.
+Reminders: a 7-day untouched daily reminder, a lock-screen screenshot on both platforms, and a native DST delivery check.
+Evidence hygiene: regenerate STATUS.md for this commit, and add the evidence folder or its hashes to the review package.
+
+None of this changes the NO-GO disposition. Native purchase, offline, DST, the physical iPhone and the store gates all remain open.
+
+
+Create a spreadsheet
+
+
+
+
+
+just now
+
+Write a message…
+
+
+
+
+
+
+Claude is AI and can make mistakes. Please double-check responses.
+
+Sonnet 5.5
+ Medium
+Claude finished the response

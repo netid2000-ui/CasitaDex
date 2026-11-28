@@ -1,0 +1,193 @@
+You said: Francisco, the owner of Designs by F&A, directs you to independently review CasitaDex and challenge ChatGPT's work, recommendations and QA claims.
+CasitaDex-independent-source-review.zip
+CasitaDex-independent-source-review.zip
+ZIP
+
+Francisco, the owner of Designs by F&A, directs you to independently review CasitaDex and challenge ChatGPT's work, recommendations and QA claims. You have actual tracked source in CasitaDex-independent-source-review.zip, not excerpts or ChatGPT-selected conclusions. Open/unpack it with your available file tools, inspect REVIEW-MANIFEST.json, verify pinned Git commit 9b5752aab18bd71a1d79506843d06b3f944033eb and independently select/read actual files across src, tests, native modules, configuration and QA docs. If you cannot directly open or inspect the ZIP, explicitly say so; never infer you accessed its contents. First research current authoritative guidance relevant to local-first backup/recovery, usability/accessibility, reminders and purchase entitlement handling; list credible source URLs. Then assess owner's approved Free (20 active+archived), Plus one-time $25.99, no subscriptions/cloud, user data preservation, native parity, evidence quality, UI flow and cost. Challenge source and evidence; do not agree for convenience. Return original findings with IDs, severity, exact actual path/line or symbol, observation, rationale, recommended fix, verification required; separate confirmed static findings vs hypotheses, prior test reports vs independently executed checks. No live data, production changes, exploit reproduction, offensive tests or paid usage. Report direct access proof by listing 3 actual independently chosen file paths, symbols, and exact short distinctive source excerpts. No source modifications. Record disagreements explicitly. Never represent review as comprehensive if not possible; state what remains. Start now.
+
+Message collapsed
+Show more
+3 hours ago
+
+
+
+Claude responded: I'll start by checking that the ZIP actually opens, then read the manifest and verify the pinned commit.
+Checking memory notes alongside the archive
+
+Checking memory notes alongside the archive
+
+I’ll start by checking that the ZIP actually opens, then read the manifest and verify the pinned commit.
+
+Ran 10 commands, searched the web, read memory
+
+Ran 10 commands, searched the web, read memory
+
+
+
+
+
+3 hours ago
+You said: Continue
+
+Continue
+
+2 minutes ago
+
+
+
+Claude responded: Status: I've finished the entitlement and reminder reading.
+Ran 6 commands
+
+Ran 6 commands
+
+Status: I’ve finished the entitlement and reminder reading. Now I’m checking test quality and OS-level backup behaviour, then I’ll write up the findings.
+
+Ran a command
+
+Ran a command
+CasitaDex independent review at commit 9b5752a (partial, not comprehensive)
+
+I read about a dozen of the 573 files, and I ran no code or tests. Every finding below is a static reading unless it is marked as a hypothesis.
+
+1. Direct access proof
+ZIP opened. It unpacked to 574 files, which is the manifest plus 573 listed files.
+Manifest integrity. All 573 SHA-256 hashes and byte counts match the manifest, with none missing and none extra.
+Commit not verified. The ZIP has no .git directory, so I can’t confirm 9b5752aab18bd71a1d79506843d06b3f944033eb through Git. The manifest states the commit, and I take that on trust.
+Cited commits differ. No commit cited in docs/qa (Build 6 8013c33, Build 7 4c6df81) is the pinned one, so I can’t tie any prior test count to this source.
+
+Three files I chose myself, with exact excerpts:
+
+src/plus-memory-limit.ts:10, in createMemoryLimitGate: if(!dependencies.enabled||savedCount+additional<=FREE_MEMORY_LIMIT)return;
+modules/casitadex-plus-store/android/src/main/java/expo/modules/casitadexplus/PlayOwnershipModule.kt:26, in configured(): private fun configured() = BuildConfig.PLAY_TEST_CHECKOUT &&
+src/reminder-alert-plan.ts:17, in planReminderAlerts: cap=48,perReminder=6
+2. Research sources
+
+Primary
+
+Google Play Billing security and acknowledgement: https://developer.android.com/google/play/billing/security
+One-time purchase lifecycle: https://developer.android.com/google/play/billing/lifecycle/one-time
+Apple StoreKit currentEntitlement: https://developer.apple.com/documentation/storekit/product/currententitlement
+Android Auto Backup (25 MB cap, allowBackup, dataExtractionRules): https://developer.android.com/identity/data/autobackup
+Android backup best practices: https://developer.android.com/privacy-and-security/risks/backup-best-practices
+WCAG 2.2 target size, 24×24 px minimum: https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum
+
+Weaker sources, treat with caution
+
+iOS 64-pending-notification limit, stated by an Apple engineer in a forum thread: https://developer.apple.com/forums/thread/811171
+Empty currentEntitlements reports, forum only: https://developer.apple.com/forums/thread/823454
+Apple Guideline 3.1.1 (visible Restore button): I could only reach secondary sources, such as the RevenueCat guide at https://revenuecat.github.io/codelabs/guides/restore-purchases-react-native.html. I did not retrieve Apple’s guidelines page.
+Apple’s 44 pt and Material’s 48 dp target sizes came from third-party summaries, for example https://specification.website/spec/accessibility/touch-target-size/.
+
+I did not research store fee percentages, the iOS notification documentation or the Apple HIG pages directly.
+
+3. Confirmed static findings
+
+CD-IR-01: High, release blocker. The Free cap and Plus gates fail open outside QA builds.
+
+src/plus-entitlement-runtime.ts:44-52 enables enforcement only when configured && isLocalTesting, or when the qaFreeMemoryLimit flag is set.
+src/plus-memory-limit.ts:10 and src/plus-feature-gate.ts:5 return immediately when enabled is false.
+In any build outside those QA identities, there is no 20-memory cap and no backup gating.
+Rationale: the superbatch report says production Free entitlement “remains restricted”. The code does not show that.
+Fix: enforce by default, make an unconfigured release build fail closed or refuse to start, and add a test that asserts this on the release configuration.
+Verify: a release-configuration build, 21st save and backup attempt on a Free account, on both platforms, in store sandbox.
+
+CD-IR-02: High. No production purchase or acknowledgement path exists.
+
+app.config.js:3-6 throws for any production environment.
+PlayOwnershipModule.kt:26 requires the test flag, and the only purchase function is purchaseForLocalTesting.
+On iOS, PlusStoreReader.swift:36-37 throws checkoutDisabled in release builds.
+plus-entitlement-runtime.ts:28 only creates the acknowledgement coordinator when isLocalTesting is true.
+Per the Google guidance above, a Play purchase that goes unacknowledged for 3 days is refunded automatically, so this must become a release gate.
+The only entitlement check is client-side signature verification (PlayOwnershipModule.kt:85-88). That fits your no-cloud rule but should be recorded as an accepted residual risk.
+Fix: build the production path (checkout, acknowledgement, Restore Purchases) and test it only in sandbox.
+Verify: sandbox purchase, kill the app mid-purchase, relaunch, confirm acknowledgement.
+
+CD-IR-03: Medium. A paying user is blocked whenever entitlement can’t be verified.
+
+plus-entitlement-store.ts:30 sets status to error while the entitlement stays at its initial free.
+plus-memory-limit.ts:13-14 then throws “Unable to verify Plus right now”. A last-known Plus state is held only in memory, so it is lost on restart.
+Android adds a 3-minute timeout and a disconnect failure (PlayOwnershipModule.kt:101-103).
+A paid user over the cap cannot save, back up or restore while the store is unreachable. Data is kept, but they are locked out of Plus features.
+Fix: persist a non-secret last-verified-Plus cache, re-verify in the background, and never downgrade on an error.
+Verify: verified Plus, airplane mode, cold start, 21st save, on both platforms.
+
+CD-IR-04: Medium. Free-tier data recovery is thin, and restoring your own backup is Plus-only.
+
+plus-access.ts:12-14 gates both full-backup and restore-backup behind Plus.
+app.config.js:34 sets allowBackup: false. I found no iOS backup-exclusion setting, so iOS behavior is unverified.
+A Free Android user who loses or replaces a phone keeps only the text report, which has no photos.
+A refunded or revoked Plus user cannot restore their own earlier archive.
+This matches your approved tiers, so I’m challenging the policy rather than the code. It conflicts with your stated values of privacy and durable data.
+Recommendation (owner decision): allow Free restore of a user’s own archive into available slots, and keep full export as the Plus value.
+Verify: a policy test for restore at 19, 20 and 21 memories.
+
+CD-IR-05: Medium. The privacy-hardened reminder module is unused, and the live path is less private.
+
+Nothing in src, tests or plugins references casitadex-reminder-alerts. Its generic body text (“Open CasitaDex to review your reminders.”) and VISIBILITY_PRIVATE therefore never run.
+The live path is src/reminder-alerts.native.ts:43. It puts the reminder title in the notification body, with no lock-screen privacy setting.
+The unused module still ships native code, including a BOOT_COMPLETED receiver.
+Fix: pick one implementation. If the live one stays, add lock-screen content control and Android private visibility.
+Verify: lock-screen screenshots on both platforms.
+
+CD-IR-06: Medium to High. Repeating reminders stop firing if the app isn’t opened.
+
+reminder-alert-plan.ts:103,123 arms at most 6 occurrences per reminder and 48 in total.
+Rescheduling happens only when reconcile runs (standalone-reminders.native.ts:26,40,51,56).
+A daily reminder therefore goes silent after roughly 6 days without opening the app.
+The success message at reminder-alerts.native.ts:56 does not disclose that limit.
+The cap of 48 does respect the iOS limit of 64.
+Fix: use repeating triggers where the platform allows, or disclose the window honestly in the UI.
+Verify: a daily reminder with the app untouched for 7 days, using simulator clock advance.
+
+CD-IR-07: Medium. Evidence quality.
+
+41 of 127 test files read source text, which checks that strings exist rather than how the app behaves.
+Test counts vary across documents (565, 568, 569, and 586 in STATUS.md) and cannot be reconciled with this commit.
+The evidence folder cited by the QA reports is not in the ZIP, so I can’t check those hashes or screenshots.
+STATUS.md is dated November 8 and cites commit 2b2022f, which makes it stale.
+Fix: regenerate the status file for this commit, with one test-count line tied to one commit hash.
+4. Hypotheses, not confirmed
+H-1 (iOS environment mismatch). PlusStoreReader.swift:14,123-124 hard-codes a single store environment in Info.plist. TestFlight transactions report Sandbox, so a build configured for Production could throw wrongIdentity. This needs a TestFlight check.
+H-2 (touch targets and labels). src/screens.tsx has no hitSlop and few accessibilityLabel strings (4 in screens.tsx, 11 in eng-screens.tsx). Shared components might supply them, and I did not check. Measure against the 24 px WCAG minimum and the 44 pt / 48 dp platform guidance.
+H-3 (legacy backup path). src/backup-files.native.ts:35,69,79 is Android-only with a 2 MB limit. I did not confirm whether the UI still reaches it.
+H-4 (timezone and DST). The planner uses the device zone at planning time (reminder-alert-plan.ts:99) and I found no timezone-change listener. Behavior after travel or a DST change is unproven.
+5. Prior reports versus what I executed
+
+I executed nothing independently: no test suite, no build, no device run, and the sandbox has no network. The 560 to 586 test counts, the native builds, the Samsung and simulator runs and the hash checks all come from ChatGPT’s reports and cannot be reproduced from this ZIP. The only independent checks I did were the manifest hash verification and the static reading above.
+
+6. Disagreements recorded
+I disagree with the superbatch §5 “Implemented” status for the monetization rules. The code shows they work only in QA identities (CD-IR-01, CD-IR-02).
+The claim that Plus bypass is verified rests on domain tests with mocked adapters. I found no evidence of a native run against a real store entitlement.
+I disagree with treating STATUS.md as a current handoff (CD-IR-07).
+The reports call allowBackup=false a privacy positive. It is also a data-loss risk for Free users (CD-IR-04).
+The reports list the reminder stack as one verified feature. It is two implementations, only one of them live (CD-IR-05).
+7. What I did not review
+The v4 backup and restore engine (src/eng-*.ts, src/sb20-*), including restore atomicity.
+media-portable-container, the media integrity code and the Recently Deleted lifecycle.
+UI screens, the figma-first directory and Figma parity.
+The iOS reminder module’s delivery handling, plugins, CI workflow and the lockfile and dependency advisories.
+Privacy manifests, the .maestro flows and all store-fee cost modeling.
+
+This is a partial review. Nothing here supports a GO decision, and production stays NO-GO.
+
+
+Create a doc
+
+
+
+
+
+just now
+
+Write a message…
+
+
+
+
+
+
+Claude is AI and can make mistakes. Please double-check responses.
+
+Sonnet 5.5
+ Medium
+Claude finished the response

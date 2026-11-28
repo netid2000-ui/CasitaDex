@@ -1,0 +1,236 @@
+You said: Francisco requests peer challenge, after your independent first review already preserved.
+
+Francisco requests peer challenge, after your independent first review already preserved. Below are the original Qwen responses and ChatGPT separate source-backed dispositions. Give each meaningful weight; challenge both, do not assume consensus. Focus on unresolved material differences and your new findings; concise 4–6 bullets, no further lengthy tool work if allowance tight. For factual disputes cite exact evidence, distinguish owner choices and native gates. For CasitaDex: QA-only enforcement and checkout are intentionally disabled in production (production configuration hard-blocked); prior report wording overstated production restriction. Source snapshot Git blobs were independently matched to the pinned commit; report commits are its ancestors, not proof of new native tests. Reconsider offline entitlement, restore policy, reminder privacy/horizon and DST, including competing options. For Event Command: consider degraded repair versus quarantine, archived deletion cleanup/feedback risk, and backup evidence limitations. No live data, code changes, offensive tests, paid usage or source exploit reproduction.
+
+QWEN RAW RESPONSES
+backup (original model response):
+### Findings:
+
+**Potential Data Corruption in Backup Verification**
+**File:** src/backup-files.native.ts
+**Line:** 22
+**Excerpt:** if (check !== backup || exportData(parseData(check)) !== backup)
+**Explanation:** The verification logic checks if the read-back data matches the original data and if parsing and re-exporting the data results in the same backup. However, this does not guarantee that the data is not corrupted during the read-back process. The parseData function might not handle all edge cases correctly, leading to potential data corruption.
+**Recommendation:** Add additional checks to ensure that the data is not corrupted during the read-back process. For example, compare the byte length of the original and read-back data.
+
+**Potential Memory Leak in saveBackupFile**
+**File:** src/backup-files.native.ts
+**Line:** 15
+**Excerpt:** return size*2+snapshotMetadataLimit;
+**Explanation:** The function backupWorkingSpace returns a value that is twice the size of the input plus a fixed value. If the input size is large, this could lead to excessive memory usage, potentially causing a memory leak.
+**Recommendation:** Review the logic of backupWorkingSpace to ensure that it does not lead to excessive memory usage. Consider limiting the size of the input or optimizing the memory usage.
+
+**Potential Security Issue in decodeEngBackup**
+**File:** src/eng-backup.ts
+**Line:** 55
+**Excerpt:** if(raw[0]!==123&&raw[0]!==32&&raw[0]!==10&&raw[0]!==13)throw Error("Unsupported full backup format");
+**Explanation:** The function decodeEngBackup checks if the first byte of the input is not one of the expected values (JSON, space, newline, or carriage return). However, this does not guarantee that the input is not a valid JSON string. An attacker could craft a JSON string that starts with a non-expected byte but is still valid JSON.
+**Recommendation:** Use a more robust method to validate the input, such as parsing the input as JSON and catching any parsing errors.
+
+### No Confirmed Issue:
+- The test coverage appears to be sufficient to verify the functionality of the code. The tests cover various scenarios, including successful backup and read-back, cancellation, and error handling.
+
+policy (original model response):
+### Findings:
+
+**Potential Race Condition in createMemoryLimitGate**
+**File:** src/plus-memory-limit.ts
+**Line:** 11
+**Excerpt:** if(!dependencies.enabled||savedCount+additional<=FREE_MEMORY_LIMIT)return;
+**Explanation:** The function createMemoryLimitGate checks if the dependencies.enabled is false or if the savedCount + additional is less than or equal to FREE_MEMORY_LIMIT. However, there is no synchronization mechanism to ensure that the savedCount and additional values are consistent across multiple calls. This could lead to a race condition where the savedCount might be updated by another function call before the current one checks it, leading to incorrect memory limit enforcement.
+**Recommendation:** Introduce a mutex or lock to synchronize access to savedCount and additional.
+
+**Potential Data Corruption in createMemoryLimitGate**
+**File:** src/plus-memory-limit.ts
+**Line:** 12
+**Excerpt:** await dependencies.refresh();
+**Explanation:** The function createMemoryLimitGate calls dependencies.refresh() to get the latest entitlement snapshot. However, if dependencies.refresh() is not thread-safe or if it modifies shared state, it could lead to data corruption. Additionally, if dependencies.refresh() throws an error, the function will not handle it gracefully, potentially leaving the application in an inconsistent state.
+**Recommendation:** Ensure that dependencies.refresh() is thread-safe and handle any potential errors gracefully.
+
+**Potential Memory Leak in createPlusEntitlementStore**
+**File:** src/plus-entitlement-store.ts
+**Line:** 39
+**Excerpt:** try{unsubscribe=source.subscribe(()=>{void refresh();});}catch{publish({...state,status:'error'});}
+**Explanation:** The function createPlusEntitlementStore subscribes to the source to listen for entitlement changes. However, if the subscription fails, it catches the error and publishes an error state. This could lead to a memory leak if the source is not properly unsubscribed from elsewhere in the application.
+**Recommendation:** Ensure that the source is properly unsubscribed from elsewhere in the application to prevent memory leaks.
+
+### No Confirmed Issue:
+- The test coverage appears to be sufficient to validate the functionality of the code. The tests cover various scenarios, including the free plan limit, Plus plan entitlement, and various error conditions.
+
+reminders (original model response):
+### Findings:
+
+**Potential Data Durability Issue in reminder-alert-plan.ts**
+**File:** src/reminder-alert-plan.ts
+**Line:** 14
+**Excerpt:** const at=new Date(y,m-1,d,hour,minute,0,0);
+**Explanation:** The code creates a new Date object using the local calendar interpretation, which can be affected by Daylight Saving Time (DST) gaps. This can lead to incorrect timestamps if the local calendar interpretation rolls forward during a DST gap.
+**Recommendation:** Use UTC-based date calculations to avoid DST issues. For example, use new Date(Date.UTC(y, m - 1, d, hour, minute, 0, 0)).
+
+**Potential Usability Issue in reminder-alert-plan.ts**
+**File:** src/reminder-alert-plan.ts
+**Line:** 21
+**Excerpt:** if(r.completed||!r.title.trim()||!validReminderDay(r.dueDate))continue;
+**Explanation:** The code skips completed reminders, reminders with empty titles, and reminders with invalid due dates. This can lead to confusion for users who might expect to see all reminders, even those that are completed or have invalid dates.
+**Recommendation:** Consider providing a way to filter or display completed reminders and reminders with invalid dates, or at least log these cases for debugging purposes.
+
+**Potential Test Coverage Gap in reminder-alert-plan.test.mjs**
+**File:** tests/reminder-alert-plan.test.mjs
+**Line:** 21
+**Excerpt:** assert.deepEqual(a.map(x=>new Date(x.timestamp).getDate()),[31,28,31]);
+**Explanation:** The test checks if the month-end clamping works correctly for a monthly recurrence. However, it does not cover the case where the due date is on the last day of the month and the next reminder is on the last day of the next month. This can lead to incorrect behavior if the due date is on the last day of the month and the next reminder is on the last day of the next month.
+**Recommendation:** Add a test case where the due date is on the last day of the month and the next reminder is on the last day of the next month to ensure that the month-end clamping works correctly.
+
+### No Confirmed Issue:
+
+The code appears to handle the creation and scheduling of reminder alerts correctly, and the tests cover a wide range of scenarios. There is no confirmed issue with functional correctness, data durability, usability, or test coverage.
+
+capture-save-new-review (original model response):
+1. **Issue in eng-store.ts**:
+   - **Path**: src/eng-store.ts lines 260-262
+   - **Evidence**: The function addPhoto does not handle the case where the draft does not exist or the draft ID does not match.
+   - **Classification**: Confirmed defect
+   - **Recommendation**: Add a check to ensure the draft exists and matches the draft ID before proceeding with the photo addition.
+
+**Issue in eng-screens.tsx**:
+**Path**: src/eng-screens.tsx lines 270-272
+**Evidence**: The function addPhoto does not handle the case where the draft does not exist or the draft ID does not match.
+**Classification**: Confirmed defect
+**Recommendation**: Add a check to ensure the draft exists and matches the draft ID before proceeding with the photo addition.
+
+**Issue in eng-screens.tsx**:
+**Path**: src/eng-screens.tsx lines 350-352
+**Evidence**: The function save does not handle the case where the draft does not exist or the draft ID does not match.
+**Classification**: Confirmed defect
+**Recommendation**: Add a check to ensure the draft exists and matches the draft ID before proceeding with the save operation.
+
+entitlement-reconsideration (original model response):
+1. **Potential Race Condition in createMemoryLimitGate**:
+   - **Evidence**: The function createMemoryLimitGate does not handle concurrent calls to refresh properly, which could lead to race conditions.
+   - **Classification**: Credible unverified risk
+   - **Recommendation**: Implement proper synchronization mechanisms (e.g., mutexes) to ensure that refresh calls are handled sequentially.
+
+**UI Feedback for Memory Limit Violation**:
+**Evidence**: The UI does not provide clear feedback when a memory limit is violated, leading to user confusion.
+**Classification**: Usability improvement
+**Recommendation**: Enhance the UI to clearly indicate when a memory limit is reached and provide actionable steps (e.g., move memories to Recently Deleted, upgrade to Plus).
+
+**Potential for Unnecessary Retry in eng-store.ts**:
+**Evidence**: The function saveDraft in eng-store.ts calls requireMemoryCapacity with a retry mechanism, which might be unnecessary if the memory limit is already checked before saving.
+**Classification**: Usability improvement
+**Recommendation**: Review the logic to ensure that requireMemoryCapacity is only called when necessary, reducing unnecessary retries and improving performance.
+
+reminder-reconsideration (original model response):
+1. **DST Gap Handling**: The code uses the native local calendar to handle DST gaps, which can lead to unexpected behavior if the local time zone changes. This is a confirmed defect because it deviates from the intended behavior of using UTC or a fixed time zone. **Recommendation**: Consider preserving the native local roll-forward with a disclosure to users, prompting for a different time, or another legitimate option. MDN documentation explains that nonexistent local times move forward by the gap, and ambiguous times choose the earlier instant, which can lead to issues.
+
+**Leap Year Handling**: The code clamps February 29th to February 28th in non-leap years, which is correct. However, the test for leap year recurrence clamping to February 28th in non-leap years is not comprehensive enough. It should also test the behavior in a leap year to ensure that the recurrence correctly handles the extra day. **Recommendation**: Add a test for leap year behavior to ensure that the recurrence correctly handles the extra day in a leap year.
+
+**Completed Reminders**: The code correctly skips completed reminders and respects the platform cap. This is intended behavior. **Classification**: Intended behavior.
+
+CHATGPT DISPOSITIONS
+# CasitaDex: independent Qwen Coder first-pass findings and separate ChatGPT response
+
+Exact source/evidence snapshot: 9b5752aab18bd71a1d79506843d06b3f944033eb. Model Qwen 2.5 Coder 7B Q4_K_M, local Ollama; three direct-source review packets (12 file entries including tests), 77.73 seconds total model review wall time. See unedited [policy](raw/policy.json), [backup](raw/backup.json), [reminders](raw/reminders.json) for original requests and responses. Not a comprehensive source review, native test, or release verdict. Model was explicitly permitted to challenge already-passed gates; no prior ChatGPT conclusions supplied. All findings retained, including disagreements.
+
+| ID | Qwen position (see raw) | ChatGPT separate verification and position | Status |
+|---|---|---|---|
+| CD-Q-01 | Capacity gate lacks synchronization, possible race. | Source src/eng-store.ts:110, 288–308, 392–414 already serializes saves and single/bulk restores across capacity check and mutation. Existing boundary and bulk atomic tests pass. No confirmed race in those paths; multi-instance/native integration remains independently testable. | Disagree with defect assertion; evidence recorded. |
+| CD-Q-02 | Entitlement refresh could corrupt data or throw. | plus-entitlement-store.ts:16–33 catches source exceptions, coalesces overlapping refresh; gate fails closed if checking. Synthetic observation confirmed in-flight check blocks the attempted additional save, followed by verified Plus and successful retry. This is a usability/latency question, not corruption. Previously approved fail-closed behavior must not be weakened. | Accept narrower usability risk; review wait/retry UX and native store transitions. |
+| CD-Q-03 | Subscription failure could leak memory. | plus-entitlement-store.ts:39–45 has unsubscribe on stop and listener cleanup; no evidence that a failed subscription leaves a partial registration. Source-level lifecycle tests pass; actual native subscription failure remains a follow-up. | Unverified hypothesis, not confirmed defect. |
+| CD-Q-04 | Legacy text readback verification could miss corruption; compare byte length. | backup-files.native.ts:20–25 compares exact serialized strings and parsed re-export against original. Byte length alone is weaker; full archive path has separate media hash verification. Do not replace exact checks with size. | Disagree with recommendation. |
+| CD-Q-05 | Working-space calculation causes memory leak. | Excerpt is backup-capacity.ts:13–16, not file cited. eng-runtime.native.ts:107 supplies calculated space to disk capacity check; number is not allocation. Real device disk-pressure still needs testing. | Disagree; maintain existing open capacity gate. |
+| CD-Q-06 | Legacy format prefix check could reject valid JSON; use JSON parser. | eng-backup.ts:55–58 deliberately blocks unknown binary versions before legacy parse. Current own-export format must remain supported; whitespace/BOM interoperability for third-party files is an optional benign compatibility test, not confirmed user data corruption. | Review narrow interoperability if required; no risky format fallthrough. |
+| CD-Q-07 | DST gap rolls forward; recommends UTC calculation. | reminder-alert-plan.ts:9–15 explicitly local wall-clock and documented spring-gap roll-forward. Synthetic Chicago 2026-03-08 02:30 schedules at 03:30; UTC substitution would break intended local reminders. Need explicit product choice/copy and real native DST tests. | Accept DST test/UX concern; disagree with UTC replacement. |
+| CD-Q-08 | Completed reminders omitted from alerts; users might want to see all. | planReminderAlerts is alert planner, not UI list. Test reminder-alert-plan.test.mjs:21–25 confirms completed reminders don't arm. Display/history is separate; don't re-arm completed items. | Disagree with alert-path finding; UI history review still valid. |
+| CD-Q-09 | Month-end test missing. | reminder-alert-plan.test.mjs:13–16 expressly verifies Jan 31, Feb 28, Mar 31; Qwen cites wrong line. No confirmed missing month-end regression. Native recurring reminders still open. | Disagree; direct test evidence. |
+
+Mac-only targeted independent ChatGPT recheck: [31/31 tests passed](CD-targeted-regression.txt), [DST observation](CD-dst-observation.txt), [entitlement observation](CD-entitlement-observation.txt). These are source-level tests (subset of existing suite; not additive to earlier totals). Qwen scopes were bounded; the reviewer identified credible questions but several recommendations were contradicted by actual source. Preserve disagreement rather than claiming consensus or blindly applying edits. No source changes, paid services, live purchase, or native build performed. Physical iPhone, release gates, and Claude independent review remain open.
+
+# CasitaDex — peer review round 2 and unresolved choices
+
+November 27, 2026, Mac mini exclusively; pinned 9b5752aab18bd71a1d79506843d06b3f944033eb. Owner approved [peer standing and owner escalation](../../../../../governance/INDEPENDENT_AI_REVIEW_PROCESS.md). Qwen Coder provided three complete responses: [entitlement reconsideration](raw/entitlement-reconsideration.json), [reminder reconsideration](raw/reminder-reconsideration.json), [fresh capture/save review](raw/capture-save-new-review.json). Reconsideration prompts included original disagreement and actual code, so these are not blind first passes. Fresh capture/save scope did not include prior verdicts. Model did not browse or execute native operations. Raw prompts, direction and outputs are retained.
+
+## Primary-source research by ChatGPT, supplied to Qwen where indicated
+
+Apple StoreKit current entitlements: nonconsumable current entitlement determines access; revoked/refunded transactions are not current. Google Play Billing integration: reconcile purchases on connection/resume and grant only PURCHASED status. Implication: preserve verification policy and data; don't bypass a checking/unknown state solely to avoid a retry.
+Apple HIG progress indicators and loading: show honest ongoing feedback and help with stalled operation. Implication: evaluate bounded wait/coalesced verification UX rather than simply adding a lock or weakening entitlement verification.
+MDN Date local time and offset transitions: nonexistent local times move forward by the gap; ambiguous times choose earlier instant. Implication: Qwen's UTC suggestion conflicts with source's explicit local-clock semantics; choose honest disclosure or prompt instead. [New synthetic observation](CD-dst-fall-spring-observation.txt) reproduces Chicago spring 02:30 -> 03:30, fall 01:30 -> first occurrence. Native delivery remains NOT_RUN.
+
+## All Qwen observations and separate evidence assessment
+
+| Stable ID | Qwen round-2 position | ChatGPT position / actual evidence | Status |
+|---|---|---|---|
+| CD-Q-01/02 | Concurrency concern remains; add mutex. | Real source already serializes capacity + mutation. Existing coalesced entitlement refresh can return while checking; earlier fixture confirms fail-closed retry. Investigate bounded wait / visual feedback, no proof of data corruption. | NEEDS_EVIDENCE (UX); not proven race crossing cap. |
+| CD-Q2-01 | Free-limit feedback unclear; add Recently Deleted/Plus actions. | eng-screens.tsx:324 already shows count, Recently Deleted, draft kept and Plus link, while action catch at 294 shows errors. Native max-text toolbar correction previously passed. Verify real in-flight feedback, not missing entire notice. | REFUTED_WITH_EVIDENCE for absent notice; UX remains open. |
+| CD-Q2-02 | Save capacity verification may be unnecessary retry. | eng-store.ts:288–308 checks capacity at transaction boundary; this is needed, not redundant pre-check. Same attempt is idempotent. No verified performance issue. | REFUTED_WITH_EVIDENCE. |
+| CD-Q-07 | Qwen maintains DST defect based on presumed intended UTC/fixed time zone; suggests disclosure or prompt. | Local clock is deliberate in reminder-alert-plan.ts:3,9–15; MDN corroborates actual temporal behavior. Owner needs policy choice for nonexistent times and disclosure. Do not silently substitute UTC. | OWNER_DECISION_REQUIRED; asked Francisco. |
+| CD-Q2-03 | Leap-day recurrence test incomplete. | reminder-alert-plan.test.mjs:17–20 checks start Feb 29 in leap year and clamp Feb 28 after one year. Broader leap-cycle/native behavior unverified; not claim test absent. | NEEDS_EVIDENCE for broader cycle/native behavior. |
+| CD-Q-08 | Completed reminders skip scheduling and cap correct. | Qwen now agrees, original dissent preserved. UI display untouched. | AGREED_RECOMMENDATION (retain). |
+| CD-Q2-04 | addPhoto misses missing/mismatched draft check. | eng-store.ts:269–272 already throws. New synthetic fixture tested missing + mismatched draft ID; both reject and preserve previous collection. | REFUTED_WITH_EVIDENCE. |
+| CD-Q2-05 | Screen photo path misses draft validation. | eng-screens.tsx:297–302 creates/checkpoints fresh draft; action flush rejects failed checkpoint; store validates exact ID. Native asynchronous navigation still not comprehensively checked. | REFUTED_WITH_EVIDENCE for missing store guard; NEEDS_EVIDENCE for native race. |
+| CD-Q2-06 | Save lacks missing/mismatched draft check. | eng-screens.tsx:309–312 rejects absent; eng-store.ts:296–300 rejects mismatched attempt/memory ID. [New synthetic observation](CD-draft-identity-observation.txt) proves guards and unchanged collection/draft. | REFUTED_WITH_EVIDENCE. |
+
+## Owner decision requested
+
+CD-OWNER-01 (DST behavior): owner was asked whether to **A** retain local roll-forward with clear explanation for nonexistent time (recommended), or **B** ask the user to choose a valid time instead. Either must retain intended local wall-clock scheduling and disclose repeated-time choice. Source behavior verified; selection is product policy. Claude's new independent review is quota-paused, and its opinion on this exact choice is NOT YET RECEIVED. No product change or inferred owner assent. Native DST and reminder delivery still open whichever choice.
+
+No other independent output received from Claude in this checkpoint. No code edits, production changes, releases, or purchases; no native checks executed in this round. Prior Qwen disagreement records and 31 targeted regression receipts remain intact.
+
+Message collapsed
+Show more
+just now
+
+
+
+Claude responded: I spot-checked ChatGPT's cited lines in eng-store.ts and eng-screens.tsx, and they match its descriptions.
+Ran a command
+
+Ran a command
+
+I spot-checked ChatGPT’s cited lines in eng-store.ts and eng-screens.tsx, and they match its descriptions. Event Command source is not in this ZIP, so my positions on it are conditional reasoning, not source-backed findings.
+
+Disputes I now side with ChatGPT on.
+Cap race. The capacity check and the write both run inside one serial() queue (eng-store.ts:110-112; saveDraft at 288-300). Qwen’s mutex finding (CD-Q-01) is refuted.
+Draft identity. The guard d.attempt!==attempt||d.memoryId!==memoryId throws “Draft changed” (eng-store.ts:298). CD-Q2-04 to -06 are refuted for the store. The native navigation race stays unverified.
+Cap notice. eng-screens.tsx:324 shows a count notice, gated by memoryLimitEnforcementEnabled. Qwen’s “missing notice” claim is wrong.
+UTC substitution. It would break the local wall-clock behavior your own scheduling relies on. My earlier CD-IR-06 and H-4 stand, because the question there is the horizon and timezone resync, not the UTC math.
+Disagreement with ChatGPT: offline entitlement (my CD-IR-03). “Fail-closed must not be weakened” mixes two separate cases.
+Apple and Google both say a current non-consumable entitlement means access. Neither says an unreachable store means “not Plus”.
+The code publishes {...state,status:'error'} with entitlement free on a cold start (plus-entitlement-store.ts:30), and plus-memory-limit.ts:14 then blocks a paid user.
+A persisted last-verified-Plus cache, re-verified on resume and never granted without a prior verification, keeps the strictness. It only stops treating “unknown” as “unpaid”.
+Competing option: keep strict blocking but show honest stalled-state feedback with a retry (HIG loading guidance). That is acceptable if native Play-unreachable tests pass, and I’d put it to you as an owner choice.
+ChatGPT’s in-flight-check fixture does not cover the cold-start error path.
+Disagreement with ChatGPT: reminders. Their disposition leaves out my CD-IR-05 and CD-IR-06 entirely. Those two decide whether the privacy and horizon concerns are real.
+Horizon. The planner arms 6 occurrences per reminder and 48 in total (reminder-alert-plan.ts:17), so a daily reminder goes silent after about 6 days without opening the app. None of the cited tests address this; the test file has no hit for perReminder.
+Privacy. The live path puts the reminder title in the notification body, while the hardened native module with the generic text is unreferenced.
+DST. On CD-OWNER-01, I’d choose A (roll forward with disclosure). It is the platform-native semantics, and prompting adds friction on every nonexistent time. Add a one-line disclosure for the repeated fall hour, and note that native delivery across DST is still NOT_RUN.
+Restore policy (my CD-IR-04). The Free-versus-Plus restore gate is a real policy fork, and ChatGPT did not reconsider it.
+Option 1 keeps restore Plus-only and adds a clear recovery message for lapsed users.
+Option 2 lets Free restore into available slots, which preserves the owner-approved cap and a user’s right to their own data.
+I recommend Option 2, but it is your decision. Whichever you pick, the 19/20/21 restore behavior needs native tests.
+Correction and conditional Event Command positions.
+My correction. I wrote that no cited report commit matches the pinned one. ChatGPT’s point that the report commits are ancestors is fair, and I withdraw any implication of a mismatch. Ancestor commits still do not prove new native tests on the pinned source.
+Event Command. I haven’t seen its source, so I won’t assert findings.
+Degraded repair vs quarantine: I’d favor quarantining unrecoverable records into a read-only, exportable bucket, with visible counts and no silent drop. Repair is fine only when it is lossless, reversible and tells the user what changed.
+Archived-deletion cleanup: it should be a user-confirmed action with a preview of what will be removed. A wrong cleanup is irreversible, so the feedback risk is higher than the cost of one extra confirmation.
+Backup evidence: the Build 11 archive hashes and sizes show the file was written and re-read. They do not show restore on a clean install, low-disk or interrupted writes, or an iPhone Files copy. I’d call it export-verified, not recovery-verified.
+To review Event Command properly, I need a ZIP of it, the same as for CasitaDex.
+
+
+
+
+
+just now
+
+Write a message…
+
+
+
+
+
+
+Claude is AI and can make mistakes. Please double-check responses.
+
+Sonnet 5.5
+ Medium
+Claude finished the response
