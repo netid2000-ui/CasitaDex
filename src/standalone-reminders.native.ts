@@ -28,15 +28,21 @@ function valid(title:string,notes:string,date:string,time:string){
 }
 const privacyKey="casitadex:reminder-title-preference:v1";
 export async function getReminderTitlePreference(){try{return await AsyncStorage.getItem(privacyKey)==="true";}catch{return false;}}
-const syncAlerts=createLatestReminderRefresh(async()=>({rows:await listStandaloneReminders(false),showTitles:await getReminderTitlePreference()}),async(state,ask)=>reconcileReminderNotifications(state.rows,ask,state.showTitles));
-export async function setReminderTitlePreference(show:boolean){
- await AsyncStorage.setItem(privacyKey,String(show));
- const status=await syncAlerts();
- if(show)return status;
+const queuedSync=createLatestReminderRefresh(async()=>({rows:await listStandaloneReminders(false),showTitles:await getReminderTitlePreference()}),async(state,ask)=>{
+ const status=await reconcileReminderNotifications(state.rows,ask,state.showTitles);
+ if(state.showTitles)return status;
  const stale=await readTitleBearingReminderCount();
  if(stale===null)return "Titles are off for new alerts. Existing notification text could not be verified; check device alerts.";
  if(stale>0)return `Titles are off for new alerts. ${stale} existing alert(s) may still show titles; check device alerts.`;
  return status;
+});
+async function syncAlerts(ask=false){
+ try{return await queuedSync(ask);}
+ catch{return "Saved locally. Alert scheduling could not be checked; existing notification text may still reflect earlier settings. Check device alerts.";}
+}
+export async function setReminderTitlePreference(show:boolean){
+ await AsyncStorage.setItem(privacyKey,String(show));
+ return syncAlerts();
 }
 export async function reminderAlertCoverage(rows:readonly StandaloneReminder[]){return readReminderAlertCoverage(rows,await getReminderTitlePreference());}
 export async function listStandaloneReminders(sync=true):Promise<StandaloneReminder[]>{

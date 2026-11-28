@@ -14,3 +14,10 @@ test("later queued refresh reads current reminder rows instead of rearming delet
  await first;await later;
  assert.deepEqual(snapshots,[["qa-old"],[]]);
 });
+
+test("a failed state read cannot block the next requested reconciliation",async()=>{
+ let attempt=0;
+ const refresh=createLatestReminderRefresh(async()=>{if(++attempt===1)throw Error("synthetic read failure");return ["current"];},async snapshot=>snapshot);
+ await assert.rejects(refresh(),/synthetic read failure/);
+ assert.deepEqual(await refresh(),["current"]);
+});
