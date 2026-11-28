@@ -8,6 +8,7 @@ import { cancelScheduledNotificationAsync } from "expo-notifications/build/cance
 import { SchedulableTriggerInputTypes } from "expo-notifications/build/Notifications.types";
 import { AndroidImportance } from "expo-notifications/build/NotificationChannelManager.types";
 import { planReminderAlerts, type ReminderForAlert } from "./reminder-alert-plan";
+import {noUpcomingReminderFeedback,queuedReminderFeedback} from "./reminder-feedback";
 
 const CHANNEL="casitadex-reminders-v1";
 const OWNER="standalone-v1";
@@ -73,8 +74,8 @@ async function run(rows:readonly ReminderForAlert[],askPermission:boolean,showTi
   const coverage=await readReminderAlertCoverage(rows,showTitles);
   if(!coverage.available)return "Saved locally. Alert coverage could not be checked; reopen Reminders to retry.";
   return coverage.eligible
-   ? `Saved locally. Alerts queued for ${coverage.armed} of ${coverage.eligible} reminders. Coverage is finite; reopen Reminders to renew it. Device settings may affect delivery.`
-   : "Saved locally. No upcoming reminder alert is due.";
+   ? queuedReminderFeedback(coverage.armed,coverage.eligible)
+   : noUpcomingReminderFeedback;
  }catch{
   // Storage mutations are already committed; native alert errors never erase saved records.
   return "Saved locally. Alert scheduling needs attention; reopen Reminders to retry.";

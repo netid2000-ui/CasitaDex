@@ -4,7 +4,7 @@ import {AccessibilityInfo,Alert,Platform,View} from 'react-native';
 import {router,useFocusEffect,useLocalSearchParams} from 'expo-router';
 import {FigmaReminders,type MemoryDueItem} from '../figma-first/FigmaReminders';
 import {getEngStore} from '../eng-runtime';
-import {retainReminderWarning,runReminderFeedbackAction,type ReminderStatusFeedback} from '../reminder-feedback';
+import {mergeReminderFeedback,retainReminderWarning,runReminderFeedbackAction,type ReminderStatusFeedback} from '../reminder-feedback';
 import {listStandaloneReminders,completeStandaloneReminder,deleteStandaloneReminder,getReminderTitlePreference,setReminderTitlePreference,reminderAlertCoverage,refreshStandaloneReminderAlerts,requestStandaloneReminderAlerts,type StandaloneReminder} from '../standalone-reminders';
 function NativeReminders(){
  const {origin}=useLocalSearchParams<{origin?:string}>();
@@ -12,8 +12,8 @@ function NativeReminders(){
  const [memoryDue,setMemoryDue]=useState<MemoryDueItem[]>([]);
  const [error,setError]=useState(''),[status,setStatus]=useState<ReminderStatusFeedback|null>(null);
  const focused=useRef(false),actionLock=useRef(false);
- const reportError=useCallback((message:string)=>{setError(message);if(message&&focused.current&&Platform.OS==='ios'){try{AccessibilityInfo.announceForAccessibilityWithOptions(message,{queue:true});}catch{/* Feedback remains visible if announcement is unavailable. */}}},[]);
- const reportStatus=useCallback((feedback:ReminderStatusFeedback)=>{setStatus(feedback);if(focused.current&&Platform.OS==='ios'){try{AccessibilityInfo.announceForAccessibilityWithOptions(feedback.message,{queue:true});}catch{/* Feedback remains visible if announcement is unavailable. */}}},[]);
+ const reportError=useCallback((message:string,announce=true)=>{setError(message);if(announce&&message&&focused.current&&Platform.OS==='ios'){try{AccessibilityInfo.announceForAccessibilityWithOptions(message,{queue:true});}catch{/* Feedback remains visible if announcement is unavailable. */}}},[]);
+ const reportStatus=useCallback((feedback:ReminderStatusFeedback,announce=true)=>{setStatus(previous=>mergeReminderFeedback(previous,feedback));if(announce&&focused.current&&Platform.OS==='ios'){try{AccessibilityInfo.announceForAccessibilityWithOptions(feedback.message,{queue:true});}catch{/* Feedback remains visible if announcement is unavailable. */}}},[]);
  const [showTitles,setShowTitles]=useState(false),[busy,setBusy]=useState(false);
  const [coverage,setCoverage]=useState<Awaited<ReturnType<typeof reminderAlertCoverage>>|null>(null);
  const refreshGeneration=useRef(0);
@@ -22,7 +22,7 @@ function NativeReminders(){
  async function act(action:()=>Promise<string|void>,success:string,actionError:string,rowAction=false){
   if(actionLock.current){Alert.alert('Please wait','Another reminder update is in progress. Try again after it finishes.');return;}
   actionLock.current=true;setBusy(true);setStatus(retainReminderWarning);
-  try{await runReminderFeedbackAction(action,refresh,feedback=>{reportStatus(feedback);if(rowAction&&feedback.level==='warning'&&focused.current)Alert.alert('Alert warning',feedback.message);},message=>{reportError(message);if(rowAction&&message&&focused.current)Alert.alert('Needs attention',message);},{success,actionError,refreshError:'The action finished, but the reminder list could not be refreshed. Reopen Reminders to check.'});}
+  try{await runReminderFeedbackAction(action,refresh,feedback=>{const modal=rowAction&&feedback.level==='warning'&&focused.current&&!(status?.level==='warning'&&status.message===feedback.message);reportStatus(feedback,!modal);if(modal)Alert.alert('Alert warning',feedback.message);},message=>{const modal=rowAction&&!!message&&focused.current;reportError(message,!modal);if(modal)Alert.alert('Needs attention',message);},{success,actionError,refreshError:'The action finished, but the reminder list could not be refreshed. Reopen Reminders to check.'});}
   finally{actionLock.current=false;setBusy(false);}
  }
  const changePrivacy=()=>act(()=>setReminderTitlePreference(!showTitles),'Reminder privacy updated.','Could not update reminder privacy. Check the saved preference before retrying.');
