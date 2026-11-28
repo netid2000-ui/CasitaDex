@@ -5,6 +5,7 @@ import type {StandaloneReminder} from '../standalone-reminders';
 import {useFigmaTheme} from './tokens';
 import {Button,Copy} from '../ui';
 import {useData} from '../state';
+import {usesCompactReminderHeader} from '../reminder-list-layout';
 const formatReminderDate=(date:string,time:string)=>{
  const parsed=new Date(`${date}T${time}:00`);
  if(Number.isNaN(parsed.getTime()))return `${date} · ${time}`;
@@ -15,7 +16,7 @@ export type FigmaRemindersProps={coverage?:{eligible:number;armed:number;through
 export function FigmaReminders({coverage,showTitles=false,privacyBusy=false,onToggleTitles,onRenewAlerts,reminders,onAdd,onEdit,onComplete,onOpenMemory,onDelete,memoryDue=[],onSetMemoryReminder}:FigmaRemindersProps){
  const fg=useFigmaTheme();
  const {large}=useData(),{fontScale}=useWindowDimensions();
- const compactHeader=large||fontScale>=1.35;const textScale=large?1.6:1;
+ const compactHeader=usesCompactReminderHeader(large,fontScale);const textScale=large?1.6:1;
  const [tab,setTab]=useState<'upcoming'|'overdue'|'completed'|'memoryDates'>('upcoming');
  const now=new Date();
  const isOverdue=(r:StandaloneReminder)=>new Date(r.dueDate+'T'+r.dueTime+':00').getTime()<now.getTime();
