@@ -1,0 +1,135 @@
+Francisco requests peer challenge after preserving your independent response. Qwen's raw position follows, then ChatGPT's evidence-based dispositions and actual correction diff. Please challenge both with equal standing (not equal certainty), identify credible remaining product behavior objections, no offensive testing or paid use. Do not claim native tests.
+QWEN RAW:
+### Review of `reminder-alert-plan.ts`
+
+#### 1. **Correctness and Fairness**
+   - **Functionality**: The function `reminderWallClockAdjustment` correctly adjusts the reminder time based on clock changes. The function `planReminderAlerts` now groups reminders by their occurrence time and then selects the next occurrence for each reminder before allocating extra occurrences.
+   - **Fairness**: The function ensures that reminders are scheduled fairly by considering the next occurrence for each reminder before allocating extra occurrences.
+
+#### 2. **Accuracy and Coverage**
+   - **Coverage**: The function now includes a more comprehensive approach to grouping and selecting reminders, ensuring that all eligible reminders are considered.
+   - **Accuracy**: The function correctly handles the scheduling of reminders and ensures that the next occurrence is selected before allocating extra occurrences.
+
+#### 3. **Accessibility**
+   - **Code Readability**: The code is more readable with the introduction of helper functions and the use of TypeScript's type annotations.
+   - **Error Handling**: The function includes error handling for permission issues and ensures that the function returns a meaningful message in case of errors.
+
+#### 4. **Benign Regression Gaps**
+   - **Regression**: The function has been refactored to improve its performance and accuracy, but it is still backward compatible with the previous implementation.
+   - **Gaps**: There are no known regression gaps in the function.
+
+### Review of `reminder-alerts.native.ts`
+
+#### 1. **Correctness and Fairness**
+   - **Functionality**: The function `run` now includes a more comprehensive approach to scheduling reminders, ensuring that all eligible reminders are considered.
+   - **Fairness**: The function ensures that reminders are scheduled fairly by considering the next occurrence for each reminder before allocating extra occurrences.
+
+#### 2. **Accuracy and Coverage**
+   - **Coverage**: The function now includes a more comprehensive approach to scheduling reminders, ensuring that all eligible reminders are considered.
+   - **Accuracy**: The function correctly handles the scheduling of reminders and ensures that the next occurrence is selected before allocating extra occurrences.
+
+#### 3. **Accessibility**
+   - **Code Readability**: The code is more readable with the introduction of helper functions and the use of TypeScript's type annotations.
+   - **Error Handling**: The function includes error handling for permission issues and ensures that the function returns a meaningful message in case of errors.
+
+#### 4. **Benign Regression Gaps**
+   - **Regression**: The function has been refactored to improve its performance and accuracy, but it is still backward compatible with the previous implementation.
+   - **Gaps**: There are no known regression gaps in the function.
+
+### Summary
+
+Both `reminder-alert-plan.ts` and `reminder-alerts.native.ts` have been refactored to improve their performance and accuracy. The functions are now more readable, maintainable, and backward compatible with the previous implementation. There are no known regression gaps in the functions.
+CHATGPT:
+ChatGPT agrees with blocking-list criticism; c0a181c returns rows before reconciling, renders rows before coverage, guards stale UI updates, and serializes database initialization. AsyncStorage declared and locked, intentionally device-local; root startup/foreground reconciliation exists in _layout.tsx, and Reminders screen actually uses coverage and toggle. Coverage/denial test added, 576 pass + 1 existing skip. Cancellation order retained; retry status explicit; partial failure and long-horizon native evidence still open.
+DIFF:
+diff --git a/src/app/reminders.tsx b/src/app/reminders.tsx
+index 2d8ed10..dbbd912 100644
+--- a/src/app/reminders.tsx
++++ b/src/app/reminders.tsx
+@@ -1,10 +1,10 @@
+ import {Button} from '../ui';
+-import React,{useCallback,useState} from 'react';
++import React,{useCallback,useRef,useState} from 'react';
+ import {Alert,View,Text} from 'react-native';
+ import {router,useFocusEffect,useLocalSearchParams} from 'expo-router';
+ import {FigmaReminders,type MemoryDueItem} from '../figma-first/FigmaReminders';
+ import {getEngStore} from '../eng-runtime';
+-import {listStandaloneReminders,completeStandaloneReminder,deleteStandaloneReminder,getReminderTitlePreference,setReminderTitlePreference,reminderAlertCoverage,requestStandaloneReminderAlerts,type StandaloneReminder} from '../standalone-reminders';
++import {listStandaloneReminders,completeStandaloneReminder,deleteStandaloneReminder,getReminderTitlePreference,setReminderTitlePreference,reminderAlertCoverage,refreshStandaloneReminderAlerts,requestStandaloneReminderAlerts,type StandaloneReminder} from '../standalone-reminders';
+ function NativeReminders(){
+  const {origin}=useLocalSearchParams<{origin?:string}>();
+  const [rows,setRows]=useState<StandaloneReminder[]>([]);
+@@ -12,8 +12,9 @@ function NativeReminders(){
+  const [error,setError]=useState('');
+  const [showTitles,setShowTitles]=useState(false),[busy,setBusy]=useState(false);
+  const [coverage,setCoverage]=useState<Awaited<ReturnType<typeof reminderAlertCoverage>>|null>(null);
+- const refresh=useCallback(async()=>{const [reminders,snapshot]=await Promise.all([listStandaloneReminders(),getEngStore().then(store=>store.load())]);setRows(reminders);setShowTitles(await getReminderTitlePreference());setCoverage(await reminderAlertCoverage(reminders));setMemoryDue(snapshot.data.memories.filter(m=>m.lifecycle==='active'&&!!m.due).map(m=>({id:m.id,title:m.title,due:m.due!})).sort((a,b)=>a.due.localeCompare(b.due)));},[]);
+- useFocusEffect(useCallback(()=>{let active=true;refresh().catch(()=>{if(active)setError('Unable to load reminders. Nothing was changed.')});return()=>{active=false}},[refresh]));
++ const refreshGeneration=useRef(0);
++ const refresh=useCallback(async()=>{const generation=++refreshGeneration.current;const [reminders,snapshot]=await Promise.all([listStandaloneReminders(false),getEngStore().then(store=>store.load())]);if(generation!==refreshGeneration.current)return;setRows(reminders);setMemoryDue(snapshot.data.memories.filter(m=>m.lifecycle==='active'&&!!m.due).map(m=>({id:m.id,title:m.title,due:m.due!})).sort((a,b)=>a.due.localeCompare(b.due)));setCoverage(null);const preference=await getReminderTitlePreference();if(generation!==refreshGeneration.current)return;setShowTitles(preference);void refreshStandaloneReminderAlerts(reminders).then(()=>reminderAlertCoverage(reminders)).then(result=>{if(generation===refreshGeneration.current)setCoverage(result);}).catch(()=>{if(generation===refreshGeneration.current)setError('Alert coverage could not be checked.');});},[]);
++ useFocusEffect(useCallback(()=>{let active=true;refresh().catch(()=>{if(active)setError('Unable to load reminders. Nothing was changed.')});return()=>{active=false;refreshGeneration.current++}},[refresh]));
+  async function changePrivacy(){if(busy)return;setBusy(true);try{const result=await setReminderTitlePreference(!showTitles);setError(result);await refresh();}catch{setError("Could not update reminder privacy. Review device notification settings.");}finally{setBusy(false);}}
+  async function renew(){if(busy)return;setBusy(true);try{setError(await requestStandaloneReminderAlerts());await refresh();}catch{setError("Could not check device alerts.");}finally{setBusy(false);}}
+  const complete=(id:string,completed=true)=>{void completeStandaloneReminder(id,completed).then(refresh).catch(()=>setError('Reminder could not be completed. Your previous save remains.'))};
+diff --git a/src/standalone-reminders.native.ts b/src/standalone-reminders.native.ts
+index 2d5cbf3..8f32c30 100644
+--- a/src/standalone-reminders.native.ts
++++ b/src/standalone-reminders.native.ts
+@@ -4,9 +4,8 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
+ import { reconcileReminderNotifications,readReminderAlertCoverage } from "./reminder-alerts.native";
+ export type StandaloneReminder={id:string;title:string;notes:string;memoryId?:string|null;dueDate:string;dueTime:string;repeat:RepeatSchedule;completed:boolean;createdAt:string;updatedAt:string};
+ let database:ReturnType<typeof openDatabaseAsync>|undefined;
+-async function db(){
+- database??=openDatabaseAsync("casitadex-development-v1.db",{useNewConnection:true});
+- const d=await database;
++async function initializeReminderDatabase(){
++ const d=await openDatabaseAsync("casitadex-development-v1.db",{useNewConnection:true});
+  await d.execAsync("PRAGMA busy_timeout=3000;");
+  await d.execAsync("CREATE TABLE IF NOT EXISTS standalone_reminders_v1 (id TEXT PRIMARY KEY,title TEXT NOT NULL,notes TEXT NOT NULL,due_date TEXT NOT NULL,completed INTEGER NOT NULL DEFAULT 0,created_at TEXT NOT NULL,updated_at TEXT NOT NULL)");
+  const columns=await d.getAllAsync<{name:string}>("PRAGMA table_info(standalone_reminders_v1)");
+@@ -16,6 +15,10 @@ async function db(){
+  if(!columns.some(c=>c.name==="repeat"))await d.execAsync("ALTER TABLE standalone_reminders_v1 ADD COLUMN repeat TEXT NOT NULL DEFAULT 'once'");
+  return d;
+ }
++function db(){
++ database??=initializeReminderDatabase().catch(error=>{database=undefined;throw error;});
++ return database;
++}
+ function valid(title:string,notes:string,date:string,time:string){
+  if(!title.trim()||title.length>200||notes.length>4000)throw Error("Enter a title (up to 200 characters) and notes (up to 4000 characters).");
+  if(!validReminderDay(date))throw Error("Enter a valid date as YYYY-MM-DD.");
+@@ -29,7 +32,7 @@ export async function listStandaloneReminders(sync=true):Promise<StandaloneRemin
+  const d=await db();
+  const rows=await d.getAllAsync<{id:string;title:string;notes:string;memory_id:string|null;due_date:string;due_time:string;repeat:string;anchor_day:number;completed:number;created_at:string;updated_at:string}>("SELECT * FROM standalone_reminders_v1 ORDER BY completed ASC,due_date ASC,created_at DESC");
+  const reminders=rows.map(r=>({id:r.id,title:r.title,notes:r.notes,memoryId:r.memory_id,dueDate:r.due_date,dueTime:r.due_time,repeat:r.repeat as RepeatSchedule,completed:r.completed===1,createdAt:r.created_at,updatedAt:r.updated_at}));
+- if(sync)await syncAlerts(reminders);
++ if(sync)void syncAlerts(reminders).catch(()=>{});
+  return reminders;
+ }
+ export async function saveStandaloneReminder(input:{id?:string;title:string;notes:string;memoryId?:string|null;dueDate:string;dueTime:string;repeat:RepeatSchedule}){
+@@ -61,6 +64,7 @@ export async function deleteStandaloneReminder(id:string){
+  if(result.changes!==1)throw Error("Reminder no longer exists.");
+  return syncAlerts(await listStandaloneReminders(false),false);
+ }
++export async function refreshStandaloneReminderAlerts(rows:readonly StandaloneReminder[]){return syncAlerts(rows);}
+ export async function requestStandaloneReminderAlerts(){return syncAlerts(await listStandaloneReminders(false),true);}
+ /** Read-only consistent reminder export; does not modify existing reminders. */
+ export async function snapshotStandaloneRemindersForBackup(){
+diff --git a/src/standalone-reminders.ts b/src/standalone-reminders.ts
+index bae2b3e..83be568 100644
+--- a/src/standalone-reminders.ts
++++ b/src/standalone-reminders.ts
+@@ -1,6 +1,6 @@
+ import type { RepeatSchedule } from "./reminder-recurrence";
+ export type StandaloneReminder={id:string;title:string;notes:string;memoryId?:string|null;dueDate:string;dueTime:string;repeat:RepeatSchedule;completed:boolean;createdAt:string;updatedAt:string};
+-export async function listStandaloneReminders():Promise<StandaloneReminder[]>{return [];}
++export async function listStandaloneReminders(_sync=true):Promise<StandaloneReminder[]>{return [];}
+ export async function saveStandaloneReminder(_input:{id?:string;title:string;notes:string;memoryId?:string|null;dueDate:string;dueTime:string;repeat:RepeatSchedule}):Promise<void>{throw Error("Reminders require the native app.");}
+ export async function completeStandaloneReminder(_id:string,_completed:boolean):Promise<void>{throw Error("Reminders require the native app.");}
+ export async function deleteStandaloneReminder(_id:string):Promise<void>{throw Error("Reminders require the native app.");}export async function requestStandaloneReminderAlerts():Promise<string>{throw Error("Device alerts require the native app.");}
+@@ -8,3 +8,5 @@ export async function deleteStandaloneReminder(_id:string):Promise<void>{throw E
+ export async function getReminderTitlePreference(){return false;}
+ export async function setReminderTitlePreference(_show:boolean):Promise<string>{throw Error("Device alerts require the native app.");}
+ export async function reminderAlertCoverage(_rows:readonly StandaloneReminder[]){return {eligible:0,armed:0,through:{} as Record<string,number>,available:false};}
++
++export async function refreshStandaloneReminderAlerts(_rows:readonly StandaloneReminder[]){return "Device alerts require the native app."; }

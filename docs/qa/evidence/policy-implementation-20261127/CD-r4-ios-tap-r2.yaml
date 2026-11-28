@@ -1,0 +1,10 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Open delivered reminder card and verify intended editor
+---
+- tapOn:
+    point: "50%,81%"
+- extendedWaitUntil:
+    visible: "Edit Reminder"
+    timeout: 20000
+- assertVisible: "QA Policy Daily Queue iOS"
+- takeScreenshot: CD-ios-reminder-tap

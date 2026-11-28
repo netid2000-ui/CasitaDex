@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="R5GL83X0K3N" tests="1" failures="0" time="24.747" timestamp="2026-11-27T23:47:13">
+    <testcase id="Build 10 reminder privacy and truthful coverage" name="Build 10 reminder privacy and truthful coverage" classname="Build 10 reminder privacy and truthful coverage" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/policy-implementation-20261127/CD-policy-smoke.yaml" time="24.738" timestamp="2026-11-27T23:47:13" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

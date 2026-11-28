@@ -1,0 +1,18 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Synthetic daily reminder actual device queue on iOS
+---
+- tapOn:
+    point: "50%,17%"
+- inputText: "QA Policy Daily Queue iOS"
+- hideKeyboard
+- tapOn: "Daily"
+- tapOn: "Save Reminder"
+- tapOn:
+    text: "Allow"
+    optional: true
+- scrollUntilVisible:
+    element: "QA Policy Daily Queue iOS"
+    direction: DOWN
+    timeout: 20000
+- assertVisible: "Alert queued through.*"
+- takeScreenshot: CD-queued-reminder-ios

@@ -1,0 +1,15 @@
+    RTC_WAKEUP #2: Alarm{22fb84f type 0 origWhen 1795844880000 whenElapsed 315038590 com.designsbyfa.casitadex.platformqa}
+      operation=PendingIntent{493bbdc: PendingIntentRecord{e4c34e5 com.designsbyfa.casitadex.platformqa broadcastIntent}}
+    RTC_WAKEUP #34: Alarm{9b386a0 type 0 origWhen 1795931280000 whenElapsed 401438590 com.designsbyfa.casitadex.platformqa}
+      operation=PendingIntent{4354259: PendingIntentRecord{eba8e1e com.designsbyfa.casitadex.platformqa broadcastIntent}}
+    RTC_WAKEUP #37: Alarm{a9be391 type 0 origWhen 1796017680000 whenElapsed 487838589 com.designsbyfa.casitadex.platformqa}
+      operation=PendingIntent{6dc42f6: PendingIntentRecord{873a6f7 com.designsbyfa.casitadex.platformqa broadcastIntent}}
+    RTC_WAKEUP #39: Alarm{6019882 type 0 origWhen 1796104080000 whenElapsed 574238590 com.designsbyfa.casitadex.platformqa}
+      operation=PendingIntent{1b1bb93: PendingIntentRecord{685d7d0 com.designsbyfa.casitadex.platformqa broadcastIntent}}
+    RTC_WAKEUP #40: Alarm{99e73c9 type 0 origWhen 1796137200000 whenElapsed 607358590 com.designsbyfa.casitadex.platformqa}
+      operation=PendingIntent{634bace: PendingIntentRecord{eb27def com.designsbyfa.casitadex.platformqa broadcastIntent}}
+    RTC_WAKEUP #41: Alarm{a38a0fc type 0 origWhen 1796190480000 whenElapsed 660638590 com.designsbyfa.casitadex.platformqa}
+      operation=PendingIntent{a118385: PendingIntentRecord{d65b5da com.designsbyfa.casitadex.platformqa broadcastIntent}}
+    RTC_WAKEUP #42: Alarm{2530a0b type 0 origWhen 1796276880000 whenElapsed 747038589 com.designsbyfa.casitadex.platformqa}
+      operation=PendingIntent{9ecd0e8: PendingIntentRecord{cebd301 com.designsbyfa.casitadex.platformqa broadcastIntent}}
+        android.permission.POST_NOTIFICATIONS: granted=true, flags=[ USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]

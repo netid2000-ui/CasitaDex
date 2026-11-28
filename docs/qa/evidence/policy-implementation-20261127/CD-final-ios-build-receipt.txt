@@ -1,0 +1,8 @@
+PruneExplicitPrecompiledModules /Volumes/FA-Development/Designs-by-FA/QA-Evidence/owner-review-corrections-20261127/CD-derived/Build/Intermediates.noindex/ExplicitPrecompiledModules
+
+PruneExplicitPrecompiledModules /Volumes/FA-Development/Designs-by-FA/QA-Evidence/owner-review-corrections-20261127/CD-derived/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules
+
+PruneExplicitPrecompiledModules /Volumes/FA-Development/Designs-by-FA/QA-Evidence/owner-review-corrections-20261127/CD-derived/SDKExplicitPrecompiledModules
+
+** BUILD SUCCEEDED **
+

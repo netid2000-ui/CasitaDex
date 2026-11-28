@@ -1,0 +1,8 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Tap delivered synthetic unlinked reminder on Android
+---
+- tapOn: "CasitaDex reminder"
+- extendedWaitUntil:
+    visible: "Alert settings.*"
+    timeout: 20000
+- assertVisible: "Reminders"

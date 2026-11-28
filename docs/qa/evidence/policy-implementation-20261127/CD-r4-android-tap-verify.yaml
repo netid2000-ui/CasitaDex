@@ -1,0 +1,6 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Verify delivered reminder opened intended editor
+---
+- assertVisible: "Edit Reminder"
+- assertVisible: "QA Policy Daily Queue Android"
+- takeScreenshot: CD-android-reminder-tap

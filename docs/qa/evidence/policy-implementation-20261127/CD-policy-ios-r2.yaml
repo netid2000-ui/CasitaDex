@@ -1,0 +1,26 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Build 10 reminder privacy and truthful coverage
+---
+- launchApp:
+    clearState: false
+- extendedWaitUntil:
+    visible: "Find a memory"
+    timeout: 20000
+- tapOn:
+    point: "61%,92%"
+- extendedWaitUntil:
+    visible: "Alert settings.*"
+    timeout: 20000
+- tapOn: "Alert settings.*"
+- assertVisible: "Reminder titles are hidden in notification text by default.*"
+- assertVisible: "Show notification titles: Off"
+- tapOn: "Show notification titles: Off"
+- extendedWaitUntil:
+    visible: "Show notification titles: On"
+    timeout: 30000
+- tapOn: "Show notification titles: On"
+- extendedWaitUntil:
+    visible: "Show notification titles: Off"
+    timeout: 30000
+- assertVisible: "Check device alerts"
+- takeScreenshot: CD-policy-settings-off

@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="CasitaDex Plus 25.99 Recovery QA - iOS 27.0 - 36C7AE6D-1615-4A23-B313-46EBD092DA6C" tests="1" failures="0" time="5.187" timestamp="2026-11-27T23:49:13">
+    <testcase id="Check delivered generic reminder in iOS notification centre" name="Check delivered generic reminder in iOS notification centre" classname="Check delivered generic reminder in iOS notification centre" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/policy-implementation-20261127/CD-r4-ios-delivery-check.yaml" time="5.183" timestamp="2026-11-27T23:49:13" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

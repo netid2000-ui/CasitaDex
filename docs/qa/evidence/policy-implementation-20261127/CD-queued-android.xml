@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="EventCommandGuestQA" tests="1" failures="1" time="21.867" timestamp="2026-11-27T23:37:19">
+    <testcase id="Synthetic daily reminder actual device queue on Android" name="Synthetic daily reminder actual device queue on Android" classname="Synthetic daily reminder actual device queue on Android" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/policy-implementation-20261127/CD-queued-android.yaml" time="21.861" timestamp="2026-11-27T23:37:19" status="ERROR">
+      <failure>Element not found: Text matching regex: Add Reminder</failure>
+    </testcase>
+  </testsuite>
+</testsuites>

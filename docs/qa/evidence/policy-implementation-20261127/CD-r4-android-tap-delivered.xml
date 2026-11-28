@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="EventCommandGuestQA" tests="1" failures="1" time="24.034" timestamp="2026-11-27T23:50:32">
+    <testcase id="Tap delivered synthetic unlinked reminder on Android" name="Tap delivered synthetic unlinked reminder on Android" classname="Tap delivered synthetic unlinked reminder on Android" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/policy-implementation-20261127/CD-r4-android-tap-delivered.yaml" time="24.031" timestamp="2026-11-27T23:50:32" status="ERROR">
+      <failure>Assertion is false: "Alert settings.*" is visible</failure>
+    </testcase>
+  </testsuite>
+</testsuites>

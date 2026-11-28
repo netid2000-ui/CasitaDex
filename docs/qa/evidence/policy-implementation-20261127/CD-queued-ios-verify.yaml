@@ -1,0 +1,16 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Verify persisted iOS synthetic daily reminder and native queue
+---
+- launchApp:
+    clearState: false
+- extendedWaitUntil:
+    visible: "Find a memory"
+    timeout: 20000
+- tapOn:
+    point: "61%,92%"
+- extendedWaitUntil:
+    visible: "Edit QA Policy Daily Queue iOS"
+    timeout: 20000
+- assertVisible: "Alerts queued for 2 of 2 eligible reminders."
+- assertVisible: "Alert queued through.*"
+- takeScreenshot: CD-queued-ios-verified

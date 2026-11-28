@@ -1,0 +1,122 @@
+Independent peer product behavior review. Challenge the source implementation solely for ordinary behavior, correctness, fairness, accurate coverage, accessibility and benign regression gaps. No offensive testing. Distinguish static review from native results. Cite paths and provide evidence.
+diff --git a/src/reminder-alert-plan.ts b/src/reminder-alert-plan.ts
+index 6765d95..521b55c 100644
+--- a/src/reminder-alert-plan.ts
++++ b/src/reminder-alert-plan.ts
+@@ -21,9 +21,10 @@ export function reminderWallClockAdjustment(day:string,time:string):string|null
+  return actual!==time?`This local time is skipped by a clock change. The alert is scheduled for ${actual} instead.`:null;
+ }
+ export function planReminderAlerts(rows:readonly ReminderForAlert[],now=Date.now(),cap=48,perReminder=6):PlannedReminderAlert[]{
+- const out:PlannedReminderAlert[]=[];
++ const groups:PlannedReminderAlert[][]=[];
+  for(const r of rows){
+   if(r.completed||!r.title.trim()||!validReminderDay(r.dueDate))continue;
++  const out:PlannedReminderAlert[]=[];
+   let day=r.dueDate;
+   const anchor=Number(day.slice(-2));
+   for(let i=0,created=0;i<30000&&created<perReminder;i++){
+@@ -39,6 +40,14 @@ export function planReminderAlerts(rows:readonly ReminderForAlert[],now=Date.now
+    if(!next||next===day)break;
+    day=next;
+   }
++  if(out.length)groups.push(out);
+  }
+- return out.sort((a,b)=>a.timestamp-b.timestamp||a.key.localeCompare(b.key)).slice(0,Math.max(0,Math.min(48,cap)));
++ const compare=(a:PlannedReminderAlert,b:PlannedReminderAlert)=>a.timestamp-b.timestamp||a.key.localeCompare(b.key);
++ // Allocate one next occurrence per eligible reminder before allocating extra occurrences.
++ const result:PlannedReminderAlert[]=[];const limit=Math.max(0,Math.min(48,cap));
++ for(let round=0;round<perReminder&&result.length<limit;round++){
++  const candidates=groups.flatMap(group=>group[round]?[group[round]]:[]).sort(compare);
++  result.push(...candidates.slice(0,limit-result.length));
++ }
++ return result.sort(compare);
+ }
+diff --git a/src/reminder-alerts.native.ts b/src/reminder-alerts.native.ts
+index d5ebf37..a4a4468 100644
+--- a/src/reminder-alerts.native.ts
++++ b/src/reminder-alerts.native.ts
+@@ -17,7 +17,24 @@ setNotificationHandler({
+  handleNotification:async()=>({shouldShowBanner:true,shouldShowList:true,shouldPlaySound:true,shouldSetBadge:false}),
+ });
+ 
+-async function run(rows:readonly ReminderForAlert[],askPermission:boolean):Promise<string>{
++const privateBody="Open CasitaDex to view your reminder.";
++function bodyFor(alert:{title:string},showTitles:boolean){return showTitles?alert.title:privateBody;}
++export type ReminderAlertCoverage={eligible:number;armed:number;through:Record<string,number>;available:boolean};
++function matches(r:Awaited<ReturnType<typeof getAllScheduledNotificationsAsync>>[number],alert:ReturnType<typeof planReminderAlerts>[number],showTitles:boolean){
++ return r.content.data?.casitaDexKey===alert.key&&r.content.data?.casitaDexReminderId===alert.id&&
++ (r.content.data?.casitaDexMemoryId??null)===(alert.memoryId??null)&&r.content.body===bodyFor(alert,showTitles);
++}
++export async function readReminderAlertCoverage(rows:readonly ReminderForAlert[],showTitles=false):Promise<ReminderAlertCoverage>{
++ const eligible=rows.filter(r=>planReminderAlerts([r],Date.now(),1,1).length>0).length;
++ try{
++  if(!(await getPermissionsAsync()).granted)return {eligible,armed:0,through:{},available:true};
++  const owned=(await getAllScheduledNotificationsAsync()).filter(r=>r.content.data?.casitaDexType===OWNER);
++  const through:Record<string,number>={};
++  for(const alert of planReminderAlerts(rows))if(owned.some(r=>matches(r,alert,showTitles)))through[alert.id]=Math.max(through[alert.id]??0,alert.timestamp);
++  return {eligible,armed:Object.keys(through).length,through,available:true};
++ }catch{return {eligible,armed:0,through:{},available:false};}
++}
++async function run(rows:readonly ReminderForAlert[],askPermission:boolean,showTitles:boolean):Promise<string>{
+  try {
+   if(Platform.OS==="android"){
+    await setNotificationChannelAsync(CHANNEL,{
+@@ -29,39 +46,38 @@ async function run(rows:readonly ReminderForAlert[],askPermission:boolean):Promi
+   if(!permission.granted&&askPermission&&permission.canAskAgain){
+    permission=await requestPermissionsAsync();
+   }
+-  if(!permission.granted)return "Saved locally. Notifications are off; enable alerts in device settings.";
+   const desired=planReminderAlerts(rows);
+-  const next=new Map(desired.map(r=>[r.key,r]));
+   const all=await getAllScheduledNotificationsAsync();
+   const owned=all.filter(r=>r.content.data?.casitaDexType===OWNER);
+-  const valid=new Set<string>();
+-  // Schedule replacements before removing stale alerts to avoid a lost-alert window.
++  const retained=new Set<string>();
++  // Cancel stale title-bearing alerts, obsolete occurrences and duplicates first.
++  // This also avoids exceeding the pending cap while replacing existing requests.
+   for(const alert of desired){
+-   const found=owned.find(r=>r.content.data?.casitaDexKey===alert.key&&r.content.body===alert.title&&!valid.has(r.identifier));
+-   if(found){valid.add(found.identifier);continue;}
+-   const id=await scheduleNotificationAsync({
+-    content:{title:"CasitaDex reminder",body:alert.title,sound:"default",
++   const found=owned.find(r=>matches(r,alert,showTitles)&&!retained.has(r.identifier));
++   if(found)retained.add(found.identifier);
++  }
++  for(const old of owned)if(!retained.has(old.identifier))await cancelScheduledNotificationAsync(old.identifier);
++  if(!permission.granted)return "Saved locally. Notifications are off; enable alerts in device settings.";
++  for(const alert of desired){
++   if(owned.some(r=>retained.has(r.identifier)&&matches(r,alert,showTitles)))continue;
++   await scheduleNotificationAsync({
++    content:{title:"CasitaDex reminder",body:bodyFor(alert,showTitles),sound:"default",
+      data:{casitaDexType:OWNER,casitaDexReminderId:alert.id,casitaDexMemoryId:alert.memoryId??null,casitaDexKey:alert.key}},
+-    trigger:{type:SchedulableTriggerInputTypes.DATE,
+-     date:new Date(alert.timestamp),...(Platform.OS==="android"?{channelId:CHANNEL}:{})},
++    trigger:{type:SchedulableTriggerInputTypes.DATE,date:new Date(alert.timestamp),...(Platform.OS==="android"?{channelId:CHANNEL}:{})},
+    });
+-   valid.add(id);
+-  }
+-  for(const old of owned){
+-   if(!valid.has(old.identifier)||!next.has(String(old.content.data?.casitaDexKey??""))){
+-    await cancelScheduledNotificationAsync(old.identifier);
+-   }
+   }
+-  return desired.length
+-   ? "Saved locally. Reminder alerts scheduled; device settings may affect timing."
++  const coverage=await readReminderAlertCoverage(rows,showTitles);
++  if(!coverage.available)return "Saved locally. Alert coverage could not be checked; reopen Reminders to retry.";
++  return coverage.eligible
++   ? `Saved locally. Alerts queued for ${coverage.armed} of ${coverage.eligible} reminders. Coverage is finite; reopen Reminders to renew it. Device settings may affect delivery.`
+    : "Saved locally. No upcoming reminder alert is due.";
+  }catch{
+   // Storage mutations are already committed; native alert errors never erase saved records.
+   return "Saved locally. Alert scheduling needs attention; reopen Reminders to retry.";
+  }
+ }
+-export function reconcileReminderNotifications(rows:readonly ReminderForAlert[],askPermission=false):Promise<string>{
+- const next=pending.then(()=>run(rows,askPermission),()=>run(rows,askPermission));
++export function reconcileReminderNotifications(rows:readonly ReminderForAlert[],askPermission=false,showTitles=false):Promise<string>{
++ const next=pending.then(()=>run(rows,askPermission,showTitles),()=>run(rows,askPermission,showTitles));
+  pending=next;
+  return next;
+ }

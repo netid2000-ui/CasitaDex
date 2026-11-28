@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="CasitaDex Plus 25.99 Recovery QA - iOS 27.0 - 36C7AE6D-1615-4A23-B313-46EBD092DA6C" tests="1" failures="1" time="26.361" timestamp="2026-11-27T23:30:11">
+    <testcase id="Build 10 reminder privacy and truthful coverage" name="Build 10 reminder privacy and truthful coverage" classname="Build 10 reminder privacy and truthful coverage" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/policy-implementation-20261127/CD-policy-smoke.yaml" time="26.355" timestamp="2026-11-27T23:30:11" status="ERROR">
+      <failure>Assertion is false: "Alert settings.*" is visible</failure>
+    </testcase>
+  </testsuite>
+</testsuites>

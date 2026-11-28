@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="EventCommandGuestQA" tests="1" failures="0" time="29.663" timestamp="2026-11-27T23:38:08">
+    <testcase id="Synthetic daily reminder actual device queue on Android" name="Synthetic daily reminder actual device queue on Android" classname="Synthetic daily reminder actual device queue on Android" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/policy-implementation-20261127/CD-queued-android-r2.yaml" time="29.658" timestamp="2026-11-27T23:38:08" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

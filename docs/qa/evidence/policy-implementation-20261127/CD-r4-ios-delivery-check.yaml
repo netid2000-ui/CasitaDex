@@ -1,0 +1,12 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Check delivered generic reminder in iOS notification centre
+---
+- swipe:
+    start: 50%, 0%
+    end: 50%, 85%
+    duration: 700
+- extendedWaitUntil:
+    visible: "CasitaDex reminder"
+    timeout: 30000
+- assertVisible: "Open CasitaDex to view your reminder."
+- takeScreenshot: CD-generic-delivered-ios

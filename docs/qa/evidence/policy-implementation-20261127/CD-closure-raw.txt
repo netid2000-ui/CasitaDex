@@ -1,0 +1,96 @@
+Final small correction review: 10ad10a, after your last feedback. Verify the title readback runs within queue and a failed row read after committed save is not falsely reported as failure, and the queue failure recovery test. No new work outside those findings; ordinary product behavior only.
+diff --git a/src/standalone-reminders.native.ts b/src/standalone-reminders.native.ts
+index e826193..474fbd9 100644
+--- a/src/standalone-reminders.native.ts
++++ b/src/standalone-reminders.native.ts
+@@ -28,15 +28,21 @@ function valid(title:string,notes:string,date:string,time:string){
+ }
+ const privacyKey="casitadex:reminder-title-preference:v1";
+ export async function getReminderTitlePreference(){try{return await AsyncStorage.getItem(privacyKey)==="true";}catch{return false;}}
+-const syncAlerts=createLatestReminderRefresh(async()=>({rows:await listStandaloneReminders(false),showTitles:await getReminderTitlePreference()}),async(state,ask)=>reconcileReminderNotifications(state.rows,ask,state.showTitles));
+-export async function setReminderTitlePreference(show:boolean){
+- await AsyncStorage.setItem(privacyKey,String(show));
+- const status=await syncAlerts();
+- if(show)return status;
++const queuedSync=createLatestReminderRefresh(async()=>({rows:await listStandaloneReminders(false),showTitles:await getReminderTitlePreference()}),async(state,ask)=>{
++ const status=await reconcileReminderNotifications(state.rows,ask,state.showTitles);
++ if(state.showTitles)return status;
+  const stale=await readTitleBearingReminderCount();
+  if(stale===null)return "Titles are off for new alerts. Existing notification text could not be verified; check device alerts.";
+  if(stale>0)return Titles are off for new alerts. ${stale} existing alert(s) may still show titles; check device alerts.;
+  return status;
++});
++async function syncAlerts(ask=false){
++ try{return await queuedSync(ask);}
++ catch{return "Saved locally. Alert scheduling could not be checked; existing notification text may still reflect earlier settings. Check device alerts.";}
++}
++export async function setReminderTitlePreference(show:boolean){
++ await AsyncStorage.setItem(privacyKey,String(show));
++ return syncAlerts();
+ }
+ export async function reminderAlertCoverage(rows:readonly StandaloneReminder[]){return readReminderAlertCoverage(rows,await getReminderTitlePreference());}
+ export async function listStandaloneReminders(sync=true):Promise<StandaloneReminder[]>{
+diff --git a/tests/reminder-refresh-queue.test.mjs b/tests/reminder-refresh-queue.test.mjs
+index fd3fe01..90ceefb 100644
+--- a/tests/reminder-refresh-queue.test.mjs
++++ b/tests/reminder-refresh-queue.test.mjs
+@@ -14,3 +14,10 @@ test("later queued refresh reads current reminder rows instead of rearming delet
+  await first;await later;
+  assert.deepEqual(snapshots,[["qa-old"],[]]);
+ });
++
++test("a failed state read cannot block the next requested reconciliation",async()=>{
++ let attempt=0;
++ const refresh=createLatestReminderRefresh(async()=>{if(++attempt===1)throw Error("synthetic read failure");return ["current"];},async snapshot=>snapshot);
++ await assert.rejects(refresh(),/synthetic read failure/);
++ assert.deepEqual(await refresh(),["current"]);
++});
+
+Message collapsed
+Show more
+just now
+
+
+
+Claude responded: Review of 10ad10a (static only)
+Review of 10ad10a (static only)
+
+I reviewed only the diff you pasted and ran nothing. This says nothing about delivery or release readiness.
+
+Verified
+Title readback runs inside the queue. In src/standalone-reminders.native.ts, readTitleBearingReminderCount() now sits in the queued apply task, right after reconcileReminderNotifications. Because the queue serializes tasks, a later reconcile cannot interleave with the count. My objection 1 is resolved.
+A failed row read after a committed save is no longer reported as a save failure. syncAlerts wraps queuedSync in a catch and returns “Saved locally. Alert scheduling could not be checked…”, so saveStandaloneReminder, completeStandaloneReminder and deleteStandaloneReminder no longer throw after their database write. My objection 4 is resolved, subject to the one wording note below.
+Queue recovery. The new test shows a rejected read() does not block the next call. This relies on the existing tail.then(…, …) handler in src/reminder-refresh-queue.ts, which runs the next task after a rejection. The test confirms exactly that.
+Remaining points (minor, ordinary behavior)
+The fallback message is the same for every caller.
+The text, “existing notification text may still reflect earlier settings”, is the privacy-toggle warning. After a plain save, complete or delete it overstates the problem, because nothing about titles changed.
+After a toggle, it fits.
+Fix: use a short generic message for non-privacy callers, and keep the title warning for setReminderTitlePreference.
+The warning is built into the caught path, not the toggle path. If the toggle’s sync fails when turning titles on, the same “may still reflect earlier settings” text appears. Turning titles on does not create a privacy exposure, so say only “could not be checked” there.
+The status text still shares the error state in reminders.tsx. This was my earlier objection 3, not addressed in this diff. I’m noting it again without raising its priority.
+No test covers the new fallback or the in-queue count. The queue test is good. Nothing exercises syncAlerts returning the fallback after a failed read, and nothing asserts the stale-title count is read after the reconcile. Both would need the native module mocked, as in tests/reminder-alert-native.test.mjs.
+Verdict
+
+The two requested fixes work as described in source. Points 1 and 2 are copy refinements, and none blocks acceptance. The native evidence gaps from earlier (lock-screen text, alert delivery, upgrade, partial-failure fault, DST) are unchanged by this diff.
+
+
+Create a doc
+
+
+
+
+
+just now
+
+Write a message…
+
+
+
+
+
+
+Claude is AI and can make mistakes. Please double-check responses.
+
+Sonnet 5.5
+ Medium
+Claude finished the response

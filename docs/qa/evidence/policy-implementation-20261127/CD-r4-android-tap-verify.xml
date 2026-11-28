@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="EventCommandGuestQA" tests="1" failures="0" time="0.812" timestamp="2026-11-27T23:51:42">
+    <testcase id="Verify delivered reminder opened intended editor" name="Verify delivered reminder opened intended editor" classname="Verify delivered reminder opened intended editor" file="/Volumes/FA-Development/Designs-by-FA/QA-Evidence/policy-implementation-20261127/CD-r4-android-tap-verify.yaml" time="0.809" timestamp="2026-11-27T23:51:42" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

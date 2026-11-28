@@ -1,0 +1,186 @@
+Final independent source review of the peer corrections after your second challenge. Review the actual diff and regression tests; identify only material unresolved ordinary product behavior objections. Native smoke separately passed Android emulator, iOS simulator, and Samsung for these candidates. Do not infer actual notification delivery or release readiness. Event-day presentation expiry is reserved for Francisco's decision; do not reinterpret manual lifecycle completion as approval of an expiry. No paid usage, offensive testing, or source modifications.
+diff --git a/src/app/reminders.tsx b/src/app/reminders.tsx
+index dbbd912..ed6c8c1 100644
+--- a/src/app/reminders.tsx
++++ b/src/app/reminders.tsx
+@@ -13,7 +13,7 @@ function NativeReminders(){
+  const [showTitles,setShowTitles]=useState(false),[busy,setBusy]=useState(false);
+  const [coverage,setCoverage]=useState<Awaited<ReturnType<typeof reminderAlertCoverage>>|null>(null);
+  const refreshGeneration=useRef(0);
+- const refresh=useCallback(async()=>{const generation=++refreshGeneration.current;const [reminders,snapshot]=await Promise.all([listStandaloneReminders(false),getEngStore().then(store=>store.load())]);if(generation!==refreshGeneration.current)return;setRows(reminders);setMemoryDue(snapshot.data.memories.filter(m=>m.lifecycle==='active'&&!!m.due).map(m=>({id:m.id,title:m.title,due:m.due!})).sort((a,b)=>a.due.localeCompare(b.due)));setCoverage(null);const preference=await getReminderTitlePreference();if(generation!==refreshGeneration.current)return;setShowTitles(preference);void refreshStandaloneReminderAlerts(reminders).then(()=>reminderAlertCoverage(reminders)).then(result=>{if(generation===refreshGeneration.current)setCoverage(result);}).catch(()=>{if(generation===refreshGeneration.current)setError('Alert coverage could not be checked.');});},[]);
++ const refresh=useCallback(async()=>{const generation=++refreshGeneration.current;const [reminders,snapshot]=await Promise.all([listStandaloneReminders(false),getEngStore().then(store=>store.load())]);if(generation!==refreshGeneration.current)return;setRows(reminders);setMemoryDue(snapshot.data.memories.filter(m=>m.lifecycle==='active'&&!!m.due).map(m=>({id:m.id,title:m.title,due:m.due!})).sort((a,b)=>a.due.localeCompare(b.due)));setCoverage(null);const preference=await getReminderTitlePreference();if(generation!==refreshGeneration.current)return;setShowTitles(preference);void refreshStandaloneReminderAlerts().then(()=>reminderAlertCoverage(reminders)).then(result=>{if(generation===refreshGeneration.current)setCoverage(result);}).catch(()=>{if(generation===refreshGeneration.current)setError('Alert coverage could not be checked.');});},[]);
+  useFocusEffect(useCallback(()=>{let active=true;refresh().catch(()=>{if(active)setError('Unable to load reminders. Nothing was changed.')});return()=>{active=false;refreshGeneration.current++}},[refresh]));
+  async function changePrivacy(){if(busy)return;setBusy(true);try{const result=await setReminderTitlePreference(!showTitles);setError(result);await refresh();}catch{setError("Could not update reminder privacy. Review device notification settings.");}finally{setBusy(false);}}
+  async function renew(){if(busy)return;setBusy(true);try{setError(await requestStandaloneReminderAlerts());await refresh();}catch{setError("Could not check device alerts.");}finally{setBusy(false);}}
+diff --git a/src/reminder-alerts.native.ts b/src/reminder-alerts.native.ts
+index a4a4468..fa2c30c 100644
+--- a/src/reminder-alerts.native.ts
++++ b/src/reminder-alerts.native.ts
+@@ -19,6 +19,10 @@ setNotificationHandler({
+ 
+ const privateBody="Open CasitaDex to view your reminder.";
+ function bodyFor(alert:{title:string},showTitles:boolean){return showTitles?alert.title:privateBody;}
++export async function readTitleBearingReminderCount():Promise<number|null>{
++ try{return (await getAllScheduledNotificationsAsync()).filter(r=>r.content.data?.casitaDexType===OWNER&&r.content.body!==privateBody).length;}
++ catch{return null;}
++}
+ export type ReminderAlertCoverage={eligible:number;armed:number;through:Record<string,number>;available:boolean};
+ function matches(r:Awaited<ReturnType<typeof getAllScheduledNotificationsAsync>>[number],alert:ReturnType<typeof planReminderAlerts>[number],showTitles:boolean){
+  return r.content.data?.casitaDexKey===alert.key&&r.content.data?.casitaDexReminderId===alert.id&&
+diff --git a/src/reminder-refresh-queue.ts b/src/reminder-refresh-queue.ts
+new file mode 100644
+index 0000000..21e82be
+--- /dev/null
++++ b/src/reminder-refresh-queue.ts
+@@ -0,0 +1,9 @@
++/** Load the current reminder state only when the preceding reconciliation has finished. */
++export function createLatestReminderRefresh<T,R>(read:()=>Promise<T>,apply:(state:T,ask:boolean)=>Promise<R>){
++ let tail:Promise<unknown>=Promise.resolve();
++ return (ask=false)=>{
++  const next=tail.then(async()=>apply(await read(),ask),async()=>apply(await read(),ask));
++  tail=next;
++  return next;
++ };
++}
+diff --git a/src/standalone-reminders.native.ts b/src/standalone-reminders.native.ts
+index 8f32c30..e826193 100644
+--- a/src/standalone-reminders.native.ts
++++ b/src/standalone-reminders.native.ts
+@@ -1,11 +1,13 @@
+ import { nextReminderDay, validReminderDay, type RepeatSchedule } from "./reminder-recurrence";
+ import { openDatabaseAsync } from "expo-sqlite";
+ import AsyncStorage from "@react-native-async-storage/async-storage";
+-import { reconcileReminderNotifications,readReminderAlertCoverage } from "./reminder-alerts.native";
++import { reconcileReminderNotifications,readReminderAlertCoverage,readTitleBearingReminderCount } from "./reminder-alerts.native";
++import { createLatestReminderRefresh } from "./reminder-refresh-queue";
+ export type StandaloneReminder={id:string;title:string;notes:string;memoryId?:string|null;dueDate:string;dueTime:string;repeat:RepeatSchedule;completed:boolean;createdAt:string;updatedAt:string};
+ let database:ReturnType<typeof openDatabaseAsync>|undefined;
+ async function initializeReminderDatabase(){
+  const d=await openDatabaseAsync("casitadex-development-v1.db",{useNewConnection:true});
++ try {
+  await d.execAsync("PRAGMA busy_timeout=3000;");
+  await d.execAsync("CREATE TABLE IF NOT EXISTS standalone_reminders_v1 (id TEXT PRIMARY KEY,title TEXT NOT NULL,notes TEXT NOT NULL,due_date TEXT NOT NULL,completed INTEGER NOT NULL DEFAULT 0,created_at TEXT NOT NULL,updated_at TEXT NOT NULL)");
+  const columns=await d.getAllAsync<{name:string}>("PRAGMA table_info(standalone_reminders_v1)");
+@@ -14,6 +16,7 @@ async function initializeReminderDatabase(){
+  if(!columns.some(c=>c.name==="memory_id"))await d.execAsync("ALTER TABLE standalone_reminders_v1 ADD COLUMN memory_id TEXT");
+  if(!columns.some(c=>c.name==="repeat"))await d.execAsync("ALTER TABLE standalone_reminders_v1 ADD COLUMN repeat TEXT NOT NULL DEFAULT 'once'");
+  return d;
++ }catch(error){await d.closeAsync().catch(()=>{});throw error;}
+ }
+ function db(){
+  database??=initializeReminderDatabase().catch(error=>{database=undefined;throw error;});
+@@ -25,14 +28,22 @@ function valid(title:string,notes:string,date:string,time:string){
+ }
+ const privacyKey="casitadex:reminder-title-preference:v1";
+ export async function getReminderTitlePreference(){try{return await AsyncStorage.getItem(privacyKey)==="true";}catch{return false;}}
+-async function syncAlerts(rows:readonly StandaloneReminder[],ask=false){return reconcileReminderNotifications(rows,ask,await getReminderTitlePreference());}
+-export async function setReminderTitlePreference(show:boolean){await AsyncStorage.setItem(privacyKey,String(show));return syncAlerts(await listStandaloneReminders(false));}
++const syncAlerts=createLatestReminderRefresh(async()=>({rows:await listStandaloneReminders(false),showTitles:await getReminderTitlePreference()}),async(state,ask)=>reconcileReminderNotifications(state.rows,ask,state.showTitles));
++export async function setReminderTitlePreference(show:boolean){
++ await AsyncStorage.setItem(privacyKey,String(show));
++ const status=await syncAlerts();
++ if(show)return status;
++ const stale=await readTitleBearingReminderCount();
++ if(stale===null)return "Titles are off for new alerts. Existing notification text could not be verified; check device alerts.";
++ if(stale>0)return `Titles are off for new alerts. ${stale} existing alert(s) may still show titles; check device alerts.`;
++ return status;
++}
+ export async function reminderAlertCoverage(rows:readonly StandaloneReminder[]){return readReminderAlertCoverage(rows,await getReminderTitlePreference());}
+ export async function listStandaloneReminders(sync=true):Promise<StandaloneReminder[]>{
+  const d=await db();
+  const rows=await d.getAllAsync<{id:string;title:string;notes:string;memory_id:string|null;due_date:string;due_time:string;repeat:string;anchor_day:number;completed:number;created_at:string;updated_at:string}>("SELECT * FROM standalone_reminders_v1 ORDER BY completed ASC,due_date ASC,created_at DESC");
+  const reminders=rows.map(r=>({id:r.id,title:r.title,notes:r.notes,memoryId:r.memory_id,dueDate:r.due_date,dueTime:r.due_time,repeat:r.repeat as RepeatSchedule,completed:r.completed===1,createdAt:r.created_at,updatedAt:r.updated_at}));
+- if(sync)void syncAlerts(reminders).catch(()=>{});
++ if(sync)void syncAlerts().catch(()=>{});
+  return reminders;
+ }
+ export async function saveStandaloneReminder(input:{id?:string;title:string;notes:string;memoryId?:string|null;dueDate:string;dueTime:string;repeat:RepeatSchedule}){
+@@ -46,7 +57,7 @@ export async function saveStandaloneReminder(input:{id?:string;title:string;note
+  }else{
+   await d.runAsync("INSERT INTO standalone_reminders_v1 (id,title,notes,memory_id,due_date,due_time,repeat,anchor_day,completed,created_at,updated_at) VALUES (?,?,?,?,?,?,?,?,0,?,?)","r_"+Date.now().toString(36)+"_"+Math.random().toString(36).slice(2,10),input.title.trim(),input.notes,input.memoryId??null,input.dueDate,input.dueTime,input.repeat,Number(input.dueDate.slice(-2)),now,now);
+  }
+- return syncAlerts(await listStandaloneReminders(false),true);
++ return syncAlerts(true);
+ }
+ export async function completeStandaloneReminder(id:string,completed:boolean){
+  const d=await db(),now=new Date().toISOString();
+@@ -57,15 +68,15 @@ export async function completeStandaloneReminder(id:string,completed:boolean){
+   ?await d.runAsync("UPDATE standalone_reminders_v1 SET due_date=?,completed=0,updated_at=? WHERE id=?",next,now,id)
+   :await d.runAsync("UPDATE standalone_reminders_v1 SET completed=?,updated_at=? WHERE id=?",completed?1:0,now,id);
+  if(result.changes!==1)throw Error("Reminder no longer exists.");
+- return syncAlerts(await listStandaloneReminders(false),false);
++ return syncAlerts(false);
+ }
+ export async function deleteStandaloneReminder(id:string){
+  const result=await (await db()).runAsync("DELETE FROM standalone_reminders_v1 WHERE id=?",id);
+  if(result.changes!==1)throw Error("Reminder no longer exists.");
+- return syncAlerts(await listStandaloneReminders(false),false);
++ return syncAlerts(false);
+ }
+-export async function refreshStandaloneReminderAlerts(rows:readonly StandaloneReminder[]){return syncAlerts(rows);}
+-export async function requestStandaloneReminderAlerts(){return syncAlerts(await listStandaloneReminders(false),true);}
++export async function refreshStandaloneReminderAlerts(){return syncAlerts();}
++export async function requestStandaloneReminderAlerts(){return syncAlerts(true);}
+ /** Read-only consistent reminder export; does not modify existing reminders. */
+ export async function snapshotStandaloneRemindersForBackup(){
+  const d=await db();
+diff --git a/src/standalone-reminders.ts b/src/standalone-reminders.ts
+index 83be568..fe2bdd1 100644
+--- a/src/standalone-reminders.ts
++++ b/src/standalone-reminders.ts
+@@ -9,4 +9,4 @@ export async function getReminderTitlePreference(){return false;}
+ export async function setReminderTitlePreference(_show:boolean):Promise<string>{throw Error("Device alerts require the native app.");}
+ export async function reminderAlertCoverage(_rows:readonly StandaloneReminder[]){return {eligible:0,armed:0,through:{} as Record<string,number>,available:false};}
+ 
+-export async function refreshStandaloneReminderAlerts(_rows:readonly StandaloneReminder[]){return "Device alerts require the native app."; }
++export async function refreshStandaloneReminderAlerts(){return "Device alerts require the native app."; }
+diff --git a/tests/reminder-alert-native.test.mjs b/tests/reminder-alert-native.test.mjs
+index caa2c0e..fd319ad 100644
+--- a/tests/reminder-alert-native.test.mjs
++++ b/tests/reminder-alert-native.test.mjs
+@@ -27,7 +27,7 @@ const hooks=registerHooks({resolve(s,ctx,next){
+ }});
+ const state={granted:false,prompts:0,created:0,canceled:0,channel:0,next:0,scheduled:[]};
+ globalThis.__casitaAlertQA=state;
+-const {reconcileReminderNotifications,readReminderAlertCoverage}=await import("../src/reminder-alerts.native.ts");
++const {reconcileReminderNotifications,readReminderAlertCoverage,readTitleBearingReminderCount}=await import("../src/reminder-alerts.native.ts");
+ const date=new Date(Date.now()+3600e3);
+ const dueDate=[date.getFullYear(),String(date.getMonth()+1).padStart(2,"0"),String(date.getDate()).padStart(2,"0")].join("-");
+ const dueTime=[String(date.getHours()).padStart(2,"0"),String(date.getMinutes()).padStart(2,"0")].join(":");
+@@ -65,12 +65,12 @@ test("coverage reflects only matching queued alerts and permission denial remove
+  state.granted=true;state.scheduled=[];
+  await reconcileReminderNotifications([reminder("Synthetic title")],false,true);
+  const coverage=await readReminderAlertCoverage([reminder("Synthetic title")],true);
+- assert.equal(coverage.eligible,1);assert.equal(coverage.armed,1);
++ assert.equal(coverage.eligible,1);assert.equal(coverage.armed,1);assert.equal(await readTitleBearingReminderCount(),1);
+  assert.ok(coverage.through["qa-alert"]>Date.now());
+  assert.equal((await readReminderAlertCoverage([reminder()],false)).armed,0);
+  state.granted=false;
+  await reconcileReminderNotifications([reminder()],false);
+- assert.equal(state.scheduled.length,0);
++ assert.equal(state.scheduled.length,0);assert.equal(await readTitleBearingReminderCount(),0);
+  assert.equal((await readReminderAlertCoverage([reminder()],false)).armed,0);
+  state.granted=true;
+ });
+diff --git a/tests/reminder-refresh-queue.test.mjs b/tests/reminder-refresh-queue.test.mjs
+new file mode 100644
+index 0000000..fd3fe01
+--- /dev/null
++++ b/tests/reminder-refresh-queue.test.mjs
+@@ -0,0 +1,16 @@
++import test from "node:test";
++import assert from "node:assert/strict";
++import {createLatestReminderRefresh} from "../src/reminder-refresh-queue.ts";
++test("later queued refresh reads current reminder rows instead of rearming deleted row",async()=>{
++ let rows=["qa-old"],release,started;
++ const entered=new Promise(resolve=>started=resolve);
++ const pause=new Promise(resolve=>release=resolve);
++ const snapshots=[];
++ const refresh=createLatestReminderRefresh(async()=>[...rows],async snapshot=>{snapshots.push(snapshot);if(snapshots.length===1){started();await pause;}return snapshot;});
++ const first=refresh();
++ await entered;
++ const later=refresh();rows=[];
++ release();
++ await first;await later;
++ assert.deepEqual(snapshots,[["qa-old"],[]]);
++});

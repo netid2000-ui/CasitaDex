@@ -1,0 +1,6 @@
+
+Waiting for flows to complete...
+[Passed] Synthetic daily reminder actual device queue on Android (30s)
+
+1/1 Flow Passed in 30s
+

@@ -1,0 +1,14 @@
+appId: com.designsbyfa.casitadex.platformqa
+name: Open notification using iOS notification card gesture
+---
+- swipe:
+    start: 15%, 81%
+    end: 88%, 81%
+    duration: 500
+- tapOn:
+    text: "Open"
+    optional: true
+- extendedWaitUntil:
+    visible: "Edit Reminder"
+    timeout: 20000
+- assertVisible: "QA Policy Daily Queue iOS"
